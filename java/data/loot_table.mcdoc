@@ -9,7 +9,7 @@ struct LootTable {
 	functions?: [LootFunction],
 }
 
-enum LootContextType(string) {
+enum(string) LootContextType {
 	Empty = "empty",
 	Chest = "chest",
 	Command = "command",
@@ -86,7 +86,7 @@ dispatch minecraft:loot_function[apply_bonus] to struct {
 	parameters: minecraft:apply_bonus_formula[[formula]],
 }
 
-enum ApplyBonusFormula(string) {
+enum(string) ApplyBonusFormula {
 	UniformBonusCount = "uniform_bonus_count",
 	BinomialWithBonusCount = "binomial_with_bonus_count",
 	OreDrops = "ore_drops",
@@ -110,7 +110,7 @@ dispatch minecraft:loot_function[copy_nbt] to struct {
 	ops: [CopyNbtOperation],
 }
 
-enum CopyNameSource(string) {
+enum(string) CopyNameSource {
 	This = "this",
 	Killer = "killer",
 	KillerPlayer = "killer_player",
@@ -123,7 +123,7 @@ struct CopyNbtOperation {
 	op: CopyNbtStrategy,
 }
 
-enum CopyNbtStrategy(string) {
+enum(string) CopyNbtStrategy {
 	Replace = "replace",
 	Append = "append",
 	Merge = "merge",
@@ -151,7 +151,7 @@ dispatch minecraft:loot_function[exploration_map] to struct {
 	skip_existing_chunks?: boolean,
 }
 
-enum MapDecoration(string) {
+enum(string) MapDecoration {
 	Mansion = "mansion",
 	Monument = "monument",
 	Player = "player",
@@ -185,7 +185,7 @@ dispatch minecraft:loot_function[fill_player_head] to struct {
 	entity: EntityTarget,
 }
 
-enum EntityTarget(string) {
+enum(string) EntityTarget {
 	This = "this",
 	Killer = "killer",
 	DirectKiller = "direct_killer",

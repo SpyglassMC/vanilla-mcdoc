@@ -74,7 +74,7 @@ struct TextStyle {
 	},
 }
 
-enum TextColor(string) {
+enum(string) TextColor {
 	Black = "black",
 	DarkBlue = "dark_blue",
 	DarkGreen = "dark_green",
@@ -93,7 +93,7 @@ enum TextColor(string) {
 	White = "white",
 }
 
-enum TextFormat(string) {
+enum(string) TextFormat {
 	Obfuscated = "obfuscated",
 	Bold = "bold",
 	Strikethrough = "strikethrough",
@@ -102,7 +102,7 @@ enum TextFormat(string) {
 	Reset = "reset",
 }
 
-enum ClickEventAction {
+enum(string) ClickEventAction {
 	OpenUrl = "open_url",
 	OpenFile = "open_file",
 	RunCommand = "run_command",
@@ -111,13 +111,13 @@ enum ClickEventAction {
 	CopyToClipBoard = "copy_to_clipboard",
 }
 
-enum HoverEventAction {
+enum(string) HoverEventAction {
 	ShowText = "show_text",
 	ShowItem = "show_item",
 	ShowEntity = "show_entity",
 }
 
-enum Keybind {
+enum(string) Keybind {
 	Advancements = "key.advancements",
 	Attack = "key.attack",
 	Back = "key.back",

@@ -81,7 +81,7 @@ struct DistancePredicate {
 	horizontal?: MinMaxBounds<float>,
 }
 
-enum SlotType(string) {
+enum(string) SlotType {
 	Mainhand = "mainhand",
 	Offhand = "offhand",
 	Head = "head",
@@ -104,7 +104,7 @@ struct PlayerPredicate {
 	stats?: [StatisticPredicate],
 }
 
-enum GameMode(string) {
+enum(string) GameMode {
 	Survival = "survival",
 	Creative = "creative",
 	Adventure = "adventure",
