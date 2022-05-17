@@ -1,0 +1,15 @@
+dispatch minecraft:entity[end_crystal] to struct EvokerFangs {
+	/// Whether to show the base of the end crystal
+	ShowBottom: boolean,
+	/// The block that the beam is pointing to
+	BeamTarget: BeamTarget,
+}
+
+struct BeamTarget {
+	/// The x coordinate of the block the beam is pointing to
+	X: int,
+	/// The y coordinate of the block the beam is pointing to
+	Y: int,
+	/// The z coordinate of the block the beam is pointing to
+	Z: int,
+}

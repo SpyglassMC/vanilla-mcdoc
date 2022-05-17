@@ -1,0 +1,46 @@
+/// Base NBT for all entities
+struct EntityBase {
+	/// The position in [x, y, z]
+	Pos: [double] @ 3,
+	/// The motion in [x, y, z]
+	Motion: [double] @ 3,
+	/// The rotation in [y-rotation, x-rotation]
+	Rotation: [float] @ 2,
+	/// How far the entity has fallen
+	FallDistance: float,
+	/// Ticks of fire left, or if negative, ticks until the entity starts to burn
+	Fire: short,
+	/// Ticks of air left
+	Air: short,
+	/// Whether the entity is on the ground
+	OnGround: boolean,
+	/// Whether the entity should be effected by gravity
+	NoGravity: boolean,
+	/// Whether the entity should take damage
+	Invulnerable: boolean,
+	/// How long until the entity can go through a nether portal
+	PortalCooldown: int,
+	/// The upper bits of the modifiers UUID
+	UUIDMost: long,
+	/// The lower bits of the modifiers UUID
+	UUIDLeast: long,
+	/// The JSON text component name
+	CustomName: string,
+	/// Whether the custom name should be visible always
+	CustomNameVisible: boolean,
+	/// Whether the entity should make any sound
+	Silent: boolean,
+	/// The passengers on the entity
+	Passengers: [AnyEntity],
+	/// Whether the entity should glow
+	Glowing: boolean,
+	/// The tags on the entity
+	Tags: [string],
+}
+
+struct AnyEntity {
+	/// The id of the entity
+	id: #[id=entity_type] string,
+	...EntityBase,
+	...minecraft:entity[[id]],
+}

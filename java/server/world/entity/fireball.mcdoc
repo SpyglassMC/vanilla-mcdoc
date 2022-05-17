@@ -1,0 +1,28 @@
+use ::java::server::util::InventoryItem
+
+dispatch minecraft:entity[dragon_fireball,wither_skull] to FireballBase
+
+dispatch minecraft:entity[fireball] to LargeFireball
+
+dispatch minecraft:entity[small_fireball] to SmallFireball
+
+struct FireballBase {
+	/// The direction of the fireball
+	direction: [double] @ 3,
+	/// The number of ticks since the fireball last moved
+	life: int,
+	/// The acceleration of the fireball
+	power: [double] @ 3,
+}
+
+struct SmallFireball {
+	...FireballBase,
+	/// The item the fireball should render as
+	Item: InventoryItem,
+}
+
+struct LargeFireball {
+	...SmallFireball,
+	/// The power of the fireball explosion
+	ExplosionPower: int,
+}

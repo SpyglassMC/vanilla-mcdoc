@@ -1,5 +1,5 @@
-use ::server::world::item::ItemBase
-use ::server::util::text::Text
+use ::java::server::world::item::ItemBase
+use ::java::server::util::text::Text
 use super::predicates::MinMaxBounds
 use super::predicates::ItemPredicate
 use super::predicates::EntityPredicate

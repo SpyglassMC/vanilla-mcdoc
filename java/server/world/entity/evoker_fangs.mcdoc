@@ -1,0 +1,13 @@
+dispatch minecraft:entity[eye_of_ender] to struct EvokerFangs {
+	/// The number of ticks until the fangs pop out of the ground
+	Warmup: int,
+	/// The owner of the fangs
+	Owner: Owner,
+}
+
+struct Owner {
+	/// The upper bits of the owner's UUID
+	OwnerUUIDMost: long,
+	/// The lower bits of the owner's UUID
+	OwnerUUIDLeast: long,
+}

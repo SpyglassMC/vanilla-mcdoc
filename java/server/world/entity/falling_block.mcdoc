@@ -1,0 +1,16 @@
+dispatch minecraft:entity[falling_block] to struct ExperienceOrb {
+	/// The NBT data for the placed block
+	TileEntityData: minecraft:block[[BlockState.Name]],
+	/// The block state for the placed block
+	BlockState: BlockState,
+	/// The number of ticks this falling block has existed
+	Time: int,
+	/// Whether this falling block should drop as a block when destroyed
+	DropItem: boolean,
+	/// Whether this falling block should hurt entities
+	HurtEntities: boolean,
+	/// The maximum damage this falling block should do
+	FallHurtMax: int,
+	/// The damage multiplier for this falling block
+	FallHurtAmount: float,
+}

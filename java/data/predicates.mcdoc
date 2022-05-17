@@ -1,4 +1,4 @@
-use ::server::world::item::ItemBase
+use ::java::server::world::item::ItemBase
 
 type MinMaxBounds<T> = (T | struct { min?: T, max?: T })
 

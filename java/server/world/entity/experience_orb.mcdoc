@@ -1,0 +1,8 @@
+dispatch minecraft:entity[experience_orb] to struct ExperienceOrb {
+	/// The number of ticks that the orb has been alive
+	Age: short,
+	/// The health of the orb
+	Health: byte,
+	/// The amount of experience the orb will give
+	Value: short,
+}

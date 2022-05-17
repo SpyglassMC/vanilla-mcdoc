@@ -1,0 +1,12 @@
+use ::java::server::util::InventoryItem
+
+dispatch minecraft:entity[firework_rocket] to struct FireWorkRocket {
+	/// The number of ticks the firework rocket has been alive for
+	Life: int,
+	/// The number of ticks this firework rocket will live for
+	LifeTime: int,
+	/// Whether the firework rocket should move at an angle
+	ShotAtAngle: boolean,
+	/// The item representation of the firework rocket
+	FireworksItem: InventoryItem,
+}

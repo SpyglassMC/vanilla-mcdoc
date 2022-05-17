@@ -1,0 +1,4 @@
+dispatch minecraft:entity[tnt] to struct Tnt {
+	/// The number of ticks until this tnt explodes
+	Fuse: short,
+}

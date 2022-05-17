@@ -1,0 +1,19 @@
+dispatch minecraft:entity[painting] to struct Painting {
+	/// The x coordinate of the block the item frame is in
+	TileX: int,
+	/// The y coordinate of the block the item frame is in
+	TileY: int,
+	/// The z coordinate of the block the item frame is in
+	TileZ: int,
+	/// The direction the painting is facing
+	Facing: Facing,
+	/// The type of the painting
+	Motive: #[id=motive] string,
+}
+
+enum(byte) Facing {
+	South = 0,
+	West = 1,
+	North = 2,
+	East = 3,
+}

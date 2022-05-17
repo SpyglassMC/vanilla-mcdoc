@@ -1,0 +1,34 @@
+use ::java::server::util::PotionEffect
+
+dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
+	/// The number of ticks this area effect cloud has been alive  
+	/// The area effect cloud will disappear when greater than `Duration + WaitTime`
+	Age: int,
+	/// The color of the particles  
+	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
+	Color: int,
+	/// The maximum number of ticks until this area effect cloud will disappear after `WaitTime` is done
+	Duration: int,
+	/// The number of ticks until the effects are reapplied
+	ReapplicationDelay: int,
+	/// The number of ticks until the area effect cloud appears
+	WaitTime: int,
+	/// The amount the duration changes when the area effect cloud is used
+	DurationOnUse: int,
+	/// The upper bits of the owner's UUID
+	OwnerUUIDMost: long,
+	/// The lower bits of the owner's UUID
+	OwnerUUIDLeast: long,
+	/// The radius of the area effect cloud
+	Radius: float,
+	/// The change in the radius of the area effect cloud when it is used
+	RadiusOnUse: float,
+	/// The change in the radius of the area effect cloud per tick
+	RadiusPerTick: float,
+	/// The particle the area effect cloud displays
+	Particle: string,
+	/// The default potion effect
+	Potion: #[id=potion] string,
+	/// The potion effects that get applied on use
+	Effects: [PotionEffect],
+}

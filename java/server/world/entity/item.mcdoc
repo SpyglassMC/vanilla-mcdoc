@@ -1,0 +1,22 @@
+dispatch minecraft:entity[item] to struct Item {
+	/// The number of ticks the item has been alive
+	Age: short,
+	/// The health of the item
+	Health: short,
+	/// The number of ticks until a player can pick up this item
+	PickupDelay: short,
+	/// The owner of the item  
+	/// Only the owner can pick up the item
+	Owner: Uuid,
+	/// The player who threw the item
+	Thrower: Uuid,
+	/// The item's representation
+	Item: InventoryItem,
+}
+
+struct Uuid {
+	/// The lower bits of the target player's UUID
+	L: long,
+	/// The upper bits of the target player's UUID
+	M: long,
+}
