@@ -1,0 +1,266 @@
+use ::server::world::item::ItemBase
+use ::server::util::text::Text
+use super::predicates::MinMaxBounds
+use super::predicates::ItemPredicate
+use super::predicates::EntityPredicate
+use super::predicates::MobEffectPredicate
+use super::predicates::DamagePredicate
+use super::predicates::DamageSourcePredicate
+use super::predicates::LocationPredicate
+use super::predicates::DistancePredicate
+
+struct Advancement {
+	display?: Display,
+	parent?: #[id=advancement] string,
+	criteria: struct {
+		[string]: Criterion,
+	},
+	requirements?: [[string]], // TODO
+	rewards?: Rewards
+}
+
+struct Display {
+	icon: struct {
+		item: #[id=item] string,
+		nbt?: #[parser=nbt(ItemBase)] string, // TODO
+	},
+	title: Text,
+	description: Text,
+	background?: string, // TODO
+	frame?: FrameType,
+	show_toast?: boolean,
+	announce_to_chat?: boolean,
+	hidden?: boolean,
+}
+
+enum FrameType(string) {
+	Task = "task",
+	Challenge = "challenge",
+	Goal = "goal",
+}
+
+struct Rewards {
+	function?: #[id=function] string,
+	loot?: [#[id=loot_table] string],
+	recipes?: [#[id=recipe] string],
+	experience?: int,
+}
+
+struct Criterion {
+	trigger: #[id] Trigger,
+	conditions?: minecraft:criteria_trigger[[trigger]],
+}
+
+enum Trigger(string) {
+  BeeNestDestroyed = "bee_nest_destroyed",
+  BredAnimals = "bred_animals",
+  BrewedPotion = "brewed_potion",
+  ChangedDimension = "changed_dimension",
+  ChanneledLightning = "channeled_lightning",
+  ConstructBeacon = "construct_beacon",
+  ConsumeItem = "consume_item",
+  CuredZombieVillager = "cured_zombie_villager",
+  EffectsChanged = "effects_changed",
+  EnchantedItem = "enchanted_item",
+  EnterBlock = "enter_block",
+  EntityHurtPlayer = "entity_hurt_player",
+  EntityKilledPlayer = "entity_killed_player",
+  FilledBucket = "filled_bucket",
+  FishingRodHooked = "fishing_rod_hooked",
+  HeroOfTheVillage = "hero_of_the_village",
+  Impossible = "impossible",
+  InventoryChanged = "inventory_changed",
+  ItemDurabilityChanged = "item_durability_changed",
+  KilledByCrossbow = "killed_by_crossbow",
+  Levitation = "levitation",
+  Location = "location",
+  NetherTravel = "nether_travel",
+  PlacedBlock = "placed_block",
+  PlayerHurtEntity = "player_hurt_entity",
+  PlayerKilledEntity = "player_killed_entity",
+  RecipeUnlocked = "recipe_unlocked",
+  ShotCrossbow = "shot_crossbow",
+  SafelyHarvestHoney = "safely_harvest_honey",
+  SleptInBed = "slept_in_bed",
+  SlideDownBlock = "slide_down_block",
+  SummonedEntity = "summoned_entity",
+  TameAnimal = "tame_animal",
+  Tick = "tick",
+  UsedEnderEye = "used_ender_eye",
+  UsedTotem = "used_totem",
+  VillagerTrade = "villager_trade",
+  VoluntaryExile = "voluntary_exile"
+}
+
+dispatch minecraft:criteria_trigger[BeeNestDestroyed] to struct {
+	block?: #[id=block] string,
+	num_bees_inside?: int,
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[BredAnimals] to struct {
+	parent?: EntityPredicate,
+	partner?: EntityPredicate,
+	child?: EntityPredicate,
+}
+
+dispatch minecraft:criteria_trigger[BrewedPotion] to struct {
+	potion?: #[id=potion] string,
+}
+
+dispatch minecraft:criteria_trigger[ChangedDimension] to struct {
+	from?: #[id=dimension],
+	to?: #[id=dimension],
+}
+
+dispatch minecraft:criteria_trigger[ChanneledLightning] to struct {
+	victims?: [EntityPredicate],
+}
+
+dispatch minecraft:criteria_trigger[ConstructBeacon] to struct {
+	level?: MinMaxBounds<int>,
+}
+
+dispatch minecraft:criteria_trigger[ConsumeItem] to struct {
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[CuredZombieVillager] to struct {
+	villager?: EntityPredicate,
+	zombie?: EntityPredicate,
+}
+
+dispatch minecraft:criteria_trigger[EffectsChanged] to struct {
+	effects?: struct {
+		[#[id=mob_effect] string]: MobEffectPredicate,
+	},
+}
+
+dispatch minecraft:criteria_trigger[EnterBlock] to struct {
+	block?: #[id=block] string,
+	state?: struct {
+		[string]: string, // TODO
+	},
+}
+
+dispatch minecraft:criteria_trigger[EnchantedItem] to struct {
+	item?: ItemPredicate,
+	levels?: MinMaxBounds<int>,
+}
+
+dispatch minecraft:criteria_trigger[EntityHurtPlayer] to struct {
+	damage?: DamagePredicate,
+}
+
+dispatch minecraft:criteria_trigger[EntityKilledPlayer] to struct {
+	entity?: EntityPredicate,
+	killing_blow?: DamageSourcePredicate,
+}
+
+dispatch minecraft:criteria_trigger[FilledBucket] to struct {
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[FishingRodHooked] to struct {
+	entity?: EntityPredicate,
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[HeroOfTheVillage] to LocationPredicate
+
+dispatch minecraft:criteria_trigger[InventoryChanged] to struct {
+	slots?: struct {
+		empty?: MinMaxBounds<int>,
+		occupied?: MinMaxBounds<int>,
+		full?: MinMaxBounds<int>,
+	},
+	items?: [ItemPredicate],
+}
+
+dispatch minecraft:criteria_trigger[ItemDurabilityChanged] to struct {
+	delta?: MinMaxBounds<int>,
+	durability?: MinMaxBounds<int>,
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[KilledByCrossbow] to struct {
+	unique_entity_types?: MinMaxBounds<int>,
+	victims?: [EntityPredicate],
+}
+
+dispatch minecraft:criteria_trigger[Levitation] to struct {
+	distance?: DistancePredicate,
+	duration?: MinMaxBounds<int>,
+}
+
+dispatch minecraft:criteria_trigger[Location] to LocationPredicate
+
+dispatch minecraft:criteria_trigger[NetherTravel] to struct {
+	distance?: DistancePredicate,
+	entered?: LocationPredicate,
+	exited?: LocationPredicate,
+}
+
+dispatch minecraft:criteria_trigger[PlacedBlock] to struct {
+	block?: #[id=block] string,
+	state?: struct {
+		[string]: string, // TODO
+	},
+	item?: ItemPredicate,
+	location?: LocationPredicate,
+}
+
+dispatch minecraft:criteria_trigger[PlayerHurtEntity] to struct {
+	damage?: DamagePredicate,
+	entity?: EntityPredicate,
+}
+
+dispatch minecraft:criteria_trigger[PlayerKilledEntity] to struct {
+	entity?: EntityPredicate,
+	killing_blow?: DamageSourcePredicate,
+}
+
+dispatch minecraft:criteria_trigger[RecipeUnlocked] to struct {
+	recipe: #[id=recipe] string,
+}
+
+dispatch minecraft:criteria_trigger[SafelyHarvestHoney] to struct {
+	block?: struct {
+		block?: #[id=block] string,
+		tag?: #[id(registry=block,tags=implicit)] string,
+	},
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[SleptInBed] to LocationPredicate
+
+dispatch minecraft:criteria_trigger[SlideDownBlock] to struct {
+	block?: #[id=block] string,
+}
+
+dispatch minecraft:criteria_trigger[ShotCrossbow] to struct {
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[SummonedEntity] to struct {
+	entity?: EntityPredicate,
+}
+
+dispatch minecraft:criteria_trigger[TameAnimal] to struct {
+	entity?: EntityPredicate,
+}
+
+dispatch minecraft:criteria_trigger[UsedEnderEye] to struct {
+	distance?: MinMaxBounds<float>,
+}
+
+dispatch minecraft:criteria_trigger[UsedTotem] to struct {
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[VillagerTrade] to struct {
+	villager?: EntityPredicate,
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[VoluntaryExile] to LocationPredicate

@@ -1,0 +1,156 @@
+use ::server::world::item::ItemBase
+
+type MinMaxBounds<T> = (T | struct { min?: T, max?: T })
+
+struct ItemPredicate {
+	item?: #[id=item] string,
+	tag?: #[id(registry=item,tags=implicit)] string,
+	count?: MinMaxBounds<int>,
+	durability?: MinMaxBounds<int>,
+	potion?: #[id=potion] string,
+	enchantments?: [EnchantmentPredicate]
+	nbt?: #[parser=nbt(ItemBase)] string, // TODO
+}
+
+struct EnchantmentPredicate {
+	enchantment?: #[id=enchantment] string,
+	levels?: MinMaxBounds<int>,
+}
+
+struct BlockPredicate {
+	block?: #[id=block] string,
+	tag?: #[id(registry=block,tags=implicit)] string,
+	state?: struct {
+		[string]: (MinMaxBounds<int> | boolean | string), // TODO
+	},
+	nbt?: #[parser=nbt(ItemBase)] string, // TODO
+}
+
+struct FluidPredicate {
+	fluid?: #[id=fluid] string,
+	tag?: #[id(registry=fluid,tags=implicit)] string,
+	state?: struct {
+		[string]: (MinMaxBounds<int> | boolean | string), // TODO
+	},
+}
+
+struct LocationPredicate {
+	position?: struct {
+		x?: MinMaxBounds<float>,
+		y?: MinMaxBounds<float>,
+		z?: MinMaxBounds<float>,
+	},
+	biome?: string,
+	feature?: string,
+	dimension?: string,
+	light?: struct {
+		light?: MinMaxBounds<int @ 0..15>,
+	},
+	block?: BlockPredicate,
+	fluid?: FluidPredicate,
+}
+
+struct EntityPredicate {
+	type?: #[id(registry=entity_type,tags=allow)] string,
+	team?: #[team] string,
+	nbt?: #[parser=nbt] string, // TODO
+	location?: LocationPredicate,
+	distance?: DistancePredicate,
+	flags?: struct {
+		is_on_fire?: boolean,
+		is_sneaking?: boolean,
+		is_sprinting?: boolean,
+		is_swimming?: boolean,
+		is_baby?: boolean,
+	},
+	equipment?: struct {
+		[SlotType]: ItemPredicate,
+	},
+	player?: PlayerPredicate,
+	catType?: string,
+	effects?: struct {
+		[#[id=mob_effect] string]: MobEffectPredicate,
+	},
+}
+
+struct DistancePredicate {
+	x?: MinMaxBounds<float>,
+	y?: MinMaxBounds<float>,
+	z?: MinMaxBounds<float>,
+	absolute?: MinMaxBounds<float>,
+	horizontal?: MinMaxBounds<float>,
+}
+
+enum SlotType(string) {
+	Mainhand = "mainhand",
+	Offhand = "offhand",
+	Head = "head",
+	Chest = "chest",
+	Legs = "legs",
+	Feet = "feet",
+}
+
+struct PlayerPredicate {
+	gamemode?: GameMode,
+	level?: MinMaxBounds<int>,
+	advancements?: struct {
+		[#[id=advancement] string]: (boolean | struct {
+			[string]: boolean,
+		}),
+	},
+	recipes?: struct {
+		[#[id=recipe] string]: boolean,
+	},
+	stats?: [StatisticPredicate],
+}
+
+enum GameMode(string) {
+	Survival = "survival",
+	Creative = "creative",
+	Adventure = "adventure",
+	Spectator = "spectator",
+}
+
+struct StatisticPredicate {
+	type: #[id=stat_type] string,
+	stat: minecraft:statistic_type[[type]],
+	value: MinMaxBounds<int>,
+}
+
+dispatch minecraft:statistic_type to string
+
+dispatch minecraft:statistic_type[mined] to #[id=block] string
+
+dispatch minecraft:statistic_type[crafted,used,broken,picked_up,dropped] to #[id=item] string
+
+dispatch minecraft:statistic_type[killed,killed_by] to #[id=entity_type] string
+
+dispatch minecraft:statistic_type[custom] to #[id=custom_stat] string
+
+struct MobEffectPredicate {
+	amplifier?: MinMaxBounds<int>,
+	duration?: MinMaxBounds<int>,
+	ambient?: boolean,
+	visible?: boolean,
+}
+
+struct DamagePredicate {
+	dealt?: MinMaxBounds<float>,
+	taken?: MinMaxBounds<float>,
+	blocked?: boolean,
+	source_entity?: EntityPredicate,
+	type?: DamageSourcePredicate,
+}
+
+struct DamageSourcePredicate {
+	is_explosion?: boolean,
+	is_fire?: boolean,
+	is_magic?: boolean,
+	is_projectile?: boolean,
+	is_lightning?: boolean,
+	bypasses_armor?: boolean,
+	bypasses_invulnerability?: boolean,
+	bypasses_magic?: boolean,
+	source_entity?: EntityPredicate,
+	direct_entity?: EntityPredicate,
+}
