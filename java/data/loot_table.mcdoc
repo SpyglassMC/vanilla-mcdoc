@@ -1,0 +1,334 @@
+use ::server::world::item::ItemBase
+use ::server::util::text::Text
+use super::predicates::MinMaxBounds
+use super::predicates::SlotType
+
+struct LootTable {
+	type?: #[id] LootContextType,
+	pools?: [LootPool],
+	functions?: [LootFunction],
+}
+
+enum LootContextType(string) {
+	Empty = "empty",
+	Chest = "chest",
+	Command = "command",
+	Selector = "selector",
+	Fishing = "fishing",
+	Entity = "entity",
+	Gift = "gift",
+	Barter = "barter",
+	AdvancementReward = "advancement_reward",
+	AdvancementEntity = "advancement_entity",
+	Generic = "generic",
+	Block = "block",
+}
+
+type RandomIntGenerator = (int | struct {
+	type: ("uniform" | "binomial" | "constant"),
+	...minecraft:random_int_generator[[type]],
+})
+
+dispatch minecraft:random_int_generator[uniform,()] to struct { min?: int, max?: int }
+
+dispatch minecraft:random_int_generator[binomial] to struct { n: int @ 0.., p: float @ 0..1 }
+
+dispatch minecraft:random_int_generator[constant] to struct { value: int }
+
+type RandomValueBounds = (float | struct { min: float, max: float })
+
+struct LootPool {
+	rolls: RandomIntGenerator,
+	bonus_rolls?: MinMaxBounds<float>,
+	entries: [LootPoolEntry],
+	functions?: [LootFunction],
+	conditions?: [LootCondition],
+}
+
+struct LootPoolEntry {
+	type: #[id=loot_pool_entry_type] string,
+	...minecraft:loot_pool_entry[[type]],
+}
+
+struct LootPoolEntryBase {
+	functions?: [LootFunction],
+	conditions?: [LootCondition],
+}
+
+struct LootPoolEntrySingleton<Name> {
+	name: Name,
+	weight?: int @ 1..,
+	quality?: int,
+	...LootPoolEntryBase,
+}
+
+dispatch minecraft:loot_pool_entry[dynamic] to LootPoolEntrySingleton<#[id] string>
+
+dispatch minecraft:loot_pool_entry[item] to LootPoolEntrySingleton<#[id=item] string>
+
+dispatch minecraft:loot_pool_entry[loot_table] to LootPoolEntrySingleton<#[id=loot_table] string>
+
+dispatch minecraft:loot_pool_entry[tag] to LootPoolEntrySingleton<#[id(registry=item,tags=implicit)] string>
+
+dispatch minecraft:loot_pool_entry[alternatives,group,sequence] to {
+	children: [LootPoolEntry],
+	...LootPoolEntryBase,
+}
+
+struct LootFunction {
+	function: #[id=loot_function_type] string,
+	...minecraft:loot_function[[function]],
+}
+
+dispatch minecraft:loot_function[apply_bonus] to struct {
+	enchantment: #[id=enchantment] string,
+	formula: #[id] ApplyBonusFormula,
+	parameters: minecraft:apply_bonus_formula[[formula]],
+}
+
+enum ApplyBonusFormula(string) {
+	UniformBonusCount = "uniform_bonus_count",
+	BinomialWithBonusCount = "binomial_with_bonus_count",
+	OreDrops = "ore_drops",
+}
+
+dispatch minecraft:apply_bonus_formula[uniform_bonus_count] to struct {
+	bonusMultiplier: int,
+}
+
+dispatch minecraft:apply_bonus_formula[binomial_with_bonus_count] to struct {
+	extra: int @ 0..,
+	probability: float @ 0..1,
+}
+
+dispatch minecraft:loot_function[copy_name] to struct {
+	source: CopyNameSource,
+}
+
+dispatch minecraft:loot_function[copy_nbt] to struct {
+	source: CopyNameSource,
+	ops: [CopyNbtOperation],
+}
+
+enum CopyNameSource(string) {
+	This = "this",
+	Killer = "killer",
+	KillerPlayer = "killer_player",
+	BlockEntity = "block_entity",
+}
+
+struct CopyNbtOperation {
+	source: string, // TODO
+	target: string, // TODO
+	op: CopyNbtStrategy,
+}
+
+enum CopyNbtStrategy(string) {
+	Replace = "replace",
+	Append = "append",
+	Merge = "merge",
+}
+
+dispatch minecraft:loot_function[copy_state] to struct {
+	block: #[id=block] string,
+	properties: [string], // TODO
+}
+
+dispatch minecraft:loot_function[enchant_randomly] to struct {
+	enchantments: [#[id=enchantment]],
+}
+
+dispatch minecraft:loot_function[enchant_with_levels] to struct {
+	levels: RandomIntGenerator,
+	treasure?: boolean,
+}
+
+dispatch minecraft:loot_function[exploration_map] to struct {
+	destination?: string, // TODO
+	decoration?: MapDecoration,
+	zoom?: int,
+	search_radius?: int,
+	skip_existing_chunks?: boolean,
+}
+
+enum MapDecoration(string) {
+	Mansion = "mansion",
+  Monument = "monument",
+  Player = "player",
+  Frame = "frame",
+  RedMarker = "red_marker",
+  BlueMarker = "blue_marker",
+  TargetX = "target_x",
+  TargetPoint = "target_point",
+  PlayerOffMap = "player_off_map",
+  PlayerOffLimits = "player_off_limits",
+  RedX = "red_x",
+  BannerWhite = "banner_white",
+  BannerOrange = "banner_orange",
+  BannerMagenta = "banner_magenta",
+  BannerLight_blue = "banner_light_blue",
+  BannerYellow = "banner_yellow",
+  BannerLime = "banner_lime",
+  BannerPink = "banner_pink",
+  BannerGray = "banner_gray",
+  BannerLight_gray = "banner_light_gray",
+  BannerCyan = "banner_cyan",
+  BannerPurple = "banner_purple",
+  BannerBlue = "banner_blue",
+  BannerBrown = "banner_brown",
+  BannerGreen = "banner_green",
+  BannerRed = "banner_red",
+  BannerBlack = "banner_black",
+}
+
+dispatch minecraft:loot_function[fill_player_head] to struct {
+	entity: EntityTarget,
+}
+
+enum EntityTarget(string) {
+	This = "this",
+	Killer = "killer",
+	DirectKiller = "direct_killer",
+	KillerPlayer = "killer_player",
+}
+
+dispatch minecraft:loot_function[limit_count] to struct {
+	limit: MinMaxBounds<int>,
+}
+
+dispatch minecraft:loot_function[looting_enchant] to struct {
+	count: MinMaxBounds<float>,
+	limit?: int,
+}
+
+dispatch minecraft:loot_function[set_attributes] to struct {
+	modifiers: [AttributeModifier],
+}
+
+struct AttributeModifier {
+	attribute: string,
+	name: string,
+	amount: MinMaxBounds<float>,
+	operation: ("addition" | "multiply_base" | "multiply_total"),
+	slot: (SlotType | [SlotType]),
+	id?: #[parser=uuid] string,
+}
+
+dispatch minecraft:loot_function[set_contents] to struct {
+	entries: [LootPoolEntry],
+}
+
+dispatch minecraft:loot_function[set_count] to struct {
+	count: RandomIntGenerator,
+}
+
+dispatch minecraft:loot_function[set_damage] to struct {
+	damage: RandomValueBounds,
+}
+
+dispatch minecraft:loot_function[set_loot_table] to struct {
+	name: #[id=loot_table] string,
+	seed?: int,
+}
+
+dispatch minecraft:loot_function[set_lore] to struct {
+	entity: EntityTarget,
+	lore: [Text],
+	replace?: boolean,
+}
+
+dispatch minecraft:loot_function[set_name] to struct {
+	entity: EntityTarget,
+	name: Text,
+}
+
+dispatch minecraft:loot_function[set_nbt] to struct {
+	tag: #[parser=nbt(ItemBase)] string, // TODO
+}
+
+dispatch minecraft:loot_function[set_stew_effect] to struct {
+	effects?: [StewEffect],
+}
+
+struct StewEffect {
+	type: #[id=mob_effect] string,
+	duration: MinMaxBounds<float>,
+}
+
+struct LootCondition {
+	condition: #[id=loot_condition_type] string,
+	...minecraft:loot_condition[[condition]],
+}
+
+dispatch minecraft:loot_condition[alternative] to struct {
+	terms: [LootCondition],
+}
+
+dispatch minecraft:loot_condition[block_state_property] to struct {
+	block: #[id=block] string,
+	properties: struct {
+		[string]: string, // TODO
+	},
+}
+
+dispatch minecraft:loot_condition[damage_source_properties] to struct {
+	predicate: DamageSourcePredicate,
+}
+
+dispatch minecraft:loot_condition[entity_properties] to struct {
+	predicate: EntityPredicate,
+}
+
+dispatch minecraft:loot_condition[entity_scores] to struct {
+	entity: EntityTarget,
+	scores: struct {
+		[#[objective] string]: RandomValueBounds,
+	},
+}
+
+dispatch minecraft:loot_condition[inverted] to struct {
+	term: LootCondition,
+}
+
+dispatch minecraft:loot_condition[killed_by_player] to struct {
+	inverse?: boolean,
+}
+
+dispatch minecraft:loot_condition[location_check] to struct {
+	offsetX?: int,
+	offsetY?: int,
+	offsetZ?: int,
+	predicate: LocationPredicate,
+}
+
+dispatch minecraft:loot_condition[match_tool] to struct {
+	predicate: ItemPredicate,
+}
+
+dispatch minecraft:loot_condition[random_chance] to struct {
+	chance: float @ 0..1,
+}
+
+dispatch minecraft:loot_condition[random_chance_with_looting] to struct {
+	chance: float @ 0..1,
+	looting_multiplier: float,
+}
+
+dispatch minecraft:loot_condition[reference] to struct {
+	name: LootCondition,
+}
+
+dispatch minecraft:loot_condition[table_bonus] to struct {
+	enchantment: #[id=enchantment] string,
+	chances: [float @ 0..1],
+}
+
+dispatch minecraft:loot_condition[time_check] to struct {
+	value: RandomValueBounds,
+	period?: long,
+}
+
+dispatch minecraft:loot_condition[weather_check] to struct {
+	raining?: boolean,
+	thundering?: boolean,
+}
