@@ -1,0 +1,19 @@
+use super::super::util::color::ColorInt
+use super::super::util::BannerPattern
+
+struct Shield {
+	/// The tag for the shield
+	BlockEntityTag: Tag,
+}
+
+struct Tag {
+	/// The patterns on the shield
+	Patterns: [Pattern],
+}
+
+struct Pattern {
+	/// The color of the pattern
+	Color: ColorInt,
+	/// The pattern id
+	Pattern: BannerPattern,
+}

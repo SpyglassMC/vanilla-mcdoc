@@ -1,0 +1,9 @@
+use super::super::util::InventoryItem
+
+/// A crossbow
+struct Crossbow {
+	/// The projectiles loaded into the crossbow
+	ChargedProjectiles: [InventoryItem] @ 0..3,
+	/// Whether the crossbow is charged
+	Charged: boolean,
+}

@@ -1,0 +1,9 @@
+/// An item that can be placed as a block
+struct BlockItem {
+	/// A list of blocks that this block item can be placed on
+	CanPlaceOn: [#[id=block] string],
+	/// The tags that the block entity that is placed can have
+	BlockEntityTag: minecraft:block[[super.id]],
+	/// The block states that the placed block will have
+	BlockStateTag: mcdoc:block_item_states[[super.id]],
+}

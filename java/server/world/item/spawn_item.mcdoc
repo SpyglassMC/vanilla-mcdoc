@@ -1,0 +1,5 @@
+/// An item that can spawn an entity
+struct SpawnItem {
+	/// The data of the spawned entity
+	EntityTag: mcdoc:spawn_item_tag[[super.id]],
+}

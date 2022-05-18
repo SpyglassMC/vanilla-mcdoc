@@ -1,0 +1,80 @@
+enum(string) BannerPattern {
+	/// Bottom Stripe (Base)
+	BottomStripe = "bs",
+	/// Top Stripe (Chief)
+	TopStripe = "ts",
+	/// Left Stripe (Pale dexter)
+	LeftStripe = "ls",
+	/// Right Stripe (Pale sinister)
+	RightStripe = "rs",
+	/// Center Stripe (Vertical) (Pale)
+	CenterStripeVertical = "cs",
+	/// Middle Stripe (Horizontal) (Fess)
+	MiddleStripeHorizontal = "ms",
+	/// Down Right Stripe (Bend)
+	DownRightStripe = "drs",
+	/// Down Left Stripe (Bend sinister)
+	DownLeftStripe = "dls",
+	/// Small (Vertical) Stripes (Paly)
+	SmallVerticalStripes = "ss",
+	/// Diagonal Cross (Saltire)
+	DiagonalCross = "cr",
+	/// Square Cross (Cross)
+	SquareCross = "sc",
+	/// Left of Diagonal (Per bend sinister)
+	LeftOfDiagonal = "ld",
+	/// Right of upside-down Diagonal (Per bend)
+	RightOfUpsideDownDiagonal = "rud",
+	/// Left of upside-down Diagonal (Per bend inverted)
+	LeftOfUpsideDownDiagonal = "lud",
+	/// Right of Diagonal (Per bend sinister inverted)
+	RightOfDiagonal = "rd",
+	/// Vertical Half (left) (Per pale)
+	VerticalHalfLeft = "vh",
+	/// Vertical Half (right) (Per pale inverted)
+	VerticalHalfRight = "vhr",
+	/// Horizontal Half (top) (Per fess)
+	HorizontalHalfTop = "hh",
+	/// Horizontal Half (bottom) (Per fess inverted)
+	HorizontalHalfBottom = "hhb",
+	/// Bottom Left Corner (Base dexter canton)
+	BottomLeftCorner = "bl",
+	/// Bottom Right Corner (Base sinister canton)
+	BottomRightCorner = "br",
+	/// Top Left Corner (Chief dexter canton)
+	TopLeftCorner = "tl",
+	/// Top Right Corner (Chief sinister canton)
+	TopRightCorner = "tr",
+	/// Bottom Triangle (Chevron)
+	BottomTriangle = "bt",
+	/// Top Triangle (Inverted chevron)
+	TopTriangle = "tt",
+	/// Bottom Triangle Sawtooth (Base indented)
+	BottomTriangleSawtooth = "bts",
+	/// Top Triangle Sawtooth (Chief indented)
+	TopTriangleSawtooth = "tts",
+	/// Middle Circle (Roundel)
+	MiddleCircle = "mc",
+	/// Middle Rhombus (Lozenge)
+	MiddleRhombus = "mr",
+	/// Border (Bordure)
+	Border = "bo",
+	/// Curly Border (Bordure indented)
+	CurlyBorder = "cbo",
+	/// Brick (Field masoned)
+	Brick = "bri",
+	/// Gradient (Gradient)
+	Gradient = "gra",
+	/// Gradient upside-down (Base gradient)
+	GradientUpsideDown = "gru",
+	/// Creeper (Creeper charge)
+	Creeper = "cre",
+	/// Skull (Skull charge)
+	Skull = "sku",
+	/// Flower (Flower charge)
+	Flower = "flo",
+	/// Mojang (Thing)
+	Mojang = "moj",
+	/// Globe (Globe)
+	Globe = "glb"
+}

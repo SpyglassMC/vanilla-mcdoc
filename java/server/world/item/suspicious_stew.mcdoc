@@ -1,0 +1,15 @@
+use super::super::util::EffectId
+
+/// A suspicious stew item
+struct SuspiciousStew {
+	/// The effects this stew will give
+	Effects: [Effect],
+}
+
+/// A suspicious stew effect
+struct Effect {
+	/// The id of the effect
+	EffectId: EffectId,
+	/// The duration of the effect in ticks
+	EffectDuration: int @ 1..,
+}

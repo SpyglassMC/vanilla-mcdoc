@@ -1,0 +1,12 @@
+struct LeatherArmor {
+	/// The display settings of the item
+	display: ColorDisplay,
+}
+
+/// The display settings of an item
+struct ColorDisplay {
+    ...super::Display,
+	/// The color of the armor  
+	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
+	color: #[color=composite_int] int,
+}

@@ -1,0 +1,76 @@
+use super::super::util::Attribute
+use super::super::util::slot::EquipmentSlot
+use super::super::util::attribute::Operation
+
+/// The base NBT of all items
+struct ItemBase {
+	/// The damage that an item has. Only used for tools, armor, etc
+	Damage: int,
+	/// Whether the item should be unbreakable
+	/// Only used for tools, armor, etc
+	Unbreakable: boolean,
+	/// A list of the blocks that can be destroyed by this item when holding it in adventure mode
+	CanDestroy: #[id=block] string,
+	/// A tag that describes the custom model an item will take.  
+	/// Gets used by the `custom_model_data` model predicate
+	CustomModelData: int,
+	/// A list of enchantments that are on the item
+	Enchantments: [Enchantment],
+	/// Number of levels to add to the cost when using this in an anvil
+	RepairCost: int,
+	/// Attribute modifiers to apply while this item is being worn, held, etc
+	AttributeModifiers: [AttributeModifier],
+	/// The display settings of the item
+	display: Display,
+	/// Bitfield for which flags to hide on an item
+	#[bitfield(enum (int) {
+		Enchantments = 1,
+		AttributeModifiers = 2,
+		Unbreakable = 3,
+		CanDestroy = 4,
+		CanPlaceOn = 5,
+		Other = 6,
+	})]
+	HideFlags: int @ 1..63,
+}
+
+struct AnyItem {
+	/// The id of the item
+	id: #[id=item_type] string,
+	...ItemBase,
+	...minecraft:item[[id]],
+}
+
+/// An individual enchantment, with ID and level
+struct Enchantment {
+	/// Which enchantment is being described
+	id: #[id=enchantment] string,
+	/// Which level the enchantment is
+	lvl: int @ 1..,
+}
+
+/// A single attribute modifier
+struct AttributeModifier {
+	/// The name of the attribute
+	AttributeName: Attribute,
+	/// Name of the modifier, has no real effect
+	Name: string,
+	/// The slot that the modifier is active in
+	Slot: EquipmentSlot,
+	/// The modifier operation
+	Operation: Operation,
+	/// The change in the attribute
+	Amount: double,
+	/// The upper bits of the modifiers UUID
+	UUIDMost: long,
+	/// The lower bits of the modifiers UUID
+	UUIDLeast: long,
+}
+
+/// The display settings of an item
+struct Display {
+	/// The name of an item, as a JSON text component
+	Name: string,
+	/// The lore of an item, with each element being a lore line
+	Lore: [#[text_component] string],
+}

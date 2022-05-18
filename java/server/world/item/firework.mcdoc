@@ -1,0 +1,40 @@
+/// A firework rocket
+struct FireworkRocket {
+	/// The firework settings
+	Fireworks: Fireworks,
+}
+
+struct FireworkStar {
+	/// The explosion settings
+	Explosion: Explosion,
+}
+
+struct Fireworks {
+	/// Flight duration of the firework rocket
+	Flight: byte,
+	/// Explosions on the firework
+	Explosions: [Explosion],
+}
+
+struct Explosion {
+	/// Whether the explosion should flicker
+	Flicker: boolean,
+	/// Whether the explosion should have a trail
+	Trail: boolean,
+	/// The type of the explosion
+	Type: Type,
+	/// The colors of the explosion  
+	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
+	Colors: #[color=composite_int] int[],
+	/// The colors of the explosion fade  
+	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
+	FadeColors: #[color=composite_int] int[],
+}
+
+enum(byte) Type {
+	SmallBall = 0,
+	LargeBall = 1,
+	Star = 2,
+	Creeper = 3,
+	Burst = 4,
+}
