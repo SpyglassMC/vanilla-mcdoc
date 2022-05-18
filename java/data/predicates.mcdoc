@@ -1,4 +1,5 @@
 use ::java::server::world::item::ItemBase
+use ::java::server::util::slot::EquipmentSlot
 
 type MinMaxBounds<T> = (T | struct { min?: T, max?: T })
 
@@ -64,7 +65,7 @@ struct EntityPredicate {
 		is_baby?: boolean,
 	},
 	equipment?: struct {
-		[SlotType]: ItemPredicate,
+		[EquipmentSlot]: ItemPredicate,
 	},
 	player?: PlayerPredicate,
 	catType?: string,
@@ -79,15 +80,6 @@ struct DistancePredicate {
 	z?: MinMaxBounds<float>,
 	absolute?: MinMaxBounds<float>,
 	horizontal?: MinMaxBounds<float>,
-}
-
-enum(string) SlotType {
-	Mainhand = "mainhand",
-	Offhand = "offhand",
-	Head = "head",
-	Chest = "chest",
-	Legs = "legs",
-	Feet = "feet",
 }
 
 struct PlayerPredicate {
