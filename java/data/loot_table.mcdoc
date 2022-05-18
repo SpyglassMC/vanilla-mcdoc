@@ -70,7 +70,7 @@ dispatch minecraft:loot_pool_entry[loot_table] to LootPoolEntrySingleton<#[id=lo
 
 dispatch minecraft:loot_pool_entry[tag] to LootPoolEntrySingleton<#[id(registry=item,tags=implicit)] string>
 
-dispatch minecraft:loot_pool_entry[alternatives,group,sequence] to {
+dispatch minecraft:loot_pool_entry[alternatives,group,sequence] to struct {
 	children: [LootPoolEntry],
 	...LootPoolEntryBase,
 }

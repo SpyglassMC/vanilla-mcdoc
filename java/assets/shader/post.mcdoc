@@ -1,0 +1,31 @@
+struct ShaderPost {
+	targets?: [(string | Target)],
+	passes?: [Pass],
+}
+
+struct Target {
+	name: string,
+	width?: int,
+	height?: int,
+}
+
+struct Pass {
+	name: string,
+	intarget: string,
+	outtarget: string,
+	auxtargets?: [],
+	uniforms?: [Uniform],
+}
+
+struct AuxTarget {
+	name: string,
+	id: string,
+	width?: int,
+	height?: int,
+	bilinear?: boolean,
+}
+
+struct Uniform {
+	name: string,
+	values: [float] @ 0..4,
+}

@@ -1,0 +1,29 @@
+struct Sounds {
+	[string]: SoundEventRegistration,
+}
+
+struct SoundEventRegistration {
+	sounds?: [(string | Sound)],
+	replace?: boolean,
+	subtitle?: string,
+}
+
+struct Sound {
+	type?: SoundType,
+	name: minecraft:sound_type[[type]],
+	volume?: float @ 0..,
+	pitch?: float @ 0..,
+	weight?: int @ 1..,
+	preload?: boolean,
+	stream?: boolean,
+	attenuation_distance?: int,
+}
+
+enum(string) SoundType {
+	File = "file",
+	SoundEvent = "event",
+}
+
+dispatch minecraft:sound_type[file,()] to #[id=sound] string
+
+dispatch minecraft:sound_type[event] to #[id=sound_event] string

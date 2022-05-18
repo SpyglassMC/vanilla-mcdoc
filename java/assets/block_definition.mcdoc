@@ -1,0 +1,37 @@
+type BlockDefinition = (
+	struct {
+		variants: struct {
+			[string]: ModelVariant,
+		},
+	} |
+	struct {
+		multipart: [struct {
+			when?: MultiPartCondition,
+			apply: ModelVariant,
+		}],
+	} |
+)
+
+type ModelVariant (
+	ModelVariantBase |
+	[struct {
+		...ModelVariantBase,
+		weight?: int @ 1..,
+	}] |
+)
+
+struct ModelVariantBase {
+	model: #[id=model] string,
+	x?: (0 | 90 | 180 | 270),
+	y?: (0 | 90 | 180 | 270),
+	uvlock?: boolean,
+}
+
+type MultiPartCondition = (
+	struct {
+		OR: [MultiPartCondition],
+	} |
+	struct {
+		[string]: string,
+	} |
+)

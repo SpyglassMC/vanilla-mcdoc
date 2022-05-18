@@ -1,0 +1,29 @@
+struct Font {
+	providers: [Provider],
+}
+
+struct Provider {
+	type: ProviderType,
+	...minecraft:glyph_provider[[type]],
+}
+
+enum(string) ProviderType {
+	Bitmap = "bitmap",
+	TrueType = "ttf",
+	LegacyUnicode = "legacy_unicode",
+}
+
+dispatch minecraft:glyph_provider[bitmap] to struct {
+	file: string,
+	height?: int,
+	ascent: int,
+	chars: [string @ 1..] @ 1..,
+}
+
+dispatch minecraft:glyph_provider[ttf] to struct {
+	file: string,
+	size?: float,
+	oversample?: float,
+	shift?: [float, float],
+	skip?: (string | [string]),
+}
