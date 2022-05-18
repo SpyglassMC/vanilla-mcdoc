@@ -1,7 +1,7 @@
 use super::super::util::PotionEffect
 
 /// An item that has a potion effect
-compound EffectItem extends super::ItemBase {
+struct EffectItem {
 	/// A list of the potion effects that will be used with this item
 	CustomPotionEffects: [PotionEffect],
 	/// The name of the default potion effect
