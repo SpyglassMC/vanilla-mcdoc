@@ -27,3 +27,8 @@ dispatch minecraft:glyph_provider[ttf] to struct {
 	shift?: [float, float],
 	skip?: (string | [string]),
 }
+
+dispatch minecraft:glyph_provider[legacy_unicode] to struct {
+	sizes: string,
+	template: string,
+}
