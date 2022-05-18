@@ -1,0 +1,59 @@
+struct Recipe {
+	type: #[id=recipe_serializer],
+	...minecraft:recipe_serializer[[type]],
+}
+
+dispatch minecraft:recipe_serializer[crafting_shaped] to struct {
+	group?: string, // TODO
+	pattern: [string @ 1..3] @ 1..3, // TODO
+	key: struct {
+		[string]: Ingredient,
+	},
+	result: ItemResult,
+}
+
+dispatch minecraft:recipe_serializer[crafting_shapeless] to struct {
+	group?: string,
+	ingredients?: [Ingredient] @ 1..9,
+	result: ItemResult,
+}
+
+dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct {
+	group?: string,
+	ingredient: Ingredient,
+	result: #[id=item] string,
+	experience?: float,
+	cookingtime?: int,
+}
+
+dispatch minecraft:recipe_serializer[stonecutting] to struct {
+	group?: string,
+	ingredient: Ingredient,
+	result: #[id=item] string,
+	count: int,
+}
+
+dispatch minecraft:recipe_serializer[smithing] to struct {
+	base: IngredientValue,
+	addition: IngredientValue,
+	result: ItemResult,
+}
+
+struct ItemResult {
+	item: #[id=item] string,
+	count?: int
+}
+
+type Ingredient = (
+	IngredientValue |
+	[IngredientValue] |
+)
+
+type IngredientValue = (
+	struct {
+		item: #[id=item] string,
+	} |
+	struct {
+		tag: #[id(registry=item,tags=implicit)] string,
+	} |
+)

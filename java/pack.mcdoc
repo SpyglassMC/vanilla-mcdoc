@@ -1,0 +1,8 @@
+use ::java::server::util::text::Text
+
+struct Pack {
+	pack: struct {
+		pack_format: int @ 1..,
+		description: Text,
+	}
+}
