@@ -1,0 +1,28 @@
+dispatch minecraft:entity[shulker_bullet] to struct ShulkerBullet {
+	...super::EntityBase,
+	/// The owner of the shulker bullet
+	Owner: BulletTarget,
+	/// The number of steps it takes to reach the target
+	Steps: int,
+	/// The target of the bullet
+	Target: BulletTarget,
+	/// The offset in the x direction to move based on the target's location
+	TXD: double,
+	/// The offset in the y direction to move based on the target's location
+	TYD: double,
+	/// The offset in the z direction to move based on the target's location
+	TZD: double,
+}
+
+struct BulletTarget {
+	/// The upper bits of the target's UUID
+	M: long,
+	/// The lower bits of the target's UUID
+	L: long,
+	/// The x block coordiante of the target
+	X: int,
+	/// The y block coordiante of the target
+	Y: int,
+	/// The z block coordiante of the target
+	Z: int,
+}

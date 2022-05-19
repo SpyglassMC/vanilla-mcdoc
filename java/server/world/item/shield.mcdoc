@@ -1,5 +1,5 @@
-use super::super::util::color::ColorInt
-use super::super::util::BannerPattern
+use ::java::server::util::color::ColorInt
+use ::java::server::util::BannerPattern
 
 struct Shield {
 	/// The tag for the shield

@@ -1,0 +1,8 @@
+dispatch minecraft:entity[magma_cube,slime] to struct Slime {
+	...super::MobBase,
+	/// The size of the slime  
+	/// 0 is the smallest
+	Size: int,
+	/// Whether the slime is on the ground
+	wasOnGround: boolean,
+}

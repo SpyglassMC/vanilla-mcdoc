@@ -1,0 +1,5 @@
+dispatch minecraft:entity[ocelot] to struct Ocelot {
+	...super::Breedable,
+	/// Whether the ocelot trusts players
+	Trusting: boolean
+}

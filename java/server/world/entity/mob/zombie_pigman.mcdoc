@@ -1,0 +1,9 @@
+dispatch minecraft:entity[zombie_pigman] to struct ZombiePigman {
+	...super::MobBase,
+	/// Whether the zombie pigman is a baby
+	IsBaby: boolean,
+	/// The number of ticks that the zombie pigman will be angry for
+	Anger: short,
+	/// The UUID of the last player to hit a zombie pigman in this zombie pigman's detection range
+	HurtBy: string,
+}

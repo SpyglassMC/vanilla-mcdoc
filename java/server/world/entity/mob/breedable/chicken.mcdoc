@@ -1,0 +1,8 @@
+dispatch minecraft:entity[chicken] to struct Chicken {
+	...super::Breedable,
+	/// Whether this chicken is from a chicken jockey
+	/// If true this chicken will despawn and will drop more experience
+	IsChickenJockey: boolean,
+	/// Time until this chicken lays another egg
+	EggLayTime: int,
+}

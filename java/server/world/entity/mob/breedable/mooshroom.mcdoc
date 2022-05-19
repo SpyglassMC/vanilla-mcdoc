@@ -1,0 +1,15 @@
+use ::java::server::util::effect::EffectId
+
+dispatch minecraft:entity[mooshroom] to struct Mooshroom {
+	...super::Breedable,
+	Type: MooshroomType,
+	/// The effect that the mooshroom gives to suspicious stew
+	EffectId: EffectId,
+	/// The duration of the suspicious stew effect
+	EffectDuration: int,
+}
+
+enum(string) MooshroomType {
+	Red = "red",
+	Brown = "brown",
+}

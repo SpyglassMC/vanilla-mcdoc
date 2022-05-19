@@ -1,0 +1,17 @@
+dispatch minecraft:entity[rabbit] to struct Rabbit {
+	...super::Breedable,
+	/// The type of the rabbit
+	RabbitType: RabbitType,
+	/// Ticks down once a carrot crop is eaten
+	MoreCarrotTicks: int,
+}
+
+enum(int) RabbitType {
+	Brown = 0,
+	White = 1,
+	Black = 2,
+	BlackAndWhite = 3,
+	Gold = 4,
+	SaltAndPepper = 5,
+	Killer = 99,
+}

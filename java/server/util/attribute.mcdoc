@@ -1,4 +1,6 @@
-enum(string) Attribute {
+use super::inventory::EquipmentSlot
+
+enum(string) AttributeName {
 	MaxHealth = "generic.maxHealth",
 	FollowRange = "generic.followRange",
 	KnockbackResistance = "generic.knockbackResistance",

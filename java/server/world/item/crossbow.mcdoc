@@ -1,4 +1,4 @@
-use super::super::util::InventoryItem
+use ::java::server::util::inventory::InventoryItem
 
 /// A crossbow
 struct Crossbow {

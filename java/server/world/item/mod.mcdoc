@@ -1,6 +1,6 @@
-use super::super::util::Attribute
-use super::super::util::slot::EquipmentSlot
-use super::super::util::attribute::Operation
+use ::java::server::util::attribute::AttributeName
+use ::java::server::util::attribute::Operation
+use ::java::server::util::inventory::EquipmentSlot
 
 /// The base NBT of all items
 struct ItemBase {
@@ -52,7 +52,7 @@ struct Enchantment {
 /// A single attribute modifier
 struct AttributeModifier {
 	/// The name of the attribute
-	AttributeName: Attribute,
+	AttributeName: (AttributeName | string),
 	/// Name of the modifier, has no real effect
 	Name: string,
 	/// The slot that the modifier is active in

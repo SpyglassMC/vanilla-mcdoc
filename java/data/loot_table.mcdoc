@@ -1,6 +1,6 @@
 use ::java::server::world::item::ItemBase
 use ::java::server::util::text::Text
-use ::java::server::util::slot::EquipmentSlot
+use ::java::server::util::inventory::EquipmentSlot
 use super::predicates::MinMaxBounds
 
 struct LootTable {

@@ -1,0 +1,5 @@
+dispatch minecraft:entity[iron_golem] to struct IronGolem {
+	...super::MobBase,
+	/// Whether the player created the golem
+	PlayerCreated: boolean,
+}

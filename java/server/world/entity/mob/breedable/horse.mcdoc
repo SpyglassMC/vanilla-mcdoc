@@ -1,0 +1,43 @@
+use ::java::server::util::inventory::InventoryItem
+
+dispatch minecraft:entity[zombie_horse] to struct HorseBase {
+	...super::Breedable,
+	/// Unknown use  
+	/// Remains `0` even if the horse was bred
+	Bred: boolean,
+	/// Whether the horse is eating a haystack
+	EatingHaystack: boolean,
+	/// Whether the horse has been tamed
+	Tame: boolean,
+	/// Higher values make the horse easier to tame  
+	/// Increases with feeding
+	Temper: int @ 0..100,
+	/// UUID of the player who tamed the horse
+	OwnerUUID: string,
+	/// The armor item of the horse
+	ArmorItem: InventoryItem,
+	/// The saddle item of the horse
+	SaddleItem: InventoryItem,
+}
+
+dispatch minecraft:entity[horse] to struct Horse {
+	...HorseBase,
+	/// The variant of the horse
+	Variant: int,
+}
+
+dispatch minecraft:entity[donkey,mule] to struct ChestedHorse {
+	...HorseBase,
+	/// Whether the horse has a chest
+	ChestedHorse: boolean,
+	/// The items in the horse's chest
+	Items: [SlottedItem],
+}
+
+dispatch minecraft:entity[skeleton_horse] to struct SkeletonHorse {
+	...HorseBase,
+	/// Whether the skeleton horse is trapped
+	SkeletonTrap: boolean,
+	/// How many ticks the skeleton horse trap has been alive
+	SkeletonTrapTime: int,
+}

@@ -12,3 +12,12 @@ struct SlottedItem {
 	/// The inventory slot the item is in
 	Slot: byte,
 }
+
+enum(string) EquipmentSlot {
+	Mainhand = "mainhand",
+	Offhand = "offhand",
+	Head = "head",
+	Chest = "chest",
+	Legs = "legs",
+	Feet = "feet",
+}

@@ -1,4 +1,4 @@
 struct BlockState {
 	Name: #[id=block],
-	Properties?: mcdoc:block_state_map[[Name]],
+	Properties?: mcdoc:block_states[[Name]],
 }

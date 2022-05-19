@@ -1,4 +1,4 @@
-use ::java::server::util::InventoryItem
+use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:entity[eye_of_ender] to struct EyeOfEnder {
 	/// The item to render as

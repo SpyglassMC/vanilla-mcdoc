@@ -1,0 +1,129 @@
+use ::java::server::util::inventory::InventoryItem
+use super::super::AnyEntity
+
+dispatch minecraft:entity[player] to struct Player {
+	...super::LivingEntity,
+	/// The version of the player NBT structure
+	DataVersion: int,
+	/// The dimension the player is in
+	Dimension: Dimension,
+	/// The game mode that the player is in
+	playerGameType: Gamemode,
+	/// The score to display upon death
+	Score: int,
+	/// The hotbar slot the player has selected
+	SelectedItemSlot: int @ 0..8,
+	/// The item in the hotbar slot the player has selected
+	SelectedItem: SlottedItem,
+	/// The x coordinate of the player's spawpoint
+	SpawnX: int,
+	/// The y coordinate of the player's spawpoint
+	SpawnY: int,
+	/// The z coordinate of the player's spawpoint
+	SpawnZ: int,
+	/// Whether the player must spawn at the spawn point
+	SpawnForced: boolean,
+	/// The number of ticks the player has been in bed
+	SleepTimer: short,
+	/// The level of the hunger bar
+	foodLevel: int,
+	/// The rate at which the `foodSaturationLevel` depletes
+	foodExhaustionLevel: float,
+	/// The rate at which the hunger bar depletes
+	foodSaturationLevel: float,
+	/// The number of ticks until the player heals or takes starvation damage
+	foodTickTimer: int,
+	/// The number of experience levels the player has
+	XpLevel: int,
+	/// The percentage the experience bar is filled up
+	XpP: float,
+	/// The total experience the player has
+	XpTotal: int,
+	/// The seed for enchantments
+	XpSeed: int,
+	/// The player's inventory
+	Inventory: [SlottedItem] @ 0..41,
+	/// The player's enderchest inventory
+	EnderItems: [SlottedItem] @ 0..27,
+	/// The abilities of the player
+	abilities: Abilities,
+	/// The position that the player entered the nether at
+	enteredNetherPosition: EnteredNetherPosition,
+	/// The entity that the player is riding
+	RootVehicle: RootVehicle,
+	/// The entity that is on the player's left shoulder
+	ShoulderEntityLeft: AnyEntity,
+	/// The entity that is on the player's right shoulder
+	ShoulderEntityRight: AnyEntity,
+	/// Whether the player has gone to the overworld after defeating the Ender Dragon
+	seenCredits: boolean,
+	/// The recipes that the player has
+	recipeBook: RecipeBook,
+	// these are not included
+	id: (),
+	CustomName: (),
+	CustomNameVisible: (),
+}
+
+enum(int) Dimension {
+	Nether = -1,
+	Overworld = 0,
+	End = 1,
+}
+
+enum(int) Gamemode {
+	Survival = 0,
+	Creative = 1,
+	Adventure = 2,
+	Spectator = 3,
+}
+
+struct Abilities {
+	/// The speed that the player walks at
+	walkSpeed: float @ 0.1,
+	/// The speed that the player flies at
+	flySpeed: float @ 0.05,
+	/// Whether the player can fly
+	mayfly: boolean,
+	/// Whether the player is flying
+	flying: boolean,
+	/// Whether the player can only take damage from the void
+	invulnerable: boolean,
+	/// Whether the player may build
+	mayBuild: boolean,
+	/// Whether the player destroys blocks instantly
+	instabuild: boolean,
+}
+
+struct EnteredNetherPosition {
+	/// The x coordinate that the player entered the nether
+	x: double,
+	/// The y coordinate that the player entered the nether
+	y: double,
+	/// The z coordinate that the player entered the nether
+	z: double,
+}
+
+struct RootVehicle {
+	/// The upper bits of the ridden entity's UUID
+	AttachMost: long,
+	/// The lower bits of the ridden entity's UUID
+	AttachLeast: long,
+	/// The ridden entity
+	Entity: AnyEntity,
+}
+
+struct RecipeBook {
+	/// The recipes the player has acquired
+	recipes: #[id=recipe] string,
+	/// The recipes that should pulse in the crafting book
+	toBeDisplayed: #[id=recipe] string,
+	/// Whether the player has filtered crafting on in the crafting table
+	isFilteringCraftable: boolean,
+	/// Whether the player has the crafting book open in the crafting table
+	isGuiOpen: boolean,
+	/// Whether the player has filtered crafting on in the furnace
+	isFurnaceFilteringCraftable: boolean,
+	/// Whether the player has the crafting book open in the furnace
+	isFurnaceGuiOpen: boolean,
+}

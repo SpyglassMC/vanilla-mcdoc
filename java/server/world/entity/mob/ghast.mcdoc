@@ -1,0 +1,5 @@
+dispatch minecraft:entity[ghast] to struct Ghast {
+	...super::MobBase,
+	/// The explosion radius of the fireball created by the ghast
+	ExplosionPower: int @ 0..,
+}

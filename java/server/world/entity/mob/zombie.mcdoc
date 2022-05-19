@@ -1,0 +1,31 @@
+use super::breedable::villager::VillagerData
+use super::breedable::villager::Gossip
+use super::breedable::villager::Offers
+
+dispatch minecraft:entity[drowned,husk,zombie] to struct Zombie {
+	...super::MobBase,
+	/// Whether the zombie is a baby
+	IsBaby: boolean,
+	/// Whether the zombie can break doors
+	CanBreakDoors: boolean,
+	/// Time until the zombie converts
+	DrownedConversionTime: int,
+	/// Time the zombie has been in the water
+	InWaterTime: int,
+}
+
+dispatch minecraft:entity[zombie_villager] to struct ZombieVillager {
+	...Zombie,
+	/// The villager's skin data
+	VillagerData: VillagerData,
+	/// The villager's gossips
+	Gossips: [Gossip],
+	/// The villager's offers
+	Offers: Offers,
+	/// The number of ticks until the zombie villager is converted
+	ConversionTime: int,
+	/// The lower bits of the player's uuid who triggered the conversion
+	ConversionPlayerLeast: long,
+	/// The upper bits of the player's uuid who triggered the conversion
+	ConversionPlayerMost: long,
+}

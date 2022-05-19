@@ -1,0 +1,125 @@
+use ::java::server::util::inventory::InventoryItem
+use ::java::server::util::effect::PotionEffect
+use ::java::server::util::inventory::EquipmentSlot
+
+struct LivingEntity {
+	...super::EntityBase,
+	/// How much health the entity has
+	Health: float,
+	/// How much absorbtion health the entity has
+	AbsorbtionAmount: float,
+	/// Timer since the mob has been damaged  
+	/// Counts down to zero
+	HurtTime: short,
+	/// Number of ticks since the mob was last damaged, from its creation
+	HurtByTimestamp: int,
+	/// Timer since the mob was marked as dead  
+	/// Counts down to zero
+	DeathTime: short,
+	/// Whether the mob will glide when it falls
+	FallFlying: boolean,
+	/// The x coordinate of where the mob is sleeping
+	SleepingX: int,
+	/// The y coordinate of where the mob is sleeping
+	SleepingY: int,
+	/// The z coordinate of where the mob is sleeping
+	SleepingZ: int,
+	/// The mob's brain, empty
+	Brain: Brain,
+	/// The mob's attributes
+	Attributes: [Attribute],
+	/// The active potion effects on the mob
+	ActiveEffects: [PotionEffect],
+	/// Whether the mob should have an AI
+	NoAI: boolean,
+	/// The team to join when the mob is spawned
+	Team: string,
+}
+
+/// Base NBT for all mobs
+struct MobBase {
+	...LivingEntity,
+	/// The items that the mob is holding, in [main hand, offhand]
+	HandItems: [InventoryItem] @ 2,
+	/// The items that the mob is wearing, in [head, body, legs, feet]
+	ArmorItems: [InventoryItem] @ 4,
+	/// The chance to drop the items that the mob is holding, in [main hand, offhand]
+	HandDropChances: [float] @ 2,
+	/// The chance to drop the items that the mob is wearing, in [head, body, legs, feet]
+	ArmorDropChances: [float] @ 4,
+	/// The mob's death loot table
+	DeathLootTable: #[id=loot_table] string,
+	/// The seed for generating the death loot table
+	DeathLootTableSeed: long,
+	/// Wether the mob can pick up loot
+	CanPickUpLoot: boolean,
+	/// Whether the mob should not despawn naturally
+	PersistenceRequired: boolean,
+	/// Whether the mob is left handed
+	LeftHanded: boolean,
+	/// Whether the mob is leashed
+	Leashed: boolean,
+	/// What the leash is attached to
+	Leash: (UUIDLeash | BlockLeash),
+}
+
+/// A single attribute
+struct Attribute {
+	/// The name of the attribute
+	Name: (AttributeName | string),
+	/// The base value of the attribute
+	Base: double,
+	/// The modifiers that act on the attribute
+	Modifiers: [AttributeModifier],
+}
+
+/// A single attribute modifier
+struct AttributeModifier {
+	/// Name of the modifier, has no real effect
+	Name: (AttributeId | string),
+	/// The slot that the modifier is active in
+	Slot: EquipmentSlot,
+	/// The modifier operation
+	Operation: Operation,
+	/// The change in the attribute
+	Amount: double,
+	/// The upper bits of the modifier's UUID
+	UUIDMost: long,
+	/// The lower bits of the modifier's UUID
+	UUIDLeast: long,
+}
+
+struct Brain {
+	/// The mobs memories, empty
+	memories: struct {},
+}
+
+struct UUIDLeash {
+	/// The upper bits of the other entity's UUID
+	UUIDMost: long,
+	/// The lower bits of the other entity's UUID
+	UUIDLeast: long,
+}
+
+struct BlockLeash {
+	/// The x coordiante of leash knot
+	X: int,
+	/// The y coordiante of leash knot
+	Y: int,
+	/// The z coordiante of leash knot
+	Z: int,
+}
+
+dispatch minecraft:entity[
+	blaze,
+	cave_spider,
+	elder_guardian,
+	giant,
+	guardian,
+	silverfish,
+	skeleton,
+	spider,
+	squid,
+	stray,
+	wither_skeleton,
+] to MobBase

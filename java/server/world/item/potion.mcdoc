@@ -1,4 +1,4 @@
-use super::super::util::PotionEffect
+use ::java::server::util::PotionEffect
 
 /// An item that has a potion effect
 struct EffectItem {

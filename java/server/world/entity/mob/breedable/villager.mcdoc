@@ -1,0 +1,80 @@
+use ::java::server::util::inventory::InventoryItem
+
+dispatch minecraft:entity[villager] to struct Villager {
+	...super::Breedable,
+	/// Whether the villager is willing to breed
+	Willing: boolean,
+	/// The data associated with the villager and it's skin
+	VillagerData: VillagerData,
+	/// The gossips the villager has heard
+	Gossips: [Gossip],
+	/// The tick of the last time the villager has restocked
+	LastRestock: long,
+	/// The tick of the last time the villager's gossips have decreased in strength
+	LastGossipDecay: long,
+	/// The number of times the villager has restocked in the past ten minutes
+	RestocksToday: int,
+	/// The xp the villager has, increases with trading
+	Xp: int,
+	/// The villager's inventory
+	Inventory: [InventoryItem],
+	/// The trade offers the villager has
+	Offers: Offers,
+}
+
+struct VillagerData {
+	/// The level of the villager  
+	/// Used for trading and badge rendering
+	level: int,
+	/// The profession of the villager
+	profession: #[id=villager_profession] string,
+	/// The type of the villager
+	type: #[id=villager_type] string,
+}
+
+struct Gossip {
+	/// The type of the gossip
+	Type: GossipType,
+	/// The value of the gossip
+	Value: int,
+	/// The upper bits of the gossip target's UUID
+	TargetMost: long,
+	/// The lower bits of the gossip target's UUID
+	TargetLeast: long,
+}
+
+enum(string) GossipType {
+	MajorNegative = "major_negative",
+	MinorNegative = "minor_negative",
+	MajorPositive = "major_positive",
+	MinorPositive = "minor_positive", 
+	Trading = "trading",
+}
+
+struct Offers {
+	/// The trades the villager has to offer
+	Recipes: [Recipe],
+}
+
+struct Recipe {
+	/// Whether the villager should reward experience for using this trade
+	rewardExp: boolean,
+	/// The maximum number of uses for this trade before the villager has to restock
+	maxUses: int,
+	/// The number of times this trade has been used since the villager last restocked
+	uses: int,
+	/// The first item the villager buys
+	buy: InventoryItem,
+	/// The second item the villager buys
+	buyB: InventoryItem,
+	/// The item the villager sells
+	sell: InventoryItem,
+	/// The amount of xp the villager gains from the trade
+	xp: int,
+	/// The multiplier on the demand price adjuster
+	priceMultiplier: float,
+	/// A modifier added to the original price of the first cost item
+	specialPrice: int,
+	/// The price adjuster of the first cost item based on demand
+	demand: int,
+}

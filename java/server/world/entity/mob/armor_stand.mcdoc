@@ -1,0 +1,30 @@
+dispatch minecraft:entity[armor_stand] to struct ArmorStand {
+	...super::MobBase,
+	/// Whether the armor stand has no hitbox
+	Marker: boolean,
+	/// Whether the armor stand should have a no base plate
+	NoBasePlate: boolean,
+	/// Whether the armor stand should show its arms
+	ShowArms: boolean,
+	/// Whether the armor stand is small
+	Small: boolean,
+	/// A bit field of the slots that cannot be used
+	DisabledSlots: int,
+	/// The post of the armor stand
+	Pose: Pose,
+}
+
+struct Pose {
+	/// The x, y, and z rotations for the body
+	Body: [float] @ 3,
+	/// The x, y, and z rotations for the left arm
+	LeftArm: [float] @ 3,
+	/// The x, y, and z rotations for the right arm
+	RightArm: [float] @ 3,
+	/// The x, y, and z rotations for the left leg
+	LeftLeg: [float] @ 3,
+	/// The x, y, and z rotations for the right leg
+	RightLeg: [float] @ 3,
+	/// The x, y, and z rotations for the head
+	Head: [float] @ 3,
+}

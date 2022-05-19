@@ -1,0 +1,5 @@
+dispatch minecraft:entity[bat] to struct Bat {
+	...super::MobBase,
+	/// Whether the bat is upside down
+	BatFlags: boolean,
+}

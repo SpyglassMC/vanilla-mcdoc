@@ -1,0 +1,23 @@
+dispatch minecraft:entity[cod,salmon] to struct Fish {
+	...super::MobBase,
+	/// If this fish was released from a bucket
+	FromBucket: boolean,
+}
+
+dispatch minecraft:entity[tropical_fish] to struct TropicalFish {
+	...Fish,
+	/// The fish variant
+	Variant: int,
+}
+
+dispatch minecraft:entity[pufferfish] to struct Pufferfish {
+	...Fish,
+	/// How puffed the pufferfish is
+	PuffState: PuffState,
+}
+
+enum(int) PuffState {
+	Deflated = 0,
+	HalfPuffed = 1,
+	Puffed = 2,
+}

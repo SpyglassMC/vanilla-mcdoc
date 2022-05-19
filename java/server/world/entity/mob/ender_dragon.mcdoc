@@ -1,0 +1,19 @@
+dispatch minecraft:entity[ender_dragon] to struct EnderDragon {
+	...super::MobBase,
+	/// The phase that the dragon is in
+	DragonPhase: DragonPhase,
+}
+
+enum(int) DragonPhase {
+	Circling = 0,
+	Strafing = 1,
+	FlyingToPortal = 2,
+	Landing = 3,
+	TakingOff = 4,
+	BreathAttack = 5,
+	Landed = 6,
+	Roar = 7,
+	Charging = 8,
+	Dying = 9,
+	Hovering = 10,
+}

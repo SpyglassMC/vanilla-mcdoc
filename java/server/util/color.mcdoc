@@ -33,5 +33,5 @@ enum(int) ColorInt {
 	Brown = 12,
 	Green = 13,
 	Red = 14,
-	Black = 15
+	Black = 15,
 }

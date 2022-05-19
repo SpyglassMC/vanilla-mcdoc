@@ -1,4 +1,4 @@
-use ::java::server::util::InventoryItem
+use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:entity[item_frame] to struct ItemFrame {
 	/// The x coordinate of the block the item frame is in

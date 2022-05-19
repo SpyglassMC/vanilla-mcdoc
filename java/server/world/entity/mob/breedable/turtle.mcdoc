@@ -1,0 +1,17 @@
+dispatch minecraft:entity[turtle] to struct Turtle {
+	...super::Breedable,
+	/// Whether the turtle has an egg
+	HasEgg: boolean,
+	/// The x coordinate of the turtles home
+	HomePosX: int,
+	/// The y coordinate of the turtles home
+	HomePosY: int,
+	/// The z coordinate of the turtles home
+	HomePosZ: int,
+	/// The x coordinate of the turtles travel target
+	TravelPosX: int,
+	/// The y coordinate of the turtles travel target
+	TravelPosY: int,
+	/// The z coordinate of the turtles travel target
+	TravelPosZ: int,
+}

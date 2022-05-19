@@ -1,0 +1,13 @@
+use ::java::server::util::block_state::BlockState
+
+struct ProjectileBase {
+	...super::EntityBase,
+	/// The x coordinate of the projectile
+	xTile: int,
+	/// The y coordinate of the projectile
+	yTile: int,
+	/// The z coordinate of the projectile
+	zTile: int,
+	/// The block the projectile is in
+	inBlockState: BlockState,
+}
