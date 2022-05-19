@@ -1,0 +1,24 @@
+use ::java::server::util::effect::EffectId
+
+dispatch minecraft:block[beacon] to struct Beacon {
+	...super::BlockEntity,
+	/// The name of the item that a player has to be holding to open this beacon
+	Lock: string,
+	/// The number of levels from the pyramid
+	Levels: int,
+	/// The primary potion effect of the beacon
+	Primary: (NoneId | EffectId),
+	/// The secondary potion effect of the beacon
+	Secondary: (NoneId | EffectId),
+}
+
+struct Pattern {
+	/// The color of the pattern
+	Color: ColorInt,
+	/// The pattern id
+	Pattern: BannerPattern,
+}
+
+enum(int) NoneId {
+	None = 0,
+}

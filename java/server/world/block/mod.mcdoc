@@ -1,0 +1,33 @@
+struct BlockEntity {
+	/// The id of the block entity
+	id: #[id=block_entity] string,
+	/// The x coordinate of the block entity
+	x: int,
+	/// The y coordinate of the block entity
+	y: int,
+	/// The z coordinate of the block entity
+	z: int,
+	/// Unknown
+	/// 0 for regular block entities
+	keepPacked: boolean,
+}
+
+dispatch minecraft:block[%fallback] to struct {}
+
+dispatch minecraft:block[
+	bed,
+	bell,
+	daylight_detector,
+	ender_chest,
+	end_portal,
+	skeleton_skull,
+	wither_skeleton_skull,
+	creeper_head,
+	zombie_head,
+	dragon_head,
+	skeleton_wall_skull,
+	wither_skeleton_wall_skull,
+	creeper_wall_head,
+	zombie_wall_head,
+	dragon_wall_head,
+] to BlockEntity

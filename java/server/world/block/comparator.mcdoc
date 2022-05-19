@@ -1,0 +1,5 @@
+dispatch minecraft:block[comparator] to struct Comparator {
+	...super::BlockEntity,
+	/// The strength of the redstone output
+	OutputSignal: int,
+}

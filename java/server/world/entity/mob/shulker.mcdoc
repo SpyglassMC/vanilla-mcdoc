@@ -5,7 +5,7 @@ dispatch minecraft:entity[shulker] to struct Shulker {
 	/// Which face the shulker is attached to
 	AttachFace: AttachFace,
 	/// The color of the shulker
-	Color: ShulkerColor,
+	Color: (ColorInt | ShulkerColor),
 	/// Approximate x coordinate of the shulker
 	APX: int,
 	/// Approximate y coordinate of the shulker
@@ -24,21 +24,5 @@ enum(byte) AttachFace {
 }
 
 enum(byte) ShulkerColor {
-	White = 0,
-	Orange = 1,
-	Magenta = 2,
-	LightBlue = 3,
-	Yellow = 4,
-	Lime = 5,
-	Pink = 6,
-	Gray = 7,
-	LightGray = 8,
-	Cyan = 9,
-	Purple = 10,
-	Blue = 11,
-	Brown = 12,
-	Green = 13,
-	Red = 14,
-	Black = 15,
 	Normal = 16,
 }

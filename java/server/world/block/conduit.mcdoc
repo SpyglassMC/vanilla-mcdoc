@@ -1,0 +1,12 @@
+dispatch minecraft:block[conduit] to struct Conduit {
+	...super::BlockEntity,
+	/// The UUID of the conduit's target
+	target_uuid: TargetUUID,
+}
+
+struct TargetUUID {
+	/// The upper bits of the target's UUID
+	M: long,
+	/// The lower bits of the target's UUID
+	L: long,
+}

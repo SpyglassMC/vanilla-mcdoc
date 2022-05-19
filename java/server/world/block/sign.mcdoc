@@ -1,0 +1,27 @@
+use ::java::server::util::color::ColorString
+
+dispatch minecraft:block[
+	spruce_sign,
+	birch_sign,
+	jungle_sign,
+	acacia_sign,
+	dark_oak_sign,
+	oak_wall_sign,
+	spruce_wall_sign,
+	birch_wall_sign,
+	jungle_wall_sign,
+	acacia_wall_sign,
+	dark_oak_wall_sign,
+] to struct Sign {
+	...super::BlockEntity,
+	/// The color the sign has been dyed
+	Color: ColorString,
+	/// The first line of text from the top
+	Text1: string,
+	/// The second line of text from the top
+	Text2: string,
+	/// The third line of text from the top
+	Text3: string,
+	/// The fourth line of text from the top
+	Text4: string,
+}

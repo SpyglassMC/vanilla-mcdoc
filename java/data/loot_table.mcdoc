@@ -29,7 +29,7 @@ type RandomIntGenerator = (int | struct {
 	...minecraft:random_int_generator[[type]],
 })
 
-dispatch minecraft:random_int_generator[uniform,()] to struct { min?: int, max?: int }
+dispatch minecraft:random_int_generator[uniform,%none] to struct { min?: int, max?: int }
 
 dispatch minecraft:random_int_generator[binomial] to struct { n: int @ 0.., p: float @ 0..1 }
 

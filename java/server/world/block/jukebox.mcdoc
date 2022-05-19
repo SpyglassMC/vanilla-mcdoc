@@ -1,0 +1,7 @@
+use ::java::server::util::inventory::InventoryItem
+
+dispatch minecraft:block[jukebox] to struct Jukebox {
+	...super::BlockEntity,
+	/// The item in the jukebox
+	RecordItem: InventoryItem,
+}

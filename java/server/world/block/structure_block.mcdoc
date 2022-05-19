@@ -1,0 +1,59 @@
+dispatch minecraft:block[structure_block] to struct StructureBlock {
+	...super::BlockEntity,
+	/// The name of the structure
+	name: string,
+	/// The author of the structure
+	author: string,
+	/// Custom data for the structure
+	metadata: string,
+	/// The offset on the x axis for the structure position
+	posX: int,
+	/// The offset on the y axis for the structure position
+	posY: int,
+	/// The offset on the z axis for the structure position
+	posZ: int,
+	/// The size on the x axis for the structure
+	sizeX: int,
+	/// The size on the y axis for the structure
+	sizeY: int,
+	/// The size on the z axis for the structure
+	sizeZ: int,
+	/// How the structure should be rotated
+	rotation: Rotation,
+	/// How the structure should be mirrored
+	mirror: Mirror,
+	/// The mode of the structure block
+	mode: Mode,
+	/// Whether the structure block should ignore entities
+	ignoreEntities: boolean,
+	/// Whether the structure block should show the bounding box
+	showboundingbox: boolean,
+	/// Whether the structure block has been powered by redstone
+	powered: boolean,
+	/// The chance for each block to stay
+	integrity: float,
+	/// The seed for the integrity randomness
+	seed: long,
+	/// Whether to show invisible blocks inside the bounding box
+	showair: boolean,
+}
+
+enum(string) Rotation {
+	None = "NONE",
+	Clockwise90 = "CLOCKWISE_90",
+	Clockwise180 = "CLOCKWISE_180",
+	CounterClockwise90 = "COUNTERCLOCKWISE_90",
+}
+
+enum(string) Mirror {
+	None = "NONE",
+	LeftRight = "LEFT_RIGHT",
+	FrontBack = "FRONT_BACK",
+}
+
+enum(string) Mode {
+	Save = "SAVE",
+	Load = "LOAD",
+	Data = "DATA",
+	Corner = "CORNER",
+}

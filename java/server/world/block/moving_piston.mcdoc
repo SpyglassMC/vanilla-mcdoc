@@ -1,0 +1,24 @@
+use ::java::server::util::block_state::BlockState
+
+dispatch minecraft:block[moving_piston] to struct MovingPiston {
+	...super::BlockEntity,
+	/// The moving block represented by the moving piston
+	blockState: BlockState,
+	/// The direction the moving piston is moving
+	facing: Facing,
+	/// How far the moving piston has moved
+	progress: float,
+	/// Whether the moving piston is extending
+	extending: boolean,
+	/// Whether the moving piston is the piston head
+	source: boolean,
+}
+
+enum(int) Facing {
+	Down = 0,
+	Up = 1,
+	North = 2,
+	South = 3,
+	West = 4,
+	East = 5,
+}

@@ -1,0 +1,32 @@
+dispatch minecraft:block[
+	white_banner,
+	orange_banner,
+	magenta_banner,
+	light_blue_banner,
+	yellow_banner,
+	lime_banner,
+	pink_banner,
+	gray_banner,
+	light_gray_banner,
+	cyan_banner,
+	purple_banner,
+	blue_banner,
+	brown_banner,
+	green_banner,
+	red_banner,
+	black_banner,
+] to struct Banner {
+	...super::BlockEntity,
+	/// The name of the banner  
+	/// Will show up on map markers
+	CustomName: string,
+	/// The patterns on the banner
+	Patterns: [Pattern],
+}
+
+struct Pattern {
+	/// The color of the pattern
+	Color: ColorInt,
+	/// The pattern id
+	Pattern: BannerPattern,
+}

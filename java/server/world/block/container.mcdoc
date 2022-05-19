@@ -1,0 +1,44 @@
+use ::java::server::util::inventory::SlottedItem
+
+struct ContainerBase {
+	...super::BlockEntity,
+	/// The name of the container
+	CustomName: string,
+	/// The name of the item that a player has to be holding to open this container
+	Lock: string,
+	/// The loot table that will populate this container
+	LootTable: #[id=loot_table] string,
+	/// The seed of the loot table
+	LootTableSeed: long,
+}
+
+dispatch minecraft:block[
+	barrel,
+	chest,
+	shulker_box,
+	white_shulker_box,
+	orange_shulker_box,
+	magenta_shulker_box,
+	light_blue_shulker_box,
+	yellow_shulker_box,
+	lime_shulker_box,
+	pink_shulker_box,
+	gray_shulker_box,
+	light_gray_shulker_box,
+	cyan_shulker_box,
+	purple_shulker_box,
+	blue_shulker_box,
+	brown_shulker_box,
+	green_shulker_box,
+	red_shulker_box,
+	black_shulker_box,
+] to struct Container27 {
+	...ContainerBase,
+	/// The items in this container, with slots from 0 to 26
+	Items: [SlottedItem] @ 0..27,
+}
+
+dispatch minecraft:block[dispenser,dropper] to struct Container9 {
+	/// The items in this container, with slots from 0 to 8
+	Items: [SlottedItem] @ 0..9,
+}

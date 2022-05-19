@@ -1,0 +1,26 @@
+dispatch minecraft:block[player_head,player_wall_head] to struct PlayerHead {
+	...super::BlockEntity,
+	/// The owner of the skull
+	SkullOwner: SkullOwner,
+}
+
+struct SkullOwner {
+	/// UUID of the owner, optional
+	Id: int[] @ 4,
+	/// Name of the owner, if missing appears as a steve head
+	Name: string,
+	/// Texture properties
+	Properties: Properties,
+}
+
+struct Properties {
+	/// The textures
+	textures: [Texture],
+}
+
+struct Texture {
+	/// Signature of the texture
+	Signature: string,
+	/// Base64 encoded JSON value of the texture
+	Value: string,
+}
