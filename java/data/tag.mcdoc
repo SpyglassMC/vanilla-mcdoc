@@ -1,0 +1,4 @@
+struct Tag {
+	replace?: boolean,
+	values: [#[tag_entry] string],
+}
