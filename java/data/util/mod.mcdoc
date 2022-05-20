@@ -1,0 +1,37 @@
+type MinMaxBounds<T> = (
+	T |
+	struct {
+		min?: T,
+		max?: T,
+	} |
+)
+
+type RandomValueBounds = (
+	float |
+	struct {
+		min: float,
+		max: float,
+	} |
+)
+
+type RandomIntGenerator = (
+	int |
+	struct {
+		type: ("uniform" | "binomial" | "constant"),
+		...minecraft:random_int_generator[[type]],
+	} |
+)
+
+dispatch minecraft:random_int_generator[uniform,%none] to struct UniformIntGenerator {
+	min?: int,
+	max?: int,
+}
+
+dispatch minecraft:random_int_generator[binomial] to struct BinomialIntGenerator {
+	n: int @ 0..,
+	p: float @ 0..1,
+}
+
+dispatch minecraft:random_int_generator[constant] to struct ConstantIntGenerator {
+	value: int,
+}

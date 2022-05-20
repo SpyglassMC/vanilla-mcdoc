@@ -1,0 +1,73 @@
+use ::java::server::world::item::ItemBase
+use ::java::server::util::text::Text
+use super::util::MinMaxBounds
+use super::util::RandomIntGenerator
+
+struct LootTable {
+	type?: #[id] LootContextType,
+	pools?: [LootPool],
+	functions?: [LootFunction],
+}
+
+enum(string) LootContextType {
+	Empty = "empty",
+	Chest = "chest",
+	Command = "command",
+	Selector = "selector",
+	Fishing = "fishing",
+	Entity = "entity",
+	Gift = "gift",
+	Barter = "barter",
+	AdvancementReward = "advancement_reward",
+	AdvancementEntity = "advancement_entity",
+	Generic = "generic",
+	Block = "block",
+}
+
+struct LootPool {
+	rolls: RandomIntGenerator,
+	bonus_rolls?: MinMaxBounds<float>,
+	entries: [LootPoolEntry],
+	functions?: [LootFunction],
+	conditions?: [LootCondition],
+}
+
+struct LootPoolEntry {
+	type: #[id=loot_pool_entry_type] string,
+	...minecraft:loot_pool_entry[[type]],
+}
+
+struct LootPoolEntryBase {
+	functions?: [LootFunction],
+	conditions?: [LootCondition],
+}
+
+struct LootPoolEntrySingleton<Name> {
+	name: Name,
+	weight?: int @ 1..,
+	quality?: int,
+	...LootPoolEntryBase,
+}
+
+dispatch minecraft:loot_pool_entry[dynamic] to LootPoolEntrySingleton<#[id] string>
+
+dispatch minecraft:loot_pool_entry[item] to LootPoolEntrySingleton<#[id=item] string>
+
+dispatch minecraft:loot_pool_entry[loot_table] to LootPoolEntrySingleton<#[id=loot_table] string>
+
+dispatch minecraft:loot_pool_entry[tag] to LootPoolEntrySingleton<#[id(registry=item,tags=implicit)] string>
+
+dispatch minecraft:loot_pool_entry[alternatives,group,sequence] to struct CompositePoolEntry {
+	children: [LootPoolEntry],
+	...LootPoolEntryBase,
+}
+
+struct LootFunction {
+	function: #[id=loot_function_type] string,
+	...minecraft:loot_function[[function]],
+}
+
+struct LootCondition {
+	condition: #[id=loot_condition_type] string,
+	...minecraft:loot_condition[[condition]],
+}

@@ -1,0 +1,79 @@
+use super::LootCondition
+use super::super::util::RandomValueBounds
+use super::super::advancement::predicate::ItemPredicate
+use super::super::advancement::predicate::EntityPredicate
+use super::super::advancement::predicate::LocationPredicate
+use super::super::advancement::predicate::DamageSourcePredicate
+
+dispatch minecraft:loot_condition[alternative] to struct Alternative {
+	terms: [LootCondition],
+}
+
+dispatch minecraft:loot_condition[block_state_property] to struct BlockStateProperty {
+	block: #[id=block] string,
+	properties: struct {
+		[string]: string, // TODO
+	},
+}
+
+dispatch minecraft:loot_condition[damage_source_properties] to struct DamageSourceProperties {
+	predicate: DamageSourcePredicate,
+}
+
+dispatch minecraft:loot_condition[entity_properties] to struct EntityProperties {
+	predicate: EntityPredicate,
+}
+
+dispatch minecraft:loot_condition[entity_scores] to struct EntityScores {
+	entity: EntityTarget,
+	scores: struct {
+		[#[objective] string]: RandomValueBounds,
+	},
+}
+
+dispatch minecraft:loot_condition[inverted] to struct Inverted {
+	term: LootCondition,
+}
+
+dispatch minecraft:loot_condition[killed_by_player] to struct KilledByPlayer {
+	inverse?: boolean,
+}
+
+dispatch minecraft:loot_condition[location_check] to struct LocationCheck {
+	offsetX?: int,
+	offsetY?: int,
+	offsetZ?: int,
+	predicate: LocationPredicate,
+}
+
+dispatch minecraft:loot_condition[match_tool] to struct MatchTool {
+	predicate: ItemPredicate,
+}
+
+dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
+	chance: float @ 0..1,
+}
+
+dispatch minecraft:loot_condition[random_chance_with_looting] to struct RandomChanceWithLooting {
+	chance: float @ 0..1,
+	looting_multiplier: float,
+}
+
+dispatch minecraft:loot_condition[reference] to struct Reference {
+	name: LootCondition,
+}
+
+dispatch minecraft:loot_condition[table_bonus] to struct TableBonus {
+	enchantment: #[id=enchantment] string,
+	chances: [float @ 0..1],
+}
+
+dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
+	value: RandomValueBounds,
+	period?: long,
+}
+
+dispatch minecraft:loot_condition[weather_check] to struct WeatherCheck {
+	raining?: boolean,
+	thundering?: boolean,
+}

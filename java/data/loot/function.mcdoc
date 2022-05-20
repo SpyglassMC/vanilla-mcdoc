@@ -1,0 +1,180 @@
+use super::LootPoolEntry
+use super::super::util::MinMaxBounds
+use super::super::util::RandomValueBounds
+use super::super::util::RandomIntGenerator
+use ::java::server::util::inventory::EquipmentSlot
+
+dispatch minecraft:loot_function[apply_bonus] to struct ApplyBonus {
+	enchantment: #[id=enchantment] string,
+	formula: #[id] ApplyBonusFormula,
+	parameters: minecraft:apply_bonus_formula[[formula]],
+}
+
+enum(string) ApplyBonusFormula {
+	UniformBonusCount = "uniform_bonus_count",
+	BinomialWithBonusCount = "binomial_with_bonus_count",
+	OreDrops = "ore_drops",
+}
+
+dispatch minecraft:apply_bonus_formula[uniform_bonus_count] to struct UniformBonusFormula {
+	bonusMultiplier: int,
+}
+
+dispatch minecraft:apply_bonus_formula[binomial_with_bonus_count] to struct BinomialWithBonusCountFormula {
+	extra: int @ 0..,
+	probability: float @ 0..1,
+}
+
+dispatch minecraft:loot_function[copy_name] to struct CopyName {
+	source: CopyNameSource,
+}
+
+dispatch minecraft:loot_function[copy_nbt] to struct CopyNbt {
+	source: CopyNameSource,
+	ops: [CopyNbtOperation],
+}
+
+enum(string) CopyNameSource {
+	This = "this",
+	Killer = "killer",
+	KillerPlayer = "killer_player",
+	BlockEntity = "block_entity",
+}
+
+struct CopyNbtOperation {
+	source: string, // TODO
+	target: string, // TODO
+	op: CopyNbtStrategy,
+}
+
+enum(string) CopyNbtStrategy {
+	Replace = "replace",
+	Append = "append",
+	Merge = "merge",
+}
+
+dispatch minecraft:loot_function[copy_state] to struct CopyState {
+	block: #[id=block] string,
+	properties: [string], // TODO
+}
+
+dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {
+	enchantments: [#[id=enchantment]],
+}
+
+dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevels {
+	levels: RandomIntGenerator,
+	treasure?: boolean,
+}
+
+dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
+	destination?: string, // TODO
+	decoration?: MapDecoration,
+	zoom?: int,
+	search_radius?: int,
+	skip_existing_chunks?: boolean,
+}
+
+enum(string) MapDecoration {
+	Mansion = "mansion",
+	Monument = "monument",
+	Player = "player",
+	Frame = "frame",
+	RedMarker = "red_marker",
+	BlueMarker = "blue_marker",
+	TargetX = "target_x",
+	TargetPoint = "target_point",
+	PlayerOffMap = "player_off_map",
+	PlayerOffLimits = "player_off_limits",
+	RedX = "red_x",
+	BannerWhite = "banner_white",
+	BannerOrange = "banner_orange",
+	BannerMagenta = "banner_magenta",
+	BannerLight_blue = "banner_light_blue",
+	BannerYellow = "banner_yellow",
+	BannerLime = "banner_lime",
+	BannerPink = "banner_pink",
+	BannerGray = "banner_gray",
+	BannerLight_gray = "banner_light_gray",
+	BannerCyan = "banner_cyan",
+	BannerPurple = "banner_purple",
+	BannerBlue = "banner_blue",
+	BannerBrown = "banner_brown",
+	BannerGreen = "banner_green",
+	BannerRed = "banner_red",
+	BannerBlack = "banner_black",
+}
+
+dispatch minecraft:loot_function[fill_player_head] to struct FillPlayerHead {
+	entity: EntityTarget,
+}
+
+enum(string) EntityTarget {
+	This = "this",
+	Killer = "killer",
+	DirectKiller = "direct_killer",
+	KillerPlayer = "killer_player",
+}
+
+dispatch minecraft:loot_function[limit_count] to struct LimitCount {
+	limit: MinMaxBounds<int>,
+}
+
+dispatch minecraft:loot_function[looting_enchant] to struct LootingEnchant {
+	count: MinMaxBounds<float>,
+	limit?: int,
+}
+
+dispatch minecraft:loot_function[set_attributes] to struct SetAttributes {
+	modifiers: [AttributeModifier],
+}
+
+struct AttributeModifier {
+	attribute: string,
+	name: string,
+	amount: MinMaxBounds<float>,
+	operation: ("addition" | "multiply_base" | "multiply_total"),
+	slot: (EquipmentSlot | [EquipmentSlot]),
+	id?: #[parser=uuid] string,
+}
+
+dispatch minecraft:loot_function[set_contents] to struct SetContents {
+	entries: [LootPoolEntry],
+}
+
+dispatch minecraft:loot_function[set_count] to struct SetCount {
+	count: RandomIntGenerator,
+}
+
+dispatch minecraft:loot_function[set_damage] to struct SetDamage {
+	damage: RandomValueBounds,
+}
+
+dispatch minecraft:loot_function[set_loot_table] to struct SetLootTable {
+	name: #[id=loot_table] string,
+	seed?: int,
+}
+
+dispatch minecraft:loot_function[set_lore] to struct SetLore {
+	entity: EntityTarget,
+	lore: [Text],
+	replace?: boolean,
+}
+
+dispatch minecraft:loot_function[set_name] to struct SetName {
+	entity: EntityTarget,
+	name: Text,
+}
+
+dispatch minecraft:loot_function[set_nbt] to struct SetNbt {
+	tag: #[parser=nbt(ItemBase)] string, // TODO
+}
+
+dispatch minecraft:loot_function[set_stew_effect] to struct SetStewEffect {
+	effects?: [StewEffect],
+}
+
+struct StewEffect {
+	type: #[id=mob_effect] string,
+	duration: MinMaxBounds<float>,
+}
