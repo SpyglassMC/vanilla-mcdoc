@@ -1,4 +1,4 @@
-dispatch minecraft:entity[falling_block] to struct ExperienceOrb {
+dispatch minecraft:entity[falling_block] to struct FallingBlock {
 	/// The NBT data for the placed block
 	TileEntityData: minecraft:block[[BlockState.Name]],
 	/// The block state for the placed block

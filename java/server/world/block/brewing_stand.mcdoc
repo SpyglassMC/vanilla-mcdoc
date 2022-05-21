@@ -1,7 +1,7 @@
 dispatch minecraft:block[brewing_stand] to struct BrewingStand {
 	...super::BlockEntity,
 	/// The name of the brewing stand
-	CustomName: string,
+	CustomName: #[text_component] string,
 	/// The name of the item that a player has to be holding to open this brewing stand
 	Lock: string,
 	/// The items in this furnace, with slots:  

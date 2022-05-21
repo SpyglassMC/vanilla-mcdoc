@@ -46,7 +46,10 @@ struct Enchantment {
 	/// Which enchantment is being described
 	id: #[id=enchantment] string,
 	/// Which level the enchantment is
-	lvl: (short @ 1.. | int @ 1..),
+	lvl: (
+		#[until=1.17] (short @ 1.. | int @ 1..) |
+		#[since=1.17] int @ 0..255 |
+	),
 }
 
 /// A single attribute modifier

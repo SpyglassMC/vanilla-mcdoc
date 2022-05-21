@@ -34,6 +34,14 @@ dispatch minecraft:memory_module[
 	value: long,
 }
 
+#[since=1.17]
+dispatch minecraft:memory_module[
+	long_jump_cooling_down,
+	play_dead_ticks,
+	ram_cooldown_ticks,
+	temptation_cooldown_ticks,
+] to TickMemory
+
 #[since=1.16]
 dispatch minecraft:memory_module[angry_at] to struct UuidMemory {
 	/// The uuid value
@@ -42,12 +50,22 @@ dispatch minecraft:memory_module[angry_at] to struct UuidMemory {
 
 #[since=1.16]
 dispatch minecraft:memory_module[
-	golem_detected_recently,
-	universal_anger,
-	admiring_item,
 	admiring_disabled,
+	admiring_item,
+	golem_detected_recently,
 	hunted_recently,
+	universal_anger,
 ] to struct BooleanMemory {
 	/// The boolean value
 	value: boolean,
+}
+
+#[since=1.17]
+dispatch minecraft:memory_module[is_tempted] to BooleanMemory
+
+#[since=1.17]
+dispatch minecraft:memory_module[has_hunting_cooldown] to struct CooldownMemory {
+	value: boolean,
+	/// The number of ticks until this memory is removed
+	ttl: long,
 }

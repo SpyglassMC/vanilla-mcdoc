@@ -2,6 +2,11 @@ use ::java::server::util::block_state::BlockState
 
 struct ProjectileBase {
 	...super::EntityBase,
+	/// Whether the projectile has been shot. This is set to true when the projectile exists for
+	/// at least one tick, and is used by the game to ensure it only triggers the projectile_shoot
+	/// game event once
+	#[since=1.17]
+	HasBeenShot: boolean,
 	/// The UUID of the projectile's owner
 	#[since=1.16,uuid]
 	Owner: int[] @ 4,

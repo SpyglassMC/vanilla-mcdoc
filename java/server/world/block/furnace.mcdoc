@@ -2,8 +2,8 @@ use ::java::server::util::inventory::SlottedItem
 
 dispatch minecraft:block[furnace,blast_furnace,smoker] to struct Furnace {
 	...super::BlockEntity,
-	/// The name of the furance
-	CustomName: string,
+	/// The name of the furnace
+	CustomName: #[text_component] string,
 	/// The name of the item that a player has to be holding to open this furnace
 	Lock: string,
 	/// The items in this furnace, with slots:  

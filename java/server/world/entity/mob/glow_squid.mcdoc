@@ -1,0 +1,6 @@
+#[since=1.17]
+dispatch minecraft:entity[glow_squid] to struct GlowSquid {
+	...super::MobBase,
+	/// The number of tickets that the glow squid will wait before glowing
+	DarkTicksRemaining: int,
+}

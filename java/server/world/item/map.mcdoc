@@ -83,7 +83,7 @@ enum(byte) IconId {
 
 /// The display settings of an item
 struct Display {
-    ...super::Display,
+	...super::Display,
 	/// The color of the map  
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
 	MapColor: #[color=composite_int] int,

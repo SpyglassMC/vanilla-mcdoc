@@ -5,7 +5,7 @@ dispatch minecraft:block[
 ] to struct Campfire {
 	...super::BlockEntity,
 	/// The name of the command block
-	CustomName: string,
+	CustomName: #[text_component] string,
 	/// The command stored in the command block
 	Command: string,
 	/// The success count of the last command

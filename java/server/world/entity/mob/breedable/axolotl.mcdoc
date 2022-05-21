@@ -1,0 +1,16 @@
+#[since=1.17]
+dispatch minecraft:entity[axolotl] struct Axolotl {
+	...super::Breedable,
+	/// The variant of the axolotl
+	Variant: Variant,
+	/// If this axolotl was released from a bucket
+	FromBucket: boolean
+}
+
+enum(int) Variant {
+	Lucy = 0,
+	Wild = 1,
+	Gold = 2,
+	Cyan = 3,
+	Blue = 4
+}

@@ -52,7 +52,7 @@ dispatch minecraft:entity[hopper_minecart] to struct HopperMinecart {
 	LootTableSeed: long,
 	/// The items in this hopper minecart, with slots from 0 to 4
 	Items: [SlottedItem] @ 0..5,
-	/// The number of ticks until an item can be transfered
+	/// The number of ticks until an item can be transferred
 	TransferCooldown: int,
 	/// Whether this hopper minecart should pick up items
 	Enabled: boolean,

@@ -1,0 +1,5 @@
+dispatch minecraft:entity[goat] struct Goat {
+	...super::Breedable,
+	/// Whether the goat is a screaming goat
+	IsScreamingGoat: boolean
+}

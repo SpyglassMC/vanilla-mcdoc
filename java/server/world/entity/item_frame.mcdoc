@@ -24,6 +24,9 @@ dispatch minecraft:entity[item_frame] to struct ItemFrame {
 	Fixed: boolean,
 }
 
+#[since=1.17]
+dispatch minecraft:entity[glow_item_frame] to ItemFrame
+
 enum(byte) Facing {
 	Down = 0,
 	Up = 1,

@@ -19,7 +19,7 @@ dispatch minecraft:block[
 	...super::BlockEntity,
 	/// The name of the banner  
 	/// Will show up on map markers
-	CustomName: string,
+	CustomName: #[text_component] string,
 	/// The patterns on the banner
 	Patterns: [Pattern],
 }

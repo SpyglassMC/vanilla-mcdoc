@@ -1,7 +1,7 @@
 dispatch minecraft:block[hopper] to struct Hopper {
 	...super::BlockEntity,
 	/// The name of the container
-	CustomName: string,
+	CustomName: #[text_component] string,
 	/// The name of the item that a player has to be holding to open this container
 	Lock: string,
 	/// The loot table that will populate this container

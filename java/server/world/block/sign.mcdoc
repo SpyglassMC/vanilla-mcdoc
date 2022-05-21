@@ -1,28 +1,39 @@
 use ::java::server::util::color::ColorString
 
 dispatch minecraft:block[
+	acacia_sign,
+	birch_sign,
+	dark_oak_sign,
+	jungle_sign,
 	oak_sign,
 	spruce_sign,
-	birch_sign,
-	jungle_sign,
-	acacia_sign,
-	dark_oak_sign,
+	acacia_wall_sign,
+	birch_wall_sign,
+	dark_oak_wall_sign,
+	jungle_wall_sign,
 	oak_wall_sign,
 	spruce_wall_sign,
-	birch_wall_sign,
-	jungle_wall_sign,
-	acacia_wall_sign,
-	dark_oak_wall_sign,
 ] to struct Sign {
 	...super::BlockEntity,
 	/// The color the sign has been dyed
 	Color: ColorString,
+	/// Whether the texts on this sign are glowing
+	#[since=1.17]
+	GlowingText: boolean,
 	/// The first line of text from the top
-	Text1: string,
+	Text1: #[text_component] string,
 	/// The second line of text from the top
-	Text2: string,
+	Text2: #[text_component] string,
 	/// The third line of text from the top
-	Text3: string,
+	Text3: #[text_component] string,
 	/// The fourth line of text from the top
-	Text4: string,
+	Text4: #[text_component] string,
 }
+
+#[since=1.17]
+dispatch minecraft:entity[
+	crimson_sign,
+	warped_sign,
+	crimson_wall_sign,
+	warped_wall_sign,
+] to Sign

@@ -1,5 +1,5 @@
 struct FishBucket {
-    ...super::spawnitem::SpawnItem,
+	...super::spawnitem::SpawnItem,
 	/// The variant of fish. Only used for tropical fish
 	BucketVariantTag: int,
 }

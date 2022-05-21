@@ -27,5 +27,8 @@ struct SpawnPotential {
 	/// The entity to spawn
 	Entity: AnyEntity,
 	/// The weight for this entry to get chosen
-	Weight: int
+	Weight: (
+		#[until=1.17] int @ 0.. | 
+		#[since=1.17] byte @ 0.. |
+	),
 }

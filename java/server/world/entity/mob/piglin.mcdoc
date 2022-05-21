@@ -1,6 +1,6 @@
 struct PiglinBase {
 	...super::MobBase,
-	/// Whether the piglin will not transform to a zomblified piglin when it is in the Overword
+	/// Whether the piglin will not transform to a zombified piglin when it is in the Overword
 	IsImmuneToZombification: boolean,
 	/// The number of ticks the piglin has been in the overworld
 	TimeInOverworld: int,

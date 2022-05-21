@@ -137,7 +137,6 @@ dispatch minecraft:entity[
 	giant,
 	guardian,
 	silverfish,
-	skeleton,
 	spider,
 	squid,
 	stray,

@@ -24,11 +24,11 @@ dispatch minecraft:entity[player] to struct Player {
 	/// The dimension of the player's respawn point
 	#[since=1.16]
 	SpawnDimension: #[id=dimension],
-	/// The x coordinate of the player's spawpoint
+	/// The x coordinate of the player's spawn point
 	SpawnX: int,
-	/// The y coordinate of the player's spawpoint
+	/// The y coordinate of the player's spawn point
 	SpawnY: int,
-	/// The z coordinate of the player's spawpoint
+	/// The z coordinate of the player's spawn point
 	SpawnZ: int,
 	/// Whether the player must spawn at the spawn point
 	SpawnForced: boolean,
