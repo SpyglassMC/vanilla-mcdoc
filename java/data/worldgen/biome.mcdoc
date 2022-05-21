@@ -1,0 +1,121 @@
+use ::java::server::util::particle::Particle
+use super::carver::CarverRef
+use super::feature::ConfiguredFeatureRef
+
+struct Biome {
+	category: BiomeCategory,
+	depth: float,
+	scale: float,
+	temperature: float,
+	downfall: float,
+	precipitation: Precipication,
+	temperature_modifier?: TemperatureModifier,
+	player_spawn_friendly?: boolean,
+	creature_spawn_probability?: float @ 0..1,
+	effects: BiomeEffects,
+	starts: [ConfiguredStructureRef],
+	spawners: struct {
+		[MobCategory]: SpawnerData,
+	},
+	spawn_costs: struct {
+		[#[id=entity_type] string]: MobSpawnCost,
+	},
+	carvers: struct {
+		[CarveStep]: [CarverRef],
+	},
+	features: [[ConfiguredFeatureRef]] @ ..10,
+}
+
+enum BiomeCategory {
+	Beach = "beach",
+	Desert = "desert",
+	ExtremeHills = "extreme_hills",
+	Forest = "forest",
+	Icy = "icy",
+	Jungle = "jungle",
+	Mesa = "mesa",
+	Mushroom = "mushroom",
+	Nether = "nether",
+	None = "none",
+	Ocean = "ocean",
+	Plains = "plains",
+	River = "river",
+	Savanna = "savanna",
+	Swamp = "swamp",
+	Taiga = "taiga",
+	TheEnd = "the_end",
+}
+
+enum(string) Precipication {
+	None = "none",
+	Rain = "rain",
+	Snow = "snow",
+}
+
+enum(string) TemperatureModifier {
+	None = "none",
+	Frozen = "frozen",
+}
+
+struct BiomeEffects {
+	sky_color: #[color=composite_int] int,
+	fog_color: #[color=composite_int] int,
+	water_color: #[color=composite_int] int,
+	water_fog_color: #[color=composite_int] int,
+	grass_color?: #[color=composite_int] int,
+	foliage_color?: #[color=composite_int] int,
+	grass_color_modifier?: GrassColorModifier,
+	ambient_sound?: string,
+	mood_sound?: struct {
+		sound: #[id=sound_event] string,
+		tick_delay: int,
+		block_search_extent: int,
+		offset: float,
+	},
+	additions_sound?: struct {
+		sound: #[id=sound_event] string,
+		tick_chance: float @ 0..1,
+	},
+	music?: struct {
+		sound: #[id=sound_event] string,
+		min_delay: int @ 0..,
+		max_delay: int @ 0..,
+		replace_current_music: boolean,
+	},
+	particle?: struct {
+		options: Particle,
+		probability: float @ 0..1,
+	},
+}
+
+enum(string) GrassColorModifier {
+	None = "none",
+	DarkForest = "dark_forest",
+	Swamp = "swamp",
+}
+
+enum(string) MobCategory {
+	WaterAmbient = "water_ambient",
+	Ambient = "ambient",
+	Misc = "misc",
+	WaterCreature = "water_creature",
+	Creature = "creature",
+	Monster = "monster",
+}
+
+struct SpawnerData {
+	type: #[id=entity_type] string,
+	weight: int,
+	minCount: int,
+	maxCount: int,
+}
+
+struct MobSpawnCost {
+	energy_budget: double,
+	charge: charge,
+}
+
+enum(string) CarveStep {
+	Air = "air",
+	Liquid = "liquid",
+}

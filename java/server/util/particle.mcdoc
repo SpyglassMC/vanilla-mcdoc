@@ -1,0 +1,18 @@
+use super::block_state::BlockState
+use super::inventory::InventoryItem
+
+struct Particle {
+	type: #[id=particle_type],
+	value: minecraft:particle[[type]],
+}
+
+dispatch minecraft:particle[block,falling_dust] to BlockState
+
+dispatch minecraft:particle[dust] to struct DustOption {
+	r: float,
+	g: float,
+	b: float,
+	scale: float,
+}
+
+dispatch minecraft:particle[item] to struct InventoryItem

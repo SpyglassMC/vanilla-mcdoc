@@ -1,0 +1,29 @@
+use super::noise_settings::NoiseGeneratorSettingsRef
+
+struct ChunkGenerator {
+	type: #[id=worldgen/chunk_generator] string,
+	...minecraft:chunk_generator[[type]],
+}
+
+dispatch minecraft:chunk_generator[flat] to struct Flat {
+	settings: FlatGeneratorSettings,
+}
+
+struct FlatGeneratorSettings {
+	biome?: #[id=worldgen/biome] string,
+	lakes?: boolean,
+	features?: boolean,
+	layers: [FlatGeneratorLayer],
+	structures: StructureSettings,
+}
+
+struct FlatGeneratorLayer {
+	height: int @ 0..4096,
+	block: #[id=block] string,
+}
+
+dispatch minecraft:chunk_generator[noise] to struct Noise {
+	seed: long,
+	settings: NoiseGeneratorSettingsRef,
+	biome_source: BiomeSource,
+}

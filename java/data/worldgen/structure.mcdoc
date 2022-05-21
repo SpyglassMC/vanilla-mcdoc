@@ -1,0 +1,9 @@
+type ConfiguredStructureRef = (
+	#[id=worldgen/configured_structure_feature] string,
+	ConfiguredStructure,
+)
+
+struct ConfiguredStructure {
+	type: #[id=worldgen/structure_feature],
+	config: minecraft:structure_config[[type]],
+}

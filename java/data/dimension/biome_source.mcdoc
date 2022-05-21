@@ -1,0 +1,52 @@
+struct BiomeSource {
+	type: #[id=worldgen/biome_source] string,
+	...minecraft:biome_source[[type]],
+}
+
+dispatch minecraft:biome_source[checkerboard] to struct Checkerboard {
+	scale?: int @ 0..62,
+	biomes: [#[id=worldgen/biom] string],
+}
+
+dispatch minecraft:biome_source[fixed] to struct Fixed {
+	biome: #[id=worldgen/biome] string,
+}
+
+dispatch minecraft:biome_source[multi_noise] to struct MultiNoise {
+	seed: long,
+	#[since=1.16.2]
+	temperature_noise: NoiseParameters,
+	#[since=1.16.2]
+	humidity_noise: NoiseParameters,
+	#[since=1.16.2]
+	altitude_noise: NoiseParameters,
+	#[since=1.16.2]
+	weirdness_noise: NoiseParameters,
+	biomes: [struct {
+		biome: #[id=worldgen/biome],
+		parameters: ClimateParameters,
+	}],
+}
+
+struct NoiseParameters {
+	firstOctave: int,
+	amplitudes: [double],
+}
+
+struct ClimateParameters {
+	temperature: float @ -2..2,
+	humidity: float @ -2..2,
+	altitude: float @ -2..2,
+	weirdness: float @ -2..2,
+	offset: float @ 0..1,
+}
+
+dispatch minecraft:biome_source[the_end] to struct TheEnd {
+	seed: long,
+}
+
+dispatch minecraft:biome_source[vanilla_layered] to struct VanillaLayered {
+	seed: long,
+	large_biomes?: boolean,
+	legacy_biome_init_layer?: boolean,
+}

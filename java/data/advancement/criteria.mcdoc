@@ -6,57 +6,90 @@ use super::predicate::MobEffectPredicate
 use super::predicate::DamagePredicate
 use super::predicate::DamageSourcePredicate
 use super::predicate::DistancePredicate
+use super::super::loot::LootCondition
+
+type CompositeEntity = (
+	EntityPredicate,
+	#[since=1.16]
+	[LootCondition],
+)
+
+struct CriterionBase {
+	#[since=1.16]
+	player?: CompositeEntity,
+}
+
+type LocationCriterion = (
+	#[deprecated=1.16]
+	LocationPredicate |
+	#[since=1.16]
+	struct Location {
+		...CriterionBase,
+		location?: LocationPredicate,
+	} |
+)
 
 dispatch minecraft:criteria_trigger[bee_nest_destroyed] to struct BeeNestDestroyed {
+	...CriterionBase,
 	block?: #[id=block] string,
 	num_bees_inside?: int,
 	item?: ItemPredicate,
 }
 
 dispatch minecraft:criteria_trigger[bred_animals] to struct BredAnimals {
-	parent?: EntityPredicate,
-	partner?: EntityPredicate,
-	child?: EntityPredicate,
+	...CriterionBase,
+	parent?: CompositeEntity,
+	partner?: CompositeEntity,
+	child?: CompositeEntity,
 }
 
 dispatch minecraft:criteria_trigger[brewed_potion] to struct BrewedPotion {
+	...CriterionBase,
 	potion?: #[id=potion] string,
 }
 
 dispatch minecraft:criteria_trigger[changed_dimension] to struct ChangedDimension {
+	...CriterionBase,
 	from?: #[id=dimension],
 	to?: #[id=dimension],
 }
 
 dispatch minecraft:criteria_trigger[channeled_lightning] to struct ChanneledLightning {
-	victims?: [EntityPredicate],
+	...CriterionBase,
+	victims?: [CompositeEntity],
 }
 
 dispatch minecraft:criteria_trigger[construct_beacon] to struct ConstructBeacon {
+	...CriterionBase,
 	level?: MinMaxBounds<int>,
 }
 
 dispatch minecraft:criteria_trigger[consume_item] to struct ConsumeItem {
+	...CriterionBase,
 	item?: ItemPredicate,
 }
 
 dispatch minecraft:criteria_trigger[cured_zombie_villager] to struct CuredZombieVillager {
-	villager?: EntityPredicate,
-	zombie?: EntityPredicate,
+	...CriterionBase,
+	villager?: CompositeEntity,
+	zombie?: CompositeEntity,
 }
 
 dispatch minecraft:criteria_trigger[effects_changed] to struct EffectsChanged {
+	...CriterionBase,
 	effects?: struct {
 		[#[id=mob_effect] string]: MobEffectPredicate,
 	},
 }
 
 dispatch minecraft:criteria_trigger[enchanted_item] to struct EnchantedItem {
+	...CriterionBase,
 	item?: ItemPredicate,
 	levels?: MinMaxBounds<int>,
 }
 
 dispatch minecraft:criteria_trigger[enter_block] to struct EnterBlock {
+	...CriterionBase,
 	block?: #[id=block] string,
 	state?: struct {
 		[string]: string, // TODO
@@ -64,26 +97,31 @@ dispatch minecraft:criteria_trigger[enter_block] to struct EnterBlock {
 }
 
 dispatch minecraft:criteria_trigger[entity_hurt_player] to struct EntityHurtPlayer {
+	...CriterionBase,
 	damage?: DamagePredicate,
 }
 
 dispatch minecraft:criteria_trigger[entity_killed_player] to struct EntityKilledPlayer {
-	entity?: EntityPredicate,
+	...CriterionBase,
+	entity?: CompositeEntity,
 	killing_blow?: DamageSourcePredicate,
 }
 
 dispatch minecraft:criteria_trigger[filled_bucket] to struct FilledBucket {
+	...CriterionBase,
 	item?: ItemPredicate,
 }
 
 dispatch minecraft:criteria_trigger[fishing_rod_hooked] to struct FishingRodHooked {
-	entity?: EntityPredicate,
+	...CriterionBase,
+	entity?: CompositeEntity,
 	item?: ItemPredicate,
 }
 
-dispatch minecraft:criteria_trigger[hero_of_the_village] to LocationPredicate
+dispatch minecraft:criteria_trigger[hero_of_the_village] to LocationCriterion
 
 dispatch minecraft:criteria_trigger[inventory_changed] to struct InventoryChanged {
+	...CriterionBase,
 	slots?: struct {
 		empty?: MinMaxBounds<int>,
 		occupied?: MinMaxBounds<int>,
@@ -93,30 +131,41 @@ dispatch minecraft:criteria_trigger[inventory_changed] to struct InventoryChange
 }
 
 dispatch minecraft:criteria_trigger[item_durability_changed] to struct ItemDurabilityChanged {
+	...CriterionBase,
 	delta?: MinMaxBounds<int>,
 	durability?: MinMaxBounds<int>,
 	item?: ItemPredicate,
 }
 
+#[since=1.16]
+dispatch minecraft:criteria_trigger[item_used_on_block] to struct {
+	item?: ItemPredicate,
+	location?: LocationPredicate,
+}
+
 dispatch minecraft:criteria_trigger[killed_by_crossbow] to struct KilledByCrossbow {
+	...CriterionBase,
 	unique_entity_types?: MinMaxBounds<int>,
-	victims?: [EntityPredicate],
+	victims?: [CompositeEntity],
 }
 
 dispatch minecraft:criteria_trigger[levitation] to struct Levitation {
+	...CriterionBase,
 	distance?: DistancePredicate,
 	duration?: MinMaxBounds<int>,
 }
 
-dispatch minecraft:criteria_trigger[location] to LocationPredicate
+dispatch minecraft:criteria_trigger[location] to LocationCriterion
 
 dispatch minecraft:criteria_trigger[nether_travel] to struct NetherTravel {
+	...CriterionBase,
 	distance?: DistancePredicate,
 	entered?: LocationPredicate,
 	exited?: LocationPredicate,
 }
 
 dispatch minecraft:criteria_trigger[placed_block] to struct PlacedBlock {
+	...CriterionBase,
 	block?: #[id=block] string,
 	state?: struct {
 		[string]: string, // TODO
@@ -125,25 +174,42 @@ dispatch minecraft:criteria_trigger[placed_block] to struct PlacedBlock {
 	location?: LocationPredicate,
 }
 
+#[since=1.16]
+dispatch minecraft:criteria_trigger[player_generates_container_loot] to struct {
+	loot_table: #[id=loot_table] string,
+}
+
 dispatch minecraft:criteria_trigger[player_hurt_entity] to struct PlayerHurtEntity {
+	...CriterionBase,
 	damage?: DamagePredicate,
-	entity?: EntityPredicate,
+	entity?: CompositeEntity,
+}
+
+#[since=1.16]
+dispatch minecraft:criteria_trigger[player_interacted_with_entity] to struct {
+	item?: ItemPredicate,
+	entity?: CompositeEntity,
 }
 
 dispatch minecraft:criteria_trigger[player_killed_entity] to struct PlayerKilledEntity {
-	entity?: EntityPredicate,
+	...CriterionBase,
+	entity?: CompositeEntity,
 	killing_blow?: DamageSourcePredicate,
 }
 
 dispatch minecraft:criteria_trigger[recipe_unlocked] to struct RecipeUnlocked {
+	...CriterionBase,
 	recipe: #[id=recipe] string,
 }
 
 dispatch minecraft:criteria_trigger[shot_crossbow] to struct ShotCrossbow {
+	...CriterionBase,
 	item?: ItemPredicate,
 }
 
+#[until=1.16]
 dispatch minecraft:criteria_trigger[safely_harvest_honey] to struct SafelyHarvestHoney {
+	...CriterionBase,
 	block?: struct {
 		block?: #[id=block] string,
 		tag?: #[id(registry=block,tags=implicit)] string,
@@ -151,31 +217,53 @@ dispatch minecraft:criteria_trigger[safely_harvest_honey] to struct SafelyHarves
 	item?: ItemPredicate,
 }
 
-dispatch minecraft:criteria_trigger[slept_in_bed] to LocationPredicate
+dispatch minecraft:criteria_trigger[slept_in_bed] to LocationCriterion
 
 dispatch minecraft:criteria_trigger[slide_down_block] to struct SlideDownBlock {
+	...CriterionBase,
 	block?: #[id=block] string,
 }
 
 dispatch minecraft:criteria_trigger[summoned_entity] to struct SummonedEntity {
-	entity?: EntityPredicate,
+	...CriterionBase,
+	entity?: CompositeEntity,
 }
 
 dispatch minecraft:criteria_trigger[tame_animal] to struct TameAnimal {
-	entity?: EntityPredicate,
+	...CriterionBase,
+	entity?: CompositeEntity,
 }
 
+#[since=1.16]
+dispatch minecraft:criteria_trigger[target_hit] to struct TargetHit {
+	...CriterionBase,
+	projectile?: CompositeEntity,
+	shooter?: CompositeEntity,
+	signal_strength?: MinMaxBounds<int>,
+}
+
+#[since=1.16]
+dispatch minecraft:criteria_trigger[thrown_item_picked_up_by_entity] to struct ThrownItemPickedUpByEntity {
+	item?: ItemPredicate,
+	entity?: CompositeEntity,
+}
+
+dispatch minecraft:criteria_trigger[tick] to CriterionBase
+
 dispatch minecraft:criteria_trigger[used_ender_eye] to struct UsedEnderEye {
+	...CriterionBase,
 	distance?: MinMaxBounds<float>,
 }
 
 dispatch minecraft:criteria_trigger[used_totem] to struct UsedTotem {
+	...CriterionBase,
 	item?: ItemPredicate,
 }
 
 dispatch minecraft:criteria_trigger[villager_trade] to struct VillagerTrade {
-	villager?: EntityPredicate,
+	...CriterionBase,
+	villager?: CompositeEntity,
 	item?: ItemPredicate,
 }
 
-dispatch minecraft:criteria_trigger[voluntary_exile] to LocationPredicate
+dispatch minecraft:criteria_trigger[voluntary_exile] to LocationCriterion

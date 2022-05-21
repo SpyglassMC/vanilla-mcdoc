@@ -40,14 +40,19 @@ struct LocationPredicate {
 		y?: MinMaxBounds<float>,
 		z?: MinMaxBounds<float>,
 	},
-	biome?: string,
+	biome?: (
+		#[until=1.16,id=biome] string |
+		#[since=1.16,id=worldgen/biome] string |
+	),
 	feature?: string,
-	dimension?: string,
+	dimension?: #[id=dimension] string,
 	light?: struct {
 		light?: MinMaxBounds<int @ 0..15>,
 	},
 	block?: BlockPredicate,
 	fluid?: FluidPredicate,
+	#[since=1.16]
+	smokey?: boolean,
 }
 
 struct EntityPredicate {
@@ -67,6 +72,14 @@ struct EntityPredicate {
 		[EquipmentSlot]: ItemPredicate,
 	},
 	player?: PlayerPredicate,
+	#[since=1.16]
+	vehicle?: EntityPredicate,
+	#[since=1.16]
+	targeted_entity?: EntityPredicate,
+	#[since=1.16]
+	fishing_hook?: struct {
+		in_open_water?: boolean,
+	},
 	catType?: string,
 	effects?: struct {
 		[#[id=mob_effect] string]: MobEffectPredicate,

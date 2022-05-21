@@ -17,7 +17,7 @@ type RandomValueBounds = (
 type RandomIntGenerator = (
 	int |
 	struct {
-		type: ("uniform" | "binomial" | "constant"),
+		type?: ("uniform" | "binomial" | "constant"),
 		...minecraft:random_int_generator[[type]],
 	} |
 )

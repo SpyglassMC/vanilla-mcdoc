@@ -1,0 +1,11 @@
+type CarverRef = (
+	#[id=worldgen/configured_carver] string,
+	ConfiguredCarver,
+)
+
+struct ConfiguredCarver {
+	type: #[id=worldgen/carver],
+	config: struct {
+		probability: float @ 0..1,
+	},
+}

@@ -1,3 +1,5 @@
+use super::inventory::InventoryItem
+
 type Text = (
 	string |
 	TextObject |
@@ -58,20 +60,16 @@ struct TextBase {
 
 struct TextStyle {
 	color?: (TextColor | TextFormat),
+	#[since=1.16]
+	font?: #[id=font] string,
 	bold?: boolean,
 	italic?: boolean,
 	underlined?: boolean,
 	strikethrough?: boolean,
 	obfuscated?: boolean,
 	insertion?: string,
-	clickEvent?: struct {
-		action: ClickEventAction,
-		value: string, // TODO
-	},
-	hoverEvent?: struct {
-		action: HoverEventAction,
-		value: Text, // TODO
-	},
+	clickEvent?: ClickEvent,
+	hoverEvent?: HoverEvent,
 }
 
 enum(string) TextColor {
@@ -102,6 +100,11 @@ enum(string) TextFormat {
 	Reset = "reset",
 }
 
+struct ClickEvent {
+	action: ClickEventAction,
+	value: string, // TODO
+}
+
 enum(string) ClickEventAction {
 	OpenUrl = "open_url",
 	OpenFile = "open_file",
@@ -111,10 +114,48 @@ enum(string) ClickEventAction {
 	CopyToClipBoard = "copy_to_clipboard",
 }
 
+struct HoverEvent {
+	action: HoverEventAction,
+	...minecraft:hover_event[[action]],
+}
+
 enum(string) HoverEventAction {
 	ShowText = "show_text",
 	ShowItem = "show_item",
 	ShowEntity = "show_entity",
+}
+
+dispatch minecraft:hover_event[show_text] to struct ShowTextHoverEvent {
+	#[deprecated=1.16]
+	value?: Text,
+	#[since=1.16]
+	contents?: Text,
+}
+
+dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
+	#[deprecated=1.16]
+	value?: #[nbt=InventoryItem] string,
+	#[since=1.16]
+	contents?: struct {
+		id: #[id=item] string,
+		count?: int,
+		tag?: #[nbt=minecraft:item[[id]]] string,
+	},
+}
+
+dispatch minecraft:hover_event[show_entity] to struct ShowEntityHoverEvent {
+	#[deprecated=1.16]
+	value?: struct {
+		name?: string,
+		type?: string,
+		id?: string,
+	},
+	#[since=1.16]
+	value?: struct {
+		name?: Text,
+		type?: #[id=entity_type] string,
+		id?: #[uuid] string,
+	},
 }
 
 enum(string) Keybind {

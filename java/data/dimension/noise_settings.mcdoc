@@ -1,0 +1,67 @@
+use ::java::server::util::block_state::BlockState
+
+type NoiseGeneratorSettingsRef = (
+	#[since=1.16.2,id=worldgen/noise_settings] string |
+	struct {
+		name: #[id=(registry=worldgen/noise_settings,definition=true)],
+		...NoiseGeneratorSettings,
+	} |
+)
+
+struct NoiseGeneratorSettings {
+	default_block: BlockState,
+	default_fluid: BlockState,
+	bedrock_roof_position: int @ -20 276,
+	bedrock_floor_position: int @ -20 276,
+	sea_level: int @ 0..255,
+	disable_mob_generation: boolean,
+	noise: NoiseSettings,
+	structures: StructureSettings,
+}
+
+struct NoiseSettings {
+	height: int @ 0..256,
+	size_horizontal: int @ 1..4,
+	size_vertical: int @ 1..4,
+	density_factor: double,
+	density_offset: double,
+	sampling: NoiseSamplingSettings,
+	top_slide: NoiseSlideSettings,
+	bottom_slide: NoiseSlideSettings,
+	simplex_surface_noise: boolean,
+	random_density_offset?: boolean,
+	island_noise_override?: boolean,
+	amplified?: boolean,
+}
+
+struct NoiseSamplingSettings {
+	xz_scale: double @ 0.001..1000,
+	y_scale: double @ 0.001..1000,
+	xz_factor: double @ 0.001..1000,
+	y_factor: double @ 0.001..1000,
+}
+
+struct NoiseSlideSettings {
+	target: int,
+	size: int @ 0..256,
+	offset: int,
+}
+
+struct StructureSettings {
+	stronghold?: StrongholdSettings,
+	structures: struct {
+		[#[id=worldgen/structure_feature] string]: StructureFeatureSettings
+	}
+}
+
+struct StrongholdSettings {
+	distance: int @ 0..1023,
+	spread: int @ 0..1023,
+	count: int @ 1..4095,
+}
+
+struct StructureFeatureSettings {
+	spacing: int @ 0..4096,
+	separation: int @ 0..4096,
+	salt: int @ 0..,
+}
