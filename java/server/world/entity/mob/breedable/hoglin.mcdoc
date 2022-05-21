@@ -1,0 +1,10 @@
+#[since=1.16]
+dispatch minecraft:entity[hoglin] to struct Hoglin {
+	...super::Breedable,
+	/// Whether the hoglin will not transform to a zoglin when it is in the Overword
+	IsImmuneToZombification: boolean,
+	/// Whether the hoglin cannot be hunted by piglins
+	CannotBeHunted: boolean,
+	/// The number of ticks the hoglin has been in the overworld
+	TimeInOverworld: int,
+}

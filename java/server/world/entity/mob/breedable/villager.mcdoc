@@ -1,11 +1,18 @@
 use ::java::server::util::inventory::InventoryItem
 
+struct VillagerBase {
+	/// The villager's inventory
+	Inventory: [InventoryItem] @ 0..8,
+	/// The trade offers the villager has
+	Offers: Offers,
+}
+
 dispatch minecraft:entity[villager] to struct Villager {
 	...super::Breedable,
-	/// Whether the villager is willing to breed
-	Willing: boolean,
 	/// The data associated with the villager and it's skin
 	VillagerData: VillagerData,
+	/// The food level of the villager
+	FoodLevel: byte,
 	/// The gossips the villager has heard
 	Gossips: [Gossip],
 	/// The tick of the last time the villager has restocked
@@ -16,10 +23,6 @@ dispatch minecraft:entity[villager] to struct Villager {
 	RestocksToday: int,
 	/// The xp the villager has, increases with trading
 	Xp: int,
-	/// The villager's inventory
-	Inventory: [InventoryItem],
-	/// The trade offers the villager has
-	Offers: Offers,
 }
 
 struct VillagerData {
@@ -77,4 +80,21 @@ struct Recipe {
 	specialPrice: int,
 	/// The price adjuster of the first cost item based on demand
 	demand: int,
+}
+
+dispatch minecraft:entity[wandering_trader] to struct WanderingTrader {
+	...VillagerBase,
+	/// The number of ticks until the wandering trader despawns
+	DespawnDelay: int,
+	/// The block the wandering trader is heading to
+	WanderTarget: WanderTarget,
+}
+
+struct WanderTarget {
+	/// The x coordinate that the wandering trader is headed to
+	X: int,
+	/// The y coordinate that the wandering trader is headed to
+	Y: int,
+	/// The z coordinate that the wandering trader is headed to
+	Z: int,
 }

@@ -15,6 +15,7 @@ struct ContainerBase {
 dispatch minecraft:block[
 	barrel,
 	chest,
+	trapped_chest,
 	shulker_box,
 	white_shulker_box,
 	orange_shulker_box,

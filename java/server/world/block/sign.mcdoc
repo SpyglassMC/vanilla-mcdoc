@@ -1,6 +1,7 @@
 use ::java::server::util::color::ColorString
 
 dispatch minecraft:block[
+	oak_sign,
 	spruce_sign,
 	birch_sign,
 	jungle_sign,

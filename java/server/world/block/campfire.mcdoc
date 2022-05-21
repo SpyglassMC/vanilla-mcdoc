@@ -10,3 +10,6 @@ dispatch minecraft:block[campfire] to struct Campfire {
 	/// Index zero is slot zero, etc
 	CookingTotalTimes: int[] @ 4,
 }
+
+#[since=1.16]
+dispatch minecraft:block[soul_campfire] to Campfire

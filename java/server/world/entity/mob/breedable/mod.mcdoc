@@ -9,9 +9,14 @@ struct Breedable {
 	/// Incremented when a baby mob is fed
 	ForcedAge: int,
 	/// The UUIDMost of the entity that caused this mob to breed
+	#[until=1.16]
 	LoveCauseMost: long,
 	/// The UUIDMost of the entity that caused this mob to breed
+	#[until=1.16]
 	LoveCauseLeast: long,
+	/// The UUID of the entity that caused this mob to breed
+	#[since=1.16]
+	LoveCause: int[] @ 4,
 }
 
 dispatch minecraft:entity[cow,polar_bear] to Breedable

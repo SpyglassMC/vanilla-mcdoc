@@ -1,6 +1,7 @@
 dispatch minecraft:entity[shulker_bullet] to struct ShulkerBullet {
-	...super::EntityBase,
+	...super::ProjectileBase,
 	/// The owner of the shulker bullet
+	#[until=1.16]
 	Owner: BulletTarget,
 	/// The number of steps it takes to reach the target
 	Steps: int,
@@ -16,9 +17,14 @@ dispatch minecraft:entity[shulker_bullet] to struct ShulkerBullet {
 
 struct BulletTarget {
 	/// The upper bits of the target's UUID
+	#[until=1.16]
 	M: long,
 	/// The lower bits of the target's UUID
+	#[until=1.16]
 	L: long,
+	/// The UUID of the target
+	#[since=1.16]
+	UUID: int[] @ 4,
 	/// The x block coordiante of the target
 	X: int,
 	/// The y block coordiante of the target

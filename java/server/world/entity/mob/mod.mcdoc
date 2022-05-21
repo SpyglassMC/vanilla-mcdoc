@@ -6,8 +6,8 @@ struct LivingEntity {
 	...super::EntityBase,
 	/// How much health the entity has
 	Health: float,
-	/// How much absorbtion health the entity has
-	AbsorbtionAmount: float,
+	/// How much absorption health the entity has
+	AbsorptionAmount: float,
 	/// Timer since the mob has been damaged  
 	/// Counts down to zero
 	HurtTime: short,
@@ -34,6 +34,8 @@ struct LivingEntity {
 	NoAI: boolean,
 	/// The team to join when the mob is spawned
 	Team: string,
+	/// The mob's brain
+	Brain: Brain,
 }
 
 /// Base NBT for all mobs
@@ -41,11 +43,11 @@ struct MobBase {
 	...LivingEntity,
 	/// The items that the mob is holding, in [main hand, offhand]
 	HandItems: [InventoryItem] @ 2,
-	/// The items that the mob is wearing, in [head, body, legs, feet]
+	/// The items that the mob is wearing, in [feet, legs, body, head]
 	ArmorItems: [InventoryItem] @ 4,
 	/// The chance to drop the items that the mob is holding, in [main hand, offhand]
 	HandDropChances: [float] @ 2,
-	/// The chance to drop the items that the mob is wearing, in [head, body, legs, feet]
+	/// The chance to drop the items that the mob is wearing, in [feet, legs, body, head]
 	ArmorDropChances: [float] @ 4,
 	/// The mob's death loot table
 	DeathLootTable: #[id=loot_table] string,
@@ -57,16 +59,25 @@ struct MobBase {
 	PersistenceRequired: boolean,
 	/// Whether the mob is left handed
 	LeftHanded: boolean,
-	/// Whether the mob is leashed
-	Leashed: boolean,
 	/// What the leash is attached to
 	Leash: (UUIDLeash | BlockLeash),
+}
+
+struct NeutralMob {
+	/// The number of tickets that the bee will be angry for
+	AngerTime: int,
+	/// The UUID of the target that the bee is angry at
+	#[uuid]
+	AngryAt: int[] @ 4,
 }
 
 /// A single attribute
 struct Attribute {
 	/// The name of the attribute
-	Name: (AttributeName | string),
+	Name: (
+		#[until=1.16] (AttributeName | string) |
+		#[since=1.16,id=attribute] string |
+	),
 	/// The base value of the attribute
 	Base: double,
 	/// The modifiers that act on the attribute
@@ -76,7 +87,7 @@ struct Attribute {
 /// A single attribute modifier
 struct AttributeModifier {
 	/// Name of the modifier, has no real effect
-	Name: (AttributeId | string),
+	Name: string,
 	/// The slot that the modifier is active in
 	Slot: EquipmentSlot,
 	/// The modifier operation
@@ -84,14 +95,23 @@ struct AttributeModifier {
 	/// The change in the attribute
 	Amount: double,
 	/// The upper bits of the modifier's UUID
+	#[until=1.16]
 	UUIDMost: long,
 	/// The lower bits of the modifier's UUID
+	#[until=1.16]
 	UUIDLeast: long,
+	/// The UUID of the modifier
+	#[since=1.16]
+	UUID: int[] @ 4,
 }
 
 struct Brain {
 	/// The mobs memories, empty
 	memories: struct {},
+}
+
+struct Memories {
+	[#[id=memory_module_type] string]: minecraft:memory_module[[%key]],
 }
 
 struct UUIDLeash {
@@ -123,3 +143,7 @@ dispatch minecraft:entity[
 	stray,
 	wither_skeleton,
 ] to MobBase
+
+dispatch minecraft:entity[
+	polar_bear,
+] to NeutralMob

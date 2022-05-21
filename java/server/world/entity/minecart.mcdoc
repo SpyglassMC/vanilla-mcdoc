@@ -1,0 +1,88 @@
+use super::super::block::spawner::SpawnPotential
+use super::super::entity::AnyEntity
+
+dispatch minecraft:entity[minecart] to struct Minecart {
+	...super::EntityBase,
+	/// Whether the minecart should display a custom block in it
+	CustomDisplayTile: boolean,
+	/// The custom block to display in the minecart  
+	/// Only has effects when `CustomDisplayTile` is true
+	DisplayState: BlockState,
+	/// The offset of the custom block displayed in the minecart
+	DisplayOffset: int,
+}
+
+dispatch minecraft:entity[chest_minecart] to struct ChestMinecart {
+	...Minecart,
+	/// The loot table that will populate this chest minecart
+	LootTable: #[id=loot_table] string,
+	/// The seed of the loot table
+	LootTableSeed: long,
+	/// The items in this chest minecart, with slots from 0 to 26
+	Items: [SlottedItem] @ 0..27,
+}
+
+dispatch minecraft:entity[command_block_minecart] to struct CommandBlockMinecart {
+	...Minecart,
+	/// The command stored in this command block minecart
+	Command: string,
+	/// The success count of the last command
+	SuccessCount: int,
+	/// The last output of this command block minecart
+	LastOutput: string,
+	/// Whether the command block minecart should track its output
+	TrackOutput: boolean,
+}
+
+dispatch minecraft:entity[furnace_minecart] to struct FurnaceMinecart {
+	...Minecart,
+	/// The acceleration in x axis
+	PushX: double,
+	/// The acceleration in z axis
+	PushZ: double,
+	/// The number of ticks until the fuel runs out
+	Fuel: short,
+}
+
+dispatch minecraft:entity[hopper_minecart] to struct HopperMinecart {
+	...Minecart,
+	/// The loot table that will populate this hopper minecart
+	LootTable: #[id=loot_table] string,
+	/// The seed of the loot table
+	LootTableSeed: long,
+	/// The items in this hopper minecart, with slots from 0 to 4
+	Items: [SlottedItem] @ 0..5,
+	/// The number of ticks until an item can be transfered
+	TransferCooldown: int,
+	/// Whether this hopper minecart should pick up items
+	Enabled: boolean,
+}
+
+dispatch minecraft:entity[spawner_minecart] to struct SpawnerMinecart {
+	...Minecart,
+	/// A list of potential entities to spawn next
+	SpawnPotentials: [SpawnPotential],
+	/// The data for the next mob to spawn  
+	/// Will get overwritten by `SpawnPotentials`
+	SpawnData: AnyEntity,
+	/// The number of entities that will be placed
+	SpawnCount: short,
+	/// The range that the spawned entities will be placed
+	SpawnRange: short,
+	/// The number of ticks until the next spawn
+	Delay: short,
+	/// The minimum random delay for the next spawn
+	MinSpawnDelay: short,
+	/// The maximum random delay for the next spawn
+	MaxSpawnDelay: short,
+	/// The maximum number of entities nearby
+	MaxNearbyEntities: short,
+	/// The radius in blocks that a player has to be within to spawn entities
+	RequiredPlayerRange: short,
+}
+
+dispatch minecraft:entity[tnt_minecart] to struct TntMinecart {
+	...Minecart,
+	/// The number of ticks until this TNT minecart explodes
+	TNTFuse: int,
+}

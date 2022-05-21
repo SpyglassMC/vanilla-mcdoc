@@ -15,6 +15,13 @@ dispatch minecraft:entity[item_frame] to struct ItemFrame {
 	ItemDropChance: float,
 	/// The rotation of the item
 	ItemRotation: byte @ 0..7,
+	/// Whether the item frame should be invisible
+	/// The item inside the frame is not effected
+	#[since=1.16]
+	Invisible: boolean,
+	/// Whether the item frame should not be able to be broken and should disallow the item to be moved
+	#[since=1.16]
+	Fixed: boolean,
 }
 
 enum(byte) Facing {

@@ -6,15 +6,24 @@ dispatch minecraft:entity[player] to struct Player {
 	/// The version of the player NBT structure
 	DataVersion: int,
 	/// The dimension the player is in
-	Dimension: Dimension,
+	Dimension: (
+		#[until=1.16] Dimension |
+		#[since=1.16,id=dimension] string |
+	),
 	/// The game mode that the player is in
 	playerGameType: Gamemode,
+	/// The previous game mode that the player was in
+	#[since=1.16]
+	previousPlayerGameType: Gamemode,
 	/// The score to display upon death
 	Score: int,
 	/// The hotbar slot the player has selected
 	SelectedItemSlot: int @ 0..8,
 	/// The item in the hotbar slot the player has selected
 	SelectedItem: SlottedItem,
+	/// The dimension of the player's respawn point
+	#[since=1.16]
+	SpawnDimension: #[id=dimension],
 	/// The x coordinate of the player's spawpoint
 	SpawnX: int,
 	/// The y coordinate of the player's spawpoint
@@ -106,9 +115,14 @@ struct EnteredNetherPosition {
 
 struct RootVehicle {
 	/// The upper bits of the ridden entity's UUID
+	#[until=1.16]
 	AttachMost: long,
 	/// The lower bits of the ridden entity's UUID
+	#[until=1.16]
 	AttachLeast: long,
+	/// The UUID of the ridden entity
+	#[since=1.16]
+	Attach: int[] @ 4,
 	/// The ridden entity
 	Entity: AnyEntity,
 }

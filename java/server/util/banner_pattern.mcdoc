@@ -76,5 +76,7 @@ enum(string) BannerPattern {
 	/// Mojang (Thing)
 	Mojang = "moj",
 	/// Globe (Globe)
-	Globe = "glb"
+	Globe = "glb",
+	/// Piglin (Piglin)
+	Piglin = "pig",
 }

@@ -9,6 +9,8 @@ struct PotionEffect {
 	ShowParticles: boolean,
 	/// Whether the effect icon should be shown
 	ShowIcon: boolean,
+	/// A lower amplifier effect of the same type.
+	HiddenEffect: PotionEffect,
 }
 
 /// Numerical ids for effects

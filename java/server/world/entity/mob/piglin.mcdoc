@@ -1,0 +1,21 @@
+struct PiglinBase {
+	...super::MobBase,
+	/// Whether the piglin will not transform to a zomblified piglin when it is in the Overword
+	IsImmuneToZombification: boolean,
+	/// The number of ticks the piglin has been in the overworld
+	TimeInOverworld: int,
+}
+
+#[since=1.16]
+dispatch minecraft:entity[piglin] to struct Piglin {
+	...PiglinBase,
+	/// Whether the piglin is a baby
+	IsBaby: boolean,
+	/// Whether the piglin does not hunt hoglins
+	CannotHunt: boolean,
+	/// The inventory of the piglin
+	Inventory: [InventoryItem] @ 0..8,
+}
+
+#[since=1.16]
+dispatch minecraft:entity[piglin_brute] to PiglinBase

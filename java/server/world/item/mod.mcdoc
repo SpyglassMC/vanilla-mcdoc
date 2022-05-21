@@ -9,8 +9,8 @@ struct ItemBase {
 	/// Whether the item should be unbreakable
 	/// Only used for tools, armor, etc
 	Unbreakable: boolean,
-	/// A list of the blocks that can be destroyed by this item when holding it in adventure mode
-	CanDestroy: #[id=block] string,
+	/// A list of the block states that can be destroyed by this item when holding it in adventure mode
+	CanDestroy: [string], // TODO
 	/// A tag that describes the custom model an item will take.  
 	/// Gets used by the `custom_model_data` model predicate
 	CustomModelData: int,
@@ -46,13 +46,16 @@ struct Enchantment {
 	/// Which enchantment is being described
 	id: #[id=enchantment] string,
 	/// Which level the enchantment is
-	lvl: int @ 1..,
+	lvl: (short @ 1.. | int @ 1..),
 }
 
 /// A single attribute modifier
 struct AttributeModifier {
 	/// The name of the attribute
-	AttributeName: (AttributeName | string),
+	AttributeName: (
+		#[until=1.16] (AttributeName | string) |
+		#[since=1.16,id=attribute] string |
+	),
 	/// Name of the modifier, has no real effect
 	Name: string,
 	/// The slot that the modifier is active in
@@ -62,9 +65,14 @@ struct AttributeModifier {
 	/// The change in the attribute
 	Amount: double,
 	/// The upper bits of the modifiers UUID
+	#[until=1.16]
 	UUIDMost: long,
 	/// The lower bits of the modifiers UUID
+	#[until=1.16]
 	UUIDLeast: long,
+	/// The UUID of the modifier
+	#[since=1.16]
+	UUID: int[] @ 4,
 }
 
 /// The display settings of an item

@@ -2,7 +2,11 @@ dispatch minecraft:entity[eye_of_ender] to struct EvokerFangs {
 	/// The number of ticks until the fangs pop out of the ground
 	Warmup: int,
 	/// The owner of the fangs
-	Owner: Owner,
+	#[uuid]
+	Owner: (
+		#[until=1.16] Owner |
+		#[since=1.16] int[] 4 |
+	),
 }
 
 struct Owner {

@@ -1,12 +1,14 @@
 /// A writable or written book
 struct WritableBook {
+	/// The pages of the book as raw strings
+	pages: [string],
+}
+
+struct WrittenBook {
 	/// Whether the dynamic content on the pages has been resolved
 	resolved: boolean,
 	/// The pages of the book as JSON text components
 	pages: [#[text_component] string],
-}
-
-struct WrittenBook {
 	/// The generation of the book
 	generation: Generation,
 	/// The author of the book

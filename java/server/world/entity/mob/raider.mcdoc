@@ -2,12 +2,15 @@ use ::java::server::util::SlottedItem
 
 dispatch minecraft:entity[witch] to struct RaiderBase {
 	...super::MobBase,
-	HasRaidGoal: boolean,
+	/// Whether the raider is patrolling
 	Patrolling: boolean,
 	/// Whether the raider is leading the patrol
 	PatrolLeader: boolean,
-	/// Where the patrol is heading towards
+	/// Where the raider is heading towards
 	PatrolTarget: PatrolTarget,
+	/// Whether the raider can join raids and count towards the progress bar
+	#[since=1.16]
+	CanJoinRaid: boolean,
 	/// Id of the raid that the raider is in
 	RaidId: int,
 	/// Wave that the raider is in

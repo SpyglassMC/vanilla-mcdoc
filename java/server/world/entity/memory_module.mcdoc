@@ -1,0 +1,53 @@
+dispatch minecraft:memory_module[%fallback] to struct MemoryModule {
+	/// The amount of ticks before this memory is removed
+	#[since=1.16]
+	ttl: long,
+}
+
+dispatch minecraft:memory_module[
+	home,
+	job_site,
+	meeting_point,
+] to struct PositionMemory {
+	...MemoryModule,
+	/// The position value
+	value: GlobalPos,
+}
+
+#[since=1.16]
+dispatch minecraft:memory_module[potential_job_site] to PositionMemory
+
+struct GlobalPos {
+	/// The coordinates of the location in [x, y, z]
+	pos: int[] @ 3,
+	/// The dimension of the location
+	dimension: #[id=dimension] string,
+}
+
+dispatch minecraft:memory_module[
+	last_slept,
+	last_woken,
+	last_worked_at_poi,
+] to struct TickMemory {
+	...MemoryModule,
+	/// The tick value
+	value: long,
+}
+
+#[since=1.16]
+dispatch minecraft:memory_module[angry_at] to struct UuidMemory {
+	/// The uuid value
+	value: int[] @ 4,
+}
+
+#[since=1.16]
+dispatch minecraft:memory_module[
+	golem_detected_recently,
+	universal_anger,
+	admiring_item,
+	admiring_disabled,
+	hunted_recently,
+] to struct BooleanMemory {
+	/// The boolean value
+	value: boolean,
+}

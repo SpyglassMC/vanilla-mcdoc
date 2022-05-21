@@ -20,5 +20,6 @@ struct Pattern {
 }
 
 enum(int) NoneId {
-	None = 0,
+	#[until=1.16] None = 0,
+	#[since=1.16] None = -1,
 }

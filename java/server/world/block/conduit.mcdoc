@@ -1,10 +1,14 @@
 dispatch minecraft:block[conduit] to struct Conduit {
 	...super::BlockEntity,
 	/// The UUID of the conduit's target
-	target_uuid: TargetUUID,
+	#[uuid]
+	target_uuid: (
+		#[until=1.16] TargetUuid |
+		#[since=1.16] int[] 4 |
+	),
 }
 
-struct TargetUUID {
+struct TargetUuid {
 	/// The upper bits of the target's UUID
 	M: long,
 	/// The lower bits of the target's UUID

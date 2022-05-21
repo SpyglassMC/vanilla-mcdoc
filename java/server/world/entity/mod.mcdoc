@@ -20,10 +20,15 @@ struct EntityBase {
 	Invulnerable: boolean,
 	/// How long until the entity can go through a nether portal
 	PortalCooldown: int,
-	/// The upper bits of the modifiers UUID
+	/// The upper bits of the entity's UUID
+	#[until=1.16]
 	UUIDMost: long,
-	/// The lower bits of the modifiers UUID
+	/// The lower bits of the entity's UUID
+	#[until=1.16]
 	UUIDLeast: long,
+	/// The UUID of the entity
+	#[since=1.16]
+	UUID: int[] @ 4,
 	/// The JSON text component name
 	CustomName: string,
 	/// Whether the custom name should be visible always

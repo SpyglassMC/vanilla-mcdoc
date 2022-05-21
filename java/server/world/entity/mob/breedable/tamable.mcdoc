@@ -1,7 +1,11 @@
 struct Tamable {
 	...super::Breedable,
 	/// The UUID of the owner
+	#[until=1.16,uuid]
 	OwnerUUID: string,
+	/// The UUID of the owner
+	#[since=1.16,uuid]
+	Owner: int[] @ 4,
 	/// Whether the mob is sitting
 	Sitting: boolean,
 }
@@ -32,7 +36,11 @@ enum(int) CatType {
 dispatch minecraft:entity[parrot] to struct Parrot {
 	...Tamable,
 	/// The UUID of the owner
+	#[until=1.16,uuid]
 	OwnerUUID: string,
+	/// The UUID of the owner
+	#[since=1.16,uuid]
+	Owner: int[] @ 4,
 	/// Whether the parrot is sitting
 	Sitting: boolean,
 	/// The variant of the parrot
@@ -49,7 +57,10 @@ enum(int) ParrotVariant {
 
 dispatch minecraft:entity[wolf] to struct Wolf {
 	...Tamable,
+	#[since=1.16]
+	...super::super::NeutralMob
 	/// Whether the wolf is angry
+	#[until=1.16]
 	Angry: boolean,
 	/// The wolf's collar color, present for wild wolfs
 	CollarColor: Color,

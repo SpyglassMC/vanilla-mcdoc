@@ -1,10 +1,10 @@
 dispatch minecraft:block[structure_block] to struct StructureBlock {
 	...super::BlockEntity,
 	/// The name of the structure
-	name: string,
+	name: #[id=structure] string,
 	/// The author of the structure
 	author: string,
-	/// Custom data for the structure
+	/// Custom data for the structure. Stores the data id for "DATA" mode
 	metadata: string,
 	/// The offset on the x axis for the structure position
 	posX: int,

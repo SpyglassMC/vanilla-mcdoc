@@ -1,5 +1,13 @@
+use ::java::server::util::inventory::InventoryItem
+
 dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 	...super::MobBase,
+	/// The items that the armor stand is wearing, in [feet, legs, body, head]
+	ArmorItems: [InventoryItem] @ 4,
+	/// The items that the armor stand is holding, in [main hand, offhand]
+	HandItems: [InventoryItem] @ 2,
+	/// Whether the armor stand should be invisible
+	Invisible: boolean,
 	/// Whether the armor stand has no hitbox
 	Marker: boolean,
 	/// Whether the armor stand should have a no base plate
@@ -10,7 +18,7 @@ dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 	Small: boolean,
 	/// A bit field of the slots that cannot be used
 	DisabledSlots: int,
-	/// The post of the armor stand
+	/// The pose of the armor stand
 	Pose: Pose,
 }
 
