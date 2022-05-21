@@ -78,5 +78,6 @@ enum(string) BannerPattern {
 	/// Globe (Globe)
 	Globe = "glb",
 	/// Piglin (Piglin)
+	#[since=1.16]
 	Piglin = "pig",
 }

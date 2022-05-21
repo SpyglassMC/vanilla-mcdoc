@@ -10,6 +10,7 @@ struct PotionEffect {
 	/// Whether the effect icon should be shown
 	ShowIcon: boolean,
 	/// A lower amplifier effect of the same type.
+	#[since=1.16]
 	HiddenEffect: PotionEffect,
 }
 
