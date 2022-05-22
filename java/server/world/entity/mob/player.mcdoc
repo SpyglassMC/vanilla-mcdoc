@@ -158,5 +158,5 @@ struct WardenSpawnTracker {
 	/// and the `warning_level` will be decreased by 1.
 	ticks_since_last_warning: int @ 0..,
 	/// The warden will spawn at level 3
-	warning_level: int @ 0..3
+	warning_level: int @ 0..3,
 }

@@ -41,6 +41,6 @@ dispatch minecraft:block[
 
 #[since=1.19]
 dispatch minecraft:block[
-	mangrove_sign
-	mangrove_wall_sign
+	mangrove_sign,
+	mangrove_wall_sign,
 ] to Sign
