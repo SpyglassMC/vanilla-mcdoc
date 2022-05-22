@@ -13,6 +13,7 @@ struct Biome {
 	player_spawn_friendly?: boolean,
 	creature_spawn_probability?: float @ 0..1,
 	effects: BiomeEffects,
+	surface_builder: ConfiguredSurfaceBuilderRef,
 	starts: [ConfiguredStructureRef],
 	spawners: struct {
 		[MobCategory]: SpawnerData,
@@ -113,9 +114,4 @@ struct SpawnerData {
 struct MobSpawnCost {
 	energy_budget: double,
 	charge: charge,
-}
-
-enum(string) CarveStep {
-	Air = "air",
-	Liquid = "liquid",
 }

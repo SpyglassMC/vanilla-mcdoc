@@ -1,0 +1,54 @@
+use super::super::CarveStep,
+use super::super::UniformInt
+
+struct ConfiguredDecorator {
+	type: #[id=worldgen/decorator] string,
+	config: minecraft:decorator_config[[type]],
+}
+
+dispatch minecraft:decorator_config[carving_mask] to struct CarvingMaskConfig {
+	step: CarveStep,
+	probability: float @ 0..1,
+}
+
+dispatch minecraft:decorator_config[chance,lava_lake,water_lake] to struct ChanceConfig {
+	chance: int @ 0..,
+}
+
+dispatch minecraft:decorator_config[count,count_multilayer,fire,glowstone] to struct CountConfig {
+	count: UniformInt<int @ -10..128, int @ 0..128>,
+}
+
+dispatch minecraft:decorator_config[count_extra] to struct CountExtraConfig {
+	count: int,
+	extra_count: int,
+	extra_chance: float @ 0..1,
+}
+
+dispatch minecraft:decorator_config[count_noise] to struct CountNoiseConfig {
+	noise_level: float,
+	below_noise: int,
+	above_noise: int,
+}
+
+dispatch minecraft:decorator_config[count_noise_biased] to struct CountNoiseBiasedConfig {
+	noise_to_count_ratio: int,
+	noise_factor: float,
+	noise_offset?: float,
+}
+
+dispatch minecraft:decorator_config[decorated] to struct DecoratedConfig {
+	outer: ConfiguredDecorator,
+	inner: ConfiguredDecorator,
+}
+
+dispatch minecraft:decorator_config[depth_average] to struct DepthAverageConfig {
+	baseline: int,
+	spread: int,
+}
+
+dispatch minecraft:decorator_config[range,range_biased,range_very_biased] to struct RangeConfig {
+	maximum: int,
+	bottom_offset: int,
+	top_offset: int,
+}

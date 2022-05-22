@@ -7,3 +7,55 @@ struct ConfiguredStructure {
 	type: #[id=worldgen/structure_feature],
 	config: minecraft:structure_config[[type]],
 }
+
+dispatch minecraft:structure_config[
+	bastion_remnant,
+	pillager_outpost,
+	villager,
+] to Jigsaw {
+	start_pool: #[id=worldgen/template_pool] string,
+	size: int @ 0..7,
+}
+
+dispatch minecraft:structure_config[buried_treasure] to struct BuriedTreasure {
+	probability: float @ 0..1,
+}
+
+dispatch minecraft:structure_config[mineshaft] to struct Mineshaft {
+	type: MineshaftType,
+	probability: float @ 0..1,
+}
+
+enum(string) MineshaftType {
+	Normal = "normal",
+	Mesa = "mesa",
+}
+
+dispatch minecraft:structure_config[ocean_ruin] to struct OceanRuin {
+	biome_temp: BiomeTemperature,
+	large_probability: float @ 0..1,
+	cluster_probability: float @ 0..1,
+}
+
+enum(string) BiomeTemperature {
+	Cold = "cold",
+	Warm = "warm",
+}
+
+dispatch minecraft:structure_config[ruined_portal] to struct RuinedPortal {
+	portal_type: RuinedPortalType,
+}
+
+enum(string) RuinedPortalType {
+	Standard = "standard",
+	Desert = "desert",
+	Jungle = "jungle",
+	Mountain = "mountain",
+	Nether = "nether",
+	Ocean = "ocean",
+	Swamp = "swamp",
+}
+
+dispatch minecraft:structure_config[shipwreck] to struct Shipwreck {
+	is_beached?: boolean,
+}

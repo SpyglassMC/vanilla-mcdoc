@@ -1,0 +1,99 @@
+use super::super::HeightmapType
+use super::super::UniformInt
+use super::block_state_provider::BlockStateProvider
+
+dispatch minecraft:feature_config[tree] to struct TreeConfig {
+	max_water_depth: int,
+	ignore_vines: boolean,
+	heightmap: HeightmapType,
+	minimum_size: FeatureSize,
+	trunk_provider: BlockStateProvider,
+	leaves_provider: BlockStateProvider,
+	trunk_placer: TrunkPlacer,
+	foliage_placer: FoliagePlacer,
+	decorators: [TreeDecorator],
+}
+
+struct BlockPlacer {
+	type: #[id=worldgen/block_placer_type] string,
+	...minecraft:block_placer[[type]],
+}
+
+dispatch minecraft:block_placer[column_placer] to struct {
+	min_size: int,
+	extra_size: int,
+}
+
+struct FeatureSize {
+	type: #[id=worldgen/feature_size_type] string,
+	...minecraft:feature_size[[type]],
+}
+
+dispatch minecraft:feature_size[two_layers_feature_size] to struct TwoLayersFeatureSize {
+	min_clipped_height: float @ 0..80,
+	limit?: int @ 0..81,
+	lower_size?: int @ 0..16,
+	upper_size?: int @ 0..16,
+}
+
+dispatch minecraft:feature_size[three_layers_feature_size] to struct ThreeLayersFeatureSize {
+	min_clipped_height: float @ 0..80,
+	limit?: int @ 0..80,
+	upper_limit?: int @ 0..80,
+	lower_size?: int @ 0..16,
+	middle_size?: int @ 0..16,
+	upper_size?: int @ 0..16,
+}
+
+struct TrunkPlacer {
+	type: #[id=worldgen/trunk_placer_type] string,
+	base_height: int @ 0..32,
+	height_rand_a: int @ 0..24,
+	height_rand_b: int @ 0..24,
+	...minecraft:trunk_placer[[type]],
+}
+
+struct FoliagePlacer {
+	type: #[id=worldgen/foliage_placer_type] string,
+	radius: UniformInt<int @ 0..8, int @ 0..8>,
+	offset: UniformInt<int @ 0..8, int @ 0..8>,
+	...minecraft:foliage_placer[[type]],
+}
+
+dispatch minecraft:foliage_placer[
+	blob_foliage_placer,
+	bush_foliage_placer,
+	fancy_foliage_placer,
+	jungle_foliage_placer,
+] to struct HeightFoliagePlacer {
+	height: int @ 0..16,
+}
+
+dispatch minecraft:foliage_placer[mega_pine_foliage_placer] to struct MegaPineFoliagePlacer {
+	crown_height: UniformInt<int @ 0..16, int @ 0..8>,
+}
+
+dispatch minecraft:foliage_placer[pine_foliage_placer] to struct MegaPineFoliagePlacer {
+	height: UniformInt<int @ 0..16, int @ 0..8>,
+}
+
+dispatch minecraft:foliage_placer[spruce_foliage_placer] to struct MegaPineFoliagePlacer {
+	trunk_height: UniformInt<int @ 0..16, int @ 0..8>,
+}
+
+struct TreeDecorator {
+	type: #[id=worldgen/tree_decorator_type] string,
+	...minecraft:tree_decorator[[type]],
+}
+
+dispatch minecraft:tree_decorator[alter_ground] to struct AlterGroundTreeDecorator {
+	provider: BlockStateProvider,
+}
+
+dispatch minecraft:tree_decorator[beehive] to struct BeehiveTreeDecorator {
+	probability: float 0..1,
+}
+
+dispatch minecraft:tree_decorator[cocoa] to struct CocoaTreeDecorator {
+	probability: float 0..1,
+}

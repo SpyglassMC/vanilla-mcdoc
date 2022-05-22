@@ -1,0 +1,167 @@
+use block_state_provider::BlockStateProvider
+use decorator::ConfiguredDecorator
+use super::processor_list::RuleTest
+use ::java::server::util::block_state::BlockState
+
+type ConfiguredFeatureRef = (
+	#[id=worldgen/configured_feature] string,
+	ConfiguredFeature,
+)
+
+struct ConfiguredFeature {
+	type: #[id=worldgen/feature] string,
+	config: minecraft:feature_config[[type]],
+}
+
+dispatch minecraft:feature_config[bamboo,seagrass] to struct ProbabilityConfig {
+	probability: float @ 0..1,
+}
+
+dispatch minecraft:feature_config[basalt_columns] to struct ColumnsConfig {
+	reach: UniformInt<int @ 0..2, int @ 0..1>,
+	height: UniformInt<int @ 1..5, int @ 0..5>,
+}
+
+dispatch minecraft:feature_config[block_pile] to struct BlockPileConfig {
+	state_provider: BlockStateProvider,
+}
+
+dispatch minecraft:feature_config[decorated] to struct DecoratedConfig {
+	decorator: ConfiguredDecorator,
+	feature: ConfiguredFeatureRef,
+}
+
+dispatch minecraft:feature_config[delta_feature] to struct DeltaConfig {
+	contents: BlockState,
+	rim: BlockState,
+	size: UniformInt<int @ 0..8, int @ 0..8>,
+	rim_size: UniformInt<int @ 0..8, int @ 0..8>,
+}
+
+dispatch minecraft:feature_config[disk,ice_patch] to struct DiskConfig {
+	state: BlockState,
+	radius: UniformInt<int @ 0..4, int @ 0..4>,
+	half_height: int @ 0..4,
+	targets: [BlockState],
+}
+
+dispatch minecraft:feature_config[emerald_ore] to struct EmeraldOreConfig {
+	state: BlockState,
+	target: BlockState,
+}
+
+dispatch minecraft:feature_config[end_gateway] to struct EndGatewayConfig {
+	exact: boolean,
+	exit?: [int] @ 3,
+}
+
+dispatch minecraft:feature_config[end_spike] to struct EndSpikeConfig {
+	spikes: [EndSpike],
+	crystal_invulnerable?: boolean,
+	crystal_beam_target?: [int] @ 3,
+}
+
+struct EndSpike {
+	centerX: int,
+	centerZ: int,
+	radius: int,
+	height: int,
+	guarded?: boolean,
+}
+
+dispatch minecraft:feature_config[fill_layer] to struct FillLayerConfig {
+	state: BlockState,
+	height: int @ 0..255,
+}
+
+dispatch minecraft:feature_config[flower,no_bonemeal_flower,random_patch] to struct RandomPatchConfig {
+	can_replace?: boolean,
+	project?: boolean,
+	need_water?: boolean,
+	xspread: int,
+	yspread: int,
+	zspread: int,
+	tries: int,
+	state_provider: BlockStateProvider,
+	block_placer: BlockPlacer,
+	whitelist: [BlockState],
+	blacklist: [BlockState],
+}
+
+dispatch minecraft:feature_config[forest_rock] to struct ForestRockConfig {
+	state: BlockState,
+}
+
+dispatch minecraft:feature_config[huge_brown_mushroom,huge_red_mushroom] to struct HugeMushroomConfig {
+	cap_provider: BlockStateProvider,
+	stem_provider: BlockStateProvider,
+	foliage_radius: int,
+}
+
+dispatch minecraft:feature_config[huge_fungus] to struct HugeFungusConfig {
+	hat_state: BlockState,
+	decor_state: BlockState,
+	stem_state: BlockState,
+	valid_base_block: BlockState,
+	planted?: boolean,
+}
+
+dispatch minecraft:feature_config[iceberg] to struct IcebergConfig {
+	state: BlockState,
+}
+
+dispatch minecraft:feature_config[lake] to struct LakeConfig {
+	state: BlockState,
+}
+
+dispatch minecraft:feature_config[nether_forest_vegetation] to struct NetherForestVegetationConfig {
+	state_provider: BlockStateProvider,
+}
+
+dispatch minecraft:feature_config[netherrack_replace_blobs] to struct NetherrackReplaceBlobsConfig {
+	state: BlockState,
+	target: BlockState,
+	radius: UniformInt<int, int @ 0..>,
+}
+
+dispatch minecraft:feature_config[no_surface_ore,ore] to struct OreConfig {
+	state: BlockState,
+	target: RuleTest,
+	size: int @ 0..64,
+}
+
+dispatch minecraft:feature_config[random_boolean_selector] to struct RandomBooleanSelector {
+	feature_false: ConfiguredFeatureRef,
+	feature_true: ConfiguredFeatureRef,
+}
+
+dispatch minecraft:feature_config[random_selector] to struct RandomSelector {
+	features: [struct {
+		chance: float @ 0..1,
+		feature: ConfiguredFeatureRef,
+	}],
+	default: ConfiguredFeatureRef,
+}
+
+dispatch minecraft:feature_config[sea_pickle] to struct SeaPickleConfig {
+	count: UniformInt<int @ -10..128, int @ 0..128>,
+}
+
+dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
+	to_place: BlockState,
+	place_on: [BlockState],
+	place_in: [BlockState],
+	place_under: [BlockState],
+}
+
+dispatch minecraft:feature_config[simple_random_selector] to struct SimpleRandomSelectorConfig {
+	features: [ConfiguredFeatureRef],
+}
+
+dispatch minecraft:feature_config[spring_feature] to struct SpringConfig {
+	state: BlockState,
+	rock_count: int,
+	hole_count: int,
+	requires_block_below: boolean,
+	valid_blocks: [#[id=block] string],
+}

@@ -1,0 +1,42 @@
+struct TemplatePool {
+	name: string,
+	fallback: string,
+	elements: [WeightedElement],
+}
+
+struct WeightedElement {
+	weight: int @ 1..,
+	element: Element,
+}
+
+struct Element {
+	element_type: #[id=worldgen/structure_pool_element] string,
+	...minecraft:template_pool_element[[element_type]],
+}
+
+struct ElementBase {
+	projection: Projection,
+}
+
+enum(string) Projection {
+	Rigid = "rigid",
+	TerrainMatching = "terrain_matching",
+}
+
+dispatch minecraft:template_pool_element[feature_pool_element] to struct FeatureElement {
+	...ElementBase,
+	feature: #[id=worldgen/configured_feature] string,
+}
+
+dispatch minecraft:template_pool_element[
+	legacy_single_pool_element,
+	single_pool_element,
+] to struct SingleElement {
+	...ElementBase,
+	location: #[id=structure] string,
+	processors: ProcessorListRef,
+}
+
+dispatch minecraft:template_pool_element[list_pool_element] to struct ListElement {
+	elements: [Element],
+}
