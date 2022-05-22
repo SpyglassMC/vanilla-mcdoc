@@ -1,0 +1,7 @@
+/// A debug stick item
+struct DebugStick {
+    ...super::ItemBase,
+	/// A map from block IDs to block state names
+    #[since=1.19]
+	DebugProperty: Any,
+}

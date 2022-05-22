@@ -1,3 +1,5 @@
+use ::java::server::util::inventory::SlottedItem;
+
 dispatch minecraft:entity[boat] to struct Boat {
 	...super::EntityBase,
 	/// The wood type of this boat
@@ -10,5 +12,18 @@ enum(string) BoatType {
 	Birch = "birch",
 	Jungle = "jungle",
 	Acacia = "acacia",
-	DarkOak = "dark_oak".
+	DarkOak = "dark_oak",
+	#[since=1.19]
+	Mangrove = "mangrove",
+}
+
+#[since=1.19]
+dispatch minecraft:entity[chest_boat] to struct ChestBoat {
+	...Boat,
+	/// The loot table that will populate this chest boat
+	LootTable: #[id=loot_table] string,
+	/// The seed of the loot table
+	LootTableSeed: long,
+	/// The items in this chest boat, with slots from 0 to 26
+	Items: [SlottedItem] @ 0..27,
 }

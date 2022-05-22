@@ -1,0 +1,17 @@
+#[since=1.19]
+dispatch minecraft:entity[warden] to struct Warden {
+    ...super::MobBase,
+	/// Anger management of the warden
+	anger: AngerManagement,
+}
+
+struct AngerManagement {
+	suspects: [Suspect],
+}
+
+struct Suspect {
+    /// The level of anger that will decrease by 1 every second
+    anger: int @ 1..150,
+    #[uuid]
+    uuid: int[] @ 4,
+}

@@ -1,10 +1,12 @@
+use ::java::server::util::inventory::SlottedItem
+
 dispatch minecraft:block[brewing_stand] to struct BrewingStand {
 	...super::BlockEntity,
 	/// The name of the brewing stand
 	CustomName: #[text_component] string,
 	/// The name of the item that a player has to be holding to open this brewing stand
 	Lock: string,
-	/// The items in this furnace, with slots:  
+	/// The items in this brewing stand, with slots:  
 	/// * 0: left brewing slot  
 	/// * 1: middle brewing slot  
 	/// * 2: right brewing slot  

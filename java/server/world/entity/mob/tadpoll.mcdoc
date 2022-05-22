@@ -1,0 +1,8 @@
+#[since=1.19]
+dispatch minecraft:entity[tadpole] to struct Tadpole {
+    ...super::MobBase,
+	/// The age of the tadpole in ticks. When greater than or equal to 24000, the tadpole grows into a frog
+	Age: int,
+	/// If this tadpole was released from a bucket
+	FromBucket: boolean,
+}

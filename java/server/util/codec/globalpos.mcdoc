@@ -1,0 +1,6 @@
+compound GlobalPos {
+	/// The coordinates of the location in [x, y, z]
+	pos: int[] @ 3,
+	/// The dimension of the location
+	dimension: id(minecraft:dimension)
+}

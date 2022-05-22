@@ -13,9 +13,12 @@ struct Tamable {
 dispatch minecraft:entity[cat] to struct Cat {
 	...Tamable,
 	/// The type of the cat
+	#[until=1.19]
 	CatType: CatType,
 	/// The cat's collar color, present for stray cats
 	CollarColor: Color,
+	#[since=1.19]
+	variant: #[id=cat_variant] string,
 }
 
 enum(int) CatType {

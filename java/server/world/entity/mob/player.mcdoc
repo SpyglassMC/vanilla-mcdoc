@@ -1,4 +1,5 @@
 use ::java::server::util::inventory::InventoryItem
+use ::java::server::util::codec::GlobalPos;
 use super::super::AnyEntity
 
 dispatch minecraft:entity[player] to struct Player {
@@ -10,6 +11,9 @@ dispatch minecraft:entity[player] to struct Player {
 		#[until=1.16] Dimension |
 		#[since=1.16,id=dimension] string |
 	),
+	/// The location of the player's last death
+	#[since=1.19]
+	LastDeathLocation: GlobalPos,
 	/// The game mode that the player is in
 	playerGameType: Gamemode,
 	/// The previous game mode that the player was in
@@ -68,6 +72,9 @@ dispatch minecraft:entity[player] to struct Player {
 	seenCredits: boolean,
 	/// The recipes that the player has
 	recipeBook: RecipeBook,
+	/// Tracking the warden spawning process for this player
+	#[since=1.19]
+	warden_spawn_tracker: WardenSpawnTracker,
 	// these are not included
 	id: (),
 	CustomName: (),
@@ -140,4 +147,16 @@ struct RecipeBook {
 	isFurnaceFilteringCraftable: boolean,
 	/// Whether the player has the crafting book open in the furnace
 	isFurnaceGuiOpen: boolean,
+}
+
+struct WardenSpawnTracker {
+	/// The number of ticks before the `warning_level` can be increased again.
+	/// Decreases by 1 every tick. It is set to 200 game ticks (10 seconds) every time the warning level is increased
+	cooldown_ticks: int @ 0..,
+	/// The number of ticks since the player was warned for warden spawning.
+	/// Increases by 1 every tick. After 12000 game ticks (10 minutes) it will be set back to 0,
+	/// and the `warning_level` will be decreased by 1.
+	ticks_since_last_warning: int @ 0..,
+	/// The warden will spawn at level 3
+	warning_level: int @ 0..3
 }

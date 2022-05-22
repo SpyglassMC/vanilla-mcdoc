@@ -1,0 +1,38 @@
+use ::java::server::util::InventoryItem;
+
+#[since=1.19]
+dispatch minecraft:entity[allay] to struct Allay {
+    ..super::MobBase,
+	/// The items that the allay has picked up. Note that the item given by the player is in
+	/// the allay's `HandItems[0]` tag, not here
+	Inventory: [InventoryItem] @ 1,
+	/// The allay's vibration game event listener
+	listener: Listener,
+}
+
+struct Listener {
+	distance: int @ 0..,
+	event: Event,
+	event_delay: int @ 0..,
+	event_distance: int @ 0..,
+	range: int @ 0..,
+	source: PositionSource,
+}
+
+struct Event {
+	distance: int @ 0..,
+	game_event: #[id=game_event] string,
+	pos: [double] @ 3,
+	projectile_owner: int[] @ 4,
+	source: int[] @ 4,
+}
+
+struct PositionSource {
+	type: #[id=position_source_type] string,
+	/// Only exists for `block` type
+	pos: int[] @ 3,
+	/// Only exists for `entity` type
+	source_entity: int[] @ 4,
+	/// Only exists for `entity` type
+	y_offset: float,
+}

@@ -8,7 +8,10 @@ dispatch minecraft:entity[painting] to struct Painting {
 	/// The direction the painting is facing
 	Facing: Facing,
 	/// The type of the painting
+	#[until=1.19]
 	Motive: #[id=motive] string,
+	#[since=1.19]
+	variant: #[id=painting_variant] string,
 }
 
 enum(byte) Facing {

@@ -32,9 +32,15 @@ dispatch minecraft:block[
 }
 
 #[since=1.17]
-dispatch minecraft:entity[
+dispatch minecraft:block[
 	crimson_sign,
 	warped_sign,
 	crimson_wall_sign,
 	warped_wall_sign,
+] to Sign
+
+#[since=1.19]
+dispatch minecraft:block[
+	mangrove_sign
+	mangrove_wall_sign
 ] to Sign
