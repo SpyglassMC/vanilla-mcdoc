@@ -5,6 +5,7 @@ struct WritableBook {
 }
 
 struct WrittenBook {
+	// TODO: Add filtered text
 	/// Whether the dynamic content on the pages has been resolved
 	resolved: boolean,
 	/// The pages of the book as JSON text components

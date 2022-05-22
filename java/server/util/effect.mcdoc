@@ -45,7 +45,7 @@ enum(byte) EffectId {
 	UnLuck = 27,
 	SlowFalling = 28,
 	ConduitPower = 29,
-	DolphinsGRace = 30,
+	DolphinsGrace = 30,
 	BadOmen = 31,
 	HeroOfTheVillage = 32,
 }

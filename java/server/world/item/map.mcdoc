@@ -4,6 +4,8 @@ struct FilledMap {
 	map: int,
 	/// The amount to increase the current map scale by when crafting
 	map_scale_direction: int @ 1..,
+	/// Whether the map should be locked after being taken out of the cartography table
+	map_to_lock: boolean,
 	/// The decorations on the map
 	Decorations: [Decoration],
 	/// The display for the item

@@ -6,7 +6,10 @@ dispatch minecraft:block[spawner] to struct Sign {
 	SpawnPotentials: [SpawnPotential],
 	/// The data for the next mob to spawn  
 	/// Will get overwritten by `SpawnPotentials`
-	SpawnData: AnyEntity,
+	SpawnData: (
+		#[until=1.18] AnyEntity |
+		#[since=1.18] SpawnerEntry |
+	),
 	/// The number of entities that will be placed
 	SpawnCount: short,
 	/// The range that the spawned entities will be placed
@@ -25,10 +28,36 @@ dispatch minecraft:block[spawner] to struct Sign {
 
 struct SpawnPotential {
 	/// The entity to spawn
-	Entity: AnyEntity,
+	Entity: (
+		#[until=1.18] AnyEntity |
+		#[since=1.18] SpawnerEntry |
+	),,
 	/// The weight for this entry to get chosen
+	#[until=1.18]
 	Weight: (
 		#[until=1.17] int @ 0.. | 
 		#[since=1.17] byte @ 0.. |
 	),
+	/// The weight for this entry to get chosen
+	#[since=1.18]
+	weight: int @ 0..,
+}
+
+struct SpawnerEntry {
+	/// Custom spawn rules
+	custom_spawn_rules: CustomSpawnRules,
+	/// The entity to spawn
+	entity: AnyEntity
+}
+
+struct CustomSpawnRules {
+	/// The range of block light level required for the entity to spawn
+	block_light_limit: (int @ 0..15 | [int @ 0..15] @ 2 | LightLimitRange),
+	/// The range of sky light level required for the entity to spawn
+	sky_light_limit: (int @ 0..15 | [int @ 0..15] @ 2 | LightLimitRange)
+}
+
+struct LightLimitRange {
+	max_inclusive: int @ 0..15,
+	min_inclusive: int @ 0..15
 }

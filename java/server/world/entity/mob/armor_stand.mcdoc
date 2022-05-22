@@ -17,6 +17,26 @@ dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 	/// Whether the armor stand is small
 	Small: boolean,
 	/// A bit field of the slots that cannot be used
+	#[bitfield(enum (int) {
+		HandAll = 1,
+		BootsAll = 2,
+		LeggingsAll = 3,
+		ChestplateAll = 4,
+		HelmetAll = 5,
+		OffhandAll = 6,
+		HandReplace = 7,
+		BootsReplace = 8,
+		LeggingsReplace = 9,
+		ChestplateReplace = 10,
+		HelmetReplace = 11,
+		OffhandReplace = 12,
+		HandPlace = 13,
+		BootsPlace = 14,
+		LeggingsPlace = 15,
+		ChestplatePlace = 16,
+		HelmetPlace = 17,
+		OffhandPlace = 18,
+	})]
 	DisabledSlots: int,
 	/// The pose of the armor stand
 	Pose: Pose,

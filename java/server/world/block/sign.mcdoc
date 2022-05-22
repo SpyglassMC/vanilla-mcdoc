@@ -17,6 +17,7 @@ dispatch minecraft:block[
 	...super::BlockEntity,
 	/// The color the sign has been dyed
 	Color: ColorString,
+	// TODO: Add filtered text
 	/// Whether the texts on this sign are glowing
 	#[since=1.17]
 	GlowingText: boolean,

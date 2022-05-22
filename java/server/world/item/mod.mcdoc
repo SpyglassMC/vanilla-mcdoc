@@ -30,8 +30,10 @@ struct ItemBase {
 		CanDestroy = 4,
 		CanPlaceOn = 5,
 		Other = 6,
+		#[since=1.16.2]
+		LeatherColor = 7,
 	})]
-	HideFlags: int @ 1..63,
+	HideFlags: int
 }
 
 struct AnyItem {
