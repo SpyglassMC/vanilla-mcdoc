@@ -59,7 +59,7 @@ struct AttributeModifier {
 	/// The name of the attribute
 	AttributeName: (
 		#[until=1.16] (AttributeName | string) |
-		#[since=1.16,id=attribute] string |
+		#[since=1.16] #[id=attribute] string |
 	),
 	/// Name of the modifier, has no real effect
 	Name: string,

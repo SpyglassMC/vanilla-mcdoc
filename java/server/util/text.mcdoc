@@ -37,7 +37,7 @@ type TextObject = (
 		...TextNbtBase,
 	} |
 	struct {
-		entity: #[parser=selector(amount=multiple,type=entities)] string,
+		entity: #[selector(amount=multiple,type=entities)] string,
 		nbt: #[nbt_path(category=entity,id=[entity])] string,
 		...TextNbtBase,
 	} |
