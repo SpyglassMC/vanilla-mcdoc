@@ -19,7 +19,7 @@ struct BlockPlacer {
 	...minecraft:block_placer[[type]],
 }
 
-dispatch minecraft:block_placer[column_placer] to struct {
+dispatch minecraft:block_placer[column_placer] to struct ColumnPlacer {
 	min_size: int,
 	extra_size: int,
 }
