@@ -1,10 +1,10 @@
 enum(string) HeightmapType {
 	MotionBlocking = "MOTION_BLOCKING",
 	MotionBlockingNoLeaves = "MOTION_BLOCKING_NO_LEAVES",
-  OceanFloor = "OCEAN_FLOOR",
-  OceanFloorWorldgen = "OCEAN_FLOOR_WG",
-  WorldSurface = "WORLD_SURFACE",
-  WorldSurfaceWorldgen = "WORLD_SURFACE_WG",
+	OceanFloor = "OCEAN_FLOOR",
+	OceanFloorWorldgen = "OCEAN_FLOOR_WG",
+	WorldSurface = "WORLD_SURFACE",
+	WorldSurfaceWorldgen = "WORLD_SURFACE_WG",
 }
 
 enum(string) CarveStep {

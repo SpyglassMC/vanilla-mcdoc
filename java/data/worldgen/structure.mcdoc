@@ -1,10 +1,10 @@
 type ConfiguredStructureRef = (
-	#[id=worldgen/configured_structure_feature] string,
-	ConfiguredStructure,
+	#[id="worldgen/configured_structure_feature"] string |
+	ConfiguredStructure |
 )
 
 struct ConfiguredStructure {
-	type: #[id=worldgen/structure_feature],
+	type: #[id="worldgen/structure_feature"] string,
 	config: minecraft:structure_config[[type]],
 }
 
@@ -12,8 +12,8 @@ dispatch minecraft:structure_config[
 	bastion_remnant,
 	pillager_outpost,
 	villager,
-] to Jigsaw {
-	start_pool: #[id=worldgen/template_pool] string,
+] to struct Jigsaw {
+	start_pool: #[id="worldgen/template_pool"] string,
 	size: int @ 0..7,
 }
 

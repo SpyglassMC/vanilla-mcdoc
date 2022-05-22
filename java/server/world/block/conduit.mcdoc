@@ -4,7 +4,7 @@ dispatch minecraft:block[conduit] to struct Conduit {
 	#[uuid]
 	target_uuid: (
 		#[until=1.16] TargetUuid |
-		#[since=1.16] int[] 4 |
+		#[since=1.16] int[] @ 4 |
 	),
 }
 

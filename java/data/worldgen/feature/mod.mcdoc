@@ -4,12 +4,12 @@ use super::processor_list::RuleTest
 use ::java::server::util::block_state::BlockState
 
 type ConfiguredFeatureRef = (
-	#[id=worldgen/configured_feature] string,
-	ConfiguredFeature,
+	#[id="worldgen/configured_feature"] string |
+	ConfiguredFeature |
 )
 
 struct ConfiguredFeature {
-	type: #[id=worldgen/feature] string,
+	type: #[id="worldgen/feature"] string,
 	config: minecraft:feature_config[[type]],
 }
 

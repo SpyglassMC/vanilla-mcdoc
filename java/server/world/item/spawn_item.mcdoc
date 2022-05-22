@@ -3,5 +3,5 @@ struct SpawnItem {
 	// EntityTag has this weird value because the id for the spawned entity can be
 	// changed by both the id inside the tag and also the id of the item (as a default)
 	/// The data of the spawned entity
-	EntityTag: (minecraft:entity[[EntityTag.id]] | mcdoc:spawn_item_tag[[super.id]]),
+	EntityTag: (minecraft:entity[[EntityTag.id]] | mcdoc:spawn_item_tag[[%parent.id]]),
 }

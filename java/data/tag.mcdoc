@@ -5,7 +5,7 @@ struct Tag {
 
 type TagEntry = (
 	#[tag_entry] string |
-	#[since=1.16.2]
+	#[since="1.16.2"]
 	struct {
 		id: #[tag_entry] string,
 		required?: boolean,

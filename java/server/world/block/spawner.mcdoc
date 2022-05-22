@@ -31,7 +31,7 @@ struct SpawnPotential {
 	Entity: (
 		#[until=1.18] AnyEntity |
 		#[since=1.18] SpawnerEntry |
-	),,
+	),
 	/// The weight for this entry to get chosen
 	#[until=1.18]
 	Weight: (

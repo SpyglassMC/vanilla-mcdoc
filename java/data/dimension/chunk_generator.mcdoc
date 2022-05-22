@@ -1,7 +1,7 @@
 use super::noise_settings::NoiseGeneratorSettingsRef
 
 struct ChunkGenerator {
-	type: #[id=worldgen/chunk_generator] string,
+	type: #[id="worldgen/chunk_generator"] string,
 	...minecraft:chunk_generator[[type]],
 }
 
@@ -10,7 +10,7 @@ dispatch minecraft:chunk_generator[flat] to struct Flat {
 }
 
 struct FlatGeneratorSettings {
-	biome?: #[id=worldgen/biome] string,
+	biome?: #[id="worldgen/biome"] string,
 	lakes?: boolean,
 	features?: boolean,
 	layers: [FlatGeneratorLayer],

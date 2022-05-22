@@ -10,7 +10,7 @@ struct WeightedElement {
 }
 
 struct Element {
-	element_type: #[id=worldgen/structure_pool_element] string,
+	element_type: #[id="worldgen/structure_pool_element"] string,
 	...minecraft:template_pool_element[[element_type]],
 }
 
@@ -25,7 +25,7 @@ enum(string) Projection {
 
 dispatch minecraft:template_pool_element[feature_pool_element] to struct FeatureElement {
 	...ElementBase,
-	feature: #[id=worldgen/configured_feature] string,
+	feature: #[id="worldgen/configured_feature"] string,
 }
 
 dispatch minecraft:template_pool_element[

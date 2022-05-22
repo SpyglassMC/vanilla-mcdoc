@@ -32,18 +32,18 @@ type TextObject = (
 		...TextBase,
 	} |
 	struct {
-		block: #[parser=vector(dimension=3,integer=true)] string,
-		nbt: #[parser=nbt_path(category=block,id=[block])] string,
+		block: #[vector(dimension=3,integer=true)] string,
+		nbt: #[nbt_path(category=block,id=[block])] string,
 		...TextNbtBase,
 	} |
 	struct {
 		entity: #[parser=selector(amount=multiple,type=entities)] string,
-		nbt: #[parser=nbt_path(category=entity,id=[entity])] string,
+		nbt: #[nbt_path(category=entity,id=[entity])] string,
 		...TextNbtBase,
 	} |
 	struct {
 		storage: #[id=storage] string,
-		nbt: #[parser=nbt_path] string, // TODO
+		nbt: #[nbt_path] string, // TODO
 		...TextNbtBase,
 	} |
 )

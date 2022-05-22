@@ -76,7 +76,7 @@ struct Attribute {
 	/// The name of the attribute
 	Name: (
 		#[until=1.16] (AttributeName | string) |
-		#[since=1.16,id=attribute] string |
+		#[since=1.16] #[id=attribute] string |
 	),
 	/// The base value of the attribute
 	Base: double,

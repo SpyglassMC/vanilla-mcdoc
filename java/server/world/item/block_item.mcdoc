@@ -3,7 +3,7 @@ struct BlockItem {
 	/// A list of block states that this block item can be placed on
 	CanPlaceOn: [string], // TODO
 	/// The tags that the block entity that is placed can have
-	BlockEntityTag: minecraft:block[[super.id]],
+	BlockEntityTag: minecraft:block[[%parent.id]],
 	/// The block states that the placed block will have
-	BlockStateTag: mcdoc:block_item_states[[super.id]],
+	BlockStateTag: mcdoc:block_item_states[[%parent.id]],
 }

@@ -13,7 +13,7 @@ struct Pass {
 	name: string,
 	intarget: string,
 	outtarget: string,
-	auxtargets?: [],
+	auxtargets?: [AuxTarget],
 	uniforms?: [Uniform],
 }
 

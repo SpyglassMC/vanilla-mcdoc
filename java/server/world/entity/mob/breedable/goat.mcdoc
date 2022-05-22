@@ -1,4 +1,4 @@
-dispatch minecraft:entity[goat] struct Goat {
+dispatch minecraft:entity[goat] to struct Goat {
 	...super::Breedable,
 	/// Whether the goat has its left horn
 	#[since=1.19]

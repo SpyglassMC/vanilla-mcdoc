@@ -2,7 +2,7 @@ use super::block_state::BlockState
 use super::inventory::InventoryItem
 
 struct Particle {
-	type: #[id=particle_type],
+	type: #[id=particle_type] string,
 	value: minecraft:particle[[type]],
 }
 
@@ -15,4 +15,4 @@ dispatch minecraft:particle[dust] to struct DustOption {
 	scale: float,
 }
 
-dispatch minecraft:particle[item] to struct InventoryItem
+dispatch minecraft:particle[item] to InventoryItem

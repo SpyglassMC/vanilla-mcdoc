@@ -2,8 +2,8 @@ use ::java::server::util::block_state::BlockState
 use super::super::util::HeightmapType
 
 type ProcessorListRef = (
-	#[id=worldgen/processor_list] string,
-	ProcessorList,
+	#[id="worldgen/processor_list"] string |
+	ProcessorList |
 )
 
 struct ProcessorList {
@@ -11,7 +11,7 @@ struct ProcessorList {
 }
 
 struct Processor {
-	processor_type: #[id=worldgen/structure_processor] string,
+	processor_type: #[id="worldgen/structure_processor"] string,
 	...minecraft:template_processor[[processor_type]],
 }
 
@@ -68,7 +68,7 @@ enum(string) Axis {
 }
 
 struct RuleTest {
-	predicate_type: #[id=rule_test],
+	predicate_type: #[id=rule_test] string,
 	...minecraft:rule_test[[predicate_type]],
 }
 

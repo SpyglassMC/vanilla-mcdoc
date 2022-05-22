@@ -13,10 +13,10 @@ dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	/// Increases with feeding
 	Temper: int @ 0..100,
 	/// UUID of the player who tamed the horse
-	#[until=1.16,uuid]
+	#[until=1.16] #[uuid]
 	OwnerUUID: string,
 	/// UUID of the player who tamed the horse
-	#[since=1.16,uuid]
+	#[since=1.16] #[uuid]
 	Owner: int[] @ 4,
 	/// The armor item of the horse
 	ArmorItem: InventoryItem,

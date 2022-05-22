@@ -1,9 +1,9 @@
 use ::java::server::util::block_state::BlockState
 
 type NoiseGeneratorSettingsRef = (
-	#[since=1.16.2,id=worldgen/noise_settings] string |
+	#[since="1.16.2"] #[id="worldgen/noise_settings"] string |
 	struct {
-		name: #[id=(registry=worldgen/noise_settings,definition=true)],
+		name: #[id=(registry="worldgen/noise_settings",definition=true)] string,
 		...NoiseGeneratorSettings,
 	} |
 )
@@ -11,8 +11,8 @@ type NoiseGeneratorSettingsRef = (
 struct NoiseGeneratorSettings {
 	default_block: BlockState,
 	default_fluid: BlockState,
-	bedrock_roof_position: int @ -20 276,
-	bedrock_floor_position: int @ -20 276,
+	bedrock_roof_position: int @ -20..276,
+	bedrock_floor_position: int @ -20..276,
 	sea_level: int @ 0..255,
 	disable_mob_generation: boolean,
 	noise: NoiseSettings,
@@ -50,7 +50,7 @@ struct NoiseSlideSettings {
 struct StructureSettings {
 	stronghold?: StrongholdSettings,
 	structures: struct {
-		[#[id=worldgen/structure_feature] string]: StructureFeatureSettings
+		[#[id="worldgen/structure_feature"] string]: StructureFeatureSettings
 	}
 }
 

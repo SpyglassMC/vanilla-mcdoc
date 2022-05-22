@@ -1,4 +1,4 @@
-dispatch minecraft:entity[skeleton] struct Skeleton {
+dispatch minecraft:entity[skeleton] to struct Skeleton {
     ...super::MobBase,
 	/// Time until the skeleton converts
     #[since=1.17]

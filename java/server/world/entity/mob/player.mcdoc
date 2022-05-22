@@ -1,5 +1,5 @@
 use ::java::server::util::inventory::InventoryItem
-use ::java::server::util::codec::GlobalPos;
+use ::java::server::util::codec::GlobalPos
 use super::super::AnyEntity
 
 dispatch minecraft:entity[player] to struct Player {
@@ -9,7 +9,7 @@ dispatch minecraft:entity[player] to struct Player {
 	/// The dimension the player is in
 	Dimension: (
 		#[until=1.16] Dimension |
-		#[since=1.16,id=dimension] string |
+		#[since=1.16] #[id=dimension] string |
 	),
 	/// The location of the player's last death
 	#[since=1.19]
@@ -27,7 +27,7 @@ dispatch minecraft:entity[player] to struct Player {
 	SelectedItem: SlottedItem,
 	/// The dimension of the player's respawn point
 	#[since=1.16]
-	SpawnDimension: #[id=dimension],
+	SpawnDimension: #[id=dimension] string,
 	/// The x coordinate of the player's spawn point
 	SpawnX: int,
 	/// The y coordinate of the player's spawn point

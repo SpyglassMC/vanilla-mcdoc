@@ -1,8 +1,8 @@
-use ::java::server::util::InventoryItem;
+use ::java::server::util::InventoryItem
 
 #[since=1.19]
 dispatch minecraft:entity[allay] to struct Allay {
-    ..super::MobBase,
+	...super::MobBase,
 	/// The items that the allay has picked up. Note that the item given by the player is in
 	/// the allay's `HandItems[0]` tag, not here
 	Inventory: [InventoryItem] @ 1,

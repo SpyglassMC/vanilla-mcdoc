@@ -14,7 +14,7 @@ struct Advancement {
 struct Display {
 	icon: struct {
 		item: #[id=item] string,
-		nbt?: #[parser=nbt(ItemBase)] string, // TODO
+		nbt?: #[nbt=ItemBase] string, // TODO
 	},
 	title: Text,
 	description: Text,

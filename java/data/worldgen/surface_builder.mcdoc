@@ -1,12 +1,12 @@
 use ::java::server::util::block_state::BlockState
 
 type ConfiguredSurfaceBuilderRef = (
-	#[id=worldgen/configured_surface_builder] string,
-	ConfiguredSurfaceBuilder,
+	#[id="worldgen/configured_surface_builder"] string |
+	ConfiguredSurfaceBuilder |
 )
 
 struct ConfiguredSurfaceBuilder {
-	type: #[id=worldgen/surface_builder] string,
+	type: #[id="worldgen/surface_builder"] string,
 	config: struct {
 		top_material: BlockState,
 		under_material: BlockState,

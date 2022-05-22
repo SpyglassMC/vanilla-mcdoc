@@ -27,7 +27,7 @@ struct Biome {
 	features: [[ConfiguredFeatureRef]] @ ..10,
 }
 
-enum BiomeCategory {
+enum (string) BiomeCategory {
 	Beach = "beach",
 	Desert = "desert",
 	ExtremeHills = "extreme_hills",

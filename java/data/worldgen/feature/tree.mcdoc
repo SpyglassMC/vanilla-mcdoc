@@ -15,7 +15,7 @@ dispatch minecraft:feature_config[tree] to struct TreeConfig {
 }
 
 struct BlockPlacer {
-	type: #[id=worldgen/block_placer_type] string,
+	type: #[id="worldgen/block_placer_type"] string,
 	...minecraft:block_placer[[type]],
 }
 
@@ -25,7 +25,7 @@ dispatch minecraft:block_placer[column_placer] to struct {
 }
 
 struct FeatureSize {
-	type: #[id=worldgen/feature_size_type] string,
+	type: #[id="worldgen/feature_size_type"] string,
 	...minecraft:feature_size[[type]],
 }
 
@@ -46,7 +46,7 @@ dispatch minecraft:feature_size[three_layers_feature_size] to struct ThreeLayers
 }
 
 struct TrunkPlacer {
-	type: #[id=worldgen/trunk_placer_type] string,
+	type: #[id="worldgen/trunk_placer_type"] string,
 	base_height: int @ 0..32,
 	height_rand_a: int @ 0..24,
 	height_rand_b: int @ 0..24,
@@ -54,7 +54,7 @@ struct TrunkPlacer {
 }
 
 struct FoliagePlacer {
-	type: #[id=worldgen/foliage_placer_type] string,
+	type: #[id="worldgen/foliage_placer_type"] string,
 	radius: UniformInt<int @ 0..8, int @ 0..8>,
 	offset: UniformInt<int @ 0..8, int @ 0..8>,
 	...minecraft:foliage_placer[[type]],
@@ -82,7 +82,7 @@ dispatch minecraft:foliage_placer[spruce_foliage_placer] to struct MegaPineFolia
 }
 
 struct TreeDecorator {
-	type: #[id=worldgen/tree_decorator_type] string,
+	type: #[id="worldgen/tree_decorator_type"] string,
 	...minecraft:tree_decorator[[type]],
 }
 
@@ -91,9 +91,9 @@ dispatch minecraft:tree_decorator[alter_ground] to struct AlterGroundTreeDecorat
 }
 
 dispatch minecraft:tree_decorator[beehive] to struct BeehiveTreeDecorator {
-	probability: float 0..1,
+	probability: float @ 0..1,
 }
 
 dispatch minecraft:tree_decorator[cocoa] to struct CocoaTreeDecorator {
-	probability: float 0..1,
+	probability: float @ 0..1,
 }

@@ -8,8 +8,8 @@ struct ItemPredicate {
 	count?: MinMaxBounds<int>,
 	durability?: MinMaxBounds<int>,
 	potion?: #[id=potion] string,
-	enchantments?: [EnchantmentPredicate]
-	nbt?: #[parser=nbt(ItemBase)] string, // TODO
+	enchantments?: [EnchantmentPredicate],
+	nbt?: #[nbt=ItemBase] string, // TODO
 }
 
 struct EnchantmentPredicate {
@@ -23,7 +23,7 @@ struct BlockPredicate {
 	state?: struct {
 		[string]: (MinMaxBounds<int> | boolean | string), // TODO
 	},
-	nbt?: #[parser=nbt(ItemBase)] string, // TODO
+	nbt?: #[nbt=ItemBase] string, // TODO
 }
 
 struct FluidPredicate {
@@ -41,8 +41,8 @@ struct LocationPredicate {
 		z?: MinMaxBounds<float>,
 	},
 	biome?: (
-		#[until=1.16,id=biome] string |
-		#[since=1.16,id=worldgen/biome] string |
+		#[until=1.16] #[id=biome] string |
+		#[since=1.16] #[id="worldgen/biome"] string |
 	),
 	feature?: string,
 	dimension?: #[id=dimension] string,
@@ -58,7 +58,7 @@ struct LocationPredicate {
 struct EntityPredicate {
 	type?: #[id(registry=entity_type,tags=allow)] string,
 	team?: #[team] string,
-	nbt?: #[parser=nbt] string, // TODO
+	nbt?: #[nbt=TODO] string, // TODO
 	location?: LocationPredicate,
 	distance?: DistancePredicate,
 	flags?: struct {
@@ -121,7 +121,7 @@ struct StatisticPredicate {
 	value: MinMaxBounds<int>,
 }
 
-dispatch minecraft:statistic_type to string
+dispatch minecraft:statistic_type[%unknown] to string
 
 dispatch minecraft:statistic_type[mined] to #[id=block] string
 

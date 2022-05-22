@@ -12,7 +12,7 @@ type BlockDefinition = (
 	} |
 )
 
-type ModelVariant (
+type ModelVariant = (
 	ModelVariantBase |
 	[struct {
 		...ModelVariantBase,

@@ -9,9 +9,9 @@ use super::predicate::DistancePredicate
 use super::super::loot::LootCondition
 
 type CompositeEntity = (
-	EntityPredicate,
+	EntityPredicate |
 	#[since=1.16]
-	[LootCondition],
+	[LootCondition] |
 )
 
 struct CriterionBase {
@@ -50,8 +50,8 @@ dispatch minecraft:criteria_trigger[brewed_potion] to struct BrewedPotion {
 
 dispatch minecraft:criteria_trigger[changed_dimension] to struct ChangedDimension {
 	...CriterionBase,
-	from?: #[id=dimension],
-	to?: #[id=dimension],
+	from?: #[id=dimension] string,
+	to?: #[id=dimension] string,
 }
 
 dispatch minecraft:criteria_trigger[channeled_lightning] to struct ChanneledLightning {

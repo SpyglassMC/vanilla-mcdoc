@@ -1,5 +1,5 @@
 struct Recipe {
-	type: #[id=recipe_serializer],
+	type: #[id=recipe_serializer] string,
 	...minecraft:recipe_serializer[[type]],
 }
 
