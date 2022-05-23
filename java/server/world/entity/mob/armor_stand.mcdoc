@@ -16,7 +16,7 @@ dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 	ShowArms: boolean,
 	/// Whether the armor stand is small
 	Small: boolean,
-	/// A bit field of the slots that cannot be used
+	/// A bitfield of the slots that cannot be used
 	#[bitfield(enum (int) {
 		HandAll = 1,
 		BootsAll = 2,
