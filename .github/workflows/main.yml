@@ -6,21 +6,23 @@ on:
       - main
 
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
+  locales:
+    name: Update base localization
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
-    - run: npm ci
+      - run: npm ci
 
-    - run: npm run build:locales
+      - run: npm run build:locales
 
-    - uses: EndBug/add-and-commit@v9
-      with:
-        add: 'locales'
-        author_name: GitHub Actions
-        author_email: actions@github.com
-        message: 🌐 Update base localization
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: 'locales'
+          author_name: GitHub Actions
+          author_email: actions@github.com
+          message: 🌐 Update base localization
