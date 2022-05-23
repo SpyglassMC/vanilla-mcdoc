@@ -97,12 +97,13 @@ enum(string) GrassColorModifier {
 }
 
 enum(string) MobCategory {
-	WaterAmbient = "water_ambient",
-	Ambient = "ambient",
-	Misc = "misc",
-	WaterCreature = "water_creature",
-	Creature = "creature",
 	Monster = "monster",
+	Creature = "creature",
+	Ambient = "ambient",
+	#[since=1.17] UndergroundWaterCreature = "underground_water_creature",
+	WaterCreature = "water_creature",
+	WaterAmbient = "water_ambient",
+	Misc = "misc",
 }
 
 struct SpawnerData {

@@ -20,6 +20,9 @@ type UniformInt<Base, Spread> = (
 	} |
 )
 
+type IntProvider = () // TODO
+type FloatProvider = () // TODO
+
 struct HeightProvider {
 	type?: #[id="worldgen/height_provider_type"] string,
 	...minecraft:height_provider[[type]],

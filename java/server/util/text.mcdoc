@@ -50,6 +50,8 @@ type TextObject = (
 
 struct TextNbtBase {
 	interpret?: boolean,
+	#[since=1.17]
+	separator?: Text,
 	...TextBase,
 }
 

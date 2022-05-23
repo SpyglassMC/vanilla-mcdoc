@@ -2,7 +2,9 @@ use super::LootPoolEntry
 use super::super::util::MinMaxBounds
 use super::super::util::RandomValueBounds
 use super::super::util::RandomIntGenerator
+use super::super::util::NumberProvider
 use ::java::server::util::inventory::EquipmentSlot
+use ::java::server::util::color::ColorString
 
 dispatch minecraft:loot_function[apply_bonus] to struct ApplyBonus {
 	enchantment: #[id=enchantment] string,
@@ -63,7 +65,10 @@ dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {
 }
 
 dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevels {
-	levels: RandomIntGenerator,
+	levels: (
+		#[until=1.17] RandomIntGenerator |
+		#[since=1.17] NumberProvider |
+	),
 	treasure?: boolean,
 }
 
@@ -121,7 +126,10 @@ dispatch minecraft:loot_function[limit_count] to struct LimitCount {
 }
 
 dispatch minecraft:loot_function[looting_enchant] to struct LootingEnchant {
-	count: MinMaxBounds<float>,
+	count: (
+		#[until=1.17] MinMaxBounds<float> |
+		#[since=1.17] NumberProvider |
+	),
 	limit?: int,
 }
 
@@ -138,16 +146,85 @@ struct AttributeModifier {
 	id?: #[parser=uuid] string,
 }
 
+#[since=1.17]
+dispatch minecraft:loot_function[set_banner_pattern] to struct SetBannerPattern {
+	patterns: [BannerPatternEntry],
+	append?: boolean,
+}
+
+struct BannerPatternEntry {
+	pattern: BannerPattern,
+	color: ColorString,
+}
+
+enum(string) BannerPattern {
+	Base = "base",
+	SquareBottomLeft = "square_bottom_left",
+	SquareBottom = "square_bottom_right",
+	SquareTopLeft = "square_top_left",
+	SquareTopRight = "square_top_right",
+	StripeBottom = "stripe_bottom",
+	StripeTop = "stripe_top",
+	StripeLeft = "stripe_left",
+	StripeRight = "stripe_right",
+	StripeCenter = "stripe_center",
+	StripeMiddle = "stripe_middle",
+	StripeDownright = "stripe_downright",
+	StripeDownleft = "stripe_downleft",
+	SmallStripes = "small_stripes",
+	Cross = "cross",
+	StraightCross = "straight_cross",
+	TriangleBottom = "triangle_bottom",
+	TriangleTop = "triangle_top",
+	TrianglesBottom = "triangles_bottom",
+	TrianglesTop = "triangles_top",
+	DiagonalLeft = "diagonal_left",
+	DiagonalUpRight = "diagonal_up_right",
+	DiagonalUpLeft = "diagonal_up_left",
+	DiagonalRight = "diagonal_right",
+	Circle = "circle",
+	Rhombus = "rhombus",
+	HalfVertical = "half_vertical",
+	HalfHorizontal = "half_horizontal",
+	HalfVerticalRight = "half_vertical_right",
+	HalfHorizontalBottom = "half_horizontal_bottom",
+	Border = "border",
+	CurlyBorder = "curly_border",
+	Gradient = "gradient",
+	GradientUp = "gradient_up",
+	Bricks = "bricks",
+	Globe = "globe",
+	Creeper = "creeper",
+	Skull = "skull",
+	Flower = "flower",
+	Mojang = "mojang",
+	Piglin = "piglin",
+}
+
 dispatch minecraft:loot_function[set_contents] to struct SetContents {
 	entries: [LootPoolEntry],
 }
 
 dispatch minecraft:loot_function[set_count] to struct SetCount {
-	count: RandomIntGenerator,
+	count: (
+		#[until=1.17] RandomIntGenerator |
+		#[since=1.17] NumberProvider |
+	),
 }
 
 dispatch minecraft:loot_function[set_damage] to struct SetDamage {
-	damage: RandomValueBounds,
+	damage: (
+		#[until=1.17] RandomValueBounds |
+		#[since=1.17] NumberProvider |
+	),
+}
+
+#[since=1.17]
+dispatch minecraft:loot_function[set_enchantments] to struct SetEnchantments {
+	enchantments: struct {
+		[#[id=enchantment] string]: NumberProvider,
+	},
+	add?: boolean,
 }
 
 dispatch minecraft:loot_function[set_loot_table] to struct SetLootTable {
@@ -176,5 +253,8 @@ dispatch minecraft:loot_function[set_stew_effect] to struct SetStewEffect {
 
 struct StewEffect {
 	type: #[id=mob_effect] string,
-	duration: MinMaxBounds<float>,
+	duration: (
+		#[until=1.17] MinMaxBounds<float> |
+		#[since=1.17] NumberProvider |
+	),
 }

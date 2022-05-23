@@ -60,7 +60,7 @@ dispatch minecraft:loot_condition[random_chance_with_looting] to struct RandomCh
 }
 
 dispatch minecraft:loot_condition[reference] to struct Reference {
-	name: LootCondition,
+	name: #[id=predicate] string,
 }
 
 dispatch minecraft:loot_condition[table_bonus] to struct TableBonus {

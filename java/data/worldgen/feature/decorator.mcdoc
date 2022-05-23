@@ -1,4 +1,6 @@
 use super::super::CarveStep
+use super::super::HeightmapType
+use super::super::HeightProvider
 use super::super::UniformInt
 
 struct ConfiguredDecorator {
@@ -8,20 +10,36 @@ struct ConfiguredDecorator {
 
 dispatch minecraft:decorator_config[carving_mask] to struct CarvingMaskConfig {
 	step: CarveStep,
+	#[until=1.17]
 	probability: float @ 0..1,
 }
 
-dispatch minecraft:decorator_config[chance,lava_lake,water_lake] to struct ChanceConfig {
+#[since=1.17]
+dispatch minecraft:decorator_config[cave_surface] to struct CaveSurface {
+	surface: ("floor" | "ceiling"),
+	floor_to_ceiling_search_range: int,
+}
+
+dispatch minecraft:decorator_config[chance,lava_lake] to struct ChanceConfig {
 	chance: int @ 0..,
 }
 
+#[until=1.17]
+dispatch minecraft:decorator_config[water_lake] to ChanceConfig
+
 dispatch minecraft:decorator_config[count,count_multilayer,fire,glowstone] to struct CountConfig {
-	count: UniformInt<int @ -10..128, int @ 0..128>,
+	count: UniformInt<int @ -10..128, int @ 0..128>, // TODO IntProvider({ min: 0, max: 256 })
 }
 
 dispatch minecraft:decorator_config[count_extra] to struct CountExtraConfig {
-	count: int,
-	extra_count: int,
+	count: (
+		#[until=1.17] int |
+		#[since=1.17] int @ 0.. |
+	),
+	extra_count: (
+		#[until=1.17] int |
+		#[since=1.17] int @ 0.. |
+	),
 	extra_chance: float @ 0..1,
 }
 
@@ -42,13 +60,30 @@ dispatch minecraft:decorator_config[decorated] to struct DecoratedConfig {
 	inner: ConfiguredDecorator,
 }
 
+#[until=1.17]
 dispatch minecraft:decorator_config[depth_average] to struct DepthAverageConfig {
 	baseline: int,
 	spread: int,
 }
 
+#[until=1.17]
 dispatch minecraft:decorator_config[range,range_biased,range_very_biased] to struct RangeConfig {
 	maximum: int,
 	bottom_offset: int,
 	top_offset: int,
+}
+
+#[since=1.17]
+dispatch minecraft:decorator_config[heightmap, heightmap_spread_double] to struct HeightmapConfig {
+	heightmap: HeightmapType,
+}
+
+#[since=1.17]
+dispatch minecraft:decorator_config[range] to struct RangeConfig {
+	height: HeightProvider,
+}
+
+#[since=1.17]
+dispatch minecraft:decorator_config[water_depth_threshold] to struct WaterDepthThresholdConfig {
+	max_water_depth: int,
 }

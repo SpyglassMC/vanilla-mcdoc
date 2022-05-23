@@ -35,3 +35,5 @@ dispatch minecraft:random_int_generator[binomial] to struct BinomialIntGenerator
 dispatch minecraft:random_int_generator[constant] to struct ConstantIntGenerator {
 	value: int,
 }
+
+type NumberProvider = () // TODO

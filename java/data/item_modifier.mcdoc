@@ -1,0 +1,10 @@
+use super::loot::LootFunction
+use super::loot::LootCondition
+
+#[since=1.17]
+type ItemModifier = (Modifier | [Modifier])
+
+struct Modifier {
+	...LootFunction,
+	conditions?: [LootCondition],
+}

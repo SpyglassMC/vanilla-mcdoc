@@ -1,5 +1,5 @@
 use ::java::server::util::block_state::BlockState
-use super::super::util::HeightmapType
+use super::HeightmapType
 
 type ProcessorListRef = (
 	#[id="worldgen/processor_list"] string |
