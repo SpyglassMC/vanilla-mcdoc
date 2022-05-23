@@ -45,6 +45,7 @@ enum (string) BiomeCategory {
 	Swamp = "swamp",
 	Taiga = "taiga",
 	TheEnd = "the_end",
+	#[since=1.17] Underground = "underground",
 }
 
 enum(string) Precipication {

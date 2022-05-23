@@ -155,6 +155,12 @@ dispatch minecraft:criteria_trigger[levitation] to struct Levitation {
 	duration?: MinMaxBounds<int>,
 }
 
+dispatch minecraft:criteria_trigger[lightning_strike] to struct LightningStrike {
+	...CriterionBase,
+	lightning?: EntityPredicate,
+	bystander?: EntityPredicate,
+}
+
 dispatch minecraft:criteria_trigger[location] to LocationCriterion
 
 dispatch minecraft:criteria_trigger[nether_travel] to struct NetherTravel {
@@ -256,6 +262,11 @@ dispatch minecraft:criteria_trigger[used_ender_eye] to struct UsedEnderEye {
 }
 
 dispatch minecraft:criteria_trigger[used_totem] to struct UsedTotem {
+	...CriterionBase,
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[using_item] to struct UsingItem {
 	...CriterionBase,
 	item?: ItemPredicate,
 }

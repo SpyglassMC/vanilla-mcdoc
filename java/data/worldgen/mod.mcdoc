@@ -19,3 +19,32 @@ type UniformInt<Base, Spread> = (
 		spread: Spread,
 	} |
 )
+
+struct HeightProvider {
+	type?: #[id="worldgen/height_provider_type"] string,
+	...minecraft:height_provider[[type]],
+}
+
+dispatch minecraft:height_provider[constant] to struct ConstantHeightProvider {
+	value: VerticalAnchor,
+}
+
+dispatch minecraft:height_provider[uniform] to struct UniformHeightProvider {
+	min_inclusive: VerticalAnchor,
+	max_inclusive: VerticalAnchor,
+}
+
+dispatch minecraft:height_provider[biased_to_bottom,very_biased_to_bottom] to struct BottomBiasHeightProvider {
+	...UniformHeightProvider,
+	inner?: int @ 1..,
+}
+
+dispatch minecraft:height_provider[trapezoid] to struct TrapezoidHeightProvider {
+	...UniformHeightProvider,
+	plateau?: int,
+}
+
+
+dispatch minecraft:height_provider[%none] to struct VerticalAnchor {
+	[("absolute" | "above_bottom" | "below_top")]: int,
+}

@@ -32,6 +32,11 @@ dispatch minecraft:template_processor[gravity] to struct Gravity {
 	offset: int,
 }
 
+#[since=1.17]
+dispatch minecraft:template_processor[protected_blocks] to struct ProtectedBlocks {
+	value: #[id(registry=block,tags=implicit)] string,
+}
+
 dispatch minecraft:template_processor[rule] to struct Rule {
 	rules: [ProcessorRule],
 }
@@ -50,10 +55,10 @@ struct PosRuleTest {
 }
 
 dispatch minecraft:pos_rule_test[linear_pos] to struct LinearPos {
-	min_dist: int @ 0..255,
-	max_dist: int @ 0..255,
-	min_chance: float @ 0..1,
-	max_chance: float @ 0..1,
+	min_dist?: int @ 0..255,
+	max_dist?: int @ 0..255,
+	min_chance?: float @ 0..1,
+	max_chance?: float @ 0..1,
 }
 
 dispatch minecraft:pos_rule_test[axis_aligned_linear_pos] to struct AxisAlignedLinearPos {

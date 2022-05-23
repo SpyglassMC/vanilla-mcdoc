@@ -66,6 +66,7 @@ enum(string) Trigger {
 	#[since=1.16] ItemUsedOnBlock = "item_used_on_block",
 	KilledByCrossbow = "killed_by_crossbow",
 	Levitation = "levitation",
+	#[since=1.17] LightningStrike = "lightning_strike",
 	Location = "location",
 	NetherTravel = "nether_travel",
 	PlacedBlock = "placed_block",
@@ -78,6 +79,7 @@ enum(string) Trigger {
 	#[until=1.16] SafelyHarvestHoney = "safely_harvest_honey",
 	SleptInBed = "slept_in_bed",
 	SlideDownBlock = "slide_down_block",
+	#[since=1.17] StartedRiding = "started_riding",
 	SummonedEntity = "summoned_entity",
 	TameAnimal = "tame_animal",
 	#[since=1.16] TargetHit = "target_hit",
@@ -85,6 +87,7 @@ enum(string) Trigger {
 	Tick = "tick",
 	UsedEnderEye = "used_ender_eye",
 	UsedTotem = "used_totem",
+	#[since=1.17] UsingItem = "using_item",
 	VillagerTrade = "villager_trade",
-	VoluntaryExile = "voluntary_exile"
+	VoluntaryExile = "voluntary_exile",
 }

@@ -14,13 +14,27 @@ struct NoiseGeneratorSettings {
 	bedrock_roof_position: int @ -20..276,
 	bedrock_floor_position: int @ -20..276,
 	sea_level: int @ 0..255,
+	#[since=1.17]
+	min_surface_level: int,
 	disable_mob_generation: boolean,
+	#[since=1.17]
+	...struct {
+		noise_caves_enabled: boolean,
+		noodle_caves_enabled: boolean,
+		aquifers_enabled: boolean,
+		deepslate_enabled: boolean,
+		ore_veins_enabled: boolean,
+	},
 	noise: NoiseSettings,
 	structures: StructureSettings,
 }
 
 struct NoiseSettings {
-	height: int @ 0..256,
+	min_y: int @ -2048..2047,
+	height: (
+		#[until=1.17] int @ 0..256 |
+		#[since=1.17] int @ 0..4096 |
+	),
 	size_horizontal: int @ 1..4,
 	size_vertical: int @ 1..4,
 	density_factor: double,

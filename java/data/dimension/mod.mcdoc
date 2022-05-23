@@ -29,10 +29,17 @@ struct DimensionType {
 	coordinate_scale: double @ 0.00001..30000000,
 	ambient_light: float,
 	fixed_time?: int,
-	logical_height: int @ 0..256,
+	logical_height: (
+		#[until=1.17] int @ 0..256 |
+		#[since=1.17] int @ 0..4096 |
+	),
 	#[since="1.16.2"]
 	effects: #[id] DimensionTypeEffects,
 	infiniburn: #[id(registry=block,tags=implicit)] string,
+	#[since=1.17]
+	min_y: int @ -2048..2047,
+	#[since=1.17]
+	height: int @ 0..4096,
 }
 
 enum(string) DimensionTypeEffects {

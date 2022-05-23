@@ -1,3 +1,5 @@
+use super::HeightProvider
+
 type ConfiguredStructureRef = (
 	#[id="worldgen/configured_structure_feature"] string |
 	ConfiguredStructure |
@@ -29,6 +31,12 @@ dispatch minecraft:structure_config[mineshaft] to struct Mineshaft {
 enum(string) MineshaftType {
 	Normal = "normal",
 	Mesa = "mesa",
+}
+
+#[since=1.17]
+dispatch minecraft:structure_config[nether_fossil] to struct NetherFossil {
+	// TODO
+	height: HeightProvider
 }
 
 dispatch minecraft:structure_config[ocean_ruin] to struct OceanRuin {
