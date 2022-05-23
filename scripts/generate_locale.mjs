@@ -152,7 +152,7 @@ function processDocs(key, node) {
 	const doc = node.children.find(mcdoc.DocCommentsNode.is)
 	if (doc) {
 		const text = doc.children.filter(core.CommentNode.is)
-			.map(n => n.comment.trim())
+			.map(n => n.comment.trimStart().replace(/[\r\n]+$/, ''))
 			.filter(s => s.length > 0)
 			.join('\\n')
 		DOCS.set(key, text)
