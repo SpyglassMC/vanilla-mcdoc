@@ -1,4 +1,4 @@
-dispatch minecraft:memory_module[%fallback] to struct MemoryModule {
+struct MemoryModule {
 	/// The amount of ticks before this memory is removed
 	#[since=1.16]
 	ttl: long,
@@ -44,6 +44,7 @@ dispatch minecraft:memory_module[
 
 #[since=1.16]
 dispatch minecraft:memory_module[angry_at] to struct UuidMemory {
+	...MemoryModule,
 	/// The uuid value
 	value: int[] @ 4,
 }
@@ -56,6 +57,7 @@ dispatch minecraft:memory_module[
 	hunted_recently,
 	universal_anger,
 ] to struct BooleanMemory {
+	...MemoryModule,
 	/// The boolean value
 	value: boolean,
 }
@@ -64,8 +66,4 @@ dispatch minecraft:memory_module[
 dispatch minecraft:memory_module[is_tempted] to BooleanMemory
 
 #[since=1.17]
-dispatch minecraft:memory_module[has_hunting_cooldown] to struct CooldownMemory {
-	value: boolean,
-	/// The number of ticks until this memory is removed
-	ttl: long,
-}
+dispatch minecraft:memory_module[has_hunting_cooldown] to BooleanMemory

@@ -138,7 +138,7 @@ dispatch minecraft:criteria_trigger[item_durability_changed] to struct ItemDurab
 }
 
 #[since=1.16]
-dispatch minecraft:criteria_trigger[item_used_on_block] to struct {
+dispatch minecraft:criteria_trigger[item_used_on_block] to struct ItemUsedOnBlock {
 	item?: ItemPredicate,
 	location?: LocationPredicate,
 }
@@ -181,7 +181,7 @@ dispatch minecraft:criteria_trigger[placed_block] to struct PlacedBlock {
 }
 
 #[since=1.16]
-dispatch minecraft:criteria_trigger[player_generates_container_loot] to struct {
+dispatch minecraft:criteria_trigger[player_generates_container_loot] to struct PlayerGeneratesContainerLoot {
 	loot_table: #[id=loot_table] string,
 }
 
@@ -192,7 +192,7 @@ dispatch minecraft:criteria_trigger[player_hurt_entity] to struct PlayerHurtEnti
 }
 
 #[since=1.16]
-dispatch minecraft:criteria_trigger[player_interacted_with_entity] to struct {
+dispatch minecraft:criteria_trigger[player_interacted_with_entity] to struct PlayerInteractedWithEntity {
 	item?: ItemPredicate,
 	entity?: CompositeEntity,
 }

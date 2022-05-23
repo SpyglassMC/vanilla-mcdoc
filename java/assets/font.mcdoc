@@ -13,14 +13,14 @@ enum(string) ProviderType {
 	LegacyUnicode = "legacy_unicode",
 }
 
-dispatch minecraft:glyph_provider[bitmap] to struct {
+dispatch minecraft:glyph_provider[bitmap] to struct BitmapProvider {
 	file: string,
 	height?: int,
 	ascent: int,
 	chars: [string @ 1..] @ 1..,
 }
 
-dispatch minecraft:glyph_provider[ttf] to struct {
+dispatch minecraft:glyph_provider[ttf] to struct TtfProvider {
 	file: string,
 	size?: float,
 	oversample?: float,
@@ -28,7 +28,7 @@ dispatch minecraft:glyph_provider[ttf] to struct {
 	skip?: (string | [string]),
 }
 
-dispatch minecraft:glyph_provider[legacy_unicode] to struct {
+dispatch minecraft:glyph_provider[legacy_unicode] to struct LegacyUnicodeProvider {
 	sizes: string,
 	template: string,
 }

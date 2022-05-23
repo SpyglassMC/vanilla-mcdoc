@@ -12,8 +12,6 @@ struct BlockEntity {
 	keepPacked: boolean,
 }
 
-dispatch minecraft:block[%fallback] to struct {}
-
 dispatch minecraft:block[
 	bed,
 	bell,
