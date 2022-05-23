@@ -19,11 +19,11 @@ struct CriterionBase {
 	player?: CompositeEntity,
 }
 
-type LocationCriterion = (
+type Location = (
 	#[deprecated=1.16]
 	LocationPredicate |
 	#[since=1.16]
-	struct Location {
+	struct {
 		...CriterionBase,
 		location?: LocationPredicate,
 	} |
@@ -118,7 +118,7 @@ dispatch minecraft:criteria_trigger[fishing_rod_hooked] to struct FishingRodHook
 	item?: ItemPredicate,
 }
 
-dispatch minecraft:criteria_trigger[hero_of_the_village] to LocationCriterion
+dispatch minecraft:criteria_trigger[hero_of_the_village] to Location
 
 dispatch minecraft:criteria_trigger[inventory_changed] to struct InventoryChanged {
 	...CriterionBase,
@@ -161,7 +161,7 @@ dispatch minecraft:criteria_trigger[lightning_strike] to struct LightningStrike 
 	bystander?: EntityPredicate,
 }
 
-dispatch minecraft:criteria_trigger[location] to LocationCriterion
+dispatch minecraft:criteria_trigger[location] to Location
 
 dispatch minecraft:criteria_trigger[nether_travel] to struct NetherTravel {
 	...CriterionBase,
@@ -223,7 +223,7 @@ dispatch minecraft:criteria_trigger[safely_harvest_honey] to struct SafelyHarves
 	item?: ItemPredicate,
 }
 
-dispatch minecraft:criteria_trigger[slept_in_bed] to LocationCriterion
+dispatch minecraft:criteria_trigger[slept_in_bed] to Location
 
 dispatch minecraft:criteria_trigger[slide_down_block] to struct SlideDownBlock {
 	...CriterionBase,
@@ -277,4 +277,4 @@ dispatch minecraft:criteria_trigger[villager_trade] to struct VillagerTrade {
 	item?: ItemPredicate,
 }
 
-dispatch minecraft:criteria_trigger[voluntary_exile] to LocationCriterion
+dispatch minecraft:criteria_trigger[voluntary_exile] to Location
