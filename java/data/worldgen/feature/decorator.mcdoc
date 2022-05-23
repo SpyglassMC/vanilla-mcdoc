@@ -1,6 +1,7 @@
 use super::super::CarveStep
 use super::super::HeightmapType
 use super::super::HeightProvider
+use super::super::IntProvider
 use super::super::UniformInt
 
 struct ConfiguredDecorator {
@@ -28,7 +29,10 @@ dispatch minecraft:decorator_config[chance,lava_lake] to struct ChanceConfig {
 dispatch minecraft:decorator_config[water_lake] to ChanceConfig
 
 dispatch minecraft:decorator_config[count,count_multilayer,fire,glowstone] to struct CountConfig {
-	count: UniformInt<int @ -10..128, int @ 0..128>, // TODO IntProvider({ min: 0, max: 256 })
+	count: (
+		#[until=1.17] UniformInt<int @ -10..128, int @ 0..128> |
+		#[since=1.17] IntProvider | // TODO ({ min: 0, max: 256 })|
+	),
 }
 
 dispatch minecraft:decorator_config[count_extra] to struct CountExtraConfig {
