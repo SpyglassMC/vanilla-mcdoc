@@ -1,3 +1,6 @@
+use super::loot::function::CopyNameSource
+use super::loot::function::EntityTarget
+
 type MinMaxBounds<T> = (
 	T |
 	struct {
@@ -17,10 +20,16 @@ type RandomValueBounds = (
 type RandomIntGenerator = (
 	int |
 	struct {
-		type?: ("uniform" | "binomial" | "constant"),
+		type?: RandomIntGeneratorType,
 		...minecraft:random_int_generator[[type]],
 	} |
 )
+
+enum(string) RandomIntGeneratorType {
+	Uniform = "uniform",
+	Binomial = "binomial",
+	Constant = "constant",
+}
 
 dispatch minecraft:random_int_generator[uniform,%none] to struct UniformIntGenerator {
 	min?: int,
@@ -36,4 +45,62 @@ dispatch minecraft:random_int_generator[constant] to struct ConstantIntGenerator
 	value: int,
 }
 
-type NumberProvider = () // TODO
+type NumberProvider = (
+	float |
+	struct {
+		type?: #[id=loot_number_provider_type] string,
+		...minecraft:number_provider[[type]],
+	} |
+)
+
+dispatch minecraft:number_provider[uniform,%none] to struct UniformIntGenerator {
+	min?: NumberProvider,
+	max?: NumberProvider,
+}
+
+dispatch minecraft:number_provider[binomial] to struct BinomialIntGenerator {
+	n: NumberProvider,
+	p: NumberProvider,
+}
+
+dispatch minecraft:number_provider[constant] to struct ConstantIntGenerator {
+	value: float,
+}
+
+dispatch minecraft:number_provider[score] to struct ConstantIntGenerator {
+	target: ScoreProvider,
+	score: #[objective] string,
+	scale?: float,
+}
+
+type ScoreProvider = (
+	EntityTarget |
+	struct {
+		type: #[id=loot_score_provider_type] string,
+		...minecraft:score_provider[[type]],
+	} |
+)
+
+dispatch minecraft:score_provider[context] to struct ContextScoreProvider {
+	target: EntityTarget,
+}
+
+dispatch minecraft:score_provider[fixed] to struct FixedScoreProvider {
+	name: #[score_holder] string,
+}
+
+type NbtProvider = (
+	CopyNameSource |
+	struct {
+		type: #[id=loot_nbt_provider_type] string,
+		...minecraft:nbt_provider[[type]],
+	} |
+)
+
+dispatch minecraft:nbt_provider[context] to struct ContextNbtProvider {
+	target: CopyNameSource,
+}
+
+dispatch minecraft:nbt_provider[storage] to struct StorageNbtProvider {
+	source: #[id=storage] string,
+}

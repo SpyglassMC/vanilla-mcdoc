@@ -20,13 +20,76 @@ type UniformInt<Base, Spread> = (
 	} |
 )
 
-type IntProvider = () // TODO
-type FloatProvider = () // TODO
+type IntProvider = (
+	int |
+	struct {
+		type: #[id=int_provider_type] string,
+		value: minecraft:int_provider[[type]],
+	} |
+)
+
+dispatch minecraft:int_provider[constant] to struct ConstantIntProvider {
+	value: int,
+}
+
+dispatch minecraft:int_provider[uniform,biased_to_bottom] to struct UniformIntProvider {
+	min_inclusive: int,
+	max_inclusive: int,
+}
+
+dispatch minecraft:int_provider[clamped] to struct ClampedIntProvider {
+	...UniformIntProvider,
+	source: IntProvider,
+}
+
+type FloatProvider = (
+	float |
+	struct {
+		type: #[id=float_provider_type] string,
+		value: minecraft:float_provider[[type]],
+	} |
+)
+
+dispatch minecraft:float_provider[constant] to struct ConstantFloatProvider {
+	value: float,
+}
+
+dispatch minecraft:float_provider[uniform] to struct UniformFloatProvider {
+	min_inclusive: float,
+	max_exclusive: float,
+}
+
+dispatch minecraft:float_provider[clamped_normal] to struct ClampedNormalFloatProvider {
+	min: float,
+	max: float,
+	mean: float,
+	deviation: float,
+}
+
+dispatch minecraft:float_provider[trapezoid] to struct TrapezoidFloatProvider {
+	min: float,
+	max: float,
+	plateau: float,
+}
+
+type VerticalAnchor = (
+	struct {
+		absolute: int,
+	} |
+	struct {
+		above_bottom: int,
+	} |
+	struct {
+		below_top: int,
+	} |
+)
 
 struct HeightProvider {
-	type?: #[id="worldgen/height_provider_type"] string,
+	type?: #[id=height_provider_type] string,
 	...minecraft:height_provider[[type]],
 }
+
+dispatch minecraft:height_provider[%none] to VerticalAnchor
 
 dispatch minecraft:height_provider[constant] to struct ConstantHeightProvider {
 	value: VerticalAnchor,
@@ -45,9 +108,4 @@ dispatch minecraft:height_provider[biased_to_bottom,very_biased_to_bottom] to st
 dispatch minecraft:height_provider[trapezoid] to struct TrapezoidHeightProvider {
 	...UniformHeightProvider,
 	plateau?: int,
-}
-
-
-dispatch minecraft:height_provider[%none] to struct VerticalAnchor {
-	[("absolute" | "above_bottom" | "below_top")]: int,
 }
