@@ -24,18 +24,12 @@ struct ConfiguredCarver {
 				lava_state: BlockState,
 				barrier_state: BlockState,
 			},
-			// TODO
-			// [Switch]: ['pop', { push: 'type' }],
-			// [Case]: {
-			//	'minecraft:canyon': CanyonConfig,
-			//	'minecraft:cave': CaveConfig,
-			//	'minecraft:nether_cave': CaveConfig
-			//},
+			...minecraft:carver_config[[%parent.type]],
 		}
 	},
 }
 
-struct CanyonConfig {
+dispatch minecraft:carver_config[canyon] to struct CanyonConfig {
     vertical_rotation: FloatProvider,
     shape: struct {
       distance_factor: FloatProvider,
@@ -47,7 +41,7 @@ struct CanyonConfig {
     }
   }
 
-struct CaveConfig {
+dispatch minecraft:carver_config[cave,nether_cave] to struct CaveConfig {
     horizontal_radius_multiplier: FloatProvider,
     vertical_radius_multiplier: float,
     floor_level: FloatProvider, // TODO min: -1, max: 1

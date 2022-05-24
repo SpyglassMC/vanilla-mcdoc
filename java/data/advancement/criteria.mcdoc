@@ -107,6 +107,12 @@ dispatch minecraft:criteria_trigger[entity_killed_player] to struct EntityKilled
 	killing_blow?: DamageSourcePredicate,
 }
 
+#[since=1.18]
+dispatch minecraft:criteria_trigger[fall_from_height] to struct FallFromHeight {
+	start_position?: LocationPredicate,
+	distance?: DistancePredicate,
+}
+
 dispatch minecraft:criteria_trigger[filled_bucket] to struct FilledBucket {
 	...CriterionBase,
 	item?: ItemPredicate,
@@ -165,8 +171,12 @@ dispatch minecraft:criteria_trigger[location] to Location
 
 dispatch minecraft:criteria_trigger[nether_travel] to struct NetherTravel {
 	...CriterionBase,
+	#[since=1.18]
+	start_position?: LocationPredicate,
 	distance?: DistancePredicate,
+	#[until=1.18]
 	entered?: LocationPredicate,
+	#[until=1.18]
 	exited?: LocationPredicate,
 }
 
@@ -208,9 +218,10 @@ dispatch minecraft:criteria_trigger[recipe_unlocked] to struct RecipeUnlocked {
 	recipe: #[id=recipe] string,
 }
 
-dispatch minecraft:criteria_trigger[shot_crossbow] to struct ShotCrossbow {
-	...CriterionBase,
-	item?: ItemPredicate,
+#[since=1.18]
+dispatch minecraft:criteria_trigger[ride_entity_in_lava] to struct RideEntityInLava {
+	start_position?: LocationPredicate,
+	distance?: DistancePredicate,
 }
 
 #[until=1.16]
@@ -220,6 +231,11 @@ dispatch minecraft:criteria_trigger[safely_harvest_honey] to struct SafelyHarves
 		block?: #[id=block] string,
 		tag?: #[id(registry=block,tags=implicit)] string,
 	},
+	item?: ItemPredicate,
+}
+
+dispatch minecraft:criteria_trigger[shot_crossbow] to struct ShotCrossbow {
+	...CriterionBase,
 	item?: ItemPredicate,
 }
 
@@ -248,13 +264,13 @@ dispatch minecraft:criteria_trigger[target_hit] to struct TargetHit {
 	signal_strength?: MinMaxBounds<int>,
 }
 
+dispatch minecraft:criteria_trigger[tick] to CriterionBase
+
 #[since=1.16]
 dispatch minecraft:criteria_trigger[thrown_item_picked_up_by_entity] to struct ThrownItemPickedUpByEntity {
 	item?: ItemPredicate,
 	entity?: CompositeEntity,
 }
-
-dispatch minecraft:criteria_trigger[tick] to CriterionBase
 
 dispatch minecraft:criteria_trigger[used_ender_eye] to struct UsedEnderEye {
 	...CriterionBase,
