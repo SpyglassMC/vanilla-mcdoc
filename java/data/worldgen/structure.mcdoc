@@ -35,7 +35,6 @@ enum(string) MineshaftType {
 
 #[since=1.17]
 dispatch minecraft:structure_config[nether_fossil] to struct NetherFossil {
-	// TODO
 	height: HeightProvider
 }
 

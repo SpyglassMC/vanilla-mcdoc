@@ -1,9 +1,18 @@
+use super::super::IntProvider
+
 struct BlockStateProvider {
 	type: #[id="worldgen/block_state_provider_type"] string,
 	...minecraft:block_state_provider[[type]],
 }
 
-dispatch minecraft:block_state_provider[rotated_block_provider,simple_state_provider] to struct SimpleBlockStateProvider {
+#[since=1.17]
+dispatch minecraft:block_state_provider[randomized_int_state_provider] to struct RandomizedIntStateProvider {
+	property: string,
+	values: IntProvider<int>,
+	source: BlockStateProvider,
+}
+
+dispatch minecraft:block_state_provider[rotated_block_provider,simple_state_provider] to struct SimpleStateProvider {
 	state: BlockState,
 }
 

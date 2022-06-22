@@ -14,35 +14,41 @@ struct ConfiguredCarver {
 		#[since=1.17]
 		...struct {
 			y: HeightProvider,
-			yScale: FloatProvider, // TODO 
+			yScale: FloatProvider<float>,
 			lava_level: VerticalAnchor,
 			aquifers_enabled: boolean,
-			debug_settings?: struct {
-				debug_mode?: boolean,
-				air_state: BlockState,
-				water_state: BlockState,
-				lava_state: BlockState,
-				barrier_state: BlockState,
-			},
-			...minecraft:carver_config[[%parent.type]],
-		}
+			debug_settings?: CarverDebugSettings,
+		},
+		...minecraft:carver_config[[%parent.type]],
 	},
 }
 
-dispatch minecraft:carver_config[canyon] to struct CanyonConfig {
-    vertical_rotation: FloatProvider,
-    shape: struct {
-      distance_factor: FloatProvider,
-      thickness: FloatProvider,
-      width_smoothness: int @ 0..,
-      horizontal_radius_factor: FloatProvider,
-      vertical_radius_default_factor: float,
-      vertical_radius_center_factor: float,
-    }
-  }
+struct CarverDebugSettings{
+	debug_mode?: boolean,
+	air_state: BlockState,
+	water_state: BlockState,
+	lava_state: BlockState,
+	barrier_state: BlockState,
+}
 
+#[since=1.17]
+dispatch minecraft:carver_config[canyon] to struct CanyonConfig {
+	vertical_rotation: FloatProvider<float>,
+	shape: CanyonShape,
+}
+
+struct CanyonShape {
+	distance_factor: FloatProvider<float>,
+	thickness: FloatProvider<float>,
+	width_smoothness: int @ 0..,
+	horizontal_radius_factor: FloatProvider<float>,
+	vertical_radius_default_factor: float,
+	vertical_radius_center_factor: float,
+}
+
+#[since=1.17]
 dispatch minecraft:carver_config[cave,nether_cave] to struct CaveConfig {
-    horizontal_radius_multiplier: FloatProvider,
-    vertical_radius_multiplier: float,
-    floor_level: FloatProvider, // TODO min: -1, max: 1
-  }
+	horizontal_radius_multiplier: FloatProvider<float>,
+	vertical_radius_multiplier: FloatProvider<float>,
+	floor_level: FloatProvider<float @ -1..1>,
+}

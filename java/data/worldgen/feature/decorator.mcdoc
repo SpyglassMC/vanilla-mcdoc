@@ -31,7 +31,7 @@ dispatch minecraft:decorator_config[water_lake] to ChanceConfig
 dispatch minecraft:decorator_config[count,count_multilayer,fire,glowstone] to struct CountConfig {
 	count: (
 		#[until=1.17] UniformInt<int @ -10..128, int @ 0..128> |
-		#[since=1.17] IntProvider | // TODO ({ min: 0, max: 256 })|
+		#[since=1.17] IntProvider<int @ 0..256> |
 	),
 }
 

@@ -1,27 +1,29 @@
 use super::super::HeightmapType
 use super::super::UniformInt
 use super::block_state_provider::BlockStateProvider
+use super::super::IntProvider
 
 dispatch minecraft:feature_config[tree] to struct TreeConfig {
-	max_water_depth: int,
-	ignore_vines: boolean,
+	#[until=1.17]
+	max_water_depth?: int,
+	ignore_vines?: boolean,
+	#[until=1.17]
 	heightmap: HeightmapType,
+	#[since=1.17]
+	force_dirt?: boolean,
 	minimum_size: FeatureSize,
+	#[since=1.17]
+	dirt_provider: BlockStateProvider,
+	#[since=1.17]
+	sapling_provider: BlockStateProvider,
 	trunk_provider: BlockStateProvider,
+	#[until=1.17]
 	leaves_provider: BlockStateProvider,
+	#[since=1.17]
+	foliage_provider: BlockStateProvider,
 	trunk_placer: TrunkPlacer,
 	foliage_placer: FoliagePlacer,
 	decorators: [TreeDecorator],
-}
-
-struct BlockPlacer {
-	type: #[id="worldgen/block_placer_type"] string,
-	...minecraft:block_placer[[type]],
-}
-
-dispatch minecraft:block_placer[column_placer] to struct ColumnPlacer {
-	min_size: int,
-	extra_size: int,
 }
 
 struct FeatureSize {
@@ -53,10 +55,22 @@ struct TrunkPlacer {
 	...minecraft:trunk_placer[[type]],
 }
 
+#[since=1.17]
+dispatch minecraft:trunk_placer[bending_trunk_placer] to struct BendingTrunkPlacer {
+	bend_length: IntProvider<int @ 1..64>,
+	min_height_for_leaves?: int @ 1..,
+}
+
 struct FoliagePlacer {
 	type: #[id="worldgen/foliage_placer_type"] string,
-	radius: UniformInt<int @ 0..8, int @ 0..8>,
-	offset: UniformInt<int @ 0..8, int @ 0..8>,
+	radius: (
+		#[until=1.17] UniformInt<int @ 0..8, int @ 0..8> |
+		#[since=1.17] IntProvider<int @ 0..16> |
+	),
+	offset: (
+		#[until=1.17] UniformInt<int @ 0..8, int @ 0..8> |
+		#[since=1.17] IntProvider<int @ 0..16> |
+	),
 	...minecraft:foliage_placer[[type]],
 }
 
@@ -70,15 +84,30 @@ dispatch minecraft:foliage_placer[
 }
 
 dispatch minecraft:foliage_placer[mega_pine_foliage_placer] to struct MegaPineFoliagePlacer {
-	crown_height: UniformInt<int @ 0..16, int @ 0..8>,
+	crown_height: (
+		#[until=1.17] UniformInt<int @ 0..16, int @ 0..8> |
+		#[since=1.17] IntProvider<int @ 0..24> |
+	),
 }
 
 dispatch minecraft:foliage_placer[pine_foliage_placer] to struct MegaPineFoliagePlacer {
-	height: UniformInt<int @ 0..16, int @ 0..8>,
+	height: (
+		#[until=1.17] UniformInt<int @ 0..16, int @ 0..8> |
+		#[since=1.17] IntProvider<int @ 0..24> |
+	),
+}
+
+#[since=1.17]
+dispatch minecraft:foliage_placer[random_spread_foliage_placer] to struct RandomSpreadFoliagePlacer {
+	foliage_height: IntProvider<int @ 1..512>,
+	leaf_placement_attempts: int @ 0..256,
 }
 
 dispatch minecraft:foliage_placer[spruce_foliage_placer] to struct MegaPineFoliagePlacer {
-	trunk_height: UniformInt<int @ 0..16, int @ 0..8>,
+	trunk_height: (
+		#[until=1.17] UniformInt<int @ 0..16, int @ 0..8> |
+		#[since=1.17] IntProvider<int @ 0..24> |
+	),
 }
 
 struct TreeDecorator {
