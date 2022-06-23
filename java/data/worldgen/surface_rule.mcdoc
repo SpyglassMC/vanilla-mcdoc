@@ -1,5 +1,5 @@
-use super::super::worldgen::CaveSurface
-use super::super::worldgen::VerticalAnchor
+use super::CaveSurface
+use super::VerticalAnchor
 use ::java::server::util::block_state::BlockState
 
 struct SurfaceRule {
