@@ -65,6 +65,7 @@ dispatch minecraft:loot_pool_entry[alternatives,group,sequence] to struct Compos
 struct LootFunction {
 	function: #[id=loot_function_type] string,
 	...minecraft:loot_function[[function]],
+	conditions?: [LootCondition],
 }
 
 struct LootCondition {
