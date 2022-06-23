@@ -16,6 +16,7 @@ struct ConfiguredCarver {
 			y: HeightProvider,
 			yScale: FloatProvider<float>,
 			lava_level: VerticalAnchor,
+			#[until=1.18]
 			aquifers_enabled: boolean,
 			debug_settings?: CarverDebugSettings,
 		},

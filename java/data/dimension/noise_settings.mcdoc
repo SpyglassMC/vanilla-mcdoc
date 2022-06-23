@@ -11,10 +11,12 @@ type NoiseGeneratorSettingsRef = (
 struct NoiseGeneratorSettings {
 	default_block: BlockState,
 	default_fluid: BlockState,
+	#[until=1.18]
 	bedrock_roof_position: int @ -20..276,
+	#[until=1.18]
 	bedrock_floor_position: int @ -20..276,
 	sea_level: int @ 0..255,
-	#[since=1.17]
+	#[since=1.17] #[until=1.18]
 	min_surface_level: int,
 	disable_mob_generation: boolean,
 	#[since=1.17]
@@ -22,10 +24,15 @@ struct NoiseGeneratorSettings {
 		noise_caves_enabled: boolean,
 		noodle_caves_enabled: boolean,
 		aquifers_enabled: boolean,
+		#[until=1.18]
 		deepslate_enabled: boolean,
 		ore_veins_enabled: boolean,
 	},
+	#[until=1.18]
+	legacy_random_source: boolean,
 	noise: NoiseSettings,
+	#[since=1.18]
+	surface_rule: SurfaceRule,
 	structures: StructureSettings,
 }
 
@@ -37,12 +44,18 @@ struct NoiseSettings {
 	),
 	size_horizontal: int @ 1..4,
 	size_vertical: int @ 1..4,
+	#[until=1.18]
 	density_factor: double,
+	#[until=1.18]
 	density_offset: double,
 	sampling: NoiseSamplingSettings,
 	top_slide: NoiseSlideSettings,
 	bottom_slide: NoiseSlideSettings,
+	#[since=1.18]
+	terrain_shaper: TerrainShaper,
+	#[until=1.18]
 	simplex_surface_noise: boolean,
+	#[until=1.18]
 	random_density_offset?: boolean,
 	island_noise_override?: boolean,
 	amplified?: boolean,
@@ -59,6 +72,33 @@ struct NoiseSlideSettings {
 	target: int,
 	size: int @ 0..256,
 	offset: int,
+}
+
+struct TerrainShaper {
+	offset: TerrainSpline,
+	factor: TerrainSpline,
+	jaggedness: TerrainSpline,
+}
+
+type TerrainSpline = (
+	float |
+	struct {
+		coordinate: TerrainCoordinate,
+		points: [TerrainSplinePoint],
+	} |
+)
+
+enum(string) TerrainCoordinate {
+	Continents = "continents",
+	Erosion = "erosion",
+	Weirdness = "weirdness",
+	Ridges = "ridges",
+}
+
+struct TerrainSplinePoint {
+	location: float,
+	derivative: float,
+	value: TerrainSpline,
 }
 
 struct StructureSettings {

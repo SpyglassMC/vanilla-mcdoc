@@ -1,19 +1,24 @@
 use ::java::server::util::particle::Particle
 use super::carver::CarverRef
-use super::feature::ConfiguredFeatureRef
+use super::feature::PlacedFeatureRef
 
 struct Biome {
 	category: BiomeCategory,
+	#[until=1.18]
 	depth: float,
+	#[until=1.18]
 	scale: float,
 	temperature: float,
 	downfall: float,
 	precipitation: Precipication,
 	temperature_modifier?: TemperatureModifier,
+	#[until=1.18]
 	player_spawn_friendly?: boolean,
 	creature_spawn_probability?: float @ 0..1,
 	effects: BiomeEffects,
+	#[until=1.18]
 	surface_builder: ConfiguredSurfaceBuilderRef,
+	#[until=1.18]
 	starts: [ConfiguredStructureRef],
 	spawners: struct {
 		[MobCategory]: SpawnerData,
@@ -24,7 +29,10 @@ struct Biome {
 	carvers: struct {
 		[CarveStep]: [CarverRef],
 	},
-	features: [[ConfiguredFeatureRef]] @ ..10,
+	features: (
+		#[until=1.18] [[ConfiguredFeatureRef]] @ ..10 |
+		#[since=1.18] [[PlacedFeatureRef]] @ ..11 |
+	),
 }
 
 enum (string) BiomeCategory {
@@ -101,6 +109,7 @@ enum(string) MobCategory {
 	Monster = "monster",
 	Creature = "creature",
 	Ambient = "ambient",
+	#[since=1.18] Axolotls = "axolotls",
 	#[since=1.17] UndergroundWaterCreature = "underground_water_creature",
 	WaterCreature = "water_creature",
 	WaterAmbient = "water_ambient",

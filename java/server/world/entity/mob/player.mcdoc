@@ -1,5 +1,5 @@
 use ::java::server::util::inventory::InventoryItem
-use ::java::server::util::codec::GlobalPos
+use ::java::server::util::global_pos::GlobalPos
 use super::super::AnyEntity
 
 dispatch minecraft:entity[player] to struct Player {

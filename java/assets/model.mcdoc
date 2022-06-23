@@ -1,3 +1,5 @@
+use ::java::server::util::direction::Direction
+
 struct Model {
 	parent?: #[id=model] string,
 	ambientocclusion?: boolean,
@@ -48,15 +50,6 @@ struct ModelOverride {
 		[Predicates]: float,
 	},
 	model: #[id=model] string,
-}
-
-enum(string) Direction {
-	Down = "down",
-	Up = "up",
-	North = "north",
-	East = "east",
-	South = "south",
-	West = "west",
 }
 
 enum(string) Axis {

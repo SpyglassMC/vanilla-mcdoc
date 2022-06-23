@@ -1,0 +1,88 @@
+use super::ConfiguredFeatureRef
+use super::block_predicate::BlockPredicate
+use super::super::CarveStep
+use super::super::IntProvider
+use super::super::HeightmapType
+use super::super::HeightProvider
+
+type PlacedFeatureRef = (
+	#[id="worldgen/placed_feature"] string |
+	PlacedFeature |
+)
+
+struct PlacedFeature {
+	feature: ConfiguredFeatureRef,
+	placement: [PlacedmentModifier],
+}
+
+struct PlacementModifier {
+	type: #[id="worldgen/placement_modifier_type"] string,
+	...minecraft:placement_modifier[[type]],
+}
+
+dispatch minecraft:placement_modifier[block_predicate_filter] to struct BlockPredicateFilter {
+	predicate: BlockPredicate,
+}
+
+dispatch minecraft:placement_modifier[carving_mask] to struct CarvingMaskModifier {
+	step: CarveStep,
+}
+
+dispatch minecraft:placement_modifier[rarity_filter] to struct RarityFilter {
+	chance: int @ 0..,
+}
+
+dispatch minecraft:placement_modifier[count,count_on_every_layer] to struct CountModifier {
+	count: IntProvider<int @ 0..256>,
+}
+
+dispatch minecraft:placement_modifier[noise_threshold_count] to struct NoiseThresholdCountModifier {
+	noise_level: float,
+	below_noise: int,
+	above_noise: int,
+}
+
+dispatch minecraft:placement_modifier[noise_based_count] to struct NoiseBasedCountModifier {
+	noise_to_count_ratio: int,
+	noise_factor: float,
+	noise_offset?: float,
+}
+
+dispatch minecraft:placement_modifier[environment_scan] to struct EnvironmentScanModifier {
+	direction_of_search: SearchDirection,
+	max_steps: int @ 1..32,
+	target_condition: BlockPredicate,
+	allowed_search_condition: BlockPredicate,
+}
+
+enum(string) SearchDirection {
+	Up = "up",
+	Down = "down",
+}
+
+dispatch minecraft:placement_modifier[heightmap] to struct HeightmapModifier {
+	heightmap: HeightmapType,
+}
+
+dispatch minecraft:placement_modifier[height_range] to struct HeightRangeModifier {
+	height: HeightProvider,
+}
+
+dispatch minecraft:placement_modifier[random_offset] to struct RandomOffsetModifier {
+	xz_spread: IntProvider<int @ -16..16>,
+	y_spread: IntProvider<int @ -16..16>,
+}
+
+dispatch minecraft:placement_modifier[surface_relative_threshold_filter] to struct SurfaceRelativeThresholdFilter {
+	heightmap: HeightmapType,
+	min_inclusive?: int,
+	max_inclusive?: int,
+}
+
+dispatch minecraft:placement_modifier[surface_water_depth_filter] to struct SurfaceWaterDepthFilter {
+	max_water_depth: int,
+}
+
+struct BlockPredicate {
+
+}

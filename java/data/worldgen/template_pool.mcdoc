@@ -25,7 +25,10 @@ enum(string) Projection {
 
 dispatch minecraft:template_pool_element[feature_pool_element] to struct FeatureElement {
 	...ElementBase,
-	feature: #[id="worldgen/configured_feature"] string,
+	feature: (
+		#[until=1.18] #[id="worldgen/configured_feature"] string |
+		#[since=1.18] #[id="worldgen/placed_feature"] string |
+	),
 }
 
 dispatch minecraft:template_pool_element[

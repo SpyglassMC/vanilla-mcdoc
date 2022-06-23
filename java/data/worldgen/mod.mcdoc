@@ -12,6 +12,11 @@ enum(string) CarveStep {
 	Liquid = "liquid",
 }
 
+enum(string) CaveSurface {
+	Floor = "floor",
+	Ceiling = "ceiling",
+}
+
 type UniformInt<Base, Spread> = (
 	Base |
 	struct {

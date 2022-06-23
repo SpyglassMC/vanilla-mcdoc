@@ -1,3 +1,5 @@
+use ::java::server::util::global_pos::GlobalPos
+
 struct MemoryModule {
 	/// The amount of ticks before this memory is removed
 	#[since=1.16]

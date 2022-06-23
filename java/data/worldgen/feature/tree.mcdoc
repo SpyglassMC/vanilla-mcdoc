@@ -14,7 +14,7 @@ dispatch minecraft:feature_config[tree] to struct TreeConfig {
 	minimum_size: FeatureSize,
 	#[since=1.17]
 	dirt_provider: BlockStateProvider,
-	#[since=1.17]
+	#[since=1.17] #[until=1.18]
 	sapling_provider: BlockStateProvider,
 	trunk_provider: BlockStateProvider,
 	#[until=1.17]

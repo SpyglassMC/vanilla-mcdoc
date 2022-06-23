@@ -1,0 +1,8 @@
+type InclusiveRange<T> = (
+	T |
+	[T] @ 2 |
+	struct {
+		min_inclusive: T,
+		max_inclusive: T,
+	} |
+)

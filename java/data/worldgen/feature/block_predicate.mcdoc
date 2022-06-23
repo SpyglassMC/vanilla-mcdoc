@@ -1,0 +1,48 @@
+use ::java::server::util::block_state::BlockState
+use ::java::server::util::direction::Direction
+
+struct BlockPredicate {
+	type: #[id=block_predicate_type] string,
+	...minecraft:block_predicate[[type]],
+}
+
+struct PredicateOffset {
+	offset?: 
+}
+
+dispatch minecraft:block_predicate[all_of,any_of] to struct CombiningPredicate {
+	predicates: [BlockPredicate],
+}
+
+dispatch minecraft:block_predicate[has_sturdy_face] to struct HasSturdyFacePredicate {
+	...PredicateOffset,
+	direction: Direction,
+}
+
+dispatch minecraft:block_predicate[inside_world_bounds] to struct InsideWorldBoundsPredicate {
+	...PredicateOffset,
+}
+
+dispatch minecraft:block_predicate[matching_block_tag] to struct MatchingBlockTagPredicate {
+	...PredicateOffset,
+	tag: #[id(registry=block,tags=implicit)] string,
+}
+
+dispatch minecraft:block_predicate[matching_blocks] to struct MatchingBlocksPredicate {
+	...PredicateOffset,
+	blocks: [#[id=block] string],
+}
+
+dispatch minecraft:block_predicate[matching_fluids] to struct MatchingFluidsPredicate {
+	...PredicateOffset,
+	fluids: [#[id=fluid] string],
+}
+
+dispatch minecraft:block_predicate[not] to struct NotPredicate {
+	predicate: BlockPredicate,
+}
+
+dispatch minecraft:block_predicate[would_survive] to struct WouldSurvivePredicate {
+	...PredicateOffset,
+	state: BlockState,
+}

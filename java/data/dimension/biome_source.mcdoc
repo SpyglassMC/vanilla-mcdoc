@@ -13,19 +13,35 @@ dispatch minecraft:biome_source[fixed] to struct Fixed {
 }
 
 dispatch minecraft:biome_source[multi_noise] to struct MultiNoise {
+	#[until=1.18]
 	seed: long,
-	#[since="1.16.2"]
-	temperature_noise: NoiseParameters,
-	#[since="1.16.2"]
-	humidity_noise: NoiseParameters,
-	#[since="1.16.2"]
-	altitude_noise: NoiseParameters,
-	#[since="1.16.2"]
-	weirdness_noise: NoiseParameters,
-	biomes: [struct {
-		biome: #[id="worldgen/biome"] string,
-		parameters: ClimateParameters,
-	}],
+	...(
+		struct {
+			preset: (
+				#[until=1.18] MultiNoisePreset |
+				#[until=1.18] #[id] MultiNoisePreset |
+			),
+		} |
+		struct {
+			#[since="1.16.2"] #[until=1.18]
+			temperature_noise: NoiseParameters,
+			#[since="1.16.2"] #[until=1.18]
+			humidity_noise: NoiseParameters,
+			#[since="1.16.2"] #[until=1.18]
+			altitude_noise: NoiseParameters,
+			#[since="1.16.2"] #[until=1.18]
+			weirdness_noise: NoiseParameters,
+			biomes: [struct {
+				biome: #[id="worldgen/biome"] string,
+				parameters: ClimateParameters,
+			}],
+		} |
+	),
+}
+
+enum(string) MultiNoisePreset {
+	Nether = "nether",
+	#[since=1.18] Overworld = "overworld",
 }
 
 struct NoiseParameters {
@@ -36,8 +52,15 @@ struct NoiseParameters {
 struct ClimateParameters {
 	temperature: float @ -2..2,
 	humidity: float @ -2..2,
+	#[until=1.18]
 	altitude: float @ -2..2,
+	#[since=1.18]
+	continentalness: float @ -2..2,
+	#[since=1.18]
+	erosion: float @ -2..2,
 	weirdness: float @ -2..2,
+	#[since=1.18]
+	depth: float @ -2..2,
 	offset: float @ 0..1,
 }
 
@@ -45,6 +68,7 @@ dispatch minecraft:biome_source[the_end] to struct TheEnd {
 	seed: long,
 }
 
+#[until=1.18]
 dispatch minecraft:biome_source[vanilla_layered] to struct VanillaLayered {
 	seed: long,
 	large_biomes?: boolean,

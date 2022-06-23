@@ -1,4 +1,5 @@
 use super::super::entity::AnyEntity
+use super::super::super::util::range::InclusiveRange
 
 dispatch minecraft:block[spawner] to struct Sign {
 	...super::BlockEntity,
@@ -47,17 +48,12 @@ struct SpawnerEntry {
 	/// Custom spawn rules
 	custom_spawn_rules: CustomSpawnRules,
 	/// The entity to spawn
-	entity: AnyEntity
+	entity: AnyEntity,
 }
 
 struct CustomSpawnRules {
 	/// The range of block light level required for the entity to spawn
-	block_light_limit: (int @ 0..15 | [int @ 0..15] @ 2 | LightLimitRange),
+	block_light_limit: InclusiveRange<int @ 0..15>,
 	/// The range of sky light level required for the entity to spawn
-	sky_light_limit: (int @ 0..15 | [int @ 0..15] @ 2 | LightLimitRange)
-}
-
-struct LightLimitRange {
-	max_inclusive: int @ 0..15,
-	min_inclusive: int @ 0..15
+	sky_light_limit: InclusiveRange<int @ 0..15>,
 }
