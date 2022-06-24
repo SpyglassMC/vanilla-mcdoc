@@ -1,0 +1,11 @@
+#[since="1.18.2"]
+struct RegionalCompliancies {
+	[string]: Notification,
+}
+
+struct Notification {
+	delay?: long,
+	period: long,
+	title: string,
+	message: string,
+}

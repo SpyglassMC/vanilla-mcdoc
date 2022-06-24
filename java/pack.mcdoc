@@ -4,5 +4,16 @@ struct Pack {
 	pack: struct {
 		pack_format: int @ 1..,
 		description: Text,
-	}
+	},
+	#[since=1.19]
+	filter?: PackFilter,
+}
+
+struct PackFilter {
+	block: [BlockPattern],
+}
+
+struct BlockPattern {
+	namespace?: #[regex_pattern] string,
+	path?: #[regex_pattern] string,
 }
