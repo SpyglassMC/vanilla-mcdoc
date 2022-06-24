@@ -1,0 +1,107 @@
+type DensityFunctionRef = (
+	#[id="worldgen/density_function"] string |
+	NoiseRange |
+	DensityFunction |
+)
+
+type NoiseRange = float @ -1000000..1000000
+
+struct DensityFunction {
+	type: #[id="worldgen/density_function_type"] string,
+	...minecraft:density_function[[type]],
+}
+
+dispatch minecraft:density_function[
+	abs,
+	blend_density,
+	cache_2d,
+	cache_all_in_cell,
+	cache_once,
+	cube,
+	flat_cache,
+	half_negative,
+	interpolated,
+	quarter_negative,
+	shift,
+	shift_a,
+	shift_b,
+	slide,
+	square,
+	squeeze,
+] to struct OneArgumentFunction {
+	argument: DensityFunctionRef,
+}
+
+dispatch minecraft:density_function[
+	add,
+	max,
+	min,
+	mul,
+] to struct TwoArgumentFunction {
+	argument1: DensityFunctionRef,
+	argument1: DensityFunctionRef,
+}
+
+dispatch minecraft:density_function[clamp] to struct ClampFunction {
+	input: (NoiseRange | DensityFunction),
+	min: NoiseRange,
+	max: NoiseRange,
+}
+
+dispatch minecraft:density_function[constant] to struct ConstantFunction {
+	argument: NoiseRange,
+}
+
+dispatch minecraft:density_function[noise] to struct NoiseFunction {
+	noise: #[id="worldgen/noise"] string,
+	xz_scale: float,
+	y_scale: float,
+}
+
+dispatch minecraft:density_function[range_choice] to struct RangeChoiceFunction {
+	input: DensityFunctionRef,
+	min_inclusive: NoiseRange,
+	max_exclusive: NoiseRange,
+	when_in_range: DensityFunctionRef,
+	when_out_of_range: DensityFunctionRef,
+}
+
+dispatch minecraft:density_function[shifted_noise] to struct ShiftedNoiseFunction {
+	...NoiseFunction,
+	shift_x: DensityFunctionRef,
+	shift_y: DensityFunctionRef,
+	shift_z: DensityFunctionRef,
+}
+
+dispatch minecraft:density_function[terrain_shaper_spline] to struct TerrainShaperSplineFunction {
+	spline: SplineType,
+	min_value: NoiseRange,
+	max_value: NoiseRange,
+	continentalness: DensityFunctionRef,
+	erosion: DensityFunctionRef,
+	weirdness: DensityFunctionRef,
+}
+
+enum(string) SplineType {
+	Offset = "offset",
+	Factor = "factor",
+	Jaggedness = "jaggedness",
+}
+
+dispatch minecraft:density_function[weird_scaled_sampler] to struct WeirdScaledSamplerFunction {
+	rarity_value_mapper: RarityType,
+	noise: #[id="worldgen/noise"] string,
+	input: DensityFunctionRef,
+}
+
+enum(string) RarityType {
+	Type1 = "type_1",
+	Type2 = "type_2",
+}
+
+dispatch minecraft:density_function[y_clamped_gradient] to struct YClampedGradientFunction {
+	from_y: int @ -4064..4062,
+	to_y: int @ -4064..4062,
+	from_value: NoiseRange,
+	to_value: NoiseRange,
+}

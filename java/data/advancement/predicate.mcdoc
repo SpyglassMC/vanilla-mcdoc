@@ -44,7 +44,10 @@ struct LocationPredicate {
 		#[until=1.16] #[id=biome] string |
 		#[since=1.16] #[id="worldgen/biome"] string |
 	),
-	feature?: string,
+	feature?: (
+		#[until="1.18.2"] string |
+		#[since="1.18.2"] #[id="worldgen/configured_structure_feature"] string |
+	),
 	dimension?: #[id=dimension] string,
 	light?: struct {
 		light?: MinMaxBounds<int @ 0..15>,
@@ -56,7 +59,7 @@ struct LocationPredicate {
 }
 
 struct EntityPredicate {
-	type?: #[id(registry=entity_type,tags=allow)] string,
+	type?: #[id(registry=entity_type,tags=allowed)] string,
 	team?: #[team] string,
 	nbt?: #[nbt=TODO] string, // TODO
 	location?: LocationPredicate,

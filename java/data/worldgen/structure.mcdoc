@@ -1,4 +1,6 @@
 use super::HeightProvider
+use super::biome::MobCategory
+use super::biome::SpawnerData
 
 type ConfiguredStructureRef = (
 	#[id="worldgen/configured_structure_feature"] string |
@@ -8,6 +10,27 @@ type ConfiguredStructureRef = (
 struct ConfiguredStructure {
 	type: #[id="worldgen/structure_feature"] string,
 	config: minecraft:structure_config[[type]],
+	#[since="1.18.2"]
+	biomes: (
+		[#[id="worldgen/biome"] string] |
+		#[id(registry="worldgen/biome",tags=allowed)] string |
+	),
+	#[since="1.18.2"]
+	adapt_noise?: boolean,
+	#[since="1.18.2"]
+	spawn_overrides: struct {
+		[MobCategory]: SpawnOverride,
+	},
+}
+
+struct SpawnOverride {
+	bounding_box: BoundingBox,
+	spawns: SpawnerData,
+}
+
+enum(string) BoundingBox {
+	Piece = "piece",
+	Full = "full",
 }
 
 dispatch minecraft:structure_config[

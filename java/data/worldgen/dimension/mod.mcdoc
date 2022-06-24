@@ -31,15 +31,18 @@ struct DimensionType {
 	fixed_time?: int,
 	logical_height: (
 		#[until=1.17] int @ 0..256 |
-		#[since=1.17] int @ 0..4096 |
+		#[since=1.17] int @ 0..4064 |
 	),
 	#[since="1.16.2"]
 	effects: #[id] DimensionTypeEffects,
-	infiniburn: #[id(registry=block,tags=implicit)] string,
+	infiniburn: (
+		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |
+		#[since="1.18.2"] #[id(registry=block,tags=required)] string |
+	),
 	#[since=1.17]
-	min_y: int @ -2048..2047,
+	min_y: int @ -2032..2031, // TODO: divisible by 16
 	#[since=1.17]
-	height: int @ 0..4096,
+	height: int @ 16..4064, // TODO: divisible by 16
 }
 
 enum(string) DimensionTypeEffects {

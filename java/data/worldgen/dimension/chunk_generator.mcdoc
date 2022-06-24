@@ -1,4 +1,6 @@
 use super::super::noise_settings::NoiseGeneratorSettingsRef
+use super::super::noise_settings::StructureSettings
+use super::super::structure_set::StructureSetRef
 
 struct ChunkGenerator {
 	type: #[id="worldgen/chunk_generator"] string,
@@ -14,7 +16,10 @@ struct FlatGeneratorSettings {
 	lakes?: boolean,
 	features?: boolean,
 	layers: [FlatGeneratorLayer],
-	structures: StructureSettings,
+	structures: (
+		#[until="1.18.2"] StructureSettings |
+		#[since="1.18.2"] [StructureSetRef] |
+	),
 }
 
 struct FlatGeneratorLayer {

@@ -43,7 +43,10 @@ dispatch minecraft:surface_condition[stone_depth] to struct StoneDepthCondition 
 	offset: int,
 	surface_type: CaveSurface,
 	add_surface_depth: boolean,
+	#[until="1.18.2"]
 	add_surface_secondary_depth: boolean,
+	#[since="1.18.2"]
+	secondary_depth_range: int,
 }
 
 dispatch minecraft:surface_condition[vertical_gradient] to struct VerticalGradientCondition {

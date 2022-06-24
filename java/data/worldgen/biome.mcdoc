@@ -27,11 +27,17 @@ struct Biome {
 		[#[id=entity_type] string]: MobSpawnCost,
 	},
 	carvers: struct {
-		[CarveStep]: [CarverRef],
+		[CarveStep]: (
+			[CarverRef] |
+			#[since="1.18.2"] #[id(registry="worldgen/configured_carver",tags=allowed)] string |
+		),
 	},
 	features: (
 		#[until=1.18] [[ConfiguredFeatureRef]] @ ..10 |
-		#[since=1.18] [[PlacedFeatureRef]] @ ..11 |
+		#[since=1.18] [(
+			[PlacedFeatureRef] |
+			#[since=1.18.2] #[id(registry="worldgen/placed_feature",tags=allowed)] string |
+		)] @ ..11 |
 	),
 }
 

@@ -1,3 +1,6 @@
+use super::density_function::DensityFunctionRef
+use super::structure_set::ConcentricRingsPlacement
+use super::structure_set::RandomSpreadPlacement
 use ::java::server::util::block_state::BlockState
 
 type NoiseGeneratorSettingsRef = (
@@ -21,7 +24,9 @@ struct NoiseGeneratorSettings {
 	disable_mob_generation: boolean,
 	#[since=1.17]
 	...struct {
+		#[until="1.18.2"]
 		noise_caves_enabled: boolean,
+		#[until="1.18.2"]
 		noodle_caves_enabled: boolean,
 		aquifers_enabled: boolean,
 		#[until=1.18]
@@ -31,8 +36,11 @@ struct NoiseGeneratorSettings {
 	#[until=1.18]
 	legacy_random_source: boolean,
 	noise: NoiseSettings,
+	#[since="1.18.2"]
+	noise_router: NoiseRouter,
 	#[since=1.18]
 	surface_rule: SurfaceRule,
+	#[until="1.18.2"]
 	structures: StructureSettings,
 }
 
@@ -57,8 +65,12 @@ struct NoiseSettings {
 	simplex_surface_noise: boolean,
 	#[until=1.18]
 	random_density_offset?: boolean,
+	#[until="1.18.2"]
 	island_noise_override?: boolean,
+	#[until="1.18.2"]
 	amplified?: boolean,
+	#[since=1.18] #[until="1.18.2"]
+	large_biomes?: boolean,
 }
 
 struct NoiseSamplingSettings {
@@ -101,21 +113,26 @@ struct TerrainSplinePoint {
 	value: TerrainSpline,
 }
 
+struct NoiseRouter {
+	barrier: DensityFunctionRef,
+	fluid_level_floodedness: DensityFunctionRef,
+	fluid_level_spread: DensityFunctionRef,
+	lava: DensityFunctionRef,
+	vein_toggle: DensityFunctionRef,
+	vein_ridged: DensityFunctionRef,
+	vein_gap: DensityFunctionRef,
+	temperature: DensityFunctionRef,
+	vegetation: DensityFunctionRef,
+	continents: DensityFunctionRef,
+	erosion: DensityFunctionRef,
+	depth: DensityFunctionRef,
+	initial_density_without_jaggedness: DensityFunctionRef,
+	final_density: DensityFunctionRef,
+}
+
 struct StructureSettings {
-	stronghold?: StrongholdSettings,
+	stronghold?: ConcentricRingsPlacement,
 	structures: struct {
-		[#[id="worldgen/structure_feature"] string]: StructureFeatureSettings
+		[#[id="worldgen/structure_feature"] string]: RandomSpreadPlacement
 	}
-}
-
-struct StrongholdSettings {
-	distance: int @ 0..1023,
-	spread: int @ 0..1023,
-	count: int @ 1..4095,
-}
-
-struct StructureFeatureSettings {
-	spacing: int @ 0..4096,
-	separation: int @ 0..4096,
-	salt: int @ 0..,
 }
