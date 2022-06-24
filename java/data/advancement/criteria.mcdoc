@@ -25,9 +25,17 @@ type Location = (
 	#[since=1.16]
 	struct {
 		...CriterionBase,
+		#[until=1.19]
 		location?: LocationPredicate,
 	} |
 )
+
+#[since=1.19]
+dispatch minecraft:criteria_trigger[allay_drop_item_on_block] to struct AllayDropItemOnBlock {
+	...CriterionBase,
+	item?: ItemPredicate,
+	location?: LocationPredicate,
+}
 
 dispatch minecraft:criteria_trigger[bee_nest_destroyed] to struct BeeNestDestroyed {
 	...CriterionBase,
@@ -109,6 +117,7 @@ dispatch minecraft:criteria_trigger[entity_killed_player] to struct EntityKilled
 
 #[since=1.18]
 dispatch minecraft:criteria_trigger[fall_from_height] to struct FallFromHeight {
+	...CriterionBase,
 	start_position?: LocationPredicate,
 	distance?: DistancePredicate,
 }
@@ -145,8 +154,16 @@ dispatch minecraft:criteria_trigger[item_durability_changed] to struct ItemDurab
 
 #[since=1.16]
 dispatch minecraft:criteria_trigger[item_used_on_block] to struct ItemUsedOnBlock {
+	...CriterionBase,
 	item?: ItemPredicate,
 	location?: LocationPredicate,
+}
+
+#[since=1.19]
+dispatch minecraft:criteria_trigger[kill_mob_near_sculk_catalyst] to struct KillMobNearSculkCatalyst {
+	...CriterionBase,
+	entity?: EntityPredicate,
+	killing_blow?: DamageSourcePredicate,
 }
 
 dispatch minecraft:criteria_trigger[killed_by_crossbow] to struct KilledByCrossbow {
@@ -192,6 +209,7 @@ dispatch minecraft:criteria_trigger[placed_block] to struct PlacedBlock {
 
 #[since=1.16]
 dispatch minecraft:criteria_trigger[player_generates_container_loot] to struct PlayerGeneratesContainerLoot {
+	...CriterionBase,
 	loot_table: #[id=loot_table] string,
 }
 
@@ -203,6 +221,7 @@ dispatch minecraft:criteria_trigger[player_hurt_entity] to struct PlayerHurtEnti
 
 #[since=1.16]
 dispatch minecraft:criteria_trigger[player_interacted_with_entity] to struct PlayerInteractedWithEntity {
+	...CriterionBase,
 	item?: ItemPredicate,
 	entity?: CompositeEntity,
 }
@@ -220,6 +239,7 @@ dispatch minecraft:criteria_trigger[recipe_unlocked] to struct RecipeUnlocked {
 
 #[since=1.18]
 dispatch minecraft:criteria_trigger[ride_entity_in_lava] to struct RideEntityInLava {
+	...CriterionBase,
 	start_position?: LocationPredicate,
 	distance?: DistancePredicate,
 }
@@ -268,6 +288,14 @@ dispatch minecraft:criteria_trigger[tick] to CriterionBase
 
 #[since=1.16]
 dispatch minecraft:criteria_trigger[thrown_item_picked_up_by_entity] to struct ThrownItemPickedUpByEntity {
+	...CriterionBase,
+	item?: ItemPredicate,
+	entity?: CompositeEntity,
+}
+
+#[since=1.16]
+dispatch minecraft:criteria_trigger[thrown_item_picked_up_by_player] to struct ThrownItemPickedUpByPlayer {
+	...CriterionBase,
 	item?: ItemPredicate,
 	entity?: CompositeEntity,
 }

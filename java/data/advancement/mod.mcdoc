@@ -44,6 +44,8 @@ struct Criterion {
 }
 
 enum(string) Trigger {
+	#[since=1.19] AllayDropItemOnBlock = "allay_drop_item_on_block",
+	#[since=1.19] AvoidVibration = "avoid_vibration",
 	BeeNestDestroyed = "bee_nest_destroyed",
 	BredAnimals = "bred_animals",
 	BrewedPotion = "brewed_potion",
@@ -65,6 +67,7 @@ enum(string) Trigger {
 	InventoryChanged = "inventory_changed",
 	ItemDurabilityChanged = "item_durability_changed",
 	#[since=1.16] ItemUsedOnBlock = "item_used_on_block",
+	#[since=1.19] KillMobNearSculkCatalyst = "kill_mob_near_sculk_catalyst",
 	KilledByCrossbow = "killed_by_crossbow",
 	Levitation = "levitation",
 	#[since=1.17] LightningStrike = "lightning_strike",
@@ -86,6 +89,7 @@ enum(string) Trigger {
 	TameAnimal = "tame_animal",
 	#[since=1.16] TargetHit = "target_hit",
 	#[since=1.16] ThrownItemPickedUpByEntity = "thrown_item_picked_up_by_entity",
+	#[since=1.19] ThrownItemPickedUpByPlayer = "thrown_item_picked_up_by_player",
 	Tick = "tick",
 	UsedEnderEye = "used_ender_eye",
 	UsedTotem = "used_totem",

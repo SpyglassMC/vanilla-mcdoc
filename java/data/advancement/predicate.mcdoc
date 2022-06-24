@@ -44,10 +44,13 @@ struct LocationPredicate {
 		#[until=1.16] #[id=biome] string |
 		#[since=1.16] #[id="worldgen/biome"] string |
 	),
+	#[until=1.19]
 	feature?: (
 		#[until="1.18.2"] string |
 		#[since="1.18.2"] #[id="worldgen/configured_structure_feature"] string |
 	),
+	#[since=1.19]
+	structure?: #[id="worldgen/structure"] string,
 	dimension?: #[id=dimension] string,
 	light?: struct {
 		light?: MinMaxBounds<int @ 0..15>,
@@ -60,6 +63,8 @@ struct LocationPredicate {
 
 struct EntityPredicate {
 	type?: #[id(registry=entity_type,tags=allowed)] string,
+	#[since=1.19]
+	type_specific?: TypeSpecificPredicate,
 	team?: #[team] string,
 	nbt?: #[nbt=TODO] string, // TODO
 	location?: LocationPredicate,
@@ -74,30 +79,56 @@ struct EntityPredicate {
 	equipment?: struct {
 		[EquipmentSlot]: ItemPredicate,
 	},
+	#[until=1.19]
 	player?: PlayerPredicate,
 	#[since=1.16]
 	vehicle?: EntityPredicate,
-	#[since=1.16]
+	#[since=1.16] #[until=1.19]
 	targeted_entity?: EntityPredicate,
-	#[since=1.16]
-	fishing_hook?: struct {
-		in_open_water?: boolean,
-	},
+	#[since=1.16] #[until=1.19]
+	fishing_hook?: FishingHookPredicate,
+	#[since=1.17]
+	lightning_bolt?: LightningBoltPredicate,
+	#[until=1.19]
 	catType?: string,
 	effects?: struct {
 		[#[id=mob_effect] string]: MobEffectPredicate,
 	},
 }
 
-struct DistancePredicate {
-	x?: MinMaxBounds<float>,
-	y?: MinMaxBounds<float>,
-	z?: MinMaxBounds<float>,
-	absolute?: MinMaxBounds<float>,
-	horizontal?: MinMaxBounds<float>,
+struct TypeSpecificPredicate {
+	type: SpecificType,
+	...minecraft:type_specific_predicate[[type]],
 }
 
-struct PlayerPredicate {
+enum(string) SpecificType {
+	Any = "any",
+	Cat = "cat",
+	FishingHook = "fishing_hook",
+	Frog = "frog",
+	Lightning = "lightning",
+	Player = "player",
+	Slime = "slime",
+}
+
+dispatch minecraft:type_specific_predicate[cat] to struct CatPredicate {
+	variant?: #[id=cat_variant] string,
+}
+
+dispatch minecraft:type_specific_predicate[fishing_hook] to struct FishingHookPredicate {
+	in_open_water?: boolean,
+}
+
+dispatch minecraft:type_specific_predicate[frog] to struct FrogPredicate {
+	variant?: #[id=frog_variant] string,
+}
+
+dispatch minecraft:type_specific_predicate[lightning] to struct LightningBoltPredicate {
+	blocks_set_on_fire?: MinMaxBounds<int>,
+	entity_struck?: EntityPredicate,
+}
+
+dispatch minecraft:type_specific_predicate[player] to struct PlayerPredicate {
 	gamemode?: GameMode,
 	level?: MinMaxBounds<int>,
 	advancements?: struct {
@@ -109,6 +140,18 @@ struct PlayerPredicate {
 		[#[id=recipe] string]: boolean,
 	},
 	stats?: [StatisticPredicate],
+}
+
+dispatch minecraft:type_specific_predicate[slime] to struct SlimePredicate {
+	size?: MinMaxBounds<int>,
+}
+
+struct DistancePredicate {
+	x?: MinMaxBounds<float>,
+	y?: MinMaxBounds<float>,
+	z?: MinMaxBounds<float>,
+	absolute?: MinMaxBounds<float>,
+	horizontal?: MinMaxBounds<float>,
 }
 
 enum(string) GameMode {

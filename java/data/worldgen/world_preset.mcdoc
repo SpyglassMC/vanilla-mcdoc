@@ -1,0 +1,13 @@
+use super::dimension::Dimension
+use super::dimension::chunk_generator::FlatGeneratorSettings
+
+struct WorldPreset {
+	dimensions: struct {
+		[#[id(registry=dimension,definition=true)] string]: Dimension,
+	},
+}
+
+struct FlatGeneratorPreset {
+	display: #[id=item] string,
+	settings: FlatGeneratorSettings,
+}

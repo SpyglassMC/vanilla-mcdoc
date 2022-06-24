@@ -12,6 +12,20 @@ enum(string) CarveStep {
 	Liquid = "liquid",
 }
 
+enum(string) DecorationStep {
+	RawGeneration = "raw_generation",
+	Lakes = "lakes",
+	LocalModifications = "local_modifications",
+	UndergroundStructures = "underground_structures",
+	SurfaceStructures = "surface_structures",
+	Strongholds = "strongholds",
+	UndergroundOres = "underground_ores",
+	UndergroundDecoration = "underground_decoration",
+	FluidSprings = "fluid_springs",
+	VegetalDecoration = "vegetal_decoration",
+	TopLayerModification = "top_layer_modification"
+}
+
 enum(string) CaveSurface {
 	Floor = "floor",
 	Ceiling = "ceiling",
@@ -114,4 +128,12 @@ dispatch minecraft:height_provider[biased_to_bottom,very_biased_to_bottom] to st
 dispatch minecraft:height_provider[trapezoid] to struct TrapezoidHeightProvider {
 	...UniformHeightProvider,
 	plateau?: int,
+}
+
+#[since=1.18]
+dispatch minecraft:height_provider[weighted_list] to struct WeightListHeightProvider {
+	distribution: [struct {
+		weight: int,
+		data: HeightProvider,
+	}],
 }

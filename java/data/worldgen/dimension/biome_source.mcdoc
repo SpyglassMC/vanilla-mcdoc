@@ -68,6 +68,7 @@ struct ClimateParameters {
 }
 
 dispatch minecraft:biome_source[the_end] to struct TheEnd {
+	#[until=1.19]
 	seed: long,
 }
 

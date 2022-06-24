@@ -77,13 +77,27 @@ dispatch minecraft:feature_config[delta_feature] to struct DeltaConfig {
 }
 
 dispatch minecraft:feature_config[disk,ice_patch] to struct DiskConfig {
+	#[until=1.19]
 	state: BlockState,
+	#[since=1.19]
+	state_provider: RuleBasedBlockStateProvider,
 	radius: (
 		#[until=1.17] UniformInt<int @ 0..4, int @ 0..4> |
 		#[since=1.17] IntProvider<int @ 0..8> |
 	),
 	half_height: int @ 0..4,
+	#[until=1.19]
 	targets: [BlockState],
+	#[since=1.19]
+	target: BlockPredicate,
+}
+
+struct RuleBasedBlockStateProvider {
+	fallback: BlockStateProvider,
+	rules: [struct {
+		if_true: BlockPredicate,
+		then: BlockStateProvider,
+	}]
 }
 
 dispatch minecraft:feature_config[emerald_ore] to struct EmeraldOreConfig {
@@ -238,11 +252,13 @@ struct GeodeLayerSettings {
 struct GeodeCrackSettings {
 	generate_crack_chance?: float @ 0..1,
 	base_crack_size?: float @ 0..5,
-	crack_point_offset?: int @ 0..10,  
+	crack_point_offset?: int @ 0..10,
 }
 
 #[since=1.17]
-dispatch minecraft:feature_config[glow_lichen] to struct GlowLichenConfig {
+dispatch minecraft:feature_config[glow_lichen,multiface_growth] to struct MultifaceGrowthConfig {
+	#[since=1.19]
+	block?: #[id] MultifaceBlock,
 	search_range?: int @ 1..64,
 	chance_of_spreading?: float @ 0..1,
 	can_place_on_floor?: boolean,
@@ -253,6 +269,11 @@ dispatch minecraft:feature_config[glow_lichen] to struct GlowLichenConfig {
 		#[since=1.18] [#[id=block] string] |
 		#[since="1.18.2"] #[id(registry=block,tags=allowed)] string |
 	),
+}
+
+enum(string) MultifaceBlock {
+	GlowLichen = "glow_lichen",
+	SculkVein = "sculk_vein",
 }
 
 #[since=1.17] #[until=1.18]
@@ -384,6 +405,17 @@ dispatch minecraft:feature_config[root_system] to struct RootSystemConfig {
 	#[since=1.18]
 	allowed_tree_position: BlockPredicate,
 	feature: FeatureRef
+}
+
+#[since=1.19]
+dispatch minecraft:feature_config[sculk_patch] to struct SculkPatchConfig {
+	charge_count: int @ 1..32,
+	amount_per_charge: int @ 1..500,
+	spread_attempts: int @ 1..64,
+	growth_rounds: int @ 0..8,
+	spread_rounds: int @ 0..8,
+	extra_rare_growths: IntProvider<int>,
+	catalyst_chance: float @ 0..1,
 }
 
 dispatch minecraft:feature_config[sea_pickle] to struct SeaPickleConfig {

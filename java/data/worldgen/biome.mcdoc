@@ -1,8 +1,10 @@
 use ::java::server::util::particle::Particle
 use super::carver::CarverRef
 use super::feature::PlacedFeatureRef
+use super::structure::StructureRef
 
 struct Biome {
+	#[until=1.19]
 	category: BiomeCategory,
 	#[until=1.18]
 	depth: float,
@@ -19,7 +21,7 @@ struct Biome {
 	#[until=1.18]
 	surface_builder: ConfiguredSurfaceBuilderRef,
 	#[until=1.18]
-	starts: [ConfiguredStructureRef],
+	starts: [StructureRef],
 	spawners: struct {
 		[MobCategory]: SpawnerData,
 	},

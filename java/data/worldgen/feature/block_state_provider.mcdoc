@@ -53,5 +53,5 @@ dispatch minecraft:block_state_provider[weighted_state_provider] to struct Weigh
 	entries: [struct {
 		weight: int @ 1..,
 		data: BlockState,
-	}]
+	}],
 }

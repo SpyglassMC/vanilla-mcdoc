@@ -11,6 +11,11 @@ struct ConfiguredCarver {
 	type: #[id="worldgen/carver"] string,
 	config: struct {
 		probability: float @ 0..1,
+		#[since=1.19]
+		replaceable?: (
+			[#[id=block] string] |
+			#[id(registry=block,tags=allowed)] string |
+		),
 		#[since=1.17]
 		...struct {
 			y: HeightProvider,

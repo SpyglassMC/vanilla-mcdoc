@@ -8,7 +8,7 @@ struct Dimension {
 
 type DimensionTypeRef = (
 	#[id=dimension_type] string |
-	struct {
+	#[until=1.19] struct {
 		name: #[id=(registry=dimension_type,definition=true)] string,
 		...DimensionType,
 	} |
@@ -43,6 +43,10 @@ struct DimensionType {
 	min_y: int @ -2032..2031, // TODO: divisible by 16
 	#[since=1.17]
 	height: int @ 16..4064, // TODO: divisible by 16
+	#[since=1.19]
+	monster_spawn_light_level: IntProvider<int @ 0..15>,
+	#[since=1.19]
+	monster_spawn_block_light_limit: int @ 0..15,
 }
 
 enum(string) DimensionTypeEffects {

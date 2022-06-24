@@ -2,6 +2,7 @@ use super::super::HeightmapType
 use super::super::UniformInt
 use super::block_state_provider::BlockStateProvider
 use super::super::IntProvider
+use ::java::server::util::direction::Direction
 
 dispatch minecraft:feature_config[tree] to struct TreeConfig {
 	#[until=1.17]
@@ -21,6 +22,8 @@ dispatch minecraft:feature_config[tree] to struct TreeConfig {
 	leaves_provider: BlockStateProvider,
 	#[since=1.17]
 	foliage_provider: BlockStateProvider,
+	#[since=1.19]
+	root_placer?: RootPlacer,
 	trunk_placer: TrunkPlacer,
 	foliage_placer: FoliagePlacer,
 	decorators: [TreeDecorator],
@@ -47,6 +50,38 @@ dispatch minecraft:feature_size[three_layers_feature_size] to struct ThreeLayers
 	upper_size?: int @ 0..16,
 }
 
+struct RootPlacer {
+	type: #[id="worldgen/root_placer_type"] string,
+	root_provider: BlockStateProvider,
+	trunk_offset_y: IntProvider<int>,
+	above_root_placement?: AboveRootPlacement,
+	...minecraft:root_placer[[type]],
+}
+
+struct AboveRootPlacement {
+	above_root_provider: BlockStateProvider,
+	above_root_placement_chance: float @ 0..1,
+}
+
+dispatch minecraft:root_placer[mangrove_root_placer] to struct MangroveRootPlacer {
+	mangrove_root_placement: MangroveRootPlacement,
+}
+
+struct MangroveRootPlacement {
+	max_root_width: int @ 1..12,
+	max_root_length: int @ 1..64,
+	random_skew_chance: float @ 0..1,
+	can_grow_through: (
+		[#[id=block] string] |
+		#[id(registry=block,tags=allowed)] string |
+	),
+	muddy_roots_in: (
+		[#[id=block] string] |
+		#[id(registry=block,tags=allowed)] string |
+	),
+	muddy_roots_provider: BlockStateProvider,
+}
+
 struct TrunkPlacer {
 	type: #[id="worldgen/trunk_placer_type"] string,
 	base_height: int @ 0..32,
@@ -59,6 +94,17 @@ struct TrunkPlacer {
 dispatch minecraft:trunk_placer[bending_trunk_placer] to struct BendingTrunkPlacer {
 	bend_length: IntProvider<int @ 1..64>,
 	min_height_for_leaves?: int @ 1..,
+}
+
+#[since=1.19]
+dispatch minecraft:trunk_placer[upwards_branching_trunk_placer] to struct UpwardsBranchingTrunkPlacer {
+	extra_branch_steps: IntProvider<int @ 1..>,
+	extra_branch_length: IntProvider<int @ 0..>,
+	place_branch_per_log_probability: float @ 0..1,
+	can_grow_through: (
+		[#[id=block] string] |
+		#[id(registry=block,tags=allowed)] string |
+	),
 }
 
 struct FoliagePlacer {
@@ -119,10 +165,24 @@ dispatch minecraft:tree_decorator[alter_ground] to struct AlterGroundTreeDecorat
 	provider: BlockStateProvider,
 }
 
+dispatch minecraft:tree_decorator[attached_to_leaves] to struct AttachedToLeavesTreeDecorator {
+	probability: float @ 0..1,
+	exclusion_radius_xz: int @ 0..16,
+	exclusion_radius_y: int @ 0..16,
+	required_empty_blocks: int @ 1..16,
+	block_provider: BlockStateProvider,
+	directions: [Direction],
+}
+
 dispatch minecraft:tree_decorator[beehive] to struct BeehiveTreeDecorator {
 	probability: float @ 0..1,
 }
 
 dispatch minecraft:tree_decorator[cocoa] to struct CocoaTreeDecorator {
+	probability: float @ 0..1,
+}
+
+dispatch minecraft:tree_decorator[leave_vine] to struct LeaveVineTreeDecorator {
+	#[since=1.19]
 	probability: float @ 0..1,
 }

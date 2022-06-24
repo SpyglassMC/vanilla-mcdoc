@@ -1,4 +1,6 @@
+use super::dimension::biome_source::ClimateParameters
 use super::density_function::DensityFunctionRef
+use super::density_function::CubicSpline
 use super::structure_set::ConcentricRingsPlacement
 use super::structure_set::RandomSpreadPlacement
 use ::java::server::util::block_state::BlockState
@@ -38,6 +40,8 @@ struct NoiseGeneratorSettings {
 	noise: NoiseSettings,
 	#[since="1.18.2"]
 	noise_router: NoiseRouter,
+	#[since=1.19]
+	spawn_target: [ClimateParameters],
 	#[since=1.18]
 	surface_rule: SurfaceRule,
 	#[until="1.18.2"]
@@ -87,30 +91,9 @@ struct NoiseSlideSettings {
 }
 
 struct TerrainShaper {
-	offset: TerrainSpline,
-	factor: TerrainSpline,
-	jaggedness: TerrainSpline,
-}
-
-type TerrainSpline = (
-	float |
-	struct {
-		coordinate: TerrainCoordinate,
-		points: [TerrainSplinePoint],
-	} |
-)
-
-enum(string) TerrainCoordinate {
-	Continents = "continents",
-	Erosion = "erosion",
-	Weirdness = "weirdness",
-	Ridges = "ridges",
-}
-
-struct TerrainSplinePoint {
-	location: float,
-	derivative: float,
-	value: TerrainSpline,
+	offset: CubicSpline,
+	factor: CubicSpline,
+	jaggedness: CubicSpline,
 }
 
 struct NoiseRouter {
@@ -126,6 +109,7 @@ struct NoiseRouter {
 	continents: DensityFunctionRef,
 	erosion: DensityFunctionRef,
 	depth: DensityFunctionRef,
+	ridges: DensityFunctionRef,
 	initial_density_without_jaggedness: DensityFunctionRef,
 	final_density: DensityFunctionRef,
 }

@@ -73,7 +73,10 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 }
 
 dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
-	destination?: string, // TODO
+	destination?: (
+		#[until=1.9] string |
+		#[since=1.19] #[id(registry="worldgen/structure",tags=implicit)] string |
+	),
 	decoration?: MapDecoration,
 	zoom?: int,
 	search_radius?: int,
@@ -227,6 +230,11 @@ dispatch minecraft:loot_function[set_enchantments] to struct SetEnchantments {
 		[#[id=enchantment] string]: NumberProvider,
 	},
 	add?: boolean,
+}
+
+#[since=1.19]
+dispatch minecraft:loot_function[set_instrument] to struct SetInstrument {
+	options: #[id(registry=instrument,tags=required)] string,
 }
 
 dispatch minecraft:loot_function[set_loot_table] to struct SetLootTable {

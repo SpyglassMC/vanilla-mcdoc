@@ -53,21 +53,21 @@ type NumberProvider = (
 	} |
 )
 
-dispatch minecraft:number_provider[uniform,%none] to struct UniformIntGenerator {
+dispatch minecraft:number_provider[uniform,%none] to struct UniformNumberProvider {
 	min?: NumberProvider,
 	max?: NumberProvider,
 }
 
-dispatch minecraft:number_provider[binomial] to struct BinomialIntGenerator {
+dispatch minecraft:number_provider[binomial] to struct BinomialNumberProvider {
 	n: NumberProvider,
 	p: NumberProvider,
 }
 
-dispatch minecraft:number_provider[constant] to struct ConstantIntGenerator {
+dispatch minecraft:number_provider[constant] to struct ConstantNumberProvider {
 	value: float,
 }
 
-dispatch minecraft:number_provider[score] to struct ConstantIntGenerator {
+dispatch minecraft:number_provider[score] to struct ScoreNumberProvider {
 	target: ScoreProvider,
 	score: #[objective] string,
 	scale?: float,

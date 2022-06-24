@@ -16,10 +16,10 @@ struct FlatGeneratorSettings {
 	lakes?: boolean,
 	features?: boolean,
 	layers: [FlatGeneratorLayer],
-	structures: (
-		#[until="1.18.2"] StructureSettings |
-		#[since="1.18.2"] [StructureSetRef] |
-	),
+	#[until="1.18.2"]
+	structures: StructureSettings,
+	#[since="1.18.2"]
+	structure_overrides: [StructureSetRef],
 }
 
 struct FlatGeneratorLayer {
@@ -28,6 +28,7 @@ struct FlatGeneratorLayer {
 }
 
 dispatch minecraft:chunk_generator[noise] to struct Noise {
+	#[until=1.19]
 	seed: long,
 	settings: NoiseGeneratorSettingsRef,
 	biome_source: BiomeSource,

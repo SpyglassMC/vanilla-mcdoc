@@ -25,6 +25,10 @@ dispatch minecraft:template_processor[block_ignore] to struct BlockIgnore {
 
 dispatch minecraft:template_processor[block_rot] to struct BlockRot {
 	integrity: float @ 0..1,
+	rottable_blocks?: (
+		[#[id=block] string] |
+		#[id(registry=block,tags=allowed)] string |
+	),
 }
 
 dispatch minecraft:template_processor[gravity] to struct Gravity {
