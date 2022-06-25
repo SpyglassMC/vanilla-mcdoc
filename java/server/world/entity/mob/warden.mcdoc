@@ -1,17 +1,23 @@
+use ::java::util::game_event::VibrationListener
+
 #[since=1.19]
 dispatch minecraft:entity[warden] to struct Warden {
-    ...super::MobBase,
+	...super::MobBase,
 	/// Anger management of the warden
 	anger: AngerManagement,
+	/// The vibration listener of the warden
+	listener: VibrationListener,
 }
 
 struct AngerManagement {
+	/// List of suspects that have angered the warden
 	suspects: [Suspect],
 }
 
 struct Suspect {
-    /// The level of anger that will decrease by 1 every second
-    anger: int @ 1..150,
-    #[uuid]
-    uuid: int[] @ 4,
+	/// The level of anger that will decrease by 1 every second
+	anger: int @ 1..150,
+	/// The UUID of this suspect
+	#[uuid]
+	uuid: int[] @ 4,
 }

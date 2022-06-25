@@ -1,0 +1,44 @@
+struct VibrationListener {
+	/// The source of this vibration listener
+	source: PositionSource,
+	/// The range in blocks where vibrations can be detected
+	range: int @ 1..,
+	/// The event that is being received, if any
+	event?: ReceivingEvent,
+	/// The distance in blocks to the event that is being received
+	event_distance?: float @ 0.0..,
+	/// The delay in ticks until the event reaches this listener
+	event_delay?: int @ 1..,
+}
+
+struct ReceivingEvent {
+	/// The game event type
+	game_event: #[id=game_event] string,
+	/// The distance in blocks to the source
+	distance: float @ 0..,
+	/// The origin of the event
+	pos: [float] @ 3,
+	/// The UUID of the source entity of the event, if one exists
+	source?: #[uuid] [int] @ 4,
+	/// The UUID of the owner of the projectile, if one exists
+	projectile_owner?: #[uuid] [int] @ 4,
+}
+
+struct PositionSource {
+	/// The type of the position source
+	type: #[id=position_source_type] string,
+	...minecraft:position_source[[type]],
+}
+
+dispatch minecraft:position_source[block] to struct BlockPositionSource {
+	/// The block position of the source
+	pos: [int] @ 3,
+}
+
+dispatch minecraft:position_source[entity] to struct EntityPositionSource {
+	/// The UUID of the source entity
+	#[uuid]
+	source_entity: [int] @ 4,
+	/// The Y offset from the entity's feet to the source position
+	y_offset?: float,
+}

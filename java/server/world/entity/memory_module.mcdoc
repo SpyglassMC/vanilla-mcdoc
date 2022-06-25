@@ -6,6 +6,11 @@ struct MemoryModule {
 	ttl: long,
 }
 
+dispatch minecraft:memory_module[%unknown] to UnitMemory {
+	/// The unit value
+	value: struct {},
+}
+
 dispatch minecraft:memory_module[
 	home,
 	job_site,
