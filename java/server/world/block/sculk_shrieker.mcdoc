@@ -1,0 +1,7 @@
+use ::java::util::game_event::VibrationListener
+
+#[since=1.19]
+dispatch minecraft:block[sculk_shrieker] to struct SculkShrieker {
+	warning_level: int,
+	listener: VibrationListener,
+}
