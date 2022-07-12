@@ -1,4 +1,5 @@
 use chunk_generator::ChunkGenerator
+use super::IntProvider
 
 #[since=1.16]
 struct Dimension {

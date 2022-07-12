@@ -5,6 +5,7 @@ use super::super::util::RandomIntGenerator
 use super::super::util::NumberProvider
 use ::java::server::util::inventory::EquipmentSlot
 use ::java::server::util::color::ColorString
+use ::java::server::util::text::Text
 
 dispatch minecraft:loot_function[apply_bonus] to struct ApplyBonus {
 	enchantment: #[id=enchantment] string,

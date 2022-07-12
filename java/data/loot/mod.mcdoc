@@ -42,7 +42,7 @@ struct LootPoolEntryBase {
 	conditions?: [LootCondition],
 }
 
-struct LootPoolEntrySingleton<Name> {
+type LootPoolEntrySingleton<Name> = struct {
 	name: Name,
 	weight?: int @ 1..,
 	quality?: int,
