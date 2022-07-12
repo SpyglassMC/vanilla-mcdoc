@@ -1,3 +1,5 @@
+use ::java::server::util::SlottedItem
+
 dispatch minecraft:block[hopper] to struct Hopper {
 	...super::BlockEntity,
 	/// The name of the container

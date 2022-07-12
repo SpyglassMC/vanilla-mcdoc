@@ -1,5 +1,6 @@
-use ::java::server::util::inventory::InventoryItem
-use ::java::server::util::global_pos::GlobalPos
+use ::java::server::util::GlobalPos
+use ::java::server::util::InventoryItem
+use ::java::server::util::SlottedItem
 use super::super::AnyEntity
 
 dispatch minecraft:entity[player] to struct Player {

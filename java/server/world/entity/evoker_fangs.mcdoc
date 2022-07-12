@@ -1,4 +1,4 @@
-dispatch minecraft:entity[eye_of_ender] to struct EvokerFangs {
+dispatch minecraft:entity[evoker_fangs] to struct EvokerFangs {
 	/// The number of ticks until the fangs pop out of the ground
 	Warmup: int,
 	/// The owner of the fangs

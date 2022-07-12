@@ -15,10 +15,10 @@ struct ProjectileBase {
 	LeftOwner: boolean,
 }
 
-#[until=1.16]
 dispatch minecraft:entity[llama_spit] to struct LlamaSpit {
 	...ProjectileBase,
 	/// The owner of the spit
+	#[since=1.16]
 	Owner: OwnerUuid,
 }
 
@@ -28,6 +28,3 @@ struct OwnerUuid {
 	/// The lower bits of the owner's UUID
 	OwnerUUIDLeast: long
 }
-
-#[since=1.16]
-dispatch minecraft:entity[llama_spit] to ProjectileBase

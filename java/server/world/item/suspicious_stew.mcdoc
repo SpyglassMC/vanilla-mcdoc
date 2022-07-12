@@ -1,4 +1,4 @@
-use ::java::server::util::effect::EffectId
+use ::java::server::util::EffectId
 
 /// A suspicious stew item
 struct SuspiciousStew {

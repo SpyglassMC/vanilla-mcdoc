@@ -1,3 +1,5 @@
+use ::java::server::util::ColorByte
+
 struct Tamable {
 	...super::Breedable,
 	/// The UUID of the owner
@@ -16,7 +18,7 @@ dispatch minecraft:entity[cat] to struct Cat {
 	#[until=1.19]
 	CatType: CatType,
 	/// The cat's collar color, present for stray cats
-	CollarColor: Color,
+	CollarColor: ColorByte,
 	#[since=1.19]
 	variant: #[id=cat_variant] string,
 }
@@ -66,5 +68,5 @@ dispatch minecraft:entity[wolf] to struct Wolf {
 	#[until=1.16]
 	Angry: boolean,
 	/// The wolf's collar color, present for wild wolfs
-	CollarColor: Color,
+	CollarColor: ColorByte,
 }

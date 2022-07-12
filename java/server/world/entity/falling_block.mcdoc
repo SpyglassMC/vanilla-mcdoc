@@ -1,3 +1,5 @@
+use ::java::server::util::BlockState
+
 dispatch minecraft:entity[falling_block] to struct FallingBlock {
 	/// The NBT data for the placed block
 	TileEntityData: minecraft:block[[BlockState.Name]],

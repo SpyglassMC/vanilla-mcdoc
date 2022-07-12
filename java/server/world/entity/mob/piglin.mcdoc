@@ -1,3 +1,5 @@
+use ::java::server::util::InventoryItem
+
 struct PiglinBase {
 	...super::MobBase,
 	/// Whether the piglin will not transform to a zombified piglin when it is in the Overword

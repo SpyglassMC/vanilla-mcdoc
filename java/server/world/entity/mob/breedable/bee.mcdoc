@@ -1,7 +1,7 @@
 dispatch minecraft:entity[bee] to struct Bee {
 	...super::Breedable,
 	#[since=1.16]
-	...super::NeutralMob,
+	...super::super::NeutralMob,
 	/// The position of the bee's hive
 	HivePos: HivePos,
 	/// The position of the flower the bee is circling

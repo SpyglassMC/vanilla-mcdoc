@@ -1,3 +1,5 @@
+use ::java::server::util::InventoryItem
+
 dispatch minecraft:entity[item] to struct Item {
 	/// The number of ticks the item has been alive
 	Age: short,

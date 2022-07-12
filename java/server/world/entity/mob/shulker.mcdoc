@@ -1,3 +1,5 @@
+use ::java::server::util::color::ColorInt
+
 dispatch minecraft:entity[shulker] to struct Shulker {
 	...super::MobBase,
 	/// Whether the shulker is peeking

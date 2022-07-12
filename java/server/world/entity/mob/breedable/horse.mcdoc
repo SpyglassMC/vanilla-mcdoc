@@ -1,4 +1,5 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::util::InventoryItem
+use ::java::server::util::SlottedItem
 
 dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	...super::Breedable,

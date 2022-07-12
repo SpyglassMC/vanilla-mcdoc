@@ -1,4 +1,6 @@
-use ::java::server::util::effect::EffectId
+use ::java::server::util::BannerPattern
+use ::java::server::util::ColorInt
+use ::java::server::util::EffectId
 
 dispatch minecraft:block[beacon] to struct Beacon {
 	...super::BlockEntity,
@@ -19,7 +21,7 @@ struct Pattern {
 	Pattern: BannerPattern,
 }
 
-enum(int) NoneId {
-	#[until=1.16] None = 0,
-	#[since=1.16] None = -1,
-}
+type NoneId = (
+	#[until=1.16] 0 |
+	#[since=1.16] -1 |
+)

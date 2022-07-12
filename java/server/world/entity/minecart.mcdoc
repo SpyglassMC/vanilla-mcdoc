@@ -1,5 +1,7 @@
 use super::super::block::spawner::SpawnPotential
 use super::super::entity::AnyEntity
+use ::java::server::util::BlockState
+use ::java::server::util::SlottedItem
 
 dispatch minecraft:entity[minecart] to struct Minecart {
 	...super::EntityBase,

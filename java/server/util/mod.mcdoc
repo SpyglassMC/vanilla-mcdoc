@@ -1,0 +1,12 @@
+// Some aliases for common utils.
+
+type BannerPattern = banner_pattern::BannerPattern
+type BlockState = block_state::BlockState
+type ColorByte = color::ColorByte
+type ColorInt = color::ColorInt
+type ColorString = color::ColorString
+type EffectId = effect::EffectId
+type GlobalPos = global_pos::GlobalPos
+type InventoryItem = inventory::InventoryItem
+type PotionEffect = effect::PotionEffect
+type SlottedItem = inventory::SlottedItem

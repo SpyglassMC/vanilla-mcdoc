@@ -146,18 +146,18 @@ dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 }
 
 dispatch minecraft:hover_event[show_entity] to struct ShowEntityHoverEvent {
-	#[deprecated=1.16]
-	value?: struct {
-		name?: string,
-		type?: string,
-		id?: string,
-	},
-	#[since=1.16]
-	value?: struct {
-		name?: Text,
-		type?: #[id=entity_type] string,
-		id?: #[uuid] string,
-	},
+	value?: (
+		#[deprecated=1.16] struct {
+			name?: string,
+			type?: string,
+			id?: string,
+		} |
+		#[since=1.16] struct {
+			name?: Text,
+			type?: #[id=entity_type] string,
+			id?: #[uuid] string,
+		} |
+	),
 }
 
 enum(string) Keybind {

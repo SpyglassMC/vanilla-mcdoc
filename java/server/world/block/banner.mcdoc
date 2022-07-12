@@ -1,3 +1,6 @@
+use ::java::server::util::BannerPattern
+use ::java::server::util::ColorInt
+
 dispatch minecraft:block[
 	white_banner,
 	orange_banner,

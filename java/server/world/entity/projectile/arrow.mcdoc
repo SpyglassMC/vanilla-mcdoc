@@ -1,6 +1,7 @@
 use ::java::server::util::block_state::BlockState
 use ::java::server::util::effect::PotionEffect
 use ::java::server::util::inventory::InventoryItem
+use super::ProjectileBase
 
 struct ArrowBase {
 	...ProjectileBase,

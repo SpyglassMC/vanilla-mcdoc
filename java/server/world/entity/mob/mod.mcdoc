@@ -1,3 +1,5 @@
+use ::java::server::util::attribute::AttributeName
+use ::java::server::util::attribute::Operation
 use ::java::server::util::inventory::InventoryItem
 use ::java::server::util::effect::PotionEffect
 use ::java::server::util::inventory::EquipmentSlot
@@ -34,8 +36,6 @@ struct LivingEntity {
 	NoAI: boolean,
 	/// The team to join when the mob is spawned
 	Team: string,
-	/// The mob's brain
-	Brain: Brain,
 }
 
 /// Base NBT for all mobs
