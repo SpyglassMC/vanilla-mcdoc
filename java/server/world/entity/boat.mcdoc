@@ -15,6 +15,8 @@ enum(string) BoatType {
 	DarkOak = "dark_oak",
 	#[since=1.19]
 	Mangrove = "mangrove",
+	#[since="1.19.3"]
+	Mangrove = "bamboo",
 }
 
 #[since=1.19]

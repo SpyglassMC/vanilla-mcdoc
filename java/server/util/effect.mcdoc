@@ -48,4 +48,6 @@ enum(byte) EffectId {
 	DolphinsGrace = 30,
 	BadOmen = 31,
 	HeroOfTheVillage = 32,
+	#[since=1.19]
+	Darkness = 33,
 }

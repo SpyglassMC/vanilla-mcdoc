@@ -4,29 +4,29 @@ use ::java::server::util::SlottedItem
 dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	...super::Breedable,
 	/// Unknown use  
-	/// Remains `0` even if the horse was bred
+	/// Remains `0` even if the mob was bred
 	Bred: boolean,
-	/// Whether the horse is eating a haystack
+	/// Whether the mob is eating a haystack
 	EatingHaystack: boolean,
-	/// Whether the horse has been tamed
+	/// Whether the mob has been tamed
 	Tame: boolean,
-	/// Higher values make the horse easier to tame  
+	/// Higher values make the mob easier to tame  
 	/// Increases with feeding
 	Temper: int @ 0..100,
-	/// UUID of the player who tamed the horse
+	/// UUID of the player who tamed the mob
 	#[until=1.16] #[uuid]
 	OwnerUUID: string,
-	/// UUID of the player who tamed the horse
+	/// UUID of the player who tamed the mob
 	#[since=1.16] #[uuid]
 	Owner: int[] @ 4,
-	/// The armor item of the horse
-	ArmorItem: InventoryItem,
-	/// The saddle item of the horse
+	/// The saddle item of the mob
 	SaddleItem: InventoryItem,
 }
 
 dispatch minecraft:entity[horse] to struct Horse {
 	...HorseBase,
+	/// The armor item of the horse
+	ArmorItem: InventoryItem,
 	/// The variant of the horse
 	Variant: int,
 }
@@ -45,4 +45,12 @@ dispatch minecraft:entity[skeleton_horse] to struct SkeletonHorse {
 	SkeletonTrap: boolean,
 	/// How many ticks the skeleton horse trap has been alive
 	SkeletonTrapTime: int,
+}
+
+dispatch minecraft:entity[camel] to struct Camel {
+	...HorseBase,
+	/// Whether the camel is sitting
+	IsSitting: boolean,
+	/// The tick when the camel started changing its pose
+	LastPoseTick: long
 }

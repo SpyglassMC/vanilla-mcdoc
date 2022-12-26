@@ -43,3 +43,8 @@ dispatch minecraft:block[dispenser,dropper] to struct Container9 {
 	/// The items in this container, with slots from 0 to 8
 	Items: [SlottedItem] @ 0..9,
 }
+
+dispatch minecraft:block[chiseled_bookshelf] to struct Container6 {
+	/// The items in this container, with slots from 0 to 5
+	Items: [SlottedItem] @ 0..9,
+}
