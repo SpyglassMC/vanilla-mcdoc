@@ -1,0 +1,7 @@
+use ::java::server::util::SlottedItem
+
+dispatch minecraft:block[chiseled_bookshelf] to struct ChiseledBookshelf {
+	...super::BlockEntity,
+	/// The items in the chiseled bookshelf, with slots from 0 to 5
+	Items: [SlottedItem] @ 0..6,
+}
