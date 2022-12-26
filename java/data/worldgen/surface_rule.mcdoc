@@ -3,7 +3,7 @@ use super::VerticalAnchor
 use ::java::server::util::block_state::BlockState
 
 struct SurfaceRule {
-	type: #[id=worldgen/material_rule] string,
+	type: #[id="worldgen/material_rule"] string,
 	...minecraft:surface_rule[[type]],
 }
 
@@ -21,16 +21,16 @@ dispatch minecraft:surface_rule[sequence] to struct SequenceRule {
 }
 
 struct SurfaceCondition {
-	type: #[id=worldgen/material_condition] string,
+	type: #[id="worldgen/material_condition"] string,
 	...minecraft:surface_condition[[type]],
 }
 
 dispatch minecraft:surface_condition[biome] to struct BiomeCondition {
-	biome_is: [#[id=worldgen/biome] string],
+	biome_is: [#[id="worldgen/biome"] string],
 }
 
 dispatch minecraft:surface_condition[noise_threshold] to struct NoiseThresholdCondition {
-	noise: #[id=worldgen/noise] string,
+	noise: #[id="worldgen/noise"] string,
 	min_threshold: float,
 	max_threshold: float,
 }

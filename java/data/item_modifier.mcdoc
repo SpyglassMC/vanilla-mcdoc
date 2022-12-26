@@ -1,5 +1,4 @@
 use super::loot::LootFunction
 use super::loot::LootCondition
 
-#[since=1.17]
-type ItemModifier = (LootFunction | [LootFunction])
+type ItemModifier = #[since=1.17] (LootFunction | [LootFunction])

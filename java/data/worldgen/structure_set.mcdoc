@@ -47,8 +47,8 @@ dispatch minecraft:structure_placement[concentric_rings] to struct ConcentricRin
 	count: int @ 1..4095,
 	#[since=1.19]
 	preferred_biomes: (
-		[#[id="worldgen/biome"] string]
-		#[id(registry="worldgen/biome",tags=allowed)] string,
+		[#[id="worldgen/biome"] string] |
+		#[id(registry="worldgen/biome",tags=allowed)] string |
 	),
 }
 
