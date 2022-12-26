@@ -5,6 +5,7 @@ struct Recipe {
 
 dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 	group?: string, // TODO
+	category?: CraftingBookCategory,
 	pattern: [string @ 1..3] @ 1..3, // TODO
 	key: struct {
 		[string]: Ingredient,
@@ -14,12 +15,14 @@ dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 
 dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShapeless {
 	group?: string,
+	category?: CraftingBookCategory,
 	ingredients?: [Ingredient] @ 1..9,
 	result: ItemResult,
 }
 
 dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
 	group?: string,
+	category?: CookingBookCategory,
 	ingredient: Ingredient,
 	result: #[id=item] string,
 	experience?: float,
@@ -57,3 +60,16 @@ type IngredientValue = (
 		tag: #[id(registry=item,tags=implicit)] string,
 	} |
 )
+
+enum(string) CraftingBookCategory {
+	Building = "building",
+	Redstone = "redstone",
+	Equipment = "equipment",
+	Misc = "misc",
+}
+
+enum(string) CookingBookCategory {
+	Food = "food",
+	Blocks = "blocks",
+	Misc = "misc",
+}

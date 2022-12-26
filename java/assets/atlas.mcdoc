@@ -1,0 +1,50 @@
+#[since="1.19.3"]
+struct Atlas {
+	sources: [SpriteSource],
+}
+
+struct SpriteSource {
+	type: SpriteSourceType,
+	...minecraft:sprite_source[[type]],
+}
+
+enum(string) SpriteSourceType {
+	Single = "single",
+	Directory = "directory",
+	Filter = "filter",
+	Unstitch = "unstitch",
+}
+
+dispatch minecraft:sprite_source[single] to struct Single {
+	resource: #[id=texture] string,
+	sprite?: #[id(registry=texture,definition=true)] string,
+}
+
+dispatch minecraft:sprite_source[directory] to struct Directory {
+	source: string,
+	prefix: string,
+}
+
+dispatch minecraft:sprite_source[filter] to struct Filter {
+	pattern: FilterPattern,
+}
+
+struct FilterPattern {
+	namespace?: #[regex_pattern] string,
+	path?: #[regex_pattern] string,
+}
+
+dispatch minecraft:sprite_source[unstitch] to struct Unstitch {
+	resource: #[id=texture] string,
+	divisor_x?: double,
+	divisor_y?: double,
+	regions: [UnstitchRegion],
+}
+
+struct UnstitchRegion {
+	sprite: #[id(registry=texture,definition=true)] string,
+	x: double,
+	y: double,
+	width: double,
+	height: double,
+}

@@ -7,6 +7,8 @@ struct Pack {
 	},
 	#[since=1.19]
 	filter?: PackFilter,
+	#[since="1.19.3"]
+	features?: PackFeatures,
 }
 
 struct PackFilter {
@@ -16,4 +18,14 @@ struct PackFilter {
 struct BlockPattern {
 	namespace?: #[regex_pattern] string,
 	path?: #[regex_pattern] string,
+}
+
+struct PackFeatures {
+	enabled: [FeatureFlag],
+}
+
+enum(string) FeatureFlag {
+	Vanilla = "vanilla",
+	Bundle = "bundle",
+	Update1120 = "update_1_20",
 }
