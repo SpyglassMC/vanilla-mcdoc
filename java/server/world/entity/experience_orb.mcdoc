@@ -6,9 +6,9 @@ dispatch minecraft:entity[experience_orb] to struct ExperienceOrb {
 	Health: short,
 	/// The amount of experience the orb will give
 	Value: short,
-	/// The remaining number of times that the orb can be picked up.  
-	/// When the orb is picked up, the value decreases by 1.  
-	/// When multiple orbs are merged, their values are added up to result orb.  
+	/// The remaining number of times that the orb can be picked up.
+	/// When the orb is picked up, the value decreases by 1.
+	/// When multiple orbs are merged, their values are added up to result orb.
 	/// When the value reaches 0, the orb is depleted.
 	#[since=1.17]
 	Count: int,

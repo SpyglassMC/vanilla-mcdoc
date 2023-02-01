@@ -1,5 +1,5 @@
 #[since=1.19]
 struct GoatHorn {
-    ...super::ItemBase,
-    instrument: #[id=instrument] string,
+	...super::ItemBase,
+	instrument: #[id=instrument] string,
 }

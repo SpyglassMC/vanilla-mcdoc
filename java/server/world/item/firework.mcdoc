@@ -23,10 +23,10 @@ struct Explosion {
 	Trail: boolean,
 	/// The type of the explosion
 	Type: Type,
-	/// The colors of the explosion  
+	/// The colors of the explosion
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
 	Colors: #[color=composite_int] int[],
-	/// The colors of the explosion fade  
+	/// The colors of the explosion fade
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
 	FadeColors: #[color=composite_int] int[],
 }

@@ -3,14 +3,14 @@ use ::java::server::util::inventory::SlottedItem
 
 dispatch minecraft:entity[llama] to struct Llama {
 	...super::Breedable,
-	/// Unknown use  
+	/// Unknown use
 	/// Remains `0` even if the llama was bred
 	Bred: boolean,
 	/// Whether the llama is grazing
 	EatingHaystack: boolean,
 	/// Whether the llama has been tamed
 	Tame: boolean,
-	/// Higher values make the llama easier to tame  
+	/// Higher values make the llama easier to tame
 	/// Increases with feeding
 	Temper: int @ 0..100,
 	/// UUID of the player who tamed the llama

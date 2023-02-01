@@ -20,7 +20,7 @@ dispatch minecraft:block[
 	black_banner,
 ] to struct Banner {
 	...super::BlockEntity,
-	/// The name of the banner  
+	/// The name of the banner
 	/// Will show up on map markers
 	CustomName: #[text_component] string,
 	/// The patterns on the banner

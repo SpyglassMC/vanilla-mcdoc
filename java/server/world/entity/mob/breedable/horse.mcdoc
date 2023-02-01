@@ -3,14 +3,14 @@ use ::java::server::util::SlottedItem
 
 dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	...super::Breedable,
-	/// Unknown use  
+	/// Unknown use
 	/// Remains `0` even if the mob was bred
 	Bred: boolean,
 	/// Whether the mob is eating a haystack
 	EatingHaystack: boolean,
 	/// Whether the mob has been tamed
 	Tame: boolean,
-	/// Higher values make the mob easier to tame  
+	/// Higher values make the mob easier to tame
 	/// Increases with feeding
 	Temper: int @ 0..100,
 	/// UUID of the player who tamed the mob

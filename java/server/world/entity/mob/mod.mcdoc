@@ -10,12 +10,12 @@ struct LivingEntity {
 	Health: float,
 	/// How much absorption health the entity has
 	AbsorptionAmount: float,
-	/// Timer since the mob has been damaged  
+	/// Timer since the mob has been damaged
 	/// Counts down to zero
 	HurtTime: short,
 	/// Number of ticks since the mob was last damaged, from its creation
 	HurtByTimestamp: int,
-	/// Timer since the mob was marked as dead  
+	/// Timer since the mob was marked as dead
 	/// Counts down to zero
 	DeathTime: short,
 	/// Whether the mob will glide when it falls

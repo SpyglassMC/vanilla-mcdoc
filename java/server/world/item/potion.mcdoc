@@ -6,7 +6,7 @@ struct EffectItem {
 	CustomPotionEffects: [PotionEffect],
 	/// The name of the default potion effect
 	Potion: #[id=potion] string,
-	/// Color of this item  
+	/// Color of this item
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
 	CustomPotionColor: #[color=composite_int] int,
 }

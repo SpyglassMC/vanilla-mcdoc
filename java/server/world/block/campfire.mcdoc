@@ -3,10 +3,10 @@ use ::java::server::util::inventory::SlottedItem
 dispatch minecraft:block[campfire] to struct Campfire {
 	...super::BlockEntity,
 	Items: [SlottedItem] @ 0..4,
-	/// The time each item has been cooking  
+	/// The time each item has been cooking
 	/// Index zero is slot zero, etc
 	CookingTimes: int[] @ 4,
-	/// The time each item has to cook  
+	/// The time each item has to cook
 	/// Index zero is slot zero, etc
 	CookingTotalTimes: int[] @ 4,
 }

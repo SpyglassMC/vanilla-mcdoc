@@ -1,6 +1,6 @@
 dispatch minecraft:entity[skeleton] to struct Skeleton {
-    ...super::MobBase,
+	...super::MobBase,
 	/// Time until the skeleton converts
-    #[since=1.17]
+	#[since=1.17]
 	StrayConversionTime: int,
 }

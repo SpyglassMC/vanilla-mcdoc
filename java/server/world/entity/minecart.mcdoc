@@ -7,7 +7,7 @@ dispatch minecraft:entity[minecart] to struct Minecart {
 	...super::EntityBase,
 	/// Whether the minecart should display a custom block in it
 	CustomDisplayTile: boolean,
-	/// The custom block to display in the minecart  
+	/// The custom block to display in the minecart
 	/// Only has effects when `CustomDisplayTile` is true
 	DisplayState: BlockState,
 	/// The offset of the custom block displayed in the minecart
@@ -64,7 +64,7 @@ dispatch minecraft:entity[spawner_minecart] to struct SpawnerMinecart {
 	...Minecart,
 	/// A list of potential entities to spawn next
 	SpawnPotentials: [SpawnPotential],
-	/// The data for the next mob to spawn  
+	/// The data for the next mob to spawn
 	/// Will get overwritten by `SpawnPotentials`
 	SpawnData: AnyEntity,
 	/// The number of entities that will be placed

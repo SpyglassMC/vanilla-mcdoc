@@ -5,7 +5,7 @@ dispatch minecraft:block[spawner] to struct Sign {
 	...super::BlockEntity,
 	/// A list of potential entities to spawn next
 	SpawnPotentials: [SpawnPotential],
-	/// The data for the next mob to spawn  
+	/// The data for the next mob to spawn
 	/// Will get overwritten by `SpawnPotentials`
 	SpawnData: (
 		#[until=1.18] AnyEntity |

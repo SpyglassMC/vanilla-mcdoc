@@ -26,7 +26,7 @@ dispatch minecraft:entity[villager] to struct Villager {
 }
 
 struct VillagerData {
-	/// The level of the villager  
+	/// The level of the villager
 	/// Used for trading and badge rendering
 	level: int,
 	/// The profession of the villager

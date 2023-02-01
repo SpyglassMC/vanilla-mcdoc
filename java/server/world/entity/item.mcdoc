@@ -7,7 +7,7 @@ dispatch minecraft:entity[item] to struct Item {
 	Health: short,
 	/// The number of ticks until a player can pick up this item
 	PickupDelay: short,
-	/// The UUID of the owner of the item  
+	/// The UUID of the owner of the item
 	/// Only the owner can pick up the item
 	#[uuid]
 	Owner: (

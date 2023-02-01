@@ -44,14 +44,14 @@ enum(byte) Pickup {
 
 dispatch minecraft:entity[arrow] to struct Arrow {
 	...ArrowBase,
-	/// The color of the arrow  
+	/// The color of the arrow
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
 	Color: #[color=composite_int] int,
 	/// The custom potion effects to give to the hit entity
 	CustomPotionEffects: [PotionEffect],
 	/// The name of the default potion effect
 	Potion: #[id=mob_effect] string,
-	/// The color of the arrow's particles  
+	/// The color of the arrow's particles
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
 	CustomPotionColor: #[color=composite_int] int,
 }

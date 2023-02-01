@@ -1,7 +1,7 @@
 /// A debug stick item
 struct DebugStick {
-    ...super::ItemBase,
-    #[since=1.19]
+	...super::ItemBase,
+	#[since=1.19]
 	DebugProperty: struct {
 		[#[id=block] string]: string // FIXME
 	},

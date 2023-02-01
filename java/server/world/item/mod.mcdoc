@@ -11,7 +11,7 @@ struct ItemBase {
 	Unbreakable: boolean,
 	/// A list of the block states that can be destroyed by this item when holding it in adventure mode
 	CanDestroy: [string], // TODO
-	/// A tag that describes the custom model an item will take.  
+	/// A tag that describes the custom model an item will take.
 	/// Gets used by the `custom_model_data` model predicate
 	CustomModelData: int,
 	/// A list of enchantments that are on the item

@@ -1,10 +1,10 @@
 use ::java::server::util::PotionEffect
 
 dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
-	/// The number of ticks this area effect cloud has been alive  
+	/// The number of ticks this area effect cloud has been alive
 	/// The area effect cloud will disappear when greater than `Duration + WaitTime`
 	Age: int,
-	/// The color of the particles  
+	/// The color of the particles
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
 	Color: int,
 	/// The maximum number of ticks until this area effect cloud will disappear after `WaitTime` is done
