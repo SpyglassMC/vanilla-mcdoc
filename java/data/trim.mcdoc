@@ -1,0 +1,33 @@
+use super::util::ArmorMaterials
+use ::java::server::util::text::Text
+
+type TrimMaterial = #[since="1.19.4"] struct {
+	/// A string which will be used in the resource pack.
+	asset_name: string, // TODO
+
+	/// A JSON text component name, allowing color, translations, etc.
+	description: Text,
+
+	/// The item used in the smithing table for this material.
+	ingredient: #[id=item] string,
+
+	/// Model override predicate float.
+	item_model_index: [float @ 0..1],
+
+	/// Optional. Armor materials that should have a different color palette. */
+	override_armor_materials?: struct {
+		[ArmorMaterials]: string,
+	}
+}
+
+
+type TrimPattern = #[since="1.19.4"] struct {
+	/// A resource location (In the resource pack) of the pattern that will be used as an overlay on the armor.
+	asset_id: #[id=texture] string, // TODO
+
+	/// A JSON text component name, allowing color, translations, etc. Displayed in the result item tooltip.
+	description: Text,
+
+	/// The item used in the smithing table for this pattern.
+	template_item: #[id=item] string,
+}

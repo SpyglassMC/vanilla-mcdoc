@@ -36,10 +36,35 @@ dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
 	count: int,
 }
 
+#[until=1.20]
 dispatch minecraft:recipe_serializer[smithing] to struct Smithing {
 	base: IngredientValue,
 	addition: IngredientValue,
 	result: ItemResult,
+}
+
+#[since="1.19.4"]
+dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
+	/// Ingredient specifying an item to be trimmed. (eg. `{ "tag": "minecraft:trimmable_armor" }`)
+    base: Ingredient,
+    /// Trim material that will be used for trimming. (eg. `{ "tag": "minecraft:trim_materials" }`)
+    addition: Ingredient,
+    /// Trim template item that will be used for the trim pattern.
+    template: Ingredient,
+}
+
+#[since="1.19.4"]
+dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTransform {
+	/// Ingredient specifying an item to be transformed. (eg. `{ "tag": "minecraft:diamond_helmet" }`)
+    base: Ingredient,
+    /// Material that will be used for transforming. (eg. `{ "tag": "minecraft:netherite_ingot" }`)
+    addition: Ingredient,
+    /// Template item that will be used for the item transformation.
+    template: Ingredient,
+	/// Resulting transformed item
+	result: struct {
+		item: #[id=item] string, // Fun
+	},
 }
 
 struct ItemResult {

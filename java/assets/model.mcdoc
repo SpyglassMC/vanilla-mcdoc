@@ -5,9 +5,9 @@ struct Model {
 	ambientocclusion?: boolean,
 	gui_light?: ("front" | "side"),
 	textures?: struct {
-		[string]: string, // TODO
+		[string]: #[id=texture] string, // TODO
 	},
-	particle?: string, // TODO
+	particle?: #[id=texture] string,
 	elements?: [ModelElement],
 	display?: struct {
 		[ItemTransformType]: ItemTransform,
@@ -85,4 +85,5 @@ enum(string) Predicates {
 	Pulling = "pulling",
 	Throwing = "throwing",
 	Time = "time",
+	TrimType = "trim_type",
 }

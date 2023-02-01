@@ -2,12 +2,16 @@
 struct PotionEffect {
 	Id: EffectId,
 	Amplifier: byte,
-	Duration: int @ 1..,
-	/// Whether the effect particles are semi-transparent (like with a Beacon)
+	/// Since 1.19.4 a value of `-1` is supported, representing an infinite effect duration.
+	Duration: (
+		#[until="1.19.4"] int @ 1.. |
+		#[since="1.19.4"] (int @ -1 | 1..)
+	),
+	/// Whether the effect particles are semi-transparent. (like with a Beacon)
 	Ambient: boolean,
-	/// Whether the effect particles should be shown
+	/// Whether the effect particles should be shown.
 	ShowParticles: boolean,
-	/// Whether the effect icon should be shown
+	/// Whether the effect icon should be shown.
 	ShowIcon: boolean,
 	/// A lower amplifier effect of the same type.
 	#[since=1.16]

@@ -32,8 +32,18 @@ struct ItemBase {
 		Other = 6,
 		#[since="1.16.2"]
 		LeatherColor = 7,
+		#[since="1.19.4"]
+		Trim = 8
 	})]
-	HideFlags: int
+	HideFlags: int,
+	/// The trim to apply to the item & armor when worn
+	#[since="1.19.4"]
+	Trim: struct {
+		/// Gets used by the `trim_type` model predicate via the material item_model_index and armor rendering for the material's `asset_name` for the `armor_trims` atlas
+		material: #[id=trim_material] string,
+		/// Gets used by armor rendering for the pattern's `asset_id`
+		pattern: #[id=trim_pattern] string,
+	},
 }
 
 struct AnyItem {

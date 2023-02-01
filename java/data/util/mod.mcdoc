@@ -104,3 +104,5 @@ dispatch minecraft:nbt_provider[context] to struct ContextNbtProvider {
 dispatch minecraft:nbt_provider[storage] to struct StorageNbtProvider {
 	source: #[id=storage] string,
 }
+
+type ArmorMaterials = ("leather" | "chainmail" | "iron" | "gold" | "diamond" | "turtle" | "netherite")
