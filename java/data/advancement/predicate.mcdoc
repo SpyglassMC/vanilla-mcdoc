@@ -189,7 +189,10 @@ struct DamagePredicate {
 	taken?: MinMaxBounds<float>,
 	blocked?: boolean,
 	source_entity?: EntityPredicate,
+	#[until="1.19.4"]
 	type?: DamageSourcePredicate,
+	#[since="1.19.4"]
+	tags?: DamageTypeSource[], 
 }
 
 struct DamageSourcePredicate {
@@ -203,4 +206,10 @@ struct DamageSourcePredicate {
 	bypasses_magic?: boolean,
 	source_entity?: EntityPredicate,
 	direct_entity?: EntityPredicate,
+}
+
+struct DamageTypeSource {
+	id: #[id(registry=damage_type,tags=implicit)] string,
+	/// Whether the damage is expected to have or not have the tag for the predicate to match
+	expected: boolean,
 }
