@@ -1,7 +1,8 @@
 use super::util::ArmorMaterials
 use ::java::server::util::text::Text
 
-type TrimMaterial = #[since="1.19.4"] struct {
+#[since="1.19.4"]
+struct TrimMaterial {
 	/// A string which will be used in the resource pack.
 	asset_name: string, // TODO
 
@@ -20,8 +21,8 @@ type TrimMaterial = #[since="1.19.4"] struct {
 	}
 }
 
-
-type TrimPattern = #[since="1.19.4"] struct {
+#[since="1.19.4"]
+struct TrimPattern {
 	/// A resource location (In the resource pack) of the pattern that will be used as an overlay on the armor.
 	asset_id: #[id=texture] string, // TODO
 

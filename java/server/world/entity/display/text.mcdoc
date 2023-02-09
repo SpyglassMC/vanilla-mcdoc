@@ -1,0 +1,27 @@
+use ::java::server::util::text::Text
+use super::DisplayBase
+
+dispatch minecraft:entity[text_display] to struct TextDisplay {
+	...DisplayBase,
+	/// Text to display. Components are resolved with the executor set to the display entity and the position set to `0 0 0`.
+	text: Text,
+	/// Line width in pixels used to split lines (note: new line can be also addded with \n characters). Defaults to 200.
+	line_width: int @ 0..,
+	/// Opacity (alpha component) of rendered text. Defaults to 255. Interpolated.
+	text_opacity: int @ 0..255,
+	/// Color of background. Includes alpha channel. Defaults to 0x40000000. Interpolated.
+	/// Calculated as `ALPHA << 24 | RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
+	background: #[translucent_color=composite_int] int,
+	/// If true, overrides `background` & rendering uses default text background color (same as in chat). Defaults to false.
+	default_background: boolean,
+	/// Should text be displayed with shadow. Defaults to false.
+	shadow: boolean,
+	/// Should text be visible through blocks. Defaults to false.
+	see_through: boolean,
+	/// How text should be aligned. Defaults to `center`.
+	alignment: enum(string) {
+		Center = "center",
+		Left = "left",
+		Right = "right",
+	},
+}

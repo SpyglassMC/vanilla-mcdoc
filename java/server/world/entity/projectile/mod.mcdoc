@@ -1,5 +1,3 @@
-use ::java::server::util::block_state::BlockState
-
 struct ProjectileBase {
 	...super::EntityBase,
 	/// Whether the projectile has been shot. This is set to true when the projectile exists for
