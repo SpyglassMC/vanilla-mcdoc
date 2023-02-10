@@ -48,14 +48,14 @@ struct DisplayBase {
 		/// Model can pivot around the center point.
 		center: boolean,
 	},
-	/// When defined, overrides light values used for rendering. Omited by default (which means rendering uses values from entity position).
+	/// When defined, overrides light values used for rendering. Omitted by default (which means rendering uses values from entity position).
 	brightness: struct {
 		/// Value of skylight.
 		sky: int @ 0..15,
 		/// Value of block light.
 		block: int @ 0..15,
 	},
-	/// Maximum view range of this entity. Actual distance depends on client-side render distance and entity distance scalling. Default value 1.0 (roughly the same as fireball).
+	/// Maximum view range of this entity. Actual distance depends on client-side render distance and entity distance scaling. Default value 1.0 (roughly the same as fireball).
 	view_range: float @ 0..,
 	/// Describe width of culling bounding box.
 	/// Bounding box spans vertically y to y+height and horizontally width/2 in all directions from entity position.
