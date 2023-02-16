@@ -2,7 +2,7 @@
 dispatch minecraft:block[decorated_pot] to struct DecoratedPot {
 	...super::BlockEntity,
 	/// The item id of what was used for the given side of the pot.
-	shards: [Shard] @ 4
+	shards: [Shard] @ 4,
 }
 
 enum(string) Shard {
