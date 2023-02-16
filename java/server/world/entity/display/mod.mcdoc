@@ -17,7 +17,7 @@ struct DisplayBase {
 			left_rotation: Rotation,
 			/// For more complex transformations.
 			right_rotation: Rotation,
-			/// Scale in [x, y, z]
+			/// Scale in [x, y, z].
 			scale: [float] @ 3,
 		}
 	),

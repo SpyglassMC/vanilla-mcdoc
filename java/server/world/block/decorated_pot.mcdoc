@@ -1,0 +1,14 @@
+#[since="1.19.4"]
+dispatch minecraft:block[decorated_pot] to struct DecoratedPot {
+	...super::BlockEntity,
+	/// The item id of what was used for the given side of the pot.
+	shards: [Shard] @ 4
+}
+
+enum(string) Shard {
+    Brick: "brick",
+    Prize: "pottery_shard_prize",
+    Archer: "pottery_shard_archer",
+    Skull: "pottery_shard_skull",
+    ArmsUp: "pottery_shard_arms_up",
+}
