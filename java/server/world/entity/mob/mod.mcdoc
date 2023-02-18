@@ -27,7 +27,12 @@ struct LivingEntity {
 	/// The z coordinate of where the mob is sleeping
 	SleepingZ: int,
 	/// The mob's brain, empty
-	Brain: Brain,
+	Brain: struct {
+		memories: struct {
+			/// The unit value
+			[%unknown]: struct {}
+		}
+	},
 	/// The mob's attributes
 	Attributes: [Attribute],
 	/// The active potion effects on the mob

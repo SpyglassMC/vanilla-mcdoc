@@ -99,9 +99,7 @@ dispatch minecraft:criteria_trigger[enchanted_item] to struct EnchantedItem {
 dispatch minecraft:criteria_trigger[enter_block] to struct EnterBlock {
 	...CriterionBase,
 	block?: #[id=block] string,
-	state?: struct {
-		[string]: string, // TODO
-	},
+	state?: mcdoc:block_states[[block]],
 }
 
 dispatch minecraft:criteria_trigger[entity_hurt_player] to struct EntityHurtPlayer {
@@ -200,9 +198,7 @@ dispatch minecraft:criteria_trigger[nether_travel] to struct NetherTravel {
 dispatch minecraft:criteria_trigger[placed_block] to struct PlacedBlock {
 	...CriterionBase,
 	block?: #[id=block] string,
-	state?: struct {
-		[string]: string, // TODO
-	},
+	state?: mcdoc:block_states[[block]],
 	item?: ItemPredicate,
 	location?: LocationPredicate,
 }

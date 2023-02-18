@@ -1,0 +1,32 @@
+use ::java::server::util::global_pos::GlobalPos
+
+struct TimedMemory {
+	/// The amount of ticks before this memory is removed.
+	#[since=1.16]
+	ttl: long,
+}
+
+struct FlagMemory {
+	value: boolean,
+}
+
+struct TimedFlagMemory {
+	...TimedMemory,
+	value: boolean,
+}
+
+struct TimedEntityMemory {
+	...TimedMemory,
+	/// The target entity's UUID.
+	value: int[] @ 4,
+}
+
+struct TickMemory {
+	/// The tick value
+	value: long,
+}
+
+struct PositionMemory {
+	/// The position value
+	value: GlobalPos,
+}

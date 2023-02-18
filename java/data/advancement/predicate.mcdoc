@@ -20,9 +20,7 @@ struct EnchantmentPredicate {
 struct BlockPredicate {
 	block?: #[id=block] string,
 	tag?: #[id(registry=block,tags=implicit)] string,
-	state?: struct {
-		[string]: (MinMaxBounds<int> | boolean | string), // TODO
-	},
+	state?: mcdoc:block_states[[tag] | [block]],
 	nbt?: #[nbt=ItemBase] string, // TODO
 }
 
@@ -66,7 +64,7 @@ struct EntityPredicate {
 	#[since=1.19]
 	type_specific?: TypeSpecificPredicate,
 	team?: #[team] string,
-	nbt?: #[nbt=TODO] string, // TODO
+	nbt?: #[nbt=EntityBase] string, // TODO
 	location?: LocationPredicate,
 	distance?: DistancePredicate,
 	flags?: struct {
@@ -210,6 +208,6 @@ struct DamageSourcePredicate {
 
 struct DamageTypeSource {
 	id: #[id(registry=damage_type,tags=implicit)] string,
-	/// Whether the damage is expected to have or not have the tag for the predicate to match
+	/// Whether the damage is expected to have or not have the tag for the predicate to match.
 	expected: boolean,
 }

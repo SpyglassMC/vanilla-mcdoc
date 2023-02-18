@@ -14,11 +14,11 @@ struct Advancement {
 struct Display {
 	icon: struct {
 		item: #[id=item] string,
-		nbt?: #[nbt=ItemBase] string, // TODO
+		nbt?: #[nbt=ItemBase] string,
 	},
 	title: Text,
 	description: Text,
-	background?: string, // TODO
+	background?: #[id=texture] string,
 	frame?: FrameType,
 	show_toast?: boolean,
 	announce_to_chat?: boolean,

@@ -1,9 +1,24 @@
+use ::java::server::util::FlagMemory
+use ::java::server::util::TickMemory
+
 #[since=1.17]
 dispatch minecraft:entity[axolotl] to struct Axolotl {
 	...super::Breedable,
-	/// The variant of the axolotl
+	Brain: struct {
+		memories: struct {
+			/// Hunting cooldown active.
+			"minecraft:has_hunting_cooldown": FlagMemory,
+			/// Tempted by the player.
+			"minecraft:is_tempted": FlagMemory,
+			/// Ticks until it stops playing dead.
+			"minecraft:play_dead_ticks": TickMemory,
+			/// Ticks until it can be tempted again.
+			"minecraft:temptation_cooldown_ticks": TickMemory
+		}
+	}
+	/// The variant of the axolotl.
 	Variant: Variant,
-	/// If this axolotl was released from a bucket
+	/// If this axolotl was released from a bucket.
 	FromBucket: boolean
 }
 

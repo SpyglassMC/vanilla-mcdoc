@@ -1,3 +1,4 @@
+use ::java::server::util::block_state::BlockState
 use super::HeightProvider
 use super::VerticalAnchor
 use super::FloatProvider

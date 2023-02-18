@@ -6,9 +6,9 @@ dispatch minecraft:block[decorated_pot] to struct DecoratedPot {
 }
 
 enum(string) Shard {
-    Brick: "brick",
-    Prize: "pottery_shard_prize",
-    Archer: "pottery_shard_archer",
-    Skull: "pottery_shard_skull",
-    ArmsUp: "pottery_shard_arms_up",
+	Brick: "brick",
+	Prize: "pottery_shard_prize",
+	Archer: "pottery_shard_archer",
+	Skull: "pottery_shard_skull",
+	ArmsUp: "pottery_shard_arms_up",
 }

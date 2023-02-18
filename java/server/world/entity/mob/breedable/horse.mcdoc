@@ -1,5 +1,7 @@
 use ::java::server::util::InventoryItem
 use ::java::server::util::SlottedItem
+use ::java::server::util::FlagMemory
+use ::java::server::util::TickMemory
 
 dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	...super::Breedable,
@@ -47,8 +49,19 @@ dispatch minecraft:entity[skeleton_horse] to struct SkeletonHorse {
 	SkeletonTrapTime: int,
 }
 
+#[since=1.17]
 dispatch minecraft:entity[camel] to struct Camel {
 	...HorseBase,
+	Brain: struct {
+		memories: struct {
+			/// Ticks until it can look around randomly again.
+			"minecraft:gaze_cooldown_ticks": TickMemory,
+			/// Tempted by the player.
+			"minecraft:is_tempted": FlagMemory,
+			/// Ticks until it can be tempted again.
+			"minecraft:temptation_cooldown_ticks": TickMemory,
+		},
+	},
 	/// Whether the camel is sitting
 	IsSitting: boolean,
 	/// The tick when the camel started changing its pose

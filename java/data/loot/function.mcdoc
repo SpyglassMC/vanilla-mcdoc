@@ -33,21 +33,30 @@ dispatch minecraft:loot_function[copy_name] to struct CopyName {
 }
 
 dispatch minecraft:loot_function[copy_nbt] to struct CopyNbt {
-	source: CopyNameSource,
-	ops: [CopyNbtOperation],
+	source: (
+		CopyNameSource | 
+		struct {
+			type: "context",
+			target: CopyNameSource,
+		} |
+		struct {
+			type: "storage",
+			source: string, // TODO
+		}
+	),
+	ops: [(struct {
+		source: #[nbt_path] string,
+		target: #[nbt_path] string,
+		op: CopyNbtStrategy
+	})],
 }
 
 enum(string) CopyNameSource {
 	This = "this",
 	Killer = "killer",
 	KillerPlayer = "killer_player",
+	DirectKiller = "direct_killer",
 	BlockEntity = "block_entity",
-}
-
-struct CopyNbtOperation {
-	source: string, // TODO
-	target: string, // TODO
-	op: CopyNbtStrategy,
 }
 
 enum(string) CopyNbtStrategy {
@@ -58,7 +67,7 @@ enum(string) CopyNbtStrategy {
 
 dispatch minecraft:loot_function[copy_state] to struct CopyState {
 	block: #[id=block] string,
-	properties: [string], // TODO
+	properties: mcdoc:block_states[[block]],
 }
 
 dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {

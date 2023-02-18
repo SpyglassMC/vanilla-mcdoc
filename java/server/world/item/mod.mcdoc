@@ -1,6 +1,7 @@
 use ::java::server::util::attribute::AttributeName
 use ::java::server::util::attribute::Operation
 use ::java::server::util::inventory::EquipmentSlot
+use ::java::server::util::block_state::BlockState
 
 /// The base NBT of all items
 struct ItemBase {
@@ -10,7 +11,7 @@ struct ItemBase {
 	/// Only used for tools, armor, etc
 	Unbreakable: boolean,
 	/// A list of the block states that can be destroyed by this item when holding it in adventure mode
-	CanDestroy: [string], // TODO
+	CanDestroy: [BlockState],
 	/// A tag that describes the custom model an item will take.
 	/// Gets used by the `custom_model_data` model predicate
 	CustomModelData: int,

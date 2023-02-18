@@ -1,7 +1,10 @@
+use ::java::server::util::block_state::BlockState
+
 /// An item that can be placed as a block
 struct BlockItem {
+	...super::ItemBase
 	/// A list of block states that this block item can be placed on
-	CanPlaceOn: [string], // TODO
+	CanPlaceOn: [BlockState],
 	/// The tags that the block entity that is placed can have
 	BlockEntityTag: minecraft:block[[%parent.id]],
 	/// The block states that the placed block will have

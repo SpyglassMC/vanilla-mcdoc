@@ -1,11 +1,27 @@
+use ::java::server::util::FlagMemory
+use ::java::server::util::TickMemory
+
+#[since=1.17]
 dispatch minecraft:entity[goat] to struct Goat {
 	...super::Breedable,
-	/// Whether the goat has its left horn
+	Brain: struct {
+		memories: struct {
+			/// Tempted by the player.
+			"minecraft:is_tempted": FlagMemory,
+			/// Ticks until it can leap again
+			"minecraft:long_jump_cooling_down": TickMemory,
+			/// Ticks until it can ram again
+			"minecraft:ram_cooldown_ticks": TickMemory,
+			/// Ticks until it can be tempted again
+			"minecraft:temptation_cooldown_ticks": TickMemory,
+		},
+	},
+	/// Whether it has its left horn.
 	#[since=1.19]
 	HasLeftHorn: boolean,
-	/// Whether the goat has its right horn
+	/// Whether it has its right horn.
 	#[since=1.19]
 	HasRightHorn: boolean,
-	/// Whether the goat is a screaming goat
+	/// Whether it is a screaming goat.
 	IsScreamingGoat: boolean,
 }

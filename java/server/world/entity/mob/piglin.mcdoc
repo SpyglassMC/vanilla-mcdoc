@@ -1,16 +1,33 @@
 use ::java::server::util::InventoryItem
+use ::java::server::util::TimedFlagMemory
+use ::java::server::util::TimedEntityMemory
 
 struct PiglinBase {
 	...super::MobBase,
-	/// Whether the piglin will not transform to a zombified piglin when it is in the Overword
+	/// Whether the piglin will not transform to a zombified piglin when it is in the Overword.
 	IsImmuneToZombification: boolean,
-	/// The number of ticks the piglin has been in the overworld
+	/// The number of ticks the piglin has been in the overworld.
 	TimeInOverworld: int,
 }
 
 #[since=1.16]
 dispatch minecraft:entity[piglin] to struct Piglin {
 	...PiglinBase,
+	#[since=1.16]
+	Brain: struct {
+		memories: struct {
+			/// Whether the piglin cannot admire an item.
+			"minecraft:admiring_disabled": TimedFlagMemory,
+			/// Whether the piglin is admiring an item.
+			"minecraft:admiring_disabled": TimedFlagMemory,
+			/// The target of the piglin.
+			"minecraft:angry_at": TimedEntityMemory,
+			/// Whether the piglin hunted recently.
+			"minecraft:hunted_recently": TimedFlagMemory,
+			/// Whether the piglin is being angered universally.
+			"minecraft:universal_anger": TimedFlagMemory,
+		},
+	},
 	/// Whether the piglin is a baby
 	IsBaby: boolean,
 	/// Whether the piglin does not hunt hoglins

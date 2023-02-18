@@ -37,16 +37,15 @@ struct DisplayBase {
 	/// End of interpolation (entity fully in "current" state) is defined as start+duration, in ticks.
 	interpolation_duration: int @ 0..,
 	/// Controls if model should pivot to face player when rendered.
-	billboard: struct {
+	billboard: enum(string) Billboard {
 		/// No rotation (default).
-		fixed: boolean,
-	} | struct {
+		Fixed: "fixed",
 		/// Model can pivot around vertical axis.
-		vertical: boolean,
+		Vertical: "vertical",
 		/// Model can pivot around horizontal axis.
-		horizontal: boolean,
-		/// Model can pivot around the center point.
-		center: boolean,
+		Horizontal: "horizontal",
+		/// Model can pivot around both axes.
+		Center: "center",
 	},
 	/// When defined, overrides light values used for rendering. Omitted by default (which means rendering uses values from entity position).
 	brightness: struct {
