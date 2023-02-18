@@ -4,9 +4,9 @@ use ::java::server::util::TimedEntityMemory
 
 struct PiglinBase {
 	...super::MobBase,
-	/// Whether the piglin will not transform to a zombified piglin when it is in the Overword.
+	/// Whether it will not transform to a zombified piglin when it is in the overworld.
 	IsImmuneToZombification: boolean,
-	/// The number of ticks the piglin has been in the overworld.
+	/// The number of ticks it has been in the overworld.
 	TimeInOverworld: int,
 }
 
