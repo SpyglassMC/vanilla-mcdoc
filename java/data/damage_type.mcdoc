@@ -23,7 +23,7 @@ struct DamageType {
 		/// Thorns hurt sound.
 		Thorns = "thorns",
 		/// Drowing sound.
-		Drowning = "Drowning",
+		Drowning = "drowning",
 		/// A single tick of burning hurt sound.
 		Burning = "burning",
 		/// Berry bush poke sound.
