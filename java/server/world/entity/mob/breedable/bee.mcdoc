@@ -2,44 +2,37 @@ dispatch minecraft:entity[bee] to struct Bee {
 	...super::Breedable,
 	#[since=1.16]
 	...super::super::NeutralMob,
-	/// The position of the bee's hive
 	HivePos: HivePos,
-	/// The position of the flower the bee is circling
+	/// Position of the flower the bee is circling
 	FlowerPos: FlowerPos,
-	/// Whether the bee has nectar
+	/// Whether the bee has nectar.
 	HasNectar: boolean,
-	/// Whether the bee has stung an entity
+	/// Whether the bee has stung an entity.
 	HasStung: boolean,
-	/// The number of ticks since the bee has pollinated a crop
+	/// Ticks since the bee has pollinated a crop.
 	TicksSincePollination: int,
-	/// The number of ticks until the bee can enter its hive
+	/// Ticks until the bee can enter its hive.
 	CannotEnterHiveTicks: int,
-	/// The number of crops grown since the bee has gathered nectar
+	/// Crops grown since the bee has gathered nectar.
 	CropsGrownSincePollination: int,
-	/// The number of ticks the bee will be angry for
+	/// Ticks the bee will be angry for.
 	Anger: int,
-	/// The UUID of the player that has attacked the bee
+	/// Player that has attacked the bee.
 	#[uuid]
 	HurtBy: (
 		#[until=1.16] string |
-		#[since=1.16] int[]@ 4 |
+		#[since=1.16] int[] @ 4 |
 	),
 }
 
 struct HivePos {
-	/// The x coordinate of the hive
 	X: int,
-	/// The y coordinate of the hive
 	Y: int,
-	/// The z coordinate of the hive
 	Z: int,
 }
 
 struct FlowerPos {
-	/// The x coordinate of the flower
 	X: int,
-	/// The y coordinate of the flower
 	Y: int,
-	/// The z coordinate of the flower
 	Z: int,
 }

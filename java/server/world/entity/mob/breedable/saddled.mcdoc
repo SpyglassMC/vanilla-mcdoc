@@ -1,6 +1,6 @@
 dispatch minecraft:entity[pig] to struct Saddled {
 	...super::Breedable,
-	/// Whether there is a saddle on the pig
+	/// Whether there is a saddle on it.
 	Saddle: boolean,
 }
 

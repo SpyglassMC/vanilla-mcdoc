@@ -1,40 +1,32 @@
 dispatch minecraft:block[structure_block] to struct StructureBlock {
 	...super::BlockEntity,
-	/// The name of the structure
 	name: #[id=structure] string,
-	/// The author of the structure
+	/// Author of the structure.
 	author: string,
-	/// Custom data for the structure. Stores the data id for "DATA" mode
+	/// Custom data for the structure. Stores the data id for "DATA" mode.
 	metadata: string,
-	/// The offset on the x axis for the structure position
+	/// Relative offset.
 	posX: int,
-	/// The offset on the y axis for the structure position
+	/// Relative offset.
 	posY: int,
-	/// The offset on the z axis for the structure position
+	/// Relative offset.
 	posZ: int,
-	/// The size on the x axis for the structure
 	sizeX: int,
-	/// The size on the y axis for the structure
 	sizeY: int,
-	/// The size on the z axis for the structure
 	sizeZ: int,
-	/// How the structure should be rotated
 	rotation: Rotation,
-	/// How the structure should be mirrored
 	mirror: Mirror,
-	/// The mode of the structure block
 	mode: Mode,
-	/// Whether the structure block should ignore entities
 	ignoreEntities: boolean,
-	/// Whether the structure block should show the bounding box
+	/// Whether to show the bounding box.
 	showboundingbox: boolean,
-	/// Whether the structure block has been powered by redstone
+	/// Whether it has been powered by redstone.
 	powered: boolean,
-	/// The chance for each block to stay
+	/// Chance for each block to stay.
 	integrity: float,
-	/// The seed for the integrity randomness
+	/// Seed for the integrity random.
 	seed: long,
-	/// Whether to show invisible blocks inside the bounding box
+	/// Whether to show invisible blocks inside the bounding box.
 	showair: boolean,
 }
 

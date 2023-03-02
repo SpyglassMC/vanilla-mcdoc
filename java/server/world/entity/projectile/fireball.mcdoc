@@ -1,24 +1,23 @@
 use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:entity[dragon_fireball,wither_skull] to struct HurtingProjectileBase {
-	/// The direction of the projectile
 	#[until=1.16]
 	direction: [double] @ 3,
-	/// The acceleration of the projectile
+	/// Acceleration
 	power: [double] @ 3,
-	/// The number of ticks since the projectile last moved
+	/// Ticks since it last moved.
 	#[until=1.16]
 	life: short,
 }
 
 dispatch minecraft:entity[small_fireball] to struct FireballBase {
 	...HurtingProjectileBase,
-	/// The item the fireball should render as
+	/// Item it should render as.
 	Item: InventoryItem,
 }
 
 dispatch minecraft:entity[fireball] to struct LargeFireball {
 	...FireballBase,
-	/// The power of the fireball explosion
+	/// Explosion radius.
 	ExplosionPower: int,
 }

@@ -3,40 +3,31 @@ use ::java::server::util::inventory::SlottedItem
 
 dispatch minecraft:entity[llama] to struct Llama {
 	...super::Breedable,
-	/// Unknown use
-	/// Remains `0` even if the llama was bred
+	/// Unknown use.
+	/// Remains `0` even if it was bred.
 	Bred: boolean,
-	/// Whether the llama is grazing
+	/// Whether it is grazing.
 	EatingHaystack: boolean,
-	/// Whether the llama has been tamed
+	/// Whether it has been tamed.
 	Tame: boolean,
-	/// Higher values make the llama easier to tame
-	/// Increases with feeding
+	/// Higher values make it easier to tame.
+	/// Increases with feeding.
 	Temper: int @ 0..100,
-	/// UUID of the player who tamed the llama
+	/// Player who tamed it.
 	#[until=1.16] #[uuid]
 	OwnerUUID: string,
-	/// UUID of the player who tamed the horse
+	/// Player who tamed the horse.
 	#[since=1.16] #[uuid]
 	Owner: int[] @ 4,
-	/// The carpet item of the llama
+	/// Carpet decoration on its back.
 	DecorItem: InventoryItem,
-	/// Whether the llama has a chest
+	/// Whether it has a chest.
 	ChestedHorse: boolean,
-	/// The items in the llama's chest
-	Items: [SlottedItem],
-	/// Determines both the number of item the llama can carry
-	/// and how likely it is for wolves to run away
+	/// Slots from 0 to 14. Amount of available slots (3, 6, 9, 12 or 15) scales with `Strength`.
+	Items: [SlottedItem] @ 15,
+	/// Determines both the number of items it can carry and how likely it is for wolves to run away.
 	Strength: int @ 1..5,
-	/// The variant of the llama
 	Variant: Variant,
-}
-
-struct TrustedUUID {
-	/// The lower bits of the trusted player's UUID
-	L: long,
-	/// The upper bits of the trusted player's UUID
-	M: long,
 }
 
 enum(int) Variant {
@@ -48,6 +39,6 @@ enum(int) Variant {
 
 dispatch minecraft:entity[trader_llama] to struct TraderLlama {
 	...Llama,
-	/// When the trader llama will despawn
+	/// When it will despawn.
 	DespawnDelay: int,
 }

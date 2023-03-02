@@ -2,8 +2,8 @@ use ::java::server::util::inventory::InventoryItem
 
 /// A crossbow
 struct Crossbow {
-	/// The projectiles loaded into the crossbow
+	/// Projectiles that are loaded.
 	ChargedProjectiles: [InventoryItem] @ 0..3,
-	/// Whether the crossbow is charged
+	/// Whether the crossbow is charged.
 	Charged: boolean,
 }

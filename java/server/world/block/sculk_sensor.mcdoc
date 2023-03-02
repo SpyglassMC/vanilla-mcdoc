@@ -2,9 +2,8 @@ use ::java::server::util::game_event::VibrationListener
 
 #[since=1.17]
 dispatch minecraft:block[sculk_sensor] to struct SculkSensor {
-	/// The frequency of the last vibration
 	last_vibration_frequency: int @ 1..15,
-	/// The vibration listener of the sculk sensor
+	/// Vibration listener
 	#[since=1.19]
 	listener: VibrationListener,
 }

@@ -5,20 +5,20 @@ struct DamageType {
 	/// The message id used for deaths caused by this damage type.
 	/// Is combined with the result of `death_message_type` to form a translation key.
 	message_id: string
-	/// The amount of hunger exhaustion caused by this damage type.
+	/// Amount of hunger exhaustion to cause.
 	exhaustion: float @ 0..,
-	/// Whether this damage type scales with difficulty levels.
+	/// Whether to scale with difficulty levels.
 	scaling: enum(string) {
-		/// Damage is always the same.
+		/// Always the same.
 		Never = "never",
-		/// Damage always scales with difficulty
+		/// Always scale with difficulty
 		Always = "always",
-		/// Damage scales with difficulty if it was caused by a living entity who is not a player.
+		/// Scale with difficulty if it was caused by a living entity who is not a player.
 		LivingNonPlayer = "when_caused_by_living_non_player",
 	},
 	/// Optional. Controls how damage manifests when inflicted on players. Defaults to `hurt`.
 	effects?: enum(string) {
-		/// The default hurt sound.
+		/// Default hurt sound.
 		Hurt = "hurt",
 		/// Thorns hurt sound.
 		Thorns = "thorns",

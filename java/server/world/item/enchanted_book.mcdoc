@@ -1,5 +1,4 @@
 /// An enchanted book
 struct EnchantedBook {
-	/// The stored enchantments
 	StoredEnchantments: [super::Enchantment],
 }

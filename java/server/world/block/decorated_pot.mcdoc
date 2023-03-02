@@ -1,7 +1,7 @@
 #[since="1.19.4"]
 dispatch minecraft:block[decorated_pot] to struct DecoratedPot {
 	...super::BlockEntity,
-	/// The item id of what was used for the given side of the pot.
+	/// Item ID of what was used for each side of the pot.
 	shards: [Shard] @ 4,
 }
 

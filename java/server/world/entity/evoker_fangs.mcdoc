@@ -1,7 +1,6 @@
 dispatch minecraft:entity[evoker_fangs] to struct EvokerFangs {
-	/// The number of ticks until the fangs pop out of the ground
+	/// Ticks until the fangs pop out of the ground.
 	Warmup: int,
-	/// The owner of the fangs
 	#[uuid]
 	Owner: (
 		#[until=1.16] Owner |
@@ -10,8 +9,8 @@ dispatch minecraft:entity[evoker_fangs] to struct EvokerFangs {
 }
 
 struct Owner {
-	/// The upper bits of the owner's UUID
+	/// Upper bits of the owner's UUID.
 	OwnerUUIDMost: long,
-	/// The lower bits of the owner's UUID
+	/// Lower bits of the owner's UUID.
 	OwnerUUIDLeast: long,
 }

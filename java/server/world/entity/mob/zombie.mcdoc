@@ -4,33 +4,34 @@ use super::breedable::villager::Offers
 
 dispatch minecraft:entity[drowned,husk,zombie] to struct Zombie {
 	...super::MobBase,
-	/// Whether the zombie is a baby
+	/// Whether it is a baby.
 	IsBaby: boolean,
-	/// Whether the zombie can break doors
+	/// Whether it can break doors.
 	CanBreakDoors: boolean,
-	/// Time until the zombie converts
+	/// Ticks until it converts.
 	DrownedConversionTime: int,
-	/// Time the zombie has been in the water
+	/// Ticks it has been in the water.
 	InWaterTime: int,
 }
 
 dispatch minecraft:entity[zombie_villager] to struct ZombieVillager {
 	...Zombie,
-	/// The villager's skin data
+	/// Villager's skin data
 	VillagerData: VillagerData,
-	/// The villager's gossips
+	/// Villager's gossips
 	Gossips: [Gossip],
-	/// The villager's offers
+	/// Villager's offers
 	Offers: Offers,
-	/// The number of ticks until the zombie villager is converted
+	/// Ticks until the it is converted.
 	ConversionTime: int,
-	/// The lower bits of the player's uuid who triggered the conversion
+	/// Lower bits of the player's uuid who triggered the conversion.
 	#[until=1.16]
 	ConversionPlayerLeast: long,
-	/// The upper bits of the player's uuid who triggered the conversion
+	/// Upper bits of the player's uuid who triggered the conversion.
 	#[until=1.16]
 	ConversionPlayerMost: long,
-	/// The UUID of the player who triggered the conversion
+	/// Player who triggered the conversion.
+	#[uuid]
 	#[since=1.16]
 	ConversionPlayer: int[] @ 4,
 }

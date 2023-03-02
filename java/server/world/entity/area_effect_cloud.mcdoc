@@ -1,39 +1,39 @@
 use ::java::server::util::PotionEffect
 
 dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
-	/// The number of ticks this area effect cloud has been alive
-	/// The area effect cloud will disappear when greater than `Duration + WaitTime`
+	/// Number of ticks it has existed.
+	/// Controls when it will despawn; when greater than `Duration + WaitTime`.
 	Age: int,
-	/// The color of the particles
+	/// Color of the particles.
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
 	Color: int,
-	/// The maximum number of ticks until this area effect cloud will disappear after `WaitTime` is done
+	/// Maximum number of ticks until it will disappear after `WaitTime` is done
 	Duration: int,
-	/// The number of ticks until the effects are reapplied
+	/// Number of ticks until the effects are reapplied.
 	ReapplicationDelay: int,
-	/// The number of ticks until the area effect cloud appears
+	/// Number of ticks until it appears.
 	WaitTime: int,
-	/// The amount the duration changes when the area effect cloud is used
+	/// Amount the duration changes when it is active.
 	DurationOnUse: int,
-	/// The upper bits of the owner's UUID
+	/// Upper bits of the owner's UUID.
 	#[until=1.16]
 	OwnerUUIDMost: long,
-	/// The lower bits of the owner's UUID
+	/// Lower bits of the owner's UUID.
 	#[until=1.16]
 	OwnerUUIDLeast: long,
-	/// The UUID of the owner
+	#[uuid]
 	#[since=1.16]
 	Owner: int[] @ 4,
-	/// The radius of the area effect cloud
+	/// Radius of the particles & effect application.
 	Radius: float,
-	/// The change in the radius of the area effect cloud when it is used
+	/// Change in the radius when it is used.
 	RadiusOnUse: float,
-	/// The change in the radius of the area effect cloud per tick
+	/// Change in the radius per tick.
 	RadiusPerTick: float,
-	/// The particle the area effect cloud displays
-	Particle: string,
-	/// The default potion effect
+	/// Particle the area effect cloud displays.
+	Particle: string, // TODO
+	/// Default potion effect.
 	Potion: #[id=potion] string,
-	/// The potion effects that get applied on use
+	/// Potion effects that get applied on use.
 	Effects: [PotionEffect],
 }

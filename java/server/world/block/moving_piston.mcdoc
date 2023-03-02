@@ -2,15 +2,14 @@ use ::java::server::util::block_state::BlockState
 
 dispatch minecraft:block[moving_piston] to struct MovingPiston {
 	...super::BlockEntity,
-	/// The moving block represented by the moving piston
+	/// Moving block represented by the moving piston.
 	blockState: BlockState,
-	/// The direction the moving piston is moving
+	/// The direction it is moving.
 	facing: Facing,
-	/// How far the moving piston has moved
+	/// How far it has moved.
 	progress: float,
-	/// Whether the moving piston is extending
 	extending: boolean,
-	/// Whether the moving piston is the piston head
+	/// Whether the moving piston is the piston head.
 	source: boolean,
 }
 

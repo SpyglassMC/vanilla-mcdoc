@@ -1,5 +1,5 @@
 struct FishBucket {
 	...super::spawn_item::SpawnItem,
-	/// The variant of fish. Only used for tropical fish
+	/// Variant of fish. Only used for tropical fish.
 	BucketVariantTag: int,
 }

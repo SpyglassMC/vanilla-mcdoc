@@ -4,25 +4,23 @@ dispatch minecraft:block[
 	repeating_command_block,
 ] to struct Campfire {
 	...super::BlockEntity,
-	/// The name of the command block
 	CustomName: #[text_component] string,
-	/// The command stored in the command block
 	Command: string,
-	/// The success count of the last command
+	/// Success count of the last command.
 	SuccessCount: int,
-	/// The last output of the command block
+	/// Output of the last command.
 	LastOutput: string,
-	/// Whether the command block should track its output
+	/// Whether to record command output.
 	TrackOutput: boolean,
-	/// Whether the command block is powered by redstone
+	/// Whether it is powered by redstone.
 	powered: boolean,
-	/// Whether the command block is automatically powered
+	/// Whether it is automatically powered.
 	auto: boolean,
-	/// Whether the previous command block was successful when the command block was executed
-	/// This is always true for non-conditional command blocks
+	/// Whether the previous command block was successful when the command block was executed.
+	/// This is always true for non-conditional command blocks.
 	conditionMet: boolean,
-	/// Whether to update the tick that this command block last executed
+	/// Whether to record the tick of the latest command execution.
 	UpdateLastExecution: boolean,
-	/// The tick the command block last executed in
+	/// Tick of the latest command execution.
 	LastExecution: long,
 }

@@ -5,75 +5,73 @@ use super::super::AnyEntity
 
 dispatch minecraft:entity[player] to struct Player {
 	...super::LivingEntity,
-	/// The version of the player NBT structure
+	/// Version of the player NBT structure
 	DataVersion: int,
-	/// The dimension the player is in
 	Dimension: (
 		#[until=1.16] Dimension |
 		#[since=1.16] #[id=dimension] string |
 	),
-	/// The location of the player's last death
+	/// Location of the player's last death.
 	#[since=1.19]
 	LastDeathLocation: GlobalPos,
-	/// The game mode that the player is in
+	/// Game mode that the player is in.
 	playerGameType: Gamemode,
-	/// The previous game mode that the player was in
+	/// Previous game mode that the player was in.
 	#[since=1.16]
 	previousPlayerGameType: Gamemode,
-	/// The score to display upon death
+	/// Score to display upon death.
 	Score: int,
-	/// The hotbar slot the player has selected
+	/// Hotbar slot the player has selected.
 	SelectedItemSlot: int @ 0..8,
-	/// The item in the hotbar slot the player has selected
+	/// Item in the hotbar slot the player has selected.
 	SelectedItem: SlottedItem,
-	/// The dimension of the player's respawn point
+	/// Dimension of the player's respawn point.
 	#[since=1.16]
 	SpawnDimension: #[id=dimension] string,
-	/// The x coordinate of the player's spawn point
+	/// X coordinate of the player's spawn point.
 	SpawnX: int,
-	/// The y coordinate of the player's spawn point
+	/// Y coordinate of the player's spawn point.
 	SpawnY: int,
-	/// The z coordinate of the player's spawn point
+	/// Z coordinate of the player's spawn point.
 	SpawnZ: int,
-	/// Whether the player must spawn at the spawn point
+	/// Whether the player must spawn at the spawn point.
 	SpawnForced: boolean,
-	/// The number of ticks the player has been in bed
+	/// Ticks the player has been in bed.
 	SleepTimer: short,
-	/// The level of the hunger bar
+	/// Level of the hunger bar.
 	foodLevel: int,
-	/// The rate at which the `foodSaturationLevel` depletes
+	/// Rate at which the `foodSaturationLevel` depletes.
 	foodExhaustionLevel: float,
-	/// The rate at which the hunger bar depletes
+	/// Rate at which the hunger bar depletes.
 	foodSaturationLevel: float,
-	/// The number of ticks until the player heals or takes starvation damage
+	/// Ticks until the player heals or takes starvation damage.
 	foodTickTimer: int,
-	/// The number of experience levels the player has
+	/// Number of experience levels the player has.
 	XpLevel: int,
-	/// The percentage the experience bar is filled up
+	/// Percentage the experience bar is filled up.
 	XpP: float,
-	/// The total experience the player has
+	/// Total experience the player has.
 	XpTotal: int,
-	/// The seed for enchantments
+	/// Seed for enchantments.
 	XpSeed: int,
-	/// The player's inventory
 	Inventory: [SlottedItem] @ 0..41,
-	/// The player's enderchest inventory
+	/// The player's enderchest inventory.
 	EnderItems: [SlottedItem] @ 0..27,
-	/// The abilities of the player
+	/// Abilities of the player.
 	abilities: Abilities,
-	/// The position that the player entered the nether at
+	/// Position that the player entered the nether at.
 	enteredNetherPosition: EnteredNetherPosition,
-	/// The entity that the player is riding
+	/// Entity that the player is riding.
 	RootVehicle: RootVehicle,
-	/// The entity that is on the player's left shoulder
+	/// Entity that is on the player's left shoulder.
 	ShoulderEntityLeft: AnyEntity,
-	/// The entity that is on the player's right shoulder
+	/// Entity that is on the player's right shoulder.
 	ShoulderEntityRight: AnyEntity,
-	/// Whether the player has gone to the overworld after defeating the Ender Dragon
+	/// Whether the player has gone to the overworld after defeating the Ender Dragon.
 	seenCredits: boolean,
-	/// The recipes that the player has
+	/// Recipes that the player has.
 	recipeBook: RecipeBook,
-	/// Tracking the warden spawning process for this player
+	/// Tracking the warden spawning process for this player.
 	#[since=1.19]
 	warden_spawn_tracker: WardenSpawnTracker,
 	// these are not included
@@ -96,68 +94,66 @@ enum(int) Gamemode {
 }
 
 struct Abilities {
-	/// The speed that the player walks at
+	/// Speed that the player walks at.
 	walkSpeed: float @ 0.1,
-	/// The speed that the player flies at
+	/// Speed that the player flies at.
 	flySpeed: float @ 0.05,
-	/// Whether the player can fly
+	/// Whether the player can fly.
 	mayfly: boolean,
-	/// Whether the player is flying
+	/// Whether the player is flying.
 	flying: boolean,
-	/// Whether the player can only take damage from the void
+	/// Whether the player can only take damage from the void.
 	invulnerable: boolean,
-	/// Whether the player may build
+	/// Whether the player may build.
 	mayBuild: boolean,
-	/// Whether the player destroys blocks instantly
+	/// Whether the player destroys blocks instantly.
 	instabuild: boolean,
 }
 
 struct EnteredNetherPosition {
-	/// The x coordinate that the player entered the nether
 	x: double,
-	/// The y coordinate that the player entered the nether
 	y: double,
-	/// The z coordinate that the player entered the nether
 	z: double,
 }
 
 struct RootVehicle {
-	/// The upper bits of the ridden entity's UUID
+	/// Upper bits of the ridden entity's UUID.
 	#[until=1.16]
 	AttachMost: long,
-	/// The lower bits of the ridden entity's UUID
+	/// Lower bits of the ridden entity's UUID.
 	#[until=1.16]
 	AttachLeast: long,
-	/// The UUID of the ridden entity
+	/// Ridden entity's UUID.
+	#[uuid]
 	#[since=1.16]
 	Attach: int[] @ 4,
-	/// The ridden entity
+	/// The ridden entity.
 	Entity: AnyEntity,
 }
 
 struct RecipeBook {
-	/// The recipes the player has acquired
+	/// Recipes the player has acquired.
 	recipes: #[id=recipe] string,
-	/// The recipes that should pulse in the crafting book
+	/// Recipes that should pulse in the crafting book.
 	toBeDisplayed: #[id=recipe] string,
-	/// Whether the player has filtered crafting on in the crafting table
+	/// Whether the player has filtered crafting on in the crafting table.
 	isFilteringCraftable: boolean,
-	/// Whether the player has the crafting book open in the crafting table
+	/// Whether the player has the crafting book open in the crafting table.
 	isGuiOpen: boolean,
-	/// Whether the player has filtered crafting on in the furnace
+	/// Whether the player has filtered crafting on in the furnace.
 	isFurnaceFilteringCraftable: boolean,
-	/// Whether the player has the crafting book open in the furnace
+	/// Whether the player has the crafting book open in the furnace.
 	isFurnaceGuiOpen: boolean,
 }
 
 struct WardenSpawnTracker {
-	/// The number of ticks before the `warning_level` can be increased again.
-	/// Decreases by 1 every tick. It is set to 200 game ticks (10 seconds) every time the warning level is increased
+	/// Ticks before the `warning_level` can be increased again.
+	/// Decreases by 1 every tick. It is set to 200 game ticks (10 seconds) every time the warning level is increased.
 	cooldown_ticks: int @ 0..,
-	/// The number of ticks since the player was warned for warden spawning.
+	/// Ticks since the player was warned for warden spawning.
 	/// Increases by 1 every tick. After 12000 game ticks (10 minutes) it will be set back to 0,
 	/// and the `warning_level` will be decreased by 1.
 	ticks_since_last_warning: int @ 0..,
-	/// The warden will spawn at level 3
+	/// The warden will spawn at level 3.
 	warning_level: int @ 0..3,
 }

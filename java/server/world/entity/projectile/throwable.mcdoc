@@ -2,42 +2,39 @@ use ::java::server::util::inventory::InventoryItem
 
 struct Throwable {
 	...super::ProjectileBase,
-	/// The x coordinate of the projectile
 	#[until=1.16]
 	xTile: int,
-	/// The y coordinate of the projectile
 	#[until=1.16]
 	yTile: int,
-	/// The z coordinate of the projectile
 	#[until=1.16]
 	zTile: int,
-	/// The shake the projectile creates
+	/// Shake it creates.
 	#[until=1.16]
 	shake: byte,
-	/// The player that threw the projectile
+	/// Entity that threw it.
 	#[until=1.16]
 	owner: Owner,
-	/// Whether the projectile is in the ground
+	/// Whether it is in the ground.
 	#[until=1.16]
 	inGround: boolean,
 }
 
 struct Owner {
-	/// The upper bits of the owner's UUID
+	/// Upper bits of the owner's UUID.
 	M: long,
-	/// The lower bits of the owner's UUID
+	/// Lower bits of the owner's UUID.
 	L: long,
 }
 
 dispatch minecraft:entity[egg,ender_pearl,experience_bottle,snowball] to struct ThrowableItem {
 	...Throwable,
-	/// The item representation of the projectile
+	/// Item representation of the projectile.
 	#[since=1.16]
 	Item: InventoryItem,
 }
 
 dispatch minecraft:entity[potion] to struct Potion {
-	/// The item representation of the potion
+	/// Item representation of the potion.
 	#[until=1.16]
 	Potion: InventoryItem,
 }

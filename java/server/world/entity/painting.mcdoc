@@ -1,15 +1,13 @@
 dispatch minecraft:entity[painting] to struct Painting {
-	/// The x coordinate of the block the item frame is in
 	TileX: int,
-	/// The y coordinate of the block the item frame is in
 	TileY: int,
-	/// The z coordinate of the block the item frame is in
 	TileZ: int,
-	/// The direction the painting is facing
+	/// Direction it is facing.
 	Facing: Facing,
-	/// The type of the painting
+	/// Type of painting.
 	#[until=1.19]
 	Motive: #[id=motive] string,
+	/// Type of painting.
 	#[since=1.19]
 	variant: #[id=painting_variant] string,
 }

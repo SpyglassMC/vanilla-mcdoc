@@ -1,25 +1,25 @@
 dispatch minecraft:entity[panda] to struct Panda {
 	...super::Breedable,
-	/// The displayed gene
-	/// If this gene is recessive '(r)' and 'HiddenGene' is not the same, the panda will display the 'normal' gene
+	/// Displayed gene.
+	/// If this gene is recessive and 'HiddenGene' is not the same, the panda will display the 'normal' gene.
 	MainGene: Gene,
-	/// The hidden gene
+	/// Hidden gene.
 	HiddenGene: Gene,
 }
 
 enum(string) Gene {
-	/// The normal gene (d)
+	/// (dominant)
 	Normal = "normal",
-	/// The lazy gene (d)
+	/// (dominant)
 	Lazy = "lazy",
-	/// The worried gene (d)
+	/// (dominant)
 	Worried = "worried",
-	/// The playful gene (d)
+	/// (dominant)
 	Playful = "playful",
-	/// The brown gene (r)
+	/// (recessive)
 	Brown = "brown",
-	/// The weak gene (r)
+	/// (recessive)
 	Weak = "weak",
-	/// The aggressive gene (d)
+	/// (dominant)
 	Aggressive = "aggressive",
 }

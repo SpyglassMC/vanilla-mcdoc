@@ -1,38 +1,34 @@
 dispatch minecraft:block[player_head,player_wall_head] to struct PlayerHead {
 	...super::BlockEntity,
-	/// The owner of the skull
+	/// Owner of the skull.
 	#[until=1.16]
 	Owner: SkullOwner,
-	/// The owner of the skull
 	#[since=1.16]
 	SkullOwner: SkullOwner,
-	/// Name of the owner, if exists will be converted to SkullOwner
+	/// Name of the owner, if exists will be converted to SkullOwner.
 	ExtraType: string,
 	#[since="1.19.3"]
-	note_block_sound: string,
+	note_block_sound: string, // TODO
 }
 
 struct SkullOwner {
-	/// UUID of the owner, optional
+	/// Optional.
 	#[uuid]
 	Id: (
 		#[until=1.16] string |
 		#[since=1.16] int[] @ 4 |
 	),
-	/// Name of the owner, if missing appears as a steve head
+	/// If missing appears as a steve head.
 	Name: string,
-	/// Texture properties
 	Properties: Properties,
 }
 
 struct Properties {
-	/// The textures
 	textures: [Texture],
 }
 
 struct Texture {
-	/// Signature of the texture
 	Signature: string,
-	/// Base64 encoded JSON value of the texture
+	/// Base64 encoded JSON value of the texture index.
 	Value: string,
 }

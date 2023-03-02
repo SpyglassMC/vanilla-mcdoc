@@ -1,5 +1,5 @@
 /// A knowledge book item
 struct KnowledgeBook {
-	/// The recipes this book can give
+	/// Recipes it will give.
 	Recipes: [#[id=recipe] string],
 }

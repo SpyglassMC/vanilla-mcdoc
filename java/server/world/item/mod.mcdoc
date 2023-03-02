@@ -3,27 +3,27 @@ use ::java::server::util::attribute::Operation
 use ::java::server::util::inventory::EquipmentSlot
 use ::java::server::util::block_state::BlockState
 
-/// The base NBT of all items
+/// Base NBT of all items.
 struct ItemBase {
-	/// The damage that an item has. Only used for tools, armor, etc
+	/// Damage that an item has. Only used for tools, armor, etc.
 	Damage: int,
-	/// Whether the item should be unbreakable
-	/// Only used for tools, armor, etc
+	/// Whether the item should be unbreakable.
+	/// Only used for tools, armor, etc.
 	Unbreakable: boolean,
-	/// A list of the block states that can be destroyed by this item when holding it in adventure mode
+	/// List of the block states that can be destroyed by this item when holding it in adventure mode.
 	CanDestroy: [BlockState],
-	/// A tag that describes the custom model an item will take.
-	/// Gets used by the `custom_model_data` model predicate
+	/// Tag that describes the custom model an item will take.
+	/// Used by the `custom_model_data` model overrides predicate.
 	CustomModelData: int,
-	/// A list of enchantments that are on the item
+	/// List of enchantments that are on the item.
 	Enchantments: [Enchantment],
-	/// Number of levels to add to the cost when using this in an anvil
+	/// Levels to add to the cost when using this in an anvil.
 	RepairCost: int,
-	/// Attribute modifiers to apply while this item is being worn, held, etc
+	/// Applied to an entity that has equipped the item.
 	AttributeModifiers: [AttributeModifier],
-	/// The display settings of the item
+	/// Display settings.
 	display: Display,
-	/// Bitfield for which flags to hide on an item
+	/// Bitfield for which flags to hide on an item.
 	#[bitfield(enum (int) {
 		Enchantments = 1,
 		AttributeModifiers = 2,
@@ -37,64 +37,62 @@ struct ItemBase {
 		Trim = 8
 	})]
 	HideFlags: int,
-	/// The trim to apply to the item & armor when worn
+	/// Trim to apply to the item & armor when worn.
 	#[since="1.19.4"]
 	Trim: struct {
-		/// Gets used by the `trim_type` model predicate via the material item_model_index and armor rendering for the material's `asset_name` for the `armor_trims` atlas
+		/// Used by the `trim_type` model overrides predicate via the material `item_model_index` and armor rendering for the material's `asset_name` for the `armor_trims` atlas.
 		material: #[id=trim_material] string,
-		/// Gets used by armor rendering for the pattern's `asset_id`
+		/// Used by armor rendering for the pattern's `asset_id`.
 		pattern: #[id=trim_pattern] string,
 	},
 }
 
 struct AnyItem {
-	/// The id of the item
+	/// ID of the item.
 	id: #[id=item_type] string,
 	...ItemBase,
 	...minecraft:item[[id]],
 }
 
-/// An individual enchantment, with ID and level
+/// An individual enchantment, with ID and level.
 struct Enchantment {
-	/// Which enchantment is being described
+	/// Which enchantment is being described.
 	id: #[id=enchantment] string,
-	/// Which level the enchantment is
+	/// Which level the enchantment is.
 	lvl: (
 		#[until=1.17] (short @ 1.. | int @ 1..) |
 		#[since=1.17] int @ 0..255 |
 	),
 }
 
-/// A single attribute modifier
+/// A single attribute modifier.
 struct AttributeModifier {
-	/// The name of the attribute
 	AttributeName: (
 		#[until=1.16] (AttributeName | string) |
 		#[since=1.16] #[id=attribute] string |
 	),
-	/// Name of the modifier, has no real effect
+	/// Identifying name of the modifier, has no real effect.
 	Name: string,
-	/// The slot that the modifier is active in
+	/// Slot that the modifier is active in.
 	Slot: EquipmentSlot,
-	/// The modifier operation
 	Operation: Operation,
-	/// The change in the attribute
+	/// Change in the attribute.
 	Amount: double,
-	/// The upper bits of the modifiers UUID
+	/// Upper bits of the modifier's UUID.
 	#[until=1.16]
 	UUIDMost: long,
-	/// The lower bits of the modifiers UUID
+	/// Lower bits of the modifier's UUID.
 	#[until=1.16]
 	UUIDLeast: long,
-	/// The UUID of the modifier
+	#[uuid]
 	#[since=1.16]
 	UUID: int[] @ 4,
 }
 
-/// The display settings of an item
+/// Display settings of an item.
 struct Display {
-	/// The name of an item, as a JSON text component
-	Name: string,
-	/// The lore of an item, with each element being a lore line
+	/// A JSON text component.
+	Name: #[text_component] string,
+	/// A list of JSON text components, each element being a lore line.
 	Lore: [#[text_component] string],
 }

@@ -5,47 +5,44 @@ use ::java::server::util::TickMemory
 
 dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	...super::Breedable,
-	/// Unknown use
-	/// Remains `0` even if the mob was bred
+	/// Unknown use.
+	/// Remains `0` even if it was bred.
 	Bred: boolean,
-	/// Whether the mob is eating a haystack
+	/// Whether it is eating a haystack.
 	EatingHaystack: boolean,
-	/// Whether the mob has been tamed
+	/// Whether it has been tamed.
 	Tame: boolean,
-	/// Higher values make the mob easier to tame
-	/// Increases with feeding
+	/// Higher values make it easier to tame. Increases with feeding.
 	Temper: int @ 0..100,
-	/// UUID of the player who tamed the mob
+	/// Player who tamed it.
 	#[until=1.16] #[uuid]
 	OwnerUUID: string,
-	/// UUID of the player who tamed the mob
+	/// Player who tamed it.
 	#[since=1.16] #[uuid]
 	Owner: int[] @ 4,
-	/// The saddle item of the mob
 	SaddleItem: InventoryItem,
 }
 
 dispatch minecraft:entity[horse] to struct Horse {
 	...HorseBase,
-	/// The armor item of the horse
+	/// Horse armor.
 	ArmorItem: InventoryItem,
-	/// The variant of the horse
-	Variant: int,
+	Variant: int, // TODO
 }
 
-dispatch minecraft:entity[donkey,mule] to struct ChestedHorse {
+dispatch minecraft:entity[donkey, mule] to struct ChestedHorse {
 	...HorseBase,
-	/// Whether the horse has a chest
+	/// Whether it has a chest.
 	ChestedHorse: boolean,
-	/// The items in the horse's chest
-	Items: [SlottedItem],
+	/// Slots from 0 to 14.
+	Items: [SlottedItem] @ 15,
 }
 
 dispatch minecraft:entity[skeleton_horse] to struct SkeletonHorse {
 	...HorseBase,
-	/// Whether the skeleton horse is trapped
+	/// Whether it was spawned by a trap.
 	SkeletonTrap: boolean,
-	/// How many ticks the skeleton horse trap has been alive
+	/// Ticks it has existed.
 	SkeletonTrapTime: int,
 }
 
@@ -62,8 +59,8 @@ dispatch minecraft:entity[camel] to struct Camel {
 			"minecraft:temptation_cooldown_ticks": TickMemory,
 		},
 	},
-	/// Whether the camel is sitting
+	/// Whether it is sitting.
 	IsSitting: boolean,
-	/// The tick when the camel started changing its pose
+	/// The tick when it started changing its pose.
 	LastPoseTick: long
 }

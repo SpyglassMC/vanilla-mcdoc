@@ -1,11 +1,11 @@
 dispatch minecraft:entity[vex] to struct Vex {
 	...super::MobBase,
-	/// The x coordinate of the center of the vex's wander bound
+	/// X coordinate of the center of its wander bounds.
 	BoundX: int,
-	/// The y coordinate of the center of the vex's wander bound
+	/// Y coordinate of the center of its wander bounds.
 	BoundY: int,
-	/// The x coordinate of the center of the vex's wander bound
+	/// Z coordinate of the center of its wander bounds.
 	BoundZ: int,
-	/// The number of ticks until the vex starts to die
+	/// Ticks until it starts to die.
 	LifeTicks: int,
 }

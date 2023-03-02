@@ -1,7 +1,5 @@
 struct Compass {
-	/// The dimension the lodestone is in
 	LodestoneDimension: #[id=dimension] string,
-	/// The position of the lodestone
 	LodestonePos: LodestonePos,
 	/// Whether the compass should be linked to a lodestone.
 	/// When true, the compass will reset if the lodestone at the position is removed.
@@ -9,10 +7,7 @@ struct Compass {
 }
 
 struct LodestonePos {
-	/// The `x` coordinate of the lodestone
 	X: int,
-	/// The `y` coordinate of the lodestone
 	Y: int,
-	/// The `z` coordinate of the lodestone
 	Z: int
 } 

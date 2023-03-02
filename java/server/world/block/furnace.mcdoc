@@ -2,19 +2,19 @@ use ::java::server::util::inventory::SlottedItem
 
 dispatch minecraft:block[furnace,blast_furnace,smoker] to struct Furnace {
 	...super::BlockEntity,
-	/// The name of the furnace
 	CustomName: #[text_component] string,
-	/// The name of the item that a player has to be holding to open this furnace
+	/// Name of the item that a player has to be holding to open this furnace.
+	/// Source is flattened to plain text and has formatting removed before the check.
 	Lock: string,
 	/// The items in this furnace, with slots:
-	/// * 0: The item being smelted
-	/// * 1: The fuel
-	/// * 2: The output
+	/// * 0: Item being smelted
+	/// * 1: Fuel
+	/// * 2: Output
 	Items: [SlottedItem] @ 0..3,
-	/// The number of ticks until the fuel runs out
+	/// Ticks until the fuel runs out.
 	BurnTime: short,
-	/// The number of ticks the item has been smelting for
+	/// Ticks the item has been smelting for.
 	CookTime: short,
-	/// The number of ticks the item takes to be smelted
+	/// Ticks the item will take to be smelted.
 	CookTimeTotal: short,
 }

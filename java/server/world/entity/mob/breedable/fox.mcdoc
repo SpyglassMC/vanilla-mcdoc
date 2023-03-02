@@ -1,24 +1,24 @@
 dispatch minecraft:entity[fox] to struct Fox {
 	...super::Breedable,
-	/// List of trusted players
+	/// List of trusted players.
 	TrustedUUIDs: [#[uuid] (
 		#[until=1.16] TrustedUUID |
 		#[since=1.16] int[] @ 4 |
 	)],
-	/// Whether the fox is sleeping
+	/// Whether it is sleeping.
 	Sleeping: boolean,
-	/// The type of the fox
+	/// The type of fox.
 	Type: FoxType,
-	/// Whether the fox is sitting
+	/// Whether it is sitting.
 	Sitting: boolean,
-	/// Whether the fox is crouching
+	/// Whether it is crouching.
 	Crouching: boolean,
 }
 
 struct TrustedUUID {
-	/// The lower bits of the trusted player's UUID
+	/// Lower bits of the trusted player's UUID.
 	L: long,
-	/// The upper bits of the trusted player's UUID
+	/// Upper bits of the trusted player's UUID.
 	M: long,
 }
 

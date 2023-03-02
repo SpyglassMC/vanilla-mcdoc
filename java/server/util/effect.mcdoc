@@ -2,14 +2,14 @@
 struct PotionEffect {
 	Id: EffectId,
 	Amplifier: byte,
-	/// Since 1.19.4 a value of `-1` is supported, representing an infinite effect duration.
+	/// Since 1.19.4 a value of `-1` is supported, representing an infinite duration.
 	Duration: (
 		#[until="1.19.4"] int @ 1.. |
 		#[since="1.19.4"] (int @ -1 | 1..)
 	),
-	/// Whether the effect particles are semi-transparent. (like with a Beacon)
+	/// Whether particles are semi-transparent. (like with a Beacon)
 	Ambient: boolean,
-	/// Whether the effect particles should be shown.
+	/// Whether particles should be shown.
 	ShowParticles: boolean,
 	/// Whether the effect icon should be shown.
 	ShowIcon: boolean,

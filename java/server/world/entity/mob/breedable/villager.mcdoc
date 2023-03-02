@@ -4,9 +4,9 @@ use ::java::server::util::TickMemory
 use ::java::server::util::PositionMemory
 
 struct VillagerBase {
-	/// The villager's inventory
+	/// Slots from 0 to 7.
 	Inventory: [InventoryItem] @ 0..8,
-	/// The trade offers the villager has
+	/// Trade offers it has.
 	Offers: Offers,
 }
 
@@ -27,47 +27,40 @@ dispatch minecraft:entity[villager] to struct Villager {
 			"minecraft:last_woken": TickMemory,
 			/// Gametick when it last worked.
 			"minecraft:last_worked_at_poi": TickMemory,
-			/// Location of meeting point
+			/// Location of meeting point.
 			"minecraft:meeting_point": PositionMemory,
-			/// Location of a potential job site
+			/// Location of a potential job site.
 			#[since=1.16]
 			"minecraft:potential_job_site": PositionMemory,
 		},
 	},
-	/// The data associated with the villager and it's skin
 	VillagerData: VillagerData,
-	/// The food level of the villager
-	FoodLevel: byte,
-	/// The gossips the villager has heard
+	FoodLevel: byte, // TODO
+	/// Gossips it has heard.
 	Gossips: [Gossip],
-	/// The tick of the last time the villager has restocked
+	/// Tick of the last time it has restocked.
 	LastRestock: long,
-	/// The tick of the last time the villager's gossips have decreased in strength
+	/// Tick of the last time its gossips have decreased in strength.
 	LastGossipDecay: long,
-	/// The number of times the villager has restocked in the past ten minutes
+	/// Times it has restocked in the past ten minutes.
 	RestocksToday: int,
-	/// The xp the villager has, increases with trading
+	/// XP it has, increases with trading.
 	Xp: int,
 }
 
 struct VillagerData {
-	/// The level of the villager
-	/// Used for trading and badge rendering
+	/// Used for trading and badge rendering.
 	level: int,
-	/// The profession of the villager
 	profession: #[id=villager_profession] string,
-	/// The type of the villager
 	type: #[id=villager_type] string,
 }
 
 struct Gossip {
-	/// The type of the gossip
 	Type: GossipType,
-	/// The value of the gossip
 	Value: int,
-	/// The upper bits of the gossip target's UUID
+	/// Upper bits of the gossip target's UUID.
 	TargetMost: long,
-	/// The lower bits of the gossip target's UUID
+	/// Lower bits of the gossip target's UUID.
 	TargetLeast: long,
 }
 
@@ -80,46 +73,43 @@ enum(string) GossipType {
 }
 
 struct Offers {
-	/// The trades the villager has to offer
+	/// Trades it has to offer.
 	Recipes: [Recipe],
 }
 
 struct Recipe {
-	/// Whether the villager should reward experience for using this trade
+	/// Whether it should reward experience for using this trade.
 	rewardExp: boolean,
-	/// The maximum number of uses for this trade before the villager has to restock
+	/// Maximum number of uses for this trade before it has to restock.
 	maxUses: int,
-	/// The number of times this trade has been used since the villager last restocked
+	/// Times this trade has been used since it last restocked.
 	uses: int,
-	/// The first item the villager buys
+	/// First item it buys.
 	buy: InventoryItem,
-	/// The second item the villager buys
+	/// Second item it buys.
 	buyB: InventoryItem,
-	/// The item the villager sells
+	/// Item it sells.
 	sell: InventoryItem,
-	/// The amount of xp the villager gains from the trade
+	/// XP it gains from the trade.
 	xp: int,
-	/// The multiplier on the demand price adjuster
+	/// Multiplier on the demand price adjuster.
 	priceMultiplier: float,
-	/// A modifier added to the original price of the first cost item
+	/// Modifier added to the original price of the first cost item.
 	specialPrice: int,
-	/// The price adjuster of the first cost item based on demand
+	/// Price adjuster of the first cost item based on demand.
 	demand: int,
 }
 
 dispatch minecraft:entity[wandering_trader] to struct WanderingTrader {
 	...VillagerBase,
-	/// The number of ticks until the wandering trader despawns
+	/// Ticks until it despawns.
 	DespawnDelay: int,
-	/// The block the wandering trader is heading to
+	/// Where it is heading to.
 	WanderTarget: WanderTarget,
 }
 
 struct WanderTarget {
-	/// The x coordinate that the wandering trader is headed to
 	X: int,
-	/// The y coordinate that the wandering trader is headed to
 	Y: int,
-	/// The z coordinate that the wandering trader is headed to
 	Z: int,
 }

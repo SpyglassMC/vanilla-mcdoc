@@ -1,24 +1,21 @@
 /// A writable or written book
 struct WritableBook {
-	/// The pages of the book as raw strings
+	/// Pages of the book as raw strings.
 	pages: [string],
 }
 
 struct WrittenBook {
 	// TODO: Add filtered text
-	/// Whether the dynamic content on the pages has been resolved
+	/// Whether the dynamic content on the pages has been resolved.
 	resolved: boolean,
-	/// The pages of the book as JSON text components
+	/// Pages of the book as JSON text components.
 	pages: [#[text_component] string],
-	/// The generation of the book
+	/// Generation of the book.
 	generation: Generation,
-	/// The author of the book
 	author: string,
-	/// The title of the book
 	title: string,
 }
 
-/// The generation of the book
 enum(int) Generation {
 	Original = 0,
 	Copy = 1,

@@ -50,9 +50,9 @@ dispatch minecraft:recipe_serializer[smithing] to struct Smithing {
 dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
 	/// Ingredient specifying an item to be trimmed. (eg. `{ "tag": "minecraft:trimmable_armor" }`)
 	base: Ingredient,
-	/// Trim material that will be used for trimming. (eg. `{ "tag": "minecraft:trim_materials" }`)
+	/// Material that will be used. (eg. `{ "tag": "minecraft:trim_materials" }`)
 	addition: Ingredient,
-	/// Trim template item that will be used for the trim pattern.
+	/// Template item that will be used for the pattern.
 	template: Ingredient,
 }
 

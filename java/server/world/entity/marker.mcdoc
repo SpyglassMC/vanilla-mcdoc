@@ -1,6 +1,6 @@
 #[since=1.17]
 dispatch minecraft:entity[marker] to struct Marker {
-	/// The data stored in this marker
+	/// Any stored data
 	data: MarkerData,
 }
 

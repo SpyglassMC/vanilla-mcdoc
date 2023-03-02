@@ -6,112 +6,103 @@ use ::java::server::util::inventory::EquipmentSlot
 
 struct LivingEntity {
 	...super::EntityBase,
-	/// How much health the entity has
 	Health: float,
-	/// How much absorption health the entity has
+	/// How much absorption health it has.
 	AbsorptionAmount: float,
-	/// Timer since the mob has been damaged
-	/// Counts down to zero
+	/// Timer since it has been damaged. Counts down to zero.
 	HurtTime: short,
-	/// Number of ticks since the mob was last damaged, from its creation
+	/// Ticks since it was last damaged, from its creation.
 	HurtByTimestamp: int,
-	/// Timer since the mob was marked as dead
-	/// Counts down to zero
+	/// Timer since it was marked as dead. Counts down to zero.
 	DeathTime: short,
-	/// Whether the mob will glide when it falls
+	/// Whether it will glide when it falls.
 	FallFlying: boolean,
-	/// The x coordinate of where the mob is sleeping
+	/// X coordinate of where it is sleeping.
 	SleepingX: int,
-	/// The y coordinate of where the mob is sleeping
+	/// Y coordinate of where it is sleeping.
 	SleepingY: int,
-	/// The z coordinate of where the mob is sleeping
+	/// Z coordinate of where it is sleeping.
 	SleepingZ: int,
-	/// The mob's brain, empty
+	/// The mob's brain, empty.
 	Brain: struct {
 		memories: struct {
-			/// The unit value
+			/// The unit value.
 			[%unknown]: struct {}
 		}
 	},
-	/// The mob's attributes
 	Attributes: [Attribute],
-	/// The active potion effects on the mob
+	/// Active potion effects
 	ActiveEffects: [PotionEffect],
-	/// Whether the mob should have an AI
+	/// Whether it should have an AI.
 	NoAI: boolean,
-	/// The team to join when the mob is spawned
+	/// Team to join when it is spawned.
 	Team: string,
 }
 
-/// Base NBT for all mobs
+/// Base NBT for all mobs.
 struct MobBase {
 	...LivingEntity,
-	/// The items that the mob is holding, in [main hand, offhand]
+	/// [main hand, offhand]
 	HandItems: [InventoryItem] @ 2,
-	/// The items that the mob is wearing, in [feet, legs, body, head]
+	/// [feet, legs, body, head]
 	ArmorItems: [InventoryItem] @ 4,
-	/// The chance to drop the items that the mob is holding, in [main hand, offhand]
+	/// Chance to drop the items it is holding, in [main hand, offhand].
 	HandDropChances: [float] @ 2,
-	/// The chance to drop the items that the mob is wearing, in [feet, legs, body, head]
+	/// Chance to drop the items it is wearing, in [feet, legs, body, head].
 	ArmorDropChances: [float] @ 4,
-	/// The mob's death loot table
 	DeathLootTable: #[id=loot_table] string,
-	/// The seed for generating the death loot table
+	/// Seed for generating the death loot table.
 	DeathLootTableSeed: long,
-	/// Wether the mob can pick up loot
+	/// Whether it can pick up loot.
 	CanPickUpLoot: boolean,
-	/// Whether the mob should not despawn naturally
+	/// Whether it should not despawn naturally.
 	PersistenceRequired: boolean,
-	/// Whether the mob is left handed
+	/// Whether it is left handed.
 	LeftHanded: boolean,
-	/// What the leash is attached to
+	/// What the leash is attached to.
 	Leash: (UUIDLeash | BlockLeash),
 }
 
 struct NeutralMob {
-	/// The number of tickets that the bee will be angry for
+	/// Ticks that it will be angry for.
 	AngerTime: int,
-	/// The UUID of the target that the bee is angry at
 	#[uuid]
 	AngryAt: int[] @ 4,
 }
 
-/// A single attribute
+/// A single attribute.
 struct Attribute {
-	/// The name of the attribute
 	Name: (
 		#[until=1.16] (AttributeName | string) |
 		#[since=1.16] #[id=attribute] string |
 	),
-	/// The base value of the attribute
 	Base: double,
-	/// The modifiers that act on the attribute
+	/// Modifiers that act on it.
 	Modifiers: [AttributeModifier],
 }
 
 /// A single attribute modifier
 struct AttributeModifier {
-	/// Name of the modifier, has no real effect
+	/// Has no real effect.
 	Name: string,
-	/// The slot that the modifier is active in
+	/// Slot that the modifier is active in.
 	Slot: EquipmentSlot,
-	/// The modifier operation
 	Operation: Operation,
-	/// The change in the attribute
+	/// Change in the attribute.
 	Amount: double,
-	/// The upper bits of the modifier's UUID
+	/// Upper bits of the modifier's UUID.
 	#[until=1.16]
 	UUIDMost: long,
-	/// The lower bits of the modifier's UUID
+	/// Lower bits of the modifier's UUID.
 	#[until=1.16]
 	UUIDLeast: long,
-	/// The UUID of the modifier
+	#[uuid]
 	#[since=1.16]
 	UUID: int[] @ 4,
 }
 
 struct Brain {
-	/// The mobs memories, empty
+	/// The mobs memories, empty.
 	memories: struct {},
 }
 
@@ -120,18 +111,18 @@ struct Memories {
 }
 
 struct UUIDLeash {
-	/// The upper bits of the other entity's UUID
+	/// Upper bits of the other entity's UUID.
 	UUIDMost: long,
-	/// The lower bits of the other entity's UUID
+	/// Lower bits of the other entity's UUID.
 	UUIDLeast: long,
 }
 
 struct BlockLeash {
-	/// The x coordiante of leash knot
+	/// X coordiante of leash knot.
 	X: int,
-	/// The y coordiante of leash knot
+	/// Y coordiante of leash knot.
 	Y: int,
-	/// The z coordiante of leash knot
+	/// Z coordiante of leash knot.
 	Z: int,
 }
 

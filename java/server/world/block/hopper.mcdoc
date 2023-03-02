@@ -2,16 +2,12 @@ use ::java::server::util::SlottedItem
 
 dispatch minecraft:block[hopper] to struct Hopper {
 	...super::BlockEntity,
-	/// The name of the container
 	CustomName: #[text_component] string,
-	/// The name of the item that a player has to be holding to open this container
+	/// Name of the item that a player has to be holding to open this hopper.
+	/// Source is flattened to plain text and has formatting removed before the check.
 	Lock: string,
-	/// The loot table that will populate this container
-	LootTable: #[id=loot_table] string,
-	/// The items in this container, with slots from 0 to 4
+	/// Slots from 0 to 4.
 	Items: [SlottedItem] @ 0..5,
-	/// The seed of the loot table
-	LootTableSeed: long,
-	/// The number of ticks until an item can be transferred
+	/// Ticks until an item can be transferred.
 	TransferCooldown: int,
 }

@@ -3,10 +3,10 @@ use ::java::server::util::InventoryItem
 #[since=1.19]
 dispatch minecraft:entity[allay] to struct Allay {
 	...super::MobBase,
-	/// The items that the allay has picked up. Note that the item given by the player is in
-	/// the allay's `HandItems[0]` tag, not here
+	/// Items it has picked up. Note that the item given by the player is in
+	/// the allay's `HandItems[0]` tag, not here.
 	Inventory: [InventoryItem] @ 1,
-	/// The allay's vibration game event listener
+	/// Vibration game event listener.
 	listener: Listener,
 }
 
@@ -29,10 +29,10 @@ struct Event {
 
 struct PositionSource {
 	type: #[id=position_source_type] string,
-	/// Only exists for `block` type
+	/// Only exists for `block` type.
 	pos: int[] @ 3,
-	/// Only exists for `entity` type
+	/// Only exists for `entity` type.
 	source_entity: int[] @ 4,
-	/// Only exists for `entity` type
+	/// Only exists for `entity` type.
 	y_offset: float,
 }

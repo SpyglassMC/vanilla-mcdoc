@@ -15,19 +15,18 @@ dispatch minecraft:block[
 	spruce_wall_sign,
 ] to struct Sign {
 	...super::BlockEntity,
-	/// The color the sign has been dyed
+	/// Color the text has been dyed.
 	Color: ColorString,
 	// TODO: Add filtered text
-	/// Whether the texts on this sign are glowing
 	#[since=1.17]
 	GlowingText: boolean,
-	/// The first line of text from the top
+	/// First line of text.
 	Text1: #[text_component] string,
-	/// The second line of text from the top
+	/// Second line of text.
 	Text2: #[text_component] string,
-	/// The third line of text from the top
+	/// Third line of text.
 	Text3: #[text_component] string,
-	/// The fourth line of text from the top
+	/// Fourth line of text.
 	Text4: #[text_component] string,
 }
 

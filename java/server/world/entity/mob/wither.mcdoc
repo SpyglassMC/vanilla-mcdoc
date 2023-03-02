@@ -1,5 +1,5 @@
 dispatch minecraft:entity[wither] to struct Wither {
 	...super::MobBase,
-	/// The number of ticks the wither is invulnerable for
+	/// Ticks it is invulnerable for.
 	Invul: int,
 }

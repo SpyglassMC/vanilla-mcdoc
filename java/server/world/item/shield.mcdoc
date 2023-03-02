@@ -2,20 +2,17 @@ use ::java::server::util::color::ColorInt
 use ::java::server::util::BannerPattern
 
 struct Shield {
-	/// The tag for the shield
-	BlockEntityTag: Tag,
-}
-
-struct Tag {
-	/// The base color of the shield
-	Base: ColorInt,
-	/// The patterns on the shield
-	Patterns: [Pattern],
+	/// Banner Data.
+	BlockEntityTag: {
+		/// Base color.
+		Base: ColorInt,
+		Patterns: [Pattern],
+	},
 }
 
 struct Pattern {
-	/// The color of the pattern
+	/// Color of the pattern.
 	Color: ColorInt,
-	/// The pattern id
+	/// Pattern id.
 	Pattern: BannerPattern,
 }

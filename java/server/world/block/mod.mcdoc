@@ -1,11 +1,7 @@
 struct BlockEntity {
-	/// The id of the block entity
 	id: #[id=block_entity] string,
-	/// The x coordinate of the block entity
 	x: int,
-	/// The y coordinate of the block entity
 	y: int,
-	/// The z coordinate of the block entity
 	z: int,
 	/// Unknown
 	/// 0 for regular block entities

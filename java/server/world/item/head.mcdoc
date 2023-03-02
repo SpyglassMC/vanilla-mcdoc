@@ -1,29 +1,25 @@
 struct PlayerHead {
-	/// The skull owner
 	SkullOwner: (SkullOwner | string),
 }
 
 struct SkullOwner {
-	/// UUID of the owner, optional
+	/// Optional.
 	#[uuid]
 	Id: (
 		#[until=1.16] string |
 		#[since=1.16] int[] @ 4 |
 	),
-	/// Name of the owner, if missing appears as a steve head
+	/// Name of the owner, if missing appears as a steve head.
 	Name: string,
-	/// Texture properties
 	Properties: Properties,
 }
 
 struct Properties {
-	/// The textures
 	textures: [Texture],
 }
 
 struct Texture {
-	/// Signature of the texture
 	Signature: string,
-	/// Base64 encoded JSON value of the texture
+	/// Base64 encoded JSON value of the texture index.
 	Value: string,
 }

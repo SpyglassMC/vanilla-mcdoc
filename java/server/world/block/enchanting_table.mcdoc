@@ -1,5 +1,4 @@
 dispatch minecraft:block[enchanting_table] to struct EnchantingTable {
 	...super::BlockEntity,
-	/// The name of this enchanting table
 	CustomName: #[text_component] string,
 }

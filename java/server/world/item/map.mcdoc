@@ -1,92 +1,88 @@
 /// A filled map
 struct FilledMap {
-	/// The map number
+	/// Map number.
 	map: int,
-	/// The amount to increase the current map scale by when crafting
+	/// Amount to increase the current map scale by when crafting.
 	map_scale_direction: int @ 1..,
-	/// Whether the map should be locked after being taken out of the cartography table
+	/// Whether the map should be locked after being taken out of the cartography table.
 	map_to_lock: boolean,
-	/// The decorations on the map
+	/// Decorations on the map.
 	Decorations: [Decoration],
-	/// The display for the item
-	display: Display,
+	/// Display for the item.
+	display: struct {
+		...super::Display,
+		/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
+		MapColor: #[color=composite_int] int,
+	},
 }
 
 /// A decoration on a map
 struct Decoration {
-	/// An arbitrary string identifying the decoration
+	/// An arbitrary string identifying the decoration.
 	id: string,
-	/// The decoration type
+	/// Decoration type.
 	type: IconId,
-	/// The world x position of the decoration
+	/// World x position.
 	x: double,
-	/// The world z position of the decoration
+	/// World z position.
 	z: double,
-	/// The rotation of the decoration, measured in degrees clockwise
+	/// Rotation of the decoration, measured in degrees clockwise.
 	rot: double,
 }
 
 enum(byte) IconId {
-	/// White pentagon
+	/// White pentagon.
 	Player = 0,
-	/// Green pentagon
+	/// Green pentagon.
 	Frame = 1,
-	/// Red pentagon
+	/// Red pentagon.
 	RedMarker = 2,
-	/// Blue pentagon
+	/// Blue pentagon.
 	BlueMarker = 3,
-	/// White x
+	/// White x.
 	TargetX = 4,
-	/// Red triangle
+	/// Red triangle.
 	TargetPoint = 5,
-	/// Large white dot
+	/// Large white dot.
 	PlayerOffMap = 6,
-	/// Small white dot
+	/// Small white dot.
 	PlayerOffLimits = 7,
-	/// Woodland mansion
+	/// Woodland mansion.
 	Mansion = 8,
-	/// Ocean monument
+	/// Ocean monument.
 	Monument = 9,
-	/// White banner
+	/// White banner.
 	WhiteBanner = 10,
-	/// Orange banner
+	/// Orange banner.
 	OrangeBanner = 11,
-	/// Magenta banner
+	/// Magenta banner.
 	MagentaBanner = 12,
-	/// Light blue banner
+	/// Light blue banner.
 	LightBlueBanner = 13,
-	/// Yellow banner
+	/// Yellow banner.
 	YellowBanner = 14,
-	/// Lime banner
+	/// Lime banner.
 	LimeBanner = 15,
-	/// Pink banner
+	/// Pink banner.
 	PinkBanner = 16,
-	/// Gray banner
+	/// Gray banner.
 	GrayBanner = 17,
-	/// Light gray banner
+	/// Light gray banner.
 	LightGrayBanner = 18,
-	/// Cyan banner
+	/// Cyan banner.
 	CyanBanner = 19,
-	/// Purple banner
+	/// Purple banner.
 	PurpleBanner = 20,
-	/// Blue banner
+	/// Blue banner.
 	BlueBanner = 21,
-	/// Brown banner
+	/// Brown banner.
 	BrownBanner = 22,
-	/// Green banner
+	/// Green banner.
 	GreenBanner = 23,
-	/// Red banner
+	/// Red banner.
 	RedBanner = 24,
-	/// Black banner
+	/// Black banner.
 	BlackBanner = 25,
-	/// Red x
+	/// Red x.
 	RedX = 26,
-}
-
-/// The display settings of an item
-struct Display {
-	...super::Display,
-	/// The color of the map
-	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
-	MapColor: #[color=composite_int] int,
 }

@@ -5,33 +5,33 @@ use super::ProjectileBase
 
 struct ArrowBase {
 	...ProjectileBase,
-	/// The shake the projectile creates
+	/// Shake it creates.
 	shake: byte,
-	/// How players can pick up the projectile
+	/// How players can pick up it.
 	pickup: Pickup,
-	/// Whether a player shot the projectile
+	/// Whether a player shot it.
 	#[until=1.16]
 	player: boolean,
-	/// The number of ticks since the projectile last moved
+	/// Ticks since it last moved.
 	life: short,
-	/// The damage the projectile should do
+	/// Damage it should deal.
 	damage: double,
-	/// Whether the projectile is in the ground
+	/// Whether it is in the ground.
 	inGround: boolean,
-	/// The block the arrow is in
+	/// Block it is in.
 	inBlockState: BlockState,
-	/// Whether the projectile should do critical damage
+	/// Whether it should do critical damage.
 	crit: boolean,
-	/// Whether the projectile was shot from a crossbow
+	/// Whether it was shot from a crossbow.
 	ShotFromCrossbow: boolean,
-	/// The number of entities to pass through
+	/// Number of entities it can pass through.
 	PierceLevel: byte,
-	/// The sound event to play when the projectile hits something
+	/// Sound event to play when it hits something.
 	SoundEvent: string,
-	/// The upper bits of the owner's UUID
+	/// Upper bits of the owner's UUID.
 	#[until=1.16]
 	OwnerUUIDMost: long,
-	/// The lower bits of the owner's UUID
+	/// Lower bits of the owner's UUID.
 	#[until=1.16]
 	OwnerUUIDLeast: long,
 }
@@ -44,28 +44,26 @@ enum(byte) Pickup {
 
 dispatch minecraft:entity[arrow] to struct Arrow {
 	...ArrowBase,
-	/// The color of the arrow
-	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
+	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	Color: #[color=composite_int] int,
-	/// The custom potion effects to give to the hit entity
+	/// Effects to give to the hit entity.
 	CustomPotionEffects: [PotionEffect],
-	/// The name of the default potion effect
+	/// Name of the default potion effect.
 	Potion: #[id=mob_effect] string,
-	/// The color of the arrow's particles
-	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
+	/// Color of the arrow's trail particles.
+	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	CustomPotionColor: #[color=composite_int] int,
 }
 
 dispatch minecraft:entity[spectral_arrow] to struct SpectralArrow {
 	...ArrowBase,
-	/// The number of ticks the glowing effect lasts
+	/// Ticks the glowing effect lasts.
 	Duration: int,
 }
 
 dispatch minecraft:entity[trident] to struct Trident {
 	...ArrowBase,
-	/// The trident that was thrown
 	Trident: InventoryItem,
-	/// Whether the trident has already damaged an entity
+	/// Whether it has already damaged an entity.
 	DealtDamage: boolean,
 }

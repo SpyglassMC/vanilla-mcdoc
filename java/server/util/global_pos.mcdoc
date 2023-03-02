@@ -1,6 +1,6 @@
 struct GlobalPos {
-	/// The coordinates of the location in [x, y, z]
+	/// Coordinates of the location in [x, y, z]
 	pos: int[] @ 3,
-	/// The dimension of the location
+	/// Dimension of the location
 	dimension: #[id=dimension] string,
 }

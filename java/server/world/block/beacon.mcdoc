@@ -1,24 +1,17 @@
-use ::java::server::util::BannerPattern
 use ::java::server::util::ColorInt
 use ::java::server::util::EffectId
 
 dispatch minecraft:block[beacon] to struct Beacon {
 	...super::BlockEntity,
-	/// The name of the item that a player has to be holding to open this beacon
+	/// Name of the item that a player has to be holding to open this beacon.
+	/// Source is flattened to plain text and has formatting removed before the check.
 	Lock: string,
-	/// The number of levels from the pyramid
+	/// Number of levels from the pyramid.
 	Levels: int,
-	/// The primary potion effect of the beacon
+	/// Potion effect.
 	Primary: (NoneId | EffectId),
-	/// The secondary potion effect of the beacon
+	/// Potion effect.
 	Secondary: (NoneId | EffectId),
-}
-
-struct Pattern {
-	/// The color of the pattern
-	Color: ColorInt,
-	/// The pattern id
-	Pattern: BannerPattern,
 }
 
 type NoneId = (

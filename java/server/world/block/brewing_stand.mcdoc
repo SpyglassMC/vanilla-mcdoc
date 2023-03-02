@@ -2,19 +2,18 @@ use ::java::server::util::inventory::SlottedItem
 
 dispatch minecraft:block[brewing_stand] to struct BrewingStand {
 	...super::BlockEntity,
-	/// The name of the brewing stand
 	CustomName: #[text_component] string,
-	/// The name of the item that a player has to be holding to open this brewing stand
+	/// Name of the item that a player has to be holding to open this brewing stand.
+	/// Source is flattened to plain text and has formatting removed before the check.
 	Lock: string,
-	/// The items in this brewing stand, with slots:
 	/// * 0: left brewing slot
 	/// * 1: middle brewing slot
 	/// * 2: right brewing slot
 	/// * 3: ingredient slot
 	/// * 4: fuel slot
 	Items: [SlottedItem] @ 0..5,
-	/// The number of ticks until the brewing is complete
+	/// Number of ticks until the brewing is complete.
 	BrewTime: short,
-	/// The amount of fuel the brewing stand has left
+	/// Amount of fuel the brewing stand has left.
 	Fuel: byte,
 }

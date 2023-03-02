@@ -2,13 +2,13 @@ use ::java::server::util::inventory::SlottedItem
 
 struct ContainerBase {
 	...super::BlockEntity,
-	/// The name of the container
 	CustomName: #[text_component] string,
-	/// The name of the item that a player has to be holding to open this container
+	/// Name of the item that a player has to be holding to open this container.
+	/// Source is flattened to plain text and has formatting removed before the check.
 	Lock: string,
-	/// The loot table that will populate this container
+	/// Loot table that will populate this container.
 	LootTable: #[id=loot_table] string,
-	/// The seed of the loot table
+	/// Seed of the loot table.
 	LootTableSeed: long,
 }
 
@@ -35,11 +35,11 @@ dispatch minecraft:block[
 	black_shulker_box,
 ] to struct Container27 {
 	...ContainerBase,
-	/// The items in this container, with slots from 0 to 26
+	/// Slots from 0 to 26.
 	Items: [SlottedItem] @ 0..27,
 }
 
 dispatch minecraft:block[dispenser,dropper] to struct Container9 {
-	/// The items in this container, with slots from 0 to 8
+	/// Slots from 0 to 8.
 	Items: [SlottedItem] @ 0..9,
 }

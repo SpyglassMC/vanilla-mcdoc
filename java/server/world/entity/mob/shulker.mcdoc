@@ -2,17 +2,16 @@ use ::java::server::util::color::ColorInt
 
 dispatch minecraft:entity[shulker] to struct Shulker {
 	...super::MobBase,
-	/// Whether the shulker is peeking
+	/// Whether it is peeking.
 	Peek: boolean,
-	/// Which face the shulker is attached to
+	/// Which face it is attached to.
 	AttachFace: AttachFace,
-	/// The color of the shulker
 	Color: (ColorInt | ShulkerColor),
-	/// Approximate x coordinate of the shulker
+	/// Approximate x coordinate of the shulker.
 	APX: int,
-	/// Approximate y coordinate of the shulker
+	/// Approximate y coordinate of the shulker.
 	APY: int,
-	/// Approximate z coordinate of the shulker
+	/// Approximate z coordinate of the shulker.
 	APZ: int,
 }
 

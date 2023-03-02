@@ -1,7 +1,6 @@
 struct InventoryItem {
-	/// The number of items in the stack
+	/// Number of items in the stack
 	Count: byte,
-	/// The id of the item
 	id: #[id=item] string,
 	/// The NBT of the item
 	tag: minecraft:item[[id]],
@@ -9,7 +8,7 @@ struct InventoryItem {
 
 struct SlottedItem {
 	...InventoryItem,
-	/// The inventory slot the item is in
+	/// Inventory slot the item is in
 	Slot: byte,
 }
 

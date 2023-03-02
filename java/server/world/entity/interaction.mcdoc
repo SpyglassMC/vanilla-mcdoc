@@ -17,8 +17,8 @@ dispatch minecraft:entity[interaction] to struct Interaction {
 }
 
 struct Action {
-	/// UUID of player that performed the action.
+	#[uuid]
 	player: int[] @ 4,
-	/// Gametick of when the event occured.
+	/// Game tick of when the event occured.
 	timestamp: long @ 0..,
 }

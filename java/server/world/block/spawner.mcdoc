@@ -3,57 +3,54 @@ use super::super::super::util::range::InclusiveRange
 
 dispatch minecraft:block[spawner] to struct Sign {
 	...super::BlockEntity,
-	/// A list of potential entities to spawn next
+	/// Entities that can be placed.
 	SpawnPotentials: [SpawnPotential],
-	/// The data for the next mob to spawn
-	/// Will get overwritten by `SpawnPotentials`
+	/// Data for the next mob to spawn.
+	/// Overwritten by `SpawnPotentials`.
 	SpawnData: (
 		#[until=1.18] AnyEntity |
 		#[since=1.18] SpawnerEntry |
 	),
-	/// The number of entities that will be placed
+	/// Number of entities that will be placed.
 	SpawnCount: short,
-	/// The range that the spawned entities will be placed
+	/// Range that the spawned entities will be placed.
 	SpawnRange: short,
-	/// The number of ticks until the next spawn
+	/// Ticks until the next spawn.
 	Delay: short,
-	/// The minimum random delay for the next spawn
+	/// Minimum random delay for the next spawn.
 	MinSpawnDelay: short,
-	/// The maximum random delay for the next spawn
+	/// Mximum random delay for the next spawn.
 	MaxSpawnDelay: short,
-	/// The maximum number of entities nearby
+	/// Maximum number of entities nearby.
 	MaxNearbyEntities: short,
-	/// The radius in blocks that a player has to be within to spawn entities
+	/// Radius in blocks that a player has to be within to spawn entities.
 	RequiredPlayerRange: short,
 }
 
 struct SpawnPotential {
-	/// The entity to spawn
 	Entity: (
 		#[until=1.18] AnyEntity |
 		#[since=1.18] SpawnerEntry |
 	),
-	/// The weight for this entry to get chosen
+	/// Weight for this entry to be chosen.
 	#[until=1.18]
 	Weight: (
 		#[until=1.17] int @ 0.. | 
 		#[since=1.17] byte @ 0.. |
 	),
-	/// The weight for this entry to get chosen
+	/// Weight for this entry to be chosen.
 	#[since=1.18]
 	weight: int @ 0..,
 }
 
 struct SpawnerEntry {
-	/// Custom spawn rules
 	custom_spawn_rules: CustomSpawnRules,
-	/// The entity to spawn
 	entity: AnyEntity,
 }
 
 struct CustomSpawnRules {
-	/// The range of block light level required for the entity to spawn
+	/// Range of block light level required for the entity to spawn.
 	block_light_limit: InclusiveRange<int @ 0..15>,
-	/// The range of sky light level required for the entity to spawn
+	/// Range of sky light level required for the entity to spawn.
 	sky_light_limit: InclusiveRange<int @ 0..15>,
 }
