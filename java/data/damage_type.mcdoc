@@ -7,7 +7,7 @@ struct DamageType {
 	message_id: string
 	/// Amount of hunger exhaustion to cause.
 	exhaustion: float @ 0..,
-	/// Whether to scale with difficulty levels.
+	/// Whether to scale damage with difficulty levels.
 	scaling: enum(string) {
 		/// Always the same.
 		Never = "never",
