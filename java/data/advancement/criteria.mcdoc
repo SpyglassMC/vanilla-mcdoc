@@ -40,7 +40,9 @@ dispatch minecraft:criteria_trigger[allay_drop_item_on_block] to struct AllayDro
 dispatch minecraft:criteria_trigger[bee_nest_destroyed] to struct BeeNestDestroyed {
 	...CriterionBase,
 	block?: #[id=block] string,
+	/// Number of bees that were inside the bee nest/beehive before it was broken.
 	num_bees_inside?: int,
+	/// Item used to break the block.
 	item?: ItemPredicate,
 }
 
@@ -69,6 +71,7 @@ dispatch minecraft:criteria_trigger[channeled_lightning] to struct ChanneledLigh
 
 dispatch minecraft:criteria_trigger[construct_beacon] to struct ConstructBeacon {
 	...CriterionBase,
+	/// Tier of the updated beacon base.
 	level?: MinMaxBounds<int>,
 }
 
@@ -127,8 +130,12 @@ dispatch minecraft:criteria_trigger[filled_bucket] to struct FilledBucket {
 
 dispatch minecraft:criteria_trigger[fishing_rod_hooked] to struct FishingRodHooked {
 	...CriterionBase,
+	/// Entity that was pulled.
 	entity?: CompositeEntity,
+	/// Item that was caught.
 	item?: ItemPredicate,
+	/// Fishing rod used.
+	rod?: ItemPredicate,
 }
 
 dispatch minecraft:criteria_trigger[hero_of_the_village] to Location
@@ -136,8 +143,11 @@ dispatch minecraft:criteria_trigger[hero_of_the_village] to Location
 dispatch minecraft:criteria_trigger[inventory_changed] to struct InventoryChanged {
 	...CriterionBase,
 	slots?: struct {
+		/// Amount of empty slots.
 		empty?: MinMaxBounds<int>,
+		/// Amount of occupied slots.
 		occupied?: MinMaxBounds<int>,
+		/// Amount of slots that are a full stack.
 		full?: MinMaxBounds<int>,
 	},
 	items?: [ItemPredicate],
@@ -145,8 +155,11 @@ dispatch minecraft:criteria_trigger[inventory_changed] to struct InventoryChange
 
 dispatch minecraft:criteria_trigger[item_durability_changed] to struct ItemDurabilityChanged {
 	...CriterionBase,
+	/// Change in durability (negative numbers are used to indicate a decrease in durability).
 	delta?: MinMaxBounds<int>,
+	/// The resulting durability.
 	durability?: MinMaxBounds<int>,
+	/// The item before its durability changed.
 	item?: ItemPredicate,
 }
 
@@ -166,6 +179,7 @@ dispatch minecraft:criteria_trigger[kill_mob_near_sculk_catalyst] to struct Kill
 
 dispatch minecraft:criteria_trigger[killed_by_crossbow] to struct KilledByCrossbow {
 	...CriterionBase,
+	/// How many different types of entities were killed.
 	unique_entity_types?: MinMaxBounds<int>,
 	victims?: [CompositeEntity],
 }
@@ -186,11 +200,15 @@ dispatch minecraft:criteria_trigger[location] to Location
 
 dispatch minecraft:criteria_trigger[nether_travel] to struct NetherTravel {
 	...CriterionBase,
+	/// Where in the Overworld the player was when they travelled to the Nether.
 	#[since=1.18]
 	start_position?: LocationPredicate,
+	/// How far the player now is from the coordinate they started at in the Overworld before travelling.
 	distance?: DistancePredicate,
+	/// Where in the Overworld the player was when they travelled to the Nether.
 	#[until=1.18]
 	entered?: LocationPredicate,
+	/// Where in the Nether the player was when they travelled back to the Overworld.
 	#[until=1.18]
 	exited?: LocationPredicate,
 }
@@ -199,7 +217,9 @@ dispatch minecraft:criteria_trigger[placed_block] to struct PlacedBlock {
 	...CriterionBase,
 	block?: #[id=block] string,
 	state?: mcdoc:block_states[[block]],
+	/// Item that was used to place the block before the item was consumed.
 	item?: ItemPredicate,
+	/// Where the block was placed.
 	location?: LocationPredicate,
 }
 
@@ -252,6 +272,7 @@ dispatch minecraft:criteria_trigger[safely_harvest_honey] to struct SafelyHarves
 
 dispatch minecraft:criteria_trigger[shot_crossbow] to struct ShotCrossbow {
 	...CriterionBase,
+	/// Crossbow that was used.
 	item?: ItemPredicate,
 }
 
@@ -298,6 +319,7 @@ dispatch minecraft:criteria_trigger[thrown_item_picked_up_by_player] to struct T
 
 dispatch minecraft:criteria_trigger[used_ender_eye] to struct UsedEnderEye {
 	...CriterionBase,
+	/// Horizontal distance between the player and the stronghold.
 	distance?: MinMaxBounds<float>,
 }
 
@@ -314,6 +336,7 @@ dispatch minecraft:criteria_trigger[using_item] to struct UsingItem {
 dispatch minecraft:criteria_trigger[villager_trade] to struct VillagerTrade {
 	...CriterionBase,
 	villager?: CompositeEntity,
+	/// Item that was purchased. `count` tag checks the item count from one trade, not the total amount traded for.
 	item?: ItemPredicate,
 }
 

@@ -16,7 +16,7 @@ struct DamageType {
 		/// Scale with difficulty if it was caused by a living entity who is not a player.
 		LivingNonPlayer = "when_caused_by_living_non_player",
 	},
-	/// Optional. Controls how damage manifests when inflicted on players. Defaults to `hurt`.
+	/// Controls how damage manifests when inflicted on players. Defaults to `hurt`.
 	effects?: enum(string) {
 		/// Default hurt sound.
 		Hurt = "hurt",
@@ -31,7 +31,7 @@ struct DamageType {
 		/// A single tick of freezing hurt sound.
 		Freezing = "freezing"
 	},
-	/// Optional. Controls if special death message variants are used. Defaults to `default`.
+	/// Controls if special death message variants are used. Defaults to `default`.
 	death_message_type?: enum(string) {
 		/// Resulting translation key of `death.attack.` + message_id.
 		Default = "default",

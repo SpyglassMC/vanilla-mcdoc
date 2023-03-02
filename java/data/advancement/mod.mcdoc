@@ -2,45 +2,61 @@ use ::java::server::world::item::ItemBase
 use ::java::server::util::text::Text
 
 struct Advancement {
-	display?: Display,
+	display?: struct {
+		icon: struct {
+			item: #[id=item] string,
+			nbt?: #[nbt=ItemBase] string, // TODO
+		},
+		title: Text,
+		description: Text,
+		/// Used for the advancement tab (root advancement only).
+		background?: #[id=texture] string,
+		/// Controls the advancement tile frame. Defaults to `task`.
+		frame?: enum(string) {
+			/// Normal border.
+			Task = "task",
+			/// Fancy spiked border (used for the kill all mobs advancement).
+			Challenge = "challenge",
+			/// Rounded border (used for the full beacon advancement).
+			Goal = "goal",
+		},
+		/// Whether to show the toast pop up after completing this advancement. Defaults to `true`.
+		show_toast?: boolean,
+		/// Whether to announce in the chat when this advancement has been completed. Defaults to `true`.
+		announce_to_chat?: boolean,
+		/// Whether or not to hide this advancement and all its children from the advancement screen,
+		/// until this advancement have been completed.
+		/// Has no effect on root advancements themselves, but still affects all their children.
+		/// Defaults to `false`.
+		hidden?: boolean,
+	},
+	/// If this field is absent, this advancement is a root advancement.
+	/// Circular references cause a loading failure.
 	parent?: #[id=advancement] string,
+	/// If `requirements` is not defined, all defined criteria will be required.
 	criteria: struct {
-		[string]: Criterion,
+		[string]: struct {
+			/// Many triggers can occur multiple times, however, the reward will only be provided multiple times if the advancement is first revoked, which is often done within the function reward.
+			trigger: #[id] Trigger,
+			conditions?: minecraft:criteria_trigger[[trigger]],
+		},
 	},
+	/// Contains all of the `criteria` keys.
+	/// If all criteria are required at once, this may be omitted.
+	/// With multiple criteria: this contains a list of lists with criteria (all criteria must be mentioned).
+	/// If all of the lists each have any criteria met, the advancement is complete (basically AND grouping of OR groups).
 	requirements?: [[string]], // TODO
-	rewards?: Rewards
-}
-
-struct Display {
-	icon: struct {
-		item: #[id=item] string,
-		nbt?: #[nbt=ItemBase] string, // TODO
-	},
-	title: Text,
-	description: Text,
-	background?: #[id=texture] string,
-	frame?: FrameType,
-	show_toast?: boolean,
-	announce_to_chat?: boolean,
-	hidden?: boolean,
-}
-
-enum(string) FrameType {
-	Task = "task",
-	Challenge = "challenge",
-	Goal = "goal",
-}
-
-struct Rewards {
-	function?: #[id=function] string,
-	loot?: [#[id=loot_table] string],
-	recipes?: [#[id=recipe] string],
-	experience?: int,
-}
-
-struct Criterion {
-	trigger: #[id] Trigger,
-	conditions?: minecraft:criteria_trigger[[trigger]],
+	/// Provided to the player when this advancement is obtained.
+	rewards?: struct {
+		/// Function to run as the player (not at). Function group tags are not allowed.
+		function?: #[id=function] string,
+		/// Loot tables to give.
+		loot?: [#[id=loot_table] string],
+		/// Recipes to unlock.
+		recipes?: [#[id=recipe] string],
+		/// XP to add.
+		experience?: int,
+	}
 }
 
 enum(string) Trigger {
@@ -48,36 +64,58 @@ enum(string) Trigger {
 	#[since=1.19] AvoidVibration = "avoid_vibration",
 	BeeNestDestroyed = "bee_nest_destroyed",
 	BredAnimals = "bred_animals",
+	/// Player took any item out of a brewing stand.
 	BrewedPotion = "brewed_potion",
 	ChangedDimension = "changed_dimension",
+	/// Player successfully used the Channeling enchantment on an entity.
 	ChanneledLightning = "channeled_lightning",
+	/// Player changed the base of a beacon to a valid base; when the beacon updates itself, occurs both on setup & expansion.
 	ConstructBeacon = "construct_beacon",
 	ConsumeItem = "consume_item",
 	CuredZombieVillager = "cured_zombie_villager",
+	/// Player had a status effect applied or taken from them.
 	EffectsChanged = "effects_changed",
+	/// Player enchanted an item using an enchanting table; not with an anvil or through commands.
 	EnchantedItem = "enchanted_item",
+	/// Player stands in a block.
+	/// Checked every tick and will trigger for each successful match (up to 8 times, the maximum amount of blocks a player can stand in).
 	EnterBlock = "enter_block",
 	EntityHurtPlayer = "entity_hurt_player",
 	EntityKilledPlayer = "entity_killed_player",
 	#[since=1.18] FallFromHeight = "fall_from_height",
 	FilledBucket = "filled_bucket",
+	/// Player successfully caught an item with a fishing rod or pulled an entity.
 	FishingRodHooked = "fishing_rod_hooked",
+	/// Player killed the last mob of the last wave in a raid.
 	HeroOfTheVillage = "hero_of_the_village",
+	/// Criterion was granted to the player through `/advancement grant <target> only <advancement> <criterion>`.
 	Impossible = "impossible",
 	InventoryChanged = "inventory_changed",
+	/// Any equipped item was damaged or repaired.
 	ItemDurabilityChanged = "item_durability_changed",
+	// TODO: List said interactions.
+	/// Player interacted with a block with an empty hand or an item. Only occurs for specific registered interactions.
 	#[since=1.16] ItemUsedOnBlock = "item_used_on_block",
 	#[since=1.19] KillMobNearSculkCatalyst = "kill_mob_near_sculk_catalyst",
+	/// Player killed a mob or player using a projectile shot from a crossbow.
 	KilledByCrossbow = "killed_by_crossbow",
+	/// Player has the levitation status effect.
 	Levitation = "levitation",
+	/// Lightning bolt finished striking (it is already despawned), activates for all players within a 256 block radius of the strike.
 	#[since=1.17] LightningStrike = "lightning_strike",
+	/// Activates every 20 ticks (1 second).
 	Location = "location",
+	/// Player returned to the Overworld after traveling to the Nether.
 	NetherTravel = "nether_travel",
 	PlacedBlock = "placed_block",
+	/// Player generated the contents of a container upon opening it with the set loot table.
 	#[since=1.16] PlayerGeneratesContainerLoot = "player_generates_container_loot",
 	PlayerHurtEntity = "player_hurt_entity",
+	// TODO: List said interactions.
+	/// Only occurs for specific registered interactions.
 	#[since=1.16] PlayerInteractedWithEntity = "player_interacted_with_entity",
 	PlayerKilledEntity = "player_killed_entity",
+	/// Player unlocked a recipe by either crafting it, receiving it in an advancement reward, using a knowledge book, or receiving it through `/recipe`.
 	RecipeUnlocked = "recipe_unlocked",
 	#[since=1.18] RideEntityInLava = "ride_entity_in_lava",
 	ShotCrossbow = "shot_crossbow",
@@ -85,15 +123,30 @@ enum(string) Trigger {
 	SleptInBed = "slept_in_bed",
 	SlideDownBlock = "slide_down_block",
 	#[since=1.17] StartedRiding = "started_riding",
+	/// Activated when the last required block is placed for summoning
+	/// iron golems (pumpkin and iron blocks), snow golems (pumpkin and snow blocks), the ender dragon (end crystals),
+	/// or the wither (wither skulls and soul sand/soul soil).
+	///
+	/// When the block is not placed by a player directly this will activate for all players within an area:
+	/// - Golems: from the golem's position, their hitbox plus 5 blocks in each direction.
+	/// - Wither: from the wither's position, their hitbox plus 50 blocks in each direction.
+	/// - Ender dragon: 192 blocks from `0, 128, 0`.
+	///
+	/// (Spawn eggs, commands and mob spawners do not activate this)
 	SummonedEntity = "summoned_entity",
 	TameAnimal = "tame_animal",
 	#[since=1.16] TargetHit = "target_hit",
+	/// Player had thrown an item and an entity picked it up.
 	#[since=1.16] ThrownItemPickedUpByEntity = "thrown_item_picked_up_by_entity",
+	/// Player had thrown an item and any player picked it up (optimized shortcut for entity type condition).
 	#[since=1.19] ThrownItemPickedUpByPlayer = "thrown_item_picked_up_by_player",
+	/// Activates every tick (20 times a second). Should only be used in-place of `#minecraft:tick` when utilizing multiple criteria to optimize.
 	Tick = "tick",
+	/// Player used an eye of ender (in a world where strongholds generate).
 	UsedEnderEye = "used_ender_eye",
 	UsedTotem = "used_totem",
 	#[since=1.17] UsingItem = "using_item",
 	VillagerTrade = "villager_trade",
+	/// Player caused a raid to start.
 	VoluntaryExile = "voluntary_exile",
 }

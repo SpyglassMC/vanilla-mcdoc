@@ -6,6 +6,7 @@ use super::super::advancement::predicate::EntityPredicate
 use super::super::advancement::predicate::LocationPredicate
 use super::super::advancement::predicate::DamageSourcePredicate
 
+/// Whether any condition within a list passes.
 dispatch minecraft:loot_condition[alternative] to struct Alternative {
 	terms: [LootCondition],
 }
@@ -32,6 +33,7 @@ dispatch minecraft:loot_condition[entity_scores] to struct EntityScores {
 	},
 }
 
+/// Whether a condition does not pass.
 dispatch minecraft:loot_condition[inverted] to struct Inverted {
 	term: LootCondition,
 }
@@ -57,20 +59,27 @@ dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
 
 dispatch minecraft:loot_condition[random_chance_with_looting] to struct RandomChanceWithLooting {
 	chance: float @ 0..1,
+	/// Looting adjustment to the base success rate. Formula is `chance + (looting_level * looting_multiplier)` .
 	looting_multiplier: float,
 }
 
+/// Whether another predicate passes.
 dispatch minecraft:loot_condition[reference] to struct Reference {
+	/// A cyclic reference causes a parsing failure.
 	name: #[id=predicate] string,
 }
 
 dispatch minecraft:loot_condition[table_bonus] to struct TableBonus {
 	enchantment: #[id=enchantment] string,
+	/// Probabilities for each enchantment level
 	chances: [float @ 0..1],
 }
 
 dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
+	/// Check the current game tick.
 	value: RandomValueBounds,
+	/// Game tick supplied to `value` check gets modulo-divided by this.
+	/// For example, if set to 24000, `value` operates on a time period of days.
 	period?: long,
 }
 

@@ -15,7 +15,7 @@ struct TrimMaterial {
 	/// Model override predicate float.
 	item_model_index: [float @ 0..1],
 
-	/// Optional. Armor materials that should have a different color palette. */
+	/// Armor materials that should have a different color palette. */
 	override_armor_materials?: struct {
 		[ArmorMaterials]: string,
 	}

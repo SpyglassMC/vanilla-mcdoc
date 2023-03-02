@@ -9,6 +9,8 @@ struct ItemPredicate {
 	durability?: MinMaxBounds<int>,
 	potion?: #[id=potion] string,
 	enchantments?: [EnchantmentPredicate],
+	/// Checks the `StoredEnchantments` nbt tag (used by enchanted books).
+	stored_enchantments?: [EnchantmentPredicate],
 	nbt?: #[nbt=ItemBase] string, // TODO
 }
 
@@ -50,11 +52,13 @@ struct LocationPredicate {
 	#[since=1.19]
 	structure?: #[id="worldgen/structure"] string,
 	dimension?: #[id=dimension] string,
+	/// Calculated using: `max(sky-darkening, block)`.
 	light?: struct {
 		light?: MinMaxBounds<int @ 0..15>,
 	},
 	block?: BlockPredicate,
 	fluid?: FluidPredicate,
+	/// Whether the block is above (5 blocks or less) a campfire or soul campfire.
 	#[since=1.16]
 	smokey?: boolean,
 }
@@ -127,17 +131,19 @@ dispatch minecraft:type_specific_predicate[lightning] to struct LightningBoltPre
 }
 
 dispatch minecraft:type_specific_predicate[player] to struct PlayerPredicate {
-	gamemode?: GameMode,
-	level?: MinMaxBounds<int>,
 	advancements?: struct {
 		[#[id=advancement] string]: (boolean | struct {
 			[string]: boolean,
 		}),
 	},
+	gamemode?: GameMode,
+	/// Experience/XP level.
+	level?: MinMaxBounds<int>,
 	recipes?: struct {
 		[#[id=recipe] string]: boolean,
 	},
 	stats?: [StatisticPredicate],
+	looking_at?: EntityPredicate,
 }
 
 dispatch minecraft:type_specific_predicate[slime] to struct SlimePredicate {
@@ -183,12 +189,17 @@ struct MobEffectPredicate {
 }
 
 struct DamagePredicate {
+	/// Amount of incoming damage before damage reduction.
 	dealt?: MinMaxBounds<float>,
+	/// Amount of incoming damage after damage reduction.
 	taken?: MinMaxBounds<float>,
+	/// Whether the damage was successfully blocked.
 	blocked?: boolean,
+	/// Source of the damage (eg: the skeleton that shot the arrow).
 	source_entity?: EntityPredicate,
 	#[until="1.19.4"]
 	type?: DamageSourcePredicate,
+	/// Damage type group tags that the damage type is in.
 	#[since="1.19.4"]
 	tags?: DamageTypeSource[], 
 }
