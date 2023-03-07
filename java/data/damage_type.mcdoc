@@ -4,7 +4,7 @@ use ::java::server::util::text::Text
 struct DamageType {
 	/// The message id used for deaths caused by this damage type.
 	/// Is combined with the result of `death_message_type` to form a translation key.
-	message_id: string
+	message_id: string,
 	/// Amount of hunger exhaustion to cause.
 	exhaustion: float @ 0..,
 	/// Whether to scale damage with difficulty levels.
@@ -29,7 +29,7 @@ struct DamageType {
 		/// Berry bush poke sound.
 		Poking = "poking",
 		/// A single tick of freezing hurt sound.
-		Freezing = "freezing"
+		Freezing = "freezing",
 	},
 	/// Controls if special death message variants are used. Defaults to `default`.
 	death_message_type?: enum(string) {
@@ -39,5 +39,5 @@ struct DamageType {
 		FallVariants = "fall_variants",
 		/// Resulting translation key of `death.attack.` + message_id + `.link`.
 		IntentionalGameDesign = "intentional_game_design",
-	}
+	},
 }
