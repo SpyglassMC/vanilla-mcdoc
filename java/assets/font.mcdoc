@@ -1,4 +1,4 @@
-struct Font {
+dispatch minecraft:resource[font] to struct Font {
 	providers: [Provider],
 }
 

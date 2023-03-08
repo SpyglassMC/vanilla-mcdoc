@@ -1,6 +1,6 @@
 use ::java::server::util::direction::Direction
 
-struct Model {
+dispatch minecraft:resource[model] to struct Model {
 	parent?: #[id=model] string,
 	ambientocclusion?: boolean,
 	gui_light?: ("front" | "side"),

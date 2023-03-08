@@ -1,4 +1,4 @@
-type BlockDefinition = (
+dispatch minecraft:resource[block_state] to type BlockDefinition = (
 	struct {
 		variants: struct {
 			[string]: ModelVariant,

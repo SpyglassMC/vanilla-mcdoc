@@ -1,5 +1,6 @@
 #[since="1.18.2"]
-struct RegionalCompliancies {
+dispatch minecraft:resource[regional_compliances] to struct RegionalCompliancies {
+	/// Region code
 	[string]: Notification,
 }
 

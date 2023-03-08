@@ -8,7 +8,7 @@ type CarverRef = (
 	ConfiguredCarver |
 )
 
-struct ConfiguredCarver {
+dispatch minecraft:resource[worldgen/configured_carver] to struct ConfiguredCarver {
 	type: #[id="worldgen/carver"] string,
 	config: struct {
 		probability: float @ 0..1,

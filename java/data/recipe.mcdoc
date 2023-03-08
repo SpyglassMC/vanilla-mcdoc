@@ -1,4 +1,4 @@
-struct Recipe {
+dispatch minecraft:resource[recipe] to struct Recipe {
 	type: #[id=recipe_serializer] string,
 	...minecraft:recipe_serializer[[type]],
 }

@@ -3,7 +3,7 @@ type StructureSetRef = (
 	StructureSet |
 )
 
-struct StructureSet {
+dispatch minecraft:resource[worldgen/structure_set] to struct StructureSet {
 	structures: [StructureSetElement],
 	placement: StructurePlacement,
 }

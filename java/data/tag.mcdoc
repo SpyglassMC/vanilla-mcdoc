@@ -1,4 +1,4 @@
-struct Tag {
+dispatch minecraft:resource[tag] to struct Tag {
 	replace?: boolean,
 	values: [TagEntry],
 }

@@ -9,7 +9,7 @@ type StructureRef = (
 	Structure |
 )
 
-struct Structure {
+dispatch minecraft:resource[worldgen/structure] to struct Structure {
 	type: (
 		#[until=1.19] #[id="worldgen/structure_feature"] string |
 		#[since=1.19] #[id="worldgen/structure_type"] string |

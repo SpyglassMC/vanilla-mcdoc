@@ -1,5 +1,5 @@
 #[since="1.19.3"]
-struct Atlas {
+dispatch minecraft:resource[atlas] to struct Atlas {
 	sources: [SpriteSource],
 }
 

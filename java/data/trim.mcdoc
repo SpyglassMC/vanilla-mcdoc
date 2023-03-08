@@ -2,7 +2,7 @@ use super::util::ArmorMaterials
 use ::java::server::util::text::Text
 
 #[since="1.19.4"]
-struct TrimMaterial {
+dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 	/// A string which will be used in the resource pack.
 	asset_name: string, // TODO
 

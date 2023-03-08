@@ -13,7 +13,7 @@ type NoiseGeneratorSettingsRef = (
 	} |
 )
 
-struct NoiseGeneratorSettings {
+dispatch minecraft:resource[worldgen/noise_settings] to struct NoiseGeneratorSettings {
 	default_block: BlockState,
 	default_fluid: BlockState,
 	#[until=1.18]

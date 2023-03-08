@@ -1,7 +1,7 @@
 use ::java::server::util::text::Text
 
 #[since="1.19.4"]
-struct DamageType {
+dispatch minecraft:resource[damage_type] to struct DamageType {
 	/// The message id used for deaths caused by this damage type.
 	/// Is combined with the result of `death_message_type` to form a translation key.
 	message_id: string,

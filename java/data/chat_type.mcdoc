@@ -1,6 +1,6 @@
 use ::java::server::util::text::TextStyle
 
-struct ChatType {
+dispatch minecraft:resource[chat_type] to struct ChatType {
 	chat?: TextDisplay,
 	overlay?: TextDisplay,
 	narration?: Narration,

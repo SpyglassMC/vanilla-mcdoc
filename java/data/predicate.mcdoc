@@ -1,3 +1,3 @@
 use super::loot::LootCondition
 
-type Predicate = (LootCondition | [LootCondition])
+dispatch minecraft:resource[predicate] to type Predicate = (LootCondition | [LootCondition])

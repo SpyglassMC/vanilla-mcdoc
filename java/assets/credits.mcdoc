@@ -1,4 +1,4 @@
-type Credits = [struct {
+dispatch minecraft:resource[credits] to type Credits = [struct {
 	/// Company segment.
 	section: string,
 	/// Positions.

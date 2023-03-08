@@ -1,4 +1,4 @@
-struct ShaderProgram {
+dispatch minecraft:resource[shader/program] to struct ShaderProgram {
 	vertex: string,
 	fragement: string,
 	samplers?: [Sampler],

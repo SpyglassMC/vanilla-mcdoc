@@ -3,7 +3,7 @@ use super::carver::CarverRef
 use super::feature::PlacedFeatureRef
 use super::structure::StructureRef
 
-struct Biome {
+dispatch minecraft:resource[worldgen/biome] to struct Biome {
 	#[until=1.19]
 	category: BiomeCategory,
 	#[until=1.18]

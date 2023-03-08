@@ -1,4 +1,4 @@
-struct TextureMeta {
+dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 	animation: {
 		/// If true, additional frames will be generated between frames with a frame time greater than 1 between them. Defaults to false.
 		interpolate?: boolean,

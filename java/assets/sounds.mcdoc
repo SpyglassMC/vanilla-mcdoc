@@ -1,5 +1,5 @@
-struct Sounds {
-	[string]: SoundEventRegistration,
+dispatch minecraft:resource[sounds] to struct Sounds {
+	[#[id=sound_event] string]: SoundEventRegistration,
 }
 
 struct SoundEventRegistration {

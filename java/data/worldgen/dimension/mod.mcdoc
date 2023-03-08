@@ -2,7 +2,7 @@ use chunk_generator::ChunkGenerator
 use super::IntProvider
 
 #[since=1.16]
-struct Dimension {
+dispatch minecraft:resource[dimension] to struct Dimension {
 	type: DimensionTypeRef,
 	generator: ChunkGenerator,
 }
@@ -15,7 +15,7 @@ type DimensionTypeRef = (
 	} |
 )
 
-struct DimensionType {
+dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	ultrawarm: boolean,
 	natural: boolean,
 	piglin_safe: boolean,
