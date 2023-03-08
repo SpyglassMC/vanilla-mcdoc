@@ -129,6 +129,7 @@ dispatch minecraft:feature_config[dripstone_cluster] to struct DripstoneClusterC
 	floor_to_ceiling_search_range: int @ 1..512,
 	height: IntProvider<int @ 0..128>,
 	radius: IntProvider<int @ 0..128>,
+	/// Max height difference between the stalagmite and stalactite.
 	max_stalagmite_stalactite_height_diff: int @ 0..64,
 	height_deviation: int @ 1..64,
 	dripstone_block_layer_thickness: IntProvider<int @ 0..128>,
@@ -199,6 +200,7 @@ dispatch minecraft:feature_config[forest_rock] to struct ForestRockConfig {
 
 #[since=1.17]
 dispatch minecraft:feature_config[fossil] to struct FossilConfig {
+	/// If more corners are exposed to air, feature placement is cancelled.
 	max_empty_corners_allowed: int @ 0..7,
 	fossil_structures: [#[id=structure] string],
 	overlay_structures: [#[id=structure] string],
@@ -230,11 +232,13 @@ struct GeodeBlockSettings {
 	middle_layer_provider: BlockStateProvider,
 	outer_layer_provider: BlockStateProvider,
 	inner_placements: [BlockState],
+	/// Blocks that will not be replaced by the geode.
 	cannot_replace: (
 		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |
 		#[since="1.18.2"] [#[id=block] string] |
 		#[since="1.18.2"] #[id(registry=block,tags=allowed)] string |
 	),
+	/// When encountering an invalid block, feature placement is cancelled.
 	invalid_blocks: (
 		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |
 		#[since="1.18.2"] [#[id=block] string] |
@@ -351,6 +355,7 @@ dispatch minecraft:feature_config[no_surface_ore,ore,scattered_ore] to struct Or
 	#[since=1.17]
 	targets: [TargetBlock],
 	size: int @ 0..64,
+	/// Chance that feature placement will be discarded if the ore is exposed to air blocks.
 	#[since=1.17]
 	discard_chance_on_air_exposure: float @ 0..1,
 }

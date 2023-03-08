@@ -3,6 +3,7 @@ struct BiomeSource {
 	...minecraft:biome_source[[type]],
 }
 
+/// Biomes generate in a checkerboard chunk pattern.
 dispatch minecraft:biome_source[checkerboard] to struct Checkerboard {
 	scale?: int @ 0..62,
 	biomes: (
@@ -11,10 +12,12 @@ dispatch minecraft:biome_source[checkerboard] to struct Checkerboard {
 	),
 }
 
+/// One biome for the whole world.
 dispatch minecraft:biome_source[fixed] to struct Fixed {
 	biome: #[id="worldgen/biome"] string,
 }
 
+/// Custom biome distribution with configurable parameters.
 dispatch minecraft:biome_source[multi_noise] to struct MultiNoise {
 	#[until=1.18]
 	seed: long,
@@ -67,11 +70,13 @@ struct ClimateParameters {
 	offset: float @ 0..1,
 }
 
+/// Biome distribution for the End.
 dispatch minecraft:biome_source[the_end] to struct TheEnd {
 	#[until=1.19]
 	seed: long,
 }
 
+/// Biome distribution for the Overworld.
 #[until=1.18]
 dispatch minecraft:biome_source[vanilla_layered] to struct VanillaLayered {
 	seed: long,

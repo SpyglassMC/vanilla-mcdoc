@@ -4,7 +4,9 @@ dispatch minecraft:resource[recipe] to struct Recipe {
 }
 
 dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
+	/// Identifier to group multiple recipes in the recipe book.
 	group?: string, // TODO
+	/// Identifier for the category this goes in the recipe book.
 	category?: CraftingBookCategory,
 	pattern: [string @ 1..3] @ 1..3, // TODO
 	key: struct {
@@ -18,6 +20,7 @@ dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 
 dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShapeless {
 	group?: string,
+	/// Identifier for the category this goes in the recipe book.
 	category?: CraftingBookCategory,
 	ingredients?: [Ingredient] @ 1..9,
 	result: ItemResult,
@@ -25,6 +28,7 @@ dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShape
 
 dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
 	group?: string,
+	/// Identifier for the category this goes in the recipe book.
 	category?: CookingBookCategory,
 	ingredient: Ingredient,
 	result: #[id=item] string,

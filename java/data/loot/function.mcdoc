@@ -93,7 +93,7 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 
 /// Converts an empty map into an `explorer map` leading to a nearby generated structure.
 dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
-	/// Generated structure to locate. Accepts any of the structure types used by the `/locate` command.
+	/// Generated structure to locate. Accepts any of the structure types used by the `/locate` command. Defaults to buried treasure.
 	destination?: (
 		#[until=1.19] string |
 		#[since=1.19] #[id(registry="worldgen/structure",tags=implicit)] string |

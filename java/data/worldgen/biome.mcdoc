@@ -6,14 +6,17 @@ use super::structure::StructureRef
 dispatch minecraft:resource[worldgen/biome] to struct Biome {
 	#[until=1.19]
 	category: BiomeCategory,
+	/// Raises or lowers the terrain. Positive values are considered land and negative are oceans.
 	#[until=1.18]
 	depth: float,
+	/// Vertically stretches the terrain. Lower values produce flatter terrain.
 	#[until=1.18]
 	scale: float,
 	temperature: float,
 	downfall: float,
 	precipitation: Precipication,
 	temperature_modifier?: TemperatureModifier,
+	/// If true, the world spawn will be preferred in this biome.
 	#[until=1.18]
 	player_spawn_friendly?: boolean,
 	creature_spawn_probability?: float @ 0..1,

@@ -16,32 +16,46 @@ type DimensionTypeRef = (
 )
 
 dispatch minecraft:resource[dimension_type] to struct DimensionType {
+	/// If true, water will evaporate and sponges will dry.
 	ultrawarm: boolean,
+	/// If true, portals will spawn zombified piglins. If false, compasses and clocks spin randomly.
 	natural: boolean,
+	/// If false, piglins will shake and convert to zombified piglins.
 	piglin_safe: boolean,
+	/// If true, players can charge and use respawn anchors to set their spawn. If false, respawn anchors will blow up when used.
 	respawn_anchor_works: boolean,
+	/// If true, players can use beds to set their spawn and advance time. If false, beds will blow up when used.
 	bed_works: boolean,
+	/// If true, players with the Bad Omen effect can cause a raid.
 	has_raids: boolean,
+	/// Affects the weather, lighting engine and respawning rules.
 	has_skylight: boolean,
+	/// Affects the weather, map items and respawning rules.
 	has_ceiling: boolean,
 	#[until="1.16.2"]
 	shrunk: boolean,
 	#[since="1.16.2"]
 	coordinate_scale: double @ 0.00001..30000000,
-	ambient_light: float,
+	ambient_light: float @ 0..1,
+	/// Setting this value will keep the sun in a fixed position.
 	fixed_time?: int,
+	/// Portals can't spawn and chorus fruit can't teleport players above this height.
 	logical_height: (
 		#[until=1.17] int @ 0..256 |
 		#[since=1.17] int @ 0..4064 |
 	),
 	#[since="1.16.2"]
+	/// Sky effects.
 	effects: #[id] DimensionTypeEffects,
+	/// Block tag defining what blocks keep fire infinitely burning.
 	infiniburn: (
 		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |
 		#[since="1.18.2"] #[id(registry=block,tags=required)] string |
 	),
 	#[since=1.17]
+	/// The minimum height in which blocks can exist.
 	min_y: int @ -2032..2031, // TODO: divisible by 16
+	/// The total height in which blocks can exist. Max Y = Min Y + Height.
 	#[since=1.17]
 	height: int @ 16..4064, // TODO: divisible by 16
 	#[since=1.19]

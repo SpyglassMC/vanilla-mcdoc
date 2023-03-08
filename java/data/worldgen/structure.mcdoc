@@ -19,6 +19,7 @@ dispatch minecraft:resource[worldgen/structure] to struct Structure {
 		[#[id="worldgen/biome"] string] |
 		#[id(registry="worldgen/biome",tags=allowed)] string |
 	),
+	/// Whether to add extra terrain below the structure.
 	#[since="1.18.2"] #[until=1.19]
 	adapt_noise?: boolean,
 	#[since=1.19]
