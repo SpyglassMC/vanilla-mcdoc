@@ -1,7 +1,7 @@
 use ::java::server::world::entity::AnyEntity
 use ::java::server::util::block_state::BlockState
 
-dispatch minecraft:resource[structure_nbt] to struct StructureNBT {
+struct StructureNBT {
 	/// [Data version](https://minecraft.fandom.com/wiki/Data_version).
 	DataVersion: int @ 0..,
 
