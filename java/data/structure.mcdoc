@@ -1,0 +1,42 @@
+use ::java::server::world::entity::AnyEntity
+use ::java::server::util::block_state::BlockState
+
+dispatch minecraft:resource[structure_nbt] to struct StructureNBT {
+	/// [Data version](https://minecraft.fandom.com/wiki/Data_version).
+	DataVersion: int @ 0..,
+
+	size: [int @ 0..] @ 3,
+
+	blocks: [struct {
+		/// Index of the block in the palette.
+		state: int @ 0.., // TODO
+		pos: [int @ 0..] @ 3,
+		nbt?: struct {} // TODO `minecraft:block[[id]]`
+	}],
+
+	entities: [struct {
+		pos: [double @ 0..] @ 3,
+		blockPos: [int @ 0..] @ 3,
+		nbt: AnyEntity,
+	}],
+
+	...BlockPalette,
+}
+
+type BlockPalette = (
+	struct {
+		palette: [BlockState],
+	} |
+	struct {
+		palettes: [[BlockState]],
+	}
+)
+
+struct Palette {
+	palette: [BlockState]
+}
+
+struct Palettes {
+	/// Sets of different block states used in the structure, a random palette gets selected based on coordinates.
+	palettes: [[BlockState]]
+}
