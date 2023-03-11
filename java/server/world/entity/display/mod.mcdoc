@@ -25,7 +25,7 @@ struct DisplayBase {
 	shadow_radius: float @ 0..,
 	/// Strength of the shadow. Controls the opacity of the shadow as a function of distance to block below. Defaults to 1. Interpolated.
 	shadow_strength: float @ 0..1,
-	/// Start of interpolation (entity fully in "previous" state) is defined by game time, in ticks.
+	/// Ticks after the next client tick to wait until starting the interpolation.
 	/// Info:
 	/// All interpolated properties are part of a single interpolation set.
 	/// Any update to an interpolated property will cause all values of the interpolation set to be saved as "current".
@@ -33,18 +33,19 @@ struct DisplayBase {
 	/// - Updates are synchronized to clients at most once per tick, so multiple updates within command will still count as single update.
 	/// Previous current values are saved as "previous".
 	/// If interpolation is enabled, entity will transition between "previous" and "current" values over time.
-	interpolation_start: int @ -1..,
-	/// End of interpolation (entity fully in "current" state) is defined as start+duration, in ticks.
+	start_interpolation: int @ 0..,
+	/// Ticks the interpolation should take to complete.
 	interpolation_duration: int @ 0..,
-	/// Controls if model should pivot to face player when rendered.
+	start_interpolation: int @ 0..,
+	/// Controls if model should pivot to face player when rendered. Defaults to `fixed`.
 	billboard: enum(string) Billboard {
-		/// No rotation (default).
+		/// No rotation.
 		Fixed: "fixed",
-		/// Model can pivot around vertical axis.
+		/// Pivot around vertical axis.
 		Vertical: "vertical",
-		/// Model can pivot around horizontal axis.
+		/// Pivot around horizontal axis.
 		Horizontal: "horizontal",
-		/// Model can pivot around both axes.
+		/// Pivot around both axes.
 		Center: "center",
 	},
 	/// When defined, overrides light values used for rendering. Omitted by default (which means rendering uses values from entity position).
