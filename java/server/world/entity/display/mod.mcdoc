@@ -97,5 +97,5 @@ dispatch minecraft:entity[item_display] to struct ItemDisplay {
 	/// Item stack to display.
 	item: InventoryItem,
 	/// Describes item model transform applied to item (as defined in `display` section in model JSON). Defaults to `fixed`.
-	alignment: ItemTransformType,
+	item_display: ItemTransformType,
 }
