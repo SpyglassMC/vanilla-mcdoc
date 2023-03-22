@@ -15,9 +15,27 @@ dispatch minecraft:block[
 	spruce_wall_sign,
 ] to struct Sign {
 	...super::BlockEntity,
+	// TODO: Add filtered text
+	#[until=1.20]
+	...OldSign,
+	#[since=1.20]
+	...(struct {
+		back_text: SignText,
+		front_text: SignText,
+		/// Whether the sign can no longer be edited. If a sign is editable
+		is_waxed: boolean,
+	}),
+}
+
+struct SignText {
+	color: ColorString,
+	has_glowing_text: boolean,
+	messages: [#[text_component] string] @ 4,
+}
+
+struct OldSign {
 	/// Color the text has been dyed.
 	Color: ColorString,
-	// TODO: Add filtered text
 	#[since=1.17]
 	GlowingText: boolean,
 	/// First line of text.
