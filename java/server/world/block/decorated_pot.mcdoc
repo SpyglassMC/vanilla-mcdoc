@@ -2,13 +2,28 @@
 dispatch minecraft:block[decorated_pot] to struct DecoratedPot {
 	...super::BlockEntity,
 	/// Item ID of what was used for each side of the pot.
-	shards: [Shard] @ 4,
+	sherds: [Sherd] @ 4,
 }
 
-enum(string) Shard {
-	Brick: "brick",
-	Prize: "pottery_shard_prize",
-	Archer: "pottery_shard_archer",
-	Skull: "pottery_shard_skull",
-	ArmsUp: "pottery_shard_arms_up",
+enum(string) Sherd {
+	Angler : "angler_pottery_sherd",
+	Archer: "archer_pottery_sherd",
+	ArmsUp: "arms_up_pottery_sherd",
+	Blade: "blade_pottery_sherd",
+	Brewer: "brewer_pottery_sherd",
+	Burn: "burn_pottery_sherd",
+	Danger: "danger_pottery_sherd",
+	Explorer: "explorer_pottery_sherd",
+	Friend: "friend_pottery_sherd",
+	Heart: "heart_pottery_sherd",
+	Heartbreak: "heartbreak_pottery_sherd",
+	Howl: "howl_pottery_sherd",
+	Miner: "miner_pottery_sherd",
+	Mourner: "mourner_pottery_sherd",
+	Plenty: "plenty_pottery_sherd",
+	Prize: "prize_pottery_sherd",
+	Sheaf: "sheaf_pottery_sherd",
+	Shelter: "shelter_pottery_sherd",
+	Skull: "skull_pottery_sherd",
+	Snort: "snort_pottery_sherd",
 }

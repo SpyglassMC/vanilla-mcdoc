@@ -3,32 +3,60 @@ dispatch minecraft:resource[font] to struct Font {
 }
 
 struct Provider {
-	type: ProviderType,
+	type: ProviderType, // TODO: This shouldn't need an enum; it should be provided by minecraft:glyph_provider
 	...minecraft:glyph_provider[[type]],
 }
 
 enum(string) ProviderType {
 	Bitmap = "bitmap",
 	TrueType = "ttf",
+	#[until=1.20]
 	LegacyUnicode = "legacy_unicode",
+	#[since=1.20]
+	Unihex = "unihex",
+	#[since=1.20]
+	Reference = "reference",
 }
 
 dispatch minecraft:glyph_provider[bitmap] to struct BitmapProvider {
-	file: string,
+	file: string, // TODO
 	height?: int,
 	ascent: int,
 	chars: [string @ 1..] @ 1..,
 }
 
 dispatch minecraft:glyph_provider[ttf] to struct TtfProvider {
-	file: string,
+	file: string, // TODO
 	size?: float,
 	oversample?: float,
 	shift?: [float, float],
 	skip?: (string | [string]),
 }
 
+#[until=1.20]
 dispatch minecraft:glyph_provider[legacy_unicode] to struct LegacyUnicodeProvider {
 	sizes: string,
 	template: string,
+}
+
+#[since=1.20]
+dispatch minecraft:glyph_provider[unihex] to struct UnihexProvider {
+	/// ZIP archive containing one or more *.hex files (files in archive with different extensions are ignored).
+	hex_file: string, // TODO
+	size_overrides?: struct {
+		/// Minimum in codepoint range (inclusive).
+		from: string, // TODO: codepoint; "\u3001"
+		/// Maximum in codepoint range (inclusive).
+		"to": string,
+		/// Position of left-most column of the glyph.
+		left: int @ 0..,
+		/// Position of right-most column of the glyph.
+		right: int @ 0..,
+	},
+}
+
+#[since=1.20]
+/// Inclusion is performed after all fonts are loaded, so it will include all providers for a given font defined in all datapacks.
+dispatch minecraft:glyph_provider[reference] to struct ReferenceProvider {
+	id: #[id=font_provider] string,
 }
