@@ -36,7 +36,6 @@ struct DisplayBase {
 	start_interpolation: int @ 0..,
 	/// Ticks the interpolation should take to complete.
 	interpolation_duration: int @ 0..,
-	start_interpolation: int @ 0..,
 	/// Controls if model should pivot to face player when rendered. Defaults to `fixed`.
 	billboard: enum(string) Billboard {
 		/// No rotation.
