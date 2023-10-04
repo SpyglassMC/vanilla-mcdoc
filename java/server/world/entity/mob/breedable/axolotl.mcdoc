@@ -15,7 +15,7 @@ dispatch minecraft:entity[axolotl] to struct Axolotl {
 			/// Ticks until it can be tempted again.
 			"minecraft:temptation_cooldown_ticks": TickMemory
 		}
-	}
+	},
 	/// The variant of the axolotl.
 	Variant: Variant,
 	/// If this axolotl was released from a bucket.
