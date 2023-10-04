@@ -16,7 +16,7 @@ type TextObject = (
 		#[deprecated="1.19.4"]
 		with?: [Text],
 		#[since="1.19.4"]
-		fallback?: Text
+		fallback?: Text,
 		...TextBase,
 	} |
 	struct {
