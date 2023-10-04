@@ -13,10 +13,10 @@ dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 		[string]: Ingredient,
 	},
 	result: ItemResult,
-	#[since="1.19.4"]
 	/// Determines if a notification is shown when unlocking this recipe. Defaults to true.
+	#[since="1.19.4"]
 	show_notification?: boolean
-}
+}uu
 
 dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShapeless {
 	group?: string,

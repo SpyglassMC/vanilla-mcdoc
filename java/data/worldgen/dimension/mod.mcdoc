@@ -44,16 +44,16 @@ dispatch minecraft:resource[dimension_type] to struct DimensionType {
 		#[until=1.17] int @ 0..256 |
 		#[since=1.17] int @ 0..4064 |
 	),
-	#[since="1.16.2"]
 	/// Sky effects.
+	#[since="1.16.2"]
 	effects: #[id] DimensionTypeEffects,
 	/// Block tag defining what blocks keep fire infinitely burning.
 	infiniburn: (
 		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |
 		#[since="1.18.2"] #[id(registry=block,tags=required)] string |
 	),
-	#[since=1.17]
 	/// The minimum height in which blocks can exist.
+	#[since=1.17]
 	min_y: int @ -2032..2031, // TODO: divisible by 16
 	/// The total height in which blocks can exist. Max Y = Min Y + Height.
 	#[since=1.17]
