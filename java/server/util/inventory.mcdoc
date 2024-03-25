@@ -1,15 +1,21 @@
-struct InventoryItem {
+type InventoryItem<T = (#[id=item] string)> = struct {
+	id: T,
 	/// Number of items in the stack
-	Count: byte,
-	id: #[id=item] string,
+	#[since="1.20.5"]
+	count: int @ 1..99,
 	/// The NBT of the item
+	#[since="1.20.5"]
+	components: mcdoc:component[minecraft:item[[id]]],
+	#[until="1.20.5"]
+	Count: byte,
+	#[until="1.20.5"]
 	tag: minecraft:item[[id]],
 }
 
-struct SlottedItem {
+type SlottedItem<T> = struct {
 	...InventoryItem,
 	/// Inventory slot the item is in
-	Slot: byte,
+	Slot: byte @ 0..T,
 }
 
 enum(string) EquipmentSlot {

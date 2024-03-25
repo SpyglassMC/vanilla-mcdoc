@@ -11,6 +11,7 @@ enum(string) Sherd {
 	ArmsUp: "arms_up_pottery_sherd",
 	Blade: "blade_pottery_sherd",
 	Brewer: "brewer_pottery_sherd",
+	Brick: "brick",
 	Burn: "burn_pottery_sherd",
 	Danger: "danger_pottery_sherd",
 	Explorer: "explorer_pottery_sherd",

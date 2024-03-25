@@ -1,18 +1,55 @@
+use ::java::server::util::text::Text
+
+dispatch minecraft:item_component[writable_book_content] to struct WritableBookContent {
+	pages: ((struct {
+		text: string,
+		/// Shown only to players with chat filter enabled, instead of `text`.
+		filtered: string,
+	}) | string)[],
+}
+
 /// A writable or written book
-struct WritableBook {
-	/// Pages of the book as raw strings.
+dispatch minecraft:item[writable_book] to struct WritableBook {
+	#[since="1.20.5"]
+	"minecraft:writable_book_content": WritableBookContent,
+	#[until="1.20.5"]
 	pages: [string],
 }
 
-struct WrittenBook {
-	// TODO: Add filtered text
+dispatch minecraft:item_component[written_book_content] to struct WrittenBookContent {
+	pages: ((struct {
+		text: #[text_component] string,
+		/// Shown only to players with chat filter enabled, instead of `text`.
+		filtered: #[text_component] string,
+	}) | #[text_component] string)[],
+	title: struct {
+		text: #[text_component] string,
+		/// Shown only to players with chat filter enabled, instead of `text`.
+		filtered: #[text_component] string,
+	},
+	author: string,
+	/// Number of times this written book has been copied. Defaults to 0. If the value is greater than 1, the book cannot be copied.
+	generation: Generation,
 	/// Whether the dynamic content on the pages has been resolved.
 	resolved: boolean,
+}
+
+dispatch minecraft:item[written_book] to struct WrittenBook {
+	#[since="1.20.5"]
+	"minecraft:written_book_content": WrittenBookContent,
+	// TODO: Add filtered text
+	/// Whether the dynamic content on the pages has been resolved.
+	#[until="1.20.5"]
+	resolved: boolean,
 	/// Pages of the book as JSON text components.
+	#[until="1.20.5"]
 	pages: [#[text_component] string],
 	/// Generation of the book.
+	#[until="1.20.5"]
 	generation: Generation,
+	#[until="1.20.5"]
 	author: string,
+	#[until="1.20.5"]
 	title: string,
 }
 

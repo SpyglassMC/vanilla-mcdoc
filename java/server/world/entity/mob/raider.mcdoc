@@ -25,7 +25,7 @@ struct PatrolTarget {
 
 dispatch minecraft:entity[pillager] to struct Pillager {
 	...RaiderBase,
-	Inventory: [SlottedItem],
+	Inventory: [SlottedItem<255>], // TODO: Slot range is probably wrong
 }
 
 dispatch minecraft:entity[ravager] to struct Ravager {
