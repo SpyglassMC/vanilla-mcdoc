@@ -3,8 +3,23 @@ use ::java::server::util::attribute::Operation
 use ::java::server::util::inventory::EquipmentSlot
 use ::java::server::util::block_state::BlockState
 
-/// Base NBT of all items.
+/// Base Components of all items.
 struct ItemBase {
+	"minecraft:attribute_modifiers": 
+	"minecraft:custom_name": 
+	"minecraft:custom_model_data": 
+	"minecraft:damage": 
+	"minecraft:enchantment_glint_override": 
+	"minecraft:enchantments": 
+	"minecraft:fire_resistant": 
+	"minecraft:food": 
+	"minecraft:hide_tooltip": 
+	"minecraft:lore": 
+	"minecraft:max_damage": 
+	"minecraft:max_stack_size": 
+	"minecraft:rarity": 
+	"minecraft:repair_cost": 
+	"minecraft:tool": 
 	/// Damage that an item has. Only used for tools, armor, etc.
 	Damage: int,
 	/// Whether the item should be unbreakable.
