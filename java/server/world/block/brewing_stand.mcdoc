@@ -11,7 +11,7 @@ dispatch minecraft:block[brewing_stand] to struct BrewingStand {
 	/// * 2: right brewing slot
 	/// * 3: ingredient slot
 	/// * 4: fuel slot
-	Items: [SlottedItem] @ 0..5,
+	Items: [SlottedItem<4>] @ 0..5,
 	/// Number of ticks until the brewing is complete.
 	BrewTime: short,
 	/// Amount of fuel the brewing stand has left.

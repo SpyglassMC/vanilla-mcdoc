@@ -1,8 +1,11 @@
-/// A debug stick item
-struct DebugStick {
-	...super::ItemBase,
-	#[since=1.19]
-	DebugProperty: struct {
-		[#[id=block] string]: string // TODO: FIXME
-	},
+dispatch minecraft:item_component[debug_stick_state] to struct DebugStickState {
+	[#[id=block] string]: string // TODO: FIXME
+},
+
+dispatch minecraft:item[debug_stick] to struct DebugStick {
+	#[since=1.20.5]
+	"minecraft:debug_stick_state": DebugStickState,
+
+	#[since=1.19,until=1.20.5]
+	DebugProperty: DebugStickState,
 }

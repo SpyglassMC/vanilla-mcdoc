@@ -8,7 +8,7 @@ struct DisplayBase {
 	/// See [Misode's tool](https://misode.github.io/transformation/) or [Singular value decomposition](https://en.wikipedia.org/wiki/Singular_value_decomposition).
 	transformation: (
 		/// Matrix form: describing a row-major matrix.
-		[float] @ 16 | 
+		#[canonical] ([float] @ 16) | 
 		/// Decomposed form (used for saving & ease of use).
 		struct {
 			/// Translation in [x, y, z].

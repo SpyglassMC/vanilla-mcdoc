@@ -1,4 +1,6 @@
-/// An enchanted book
-struct EnchantedBook {
+dispatch minecraft:item[enchanted_book] to struct EnchantedBook {
+	#[since="1.20.5"]
+	"minecraft:stored_enchantments": super::Enchantments,
+	#[until="1.20.5"]
 	StoredEnchantments: [super::Enchantment],
 }

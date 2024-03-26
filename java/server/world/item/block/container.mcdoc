@@ -1,0 +1,45 @@
+use super::AnyItem
+
+type SlottedItem<T> = struct {
+    item: AnyItem,
+    slot: int @ 0..T,
+}
+
+dispatch minecraft:item_component[container] to ([SlottedItem<255>] @ 0..256)
+
+dispatch minecraft:item_component[container_loot] to struct ContainerLoot {
+	loot_table: #[id=loot_table] string,
+	seed: long,
+}
+
+dispatch minecraft:item[
+    barrel,
+	chest,
+	trapped_chest,
+	shulker_box,
+	white_shulker_box,
+	orange_shulker_box,
+	magenta_shulker_box,
+	light_blue_shulker_box,
+	yellow_shulker_box,
+	lime_shulker_box,
+	pink_shulker_box,
+	gray_shulker_box,
+	light_gray_shulker_box,
+	cyan_shulker_box,
+	purple_shulker_box,
+	blue_shulker_box,
+	brown_shulker_box,
+	green_shulker_box,
+	red_shulker_box,
+	black_shulker_box,
+] to struct Container27 {
+    /// Slots from 0 to 26.
+    "minecraft:container": [SlottedItem<26>] @ 0..27,
+	"minecraft:container_loot": ContainerLoot,
+}
+
+dispatch minecraft:block[dispenser, dropper] to struct Container9 {
+	/// Slots from 0 to 8.
+	"minecraft:container": [SlottedItem<8>] @ 0..9,
+}

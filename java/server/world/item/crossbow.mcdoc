@@ -1,9 +1,28 @@
 use ::java::server::util::inventory::InventoryItem
 
+/// Crossbow projectiles that are loaded.
+dispatch minecraft:item_component[charged_projectiles] to type ChargedProjectiles = [InventoryItem<(
+	"minecraft:arrow" |
+	"minecraft:tipped_arrow" |
+	"minecraft:spectral_arrow" |
+	"minecraft:firework_rocket" |
+)>]
+
+dispatch minecraft:item_component[intangible_projectile] to struct {}
+
+dispatch minecraft:item[arrow, tipped_arrow, spectral_arrow, firework_rocket] to struct {
+	/// If set, this projectile item can't be picked up by a player when fired, except in creative mode. Can only be used within charged_projectiles components.
+	"minecraft:intangible_projectile": struct {}
+}
+
 /// A crossbow
-struct Crossbow {
+dispatch minecraft:item[crossbow] to struct Crossbow {
+	#[since="1.20.5"]
+	"minecraft:charged_projectiles": ChargedProjectiles,
 	/// Projectiles that are loaded.
+	#[until="1.20.5"]
 	ChargedProjectiles: [InventoryItem] @ 0..3,
 	/// Whether the crossbow is charged.
+	#[until="1.20.5"]
 	Charged: boolean,
 }

@@ -1,8 +1,17 @@
+use ::java::server::util::color::ColorString
 use ::java::server::util::color::ColorInt
 use ::java::server::util::BannerPattern
+use super::block::banner::BannerPatterns
 
-struct Shield {
+dispatch minecraft:item_component[base_color] to ColorString
+
+dispatch minecraft:item[shield] to struct Shield {
+	#[since="1.20.5"]
+	"minecraft:banner_patterns": BannerPatterns,
+	#[since="1.20.5"]
+	"minecraft:base_color": ColorString
 	/// Banner Data.
+	#[until="1.20.5"]
 	BlockEntityTag: {
 		/// Base color.
 		Base: ColorInt,

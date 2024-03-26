@@ -1,0 +1,29 @@
+use ::java::server::util::block_state::BlockState
+
+/// List of blocks that this block item can be placed on.
+dispatch minecraft:item_component[can_place_on] to super::BlockComponent
+
+/// NBT that the block entity that is placed can have.
+dispatch minecraft:item_component[block_entity_data] to type BlockEntityData = minecraft:block[[%parent.id]]
+
+/// Blockstate that the placed block will have.
+dispatch minecraft:item_component[block_state] to type BlockStateTag = mcdoc:block_item_states[[%parent.id]]
+
+/// An item that can be placed as a block
+dispatch minecraft:item[%block_item] to struct BlockItem {
+	#[since="1.20.5"]
+	"minecraft:can_place_on": super::BlockComponent,
+	#[since="1.20.5"]
+	"minecraft:block_entity_data": BlockEntityData,
+	#[since="1.20.5"]
+	"minecraft:block_state": BlockStateTag,
+
+	/// List of blockstates that this block item can be placed on.
+	#[until="1.20.5"]
+	CanPlaceOn: [BlockState],
+	#[until="1.20.5"]
+	BlockEntityTag: BlockEntityData,
+	/// Blockstate that the placed block will have.
+	#[until="1.20.5"]
+	BlockStateTag: BlockStateTag,
+}

@@ -1,8 +1,24 @@
-struct Compass {
+dispatch minecraft:item_component[lodestone_tracker] to struct LodestoneTracker {
+	/// Location of the lodestone. Optional. If not set, the compass will spin randomly.
+	target?: struct {
+		/// Coordinates.
+		pos: int[] @ 3,
+		dimension: #[id=dimension] string,
+	},
+	/// When `true`, the component is removed when the lodestone is broken. When `false`, the component is kept. Defaults to true.
+	tracked: boolean,
+}
+
+dispatch minecraft:item[compass] to struct Compass {
+	#[since="1.20.5"]
+	"minecraft:lodestone_tracker": LodestoneTracker,
+	#[until="1.20.5"]
 	LodestoneDimension: #[id=dimension] string,
+	#[until="1.20.5"]
 	LodestonePos: LodestonePos,
 	/// Whether the compass should be linked to a lodestone.
 	/// When true, the compass will reset if the lodestone at the position is removed.
+	#[until="1.20.5"]
 	LodestoneTracked: boolean
 }
 
