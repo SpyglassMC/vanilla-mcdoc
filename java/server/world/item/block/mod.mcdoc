@@ -1,20 +1,7 @@
 use ::java::server::util::block_state::BlockState
 
-struct BlockPredicate {
-	blocks: #[id=block] string | (#[id=block] string)[] | #[id(registry=block)] string,
-	// TODO: determine how this should actually work, maybe the above should automatically resolve, idk
-	nbt: minecraft:block[[%blocks]],
-	state: mcdoc:block_item_states[[%blocks]],
-}
-
 /// List of blocks that this block item can be placed on.
-dispatch minecraft:item_component[can_place_on] to type CanPlaceOn = (
-	#[canonical] struct {
-		predicates: [BlockPredicate],
-		show_in_tooltip?: boolean,
-	} |
-	BlockPredicate |
-)
+dispatch minecraft:item_component[can_place_on] to super::BlockComponent
 
 /// NBT that the block entity that is placed can have.
 dispatch minecraft:item_component[block_entity_data] to type BlockEntityData = minecraft:block[[%parent.id]]
@@ -25,7 +12,7 @@ dispatch minecraft:item_component[block_state] to type BlockStateTag = mcdoc:blo
 /// An item that can be placed as a block
 dispatch minecraft:item[%block_item] to struct BlockItem {
 	#[since="1.20.5"]
-	"minecraft:can_place_on": CanPlaceOn,
+	"minecraft:can_place_on": super::BlockComponent,
 	#[since="1.20.5"]
 	"minecraft:block_entity_data": BlockEntityData,
 	#[since="1.20.5"]

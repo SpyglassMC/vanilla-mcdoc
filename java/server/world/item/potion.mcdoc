@@ -1,23 +1,11 @@
 use ::java::server::util::PotionEffect
+use ::java::server::util::PotionComponent
 
 dispatch minecraft:item_component[potion_contents] to struct PotionContents {
 	potion?: #[id=potion] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	custom_color?: #[color=composite_int] int,
-	custom_effects: [struct {
-		id: #[id=mob_effect] string,
-		/// Level I having value 0. Defaults to 0.
-		amplifier?: byte,
-		// TODO: Consider adding a time utility
-		/// Duration of the effect in ticks.
-		duration: int @ 1..,
-		/// Whether the effect appears as a HUD icon in addition to in the inventory GUI (same behavior as beacons when `true`). Defaults to `false`.
-		ambient?: boolean,
-		/// Defaults to `true`.
-		show_particles?: boolean,
-		/// Whether the effect appears in the inventory GUI. Defaults to `true`
-		show_icon?: boolean,
-	}]
+	custom_effects: [PotionComponent]
 }
 
 /// An item that has a potion effect

@@ -5,7 +5,7 @@ type InventoryItem<T = (#[id=item] string)> = struct {
 	count: int @ 1..99,
 	/// The NBT of the item
 	#[since="1.20.5"]
-	components: mcdoc:component[minecraft:item[[id]]],
+	components: minecraft:item[[id]],
 	#[until="1.20.5"]
 	Count: byte,
 	#[until="1.20.5"]
@@ -25,4 +25,8 @@ enum(string) EquipmentSlot {
 	Chest = "chest",
 	Legs = "legs",
 	Feet = "feet",
+	#[since="1.20.5"]
+	Hand = "hand",
+	#[since="1.20.5"]
+	Armor = "armor",
 }

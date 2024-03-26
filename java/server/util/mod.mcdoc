@@ -10,6 +10,7 @@ type ColorString = color::ColorString
 type EffectId = effect::EffectId
 type GlobalPos = global_pos::GlobalPos
 type InventoryItem<T = (#[id=item] string)> = inventory::InventoryItem<T>
+type PotionComponent = effect::PotionComponent
 type PotionEffect = effect::PotionEffect
 type SlottedItem<T> = inventory::SlottedItem<T>
 type TickMemory = memory::TickMemory

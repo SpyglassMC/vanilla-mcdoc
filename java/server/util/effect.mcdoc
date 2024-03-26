@@ -18,6 +18,21 @@ struct PotionEffect {
 	HiddenEffect: PotionEffect,
 }
 
+struct PotionComponent {
+	id: #[id=mob_effect] string,
+	/// Level I having value 0. Defaults to 0.
+	amplifier?: byte,
+	// TODO: Consider adding a time utility
+	/// Duration of the effect in ticks.
+	duration: int @ 1..,
+	/// Whether the effect appears as a HUD icon in addition to in the inventory GUI (same behavior as beacons when `true`). Defaults to `false`.
+	ambient?: boolean,
+	/// Defaults to `true`.
+	show_particles?: boolean,
+	/// Whether the effect appears in the inventory GUI. Defaults to `true`
+	show_icon?: boolean,
+}
+
 /// Numerical ids for effects
 enum(byte) EffectId {
 	Speed = 1,
