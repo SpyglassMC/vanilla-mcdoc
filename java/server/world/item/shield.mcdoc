@@ -12,7 +12,7 @@ dispatch minecraft:item[shield] to struct Shield {
 	"minecraft:base_color": ColorString
 	/// Banner Data.
 	#[until="1.20.5"]
-	BlockEntityTag: {
+	BlockEntityTag: struct {
 		/// Base color.
 		Base: ColorInt,
 		Patterns: [Pattern],

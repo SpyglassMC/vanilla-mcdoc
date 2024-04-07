@@ -3,6 +3,8 @@ use ::java::server::util::InventoryItem
 use ::java::server::util::SlottedItem
 use super::super::AnyEntity
 
+type PlayerSlot = (byte @ 0..35 | byte @ 100..103 | byte @ -106)
+
 dispatch minecraft:entity[player] to struct Player {
 	...super::LivingEntity,
 	/// Version of the player NBT structure
@@ -24,7 +26,7 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Hotbar slot the player has selected.
 	SelectedItemSlot: int @ 0..8,
 	/// Item in the hotbar slot the player has selected.
-	SelectedItem: SlottedItem<255>,
+	SelectedItem: SlottedItem<PlayerSlot>,
 	/// Dimension of the player's respawn point.
 	#[since=1.16]
 	SpawnDimension: #[id=dimension] string,
@@ -54,9 +56,9 @@ dispatch minecraft:entity[player] to struct Player {
 	XpTotal: int,
 	/// Seed for enchantments.
 	XpSeed: int,
-	Inventory: [SlottedItem<255>] @ 0..41,
+	Inventory: [SlottedItem<PlayerSlot>] @ 0..41,
 	/// The player's enderchest inventory.
-	EnderItems: [SlottedItem<26>] @ 0..27,
+	EnderItems: [SlottedItem<byte @ 0..26>] @ 0..27,
 	/// Abilities of the player.
 	abilities: Abilities,
 	/// Position that the player entered the nether at.

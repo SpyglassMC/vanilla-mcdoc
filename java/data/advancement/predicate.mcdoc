@@ -8,14 +8,14 @@ struct ItemPredicate {
 	#[until="1.20.5"]
 	tag?: #[id(registry=item,tags=implicit)] string,
 	#[since="1.20.5"]
-	items?: #[id=item,tags=allowed] string | [#[id=item] string],
+	items?: #[id(registry=item,tags=allowed)] string | [#[id=item] string],
 	#[since="1.20.5"]
 	count?: MinMaxBounds<int>,
 	durability?: MinMaxBounds<int>,
 	#[until="1.20.5"]
 	potion?: #[id=potion] string,
 	#[since="1.20.5"]
-	potions?: #[id(registry=potion,tags=allowed)] string,
+	potions?: #[id(registry=potion,tags=allowed)] string | [#[id=potion] string],
 	enchantments?: [EnchantmentPredicate],
 	/// Checks the `StoredEnchantments` nbt tag (used by enchanted books).
 	stored_enchantments?: [EnchantmentPredicate],
@@ -38,7 +38,7 @@ struct BlockPredicate {
 	#[until="1.20.5"]
 	tag?: #[id(registry=block,tags=implicit)] string,
 	#[since="1.20.5"]
-	blocks?: #[id=block,tags=allowed] string | [#[id=block] string],
+	blocks?: #[id(registry=block,tags=allowed)] string | [#[id=block] string],
 	state?: mcdoc:block_states[[blocks] | [tag] | [block]],
 	nbt?: #[nbt(registry=minecraft:block[[blocks] | [tag] | [block]])] string,
 }
@@ -49,7 +49,7 @@ struct FluidPredicate {
 	#[until="1.20.5"]
 	tag?: #[id(registry=fluid,tags=implicit)] string,
 	#[since="1.20.5"]
-	fluids?: #[id=fluid,tags=allowed] string | [#[id=fluid] string],
+	fluids?: #[id(registry=fluid,tags=allowed)] string | [#[id=fluid] string],
 	state?: struct {
 		[string]: (MinMaxBounds<int> | boolean | string), // TODO
 	},

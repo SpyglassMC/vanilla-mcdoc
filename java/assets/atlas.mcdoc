@@ -42,7 +42,7 @@ dispatch minecraft:sprite_source[paletted_permutations] to struct PalettedPermut
 	palette_key: #[id=texture] string,
 	permutations: struct {
 		[string]: #[id=texture] string, // TODO
-	}
+	},
 }
 
 dispatch minecraft:sprite_source[unstitch] to struct Unstitch {

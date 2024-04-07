@@ -1,4 +1,4 @@
-use ::java::server::util::SlottedItem
+use ::java::server::util::InventoryItem
 
 dispatch minecraft:entity[witch] to struct RaiderBase {
 	...super::MobBase,
@@ -29,7 +29,7 @@ struct PatrolTarget {
 
 dispatch minecraft:entity[pillager] to struct Pillager {
 	...RaiderBase,
-	Inventory: [SlottedItem<255>], // TODO: Slot range is probably wrong
+	Inventory: [InventoryItem] @ 0..5,
 }
 
 dispatch minecraft:entity[ravager] to struct Ravager {
