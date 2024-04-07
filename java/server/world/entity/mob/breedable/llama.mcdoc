@@ -23,10 +23,38 @@ dispatch minecraft:entity[llama] to struct Llama {
 	DecorItem: InventoryItem,
 	/// Whether it has a chest.
 	ChestedHorse: boolean,
-	/// Slots from 0 to 14. Amount of available slots (3, 6, 9, 12 or 15) scales with `Strength`.
-	Items: [SlottedItem] @ 15,
-	/// Determines both the number of items it can carry and how likely it is for wolves to run away.
-	Strength: int @ 1..5,
+	...(
+		struct {
+			/// Slots from 0 to 2. Scales with `Strength`.
+			Items: [SlottedItem<byte @ 0..2>] @ 3,
+			/// Determines both the number of items it can carry and how likely it is for wolves to run away.
+			Strength: int @ 1,
+		} |
+		struct {
+			/// Slots from 0 to 5. Scales with `Strength`.
+			Items: [SlottedItem<byte @ 0..5>] @ 6,
+			/// Determines both the number of items it can carry and how likely it is for wolves to run away.
+			Strength: int @ 2,
+		} |
+		struct {
+			/// Slots from 0 to 8. Scales with `Strength`.
+			Items: [SlottedItem<byte @ 0..8>] @ 9,
+			/// Determines both the number of items it can carry and how likely it is for wolves to run away.
+			Strength: int @ 3,
+		} |
+		struct {
+			/// Slots from 0 to 11. Scales with `Strength`.
+			Items: [SlottedItem<byte @ 0..11>] @ 12,
+			/// Determines both the number of items it can carry and how likely it is for wolves to run away.
+			Strength: int @ 4,
+		} |
+		struct {
+			/// Slots from 0 to 14. Scales with `Strength`.
+			Items: [SlottedItem<byte @ 0..14>] @ 15,
+			/// Determines both the number of items it can carry and how likely it is for wolves to run away.
+			Strength: int @ 5,
+		} |
+	),
 	Variant: Variant,
 }
 

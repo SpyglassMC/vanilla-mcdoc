@@ -36,10 +36,10 @@ dispatch minecraft:block[
 ] to struct Container27 {
 	...ContainerBase,
 	/// Slots from 0 to 26.
-	Items: [SlottedItem] @ 0..27,
+	Items: [SlottedItem<byte @ 0..26>] @ 0..27,
 }
 
 dispatch minecraft:block[dispenser,dropper] to struct Container9 {
 	/// Slots from 0 to 8.
-	Items: [SlottedItem] @ 0..9,
+	Items: [SlottedItem<byte @ 0..8>] @ 0..9,
 }

@@ -1,5 +1,6 @@
 use ::java::server::util::block_state::BlockState
-use ::java::server::util::effect::PotionEffect
+use ::java::server::util::effect::LegacyPotionEffect
+use ::java::server::util::PotionComponent
 use ::java::server::util::inventory::InventoryItem
 use super::ProjectileBase
 
@@ -27,13 +28,15 @@ struct ArrowBase {
 	/// Number of entities it can pass through.
 	PierceLevel: byte,
 	/// Sound event to play when it hits something.
-	SoundEvent: string,
+	SoundEvent: #[id=sound_event] string,
 	/// Upper bits of the owner's UUID.
 	#[until=1.16]
 	OwnerUUIDMost: long,
 	/// Lower bits of the owner's UUID.
 	#[until=1.16]
 	OwnerUUIDLeast: long,
+	#[since="1.20.3"]
+	item: InventoryItem,
 }
 
 enum(byte) Pickup {
@@ -44,15 +47,19 @@ enum(byte) Pickup {
 
 dispatch minecraft:entity[arrow] to struct Arrow {
 	...ArrowBase,
+	/// Color of the arrow's potion bubble trail particles.
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
+	#[until="1.20.5"]
 	Color: #[color=composite_int] int,
 	/// Effects to give to the hit entity.
-	CustomPotionEffects: [PotionEffect],
+	#[until="1.20.2"]
+	CustomPotionEffects: [LegacyPotionEffect],
+	/// Effects to give to the hit entity.
+	#[since="1.20.2",until="1.20.3"]
+	custom_potion_effects: [LegacyPotionEffect],
 	/// Name of the default potion effect.
+	#[until="1.20.3"]
 	Potion: #[id=mob_effect] string,
-	/// Color of the arrow's trail particles.
-	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	CustomPotionColor: #[color=composite_int] int,
 }
 
 dispatch minecraft:entity[spectral_arrow] to struct SpectralArrow {
@@ -63,6 +70,7 @@ dispatch minecraft:entity[spectral_arrow] to struct SpectralArrow {
 
 dispatch minecraft:entity[trident] to struct Trident {
 	...ArrowBase,
+	#[until="1.20.3"]
 	Trident: InventoryItem,
 	/// Whether it has already damaged an entity.
 	DealtDamage: boolean,

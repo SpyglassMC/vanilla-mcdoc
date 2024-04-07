@@ -1,5 +1,8 @@
-/// A knowledge book item
-struct KnowledgeBook {
-	/// Recipes it will give.
-	Recipes: [#[id=recipe] string],
+dispatch minecraft:item_component[recipes] to type Recipes = [#[id=recipe] string]
+
+dispatch minecraft:item[knowledge_book] to struct KnowledgeBook {
+	#[since="1.20.5"]
+	"minecraft:recipes": Recipes,
+	#[until="1.20.5"]
+	Recipes: Recipes,
 }

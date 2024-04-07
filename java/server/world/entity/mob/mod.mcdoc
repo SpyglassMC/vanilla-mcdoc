@@ -1,7 +1,8 @@
 use ::java::server::util::attribute::AttributeName
 use ::java::server::util::attribute::Operation
 use ::java::server::util::inventory::InventoryItem
-use ::java::server::util::effect::PotionEffect
+use ::java::server::util::LegacyPotionEffect
+use ::java::server::util::PotionComponent
 use ::java::server::util::inventory::EquipmentSlot
 
 struct LivingEntity {
@@ -32,7 +33,10 @@ struct LivingEntity {
 	},
 	Attributes: [Attribute],
 	/// Active potion effects
-	ActiveEffects: [PotionEffect],
+	#[until="1.20.2"]
+	ActiveEffects: [LegacyPotionEffect],
+	#[since="1.20.2"]
+	active_effects: [PotionComponent],
 	/// Whether it should have an AI.
 	NoAI: boolean,
 	/// Team to join when it is spawned.
@@ -60,7 +64,13 @@ struct MobBase {
 	/// Whether it is left handed.
 	LeftHanded: boolean,
 	/// What the leash is attached to.
+	#[until="1.20.5"]
 	Leash: (UUIDLeash | BlockLeash),
+	/// What the leash is attached to.
+	#[since="1.20.5"]
+	leash: (int[] @ 3 | struct {
+		UUID: int[] @ 4
+	})
 }
 
 struct NeutralMob {

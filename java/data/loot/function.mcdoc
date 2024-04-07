@@ -1,4 +1,5 @@
 use super::LootPoolEntry
+use super::LootCondition
 use super::super::util::MinMaxBounds
 use super::super::util::RandomValueBounds
 use super::super::util::RandomIntGenerator
@@ -32,7 +33,7 @@ dispatch minecraft:loot_function[copy_name] to struct CopyName {
 	source: CopyNameSource,
 }
 
-dispatch minecraft:loot_function[copy_nbt] to struct CopyNbt {
+struct CopyNbt {
 	source: (
 		CopyNameSource | 
 		struct {
@@ -45,10 +46,22 @@ dispatch minecraft:loot_function[copy_nbt] to struct CopyNbt {
 		}
 	),
 	ops: [(struct {
-		source: #[nbt_path] string,
+		source: #[nbt_path] string, // TODO
 		target: #[nbt_path] string,
 		op: CopyNbtStrategy
 	})],
+}
+
+#[until="1.20.5"]
+dispatch minecraft:loot_function[copy_nbt] to CopyNbt
+
+#[since="1.20.5"]
+dispatch minecraft:loot_function[copy_custom_data] to CopyNbt
+
+#[since="1.20.5"]
+dispatch minecraft:loot_function[copy_components] to struct CopyComponents {
+	source: "block_entity",
+	components: [[id=minecraft:item_component] string],
 }
 
 enum(string) CopyNameSource {
@@ -182,7 +195,10 @@ struct AttributeModifier {
 	attribute: string,
 	name: string,
 	amount: MinMaxBounds<float>,
-	operation: ("addition" | "multiply_base" | "multiply_total"),
+	operation: (
+		#[until="1.20.5"] ("addition" | "multiply_base" | "multiply_total") |
+		#[since="1.20.5"] ("add_value" | "add_multiplied_base" | "add_multiplied_total") |
+	),
 	/// If a list, one of the listed slots will be chosen randomly.
 	slot: (EquipmentSlot | [EquipmentSlot]),
 	id?: #[parser=uuid] string,
@@ -195,7 +211,10 @@ dispatch minecraft:loot_function[set_banner_pattern] to struct SetBannerPattern 
 }
 
 struct BannerPatternEntry {
-	pattern: BannerPattern,
+	pattern: (
+		#[until="1.20.4"] BannerPattern |
+		#[since="1.20.4"] #[id=banner_pattern] string |
+	),
 	color: ColorString,
 }
 
@@ -309,8 +328,21 @@ dispatch minecraft:loot_function[set_name] to struct SetName {
 	name: Text,
 }
 
+#[until="1.20.5"]
 dispatch minecraft:loot_function[set_nbt] to struct SetNbt {
 	tag: #[nbt=ItemBase] string, // TODO
+}
+#[since="1.20.5"]
+dispatch minecraft:loot_function[set_components] to struct SetComponents {
+	conditions?: [LootCondition],
+	components: struct {
+		[#[id=item_component] string]: minecraft:item_component[[%key]],
+		[#[id=item_component, nulled=true] string]: struct {},
+	},
+}
+#[since="1.20.5"]
+dispatch minecraft:loot_function[set_custom_data] to struct SetCustomData {
+	tag: #[nbt(registry=mcdoc:custom_item_data)] string,
 }
 
 #[since=1.18]

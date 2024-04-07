@@ -2,7 +2,11 @@ dispatch minecraft:entity[end_crystal] to struct EvokerFangs {
 	/// Whether to show the base of the end crystal.
 	ShowBottom: boolean,
 	/// Coordinates that the beam is pointing to
+	#[until="1.20.5"]
 	BeamTarget: BeamTarget,
+	/// Coordinates that the beam is pointing to
+	#[since="1.20.5"]
+	beam_target: int[] @ 3,
 }
 
 struct BeamTarget {

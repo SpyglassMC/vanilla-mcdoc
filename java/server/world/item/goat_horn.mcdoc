@@ -1,5 +1,9 @@
+dispatch minecraft:item_component[instrument] to type Instrument = #[id=instrument] string
+
 #[since=1.19]
-struct GoatHorn {
-	...super::ItemBase,
+dispatch minecraft:item[goat_horn] to struct GoatHorn {
+	#[since="1.20.5"]
+	"minecraft:instrument": Instrument
+	#[until="1.20.5"]
 	instrument: #[id=instrument] string,
 }

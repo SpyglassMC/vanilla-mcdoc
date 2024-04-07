@@ -3,6 +3,12 @@ dispatch minecraft:block[decorated_pot] to struct DecoratedPot {
 	...super::BlockEntity,
 	/// Item ID of what was used for each side of the pot.
 	sherds: [Sherd] @ 4,
+	/// Loot table that will populate this container.
+	#[since="1.20.3"]
+	LootTable: #[id=loot_table] string,
+	/// Seed of the loot table.
+	#[since="1.20.3"]
+	LootTableSeed: long,
 }
 
 enum(string) Sherd {
@@ -11,6 +17,7 @@ enum(string) Sherd {
 	ArmsUp: "arms_up_pottery_sherd",
 	Blade: "blade_pottery_sherd",
 	Brewer: "brewer_pottery_sherd",
+	Brick: "brick",
 	Burn: "burn_pottery_sherd",
 	Danger: "danger_pottery_sherd",
 	Explorer: "explorer_pottery_sherd",

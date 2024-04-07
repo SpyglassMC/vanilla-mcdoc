@@ -2,7 +2,7 @@ use ::java::server::util::inventory::SlottedItem
 
 dispatch minecraft:block[campfire] to struct Campfire {
 	...super::BlockEntity,
-	Items: [SlottedItem] @ 0..4,
+	Items: [SlottedItem<byte @ 0..3>] @ 0..4,
 	/// Ticks each item has been cooking.
 	/// Index is according to item slot.
 	CookingTimes: int[] @ 4,

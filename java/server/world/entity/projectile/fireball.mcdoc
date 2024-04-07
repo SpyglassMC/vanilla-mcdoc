@@ -1,17 +1,28 @@
+use super::ProjectileBase
 use ::java::server::util::inventory::InventoryItem
 
-dispatch minecraft:entity[dragon_fireball,wither_skull] to struct HurtingProjectileBase {
-	#[until=1.16]
-	direction: [double] @ 3,
+dispatch minecraft:entity[breeze_wind_charge] to struct AcceleratingProjectileBase {
+	...ProjectileBase,
 	/// Acceleration
 	power: [double] @ 3,
+}
+
+dispatch minecraft:entity[dragon_fireball] to struct DespawnableProjectileBase {
+	...AcceleratingProjectileBase,
+	#[until=1.16]
+	direction: [double] @ 3,
 	/// Ticks since it last moved.
 	#[until=1.16]
 	life: short,
 }
+dispatch minecraft:entity[wither_skull] to struct WitherSkull {
+	...DespawnableProjectileBase,
+	#[since="1.20.3"]
+	dangerous: boolean,
+}
 
 dispatch minecraft:entity[small_fireball] to struct FireballBase {
-	...HurtingProjectileBase,
+	...DespawnableProjectileBase,
 	/// Item it should render as.
 	Item: InventoryItem,
 }
