@@ -9,9 +9,15 @@ dispatch minecraft:block[beacon] to struct Beacon {
 	/// Number of levels from the pyramid.
 	Levels: int,
 	/// Potion effect.
+	#[until="1.20.2"]
 	Primary: (NoneId | EffectId),
 	/// Potion effect.
+	#[until="1.20.2"]
 	Secondary: (NoneId | EffectId),
+	#[since="1.20.2"]
+	primary_effect: #[id=mob_effect] string,
+	#[since="1.20.2"]
+	secondary_effect: #[id=mob_effect] string,
 }
 
 type NoneId = (

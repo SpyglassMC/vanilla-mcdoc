@@ -3,15 +3,28 @@ use ::java::server::util::inventory::EquipmentSlot
 use super::super::util::MinMaxBounds
 
 struct ItemPredicate {
+	#[until="1.20.5"]
 	item?: #[id=item] string,
+	#[until="1.20.5"]
 	tag?: #[id(registry=item,tags=implicit)] string,
+	#[since="1.20.5"]
+	items?: #[id=item,tags=allowed] string | [#[id=item] string],
+	#[since="1.20.5"]
 	count?: MinMaxBounds<int>,
 	durability?: MinMaxBounds<int>,
+	#[until="1.20.5"]
 	potion?: #[id=potion] string,
+	#[since="1.20.5"]
+	potions?: #[id(registry=potion,tags=allowed)] string,
 	enchantments?: [EnchantmentPredicate],
 	/// Checks the `StoredEnchantments` nbt tag (used by enchanted books).
 	stored_enchantments?: [EnchantmentPredicate],
-	nbt?: #[nbt=ItemBase] string, // TODO
+	#[until="1.20.5"]
+	nbt?: #[nbt(registry=minecraft:item[[tag] | [item]])] string,
+	#[since="1.20.5"]
+	components?: minecraft:item[[items]],
+	#[since="1.20.5"]
+	custom_data?: #[nbt(registry=mcdoc:custom_item_data[[items]])] string,
 }
 
 struct EnchantmentPredicate {
@@ -20,15 +33,23 @@ struct EnchantmentPredicate {
 }
 
 struct BlockPredicate {
+	#[until="1.20.5"]
 	block?: #[id=block] string,
+	#[until="1.20.5"]
 	tag?: #[id(registry=block,tags=implicit)] string,
-	state?: mcdoc:block_states[[tag] | [block]],
-	nbt?: #[nbt=ItemBase] string, // TODO
+	#[since="1.20.5"]
+	blocks?: #[id=block,tags=allowed] string | [#[id=block] string],
+	state?: mcdoc:block_states[[blocks] | [tag] | [block]],
+	nbt?: #[nbt(registry=minecraft:block[[blocks] | [tag] | [block]])] string,
 }
 
 struct FluidPredicate {
+	#[until="1.20.5"]
 	fluid?: #[id=fluid] string,
+	#[until="1.20.5"]
 	tag?: #[id(registry=fluid,tags=implicit)] string,
+	#[since="1.20.5"]
+	fluids?: #[id=fluid,tags=allowed] string | [#[id=fluid] string],
 	state?: struct {
 		[string]: (MinMaxBounds<int> | boolean | string), // TODO
 	},
@@ -40,17 +61,22 @@ struct LocationPredicate {
 		y?: MinMaxBounds<float>,
 		z?: MinMaxBounds<float>,
 	},
+	#[until="1.20.5"]
 	biome?: (
 		#[until=1.16] #[id=biome] string |
 		#[since=1.16] #[id="worldgen/biome"] string |
 	),
+	#[since="1.20.5"]
+	biomes?: #[id="worldgen/biome",tags=allowed] string | [#[id="worldgen/biome"] string],
 	#[until=1.19]
 	feature?: (
 		#[until="1.18.2"] string |
 		#[since="1.18.2"] #[id="worldgen/configured_structure_feature"] string |
 	),
-	#[since=1.19]
+	#[since=1.19,until="1.20.5"]
 	structure?: #[id="worldgen/structure"] string,
+	#[since="1.20.5"]
+	structures?: #[id="worldgen/structure",tags=allowed] string | [#[id="worldgen/structure"] string],
 	dimension?: #[id=dimension] string,
 	/// Calculated using: `max(sky-darkening, block)`.
 	light?: struct {
@@ -64,7 +90,10 @@ struct LocationPredicate {
 }
 
 struct EntityPredicate {
-	type?: #[id(registry=entity_type,tags=allowed)] string,
+	type?: (
+		#[id(registry=entity_type,tags=allowed)] string |
+		#[since="1.20.5"] [#[id=entity_type] string] |
+	),
 	#[since=1.19]
 	type_specific?: TypeSpecificPredicate,
 	team?: #[team] string,

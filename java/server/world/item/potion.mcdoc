@@ -1,4 +1,4 @@
-use ::java::server::util::PotionEffect
+use ::java::server::util::LegacyPotionEffect
 use ::java::server::util::PotionComponent
 
 dispatch minecraft:item_component[potion_contents] to struct PotionContents {
@@ -12,11 +12,13 @@ dispatch minecraft:item_component[potion_contents] to struct PotionContents {
 dispatch minecraft:item[potion, splash_potion, lingering_potion, tipped_arrow] to struct EffectItem {
 	/// List of the effects that will be applied with this item.
 	#[until="1.20.5"]
-	CustomPotionEffects: [PotionEffect],
+	CustomPotionEffects: [LegacyPotionEffect],
 	/// Default potion effect
 	#[until="1.20.5"]
 	Potion: #[id=potion] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	#[until="1.20.5"]
 	CustomPotionColor: #[color=composite_int] int,
+	#[since="1.20.5"]
+	"minecraft:potion_contents": PotionContents
 }

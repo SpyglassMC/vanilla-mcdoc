@@ -29,4 +29,6 @@ enum(string) EquipmentSlot {
 	Hand = "hand",
 	#[since="1.20.5"]
 	Armor = "armor",
+	#[since="1.20.5"]
+	Any = "any",
 }

@@ -1,5 +1,5 @@
 /// A single potion effect
-struct PotionEffect {
+struct LegacyPotionEffect {
 	Id: EffectId,
 	Amplifier: byte,
 	/// Since 1.19.4 a value of `-1` is supported, representing an infinite duration.
@@ -15,7 +15,7 @@ struct PotionEffect {
 	ShowIcon: boolean,
 	/// A lower amplifier effect of the same type.
 	#[since=1.16]
-	HiddenEffect: PotionEffect,
+	HiddenEffect: LegacyPotionEffect,
 }
 
 struct PotionComponent {
@@ -31,6 +31,8 @@ struct PotionComponent {
 	show_particles?: boolean,
 	/// Whether the effect appears in the inventory GUI. Defaults to `true`
 	show_icon?: boolean,
+	/// A lower amplifier effect of the same type.
+	hidden_effect?: PotionComponent,
 }
 
 /// Numerical ids for effects

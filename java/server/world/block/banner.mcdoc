@@ -1,5 +1,6 @@
 use ::java::server::util::BannerPattern
 use ::java::server::util::ColorInt
+use ::java::server::util::ColorString
 
 dispatch minecraft:block[
 	white_banner,
@@ -22,10 +23,17 @@ dispatch minecraft:block[
 	...super::BlockEntity,
 	/// Shows up on map markers
 	CustomName: #[text_component] string,
-	Patterns: [Pattern],
+	#[until="1.20.5"]
+	Patterns: [LegacyPattern],
+	#[since="1.20.5"]
+	patterns: [Pattern]
 }
 
-struct Pattern {
+struct LegacyPattern {
 	Color: ColorInt,
 	Pattern: BannerPattern,
+}
+struct Pattern {
+	color: ColorString,
+	pattern: #[id=banner_pattern] string,
 }

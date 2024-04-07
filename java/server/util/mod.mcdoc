@@ -11,7 +11,7 @@ type EffectId = effect::EffectId
 type GlobalPos = global_pos::GlobalPos
 type InventoryItem<T = (#[id=item] string)> = inventory::InventoryItem<T>
 type PotionComponent = effect::PotionComponent
-type PotionEffect = effect::PotionEffect
+type LegacyPotionEffect = effect::LegacyPotionEffect
 type SlottedItem<T> = inventory::SlottedItem<T>
 type TickMemory = memory::TickMemory
 type TimedMemory = memory::TimedMemory

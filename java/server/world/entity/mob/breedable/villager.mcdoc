@@ -105,7 +105,11 @@ dispatch minecraft:entity[wandering_trader] to struct WanderingTrader {
 	/// Ticks until it despawns.
 	DespawnDelay: int,
 	/// Where it is heading to.
+	#[until="1.20.5"]
 	WanderTarget: WanderTarget,
+	/// Where it is heading to.
+	#[since="1.20.5"],
+	wander_target: int[] @ 3
 }
 
 struct WanderTarget {

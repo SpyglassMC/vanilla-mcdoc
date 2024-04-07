@@ -2,9 +2,16 @@ dispatch minecraft:entity[bee] to struct Bee {
 	...super::Breedable,
 	#[since=1.16]
 	...super::super::NeutralMob,
+	#[until="1.20.5"]
 	HivePos: HivePos,
+	#[since="1.20.5"]
+	hive_pos: int[] @ 3,
 	/// Position of the flower the bee is circling
+	#[until="1.20.5"]
 	FlowerPos: FlowerPos,
+	/// Position of the flower the bee is circling
+	#[since="1.20.5"]
+	flower_pos: int[] @ 3,
 	/// Whether the bee has nectar.
 	HasNectar: boolean,
 	/// Whether the bee has stung an entity.

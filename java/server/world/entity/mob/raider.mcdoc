@@ -7,7 +7,11 @@ dispatch minecraft:entity[witch] to struct RaiderBase {
 	/// Whether the raider is leading the patrol.
 	PatrolLeader: boolean,
 	/// Where the raider is heading towards.
+	#[until="1.20.5"]
 	PatrolTarget: PatrolTarget,
+	/// Where the raider is heading towards.
+	#[since="1.20.5"]
+	patrol_target: int[] @ 3,
 	/// Whether the raider can join raids and count towards the progress bar.
 	#[since=1.16]
 	CanJoinRaid: boolean,

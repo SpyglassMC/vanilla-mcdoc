@@ -1,9 +1,9 @@
 use ::java::server::util::BannerPattern
-use ::java::server::util::ColorInt
+use ::java::server::util::ColorString
 
 dispatch minecraft:item_component[banner_patterns] to type BannerPatterns = [struct {
-    color: ColorInt,
-	pattern: BannerPattern,
+    color: ColorString,
+	pattern: #[id=banner_pattern] string,
 }]
 
 dispatch minecraft:item[banner] to struct Banner {

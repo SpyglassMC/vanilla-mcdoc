@@ -1,4 +1,5 @@
-use ::java::server::util::PotionEffect
+use ::java::server::util::LegacyPotionEffect
+use ::java::server::util::PotionComponent
 
 dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	/// Number of ticks it has existed.
@@ -24,7 +25,7 @@ dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	#[uuid]
 	#[since=1.16]
 	Owner: int[] @ 4,
-	/// Radius of the particles & effect application.
+	/// Radius of the particles & effect application.s
 	Radius: float,
 	/// Change in the radius when it is used.
 	RadiusOnUse: float,
@@ -33,7 +34,11 @@ dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	/// Particle the area effect cloud displays.
 	Particle: string, // TODO
 	/// Default potion effect.
+	#[until="1.20.5"]
 	Potion: #[id=potion] string,
 	/// Potion effects that get applied on use.
-	Effects: [PotionEffect],
+	#[until="1.20.5"]
+	Effects: [LegacyPotionEffect],
+	#[since="1.20.5"]
+	potion_contents: minecraft:item_component[[potion_contents]],
 }
