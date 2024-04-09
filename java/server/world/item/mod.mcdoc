@@ -130,7 +130,27 @@ dispatch minecraft:item[%all_items] to (
 		"minecraft:fire_resistant": struct {},
 		/// If set, this item is considered as a food, and can be eaten.
 		"minecraft:food": Food,
-		// TODO: What does this actually hide?
+		/// If set, several specific tooltip entries without an applicable `show_in_tooltip` option available are hidden.
+		///
+		/// Included entries:
+		/// - Banner pattern layers
+		/// - Banner Pattern description
+		/// - Decorated Pot sherds
+		/// - Shulker Box items
+		/// - Spawner entity type and interaction description
+		/// - Bundle occupancy and items
+		/// - Charged Crossbow projectiles
+		/// - Painting variant
+		/// - Disc Fragment description
+		/// - Tropical Fish Bucket entity variant
+		/// - Filled Map lock and scale level
+		/// - Firework Rocket duration
+		/// - Firework explosions
+		/// - Goat Horn instrument
+		/// - Potion effect, amplifier & duration
+		/// - Music Disc description
+		/// - Smithing Template description
+		/// - Written Book author & generation
 		"minecraft:hide_additional_tooltip": struct {}
 		/// If set, it will completely hide this item's tooltip, including its name.
 		"minecraft:hide_tooltip": struct {},
