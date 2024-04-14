@@ -17,15 +17,15 @@ dispatch minecraft:entity[piglin] to struct Piglin {
 	Brain: struct {
 		memories: struct {
 			/// Whether it cannot admire an item.
-			"minecraft:admiring_disabled": TimedFlagMemory,
+			[#[id] "admiring_disabled"]: TimedFlagMemory,
 			/// Whether it is admiring an item.
-			"minecraft:admiring_disabled": TimedFlagMemory,
+			[#[id] "admiring_disabled"]: TimedFlagMemory,
 			/// The target of the piglin.
-			"minecraft:angry_at": TimedEntityMemory,
+			[#[id] "angry_at"]: TimedEntityMemory,
 			/// Whether it hunted recently.
-			"minecraft:hunted_recently": TimedFlagMemory,
+			[#[id] "hunted_recently"]: TimedFlagMemory,
 			/// Whether it is being angered universally.
-			"minecraft:universal_anger": TimedFlagMemory,
+			[#[id] "universal_anger"]: TimedFlagMemory,
 		},
 	},
 	/// Whether it is a baby.

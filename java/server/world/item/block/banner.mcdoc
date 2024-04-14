@@ -7,5 +7,5 @@ dispatch minecraft:item_component[banner_patterns] to type BannerPatterns = [str
 }]
 
 dispatch minecraft:item[banner] to struct Banner {
-	"minecraft:banner_patterns": BannerPatterns,
+	[#[id] "banner_patterns"]: BannerPatterns,
 }

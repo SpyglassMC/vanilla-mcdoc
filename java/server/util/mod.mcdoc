@@ -19,3 +19,4 @@ type FlagMemory = memory::FlagMemory
 type TimedFlagMemory = memory::TimedFlagMemory
 type TimedEntityMemory = memory::TimedEntityMemory
 type PositionMemory = memory::PositionMemory
+type Particle = particle::Particle

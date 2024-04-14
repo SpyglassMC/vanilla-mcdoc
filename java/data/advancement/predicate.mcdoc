@@ -7,24 +7,35 @@ struct ItemPredicate {
 	item?: #[id=item] string,
 	#[until="1.20.5"]
 	tag?: #[id(registry=item,tags=implicit)] string,
+	#[until="1.20.5"]
+	durability?: MinMaxBounds<int>,
+	#[until="1.20.5"]
+	potion?: #[id=potion] string,
+	#[until="1.20.5"]
+	enchantments?: [EnchantmentPredicate],
+	/// Checks the `StoredEnchantments` nbt tag (used by enchanted books).
+	#[until="1.20.5"]
+	stored_enchantments?: [EnchantmentPredicate],
+	#[until="1.20.5"]
+	nbt?: #[nbt(registry=minecraft:item[[tag] | [item]])] string,
+
 	#[since="1.20.5"]
 	items?: #[id(registry=item,tags=allowed)] string | [#[id=item] string],
 	#[since="1.20.5"]
 	count?: MinMaxBounds<int>,
-	durability?: MinMaxBounds<int>,
-	#[until="1.20.5"]
-	potion?: #[id=potion] string,
-	#[since="1.20.5"]
-	potions?: #[id(registry=potion,tags=allowed)] string | [#[id=potion] string],
-	enchantments?: [EnchantmentPredicate],
-	/// Checks the `StoredEnchantments` nbt tag (used by enchanted books).
-	stored_enchantments?: [EnchantmentPredicate],
-	#[until="1.20.5"]
-	nbt?: #[nbt(registry=minecraft:item[[tag] | [item]])] string,
 	#[since="1.20.5"]
 	components?: minecraft:item[[items]],
 	#[since="1.20.5"]
-	custom_data?: #[nbt(registry=mcdoc:custom_item_data[[items]])] string,
+	predicates?: struct { // This is made like this because of the `items` hack to get good typing for custom data.
+		[#[id] "enchantments"]?: [EnchantmentPredicate],
+		[#[id] "stored_enchantments"]?: [EnchantmentPredicate],
+		[#[id] "potions"]?: (#[id(registry=potion,tags=allowed)] string | [#[id=potion] string]),
+		[#[id] "custom_data"]?: #[nbt(registry=mcdoc:custom_item_data[[items]])] string,
+		[#[id] "damage"]?: struct {
+			damage?: MinMaxBounds<int>,
+			durability?: MinMaxBounds<int>,
+		}
+	}
 }
 
 struct EnchantmentPredicate {
@@ -97,7 +108,7 @@ struct EntityPredicate {
 	#[since=1.19]
 	type_specific?: TypeSpecificPredicate,
 	team?: #[team] string,
-	nbt?: #[nbt=EntityBase] string, // TODO
+	nbt?: #[nbt(registry=minecraft:entity[[type]])] string,
 	location?: LocationPredicate,
 	distance?: DistancePredicate,
 	flags?: struct {
@@ -125,6 +136,10 @@ struct EntityPredicate {
 	effects?: struct {
 		[#[id=mob_effect] string]: MobEffectPredicate,
 	},
+	#[since="1.20.5"]
+	slots?: struct {
+		[#[slot_range] string]: ItemPredicate,
+	}
 }
 
 struct TypeSpecificPredicate {
@@ -133,6 +148,7 @@ struct TypeSpecificPredicate {
 }
 
 enum(string) SpecificType {
+	#[until="1.20.5"]
 	Any = "any",
 	Cat = "cat",
 	FishingHook = "fishing_hook",
@@ -140,10 +156,25 @@ enum(string) SpecificType {
 	Lightning = "lightning",
 	Player = "player",
 	Slime = "slime",
+	#[since="1.20.5"]
+	Wolf = "wolf",
+	#[since="1.20.5"]
+	Painting = "painting",
+	#[since="1.20.5"]
+	Raider = "raider",
 }
 
 dispatch minecraft:type_specific_predicate[cat] to struct CatPredicate {
-	variant?: #[id=cat_variant] string,
+	variant?: #[id(registry=cat_variant,tags=allowed)] string | [#[id=cat_variant] string],
+}
+
+#[since="1.20.5"]
+dispatch minecraft:type_specific_predicate[wolf] to struct WolfPredicate {
+	variant?: #[id(registry=wolf_variant,tags=allowed)] string | [#[id=wolf_variant] string],
+}
+
+dispatch minecraft:type_specific_predicate[painting] to struct PaintingPredicate {
+	variant?: #[id(registry=painting_variant,tags=allowed)] string | [#[id=painting_variant] string]
 }
 
 dispatch minecraft:type_specific_predicate[fishing_hook] to struct FishingHookPredicate {
@@ -151,7 +182,7 @@ dispatch minecraft:type_specific_predicate[fishing_hook] to struct FishingHookPr
 }
 
 dispatch minecraft:type_specific_predicate[frog] to struct FrogPredicate {
-	variant?: #[id=frog_variant] string,
+	variant?: #[id(registry=frog_variant,tags=allowed)] string | [#[id=frog_variant] string]
 }
 
 dispatch minecraft:type_specific_predicate[lightning] to struct LightningBoltPredicate {
@@ -177,6 +208,11 @@ dispatch minecraft:type_specific_predicate[player] to struct PlayerPredicate {
 
 dispatch minecraft:type_specific_predicate[slime] to struct SlimePredicate {
 	size?: MinMaxBounds<int>,
+}
+
+dispatch minecraft:type_specific_predicate[raider] to struct RaiderPredicate {
+	has_raid?: boolean,
+	is_captain?: boolean,
 }
 
 struct DistancePredicate {

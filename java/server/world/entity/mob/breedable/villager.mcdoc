@@ -16,22 +16,22 @@ dispatch minecraft:entity[villager] to struct Villager {
 		memories: struct {
 			/// Detected an iron golem recently.
 			#[since=1.16]
-			"minecraft:golem_detected_recently": TimedFlagMemory,
+			[#[id] "golem_detected_recently"]: TimedFlagMemory,
 			/// Location of home.
-			"minecraft:home": PositionMemory,
+			[#[id] "home"]: PositionMemory,
 			/// Location of job site.
-			"minecraft:job_site": PositionMemory,
+			[#[id] "job_site"]: PositionMemory,
 			/// Gametick when it last slept.
-			"minecraft:last_slept": TickMemory,
+			[#[id] "last_slept"]: TickMemory,
 			/// Gametick when it last woke up.
-			"minecraft:last_woken": TickMemory,
+			[#[id] "last_woken"]: TickMemory,
 			/// Gametick when it last worked.
-			"minecraft:last_worked_at_poi": TickMemory,
+			[#[id] "last_worked_at_poi"]: TickMemory,
 			/// Location of meeting point.
-			"minecraft:meeting_point": PositionMemory,
+			[#[id] "meeting_point"]: PositionMemory,
 			/// Location of a potential job site.
 			#[since=1.16]
-			"minecraft:potential_job_site": PositionMemory,
+			[#[id] "potential_job_site"]: PositionMemory,
 		},
 	},
 	VillagerData: VillagerData,

@@ -1,29 +1,29 @@
 use ::java::server::util::text::Text
 
 dispatch minecraft:item_component[writable_book_content] to struct WritableBookContent {
-	pages: ((struct {
-		text: string,
+	pages: [((struct {
+		raw: string,
 		/// Shown only to players with chat filter enabled, instead of `text`.
 		filtered: string,
-	}) | string)[],
+	}) | string)],
 }
 
 /// A writable or written book
 dispatch minecraft:item[writable_book] to struct WritableBook {
 	#[since="1.20.5"]
-	"minecraft:writable_book_content": WritableBookContent,
+	[#[id] "writable_book_content"]: WritableBookContent,
 	#[until="1.20.5"]
 	pages: [string],
 }
 
 dispatch minecraft:item_component[written_book_content] to struct WrittenBookContent {
-	pages: ((struct {
-		text: #[text_component] string,
+	pages: [((struct {
+		raw: #[text_component] string,
 		/// Shown only to players with chat filter enabled, instead of `text`.
 		filtered: #[text_component] string,
-	}) | #[text_component] string)[],
+	}) | #[text_component] string)],
 	title: struct {
-		text: #[text_component] string,
+		raw: #[text_component] string,
 		/// Shown only to players with chat filter enabled, instead of `text`.
 		filtered: #[text_component] string,
 	},
@@ -36,7 +36,7 @@ dispatch minecraft:item_component[written_book_content] to struct WrittenBookCon
 
 dispatch minecraft:item[written_book] to struct WrittenBook {
 	#[since="1.20.5"]
-	"minecraft:written_book_content": WrittenBookContent,
+	[#[id] "written_book_content"]: WrittenBookContent,
 	// TODO: Add filtered text
 	/// Whether the dynamic content on the pages has been resolved.
 	#[until="1.20.5"]

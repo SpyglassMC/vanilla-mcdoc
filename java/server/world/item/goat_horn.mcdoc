@@ -3,7 +3,7 @@ dispatch minecraft:item_component[instrument] to type Instrument = #[id=instrume
 #[since=1.19]
 dispatch minecraft:item[goat_horn] to struct GoatHorn {
 	#[since="1.20.5"]
-	"minecraft:instrument": Instrument
+	[#[id] "instrument"]: Instrument
 	#[until="1.20.5"]
 	instrument: #[id=instrument] string,
 }

@@ -1,16 +1,12 @@
+use ::java::server::util::firework::FireworkShape
+
 dispatch minecraft:item_component[fireworks] to struct Fireworks {
 	explosions: [Explosion] @ 0..256,
 	flight_duration: byte
 }
 
 dispatch minecraft:item_component[firework_explosion] to struct Explosion {
-	shape: (enum(string) {
-		SmallBall = "small_ball",
-		LargeBall = "large_ball",
-		Star = "star",
-		Creeper = "creeper",
-		Burst = "burst",
-	}),
+	shape: FireworkShape,
 	/// Colors of the initial particles of the explosion, randomly selected from.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	colors: #[color=composite_int] int[],
@@ -26,14 +22,14 @@ dispatch minecraft:item_component[firework_explosion] to struct Explosion {
 
 dispatch minecraft:item[firework_rocket] to struct FireworkRocket {
 	#[since="1.20.5"]
-	"minecraft:fireworks": Fireworks,
+	[#[id] "fireworks"]: Fireworks,
 	#[until="1.20.5"]
 	Fireworks: LegacyFireworks,
 }
 
 dispatch minecraft:item[firework_star] to struct FireworkStar {
 	#[since="1.20.5"]
-	"minecraft:firework_explosion": Explosion,
+	[#[id] "firework_explosion"]: Explosion,
 	#[until="1.20.5"]
 	Explosion: LegacyExplosion,
 }

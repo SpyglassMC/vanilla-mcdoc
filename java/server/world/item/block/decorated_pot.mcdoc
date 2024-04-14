@@ -4,5 +4,5 @@ dispatch minecraft:item_component[pot_decorations] to type Sherds = [Sherd] @ 4
 
 dispatch minecraft:item[decorated_pot] to struct DecoratedPot {
 	#[since="1.20.5"]
-	"minecraft:pot_decorations": Sherds,
+	[#[id] "pot_decorations"]: Sherds,
 }

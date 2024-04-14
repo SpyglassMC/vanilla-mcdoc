@@ -3,7 +3,7 @@ use ::java::server::util::attribute::Operation
 use ::java::server::util::inventory::InventoryItem
 use ::java::server::util::LegacyPotionEffect
 use ::java::server::util::PotionComponent
-use ::java::server::util::inventory::EquipmentSlot
+use ::java::server::util::attribute::AttributeSlot
 
 struct LivingEntity {
 	...super::EntityBase,
@@ -96,7 +96,7 @@ struct AttributeModifier {
 	/// Has no real effect.
 	Name: string,
 	/// Slot that the modifier is active in.
-	Slot: EquipmentSlot,
+	Slot: AttributeSlot,
 	Operation: Operation,
 	/// Change in the attribute.
 	Amount: double,

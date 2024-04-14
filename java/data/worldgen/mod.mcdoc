@@ -43,7 +43,10 @@ type IntProvider<T> = (
 	T |
 	struct {
 		type: #[id=int_provider_type] string,
+		#[until="1.20.5"]
 		value: minecraft:int_provider[[type]]<T>,
+		#[since="1.20.5"]
+		...minecraft:int_provider[[type]]<T>,
 	} |
 )
 

@@ -30,11 +30,11 @@ dispatch minecraft:item[
 	black_shulker_box,
 ] to struct Container27 {
 	/// Slots from 0 to 26.
-	"minecraft:container": [SlottedItem<byte @ 0..26>] @ 0..27,
-	"minecraft:container_loot": ContainerLoot,
+	[#[id] "container"]: [SlottedItem<byte @ 0..26>] @ 0..27,
+	[#[id] "container_loot"]: ContainerLoot,
 }
 
 dispatch minecraft:block[dispenser, dropper] to struct Container9 {
 	/// Slots from 0 to 8.
-	"minecraft:container": [SlottedItem<byte @ 0..8>] @ 0..9,
+	[#[id] "container"]: [SlottedItem<byte @ 0..8>] @ 0..9,
 }

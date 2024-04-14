@@ -80,6 +80,13 @@ dispatch minecraft:criteria_trigger[consume_item] to struct ConsumeItem {
 	item?: ItemPredicate,
 }
 
+#[since="1.20.5"]
+dispatch minecraft:criteria_trigger[crafter_recipe_crafted] to struct CrafterRecipeCrafted {
+	...CriterionBase,
+	recipe_id: #[id=recipe] string,
+	ingredients?: [ItemPredicate] @ 1..9,
+}
+
 dispatch minecraft:criteria_trigger[cured_zombie_villager] to struct CuredZombieVillager {
 	...CriterionBase,
 	villager?: CompositeEntity,
@@ -114,6 +121,14 @@ dispatch minecraft:criteria_trigger[entity_killed_player] to struct EntityKilled
 	...CriterionBase,
 	entity?: CompositeEntity,
 	killing_blow?: DamageSourcePredicate,
+}
+
+#[since="1.20.5"]
+dispatch minecraft:criteria_trigger[fall_after_explosion] to struct FallAfterExplosion {
+	...CriterionBase,
+	start_position?: LocationPredicate,
+	distance?: DistancePredicate,
+	cause?: EntityPredicate,
 }
 
 #[since=1.18]

@@ -57,4 +57,6 @@ dispatch minecraft:entity[wolf] to struct Wolf {
 	Angry: boolean,
 	/// Collar color, present for wild wolfs.
 	CollarColor: ColorByte,
+	#[since="1.20.5"]
+	variant: #[id=wolf_variant] string,
 }

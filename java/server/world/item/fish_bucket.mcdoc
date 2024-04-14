@@ -9,14 +9,14 @@ dispatch minecraft:item_component[bucket_entity_data] to struct {
 
 dispatch minecraft:item[cod_bucket, salmon_bucket, pufferfish_bucket, tadpole_bucket] to struct BasicFishBucket {
 	#[since="1.20.5"]
-	"minecraft:bucket_entity_data": super::spawn_item::EntityData
+	[#[id] "bucket_entity_data"]: super::spawn_item::EntityData
 	#[until="1.20.5"]
 	EntityTag: super::spawn_item::EntityData,
 }
 
 dispatch minecraft:item[axolotl_bucket] to struct AxolotlBucket {
 	#[since="1.20.5"]
-	"minecraft:bucket_entity_data": struct {
+	[#[id] "bucket_entity_data"]: struct {
 		...super::spawn_item::EntityData,
 		/// Turns into the expiry time of the memory module `has_hunting_cooldown`.
 		HuntingCooldown: long,
@@ -27,7 +27,7 @@ dispatch minecraft:item[axolotl_bucket] to struct AxolotlBucket {
 
 dispatch minecraft:item[tropical_fish_bucket] to struct AxolotlBucket {
 	#[since="1.20.5"]
-	"minecraft:bucket_entity_data": struct {
+	[#[id] "bucket_entity_data"]: struct {
 		...super::spawn_item::EntityData,
 		/// Turns into the `Variant` entity tag.
 		BucketVariantTag: int,

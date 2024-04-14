@@ -7,13 +7,13 @@ dispatch minecraft:entity[goat] to struct Goat {
 	Brain: struct {
 		memories: struct {
 			/// Tempted by the player.
-			"minecraft:is_tempted": FlagMemory,
+			[#[id] "is_tempted"]: FlagMemory,
 			/// Ticks until it can leap again.
-			"minecraft:long_jump_cooling_down": TickMemory,
+			[#[id] "long_jump_cooling_down"]: TickMemory,
 			/// Ticks until it can ram again.
-			"minecraft:ram_cooldown_ticks": TickMemory,
+			[#[id] "ram_cooldown_ticks"]: TickMemory,
 			/// Ticks until it can be tempted again.
-			"minecraft:temptation_cooldown_ticks": TickMemory,
+			[#[id] "temptation_cooldown_ticks"]: TickMemory,
 		},
 	},
 	/// Whether it has its left horn.

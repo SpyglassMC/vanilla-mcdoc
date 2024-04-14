@@ -1,5 +1,6 @@
 use ::java::server::util::LegacyPotionEffect
 use ::java::server::util::PotionComponent
+use ::java::server::util::Particle
 
 dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	/// Number of ticks it has existed.
@@ -32,7 +33,7 @@ dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	/// Change in the radius per tick.
 	RadiusPerTick: float,
 	/// Particle the area effect cloud displays.
-	Particle: string, // TODO
+	Particle: (#[until="1.20.5"] string | #[since="1.20.5"] Particle),
 	/// Default potion effect.
 	#[until="1.20.5"]
 	Potion: #[id=potion] string,

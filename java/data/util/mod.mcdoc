@@ -89,6 +89,11 @@ dispatch minecraft:score_provider[fixed] to struct FixedScoreProvider {
 	name: #[score_holder] string,
 }
 
+dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
+	source: #[id=storage] string,
+	path: string,
+}
+
 type NbtProvider = (
 	CopyNameSource |
 	struct {

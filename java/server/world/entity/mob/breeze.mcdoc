@@ -1,0 +1,18 @@
+use ::java::server::util::TickMemory
+use ::java::server::util::PositionMemory
+
+{[#[id] "breeze_jump_inhaling"]: {value: {}, ttl: 7L}, [#[id] "breeze_jump_target"]: {value: [I; 13, -60, 17]}, [#[id] "breeze_shoot_cooldown"]: {value: {}, ttl: 6L}}
+
+dispatch minecraft:entity[breeze] to struct Breeze {
+	...super::MobBase,
+	Brain: struct {
+		memories: struct { // TODO: Better docs
+            [#[id] "breeze_jump_inhaling"]: TickMemory,
+            /// Position the breeze is going to jump to.
+            [#[id] "breeze_jump_target"]: PositionMemory,
+            [#[id] "breeze_shoot_cooldown"]: TickMemory,
+            [#[id] "breeze_shoot"]: TickMemory,
+            [#[id] "breeze_shoot_charging"]: TickMemory,
+		}
+	},
+}

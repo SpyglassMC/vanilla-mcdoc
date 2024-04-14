@@ -9,7 +9,7 @@ dispatch minecraft:item_component[suspicious_stew_effects] to type SuspiciousSte
 /// A suspicious stew item.
 dispatch minecraft:item[suspicious_stew] to struct SuspiciousStew {
 	#[since="1.20.5"]
-	"minecraft:suspicious_stew_effects": SuspiciousStewEffects,
+	[#[id] "suspicious_stew_effects"]: SuspiciousStewEffects,
 	/// Effects this stew will give.
 	#[until="1.20.5"]
 	Effects: [Effect],

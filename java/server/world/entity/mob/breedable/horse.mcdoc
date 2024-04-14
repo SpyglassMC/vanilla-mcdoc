@@ -52,11 +52,11 @@ dispatch minecraft:entity[camel] to struct Camel {
 	Brain: struct {
 		memories: struct {
 			/// Ticks until it can look around randomly again.
-			"minecraft:gaze_cooldown_ticks": TickMemory,
+			[#[id] "gaze_cooldown_ticks"]: TickMemory,
 			/// Tempted by the player.
-			"minecraft:is_tempted": FlagMemory,
+			[#[id] "is_tempted"]: FlagMemory,
 			/// Ticks until it can be tempted again.
-			"minecraft:temptation_cooldown_ticks": TickMemory,
+			[#[id] "temptation_cooldown_ticks"]: TickMemory,
 		},
 	},
 	/// Whether it is sitting.

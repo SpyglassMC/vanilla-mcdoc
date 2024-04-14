@@ -23,6 +23,7 @@ dispatch minecraft:loot_condition[damage_source_properties] to struct DamageSour
 }
 
 dispatch minecraft:loot_condition[entity_properties] to struct EntityProperties {
+	entity: EntityTarget,
 	predicate: EntityPredicate,
 }
 

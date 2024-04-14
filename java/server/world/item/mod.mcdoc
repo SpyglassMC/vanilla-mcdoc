@@ -1,6 +1,6 @@
 use ::java::server::util::attribute::AttributeName
 use ::java::server::util::attribute::Operation
-use ::java::server::util::inventory::EquipmentSlot
+use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::block_state::BlockState
 use ::java::server::util::PotionComponent
 
@@ -19,13 +19,15 @@ type BlockComponent = (
 	BlockPredicate |
 )
 
-dispatch minecraft:item_component[attribute_modifiers] to type AttributeModifiers = [AttributeModifier] | #[canonical] struct {
+dispatch minecraft:item_component[attribute_modifiers] to type AttributeModifiers = ([AttributeModifier] | #[canonical] struct {
 	modifiers: [AttributeModifier],
 	show_in_tooltip?: boolean,
-}
+})
 dispatch minecraft:item_component[can_destroy] to BlockComponent
 
-dispatch minecraft:item_component[custom_name] to type CustomName = #[text_component] string
+dispatch minecraft:item_component[item_name] to type Text = #[text_component] string
+
+dispatch minecraft:item_component[custom_name] to Text
 
 dispatch minecraft:item_component[custom_model_data] to int
 
@@ -47,11 +49,10 @@ dispatch minecraft:item_component[enchantments] to type Enchantments = (
 dispatch minecraft:item_component[fire_resistant] to struct {}
 
 dispatch minecraft:item_component[food] to struct Food {
-	/// Food points/haunches restored when eaten.
+	/// Food points/haunches restored when eaten (capped to 20.0).
 	nutrition: int @ 0..,
-	// TODO: Better doc
-	/// Saturation restored when eaten.
-	saturation_modifier: float,
+	/// Exact value added to the player's saturation level, capped at whatever the [new] food points value is.
+	saturation: float,
 	/// Whether the item can be fed to wolves. Defaults to `false`.
 	is_meat: boolean,
 	/// Whether the item can be eaten when the player's food points/haunches are full. Defaults to `false`
@@ -76,9 +77,13 @@ dispatch minecraft:item_component[max_damage] to int @ 1..
 dispatch minecraft:item_component[max_stack_size] to int @ 1..99
 
 dispatch minecraft:item_component[rarity] to enum(string) Rarity { // TODO: Add doc for these
+	/// White name, or aqua when enchanted.
 	Common = "common",
+	/// Yellow name, or aqua when enchanted.
 	Uncommon = "uncommon",
+	/// Aqua name, or light purple when enchanted.
 	Rare = "rare",
+	/// Light purple name.
 	Epic = "epic",
 }
 dispatch minecraft:item_component[repair_cost] to int @ 0..
@@ -103,7 +108,6 @@ dispatch minecraft:item_component[trim] to struct Trim {
 	/// Used by armor rendering for the pattern's `asset_id`.
 	pattern: #[id=trim_pattern] string,
 
-	#[since="1.20.5"]
 	show_in_tooltip?: boolean,
 }
 dispatch minecraft:item_component[unbreakable] to struct Unbreakable {
@@ -113,23 +117,23 @@ dispatch minecraft:item_component[unbreakable] to struct Unbreakable {
 dispatch minecraft:item[%all_items] to (
 	#[since=1.20.5] struct {
 		/// Applied to an entity that has equipped/is holding the item.
-		"minecraft:attribute_modifiers": AttributeModifiers,
-		"minecraft:can_destroy": BlockComponent,
-		"minecraft:custom_name": CustomName,
+		[#[id] "attribute_modifiers"]: AttributeModifiers,
+		[#[id] "can_destroy"]: BlockComponent,
+		[#[id] "custom_name"]: Text,
 		/// Tag that describes the custom model an item will take.
 		/// Used by the `custom_model_data` model overrides predicate.
 		/// Has certain restrictions due to float conversion.
-		"minecraft:custom_model_data": CustomModelData,
+		[#[id] "custom_model_data"]: int,
 		/// Damage that an item has. Only used for tools, armor, etc.
-		"minecraft:damage": int @ 0..,
+		[#[id] "damage"]: int @ 0..,
 		/// If set, changes enchantment glint behavior. When true, this item will display a glint, even without enchantments. When false, this item will not display a glint, even with enchantments.
-		"minecraft:enchantment_glint_override": boolean,
+		[#[id] "enchantment_glint_override"]: boolean,
 		/// List of enchantments that are on the item.
-		"minecraft:enchantments": Enchantments,
+		[#[id] "enchantments"]: Enchantments,
 		/// If set, this item will not burn in fire or lava.
-		"minecraft:fire_resistant": struct {},
+		[#[id] "fire_resistant"]: struct {},
 		/// If set, this item is considered as a food, and can be eaten.
-		"minecraft:food": Food,
+		[#[id] "food"]: Food,
 		/// If set, several specific tooltip entries without an applicable `show_in_tooltip` option available are hidden.
 		///
 		/// Included entries:
@@ -151,22 +155,29 @@ dispatch minecraft:item[%all_items] to (
 		/// - Music Disc description
 		/// - Smithing Template description
 		/// - Written Book author & generation
-		"minecraft:hide_additional_tooltip": struct {}
+		[#[id] "hide_additional_tooltip"]: struct {}
 		/// If set, it will completely hide this item's tooltip, including its name.
-		"minecraft:hide_tooltip": struct {},
+		[#[id] "hide_tooltip"]: struct {},
+		/// Replaces default item name with contained chat component.
+		///
+		/// Differences from `custom_name`:
+		/// - Can't be changed or removed in anvil.
+		/// - Not styled with italics when displayed to player.
+		/// - Does not show labels where applicable (for example: banner markers, names in item frames).
+		[#[id] "item_name"]: Text,
 		/// A list of JSON text components, each element being a lore line.
-		"minecraft:lore": Lore,
-		/// Maximum amount of damage that this item can take. If not set, this item cannot take damage.
-		"minecraft:max_damage": int @ 1..,
-		"minecraft:max_stack_size": int @ 1..99,
+		[#[id] "lore"]: Lore,
+		/// Maximum amount of damage that this item can take (ie. **Durability**). If not set, this item cannot take damage. Cannot be combined with the `max_stack_size` component.
+		[#[id] "max_damage"]: int @ 1..,
+		[#[id] "max_stack_size"]: int @ 1..99,
 		/// Default color of this item's name.
-		"minecraft:rarity": Rarity,
+		[#[id] "rarity"]: Rarity,
 		/// Number of experience levels to add to the base level cost when repairing, combining, or renaming this item with an anvil.
-		"minecraft:repair_cost": int @ 0..,
-		"minecraft:tool": Tool,
+		[#[id] "repair_cost"]: int @ 0..,
+		[#[id] "tool"]: Tool,
 		/// Trim to apply to the item & armor when worn.
-		"minecraft:trim": Trim,
-		"minecraft:unbreakable": Unbreakable,
+		[#[id] "trim"]: Trim,
+		[#[id] "unbreakable"]: Unbreakable,
 	} |
 	#[until=1.20.5] struct {
 		/// Damage that an item has. Only used for tools, armor, etc.
@@ -231,7 +242,7 @@ type AttributeModifier = (
 	#[since="1.20.5"] struct {
 		type: #[id=attribute] string,
 		/// Slot or slot type the item must be in for the modifier to take effect.
-		slot: EquipmentSlot,
+		slot: AttributeSlot,
 		/// Used when equipping and unequipping the item to identify which modifier to add or remove from the entity.
 		uuid: int[] @ 4,
 		/// Identifying name of the modifier, has no real effect.
@@ -252,7 +263,7 @@ type AttributeModifier = (
 		/// Identifying name of the modifier, has no real effect.
 		Name: string,
 		/// Slot that the modifier is active in.
-		Slot: EquipmentSlot,
+		Slot: AttributeSlot,
 		Operation: Operation,
 		/// Change in the attribute.
 		Amount: double,

@@ -5,5 +5,5 @@ dispatch minecraft:item_component[bees] to type Bees [struct {
 }]
 
 dispatch minecraft:item[bee_nest, beehive] to struct BeeContainer {
-	"minecraft:bees": Bees,
+	[#[id] "bees"]: Bees,
 }

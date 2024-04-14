@@ -39,6 +39,7 @@ enum(string) TerrainAdaptation {
 	BeardThin = "beard_thin",
 	BeardBox = "beard_box",
 	Bury = "bury",
+	Encapsulate = "encapsulate"
 }
 
 struct SpawnOverride {
