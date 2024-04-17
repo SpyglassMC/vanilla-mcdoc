@@ -5,8 +5,8 @@ use ::java::server::util::block_state::BlockState
 use ::java::server::util::PotionComponent
 
 struct BlockPredicate {
-	blocks: #[id=block] string | (#[id=block] string)[] | #[id(registry=block)] string,
-	// TODO: determine how this should actually work, maybe the above should automatically resolve, idk
+	blocks: #[id=block] string | [#[id=block] string] | #[id(registry=block,tags=allowed)] string,
+	// TODO: determine how/whether this should actually work, maybe the above should automatically resolve, idk. There's other places relying on this now too.
 	nbt: minecraft:block[[%blocks]],
 	state: mcdoc:block_item_states[[%blocks]],
 }
@@ -27,7 +27,7 @@ dispatch minecraft:item_component[can_destroy] to BlockComponent
 
 dispatch minecraft:item_component[item_name] to type Text = #[text_component] string
 
-dispatch minecraft:item_component[custom_data] to type CustomData = mcdoc:custom_item_data[[%parent.id]] | struct {}
+dispatch minecraft:item_component[custom_data] to type CustomData = mcdoc:custom_item_data[[%parent.id]] | struct {} // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to ItemBase.
 
 dispatch minecraft:item_component[custom_name] to Text
 
@@ -116,7 +116,7 @@ dispatch minecraft:item_component[unbreakable] to struct Unbreakable {
 	show_in_tooltip?: boolean,
 }
 
-dispatch minecraft:item[%all_items] to (
+dispatch minecraft:item[%all_items] to type ItemBase = (
 	#[since=1.20.5] struct {
 		/// Applied to an entity that has equipped/is holding the item.
 		[#[id] "attribute_modifiers"]: AttributeModifiers,
