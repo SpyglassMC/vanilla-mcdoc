@@ -55,7 +55,7 @@ dispatch minecraft:entity[arrow] to struct Arrow {
 	#[until="1.20.2"]
 	CustomPotionEffects: [LegacyPotionEffect],
 	/// Effects to give to the hit entity.
-	#[since="1.20.2",until="1.20.3"]
+	#[since="1.20.2"] #[until="1.20.3"]
 	custom_potion_effects: [LegacyPotionEffect],
 	/// Name of the default potion effect.
 	#[until="1.20.3"]

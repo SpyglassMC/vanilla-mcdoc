@@ -1,19 +1,21 @@
 use ::java::server::util::EffectId
 
-dispatch minecraft:item_component[suspicious_stew_effects] to type SuspiciousStewEffects = [struct {
+type SuspiciousStewEffects = [struct {
 	id: #[id=mob_effect] string,
 	/// Duration of the effect in ticks. Defaults to `160`; 8 seconds.
 	duration: int @ 1..,
 }]
+dispatch minecraft:item_component[suspicious_stew_effects] to SuspiciousStewEffects
 
 /// A suspicious stew item.
-dispatch minecraft:item[suspicious_stew] to struct SuspiciousStew {
+struct SuspiciousStew {
 	#[since="1.20.5"]
 	[#[id] "suspicious_stew_effects"]: SuspiciousStewEffects,
 	/// Effects this stew will give.
 	#[until="1.20.5"]
 	Effects: [Effect],
 }
+dispatch minecraft:item[suspicious_stew] to SuspiciousStew
 
 /// A suspicious stew effect.
 struct Effect {

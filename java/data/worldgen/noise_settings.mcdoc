@@ -13,7 +13,7 @@ type NoiseGeneratorSettingsRef = (
 	} |
 )
 
-dispatch minecraft:resource[worldgen/noise_settings] to struct NoiseGeneratorSettings {
+dispatch minecraft:resource["worldgen/noise_settings"] to struct NoiseGeneratorSettings {
 	default_block: BlockState,
 	default_fluid: BlockState,
 	/// Relative position of the bedrock roof starting at the world height. Higher numbers move the roof down.

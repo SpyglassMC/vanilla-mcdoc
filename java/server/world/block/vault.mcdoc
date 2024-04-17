@@ -1,42 +1,3 @@
-{
-    server_data: {state_updating_resumes_at: 32007L},
-    config: {
-        key_item: {count: 1, id: "minecraft:ominous_trial_key"}, 
-        loot_table: "minecraft:chests/trial_chambers/reward_ominous"
-    }, 
-    shared_data: {
-        display_item: {count: 10, id: "minecraft:emerald"}, 
-        connected_players: [[I; -2014268373, 2004304939, -1679568588, -965575432]]
-    }
-}
-
-{
-    server_data: {state_updating_resumes_at: 32087L}, 
-    config: {
-        key_item: {count: 1, id: "minecraft:ominous_trial_key"}, 
-        loot_table: "minecraft:chests/trial_chambers/reward_ominous"
-    }, 
-    shared_data: {}
-}
-
-{
-    server_data: {state_updating_resumes_at: 32408L}, 
-    config: {
-        key_item: {count: 1, id: "minecraft:trial_key"}
-    },
-    shared_data: {
-        display_item: {count: 2, id: "minecraft:golden_carrot"},
-        connected_players: [[I; -2014268373, 2004304939, -1679568588, -965575432]]
-    }
-}
-
-{
-    server_data: {state_updating_resumes_at: 32468L},
-    config: {
-        key_item: {count: 1, id: "minecraft:trial_key"}
-    },
-    shared_data: {}
-}
 
 #[since="1.20.5"]
 dispatch minecraft:block[vault] to struct Vault {
@@ -50,7 +11,7 @@ dispatch minecraft:block[vault] to struct Vault {
         /// Number of items that the loot table started off the opening with, does not change while items are ejected.
         total_ejections_needed: int,
     },
-    config: {
+    config: struct {
         /// Item required to open the vault.
         key_item: InventoryItem,
         /// Defaults to "minecraft:chests/trial_chambers/reward".
@@ -58,7 +19,7 @@ dispatch minecraft:block[vault] to struct Vault {
     },
     /// When a player is in range of the vault, the same display item will be shown to all players.
     /// This is also used for the items that are being ejected from the vault.
-    shared_data: (struct {} | {
+    shared_data: (struct {} | struct {
         /// Item that is displayed to players when they are in range of the vault.
         display_item: InventoryItem,
         connected_players: [int[] @ 4],

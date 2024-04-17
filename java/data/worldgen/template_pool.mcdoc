@@ -1,4 +1,4 @@
-dispatch minecraft:resource[worldgen/template_pool] to struct TemplatePool {
+dispatch minecraft:resource["worldgen/template_pool"] to struct TemplatePool {
 	name: string,
 	fallback: string,
 	elements: [WeightedElement],

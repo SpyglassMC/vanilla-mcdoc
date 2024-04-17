@@ -10,7 +10,7 @@ type PlacedFeatureRef = (
 	PlacedFeature |
 )
 
-dispatch minecraft:resource[worldgen/placed_feature] to struct PlacedFeature {
+dispatch minecraft:resource["worldgen/placed_feature"] to struct PlacedFeature {
 	feature: ConfiguredFeatureRef,
 	placement: [PlacedmentModifier],
 }

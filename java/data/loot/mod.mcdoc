@@ -63,19 +63,19 @@ dispatch minecraft:loot_pool_entry[loot_table] to LootPoolEntrySingleton<#[id=lo
 /// Adds the contents of an item tag.
 dispatch minecraft:loot_pool_entry[tag] to LootPoolEntrySingleton<#[id(registry=item,tags=implicit)] string>
 
-/// Tests conditions of the child entries and executes the first that can run.
-dispatch minecraft:loot_pool_entry[alternatives]
-
-/// Executes all child entries when own conditions pass.
-dispatch minecraft:loot_pool_entry[group]
-
-/// Executes child entries until the first one that can't run due to conditions.
-dispatch minecraft:loot_pool_entry[sequence]
-
 struct CompositePoolEntry {
 	children: [LootPoolEntry],
 	...LootPoolEntryBase,
 }
+
+/// Tests conditions of the child entries and executes the first that can run.
+dispatch minecraft:loot_pool_entry[alternatives] to CompositePoolEntry
+
+/// Executes all child entries when own conditions pass.
+dispatch minecraft:loot_pool_entry[group] to CompositePoolEntry
+
+/// Executes child entries until the first one that can't run due to conditions.
+dispatch minecraft:loot_pool_entry[sequence] to CompositePoolEntry
 
 struct LootFunction {
 	function: #[id=loot_function_type] string,

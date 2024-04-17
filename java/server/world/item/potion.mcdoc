@@ -1,7 +1,7 @@
 use ::java::server::util::LegacyPotionEffect
 use ::java::server::util::PotionComponent
 
-dispatch minecraft:item_component[potion_contents] to type PotionContents = (
+type PotionContents = (
 	#[canonical] struct {
 		potion?: #[id=potion] string,
 		/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
@@ -10,6 +10,7 @@ dispatch minecraft:item_component[potion_contents] to type PotionContents = (
 	} |
 	#[id=potion] string |
 )
+dispatch minecraft:item_component[potion_contents] to PotionContents
 
 /// An item that has a potion effect
 dispatch minecraft:item[potion, splash_potion, lingering_potion, tipped_arrow] to struct EffectItem {

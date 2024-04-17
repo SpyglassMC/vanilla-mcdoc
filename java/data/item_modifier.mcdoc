@@ -1,5 +1,7 @@
 use super::loot::LootFunction
 use super::loot::LootCondition
 
+type ItemModifier = (LootFunction | [LootFunction])
+
 #[since=1.17]
-dispatch minecraft:resource[item_modifer] to type ItemModifier = (LootFunction | [LootFunction])
+dispatch minecraft:resource[item_modifer] to ItemModifier

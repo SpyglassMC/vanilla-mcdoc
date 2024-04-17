@@ -6,7 +6,7 @@ type DensityFunctionRef = (
 
 type NoiseRange = float @ -1000000..1000000
 
-dispatch minecraft:resource[worldgen/density_function] to struct DensityFunction {
+dispatch minecraft:resource["worldgen/density_function"] to struct DensityFunction {
 	type: #[id="worldgen/density_function_type"] string,
 	...minecraft:density_function[[type]],
 }

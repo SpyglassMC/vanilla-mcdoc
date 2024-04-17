@@ -9,7 +9,7 @@ type ColorInt = color::ColorInt
 type ColorString = color::ColorString
 type EffectId = effect::EffectId
 type GlobalPos = global_pos::GlobalPos
-type InventoryItem<T = (#[id=item] string)> = inventory::InventoryItem<T>
+type InventoryItem = inventory::InventoryItem
 type PotionComponent = effect::PotionComponent
 type LegacyPotionEffect = effect::LegacyPotionEffect
 type SlottedItem<T> = inventory::SlottedItem<T>

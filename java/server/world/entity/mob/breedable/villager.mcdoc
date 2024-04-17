@@ -108,8 +108,8 @@ dispatch minecraft:entity[wandering_trader] to struct WanderingTrader {
 	#[until="1.20.5"]
 	WanderTarget: WanderTarget,
 	/// Where it is heading to.
-	#[since="1.20.5"],
-	wander_target: int[] @ 3
+	#[since="1.20.5"]
+	wander_target: int[] @ 3,
 }
 
 struct WanderTarget {

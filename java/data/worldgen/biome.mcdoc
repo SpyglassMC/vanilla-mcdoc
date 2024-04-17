@@ -3,7 +3,7 @@ use super::carver::CarverRef
 use super::feature::PlacedFeatureRef
 use super::structure::StructureRef
 
-dispatch minecraft:resource[worldgen/biome] to struct Biome {
+dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 	#[until=1.19]
 	category: BiomeCategory,
 	/// Raises or lowers the terrain. Positive values are considered land and negative are oceans.

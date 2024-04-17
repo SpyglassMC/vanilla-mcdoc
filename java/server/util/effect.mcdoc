@@ -5,7 +5,7 @@ struct LegacyPotionEffect {
 	/// Since 1.19.4 a value of `-1` is supported, representing an infinite duration.
 	Duration: (
 		#[until="1.19.4"] int @ 1.. |
-		#[since="1.19.4"] (int @ -1 | 1..)
+		#[since="1.19.4"] (int @ -1 | int @ 1..)
 	),
 	/// Whether particles are semi-transparent. (like with a Beacon)
 	Ambient: boolean,

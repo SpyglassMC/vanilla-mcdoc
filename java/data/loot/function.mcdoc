@@ -45,7 +45,7 @@ struct CopyNbt {
 		struct {
 			type: "storage",
 			source: string, // TODO
-		},
+		} |
 	),
 	ops: [(struct {
 		source: #[nbt_path] string, // TODO
@@ -277,10 +277,10 @@ type ContainerComponents = (
 
 /// For a container block item's contents.
 dispatch minecraft:loot_function[set_contents] to struct SetContents {
-	#[since=1.18, until="1.20.5"]
+	#[since=1.18] #[until="1.20.5"]
 	type: #[id=block_entity_type] string,
-	#[since="1.20.5"]
 	/// Describes target component to be filled with items.
+	#[since="1.20.5"]
 	component: ContainerComponents,
 	entries: [LootPoolEntry],
 }
@@ -289,7 +289,7 @@ dispatch minecraft:loot_function[modify_contents] to struct ModifyContents {
 	/// Describes target component's items to modify.
 	component: ContainerComponents,
 	/// Applied to every item inside container.
-	modifier: LootFunction | [LootFunction],
+	modifier: (LootFunction | [LootFunction]),
 }
 
 /// Replaces item type of item stack without changing count and components
@@ -300,7 +300,7 @@ dispatch minecraft:loot_function[set_item] to struct SetItem {
 /// Applies sub-function(s) only to items that match item predicate
 dispatch minecraft:loot_function[filtered] to struct Filtered {
 	item_filter: ItemPredicate,
-	modifier: LootFunction | [LootFunction]
+	modifier: (LootFunction | [LootFunction])
 }
 
 dispatch minecraft:loot_function[set_count] to struct SetCount {
@@ -352,8 +352,8 @@ dispatch minecraft:loot_function[set_loot_table] to struct SetLootTable {
 dispatch minecraft:loot_function[set_lore] to struct SetLore {
 	entity: EntityTarget,
 	lore: [Text],
-	#[until="1.20.5"]
 	/// Defaults to true.
+	#[until="1.20.5"]
 	replace?: boolean,
 	#[since="1.20.5"]
 	...ListMode,
@@ -363,26 +363,26 @@ dispatch minecraft:loot_function[set_name] to struct SetName {
 	/// Specifies the entity to act as the target `@s` in the JSON text component.
 	entity: EntityTarget,
 	name: Text,
-	#[since="1.20.5"]
 	/// Which name component to set. Defaults to `custom_name`.
+	#[since="1.20.5"]
 	target?: ("item_name" | "custom_name"),
 }
 
 #[until="1.20.5"]
 dispatch minecraft:loot_function[set_nbt] to struct SetNbt {
-	tag: #[nbt(registry=minecraft:item)] string,
+	tag: #[nbt(registry=item)] string,
 }
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_components] to struct SetComponents {
 	conditions?: [LootCondition],
 	components: struct {
 		[#[id=item_component] string]: minecraft:item_component[[%key]],
-		[#[id=item_component, nulled=true] string]: struct {},
+		[#[id=(registry=item_component, nulled=true)] string]: struct {},
 	},
 }
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_custom_data] to struct SetCustomData {
-	tag: #[nbt(registry=mcdoc:custom_item_data)] string | mcdoc:custom_item_data[[%any]],
+	tag: (#[nbt(registry="mcdoc:custom_item_data")] string | mcdoc:custom_item_data[%fallback]),
 }
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_custom_model_data] to struct SetCustomModelData {

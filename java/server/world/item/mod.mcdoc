@@ -5,10 +5,10 @@ use ::java::server::util::block_state::BlockState
 use ::java::server::util::PotionComponent
 
 struct BlockPredicate {
-	blocks: #[id=block] string | [#[id=block] string] | #[id(registry=block,tags=allowed)] string,
+	blocks: (#[id=block] string | [#[id=block] string] | #[id(registry=block,tags=allowed)] string),
 	// TODO: determine how/whether this should actually work, maybe the above should automatically resolve, idk. There's other places relying on this now too.
-	nbt: minecraft:block[[%blocks]],
-	state: mcdoc:block_item_states[[%blocks]],
+	nbt: minecraft:block[[%parent.blocks]],
+	state: mcdoc:block_item_states[[%parent.blocks]],
 }
 
 type BlockComponent = (
@@ -19,15 +19,19 @@ type BlockComponent = (
 	BlockPredicate |
 )
 
-dispatch minecraft:item_component[attribute_modifiers] to type AttributeModifiers = ([AttributeModifier] | #[canonical] struct {
+type AttributeModifiers = ([AttributeModifier] | #[canonical] struct {
 	modifiers: [AttributeModifier],
 	show_in_tooltip?: boolean,
 })
+dispatch minecraft:item_component[attribute_modifiers] to AttributeModifiers
+
 dispatch minecraft:item_component[can_destroy] to BlockComponent
 
-dispatch minecraft:item_component[item_name] to type Text = #[text_component] string
+type Text = #[text_component] string
+dispatch minecraft:item_component[item_name] to Text
 
-dispatch minecraft:item_component[custom_data] to type CustomData = mcdoc:custom_item_data[[%parent.id]] | struct {} // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to ItemBase.
+type CustomData = (mcdoc:custom_item_data[[%parent.id]] | struct {}) // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to ItemBase.
+dispatch minecraft:item_component[custom_data] to CustomData
 
 dispatch minecraft:item_component[custom_name] to Text
 
@@ -37,7 +41,7 @@ dispatch minecraft:item_component[damage] to int @ 0..
 
 dispatch minecraft:item_component[enchantment_glint_override] to boolean
 
-dispatch minecraft:item_component[enchantments] to type Enchantments = (
+type Enchantments = (
 	struct {
 		[#[id=enchantment] string]: int @ 0..,
 	} |
@@ -48,9 +52,11 @@ dispatch minecraft:item_component[enchantments] to type Enchantments = (
 		show_in_tooltip?: boolean,
 	} |
 )
+dispatch minecraft:item_component[enchantments] to Enchantments
+
 dispatch minecraft:item_component[fire_resistant] to struct {}
 
-dispatch minecraft:item_component[food] to struct Food {
+struct Food {
 	/// Food points/haunches restored when eaten (capped to 20.0).
 	nutrition: int @ 0..,
 	/// Exact value added to the player's saturation level, capped at whatever the [new] food points value is.
@@ -60,7 +66,7 @@ dispatch minecraft:item_component[food] to struct Food {
 	/// Whether the item can be eaten when the player's food points/haunches are full. Defaults to `false`
 	can_always_eat: boolean,
 	/// Seconds it takes to eat the item. Defaults to `1.6`
-	eat_seconds: float @ 0..
+	eat_seconds: float @ 0..,
 	/// Applied when eaten.
 	effects: [struct {
 		effect: PotionComponent,
@@ -68,11 +74,14 @@ dispatch minecraft:item_component[food] to struct Food {
 		probability: float @ 0..1,
 	}],
 }
+dispatch minecraft:item_component[food] to Food
+
 dispatch minecraft:item_component[hide_additional_tooltip] to struct {}
 
 dispatch minecraft:item_component[hide_tooltip] to struct {}
 
-dispatch minecraft:item_component[lore] to type Lore = [#[text_component] string]
+type Lore = [#[text_component] string]
+dispatch minecraft:item_component[lore] to Lore
 
 dispatch minecraft:item_component[max_damage] to int @ 1..
 
@@ -97,7 +106,7 @@ dispatch minecraft:item_component[tool] to struct Tool {
 	damage_per_block: int,
 	/// Blocks that this tool has a special behavior with.
 	rules: [struct {
-		blocks: #[id=block] string | (#[id=block] string)[] | #[id(registry=block)] string,
+		blocks: (#[id=block] string | [#[id=block] string] | #[id(registry=block)] string),
 		/// Overrides the default mining speed.
 		speed?: float,
 		/// Overrides whether or not this tool is considered correct to mine at its most efficient speed, and to drop items if the block's loot table requires it.
@@ -116,8 +125,8 @@ dispatch minecraft:item_component[unbreakable] to struct Unbreakable {
 	show_in_tooltip?: boolean,
 }
 
-dispatch minecraft:item[%all_items] to type ItemBase = (
-	#[since=1.20.5] struct {
+type ItemBase = (
+	#[since="1.20.5"] struct {
 		/// Applied to an entity that has equipped/is holding the item.
 		[#[id] "attribute_modifiers"]: AttributeModifiers,
 		[#[id] "custom_data"]: CustomData,
@@ -158,7 +167,7 @@ dispatch minecraft:item[%all_items] to type ItemBase = (
 		/// - Music Disc description
 		/// - Smithing Template description
 		/// - Written Book author & generation
-		[#[id] "hide_additional_tooltip"]: struct {}
+		[#[id] "hide_additional_tooltip"]: struct {},
 		/// If set, it will completely hide this item's tooltip, including its name.
 		[#[id] "hide_tooltip"]: struct {},
 		/// Replaces default item name with contained chat component.
@@ -182,7 +191,7 @@ dispatch minecraft:item[%all_items] to type ItemBase = (
 		[#[id] "trim"]: Trim,
 		[#[id] "unbreakable"]: Unbreakable,
 	} |
-	#[until=1.20.5] struct {
+	#[until="1.20.5"] struct {
 		/// Damage that an item has. Only used for tools, armor, etc.
 		Damage: int,
 		/// Whether the item should be unbreakable.
@@ -221,6 +230,7 @@ dispatch minecraft:item[%all_items] to type ItemBase = (
 		Trim: Trim,
 	} |
 )
+dispatch minecraft:item[%unknown] to ItemBase
 
 struct AnyItem {
 	/// ID of the item.

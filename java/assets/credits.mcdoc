@@ -1,8 +1,8 @@
-dispatch minecraft:resource[credits] to type Credits = [struct {
+type Credits = [struct {
 	/// Company segment.
 	section: string,
 	disciplines: [struct {
-		discipline: string | "",
+		discipline: (string | ""),
 		titles: [struct {
 			title: string,
 			/// People with the title.
@@ -10,3 +10,4 @@ dispatch minecraft:resource[credits] to type Credits = [struct {
 		}],
 	}],
 }]
+dispatch minecraft:resource[credits] to Credits

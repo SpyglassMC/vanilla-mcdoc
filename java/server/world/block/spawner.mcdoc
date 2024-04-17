@@ -71,8 +71,8 @@ struct SpawnPotential {
 	/// Weight for this entry to be chosen.
 	#[since=1.18]
 	weight: int @ 0..,
+	/// Rolled items from the specified loot table will be equipped to the mob that spawns.
 	#[since="1.20.5"]
-	/// Rolled items from the specified loot table will be equipped to the mob that spawns
 	equipment: SpawnEquipment,
 }
 

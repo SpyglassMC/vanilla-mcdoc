@@ -1,4 +1,5 @@
-dispatch minecraft:item_component[map_color] to type MapColor = #[color=composite_int] int
+type MapColor = #[color=composite_int] int
+dispatch minecraft:item_component[map_color] to MapColor
 
 dispatch minecraft:item_component[map_decorations] to struct MapDecorations {
 	[string]: Decoration
@@ -15,7 +16,7 @@ dispatch minecraft:item[filled_map] to struct FilledMap {
 	[#[id] "map_decorations"]: MapDecorations,
 	/// Map number, representing the shared state holding map contents and markers.
 	#[since="1.20.5"]
-	[#[id] "map_id"]: int
+	[#[id] "map_id"]: int,
 
 	/// Map number, representing the shared state holding map contents and markers.
 	#[until="1.20.5"]

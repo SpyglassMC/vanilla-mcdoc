@@ -1,4 +1,4 @@
-dispatch minecraft:resource[shader/post] to struct ShaderPost {
+dispatch minecraft:resource["shader/post"] to struct ShaderPost {
 	targets?: [(string | Target)],
 	passes?: [Pass],
 }

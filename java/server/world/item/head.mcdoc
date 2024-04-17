@@ -1,4 +1,4 @@
-dispatch minecraft:item_component[profile] to type Profile = (
+type Profile = (
 	#[canonical] struct {
 		/// Name of a player profile, i.e. its username.
 		name: string,
@@ -28,6 +28,7 @@ dispatch minecraft:item_component[profile] to type Profile = (
 	} |
 	string |
 )
+dispatch minecraft:item_component[profile] to Profile
 
 dispatch minecraft:item_component[note_block_sound] to (#[id=sound_event] string)
 

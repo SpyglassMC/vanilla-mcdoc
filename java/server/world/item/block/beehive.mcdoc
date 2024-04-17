@@ -1,4 +1,4 @@
-dispatch minecraft:item_component[bees] to type Bees [struct {
+dispatch minecraft:item_component[bees] to [struct {
 	entity_data: minecraft:entity[[EntityTag.id]],
 	min_ticks_in_hive: int,
 	ticks_in_hive: int,

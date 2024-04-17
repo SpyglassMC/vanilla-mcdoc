@@ -9,12 +9,15 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 		/// Sets the default time for each frame in increments of one game tick. Defaults to 1.
 		frametime?: int,
 		/// Defaults to displaying all the frames from top to bottom.
-		frames?: [(struct {
-			/// A number corresponding to position of a frame from the top, with the top frame being 0.
-			index: int,
-			/// The time in ticks to show this frame, overriding `frametime` above.
-			time: int,
-		}) | number],
+		frames?: [
+			(struct {
+				/// A number corresponding to position of a frame from the top, with the top frame being 0.
+				index: int,
+				/// The time in ticks to show this frame, overriding `frametime` above.
+				time: int,
+			} |
+			number |
+		)],
 	},
 	/// Only available for villager textures.
 	villager: struct {

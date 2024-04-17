@@ -38,7 +38,7 @@ struct FilterPattern {
 
 #[since="1.19.4"]
 dispatch minecraft:sprite_source[paletted_permutations] to struct PalettedPermutations {
-	textures: [#[id=texture] string][],
+	textures: [#[id=texture] string],
 	palette_key: #[id=texture] string,
 	permutations: struct {
 		[string]: #[id=texture] string, // TODO

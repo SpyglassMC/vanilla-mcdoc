@@ -1,12 +1,7 @@
 use ::java::server::util::inventory::InventoryItem
 
 /// Crossbow projectiles that are loaded.
-dispatch minecraft:item_component[charged_projectiles] to type ChargedProjectiles = [InventoryItem<(
-	"minecraft:arrow" |
-	"minecraft:tipped_arrow" |
-	"minecraft:spectral_arrow" |
-	"minecraft:firework_rocket" |
-)>]
+dispatch minecraft:item_component[charged_projectiles] to [InventoryItem]
 
 dispatch minecraft:item_component[intangible_projectile] to struct {}
 

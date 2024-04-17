@@ -28,7 +28,7 @@ struct LivingEntity {
 	Brain: struct {
 		memories: struct {
 			/// The unit value.
-			[%unknown]: struct {}
+			[string]: struct {}
 		},
 	},
 	Attributes: [Attribute],

@@ -1,13 +1,13 @@
 use super::dimension::Dimension
 use super::dimension::chunk_generator::FlatGeneratorSettings
 
-dispatch minecraft:resource[worldgen/world_preset] to struct WorldPreset {
+dispatch minecraft:resource["worldgen/world_preset"] to struct WorldPreset {
 	dimensions: struct {
 		[#[id(registry=dimension,definition=true)] string]: Dimension,
 	},
 }
 
-dispatch minecraft:resource[worldgen/flat_level_generator_preset] to struct FlatGeneratorPreset {
+dispatch minecraft:resource["worldgen/flat_level_generator_preset"] to struct FlatGeneratorPreset {
 	display: #[id=item] string,
 	settings: FlatGeneratorSettings,
 }

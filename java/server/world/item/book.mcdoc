@@ -9,12 +9,13 @@ dispatch minecraft:item_component[writable_book_content] to struct WritableBookC
 }
 
 /// A writable or written book
-dispatch minecraft:item[writable_book] to struct WritableBook {
+struct WritableBook {
 	#[since="1.20.5"]
 	[#[id] "writable_book_content"]: WritableBookContent,
 	#[until="1.20.5"]
 	pages: [string],
 }
+dispatch minecraft:item[writable_book] to WritableBook
 
 dispatch minecraft:item_component[written_book_content] to struct WrittenBookContent {
 	pages: [((struct {

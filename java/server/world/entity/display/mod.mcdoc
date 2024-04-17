@@ -7,7 +7,7 @@ struct DisplayBase {
 	/// Transformation applied to model (after normal entity orientation). Defaults to identity. Interpolated.
 	/// See [Misode's tool](https://misode.github.io/transformation/) or [Singular value decomposition](https://en.wikipedia.org/wiki/Singular_value_decomposition).
 	transformation: (
-		/// Matrix form: describing a row-major matrix.
+		// Matrix form: describing a row-major matrix.
 		#[canonical] ([float] @ 16) | 
 		/// Decomposed form (used for saving & ease of use).
 		struct {
@@ -19,7 +19,7 @@ struct DisplayBase {
 			right_rotation: Rotation,
 			/// Scale in [x, y, z].
 			scale: [float] @ 3,
-		},
+		} |
 	),
 	/// Size of shadow. Defaults to 0 (no shadow). Interpolated.
 	shadow_radius: float @ 0..,
@@ -39,13 +39,13 @@ struct DisplayBase {
 	/// Controls if model should pivot to face player when rendered. Defaults to `fixed`.
 	billboard: enum(string) Billboard {
 		/// No rotation.
-		Fixed: "fixed",
+		Fixed = "fixed",
 		/// Pivot around vertical axis.
-		Vertical: "vertical",
+		Vertical = "vertical",
 		/// Pivot around horizontal axis.
-		Horizontal: "horizontal",
+		Horizontal = "horizontal",
 		/// Pivot around both axes.
-		Center: "center",
+		Center = "center",
 	},
 	/// When defined, overrides light values used for rendering. Omitted by default (which means rendering uses values from entity position).
 	brightness: struct {
@@ -66,14 +66,14 @@ struct DisplayBase {
 	height: float @ 0..,
 	/// Override glow border color. If field is set to 0, uses team color. Defaults to 0.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	glow_color_override: int @ 0 | #[color=composite_int] int,
+	glow_color_override: (int @ 0 | #[color=composite_int] int),
 }
 
 type Rotation = (
-	/// Quaternion form (used for saving) in [x, y, z, w].
+	// Quaternion form (used for saving) in [x, y, z, w].
 	[float] @ 4 |
-	/// Axis-angle form.
-	AxisAngle
+	// Axis-angle form.
+	AxisAngle |
 )
 
 struct AxisAngle {

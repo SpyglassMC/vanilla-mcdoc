@@ -1,5 +1,5 @@
-type InventoryItem<T = (#[id=item] string)> = struct {
-	id: T,
+type InventoryItem = struct {
+	id: #[id=item] string,
 	/// Number of items in the stack
 	#[since="1.20.5"]
 	count?: int @ 1..99,

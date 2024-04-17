@@ -50,7 +50,7 @@ enum(string) MultiNoisePreset {
 	#[since=1.18] Overworld = "overworld",
 }
 
-dispatch minecraft:resource[worldgen/noise] to struct NoiseParameters {
+dispatch minecraft:resource["worldgen/noise"] to struct NoiseParameters {
 	firstOctave: int,
 	amplitudes: [double],
 }

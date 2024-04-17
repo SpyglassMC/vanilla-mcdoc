@@ -15,7 +15,7 @@ type ConfiguredFeatureRef = (
 	ConfiguredFeature |
 )
 
-dispatch minecraft:resource[wordgen/configured_feature] to struct ConfiguredFeature {
+dispatch minecraft:resource["wordgen/configured_feature"] to struct ConfiguredFeature {
 	type: #[id="worldgen/feature"] string,
 	config: minecraft:feature_config[[type]],
 }
