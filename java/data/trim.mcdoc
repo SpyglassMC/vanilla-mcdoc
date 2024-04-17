@@ -18,7 +18,7 @@ dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 	/// Armor materials that should have a different color palette. */
 	override_armor_materials?: struct {
 		[ArmorMaterials]: string,
-	}
+	},
 }
 
 #[since="1.19.4"]

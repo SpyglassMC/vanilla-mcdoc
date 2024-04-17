@@ -15,7 +15,7 @@ type InventoryItem<T = (#[id=item] string)> = struct {
 type SlottedItem<T> = struct {
 	...InventoryItem,
 	/// Inventory slot the item is in
-	Slot: byte @ 0..T,
+	Slot: T,
 }
 
 enum(string) EquipmentSlot {

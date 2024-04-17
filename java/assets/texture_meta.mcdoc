@@ -29,5 +29,5 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 		clamp?: boolean,
 		/// Custom mipmap values for the texture. */
 		mipmaps?: int[],
-	}
+	},
 }

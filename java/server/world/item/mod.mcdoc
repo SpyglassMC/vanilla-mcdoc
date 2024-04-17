@@ -27,6 +27,8 @@ dispatch minecraft:item_component[can_destroy] to BlockComponent
 
 dispatch minecraft:item_component[item_name] to type Text = #[text_component] string
 
+dispatch minecraft:item_component[custom_data] to type CustomData = mcdoc:custom_item_data[[%parent.id]] | struct {}
+
 dispatch minecraft:item_component[custom_name] to Text
 
 dispatch minecraft:item_component[custom_model_data] to int
@@ -118,6 +120,7 @@ dispatch minecraft:item[%all_items] to (
 	#[since=1.20.5] struct {
 		/// Applied to an entity that has equipped/is holding the item.
 		[#[id] "attribute_modifiers"]: AttributeModifiers,
+		[#[id] "custom_data"]: CustomData,
 		[#[id] "can_destroy"]: BlockComponent,
 		[#[id] "custom_name"]: Text,
 		/// Tag that describes the custom model an item will take.

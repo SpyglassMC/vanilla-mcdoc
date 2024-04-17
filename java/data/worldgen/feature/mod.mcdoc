@@ -177,7 +177,7 @@ dispatch minecraft:feature_config[flower,no_bonemeal_flower,random_patch] to str
 		xz_spread: int @ 0..,
 		y_spread: int @ 0..,
 		feature: FeatureRef,
-	}
+	},
 }
 
 struct BlockPlacer {

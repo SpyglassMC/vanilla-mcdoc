@@ -45,7 +45,7 @@ struct CopyNbt {
 		struct {
 			type: "storage",
 			source: string, // TODO
-		}
+		},
 	),
 	ops: [(struct {
 		source: #[nbt_path] string, // TODO

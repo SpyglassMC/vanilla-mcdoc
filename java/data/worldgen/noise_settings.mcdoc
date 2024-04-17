@@ -128,5 +128,5 @@ struct StructureSettings {
 	stronghold?: ConcentricRingsPlacement,
 	structures: struct {
 		[#[id="worldgen/structure_feature"] string]: RandomSpreadPlacement
-	}
+	},
 }

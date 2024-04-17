@@ -57,7 +57,7 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 		recipes?: [#[id=recipe] string],
 		/// XP to add.
 		experience?: int,
-	}
+	},
 }
 
 enum(string) Trigger {

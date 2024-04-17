@@ -29,7 +29,7 @@ type BlockPalette = (
 	} |
 	struct {
 		palettes: [[BlockState]],
-	}
+	} |
 )
 
 struct Palette {

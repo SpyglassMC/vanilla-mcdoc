@@ -19,7 +19,7 @@ struct DisplayBase {
 			right_rotation: Rotation,
 			/// Scale in [x, y, z].
 			scale: [float] @ 3,
-		}
+		},
 	),
 	/// Size of shadow. Defaults to 0 (no shadow). Interpolated.
 	shadow_radius: float @ 0..,

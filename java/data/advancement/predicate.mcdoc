@@ -34,8 +34,8 @@ struct ItemPredicate {
 		[#[id] "damage"]?: struct {
 			damage?: MinMaxBounds<int>,
 			durability?: MinMaxBounds<int>,
-		}
-	}
+		},
+	},
 }
 
 struct EnchantmentPredicate {
@@ -139,7 +139,7 @@ struct EntityPredicate {
 	#[since="1.20.5"]
 	slots?: struct {
 		[#[slot_range] string]: ItemPredicate,
-	}
+	},
 }
 
 struct TypeSpecificPredicate {
