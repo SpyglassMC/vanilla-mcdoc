@@ -18,7 +18,7 @@ dispatch minecraft:entity[witch] to struct RaiderBase {
 	/// Id of the raid that the raider is in.
 	RaidId: int,
 	/// Wave that the raider is in.
-	Wave: int @ 0..6,
+	Wave: int @ 0..8,
 }
 
 struct PatrolTarget {

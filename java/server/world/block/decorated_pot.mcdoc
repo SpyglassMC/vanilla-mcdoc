@@ -1,3 +1,5 @@
+use ::java::server::util::InventoryItem
+
 #[since="1.19.4"]
 dispatch minecraft:block[decorated_pot] to struct DecoratedPot {
 	...super::BlockEntity,
@@ -9,6 +11,8 @@ dispatch minecraft:block[decorated_pot] to struct DecoratedPot {
 	/// Seed of the loot table.
 	#[since="1.20.3"]
 	LootTableSeed: long,
+	#[since="1.20.3"]
+	item: InventoryItem,
 }
 
 enum(string) Sherd {

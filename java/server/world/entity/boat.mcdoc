@@ -16,7 +16,9 @@ enum(string) BoatType {
 	#[since=1.19]
 	Mangrove = "mangrove",
 	#[since="1.19.3"]
-	Mangrove = "bamboo",
+	Bamboo = "bamboo",
+	#[since="1.19.4"]
+	Cherry = "cherry",
 }
 
 #[since=1.19]

@@ -4,6 +4,10 @@ use ::java::server::util::game_event::VibrationListener
 #[since=1.19]
 dispatch minecraft:entity[allay] to struct Allay {
 	...super::MobBase,
+	/// Whether the allay can duplicate. This is set to false when the allay duplicates.
+	CanDuplicate: bool,
+	/// Ticks until `CanDuplicate` is set to true. This is set to 6000 game ticks (5 minutes) when the allay duplicates.
+	DuplicationCooldown: int,
 	/// Items it has picked up. Note that the item given by the player is in
 	/// the allay's `HandItems[0]` tag, not here.
 	Inventory: [InventoryItem] @ 1,

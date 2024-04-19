@@ -87,3 +87,9 @@ dispatch minecraft:block[
 	spruce_wall_hanging_sign,
 	warped_wall_hanging_sign,
 ] to Sign
+
+#[since="1.19.4"]
+dispatch minecraft:block[
+	cherry_sign,
+	cherry_wall_sign,
+] to Sign

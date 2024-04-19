@@ -1,5 +1,8 @@
 dispatch minecraft:resource["worldgen/template_pool"] to struct TemplatePool {
+	#[until="1.19.3"]
 	name: string,
+	#[since="1.19.3"]
+	name?: string,
 	fallback: string,
 	elements: [WeightedElement],
 }
