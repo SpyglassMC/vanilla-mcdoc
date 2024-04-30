@@ -81,14 +81,11 @@ dispatch minecraft:particle[entity_effect] to (
 		a: float,
 	} |
 	#[since="1.20.5"] struct {
-		/// Randomized translucent color interpreted from four floats.
+		/// Translucent color interpreted from four floats.
 		///
 		/// Cheat Sheet:
-		/// - Translucency is not randomized.
-		/// - Floats between 0 and 1 are interpreted as a percentage of the original color. Weirdness begins when floats are outside of this range.
-		/// - 0-20% of darkness is added per channel.
-		/// - The final color is 0-40% darker.
-		/// - `1e100000f` produces a solid channel with no randomization.
+		/// - Floats between 0 and 1 are interpreted as a percentage of the original color.
+		/// - Negative values & values above 1 simply loop the 0-255 range, since there isn't randomization there's no weirdness.
 		///
 		/// Simplified internal behavior ([graph demo](https://www.desmos.com/calculator/drwzjaxgks)):
 		/// ```js
@@ -105,14 +102,8 @@ dispatch minecraft:particle[entity_effect] to (
 		/// 	// Integer is negative
 		/// 	return Math.abs((Math.floor(integer / 256) * 256)) + integer
 		/// }
-		/// 
-		/// var baseShade = randomBetween(0.6, 1),
-		/// 	r = integerToByte(Math.floor(color[0] * randomBetween(0.8, 1) * baseShade * 255)),
-		/// 	g = integerToByte(Math.floor(color[1] * randomBetween(0.8, 1) * baseShade * 255)),
-		/// 	b = integerToByte(Math.floor(color[2] * randomBetween(0.8, 1) * baseShade * 255)),
-		/// 	a = integerToByte(color[3] * 255)
 		/// ```
-		color: #[color=translucent_particle] [float] @ 3,
+		color: #[color=translucent_particle] [float] @ 4,
 	} |
 )
 
@@ -122,3 +113,36 @@ dispatch minecraft:particle[item] to (
 		item: (#[id=item] string | InventoryItem),
 	} |
 )
+
+dispatch minecraft:particle[sculk_charge] to (
+	#[until="1.20.5"] float |
+	#[since="1.20.5"] struct {
+		/// Angle the particle texture is rotated to, measured in radians (π ~ 3.14 for 180° clockwise, negative for counter clockwise).
+		roll: float,
+	} |
+)
+
+dispatch minecraft:particle[shriek] to (
+	#[until="1.20.5"] int @ 0.. |
+	#[since="1.20.5"] struct {
+		/// Ticks until the particle renders.
+		delay: int @ 0..,
+	} |
+)
+
+dispatch minecraft:particle[vibration] to struct {
+	/// Ticks in which to interpolate the particle's initial position to the destination.
+	arrival_in_ticks: 10,
+
+	destination: (
+		struct {
+			type: "block",
+			pos: [0,0,0],
+		} |
+		// TODO: determine whether this should use a custom attribute (invalid in `/particle`) or if it should just be hardcoded
+		struct {
+			type: "entity",
+			uuid: int[] @ 4,
+		} |
+	),
+}
