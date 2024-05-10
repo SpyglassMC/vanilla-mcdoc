@@ -12,9 +12,9 @@ enum(string) SpriteSourceType {
 	Single = "single",
 	Directory = "directory",
 	Filter = "filter",
+	Unstitch = "unstitch", // TODO: Figure out when this was added
 	#[since="1.19.4"]
 	PalettedPermutations = "paletted_permutations",
-	Unstitch = "unstitch",
 }
 
 dispatch minecraft:sprite_source[single] to struct Single {

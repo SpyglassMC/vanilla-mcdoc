@@ -36,7 +36,7 @@ type TextObject = (
 	} |
 	struct {
 		block: #[vector(dimension=3,integer=true)] string,
-		nbt: #[nbt_path(category=block,id=[block])] string,
+		nbt: #[nbt_path(category=block)] string,
 		...TextNbtBase,
 	} |
 	struct {
