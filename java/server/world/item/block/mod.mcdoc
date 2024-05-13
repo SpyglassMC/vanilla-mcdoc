@@ -9,8 +9,8 @@ dispatch minecraft:item_component[block_entity_data] to minecraft:block[[%parent
 /// Blockstate that the placed block will have.
 dispatch minecraft:item_component[block_state] to mcdoc:block_item_states[[%parent.id]]
 
-/// An item that can be placed as a block
 // TODO: replace this with any block item
+/// An item that can be placed as a block
 dispatch minecraft:item[%fallback] to struct BlockItem {
 	#[since="1.20.5"]
 	[#[id] "can_place_on"]: super::BlockComponent,

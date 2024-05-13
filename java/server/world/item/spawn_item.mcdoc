@@ -6,8 +6,7 @@ dispatch minecraft:item_component[entity_data] to EntityData
 // TODO: If %spawn_item doesn't get implemented we can use the below hack :husk:.
 // https://github.com/misode/mcmeta/raw/registries/item/data.min.json
 // `document.body.textContent.split('\n')[0].filter(item => item.includes('_egg')).join(',\n')`
-// TODO: replace this with any spawn egg
-dispatch minecraft:item[%fallback] to struct SpawnItem {
+dispatch minecraft:item[%spawn_item] to struct SpawnItem {
 	#[since="1.20.5"]
 	[#[id] "entity_data"]: EntityData,
 	// EntityTag has this weird value because the id for the spawned entity can be
