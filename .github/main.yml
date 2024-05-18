@@ -1,0 +1,31 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  locales:
+    name: Update base localization
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 21
+
+      - run: git clone https://github.com/SpyglassMC/Spyglass out/locale
+
+      - run: git clone https://github.com/SpyglassMC/Spyglass out/generated
+
+      - run: npx @spyglassmc/mcdoc-cli -l # -p -m
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          cwd: out/locale
+          author_name: GitHub Actions
+          author_email: actions@github.com
+          message: 🌐 Update base localization

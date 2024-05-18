@@ -26,11 +26,11 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 	},
 	/// Only available for colormaps.
 	texture: struct {
-		/// Causes the texture to blur when viewed from close up. Defaults to false. */
+		/// Causes the texture to blur when viewed from close up. Defaults to false.
 		blur?: boolean,
-		/// Causes the texture to stretch instead of tiling in cases where it otherwise would, such as on the shadow. Defaults to false. */
+		/// Causes the texture to stretch instead of tiling in cases where it otherwise would, such as on the shadow. Defaults to false.
 		clamp?: boolean,
-		/// Custom mipmap values for the texture. */
+		/// Custom mipmap values for the texture.
 		mipmaps?: int[],
 	},
 }
