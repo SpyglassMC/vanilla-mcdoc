@@ -11,7 +11,7 @@ dispatch minecraft:resource[damage_type] to struct DamageType {
 	scaling: enum(string) {
 		/// Always the same.
 		Never = "never",
-		/// Always scale with difficulty
+		/// Always scale with difficulty.
 		Always = "always",
 		/// Scale with difficulty if it was caused by a living entity who is not a player.
 		LivingNonPlayer = "when_caused_by_living_non_player",
