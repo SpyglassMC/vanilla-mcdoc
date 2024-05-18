@@ -1,4 +1,3 @@
-use ::java::server::world::item::ItemBase
 use ::java::server::util::inventory::EquipmentSlot
 use super::super::util::MinMaxBounds
 

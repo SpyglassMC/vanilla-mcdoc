@@ -1,15 +1,11 @@
 type InventoryItem = struct {
-	id: #[id=item] string,
+	...AnyItem,
 	/// Number of items in the stack
 	#[since="1.20.5"]
 	count?: int @ 1..99,
-	/// The NBT of the item
-	#[since="1.20.5"]
-	components: minecraft:item[[id]],
+	/// Number of items in the stack
 	#[until="1.20.5"]
 	Count: byte,
-	#[until="1.20.5"]
-	tag: minecraft:item[[id]],
 }
 
 type SlottedItem<T> = struct {

@@ -30,7 +30,7 @@ dispatch minecraft:item_component[can_destroy] to BlockComponent
 type Text = #[text_component] string
 dispatch minecraft:item_component[item_name] to Text
 
-type CustomData = (mcdoc:custom_item_data[[%parent.id]] | struct {}) // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to ItemBase.
+type CustomData = (mcdoc:custom_item_data[[%parent.id]] | struct {}) // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to AnyItem.
 dispatch minecraft:item_component[custom_data] to CustomData
 
 dispatch minecraft:item_component[custom_name] to Text
@@ -125,118 +125,125 @@ dispatch minecraft:item_component[unbreakable] to struct Unbreakable {
 	show_in_tooltip?: boolean,
 }
 
-type ItemBase = (
-	#[since="1.20.5"] struct {
-		/// Applied to an entity that has equipped/is holding the item.
-		[#[id] "attribute_modifiers"]: AttributeModifiers,
-		[#[id] "custom_data"]: CustomData,
-		[#[id] "can_destroy"]: BlockComponent,
-		[#[id] "custom_name"]: Text,
-		/// Tag that describes the custom model an item will take.
-		/// Used by the `custom_model_data` model overrides predicate.
-		/// Has certain restrictions due to float conversion.
-		[#[id] "custom_model_data"]: int,
-		/// Damage that an item has. Only used for tools, armor, etc.
-		[#[id] "damage"]: int @ 0..,
-		/// If set, changes enchantment glint behavior. When true, this item will display a glint, even without enchantments. When false, this item will not display a glint, even with enchantments.
-		[#[id] "enchantment_glint_override"]: boolean,
-		/// List of enchantments that are on the item.
-		[#[id] "enchantments"]: Enchantments,
-		/// If set, this item will not burn in fire or lava.
-		[#[id] "fire_resistant"]: struct {},
-		/// If set, this item is considered as a food, and can be eaten.
-		[#[id] "food"]: Food,
-		/// If set, several specific tooltip entries without an applicable `show_in_tooltip` option available are hidden.
-		///
-		/// Included entries:
-		/// - Banner pattern layers
-		/// - Banner Pattern description
-		/// - Decorated Pot sherds
-		/// - Shulker Box items
-		/// - Spawner entity type and interaction description
-		/// - Bundle occupancy and items
-		/// - Charged Crossbow projectiles
-		/// - Painting variant
-		/// - Disc Fragment description
-		/// - Tropical Fish Bucket entity variant
-		/// - Filled Map lock and scale level
-		/// - Firework Rocket duration
-		/// - Firework explosions
-		/// - Goat Horn instrument
-		/// - Potion effect, amplifier & duration
-		/// - Music Disc description
-		/// - Smithing Template description
-		/// - Written Book author & generation
-		[#[id] "hide_additional_tooltip"]: struct {},
-		/// If set, it will completely hide this item's tooltip, including its name.
-		[#[id] "hide_tooltip"]: struct {},
-		/// Replaces default item name with contained chat component.
-		///
-		/// Differences from `custom_name`:
-		/// - Can't be changed or removed in anvil.
-		/// - Not styled with italics when displayed to player.
-		/// - Does not show labels where applicable (for example: banner markers, names in item frames).
-		[#[id] "item_name"]: Text,
-		/// A list of JSON text components, each element being a lore line.
-		[#[id] "lore"]: Lore,
-		/// Maximum amount of damage that this item can take (ie. **Durability**). If not set, this item cannot take damage. Cannot be combined with the `max_stack_size` component.
-		[#[id] "max_damage"]: int @ 1..,
-		[#[id] "max_stack_size"]: int @ 1..99,
-		/// Default color of this item's name.
-		[#[id] "rarity"]: Rarity,
-		/// Number of experience levels to add to the base level cost when repairing, combining, or renaming this item with an anvil.
-		[#[id] "repair_cost"]: int @ 0..,
-		[#[id] "tool"]: Tool,
-		/// Trim to apply to the item & armor when worn.
-		[#[id] "trim"]: Trim,
-		[#[id] "unbreakable"]: Unbreakable,
-	} |
-	#[until="1.20.5"] struct {
-		/// Damage that an item has. Only used for tools, armor, etc.
-		Damage: int,
-		/// Whether the item should be unbreakable.
-		/// Only used for tools, armor, etc.
-		Unbreakable: boolean,
-		/// List of the block states that can be destroyed by this item when holding it in adventure mode.
-		CanDestroy: [BlockState],
-		/// Tag that describes the custom model an item will take.
-		/// Used by the `custom_model_data` model overrides predicate.
-		/// Has certain restrictions due to float conversion.
-		CustomModelData: int,
-		/// List of enchantments that are on the item.
-		Enchantments: [Enchantment],
-		/// Number of experience levels to add to the base level cost when repairing, combining, or renaming this item with an anvil.
-		RepairCost: int,
-		/// Applied to an entity that has equipped the item.
-		AttributeModifiers: [AttributeModifier],
-		/// Display settings.
-		display: Display,
-		/// Bitfield for which flags to hide on an item.
-		#[bitfield(enum (int) {
-			Enchantments = 1,
-			AttributeModifiers = 2,
-			Unbreakable = 3,
-			CanDestroy = 4,
-			CanPlaceOn = 5,
-			Other = 6,
-			#[since="1.16.2"]
-			LeatherColor = 7,
-			#[since="1.19.4"]
-			Trim = 8
-		})]
-		HideFlags: int,
-		/// Trim to apply to the item & armor when worn.
+struct DefaultItemComponents {
+	/// Applied to an entity that has equipped/is holding the item.
+	[#[id] "attribute_modifiers"]: AttributeModifiers,
+	[#[id] "custom_data"]: CustomData,
+	[#[id] "can_destroy"]: BlockComponent,
+	[#[id] "custom_name"]: Text,
+	/// Tag that describes the custom model an item will take.
+	/// Used by the `custom_model_data` model overrides predicate.
+	/// Has certain restrictions due to float conversion.
+	[#[id] "custom_model_data"]: int,
+	/// Damage that an item has. Only used for tools, armor, etc.
+	[#[id] "damage"]: int @ 0..,
+	/// If set, changes enchantment glint behavior. When true, this item will display a glint, even without enchantments. When false, this item will not display a glint, even with enchantments.
+	[#[id] "enchantment_glint_override"]: boolean,
+	/// List of enchantments that are on the item.
+	[#[id] "enchantments"]: Enchantments,
+	/// If set, this item will not burn in fire or lava.
+	[#[id] "fire_resistant"]: struct {},
+	/// If set, this item is considered as a food, and can be eaten.
+	[#[id] "food"]: Food,
+	/// If set, several specific tooltip entries without an applicable `show_in_tooltip` option available are hidden.
+	///
+	/// Included entries:
+	/// - Banner pattern layers
+	/// - Banner Pattern description
+	/// - Decorated Pot sherds
+	/// - Shulker Box items
+	/// - Spawner entity type and interaction description
+	/// - Bundle occupancy and items
+	/// - Charged Crossbow projectiles
+	/// - Painting variant
+	/// - Disc Fragment description
+	/// - Tropical Fish Bucket entity variant
+	/// - Filled Map lock and scale level
+	/// - Firework Rocket duration
+	/// - Firework explosions
+	/// - Goat Horn instrument
+	/// - Potion effect, amplifier & duration
+	/// - Music Disc description
+	/// - Smithing Template description
+	/// - Written Book author & generation
+	[#[id] "hide_additional_tooltip"]: struct {},
+	/// If set, it will completely hide this item's tooltip, including its name.
+	[#[id] "hide_tooltip"]: struct {},
+	/// Replaces default item name with contained chat component.
+	///
+	/// Differences from `custom_name`:
+	/// - Can't be changed or removed in anvil.
+	/// - Not styled with italics when displayed to player.
+	/// - Does not show labels where applicable (for example: banner markers, names in item frames).
+	[#[id] "item_name"]: Text,
+	/// A list of JSON text components, each element being a lore line.
+	[#[id] "lore"]: Lore,
+	/// Maximum amount of damage that this item can take (ie. **Durability**). If not set, this item cannot take damage. Cannot be combined with the `max_stack_size` component.
+	[#[id] "max_damage"]: int @ 1..,
+	[#[id] "max_stack_size"]: int @ 1..99,
+	/// Default color of this item's name.
+	[#[id] "rarity"]: Rarity,
+	/// Number of experience levels to add to the base level cost when repairing, combining, or renaming this item with an anvil.
+	[#[id] "repair_cost"]: int @ 0..,
+	[#[id] "tool"]: Tool,
+	/// Trim to apply to the item & armor when worn.
+	[#[id] "trim"]: Trim,
+	[#[id] "unbreakable"]: Unbreakable,
+}
+
+// until 1.20.5
+struct DefaultItemTags {
+	/// Damage that an item has. Only used for tools, armor, etc.
+	Damage: int,
+	/// Whether the item should be unbreakable.
+	/// Only used for tools, armor, etc.
+	Unbreakable: boolean,
+	/// List of the block states that can be destroyed by this item when holding it in adventure mode.
+	CanDestroy: [BlockState],
+	/// Tag that describes the custom model an item will take.
+	/// Used by the `custom_model_data` model overrides predicate.
+	/// Has certain restrictions due to float conversion.
+	CustomModelData: int,
+	/// List of enchantments that are on the item.
+	Enchantments: [Enchantment],
+	/// Number of experience levels to add to the base level cost when repairing, combining, or renaming this item with an anvil.
+	RepairCost: int,
+	/// Applied to an entity that has equipped the item.
+	AttributeModifiers: [AttributeModifier],
+	/// Display settings.
+	display: Display,
+	/// Bitfield for which flags to hide on an item.
+	#[bitfield(enum (int) {
+		Enchantments = 1,
+		AttributeModifiers = 2,
+		Unbreakable = 3,
+		CanDestroy = 4,
+		CanPlaceOn = 5,
+		Other = 6,
+		#[since="1.16.2"]
+		LeatherColor = 7,
 		#[since="1.19.4"]
-		Trim: Trim,
-	} |
-)
-dispatch minecraft:item[%unknown] to ItemBase
+		Trim = 8
+	})]
+	HideFlags: int,
+	/// Trim to apply to the item & armor when worn.
+	#[since="1.19.4"]
+	Trim: Trim,
+}
 
 struct AnyItem {
 	/// ID of the item.
-	id: #[id=item_type] string,
-	...ItemBase,
-	...minecraft:item[[id]],
+	id: #[id=item] string,
+	#[since="1.20.5"]
+	components: struct {
+		...DefaultItemComponents,
+		...minecraft:item[[id]],
+	},
+	#[until="1.20.5"]
+	tag: struct {
+		...DefaultItemTags,
+		...minecraft:item[[id]],
+	},
 }
 
 /// An individual enchantment, with ID and level.

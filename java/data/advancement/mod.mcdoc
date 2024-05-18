@@ -1,4 +1,4 @@
-use ::java::server::world::item::ItemBase
+use ::java::server::world::item::AnyItem
 use ::java::server::util::text::Text
 
 dispatch minecraft:resource[advancement] to struct Advancement {
@@ -6,7 +6,7 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 	display?: struct {
 		icon: struct {
 			item: #[id=item] string,
-			nbt?: #[nbt=ItemBase] string, // TODO
+			nbt?: #[nbt=minecraft:item[[item]]] string, // TODO
 		},
 		title: Text,
 		description: Text,
