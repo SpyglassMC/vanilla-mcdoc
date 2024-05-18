@@ -17,9 +17,13 @@ jobs:
         with:
           node-version: 21
 
-      - run: git clone https://github.com/SpyglassMC/Spyglass out/locale
+      - run: git clone https://github.com/SpyglassMC/vanilla-mcdoc out/locale
 
-      - run: git clone https://github.com/SpyglassMC/Spyglass out/generated
+      - run: cd out/locale && git checkout locale && cd ../..
+
+      # - run: git clone https://github.com/SpyglassMC/vanilla-mcdoc out/generated
+
+      # - run: cd out/generated && git checkout generated && cd ../..
 
       - run: npx @spyglassmc/mcdoc-cli -l # -p -m
 
@@ -29,3 +33,10 @@ jobs:
           author_name: GitHub Actions
           author_email: actions@github.com
           message: 🌐 Update base localization
+      
+      # - uses: EndBug/add-and-commit@v9
+      #   with:
+      #     cwd: out/generated
+      #     author_name: GitHub Actions
+      #     author_email: actions@github.com
+      #     message: 🚀 Update generated serialized AST
