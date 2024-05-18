@@ -1,6 +1,6 @@
 use ::java::server::util::text::Text
 
-dispatch minecraft:item_component[writable_book_content] to struct WritableBookContent {
+dispatch minecraft:data_component[writable_book_content] to struct WritableBookContent {
 	pages: [((struct {
 		raw: string,
 		/// Shown only to players with chat filter enabled, instead of `text`.
@@ -8,16 +8,7 @@ dispatch minecraft:item_component[writable_book_content] to struct WritableBookC
 	}) | string)],
 }
 
-/// A writable or written book
-struct WritableBook {
-	#[since="1.20.5"]
-	[#[id] "writable_book_content"]: WritableBookContent,
-	#[until="1.20.5"]
-	pages: [string],
-}
-dispatch minecraft:item[writable_book] to WritableBook
-
-dispatch minecraft:item_component[written_book_content] to struct WrittenBookContent {
+dispatch minecraft:data_component[written_book_content] to struct WrittenBookContent {
 	pages: [((struct {
 		raw: #[text_component] string,
 		/// Shown only to players with chat filter enabled, instead of `text`.
@@ -35,9 +26,17 @@ dispatch minecraft:item_component[written_book_content] to struct WrittenBookCon
 	resolved: boolean,
 }
 
+/// A writable book
+dispatch minecraft:item[writable_book] to struct WritableBook {
+	#[since="1.20.5"]
+	[#[id] "writable_book_content"]?: minecraft:data_component[writable_book_content],
+	#[until="1.20.5"]
+	pages: [string],
+}
+
 dispatch minecraft:item[written_book] to struct WrittenBook {
 	#[since="1.20.5"]
-	[#[id] "written_book_content"]: WrittenBookContent,
+	[#[id] "written_book_content"]?: minecraft:data_component[written_book_content],
 	// TODO: Add filtered text
 	/// Whether the dynamic content on the pages has been resolved.
 	#[until="1.20.5"]

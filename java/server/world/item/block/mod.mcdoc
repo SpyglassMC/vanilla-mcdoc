@@ -1,24 +1,31 @@
+use super::AdventureModePredicate
+use ::java::data::advancement::predicate::BlockPredicate
 use ::java::server::util::block_state::BlockState
 
 /// List of blocks that this block item can be placed on.
-dispatch minecraft:item_component[can_place_on] to super::BlockComponent
+dispatch minecraft:data_component[can_place_on] to (
+	#[canonical] AdventureModePredicate |
+	BlockPredicate |
+)
 
 /// NBT that the block entity that is placed can have.
-dispatch minecraft:item_component[block_entity_data] to minecraft:block[[%parent.id]]
+dispatch minecraft:data_component[block_entity_data] to struct BlockEntityData {
+	id: #[id=block] string,
+	...minecraft:block[[id]],
+}
 
 /// Blockstate that the placed block will have.
-dispatch minecraft:item_component[block_state] to mcdoc:block_item_states[[%parent.id]]
+dispatch minecraft:data_component[block_state] to mcdoc:block_item_states[[%parent.id]]
 
 // TODO: replace this with any block item
 /// An item that can be placed as a block
 dispatch minecraft:item[%fallback] to struct BlockItem {
 	#[since="1.20.5"]
-	[#[id] "can_place_on"]: super::BlockComponent,
+	[#[id] "can_place_on"]?: minecraft:data_component[can_place_on],
 	#[since="1.20.5"]
-	[#[id] "block_entity_data"]: BlockEntityData,
+	[#[id] "block_entity_data"]?: minecraft:data_component[block_entity_data],
 	#[since="1.20.5"]
-	[#[id] "block_state"]: BlockStateTag,
-
+	[#[id] "block_state"]?: minecraft:data_component[block_state],
 	/// List of blockstates that this block item can be placed on.
 	#[until="1.20.5"]
 	CanPlaceOn: [BlockState],

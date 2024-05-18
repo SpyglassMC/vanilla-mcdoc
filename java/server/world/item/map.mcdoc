@@ -1,22 +1,21 @@
-type MapColor = #[color=composite_int] int
-dispatch minecraft:item_component[map_color] to MapColor
+dispatch minecraft:data_component[map_color] to #[color=composite_int] int
 
-dispatch minecraft:item_component[map_decorations] to struct MapDecorations {
+dispatch minecraft:data_component[map_decorations] to struct MapDecorations {
 	[string]: Decoration
 }
 
-dispatch minecraft:item_component[map_id] to int
+dispatch minecraft:data_component[map_id] to int
 
 dispatch minecraft:item[filled_map] to struct FilledMap {
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	#[since="1.20.5"]
-	[#[id] "map_color"]: MapColor,
+	[#[id] "map_color"]?: minecraft:data_component[map_color],
 	/// Key-value pairs of the icons to display, where the key is an arbitrary unique string identifying the decoration.
 	#[since="1.20.5"]
-	[#[id] "map_decorations"]: MapDecorations,
+	[#[id] "map_decorations"]?: minecraft:data_component[map_decorations],
 	/// Map number, representing the shared state holding map contents and markers.
 	#[since="1.20.5"]
-	[#[id] "map_id"]: int,
+	[#[id] "map_id"]?: minecraft:data_component[map_id],
 
 	/// Map number, representing the shared state holding map contents and markers.
 	#[until="1.20.5"]
@@ -37,7 +36,7 @@ dispatch minecraft:item[filled_map] to struct FilledMap {
 	/// Display for the item.
 	#[until="1.20.5"]
 	display: struct {
-		...super::LegacyDisplay,
+		...super::Display,
 		/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 		MapColor: MapColor,
 	},

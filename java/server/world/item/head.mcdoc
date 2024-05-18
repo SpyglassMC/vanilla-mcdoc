@@ -1,43 +1,31 @@
-type Profile = (
-	#[canonical] struct {
-		/// Name of a player profile, i.e. its username.
-		name: string,
-		/// UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.
-		id: int[] @ 4,
-		/// Resolved textures hosted on the minecraft CDN.
-		properties: [struct {
-			// TODO: Provide better doc for this
-			/// Usually `textures`.
-			name: string,
-			// TODO: Consider providing specific tooling for this.
-			/// Base64 encoded JSON value of the texture index.
-			value: string,
-			/// Verifies the hash of the resulting texture.
-			signature?: string,
-		}],
-	} |
-	struct {
-		// Name of a player profile, i.e. its username.
-		name: string,
-		/// UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.
-		uuid?: int[] @ 4,
-	} |
-	struct {
-		/// UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.
-		uuid: int[] @ 4,
-	} |
-	string |
-)
-dispatch minecraft:item_component[profile] to Profile
+dispatch minecraft:data_component[profile] to struct Profile {
+	/// Name of a player profile, i.e. its username.
+	name?: string,
+	/// UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.
+	id?: int[] @ 4,
+	/// Resolved textures hosted on the minecraft CDN.
+	properties?: [ProfileProperty]
+}
 
-dispatch minecraft:item_component[note_block_sound] to (#[id=sound_event] string)
+struct ProfileProperty {
+	// TODO: Provide better doc for this
+	/// Usually `textures`.
+	name: string,
+	// TODO: Consider providing specific tooling for this.
+	/// Base64 encoded JSON value of the texture index.
+	value: string,
+	/// Verifies the hash of the resulting texture.
+	signature?: string,
+}
+
+dispatch minecraft:data_component[note_block_sound] to (#[id=sound_event] string)
 
 dispatch minecraft:item[player_head] to struct PlayerHead {
 	#[since="1.20.5"]
-	[#[id] "profile"]: Profile,
+	[#[id] "profile"]?: minecraft:data_component[profile],
 	/// Sound event to be played by a note block if this player head is placed above it.
 	#[since="1.20.5"]
-	[#[id] "note_block_sound"]: #[id=sound_event] string, // TODO: Add old tag?
+	[#[id] "note_block_sound"]?: minecraft:data_component[note_block_sound], // TODO: Add old tag?
 	#[until="1.20.5"]
 	SkullOwner: (SkullOwner | string),
 }

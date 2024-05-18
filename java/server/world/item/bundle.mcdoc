@@ -1,8 +1,8 @@
 use ::java::server::util::inventory::InventoryItem
 
-dispatch minecraft:item_component[bundle_contents] to [InventoryItem]
+dispatch minecraft:data_component[bundle_contents] to [InventoryItem]
 
 dispatch minecraft:item[bundle] to struct Bundle {
 	// Not worth versioning because the bundle is still experimental.
-	[#[id] "bundle_contents"]: [InventoryItem],
+	[#[id] "bundle_contents"]?: minecraft:data_component[bundle_contents],
 }

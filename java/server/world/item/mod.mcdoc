@@ -1,93 +1,92 @@
+use ::java::data::advancement::predicate::BlockPredicate
 use ::java::server::util::attribute::AttributeName
 use ::java::server::util::attribute::Operation
 use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::block_state::BlockState
 use ::java::server::util::PotionComponent
 
-struct BlockPredicate {
-	blocks: (#[id=block] string | [#[id=block] string] | #[id(registry=block,tags=allowed)] string),
-	// TODO: determine how/whether this should actually work, maybe the above should automatically resolve, idk. There's other places relying on this now too.
-	nbt: minecraft:block[[%parent.blocks]],
-	state: mcdoc:block_item_states[[%parent.blocks]],
+struct AttributeModifiers {
+	modifiers: [AttributeModifier],
+	show_in_tooltip?: boolean,
+}
+dispatch minecraft:data_component[attribute_modifiers] to (
+	#[canonical] AttributeModifiers |
+	[AttributeModifier] |
+)
+
+struct AdventureModePredicate {
+	predicates: [BlockPredicate] @ 1..,
+	show_in_tooltip?: boolean,
 }
 
-type BlockComponent = (
-	#[canonical] struct {
-		predicates: [BlockPredicate],
-		show_in_tooltip?: boolean,
-	} |
+dispatch minecraft:data_component[can_break] to (
+	#[canonical] AdventureModePredicate |
 	BlockPredicate |
 )
 
-type AttributeModifiers = ([AttributeModifier] | #[canonical] struct {
-	modifiers: [AttributeModifier],
-	show_in_tooltip?: boolean,
-})
-dispatch minecraft:item_component[attribute_modifiers] to AttributeModifiers
-
-dispatch minecraft:item_component[can_destroy] to BlockComponent
-
-type Text = #[text_component] string
-dispatch minecraft:item_component[item_name] to Text
+dispatch minecraft:data_component[item_name] to #[text_component] string
 
 type CustomData = (mcdoc:custom_item_data[[%parent.id]] | struct {}) // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to AnyItem.
-dispatch minecraft:item_component[custom_data] to CustomData
+dispatch minecraft:data_component[custom_data] to CustomData
 
-dispatch minecraft:item_component[custom_name] to Text
+dispatch minecraft:data_component[custom_name] to #[text_component] string
 
-dispatch minecraft:item_component[custom_model_data] to int
+dispatch minecraft:data_component[custom_model_data] to int
 
-dispatch minecraft:item_component[damage] to int @ 0..
+dispatch minecraft:data_component[damage] to int @ 0..
 
-dispatch minecraft:item_component[enchantment_glint_override] to boolean
+dispatch minecraft:data_component[enchantment_glint_override] to boolean
 
-type Enchantments = (
-	struct {
+struct EnchantmentLevels {
+	[#[id=enchantment] string]: int @ 0..255,
+}
+
+struct Enchantments {
+	levels: struct {
 		[#[id=enchantment] string]: int @ 0..,
-	} |
-	#[canonical] struct {
-		levels: struct {
-			[#[id=enchantment] string]: int @ 0..,
-		},
-		show_in_tooltip?: boolean,
-	} |
-)
-dispatch minecraft:item_component[enchantments] to Enchantments
+	},
+	show_in_tooltip?: boolean,
+}
 
-dispatch minecraft:item_component[fire_resistant] to struct {}
+dispatch minecraft:data_component[enchantments] to (
+	#[canonical] Enchantments |
+	EnchantmentLevels |
+)
+
+dispatch minecraft:data_component[fire_resistant] to struct {}
+
+struct FoodEffect {
+	effect: PotionComponent,
+	/// Chance for the effect to be applied.
+	probability: float @ 0..1,
+}
 
 struct Food {
 	/// Food points/haunches restored when eaten (capped to 20.0).
 	nutrition: int @ 0..,
 	/// Exact value added to the player's saturation level, capped at whatever the [new] food points value is.
 	saturation: float,
-	/// Whether the item can be fed to wolves. Defaults to `false`.
-	is_meat: boolean,
 	/// Whether the item can be eaten when the player's food points/haunches are full. Defaults to `false`
-	can_always_eat: boolean,
+	can_always_eat?: boolean,
 	/// Seconds it takes to eat the item. Defaults to `1.6`
-	eat_seconds: float @ 0..,
+	eat_seconds?: float @ 0..,
 	/// Applied when eaten.
-	effects: [struct {
-		effect: PotionComponent,
-		/// Chance for the effect to be applied.
-		probability: float @ 0..1,
-	}],
+	effects?: [FoodEffect],
 }
-dispatch minecraft:item_component[food] to Food
 
-dispatch minecraft:item_component[hide_additional_tooltip] to struct {}
+dispatch minecraft:data_component[food] to Food
 
-dispatch minecraft:item_component[hide_tooltip] to struct {}
+dispatch minecraft:data_component[hide_additional_tooltip] to struct {}
 
-type Lore = [#[text_component] string]
-dispatch minecraft:item_component[lore] to Lore
+dispatch minecraft:data_component[hide_tooltip] to struct {}
 
-dispatch minecraft:item_component[max_damage] to int @ 1..
+dispatch minecraft:data_component[lore] to [#[text_component] string]
 
-dispatch minecraft:item_component[max_stack_size] to int @ 1..99
+dispatch minecraft:data_component[max_damage] to int @ 1..
 
-dispatch minecraft:item_component[rarity] to enum(string) Rarity { // TODO: Add doc for these
+dispatch minecraft:data_component[max_stack_size] to int @ 1..99
+
+enum(string) Rarity {
 	/// White name, or aqua when enchanted.
 	Common = "common",
 	/// Yellow name, or aqua when enchanted.
@@ -97,54 +96,60 @@ dispatch minecraft:item_component[rarity] to enum(string) Rarity { // TODO: Add 
 	/// Light purple name.
 	Epic = "epic",
 }
-dispatch minecraft:item_component[repair_cost] to int @ 0..
 
-dispatch minecraft:item_component[tool] to struct Tool {
-	/// Used if no rules override it. Defaults to 1.0.
-	default_mining_speed: float,
-	/// Amount of durability to remove each time a block is broken with this tool. Must be a non-negative integer.
-	damage_per_block: int,
-	/// Blocks that this tool has a special behavior with.
-	rules: [struct {
-		blocks: (#[id=block] string | [#[id=block] string] | #[id(registry=block)] string),
-		/// Overrides the default mining speed.
-		speed?: float,
-		/// Overrides whether or not this tool is considered correct to mine at its most efficient speed, and to drop items if the block's loot table requires it.
-		correct_for_drops?: boolean,
-	}]
+dispatch minecraft:data_component[rarity] to Rarity
+
+dispatch minecraft:data_component[repair_cost] to int @ 0..
+
+struct ToolRule {
+	blocks: (#[id=block] string | [#[id=block] string] | #[id(registry=block)] string),
+	/// Overrides the default mining speed.
+	speed?: float,
+	/// Overrides whether or not this tool is considered correct to mine at its most efficient speed, and to drop items if the block's loot table requires it.
+	correct_for_drops?: boolean,
 }
-dispatch minecraft:item_component[trim] to struct Trim {
+
+dispatch minecraft:data_component[tool] to struct Tool {
+	/// Blocks that this tool has a special behavior with.
+	rules: [ToolRule],
+	/// Used if no rules override it. Defaults to 1.0.
+	default_mining_speed?: float,
+	/// Amount of durability to remove each time a block is broken with this tool. Must be a non-negative integer.
+	damage_per_block?: int,
+}
+
+dispatch minecraft:data_component[trim] to struct Trim {
 	/// Used by the `trim_type` model overrides predicate via the material `item_model_index` and armor rendering for the material's `asset_name` for the `armor_trims` atlas.
 	material: #[id=trim_material] string,
 	/// Used by armor rendering for the pattern's `asset_id`.
 	pattern: #[id=trim_pattern] string,
-
 	show_in_tooltip?: boolean,
 }
-dispatch minecraft:item_component[unbreakable] to struct Unbreakable {
+
+dispatch minecraft:data_component[unbreakable] to struct Unbreakable {
 	show_in_tooltip?: boolean,
 }
 
 struct DefaultItemComponents {
 	/// Applied to an entity that has equipped/is holding the item.
-	[#[id] "attribute_modifiers"]: AttributeModifiers,
-	[#[id] "custom_data"]: CustomData,
-	[#[id] "can_destroy"]: BlockComponent,
-	[#[id] "custom_name"]: Text,
+	[#[id] "attribute_modifiers"]?: minecraft:data_component[attribute_modifiers],
+	[#[id] "custom_data"]?: minecraft:data_component[custom_data],
+	[#[id] "can_break"]?: minecraft:data_component[can_break],
+	[#[id] "custom_name"]?: minecraft:data_component[custom_name],
 	/// Tag that describes the custom model an item will take.
 	/// Used by the `custom_model_data` model overrides predicate.
 	/// Has certain restrictions due to float conversion.
-	[#[id] "custom_model_data"]: int,
+	[#[id] "custom_model_data"]?: minecraft:data_component[custom_model_data],
 	/// Damage that an item has. Only used for tools, armor, etc.
-	[#[id] "damage"]: int @ 0..,
+	[#[id] "damage"]?: minecraft:data_component[damage],
 	/// If set, changes enchantment glint behavior. When true, this item will display a glint, even without enchantments. When false, this item will not display a glint, even with enchantments.
-	[#[id] "enchantment_glint_override"]: boolean,
+	[#[id] "enchantment_glint_override"]?: minecraft:data_component[enchantment_glint_override],
 	/// List of enchantments that are on the item.
-	[#[id] "enchantments"]: Enchantments,
+	[#[id] "enchantments"]?: minecraft:data_component[enchantments],
 	/// If set, this item will not burn in fire or lava.
-	[#[id] "fire_resistant"]: struct {},
+	[#[id] "fire_resistant"]?: minecraft:data_component[fire_resistant],
 	/// If set, this item is considered as a food, and can be eaten.
-	[#[id] "food"]: Food,
+	[#[id] "food"]?: minecraft:data_component[food],
 	/// If set, several specific tooltip entries without an applicable `show_in_tooltip` option available are hidden.
 	///
 	/// Included entries:
@@ -166,29 +171,29 @@ struct DefaultItemComponents {
 	/// - Music Disc description
 	/// - Smithing Template description
 	/// - Written Book author & generation
-	[#[id] "hide_additional_tooltip"]: struct {},
+	[#[id] "hide_additional_tooltip"]?: minecraft:data_component[hide_additional_tooltip],
 	/// If set, it will completely hide this item's tooltip, including its name.
-	[#[id] "hide_tooltip"]: struct {},
+	[#[id] "hide_tooltip"]?: minecraft:data_component[hide_tooltip],
 	/// Replaces default item name with contained chat component.
 	///
 	/// Differences from `custom_name`:
 	/// - Can't be changed or removed in anvil.
 	/// - Not styled with italics when displayed to player.
 	/// - Does not show labels where applicable (for example: banner markers, names in item frames).
-	[#[id] "item_name"]: Text,
+	[#[id] "item_name"]?: minecraft:data_component[item_name],
 	/// A list of JSON text components, each element being a lore line.
-	[#[id] "lore"]: Lore,
+	[#[id] "lore"]?: minecraft:data_component[lore],
 	/// Maximum amount of damage that this item can take (ie. **Durability**). If not set, this item cannot take damage. Cannot be combined with the `max_stack_size` component.
-	[#[id] "max_damage"]: int @ 1..,
-	[#[id] "max_stack_size"]: int @ 1..99,
+	[#[id] "max_damage"]?: minecraft:data_component[max_damage],
+	[#[id] "max_stack_size"]?: minecraft:data_component[max_stack_size],
 	/// Default color of this item's name.
-	[#[id] "rarity"]: Rarity,
+	[#[id] "rarity"]?: minecraft:data_component[rarity],
 	/// Number of experience levels to add to the base level cost when repairing, combining, or renaming this item with an anvil.
-	[#[id] "repair_cost"]: int @ 0..,
-	[#[id] "tool"]: Tool,
+	[#[id] "repair_cost"]?: minecraft:data_component[repair_cost],
+	[#[id] "tool"]?: minecraft:data_component[tool],
 	/// Trim to apply to the item & armor when worn.
-	[#[id] "trim"]: Trim,
-	[#[id] "unbreakable"]: Unbreakable,
+	[#[id] "trim"]?: minecraft:data_component[trim],
+	[#[id] "unbreakable"]?: minecraft:data_component[unbreakable],
 }
 
 // until 1.20.5

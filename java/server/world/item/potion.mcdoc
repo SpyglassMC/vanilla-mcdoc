@@ -1,19 +1,22 @@
 use ::java::server::util::LegacyPotionEffect
 use ::java::server::util::PotionComponent
 
-type PotionContents = (
-	#[canonical] struct {
-		potion?: #[id=potion] string,
-		/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-		custom_color?: #[color=composite_int] int,
-		custom_effects: [PotionComponent]
-	} |
+struct PotionContents {
+	potion?: #[id=potion] string,
+	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
+	custom_color?: #[color=composite_int] int,
+	custom_effects?: [PotionComponent],
+}
+
+dispatch minecraft:data_component[potion_contents] to (
+	#[canonical] PotionContents |
 	#[id=potion] string |
 )
-dispatch minecraft:item_component[potion_contents] to PotionContents
 
 /// An item that has a potion effect
 dispatch minecraft:item[potion, splash_potion, lingering_potion, tipped_arrow] to struct EffectItem {
+	#[since="1.20.5"]
+	[#[id] "potion_contents"]?: minecraft:data_component[potion_contents],
 	/// List of the effects that will be applied with this item.
 	#[until="1.20.5"]
 	CustomPotionEffects: [LegacyPotionEffect],
@@ -23,6 +26,4 @@ dispatch minecraft:item[potion, splash_potion, lingering_potion, tipped_arrow] t
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	#[until="1.20.5"]
 	CustomPotionColor: #[color=composite_int] int,
-	#[since="1.20.5"]
-	[#[id] "potion_contents"]: PotionContents
 }

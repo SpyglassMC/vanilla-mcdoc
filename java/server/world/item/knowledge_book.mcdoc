@@ -1,9 +1,8 @@
-type Recipes = [#[id=recipe] string]
-dispatch minecraft:item_component[recipes] to Recipes
+dispatch minecraft:data_component[recipes] to [#[id=recipe] string]
 
 dispatch minecraft:item[knowledge_book] to struct KnowledgeBook {
 	#[since="1.20.5"]
-	[#[id] "recipes"]: Recipes,
+	[#[id] "recipes"]?: minecraft:data_component[recipes],
 	#[until="1.20.5"]
-	Recipes: Recipes,
+	Recipes: [#[id=recipe] string],
 }
