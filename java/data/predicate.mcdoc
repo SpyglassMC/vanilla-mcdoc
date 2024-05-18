@@ -1,4 +1,0 @@
-use super::loot::LootCondition
-
-type Predicate = (LootCondition | [LootCondition])
-dispatch minecraft:resource[predicate] to Predicate

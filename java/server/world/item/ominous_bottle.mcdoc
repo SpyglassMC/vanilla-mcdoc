@@ -1,6 +1,0 @@
-dispatch minecraft:item_component[ominous_bottle_amplifier] to int @ 0..4
-
-dispatch minecraft:item[ominous_bottle] to struct OminousBottle {
-    /// Bad Omen amplifier level +1 (value of `0` corresponds to `Bad Omen I`).
-    [#[id] "ominous_bottle_amplifier"]: int @ 0..4
-}

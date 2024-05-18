@@ -1,8 +1,0 @@
-enum(string) Direction {
-	Down = "down",
-	Up = "up",
-	North = "north",
-	East = "east",
-	South = "south",
-	West = "west",
-}

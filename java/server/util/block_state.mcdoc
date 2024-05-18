@@ -1,4 +1,0 @@
-struct BlockState {
-	Name: #[id=block] string,
-	Properties?: mcdoc:block_states[[Name]],
-}

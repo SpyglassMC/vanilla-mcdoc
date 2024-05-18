@@ -1,7 +1,0 @@
-#[since=1.17]
-dispatch minecraft:entity[marker] to struct Marker {
-	/// Any stored data
-	data: MarkerData,
-}
-
-struct MarkerData { [string]: any }
