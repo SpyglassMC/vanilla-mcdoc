@@ -5,9 +5,9 @@ dispatch minecraft:data_component[charged_projectiles] to [InventoryItem]
 
 dispatch minecraft:data_component[intangible_projectile] to struct {}
 
-dispatch minecraft:item[arrow, tipped_arrow, spectral_arrow, firework_rocket] to struct {
+dispatch minecraft:item[arrow, spectral_arrow] to struct {
 	/// If set, this projectile item can't be picked up by a player when fired, except in creative mode. Can only be used within charged_projectiles components.
-	[#[id] "intangible_projectile"]: struct {}
+	[#[id] "intangible_projectile"]: struct {},
 }
 
 /// A crossbow

@@ -34,7 +34,7 @@ dispatch minecraft:item[
 	[#[id] "container_loot"]?: minecraft:data_component[container_loot],
 }
 
-dispatch minecraft:block[dispenser, dropper] to struct Container9 {
+dispatch minecraft:item[dispenser, dropper] to struct Container9 {
 	/// Slots from 0 to 8.
 	[#[id] "container"]?: [SlottedItem<byte @ 0..8>] @ 0..9,
 }

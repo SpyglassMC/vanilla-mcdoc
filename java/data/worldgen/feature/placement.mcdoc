@@ -12,7 +12,7 @@ type PlacedFeatureRef = (
 
 dispatch minecraft:resource["worldgen/placed_feature"] to struct PlacedFeature {
 	feature: ConfiguredFeatureRef,
-	placement: [PlacedmentModifier],
+	placement: [PlacementModifier],
 }
 
 struct PlacementModifier {
@@ -81,8 +81,4 @@ dispatch minecraft:placement_modifier[surface_relative_threshold_filter] to stru
 
 dispatch minecraft:placement_modifier[surface_water_depth_filter] to struct SurfaceWaterDepthFilter {
 	max_water_depth: int,
-}
-
-struct BlockPredicate {
-
 }

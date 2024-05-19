@@ -3,6 +3,7 @@ use super::density_function::DensityFunctionRef
 use super::density_function::CubicSpline
 use super::structure_set::ConcentricRingsPlacement
 use super::structure_set::RandomSpreadPlacement
+use super::surface_rule::SurfaceRule
 use ::java::server::util::block_state::BlockState
 
 type NoiseGeneratorSettingsRef = (

@@ -309,5 +309,5 @@ struct Display {
 	/// A JSON text component.
 	Name: #[text_component] string,
 	/// A list of JSON text components, each element being a lore line.
-	Lore: Lore,
+	Lore: [#[text_component] string],
 }

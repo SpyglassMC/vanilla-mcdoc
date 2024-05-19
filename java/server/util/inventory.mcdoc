@@ -1,3 +1,5 @@
+use ::java::server::world::item::AnyItem
+
 type InventoryItem = struct {
 	...AnyItem,
 	/// Number of items in the stack

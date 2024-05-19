@@ -1,3 +1,4 @@
+use ::java::server::util::inventory::InventoryItem
 
 #[since="1.20.5"]
 dispatch minecraft:block[vault] to struct Vault {

@@ -39,7 +39,7 @@ dispatch minecraft:density_function[
 	mul,
 ] to struct TwoArguments {
 	argument1: DensityFunctionRef,
-	argument1: DensityFunctionRef,
+	argument2: DensityFunctionRef,
 }
 
 dispatch minecraft:density_function[clamp] to struct Clamp {

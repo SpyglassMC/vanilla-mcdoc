@@ -1,14 +1,15 @@
 use super::LootPoolEntry
 use super::LootCondition
 use super::LootFunction
-use super::ItemPredicate
 use super::super::util::MinMaxBounds
 use super::super::util::RandomValueBounds
 use super::super::util::RandomIntGenerator
 use super::super::util::NumberProvider
+use ::java::data::advancement::predicate::ItemPredicate
 use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::color::ColorString
 use ::java::server::util::text::Text
+use ::java::server::util::firework::FireworkShape
 
 dispatch minecraft:loot_function_type[apply_bonus] to struct ApplyBonus {
 	enchantment: #[id=enchantment] string,

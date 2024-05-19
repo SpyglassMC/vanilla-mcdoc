@@ -350,8 +350,6 @@ dispatch minecraft:trigger_type[target_hit] to struct TargetHit {
 	signal_strength?: MinMaxBounds<int>,
 }
 
-dispatch minecraft:trigger_type[tick] to CriterionBase
-
 /// Player had thrown an item and an entity picked it up.
 #[since=1.16]
 dispatch minecraft:trigger_type[thrown_item_picked_up_by_entity] to struct ThrownItemPickedUpByEntity {

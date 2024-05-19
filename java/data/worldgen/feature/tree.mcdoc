@@ -136,7 +136,7 @@ dispatch minecraft:foliage_placer[mega_pine_foliage_placer] to struct MegaPineFo
 	),
 }
 
-dispatch minecraft:foliage_placer[pine_foliage_placer] to struct MegaPineFoliagePlacer {
+dispatch minecraft:foliage_placer[pine_foliage_placer] to struct PineFoliagePlacer {
 	height: (
 		#[until=1.17] UniformInt<int @ 0..16, int @ 0..8> |
 		#[since=1.17] IntProvider<int @ 0..24> |
@@ -149,7 +149,7 @@ dispatch minecraft:foliage_placer[random_spread_foliage_placer] to struct Random
 	leaf_placement_attempts: int @ 0..256,
 }
 
-dispatch minecraft:foliage_placer[spruce_foliage_placer] to struct MegaPineFoliagePlacer {
+dispatch minecraft:foliage_placer[spruce_foliage_placer] to struct SprucePineFoliagePlacer {
 	trunk_height: (
 		#[until=1.17] UniformInt<int @ 0..16, int @ 0..8> |
 		#[since=1.17] IntProvider<int @ 0..24> |

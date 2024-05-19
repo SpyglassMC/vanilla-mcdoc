@@ -18,4 +18,4 @@ struct Breedable {
 	LoveCause: int[] @ 4,
 }
 
-dispatch minecraft:entity[cow,polar_bear] to Breedable
+dispatch minecraft:entity[cow] to Breedable

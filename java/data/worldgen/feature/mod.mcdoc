@@ -1,6 +1,7 @@
 use block_predicate::BlockPredicate
 use block_state_provider::BlockStateProvider
 use decorator::ConfiguredDecorator
+use placement::PlacedFeatureRef
 use super::processor_list::RuleTest
 use super::processor_list::ProcessorListRef
 use super::UniformInt
@@ -436,17 +437,17 @@ dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
 		#[since=1.17] BlockStateProvider |
 	),
 	#[until=1.17]
-	place_on: [BlockState],
+	...struct {
+		place_on: [BlockState],
+		place_in: [BlockState],
+		place_under: [BlockState],
+	},
 	#[since=1.17] #[until=1.18]
-	place_on?: [BlockState],
-	#[until=1.17]
-	place_in: [BlockState],
-	#[since=1.17] #[until=1.18]
-	place_in?: [BlockState],
-	#[until=1.17]
-	place_under: [BlockState],
-	#[since=1.17] #[until=1.18]
-	place_under?: [BlockState],
+	...struct {
+		place_on?: [BlockState],
+		place_in?: [BlockState],
+		place_under?: [BlockState],
+	},
 }
 
 dispatch minecraft:feature_config[simple_random_selector] to struct SimpleRandomSelectorConfig {

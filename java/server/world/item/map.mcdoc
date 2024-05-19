@@ -38,7 +38,7 @@ dispatch minecraft:item[filled_map] to struct FilledMap {
 	display: struct {
 		...super::Display,
 		/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-		MapColor: MapColor,
+		MapColor: #[color=composite_int] int,
 	},
 }
 

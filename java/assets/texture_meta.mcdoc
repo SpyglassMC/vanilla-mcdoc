@@ -16,7 +16,7 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 				/// The time in ticks to show this frame, overriding `frametime` above.
 				time: int,
 			} |
-			number |
+			int |
 		)],
 	},
 	/// Only available for villager textures.

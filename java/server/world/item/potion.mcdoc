@@ -14,7 +14,7 @@ dispatch minecraft:data_component[potion_contents] to (
 )
 
 /// An item that has a potion effect
-dispatch minecraft:item[potion, splash_potion, lingering_potion, tipped_arrow] to struct EffectItem {
+dispatch minecraft:item[potion, splash_potion, lingering_potion] to struct EffectItem {
 	#[since="1.20.5"]
 	[#[id] "potion_contents"]?: minecraft:data_component[potion_contents],
 	/// List of the effects that will be applied with this item.
@@ -26,4 +26,10 @@ dispatch minecraft:item[potion, splash_potion, lingering_potion, tipped_arrow] t
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	#[until="1.20.5"]
 	CustomPotionColor: #[color=composite_int] int,
+}
+
+dispatch minecraft:item[tipped_arrow] to struct {
+	...EffectItem,
+	#[since="1.20.5"]
+	[#[id] "intangible_projectile"]: struct {},
 }

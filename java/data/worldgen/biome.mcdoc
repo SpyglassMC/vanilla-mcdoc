@@ -1,7 +1,9 @@
 use ::java::server::util::particle::Particle
 use super::carver::CarverRef
-use super::feature::PlacedFeatureRef
+use super::feature::ConfiguredFeatureRef
+use super::feature::placement::PlacedFeatureRef
 use super::structure::StructureRef
+use super::surface_builder::ConfiguredSurfaceBuilderRef
 
 dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 	#[until=1.19]
@@ -136,5 +138,5 @@ struct SpawnerData {
 
 struct MobSpawnCost {
 	energy_budget: double,
-	charge: charge,
+	charge: double,
 }

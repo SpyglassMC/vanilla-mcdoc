@@ -70,21 +70,20 @@ dispatch minecraft:decorator_config[depth_average] to struct DepthAverageConfig 
 	spread: int,
 }
 
-#[until=1.17]
 dispatch minecraft:decorator_config[range,range_biased,range_very_biased] to struct RangeConfig {
+	#[until=1.17]
 	maximum: int,
+	#[until=1.17]
 	bottom_offset: int,
+	#[until=1.17]
 	top_offset: int,
+	#[since=1.17]
+	height: HeightProvider,
 }
 
 #[since=1.17]
 dispatch minecraft:decorator_config[heightmap, heightmap_spread_double] to struct HeightmapConfig {
 	heightmap: HeightmapType,
-}
-
-#[since=1.17]
-dispatch minecraft:decorator_config[range] to struct RangeConfig {
-	height: HeightProvider,
 }
 
 #[since=1.17]

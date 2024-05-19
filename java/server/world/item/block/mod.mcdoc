@@ -33,5 +33,5 @@ dispatch minecraft:item[%fallback] to struct BlockItem {
 	BlockEntityTag: BlockEntityData,
 	/// Blockstate that the placed block will have.
 	#[until="1.20.5"]
-	BlockStateTag: BlockStateTag,
+	BlockStateTag: mcdoc:block_item_states[[%parent.id]],
 }
