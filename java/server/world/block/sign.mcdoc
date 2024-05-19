@@ -1,19 +1,6 @@
 use ::java::server::util::color::ColorString
 
-dispatch minecraft:block[
-	acacia_sign,
-	birch_sign,
-	dark_oak_sign,
-	jungle_sign,
-	oak_sign,
-	spruce_sign,
-	acacia_wall_sign,
-	birch_wall_sign,
-	dark_oak_wall_sign,
-	jungle_wall_sign,
-	oak_wall_sign,
-	spruce_wall_sign,
-] to struct Sign {
+dispatch minecraft:block_entity[sign, hanging_sign] to struct Sign {
 	...super::BlockEntity,
 	// TODO: Add filtered text
 	#[until=1.20]
@@ -48,19 +35,34 @@ struct OldSign {
 	Text4: #[text_component] string,
 }
 
+dispatch minecraft:block[
+	acacia_sign,
+	birch_sign,
+	dark_oak_sign,
+	jungle_sign,
+	oak_sign,
+	spruce_sign,
+	acacia_wall_sign,
+	birch_wall_sign,
+	dark_oak_wall_sign,
+	jungle_wall_sign,
+	oak_wall_sign,
+	spruce_wall_sign,
+] to minecraft:block_entity[sign]
+
 #[since=1.17]
 dispatch minecraft:block[
 	crimson_sign,
 	warped_sign,
 	crimson_wall_sign,
 	warped_wall_sign,
-] to Sign
+] to minecraft:block_entity[sign]
 
 #[since=1.19]
 dispatch minecraft:block[
 	mangrove_sign,
 	mangrove_wall_sign,
-] to Sign
+] to minecraft:block_entity[sign]
 
 #[since="1.19.3"]
 dispatch minecraft:block[
@@ -86,10 +88,10 @@ dispatch minecraft:block[
 	oak_wall_hanging_sign,
 	spruce_wall_hanging_sign,
 	warped_wall_hanging_sign,
-] to Sign
+] to minecraft:block_entity[sign]
 
 #[since="1.19.4"]
 dispatch minecraft:block[
 	cherry_sign,
 	cherry_wall_sign,
-] to Sign
+] to minecraft:block_entity[sign]

@@ -2,7 +2,7 @@ use super::super::entity::AnyEntity
 use super::super::super::util::range::InclusiveRange
 use super::super::super::util::inventory::EquipmentSlot
 
-dispatch minecraft:block[spawner] to struct Spawner {
+dispatch minecraft:block_entity[spawner] to struct Spawner {
 	...super::BlockEntity,
 	/// Entities that can be placed.
 	SpawnPotentials: [SpawnPotential],
@@ -29,7 +29,7 @@ dispatch minecraft:block[spawner] to struct Spawner {
 }
 
 #[since="1.20.5"]
-dispatch minecraft:block[trial_spawner] to struct TrialSpawner {
+dispatch minecraft:block_entity[trial_spawner] to struct TrialSpawner {
 	/// Spawning behavior when the player does not have the Bad Omen effect.
 	normal_config: NormalConfig,
 	/// Spawning behavior when the player has the Bad Omen effect.
@@ -42,6 +42,10 @@ dispatch minecraft:block[trial_spawner] to struct TrialSpawner {
 		}],
 	},
 }
+
+dispatch minecraft:block[spawner] to minecraft:block_entity[spawner]
+
+dispatch minecraft:block[trial_spawner] to minecraft:block_entity[trial_spawner]
 
 struct NormalConfig {
 	/// Number of entities that will be placed.

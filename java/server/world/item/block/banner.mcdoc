@@ -8,6 +8,23 @@ struct BannerPatternLayer {
 
 dispatch minecraft:data_component[banner_patterns] to [BannerPatternLayer]
 
-dispatch minecraft:item[banner] to struct Banner {
+dispatch minecraft:item[
+	white_banner,
+	orange_banner,
+	magenta_banner,
+	light_blue_banner,
+	yellow_banner,
+	lime_banner,
+	pink_banner,
+	gray_banner,
+	light_gray_banner,
+	cyan_banner,
+	purple_banner,
+	blue_banner,
+	brown_banner,
+	green_banner,
+	red_banner,
+	black_banner,
+] to struct Banner {
 	[#[id] "banner_patterns"]?: minecraft:data_component[banner_patterns],
 }

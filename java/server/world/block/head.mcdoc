@@ -1,4 +1,4 @@
-dispatch minecraft:block[player_head,player_wall_head] to struct PlayerHead {
+dispatch minecraft:block_entity[skull] to struct PlayerHead {
 	...super::BlockEntity,
 	/// Owner of the skull.
 	#[until=1.16]
@@ -8,8 +8,24 @@ dispatch minecraft:block[player_head,player_wall_head] to struct PlayerHead {
 	/// Name of the owner, if exists will be converted to SkullOwner.
 	ExtraType: string,
 	#[since="1.19.3"]
-	note_block_sound: string, // TODO
+	note_block_sound: #[id=sound_event] string,
 }
+
+dispatch minecraft:block[player_head, player_wall_head] to minecraft:block_entity[skull]
+
+// These are all technically the `skull` block entity, and the player head nbt isn't removed, but it isn't retained in the item form, and the fields do nothing, so these are just cast to `BlockEntity`
+dispatch minecraft:block[
+	skeleton_skull,
+	wither_skeleton_skull,
+	creeper_head,
+	zombie_head,
+	dragon_head,
+	skeleton_wall_skull,
+	wither_skeleton_wall_skull,
+	creeper_wall_head,
+	zombie_wall_head,
+	dragon_wall_head,
+] to super::BlockEntity
 
 struct SkullOwner {
 	/// Optional.

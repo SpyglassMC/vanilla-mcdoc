@@ -1,4 +1,4 @@
-dispatch minecraft:block[conduit] to struct Conduit {
+dispatch minecraft:block_entity[conduit] to struct Conduit {
 	...super::BlockEntity,
 	#[uuid]
 	target_uuid: (
@@ -6,6 +6,8 @@ dispatch minecraft:block[conduit] to struct Conduit {
 		#[since=1.16] int[] @ 4 |
 	),
 }
+
+dispatch minecraft:block[conduit] to minecraft:block_entity[conduit]
 
 struct TargetUuid {
 	/// Upper bits of the target's UUID

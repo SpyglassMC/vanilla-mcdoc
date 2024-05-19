@@ -1,4 +1,4 @@
-dispatch minecraft:block[jigsaw] to struct Jigsaw {
+dispatch minecraft:block_entity[jigsaw] to struct Jigsaw {
 	/// Structure pool this will connect to.
 	#[until=1.16]
 	target_pool: #[id="worldgen/template_pool"] string,
@@ -18,8 +18,10 @@ dispatch minecraft:block[jigsaw] to struct Jigsaw {
 	final_state: string,
 	/// ID of the type of jigsaw this connects to.
 	#[until=1.16]
-	attachement_type: string,
+	attachment_type: string,
 }
+
+dispatch minecraft:block[jigsaw] to minecraft:block_entity[jigsaw]
 
 enum(string) JointType {
 	/// The structure can be rotated

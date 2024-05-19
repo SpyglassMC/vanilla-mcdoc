@@ -1,8 +1,4 @@
-dispatch minecraft:block[
-	command_block,
-	chain_command_block,
-	repeating_command_block,
-] to struct Campfire {
+dispatch minecraft:block_entity[command_block] to struct CommandBlock {
 	...super::BlockEntity,
 	CustomName: #[text_component] string,
 	Command: string,
@@ -24,3 +20,9 @@ dispatch minecraft:block[
 	/// Tick of the latest command execution.
 	LastExecution: long,
 }
+
+dispatch minecraft:block[
+	command_block,
+	chain_command_block,
+	repeating_command_block,
+] to minecraft:block_entity[command_block]

@@ -11,27 +11,26 @@ dispatch minecraft:data_component[can_place_on] to (
 /// NBT that the block entity that is placed can have.
 dispatch minecraft:data_component[block_entity_data] to struct BlockEntityData {
 	id: #[id=block_entity_type] string,
-	...minecraft:block[[id]],
+	...minecraft:block_entity[[id]],
 }
 
 /// Blockstate that the placed block will have.
 dispatch minecraft:data_component[block_state] to mcdoc:block_item_states[[%parent.id]]
 
-// TODO: replace this with any block item
+type BlockItem = (
+	#[since="1.20.5"] struct {
+		[#[id] "can_place_on"]?: minecraft:data_component[can_place_on],
+		[#[id] "block_entity_data"]?: minecraft:data_component[block_entity_data],
+		[#[id] "block_state"]?: minecraft:data_component[block_state],
+	} |
+	#[until="1.20.5"] struct {
+		/// List of blockstates that this block item can be placed on.
+		CanPlaceOn: [BlockState],
+		BlockEntityTag: BlockEntityData,
+		/// Blockstate that the placed block will have.
+		BlockStateTag: mcdoc:block_item_states[[%parent.id]],
+	} |
+)
+
 /// An item that can be placed as a block
-dispatch minecraft:item[%fallback] to struct BlockItem {
-	#[since="1.20.5"]
-	[#[id] "can_place_on"]?: minecraft:data_component[can_place_on],
-	#[since="1.20.5"]
-	[#[id] "block_entity_data"]?: minecraft:data_component[block_entity_data],
-	#[since="1.20.5"]
-	[#[id] "block_state"]?: minecraft:data_component[block_state],
-	/// List of blockstates that this block item can be placed on.
-	#[until="1.20.5"]
-	CanPlaceOn: [BlockState],
-	#[until="1.20.5"]
-	BlockEntityTag: BlockEntityData,
-	/// Blockstate that the placed block will have.
-	#[until="1.20.5"]
-	BlockStateTag: mcdoc:block_item_states[[%parent.id]],
-}
+dispatch minecraft:item[%blockitem] to BlockItem

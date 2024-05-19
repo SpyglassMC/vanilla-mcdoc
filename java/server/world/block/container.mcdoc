@@ -12,6 +12,26 @@ struct ContainerBase {
 	LootTableSeed: long,
 }
 
+dispatch minecraft:block_entity[container] to struct Container27 {
+	...ContainerBase,
+	/// Slots from 0 to 26.
+	Items: [SlottedItem<byte @ 0..26>] @ 0..27,
+}
+
+dispatch minecraft:block_entity[dispenser, dropper] to struct Container9 {
+	...ContainerBase,
+	/// Slots from 0 to 8.
+	Items: [SlottedItem<byte @ 0..8>] @ 0..9,
+}
+
+dispatch minecraft:block_entity[hopper] to struct Hopper {
+	...ContainerBase,
+	/// Slots from 0 to 4.
+	Items: [SlottedItem<byte @ 0..4>] @ 0..5,
+	/// Ticks until an item can be transferred.
+	TransferCooldown: int,
+}
+
 dispatch minecraft:block[
 	barrel,
 	chest,
@@ -33,13 +53,8 @@ dispatch minecraft:block[
 	green_shulker_box,
 	red_shulker_box,
 	black_shulker_box,
-] to struct Container27 {
-	...ContainerBase,
-	/// Slots from 0 to 26.
-	Items: [SlottedItem<byte @ 0..26>] @ 0..27,
-}
+] to minecraft:block_entity[container]
 
-dispatch minecraft:block[dispenser,dropper] to struct Container9 {
-	/// Slots from 0 to 8.
-	Items: [SlottedItem<byte @ 0..8>] @ 0..9,
-}
+dispatch minecraft:block[dispenser, dropper] to minecraft:block_entity[dispenser]
+
+dispatch minecraft:block[hopper] to minecraft:block_entity[hopper]

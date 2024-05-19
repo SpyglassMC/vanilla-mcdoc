@@ -1,7 +1,7 @@
 use ::java::server::util::ColorInt
 use ::java::server::util::EffectId
 
-dispatch minecraft:block[beacon] to struct Beacon {
+dispatch minecraft:block_entity[beacon] to struct Beacon {
 	...super::BlockEntity,
 	/// Name of the item that a player has to be holding to open this beacon.
 	/// Source is flattened to plain text and has formatting removed before the check.
@@ -19,6 +19,8 @@ dispatch minecraft:block[beacon] to struct Beacon {
 	#[since="1.20.2"]
 	secondary_effect: #[id=mob_effect] string,
 }
+
+dispatch minecraft:block[beacon] to minecraft:block_entity[beacon]
 
 type NoneId = (
 	#[until=1.16] 0 |

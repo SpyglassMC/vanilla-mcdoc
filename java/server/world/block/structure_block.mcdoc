@@ -1,4 +1,4 @@
-dispatch minecraft:block[structure_block] to struct StructureBlock {
+dispatch minecraft:block_entity[structure_block] to struct StructureBlock {
 	...super::BlockEntity,
 	name: #[id=structure] string,
 	/// Author of the structure.
@@ -29,6 +29,8 @@ dispatch minecraft:block[structure_block] to struct StructureBlock {
 	/// Whether to show invisible blocks inside the bounding box.
 	showair: boolean,
 }
+
+dispatch minecraft:block[structure_block] to minecraft:block_entity[structure_block]
 
 enum(string) Rotation {
 	None = "NONE",

@@ -7,6 +7,8 @@ dispatch minecraft:data_component[container_loot] to struct ContainerLoot {
 	seed: long,
 }
 
+dispatch minecraft:data_component[lock] to string
+
 dispatch minecraft:item[
 	barrel,
 	chest,
@@ -32,6 +34,8 @@ dispatch minecraft:item[
 	/// Slots from 0 to 26.
 	[#[id] "container"]?: [SlottedItem<byte @ 0..26>] @ 0..27,
 	[#[id] "container_loot"]?: minecraft:data_component[container_loot],
+	/// Flattens the `minecraft:custom_name`'s text component and does an exact match, case-sensitive.
+	[#[id] "lock"]?: string,
 }
 
 dispatch minecraft:item[dispenser, dropper] to struct Container9 {

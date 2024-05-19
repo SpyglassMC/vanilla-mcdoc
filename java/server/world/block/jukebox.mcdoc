@@ -1,6 +1,11 @@
 use ::java::server::util::inventory::InventoryItem
 
-dispatch minecraft:block[jukebox] to struct Jukebox {
+dispatch minecraft:block_entity[jukebox] to struct Jukebox {
 	...super::BlockEntity,
 	RecordItem: InventoryItem,
+	TickCount: long,
+	RecordStartTick: long,
+	IsPlaying: boolean,
 }
+
+dispatch minecraft:block[jukebox] to minecraft:block_entity[jukebox]

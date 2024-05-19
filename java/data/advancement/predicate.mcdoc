@@ -1,3 +1,4 @@
+use ::java::server::world::item::DefaultItemComponents
 use ::java::server::util::inventory::EquipmentSlot
 use super::super::util::MinMaxBounds
 
@@ -16,14 +17,17 @@ struct ItemPredicate {
 	#[until="1.20.5"]
 	stored_enchantments?: [EnchantmentPredicate],
 	#[until="1.20.5"]
-	nbt?: #[nbt(registry=minecraft:item[[item]])] string,
+	nbt?: #[nbt(registry=minecraft:item[[item]])] string, // TODO: This needs hardcoding to include DefaultItemTags
 
 	#[since="1.20.5"]
 	items?: (#[id(registry=item,tags=allowed)] string | [#[id=item] string]),
 	#[since="1.20.5"]
 	count?: MinMaxBounds<int>,
 	#[since="1.20.5"]
-	components?: minecraft:item[[items]],
+	components?: struct {
+		...DefaultItemComponents,
+		...minecraft:item[[items]],
+	},
 	#[since="1.20.5"]
 	predicates?: struct { // This is made like this because of the `items` hack to get good typing for custom data.
 		[#[id] "enchantments"]?: [EnchantmentPredicate],
@@ -107,7 +111,7 @@ struct EntityPredicate {
 	#[since=1.19]
 	type_specific?: TypeSpecificPredicate,
 	team?: #[team] string,
-	nbt?: #[nbt(registry=minecraft:entity[[type]])] string,
+	nbt?: #[nbt(registry=minecraft:entity[[type]])] string, // TODO: This needs hardcoding to include AnyEntity
 	location?: LocationPredicate,
 	distance?: DistancePredicate,
 	flags?: struct {

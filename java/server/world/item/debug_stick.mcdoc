@@ -1,5 +1,5 @@
 dispatch minecraft:data_component[debug_stick_state] to struct DebugStickState {
-	[#[id=block] string]: string // TODO: FIXME
+	[#[id=block] string]: string, // TODO: FIXME
 }
 
 dispatch minecraft:item[debug_stick] to struct DebugStick {

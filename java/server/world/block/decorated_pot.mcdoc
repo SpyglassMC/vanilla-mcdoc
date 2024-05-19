@@ -1,7 +1,7 @@
 use ::java::server::util::InventoryItem
 
 #[since="1.19.4"]
-dispatch minecraft:block[decorated_pot] to struct DecoratedPot {
+dispatch minecraft:block_entity[decorated_pot] to struct DecoratedPot {
 	...super::BlockEntity,
 	/// Item ID of what was used for each side of the pot.
 	sherds: [Sherd] @ 4,
@@ -14,6 +14,8 @@ dispatch minecraft:block[decorated_pot] to struct DecoratedPot {
 	#[since="1.20.3"]
 	item: InventoryItem,
 }
+
+dispatch minecraft:block[decorated_pot] to minecraft:block_entity[decorated_pot]
 
 enum(string) Sherd {
 	Angler = "angler_pottery_sherd",

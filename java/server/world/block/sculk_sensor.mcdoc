@@ -1,9 +1,11 @@
 use ::java::server::util::game_event::VibrationListener
 
 #[since=1.17]
-dispatch minecraft:block[sculk_sensor] to struct SculkSensor {
+dispatch minecraft:block_entity[sculk_sensor] to struct SculkSensor {
 	last_vibration_frequency: int @ 1..15,
 	/// Vibration listener
 	#[since=1.19]
 	listener: VibrationListener,
 }
+
+dispatch minecraft:block[sculk_sensor] to minecraft:block_entity[sculk_sensor]

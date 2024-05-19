@@ -1,4 +1,4 @@
-dispatch minecraft:block[end_gateway] to struct EndGateway {
+dispatch minecraft:block_entity[end_gateway] to struct EndGateway {
 	...super::BlockEntity,
 	/// In game ticks.
 	Age: long,
@@ -11,6 +11,8 @@ dispatch minecraft:block[end_gateway] to struct EndGateway {
 	#[since="1.20.5"]
 	exit_portal: int[] @ 3,
 }
+
+dispatch minecraft:block[end_gateway] to minecraft:block_entity[end_gateway]
 
 struct ExitPortal {
 	X: int,
