@@ -6,7 +6,7 @@ struct BannerPatternLayer {
 	pattern: #[id=banner_pattern] string,
 }
 
-dispatch minecraft:data_component[banner_patterns] to BannerPatternLayer
+dispatch minecraft:data_component[banner_patterns] to [BannerPatternLayer]
 
 dispatch minecraft:item[banner] to struct Banner {
 	[#[id] "banner_patterns"]?: minecraft:data_component[banner_patterns],

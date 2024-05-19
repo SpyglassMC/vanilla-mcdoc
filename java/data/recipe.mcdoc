@@ -68,7 +68,7 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 	addition: Ingredient,
 	/// Template item that will be used for the item transformation.
 	template: Ingredient,
-	/// Resulting transformed item
+	/// Resulting transformed item.
 	result: struct {
 		item: #[id=item] string, // Fun
 	},
