@@ -11,28 +11,30 @@ jobs:
     name: Generate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - uses: actions/checkout@v3
+        with:
+          ref: locale
+          path: './out/locale'
+          
+      # - uses: actions/checkout@v3
+      #   with:
+      #     ref: generated
+      #     path: './out/generated'
 
       - uses: actions/setup-node@v3
         with:
           node-version: 21
 
-      - run: git clone https://github.com/SpyglassMC/vanilla-mcdoc out/locale
-
-      - run: cd out/locale && git checkout locale && cd ../..
-
-      # - run: git clone https://github.com/SpyglassMC/vanilla-mcdoc out/generated
-
-      # - run: cd out/generated && git checkout generated && cd ../..
-
       - run: npx @spyglassmc/mcdoc-cli generate ./ -l # -p -m
 
       - uses: EndBug/add-and-commit@v9
         with:
-          cwd: out/locale
-          author_name: GitHub Actions
+          cwd: './out/locale/'
+          author_name: 'GitHub Actions'
           author_email: actions@github.com
-          message:  Update base localization
+          message: '🌐 Update base localization'
       
       # - uses: EndBug/add-and-commit@v9
       #   with:
