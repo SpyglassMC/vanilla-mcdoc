@@ -27,7 +27,11 @@ jobs:
         with:
           node-version: 21
 
-      - run: npx @spyglassmc/mcdoc-cli generate ./ -l # -p -m
+      - run: npm install -g @spyglassmc/mcdoc-cli
+
+      - run: mcdoc-cli generate ./ -l # -p -m
+
+      - run: mcdoc-cli update_locales
 
       - uses: EndBug/add-and-commit@v9
         with:

@@ -27,7 +27,6 @@ struct LivingEntity {
 	/// The mob's brain, empty.
 	Brain: struct {
 		memories: struct {
-			/// The unit value.
 			[string]: struct {}
 		},
 	},
