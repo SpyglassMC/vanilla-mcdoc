@@ -37,6 +37,12 @@ dispatch minecraft:trigger[allay_drop_item_on_block] to struct AllayDropItemOnBl
 	location?: LocationPredicate,
 }
 
+#[since="1.20.5"]
+dispatch minecraft:trigger[any_block_use] to struct AnyBlockUse {
+	...TriggerBase,
+	location?: LocationPredicate,
+}
+
 dispatch minecraft:trigger[bee_nest_destroyed] to struct BeeNestDestroyed {
 	...TriggerBase,
 	block?: #[id=block] string,
@@ -95,6 +101,11 @@ dispatch minecraft:trigger[cured_zombie_villager] to struct CuredZombieVillager 
 	...TriggerBase,
 	villager?: CompositeEntity,
 	zombie?: CompositeEntity,
+}
+
+dispatch minecraft:trigger[default_block_use] to struct DefaultBlockUse {
+	...TriggerBase,
+	location?: LocationPredicate,
 }
 
 /// Player had a status effect applied or taken from them.
