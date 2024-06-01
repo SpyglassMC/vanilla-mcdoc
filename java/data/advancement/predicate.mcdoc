@@ -18,7 +18,6 @@ struct ItemPredicate {
 	stored_enchantments?: [EnchantmentPredicate],
 	#[until="1.20.5"]
 	nbt?: #[nbt(registry=minecraft:item[[item]])] string, // TODO: This needs hardcoding to include DefaultItemTags
-
 	#[since="1.20.5"]
 	items?: (#[id(registry=item,tags=allowed)] string | [#[id=item] string]),
 	#[since="1.20.5"]
@@ -110,7 +109,7 @@ struct EntityPredicate {
 	),
 	#[since=1.19]
 	type_specific?: TypeSpecificPredicate,
-	team?: #[team] string,
+	team?: #[command_argument=team] string,
 	nbt?: #[nbt(registry=minecraft:entity[[type]])] string, // TODO: This needs hardcoding to include AnyEntity
 	location?: LocationPredicate,
 	distance?: DistancePredicate,

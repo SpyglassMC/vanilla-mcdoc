@@ -26,7 +26,7 @@ dispatch minecraft:entity[chest_minecart] to struct ChestMinecart {
 
 dispatch minecraft:entity[command_block_minecart] to struct CommandBlockMinecart {
 	...Minecart,
-	Command: string,
+	Command: #[command] string,
 	/// Success count of the last command.
 	SuccessCount: int,
 	/// Output of the last command.

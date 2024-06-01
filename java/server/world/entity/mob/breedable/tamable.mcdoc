@@ -2,8 +2,8 @@ use ::java::server::util::ColorByte
 
 struct Tamable {
 	...super::Breedable,
-	#[until=1.16] #[uuid]
-	OwnerUUID: string,
+	#[until=1.16]
+	OwnerUUID: #[command_argument=uuid] string,
 	#[since=1.16] #[uuid]
 	Owner: int[] @ 4,
 	/// Whether the mob is sitting.

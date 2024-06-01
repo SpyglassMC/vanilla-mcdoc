@@ -39,7 +39,7 @@ struct LivingEntity {
 	/// Whether it should have an AI.
 	NoAI: boolean,
 	/// Team to join when it is spawned.
-	Team: string,
+	Team: #[command_argument=team] string,
 }
 
 /// Base NBT for all mobs.
@@ -115,9 +115,9 @@ struct Brain {
 	memories: struct {},
 }
 
-struct Memories {
-	[#[id=memory_module_type] string]: minecraft:memory_module[[%key]],
-}
+// struct Memories {
+// 	[#[id=memory_module_type] string]: minecraft:memory_module[[%key]],
+// }
 
 struct UUIDLeash {
 	/// Upper bits of the other entity's UUID.

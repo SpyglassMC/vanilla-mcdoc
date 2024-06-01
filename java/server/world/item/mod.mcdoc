@@ -24,12 +24,12 @@ dispatch minecraft:data_component[can_break] to (
 	BlockPredicate |
 )
 
-dispatch minecraft:data_component[item_name] to #[text_component] string
+dispatch minecraft:data_component[item_name] to #[command_argument=component] string
 
-type CustomData = (mcdoc:custom_item_data[[%parent.id]] | struct {}) // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to AnyItem.
+type CustomData = (mcdoc:custom_item_data[[%parent.%parent.id]] | struct {}) // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to AnyItem.
 dispatch minecraft:data_component[custom_data] to CustomData
 
-dispatch minecraft:data_component[custom_name] to #[text_component] string
+dispatch minecraft:data_component[custom_name] to #[command_argument=component] string
 
 dispatch minecraft:data_component[custom_model_data] to int
 
@@ -80,7 +80,7 @@ dispatch minecraft:data_component[hide_additional_tooltip] to struct {}
 
 dispatch minecraft:data_component[hide_tooltip] to struct {}
 
-dispatch minecraft:data_component[lore] to [#[text_component] string]
+dispatch minecraft:data_component[lore] to [#[command_argument=component] string]
 
 dispatch minecraft:data_component[max_damage] to int @ 1..
 
@@ -307,7 +307,7 @@ type AttributeModifier = (
 /// Display settings of an item.
 struct Display {
 	/// A JSON text component.
-	Name: #[text_component] string,
+	Name: #[command_argument=component] string,
 	/// A list of JSON text components, each element being a lore line.
-	Lore: [#[text_component] string],
+	Lore: [#[command_argument=component] string],
 }

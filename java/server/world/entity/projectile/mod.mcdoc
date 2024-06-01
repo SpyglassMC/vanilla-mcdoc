@@ -14,7 +14,7 @@ struct ProjectileBase {
 
 dispatch minecraft:entity[llama_spit] to struct LlamaSpit {
 	...ProjectileBase,
-	#[since=1.16]
+	#[until=1.16] #[uuid]
 	Owner: OwnerUuid,
 }
 

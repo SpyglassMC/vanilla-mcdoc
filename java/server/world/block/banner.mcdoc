@@ -5,7 +5,7 @@ use ::java::server::util::ColorString
 dispatch minecraft:block_entity[banner] to struct Banner {
 	...super::BlockEntity,
 	/// Shows up on map markers
-	CustomName: #[text_component] string,
+	CustomName: #[command_argument=component] string,
 	#[until="1.20.5"]
 	Patterns: [LegacyPattern],
 	#[since="1.20.5"]

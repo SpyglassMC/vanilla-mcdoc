@@ -10,14 +10,14 @@ dispatch minecraft:data_component[writable_book_content] to struct WritableBookC
 
 dispatch minecraft:data_component[written_book_content] to struct WrittenBookContent {
 	pages: [((struct {
-		raw: #[text_component] string,
+		raw: #[command_argument=component] string,
 		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: #[text_component] string,
-	}) | #[text_component] string)],
+		filtered: #[command_argument=component] string,
+	}) | #[command_argument=component] string)],
 	title: struct {
-		raw: #[text_component] string,
+		raw: #[command_argument=component] string,
 		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: #[text_component] string,
+		filtered: #[command_argument=component] string,
 	},
 	author: string,
 	/// Number of times this written book has been copied. Defaults to 0. If the value is greater than 1, the book cannot be copied.
@@ -43,7 +43,7 @@ dispatch minecraft:item[written_book] to struct WrittenBook {
 	resolved: boolean,
 	/// Pages of the book as JSON text components.
 	#[until="1.20.5"]
-	pages: [#[text_component] string],
+	pages: [#[command_argument=component] string],
 	/// Generation of the book.
 	#[until="1.20.5"]
 	generation: Generation,

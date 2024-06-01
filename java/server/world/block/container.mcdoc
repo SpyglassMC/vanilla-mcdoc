@@ -2,7 +2,7 @@ use ::java::server::util::inventory::SlottedItem
 
 struct ContainerBase {
 	...super::BlockEntity,
-	CustomName: #[text_component] string,
+	CustomName: #[command_argument=component] string,
 	/// Name of the item that a player has to be holding to open this container.
 	/// Source is flattened to plain text and has formatting removed before the check.
 	Lock: string,

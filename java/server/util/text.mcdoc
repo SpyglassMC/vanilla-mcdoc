@@ -21,13 +21,13 @@ type TextObject = (
 	} |
 	struct {
 		score: struct {
-			objective: string, // TODO
-			name: string, // TODO
+			objective: #[command_argument=objective] string,
+			name: #[command_argument=selector] string,
 		},
 		...TextBase,
 	} |
 	struct {
-		selector: string, // TODO
+		selector: #[command_argument=selector] string,
 		...TextBase,
 	} |
 	struct {
@@ -46,7 +46,7 @@ type TextObject = (
 	} |
 	struct {
 		storage: #[id=storage] string,
-		nbt: #[nbt_path] string, // TODO
+		nbt: #[nbt_path(registry=minecraft:storage[[storage]])] string,
 		...TextNbtBase,
 	} |
 )
@@ -107,17 +107,27 @@ enum(string) TextFormat {
 
 struct ClickEvent {
 	action: ClickEventAction,
-	value: string, // TODO
+	value: minecraft:click_event[[action]],
 }
 
 enum(string) ClickEventAction {
 	OpenUrl = "open_url",
-	OpenFile = "open_file",
+	// OpenFile = "open_file", // This is restricted to only work when received from the client
 	RunCommand = "run_command",
 	SuggestCommand = "suggest_command",
 	ChangePage = "change_page",
 	CopyToClipBoard = "copy_to_clipboard",
 }
+
+dispatch minecraft:click_event[open_url] to (#[url] string)
+
+dispatch minecraft:click_event[run_command] to (#[command=slash] string) // TODO: maybe do a special thing for 1.19.1+ to disallow signed message commands
+
+dispatch minecraft:click_event[suggest_command] to (string | #[command=slash] string) 
+
+dispatch minecraft:click_event[change_page] to (int @ 0..)
+
+dispatch minecraft:click_event[copy_to_clipboard] to (string)
 
 struct HoverEvent {
 	action: HoverEventAction,
@@ -158,7 +168,7 @@ dispatch minecraft:hover_event[show_entity] to struct ShowEntityHoverEvent {
 		#[since=1.16] struct {
 			name?: Text,
 			type?: #[id=entity_type] string,
-			id?: #[uuid] string,
+			id?: #[command_argument=uuid] string,
 		} |
 	),
 }

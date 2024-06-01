@@ -14,7 +14,7 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 			#[since="1.20.5"]
 			components?: struct {
 				...DefaultItemComponents,
-				...minecraft:item[[items]],
+				...minecraft:item[[id]],
 			},
 		},
 		title: Text,

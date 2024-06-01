@@ -69,7 +69,7 @@ dispatch minecraft:number_provider[constant] to struct ConstantNumberProvider {
 
 dispatch minecraft:number_provider[score] to struct ScoreNumberProvider {
 	target: ScoreProvider,
-	score: #[objective] string,
+	score: #[command_argument=objective] string,
 	scale?: float,
 }
 
@@ -86,7 +86,7 @@ dispatch minecraft:score_provider[context] to struct ContextScoreProvider {
 }
 
 dispatch minecraft:score_provider[fixed] to struct FixedScoreProvider {
-	name: #[score_holder] string,
+	name: #[command_argument=score_holder] string,
 }
 
 dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
