@@ -45,7 +45,7 @@ type TextObject = (
 		...TextNbtBase,
 	} |
 	struct {
-		storage: #[id=storage] string,
+		storage: #[id="storage"] string,
 		nbt: #[nbt_path(registry=minecraft:storage[[storage]])] string,
 		...TextNbtBase,
 	} |
@@ -66,7 +66,7 @@ struct TextBase {
 struct TextStyle {
 	color?: (TextColor | TextFormat),
 	#[since=1.16]
-	font?: #[id=font] string,
+	font?: #[id="font"] string,
 	bold?: boolean,
 	italic?: boolean,
 	underlined?: boolean,
@@ -152,7 +152,7 @@ dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 	value?: #[nbt=InventoryItem] string,
 	#[since=1.16]
 	contents?: struct {
-		id: #[id=item] string,
+		id: #[id="item"] string,
 		count?: int,
 		tag?: #[nbt=minecraft:item[[id]]] string,
 	},
@@ -167,7 +167,7 @@ dispatch minecraft:hover_event[show_entity] to struct ShowEntityHoverEvent {
 		} |
 		#[since=1.16] struct {
 			name?: Text,
-			type?: #[id=entity_type] string,
+			type?: #[id="entity_type"] string,
 			id?: #[command_argument=uuid] string,
 		} |
 	),

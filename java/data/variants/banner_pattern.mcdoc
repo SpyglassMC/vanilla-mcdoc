@@ -1,11 +1,11 @@
 #[since="1.20.5"]
 dispatch minecraft:resource[banner_pattern] to struct BannerPattern {
     biomes: (#[id(registry="worldgen/biome",tags=allowed)] string | [#[id="worldgen/biome"] string]),
-	wild_texture: #[id=texture] string,
-    tame_texture: #[id=texture] string,
-    angry_texture: #[id=texture] string,
+	wild_texture: #[id="texture"] string,
+    tame_texture: #[id="texture"] string,
+    angry_texture: #[id="texture"] string,
     /// Resolves to `assets/<namespace>/textures/entity/banner/<name>.png` & `assets/<namespace>/textures/entity/shield/<name>.png`.
-    asset_id: #[id=texture] string,
+    asset_id: #[id="texture"] string,
     /// Translation key prefix per dye color (e.g. `block.minecraft.banner.custom.pattern` resolves to `block.minecraft.banner.custom.pattern.<dye color>`).
     translation_key: string,
 }

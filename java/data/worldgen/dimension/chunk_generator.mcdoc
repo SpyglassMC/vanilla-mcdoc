@@ -25,7 +25,7 @@ struct FlatGeneratorSettings {
 
 struct FlatGeneratorLayer {
 	height: int @ 0..4096,
-	block: #[id=block] string,
+	block: #[id="block"] string,
 }
 
 dispatch minecraft:chunk_generator[noise] to struct Noise {

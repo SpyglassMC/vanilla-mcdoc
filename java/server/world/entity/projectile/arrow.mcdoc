@@ -28,7 +28,7 @@ struct ArrowBase {
 	/// Number of entities it can pass through.
 	PierceLevel: byte,
 	/// Sound event to play when it hits something.
-	SoundEvent: #[id=sound_event] string,
+	SoundEvent: #[id="sound_event"] string,
 	/// Upper bits of the owner's UUID.
 	#[until=1.16]
 	OwnerUUIDMost: long,
@@ -59,7 +59,7 @@ dispatch minecraft:entity[arrow] to struct Arrow {
 	custom_potion_effects: [LegacyPotionEffect],
 	/// Name of the default potion effect.
 	#[until="1.20.3"]
-	Potion: #[id=mob_effect] string,
+	Potion: #[id="mob_effect"] string,
 }
 
 dispatch minecraft:entity[spectral_arrow] to struct SpectralArrow {

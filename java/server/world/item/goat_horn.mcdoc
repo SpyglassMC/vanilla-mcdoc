@@ -1,9 +1,9 @@
-dispatch minecraft:data_component[instrument] to #[id=instrument] string
+dispatch minecraft:data_component[instrument] to #[id="instrument"] string
 
 #[since=1.19]
 dispatch minecraft:item[goat_horn] to struct GoatHorn {
 	#[since="1.20.5"]
 	[#[id] "instrument"]?: minecraft:data_component[instrument],
 	#[until="1.20.5"]
-	instrument: #[id=instrument] string,
+	instrument: #[id="instrument"] string,
 }

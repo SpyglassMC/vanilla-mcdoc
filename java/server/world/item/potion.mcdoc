@@ -2,7 +2,7 @@ use ::java::server::util::LegacyPotionEffect
 use ::java::server::util::PotionComponent
 
 struct PotionContents {
-	potion?: #[id=potion] string,
+	potion?: #[id="potion"] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	custom_color?: #[color=composite_int] int,
 	custom_effects?: [PotionComponent],
@@ -10,7 +10,7 @@ struct PotionContents {
 
 dispatch minecraft:data_component[potion_contents] to (
 	#[canonical] PotionContents |
-	#[id=potion] string |
+	#[id="potion"] string |
 )
 
 /// An item that has a potion effect
@@ -22,7 +22,7 @@ dispatch minecraft:item[potion, splash_potion, lingering_potion] to struct Effec
 	CustomPotionEffects: [LegacyPotionEffect],
 	/// Default potion effect
 	#[until="1.20.5"]
-	Potion: #[id=potion] string,
+	Potion: #[id="potion"] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	#[until="1.20.5"]
 	CustomPotionColor: #[color=composite_int] int,

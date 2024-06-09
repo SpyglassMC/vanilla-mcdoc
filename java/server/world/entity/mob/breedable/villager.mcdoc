@@ -51,8 +51,8 @@ dispatch minecraft:entity[villager] to struct Villager {
 struct VillagerData {
 	/// Used for trading and badge rendering.
 	level: int,
-	profession: #[id=villager_profession] string,
-	type: #[id=villager_type] string,
+	profession: #[id="villager_profession"] string,
+	type: #[id="villager_type"] string,
 }
 
 struct Gossip {

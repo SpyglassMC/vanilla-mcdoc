@@ -12,8 +12,8 @@ use ::java::server::util::text::Text
 use ::java::server::util::firework::FireworkShape
 
 dispatch minecraft:loot_function_type[apply_bonus] to struct ApplyBonus {
-	enchantment: #[id=enchantment] string,
-	formula: #[id=apply_bonus_formula] string,
+	enchantment: #[id="enchantment"] string,
+	formula: #[id="apply_bonus_formula"] string,
 	parameters: minecraft:apply_bonus_formula[[formula]],
 }
 
@@ -68,9 +68,9 @@ dispatch minecraft:loot_function_type[copy_custom_data] to CopyNbt
 dispatch minecraft:loot_function_type[copy_components] to struct CopyComponents {
 	source: "block_entity",
 	/// If omitted, all components present are included
-	include?: [#[id=data_component_type] string],
+	include?: [#[id="data_component_type"] string],
 	/// Defaults to none.
-	exclude?: [#[id=data_component_type] string],
+	exclude?: [#[id="data_component_type"] string],
 }
 
 enum(string) CopyNameSource {
@@ -92,14 +92,14 @@ enum(string) CopyNbtStrategy {
 
 /// Copies state properties from dropped block to the item's `BlockStateTag` tag. Fails if the block doesn't match.
 dispatch minecraft:loot_function_type[copy_state] to struct CopyState {
-	block: #[id=block] string,
+	block: #[id="block"] string,
 	properties: [mcdoc:block_states[[block]][key]], // TODO
 }
 
 /// Enchants the item with one randomly-selected enchantment. The level of the enchantment, if applicable, is random.
 dispatch minecraft:loot_function_type[enchant_randomly] to struct EnchantRandomly {
 	/// If omitted, all enchantments applicable to the item are possible
-	enchantments?: [#[id=enchantment] string],
+	enchantments?: [#[id="enchantment"] string],
 }
 
 /// Enchants the item, with the specified [enchantment level](https://minecraft.gamepedia.com/Enchantment_mechanics#How_Enchantments_Are_Chosen)`.
@@ -224,7 +224,7 @@ dispatch minecraft:loot_function_type[set_banner_pattern] to struct SetBannerPat
 struct BannerPatternEntry {
 	pattern: (
 		#[until="1.20.4"] BannerPattern |
-		#[since="1.20.4"] #[id=banner_pattern] string |
+		#[since="1.20.4"] #[id="banner_pattern"] string |
 	),
 	color: ColorString,
 }
@@ -282,7 +282,7 @@ type ContainerComponents = (
 /// For a container block item's contents.
 dispatch minecraft:loot_function_type[set_contents] to struct SetContents {
 	#[since=1.18] #[until="1.20.5"]
-	type: #[id=block_entity_type] string,
+	type: #[id="block_entity_type"] string,
 	/// Describes target component to be filled with items.
 	#[since="1.20.5"]
 	component: ContainerComponents,
@@ -298,7 +298,7 @@ dispatch minecraft:loot_function_type[modify_contents] to struct ModifyContents 
 
 /// Replaces item type of item stack without changing count and components
 dispatch minecraft:loot_function_type[set_item] to struct SetItem {
-	item: #[id=item] string,
+	item: #[id="item"] string,
 }
 
 /// Applies sub-function(s) only to items that match item predicate
@@ -334,7 +334,7 @@ dispatch minecraft:loot_function_type[set_damage] to (struct {
 #[since=1.17]
 dispatch minecraft:loot_function_type[set_enchantments] to struct SetEnchantments {
 	enchantments: struct {
-		[#[id=enchantment] string]: NumberProvider<int @ 1..>,
+		[#[id="enchantment"] string]: NumberProvider<int @ 1..>,
 	},
 	add?: boolean,
 }
@@ -347,8 +347,8 @@ dispatch minecraft:loot_function_type[set_instrument] to struct SetInstrument {
 /// For a container block item's loot table.
 dispatch minecraft:loot_function_type[set_loot_table] to struct SetLootTable {
 	#[since=1.18]
-	type: #[id=block_entity_type] string,
-	name: #[id=loot_table] string,
+	type: #[id="block_entity_type"] string,
+	name: #[id="loot_table"] string,
 	/// Defaults to a random seed.
 	seed?: int,
 }
@@ -380,7 +380,7 @@ dispatch minecraft:loot_function_type[set_nbt] to struct SetNbt {
 dispatch minecraft:loot_function_type[set_components] to struct SetComponents {
 	conditions?: [LootCondition],
 	components: struct {
-		[#[id=data_component_type] string]?: minecraft:item_component[[%key]],
+		[#[id="data_component_type"] string]?: minecraft:item_component[[%key]],
 		[#[id=(registry=data_component_type, nulled=true)] string]?: struct {},
 	},
 }
@@ -398,7 +398,7 @@ dispatch minecraft:loot_function_type[set_custom_model_data] to struct SetCustom
 
 #[since=1.18]
 dispatch minecraft:loot_function_type[set_potion] to struct SetPotion {
-	id: #[id=potion] string,
+	id: #[id="potion"] string,
 }
 
 /// Changes the `Effects` tag (used by suspicious stew).
@@ -495,7 +495,7 @@ type ListMode = (
 )
 
 struct StewEffect {
-	type: #[id=mob_effect] string,
+	type: #[id="mob_effect"] string,
 	duration: (
 		#[until=1.17] MinMaxBounds<float> |
 		#[since=1.17] NumberProvider |

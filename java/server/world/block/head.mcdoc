@@ -8,7 +8,7 @@ dispatch minecraft:block_entity[skull] to struct PlayerHead {
 	/// Name of the owner, if exists will be converted to SkullOwner.
 	ExtraType: string,
 	#[since="1.19.3"]
-	note_block_sound: #[id=sound_event] string,
+	note_block_sound: #[id="sound_event"] string,
 }
 
 dispatch minecraft:block[player_head, player_wall_head] to minecraft:block_entity[skull]

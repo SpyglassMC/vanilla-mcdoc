@@ -2,7 +2,7 @@ use ::java::server::world::entity::AnyEntity
 
 dispatch minecraft:data_component[entity_data] to struct EntityData {
 	#[since="1.20.5"]
-	id: #[id=entity_type] string,
+	id: #[id="entity_type"] string,
 	...AnyEntity,
 	...minecraft:entity[[id]],
 }

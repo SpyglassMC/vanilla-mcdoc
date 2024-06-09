@@ -37,7 +37,7 @@ dispatch minecraft:block_entity[trial_spawner] to struct TrialSpawner {
 		...NormalConfig,
 		/// Loot tables to use when summoning ominous item spawners.
 		loot_tables_to_eject: [struct {
-			data: #[id=loot_table] string,
+			data: #[id="loot_table"] string,
 			weight: int,
 		}],
 	},
@@ -82,7 +82,7 @@ struct SpawnPotential {
 
 struct SpawnEquipment {
 	/// Generates the equipment.
-	loot_table: #[id=loot_table] string,
+	loot_table: #[id="loot_table"] string,
 	/// Chance the mob will drop the equipment on death.
 	slot_drop_chances: (
 		float @ 0..1 |

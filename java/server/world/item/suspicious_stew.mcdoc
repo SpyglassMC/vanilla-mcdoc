@@ -1,7 +1,7 @@
 use ::java::server::util::EffectId
 
 struct SuspiciousStewEffect {
-	id: #[id=mob_effect] string,
+	id: #[id="mob_effect"] string,
 	/// Duration of the effect in ticks. Defaults to `160`; 8 seconds.
 	duration?: int @ 1..,
 }

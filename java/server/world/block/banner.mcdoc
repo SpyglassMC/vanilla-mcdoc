@@ -37,5 +37,5 @@ struct LegacyPattern {
 }
 struct Pattern {
 	color: ColorString,
-	pattern: #[id=banner_pattern] string,
+	pattern: #[id="banner_pattern"] string,
 }

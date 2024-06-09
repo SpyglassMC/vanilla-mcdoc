@@ -19,7 +19,7 @@ struct LegacyPotionEffect {
 }
 
 struct PotionComponent {
-	id: #[id=mob_effect] string,
+	id: #[id="mob_effect"] string,
 	/// Level I having value 0. Defaults to 0.
 	amplifier?: byte,
 	// TODO: Consider adding a time utility

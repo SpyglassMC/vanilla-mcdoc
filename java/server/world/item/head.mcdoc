@@ -18,7 +18,7 @@ struct ProfileProperty {
 	signature?: string,
 }
 
-dispatch minecraft:data_component[note_block_sound] to (#[id=sound_event] string)
+dispatch minecraft:data_component[note_block_sound] to (#[id="sound_event"] string)
 
 dispatch minecraft:item[player_head] to struct PlayerHead {
 	#[since="1.20.5"]

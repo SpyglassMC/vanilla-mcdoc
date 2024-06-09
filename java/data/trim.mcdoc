@@ -10,7 +10,7 @@ dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 	description: Text,
 
 	/// The item used in the smithing table for this material.
-	ingredient: #[id=item] string,
+	ingredient: #[id="item"] string,
 
 	/// Model override predicate float.
 	item_model_index: [float @ 0..1],
@@ -24,11 +24,11 @@ dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 #[since="1.19.4"]
 struct TrimPattern {
 	/// A resource location (In the resource pack) of the pattern that will be used as an overlay on the armor.
-	asset_id: #[id=texture] string, // TODO
+	asset_id: #[id="texture"] string, // TODO
 
 	/// A JSON text component name, allowing color, translations, etc. Displayed in the result item tooltip.
 	description: Text,
 
 	/// The item used in the smithing table for this pattern.
-	template_item: #[id=item] string,
+	template_item: #[id="item"] string,
 }

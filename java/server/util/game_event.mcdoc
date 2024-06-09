@@ -11,7 +11,7 @@ struct VibrationListener {
 }
 
 struct ReceivingEvent {
-	game_event: #[id=game_event] string,
+	game_event: #[id="game_event"] string,
 	/// Distance in blocks to the source
 	distance: float @ 0..,
 	/// Origin of the event
@@ -23,7 +23,7 @@ struct ReceivingEvent {
 }
 
 struct PositionSource {
-	type: #[id=position_source_type] string,
+	type: #[id="position_source_type"] string,
 	...minecraft:position_source[[type]],
 }
 

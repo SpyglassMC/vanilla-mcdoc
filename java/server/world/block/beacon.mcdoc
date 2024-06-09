@@ -15,9 +15,9 @@ dispatch minecraft:block_entity[beacon] to struct Beacon {
 	#[until="1.20.2"]
 	Secondary: (NoneId | EffectId),
 	#[since="1.20.2"]
-	primary_effect: #[id=mob_effect] string,
+	primary_effect: #[id="mob_effect"] string,
 	#[since="1.20.2"]
-	secondary_effect: #[id=mob_effect] string,
+	secondary_effect: #[id="mob_effect"] string,
 }
 
 dispatch minecraft:block[beacon] to minecraft:block_entity[beacon]

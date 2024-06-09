@@ -1,5 +1,5 @@
 dispatch minecraft:resource[recipe] to struct Recipe {
-	type: #[id=recipe_serializer] string,
+	type: #[id="recipe_serializer"] string,
 	...minecraft:recipe_serializer[[type]],
 }
 
@@ -31,7 +31,7 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 	/// Identifier for the category this goes in the recipe book.
 	category?: CookingBookCategory,
 	ingredient: Ingredient,
-	result: #[id=item] string,
+	result: #[id="item"] string,
 	experience?: float,
 	cookingtime?: int,
 }
@@ -39,7 +39,7 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
 	group?: string,
 	ingredient: Ingredient,
-	result: #[id=item] string,
+	result: #[id="item"] string,
 	count: int,
 }
 
@@ -70,12 +70,12 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 	template: Ingredient,
 	/// Resulting transformed item.
 	result: struct {
-		item: #[id=item] string, // Fun
+		item: #[id="item"] string, // Fun
 	},
 }
 
 struct ItemResult {
-	item: #[id=item] string,
+	item: #[id="item"] string,
 	count?: int
 }
 
@@ -86,7 +86,7 @@ type Ingredient = (
 
 type IngredientValue = (
 	struct {
-		item: #[id=item] string,
+		item: #[id="item"] string,
 	} |
 	struct {
 		tag: #[id(registry=item,tags=implicit)] string,

@@ -45,7 +45,7 @@ dispatch minecraft:trigger[any_block_use] to struct AnyBlockUse {
 
 dispatch minecraft:trigger[bee_nest_destroyed] to struct BeeNestDestroyed {
 	...TriggerBase,
-	block?: #[id=block] string,
+	block?: #[id="block"] string,
 	/// Number of bees that were inside the bee nest/beehive before it was broken.
 	num_bees_inside?: int,
 	/// Item used to break the block.
@@ -62,13 +62,13 @@ dispatch minecraft:trigger[bred_animals] to struct BredAnimals {
 /// Player took any item out of a brewing stand.
 dispatch minecraft:trigger[brewed_potion] to struct BrewedPotion {
 	...TriggerBase,
-	potion?: #[id=potion] string,
+	potion?: #[id="potion"] string,
 }
 
 dispatch minecraft:trigger[changed_dimension] to struct ChangedDimension {
 	...TriggerBase,
-	from?: #[id=dimension] string,
-	to?: #[id=dimension] string,
+	from?: #[id="dimension"] string,
+	to?: #[id="dimension"] string,
 }
 
 /// Player successfully used the Channeling enchantment on an entity.
@@ -93,7 +93,7 @@ dispatch minecraft:trigger[consume_item] to struct ConsumeItem {
 #[since="1.20.5"]
 dispatch minecraft:trigger[crafter_recipe_crafted] to struct CrafterRecipeCrafted {
 	...TriggerBase,
-	recipe_id: #[id=recipe] string,
+	recipe_id: #[id="recipe"] string,
 	ingredients?: [ItemPredicate] @ 1..9,
 }
 
@@ -112,7 +112,7 @@ dispatch minecraft:trigger[default_block_use] to struct DefaultBlockUse {
 dispatch minecraft:trigger[effects_changed] to struct EffectsChanged {
 	...TriggerBase,
 	effects?: struct {
-		[#[id=mob_effect] string]: MobEffectPredicate,
+		[#[id="mob_effect"] string]: MobEffectPredicate,
 	},
 }
 
@@ -127,7 +127,7 @@ dispatch minecraft:trigger[enchanted_item] to struct EnchantedItem {
 /// Checked every tick and will trigger for each successful match (up to 8 times, the maximum amount of blocks a player can stand in).
 dispatch minecraft:trigger[enter_block] to struct EnterBlock {
 	...TriggerBase,
-	block?: #[id=block] string,
+	block?: #[id="block"] string,
 	state?: mcdoc:block_states[[block]],
 }
 
@@ -261,7 +261,7 @@ dispatch minecraft:trigger[nether_travel] to struct NetherTravel {
 
 dispatch minecraft:trigger[placed_block] to struct PlacedBlock {
 	...TriggerBase,
-	block?: #[id=block] string,
+	block?: #[id="block"] string,
 	state?: mcdoc:block_states[[block]],
 	/// Item that was used to place the block before the item was consumed.
 	item?: ItemPredicate,
@@ -273,7 +273,7 @@ dispatch minecraft:trigger[placed_block] to struct PlacedBlock {
 #[since=1.16]
 dispatch minecraft:trigger[player_generates_container_loot] to struct PlayerGeneratesContainerLoot {
 	...TriggerBase,
-	loot_table: #[id=loot_table] string,
+	loot_table: #[id="loot_table"] string,
 }
 
 dispatch minecraft:trigger[player_hurt_entity] to struct PlayerHurtEntity {
@@ -300,7 +300,7 @@ dispatch minecraft:trigger[player_killed_entity] to struct PlayerKilledEntity {
 /// Player unlocked a recipe by either crafting it, receiving it in an advancement reward, using a knowledge book, or receiving it through `/recipe`.
 dispatch minecraft:trigger[recipe_unlocked] to struct RecipeUnlocked {
 	...TriggerBase,
-	recipe: #[id=recipe] string,
+	recipe: #[id="recipe"] string,
 }
 
 #[since=1.18]
@@ -314,7 +314,7 @@ dispatch minecraft:trigger[ride_entity_in_lava] to struct RideEntityInLava {
 dispatch minecraft:trigger[safely_harvest_honey] to struct SafelyHarvestHoney {
 	...TriggerBase,
 	block?: struct {
-		block?: #[id=block] string,
+		block?: #[id="block"] string,
 		tag?: #[id(registry=block,tags=implicit)] string,
 	},
 	item?: ItemPredicate,
@@ -330,7 +330,7 @@ dispatch minecraft:trigger[slept_in_bed] to Location
 
 dispatch minecraft:trigger[slide_down_block] to struct SlideDownBlock {
 	...TriggerBase,
-	block?: #[id=block] string,
+	block?: #[id="block"] string,
 }
 
 /// Activated when the last required block is placed for summoning

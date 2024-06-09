@@ -3,7 +3,7 @@ use ::java::server::util::SlottedItem
 dispatch minecraft:data_component[container] to ([SlottedItem<byte @ 0..255>] @ 0..256)
 
 dispatch minecraft:data_component[container_loot] to struct ContainerLoot {
-	loot_table: #[id=loot_table] string,
+	loot_table: #[id="loot_table"] string,
 	seed: long,
 }
 

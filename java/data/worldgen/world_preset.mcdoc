@@ -8,6 +8,6 @@ dispatch minecraft:resource["worldgen/world_preset"] to struct WorldPreset {
 }
 
 dispatch minecraft:resource["worldgen/flat_level_generator_preset"] to struct FlatGeneratorPreset {
-	display: #[id=item] string,
+	display: #[id="item"] string,
 	settings: FlatGeneratorSettings,
 }

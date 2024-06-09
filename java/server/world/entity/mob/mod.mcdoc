@@ -53,7 +53,7 @@ struct MobBase {
 	HandDropChances: [float] @ 2,
 	/// Chance to drop the items it is wearing, in [feet, legs, body, head].
 	ArmorDropChances: [float] @ 4,
-	DeathLootTable: #[id=loot_table] string,
+	DeathLootTable: #[id="loot_table"] string,
 	/// Seed for generating the death loot table.
 	DeathLootTableSeed: long,
 	/// Whether it can pick up loot.
@@ -83,7 +83,7 @@ struct NeutralMob {
 struct Attribute {
 	Name: (
 		#[until=1.16] (AttributeName | string) |
-		#[since=1.16] #[id=attribute] string |
+		#[since=1.16] #[id="attribute"] string |
 	),
 	Base: double,
 	/// Modifiers that act on it.
@@ -116,7 +116,7 @@ struct Brain {
 }
 
 // struct Memories {
-// 	[#[id=memory_module_type] string]: minecraft:memory_module[[%key]],
+// 	[#[id="memory_module_type"] string]: minecraft:memory_module[[%key]],
 // }
 
 struct UUIDLeash {

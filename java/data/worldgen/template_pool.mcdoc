@@ -45,7 +45,7 @@ dispatch minecraft:template_pool_element[
 	single_pool_element,
 ] to struct SingleElement {
 	...ElementBase,
-	location: #[id=structure] string,
+	location: #[id="structure"] string,
 	processors: ProcessorListRef,
 }
 

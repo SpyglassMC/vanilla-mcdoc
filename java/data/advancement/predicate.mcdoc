@@ -4,13 +4,13 @@ use super::super::util::MinMaxBounds
 
 struct ItemPredicate {
 	#[until="1.20.5"]
-	item?: #[id=item] string,
+	item?: #[id="item"] string,
 	#[until="1.20.5"]
 	tag?: #[id(registry=item,tags=implicit)] string,
 	#[until="1.20.5"]
 	durability?: MinMaxBounds<int>,
 	#[until="1.20.5"]
-	potion?: #[id=potion] string,
+	potion?: #[id="potion"] string,
 	#[until="1.20.5"]
 	enchantments?: [EnchantmentPredicate],
 	/// Checks the `StoredEnchantments` nbt tag (used by enchanted books).
@@ -19,7 +19,7 @@ struct ItemPredicate {
 	#[until="1.20.5"]
 	nbt?: #[nbt(registry=minecraft:item[[item]])] string, // TODO: This needs hardcoding to include DefaultItemTags
 	#[since="1.20.5"]
-	items?: (#[id(registry=item,tags=allowed)] string | [#[id=item] string]),
+	items?: (#[id(registry=item,tags=allowed)] string | [#[id="item"] string]),
 	#[since="1.20.5"]
 	count?: MinMaxBounds<int>,
 	#[since="1.20.5"]
@@ -31,7 +31,7 @@ struct ItemPredicate {
 	predicates?: struct { // This is made like this because of the `items` hack to get good typing for custom data.
 		[#[id] "enchantments"]?: [EnchantmentPredicate],
 		[#[id] "stored_enchantments"]?: [EnchantmentPredicate],
-		[#[id] "potions"]?: (#[id(registry=potion,tags=allowed)] string | [#[id=potion] string]),
+		[#[id] "potions"]?: (#[id(registry=potion,tags=allowed)] string | [#[id="potion"] string]),
 		[#[id] "custom_data"]?: #[nbt(registry=mcdoc:custom_item_data[[items]])] string,
 		[#[id] "damage"]?: struct {
 			damage?: MinMaxBounds<int>,
@@ -41,28 +41,28 @@ struct ItemPredicate {
 }
 
 struct EnchantmentPredicate {
-	enchantment?: #[id=enchantment] string,
+	enchantment?: #[id="enchantment"] string,
 	levels?: MinMaxBounds<int>,
 }
 
 struct BlockPredicate {
 	#[until="1.20.5"]
-	block?: #[id=block] string,
+	block?: #[id="block"] string,
 	#[until="1.20.5"]
 	tag?: #[id(registry=block,tags=implicit)] string,
 	#[since="1.20.5"]
-	blocks?: (#[id(registry=block,tags=allowed)] string | [#[id=block] string]),
+	blocks?: (#[id(registry=block,tags=allowed)] string | [#[id="block"] string]),
 	state?: mcdoc:block_states[[blocks]],
 	nbt?: #[nbt(registry=minecraft:block[[blocks]])] string,
 }
 
 struct FluidPredicate {
 	#[until="1.20.5"]
-	fluid?: #[id=fluid] string,
+	fluid?: #[id="fluid"] string,
 	#[until="1.20.5"]
 	tag?: #[id(registry=fluid,tags=implicit)] string,
 	#[since="1.20.5"]
-	fluids?: (#[id(registry=fluid,tags=allowed)] string | [#[id=fluid] string]),
+	fluids?: (#[id(registry=fluid,tags=allowed)] string | [#[id="fluid"] string]),
 	state?: struct {
 		[string]: (MinMaxBounds<int> | boolean | string), // TODO
 	},
@@ -76,7 +76,7 @@ struct LocationPredicate {
 	},
 	#[until="1.20.5"]
 	biome?: (
-		#[until=1.16] #[id=biome] string |
+		#[until=1.16] #[id="biome"] string |
 		#[since=1.16] #[id="worldgen/biome"] string |
 	),
 	#[since="1.20.5"]
@@ -90,7 +90,7 @@ struct LocationPredicate {
 	structure?: #[id="worldgen/structure"] string,
 	#[since="1.20.5"]
 	structures?: (#[id=(registry="worldgen/structure",tags=allowed)] string | [#[id="worldgen/structure"] string]),
-	dimension?: #[id=dimension] string,
+	dimension?: #[id="dimension"] string,
 	/// Calculated using: `max(sky-darkening, block)`.
 	light?: struct {
 		light?: MinMaxBounds<int @ 0..15>,
@@ -105,7 +105,7 @@ struct LocationPredicate {
 struct EntityPredicate {
 	type?: (
 		#[id(registry=entity_type,tags=allowed)] string |
-		#[since="1.20.5"] [#[id=entity_type] string] |
+		#[since="1.20.5"] [#[id="entity_type"] string] |
 	),
 	#[since=1.19]
 	type_specific?: TypeSpecificPredicate,
@@ -136,7 +136,7 @@ struct EntityPredicate {
 	#[until=1.19]
 	catType?: string,
 	effects?: struct {
-		[#[id=mob_effect] string]: MobEffectPredicate,
+		[#[id="mob_effect"] string]: MobEffectPredicate,
 	},
 	#[since="1.20.5"]
 	slots?: struct {
@@ -167,16 +167,16 @@ enum(string) SpecificType {
 }
 
 dispatch minecraft:type_specific_predicate[cat] to struct CatPredicate {
-	variant?: (#[id(registry=cat_variant,tags=allowed)] string | [#[id=cat_variant] string]),
+	variant?: (#[id(registry=cat_variant,tags=allowed)] string | [#[id="cat_variant"] string]),
 }
 
 #[since="1.20.5"]
 dispatch minecraft:type_specific_predicate[wolf] to struct WolfPredicate {
-	variant?: (#[id(registry=wolf_variant,tags=allowed)] string | [#[id=wolf_variant] string]),
+	variant?: (#[id(registry=wolf_variant,tags=allowed)] string | [#[id="wolf_variant"] string]),
 }
 
 dispatch minecraft:type_specific_predicate[painting] to struct PaintingPredicate {
-	variant?: (#[id(registry=painting_variant,tags=allowed)] string | [#[id=painting_variant] string]),
+	variant?: (#[id(registry=painting_variant,tags=allowed)] string | [#[id="painting_variant"] string]),
 }
 
 dispatch minecraft:type_specific_predicate[fishing_hook] to struct FishingHookPredicate {
@@ -184,7 +184,7 @@ dispatch minecraft:type_specific_predicate[fishing_hook] to struct FishingHookPr
 }
 
 dispatch minecraft:type_specific_predicate[frog] to struct FrogPredicate {
-	variant?: (#[id(registry=frog_variant,tags=allowed)] string | [#[id=frog_variant] string]),
+	variant?: (#[id(registry=frog_variant,tags=allowed)] string | [#[id="frog_variant"] string]),
 }
 
 dispatch minecraft:type_specific_predicate[lightning] to struct LightningBoltPredicate {
@@ -194,7 +194,7 @@ dispatch minecraft:type_specific_predicate[lightning] to struct LightningBoltPre
 
 dispatch minecraft:type_specific_predicate[player] to struct PlayerPredicate {
 	advancements?: struct {
-		[#[id=advancement] string]: (boolean | struct {
+		[#[id="advancement"] string]: (boolean | struct {
 			[string]: boolean,
 		}),
 	},
@@ -202,7 +202,7 @@ dispatch minecraft:type_specific_predicate[player] to struct PlayerPredicate {
 	/// Experience/XP level.
 	level?: MinMaxBounds<int>,
 	recipes?: struct {
-		[#[id=recipe] string]: boolean,
+		[#[id="recipe"] string]: boolean,
 	},
 	stats?: [StatisticPredicate],
 	looking_at?: EntityPredicate,
@@ -233,20 +233,20 @@ enum(string) GameMode {
 }
 
 struct StatisticPredicate {
-	type: #[id=stat_type] string,
+	type: #[id="stat_type"] string,
 	stat: minecraft:statistic_type[[type]],
 	value: MinMaxBounds<int>,
 }
 
 dispatch minecraft:statistic_type[%unknown] to string
 
-dispatch minecraft:statistic_type[mined] to #[id=block] string
+dispatch minecraft:statistic_type[mined] to #[id="block"] string
 
-dispatch minecraft:statistic_type[crafted,used,broken,picked_up,dropped] to #[id=item] string
+dispatch minecraft:statistic_type[crafted,used,broken,picked_up,dropped] to #[id="item"] string
 
-dispatch minecraft:statistic_type[killed,killed_by] to #[id=entity_type] string
+dispatch minecraft:statistic_type[killed,killed_by] to #[id="entity_type"] string
 
-dispatch minecraft:statistic_type[custom] to #[id=custom_stat] string
+dispatch minecraft:statistic_type[custom] to #[id="custom_stat"] string
 
 struct MobEffectPredicate {
 	amplifier?: MinMaxBounds<int>,

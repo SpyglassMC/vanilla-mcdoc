@@ -11,5 +11,5 @@ dispatch minecraft:entity[frog] to struct Frog {
 			[#[id] "is_tempted"]: FlagMemory,
 		},
 	},
-	variant: #[id=frog_variant] string,
+	variant: #[id="frog_variant"] string,
 }

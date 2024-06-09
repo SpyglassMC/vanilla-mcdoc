@@ -17,7 +17,7 @@ dispatch minecraft:entity[cat] to struct Cat {
 	/// Collar color, present for stray cats.
 	CollarColor: ColorByte,
 	#[since=1.19]
-	variant: #[id=cat_variant] string,
+	variant: #[id="cat_variant"] string,
 }
 
 enum(int) CatType {
@@ -58,5 +58,5 @@ dispatch minecraft:entity[wolf] to struct Wolf {
 	/// Collar color, present for wild wolfs.
 	CollarColor: ColorByte,
 	#[since="1.20.5"]
-	variant: #[id=wolf_variant] string,
+	variant: #[id="wolf_variant"] string,
 }

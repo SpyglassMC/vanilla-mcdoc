@@ -42,7 +42,7 @@ type UniformInt<Base, Spread> = (
 type IntProvider<T> = (
 	T |
 	struct {
-		type: #[id=int_provider_type] string,
+		type: #[id="int_provider_type"] string,
 		#[until="1.20.5"]
 		value: minecraft:int_provider[[type]]<T>,
 		#[since="1.20.5"]
@@ -71,7 +71,7 @@ dispatch minecraft:int_provider[clamped] to ClampedIntProvider
 type FloatProvider<T> = (
 	T |
 	struct {
-		type: #[id=float_provider_type] string,
+		type: #[id="float_provider_type"] string,
 		value: minecraft:float_provider[[type]]<T>,
 	} |
 )
@@ -115,7 +115,7 @@ type VerticalAnchor = (
 )
 
 struct HeightProvider {
-	type?: #[id=height_provider_type] string,
+	type?: #[id="height_provider_type"] string,
 	...minecraft:height_provider[[type]],
 }
 

@@ -6,11 +6,11 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 	display?: struct {
 		icon: struct {
 			#[until="1.20.5"]
-			item: #[id=item] string,
+			item: #[id="item"] string,
 			#[until="1.20.5"]
 			nbt?: #[nbt(registry=minecraft:item[[item]])] string, // TODO: This needs hardcoding to include DefaultItemTags
 			#[since="1.20.5"]
-			id: #[id=item] string,
+			id: #[id="item"] string,
 			#[since="1.20.5"]
 			components?: struct {
 				...DefaultItemComponents,
@@ -20,7 +20,7 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 		title: Text,
 		description: Text,
 		/// Used for the advancement tab (root advancement only).
-		background?: #[id=texture] string,
+		background?: #[id="texture"] string,
 		/// Controls the advancement tile frame. Defaults to `task`.
 		frame?: enum(string) {
 			/// Normal border.
@@ -42,14 +42,14 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 	},
 	/// If this field is absent, this advancement is a root advancement.
 	/// Circular references cause a loading failure.
-	parent?: #[id=advancement] string,
+	parent?: #[id="advancement"] string,
 	/// If `requirements` is not defined, all defined criteria will be required.
 	criteria: struct {
 		[string]: struct {
 			/// Many triggers can occur multiple times, however, the reward will only be provided multiple times if the advancement is first revoked, which is often done within the function reward.
 			trigger: (
 				#[until="1.20.3"] #[id] Trigger |
-				#[since="1.20.3"] #[id=trigger_type] string | 
+				#[since="1.20.3"] #[id="trigger_type"] string | 
 			),
 			conditions?: minecraft:trigger[[trigger]],
 		},
@@ -62,11 +62,11 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 	/// Provided to the player when this advancement is obtained.
 	rewards?: struct {
 		/// Function to run as the player (not at). Function group tags are not allowed.
-		function?: #[id=function] string,
+		function?: #[id="function"] string,
 		/// Loot tables to give.
-		loot?: [#[id=loot_table] string],
+		loot?: [#[id="loot_table"] string],
 		/// Recipes to unlock.
-		recipes?: [#[id=recipe] string],
+		recipes?: [#[id="recipe"] string],
 		/// XP to add.
 		experience?: int,
 	},

@@ -16,7 +16,7 @@ dispatch minecraft:block_entity[vault] to struct Vault {
         /// Item required to open the vault.
         key_item: InventoryItem,
         /// Defaults to "minecraft:chests/trial_chambers/reward".
-        loot_table?: #[id=loot_table] string,
+        loot_table?: #[id="loot_table"] string,
     },
     /// When a player is in range of the vault, the same display item will be shown to all players.
     /// This is also used for the items that are being ejected from the vault.

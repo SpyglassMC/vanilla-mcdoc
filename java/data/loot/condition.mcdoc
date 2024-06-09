@@ -12,7 +12,7 @@ dispatch minecraft:loot_condition_type[alternative] to struct Alternative {
 }
 
 dispatch minecraft:loot_condition_type[block_state_property] to struct BlockStateProperty {
-	block: #[id=block] string,
+	block: #[id="block"] string,
 	properties: struct {
 		[string]: string, // TODO
 	},
@@ -67,11 +67,11 @@ dispatch minecraft:loot_condition_type[random_chance_with_looting] to struct Ran
 /// Whether another predicate passes.
 dispatch minecraft:loot_condition_type[reference] to struct Reference {
 	/// A cyclic reference causes a parsing failure.
-	name: #[id=predicate] string,
+	name: #[id="predicate"] string,
 }
 
 dispatch minecraft:loot_condition_type[table_bonus] to struct TableBonus {
-	enchantment: #[id=enchantment] string,
+	enchantment: #[id="enchantment"] string,
 	/// Probabilities for each enchantment level
 	chances: [float @ 0..1],
 }

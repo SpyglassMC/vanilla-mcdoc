@@ -2,7 +2,7 @@ use super::block_state::BlockState
 use super::inventory::InventoryItem
 
 struct Particle {
-	type: #[id=particle_type] string,
+	type: #[id="particle_type"] string,
 	#[until="1.20.5"]
 	value: minecraft:particle[[type]],
 	#[since="1.20.0"]
@@ -12,7 +12,7 @@ struct Particle {
 dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to (
 	#[until="1.20.5"] BlockState |
 	#[since="1.20.5"] struct {
-		block_state: (#[id=block] string | BlockState),
+		block_state: (#[id="block"] string | BlockState),
 	} |
 )
 
@@ -110,7 +110,7 @@ dispatch minecraft:particle[entity_effect] to (
 dispatch minecraft:particle[item] to (
 	#[until="1.20.5"] InventoryItem |
 	#[since="1.20.5"] struct {
-		item: (#[id=item] string | InventoryItem),
+		item: (#[id="item"] string | InventoryItem),
 	} |
 )
 

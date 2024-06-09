@@ -11,7 +11,7 @@ dispatch minecraft:entity[player] to struct Player {
 	DataVersion: int,
 	Dimension: (
 		#[until=1.16] Dimension |
-		#[since=1.16] #[id=dimension] string |
+		#[since=1.16] #[id="dimension"] string |
 	),
 	/// Location of the player's last death.
 	#[since=1.19]
@@ -29,7 +29,7 @@ dispatch minecraft:entity[player] to struct Player {
 	SelectedItem: SlottedItem<PlayerSlot>,
 	/// Dimension of the player's respawn point.
 	#[since=1.16]
-	SpawnDimension: #[id=dimension] string,
+	SpawnDimension: #[id="dimension"] string,
 	/// X coordinate of the player's spawn point.
 	SpawnX: int,
 	/// Y coordinate of the player's spawn point.
@@ -135,9 +135,9 @@ struct RootVehicle {
 
 struct RecipeBook {
 	/// Recipes the player has acquired.
-	recipes: #[id=recipe] string,
+	recipes: #[id="recipe"] string,
 	/// Recipes that should pulse in the crafting book.
-	toBeDisplayed: #[id=recipe] string,
+	toBeDisplayed: #[id="recipe"] string,
 	/// Whether the player has filtered crafting on in the crafting table.
 	isFilteringCraftable: boolean,
 	/// Whether the player has the crafting book open in the crafting table.

@@ -34,7 +34,7 @@ struct LootPool {
 }
 
 struct LootPoolEntry {
-	type: #[id=loot_pool_entry_type] string,
+	type: #[id="loot_pool_entry_type"] string,
 	...minecraft:loot_pool_entry[[type]],
 }
 
@@ -54,10 +54,10 @@ type LootPoolEntrySingleton<Name> = struct {
 dispatch minecraft:loot_pool_entry[dynamic] to LootPoolEntrySingleton<#[id] string>
 
 /// Adds a single item.
-dispatch minecraft:loot_pool_entry[item] to LootPoolEntrySingleton<#[id=item] string>
+dispatch minecraft:loot_pool_entry[item] to LootPoolEntrySingleton<#[id="item"] string>
 
 /// Adds the contents of another loot table.
-dispatch minecraft:loot_pool_entry[loot_table] to LootPoolEntrySingleton<#[id=loot_table] string>
+dispatch minecraft:loot_pool_entry[loot_table] to LootPoolEntrySingleton<#[id="loot_table"] string>
 
 /// Adds the contents of an item tag.
 dispatch minecraft:loot_pool_entry[tag] to LootPoolEntrySingleton<#[id(registry=item,tags=implicit)] string>
@@ -79,7 +79,7 @@ dispatch minecraft:loot_pool_entry[sequence] to CompositePoolEntry
 struct LootFunction {
 	function: (
 		#[until=1.16] #[id] LootFunctionType |
-		#[since=1.16] #[id=loot_function_type] string |
+		#[since=1.16] #[id="loot_function_type"] string |
 	),
 	...minecraft:loot_function_type[[function]],
 	conditions?: [LootCondition],
@@ -88,7 +88,7 @@ struct LootFunction {
 struct LootCondition {
 	condition: (
 		#[until=1.16] #[id] LootConditionType |
-		#[since=1.16] #[id=loot_condition_type] string |
+		#[since=1.16] #[id="loot_condition_type"] string |
 	),
 	...minecraft:loot_condition_type[[condition]],
 }

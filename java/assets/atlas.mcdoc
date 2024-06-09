@@ -18,7 +18,7 @@ enum(string) SpriteSourceType {
 }
 
 dispatch minecraft:sprite_source[single] to struct Single {
-	resource: #[id=texture] string,
+	resource: #[id="texture"] string,
 	sprite?: #[id(registry=texture,definition=true)] string,
 }
 
@@ -38,15 +38,15 @@ struct FilterPattern {
 
 #[since="1.19.4"]
 dispatch minecraft:sprite_source[paletted_permutations] to struct PalettedPermutations {
-	textures: [#[id=texture] string],
-	palette_key: #[id=texture] string,
+	textures: [#[id="texture"] string],
+	palette_key: #[id="texture"] string,
 	permutations: struct {
-		[string]: #[id=texture] string, // TODO
+		[string]: #[id="texture"] string, // TODO
 	},
 }
 
 dispatch minecraft:sprite_source[unstitch] to struct Unstitch {
-	resource: #[id=texture] string,
+	resource: #[id="texture"] string,
 	/// If set to the resource width, regions will use pixel coordinates.
 	divisor_x?: double,
 	/// If set to the resource height, regions will use pixel coordinates.

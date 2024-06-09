@@ -38,12 +38,12 @@ dispatch minecraft:data_component[damage] to int @ 0..
 dispatch minecraft:data_component[enchantment_glint_override] to boolean
 
 struct EnchantmentLevels {
-	[#[id=enchantment] string]: int @ 0..255,
+	[#[id="enchantment"] string]: int @ 0..255,
 }
 
 struct Enchantments {
 	levels: struct {
-		[#[id=enchantment] string]: int @ 0..,
+		[#[id="enchantment"] string]: int @ 0..,
 	},
 	show_in_tooltip?: boolean,
 }
@@ -102,7 +102,7 @@ dispatch minecraft:data_component[rarity] to Rarity
 dispatch minecraft:data_component[repair_cost] to int @ 0..
 
 struct ToolRule {
-	blocks: (#[id=block] string | [#[id=block] string] | #[id(registry=block)] string),
+	blocks: (#[id="block"] string | [#[id="block"] string] | #[id(registry=block)] string),
 	/// Overrides the default mining speed.
 	speed?: float,
 	/// Overrides whether or not this tool is considered correct to mine at its most efficient speed, and to drop items if the block's loot table requires it.
@@ -120,9 +120,9 @@ dispatch minecraft:data_component[tool] to struct Tool {
 
 dispatch minecraft:data_component[trim] to struct Trim {
 	/// Used by the `trim_type` model overrides predicate via the material `item_model_index` and armor rendering for the material's `asset_name` for the `armor_trims` atlas.
-	material: #[id=trim_material] string,
+	material: #[id="trim_material"] string,
 	/// Used by armor rendering for the pattern's `asset_id`.
-	pattern: #[id=trim_pattern] string,
+	pattern: #[id="trim_pattern"] string,
 	show_in_tooltip?: boolean,
 }
 
@@ -238,7 +238,7 @@ struct DefaultItemTags {
 
 struct AnyItem {
 	/// ID of the item.
-	id: #[id=item] string,
+	id: #[id="item"] string,
 	#[since="1.20.5"]
 	components: struct {
 		...DefaultItemComponents,
@@ -254,7 +254,7 @@ struct AnyItem {
 /// An individual enchantment, with ID and level.
 struct Enchantment {
 	/// Which enchantment is being described.
-	id: #[id=enchantment] string,
+	id: #[id="enchantment"] string,
 	/// Which level the enchantment is.
 	lvl: (
 		#[until=1.17] (short @ 1.. | int @ 1..) |
@@ -265,7 +265,7 @@ struct Enchantment {
 /// A single attribute modifier.
 type AttributeModifier = (
 	#[since="1.20.5"] struct {
-		type: #[id=attribute] string,
+		type: #[id="attribute"] string,
 		/// Slot or slot type the item must be in for the modifier to take effect.
 		slot: AttributeSlot,
 		/// Used when equipping and unequipping the item to identify which modifier to add or remove from the entity.
@@ -283,7 +283,7 @@ type AttributeModifier = (
 	#[until="1.20.5"] struct {
 		AttributeName: (
 			#[until=1.16] (AttributeName | string) |
-			#[since=1.16] #[id=attribute] string |
+			#[since=1.16] #[id="attribute"] string |
 		),
 		/// Identifying name of the modifier, has no real effect.
 		Name: string,

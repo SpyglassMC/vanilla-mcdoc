@@ -48,7 +48,7 @@ dispatch minecraft:random_int_generator[constant] to struct ConstantIntGenerator
 type NumberProvider = (
 	float |
 	struct {
-		type?: #[id=loot_number_provider_type] string,
+		type?: #[id="loot_number_provider_type"] string,
 		...minecraft:number_provider[[type]],
 	} |
 )
@@ -76,7 +76,7 @@ dispatch minecraft:number_provider[score] to struct ScoreNumberProvider {
 type ScoreProvider = (
 	EntityTarget |
 	struct {
-		type: #[id=loot_score_provider_type] string,
+		type: #[id="loot_score_provider_type"] string,
 		...minecraft:score_provider[[type]],
 	} |
 )
@@ -90,14 +90,14 @@ dispatch minecraft:score_provider[fixed] to struct FixedScoreProvider {
 }
 
 dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
-	source: #[id=storage] string,
+	source: #[id="storage"] string,
 	path: string,
 }
 
 type NbtProvider = (
 	CopyNameSource |
 	struct {
-		type: #[id=loot_nbt_provider_type] string,
+		type: #[id="loot_nbt_provider_type"] string,
 		...minecraft:nbt_provider[[type]],
 	} |
 )
@@ -107,7 +107,7 @@ dispatch minecraft:nbt_provider[context] to struct ContextNbtProvider {
 }
 
 dispatch minecraft:nbt_provider[storage] to struct StorageNbtProvider {
-	source: #[id=storage] string,
+	source: #[id="storage"] string,
 }
 
 type ArmorMaterials = ("leather" | "chainmail" | "iron" | "gold" | "diamond" | "turtle" | "netherite")

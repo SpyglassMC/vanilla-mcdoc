@@ -1,5 +1,5 @@
 struct BlockEntity {
-	id: #[id=block_entity] string,
+	id: #[id="block_entity"] string,
 	x: int,
 	y: int,
 	z: int,

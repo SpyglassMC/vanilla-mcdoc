@@ -26,7 +26,7 @@ dispatch minecraft:template_processor[block_ignore] to struct BlockIgnore {
 dispatch minecraft:template_processor[block_rot] to struct BlockRot {
 	integrity: float @ 0..1,
 	rottable_blocks?: (
-		[#[id=block] string] |
+		[#[id="block"] string] |
 		#[id(registry=block,tags=allowed)] string |
 	),
 }
@@ -57,7 +57,7 @@ struct ProcessorRule {
 }
 
 struct PosRuleTest {
-	predicate_type: #[id=pos_rule_test] string,
+	predicate_type: #[id="pos_rule_test"] string,
 	...minecraft:pos_rule_test[[predicate_type]],
 }
 
@@ -80,12 +80,12 @@ enum(string) Axis {
 }
 
 struct RuleTest {
-	predicate_type: #[id=rule_test] string,
+	predicate_type: #[id="rule_test"] string,
 	...minecraft:rule_test[[predicate_type]],
 }
 
 dispatch minecraft:rule_test[block_match] to struct BlockMatch {
-	block: #[id=block] string,
+	block: #[id="block"] string,
 }
 
 dispatch minecraft:rule_test[blockstate_match] to struct BlockStateMatch {
@@ -93,7 +93,7 @@ dispatch minecraft:rule_test[blockstate_match] to struct BlockStateMatch {
 }
 
 dispatch minecraft:rule_test[random_block_match] to struct RandomBlockMatch {
-	block: #[id=block] string,
+	block: #[id="block"] string,
 	probability: float @ 0..1,
 }
 

@@ -17,7 +17,7 @@ dispatch minecraft:entity[minecart] to struct Minecart {
 dispatch minecraft:entity[chest_minecart] to struct ChestMinecart {
 	...Minecart,
 	/// Loot table that will populate this chest minecart.
-	LootTable: #[id=loot_table] string,
+	LootTable: #[id="loot_table"] string,
 	/// Seed of the loot table.
 	LootTableSeed: long,
 	/// Slots from 0 to 26.
