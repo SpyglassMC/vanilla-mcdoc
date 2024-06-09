@@ -9,10 +9,10 @@ dispatch minecraft:entity[breeze_wind_charge] to struct AcceleratingProjectileBa
 
 dispatch minecraft:entity[dragon_fireball] to struct DespawnableProjectileBase {
 	...AcceleratingProjectileBase,
-	#[until=1.16]
+	#[until="1.16"]
 	direction: [double] @ 3,
 	/// Ticks since it last moved.
-	#[until=1.16]
+	#[until="1.16"]
 	life: short,
 }
 dispatch minecraft:entity[wither_skull] to struct WitherSkull {

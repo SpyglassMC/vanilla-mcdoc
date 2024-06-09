@@ -22,8 +22,8 @@ dispatch minecraft:resource["worldgen/configured_feature"] to struct ConfiguredF
 }
 
 type FeatureRef = (
-	#[until=1.18] ConfiguredFeatureRef |
-	#[since=1.18] PlacedFeatureRef |
+	#[until="1.18"] ConfiguredFeatureRef |
+	#[since="1.18"] PlacedFeatureRef |
 )
 
 dispatch minecraft:feature_config[bamboo,seagrass] to struct ProbabilityConfig {
@@ -32,16 +32,16 @@ dispatch minecraft:feature_config[bamboo,seagrass] to struct ProbabilityConfig {
 
 dispatch minecraft:feature_config[basalt_columns] to struct ColumnsConfig {
 	reach: (
-		#[until=1.17] UniformInt<int @ 0..2, int @ 0..1> |
-		#[since=1.17] IntProvider<int @ 0..3> |
+		#[until="1.17"] UniformInt<int @ 0..2, int @ 0..1> |
+		#[since="1.17"] IntProvider<int @ 0..3> |
 	),
 	height: (
-		#[until=1.17] UniformInt<int @ 1..5, int @ 0..5> |
-		#[since=1.17] IntProvider<int @ 1..10> |
+		#[until="1.17"] UniformInt<int @ 1..5, int @ 0..5> |
+		#[since="1.17"] IntProvider<int @ 1..10> |
 	),
 }
 
-#[since=1.18]
+#[since="1.18"]
 dispatch minecraft:feature_config[block_column] to struct BlockColumnConfig {
 	direction: Direction,
 	allowed_placement: BlockPredicate,
@@ -58,7 +58,7 @@ dispatch minecraft:feature_config[block_pile] to struct BlockPileConfig {
 	state_provider: BlockStateProvider,
 }
 
-#[until=1.18]
+#[until="1.18"]
 dispatch minecraft:feature_config[decorated] to struct DecoratedConfig {
 	decorator: ConfiguredDecorator,
 	feature: FeatureRef,
@@ -68,28 +68,28 @@ dispatch minecraft:feature_config[delta_feature] to struct DeltaConfig {
 	contents: BlockState,
 	rim: BlockState,
 	size: (
-		#[until=1.17] UniformInt<int @ 0..8, int @ 0..8> |
-		#[since=1.17] IntProvider<int @ 0..16> |
+		#[until="1.17"] UniformInt<int @ 0..8, int @ 0..8> |
+		#[since="1.17"] IntProvider<int @ 0..16> |
 	),
 	rim_size: (
-		#[until=1.17] UniformInt<int @ 0..8, int @ 0..8> |
-		#[since=1.17] IntProvider<int @ 0..16> |
+		#[until="1.17"] UniformInt<int @ 0..8, int @ 0..8> |
+		#[since="1.17"] IntProvider<int @ 0..16> |
 	),
 }
 
 dispatch minecraft:feature_config[disk,ice_patch] to struct DiskConfig {
-	#[until=1.19]
+	#[until="1.19"]
 	state: BlockState,
-	#[since=1.19]
+	#[since="1.19"]
 	state_provider: RuleBasedBlockStateProvider,
 	radius: (
-		#[until=1.17] UniformInt<int @ 0..4, int @ 0..4> |
-		#[since=1.17] IntProvider<int @ 0..8> |
+		#[until="1.17"] UniformInt<int @ 0..4, int @ 0..4> |
+		#[since="1.17"] IntProvider<int @ 0..8> |
 	),
 	half_height: int @ 0..4,
-	#[until=1.19]
+	#[until="1.19"]
 	targets: [BlockState],
-	#[since=1.19]
+	#[since="1.19"]
 	target: BlockPredicate,
 }
 
@@ -125,7 +125,7 @@ struct EndSpike {
 	guarded?: boolean,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:feature_config[dripstone_cluster] to struct DripstoneClusterConfig {
 	floor_to_ceiling_search_range: int @ 1..512,
 	height: IntProvider<int @ 0..128>,
@@ -148,32 +148,32 @@ dispatch minecraft:feature_config[fill_layer] to struct FillLayerConfig {
 
 dispatch minecraft:feature_config[flower,no_bonemeal_flower,random_patch] to struct RandomPatchConfig {
 	tries?: (
-		#[until=1.17] int |
-		#[since=1.17] int @ 1.. |
+		#[until="1.17"] int |
+		#[since="1.17"] int @ 1.. |
 	),
-	#[until=1.18]
+	#[until="1.18"]
 	...struct {
 		can_replace?: boolean,
 		project?: boolean,
 		need_water?: boolean,
 		xspread?: (
-			#[until=1.17] int |
-			#[since=1.17] int @ 0.. |
+			#[until="1.17"] int |
+			#[since="1.17"] int @ 0.. |
 		),
 		yspread?: (
-			#[until=1.17] int |
-			#[since=1.17] int @ 0.. |
+			#[until="1.17"] int |
+			#[since="1.17"] int @ 0.. |
 		),
 		zspread?: (
-			#[until=1.17] int |
-			#[since=1.17] int @ 0.. |
+			#[until="1.17"] int |
+			#[since="1.17"] int @ 0.. |
 		),
 		state_provider: BlockStateProvider,
 		block_placer: BlockPlacer,
 		whitelist: [BlockState],
 		blacklist: [BlockState],
 	},
-	#[since=1.18]
+	#[since="1.18"]
 	...struct {
 		xz_spread: int @ 0..,
 		y_spread: int @ 0..,
@@ -187,11 +187,11 @@ struct BlockPlacer {
 }
 
 dispatch minecraft:block_placer[column_placer] to struct ColumnPlacer {
-	#[until=1.17]
+	#[until="1.17"]
 	min_size: int,
-	#[until=1.17]
+	#[until="1.17"]
 	extra_size: int,
-	#[since=1.17]
+	#[since="1.17"]
 	size: IntProvider<int @ 0..>,
 }
 
@@ -199,7 +199,7 @@ dispatch minecraft:feature_config[forest_rock] to struct ForestRockConfig {
 	state: BlockState,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:feature_config[fossil] to struct FossilConfig {
 	/// If more corners are exposed to air, feature placement is cancelled.
 	max_empty_corners_allowed: int @ 0..7,
@@ -209,7 +209,7 @@ dispatch minecraft:feature_config[fossil] to struct FossilConfig {
 	overlay_processors: ProcessorListRef,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:feature_config[geode] to struct GeodeConfig {
 	blocks: GeodeBlockSettings,
 	layers: GeodeLayerSettings,
@@ -260,9 +260,9 @@ struct GeodeCrackSettings {
 	crack_point_offset?: int @ 0..10,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:feature_config[glow_lichen,multiface_growth] to struct MultifaceGrowthConfig {
-	#[since=1.19]
+	#[since="1.19"]
 	block?: #[id] MultifaceBlock,
 	search_range?: int @ 1..64,
 	chance_of_spreading?: float @ 0..1,
@@ -270,8 +270,8 @@ dispatch minecraft:feature_config[glow_lichen,multiface_growth] to struct Multif
 	can_place_on_ceiling?: boolean,
 	can_place_on_wall?: boolean,
 	can_be_placed_on?: (
-		#[until=1.18] [BlockState] |
-		#[since=1.18] [#[id="block"] string] |
+		#[until="1.18"] [BlockState] |
+		#[since="1.18"] [#[id="block"] string] |
 		#[since="1.18.2"] #[id(registry=block,tags=allowed)] string |
 	),
 }
@@ -281,7 +281,7 @@ enum(string) MultifaceBlock {
 	SculkVein = "sculk_vein",
 }
 
-#[since=1.17] #[until=1.18]
+#[since="1.17"] #[until="1.18"]
 dispatch minecraft:feature_config[growing_plant] to struct GrowingPlantConfig {
 	direction: Direction,
 	allow_water: boolean,
@@ -314,15 +314,15 @@ dispatch minecraft:feature_config[iceberg] to struct IcebergConfig {
 }
 
 dispatch minecraft:feature_config[lake] to struct LakeConfig {
-	#[until=1.18]
+	#[until="1.18"]
 	state: BlockState,
-	#[since=1.18]
+	#[since="1.18"]
 	fluid: BlockState,
-	#[since=1.18]
+	#[since="1.18"]
 	barrier: BlockState,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:feature_config[large_dripstone] to struct LargeDripstoneConfig {
 	floor_to_ceiling_search_range?: int @ 1..512,
 	column_radius: IntProvider<int @ 0..60>,
@@ -345,19 +345,19 @@ dispatch minecraft:feature_config[netherrack_replace_blobs] to struct Netherrack
 	state: BlockState,
 	target: BlockState,
 	radius: (
-		#[until=1.17] UniformInt<int, int @ 0..> |
-		#[since=1.17] IntProvider<int @ 0..12> |
+		#[until="1.17"] UniformInt<int, int @ 0..> |
+		#[since="1.17"] IntProvider<int @ 0..12> |
 	),
 }
 
 dispatch minecraft:feature_config[no_surface_ore,ore,scattered_ore] to struct OreConfig {
-	#[until=1.17]
+	#[until="1.17"]
 	...TargetBlock,
-	#[since=1.17]
+	#[since="1.17"]
 	targets: [TargetBlock],
 	size: int @ 0..64,
 	/// Chance that feature placement will be discarded if the ore is exposed to air blocks.
-	#[since=1.17]
+	#[since="1.17"]
 	discard_chance_on_air_exposure: float @ 0..1,
 }
 
@@ -386,12 +386,12 @@ dispatch minecraft:feature_config[random_selector] to struct RandomSelector {
 	default: FeatureRef,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:feature_config[replace_single_block] to struct ReplaceSingleBlockConfig {
 	targets: [TargetBlock],
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:feature_config[root_system] to struct RootSystemConfig {
 	required_vertical_space_for_tree: int @ 1..64,
 	root_radius: int @ 1..64,
@@ -408,12 +408,12 @@ dispatch minecraft:feature_config[root_system] to struct RootSystemConfig {
 	),
 	root_state_provider: BlockStateProvider,
 	hanging_root_state_provider: BlockStateProvider,
-	#[since=1.18]
+	#[since="1.18"]
 	allowed_tree_position: BlockPredicate,
 	feature: FeatureRef
 }
 
-#[since=1.19]
+#[since="1.19"]
 dispatch minecraft:feature_config[sculk_patch] to struct SculkPatchConfig {
 	charge_count: int @ 1..32,
 	amount_per_charge: int @ 1..500,
@@ -426,23 +426,23 @@ dispatch minecraft:feature_config[sculk_patch] to struct SculkPatchConfig {
 
 dispatch minecraft:feature_config[sea_pickle] to struct SeaPickleConfig {
 	count: (
-		#[until=1.17] UniformInt<int @ -10..128, int @ 0..128> |
-		#[since=1.17] IntProvider<int @ 0..256> |
+		#[until="1.17"] UniformInt<int @ -10..128, int @ 0..128> |
+		#[since="1.17"] IntProvider<int @ 0..256> |
 	),
 }
 
 dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
 	to_place: (
-		#[until=1.17] BlockState |
-		#[since=1.17] BlockStateProvider |
+		#[until="1.17"] BlockState |
+		#[since="1.17"] BlockStateProvider |
 	),
-	#[until=1.17]
+	#[until="1.17"]
 	...struct {
 		place_on: [BlockState],
 		place_in: [BlockState],
 		place_under: [BlockState],
 	},
-	#[since=1.17] #[until=1.18]
+	#[since="1.17"] #[until="1.18"]
 	...struct {
 		place_on?: [BlockState],
 		place_in?: [BlockState],
@@ -457,7 +457,7 @@ dispatch minecraft:feature_config[simple_random_selector] to struct SimpleRandom
 	),
 }
 
-#[since=1.17] #[until=1.18]
+#[since="1.17"] #[until="1.18"]
 dispatch minecraft:feature_config[small_dripstone] to struct SmallDripstoneConfig {
 	max_placements?: int @ 0..100,
 	empty_space_search_radius?: int @ 0..20,
@@ -476,21 +476,21 @@ dispatch minecraft:feature_config[spring_feature] to struct SpringConfig {
 	),
 }
 
-#[since=1.18]
+#[since="1.18"]
 dispatch minecraft:feature_config[twisting_vines] to struct TwistingVinesConfig {
 	spread_width: int @ 1..,
 	spread_height: int @ 1..,
 	max_height: int @ 1..,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:feature_config[underwater_magma] to struct UnderwaterMagmaConfig {
 	floor_search_range: int @ 0..512,
 	placement_radius_around_floor: int @ 0..64,
 	placement_probability_per_valid_position: float @ 0..1,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:feature_config[vegetation_patch,waterlogged_vegetation_patch] to struct VegetationPatchConfig {
 	surface: CaveSurface,
 	depth: IntProvider<int @ 1..128>,

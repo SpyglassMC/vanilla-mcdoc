@@ -23,6 +23,6 @@ dispatch minecraft:block_entity[beacon] to struct Beacon {
 dispatch minecraft:block[beacon] to minecraft:block_entity[beacon]
 
 type NoneId = (
-	#[until=1.16] 0 |
-	#[since=1.16] -1 |
+	#[until="1.16"] 0 |
+	#[since="1.16"] -1 |
 )

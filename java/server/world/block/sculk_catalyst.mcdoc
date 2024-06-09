@@ -1,6 +1,6 @@
 use ::java::server::util::direction::Direction
 
-#[since=1.19]
+#[since="1.19"]
 dispatch minecraft:block_entity[sculk_catalyst] to struct SculkCatalyst {
 	...super::BlockEntity,
 	cursors: [ChargeCursor],

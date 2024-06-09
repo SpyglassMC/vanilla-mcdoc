@@ -78,8 +78,8 @@ dispatch minecraft:loot_pool_entry[sequence] to CompositePoolEntry
 
 struct LootFunction {
 	function: (
-		#[until=1.16] #[id] LootFunctionType |
-		#[since=1.16] #[id="loot_function_type"] string |
+		#[until="1.16"] #[id] LootFunctionType |
+		#[since="1.16"] #[id="loot_function_type"] string |
 	),
 	...minecraft:loot_function_type[[function]],
 	conditions?: [LootCondition],
@@ -87,8 +87,8 @@ struct LootFunction {
 
 struct LootCondition {
 	condition: (
-		#[until=1.16] #[id] LootConditionType |
-		#[since=1.16] #[id="loot_condition_type"] string |
+		#[until="1.16"] #[id] LootConditionType |
+		#[since="1.16"] #[id="loot_condition_type"] string |
 	),
 	...minecraft:loot_condition_type[[condition]],
 }

@@ -25,13 +25,13 @@ dispatch minecraft:entity[zombie_villager] to struct ZombieVillager {
 	/// Ticks until the it is converted.
 	ConversionTime: int,
 	/// Lower bits of the player's uuid who triggered the conversion.
-	#[until=1.16]
+	#[until="1.16"]
 	ConversionPlayerLeast: long,
 	/// Upper bits of the player's uuid who triggered the conversion.
-	#[until=1.16]
+	#[until="1.16"]
 	ConversionPlayerMost: long,
 	/// Player who triggered the conversion.
 	#[uuid]
-	#[since=1.16]
+	#[since="1.16"]
 	ConversionPlayer: int[] @ 4,
 }

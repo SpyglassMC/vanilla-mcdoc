@@ -58,7 +58,7 @@ dispatch minecraft:density_function[noise] to struct Noise {
 	y_scale: float,
 }
 
-#[since=1.19]
+#[since="1.19"]
 dispatch minecraft:density_function[old_blended_noise] to struct OldBlendedNoise {
 	xz_scale: float,
 	y_scale: float,
@@ -84,13 +84,13 @@ dispatch minecraft:density_function[shifted_noise] to struct ShiftedNoise {
 
 dispatch minecraft:density_function[spline] to struct Spline {
 	spline: CubicSpline,
-	#[until=1.19]
+	#[until="1.19"]
 	min_value: NoiseRange,
-	#[until=1.19]
+	#[until="1.19"]
 	max_value: NoiseRange,
 }
 
-#[until=1.19]
+#[until="1.19"]
 dispatch minecraft:density_function[terrain_shaper_spline] to struct TerrainShaperSpline {
 	spline: SplineType,
 	min_value: NoiseRange,
@@ -128,8 +128,8 @@ type CubicSpline = (
 	float |
 	struct {
 		coordinate: (
-			#[until=1.19] TerrainCoordinate |
-			#[since=1.19] DensityFunctionRef |
+			#[until="1.19"] TerrainCoordinate |
+			#[since="1.19"] DensityFunctionRef |
 		),
 		points: [SplinePoint],
 	} |

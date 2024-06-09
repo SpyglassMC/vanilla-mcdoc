@@ -43,7 +43,7 @@ dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
 	count: int,
 }
 
-#[until=1.20]
+#[until="1.20"]
 dispatch minecraft:recipe_serializer[smithing] to struct Smithing {
 	base: IngredientValue,
 	addition: IngredientValue,

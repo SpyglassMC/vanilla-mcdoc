@@ -1,4 +1,4 @@
-#[since=1.16]
+#[since="1.16"]
 dispatch minecraft:entity[hoglin] to struct Hoglin {
 	...super::Breedable,
 	/// Whether it will not transform to a zoglin when it is in the Overword.

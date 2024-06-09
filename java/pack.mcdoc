@@ -5,7 +5,7 @@ struct Pack {
 		pack_format: int @ 1..,
 		description: Text,
 	},
-	#[since=1.19]
+	#[since="1.19"]
 	filter?: PackFilter,
 	#[since="1.19.3"]
 	features?: PackFeatures,

@@ -1,6 +1,6 @@
 use ::java::server::util::FlagMemory
 
-#[since=1.19]
+#[since="1.19"]
 dispatch minecraft:entity[frog] to struct Frog {
 	...super::Breedable,
 	Brain: struct {

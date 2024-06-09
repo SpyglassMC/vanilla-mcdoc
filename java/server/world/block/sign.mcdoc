@@ -3,9 +3,9 @@ use ::java::server::util::color::ColorString
 dispatch minecraft:block_entity[sign, hanging_sign] to struct Sign {
 	...super::BlockEntity,
 	// TODO: Add filtered text
-	#[until=1.20]
+	#[until="1.20"]
 	...OldSign,
-	#[since=1.20]
+	#[since="1.20"]
 	...(struct {
 		back_text: SignText,
 		front_text: SignText,
@@ -23,7 +23,7 @@ struct SignText {
 struct OldSign {
 	/// Color the text has been dyed.
 	Color: ColorString,
-	#[since=1.17]
+	#[since="1.17"]
 	GlowingText: boolean,
 	/// First line of text.
 	Text1: #[command_argument=component] string,
@@ -50,7 +50,7 @@ dispatch minecraft:block[
 	spruce_wall_sign,
 ] to minecraft:block_entity[sign]
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:block[
 	crimson_sign,
 	warped_sign,
@@ -58,7 +58,7 @@ dispatch minecraft:block[
 	warped_wall_sign,
 ] to minecraft:block_entity[sign]
 
-#[since=1.19]
+#[since="1.19"]
 dispatch minecraft:block[
 	mangrove_sign,
 	mangrove_wall_sign,

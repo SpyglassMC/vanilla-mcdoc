@@ -15,7 +15,7 @@ dispatch minecraft:entity[villager] to struct Villager {
 	Brain: struct {
 		memories: struct {
 			/// Detected an iron golem recently.
-			#[since=1.16]
+			#[since="1.16"]
 			[#[id] "golem_detected_recently"]: TimedFlagMemory,
 			/// Location of home.
 			[#[id] "home"]: PositionMemory,
@@ -30,7 +30,7 @@ dispatch minecraft:entity[villager] to struct Villager {
 			/// Location of meeting point.
 			[#[id] "meeting_point"]: PositionMemory,
 			/// Location of a potential job site.
-			#[since=1.16]
+			#[since="1.16"]
 			[#[id] "potential_job_site"]: PositionMemory,
 		},
 	},

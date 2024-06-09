@@ -5,10 +5,10 @@ dispatch minecraft:entity[painting] to struct Painting {
 	/// Direction it is facing.
 	Facing: Facing,
 	/// Type of painting.
-	#[until=1.19]
+	#[until="1.19"]
 	Motive: #[id="motive"] string,
 	/// Type of painting.
-	#[since=1.19]
+	#[since="1.19"]
 	variant: #[id="painting_variant"] string,
 }
 

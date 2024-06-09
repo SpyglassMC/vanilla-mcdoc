@@ -106,8 +106,8 @@ dispatch minecraft:loot_function_type[enchant_randomly] to struct EnchantRandoml
 /// (roughly equivalent to using an enchantment table at that level)
 dispatch minecraft:loot_function_type[enchant_with_levels] to struct EnchantWithLevels {
 	levels: (
-		#[until=1.17] RandomIntGenerator |
-		#[since=1.17] NumberProvider |
+		#[until="1.17"] RandomIntGenerator |
+		#[since="1.17"] NumberProvider |
 	),
 	/// Whether treasure enchantments are allowed on this item.
 	treasure?: boolean,
@@ -117,8 +117,8 @@ dispatch minecraft:loot_function_type[enchant_with_levels] to struct EnchantWith
 dispatch minecraft:loot_function_type[exploration_map] to struct ExplorationMap {
 	/// Generated structure to locate. Accepts any of the structure types used by the `/locate` command. Defaults to buried treasure.
 	destination?: (
-		#[until=1.19] string | // TODO: low-priority, this is an enum
-		#[since=1.19] #[id(registry="worldgen/structure",tags=implicit)] string |
+		#[until="1.19"] string | // TODO: low-priority, this is an enum
+		#[since="1.19"] #[id(registry="worldgen/structure",tags=implicit)] string |
 	),
 	/// The icon used to mark the destination on the map. Accepts any of the map icon text IDs (case insensitive).
 	/// If `mansion` or `monument` is used, the color of the lines on the item texture changes to match the corresponding explorer map.
@@ -190,8 +190,8 @@ dispatch minecraft:loot_function_type[limit_count] to struct LimitCount {
 dispatch minecraft:loot_function_type[looting_enchant] to struct LootingEnchant {
 	/// If the number is fractional the result is rounded *after* the number was multiplied by the looting level.
 	count: (
-		#[until=1.17] MinMaxBounds<float> |
-		#[since=1.17] NumberProvider |
+		#[until="1.17"] MinMaxBounds<float> |
+		#[since="1.17"] NumberProvider |
 	),
 	limit?: int,
 }
@@ -215,7 +215,7 @@ struct AttributeModifier {
 	id?: #[command_argument=uuid] string,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:loot_function_type[set_banner_pattern] to struct SetBannerPattern {
 	patterns: [BannerPatternEntry],
 	append?: boolean,
@@ -281,7 +281,7 @@ type ContainerComponents = (
 
 /// For a container block item's contents.
 dispatch minecraft:loot_function_type[set_contents] to struct SetContents {
-	#[since=1.18] #[until="1.20.5"]
+	#[since="1.18"] #[until="1.20.5"]
 	type: #[id="block_entity_type"] string,
 	/// Describes target component to be filled with items.
 	#[since="1.20.5"]
@@ -309,8 +309,8 @@ dispatch minecraft:loot_function_type[filtered] to struct Filtered {
 
 dispatch minecraft:loot_function_type[set_count] to struct SetCount {
 	count: (
-		#[until=1.17] RandomIntGenerator |
-		#[since=1.17] NumberProvider |
+		#[until="1.17"] RandomIntGenerator |
+		#[since="1.17"] NumberProvider |
 	),
 }
 
@@ -318,20 +318,20 @@ dispatch minecraft:loot_function_type[set_count] to struct SetCount {
 dispatch minecraft:loot_function_type[set_damage] to (struct {
 	/// Decimal percentage.
 	damage: (
-		#[until=1.17] RandomValueBounds |
-		#[since=1.17] NumberProvider<float @ 0..1> |
+		#[until="1.17"] RandomValueBounds |
+		#[since="1.17"] NumberProvider<float @ 0..1> |
 	),
 	add?: false,
 } | struct {
 	/// In decimal percentage. What to add to the durability (negative to decrease it).
 	damage: (
-		#[until=1.17] RandomValueBounds |
-		#[since=1.17] NumberProvider<float @ -1..1> |
+		#[until="1.17"] RandomValueBounds |
+		#[since="1.17"] NumberProvider<float @ -1..1> |
 	),
 	add: true,
 })
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:loot_function_type[set_enchantments] to struct SetEnchantments {
 	enchantments: struct {
 		[#[id="enchantment"] string]: NumberProvider<int @ 1..>,
@@ -339,14 +339,14 @@ dispatch minecraft:loot_function_type[set_enchantments] to struct SetEnchantment
 	add?: boolean,
 }
 
-#[since=1.19]
+#[since="1.19"]
 dispatch minecraft:loot_function_type[set_instrument] to struct SetInstrument {
 	options: #[id(registry=instrument,tags=required)] string, // TODO: this is the really bad paradigm where mojang requires `#` for registry tags
 }
 
 /// For a container block item's loot table.
 dispatch minecraft:loot_function_type[set_loot_table] to struct SetLootTable {
-	#[since=1.18]
+	#[since="1.18"]
 	type: #[id="block_entity_type"] string,
 	name: #[id="loot_table"] string,
 	/// Defaults to a random seed.
@@ -396,7 +396,7 @@ dispatch minecraft:loot_function_type[set_custom_model_data] to struct SetCustom
 	value: NumberProvider<int>,
 }
 
-#[since=1.18]
+#[since="1.18"]
 dispatch minecraft:loot_function_type[set_potion] to struct SetPotion {
 	id: #[id="potion"] string,
 }
@@ -497,7 +497,7 @@ type ListMode = (
 struct StewEffect {
 	type: #[id="mob_effect"] string,
 	duration: (
-		#[until=1.17] MinMaxBounds<float> |
-		#[since=1.17] NumberProvider |
+		#[until="1.17"] MinMaxBounds<float> |
+		#[since="1.17"] NumberProvider |
 	),
 }

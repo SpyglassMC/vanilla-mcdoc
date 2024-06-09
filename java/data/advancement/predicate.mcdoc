@@ -76,17 +76,17 @@ struct LocationPredicate {
 	},
 	#[until="1.20.5"]
 	biome?: (
-		#[until=1.16] #[id="biome"] string |
-		#[since=1.16] #[id="worldgen/biome"] string |
+		#[until="1.16"] #[id="biome"] string |
+		#[since="1.16"] #[id="worldgen/biome"] string |
 	),
 	#[since="1.20.5"]
 	biomes?: (#[id=(registry="worldgen/biome",tags=allowed)] string | [#[id="worldgen/biome"] string]),
-	#[until=1.19]
+	#[until="1.19"]
 	feature?: (
 		#[until="1.18.2"] string |
 		#[since="1.18.2"] #[id="worldgen/configured_structure_feature"] string |
 	),
-	#[since=1.19] #[until="1.20.5"]
+	#[since="1.19"] #[until="1.20.5"]
 	structure?: #[id="worldgen/structure"] string,
 	#[since="1.20.5"]
 	structures?: (#[id=(registry="worldgen/structure",tags=allowed)] string | [#[id="worldgen/structure"] string]),
@@ -98,7 +98,7 @@ struct LocationPredicate {
 	block?: BlockPredicate,
 	fluid?: FluidPredicate,
 	/// Whether the block is above (5 blocks or less) a campfire or soul campfire.
-	#[since=1.16]
+	#[since="1.16"]
 	smokey?: boolean,
 }
 
@@ -107,7 +107,7 @@ struct EntityPredicate {
 		#[id(registry=entity_type,tags=allowed)] string |
 		#[since="1.20.5"] [#[id="entity_type"] string] |
 	),
-	#[since=1.19]
+	#[since="1.19"]
 	type_specific?: TypeSpecificPredicate,
 	team?: #[command_argument=team] string,
 	nbt?: #[nbt(registry=minecraft:entity[[type]])] string, // TODO: This needs hardcoding to include AnyEntity
@@ -123,17 +123,17 @@ struct EntityPredicate {
 	equipment?: struct {
 		[EquipmentSlot]: ItemPredicate,
 	},
-	#[until=1.19]
+	#[until="1.19"]
 	player?: PlayerPredicate,
-	#[since=1.16]
+	#[since="1.16"]
 	vehicle?: EntityPredicate,
-	#[since=1.16] #[until=1.19]
+	#[since="1.16"] #[until="1.19"]
 	targeted_entity?: EntityPredicate,
-	#[since=1.16] #[until=1.19]
+	#[since="1.16"] #[until="1.19"]
 	fishing_hook?: FishingHookPredicate,
-	#[since=1.17]
+	#[since="1.17"]
 	lightning_bolt?: LightningBoltPredicate,
-	#[until=1.19]
+	#[until="1.19"]
 	catType?: string,
 	effects?: struct {
 		[#[id="mob_effect"] string]: MobEffectPredicate,

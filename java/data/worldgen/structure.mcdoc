@@ -4,15 +4,15 @@ use super::biome::MobCategory
 use super::biome::SpawnerData
 
 type StructureRef = (
-	#[until=1.19] #[id="worldgen/configured_structure_feature"] string |
-	#[since=1.19] #[id="worldgen/structure"] string |
+	#[until="1.19"] #[id="worldgen/configured_structure_feature"] string |
+	#[since="1.19"] #[id="worldgen/structure"] string |
 	Structure |
 )
 
 dispatch minecraft:resource["worldgen/structure"] to struct Structure {
 	type: (
-		#[until=1.19] #[id="worldgen/structure_feature"] string |
-		#[since=1.19] #[id="worldgen/structure_type"] string |
+		#[until="1.19"] #[id="worldgen/structure_feature"] string |
+		#[since="1.19"] #[id="worldgen/structure_type"] string |
 	),
 	#[since="1.18.2"]
 	biomes: (
@@ -20,17 +20,17 @@ dispatch minecraft:resource["worldgen/structure"] to struct Structure {
 		#[id(registry="worldgen/biome",tags=allowed)] string |
 	),
 	/// Whether to add extra terrain below the structure.
-	#[since="1.18.2"] #[until=1.19]
+	#[since="1.18.2"] #[until="1.19"]
 	adapt_noise?: boolean,
-	#[since=1.19]
+	#[since="1.19"]
 	terrain_adaptation?: TerrainAdaptation,
 	#[since="1.18.2"]
 	spawn_overrides: struct {
 		[MobCategory]: SpawnOverride,
 	},
-	#[until=1.19]
+	#[until="1.19"]
 	config: minecraft:structure_config[[type]],
-	#[since=1.19]
+	#[since="1.19"]
 	...minecraft:structure_config[[type]],
 }
 
@@ -60,7 +60,7 @@ dispatch minecraft:structure_config[
 ] to struct Jigsaw {
 	start_pool: #[id="worldgen/template_pool"] string,
 	size: int @ 0..7,
-	#[since=1.19]
+	#[since="1.19"]
 	...struct {
 		start_height: HeightProvider,
 		start_jigsaw_name: string,
@@ -79,9 +79,9 @@ dispatch minecraft:structure_config[buried_treasure] to struct BuriedTreasure {
 }
 
 dispatch minecraft:structure_config[mineshaft] to struct Mineshaft {
-	#[until=1.19]
+	#[until="1.19"]
 	type: MineshaftType,
-	#[since=1.19]
+	#[since="1.19"]
 	mineshaft_type: MineshaftType,
 	probability: float @ 0..1,
 }
@@ -91,7 +91,7 @@ enum(string) MineshaftType {
 	Mesa = "mesa",
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:structure_config[nether_fossil] to struct NetherFossil {
 	height: HeightProvider,
 }
@@ -108,9 +108,9 @@ enum(string) BiomeTemperature {
 }
 
 dispatch minecraft:structure_config[ruined_portal] to struct RuinedPortal {
-	#[until=1.19]
+	#[until="1.19"]
 	portal_type: RuinedPortalType,
-	#[since=1.19]
+	#[since="1.19"]
 	setups: [RuinedPortalSetup],
 }
 

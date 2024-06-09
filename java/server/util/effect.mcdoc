@@ -14,7 +14,7 @@ struct LegacyPotionEffect {
 	/// Whether the effect icon should be shown.
 	ShowIcon: boolean,
 	/// A lower amplifier effect of the same type.
-	#[since=1.16]
+	#[since="1.16"]
 	HiddenEffect: LegacyPotionEffect,
 }
 
@@ -69,6 +69,6 @@ enum(byte) EffectId {
 	DolphinsGrace = 30,
 	BadOmen = 31,
 	HeroOfTheVillage = 32,
-	#[since=1.19]
+	#[since="1.19"]
 	Darkness = 33,
 }

@@ -1,6 +1,6 @@
 use ::java::server::util::game_event::VibrationListener
 
-#[since=1.19]
+#[since="1.19"]
 dispatch minecraft:entity[warden] to struct Warden {
 	...super::MobBase,
 	/// Anger management

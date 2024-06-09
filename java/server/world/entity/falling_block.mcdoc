@@ -19,6 +19,6 @@ dispatch minecraft:entity[falling_block] to struct FallingBlock {
 	/// When `true`, the block is not dropped as an item, even if the DropItem tag is set to `true`.
 	/// However, if the entity is deleted due to its Time value being too high, this tag is ignored and an item is dropped depending on the `DropItem` tag.
 	/// Defaults to `1` for falling suspicious sand and suspicious gravel, and `0` for the other vanilla falling blocks and any summoned falling block.
-	#[since=1.20]
+	#[since="1.20"]
 	CancelDrop: boolean,
 }

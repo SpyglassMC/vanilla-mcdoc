@@ -7,13 +7,13 @@ struct Breedable {
 	/// Incremented when a baby mob is fed.
 	ForcedAge: int,
 	/// Lower bits of the UUID of the player that caused this mob to breed.
-	#[until=1.16]
+	#[until="1.16"]
 	LoveCauseLeast: long,
 	/// Upper bits of the UUID of the player that caused this mob to breed.
-	#[until=1.16]
+	#[until="1.16"]
 	LoveCauseMost: long,
 	/// Player that caused this mob to breed.
-	#[since=1.16] #[uuid]
+	#[since="1.16"] #[uuid]
 	LoveCause: int[] @ 4,
 }
 

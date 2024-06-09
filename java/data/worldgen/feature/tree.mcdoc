@@ -5,24 +5,24 @@ use super::super::IntProvider
 use ::java::server::util::direction::Direction
 
 dispatch minecraft:feature_config[tree] to struct TreeConfig {
-	#[until=1.17]
+	#[until="1.17"]
 	max_water_depth?: int,
 	ignore_vines?: boolean,
-	#[until=1.17]
+	#[until="1.17"]
 	heightmap: HeightmapType,
-	#[since=1.17]
+	#[since="1.17"]
 	force_dirt?: boolean,
 	minimum_size: FeatureSize,
-	#[since=1.17]
+	#[since="1.17"]
 	dirt_provider: BlockStateProvider,
-	#[since=1.17] #[until=1.18]
+	#[since="1.17"] #[until="1.18"]
 	sapling_provider: BlockStateProvider,
 	trunk_provider: BlockStateProvider,
-	#[until=1.17]
+	#[until="1.17"]
 	leaves_provider: BlockStateProvider,
-	#[since=1.17]
+	#[since="1.17"]
 	foliage_provider: BlockStateProvider,
-	#[since=1.19]
+	#[since="1.19"]
 	root_placer?: RootPlacer,
 	trunk_placer: TrunkPlacer,
 	foliage_placer: FoliagePlacer,
@@ -90,13 +90,13 @@ struct TrunkPlacer {
 	...minecraft:trunk_placer[[type]],
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:trunk_placer[bending_trunk_placer] to struct BendingTrunkPlacer {
 	bend_length: IntProvider<int @ 1..64>,
 	min_height_for_leaves?: int @ 1..,
 }
 
-#[since=1.19]
+#[since="1.19"]
 dispatch minecraft:trunk_placer[upwards_branching_trunk_placer] to struct UpwardsBranchingTrunkPlacer {
 	extra_branch_steps: IntProvider<int @ 1..>,
 	extra_branch_length: IntProvider<int @ 0..>,
@@ -110,12 +110,12 @@ dispatch minecraft:trunk_placer[upwards_branching_trunk_placer] to struct Upward
 struct FoliagePlacer {
 	type: #[id="worldgen/foliage_placer_type"] string,
 	radius: (
-		#[until=1.17] UniformInt<int @ 0..8, int @ 0..8> |
-		#[since=1.17] IntProvider<int @ 0..16> |
+		#[until="1.17"] UniformInt<int @ 0..8, int @ 0..8> |
+		#[since="1.17"] IntProvider<int @ 0..16> |
 	),
 	offset: (
-		#[until=1.17] UniformInt<int @ 0..8, int @ 0..8> |
-		#[since=1.17] IntProvider<int @ 0..16> |
+		#[until="1.17"] UniformInt<int @ 0..8, int @ 0..8> |
+		#[since="1.17"] IntProvider<int @ 0..16> |
 	),
 	...minecraft:foliage_placer[[type]],
 }
@@ -131,19 +131,19 @@ dispatch minecraft:foliage_placer[
 
 dispatch minecraft:foliage_placer[mega_pine_foliage_placer] to struct MegaPineFoliagePlacer {
 	crown_height: (
-		#[until=1.17] UniformInt<int @ 0..16, int @ 0..8> |
-		#[since=1.17] IntProvider<int @ 0..24> |
+		#[until="1.17"] UniformInt<int @ 0..16, int @ 0..8> |
+		#[since="1.17"] IntProvider<int @ 0..24> |
 	),
 }
 
 dispatch minecraft:foliage_placer[pine_foliage_placer] to struct PineFoliagePlacer {
 	height: (
-		#[until=1.17] UniformInt<int @ 0..16, int @ 0..8> |
-		#[since=1.17] IntProvider<int @ 0..24> |
+		#[until="1.17"] UniformInt<int @ 0..16, int @ 0..8> |
+		#[since="1.17"] IntProvider<int @ 0..24> |
 	),
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:foliage_placer[random_spread_foliage_placer] to struct RandomSpreadFoliagePlacer {
 	foliage_height: IntProvider<int @ 1..512>,
 	leaf_placement_attempts: int @ 0..256,
@@ -151,8 +151,8 @@ dispatch minecraft:foliage_placer[random_spread_foliage_placer] to struct Random
 
 dispatch minecraft:foliage_placer[spruce_foliage_placer] to struct SprucePineFoliagePlacer {
 	trunk_height: (
-		#[until=1.17] UniformInt<int @ 0..16, int @ 0..8> |
-		#[since=1.17] IntProvider<int @ 0..24> |
+		#[until="1.17"] UniformInt<int @ 0..16, int @ 0..8> |
+		#[since="1.17"] IntProvider<int @ 0..24> |
 	),
 }
 
@@ -183,6 +183,6 @@ dispatch minecraft:tree_decorator[cocoa] to struct CocoaTreeDecorator {
 }
 
 dispatch minecraft:tree_decorator[leave_vine] to struct LeaveVineTreeDecorator {
-	#[since=1.19]
+	#[since="1.19"]
 	probability: float @ 0..1,
 }

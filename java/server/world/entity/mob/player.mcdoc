@@ -10,16 +10,16 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Version of the player NBT structure
 	DataVersion: int,
 	Dimension: (
-		#[until=1.16] Dimension |
-		#[since=1.16] #[id="dimension"] string |
+		#[until="1.16"] Dimension |
+		#[since="1.16"] #[id="dimension"] string |
 	),
 	/// Location of the player's last death.
-	#[since=1.19]
+	#[since="1.19"]
 	LastDeathLocation: GlobalPos,
 	/// Game mode that the player is in.
 	playerGameType: Gamemode,
 	/// Previous game mode that the player was in.
-	#[since=1.16]
+	#[since="1.16"]
 	previousPlayerGameType: Gamemode,
 	/// Score to display upon death.
 	Score: int,
@@ -28,7 +28,7 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Item in the hotbar slot the player has selected.
 	SelectedItem: SlottedItem<PlayerSlot>,
 	/// Dimension of the player's respawn point.
-	#[since=1.16]
+	#[since="1.16"]
 	SpawnDimension: #[id="dimension"] string,
 	/// X coordinate of the player's spawn point.
 	SpawnX: int,
@@ -74,7 +74,7 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Recipes that the player has.
 	recipeBook: RecipeBook,
 	/// Tracking the warden spawning process for this player.
-	#[since=1.19]
+	#[since="1.19"]
 	warden_spawn_tracker: WardenSpawnTracker,
 	// these are not included
 	id: (),
@@ -120,14 +120,14 @@ struct EnteredNetherPosition {
 
 struct RootVehicle {
 	/// Upper bits of the ridden entity's UUID.
-	#[until=1.16]
+	#[until="1.16"]
 	AttachMost: long,
 	/// Lower bits of the ridden entity's UUID.
-	#[until=1.16]
+	#[until="1.16"]
 	AttachLeast: long,
 	/// Ridden entity's UUID.
 	#[uuid]
-	#[since=1.16]
+	#[since="1.16"]
 	Attach: int[] @ 4,
 	/// The ridden entity.
 	Entity: AnyEntity,

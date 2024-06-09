@@ -13,7 +13,7 @@ enum(string) BoatType {
 	Jungle = "jungle",
 	Acacia = "acacia",
 	DarkOak = "dark_oak",
-	#[since=1.19]
+	#[since="1.19"]
 	Mangrove = "mangrove",
 	#[since="1.19.3"]
 	Bamboo = "bamboo",
@@ -21,7 +21,7 @@ enum(string) BoatType {
 	Cherry = "cherry",
 }
 
-#[since=1.19]
+#[since="1.19"]
 dispatch minecraft:entity[chest_boat] to struct ChestBoat {
 	...Boat,
 	/// Loot table that will populate this chest boat.

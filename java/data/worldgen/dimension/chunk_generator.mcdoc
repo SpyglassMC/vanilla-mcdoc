@@ -29,7 +29,7 @@ struct FlatGeneratorLayer {
 }
 
 dispatch minecraft:chunk_generator[noise] to struct Noise {
-	#[until=1.19]
+	#[until="1.19"]
 	seed: long,
 	settings: NoiseGeneratorSettingsRef,
 	biome_source: BiomeSource,

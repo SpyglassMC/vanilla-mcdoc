@@ -13,7 +13,7 @@ dispatch minecraft:entity[witch] to struct RaiderBase {
 	#[since="1.20.5"]
 	patrol_target: int[] @ 3,
 	/// Whether the raider can join raids and count towards the progress bar.
-	#[since=1.16]
+	#[since="1.16"]
 	CanJoinRaid: boolean,
 	/// Id of the raid that the raider is in.
 	RaidId: int,

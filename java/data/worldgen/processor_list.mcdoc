@@ -36,7 +36,7 @@ dispatch minecraft:template_processor[gravity] to struct Gravity {
 	offset: int,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:template_processor[protected_blocks] to struct ProtectedBlocks {
 	value: (
 		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |

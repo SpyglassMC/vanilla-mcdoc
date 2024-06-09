@@ -1,11 +1,11 @@
 dispatch minecraft:entity[zombie_pigman] to struct ZombiePigman {
 	...super::MobBase,
-	#[since=1.16]
+	#[since="1.16"]
 	...super::NeutralMob,
 	/// Whether it is a baby.
 	IsBaby: boolean,
 	/// Ticks that it will be angry for.
-	#[until=1.16]
+	#[until="1.16"]
 	Anger: short,
 	/// Last player to hit a zombie pigman in this zombie pigman's detection range.
 	#[uuid]

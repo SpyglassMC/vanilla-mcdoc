@@ -82,8 +82,8 @@ struct NeutralMob {
 /// A single attribute.
 struct Attribute {
 	Name: (
-		#[until=1.16] (AttributeName | string) |
-		#[since=1.16] #[id="attribute"] string |
+		#[until="1.16"] (AttributeName | string) |
+		#[since="1.16"] #[id="attribute"] string |
 	),
 	Base: double,
 	/// Modifiers that act on it.
@@ -100,13 +100,13 @@ struct AttributeModifier {
 	/// Change in the attribute.
 	Amount: double,
 	/// Upper bits of the modifier's UUID.
-	#[until=1.16]
+	#[until="1.16"]
 	UUIDMost: long,
 	/// Lower bits of the modifier's UUID.
-	#[until=1.16]
+	#[until="1.16"]
 	UUIDLeast: long,
 	#[uuid]
-	#[since=1.16]
+	#[since="1.16"]
 	UUID: int[] @ 4,
 }
 

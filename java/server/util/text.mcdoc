@@ -53,7 +53,7 @@ type TextObject = (
 
 struct TextNbtBase {
 	interpret?: boolean,
-	#[since=1.17]
+	#[since="1.17"]
 	separator?: Text,
 	...TextBase,
 }
@@ -65,7 +65,7 @@ struct TextBase {
 
 struct TextStyle {
 	color?: (TextColor | TextFormat),
-	#[since=1.16]
+	#[since="1.16"]
 	font?: #[id="font"] string,
 	bold?: boolean,
 	italic?: boolean,
@@ -143,14 +143,14 @@ enum(string) HoverEventAction {
 dispatch minecraft:hover_event[show_text] to struct ShowTextHoverEvent {
 	#[deprecated=1.16]
 	value?: Text,
-	#[since=1.16]
+	#[since="1.16"]
 	contents?: Text,
 }
 
 dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 	#[deprecated=1.16]
 	value?: #[nbt=InventoryItem] string,
-	#[since=1.16]
+	#[since="1.16"]
 	contents?: struct {
 		id: #[id="item"] string,
 		count?: int,
@@ -165,7 +165,7 @@ dispatch minecraft:hover_event[show_entity] to struct ShowEntityHoverEvent {
 			type?: string,
 			id?: string,
 		} |
-		#[since=1.16] struct {
+		#[since="1.16"] struct {
 			name?: Text,
 			type?: #[id="entity_type"] string,
 			id?: #[command_argument=uuid] string,

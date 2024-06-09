@@ -2,9 +2,9 @@ use ::java::server::util::ColorByte
 
 struct Tamable {
 	...super::Breedable,
-	#[until=1.16]
+	#[until="1.16"]
 	OwnerUUID: #[command_argument=uuid] string,
-	#[since=1.16] #[uuid]
+	#[since="1.16"] #[uuid]
 	Owner: int[] @ 4,
 	/// Whether the mob is sitting.
 	Sitting: boolean,
@@ -12,11 +12,11 @@ struct Tamable {
 
 dispatch minecraft:entity[cat] to struct Cat {
 	...Tamable,
-	#[until=1.19]
+	#[until="1.19"]
 	CatType: CatType,
 	/// Collar color, present for stray cats.
 	CollarColor: ColorByte,
-	#[since=1.19]
+	#[since="1.19"]
 	variant: #[id="cat_variant"] string,
 }
 
@@ -50,10 +50,10 @@ enum(int) ParrotVariant {
 
 dispatch minecraft:entity[wolf] to struct Wolf {
 	...Tamable,
-	#[since=1.16]
+	#[since="1.16"]
 	...super::super::NeutralMob,
 	/// Whether it is angry.
-	#[until=1.16]
+	#[until="1.16"]
 	Angry: boolean,
 	/// Collar color, present for wild wolfs.
 	CollarColor: ColorByte,

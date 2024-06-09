@@ -13,5 +13,5 @@ dispatch minecraft:block_entity[campfire] to struct Campfire {
 
 dispatch minecraft:block[campfire] to minecraft:block_entity[campfire]
 
-#[since=1.16]
+#[since="1.16"]
 dispatch minecraft:block[soul_campfire] to minecraft:block_entity[campfire]

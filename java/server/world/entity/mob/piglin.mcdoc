@@ -10,10 +10,10 @@ struct PiglinBase {
 	TimeInOverworld: int,
 }
 
-#[since=1.16]
+#[since="1.16"]
 dispatch minecraft:entity[piglin] to struct Piglin {
 	...PiglinBase,
-	#[since=1.16]
+	#[since="1.16"]
 	Brain: struct {
 		memories: struct {
 			/// Whether it cannot admire an item.
@@ -35,5 +35,5 @@ dispatch minecraft:entity[piglin] to struct Piglin {
 	Inventory: [InventoryItem] @ 0..8,
 }
 
-#[since=1.16]
+#[since="1.16"]
 dispatch minecraft:entity[piglin_brute] to PiglinBase

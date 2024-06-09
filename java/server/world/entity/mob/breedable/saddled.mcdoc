@@ -4,5 +4,5 @@ dispatch minecraft:entity[pig] to struct Saddled {
 	Saddle: boolean,
 }
 
-#[since=1.16]
+#[since="1.16"]
 dispatch minecraft:entity[strider] to Saddled

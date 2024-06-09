@@ -12,17 +12,17 @@ dispatch minecraft:resource["worldgen/configured_carver"] to struct ConfiguredCa
 	type: #[id="worldgen/carver"] string,
 	config: struct {
 		probability: float @ 0..1,
-		#[since=1.19]
+		#[since="1.19"]
 		replaceable?: (
 			[#[id="block"] string] |
 			#[id(registry=block,tags=allowed)] string |
 		),
-		#[since=1.17]
+		#[since="1.17"]
 		...struct {
 			y: HeightProvider,
 			yScale: FloatProvider<float>,
 			lava_level: VerticalAnchor,
-			#[until=1.18]
+			#[until="1.18"]
 			aquifers_enabled: boolean,
 			debug_settings?: CarverDebugSettings,
 		},
@@ -38,7 +38,7 @@ struct CarverDebugSettings{
 	barrier_state: BlockState,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:carver_config[canyon] to struct CanyonConfig {
 	vertical_rotation: FloatProvider<float>,
 	shape: CanyonShape,
@@ -53,7 +53,7 @@ struct CanyonShape {
 	vertical_radius_center_factor: float,
 }
 
-#[since=1.17]
+#[since="1.17"]
 dispatch minecraft:carver_config[cave,nether_cave] to struct CaveConfig {
 	horizontal_radius_multiplier: FloatProvider<float>,
 	vertical_radius_multiplier: FloatProvider<float>,

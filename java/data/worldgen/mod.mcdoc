@@ -140,7 +140,7 @@ dispatch minecraft:height_provider[trapezoid] to struct TrapezoidHeightProvider 
 	plateau?: int,
 }
 
-#[since=1.18]
+#[since="1.18"]
 dispatch minecraft:height_provider[weighted_list] to struct WeightListHeightProvider {
 	distribution: [struct {
 		weight: int,
