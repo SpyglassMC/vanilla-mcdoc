@@ -13,7 +13,6 @@ type TextObject = (
 	} |
 	struct {
 		translate: string, // TODO
-		#[deprecated="1.19.4"]
 		with?: [Text],
 		#[since="1.19.4"]
 		fallback?: Text,
@@ -141,14 +140,14 @@ enum(string) HoverEventAction {
 }
 
 dispatch minecraft:hover_event[show_text] to struct ShowTextHoverEvent {
-	#[deprecated=1.16]
+	#[deprecated="1.16"]
 	value?: Text,
 	#[since="1.16"]
 	contents?: Text,
 }
 
 dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
-	#[deprecated=1.16]
+	#[deprecated="1.16"]
 	value?: #[nbt=InventoryItem] string,
 	#[since="1.16"]
 	contents?: struct {
@@ -159,18 +158,18 @@ dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 }
 
 dispatch minecraft:hover_event[show_entity] to struct ShowEntityHoverEvent {
-	value?: (
-		#[deprecated=1.16] struct {
-			name?: string,
-			type?: string,
-			id?: string,
-		} |
-		#[since="1.16"] struct {
-			name?: Text,
-			type?: #[id="entity_type"] string,
-			id?: #[command_argument=uuid] string,
-		} |
-	),
+	#[deprecated="1.16"]
+	value?: struct {
+		name?: string,
+		type?: string,
+		id?: string,
+	},
+	#[since="1.16"]
+	contents?: struct {
+		name?: Text,
+		type?: #[id="entity_type"] string,
+		id?: #[command_argument=uuid] string,
+	},
 }
 
 enum(string) Keybind {
