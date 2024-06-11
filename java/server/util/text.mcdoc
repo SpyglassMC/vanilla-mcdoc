@@ -20,13 +20,13 @@ type TextObject = (
 	} |
 	struct {
 		score: struct {
-			objective: #[command_argument=objective] string,
-			name: #[command_argument=selector] string,
+			objective: #[command_argument="objective"] string,
+			name: #[command_argument="selector"] string,
 		},
 		...TextBase,
 	} |
 	struct {
-		selector: #[command_argument=selector] string,
+		selector: #[command_argument="selector"] string,
 		...TextBase,
 	} |
 	struct {
@@ -168,7 +168,7 @@ dispatch minecraft:hover_event[show_entity] to struct ShowEntityHoverEvent {
 	contents?: struct {
 		name?: Text,
 		type?: #[id="entity_type"] string,
-		id?: #[command_argument=uuid] string,
+		id?: #[command_argument="uuid"] string,
 	},
 }
 

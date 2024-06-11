@@ -109,7 +109,7 @@ struct EntityPredicate {
 	),
 	#[since="1.19"]
 	type_specific?: TypeSpecificPredicate,
-	team?: #[command_argument=team] string,
+	team?: #[command_argument="team"] string,
 	nbt?: #[nbt(registry=minecraft:entity[[type]])] string, // TODO: This needs hardcoding to include AnyEntity
 	location?: LocationPredicate,
 	distance?: DistancePredicate,

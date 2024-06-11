@@ -17,7 +17,7 @@ dispatch minecraft:block_entity[sign, hanging_sign] to struct Sign {
 struct SignText {
 	color: ColorString,
 	has_glowing_text: boolean,
-	messages: [#[command_argument=component] string] @ 4,
+	messages: [#[command_argument="component"] string] @ 4,
 }
 
 struct OldSign {
@@ -26,13 +26,13 @@ struct OldSign {
 	#[since="1.17"]
 	GlowingText: boolean,
 	/// First line of text.
-	Text1: #[command_argument=component] string,
+	Text1: #[command_argument="component"] string,
 	/// Second line of text.
-	Text2: #[command_argument=component] string,
+	Text2: #[command_argument="component"] string,
 	/// Third line of text.
-	Text3: #[command_argument=component] string,
+	Text3: #[command_argument="component"] string,
 	/// Fourth line of text.
-	Text4: #[command_argument=component] string,
+	Text4: #[command_argument="component"] string,
 }
 
 dispatch minecraft:block[

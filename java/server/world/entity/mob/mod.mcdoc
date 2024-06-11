@@ -39,7 +39,7 @@ struct LivingEntity {
 	/// Whether it should have an AI.
 	NoAI: boolean,
 	/// Team to join when it is spawned.
-	Team: #[command_argument=team] string,
+	Team: #[command_argument="team"] string,
 }
 
 /// Base NBT for all mobs.

@@ -30,7 +30,7 @@ struct EntityBase {
 	#[uuid]
 	#[since="1.16"]
 	UUID: int[] @ 4,
-	CustomName: #[command_argument=component] string,
+	CustomName: ##[command_argument="component"]string,
 	/// Whether the custom name should always be visible.
 	CustomNameVisible: boolean,
 	/// Whether the entity should make any sound.
