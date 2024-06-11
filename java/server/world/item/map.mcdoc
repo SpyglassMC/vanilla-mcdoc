@@ -1,4 +1,4 @@
-dispatch minecraft:data_component[map_color] to #[color=composite_int] int
+dispatch minecraft:data_component[map_color] to #[color="composite_int"] int
 
 dispatch minecraft:data_component[map_decorations] to struct MapDecorations {
 	[string]: Decoration
@@ -38,7 +38,7 @@ dispatch minecraft:item[filled_map] to struct FilledMap {
 	display: struct {
 		...super::Display,
 		/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-		MapColor: #[color=composite_int] int,
+		MapColor: #[color="composite_int"] int,
 	},
 }
 

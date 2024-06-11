@@ -60,7 +60,7 @@ dispatch minecraft:loot_pool_entry[item] to LootPoolEntrySingleton<#[id="item"] 
 dispatch minecraft:loot_pool_entry[loot_table] to LootPoolEntrySingleton<#[id="loot_table"] string>
 
 /// Adds the contents of an item tag.
-dispatch minecraft:loot_pool_entry[tag] to LootPoolEntrySingleton<#[id(registry=item,tags=implicit)] string>
+dispatch minecraft:loot_pool_entry[tag] to LootPoolEntrySingleton<#[id(registry="item",tags="implicit")] string>
 
 struct CompositePoolEntry {
 	children: [LootPoolEntry],

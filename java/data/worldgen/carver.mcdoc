@@ -15,7 +15,7 @@ dispatch minecraft:resource["worldgen/configured_carver"] to struct ConfiguredCa
 		#[since="1.19"]
 		replaceable?: (
 			[#[id="block"] string] |
-			#[id(registry=block,tags=allowed)] string |
+			#[id(registry="block",tags="allowed")] string |
 		),
 		#[since="1.17"]
 		...struct {

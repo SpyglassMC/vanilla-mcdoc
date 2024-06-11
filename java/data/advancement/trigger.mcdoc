@@ -315,7 +315,7 @@ dispatch minecraft:trigger[safely_harvest_honey] to struct SafelyHarvestHoney {
 	...TriggerBase,
 	block?: struct {
 		block?: #[id="block"] string,
-		tag?: #[id(registry=block,tags=implicit)] string,
+		tag?: #[id(registry="block",tags="implicit")] string,
 	},
 	item?: ItemPredicate,
 }

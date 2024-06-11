@@ -1,4 +1,6 @@
 use super::inventory::InventoryItem
+use ::minecraft::item::DefaultItemTags
+use ::java::server::world::item::DefaultItemComponents
 
 type Text = (
 	string |
@@ -120,9 +122,9 @@ enum(string) ClickEventAction {
 
 dispatch minecraft:click_event[open_url] to (#[url] string)
 
-dispatch minecraft:click_event[run_command] to (#[command=slash] string) // TODO: maybe do a special thing for 1.19.1+ to disallow signed message commands
+dispatch minecraft:click_event[run_command] to (#[command="slash"] string) // TODO: maybe do a special thing for 1.19.1+ to disallow signed message commands
 
-dispatch minecraft:click_event[suggest_command] to (string | #[command=slash] string) 
+dispatch minecraft:click_event[suggest_command] to (string | #[command="slash"] string) 
 
 dispatch minecraft:click_event[change_page] to (int @ 0..)
 
@@ -146,6 +148,16 @@ dispatch minecraft:hover_event[show_text] to struct ShowTextHoverEvent {
 	contents?: Text,
 }
 
+type ShowItemTags<T> = struct {
+	...DefaultItemTags,
+	...minecraft:item[[T]],
+}
+
+type ShowItemComponents<T> = struct {
+	...DefaultItemComponents,
+	...minecraft:item[[T]],
+}
+
 dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 	#[deprecated="1.16"]
 	value?: #[nbt=InventoryItem] string,
@@ -153,7 +165,10 @@ dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 	contents?: struct {
 		id: #[id="item"] string,
 		count?: int,
-		tag?: #[nbt=minecraft:item[[id]]] string,
+		#[until="1.20.5"]
+		tag?: #[nbt=ShowItemTags<id>] string, // TODO: make sure this actually works
+		#[since="1.20.5"]
+		components?: #[nbt=ShowItemComponents<id>] string, // TODO: make sure this actually works
 	},
 }
 

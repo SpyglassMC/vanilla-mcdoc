@@ -11,7 +11,7 @@ dispatch minecraft:entity[text_display] to struct TextDisplay {
 	text_opacity: int @ 0..255,
 	/// Color of background. Includes alpha channel. Defaults to 0x40000000. Interpolated.
 	/// Calculated as `ALPHA << 24 | RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	background: #[color=composite_argb] int,
+	background: #[color="composite_argb"] int,
 	/// If true, overrides `background` & rendering uses default text background color (same as in chat). Defaults to false.
 	default_background: boolean,
 	/// Should text be displayed with shadow. Defaults to false.

@@ -1,13 +1,13 @@
 struct DyedColor {
 	/// Color of the armor.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	rgb: #[color=composite_int] int,
+	rgb: #[color="composite_int"] int,
 	show_in_tooltip?: boolean,
 }
 
 dispatch minecraft:data_component[dyed_color] to (
 	#[canonical] DyedColor |
-	#[color=composite_int] int |
+	#[color="composite_int"] int |
 )
 
 dispatch minecraft:item[leather_boots, leather_leggings, leather_chestplate, leather_helmet, leather_horse_armor] to struct LeatherArmor {
@@ -21,5 +21,5 @@ struct ColorDisplay {
 	...super::Display,
 	/// Color of the armor.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	color: #[color=composite_int] int,
+	color: #[color="composite_int"] int,
 }

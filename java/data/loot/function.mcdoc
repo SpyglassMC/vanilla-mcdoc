@@ -341,7 +341,7 @@ dispatch minecraft:loot_function_type[set_enchantments] to struct SetEnchantment
 
 #[since="1.19"]
 dispatch minecraft:loot_function_type[set_instrument] to struct SetInstrument {
-	options: #[id(registry=instrument,tags=required)] string, // TODO: this is the really bad paradigm where mojang requires `#` for registry tags
+	options: #[id(registry="instrument",tags="required")] string, // TODO: this is the really bad paradigm where mojang requires `#` for registry tags
 }
 
 /// For a container block item's loot table.
@@ -386,7 +386,7 @@ dispatch minecraft:loot_function_type[set_components] to struct SetComponents {
 }
 #[since="1.20.5"]
 dispatch minecraft:loot_function_type[set_custom_data] to struct SetCustomData {
-	tag: (#[nbt(registry=mcdoc:custom_item_data[%fallback])] string | mcdoc:custom_item_data[%fallback]),
+	tag: (#[nbt=mcdoc:custom_item_data[%fallback]] string | mcdoc:custom_item_data[%fallback]),
 }
 #[since="1.20.5"]
 dispatch minecraft:loot_function_type[set_custom_model_data] to struct SetCustomModelData {
@@ -422,10 +422,10 @@ dispatch minecraft:loot_function_type[set_firework_explosion] to struct SetFirew
 	shape?: FireworkShape,
 	/// If omitted, the original colors are kept (or `[]` is used if there was no component).
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	colors?: #[color=composite_int] int[],
+	colors?: #[color="composite_int"] int[],
 	/// If omitted, the original fade colors are kept (or `[]` is used if there was no component).
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	fade_colors?: #[color=composite_int] int[],
+	fade_colors?: #[color="composite_int"] int[],
 	/// If omitted, the original `has_trail` value is kept (or `false` is used if there was no component).
 	trail?: boolean,
 	/// If omitted, the original `has_twinkle` value is kept (or `false` is used if there was no component).

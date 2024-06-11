@@ -4,7 +4,7 @@ use ::java::server::util::PotionComponent
 struct PotionContents {
 	potion?: #[id="potion"] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	custom_color?: #[color=composite_int] int,
+	custom_color?: #[color="composite_int"] int,
 	custom_effects?: [PotionComponent],
 }
 
@@ -25,7 +25,7 @@ dispatch minecraft:item[potion, splash_potion, lingering_potion] to struct Effec
 	Potion: #[id="potion"] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	#[until="1.20.5"]
-	CustomPotionColor: #[color=composite_int] int,
+	CustomPotionColor: #[color="composite_int"] int,
 }
 
 dispatch minecraft:item[tipped_arrow] to struct {

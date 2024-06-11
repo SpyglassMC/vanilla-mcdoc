@@ -73,11 +73,11 @@ struct MangroveRootPlacement {
 	random_skew_chance: float @ 0..1,
 	can_grow_through: (
 		[#[id="block"] string] |
-		#[id(registry=block,tags=allowed)] string |
+		#[id(registry="block",tags="allowed")] string |
 	),
 	muddy_roots_in: (
 		[#[id="block"] string] |
-		#[id(registry=block,tags=allowed)] string |
+		#[id(registry="block",tags="allowed")] string |
 	),
 	muddy_roots_provider: BlockStateProvider,
 }
@@ -103,7 +103,7 @@ dispatch minecraft:trunk_placer[upwards_branching_trunk_placer] to struct Upward
 	place_branch_per_log_probability: float @ 0..1,
 	can_grow_through: (
 		[#[id="block"] string] |
-		#[id(registry=block,tags=allowed)] string |
+		#[id(registry="block",tags="allowed")] string |
 	),
 }
 

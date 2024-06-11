@@ -1,7 +1,7 @@
 #[since="1.20.5"]
 dispatch minecraft:resource[wolf_variant] to struct WolfVariant {
     biomes: (#[id(registry="worldgen/biome",tags=allowed)] string | [#[id="worldgen/biome"] string]),
-	wild_texture: #[id="texture"] string,
-    tame_texture: #[id="texture"] string,
-    angry_texture: #[id="texture"] string,
+	wild_texture: #[id(registry="texture", path="entity/wolf")] string,
+    tame_texture: #[id(registry="texture", path="entity/wolf")] string,
+    angry_texture: #[id(registry="texture", path="entity/wolf")] string,
 }

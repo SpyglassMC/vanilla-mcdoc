@@ -102,7 +102,7 @@ dispatch minecraft:data_component[rarity] to Rarity
 dispatch minecraft:data_component[repair_cost] to int @ 0..
 
 struct ToolRule {
-	blocks: (#[id="block"] string | [#[id="block"] string] | #[id(registry=block)] string),
+	blocks: (#[id="block"] string | [#[id="block"] string] | #[id(registry="block")] string),
 	/// Overrides the default mining speed.
 	speed?: float,
 	/// Overrides whether or not this tool is considered correct to mine at its most efficient speed, and to drop items if the block's loot table requires it.

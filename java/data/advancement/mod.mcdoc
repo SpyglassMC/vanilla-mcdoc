@@ -8,7 +8,7 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 			#[until="1.20.5"]
 			item: #[id="item"] string,
 			#[until="1.20.5"]
-			nbt?: #[nbt(registry=minecraft:item[[item]])] string, // TODO: This needs hardcoding to include DefaultItemTags
+			nbt?: #[nbt=minecraft:item[[item]]] string, // TODO: This needs hardcoding to include DefaultItemTags
 			#[since="1.20.5"]
 			id: #[id="item"] string,
 			#[since="1.20.5"]

@@ -45,7 +45,7 @@ dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to (
 /// 	g = integerToByte(Math.floor(color[1] * randomBetween(0.8, 1) * baseShade * 255)),
 /// 	b = integerToByte(Math.floor(color[2] * randomBetween(0.8, 1) * baseShade * 255))
 /// ```
-type DustColor = #[color=particle] [float] @ 3
+type DustColor = #[color="particle"] [float] @ 3
 
 dispatch minecraft:particle[dust] to (
 	#[until="1.20.5"] struct {
@@ -103,7 +103,7 @@ dispatch minecraft:particle[entity_effect] to (
 		/// 	return Math.abs((Math.floor(integer / 256) * 256)) + integer
 		/// }
 		/// ```
-		color: #[color=translucent_particle] [float] @ 4,
+		color: #[color="translucent_particle"] [float] @ 4,
 	} |
 )
 

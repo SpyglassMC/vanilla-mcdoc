@@ -89,7 +89,7 @@ type IngredientValue = (
 		item: #[id="item"] string,
 	} |
 	struct {
-		tag: #[id(registry=item,tags=implicit)] string,
+		tag: #[id(registry="item",tags="implicit")] string,
 	} |
 )
 

@@ -49,8 +49,8 @@ dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	effects: #[id] DimensionTypeEffects,
 	/// Block tag defining what blocks keep fire infinitely burning.
 	infiniburn: (
-		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |
-		#[since="1.18.2"] #[id(registry=block,tags=required)] string |
+		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
+		#[since="1.18.2"] #[id(registry="block",tags="required")] string |
 	),
 	/// The minimum height in which blocks can exist.
 	#[since="1.17"]

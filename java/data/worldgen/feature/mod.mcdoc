@@ -235,15 +235,15 @@ struct GeodeBlockSettings {
 	inner_placements: [BlockState],
 	/// Blocks that will not be replaced by the geode.
 	cannot_replace: (
-		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |
+		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
 		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry=block,tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
 	),
 	/// When encountering an invalid block, feature placement is cancelled.
 	invalid_blocks: (
-		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |
+		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
 		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry=block,tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
 	),
 }
 
@@ -272,7 +272,7 @@ dispatch minecraft:feature_config[glow_lichen,multiface_growth] to struct Multif
 	can_be_placed_on?: (
 		#[until="1.18"] [BlockState] |
 		#[since="1.18"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry=block,tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
 	),
 }
 
@@ -402,9 +402,9 @@ dispatch minecraft:feature_config[root_system] to struct RootSystemConfig {
 	hanging_root_placement_attempts: int @ 0..256,
 	allowed_vertical_water_for_tree: int @ 1..64,
 	root_replaceable: (
-		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |
+		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
 		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry=block,tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
 	),
 	root_state_provider: BlockStateProvider,
 	hanging_root_state_provider: BlockStateProvider,
@@ -472,7 +472,7 @@ dispatch minecraft:feature_config[spring_feature] to struct SpringConfig {
 	requires_block_below: boolean,
 	valid_blocks: (
 		[#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry=block,tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
 	),
 }
 
@@ -500,9 +500,9 @@ dispatch minecraft:feature_config[vegetation_patch,waterlogged_vegetation_patch]
 	vegetation_chance: float @ 0..1,
 	xz_radius: IntProvider<int>,
 	replaceable: (
-		#[until="1.18.2"] #[id(registry=block,tags=implicit)] string |
+		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
 		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry=block,tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
 	),
 	ground_state: BlockStateProvider,
 	vegetation_feature: FeatureRef,
