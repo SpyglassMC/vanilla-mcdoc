@@ -80,6 +80,12 @@ dispatch minecraft:data_component[hide_additional_tooltip] to struct {}
 
 dispatch minecraft:data_component[hide_tooltip] to struct {}
 
+#[since="1.21"]
+dispatch minecraft:data_component[jukebox_playable] to struct JukeboxPlayable {
+	song: #[id="jukebox_song"] string,
+	show_in_tooltip?: boolean,
+}
+
 dispatch minecraft:data_component[lore] to [#[command_argument="component"] string]
 
 dispatch minecraft:data_component[max_damage] to int @ 1..
@@ -174,6 +180,8 @@ struct DefaultItemComponents {
 	[#[id] "hide_additional_tooltip"]?: minecraft:data_component[hide_additional_tooltip],
 	/// If set, it will completely hide this item's tooltip, including its name.
 	[#[id] "hide_tooltip"]?: minecraft:data_component[hide_tooltip],
+	/// If set, this item can be played in a jukebox like a music disc.
+	[#[id] "jukebox_playable"]?: minecraft:data_component[jukebox_playable],
 	/// Replaces default item name with contained chat component.
 	///
 	/// Differences from `custom_name`:
