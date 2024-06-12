@@ -4,23 +4,23 @@ struct ProjectileBase {
 	/// at least one tick, and is used by the game to ensure it only triggers the projectile_shoot
 	/// game event once.
 	#[since="1.17"]
-	HasBeenShot: boolean,
+	HasBeenShot?: boolean,
 	#[since="1.16"] #[uuid]
-	Owner: int[] @ 4,
+	Owner?: int[] @ 4,
 	/// Whether it has left its owner.
 	#[since="1.16"]
-	LeftOwner: boolean,
+	LeftOwner?: boolean,
 }
 
 dispatch minecraft:entity[llama_spit] to struct LlamaSpit {
 	...ProjectileBase,
 	#[until="1.16"] #[uuid]
-	Owner: OwnerUuid,
+	Owner?: OwnerUuid,
 }
 
 struct OwnerUuid {
 	/// Upper bits of the owner's UUID.
-	OwnerUUIDMost: long,
+	OwnerUUIDMost?: long,
 	/// Lower bits of the owner's UUID.
-	OwnerUUIDLeast: long
+	OwnerUUIDLeast?: long
 }

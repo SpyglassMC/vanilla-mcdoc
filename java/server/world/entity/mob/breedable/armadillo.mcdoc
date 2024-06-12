@@ -3,13 +3,13 @@ use ::java::server::util::TimedMemory
 
 #[since="1.20.5"]
 dispatch minecraft:entity[armadillo] to struct {
-    ...super::Breedable,
-    Brain: struct {
-		memories: struct {
+	...super::Breedable,
+	Brain?: struct {
+		memories?: struct {
 			[#[id] "gaze_cooldown_ticks"]: TickMemory,
-            [#[id] "danger_detected_recently"]: TimedMemory,
+			[#[id] "danger_detected_recently"]: TimedMemory,
 		},
 	},
-    state: ("idle" | "scared"),
-    scute_time: int @ 0..,
+	state?: ("idle" | "scared"),
+	scute_time?: int @ 0..,
 }

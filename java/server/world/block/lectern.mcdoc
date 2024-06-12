@@ -2,9 +2,9 @@ use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:block_entity[lectern] to struct Lectern {
 	...super::BlockEntity,
-	Book: InventoryItem,
+	Book?: InventoryItem,
 	/// Current page the book is on.
-	Page: int,
+	Page?: int,
 }
 
 dispatch minecraft:block[lectern] to minecraft:block_entity[lectern]

@@ -5,35 +5,36 @@ use super::super::super::util::inventory::EquipmentSlot
 dispatch minecraft:block_entity[spawner] to struct Spawner {
 	...super::BlockEntity,
 	/// Entities that can be placed.
-	SpawnPotentials: [SpawnPotential],
+	SpawnPotentials?: [SpawnPotential],
 	/// Data for the next mob to spawn.
 	/// Overwritten by `SpawnPotentials`.
-	SpawnData: (
+	SpawnData?: (
 		#[until="1.18"] AnyEntity |
 		#[since="1.18"] SpawnerEntry |
 	),
 	/// Number of entities that will be placed.
-	SpawnCount: short,
+	SpawnCount?: short,
 	/// Range that the spawned entities will be placed.
-	SpawnRange: short,
+	SpawnRange?: short,
 	/// Ticks until the next spawn.
-	Delay: short,
+	Delay?: short,
 	/// Minimum random delay for the next spawn.
-	MinSpawnDelay: short,
+	MinSpawnDelay?: short,
 	/// Maximum random delay for the next spawn.
-	MaxSpawnDelay: short,
+	MaxSpawnDelay?: short,
 	/// Maximum number of entities nearby.
-	MaxNearbyEntities: short,
+	MaxNearbyEntities?: short,
 	/// Radius in blocks that a player has to be within to spawn entities.
-	RequiredPlayerRange: short,
+	RequiredPlayerRange?: short,
 }
 
+// TODO: update
 #[since="1.20.5"]
 dispatch minecraft:block_entity[trial_spawner] to struct TrialSpawner {
 	/// Spawning behavior when the player does not have the Bad Omen effect.
-	normal_config: NormalConfig,
+	normal_config?: NormalConfig,
 	/// Spawning behavior when the player has the Bad Omen effect.
-	ominous_config: struct {
+	ominous_config?: struct {
 		...NormalConfig,
 		/// Loot tables to use when summoning ominous item spawners.
 		loot_tables_to_eject: [struct {
@@ -58,26 +59,24 @@ struct NormalConfig {
 	spawn_potentials: [SpawnPotential],
 }
 
+// TODO: check this, probably wrong between 1.18 and 1.20.5
 struct SpawnPotential {
 	#[until="1.20.5"]
-	Entity: (
+	Entity?: (
 		#[until="1.18"] AnyEntity |
 		#[since="1.18"] SpawnerEntry |
 	),
 	#[since="1.20.5"]
-	entity: SpawnerEntry,
+	data: SpawnerEntry,
 	/// Weight for this entry to be chosen.
 	#[until="1.18"]
-	Weight: (
+	Weight?: (
 		#[until="1.17"] int @ 0.. | 
 		#[since="1.17"] byte @ 0.. |
 	),
 	/// Weight for this entry to be chosen.
 	#[since="1.18"]
 	weight: int @ 0..,
-	/// Rolled items from the specified loot table will be equipped to the mob that spawns.
-	#[since="1.20.5"]
-	equipment: SpawnEquipment,
 }
 
 struct SpawnEquipment {
@@ -93,13 +92,16 @@ struct SpawnEquipment {
 }
 
 struct SpawnerEntry {
-	custom_spawn_rules: CustomSpawnRules,
 	entity: AnyEntity,
+	custom_spawn_rules?: CustomSpawnRules,
+	/// Rolled items from the specified loot table will be equipped to the mob that spawns.
+	#[since="1.20.5"]
+	equipment?: SpawnEquipment,
 }
 
 struct CustomSpawnRules {
 	/// Range of block light level required for the entity to spawn.
-	block_light_limit: InclusiveRange<int @ 0..15>,
+	block_light_limit?: InclusiveRange<int @ 0..15>,
 	/// Range of sky light level required for the entity to spawn.
-	sky_light_limit: InclusiveRange<int @ 0..15>,
+	sky_light_limit?: InclusiveRange<int @ 0..15>,
 }

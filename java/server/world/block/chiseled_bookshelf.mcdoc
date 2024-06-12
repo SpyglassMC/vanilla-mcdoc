@@ -3,8 +3,8 @@ use ::java::server::util::SlottedItem
 dispatch minecraft:block_entity[chiseled_bookshelf] to struct ChiseledBookshelf {
 	...super::BlockEntity,
 	/// Slots from 0 to 5.
-	Items: [SlottedItem<byte @ 0..5>] @ 0..6,
-	last_interacted_slot: int @ 0..5,
+	Items?: [SlottedItem<byte @ 0..5>] @ 0..6,
+	last_interacted_slot?: int @ 0..5,
 }
 
 dispatch minecraft:block[chiseled_bookshelf] to minecraft:block_entity[chiseled_bookshelf]

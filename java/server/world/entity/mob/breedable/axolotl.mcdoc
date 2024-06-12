@@ -4,8 +4,8 @@ use ::java::server::util::TickMemory
 #[since="1.17"]
 dispatch minecraft:entity[axolotl] to struct Axolotl {
 	...super::Breedable,
-	Brain: struct {
-		memories: struct {
+	Brain?: struct {
+		memories?: struct {
 			/// Hunting cooldown active.
 			[#[id] "has_hunting_cooldown"]: FlagMemory,
 			/// Tempted by the player.
@@ -17,9 +17,9 @@ dispatch minecraft:entity[axolotl] to struct Axolotl {
 		},
 	},
 	/// The variant of the axolotl.
-	Variant: Variant,
+	Variant?: Variant,
 	/// If this axolotl was released from a bucket.
-	FromBucket: boolean
+	FromBucket?: boolean
 }
 
 enum(int) Variant {

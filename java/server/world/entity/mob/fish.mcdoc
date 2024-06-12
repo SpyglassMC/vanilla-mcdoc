@@ -1,18 +1,18 @@
 dispatch minecraft:entity[cod,salmon] to struct Fish {
 	...super::MobBase,
 	/// If it was released from a bucket.
-	FromBucket: boolean,
+	FromBucket?: boolean,
 }
 
 dispatch minecraft:entity[tropical_fish] to struct TropicalFish {
 	...Fish,
-	Variant: int, // TODO
+	Variant?: int, // TODO
 }
 
 dispatch minecraft:entity[pufferfish] to struct Pufferfish {
 	...Fish,
 	/// How puffed it is.
-	PuffState: PuffState,
+	PuffState?: PuffState,
 }
 
 enum(int) PuffState {

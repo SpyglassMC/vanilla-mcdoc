@@ -2,5 +2,5 @@
 dispatch minecraft:entity[glow_squid] to struct GlowSquid {
 	...super::MobBase,
 	/// Ticks that it will wait before glowing.
-	DarkTicksRemaining: int,
+	DarkTicksRemaining?: int,
 }

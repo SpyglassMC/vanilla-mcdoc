@@ -5,57 +5,57 @@ dispatch minecraft:entity[llama] to struct Llama {
 	...super::Breedable,
 	/// Unknown use.
 	/// Remains `0` even if it was bred.
-	Bred: boolean,
+	Bred?: boolean,
 	/// Whether it is grazing.
-	EatingHaystack: boolean,
+	EatingHaystack?: boolean,
 	/// Whether it has been tamed.
-	Tame: boolean,
+	Tame?: boolean,
 	/// Higher values make it easier to tame.
 	/// Increases with feeding.
-	Temper: int @ 0..100,
+	Temper?: int @ 0..100,
 	/// Player who tamed it.
 	#[until="1.16"]
-	OwnerUUID: #[command_argument="uuid"] string,
+	OwnerUUID?: #[command_argument="uuid"] string,
 	/// Player who tamed the horse.
 	#[since="1.16"] #[uuid]
-	Owner: int[] @ 4,
+	Owner?: int[] @ 4,
 	/// Carpet decoration on its back.
-	DecorItem: InventoryItem,
+	DecorItem?: InventoryItem,
 	/// Whether it has a chest.
-	ChestedHorse: boolean,
+	ChestedHorse?: boolean,
 	...(
 		struct {
 			/// Slots from 0 to 2. Scales with `Strength`.
-			Items: [SlottedItem<byte @ 0..2>] @ 3,
+			Items?: [SlottedItem<byte @ 0..2>] @ 3,
 			/// Determines both the number of items it can carry and how likely it is for wolves to run away.
-			Strength: int @ 1,
+			Strength?: int @ 1,
 		} |
 		struct {
 			/// Slots from 0 to 5. Scales with `Strength`.
-			Items: [SlottedItem<byte @ 0..5>] @ 6,
+			Items?: [SlottedItem<byte @ 0..5>] @ 6,
 			/// Determines both the number of items it can carry and how likely it is for wolves to run away.
-			Strength: int @ 2,
+			Strength?: int @ 2,
 		} |
 		struct {
 			/// Slots from 0 to 8. Scales with `Strength`.
-			Items: [SlottedItem<byte @ 0..8>] @ 9,
+			Items?: [SlottedItem<byte @ 0..8>] @ 9,
 			/// Determines both the number of items it can carry and how likely it is for wolves to run away.
-			Strength: int @ 3,
+			Strength?: int @ 3,
 		} |
 		struct {
 			/// Slots from 0 to 11. Scales with `Strength`.
-			Items: [SlottedItem<byte @ 0..11>] @ 12,
+			Items?: [SlottedItem<byte @ 0..11>] @ 12,
 			/// Determines both the number of items it can carry and how likely it is for wolves to run away.
-			Strength: int @ 4,
+			Strength?: int @ 4,
 		} |
 		struct {
 			/// Slots from 0 to 14. Scales with `Strength`.
-			Items: [SlottedItem<byte @ 0..14>] @ 15,
+			Items?: [SlottedItem<byte @ 0..14>] @ 15,
 			/// Determines both the number of items it can carry and how likely it is for wolves to run away.
-			Strength: int @ 5,
+			Strength?: int @ 5,
 		} |
 	),
-	Variant: Variant,
+	Variant?: Variant,
 }
 
 enum(int) Variant {
@@ -68,5 +68,5 @@ enum(int) Variant {
 dispatch minecraft:entity[trader_llama] to struct TraderLlama {
 	...Llama,
 	/// When it will despawn.
-	DespawnDelay: int,
+	DespawnDelay?: int,
 }

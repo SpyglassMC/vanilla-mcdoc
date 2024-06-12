@@ -3,13 +3,13 @@ use ::java::server::util::FlagMemory
 #[since="1.19"]
 dispatch minecraft:entity[frog] to struct Frog {
 	...super::Breedable,
-	Brain: struct {
-		memories: struct {
+	Brain?: struct {
+		memories?: struct {
 			[#[id] "is_pregnant"]: struct {
-				value: struct {},
+				value?: struct {},
 			},
 			[#[id] "is_tempted"]: FlagMemory,
 		},
 	},
-	variant: #[id="frog_variant"] string,
+	variant?: #[id="frog_variant"] string,
 }

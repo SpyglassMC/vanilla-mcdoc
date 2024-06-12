@@ -3,8 +3,8 @@ use ::java::server::util::PositionMemory
 
 dispatch minecraft:entity[breeze] to struct Breeze {
 	...super::MobBase,
-	Brain: struct {
-		memories: struct { // TODO: Better docs
+	Brain?: struct {
+		memories?: struct { // TODO: Better docs
 			[#[id] "breeze_jump_inhaling"]: TickMemory,
 			/// Position the breeze is going to jump to.
 			[#[id] "breeze_jump_target"]: PositionMemory,

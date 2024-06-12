@@ -1,9 +1,9 @@
 dispatch minecraft:entity[magma_cube,slime] to struct Slime {
 	...super::MobBase,
-	Size: (
+	Size?: (
 		#[until="1.17"] int |
 		#[since="1.17"] int @ 0..126
 	),
 	/// Whether it is on the ground.
-	wasOnGround: boolean,
+	wasOnGround?: boolean,
 }

@@ -5,41 +5,41 @@ use ::java::server::util::Particle
 dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	/// Number of ticks it has existed.
 	/// Controls when it will despawn; when greater than `Duration + WaitTime`.
-	Age: int,
+	Age?: int,
 	/// Color of the particles.
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
-	Color: int,
+	Color?: int,
 	/// Maximum number of ticks until it will disappear after `WaitTime` is done
-	Duration: int,
+	Duration?: int,
 	/// Number of ticks until the effects are reapplied.
-	ReapplicationDelay: int,
+	ReapplicationDelay?: int,
 	/// Number of ticks until it appears.
-	WaitTime: int,
+	WaitTime?: int,
 	/// Amount the duration changes when it is active.
-	DurationOnUse: int,
+	DurationOnUse?: int,
 	/// Upper bits of the owner's UUID.
 	#[until="1.16"]
-	OwnerUUIDMost: long,
+	OwnerUUIDMost?: long,
 	/// Lower bits of the owner's UUID.
 	#[until="1.16"]
-	OwnerUUIDLeast: long,
+	OwnerUUIDLeast?: long,
 	#[uuid]
 	#[since="1.16"]
-	Owner: int[] @ 4,
+	Owner?: int[] @ 4,
 	/// Radius of the particles & effect applications.
-	Radius: float,
+	Radius?: float,
 	/// Change in the radius when it is used.
-	RadiusOnUse: float,
+	RadiusOnUse?: float,
 	/// Change in the radius per tick.
-	RadiusPerTick: float,
+	RadiusPerTick?: float,
 	/// Particle the area effect cloud displays.
-	Particle: (#[until="1.20.5"] string | #[since="1.20.5"] Particle),
+	Particle?: (#[until="1.20.5"] string | #[since="1.20.5"] Particle),
 	/// Default potion effect.
 	#[until="1.20.5"]
-	Potion: #[id="potion"] string,
+	Potion?: #[id="potion"] string,
 	/// Potion effects that get applied on use.
 	#[until="1.20.5"]
-	Effects: [LegacyPotionEffect],
+	Effects?: [LegacyPotionEffect],
 	#[since="1.20.5"]
-	potion_contents: minecraft:item_component[[potion_contents]],
+	potion_contents?: minecraft:item_component[[potion_contents]],
 }

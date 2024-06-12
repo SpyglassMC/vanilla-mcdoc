@@ -4,27 +4,27 @@ use super::super::entity::AnyEntity
 dispatch minecraft:block_entity[beehive] to struct Beehive {
 	...super::BlockEntity,
 	#[until="1.20.5"]
-	FlowerPos: FlowerPos,
+	FlowerPos?: FlowerPos,
 	#[since="1.20.5"]
-	flower_pos: int[] @ 3,
+	flower_pos?: int[] @ 3,
 	#[until="1.20.5"]
-	Bees: [LegacyBee],
+	Bees?: [LegacyBee],
 	#[since="1.20.5"]
-	bees: [Bee],
+	bees?: [Bee],
 }
 
 dispatch minecraft:block[beehive, bee_nest] to minecraft:block_entity[beehive]
 
 struct FlowerPos {
-	X: int,
-	Y: int,
-	Z: int,
+	X?: int,
+	Y?: int,
+	Z?: int,
 }
 
 struct LegacyBee {
-	MinOccupationTicks: int,
-	TicksInHive: int,
-	EntityData: AnyEntity,
+	MinOccupationTicks?: int,
+	TicksInHive?: int,
+	EntityData?: AnyEntity,
 }
 struct Bee {
 	min_ticks_in_hive: int,

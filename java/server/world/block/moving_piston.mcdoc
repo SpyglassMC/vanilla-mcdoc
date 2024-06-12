@@ -3,14 +3,14 @@ use ::java::server::util::block_state::BlockState
 dispatch minecraft:block_entity[moving_piston] to struct MovingPiston {
 	...super::BlockEntity,
 	/// Moving block represented by the moving piston.
-	blockState: BlockState,
+	blockState?: BlockState,
 	/// The direction it is moving.
-	facing: Facing,
+	facing?: Facing,
 	/// How far it has moved.
-	progress: float,
-	extending: boolean,
+	progress?: float,
+	extending?: boolean,
 	/// Whether the moving piston is the piston head.
-	source: boolean,
+	source?: boolean,
 }
 
 dispatch minecraft:block[moving_piston] to minecraft:block_entity[moving_piston]

@@ -2,34 +2,34 @@ use ::java::server::util::inventory::SlottedItem
 
 struct ContainerBase {
 	...super::BlockEntity,
-	CustomName: #[command_argument="component"] string,
+	CustomName?: #[command_argument="component"] string,
 	/// Name of the item that a player has to be holding to open this container.
 	/// Source is flattened to plain text and has formatting removed before the check.
-	Lock: string,
+	Lock?: string,
 	/// Loot table that will populate this container.
-	LootTable: #[id="loot_table"] string,
+	LootTable?: #[id="loot_table"] string,
 	/// Seed of the loot table.
-	LootTableSeed: long,
+	LootTableSeed?: long,
 }
 
 dispatch minecraft:block_entity[container] to struct Container27 {
 	...ContainerBase,
 	/// Slots from 0 to 26.
-	Items: [SlottedItem<byte @ 0..26>] @ 0..27,
+	Items?: [SlottedItem<byte @ 0..26>] @ 0..27,
 }
 
 dispatch minecraft:block_entity[dispenser, dropper] to struct Container9 {
 	...ContainerBase,
 	/// Slots from 0 to 8.
-	Items: [SlottedItem<byte @ 0..8>] @ 0..9,
+	Items?: [SlottedItem<byte @ 0..8>] @ 0..9,
 }
 
 dispatch minecraft:block_entity[hopper] to struct Hopper {
 	...ContainerBase,
 	/// Slots from 0 to 4.
-	Items: [SlottedItem<byte @ 0..4>] @ 0..5,
+	Items?: [SlottedItem<byte @ 0..4>] @ 0..5,
 	/// Ticks until an item can be transferred.
-	TransferCooldown: int,
+	TransferCooldown?: int,
 }
 
 dispatch minecraft:block[

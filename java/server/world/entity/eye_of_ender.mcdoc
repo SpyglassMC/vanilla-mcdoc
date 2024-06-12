@@ -2,5 +2,5 @@ use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:entity[eye_of_ender] to struct EyeOfEnder {
 	/// Item to render as
-	Item: InventoryItem,
+	Item?: InventoryItem,
 }

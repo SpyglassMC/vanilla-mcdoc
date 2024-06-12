@@ -1,25 +1,25 @@
 dispatch minecraft:entity[fox] to struct Fox {
 	...super::Breedable,
 	/// List of trusted players.
-	TrustedUUIDs: [#[uuid] (
+	TrustedUUIDs?: [#[uuid] (
 		#[until="1.16"] TrustedUUID |
 		#[since="1.16"] int[] @ 4 |
 	)],
 	/// Whether it is sleeping.
-	Sleeping: boolean,
+	Sleeping?: boolean,
 	/// The type of fox.
-	Type: FoxType,
+	Type?: FoxType,
 	/// Whether it is sitting.
-	Sitting: boolean,
+	Sitting?: boolean,
 	/// Whether it is crouching.
-	Crouching: boolean,
+	Crouching?: boolean,
 }
 
 struct TrustedUUID {
 	/// Lower bits of the trusted player's UUID.
-	L: long,
+	L?: long,
 	/// Upper bits of the trusted player's UUID.
-	M: long,
+	M?: long,
 }
 
 enum(string) FoxType {

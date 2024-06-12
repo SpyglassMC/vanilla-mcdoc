@@ -1,5 +1,5 @@
 use super::inventory::InventoryItem
-use ::minecraft::item::DefaultItemTags
+use ::java::server::world::item::DefaultItemTags
 use ::java::server::world::item::DefaultItemComponents
 
 type Text = (

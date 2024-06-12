@@ -2,10 +2,10 @@ use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:entity[firework_rocket] to struct FireWorkRocket {
 	/// Ticks it has existed.
-	Life: int,
+	Life?: int,
 	/// Ticks it will exist.
-	LifeTime: int,
+	LifeTime?: int,
 	/// Whether it should move at an angle.
-	ShotAtAngle: boolean,
-	FireworksItem: InventoryItem,
+	ShotAtAngle?: boolean,
+	FireworksItem?: InventoryItem,
 }

@@ -3,19 +3,19 @@ use ::java::server::util::inventory::InventoryItem
 dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 	...super::MobBase,
 	/// [feet, legs, body, head].
-	ArmorItems: [InventoryItem] @ 4,
+	ArmorItems?: [InventoryItem] @ 4,
 	/// [right hand, left hand].
-	HandItems: [InventoryItem] @ 2,
+	HandItems?: [InventoryItem] @ 2,
 	/// Whether it should be invisible.
-	Invisible: boolean,
+	Invisible?: boolean,
 	/// Whether it has no hitbox.
-	Marker: boolean,
+	Marker?: boolean,
 	/// Whether it should have a no base plate.
-	NoBasePlate: boolean,
+	NoBasePlate?: boolean,
 	/// Whether it should show its arms.
-	ShowArms: boolean,
+	ShowArms?: boolean,
 	/// Whether it is small.
-	Small: boolean,
+	Small?: boolean,
 	/// A bitfield of the slots that cannot be used.
 	#[bitfield(enum (int) {
 		HandAll = 1,
@@ -37,16 +37,16 @@ dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 		HelmetPlace = 17,
 		OffhandPlace = 18,
 	})]
-	DisabledSlots: int,
+	DisabledSlots?: int,
 	/// Body part rotations.
-	Pose: Pose,
+	Pose?: Pose,
 }
 
 struct Pose {
-	Body: [float] @ 3,
-	LeftArm: [float] @ 3,
-	RightArm: [float] @ 3,
-	LeftLeg: [float] @ 3,
-	RightLeg: [float] @ 3,
-	Head: [float] @ 3,
+	Body?: [float] @ 3,
+	LeftArm?: [float] @ 3,
+	RightArm?: [float] @ 3,
+	LeftLeg?: [float] @ 3,
+	RightLeg?: [float] @ 3,
+	Head?: [float] @ 3,
 }

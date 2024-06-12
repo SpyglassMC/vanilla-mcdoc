@@ -1,13 +1,13 @@
 struct BlockEntity {
-	id: #[id="block_entity"] string,
-	x: int,
-	y: int,
-	z: int,
+	id?: #[id="block_entity"] string,
+	x?: int,
+	y?: int,
+	z?: int,
 	/// Unknown
 	/// 0 for regular block entities
-	keepPacked: boolean,
+	keepPacked?: boolean,
 	#[since="1.20.5"]
-	components: minecraft:item[[id]]
+	components?: minecraft:item[[id]]
 }
 
 dispatch minecraft:block[

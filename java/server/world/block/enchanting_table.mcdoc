@@ -1,6 +1,6 @@
 dispatch minecraft:block_entity[enchanting_table] to struct EnchantingTable {
 	...super::BlockEntity,
-	CustomName: #[command_argument="component"] string,
+	CustomName?: #[command_argument="component"] string,
 }
 
 dispatch minecraft:block[enchanting_table] to minecraft:block_entity[enchanting_table]

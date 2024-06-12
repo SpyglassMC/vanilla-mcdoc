@@ -7,50 +7,50 @@ dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	...super::Breedable,
 	/// Unknown use.
 	/// Remains `0` even if it was bred.
-	Bred: boolean,
+	Bred?: boolean,
 	/// Whether it is eating a haystack.
-	EatingHaystack: boolean,
+	EatingHaystack?: boolean,
 	/// Whether it has been tamed.
-	Tame: boolean,
+	Tame?: boolean,
 	/// Higher values make it easier to tame. Increases with feeding.
-	Temper: int @ 0..100,
+	Temper?: int @ 0..100,
 	/// Player who tamed it.
 	#[until="1.16"]
-	OwnerUUID: #[command_argument="uuid"] string,
+	OwnerUUID?: #[command_argument="uuid"] string,
 	/// Player who tamed it.
 	#[since="1.16"] #[uuid]
-	Owner: int[] @ 4,
-	SaddleItem: InventoryItem,
+	Owner?: int[] @ 4,
+	SaddleItem?: InventoryItem,
 }
 
 dispatch minecraft:entity[horse] to struct Horse {
 	...HorseBase,
 	/// Horse armor.
-	ArmorItem: InventoryItem,
-	Variant: int, // TODO
+	ArmorItem?: InventoryItem,
+	Variant?: int, // TODO
 }
 
 dispatch minecraft:entity[donkey, mule] to struct ChestedHorse {
 	...HorseBase,
 	/// Whether it has a chest.
-	ChestedHorse: boolean,
+	ChestedHorse?: boolean,
 	/// Slots from 0 to 14.
-	Items: [SlottedItem<byte @ 0..14>] @ 15,
+	Items?: [SlottedItem<byte @ 0..14>] @ 15,
 }
 
 dispatch minecraft:entity[skeleton_horse] to struct SkeletonHorse {
 	...HorseBase,
 	/// Whether it was spawned by a trap.
-	SkeletonTrap: boolean,
+	SkeletonTrap?: boolean,
 	/// Ticks it has existed.
-	SkeletonTrapTime: int,
+	SkeletonTrapTime?: int,
 }
 
 #[since="1.17"]
 dispatch minecraft:entity[camel] to struct Camel {
 	...HorseBase,
-	Brain: struct {
-		memories: struct {
+	Brain?: struct {
+		memories?: struct {
 			/// Ticks until it can look around randomly again.
 			[#[id] "gaze_cooldown_ticks"]: TickMemory,
 			/// Tempted by the player.
@@ -60,7 +60,7 @@ dispatch minecraft:entity[camel] to struct Camel {
 		},
 	},
 	/// Whether it is sitting.
-	IsSitting: boolean,
+	IsSitting?: boolean,
 	/// The tick when it started changing its pose.
-	LastPoseTick: long
+	LastPoseTick?: long
 }

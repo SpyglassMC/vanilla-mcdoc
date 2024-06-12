@@ -3,43 +3,43 @@ dispatch minecraft:entity[bee] to struct Bee {
 	#[since="1.16"]
 	...super::super::NeutralMob,
 	#[until="1.20.5"]
-	HivePos: HivePos,
+	HivePos?: HivePos,
 	#[since="1.20.5"]
-	hive_pos: int[] @ 3,
+	hive_pos?: int[] @ 3,
 	/// Position of the flower the bee is circling
 	#[until="1.20.5"]
-	FlowerPos: FlowerPos,
+	FlowerPos?: FlowerPos,
 	/// Position of the flower the bee is circling
 	#[since="1.20.5"]
-	flower_pos: int[] @ 3,
+	flower_pos?: int[] @ 3,
 	/// Whether the bee has nectar.
-	HasNectar: boolean,
+	HasNectar?: boolean,
 	/// Whether the bee has stung an entity.
-	HasStung: boolean,
+	HasStung?: boolean,
 	/// Ticks since the bee has pollinated a crop.
-	TicksSincePollination: int,
+	TicksSincePollination?: int,
 	/// Ticks until the bee can enter its hive.
-	CannotEnterHiveTicks: int,
+	CannotEnterHiveTicks?: int,
 	/// Crops grown since the bee has gathered nectar.
-	CropsGrownSincePollination: int,
+	CropsGrownSincePollination?: int,
 	/// Ticks the bee will be angry for.
-	Anger: int,
+	Anger?: int,
 	/// Player that has attacked the bee.
 	#[uuid]
-	HurtBy: (
+	HurtBy?: (
 		#[until="1.16"] string |
 		#[since="1.16"] int[] @ 4 |
 	),
 }
 
 struct HivePos {
-	X: int,
-	Y: int,
-	Z: int,
+	X?: int,
+	Y?: int,
+	Z?: int,
 }
 
 struct FlowerPos {
-	X: int,
-	Y: int,
-	Z: int,
+	X?: int,
+	Y?: int,
+	Z?: int,
 }

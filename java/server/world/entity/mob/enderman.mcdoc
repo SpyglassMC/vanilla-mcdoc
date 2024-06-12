@@ -5,5 +5,5 @@ dispatch minecraft:entity[enderman] to struct Enderman {
 	#[since="1.16"]
 	...super::NeutralMob,
 	/// Block it is carrying.
-	carriedBlockState: BlockState,
+	carriedBlockState?: BlockState,
 }

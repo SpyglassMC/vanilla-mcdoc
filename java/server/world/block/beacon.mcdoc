@@ -5,19 +5,19 @@ dispatch minecraft:block_entity[beacon] to struct Beacon {
 	...super::BlockEntity,
 	/// Name of the item that a player has to be holding to open this beacon.
 	/// Source is flattened to plain text and has formatting removed before the check.
-	Lock: string,
+	Lock?: string,
 	/// Number of levels from the pyramid.
-	Levels: int,
+	Levels?: int,
 	/// Potion effect.
 	#[until="1.20.2"]
-	Primary: (NoneId | EffectId),
+	Primary?: (NoneId | EffectId),
 	/// Potion effect.
 	#[until="1.20.2"]
-	Secondary: (NoneId | EffectId),
+	Secondary?: (NoneId | EffectId),
 	#[since="1.20.2"]
-	primary_effect: #[id="mob_effect"] string,
+	primary_effect?: #[id="mob_effect"] string,
 	#[since="1.20.2"]
-	secondary_effect: #[id="mob_effect"] string,
+	secondary_effect?: #[id="mob_effect"] string,
 }
 
 dispatch minecraft:block[beacon] to minecraft:block_entity[beacon]

@@ -1,24 +1,24 @@
 dispatch minecraft:block_entity[command_block] to struct CommandBlock {
 	...super::BlockEntity,
-	CustomName: #[command_argument="component"] string,
-	Command: #[command] string,
+	CustomName?: #[command_argument="component"] string,
+	Command?: #[command] string,
 	/// Success count of the last command.
-	SuccessCount: int,
+	SuccessCount?: int,
 	/// Output of the last command.
-	LastOutput: string,
+	LastOutput?: string,
 	/// Whether to record command output.
-	TrackOutput: boolean,
+	TrackOutput?: boolean,
 	/// Whether it is powered by redstone.
-	powered: boolean,
+	powered?: boolean,
 	/// Whether it is automatically powered.
-	auto: boolean,
+	auto?: boolean,
 	/// Whether the previous command block was successful when the command block was executed.
 	/// This is always true for non-conditional command blocks.
-	conditionMet: boolean,
+	conditionMet?: boolean,
 	/// Whether to record the tick of the latest command execution.
-	UpdateLastExecution: boolean,
+	UpdateLastExecution?: boolean,
 	/// Tick of the latest command execution.
-	LastExecution: long,
+	LastExecution?: long,
 }
 
 dispatch minecraft:block[

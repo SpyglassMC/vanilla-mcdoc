@@ -1,14 +1,15 @@
+// TODO: update to 1.20.5
 dispatch minecraft:block_entity[skull] to struct PlayerHead {
 	...super::BlockEntity,
 	/// Owner of the skull.
 	#[until="1.16"]
-	Owner: SkullOwner,
+	Owner?: SkullOwner,
 	#[since="1.16"]
-	SkullOwner: SkullOwner,
+	SkullOwner?: SkullOwner,
 	/// Name of the owner, if exists will be converted to SkullOwner.
-	ExtraType: string,
+	ExtraType?: string,
 	#[since="1.19.3"]
-	note_block_sound: #[id="sound_event"] string,
+	note_block_sound?: #[id="sound_event"] string,
 }
 
 dispatch minecraft:block[player_head, player_wall_head] to minecraft:block_entity[skull]
@@ -30,21 +31,21 @@ dispatch minecraft:block[
 struct SkullOwner {
 	/// Optional.
 	#[uuid]
-	Id: (
+	Id?: (
 		#[until="1.16"] string |
 		#[since="1.16"] int[] @ 4 |
 	),
 	/// If missing appears as a steve head.
-	Name: string,
-	Properties: Properties,
+	Name?: string,
+	Properties?: Properties,
 }
 
 struct Properties {
-	textures: [Texture],
+	textures?: [Texture],
 }
 
 struct Texture {
-	Signature: string,
+	Signature?: string,
 	/// Base64 encoded JSON value of the texture index.
-	Value: string,
+	Value?: string,
 }

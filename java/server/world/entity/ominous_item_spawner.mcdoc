@@ -1,6 +1,6 @@
 use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:entity[ominous_item_spawner] to struct OminousItemSpawner {
-	item: InventoryItem,
+	item?: InventoryItem,
     spawn_item_after_ticks?: long,
 }

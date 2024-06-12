@@ -1,7 +1,7 @@
 dispatch minecraft:entity[endermite] to struct Endermite {
 	...super::MobBase,
 	/// How long it has existed.
-	Lifetime: int,
+	Lifetime?: int,
 	/// Whether enderman should attack it.
-	PlayerSpawned: boolean,
+	PlayerSpawned?: boolean,
 }

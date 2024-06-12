@@ -4,8 +4,8 @@ use ::java::server::util::TickMemory
 #[since="1.17"]
 dispatch minecraft:entity[goat] to struct Goat {
 	...super::Breedable,
-	Brain: struct {
-		memories: struct {
+	Brain?: struct {
+		memories?: struct {
 			/// Tempted by the player.
 			[#[id] "is_tempted"]: FlagMemory,
 			/// Ticks until it can leap again.
@@ -18,10 +18,10 @@ dispatch minecraft:entity[goat] to struct Goat {
 	},
 	/// Whether it has its left horn.
 	#[since="1.19"]
-	HasLeftHorn: boolean,
+	HasLeftHorn?: boolean,
 	/// Whether it has its right horn.
 	#[since="1.19"]
-	HasRightHorn: boolean,
+	HasRightHorn?: boolean,
 	/// Whether it is a screaming goat.
-	IsScreamingGoat: boolean,
+	IsScreamingGoat?: boolean,
 }

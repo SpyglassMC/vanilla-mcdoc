@@ -8,78 +8,78 @@ type PlayerSlot = (byte @ 0..35 | byte @ 100..103 | byte @ -106)
 dispatch minecraft:entity[player] to struct Player {
 	...super::LivingEntity,
 	/// Version of the player NBT structure
-	DataVersion: int,
-	Dimension: (
+	DataVersion?: int,
+	Dimension?: (
 		#[until="1.16"] Dimension |
 		#[since="1.16"] #[id="dimension"] string |
 	),
 	/// Location of the player's last death.
 	#[since="1.19"]
-	LastDeathLocation: GlobalPos,
+	LastDeathLocation?: GlobalPos,
 	/// Game mode that the player is in.
-	playerGameType: Gamemode,
+	playerGameType?: Gamemode,
 	/// Previous game mode that the player was in.
 	#[since="1.16"]
-	previousPlayerGameType: Gamemode,
+	previousPlayerGameType?: Gamemode,
 	/// Score to display upon death.
-	Score: int,
+	Score?: int,
 	/// Hotbar slot the player has selected.
-	SelectedItemSlot: int @ 0..8,
+	SelectedItemSlot?: int @ 0..8,
 	/// Item in the hotbar slot the player has selected.
-	SelectedItem: SlottedItem<PlayerSlot>,
+	SelectedItem?: SlottedItem<PlayerSlot>,
 	/// Dimension of the player's respawn point.
 	#[since="1.16"]
-	SpawnDimension: #[id="dimension"] string,
+	SpawnDimension?: #[id="dimension"] string,
 	/// X coordinate of the player's spawn point.
-	SpawnX: int,
+	SpawnX?: int,
 	/// Y coordinate of the player's spawn point.
-	SpawnY: int,
+	SpawnY?: int,
 	/// Z coordinate of the player's spawn point.
-	SpawnZ: int,
+	SpawnZ?: int,
 	/// Whether the player must spawn at the spawn point.
-	SpawnForced: boolean,
+	SpawnForced?: boolean,
 	/// Ticks the player has been in bed.
-	SleepTimer: short,
+	SleepTimer?: short,
 	/// Level of the hunger bar.
-	foodLevel: int,
+	foodLevel?: int,
 	/// Rate at which the `foodSaturationLevel` depletes.
-	foodExhaustionLevel: float,
+	foodExhaustionLevel?: float,
 	/// Rate at which the hunger bar depletes.
-	foodSaturationLevel: float,
+	foodSaturationLevel?: float,
 	/// Ticks until the player heals or takes starvation damage.
-	foodTickTimer: int,
+	foodTickTimer?: int,
 	/// Number of experience levels the player has.
-	XpLevel: int,
+	XpLevel?: int,
 	/// Percentage the experience bar is filled up.
-	XpP: float,
+	XpP?: float,
 	/// Total experience the player has.
-	XpTotal: int,
+	XpTotal?: int,
 	/// Seed for enchantments.
-	XpSeed: int,
-	Inventory: [SlottedItem<PlayerSlot>] @ 0..41,
+	XpSeed?: int,
+	Inventory?: [SlottedItem<PlayerSlot>] @ 0..41,
 	/// The player's enderchest inventory.
-	EnderItems: [SlottedItem<byte @ 0..26>] @ 0..27,
+	EnderItems?: [SlottedItem<byte @ 0..26>] @ 0..27,
 	/// Abilities of the player.
-	abilities: Abilities,
+	abilities?: Abilities,
 	/// Position that the player entered the nether at.
-	enteredNetherPosition: EnteredNetherPosition,
+	enteredNetherPosition?: EnteredNetherPosition,
 	/// Entity that the player is riding.
-	RootVehicle: RootVehicle,
+	RootVehicle?: RootVehicle,
 	/// Entity that is on the player's left shoulder.
-	ShoulderEntityLeft: AnyEntity,
+	ShoulderEntityLeft?: AnyEntity,
 	/// Entity that is on the player's right shoulder.
-	ShoulderEntityRight: AnyEntity,
+	ShoulderEntityRight?: AnyEntity,
 	/// Whether the player has gone to the overworld after defeating the Ender Dragon.
-	seenCredits: boolean,
+	seenCredits?: boolean,
 	/// Recipes that the player has.
-	recipeBook: RecipeBook,
+	recipeBook?: RecipeBook,
 	/// Tracking the warden spawning process for this player.
 	#[since="1.19"]
-	warden_spawn_tracker: WardenSpawnTracker,
+	warden_spawn_tracker?: WardenSpawnTracker,
 	// these are not included
-	id: (),
-	CustomName: (),
-	CustomNameVisible: (),
+	id?: (),
+	CustomName?: (),
+	CustomNameVisible?: (),
 }
 
 enum(int) Dimension {
@@ -97,65 +97,65 @@ enum(int) Gamemode {
 
 struct Abilities {
 	/// Speed that the player walks at.
-	walkSpeed: float @ 0.1,
+	walkSpeed?: float @ 0.1,
 	/// Speed that the player flies at.
-	flySpeed: float @ 0.05,
+	flySpeed?: float @ 0.05,
 	/// Whether the player can fly.
-	mayfly: boolean,
+	mayfly?: boolean,
 	/// Whether the player is flying.
-	flying: boolean,
+	flying?: boolean,
 	/// Whether the player can only take damage from the void.
-	invulnerable: boolean,
+	invulnerable?: boolean,
 	/// Whether the player may build.
-	mayBuild: boolean,
+	mayBuild?: boolean,
 	/// Whether the player destroys blocks instantly.
-	instabuild: boolean,
+	instabuild?: boolean,
 }
 
 struct EnteredNetherPosition {
-	x: double,
-	y: double,
-	z: double,
+	x?: double,
+	y?: double,
+	z?: double,
 }
 
 struct RootVehicle {
 	/// Upper bits of the ridden entity's UUID.
 	#[until="1.16"]
-	AttachMost: long,
+	AttachMost?: long,
 	/// Lower bits of the ridden entity's UUID.
 	#[until="1.16"]
-	AttachLeast: long,
+	AttachLeast?: long,
 	/// Ridden entity's UUID.
 	#[uuid]
 	#[since="1.16"]
-	Attach: int[] @ 4,
+	Attach?: int[] @ 4,
 	/// The ridden entity.
-	Entity: AnyEntity,
+	Entity?: AnyEntity,
 }
 
 struct RecipeBook {
 	/// Recipes the player has acquired.
-	recipes: #[id="recipe"] string,
+	recipes?: #[id="recipe"] string,
 	/// Recipes that should pulse in the crafting book.
-	toBeDisplayed: #[id="recipe"] string,
+	toBeDisplayed?: #[id="recipe"] string,
 	/// Whether the player has filtered crafting on in the crafting table.
-	isFilteringCraftable: boolean,
+	isFilteringCraftable?: boolean,
 	/// Whether the player has the crafting book open in the crafting table.
-	isGuiOpen: boolean,
+	isGuiOpen?: boolean,
 	/// Whether the player has filtered crafting on in the furnace.
-	isFurnaceFilteringCraftable: boolean,
+	isFurnaceFilteringCraftable?: boolean,
 	/// Whether the player has the crafting book open in the furnace.
-	isFurnaceGuiOpen: boolean,
+	isFurnaceGuiOpen?: boolean,
 }
 
 struct WardenSpawnTracker {
 	/// Ticks before the `warning_level` can be increased again.
 	/// Decreases by 1 every tick. It is set to 200 game ticks (10 seconds) every time the warning level is increased.
-	cooldown_ticks: int @ 0..,
+	cooldown_ticks?: int @ 0..,
 	/// Ticks since the player was warned for warden spawning.
 	/// Increases by 1 every tick. After 12000 game ticks (10 minutes) it will be set back to 0,
 	/// and the `warning_level` will be decreased by 1.
-	ticks_since_last_warning: int @ 0..,
+	ticks_since_last_warning?: int @ 0..,
 	/// The warden will spawn at level 3.
-	warning_level: int @ 0..3,
+	warning_level?: int @ 0..3,
 }

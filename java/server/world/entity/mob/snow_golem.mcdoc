@@ -1,5 +1,5 @@
 dispatch minecraft:entity[snow_golem] to struct SnowGolem {
 	...super::MobBase,
 	/// Whether it has a pumpkin.
-	Pumpkin: boolean,
+	Pumpkin?: boolean,
 }

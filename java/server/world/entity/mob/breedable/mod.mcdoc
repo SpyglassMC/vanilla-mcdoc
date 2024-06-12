@@ -1,20 +1,20 @@
 struct Breedable {
 	...super::MobBase,
 	/// Ticks until it stops searching for a mate.
-	InLove: int @ 0..,
-	Age: int,
+	InLove?: int @ 0..,
+	Age?: int,
 	/// A value of age assigned to this mob when it grows up.
 	/// Incremented when a baby mob is fed.
-	ForcedAge: int,
+	ForcedAge?: int,
 	/// Lower bits of the UUID of the player that caused this mob to breed.
 	#[until="1.16"]
-	LoveCauseLeast: long,
+	LoveCauseLeast?: long,
 	/// Upper bits of the UUID of the player that caused this mob to breed.
 	#[until="1.16"]
-	LoveCauseMost: long,
+	LoveCauseMost?: long,
 	/// Player that caused this mob to breed.
 	#[since="1.16"] #[uuid]
-	LoveCause: int[] @ 4,
+	LoveCause?: int[] @ 4,
 }
 
 dispatch minecraft:entity[cow] to Breedable

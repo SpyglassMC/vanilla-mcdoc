@@ -1,15 +1,15 @@
 dispatch minecraft:entity[painting] to struct Painting {
-	TileX: int,
-	TileY: int,
-	TileZ: int,
+	TileX?: int,
+	TileY?: int,
+	TileZ?: int,
 	/// Direction it is facing.
-	Facing: Facing,
+	Facing?: Facing,
 	/// Type of painting.
 	#[until="1.19"]
-	Motive: #[id="motive"] string,
+	Motive?: #[id="motive"] string,
 	/// Type of painting.
 	#[since="1.19"]
-	variant: #[id="painting_variant"] string,
+	variant?: #[id="painting_variant"] string,
 }
 
 enum(byte) Facing {

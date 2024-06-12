@@ -7,13 +7,13 @@ type InventoryItem = struct {
 	count?: int @ 1..99,
 	/// Number of items in the stack
 	#[until="1.20.5"]
-	Count: byte,
+	Count?: byte,
 }
 
 type SlottedItem<T> = struct {
 	...InventoryItem,
 	/// Inventory slot the item is in
-	Slot: T,
+	Slot?: T,
 }
 
 enum(string) EquipmentSlot {

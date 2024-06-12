@@ -4,13 +4,13 @@ use ::java::server::util::TickMemory
 #[since="1.19.4"]
 dispatch minecraft:entity[sniffer] to struct Sniffer {
 	...super::Breedable,
-	Brain: struct {
-		memories: struct {
+	Brain?: struct {
+		memories?: struct {
 			/// Ticks till it can explore another position.
 			[#[id] "sniff_cooldown"]: TimedFlagMemory,
 			/// Coordinates in the world that it has already explored.
 			[#[id] "sniffer_explored_positions"]: struct {
-				value: [int[] @ 3] @ ..20,
+				value?: [int[] @ 3] @ ..20,
 			},
 		},
 	},

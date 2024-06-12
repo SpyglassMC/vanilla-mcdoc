@@ -1,10 +1,10 @@
 dispatch minecraft:entity[phantom] to struct Phantom {
 	...super::MobBase,
 	/// Approximate circle x coordinate.
-	AX: int,
+	AX?: int,
 	/// Approximate circle y coordinate.
-	AY: int,
+	AY?: int,
 	/// Approximate circle z coordinate.
-	AZ: int,
-	Size: int @ 0..64,
+	AZ?: int,
+	Size?: int @ 0..64,
 }

@@ -3,6 +3,6 @@ use ::java::server::util::ColorByte
 dispatch minecraft:entity[sheep] to struct Sheep {
 	...super::Breedable,
 	/// Whether it has been shorn.
-	Sheared: boolean,
-	Color: ColorByte,
+	Sheared?: boolean,
+	Color?: ColorByte,
 }

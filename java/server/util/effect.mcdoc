@@ -1,21 +1,21 @@
 /// A single potion effect
 struct LegacyPotionEffect {
-	Id: EffectId,
-	Amplifier: byte,
+	Id?: EffectId,
+	Amplifier?: byte,
 	/// Since 1.19.4 a value of `-1` is supported, representing an infinite duration.
-	Duration: (
+	Duration?: (
 		#[until="1.19.4"] int @ 1.. |
 		#[since="1.19.4"] (int @ -1 | int @ 1..)
 	),
 	/// Whether particles are semi-transparent. (like with a Beacon)
-	Ambient: boolean,
+	Ambient?: boolean,
 	/// Whether particles should be shown.
-	ShowParticles: boolean,
+	ShowParticles?: boolean,
 	/// Whether the effect icon should be shown.
-	ShowIcon: boolean,
+	ShowIcon?: boolean,
 	/// A lower amplifier effect of the same type.
 	#[since="1.16"]
-	HiddenEffect: LegacyPotionEffect,
+	HiddenEffect?: LegacyPotionEffect,
 }
 
 struct PotionComponent {
@@ -24,7 +24,7 @@ struct PotionComponent {
 	amplifier?: byte,
 	// TODO: Consider adding a time utility
 	/// Duration of the effect in ticks.
-	duration: int @ 1..,
+	duration?: int @ 1..,
 	/// Whether the effect appears as a HUD icon in addition to in the inventory GUI (same behavior as beacons when `true`). Defaults to `false`.
 	ambient?: boolean,
 	/// Defaults to `true`.

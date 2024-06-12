@@ -2,28 +2,28 @@ use ::java::server::util::InventoryItem
 
 dispatch minecraft:entity[item] to struct Item {
 	/// Ticks it has existed.
-	Age: short,
-	Health: short,
+	Age?: short,
+	Health?: short,
 	/// Ticks until an entity can pick up this item.
-	PickupDelay: short,
+	PickupDelay?: short,
 	/// Only this entity can pick up the item.
 	#[uuid]
-	Owner: (
+	Owner?: (
 		#[until="1.16"] Uuid |
 		#[since="1.16"] int[] @ 4 |
 	),
 	/// Player who threw the item. Can be set and/or changed to any entity.
 	#[uuid]
-	Thrower: (
+	Thrower?: (
 		#[until="1.16"] Uuid |
 		#[since="1.16"] int[] @ 4 |
 	),
-	Item: InventoryItem,
+	Item?: InventoryItem,
 }
 
 struct Uuid {
 	/// Lower bits of the target player's UUID
-	L: long,
+	L?: long,
 	/// Upper bits of the target player's UUID
-	M: long,
+	M?: long,
 }

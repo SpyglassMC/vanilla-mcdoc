@@ -1,21 +1,21 @@
 dispatch minecraft:block_entity[end_gateway] to struct EndGateway {
 	...super::BlockEntity,
 	/// In game ticks.
-	Age: long,
+	Age?: long,
 	/// Whether to teleport to the exact location.
-	ExactTeleport: boolean,
+	ExactTeleport?: boolean,
 	/// Coordinates of where to teleport entities to.
 	#[until="1.20.5"]
-	ExitPortal: ExitPortal,
+	ExitPortal?: ExitPortal,
 	/// Coordinates of where to teleport entities to.
 	#[since="1.20.5"]
-	exit_portal: int[] @ 3,
+	exit_portal?: int[] @ 3,
 }
 
 dispatch minecraft:block[end_gateway] to minecraft:block_entity[end_gateway]
 
 struct ExitPortal {
-	X: int,
-	Y: int,
-	Z: int,
+	X?: int,
+	Y?: int,
+	Z?: int,
 }
