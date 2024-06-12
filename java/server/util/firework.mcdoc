@@ -1,7 +1,7 @@
 enum(string) FireworkShape {
-    SmallBall = "small_ball",
-    LargeBall = "large_ball",
-    Star = "star",
-    Creeper = "creeper",
-    Burst = "burst",
+	SmallBall = "small_ball",
+	LargeBall = "large_ball",
+	Star = "star",
+	Creeper = "creeper",
+	Burst = "burst",
 }

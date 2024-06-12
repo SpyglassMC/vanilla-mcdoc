@@ -71,19 +71,19 @@ dispatch minecraft:decorator_config[depth_average] to struct DepthAverageConfig 
 }
 
 struct OldRangeConfig {
-    maximum: int,
-    bottom_offset: int,
-    top_offset: int,
+	maximum: int,
+	bottom_offset: int,
+	top_offset: int,
 }
 
 #[until="1.17"]
 dispatch minecraft:decorator_config[range_biased,range_very_biased] to OldRangeConfig
 
 dispatch minecraft:decorator_config[range] to (
-    #[until="1.17"] OldRangeConfig |
-    #[since="1.17"] struct {
-        height: HeightProvider,
-    } |
+	#[until="1.17"] OldRangeConfig |
+	#[since="1.17"] struct {
+		height: HeightProvider,
+	} |
 )
 
 #[since="1.17"]
