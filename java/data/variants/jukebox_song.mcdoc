@@ -16,5 +16,5 @@ struct RangedSoundEvent {
 	sound_id: #[id="minecraft:sound_event"] string,
 	// TODO: What is "variable range"?
 	/// Range in blocks. If the player is further than this range from the jukebox, the sound will be inaudible. If omitted, the sound will have a variable range.
-	range?: float @ 0.0000001..
+	range?: float @ 0.0000001..,
 }
