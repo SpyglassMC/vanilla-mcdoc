@@ -4,10 +4,10 @@ dispatch minecraft:resource[tag] to struct Tag {
 }
 
 type TagEntry = (
-	#[id(registry="%tag",tags=allowed)] string |
+	#[id(registry="%tag",tags="allowed")] string |
 	#[since="1.16.2"]
 	struct {
-		id: #[id(registry="%tag",tags=allowed)] string,
+		id: #[id(registry="%tag",tags="allowed")] string,
 		required?: boolean,
 	} |
 )
