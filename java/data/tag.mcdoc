@@ -1,13 +1,13 @@
-dispatch minecraft:resource[tag] to struct Tag {
+type Tag<E> = struct {
 	replace?: boolean,
-	values: [TagEntry],
+	values: [TagEntry<E>],
 }
 
-type TagEntry = (
-	#[id(registry="%tag",tags="allowed")] string |
+type TagEntry<E> = (
+	E |
 	#[since="1.16.2"]
 	struct {
-		id: #[id(registry="%tag",tags="allowed")] string,
+		id: E,
 		required?: boolean,
 	} |
 )
