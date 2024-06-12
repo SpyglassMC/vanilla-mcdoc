@@ -9,7 +9,7 @@ dispatch minecraft:resource[jukebox_song] to struct JukeboxSong {
 	sound_event: (
 		#[id="minecraft:sound_event"] string |
 		RangedSoundEvent |
-	)
+	),
 }
 
 struct RangedSoundEvent {
