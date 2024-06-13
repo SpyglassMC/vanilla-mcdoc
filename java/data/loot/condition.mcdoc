@@ -94,9 +94,8 @@ dispatch minecraft:loot_condition_type[time_check] to struct TimeCheck {
 
 #[since="1.17"]
 dispatch minecraft:loot_condition_type[value_check] to struct ValueCheck {
-	/// The value to check.
 	value: NumberProvider<int>,
-	/// Valid range for the value, passes when value is inside this range.
+	/// Passes when `value` is within this range.
 	range: MinMaxBounds<int>,
 }
 

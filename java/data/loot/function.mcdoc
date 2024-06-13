@@ -167,12 +167,10 @@ enum(string) MapDecoration {
 /// Removes some items from a stack, if there was an explosion. Each item has a chance of 1/explosion radius to be lost.
 dispatch minecraft:loot_function_type[explosion_decay] to struct {}
 
-/// Applies another loot function to items that match an item predicate.
+/// Applies loot function(s) to items that match an item predicate.
 #[since="1.20.5"]
 dispatch minecraft:loot_condition_type[filtered] to struct Filtered {
-	/// Item predicate to select items to modify.
 	item_filter: ItemPredicate,
-	/// Loot function to apply to the selected items.
 	modifier: (LootFunction | [LootFunction]),
 }
 
