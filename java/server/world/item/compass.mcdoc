@@ -6,24 +6,24 @@ dispatch minecraft:data_component[lodestone_tracker] to struct LodestoneTracker 
 		dimension: #[id="dimension"] string,
 	},
 	/// When `true`, the component is removed when the lodestone is broken. When `false`, the component is kept. Defaults to true.
-	tracked: boolean,
+	tracked?: boolean,
 }
 
 dispatch minecraft:item[compass] to struct Compass {
 	#[since="1.20.5"]
 	[#[id] "lodestone_tracker"]?: minecraft:data_component[lodestone_tracker],
 	#[until="1.20.5"]
-	LodestoneDimension: #[id="dimension"] string,
+	LodestoneDimension?: #[id="dimension"] string,
 	#[until="1.20.5"]
-	LodestonePos: LodestonePos,
+	LodestonePos?: LodestonePos,
 	/// Whether the compass should be linked to a lodestone.
 	/// When true, the compass will reset if the lodestone at the position is removed.
 	#[until="1.20.5"]
-	LodestoneTracked: boolean
+	LodestoneTracked?: boolean
 }
 
 struct LodestonePos {
-	X: int,
-	Y: int,
-	Z: int
+	X?: int,
+	Y?: int,
+	Z?: int
 } 

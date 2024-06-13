@@ -1,4 +1,5 @@
 dispatch minecraft:entity[end_crystal] to struct EvokerFangs {
+	...super::EntityBase,
 	/// Whether to show the base of the end crystal.
 	ShowBottom?: boolean,
 	/// Coordinates that the beam is pointing to

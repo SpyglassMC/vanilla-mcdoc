@@ -50,6 +50,5 @@ struct EntityBase {
 
 struct AnyEntity {
 	id?: #[id="entity_type"] string,
-	...EntityBase,
 	...minecraft:entity[[id]],
 }

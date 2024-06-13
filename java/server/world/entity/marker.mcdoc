@@ -1,5 +1,6 @@
 #[since="1.17"]
 dispatch minecraft:entity[marker] to struct Marker {
+	...super::EntityBase,
 	/// Any stored data
 	data?: MarkerData,
 }

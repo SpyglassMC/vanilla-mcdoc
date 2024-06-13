@@ -16,8 +16,8 @@ dispatch minecraft:item[crossbow] to struct Crossbow {
 	[#[id] "charged_projectiles"]?: minecraft:data_component[charged_projectiles],
 	/// Projectiles that are loaded.
 	#[until="1.20.5"]
-	ChargedProjectiles: [InventoryItem] @ 0..3,
+	ChargedProjectiles?: [InventoryItem] @ 0..3,
 	/// Whether the crossbow is charged.
 	#[until="1.20.5"]
-	Charged: boolean,
+	Charged?: boolean,
 }

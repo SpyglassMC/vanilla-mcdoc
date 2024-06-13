@@ -3,6 +3,7 @@ use ::java::server::util::PotionComponent
 use ::java::server::util::Particle
 
 dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
+	...super::EntityBase,
 	/// Number of ticks it has existed.
 	/// Controls when it will despawn; when greater than `Duration + WaitTime`.
 	Age?: int,

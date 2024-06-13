@@ -1,6 +1,7 @@
 use ::java::server::util::block_state::BlockState
 
 dispatch minecraft:entity[tnt] to struct Tnt {
+	...super::EntityBase,
 	/// Ticks until it explodes.
 	#[until="1.20.3"]
 	Fuse?: short,

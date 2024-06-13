@@ -1,6 +1,7 @@
 use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:entity[firework_rocket] to struct FireWorkRocket {
+	...super::EntityBase,
 	/// Ticks it has existed.
 	Life?: int,
 	/// Ticks it will exist.

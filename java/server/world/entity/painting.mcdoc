@@ -1,4 +1,5 @@
 dispatch minecraft:entity[painting] to struct Painting {
+	...super::EntityBase,
 	TileX?: int,
 	TileY?: int,
 	TileZ?: int,

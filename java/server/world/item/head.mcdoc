@@ -27,27 +27,27 @@ dispatch minecraft:item[player_head] to struct PlayerHead {
 	#[since="1.20.5"]
 	[#[id] "note_block_sound"]?: minecraft:data_component[note_block_sound], // TODO: Add old tag?
 	#[until="1.20.5"]
-	SkullOwner: (SkullOwner | string),
+	SkullOwner?: (SkullOwner | string),
 }
 
 struct SkullOwner {
 	/// Optional.
 	#[uuid]
-	Id: (
+	Id?: (
 		#[until="1.16"] string |
 		#[since="1.16"] int[] @ 4 |
 	),
 	/// Name of the owner, if missing appears as a steve head.
-	Name: string,
-	Properties: Properties,
+	Name?: string,
+	Properties?: Properties,
 }
 
 struct Properties {
-	textures: [Texture],
+	textures?: [Texture],
 }
 
 struct Texture {
-	Signature: string,
+	Signature?: string,
 	/// Base64 encoded JSON value of the texture index.
-	Value: string,
+	Value?: string,
 }

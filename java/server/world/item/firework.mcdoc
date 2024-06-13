@@ -13,9 +13,9 @@ dispatch minecraft:data_component[firework_explosion] to struct Explosion {
 	/// Colors of the fading particles of the explosion
 	fade_colors: #[color="composite_int"] int[],
 	/// Added to a firework star via Diamond.
-	has_trail: boolean,
+	has_trail?: boolean,
 	/// Added to a firework star via Glowstone Dust.
-	has_twinkle: boolean,
+	has_twinkle?: boolean,
 }
 
 dispatch minecraft:item[firework_rocket] to struct FireworkRocket {
@@ -24,28 +24,28 @@ dispatch minecraft:item[firework_rocket] to struct FireworkRocket {
 	/// If set, this projectile item can't be picked up by a player when fired, except in creative mode. Can only be used within charged_projectiles components.
 	[#[id] "intangible_projectile"]: struct {},
 	#[until="1.20.5"]
-	Fireworks: LegacyFireworks,
+	Fireworks?: LegacyFireworks,
 }
 
 dispatch minecraft:item[firework_star] to struct FireworkStar {
 	#[since="1.20.5"]
 	[#[id] "firework_explosion"]?: minecraft:data_component[firework_explosion],
 	#[until="1.20.5"]
-	Explosion: LegacyExplosion,
+	Explosion?: LegacyExplosion,
 }
 
 struct LegacyFireworks {
 	/// Duration of flight.
-	Flight: byte,
-	Explosions: [LegacyExplosion],
+	Flight?: byte,
+	Explosions?: [LegacyExplosion],
 }
 
 struct LegacyExplosion {
 	/// Whether the explosion should flicker.
-	Flicker: boolean,
+	Flicker?: boolean,
 	/// Whether the explosion should have a trail.
-	Trail: boolean,
-	Type: (enum(byte) {
+	Trail?: boolean,
+	Type?: (enum(byte) {
 		SmallBall = 0,
 		LargeBall = 1,
 		Star = 2,
@@ -54,8 +54,8 @@ struct LegacyExplosion {
 	}),
 	/// Colors of the explosion.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	Colors: #[color="composite_int"] int[],
+	Colors?: #[color="composite_int"] int[],
 	/// Colors of the explosion fade.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	FadeColors: #[color="composite_int"] int[],
+	FadeColors?: #[color="composite_int"] int[],
 }

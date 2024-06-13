@@ -12,15 +12,15 @@ dispatch minecraft:item[axolotl_bucket, cod_bucket, salmon_bucket, pufferfish_bu
 	#[since="1.20.5"]
 	[#[id] "bucket_entity_data"]?: minecraft:data_component[bucket_entity_data],
 	#[until="1.20.5"]
-	EntityTag: EntityData,
+	EntityTag?: EntityData,
 }
 
 dispatch minecraft:item[tropical_fish_bucket] to struct AxolotlBucket {
 	#[since="1.20.5"]
 	[#[id] "bucket_entity_data"]?: minecraft:data_component[bucket_entity_data],
 	#[until="1.20.5"]
-	EntityTag: EntityData,
+	EntityTag?: EntityData,
 	/// Turns into the `Variant` entity tag.
 	#[until="1.20.5"]
-	BucketVariantTag: int,
+	BucketVariantTag?: int,
 }

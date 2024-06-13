@@ -1,6 +1,7 @@
 use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:entity[item_frame] to struct ItemFrame {
+	...super::EntityBase,
 	TileX?: int,
 	TileY?: int,
 	TileZ?: int,

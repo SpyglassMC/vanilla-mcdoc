@@ -1,6 +1,7 @@
 use ::java::server::util::InventoryItem
 
 dispatch minecraft:entity[item] to struct Item {
+	...super::EntityBase,
 	/// Ticks it has existed.
 	Age?: short,
 	Health?: short,

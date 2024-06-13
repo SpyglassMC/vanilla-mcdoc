@@ -14,13 +14,13 @@ struct SuspiciousStew {
 	[#[id] "suspicious_stew_effects"]?: minecraft:data_component[suspicious_stew_effects],
 	/// Effects this stew will give.
 	#[until="1.20.5"]
-	Effects: [Effect],
+	Effects?: [Effect],
 }
 dispatch minecraft:item[suspicious_stew] to SuspiciousStew
 
 /// A suspicious stew effect.
 struct Effect {
-	EffectId: EffectId,
+	EffectId?: EffectId,
 	/// Duration in ticks.
-	EffectDuration: int @ 1..,
+	EffectDuration?: int @ 1..,
 }

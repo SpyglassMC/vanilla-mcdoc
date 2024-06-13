@@ -19,13 +19,13 @@ dispatch minecraft:item[potion, splash_potion, lingering_potion] to struct Effec
 	[#[id] "potion_contents"]?: minecraft:data_component[potion_contents],
 	/// List of the effects that will be applied with this item.
 	#[until="1.20.5"]
-	CustomPotionEffects: [LegacyPotionEffect],
+	CustomPotionEffects?: [LegacyPotionEffect],
 	/// Default potion effect
 	#[until="1.20.5"]
-	Potion: #[id="potion"] string,
+	Potion?: #[id="potion"] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	#[until="1.20.5"]
-	CustomPotionColor: #[color="composite_int"] int,
+	CustomPotionColor?: #[color="composite_int"] int,
 }
 
 dispatch minecraft:item[tipped_arrow] to struct {

@@ -25,10 +25,10 @@ type BlockItem = (
 	} |
 	#[until="1.20.5"] struct {
 		/// List of blockstates that this block item can be placed on.
-		CanPlaceOn: [BlockState],
-		BlockEntityTag: BlockEntityData,
+		CanPlaceOn?: [BlockState],
+		BlockEntityTag?: BlockEntityData,
 		/// Blockstate that the placed block will have.
-		BlockStateTag: mcdoc:block_item_states[[%parent.id]],
+		BlockStateTag?: mcdoc:block_item_states[[%parent.id]],
 	} |
 )
 

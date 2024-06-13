@@ -207,24 +207,24 @@ struct DefaultItemComponents {
 // until 1.20.5
 struct DefaultItemTags {
 	/// Damage that an item has. Only used for tools, armor, etc.
-	Damage: int,
+	Damage?: int,
 	/// Whether the item should be unbreakable.
 	/// Only used for tools, armor, etc.
-	Unbreakable: boolean,
+	Unbreakable?: boolean,
 	/// List of the block states that can be destroyed by this item when holding it in adventure mode.
-	CanDestroy: [BlockState],
+	CanDestroy?: [BlockState],
 	/// Tag that describes the custom model an item will take.
 	/// Used by the `custom_model_data` model overrides predicate.
 	/// Has certain restrictions due to float conversion.
-	CustomModelData: int,
+	CustomModelData?: int,
 	/// List of enchantments that are on the item.
-	Enchantments: [Enchantment],
+	Enchantments?: [Enchantment],
 	/// Number of experience levels to add to the base level cost when repairing, combining, or renaming this item with an anvil.
-	RepairCost: int,
+	RepairCost?: int,
 	/// Applied to an entity that has equipped the item.
-	AttributeModifiers: [AttributeModifier],
+	AttributeModifiers?: [AttributeModifier],
 	/// Display settings.
-	display: Display,
+	display?: Display,
 	/// Bitfield for which flags to hide on an item.
 	#[bitfield(enum (int) {
 		Enchantments = 1,
@@ -238,22 +238,22 @@ struct DefaultItemTags {
 		#[since="1.19.4"]
 		Trim = 8
 	})]
-	HideFlags: int,
+	HideFlags?: int,
 	/// Trim to apply to the item & armor when worn.
 	#[since="1.19.4"]
-	Trim: Trim,
+	Trim?: Trim,
 }
 
 struct AnyItem {
 	/// ID of the item.
 	id: #[id="item"] string,
 	#[since="1.20.5"]
-	components: struct {
+	components?: struct {
 		...DefaultItemComponents,
 		...minecraft:item[[id]],
 	},
 	#[until="1.20.5"]
-	tag: struct {
+	tag?: struct {
 		...DefaultItemTags,
 		...minecraft:item[[id]],
 	},
@@ -262,9 +262,9 @@ struct AnyItem {
 /// An individual enchantment, with ID and level.
 struct Enchantment {
 	/// Which enchantment is being described.
-	id: #[id="enchantment"] string,
+	id?: #[id="enchantment"] string,
 	/// Which level the enchantment is.
-	lvl: (
+	lvl?: (
 		#[until="1.17"] (short @ 1.. | int @ 1..) |
 		#[since="1.17"] int @ 0..255 |
 	),
@@ -289,33 +289,33 @@ type AttributeModifier = (
 		}),
 	} |
 	#[until="1.20.5"] struct {
-		AttributeName: (
+		AttributeName?: (
 			#[until="1.16"] (AttributeName | string) |
 			#[since="1.16"] #[id="attribute"] string |
 		),
 		/// Identifying name of the modifier, has no real effect.
-		Name: string,
+		Name?: string,
 		/// Slot that the modifier is active in.
-		Slot: AttributeSlot,
-		Operation: Operation,
+		Slot?: AttributeSlot,
+		Operation?: Operation,
 		/// Change in the attribute.
-		Amount: double,
+		Amount?: double,
 		/// Upper bits of the modifier's UUID.
 		#[until="1.16"]
-		UUIDMost: long,
+		UUIDMost?: long,
 		/// Lower bits of the modifier's UUID.
 		#[until="1.16"]
-		UUIDLeast: long,
+		UUIDLeast?: long,
 		#[uuid]
 		#[since="1.16"]
-		UUID: int[] @ 4,
+		UUID?: int[] @ 4,
 	} |
 )
 
 /// Display settings of an item.
 struct Display {
 	/// A JSON text component.
-	Name: #[command_argument="component"] string,
+	Name?: #[command_argument="component"] string,
 	/// A list of JSON text components, each element being a lore line.
-	Lore: [#[command_argument="component"] string],
+	Lore?: [#[command_argument="component"] string],
 }

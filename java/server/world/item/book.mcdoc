@@ -31,7 +31,7 @@ dispatch minecraft:item[writable_book] to struct WritableBook {
 	#[since="1.20.5"]
 	[#[id] "writable_book_content"]?: minecraft:data_component[writable_book_content],
 	#[until="1.20.5"]
-	pages: [string],
+	pages?: [string],
 }
 
 dispatch minecraft:item[written_book] to struct WrittenBook {
@@ -40,17 +40,17 @@ dispatch minecraft:item[written_book] to struct WrittenBook {
 	// TODO: Add filtered text
 	/// Whether the dynamic content on the pages has been resolved.
 	#[until="1.20.5"]
-	resolved: boolean,
+	resolved?: boolean,
 	/// Pages of the book as JSON text components.
 	#[until="1.20.5"]
-	pages: [#[command_argument="component"] string],
+	pages?: [#[command_argument="component"] string],
 	/// Generation of the book.
 	#[until="1.20.5"]
-	generation: Generation,
+	generation?: Generation,
 	#[until="1.20.5"]
-	author: string,
+	author?: string,
 	#[until="1.20.5"]
-	title: string,
+	title?: string,
 }
 
 enum(int) Generation {
