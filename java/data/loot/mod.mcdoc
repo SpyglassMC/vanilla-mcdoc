@@ -50,7 +50,7 @@ struct SingletonPoolEntry {
 }
 
 /// Gets block specific drops.
-dispatch minecraft:loot_pool_entry[dynamic] to DynamicPoolEntry {
+dispatch minecraft:loot_pool_entry[dynamic] to struct DynamicPoolEntry {
 	name: #[id] DynamicDrops,
 	...SingletonPoolEntry,
 }

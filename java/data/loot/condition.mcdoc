@@ -1,5 +1,7 @@
 use super::LootCondition
 use super::function::EntityTarget
+use super::super::util::MinMaxBounds
+use super::super::util::NumberProvider
 use super::super::util::RandomValueBounds
 use super::super::advancement::predicate::ItemPredicate
 use super::super::advancement::predicate::EntityPredicate

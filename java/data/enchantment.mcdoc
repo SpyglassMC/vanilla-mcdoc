@@ -41,5 +41,5 @@ struct ExperienceCost {
 
 dispatch minecraft:resource[armor_effectiveness] to [struct DamageEnchantmentEffect {
 	requirements: minecraft:resource[predicate],
-	effect: ValueEffect | [ValueEffect],
+	effect: (ValueEffect | [ValueEffect]),
 }]
