@@ -4,6 +4,10 @@ dispatch minecraft:data_component[entity_data] to struct EntityData {
 	...minecraft:entity[[id]],
 }
 
+// Flattening funny
+// TODO: While we wait for %spawnitem to be implemented we can use the below hack :husk:.
+// https://github.com/misode/mcmeta/raw/registries/item/data.min.json
+// `document.body.textContent.split('\n')[0].filter(item => item.includes('_egg')).join(',\n')`
 dispatch minecraft:item[
 	allay_spawn_egg,
 	armadillo_spawn_egg,
