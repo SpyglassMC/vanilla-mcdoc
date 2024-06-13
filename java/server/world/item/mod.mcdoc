@@ -274,12 +274,8 @@ struct Enchantment {
 type AttributeModifier = (
 	#[since="1.20.5"] struct {
 		type: #[id="attribute"] string,
-		/// Slot or slot type the item must be in for the modifier to take effect.
-		slot: AttributeSlot,
 		/// Used when equipping and unequipping the item to identify which modifier to add or remove from the entity.
-		id: #[command_argument="uuid"] string,
-		/// Identifying name of the modifier, has no real effect.
-		name: string,
+		id: #[id="attribute_modifier"] string,
 		/// Change in the attribute.
 		amount: double,
 		operation: (enum(string) {
@@ -287,6 +283,8 @@ type AttributeModifier = (
 			AddMultipliedBase = "add_multiplied_base",
 			AddMultipliedTotal = "add_multiplied_total"
 		}),
+		/// Slot or slot type the item must be in for the modifier to take effect. Defaults to `any`.
+		slot?: AttributeSlot,
 	} |
 	#[until="1.20.5"] struct {
 		AttributeName?: (
