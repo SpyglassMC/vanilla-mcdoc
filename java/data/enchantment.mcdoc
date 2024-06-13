@@ -1,6 +1,7 @@
 use ::java::server::util::text::Text
 use ::java::server::util::attribute::AttributeSlot
 
+#[since="1.21"]
 dispatch minecraft:resource[enchantment] to struct Enchantment {
 	description: Text,
 	exclusive_set?: (
@@ -21,10 +22,12 @@ dispatch minecraft:resource[enchantment] to struct Enchantment {
 	/// How commonly the Enchantment appears, compared to the total combined `weight` of all available Enchantments.
 	weight: int @ 0..,
 	max_level: int @ 1..,
-	min_cost: ExperienceCost,
-	max_cost: ExperienceCost,
-	/// This value is halved when an Enchantment is added to a book
-	/// The effective fee is multiplied by the level of the Enchantment
+	/// Minimum experience cost.
+	min_cost: LinearLevelValue<int @ 1..>,
+	/// Maximum experience cost.
+	max_cost: LinearLevelValue<int @ 1..>,
+	/// Halved when an Enchantment is added to a book.
+	/// The effective fee is multiplied by the level of the Enchantment.
 	anvil_cost: int @ 0..,
 	slots: [AttributeSlot],
 	effects: struct {
@@ -32,12 +35,115 @@ dispatch minecraft:resource[enchantment] to struct Enchantment {
 	},
 }
 
-struct ExperienceCost {
-	/// Base cost at level 1.
-	base: int @ 1..,
-	/// Cost increase per level above 1.
-	per_level_above_first: int @ 1..,
+
+
+struct LevelBasedValue {
+	type: #[id="enchantment_level_based_value_type"] string,
+	...minecraft:level_based_value[[type]],
 }
+
+type LinearLevelValue<T> = (struct {
+	/// Base cost at level 1.
+	base: T,
+	/// Cost increase per level above 1.
+	per_level_above_first: T,
+})
+
+dispatch minecraft:level_based_value[linear] to LinearLevelValue<(int | float)>
+
+/// Clamps another Level-Based Value
+dispatch minecraft:level_based_value[clamped] to struct ClampedLevelValue {
+	value: LevelBasedValue,
+	min: float,
+	max: float,
+}
+
+/// Fraction constructed from two other Level-Based Values
+dispatch minecraft:level_based_value[fraction] to struct FractionLevelValue {
+	numerator: LevelBasedValue,
+	denominator: LevelBasedValue,
+}
+
+/// Value based on the level squared.
+dispatch minecraft:level_based_value[levels_squared] to struct SquaredLevelValue {
+	/// Added to the exponent; `0.0` for squared, `1.0` for cubed, `.5` for square root, `-4` for negpow(2), etc.
+	added: float,
+}
+
+/// Maps a list of values to specific levels, and applies a fallback if the level is greater than the number of values supplied.
+dispatch minecraft:level_based_value[lookup] to struct LookupLevelValue {
+	/// Indexed by `level - 1` to apply, if present
+	values: [LevelBasedValue] @ 1..,
+	/// Applied if the level is greater than the size of `values`.
+	fallback: LevelBasedValue,
+}
+
+struct EffectValue {
+	type: #[id="enchantment_value_effect_type"] string,
+	...minecraft:value_effect[[type]],
+}
+
+dispatch minecraft:value_effect[add] to struct AddEffectValue {
+	value: LevelBasedValue,
+}
+
+/// Runs a number of other Effect Values, in order
+dispatch minecraft:value_effect[all_of] to struct AllOfEffectValue {
+	effects: [EffectValue] @ 1..,
+}
+
+dispatch minecraft:value_effect[multiply] to struct MultiplyEffectValue {
+	/// Level-Based Value determining the factor to multiply in
+	factor: LevelBasedValue,
+}
+
+/// Runs a Binomial series of checks, reducing the input value by 1 for every successful check.
+dispatch minecraft:value_effect[remove_binomial] to struct ReduceBinomialEffectValue {
+	/// Chance that an input value is dropped by 1.
+	///
+	/// The span is 0 to 1, with 0 being no chance to drop an input value and 1 dropping all input values.
+	chance: LevelBasedValue,
+}
+
+dispatch minecraft:value_effect[set] to struct SetEffectValue {
+	value: LevelBasedValue,
+}
+
+struct AttributeEffect {
+	attribute: #[id="attribute"] string,
+	/// Used when equipping and unequipping the item to identify which modifier to add or remove from the entity.
+	///
+	/// Postfixed with the slot name when the enchanted item is equipped.
+	id: #[id="attribute_modifier"] string,
+	/// Change in the attribute.
+	amount: double,
+	operation: (enum(string) {
+		AddValue = "add_value",
+		AddMultipliedBase = "add_multiplied_base",
+		AddMultipliedTotal = "add_multiplied_total"
+	}),
+}
+
+struct EntityEffect {
+	type: #[id="enchantment_entity_effect_type"] string,
+	...minecraft:entity_effect[[type]],
+}
+
+/// Runs a list of other Entity Effects. Useful when a set of conditions should apply to more than one Entity Effect.
+dispatch minecraft:entity_effect[all_of] to struct AllOfEntityEffect {
+	effects: [EntityEffect] @ 1..,
+}
+
+dispatch minecraft:entity_effect[apply_mob_effect] to ApplyMobEffectEntityEffect {
+	/// If multiple mob effects are specified, a random effect is selected.
+	to_apply: (#[id(registry="mob_effect", tags="allowed")] string | [#[id="mob_effect"] string]),
+	min_duration: LevelBasedValue,
+	max_duration: LevelBasedValue,
+	min_amplifier: LevelBasedValue,
+	max_amplifier: LevelBasedValue,
+}
+
+// cont. https://quiltmc.org/en/mc-patchnotes/#1.21:~:text=and%20maximum%20amplifier-,damage_entity,-An%20Entity%20Effect
 
 dispatch minecraft:resource[armor_effectiveness] to [struct DamageEnchantmentEffect {
 	requirements: minecraft:resource[predicate],

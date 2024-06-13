@@ -1,5 +1,6 @@
 use ::java::server::util::text::Text
 
+#[since="1.21"]
 dispatch minecraft:resource[jukebox_song] to struct JukeboxSong {
 	/// Displayed in the HUD actionbar & item tooltip.
 	description: Text,
