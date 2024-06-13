@@ -103,9 +103,11 @@ dispatch minecraft:trigger[cured_zombie_villager] to struct CuredZombieVillager 
 	zombie?: CompositeEntity,
 }
 
+#[since="1.20.5"]
 dispatch minecraft:trigger[default_block_use] to struct DefaultBlockUse {
 	...TriggerBase,
-	location?: LocationPredicate,
+	/// The location of the block.
+	location?: [LootCondition],
 }
 
 /// Player had a status effect applied or taken from them.

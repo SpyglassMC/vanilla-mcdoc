@@ -43,24 +43,49 @@ struct LootPoolEntryBase {
 	conditions?: [LootCondition],
 }
 
-type LootPoolEntrySingleton<Name> = struct {
-	name: Name,
+struct SingletonPoolEntry {
 	weight?: int @ 1..,
 	quality?: int,
 	...LootPoolEntryBase,
 }
 
 /// Gets block specific drops.
-dispatch minecraft:loot_pool_entry[dynamic] to LootPoolEntrySingleton<#[id] string>
+dispatch minecraft:loot_pool_entry[dynamic] to DynamicPoolEntry {
+	name: #[id] DynamicDrops,
+	...SingletonPoolEntry,
+}
+
+enum(string) DynamicDrops {
+	/// Drops the items in a shulker box.
+	Contents = "contents",
+	/// Drops the sherds of a decorated pot.
+	#[since="1.20"]
+	Sherds = "sherds",
+}
 
 /// Adds a single item.
-dispatch minecraft:loot_pool_entry[item] to LootPoolEntrySingleton<#[id="item"] string>
+dispatch minecraft:loot_pool_entry[item] to struct ItemPoolEntry {
+	name: #[id="item"] string,
+	...SingletonPoolEntry,
+}
 
 /// Adds the contents of another loot table.
-dispatch minecraft:loot_pool_entry[loot_table] to LootPoolEntrySingleton<#[id="loot_table"] string>
+dispatch minecraft:loot_pool_entry[loot_table] to struct LootTablePoolEntry {
+	#[until="1.20.5"]
+	name: #[id="loot_table"] string,
+	#[since="1.20.5"]
+	value: (
+		#[id="loot_table"] string |
+		LootTable |
+	),
+	...SingletonPoolEntry,
+}
 
 /// Adds the contents of an item tag.
-dispatch minecraft:loot_pool_entry[tag] to LootPoolEntrySingleton<#[id(registry="item",tags="implicit")] string>
+dispatch minecraft:loot_pool_entry[tag] to struct TagPoolEntry {
+	name: #[id(registry="item",tags="implicit")] string,
+	...SingletonPoolEntry,
+}
 
 struct CompositePoolEntry {
 	children: [LootPoolEntry],
