@@ -582,7 +582,7 @@
    "mcdoc.java.server.world.entity.tnt.Tnt.fuse": "Ticks until it explodes.",
    "mcdoc.java.server.world.item.book.WritableBookContent.pages.__union_list.__struct.filtered": "Shown only to players with chat filter enabled, instead of `text`.",
    "mcdoc.java.server.world.item.book.WrittenBookContent.pages.__union_list.__struct.filtered": "Shown only to players with chat filter enabled, instead of `text`.",
-   "mcdoc.java.server.world.item.book.WrittenBookContent.title.filtered": "Shown only to players with chat filter enabled, instead of `text`.",
+   "mcdoc.java.server.world.item.book.WrittenBookContent.title.__union.__struct_1.filtered": "Shown only to players with chat filter enabled, instead of `text`.",
    "mcdoc.java.server.world.item.book.WrittenBookContent.generation": "Number of times this written book has been copied. Defaults to 0. If the value is greater than 1, the book cannot be copied.",
    "mcdoc.java.server.world.item.book.WrittenBookContent.resolved": "Whether the dynamic content on the pages has been resolved.",
    "mcdoc.java.server.world.item.book.item.__dispatch.WritableBook": "A writable book",
