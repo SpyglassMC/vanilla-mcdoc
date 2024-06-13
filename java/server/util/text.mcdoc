@@ -37,17 +37,17 @@ type TextObject = (
 	} |
 	struct {
 		block: #[vector(dimension=3,integer=true)] string,
-		nbt: #[nbt_path(category=block)] string,
+		nbt: #[nbt_path=minecraft:block[%fallback]] string,
 		...TextNbtBase,
 	} |
 	struct {
 		entity: #[selector(amount=multiple,type=entities)] string,
-		nbt: #[nbt_path(category=entity,id=[entity])] string,
+		nbt: #[nbt_path=minecraft:entity[[entity]]] string,
 		...TextNbtBase,
 	} |
 	struct {
 		storage: #[id="storage"] string,
-		nbt: #[nbt_path(registry=minecraft:storage[[storage]])] string,
+		nbt: #[nbt_path=minecraft:storage[[storage]]] string,
 		...TextNbtBase,
 	} |
 )
