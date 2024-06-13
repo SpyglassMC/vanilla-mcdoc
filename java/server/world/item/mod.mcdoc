@@ -277,14 +277,14 @@ type AttributeModifier = (
 		/// Slot or slot type the item must be in for the modifier to take effect.
 		slot: AttributeSlot,
 		/// Used when equipping and unequipping the item to identify which modifier to add or remove from the entity.
-		uuid: int[] @ 4,
+		id: #[command_argument="uuid"] string,
 		/// Identifying name of the modifier, has no real effect.
 		name: string,
 		/// Change in the attribute.
 		amount: double,
 		operation: (enum(string) {
 			AddValue = "add_value",
-			AddMultipliedBase = "add_value",
+			AddMultipliedBase = "add_multiplied_base",
 			AddMultipliedTotal = "add_multiplied_total"
 		}),
 	} |

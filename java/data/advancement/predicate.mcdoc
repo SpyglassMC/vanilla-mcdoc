@@ -140,7 +140,7 @@ struct EntityPredicate {
 	},
 	#[since="1.20.5"]
 	slots?: struct {
-		[#[slot_range] string]: ItemPredicate,
+		[#[command_argument="item_slots"] string]: ItemPredicate,
 	},
 }
 

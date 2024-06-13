@@ -1,0 +1,45 @@
+use ::java::server::util::text::Text
+use ::java::server::util::attribute::AttributeSlot
+
+dispatch minecraft:resource[enchantment] to struct Enchantment {
+	description: Text,
+	exclusive_set?: (
+		#[id(registry="enchantment", tags="allowed")] string |
+		[#[id="enchantment"] string] |
+	),
+	supported_items: (
+		#[id(registry="item", tags="allowed")] string |
+		[#[id="item"] string] |
+	),
+	/// Item types for which this Enchantment shows up in Enchanting Tables and on traded equipment.
+	///
+	/// Must be a subset of `supported_items`.
+	primary_items: (
+		#[id(registry="item", tags="allowed")] string |
+		[#[id="item"] string] |
+	),
+	/// How commonly the Enchantment appears, compared to the total combined `weight` of all available Enchantments.
+	weight: int @ 0..,
+	max_level: int @ 1..,
+	min_cost: ExperienceCost,
+	max_cost: ExperienceCost,
+	/// This value is halved when an Enchantment is added to a book
+	/// The effective fee is multiplied by the level of the Enchantment
+	anvil_cost: int @ 0..,
+	slots: [AttributeSlot],
+	effects: struct {
+		[#[id="enchantment_effect"] string]?: minecraft:enchantment_effect[[%key]],
+	},
+}
+
+struct ExperienceCost {
+	/// Base cost at level 1.
+	base: int @ 1..,
+	/// Cost increase per level above 1.
+	per_level_above_first: int @ 1..,
+}
+
+dispatch minecraft:resource[armor_effectiveness] to [struct DamageEnchantmentEffect {
+	requirements: minecraft:resource[predicate],
+	effect: ValueEffect | [ValueEffect],
+}]

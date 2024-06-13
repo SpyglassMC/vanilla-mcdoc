@@ -11,6 +11,8 @@ enum(string) AttributeSlot {
 	Armor = "armor",
 	#[since="1.20.5"]
 	Any = "any",
+	#[since="1.20.5"]
+	Body = "body",
 }
 
 enum(string) AttributeName {
