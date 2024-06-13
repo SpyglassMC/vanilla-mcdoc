@@ -41,5 +41,5 @@ dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	#[until="1.20.5"]
 	Effects?: [LegacyPotionEffect],
 	#[since="1.20.5"]
-	potion_contents?: minecraft:item_component[[potion_contents]],
+	potion_contents?: minecraft:data_component[[potion_contents]],
 }

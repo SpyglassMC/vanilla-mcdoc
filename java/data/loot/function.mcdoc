@@ -386,7 +386,7 @@ dispatch minecraft:loot_function_type[set_nbt] to struct SetNbt {
 dispatch minecraft:loot_function_type[set_components] to struct SetComponents {
 	conditions?: [LootCondition],
 	components: struct {
-		[#[id="data_component_type"] string]?: minecraft:item_component[[%key]],
+		[#[id="data_component_type"] string]?: minecraft:data_component[[%key]],
 		[#[id=(registry=data_component_type, nulled=true)] string]?: struct {},
 	},
 }
@@ -417,7 +417,7 @@ dispatch minecraft:loot_function_type[set_fireworks] to struct SetFireworks {
 	/// If omitted, the flight duration of the item is left untouched - or set to 0 if the component did not exist before.
 	flight_duration?: int @ 0..255,
 	explosions?: struct {
-		values: [minecraft:item_component[firework_explosion]],
+		values: [minecraft:data_component[firework_explosion]],
 		...ListMode,
 	},
 }

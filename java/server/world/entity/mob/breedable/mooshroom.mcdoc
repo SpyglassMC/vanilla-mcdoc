@@ -10,5 +10,5 @@ dispatch minecraft:entity[mooshroom] to struct Mooshroom {
 	#[until="1.20.2"]
 	EffectDuration?: int,
 	#[since="1.20.2"]
-	stew_effects?: minecraft:item_component[suspicious_stew_effects],
+	stew_effects?: minecraft:data_component[suspicious_stew_effects],
 }
