@@ -1,0 +1,8 @@
+use ::java::server::util::inventory::SlottedItem
+
+dispatch minecraft:block_entity[crafter] to struct Crafter {
+	...super::BlockEntity,
+	crafting_ticks_remaining?: int,
+	disabled_slots?: int @ 0..8 [] @ ..9,
+	triggered?: (0 | 1),
+}

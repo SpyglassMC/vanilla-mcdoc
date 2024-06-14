@@ -2,7 +2,7 @@ use ::java::server::util::TickMemory
 use ::java::server::util::TimedMemory
 
 #[since="1.20.5"]
-dispatch minecraft:entity[armadillo] to struct {
+dispatch minecraft:entity[armadillo] to struct Armadillo {
 	...super::Breedable,
 	Brain?: struct {
 		memories?: struct {
@@ -10,6 +10,13 @@ dispatch minecraft:entity[armadillo] to struct {
 			[#[id] "danger_detected_recently"]: TimedMemory,
 		},
 	},
-	state?: ("idle" | "scared"),
+	state?: ArmadilloState,
 	scute_time?: int @ 0..,
+}
+
+enum(string) ArmadilloState {
+	Idle = "idle",
+	Rolling = "rolling",
+	Scared = "scared",
+	Unrolling = "unrolling",
 }
