@@ -1,5 +1,6 @@
 use super::loot::function::CopyNameSource
 use super::loot::function::EntityTarget
+use super::loot::enchantment::LevelBasedValue
 
 type MinMaxBounds<T> = (
 	T |
@@ -92,6 +93,10 @@ dispatch minecraft:score_provider[fixed] to struct FixedScoreProvider {
 dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
 	source: #[id="storage"] string,
 	path: string,
+}
+
+dispatch minecraft:number_provider[enchantment_level] to struct EnchantmentLevelProvider {
+	amount: LevelBasedValue,
 }
 
 type NbtProvider = (

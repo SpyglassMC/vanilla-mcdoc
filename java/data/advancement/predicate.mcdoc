@@ -37,11 +37,17 @@ struct ItemPredicate {
 			damage?: MinMaxBounds<int>,
 			durability?: MinMaxBounds<int>,
 		},
+		[#[id] "jukebox_playable"]?: struct {
+			song?: (#[id(registry="jukebox_song",tags="allowed")] string | [#[id="jukebox_song"] string]),
+		}
 	},
 }
 
 struct EnchantmentPredicate {
+	#[until="1.21"]
 	enchantment?: #[id="enchantment"] string,
+	#[since="1.21"]
+	enchantments?: (#[id(registry="enchantment",tags="allowed")] string | [#[id="enchantment"] string]),
 	levels?: MinMaxBounds<int>,
 }
 
@@ -100,6 +106,19 @@ struct LocationPredicate {
 	/// Whether the block is above (5 blocks or less) a campfire or soul campfire.
 	#[since="1.16"]
 	smokey?: boolean,
+	/// Whether the location has the maximum possible level of sky light
+	#[since="1.21"]
+	can_see_sky?: boolean,
+}
+
+struct MovementPredicate {
+	x?: MinMaxBounds<float>,
+	y?: MinMaxBounds<float>,
+	z?: MinMaxBounds<float>,
+	speed?: MinMaxBounds<float>,
+	horizontal_speed?: MinMaxBounds<float>,
+	vertical_speed?: MinMaxBounds<float>,
+	fall_distance?: MinMaxBounds<float>,
 }
 
 struct EntityPredicate {
@@ -119,6 +138,10 @@ struct EntityPredicate {
 		is_sprinting?: boolean,
 		is_swimming?: boolean,
 		is_baby?: boolean,
+		#[since="1.21"]
+		is_on_ground?: boolean,
+		#[since="1.21"]
+		is_flying?: boolean,
 	},
 	equipment?: struct {
 		[EquipmentSlot]: ItemPredicate,
@@ -142,6 +165,14 @@ struct EntityPredicate {
 	slots?: struct {
 		[#[command_argument="item_slots"] string]: ItemPredicate,
 	},
+	#[since="1.21"]
+	movement?: MovementPredicate,
+	/// True every `n` ticks of an entity's lifetime.
+	#[since="1.21"]
+	periodic_ticks?: int @ 1..,
+	/// Whether the block at most 0.5 blocks below the entity is present which can affect its movement.
+	#[since="1.21"]
+	movement_affected_by?: LocationPredicate,
 }
 
 struct TypeSpecificPredicate {
@@ -198,7 +229,7 @@ dispatch minecraft:type_specific_predicate[player] to struct PlayerPredicate {
 			[string]: boolean,
 		}),
 	},
-	gamemode?: GameMode,
+	gamemode?: GameMode | [GameMode],
 	/// Experience/XP level.
 	level?: MinMaxBounds<int>,
 	recipes?: struct {
@@ -269,6 +300,9 @@ struct DamagePredicate {
 	/// Damage type group tags that the damage type is in.
 	#[since="1.19.4"]
 	tags?: [DamageTypeSource],
+	/// Damage is direct when its direct and source entities are the same.
+	#[since="1.21"]
+	is_direct?: boolean,
 }
 
 struct DamageSourcePredicate {

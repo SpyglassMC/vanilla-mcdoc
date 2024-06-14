@@ -1,5 +1,6 @@
 use super::LootCondition
 use super::function::EntityTarget
+use super::super::enchantment::LevelBasedValue
 use super::super::util::MinMaxBounds
 use super::super::util::NumberProvider
 use super::super::util::RandomValueBounds
@@ -22,6 +23,11 @@ dispatch minecraft:loot_condition_type[block_state_property] to struct BlockStat
 
 dispatch minecraft:loot_condition_type[damage_source_properties] to struct DamageSourceProperties {
 	predicate: DamageSourcePredicate,
+}
+
+/// Requires the "Enchantment Active" parameter to exist in the context, which currently means it only works in Enchantment conditions.
+dispatch minecraft:loot_condition_type[enchantment_active_check] to struct EnchantmentActiveCheck {
+	active: boolean,
 }
 
 dispatch minecraft:loot_condition_type[entity_properties] to struct EntityProperties {
@@ -60,13 +66,24 @@ dispatch minecraft:loot_condition_type[match_tool] to struct MatchTool {
 }
 
 dispatch minecraft:loot_condition_type[random_chance] to struct RandomChance {
-	chance: float @ 0..1,
+	chance: (
+		#[until="1.21"] float @ 0..1 |
+		#[since="1.21"] NumberProvider<float> |
+	),
 }
 
+#[until="1.21"]
 dispatch minecraft:loot_condition_type[random_chance_with_looting] to struct RandomChanceWithLooting {
 	chance: float @ 0..1,
 	/// Looting adjustment to the base success rate. Formula is `chance + (looting_level * looting_multiplier)` .
 	looting_multiplier: float,
+}
+
+#[since="1.21"]
+dispatch minecraft:loot_condition_type[random_chance_with_enchanted_bonus] to struct RandomChanceWithEnchantedBonus {
+	unenchanted_chance: float @ 0..1,
+	enchanted_chance: LevelBasedValue,
+	enchantment: #[id="enchantment"] string,
 }
 
 /// Whether another predicate passes.

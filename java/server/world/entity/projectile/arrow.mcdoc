@@ -24,6 +24,7 @@ struct ArrowBase {
 	/// Whether it should do critical damage.
 	crit?: boolean,
 	/// Whether it was shot from a crossbow.
+	#[until="1.21"]
 	ShotFromCrossbow?: boolean,
 	/// Number of entities it can pass through.
 	PierceLevel?: byte,

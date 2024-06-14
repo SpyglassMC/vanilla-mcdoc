@@ -4,7 +4,10 @@ use ::java::server::util::inventory::InventoryItem
 dispatch minecraft:entity[breeze_wind_charge] to struct AcceleratingProjectileBase {
 	...ProjectileBase,
 	/// Acceleration
+	#[until="1.21"]
 	power?: [double] @ 3,
+	#[since="1.21"]
+	acceleration_power?: [double] @ 3,
 }
 
 dispatch minecraft:entity[dragon_fireball] to struct DespawnableProjectileBase {

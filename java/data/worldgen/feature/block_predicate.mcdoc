@@ -48,6 +48,12 @@ dispatch minecraft:block_predicate[not] to struct NotPredicate {
 	predicate: BlockPredicate,
 }
 
+/// Whether the selected block is unobstructed (no entities are in the space of the block).
+#[since="1.21"]
+dispatch minecraft:block_predicate[unobstructed] to struct UnobstructedPredicate {
+	offset?: [int] @ 3,
+}
+
 dispatch minecraft:block_predicate[would_survive] to struct WouldSurvivePredicate {
 	...PredicateOffset,
 	state: BlockState,

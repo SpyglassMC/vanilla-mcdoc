@@ -1,6 +1,8 @@
 use ::java::server::world::entity::AnyEntity
 use ::java::server::util::block_state::BlockState
 
+// TODO: https://quiltmc.org/en/mc-patchnotes/#1.21:~:text=custom_name%22%3A%27%22Wait%20what%3F%22%27%7D%7D%7D-,Structures,-Added%20dimension_padding%20field
+
 struct StructureNBT {
 	/// [Data version](https://minecraft.fandom.com/wiki/Data_version).
 	DataVersion: int @ 0..,
@@ -11,7 +13,7 @@ struct StructureNBT {
 		/// Index of the block in the palette.
 		state: int @ 0.., // TODO
 		pos: [int @ 0..] @ 3,
-		nbt?: struct {} // TODO `minecraft:block[[id]]`
+		nbt?: struct {}, // TODO `minecraft:block[[id]]`
 	}],
 
 	entities: [struct {

@@ -26,7 +26,12 @@ dispatch minecraft:data_component[can_break] to (
 
 dispatch minecraft:data_component[item_name] to #[command_argument="component"] string
 
-type CustomData = (mcdoc:custom_item_data[[%parent.%parent.id]] | struct {}) // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to AnyItem.
+// TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to AnyItem.
+type CustomData = (
+	mcdoc:custom_item_data[[%parent.%parent.id]] |
+	#[nbt=mcdoc:custom_item_data[[%parent.%parent.id]]] string |
+	struct {} |
+)
 dispatch minecraft:data_component[custom_data] to CustomData
 
 dispatch minecraft:data_component[custom_name] to #[command_argument="component"] string
@@ -72,6 +77,9 @@ struct Food {
 	eat_seconds?: float @ 0..,
 	/// Applied when eaten.
 	effects?: [FoodEffect],
+	/// Works similarly to a milk bucket.
+	#[since="1.21"]
+	using_converts_to?: AnyItem,
 }
 
 dispatch minecraft:data_component[food] to Food

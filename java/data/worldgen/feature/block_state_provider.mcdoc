@@ -11,7 +11,7 @@ struct BlockStateProvider {
 struct BaseNoiseProvider {
 	seed: int,
 	noise: NoiseParameters,
-	scale: float @ 0<..,
+	scale: float @ 0..,
 }
 
 #[since="1.18"]
@@ -19,7 +19,7 @@ dispatch minecraft:block_state_provider[dual_noise_provider] to struct DualNoise
 	...BaseNoiseProvider,
 	variety: InclusiveRange<int @ 1..64>,
 	slow_noise: NoiseParameters,
-	slow_scale: float @ 0<..,
+	slow_scale: float @ 0..,
 	states: [BlockState],
 }
 

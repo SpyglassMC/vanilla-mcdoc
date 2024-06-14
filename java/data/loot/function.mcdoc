@@ -75,8 +75,14 @@ dispatch minecraft:loot_function_type[copy_components] to struct CopyComponents 
 
 enum(string) CopyNameSource {
 	This = "this",
+	#[until="1.21"]
 	Killer = "killer",
+	#[since="1.21"]
+	AttackingEntity = "attacking_entity",
+	#[until="1.21"]
 	KillerPlayer = "killer_player",
+	#[since="1.21"]
+	LastDamagePlayer = "last_damage_player",
 	DirectKiller = "direct_killer",
 	BlockEntity = "block_entity",
 }
@@ -99,7 +105,14 @@ dispatch minecraft:loot_function_type[copy_state] to struct CopyState {
 /// Enchants the item with one randomly-selected enchantment. The level of the enchantment, if applicable, is random.
 dispatch minecraft:loot_function_type[enchant_randomly] to struct EnchantRandomly {
 	/// If omitted, all enchantments applicable to the item are possible
+	#[until="1.21"]
 	enchantments?: [#[id="enchantment"] string],
+	/// If omitted, all enchantments applicable to the item are possible
+	options?: (#[id(registry="enchantment",tags="allowed")] string | [#[id="enchantment"] string]),
+	/// Whether to only enchant with item-compatible enchantments. Defaults to `true`.
+	///
+	/// Note: Books are considered compatible with all Enchantments.
+	only_compatible?: boolean,
 }
 
 /// Enchants the item, with the specified [enchantment level](https://minecraft.gamepedia.com/Enchantment_mechanics#How_Enchantments_Are_Chosen)`.
@@ -109,7 +122,10 @@ dispatch minecraft:loot_function_type[enchant_with_levels] to struct EnchantWith
 		#[until="1.17"] RandomIntGenerator |
 		#[since="1.17"] NumberProvider |
 	),
+	#[since="1.21"]
+	options: (#[id(registry="enchantment",tags="allowed")] string | [#[id="enchantment"] string]),
 	/// Whether treasure enchantments are allowed on this item.
+	#[until="1.21"]
 	treasure?: boolean,
 }
 
@@ -196,6 +212,7 @@ dispatch minecraft:loot_function_type[limit_count] to struct LimitCount {
 }
 
 /// Adjusts the stack size based on the level of the `Looting` enchantment on the `killer` entity's weapon.
+#[until="1.21"]
 dispatch minecraft:loot_function_type[looting_enchant] to struct LootingEnchant {
 	/// If the number is fractional the result is rounded *after* the number was multiplied by the looting level.
 	count: (
@@ -203,6 +220,13 @@ dispatch minecraft:loot_function_type[looting_enchant] to struct LootingEnchant 
 		#[since="1.17"] NumberProvider |
 	),
 	limit?: int,
+}
+
+#[since="1.21"]
+dispatch minecraft:loot_function_type[enchanted_count_increase] to struct EnchantedCountIncrease {
+	...LootingEnchant,
+	/// Enchantment that increases yields.
+	enchantment: #[id="enchantment"] string,
 }
 
 dispatch minecraft:loot_function_type[set_attributes] to struct SetAttributes {
