@@ -1,5 +1,6 @@
 use ::java::data::advancement::predicate::BlockPredicate
 use ::java::server::util::attribute::AttributeName
+use ::java::server::util::attribute::LegacyOperation
 use ::java::server::util::attribute::Operation
 use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::block_state::BlockState
@@ -286,11 +287,7 @@ type AttributeModifier = (
 		id: #[id="attribute_modifier"] string,
 		/// Change in the attribute.
 		amount: double,
-		operation: (enum(string) {
-			AddValue = "add_value",
-			AddMultipliedBase = "add_multiplied_base",
-			AddMultipliedTotal = "add_multiplied_total"
-		}),
+		operation: Operation,
 		/// Slot or slot type the item must be in for the modifier to take effect. Defaults to `any`.
 		slot?: AttributeSlot,
 	} |
@@ -303,7 +300,7 @@ type AttributeModifier = (
 		Name?: string,
 		/// Slot that the modifier is active in.
 		Slot?: AttributeSlot,
-		Operation?: Operation,
+		Operation?: LegacyOperation,
 		/// Change in the attribute.
 		Amount?: double,
 		/// Upper bits of the modifier's UUID.

@@ -1,4 +1,5 @@
 use ::java::server::util::attribute::AttributeName
+use ::java::server::util::attribute::LegacyOperation
 use ::java::server::util::attribute::Operation
 use ::java::server::util::inventory::InventoryItem
 use ::java::server::util::LegacyPotionEffect
@@ -30,7 +31,10 @@ struct LivingEntity {
 			[string]: struct {}
 		},
 	},
+	#[until="1.21"]
 	Attributes?: [Attribute],
+	#[since="1.21"]
+	attributes?: [Attribute],
 	/// Active potion effects
 	#[until="1.20.2"]
 	ActiveEffects?: [LegacyPotionEffect],
@@ -81,34 +85,50 @@ struct NeutralMob {
 
 /// A single attribute.
 struct Attribute {
+	#[until="1.21"]
 	Name?: (
 		#[until="1.16"] (AttributeName | string) |
 		#[since="1.16"] #[id="attribute"] string |
 	),
+	#[until="1.21"]
 	Base?: double,
 	/// Modifiers that act on it.
+	#[until="1.21"]
 	Modifiers?: [AttributeModifier],
+	#[since="1.21"]
+	id?: #[id="attribute"] string,
+	#[since="1.21"]
+	base?: double,
+	#[since="1.21"]
+	modifiers?: [AttributeModifier],
 }
 
 /// A single attribute modifier
-struct AttributeModifier {
-	/// Has no real effect.
-	Name?: string,
-	/// Slot that the modifier is active in.
-	Slot?: AttributeSlot,
-	Operation?: Operation,
-	/// Change in the attribute.
-	Amount?: double,
-	/// Upper bits of the modifier's UUID.
-	#[until="1.16"]
-	UUIDMost?: long,
-	/// Lower bits of the modifier's UUID.
-	#[until="1.16"]
-	UUIDLeast?: long,
-	#[uuid]
-	#[since="1.16"]
-	UUID?: int[] @ 4,
-}
+type AttributeModifier = (
+	#[since="1.21"] struct {
+		id?: #[id="attribute_modifier"] string,
+		amount?: double,
+		operation?: Operation,
+	} |
+	#[until="1.21"] struct {
+		/// Has no real effect.
+		Name?: string,
+		/// Slot that the modifier is active in.
+		Slot?: AttributeSlot,
+		Operation?: LegacyOperation,
+		/// Change in the attribute.
+		Amount?: double,
+		/// Upper bits of the modifier's UUID.
+		#[until="1.16"]
+		UUIDMost?: long,
+		/// Lower bits of the modifier's UUID.
+		#[until="1.16"]
+		UUIDLeast?: long,
+		#[uuid]
+		#[since="1.16"]
+		UUID?: int[] @ 4,
+	} |
+)
 
 struct Brain {
 	/// The mobs memories, empty.

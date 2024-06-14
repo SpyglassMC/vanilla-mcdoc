@@ -32,7 +32,14 @@ enum(string) AttributeName {
 }
 
 /// A modifier operation
-enum(int) Operation {
+enum(string) Operation {
+	AddValue = "add_value",
+	AddMultipliedBase = "add_multiplied_base",
+	AddMultipliedTotal = "add_multiplied_total"
+}
+
+/// A modifier operation
+enum(int) LegacyOperation {
 	/// aka. `add_value`. Adds all of the modifiers' amounts to the current value of the attribute.
 	Additive = 0,
 	/// aka. `add_multiplied_base`. Multiplies the current value of the attribute by (1 + x),
