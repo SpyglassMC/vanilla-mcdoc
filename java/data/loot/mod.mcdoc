@@ -28,8 +28,14 @@ enum(string) LootContextType {
 }
 
 struct LootPool {
-	rolls: RandomIntGenerator,
-	bonus_rolls?: MinMaxBounds<float>,
+	rolls: (
+		#[until="1.17"] RandomIntGenerator |
+		#[since="1.17"] NumberProvider |
+	),
+	bonus_rolls?: (
+		#[until="1.17"] MinMaxBounds<float> |
+		#[since="1.17"] NumberProvider |
+	),
 	entries: [LootPoolEntry],
 	functions?: [LootFunction],
 	conditions?: [LootCondition],

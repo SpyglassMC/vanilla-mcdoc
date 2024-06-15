@@ -87,7 +87,7 @@ dispatch minecraft:score_provider[context] to struct ContextScoreProvider {
 }
 
 dispatch minecraft:score_provider[fixed] to struct FixedScoreProvider {
-	name: #[command_argument="score_holder"] string,
+	name: #[command_argument(parser="score_holder",amount="multiple")] string,
 }
 
 dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
