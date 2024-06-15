@@ -245,7 +245,7 @@ struct AttributeModifier {
 	),
 	/// If a list, one of the listed slots will be chosen randomly.
 	slot: (AttributeSlot | [AttributeSlot]),
-	id?: #[command_argument="uuid"] string,
+	id?: #[uuid] string,
 }
 
 #[since="1.17"]
@@ -466,9 +466,9 @@ dispatch minecraft:loot_function_type[set_firework_explosion] to struct SetFirew
 dispatch minecraft:loot_function_type[set_book_cover] to struct SetBookCover {
 	/// If omitted, the original title is kept (or an empty string is used if there was no component)
 	title?: struct {
-		raw: #[command_argument="component"] string,
+		raw: #[text_component] string,
 		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: #[command_argument="component"] string,
+		filtered: #[text_component] string,
 	},
 	/// If omitted, the original author is kept (or an empty string is used if there was no component)
 	author?: string,
@@ -489,10 +489,10 @@ dispatch minecraft:loot_function_type[set_writable_book_pages] to struct SetWrit
 #[since="1.20.5"]
 dispatch minecraft:loot_function_type[set_written_book_pages] to struct SetWrittenBookPages {
 	pages: [((struct {
-		raw: #[command_argument="component"] string,
+		raw: #[text_component] string,
 		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: #[command_argument="component"] string,
-	}) | #[command_argument="component"] string)],
+		filtered: #[text_component] string,
+	}) | #[text_component] string)],
 	...ListMode,
 }
 

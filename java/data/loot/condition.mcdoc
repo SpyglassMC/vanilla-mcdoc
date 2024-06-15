@@ -38,7 +38,7 @@ dispatch minecraft:loot_condition_type[entity_properties] to struct EntityProper
 dispatch minecraft:loot_condition_type[entity_scores] to struct EntityScores {
 	entity: EntityTarget,
 	scores: struct {
-		[#[command_argument="objective"] string]: (
+		[#[objective] string]: (
 			#[until="1.17"] RandomValueBounds |
 			#[since="1.17"] MinMaxBounds<int> |
 		),

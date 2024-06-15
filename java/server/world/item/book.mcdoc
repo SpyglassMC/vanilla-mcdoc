@@ -10,10 +10,10 @@ dispatch minecraft:data_component[writable_book_content] to struct WritableBookC
 
 dispatch minecraft:data_component[written_book_content] to struct WrittenBookContent {
 	pages?: [((struct {
-		raw: #[command_argument="component"] string,
+		raw: #[text_component] string,
 		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: #[command_argument="component"] string,
-	}) | #[command_argument="component"] string)],
+		filtered: #[text_component] string,
+	}) | #[text_component] string)],
 	title: (struct {
 		raw: string @ ..32,
 		/// Shown only to players with chat filter enabled, instead of `text`.
@@ -43,7 +43,7 @@ dispatch minecraft:item[written_book] to struct WrittenBook {
 	resolved?: boolean,
 	/// Pages of the book as JSON text components.
 	#[until="1.20.5"]
-	pages?: [#[command_argument="component"] string],
+	pages?: [#[text_component] string],
 	/// Generation of the book.
 	#[until="1.20.5"]
 	generation?: Generation,

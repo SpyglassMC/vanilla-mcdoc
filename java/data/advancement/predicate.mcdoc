@@ -128,7 +128,7 @@ struct EntityPredicate {
 	),
 	#[since="1.19"]
 	type_specific?: TypeSpecificPredicate,
-	team?: #[command_argument="team"] string,
+	team?: #[team] string,
 	nbt?: #[nbt=minecraft:entity[[type]]] string, // TODO: This needs hardcoding to include AnyEntity
 	location?: LocationPredicate,
 	distance?: DistancePredicate,
@@ -163,7 +163,7 @@ struct EntityPredicate {
 	},
 	#[since="1.20.5"]
 	slots?: struct {
-		[#[command_argument="item_slots"] string]: ItemPredicate,
+		[#[item_slots] string]: ItemPredicate,
 	},
 	#[since="1.21"]
 	movement?: MovementPredicate,

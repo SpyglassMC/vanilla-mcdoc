@@ -25,7 +25,7 @@ dispatch minecraft:data_component[can_break] to (
 	BlockPredicate |
 )
 
-dispatch minecraft:data_component[item_name] to #[command_argument="component"] string
+dispatch minecraft:data_component[item_name] to #[text_component] string
 
 // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to AnyItem.
 type CustomData = (
@@ -35,7 +35,7 @@ type CustomData = (
 )
 dispatch minecraft:data_component[custom_data] to CustomData
 
-dispatch minecraft:data_component[custom_name] to #[command_argument="component"] string
+dispatch minecraft:data_component[custom_name] to #[text_component] string
 
 dispatch minecraft:data_component[custom_model_data] to int
 
@@ -95,7 +95,7 @@ dispatch minecraft:data_component[jukebox_playable] to struct JukeboxPlayable {
 	show_in_tooltip?: boolean,
 }
 
-dispatch minecraft:data_component[lore] to [#[command_argument="component"] string]
+dispatch minecraft:data_component[lore] to [#[text_component] string]
 
 dispatch minecraft:data_component[max_damage] to int @ 1..
 
@@ -318,7 +318,7 @@ type AttributeModifier = (
 /// Display settings of an item.
 struct Display {
 	/// A JSON text component.
-	Name?: #[command_argument="component"] string,
+	Name?: #[text_component] string,
 	/// A list of JSON text components, each element being a lore line.
-	Lore?: [#[command_argument="component"] string],
+	Lore?: [#[text_component] string],
 }
