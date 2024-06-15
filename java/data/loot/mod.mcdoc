@@ -1,5 +1,6 @@
 use ::java::server::util::text::Text
 use super::util::MinMaxBounds
+use super::util::NumberProvider
 use super::util::RandomIntGenerator
 
 dispatch minecraft:resource[loot_table] to struct LootTable {
