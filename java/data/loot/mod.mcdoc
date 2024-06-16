@@ -115,7 +115,7 @@ struct LootFunction {
 		#[until="1.16"] #[id] LootFunctionType |
 		#[since="1.16"] #[id="loot_function_type"] string |
 	),
-	...minecraft:loot_function_type[[function]],
+	...minecraft:loot_function[[function]],
 	conditions?: [LootCondition],
 }
 
@@ -124,7 +124,7 @@ struct LootCondition {
 		#[until="1.16"] #[id] LootConditionType |
 		#[since="1.16"] #[id="loot_condition_type"] string |
 	),
-	...minecraft:loot_condition_type[[condition]],
+	...minecraft:loot_condition[[condition]],
 }
 
 // TODO: Actually write these
