@@ -1,6 +1,6 @@
 use super::loot::function::CopyNameSource
 use super::loot::function::EntityTarget
-use super::loot::enchantment::LevelBasedValue
+use super::enchantment::LevelBasedValue
 
 type MinMaxBounds<T> = (
 	T |

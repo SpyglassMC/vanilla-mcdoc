@@ -144,7 +144,7 @@ dispatch minecraft:entity_effect[all_of] to struct AllOfEntityEffect {
 	effects: [EntityEffect] @ 1..,
 }
 
-dispatch minecraft:entity_effect[apply_mob_effect] to ApplyMobEffectEntityEffect {
+dispatch minecraft:entity_effect[apply_mob_effect] to struct ApplyMobEffectEntityEffect {
 	/// If multiple mob effects are specified, a random effect is selected.
 	to_apply: (#[id(registry="mob_effect", tags="allowed")] string | [#[id="mob_effect"] string]),
 	min_duration: LevelBasedValue,
@@ -162,7 +162,7 @@ dispatch minecraft:entity_effect[damage_entity] to struct DamageEntityEffect {
 
 dispatch minecraft:entity_effect[explode] to struct ExplodeEntityEffect {
 	/// Whether the explosion should be attributed to the user of the enchanted tool.
-	attribute_to_user: boolean
+	attribute_to_user: boolean,
 	/// If omitted, no damage is dealt by the explosion.
 	damage_type?: #[id="damage_type"] string,
 	/// List of Blocks or hash-prefixed Block Tag specifying which blocks fully block the explosion.
@@ -258,7 +258,7 @@ struct ParticleVelocity {
 	base?: float,
 	/// Scale factor applied to the given axis (`1` adds the velocity of the entity to the spawned particles). Defaults to 0.
 	movement_scale?: float,
-},
+}
 
 dispatch minecraft:entity_effect[summon_entity] to struct SummonEntityEffect {
 	/// If multiple entity types are specified, a random entity type is selected.
@@ -267,12 +267,14 @@ dispatch minecraft:entity_effect[summon_entity] to struct SummonEntityEffect {
 	join_team: boolean,
 }
 
-dispatch minecraft:effect_component[armor_effectiveness] to [struct DamageEnchantmentEffect {
+struct DamageEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
 	requirements: LootCondition,
 	/// Determines armor effectiveness; `0.0` for no effect, `1.0` for full effect.
 	effect: EffectValue,
-}]
+}
+
+dispatch minecraft:effect_component[armor_effectiveness] to [DamageEnchantmentEffect]
 
 dispatch minecraft:effect_component[attributes] to [AttributeEffect]
 
@@ -303,12 +305,7 @@ dispatch minecraft:effect_component[crossbow_charge_sounds] to [struct CrossbowC
 /// Charge time of the Crossbow in seconds
 dispatch minecraft:effect_component[crossbow_charge_time] to EffectValue
 
-dispatch minecraft:effect_component[damage] to [struct DamageEnchantmentEffect {
-	/// Predicate context: Damage Parameters.
-	requirements: LootCondition,
-	/// Amount of damage being dealt.
-	effect: EffectValue,
-}]
+dispatch minecraft:effect_component[damage] to [DamageEnchantmentEffect]
 
 /// Complete damage immunity given the conditions are met.
 dispatch minecraft:effect_component[damage_immunity] to [struct DamageImmunityEnchantmentEffect {
@@ -401,7 +398,7 @@ dispatch minecraft:effect_component[post_attack] to [struct PostAttackEnchantmen
 	affected: AttackTarget,
 }]
 
-enum AttackTarget {
+enum(string) AttackTarget {
 	Attacker = "attacker",
 	DamagingEntity = "damaging_entity",
 	Victim = "victim",

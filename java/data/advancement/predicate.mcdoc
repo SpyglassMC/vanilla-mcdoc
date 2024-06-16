@@ -229,7 +229,7 @@ dispatch minecraft:type_specific_predicate[player] to struct PlayerPredicate {
 			[string]: boolean,
 		}),
 	},
-	gamemode?: GameMode | [GameMode],
+	gamemode?: (GameMode | [GameMode]),
 	/// Experience/XP level.
 	level?: MinMaxBounds<int>,
 	recipes?: struct {
