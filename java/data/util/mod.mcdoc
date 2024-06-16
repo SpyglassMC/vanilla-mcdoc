@@ -115,4 +115,20 @@ dispatch minecraft:nbt_provider[storage] to struct StorageNbtProvider {
 	source: #[id="storage"] string,
 }
 
-type ArmorMaterials = ("leather" | "chainmail" | "iron" | "gold" | "diamond" | "turtle" | "netherite")
+enum(string) ArmorMaterials {
+	Leather = "leather",
+	Chainmail = "chainmail",
+	Iron = "iron",
+	Gold = "gold",
+	Diamond = "diamond",
+	Netherite = "netherite",
+	Turtle = "turtle",
+}
+
+type Filterable<T> = (
+	struct {
+		raw: T,
+		filtered?: T,
+	} |
+	T |
+)

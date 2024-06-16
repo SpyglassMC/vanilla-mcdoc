@@ -1,6 +1,11 @@
 use ::java::server::world::item::DefaultItemComponents
 use ::java::server::util::inventory::EquipmentSlot
+use ::java::server::util::attribute::Operation
+use ::java::server::util::attribute::AttributeSlot
+use ::java::server::util::firework::FireworkShape
+use ::java::server::util::text::Text
 use super::super::util::MinMaxBounds
+use super::super::util::Filterable
 
 struct ItemPredicate {
 	#[until="1.20.5"]
@@ -28,19 +33,77 @@ struct ItemPredicate {
 		...minecraft:item[[items]],
 	},
 	#[since="1.20.5"]
-	predicates?: struct { // This is made like this because of the `items` hack to get good typing for custom data.
-		[#[id] "enchantments"]?: [EnchantmentPredicate],
-		[#[id] "stored_enchantments"]?: [EnchantmentPredicate],
-		[#[id] "potions"]?: (#[id(registry="potion",tags="allowed")] string | [#[id="potion"] string]),
-		[#[id] "custom_data"]?: #[nbt=mcdoc:custom_item_data[[items]]] string,
-		[#[id] "damage"]?: struct {
-			damage?: MinMaxBounds<int>,
-			durability?: MinMaxBounds<int>,
-		},
-		[#[id] "jukebox_playable"]?: struct {
-			song?: (#[id(registry="jukebox_song",tags="allowed")] string | [#[id="jukebox_song"] string]),
-		}
-	},
+	predicates?: ItemSubPredicate,
+}
+
+struct ItemSubPredicate {
+	[#[id="item_sub_predicate_type"] string]: minecraft:item_sub_predicate[[%key]],
+}
+
+dispatch minecraft:item_sub_predicate[attribute_modifiers] to struct AttributeModifiersPredicate {
+	modifiers?: CollectionPredicate<AttributeModifiersPredicateEntry>,
+}
+
+struct AttributeModifiersPredicateEntry {
+	attribute?: (#[id(registry="attribute",tags="allowed")] string | [#[id="attribute"] string] ),
+	id?: #[id="attribute_modifier"] string,
+	amount?: MinMaxBounds<double>,
+	operation?: Operation,
+	slot?: AttributeSlot,
+}
+
+dispatch minecraft:item_sub_predicate[bundle_contents] to struct BundleContentsPredicate {
+	items?: CollectionPredicate<ItemPredicate>,
+}
+
+dispatch minecraft:item_sub_predicate[container] to struct ContainerPredicate {
+	items?: CollectionPredicate<ItemPredicate>,
+}
+
+dispatch minecraft:item_sub_predicate[custom_data] to (
+	#[nbt=mcdoc:custom_item_data[%fallback]] string |
+	mcdoc:custom_item_data[%fallback] |
+)
+
+dispatch minecraft:item_sub_predicate[damage] to struct ItemDamagePredicate {
+	damage?: MinMaxBounds<int>,
+	durability?: MinMaxBounds<int>,
+}
+
+dispatch minecraft:item_sub_predicate[enchantments, stored_enchantments] to [EnchantmentPredicate]
+
+dispatch minecraft:item_sub_predicate[fireworks] to struct FireworksPredicate {
+	explosions?: CollectionPredicate<FireworkExplosionPredicate>,
+	flight_duration?: MinMaxBounds<int>,
+}
+
+dispatch minecraft:item_sub_predicate[firework_explosion] to struct FireworkExplosionPredicate {
+	shape?: FireworkShape,
+	has_twinkle?: boolean,
+	has_trail?: boolean,
+}
+
+dispatch minecraft:item_sub_predicate[jukebox_playable] to struct JukeboxPlayablePredicate {
+	song?: (#[id(registry="jukebox_song",tags="allowed")] string | [#[id="jukebox_song"] string]),
+}
+
+dispatch minecraft:item_sub_predicate[potion_contents] to (#[id(registry="potion",tags="allowed")] string | [#[id="potion"] string])
+
+dispatch minecraft:item_sub_predicate[trim] to struct TrimPredicate {
+	material?: (#[id(registry="trim_material",tags="allowed")] string | [#[id="trim_material"] string]),
+	pattern?: (#[id(registry="trim_pattern",tags="allowed")] string | [#[id="trim_pattern"] string]),
+}
+
+dispatch minecraft:item_sub_predicate[writable_book_content] to struct WritableBookPredicate {
+	pages?: CollectionPredicate<Filterable<string>>,
+}
+
+dispatch minecraft:item_sub_predicate[written_book_content] to struct WrittenBookPredicate {
+	pages?: CollectionPredicate<Filterable<Text>>,
+	author?: string,
+	title?: string,
+	generation?: MinMaxBounds<int>,
+	resolved?: boolean,
 }
 
 struct EnchantmentPredicate {
@@ -127,9 +190,9 @@ struct EntityPredicate {
 		#[since="1.20.5"] [#[id="entity_type"] string] |
 	),
 	#[since="1.19"]
-	type_specific?: TypeSpecificPredicate,
+	type_specific?: EntitySubPredicate,
 	team?: #[team] string,
-	nbt?: #[nbt=minecraft:entity[[type]]] string, // TODO: This needs hardcoding to include AnyEntity
+	nbt?: #[nbt=minecraft:entity[[type]]] string,
 	location?: LocationPredicate,
 	distance?: DistancePredicate,
 	flags?: struct {
@@ -175,9 +238,9 @@ struct EntityPredicate {
 	movement_affected_by?: LocationPredicate,
 }
 
-struct TypeSpecificPredicate {
+struct EntitySubPredicate {
 	type: SpecificType,
-	...minecraft:type_specific_predicate[[type]],
+	...minecraft:entity_sub_predicate[[type]],
 }
 
 enum(string) SpecificType {
@@ -197,33 +260,33 @@ enum(string) SpecificType {
 	Raider = "raider",
 }
 
-dispatch minecraft:type_specific_predicate[cat] to struct CatPredicate {
+dispatch minecraft:entity_sub_predicate[cat] to struct CatPredicate {
 	variant?: (#[id(registry="cat_variant",tags="allowed")] string | [#[id="cat_variant"] string]),
 }
 
 #[since="1.20.5"]
-dispatch minecraft:type_specific_predicate[wolf] to struct WolfPredicate {
+dispatch minecraft:entity_sub_predicate[wolf] to struct WolfPredicate {
 	variant?: (#[id(registry="wolf_variant",tags="allowed")] string | [#[id="wolf_variant"] string]),
 }
 
-dispatch minecraft:type_specific_predicate[painting] to struct PaintingPredicate {
+dispatch minecraft:entity_sub_predicate[painting] to struct PaintingPredicate {
 	variant?: (#[id(registry="painting_variant",tags="allowed")] string | [#[id="painting_variant"] string]),
 }
 
-dispatch minecraft:type_specific_predicate[fishing_hook] to struct FishingHookPredicate {
+dispatch minecraft:entity_sub_predicate[fishing_hook] to struct FishingHookPredicate {
 	in_open_water?: boolean,
 }
 
-dispatch minecraft:type_specific_predicate[frog] to struct FrogPredicate {
+dispatch minecraft:entity_sub_predicate[frog] to struct FrogPredicate {
 	variant?: (#[id(registry="frog_variant",tags="allowed")] string | [#[id="frog_variant"] string]),
 }
 
-dispatch minecraft:type_specific_predicate[lightning] to struct LightningBoltPredicate {
+dispatch minecraft:entity_sub_predicate[lightning] to struct LightningBoltPredicate {
 	blocks_set_on_fire?: MinMaxBounds<int>,
 	entity_struck?: EntityPredicate,
 }
 
-dispatch minecraft:type_specific_predicate[player] to struct PlayerPredicate {
+dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 	advancements?: struct {
 		[#[id="advancement"] string]: (boolean | struct {
 			[string]: boolean,
@@ -239,11 +302,11 @@ dispatch minecraft:type_specific_predicate[player] to struct PlayerPredicate {
 	looking_at?: EntityPredicate,
 }
 
-dispatch minecraft:type_specific_predicate[slime] to struct SlimePredicate {
+dispatch minecraft:entity_sub_predicate[slime] to struct SlimePredicate {
 	size?: MinMaxBounds<int>,
 }
 
-dispatch minecraft:type_specific_predicate[raider] to struct RaiderPredicate {
+dispatch minecraft:entity_sub_predicate[raider] to struct RaiderPredicate {
 	has_raid?: boolean,
 	is_captain?: boolean,
 }
@@ -322,4 +385,13 @@ struct DamageTypeSource {
 	id: #[id(registry="damage_type",tags="implicit")] string,
 	/// Whether the damage is expected to have or not have the tag for the predicate to match.
 	expected: boolean,
+}
+
+type CollectionPredicate<P> = struct {
+	contains?: [P],
+	count?: [struct CollectionCountPredicate {
+		test: P,
+		count: MinMaxBounds<int>,
+	}],
+	size?: MinMaxBounds<int>,
 }
