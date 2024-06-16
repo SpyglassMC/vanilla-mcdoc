@@ -345,21 +345,16 @@ dispatch minecraft:loot_function_type[set_count] to struct SetCount {
 }
 
 /// Sets the durability of applicable items.
-dispatch minecraft:loot_function_type[set_damage] to (struct {
-	/// Decimal percentage.
-	damage: (
-		#[until="1.17"] RandomValueBounds |
-		#[since="1.17"] NumberProvider<float @ 0..1> |
-	),
-	add?: false,
-} | struct {
-	/// In decimal percentage. What to add to the durability (negative to decrease it).
+dispatch minecraft:loot_function_type[set_damage] to struct {
+	/// Decimal percentage. Can be negative when used in combination with `add`.
 	damage: (
 		#[until="1.17"] RandomValueBounds |
 		#[since="1.17"] NumberProvider<float @ -1..1> |
 	),
-	add: true,
-})
+	/// Whether to add to the existing damage of the item. Defaults to `false`.
+	#[since="1.17"]
+	add?: boolean,
+}
 
 #[since="1.17"]
 dispatch minecraft:loot_function_type[set_enchantments] to struct SetEnchantments {
