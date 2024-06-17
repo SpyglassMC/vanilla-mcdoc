@@ -53,7 +53,7 @@ struct ProcessorRule {
 	location_predicate: RuleTest,
 	input_predicate: RuleTest,
 	output_state: BlockState,
-	output_nbt: minecraft:block[[output_state.Name]],
+	output_nbt?: minecraft:block[[output_state.Name]],
 }
 
 struct PosRuleTest {
