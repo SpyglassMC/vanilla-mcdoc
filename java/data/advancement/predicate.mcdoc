@@ -1,6 +1,6 @@
 use ::java::server::world::item::DefaultItemComponents
 use ::java::server::util::inventory::EquipmentSlot
-use ::java::server::util::attribute::Operation
+use ::java::server::util::attribute::AttributeOperation
 use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::firework::FireworkShape
 use ::java::server::util::text::Text
@@ -48,7 +48,7 @@ struct AttributeModifiersPredicateEntry {
 	attribute?: (#[id(registry="attribute",tags="allowed")] string | [#[id="attribute"] string] ),
 	id?: #[id="attribute_modifier"] string,
 	amount?: MinMaxBounds<double>,
-	operation?: Operation,
+	operation?: AttributeOperation,
 	slot?: AttributeSlot,
 }
 

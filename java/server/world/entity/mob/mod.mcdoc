@@ -1,6 +1,6 @@
 use ::java::server::util::attribute::AttributeName
 use ::java::server::util::attribute::LegacyOperation
-use ::java::server::util::attribute::Operation
+use ::java::server::util::attribute::AttributeOperation
 use ::java::server::util::inventory::InventoryItem
 use ::java::server::util::LegacyPotionEffect
 use ::java::server::util::PotionComponent
@@ -108,7 +108,7 @@ type AttributeModifier = (
 	#[since="1.21"] struct {
 		id?: #[id="attribute_modifier"] string,
 		amount?: double,
-		operation?: Operation,
+		operation?: AttributeOperation,
 	} |
 	#[until="1.21"] struct {
 		/// Has no real effect.

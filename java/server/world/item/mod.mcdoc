@@ -1,7 +1,7 @@
 use ::java::data::advancement::predicate::BlockPredicate
 use ::java::server::util::attribute::AttributeName
 use ::java::server::util::attribute::LegacyOperation
-use ::java::server::util::attribute::Operation
+use ::java::server::util::attribute::AttributeOperation
 use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::block_state::BlockState
 use ::java::server::util::PotionComponent
@@ -287,7 +287,7 @@ type AttributeModifier = (
 		id: #[id="attribute_modifier"] string,
 		/// Change in the attribute.
 		amount: double,
-		operation: Operation,
+		operation: AttributeOperation,
 		/// Slot or slot type the item must be in for the modifier to take effect. Defaults to `any`.
 		slot?: AttributeSlot,
 	} |

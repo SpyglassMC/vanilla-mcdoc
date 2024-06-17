@@ -31,14 +31,17 @@ enum(string) AttributeName {
 	ZombieSpawnReinforcements = "zombie.spawnReinforcements",
 }
 
-/// A modifier operation
-enum(string) Operation {
+enum(string) AttributeOperation {
+	/// Adds all of the modifiers' amounts to the current value of the attribute.
 	AddValue = "add_value",
+	/// Multiplies the current value of the attribute by `(1 + x)`,
+	/// where `x` is the sum of the modifiers' amounts.
 	AddMultipliedBase = "add_multiplied_base",
+	/// For every modifier, multiplies the current value of the attribute by `(1 + x)`,
+	/// where `x` is the amount of the particular modifier.
 	AddMultipliedTotal = "add_multiplied_total"
 }
 
-/// A modifier operation
 enum(int) LegacyOperation {
 	/// aka. `add_value`. Adds all of the modifiers' amounts to the current value of the attribute.
 	Additive = 0,

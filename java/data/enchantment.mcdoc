@@ -4,6 +4,7 @@ use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
 use ::java::data::worldgen::feature::block_predicate::BlockPredicate
 use ::java::server::util::text::Text
 use ::java::server::util::attribute::AttributeSlot
+use ::java::server::util::attribute::AttributeOperation
 
 // TODO: handle the "location based effects" thing
 
@@ -127,11 +128,8 @@ struct AttributeEffect {
 	id: #[id="attribute_modifier"] string,
 	/// Change in the attribute.
 	amount: double,
-	operation: (enum(string) {
-		AddValue = "add_value",
-		AddMultipliedBase = "add_multiplied_base",
-		AddMultipliedTotal = "add_multiplied_total"
-	}),
+	/// The attribute operation to use.
+	operation: AttributeOperation,
 }
 
 struct EntityEffect {
