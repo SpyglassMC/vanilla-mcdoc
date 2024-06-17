@@ -31,8 +31,12 @@ dispatch minecraft:data_component[item_name] to #[text_component] string
 type CustomData = (
 	mcdoc:custom_item_data[[%parent.%parent.id]] |
 	#[nbt=mcdoc:custom_item_data[[%parent.%parent.id]]] string |
-	struct {} |
 )
+
+dispatch mcdoc:custom_item_data[%fallback] to struct {
+  [string]: any
+}
+
 dispatch minecraft:data_component[custom_data] to CustomData
 
 dispatch minecraft:data_component[custom_name] to #[text_component] string
