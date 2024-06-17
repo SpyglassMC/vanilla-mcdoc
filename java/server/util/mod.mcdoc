@@ -20,3 +20,12 @@ type TimedFlagMemory = memory::TimedFlagMemory
 type TimedEntityMemory = memory::TimedEntityMemory
 type PositionMemory = memory::PositionMemory
 type Particle = particle::Particle
+
+type Filterable<T> = (
+	struct {
+		raw: T,
+		/// Shown only to players with chat filtering enabled.
+		filtered?: T,
+	} |
+	T |
+)

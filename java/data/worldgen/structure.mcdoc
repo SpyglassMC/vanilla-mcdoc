@@ -1,5 +1,6 @@
 use super::HeightmapType
 use super::HeightProvider
+use super::DecorationStep
 use super::biome::MobCategory
 use super::biome::SpawnerData
 
@@ -21,7 +22,7 @@ dispatch minecraft:resource["worldgen/structure"] to struct Structure {
 	),
 	/// The step when the structure generates.
 	#[since="1.19"]
-	step: StructureStep,
+	step: DecorationStep,
 	/// Whether to add extra terrain below the structure.
 	#[since="1.18.2"] #[until="1.19"]
 	adapt_noise?: boolean,
@@ -35,20 +36,6 @@ dispatch minecraft:resource["worldgen/structure"] to struct Structure {
 	config: minecraft:structure_config[[type]],
 	#[since="1.19"]
 	...minecraft:structure_config[[type]],
-}
-
-enum(string) StructureStep {
-	RawGeneration = "raw_generation",
-	Lakes = "lakes",
-	LocalModifications = "local_modifications",
-	UndergroundStructures = "underground_structures",
-	SurfaceStructures = "surface_structures",
-	Strongholds = "strongholds",
-	UndergroundOres = "underground_ores",
-	UndergroundDecoration = "underground_decoration",
-	FluidSprings = "fluid_springs",
-	VegetalDecoration = "vegetal_decoration",
-	TopLayerModification = "top_layer_modification",
 }
 
 enum(string) TerrainAdaptation {

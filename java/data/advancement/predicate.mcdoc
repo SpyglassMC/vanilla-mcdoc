@@ -4,8 +4,8 @@ use ::java::server::util::attribute::Operation
 use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::firework::FireworkShape
 use ::java::server::util::text::Text
+use ::java::server::util::Filterable
 use super::super::util::MinMaxBounds
-use super::super::util::Filterable
 
 struct ItemPredicate {
 	#[until="1.20.5"]

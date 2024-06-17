@@ -124,11 +124,3 @@ enum(string) ArmorMaterials {
 	Netherite = "netherite",
 	Turtle = "turtle",
 }
-
-type Filterable<T> = (
-	struct {
-		raw: T,
-		filtered?: T,
-	} |
-	T |
-)

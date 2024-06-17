@@ -1,24 +1,13 @@
 use ::java::server::util::text::Text
+use ::java::server::util::Filterable
 
 dispatch minecraft:data_component[writable_book_content] to struct WritableBookContent {
-	pages: [((struct {
-		raw: string,
-		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: string,
-	}) | string)],
+	pages: [Filterable<string>],
 }
 
 dispatch minecraft:data_component[written_book_content] to struct WrittenBookContent {
-	pages?: [((struct {
-		raw: #[text_component] string,
-		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: #[text_component] string,
-	}) | #[text_component] string)],
-	title: (struct {
-		raw: string @ ..32,
-		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: string @ ..32,
-	} | string @ ..32),
+	pages?: [Filterable<#[text_component] string>],
+	title: (Filterable<string @ ..32>),
 	author: string,
 	/// Number of times this written book has been copied. Defaults to 0. If the value is greater than 1, the book cannot be copied.
 	generation?: Generation,

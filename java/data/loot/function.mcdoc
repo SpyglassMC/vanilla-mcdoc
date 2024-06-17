@@ -10,6 +10,7 @@ use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::color::ColorString
 use ::java::server::util::text::Text
 use ::java::server::util::firework::FireworkShape
+use ::java::server::util::Filterable
 
 dispatch minecraft:loot_function[apply_bonus] to struct ApplyBonus {
 	enchantment: #[id="enchantment"] string,
@@ -460,11 +461,7 @@ dispatch minecraft:loot_function[set_firework_explosion] to struct SetFireworkEx
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_book_cover] to struct SetBookCover {
 	/// If omitted, the original title is kept (or an empty string is used if there was no component)
-	title?: struct {
-		raw: #[text_component] string,
-		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: #[text_component] string,
-	},
+	title?: Filterable<#[text_component] string>,
 	/// If omitted, the original author is kept (or an empty string is used if there was no component)
 	author?: string,
 	/// If omitted, the original generation is kept (or 0 is used if there was no component)
@@ -473,21 +470,13 @@ dispatch minecraft:loot_function[set_book_cover] to struct SetBookCover {
 
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_writable_book_pages] to struct SetWriteableBookPages {
-	pages: [((struct {
-		raw: string,
-		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: string,
-	}) | string)],
+	pages: [Filterable<string>],
 	...ListOperation,
 }
 
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_written_book_pages] to struct SetWrittenBookPages {
-	pages: [((struct {
-		raw: #[text_component] string,
-		/// Shown only to players with chat filter enabled, instead of `text`.
-		filtered: #[text_component] string,
-	}) | #[text_component] string)],
+	pages: [Filterable<#[text_component] string>],
 	...ListOperation,
 }
 
