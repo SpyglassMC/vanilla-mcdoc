@@ -80,7 +80,7 @@ dispatch minecraft:structure_config[
 	#[since="1.19"]
 	...struct {
 		start_height: HeightProvider,
-		start_jigsaw_name: string,
+		start_jigsaw_name?: #[id] string,
 		project_start_to_heightmap?: HeightmapType,
 		max_distance_from_center: minecraft:jigsaw_max_distance_from_center[[terrain_adaptation]],
 		use_expansion_hack: boolean,
