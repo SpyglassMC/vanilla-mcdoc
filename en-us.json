@@ -373,6 +373,7 @@
    "mcdoc.java.data.worldgen.noise_settings.NoiseSlideSettings.target": "The target density. Positive values add terrain and negative values remove terrain.",
    "mcdoc.java.data.worldgen.noise_settings.NoiseSlideSettings.size": "Defines a range of 'Size * Size vertical * 4' blocks where the existing density and target are interpolated.",
    "mcdoc.java.data.worldgen.noise_settings.NoiseSlideSettings.offset": "Defines an range of 'Offset * Size vertical * 4' blocks where the density is set to the target.",
+   "mcdoc.java.data.worldgen.structure.Structure.step": "The step when the structure generates.",
    "mcdoc.java.data.worldgen.structure.Structure.adapt_noise": "Whether to add extra terrain below the structure.",
    "mcdoc.java.data.worldgen.structure_set.RandomSpreadPlacement.spacing": "Average distance in chunks between two structures of this type.",
    "mcdoc.java.data.worldgen.structure_set.RandomSpreadPlacement.separation": "Minimum distance in chunks between two structures of this type.",
