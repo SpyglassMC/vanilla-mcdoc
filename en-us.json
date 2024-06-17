@@ -208,6 +208,7 @@
    "mcdoc.java.data.advancement.mod.Advancement.rewards.loot": "Loot tables to give.",
    "mcdoc.java.data.advancement.mod.Advancement.rewards.recipes": "Recipes to unlock.",
    "mcdoc.java.data.advancement.mod.Advancement.rewards.experience": "XP to add.",
+   "mcdoc.java.data.advancement.mod.Advancement.sends_telemetry_event": "Defaults to `false`. The vanilla game client only reads this for advancements from the `minecraft` namespace.",
    "mcdoc.java.data.advancement.predicate.ItemPredicate.stored_enchantments": "Checks the `StoredEnchantments` nbt tag (used by enchanted books).",
    "mcdoc.java.data.advancement.predicate.LocationPredicate.light": "Calculated using: `max(sky-darkening, block)`.",
    "mcdoc.java.data.advancement.predicate.LocationPredicate.smokey": "Whether the block is above (5 blocks or less) a campfire or soul campfire.",
