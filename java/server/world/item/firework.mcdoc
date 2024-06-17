@@ -20,16 +20,16 @@ dispatch minecraft:data_component[firework_explosion] to struct Explosion {
 
 dispatch minecraft:item[firework_rocket] to struct FireworkRocket {
 	#[since="1.20.5"]
-	[#[id] "fireworks"]?: minecraft:data_component[fireworks],
+	[#[id="data_component_type"] "fireworks"]?: minecraft:data_component[fireworks],
 	/// If set, this projectile item can't be picked up by a player when fired, except in creative mode. Can only be used within charged_projectiles components.
-	[#[id] "intangible_projectile"]: struct {},
+	[#[id="data_component_type"] "intangible_projectile"]: struct {},
 	#[until="1.20.5"]
 	Fireworks?: LegacyFireworks,
 }
 
 dispatch minecraft:item[firework_star] to struct FireworkStar {
 	#[since="1.20.5"]
-	[#[id] "firework_explosion"]?: minecraft:data_component[firework_explosion],
+	[#[id="data_component_type"] "firework_explosion"]?: minecraft:data_component[firework_explosion],
 	#[until="1.20.5"]
 	Explosion?: LegacyExplosion,
 }

@@ -5,10 +5,10 @@ dispatch minecraft:entity[frog] to struct Frog {
 	...super::Breedable,
 	Brain?: struct {
 		memories?: struct {
-			[#[id] "is_pregnant"]: struct {
+			[#[id="memory_module_type"] "is_pregnant"]: struct {
 				value?: struct {},
 			},
-			[#[id] "is_tempted"]: FlagMemory,
+			[#[id="memory_module_type"] "is_tempted"]: FlagMemory,
 		},
 	},
 	variant?: #[id="frog_variant"] string,

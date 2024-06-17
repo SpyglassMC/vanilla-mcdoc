@@ -91,7 +91,7 @@ dispatch minecraft:item[
 	zombified_piglin_spawn_egg,
 ] to struct SpawnItem {
 	#[since="1.20.5"]
-	[#[id] "entity_data"]?: minecraft:data_component[entity_data],
+	[#[id="data_component_type"] "entity_data"]?: minecraft:data_component[entity_data],
 	// EntityTag has this weird value because the id for the spawned entity can be
 	// changed by both the id inside the tag and also the id of the item (as a default)
 	/// Data of the spawned entity.

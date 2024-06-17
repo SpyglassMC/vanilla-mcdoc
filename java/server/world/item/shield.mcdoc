@@ -6,9 +6,9 @@ dispatch minecraft:data_component[base_color] to ColorString
 
 dispatch minecraft:item[shield] to struct Shield {
 	#[since="1.20.5"]
-	[#[id] "banner_patterns"]?: minecraft:data_component[banner_patterns],
+	[#[id="data_component_type"] "banner_patterns"]?: minecraft:data_component[banner_patterns],
 	#[since="1.20.5"]
-	[#[id] "base_color"]?: minecraft:data_component[base_color],
+	[#[id="data_component_type"] "base_color"]?: minecraft:data_component[base_color],
 	/// Banner Data.
 	#[until="1.20.5"]
 	BlockEntityTag?: struct {

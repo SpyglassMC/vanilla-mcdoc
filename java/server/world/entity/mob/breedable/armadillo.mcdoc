@@ -6,8 +6,8 @@ dispatch minecraft:entity[armadillo] to struct Armadillo {
 	...super::Breedable,
 	Brain?: struct {
 		memories?: struct {
-			[#[id] "gaze_cooldown_ticks"]: TickMemory,
-			[#[id] "danger_detected_recently"]: TimedMemory,
+			[#[id="memory_module_type"] "gaze_cooldown_ticks"]: TickMemory,
+			[#[id="memory_module_type"] "danger_detected_recently"]: TimedMemory,
 		},
 	},
 	state?: ArmadilloState,

@@ -7,9 +7,9 @@ dispatch minecraft:entity[sniffer] to struct Sniffer {
 	Brain?: struct {
 		memories?: struct {
 			/// Ticks till it can explore another position.
-			[#[id] "sniff_cooldown"]: TimedFlagMemory,
+			[#[id="memory_module_type"] "sniff_cooldown"]: TimedFlagMemory,
 			/// Coordinates in the world that it has already explored.
-			[#[id] "sniffer_explored_positions"]: struct {
+			[#[id="memory_module_type"] "sniffer_explored_positions"]: struct {
 				value?: [int[] @ 3] @ ..20,
 			},
 		},

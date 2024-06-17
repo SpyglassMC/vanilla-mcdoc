@@ -7,5 +7,5 @@ struct Occupant {
 }
 
 dispatch minecraft:item[bee_nest, beehive] to struct BeeContainer {
-	[#[id] "bees"]?: minecraft:data_component[bees],
+	[#[id="data_component_type"] "bees"]?: minecraft:data_component[bees],
 }

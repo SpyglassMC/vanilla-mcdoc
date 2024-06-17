@@ -7,13 +7,13 @@ dispatch minecraft:entity[axolotl] to struct Axolotl {
 	Brain?: struct {
 		memories?: struct {
 			/// Hunting cooldown active.
-			[#[id] "has_hunting_cooldown"]: FlagMemory,
+			[#[id="memory_module_type"] "has_hunting_cooldown"]: FlagMemory,
 			/// Tempted by the player.
-			[#[id] "is_tempted"]: FlagMemory,
+			[#[id="memory_module_type"] "is_tempted"]: FlagMemory,
 			/// Ticks until it stops playing dead.
-			[#[id] "play_dead_ticks"]: TickMemory,
+			[#[id="memory_module_type"] "play_dead_ticks"]: TickMemory,
 			/// Ticks until it can be tempted again.
-			[#[id] "temptation_cooldown_ticks"]: TickMemory
+			[#[id="memory_module_type"] "temptation_cooldown_ticks"]: TickMemory
 		},
 	},
 	/// The variant of the axolotl.

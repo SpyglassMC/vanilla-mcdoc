@@ -11,7 +11,7 @@ dispatch minecraft:data_component[suspicious_stew_effects] to [SuspiciousStewEff
 /// A suspicious stew item.
 struct SuspiciousStew {
 	#[since="1.20.5"]
-	[#[id] "suspicious_stew_effects"]?: minecraft:data_component[suspicious_stew_effects],
+	[#[id="data_component_type"] "suspicious_stew_effects"]?: minecraft:data_component[suspicious_stew_effects],
 	/// Effects this stew will give.
 	#[until="1.20.5"]
 	Effects?: [Effect],

@@ -32,13 +32,13 @@ dispatch minecraft:item[
 	black_shulker_box,
 ] to struct Container27 {
 	/// Slots from 0 to 26.
-	[#[id] "container"]?: [SlottedItem<byte @ 0..26>] @ 0..27,
-	[#[id] "container_loot"]?: minecraft:data_component[container_loot],
+	[#[id="data_component_type"] "container"]?: [SlottedItem<byte @ 0..26>] @ 0..27,
+	[#[id="data_component_type"] "container_loot"]?: minecraft:data_component[container_loot],
 	/// Flattens the `minecraft:custom_name`'s text component and does an exact match, case-sensitive.
-	[#[id] "lock"]?: string,
+	[#[id="data_component_type"] "lock"]?: string,
 }
 
 dispatch minecraft:item[dispenser, dropper] to struct Container9 {
 	/// Slots from 0 to 8.
-	[#[id] "container"]?: [SlottedItem<byte @ 0..8>] @ 0..9,
+	[#[id="data_component_type"] "container"]?: [SlottedItem<byte @ 0..8>] @ 0..9,
 }

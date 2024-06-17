@@ -4,7 +4,7 @@ dispatch minecraft:data_component[debug_stick_state] to struct DebugStickState {
 
 dispatch minecraft:item[debug_stick] to struct DebugStick {
 	#[since="1.20.5"]
-	[#[id] "debug_stick_state"]?: minecraft:data_component[debug_stick_state],
+	[#[id="data_component_type"] "debug_stick_state"]?: minecraft:data_component[debug_stick_state],
 	#[since="1.19"] #[until="1.20.5"]
 	DebugProperty?: DebugStickState,
 }

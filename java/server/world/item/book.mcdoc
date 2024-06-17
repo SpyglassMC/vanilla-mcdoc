@@ -29,14 +29,14 @@ dispatch minecraft:data_component[written_book_content] to struct WrittenBookCon
 /// A writable book
 dispatch minecraft:item[writable_book] to struct WritableBook {
 	#[since="1.20.5"]
-	[#[id] "writable_book_content"]?: minecraft:data_component[writable_book_content],
+	[#[id="data_component_type"] "writable_book_content"]?: minecraft:data_component[writable_book_content],
 	#[until="1.20.5"]
 	pages?: [string],
 }
 
 dispatch minecraft:item[written_book] to struct WrittenBook {
 	#[since="1.20.5"]
-	[#[id] "written_book_content"]?: minecraft:data_component[written_book_content],
+	[#[id="data_component_type"] "written_book_content"]?: minecraft:data_component[written_book_content],
 	// TODO: Add filtered text
 	/// Whether the dynamic content on the pages has been resolved.
 	#[until="1.20.5"]
