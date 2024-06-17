@@ -489,7 +489,7 @@ dispatch minecraft:loot_function[toggle_tooltips] to struct ToggleTooltips {
 
 struct ListOperation {
 	mode: ListOperationMode,
-	...minecraft:list_operation[mode],
+	...minecraft:list_operation[[mode]],
 }
 
 enum(string) ListOperationMode {
@@ -499,10 +499,14 @@ enum(string) ListOperationMode {
 	ReplaceSection = "replace_section",
 }
 
+dispatch minecraft:list_operation[append] to struct {}
+
 dispatch minecraft:list_operation[insert] to struct InsertListOperation {
 	/// Defaults to 0.
 	offset?: int @ 0..,
 }
+
+dispatch minecraft:list_operation[replace_all] to struct {}
 
 dispatch minecraft:list_operation[replace_section] to struct ReplaceSectionListOperation {
 	/// Defaults to 0.
