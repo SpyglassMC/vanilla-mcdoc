@@ -390,7 +390,7 @@ dispatch minecraft:loot_function[set_lore] to struct SetLore {
 
 dispatch minecraft:loot_function[set_name] to struct SetName {
 	/// Specifies the entity to act as the target `@s` in the JSON text component.
-	entity: EntityTarget,
+	entity?: EntityTarget,
 	name: Text,
 	/// Which name component to set. Defaults to `custom_name`.
 	#[since="1.20.5"]

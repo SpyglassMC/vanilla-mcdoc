@@ -33,8 +33,12 @@ type Location = (
 #[since="1.19"]
 dispatch minecraft:trigger[allay_drop_item_on_block] to struct AllayDropItemOnBlock {
 	...TriggerBase,
+	#[until="1.20"]
 	item?: ItemPredicate,
-	location?: LocationPredicate,
+	location?: (
+		#[until="1.20"] LocationPredicate |
+		#[since="1.20"] [LootCondition] |
+	),
 }
 
 #[since="1.20.5"]
@@ -209,8 +213,12 @@ dispatch minecraft:trigger[item_durability_changed] to struct ItemDurabilityChan
 #[since="1.16"]
 dispatch minecraft:trigger[item_used_on_block] to struct ItemUsedOnBlock {
 	...TriggerBase,
+	#[until="1.20"]
 	item?: ItemPredicate,
-	location?: LocationPredicate,
+	location?: (
+		#[until="1.20"] LocationPredicate |
+		#[since="1.20"] [LootCondition] |
+	),
 }
 
 #[since="1.19"]
@@ -263,12 +271,18 @@ dispatch minecraft:trigger[nether_travel] to struct NetherTravel {
 
 dispatch minecraft:trigger[placed_block] to struct PlacedBlock {
 	...TriggerBase,
+	#[until="1.20"]
 	block?: #[id="block"] string,
+	#[until="1.20"]
 	state?: mcdoc:block_states[[block]],
 	/// Item that was used to place the block before the item was consumed.
+	#[until="1.20"]
 	item?: ItemPredicate,
 	/// Where the block was placed.
-	location?: LocationPredicate,
+	location?: (
+		#[until="1.20"] LocationPredicate |
+		#[since="1.20"] [LootCondition]
+	),
 }
 
 /// Player generated the contents of a container upon opening it with the set loot table.
