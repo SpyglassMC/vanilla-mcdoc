@@ -385,7 +385,7 @@ dispatch minecraft:loot_function[set_lore] to struct SetLore {
 	#[until="1.20.5"]
 	replace?: boolean,
 	#[since="1.20.5"]
-	...ListMode,
+	...ListOperation,
 }
 
 dispatch minecraft:loot_function[set_name] to struct SetName {
@@ -437,7 +437,7 @@ dispatch minecraft:loot_function[set_fireworks] to struct SetFireworks {
 	flight_duration?: int @ 0..255,
 	explosions?: struct {
 		values: [minecraft:data_component[firework_explosion]],
-		...ListMode,
+		...ListOperation,
 	},
 }
 
@@ -478,7 +478,7 @@ dispatch minecraft:loot_function[set_writable_book_pages] to struct SetWriteable
 		/// Shown only to players with chat filter enabled, instead of `text`.
 		filtered: string,
 	}) | string)],
-	...ListMode,
+	...ListOperation,
 }
 
 #[since="1.20.5"]
@@ -488,7 +488,7 @@ dispatch minecraft:loot_function[set_written_book_pages] to struct SetWrittenBoo
 		/// Shown only to players with chat filter enabled, instead of `text`.
 		filtered: #[text_component] string,
 	}) | #[text_component] string)],
-	...ListMode,
+	...ListOperation,
 }
 
 #[since="1.20.5"]
@@ -498,26 +498,29 @@ dispatch minecraft:loot_function[toggle_tooltips] to struct ToggleTooltips {
 	},
 } 
 
-type ListMode = (
-	struct {
-		mode: "replace_all",
-	} |
-	struct {
-		mode: "append",
-	} |
-	struct {
-		mode: "insert",
-		/// Defaults to 0.
-		offset?: int @ 0..,
-	} |
-	struct {
-		mode: "replace_section",
-		/// Defaults to 0.
-		offset?: int @ 0..,
-		/// Defaults to size of the list.
-		size?: int @ 0..,
-	} |
-)
+struct ListOperation {
+	mode: ListOperationMode,
+	...minecraft:list_operation[mode],
+}
+
+enum(string) ListOperationMode {
+	Append = "append",
+	Insert = "insert",
+	ReplaceAll = "replace_all",
+	ReplaceSection = "replace_section",
+}
+
+dispatch minecraft:list_operation[insert] to struct InsertListOperation {
+	/// Defaults to 0.
+	offset?: int @ 0..,
+}
+
+dispatch minecraft:list_operation[replace_section] to struct ReplaceSectionListOperation {
+	/// Defaults to 0.
+	offset?: int @ 0..,
+	/// Defaults to size of the list.
+	size?: int @ 0..,
+}
 
 struct StewEffect {
 	type: #[id="mob_effect"] string,
