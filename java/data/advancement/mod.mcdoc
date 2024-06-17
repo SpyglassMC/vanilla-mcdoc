@@ -70,6 +70,8 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 		/// XP to add.
 		experience?: int,
 	},
+	/// Defaults to `false`. The vanilla game client only reads this for advancements from the `minecraft` namespace.
+	sends_telemetry_event?: boolean,
 }
 
 enum(string) Trigger {
