@@ -33,9 +33,9 @@ type CustomData = (
 	#[nbt=mcdoc:custom_item_data[[%parent.%parent.id]]] string |
 )
 
-dispatch mcdoc:custom_item_data[%fallback] to struct {
-  [string]: any
-}
+// dispatch mcdoc:custom_item_data[%fallback] to struct {
+// 	[string]: any
+// }
 
 dispatch minecraft:data_component[custom_data] to CustomData
 
