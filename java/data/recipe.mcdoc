@@ -1,3 +1,6 @@
+use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::AnyItem
+
 dispatch minecraft:resource[recipe] to struct Recipe {
 	type: #[id="recipe_serializer"] string,
 	...minecraft:recipe_serializer[[type]],
@@ -12,7 +15,10 @@ dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 	key: struct {
 		[string]: Ingredient,
 	},
-	result: ItemResult,
+	result: (
+		#[until="1.20.5"] ItemResult |
+		#[since="1.20.5"] InventoryItem |
+	),
 	/// Determines if a notification is shown when unlocking this recipe. Defaults to true.
 	#[since="1.19.4"]
 	show_notification?: boolean
@@ -23,7 +29,10 @@ dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShape
 	/// Identifier for the category this goes in the recipe book.
 	category?: CraftingBookCategory,
 	ingredients?: [Ingredient] @ 1..9,
-	result: ItemResult,
+	result: (
+		#[until="1.20.5"] ItemResult |
+		#[since="1.20.5"] InventoryItem |
+	),
 }
 
 dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
@@ -31,7 +40,10 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 	/// Identifier for the category this goes in the recipe book.
 	category?: CookingBookCategory,
 	ingredient: Ingredient,
-	result: #[id="item"] string,
+	result: (
+		#[until="1.20.5"] #[id="item"] string |
+		#[since="1.20.5"] AnyItem |
+	),
 	experience?: float,
 	cookingtime?: int,
 }
@@ -39,7 +51,10 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
 	group?: string,
 	ingredient: Ingredient,
-	result: #[id="item"] string,
+	result: (
+		#[until="1.20.5"] #[id="item"] string |
+		#[since="1.20.5"] InventoryItem |
+	),
 	count: int,
 }
 
@@ -69,9 +84,12 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 	/// Template item that will be used for the item transformation.
 	template: Ingredient,
 	/// Resulting transformed item.
-	result: struct {
-		item: #[id="item"] string, // Fun
-	},
+	result: (
+		#[until="1.20.5"] struct {
+			item: #[id="item"] string, // Fun
+		} |
+		#[since="1.20.5"] InventoryItem |
+	)
 }
 
 struct ItemResult {
