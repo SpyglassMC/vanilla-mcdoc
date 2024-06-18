@@ -17,7 +17,7 @@ dispatch minecraft:data_component[potion_contents] to (
 dispatch minecraft:item[potion, splash_potion, lingering_potion] to struct EffectItem {
 	...super::ItemBase,
 	#[since="1.20.5"]
-	[#[id="data_component_type"] "potion_contents"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "potion_contents"]?: minecraft:data_component[[%key]],
 	/// List of the effects that will be applied with this item.
 	#[until="1.20.5"]
 	CustomPotionEffects?: [LegacyPotionEffect],

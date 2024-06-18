@@ -10,13 +10,13 @@ dispatch minecraft:item[filled_map] to struct FilledMap {
 	...super::ItemBase,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	#[since="1.20.5"]
-	[#[id="data_component_type"] "map_color"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "map_color"]?: minecraft:data_component[[%key]],
 	/// Key-value pairs of the icons to display, where the key is an arbitrary unique string identifying the decoration.
 	#[since="1.20.5"]
-	[#[id="data_component_type"] "map_decorations"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "map_decorations"]?: minecraft:data_component[[%key]],
 	/// Map number, representing the shared state holding map contents and markers.
 	#[since="1.20.5"]
-	[#[id="data_component_type"] "map_id"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "map_id"]?: minecraft:data_component[[%key]],
 
 	/// Map number, representing the shared state holding map contents and markers.
 	#[until="1.20.5"]

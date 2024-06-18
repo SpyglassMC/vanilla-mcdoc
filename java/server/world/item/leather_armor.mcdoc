@@ -13,7 +13,7 @@ dispatch minecraft:data_component[dyed_color] to (
 dispatch minecraft:item[leather_boots, leather_leggings, leather_chestplate, leather_helmet, leather_horse_armor] to struct LeatherArmor {
 	...super::ItemBase,
 	#[since="1.20.5"]
-	[#[id="data_component_type"] "dyed_color"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "dyed_color"]?: minecraft:data_component[[%key]],
 	#[until="1.20.5"]
 	display?: ColorDisplay,
 }

@@ -8,5 +8,5 @@ struct Occupant {
 
 dispatch minecraft:item[bee_nest, beehive] to struct BeeContainer {
 	...super::BlockItem,
-	[#[id="data_component_type"] "bees"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "bees"]?: minecraft:data_component[[%key]],
 }

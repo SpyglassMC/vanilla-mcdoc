@@ -20,9 +20,9 @@ dispatch minecraft:data_component[block_state] to mcdoc:block_item_states[[%pare
 type BlockItem = (
 	#[since="1.20.5"] struct {
 		...super::DefaultItemComponents,
-		[#[id="data_component_type"] "can_place_on"]?: minecraft:data_component[%key],
-		[#[id="data_component_type"] "block_entity_data"]?: minecraft:data_component[%key],
-		[#[id="data_component_type"] "block_state"]?: minecraft:data_component[%key],
+		[#[id="data_component_type"] "can_place_on"]?: minecraft:data_component[[%key]],
+		[#[id="data_component_type"] "block_entity_data"]?: minecraft:data_component[[%key]],
+		[#[id="data_component_type"] "block_state"]?: minecraft:data_component[[%key]],
 	} |
 	#[until="1.20.5"] struct {
 		...super::DefaultItemTags,
