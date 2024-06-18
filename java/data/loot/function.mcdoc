@@ -109,7 +109,7 @@ dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {
 	/// If omitted, all enchantments applicable to the item are possible
 	#[until="1.21"]
 	enchantments?: [#[id="enchantment"] string],
-	/// The allowed enchantments. If omitted, all enchantments applicable to the item are possible
+	/// The allowed enchantments. If omitted, all enchantments applicable to the item are possible.
 	options?: (#[id(registry="enchantment",tags="allowed")] string | [#[id="enchantment"] string]),
 	/// Whether to only enchant with item-compatible enchantments. Defaults to `true`.
 	///
@@ -117,7 +117,7 @@ dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {
 	only_compatible?: boolean,
 }
 
-/// Enchants the item, with the specified enchantment level.
+/// Enchants the item, with the specified [enchantment level](https://minecraft.wiki/w/Enchanting_mechanics#How_enchantments_are_chosen).
 /// (roughly equivalent to using an enchantment table at that level)
 dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevels {
 	/// The levels to enchant this item with.
@@ -125,7 +125,7 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 		#[until="1.17"] RandomIntGenerator |
 		#[since="1.17"] NumberProvider |
 	),
-	/// The allowed enchantments. If omitted, all enchantments applicable to the item are possible
+	/// The allowed enchantments. If omitted, all enchantments applicable to the item are possible.
 	#[since="1.21"]
 	options?: (#[id(registry="enchantment",tags="allowed")] string | [#[id="enchantment"] string]),
 	/// Whether treasure enchantments are allowed on this item.
