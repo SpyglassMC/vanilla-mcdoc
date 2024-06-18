@@ -12,7 +12,7 @@ dispatch minecraft:data_component[lodestone_tracker] to struct LodestoneTracker 
 dispatch minecraft:item[compass] to struct Compass {
 	...super::ItemBase,
 	#[since="1.20.5"]
-	[#[id="data_component_type"] "lodestone_tracker"]?: minecraft:data_component[lodestone_tracker],
+	[#[id="data_component_type"] "lodestone_tracker"]?: minecraft:data_component[%key],
 	#[until="1.20.5"]
 	LodestoneDimension?: #[id="dimension"] string,
 	#[until="1.20.5"]

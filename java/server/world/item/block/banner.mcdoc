@@ -27,5 +27,5 @@ dispatch minecraft:item[
 	black_banner,
 ] to struct Banner {
 	...super::BlockItem,
-	[#[id="data_component_type"] "banner_patterns"]?: minecraft:data_component[banner_patterns],
+	[#[id="data_component_type"] "banner_patterns"]?: minecraft:data_component[%key],
 }

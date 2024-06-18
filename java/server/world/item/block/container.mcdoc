@@ -34,7 +34,7 @@ dispatch minecraft:item[
 	...super::BlockItem,
 	/// Slots from 0 to 26.
 	[#[id="data_component_type"] "container"]?: [SlottedItem<byte @ 0..26>] @ 0..27,
-	[#[id="data_component_type"] "container_loot"]?: minecraft:data_component[container_loot],
+	[#[id="data_component_type"] "container_loot"]?: minecraft:data_component[%key],
 	/// Flattens the `minecraft:custom_name`'s text component and does an exact match, case-sensitive.
 	[#[id="data_component_type"] "lock"]?: string,
 }

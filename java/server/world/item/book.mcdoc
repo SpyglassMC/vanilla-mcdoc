@@ -19,7 +19,7 @@ dispatch minecraft:data_component[written_book_content] to struct WrittenBookCon
 dispatch minecraft:item[writable_book] to struct WritableBook {
 	...super::ItemBase,
 	#[since="1.20.5"]
-	[#[id="data_component_type"] "writable_book_content"]?: minecraft:data_component[writable_book_content],
+	[#[id="data_component_type"] "writable_book_content"]?: minecraft:data_component[%key],
 	#[until="1.20.5"]
 	pages?: [string],
 }
@@ -27,7 +27,7 @@ dispatch minecraft:item[writable_book] to struct WritableBook {
 dispatch minecraft:item[written_book] to struct WrittenBook {
 	...super::ItemBase,
 	#[since="1.20.5"]
-	[#[id="data_component_type"] "written_book_content"]?: minecraft:data_component[written_book_content],
+	[#[id="data_component_type"] "written_book_content"]?: minecraft:data_component[%key],
 	// TODO: Add filtered text
 	/// Whether the dynamic content on the pages has been resolved.
 	#[until="1.20.5"]

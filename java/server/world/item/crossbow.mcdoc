@@ -15,7 +15,7 @@ dispatch minecraft:item[arrow, spectral_arrow] to struct {
 dispatch minecraft:item[crossbow] to struct Crossbow {
 	...super::ItemBase,
 	#[since="1.20.5"]
-	[#[id="data_component_type"] "charged_projectiles"]?: minecraft:data_component[charged_projectiles],
+	[#[id="data_component_type"] "charged_projectiles"]?: minecraft:data_component[%key],
 	/// Projectiles that are loaded.
 	#[until="1.20.5"]
 	ChargedProjectiles?: [InventoryItem] @ 0..3,

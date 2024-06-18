@@ -151,24 +151,24 @@ dispatch minecraft:data_component[unbreakable] to struct Unbreakable {
 
 struct DefaultItemComponents {
 	/// Applied to an entity that has equipped/is holding the item.
-	[#[id="data_component_type"] "attribute_modifiers"]?: minecraft:data_component[attribute_modifiers],
-	[#[id="data_component_type"] "custom_data"]?: minecraft:data_component[custom_data],
-	[#[id="data_component_type"] "can_break"]?: minecraft:data_component[can_break],
-	[#[id="data_component_type"] "custom_name"]?: minecraft:data_component[custom_name],
+	[#[id="data_component_type"] "attribute_modifiers"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "custom_data"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "can_break"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "custom_name"]?: minecraft:data_component[%key],
 	/// Tag that describes the custom model an item will take.
 	/// Used by the `custom_model_data` model overrides predicate.
 	/// Has certain restrictions due to float conversion.
-	[#[id="data_component_type"] "custom_model_data"]?: minecraft:data_component[custom_model_data],
+	[#[id="data_component_type"] "custom_model_data"]?: minecraft:data_component[%key],
 	/// Damage that an item has. Only used for tools, armor, etc.
-	[#[id="data_component_type"] "damage"]?: minecraft:data_component[damage],
+	[#[id="data_component_type"] "damage"]?: minecraft:data_component[%key],
 	/// If set, changes enchantment glint behavior. When true, this item will display a glint, even without enchantments. When false, this item will not display a glint, even with enchantments.
-	[#[id="data_component_type"] "enchantment_glint_override"]?: minecraft:data_component[enchantment_glint_override],
+	[#[id="data_component_type"] "enchantment_glint_override"]?: minecraft:data_component[%key],
 	/// List of enchantments that are on the item.
-	[#[id="data_component_type"] "enchantments"]?: minecraft:data_component[enchantments],
+	[#[id="data_component_type"] "enchantments"]?: minecraft:data_component[%key],
 	/// If set, this item will not burn in fire or lava.
-	[#[id="data_component_type"] "fire_resistant"]?: minecraft:data_component[fire_resistant],
+	[#[id="data_component_type"] "fire_resistant"]?: minecraft:data_component[%key],
 	/// If set, this item is considered as a food, and can be eaten.
-	[#[id="data_component_type"] "food"]?: minecraft:data_component[food],
+	[#[id="data_component_type"] "food"]?: minecraft:data_component[%key],
 	/// If set, several specific tooltip entries without an applicable `show_in_tooltip` option available are hidden.
 	///
 	/// Included entries:
@@ -190,31 +190,31 @@ struct DefaultItemComponents {
 	/// - Music Disc description
 	/// - Smithing Template description
 	/// - Written Book author & generation
-	[#[id="data_component_type"] "hide_additional_tooltip"]?: minecraft:data_component[hide_additional_tooltip],
+	[#[id="data_component_type"] "hide_additional_tooltip"]?: minecraft:data_component[%key],
 	/// If set, it will completely hide this item's tooltip, including its name.
-	[#[id="data_component_type"] "hide_tooltip"]?: minecraft:data_component[hide_tooltip],
+	[#[id="data_component_type"] "hide_tooltip"]?: minecraft:data_component[%key],
 	/// If set, this item can be played in a jukebox like a music disc.
-	[#[id="data_component_type"] "jukebox_playable"]?: minecraft:data_component[jukebox_playable],
+	[#[id="data_component_type"] "jukebox_playable"]?: minecraft:data_component[%key],
 	/// Replaces default item name with contained chat component.
 	///
 	/// Differences from `custom_name`:
 	/// - Can't be changed or removed in anvil.
 	/// - Not styled with italics when displayed to player.
 	/// - Does not show labels where applicable (for example: banner markers, names in item frames).
-	[#[id="data_component_type"] "item_name"]?: minecraft:data_component[item_name],
+	[#[id="data_component_type"] "item_name"]?: minecraft:data_component[%key],
 	/// A list of JSON text components, each element being a lore line.
-	[#[id="data_component_type"] "lore"]?: minecraft:data_component[lore],
+	[#[id="data_component_type"] "lore"]?: minecraft:data_component[%key],
 	/// Maximum amount of damage that this item can take (ie. **Durability**). If not set, this item cannot take damage. Cannot be combined with the `max_stack_size` component.
-	[#[id="data_component_type"] "max_damage"]?: minecraft:data_component[max_damage],
-	[#[id="data_component_type"] "max_stack_size"]?: minecraft:data_component[max_stack_size],
+	[#[id="data_component_type"] "max_damage"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "max_stack_size"]?: minecraft:data_component[%key],
 	/// Default color of this item's name.
-	[#[id="data_component_type"] "rarity"]?: minecraft:data_component[rarity],
+	[#[id="data_component_type"] "rarity"]?: minecraft:data_component[%key],
 	/// Number of experience levels to add to the base level cost when repairing, combining, or renaming this item with an anvil.
-	[#[id="data_component_type"] "repair_cost"]?: minecraft:data_component[repair_cost],
-	[#[id="data_component_type"] "tool"]?: minecraft:data_component[tool],
+	[#[id="data_component_type"] "repair_cost"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "tool"]?: minecraft:data_component[%key],
 	/// Trim to apply to the item & armor when worn.
-	[#[id="data_component_type"] "trim"]?: minecraft:data_component[trim],
-	[#[id="data_component_type"] "unbreakable"]?: minecraft:data_component[unbreakable],
+	[#[id="data_component_type"] "trim"]?: minecraft:data_component[%key],
+	[#[id="data_component_type"] "unbreakable"]?: minecraft:data_component[%key],
 }
 
 // until 1.20.5
