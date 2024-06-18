@@ -894,8 +894,6 @@
    "mcdoc.java.server.world.entity.mob.allay.Allay.DuplicationCooldown": "Ticks until `CanDuplicate` is set to true. This is set to 6000 game ticks (5 minutes) when the allay duplicates.",
    "mcdoc.java.server.world.entity.mob.allay.Allay.Inventory": "Items it has picked up. Note that the item given by the player is in\nthe allay's `HandItems[0]` tag, not here.",
    "mcdoc.java.server.world.entity.mob.allay.Allay.listener": "Vibration game event listener.",
-   "mcdoc.java.server.world.entity.mob.armor_stand.ArmorStand.ArmorItems": "[feet, legs, body, head].",
-   "mcdoc.java.server.world.entity.mob.armor_stand.ArmorStand.HandItems": "[right hand, left hand].",
    "mcdoc.java.server.world.entity.mob.armor_stand.ArmorStand.Invisible": "Whether it should be invisible.",
    "mcdoc.java.server.world.entity.mob.armor_stand.ArmorStand.Marker": "Whether it has no hitbox.",
    "mcdoc.java.server.world.entity.mob.armor_stand.ArmorStand.NoBasePlate": "Whether it should have a no base plate.",
