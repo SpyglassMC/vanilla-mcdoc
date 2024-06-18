@@ -201,11 +201,12 @@ struct EntityPredicate {
 	player?: PlayerPredicate,
 	#[since="1.16"]
 	vehicle?: EntityPredicate,
-	#[since="1.16"] #[until="1.19"]
+	/// The entity that a mob's AI/aggro is targeting.
+	#[since="1.16"]
 	targeted_entity?: EntityPredicate,
 	#[since="1.16"] #[until="1.19"]
 	fishing_hook?: FishingHookPredicate,
-	#[since="1.17"]
+	#[since="1.17"] #[until="1.19"]
 	lightning_bolt?: LightningBoltPredicate,
 	#[until="1.19"]
 	catType?: string,

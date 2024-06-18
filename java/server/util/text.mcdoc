@@ -160,7 +160,7 @@ dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 		#[until="1.20.5"]
 		tag?: #[nbt=minecraft:item[[id]]] string,
 		#[since="1.20.5"]
-		components?: #[nbt=minecraft:item[[id]]] string, // TODO: make sure this actually works
+		components?: #[nbt=minecraft:item[[id]]] string,
 	},
 }
 
