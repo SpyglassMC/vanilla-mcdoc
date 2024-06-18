@@ -213,6 +213,7 @@
    "mcdoc.java.data.advancement.predicate.LocationPredicate.light": "Calculated using: `max(sky-darkening, block)`.",
    "mcdoc.java.data.advancement.predicate.LocationPredicate.smokey": "Whether the block is above (5 blocks or less) a campfire or soul campfire.",
    "mcdoc.java.data.advancement.predicate.LocationPredicate.can_see_sky": "Whether the location has the maximum possible level of sky light",
+   "mcdoc.java.data.advancement.predicate.EntityPredicate.targeted_entity": "The entity that a mob's AI/aggro is targeting.",
    "mcdoc.java.data.advancement.predicate.EntityPredicate.periodic_ticks": "True every `n` ticks of an entity's lifetime.",
    "mcdoc.java.data.advancement.predicate.EntityPredicate.movement_affected_by": "Whether the block at most 0.5 blocks below the entity is present which can affect its movement.",
    "mcdoc.java.data.advancement.predicate.PlayerPredicate.level": "Experience/XP level.",
