@@ -31,6 +31,7 @@ dispatch minecraft:item[
 	red_shulker_box,
 	black_shulker_box,
 ] to struct Container27 {
+	...super::BlockItem,
 	/// Slots from 0 to 26.
 	[#[id="data_component_type"] "container"]?: [SlottedItem<byte @ 0..26>] @ 0..27,
 	[#[id="data_component_type"] "container_loot"]?: minecraft:data_component[container_loot],
@@ -39,6 +40,7 @@ dispatch minecraft:item[
 }
 
 dispatch minecraft:item[dispenser, dropper] to struct Container9 {
+	...super::BlockItem,
 	/// Slots from 0 to 8.
 	[#[id="data_component_type"] "container"]?: [SlottedItem<byte @ 0..8>] @ 0..9,
 }

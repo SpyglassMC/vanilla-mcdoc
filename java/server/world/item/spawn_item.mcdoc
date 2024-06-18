@@ -90,6 +90,7 @@ dispatch minecraft:item[
 	zombie_villager_spawn_egg,
 	zombified_piglin_spawn_egg,
 ] to struct SpawnItem {
+	...super::ItemBase,
 	#[since="1.20.5"]
 	[#[id="data_component_type"] "entity_data"]?: minecraft:data_component[entity_data],
 	// EntityTag has this weird value because the id for the spawned entity can be

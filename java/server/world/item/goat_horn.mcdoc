@@ -2,6 +2,7 @@ dispatch minecraft:data_component[instrument] to #[id="instrument"] string
 
 #[since="1.19"]
 dispatch minecraft:item[goat_horn] to struct GoatHorn {
+	...super::ItemBase,
 	#[since="1.20.5"]
 	[#[id="data_component_type"] "instrument"]?: minecraft:data_component[instrument],
 	#[until="1.20.5"]

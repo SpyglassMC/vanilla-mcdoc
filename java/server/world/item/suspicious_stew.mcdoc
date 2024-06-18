@@ -8,15 +8,14 @@ struct SuspiciousStewEffect {
 
 dispatch minecraft:data_component[suspicious_stew_effects] to [SuspiciousStewEffect]
 
-/// A suspicious stew item.
-struct SuspiciousStew {
+dispatch minecraft:item[suspicious_stew] to struct SuspiciousStew {
+	...super::ItemBase,
 	#[since="1.20.5"]
 	[#[id="data_component_type"] "suspicious_stew_effects"]?: minecraft:data_component[suspicious_stew_effects],
 	/// Effects this stew will give.
 	#[until="1.20.5"]
 	Effects?: [Effect],
 }
-dispatch minecraft:item[suspicious_stew] to SuspiciousStew
 
 /// A suspicious stew effect.
 struct Effect {

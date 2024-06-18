@@ -17,6 +17,7 @@ dispatch minecraft:data_component[written_book_content] to struct WrittenBookCon
 
 /// A writable book
 dispatch minecraft:item[writable_book] to struct WritableBook {
+	...super::ItemBase,
 	#[since="1.20.5"]
 	[#[id="data_component_type"] "writable_book_content"]?: minecraft:data_component[writable_book_content],
 	#[until="1.20.5"]
@@ -24,6 +25,7 @@ dispatch minecraft:item[writable_book] to struct WritableBook {
 }
 
 dispatch minecraft:item[written_book] to struct WrittenBook {
+	...super::ItemBase,
 	#[since="1.20.5"]
 	[#[id="data_component_type"] "written_book_content"]?: minecraft:data_component[written_book_content],
 	// TODO: Add filtered text

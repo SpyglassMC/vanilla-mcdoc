@@ -1,4 +1,3 @@
-use ::java::server::world::item::DefaultItemComponents
 use ::java::server::util::inventory::EquipmentSlot
 use ::java::server::util::attribute::AttributeOperation
 use ::java::server::util::attribute::AttributeSlot
@@ -7,34 +6,23 @@ use ::java::server::util::text::Text
 use ::java::server::util::Filterable
 use super::super::util::MinMaxBounds
 
-struct ItemPredicate {
-	#[until="1.20.5"]
-	item?: #[id="item"] string,
-	#[until="1.20.5"]
-	tag?: #[id(registry="item",tags="implicit")] string,
-	#[until="1.20.5"]
-	durability?: MinMaxBounds<int>,
-	#[until="1.20.5"]
-	potion?: #[id="potion"] string,
-	#[until="1.20.5"]
-	enchantments?: [EnchantmentPredicate],
-	/// Checks the `StoredEnchantments` nbt tag (used by enchanted books).
-	#[until="1.20.5"]
-	stored_enchantments?: [EnchantmentPredicate],
-	#[until="1.20.5"]
-	nbt?: #[nbt=minecraft:item[[item]]] string, // TODO: This needs hardcoding to include DefaultItemTags
-	#[since="1.20.5"]
-	items?: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
-	#[since="1.20.5"]
-	count?: MinMaxBounds<int>,
-	#[since="1.20.5"]
-	components?: struct {
-		...DefaultItemComponents,
-		...minecraft:item[[items]],
-	},
-	#[since="1.20.5"]
-	predicates?: ItemSubPredicate,
-}
+type ItemPredicate = (
+	#[until="1.20.5"] struct {
+		item: #[id="item"] string,
+		tag?: #[id(registry="item",tags="implicit")] string,
+		durability?: MinMaxBounds<int>,
+		potion?: #[id="potion"] string,
+		enchantments?: [EnchantmentPredicate],
+		stored_enchantments?: [EnchantmentPredicate],
+		nbt?: #[nbt=minecraft:item[[item]]] string,
+	} |
+	#[since="1.20.5"] struct {
+		items: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
+		count?: MinMaxBounds<int>,
+		components?: minecraft:item[[items]],
+		predicates?: ItemSubPredicate,
+	} |
+)
 
 struct ItemSubPredicate {
 	[#[id="item_sub_predicate_type"] string]: minecraft:item_sub_predicate[[%key]],

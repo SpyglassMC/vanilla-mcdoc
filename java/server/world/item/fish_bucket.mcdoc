@@ -16,6 +16,7 @@ dispatch minecraft:item[axolotl_bucket, cod_bucket, salmon_bucket, pufferfish_bu
 }
 
 dispatch minecraft:item[tropical_fish_bucket] to struct AxolotlBucket {
+	...super::ItemBase,
 	#[since="1.20.5"]
 	[#[id="data_component_type"] "bucket_entity_data"]?: minecraft:data_component[bucket_entity_data],
 	#[until="1.20.5"]

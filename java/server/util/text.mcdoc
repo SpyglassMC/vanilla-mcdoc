@@ -1,6 +1,4 @@
 use super::inventory::InventoryItem
-use ::java::server::world::item::DefaultItemTags
-use ::java::server::world::item::DefaultItemComponents
 
 type Text = (
 	string |
@@ -148,16 +146,6 @@ dispatch minecraft:hover_event[show_text] to struct ShowTextHoverEvent {
 	contents?: Text,
 }
 
-type ShowItemTags<T> = struct {
-	...DefaultItemTags,
-	...minecraft:item[[T]],
-}
-
-type ShowItemComponents<T> = struct {
-	...DefaultItemComponents,
-	...minecraft:item[[T]],
-}
-
 dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 	#[deprecated="1.16"]
 	value?: #[nbt=InventoryItem] string,
@@ -166,9 +154,9 @@ dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 		id: #[id="item"] string,
 		count?: int,
 		#[until="1.20.5"]
-		tag?: #[nbt=ShowItemTags<id>] string, // TODO: make sure this actually works
+		tag?: #[nbt=minecraft:item[[id]]] string,
 		#[since="1.20.5"]
-		components?: #[nbt=ShowItemComponents<id>] string, // TODO: make sure this actually works
+		components?: #[nbt=minecraft:item[[id]]] string, // TODO: make sure this actually works
 	},
 }
 

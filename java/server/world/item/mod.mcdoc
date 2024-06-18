@@ -257,19 +257,22 @@ struct DefaultItemTags {
 	Trim?: Trim,
 }
 
+struct ItemBase {
+	#[until="1.20.5"]
+	...DefaultItemTags,
+	#[since="1.20.5"]
+	...DefaultItemComponents,
+}
+
+dispatch minecraft:item[%fallback] to ItemBase
+
 struct AnyItem {
 	/// ID of the item.
 	id: #[id="item"] string,
 	#[since="1.20.5"]
-	components?: struct {
-		...DefaultItemComponents,
-		...minecraft:item[[id]],
-	},
+	components?: minecraft:item[[id]],
 	#[until="1.20.5"]
-	tag?: struct {
-		...DefaultItemTags,
-		...minecraft:item[[id]],
-	},
+	tag?: minecraft:item[[id]],
 }
 
 /// An individual enchantment, with ID and level.

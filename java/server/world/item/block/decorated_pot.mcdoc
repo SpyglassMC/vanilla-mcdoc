@@ -3,6 +3,7 @@ use ::java::server::world::block::decorated_pot::Sherd
 dispatch minecraft:data_component[pot_decorations] to [Sherd] @ 4
 
 dispatch minecraft:item[decorated_pot] to struct DecoratedPot {
+	...super::BlockItem,
 	#[since="1.20.5"]
 	[#[id="data_component_type"] "pot_decorations"]?: minecraft:data_component[pot_decorations],
 }
