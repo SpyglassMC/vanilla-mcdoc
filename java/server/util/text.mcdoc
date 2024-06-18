@@ -63,7 +63,10 @@ struct TextBase {
 }
 
 struct TextStyle {
-	color?: (TextColor | TextFormat),
+	color?: (
+		#[since="1.16"] #[color="hex"] string |
+		TextColor |
+	),
 	#[since="1.16"]
 	font?: #[id="font"] string,
 	bold?: boolean,
@@ -95,6 +98,7 @@ enum(string) TextColor {
 	White = "white",
 }
 
+// TODO: test if this was ever allowed in the "color" field
 enum(string) TextFormat {
 	Obfuscated = "obfuscated",
 	Bold = "bold",
