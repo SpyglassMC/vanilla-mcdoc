@@ -50,9 +50,9 @@ struct LivingEntity {
 struct MobBase {
 	...LivingEntity,
 	/// [main hand, offhand]
-	HandItems?: [InventoryItem] @ 2,
+	HandItems?: [(InventoryItem | struct {})] @ 2,
 	/// [feet, legs, body, head]
-	ArmorItems?: [InventoryItem] @ 4,
+	ArmorItems?: [(InventoryItem | struct {})] @ 4,
 	/// Chance to drop the items it is holding, in [main hand, offhand].
 	HandDropChances?: [float] @ 2,
 	/// Chance to drop the items it is wearing, in [feet, legs, body, head].

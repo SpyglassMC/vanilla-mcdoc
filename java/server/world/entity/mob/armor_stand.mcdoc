@@ -2,10 +2,6 @@ use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 	...super::MobBase,
-	/// [feet, legs, body, head].
-	ArmorItems?: [InventoryItem] @ 4,
-	/// [right hand, left hand].
-	HandItems?: [InventoryItem] @ 2,
 	/// Whether it should be invisible.
 	Invisible?: boolean,
 	/// Whether it has no hitbox.
