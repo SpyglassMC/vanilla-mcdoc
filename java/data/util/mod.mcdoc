@@ -10,6 +10,13 @@ type MinMaxBounds<T> = (
 	} |
 )
 
+// Since 1.17
+struct IntRange {
+	min?: NumberProvider<int>,
+	max?: NumberProvider<int>,
+}
+
+// Until 1.17
 type RandomValueBounds = (
 	float |
 	struct {
@@ -18,6 +25,13 @@ type RandomValueBounds = (
 	} |
 )
 
+// Until 1.17
+struct IntLimiter {
+	min?: int,
+	max?: int,
+}
+
+// Until 1.17
 type RandomIntGenerator = (
 	int |
 	struct {

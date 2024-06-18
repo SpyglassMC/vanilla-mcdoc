@@ -4,6 +4,8 @@ use super::LootFunction
 use super::super::util::MinMaxBounds
 use super::super::util::RandomValueBounds
 use super::super::util::RandomIntGenerator
+use super::super::util::IntRange
+use super::super::util::IntLimiter
 use super::super::util::NumberProvider
 use ::java::data::advancement::predicate::ItemPredicate
 use ::java::server::util::attribute::AttributeSlot
@@ -213,7 +215,10 @@ enum(string) EntityTarget {
 
 dispatch minecraft:loot_function[limit_count] to struct LimitCount {
 	/// Limits the count of the item to a range.
-	limit: MinMaxBounds<int>,
+	limit: (
+		#[until="1.17"] IntLimiter |
+		#[since="1.17"] IntRange |
+	),
 }
 
 /// Adjusts the stack size based on the level of the `Looting` enchantment on the `killer` entity's weapon.

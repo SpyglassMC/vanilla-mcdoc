@@ -1,7 +1,7 @@
 use super::LootCondition
 use super::function::EntityTarget
 use super::super::enchantment::LevelBasedValue
-use super::super::util::MinMaxBounds
+use super::super::util::IntRange
 use super::super::util::NumberProvider
 use super::super::util::RandomValueBounds
 use super::super::advancement::predicate::ItemPredicate
@@ -40,7 +40,7 @@ dispatch minecraft:loot_condition[entity_scores] to struct EntityScores {
 	scores: struct {
 		[#[objective] string]: (
 			#[until="1.17"] RandomValueBounds |
-			#[since="1.17"] MinMaxBounds<int> |
+			#[since="1.17"] IntRange |
 		),
 	},
 }
@@ -102,7 +102,7 @@ dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
 	/// Check the current game tick.
 	value: (
 		#[until="1.17"] RandomValueBounds |
-		#[since="1.17"] MinMaxBounds<int> |
+		#[since="1.17"] IntRange |
 	),
 	/// Game tick supplied to `value` check gets modulo-divided by this.
 	/// For example, if set to 24000, `value` operates on a time period of days.
@@ -113,7 +113,7 @@ dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
 dispatch minecraft:loot_condition[value_check] to struct ValueCheck {
 	value: NumberProvider<int>,
 	/// Passes when `value` is within this range.
-	range: MinMaxBounds<int>,
+	range: IntRange,
 }
 
 dispatch minecraft:loot_condition[weather_check] to struct WeatherCheck {
