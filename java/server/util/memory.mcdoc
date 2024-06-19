@@ -6,6 +6,10 @@ struct TimedMemory {
 	ttl: long,
 }
 
+struct UnitMemory {
+	value?: struct {},
+}
+
 struct FlagMemory {
 	value: boolean,
 }
@@ -30,3 +34,85 @@ struct PositionMemory {
 	/// Position
 	value: GlobalPos,
 }
+
+dispatch minecraft:memory_module[breeze_jump_inhaling] to TickMemory
+
+/// Position the breeze is going to jump to.
+dispatch minecraft:memory_module[breeze_jump_target] to PositionMemory
+
+dispatch minecraft:memory_module[breeze_shoot_cooldown] to TickMemory
+
+dispatch minecraft:memory_module[breeze_shoot] to TickMemory
+
+dispatch minecraft:memory_module[breeze_shoot_charging] to TickMemory
+
+/// Whether it cannot admire an item.
+dispatch minecraft:memory_module[admiring_disabled] to TimedFlagMemory
+
+/// Whether it is admiring an item.
+dispatch minecraft:memory_module[admiring_item] to FlagMemory
+
+/// The target of the piglin.
+dispatch minecraft:memory_module[angry_at] to TimedEntityMemory
+
+/// Whether it hunted recently.
+dispatch minecraft:memory_module[hunted_recently] to TimedFlagMemory
+
+/// Whether it is being angered universally.
+dispatch minecraft:memory_module[universal_anger] to TimedFlagMemory
+
+/// Ticks until it can look around randomly again.
+dispatch minecraft:memory_module[gaze_cooldown_ticks] to TickMemory
+
+dispatch minecraft:memory_module[danger_detected_recently] to TimedMemory
+
+/// Hunting cooldown active.
+dispatch minecraft:memory_module[has_hunting_cooldown] to FlagMemory
+
+/// Ticks until it stops playing dead.
+dispatch minecraft:memory_module[play_dead_ticks] to TickMemory
+
+/// Ticks until it can be tempted again.
+dispatch minecraft:memory_module[temptation_cooldown_ticks] to TickMemory
+
+dispatch minecraft:memory_module[is_pregnant] to UnitMemory
+
+/// Whether it is tempted by the player.
+dispatch minecraft:memory_module[is_tempted] to FlagMemory
+
+/// Ticks until it can leap again.
+dispatch minecraft:memory_module[long_jump_cooling_down] to TickMemory
+
+/// Ticks until it can ram again.
+dispatch minecraft:memory_module[ram_cooldown_ticks] to TickMemory
+
+/// Ticks till it can explore another position.
+dispatch minecraft:memory_module[sniff_cooldown] to TimedFlagMemory
+
+/// Coordinates in the world that it has already explored.
+dispatch minecraft:memory_module[sniffer_explored_positions] to struct {
+	value?: [GlobalPos] @ ..20,
+}
+
+dispatch minecraft:memory_module[golem_detected_recently] to TimedFlagMemory
+
+/// Location of home.
+dispatch minecraft:memory_module[home] to PositionMemory
+
+/// Location of job site.
+dispatch minecraft:memory_module[job_site] to PositionMemory
+
+/// Gametick when it last slept.
+dispatch minecraft:memory_module[last_slept] to TickMemory
+
+/// Gametick when it last woke up.
+dispatch minecraft:memory_module[last_woken] to TickMemory
+
+/// Gametick when it last worked.
+dispatch minecraft:memory_module[last_worked_at_poi] to TickMemory
+
+/// Location of meeting point.
+dispatch minecraft:memory_module[meeting_point] to PositionMemory
+
+/// Location of a potential job site.
+dispatch minecraft:memory_module[potential_job_site] to PositionMemory
