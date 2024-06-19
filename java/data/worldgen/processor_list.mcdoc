@@ -1,5 +1,6 @@
 use ::java::server::util::block_state::BlockState
 use super::HeightmapType
+use super::IntProvider
 
 type ProcessorListRef = (
 	#[id="worldgen/processor_list"] string |
@@ -46,6 +47,12 @@ dispatch minecraft:template_processor[protected_blocks] to struct ProtectedBlock
 
 dispatch minecraft:template_processor[rule] to struct Rule {
 	rules: [ProcessorRule],
+}
+
+#[since="1.19"]
+dispatch minecraft:template_processor[capped] to struct Capped {
+	delegate: Processor,
+	limit: IntProvider<int@0..>
 }
 
 struct ProcessorRule {
