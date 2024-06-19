@@ -192,6 +192,10 @@ struct EntityPredicate {
 	player?: PlayerPredicate,
 	#[since="1.16"]
 	vehicle?: EntityPredicate,
+	#[since="1.17"]
+	passenger?: EntityPredicate,
+	#[since="1.17"]
+	stepping_on?: LocationPredicate,
 	/// The entity that a mob's AI/aggro is targeting.
 	#[since="1.16"]
 	targeted_entity?: EntityPredicate,
@@ -212,7 +216,7 @@ struct EntityPredicate {
 	movement?: MovementPredicate,
 	/// True every `n` ticks of an entity's lifetime.
 	#[since="1.21"]
-	periodic_ticks?: int @ 1..,
+	periodic_tick?: int @ 1..,
 	/// Whether the block at most 0.5 blocks below the entity is present which can affect its movement.
 	#[since="1.21"]
 	movement_affected_by?: LocationPredicate,
@@ -250,6 +254,19 @@ enum(string) SpecificType {
 	Painting = "painting",
 	#[since="1.20.5"]
 	Raider = "raider",
+}
+
+dispatch minecraft:entity_sub_predicate[axolotl] to struct AxolotlPredicate {
+	variant: AxolotlVariant,
+}
+
+enum(string) AxolotlVariant {
+	Lucy = "lucy",
+	Wild = "wild",
+	Gold = "gold",
+	Cyan = "cyan",
+	/// The rare variant.
+	Blue = "blue",
 }
 
 dispatch minecraft:entity_sub_predicate[cat] to struct CatPredicate {
@@ -348,34 +365,40 @@ struct DamagePredicate {
 	taken?: MinMaxBounds<float>,
 	/// Whether the damage was successfully blocked.
 	blocked?: boolean,
-	/// Source of the damage (eg: the skeleton that shot the arrow).
+	/// Source of the damage (eg: a skeleton shooting an arrow or player lightning tnt).
 	source_entity?: EntityPredicate,
-	#[until="1.19.4"]
+	/// The type of the damage source.
 	type?: DamageSourcePredicate,
-	/// Damage type group tags that the damage type is in.
+}
+
+struct DamageSourcePredicate {
+	#[until="1.19.4"]
+	...struct {
+		is_explosion?: boolean,
+		is_fire?: boolean,
+		is_magic?: boolean,
+		is_projectile?: boolean,
+		is_lightning?: boolean,
+		bypasses_armor?: boolean,
+		bypasses_invulnerability?: boolean,
+		bypasses_magic?: boolean,
+	},
+	/// Damage type tags that the damage type is in.
 	#[since="1.19.4"]
-	tags?: [DamageTypeSource],
+	tags?: [DamageTagPredicate],
+	/// Source of the damage (eg: a skeleton shooting an arrow or player lightning tnt).
+	source_entity?: EntityPredicate,
+	/// Direct entity responsible for the damage (eg: the arrow or tnt).
+	direct_entity?: EntityPredicate,
 	/// Damage is direct when its direct and source entities are the same.
 	#[since="1.21"]
 	is_direct?: boolean,
 }
 
-struct DamageSourcePredicate {
-	is_explosion?: boolean,
-	is_fire?: boolean,
-	is_magic?: boolean,
-	is_projectile?: boolean,
-	is_lightning?: boolean,
-	bypasses_armor?: boolean,
-	bypasses_invulnerability?: boolean,
-	bypasses_magic?: boolean,
-	source_entity?: EntityPredicate,
-	direct_entity?: EntityPredicate,
-}
-
-struct DamageTypeSource {
+struct DamageTagPredicate {
+	/// The damage type tag to check.
 	id: #[id(registry="damage_type",tags="implicit")] string,
-	/// Whether the damage is expected to have or not have the tag for the predicate to match.
+	/// Whether the damage is expected to have or not have the tag.
 	expected: boolean,
 }
 
