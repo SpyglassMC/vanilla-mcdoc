@@ -93,6 +93,8 @@ dispatch minecraft:loot_pool_entry[loot_table] to struct LootTablePoolEntry {
 /// Adds the contents of an item tag.
 dispatch minecraft:loot_pool_entry[tag] to struct TagPoolEntry {
 	name: #[id(registry="item",tags="implicit")] string,
+	/// If `true`, drops a random item from the tag. If `false`, drops all items in the tag.
+	expand: boolean,
 	...SingletonPoolEntry,
 }
 
