@@ -307,6 +307,8 @@ dispatch minecraft:feature_config[huge_fungus] to struct HugeFungusConfig {
 	stem_state: BlockState,
 	valid_base_block: BlockState,
 	planted?: boolean,
+	#[since="1.20"]
+	replaceable_blocks: BlockPredicate
 }
 
 dispatch minecraft:feature_config[iceberg] to struct IcebergConfig {
@@ -317,9 +319,9 @@ dispatch minecraft:feature_config[lake] to struct LakeConfig {
 	#[until="1.18"]
 	state: BlockState,
 	#[since="1.18"]
-	fluid: BlockState,
+	fluid: BlockStateProvider,
 	#[since="1.18"]
-	barrier: BlockState,
+	barrier: BlockStateProvider,
 }
 
 #[since="1.17"]
