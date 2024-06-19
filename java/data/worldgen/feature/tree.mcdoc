@@ -2,6 +2,7 @@ use super::super::HeightmapType
 use super::super::UniformInt
 use super::block_state_provider::BlockStateProvider
 use super::super::IntProvider
+use super::super::UniformIntProvider
 use ::java::server::util::direction::Direction
 
 dispatch minecraft:feature_config[tree] to struct TreeConfig {
@@ -107,6 +108,15 @@ dispatch minecraft:trunk_placer[upwards_branching_trunk_placer] to struct Upward
 	),
 }
 
+#[since="1.19.4"]
+dispatch minecraft:trunk_placer[cherry_trunk_placer] to struct CherryTrunkPlacer {
+	branch_count: IntProvider<int @ 1..3>,
+	branch_horizontal_length: IntProvider<int @ 2..16>,
+	//Need at least 2 blocks variation for the branch starts to fit both branches
+	branch_start_offset_from_top: UniformIntProvider<int @ -16..0>,
+	branch_end_offset_from_top: IntProvider<int @ -16..16>,
+}
+
 struct FoliagePlacer {
 	type: #[id="worldgen/foliage_placer_type"] string,
 	radius: (
@@ -154,6 +164,15 @@ dispatch minecraft:foliage_placer[spruce_foliage_placer] to struct SprucePineFol
 		#[until="1.17"] UniformInt<int @ 0..16, int @ 0..8> |
 		#[since="1.17"] IntProvider<int @ 0..24> |
 	),
+}
+
+#[since="1.19.4"]
+dispatch minecraft:foliage_placer[cherry_foliage_placer] to struct CherryFoliagePlacer {
+	height: IntProvider<int @ 4..16>,
+	wide_bottom_layer_hole_chance: float @ 0..1,
+	corner_hole_chance: float @ 0..1,
+	hanging_leaves_chance: float @ 0..1,
+	hanging_leaves_extension_chance: float @ 0..1,
 }
 
 struct TreeDecorator {
