@@ -56,24 +56,6 @@ enum(string) BoundingBox {
 	Full = "full",
 }
 
-dispatch minecraft:structure_config[
-	bastion_remnant,
-	jigsaw,
-	pillager_outpost,
-	villager,
-] to struct Jigsaw {
-	start_pool: #[id="worldgen/template_pool"] string,
-	size: int @ 0..7,
-	#[since="1.19"]
-	...struct {
-		start_height: HeightProvider,
-		start_jigsaw_name?: #[id] string,
-		project_start_to_heightmap?: HeightmapType,
-		max_distance_from_center: minecraft:jigsaw_max_distance_from_center[[terrain_adaptation]],
-		use_expansion_hack: boolean,
-	},
-}
-
 dispatch minecraft:jigsaw_max_distance_from_center[%none,%unknown] to int @ 1..128
 
 dispatch minecraft:jigsaw_max_distance_from_center[beard_thin,beard_box,bury] to int @ 1..116
@@ -152,4 +134,70 @@ enum(string) RuinedPortalPlacement {
 
 dispatch minecraft:structure_config[shipwreck] to struct Shipwreck {
 	is_beached?: boolean,
+}
+
+dispatch minecraft:structure_config[
+	bastion_remnant,
+	jigsaw,
+	pillager_outpost,
+	villager,
+] to struct Jigsaw {
+	start_pool: #[id="worldgen/template_pool"] string,
+	size: (
+		#[until="1.20.3"]
+		int @ 0..7 |
+		#[since="1.20.3"]
+		int @ 1..20
+	),
+	#[since="1.19"]
+	...struct {
+		start_height: HeightProvider,
+		start_jigsaw_name?: #[id] string,
+		project_start_to_heightmap?: HeightmapType,
+		max_distance_from_center: minecraft:jigsaw_max_distance_from_center[[terrain_adaptation]],
+		use_expansion_hack: boolean,
+	},
+	#[since="1.20.3"]
+	pool_aliases?: [PoolAlias],
+	#[since="1.21"]
+	...struct {
+		dimension_padding?: (
+			int @ 0.. |
+			struct {
+				bottom?: int @ 0..,
+				top?: int @ 0..,
+			}
+		),
+		liquid_settings?: LiquidSettings,
+	},
+}
+
+enum(string) LiquidSettings {
+	ApplyWaterlogging = "apply_waterlogging",
+	IgnoreWaterlogging = "ignore_waterlogging",
+}
+
+type PoolAlias = struct {
+	type: #[id="worldgen/pool_alias_binding"] string,
+	...minecraft:worldgen/pool_alias_binding[[type]],
+}
+
+dispatch minecraft:worldgen/pool_alias_binding[direct] to struct DirectPoolAlias {
+	alias: #[id] string,
+	target: #[id="worldgen/template_pool"] string,
+}
+
+dispatch minecraft:worldgen/pool_alias_binding[random] to struct RandomPoolAlias {
+	alias: #[id] string,
+	targets: [struct {
+		weight: int,
+		data: #[id="worldgen/template_pool"] string,
+	}],
+}
+
+dispatch minecraft:worldgen/pool_alias_binding[random_group] to struct RandomGroupPoolAlias {
+	groups: [struct {
+		weight: int,
+		data: [PoolAlias]
+	}]
 }
