@@ -184,17 +184,7 @@ struct EntityPredicate {
 	nbt?: #[nbt=minecraft:entity[[type]]] string,
 	location?: LocationPredicate,
 	distance?: DistancePredicate,
-	flags?: struct {
-		is_on_fire?: boolean,
-		is_sneaking?: boolean,
-		is_sprinting?: boolean,
-		is_swimming?: boolean,
-		is_baby?: boolean,
-		#[since="1.21"]
-		is_on_ground?: boolean,
-		#[since="1.21"]
-		is_flying?: boolean,
-	},
+	flags?: EntityFlagsPredicate,
 	equipment?: struct {
 		[EquipmentSlot]: ItemPredicate,
 	},
@@ -226,6 +216,18 @@ struct EntityPredicate {
 	/// Whether the block at most 0.5 blocks below the entity is present which can affect its movement.
 	#[since="1.21"]
 	movement_affected_by?: LocationPredicate,
+}
+
+struct EntityFlagsPredicate {
+	is_on_fire?: boolean,
+	is_sneaking?: boolean,
+	is_sprinting?: boolean,
+	is_swimming?: boolean,
+	is_baby?: boolean,
+	#[since="1.21"]
+	is_on_ground?: boolean,
+	#[since="1.21"]
+	is_flying?: boolean,
 }
 
 struct EntitySubPredicate {

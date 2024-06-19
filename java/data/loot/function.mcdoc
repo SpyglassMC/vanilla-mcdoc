@@ -6,6 +6,7 @@ use super::super::util::RandomValueBounds
 use super::super::util::RandomIntGenerator
 use super::super::util::IntRange
 use super::super::util::IntLimiter
+use super::super::util::NbtProvider
 use super::super::util::NumberProvider
 use ::java::data::advancement::predicate::ItemPredicate
 use ::java::server::util::attribute::AttributeSlot
@@ -42,17 +43,7 @@ dispatch minecraft:loot_function[copy_name] to struct CopyName {
 }
 
 struct CopyNbt {
-	source: (
-		CopyNameSource | 
-		struct {
-			type: "context",
-			target: CopyNameSource,
-		} |
-		struct {
-			type: "storage",
-			source: string, // TODO
-		} |
-	),
+	source: NbtProvider,
 	ops: [(struct {
 		source: #[nbt_path] string, // TODO
 		target: (

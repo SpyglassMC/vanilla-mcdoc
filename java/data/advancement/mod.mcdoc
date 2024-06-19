@@ -1,55 +1,16 @@
 use ::java::server::util::text::Text
+use ::java::server::util::inventory::InventoryItem
 use ::java::server::world::item::DataComponentPatch
 
 dispatch minecraft:resource[advancement] to struct Advancement {
 	/// If present, advancement will be visible in the advancement tabs.
-	display?: struct {
-		icon: struct {
-			#[until="1.20.5"]
-			item: #[id="item"] string,
-			#[until="1.20.5"]
-			nbt?: #[nbt=minecraft:item[[item]]] string,
-			#[since="1.20.5"]
-			id: #[id="item"] string,
-			#[since="1.20.5"]
-			components?: DataComponentPatch,
-		},
-		title: Text,
-		description: Text,
-		/// Used for the advancement tab (root advancement only).
-		background?: #[id="texture"] string,
-		/// Controls the advancement tile frame. Defaults to `task`.
-		frame?: enum(string) {
-			/// Normal border.
-			Task = "task",
-			/// Fancy spiked border (used for the kill all mobs advancement).
-			Challenge = "challenge",
-			/// Rounded border (used for the full beacon advancement).
-			Goal = "goal",
-		},
-		/// Whether to show the toast pop up after completing this advancement. Defaults to `true`.
-		show_toast?: boolean,
-		/// Whether to announce in the chat when this advancement has been completed. Defaults to `true`.
-		announce_to_chat?: boolean,
-		/// Whether or not to hide this advancement and all its children from the advancement screen,
-		/// until this advancement have been completed.
-		/// Has no effect on root advancements themselves, but still affects all their children.
-		/// Defaults to `false`.
-		hidden?: boolean,
-	},
+	display?: AdvancementDisplay,
 	/// If this field is absent, this advancement is a root advancement.
 	/// Circular references cause a loading failure.
 	parent?: #[id="advancement"] string,
 	/// If `requirements` is not defined, all defined criteria will be required.
 	criteria: struct {
-		[string]: struct {
-			/// Many triggers can occur multiple times, however, the reward will only be provided multiple times if the advancement is first revoked, which is often done within the function reward.
-			trigger: (
-				#[until="1.20.3"] #[id] Trigger |
-				#[since="1.20.3"] #[id="trigger_type"] string | 
-			),
-			conditions?: minecraft:trigger[[trigger]],
-		},
+		[string]: AdvancementCriterion,
 	},
 	/// Contains all of the `criteria` keys.
 	/// If all criteria are required at once, this may be omitted.
@@ -57,18 +18,65 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 	/// If all of the lists each have any criteria met, the advancement is complete (basically AND grouping of OR groups).
 	requirements?: [[string]], // TODO
 	/// Provided to the player when this advancement is obtained.
-	rewards?: struct {
-		/// Function to run as the player (not at). Function group tags are not allowed.
-		function?: #[id="function"] string,
-		/// Loot tables to give.
-		loot?: [#[id="loot_table"] string],
-		/// Recipes to unlock.
-		recipes?: [#[id="recipe"] string],
-		/// XP to add.
-		experience?: int,
-	},
+	rewards?: AdvancementRewards,
 	/// Defaults to `false`. The vanilla game client only reads this for advancements from the `minecraft` namespace.
 	sends_telemetry_event?: boolean,
+}
+
+struct AdvancementDisplay {
+	icon: (
+		#[until="1.20.5"] AdvancementIcon |
+		#[since="1.20.5"] InventoryItem |
+	),
+	title: Text,
+	description: Text,
+	/// Used for the advancement tab (root advancement only).
+	background?: #[id="texture"] string,
+	/// Controls the advancement tile frame. Defaults to `task`.
+	frame?: AdvancementFrame,
+	/// Whether to show the toast pop up after completing this advancement. Defaults to `true`.
+	show_toast?: boolean,
+	/// Whether to announce in the chat when this advancement has been completed. Defaults to `true`.
+	announce_to_chat?: boolean,
+	/// Whether or not to hide this advancement and all its children from the advancement screen,
+	/// until this advancement have been completed.
+	/// Has no effect on root advancements themselves, but still affects all their children.
+	/// Defaults to `false`.
+	hidden?: boolean,
+}
+
+struct AdvancementIcon {
+	item: #[id="item"] string,
+	nbt?: #[nbt=minecraft:item[[item]]] string,
+}
+
+enum(string) AdvancementFrame {
+	/// Normal border.
+	Task = "task",
+	/// Fancy spiked border (used for the kill all mobs advancement).
+	Challenge = "challenge",
+	/// Rounded border (used for the full beacon advancement).
+	Goal = "goal",
+}
+
+struct AdvancementCriterion {
+	/// Many triggers can occur multiple times, however, the reward will only be provided multiple times if the advancement is first revoked, which is often done within the function reward.
+	trigger: (
+		#[until="1.20.3"] #[id] Trigger |
+		#[since="1.20.3"] #[id="trigger_type"] string | 
+	),
+	conditions?: minecraft:trigger[[trigger]],
+}
+
+struct AdvancementRewards {
+	/// Function to run as the player (not at). Function group tags are not allowed.
+	function?: #[id="function"] string,
+	/// Loot tables to give.
+	loot?: [#[id="loot_table"] string],
+	/// Recipes to unlock.
+	recipes?: [#[id="recipe"] string],
+	/// XP to add.
+	experience?: int,
 }
 
 enum(string) Trigger {
