@@ -372,6 +372,7 @@
    "mcdoc.java.data.loot.mod.loot_pool_entry.__dispatch.ItemPoolEntry": "Adds a single item.",
    "mcdoc.java.data.loot.mod.loot_pool_entry.__dispatch.LootTablePoolEntry": "Adds the contents of another loot table.",
    "mcdoc.java.data.loot.mod.loot_pool_entry.__dispatch.TagPoolEntry": "Adds the contents of an item tag.",
+   "mcdoc.java.data.loot.mod.TagPoolEntry.expand": "If `true`, drops a random item from the tag. If `false`, drops all items in the tag.",
    "mcdoc.java.data.loot.mod.loot_pool_entry.__dispatch.alternatives": "Tests conditions of the child entries and executes the first that can run.",
    "mcdoc.java.data.loot.mod.loot_pool_entry.__dispatch.group": "Executes all child entries when own conditions pass.",
    "mcdoc.java.data.loot.mod.loot_pool_entry.__dispatch.sequence": "Executes child entries until the first one that can't run due to conditions.",
