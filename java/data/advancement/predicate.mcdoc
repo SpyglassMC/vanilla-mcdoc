@@ -365,7 +365,7 @@ struct DamagePredicate {
 	taken?: MinMaxBounds<float>,
 	/// Whether the damage was successfully blocked.
 	blocked?: boolean,
-	/// Source of the damage (eg: a skeleton shooting an arrow or player lightning tnt).
+	/// Source of the damage (eg: a skeleton shooting an arrow or player igniting tnt).
 	source_entity?: EntityPredicate,
 	/// The type of the damage source.
 	type?: DamageSourcePredicate,
@@ -386,7 +386,7 @@ struct DamageSourcePredicate {
 	/// Damage type tags that the damage type is in.
 	#[since="1.19.4"]
 	tags?: [DamageTagPredicate],
-	/// Source of the damage (eg: a skeleton shooting an arrow or player lightning tnt).
+	/// Source of the damage (eg: a skeleton shooting an arrow or player igniting tnt).
 	source_entity?: EntityPredicate,
 	/// Direct entity responsible for the damage (eg: the arrow or tnt).
 	direct_entity?: EntityPredicate,
