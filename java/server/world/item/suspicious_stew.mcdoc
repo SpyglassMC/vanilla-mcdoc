@@ -10,10 +10,7 @@ dispatch minecraft:data_component[suspicious_stew_effects] to [SuspiciousStewEff
 
 dispatch minecraft:item[suspicious_stew] to struct SuspiciousStew {
 	...super::ItemBase,
-	#[since="1.20.5"]
-	[#[id="data_component_type"] "suspicious_stew_effects"]?: minecraft:data_component[[%key]],
 	/// Effects this stew will give.
-	#[until="1.20.5"]
 	Effects?: [Effect],
 }
 

@@ -18,16 +18,11 @@ struct ProfileProperty {
 	signature?: string,
 }
 
+/// Sound event to be played by a note block if this player head is placed above it.
 dispatch minecraft:data_component[note_block_sound] to (#[id="sound_event"] string)
 
 dispatch minecraft:item[player_head] to struct PlayerHead {
 	...super::ItemBase,
-	#[since="1.20.5"]
-	[#[id="data_component_type"] "profile"]?: minecraft:data_component[[%key]],
-	/// Sound event to be played by a note block if this player head is placed above it.
-	#[since="1.20.5"]
-	[#[id="data_component_type"] "note_block_sound"]?: minecraft:data_component[[%key]], // TODO: Add old tag?
-	#[until="1.20.5"]
 	SkullOwner?: (SkullOwner | string),
 }
 

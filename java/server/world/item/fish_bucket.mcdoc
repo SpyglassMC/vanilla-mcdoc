@@ -9,19 +9,12 @@ dispatch minecraft:data_component[bucket_entity_data] to struct BucketEntityData
 }
 
 dispatch minecraft:item[axolotl_bucket, cod_bucket, salmon_bucket, pufferfish_bucket, tadpole_bucket] to struct BasicFishBucket {
-	#[since="1.20.5"]
-	[#[id="data_component_type"] "bucket_entity_data"]?: minecraft:data_component[[%key]],
-	#[until="1.20.5"]
 	EntityTag?: EntityData,
 }
 
 dispatch minecraft:item[tropical_fish_bucket] to struct AxolotlBucket {
 	...super::ItemBase,
-	#[since="1.20.5"]
-	[#[id="data_component_type"] "bucket_entity_data"]?: minecraft:data_component[[%key]],
-	#[until="1.20.5"]
 	EntityTag?: EntityData,
 	/// Turns into the `Variant` entity tag.
-	#[until="1.20.5"]
 	BucketVariantTag?: int,
 }

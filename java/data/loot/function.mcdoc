@@ -14,6 +14,7 @@ use ::java::server::util::color::ColorString
 use ::java::server::util::text::Text
 use ::java::server::util::firework::FireworkShape
 use ::java::server::util::Filterable
+use ::java::server::world::item::DataComponentPatch
 
 dispatch minecraft:loot_function[apply_bonus] to struct ApplyBonus {
 	enchantment: #[id="enchantment"] string,
@@ -435,10 +436,7 @@ dispatch minecraft:loot_function[set_nbt] to struct SetNbt {
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_components] to struct SetComponents {
 	conditions?: [LootCondition],
-	components: struct {
-		[#[id="data_component_type"] string]?: minecraft:data_component[[%key]],
-		[#[id=(registry=data_component_type, prefix="!")] string]?: struct {},
-	},
+	components: DataComponentPatch,
 }
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_custom_data] to struct SetCustomData {

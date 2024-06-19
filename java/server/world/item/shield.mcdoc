@@ -6,12 +6,7 @@ dispatch minecraft:data_component[base_color] to ColorString
 
 dispatch minecraft:item[shield] to struct Shield {
 	...super::ItemBase,
-	#[since="1.20.5"]
-	[#[id="data_component_type"] "banner_patterns"]?: minecraft:data_component[[%key]],
-	#[since="1.20.5"]
-	[#[id="data_component_type"] "base_color"]?: minecraft:data_component[[%key]],
 	/// Banner Data.
-	#[until="1.20.5"]
 	BlockEntityTag?: struct {
 		/// Base color.
 		Base?: ColorInt,
