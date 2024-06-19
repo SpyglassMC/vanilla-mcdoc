@@ -1,15 +1,19 @@
 type DensityFunctionRef = (
 	#[id="worldgen/density_function"] string |
-	NoiseRange |
 	DensityFunction |
 )
 
 type NoiseRange = float @ -1000000..1000000
 
-dispatch minecraft:resource["worldgen/density_function"] to struct DensityFunction {
-	type: #[id="worldgen/density_function_type"] string,
-	...minecraft:density_function[[type]],
-}
+type DensityFunction = (
+	NoiseRange | 
+	struct {
+		type: #[id="worldgen/density_function_type"] string,
+		...minecraft:density_function[[type]],
+	} |
+)
+
+dispatch minecraft:resource["worldgen/density_function"] to DensityFunction
 
 dispatch minecraft:density_function[
 	abs,
@@ -22,9 +26,6 @@ dispatch minecraft:density_function[
 	half_negative,
 	interpolated,
 	quarter_negative,
-	shift,
-	shift_a,
-	shift_b,
 	slide,
 	square,
 	squeeze,
@@ -43,7 +44,7 @@ dispatch minecraft:density_function[
 }
 
 dispatch minecraft:density_function[clamp] to struct Clamp {
-	input: (NoiseRange | DensityFunction),
+	input: DensityFunction,
 	min: NoiseRange,
 	max: NoiseRange,
 }
@@ -80,6 +81,14 @@ dispatch minecraft:density_function[shifted_noise] to struct ShiftedNoise {
 	shift_x: DensityFunctionRef,
 	shift_y: DensityFunctionRef,
 	shift_z: DensityFunctionRef,
+}
+
+dispatch minecraft:density_function[
+	shift,
+	shift_a,
+	shift_b,
+] to struct Shift {
+	argument: #[id="worldgen/noise"] string,
 }
 
 dispatch minecraft:density_function[spline] to struct Spline {
