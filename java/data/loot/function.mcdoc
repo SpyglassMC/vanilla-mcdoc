@@ -506,6 +506,11 @@ dispatch minecraft:loot_function[toggle_tooltips] to struct ToggleTooltips {
 	},
 }
 
+#[since="1.20.5"]
+dispatch minecraft:loot_function[set_ominous_bottle_amplifier] to struct SetOminousBottleAmplifier {
+	amplifier: NumberProvider,
+}
+
 enum(string) ToggleableDataComponent {
 	AttributeModifiers = "attribute_modifiers",
 	CanBreak = "can_break",
