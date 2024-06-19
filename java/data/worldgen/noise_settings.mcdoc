@@ -38,7 +38,7 @@ dispatch minecraft:resource["worldgen/noise_settings"] to struct NoiseGeneratorS
 		deepslate_enabled: boolean,
 		ore_veins_enabled: boolean,
 	},
-	#[until="1.18"]
+	#[since="1.18"]
 	legacy_random_source: boolean,
 	noise: NoiseSettings,
 	#[since="1.18.2"]
@@ -65,12 +65,15 @@ struct NoiseSettings {
 	density_factor: double,
 	#[until="1.18"]
 	density_offset: double,
+	#[until="1.19"]
 	sampling: NoiseSamplingSettings,
 	/// Adds or removes terrain at the top of the world. Does nothing when size is 0.
+	#[until="1.19"]
 	top_slide: NoiseSlideSettings,
 	/// Adds or removes terrain at the bottom of the world. Does nothing when size is 0.
+	#[until="1.19"]
 	bottom_slide: NoiseSlideSettings,
-	#[since="1.18"]
+	#[since="1.18"] #[until="1.19"]
 	terrain_shaper: TerrainShaper,
 	#[until="1.18"]
 	simplex_surface_noise: boolean,
