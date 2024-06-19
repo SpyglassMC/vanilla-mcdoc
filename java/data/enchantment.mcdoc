@@ -22,7 +22,7 @@ dispatch minecraft:resource[enchantment] to struct Enchantment {
 	/// Item types for which this Enchantment shows up in Enchanting Tables and on traded equipment.
 	///
 	/// Must be a subset of `supported_items`.
-	primary_items: (
+	primary_items?: (
 		#[id(registry="item", tags="allowed")] string |
 		[#[id="item"] string] |
 	),
