@@ -56,19 +56,26 @@ dispatch minecraft:resource["worldgen/noise"] to struct NoiseParameters {
 }
 
 struct ClimateParameters {
-	temperature: float @ -2..2,
-	humidity: float @ -2..2,
+	temperature: ClimateParameter,
+	humidity: ClimateParameter,
 	#[until="1.18"]
 	altitude: float @ -2..2,
 	#[since="1.18"]
-	continentalness: float @ -2..2,
+	continentalness: ClimateParameter,
 	#[since="1.18"]
-	erosion: float @ -2..2,
-	weirdness: float @ -2..2,
+	erosion: ClimateParameter,
+	weirdness: ClimateParameter,
 	#[since="1.18"]
-	depth: float @ -2..2,
+	depth: ClimateParameter,
 	offset: float @ 0..1,
 }
+
+type ClimateParameter = (
+	float @ -2..2 |
+	#[since="1.18"]
+	[float @ -2..2] @ 2 |
+)
+
 
 /// Biome distribution for the End.
 dispatch minecraft:biome_source[the_end] to struct TheEnd {

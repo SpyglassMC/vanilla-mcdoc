@@ -19,10 +19,19 @@ dispatch minecraft:resource["worldgen/noise_settings"] to struct NoiseGeneratorS
 	default_fluid: BlockState,
 	/// Relative position of the bedrock roof starting at the world height. Higher numbers move the roof down.
 	#[until="1.18"]
-	bedrock_roof_position: int @ 0..276,
+	bedrock_roof_position: (
+		#[until="1.17"] int @ -20..276 |
+		#[since="1.17"] int |
+	),
 	#[until="1.18"]
-	bedrock_floor_position: int @ -20..276,
-	sea_level: int @ 0..255,
+	bedrock_floor_position: (
+		#[until="1.17"] int @ -20..276 |
+		#[since="1.17"] int |
+	),
+	sea_level: (
+		#[until="1.17"] int @ 0..255 |
+		#[since="1.17"] int |
+	),
 	#[since="1.17"] #[until="1.18"]
 	min_surface_level: int,
 	/// If true, mobs will not spawn during generation.
@@ -38,7 +47,7 @@ dispatch minecraft:resource["worldgen/noise_settings"] to struct NoiseGeneratorS
 		deepslate_enabled: boolean,
 		ore_veins_enabled: boolean,
 	},
-	#[until="1.18"]
+	#[since="1.18"]
 	legacy_random_source: boolean,
 	noise: NoiseSettings,
 	#[since="1.18.2"]
@@ -65,12 +74,15 @@ struct NoiseSettings {
 	density_factor: double,
 	#[until="1.18"]
 	density_offset: double,
+	#[until="1.19"]
 	sampling: NoiseSamplingSettings,
 	/// Adds or removes terrain at the top of the world. Does nothing when size is 0.
+	#[until="1.19"]
 	top_slide: NoiseSlideSettings,
 	/// Adds or removes terrain at the bottom of the world. Does nothing when size is 0.
+	#[until="1.19"]
 	bottom_slide: NoiseSlideSettings,
-	#[since="1.18"]
+	#[since="1.18"] #[until="1.19"]
 	terrain_shaper: TerrainShaper,
 	#[until="1.18"]
 	simplex_surface_noise: boolean,
