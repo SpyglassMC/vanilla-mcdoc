@@ -1,6 +1,7 @@
 use super::LootPoolEntry
 use super::LootCondition
 use super::LootFunction
+use super::EntityTarget
 use super::super::util::MinMaxBounds
 use super::super::util::RandomValueBounds
 use super::super::util::RandomIntGenerator
@@ -198,12 +199,7 @@ dispatch minecraft:loot_function[fill_player_head] to struct FillPlayerHead {
 	entity: EntityTarget,
 }
 
-enum(string) EntityTarget {
-	This = "this",
-	Killer = "killer",
-	DirectKiller = "direct_killer",
-	KillerPlayer = "killer_player",
-}
+
 
 dispatch minecraft:loot_function[limit_count] to struct LimitCount {
 	/// Limits the count of the item to a range.

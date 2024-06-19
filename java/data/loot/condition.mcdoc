@@ -1,5 +1,5 @@
 use super::LootCondition
-use super::function::EntityTarget
+use super::EntityTarget
 use super::super::enchantment::LevelBasedValue
 use super::super::util::IntRange
 use super::super::util::NumberProvider
