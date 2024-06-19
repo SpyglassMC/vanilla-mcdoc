@@ -77,6 +77,17 @@ type ClampedNormalIntProvider<T> = struct {
 #[since="1.18"]
 dispatch minecraft:int_provider[clamped_normal] to ClampedNormalIntProvider
 
+type WeightListIntProvider<T> = struct {
+	distribution: [struct {
+		weight: int,
+		data: IntProvider<T>,
+	}],
+}
+
+#[since="1.18"]
+dispatch minecraft:int_provider[weighted_list] to WeightListIntProvider
+
+
 type FloatProvider<T> = (
 	T |
 	struct {
