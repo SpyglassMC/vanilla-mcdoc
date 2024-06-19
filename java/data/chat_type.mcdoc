@@ -1,9 +1,16 @@
 use ::java::server::util::text::TextStyle
 
 dispatch minecraft:resource[chat_type] to struct ChatType {
-	chat?: TextDisplay,
+	chat?: (
+		#[until="1.19.1"] TextDisplay |
+		#[since="1.19.1"] ChatDecoration |
+	),
+	#[until="1.19.1"]
 	overlay?: TextDisplay,
-	narration?: Narration,
+	narration?: (
+		#[until="1.19.1"] Narration |
+		#[since="1.19.1"] ChatDecoration
+	),
 }
 
 struct TextDisplay {
@@ -23,11 +30,21 @@ enum(string) NarrationPriority {
 struct ChatDecoration {
 	translation_key: string,
 	parameters: [ChatDecorationParameter],
-	style: TextStyle,
+	#[until="1.19.1"]
+	...struct {
+		style: TextStyle,
+	},
+	#[since="1.19.1"]
+	...struct {
+		style?: TextStyle,
+	},
 }
 
 enum(string) ChatDecorationParameter {
 	Sender = "sender",
 	Content = "content",
+	#[until="1.19.1"]
 	TeamName = "team_name",
+	#[since="1.19.1"]
+	Target = "target"
 }
