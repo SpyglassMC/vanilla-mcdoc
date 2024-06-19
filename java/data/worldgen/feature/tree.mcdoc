@@ -35,14 +35,14 @@ struct FeatureSize {
 }
 
 dispatch minecraft:feature_size[two_layers_feature_size] to struct TwoLayersFeatureSize {
-	min_clipped_height: float @ 0..80,
+	min_clipped_height?: float @ 0..80,
 	limit?: int @ 0..81,
 	lower_size?: int @ 0..16,
 	upper_size?: int @ 0..16,
 }
 
 dispatch minecraft:feature_size[three_layers_feature_size] to struct ThreeLayersFeatureSize {
-	min_clipped_height: float @ 0..80,
+	min_clipped_height?: float @ 0..80,
 	limit?: int @ 0..80,
 	upper_limit?: int @ 0..80,
 	lower_size?: int @ 0..16,
