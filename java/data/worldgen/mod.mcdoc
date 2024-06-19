@@ -71,7 +71,7 @@ dispatch minecraft:int_provider[clamped] to ClampedIntProvider
 type ClampedNormalIntProvider<T> = struct {
 	...UniformIntProvider,
 	mean: float,
-	deviation: float
+	deviation: float,
 }
 
 #[since="1.18"]
@@ -95,7 +95,7 @@ type FloatProvider<T> = (
 		#[until="1.20.5"]
 		value: minecraft:float_provider[[type]]<T>,
 		#[since="1.20.5"]
-		...minecraft:float_provider[[type]]<T>
+		...minecraft:float_provider[[type]]<T>,
 	} |
 )
 

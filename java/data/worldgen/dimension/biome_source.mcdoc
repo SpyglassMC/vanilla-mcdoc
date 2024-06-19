@@ -73,7 +73,7 @@ struct ClimateParameters {
 type ClimateParameter = (
 	float @ -2..2 |
 	#[since="1.18"]
-	[float @ -2..2] @ 2
+	[float @ -2..2] @ 2 |
 )
 
 

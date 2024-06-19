@@ -52,7 +52,7 @@ dispatch minecraft:template_processor[rule] to struct Rule {
 #[since="1.19"]
 dispatch minecraft:template_processor[capped] to struct Capped {
 	delegate: Processor,
-	limit: IntProvider<int@0..>
+	limit: IntProvider<int@0..>,
 }
 
 struct ProcessorRule {
@@ -63,7 +63,7 @@ struct ProcessorRule {
 	#[until="1.20"]
 	output_nbt?: minecraft:block[[output_state.Name]],
 	#[since="1.20"]
-	block_entity_modifier?: BlockEntityModifier
+	block_entity_modifier?: BlockEntityModifier,
 }
 
 struct PosRuleTest {
@@ -118,13 +118,13 @@ dispatch minecraft:rule_test[tag_match] to struct TagMatch {
 
 struct BlockEntityModifier {
 	type: #[id="rule_block_entity_modifier"] string,
-	...minecraft:rule_block_entity_modifier[[type]]
+	...minecraft:rule_block_entity_modifier[[type]],
 }
 
 dispatch minecraft:rule_block_entity_modifier[append_static] to struct AppendStatic {
-	data: any
+	data: any,
 }
 
 dispatch minecraft:rule_block_entity_modifier[append_loot] to struct AppendLoot {
-	loot_table: #[id="loot_table"] string
+	loot_table: #[id="loot_table"] string,
 }

@@ -198,6 +198,6 @@ dispatch minecraft:worldgen/pool_alias_binding[random] to struct RandomPoolAlias
 dispatch minecraft:worldgen/pool_alias_binding[random_group] to struct RandomGroupPoolAlias {
 	groups: [struct {
 		weight: int,
-		data: [PoolAlias]
-	}]
+		data: [PoolAlias],
+	}],
 }

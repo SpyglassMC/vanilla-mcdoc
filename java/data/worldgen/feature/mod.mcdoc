@@ -308,7 +308,7 @@ dispatch minecraft:feature_config[huge_fungus] to struct HugeFungusConfig {
 	valid_base_block: BlockState,
 	planted?: boolean,
 	#[since="1.20"]
-	replaceable_blocks: BlockPredicate
+	replaceable_blocks: BlockPredicate,
 }
 
 dispatch minecraft:feature_config[iceberg] to struct IcebergConfig {
