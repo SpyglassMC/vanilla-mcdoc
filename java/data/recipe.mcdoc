@@ -55,6 +55,7 @@ dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
 		#[until="1.20.5"] #[id="item"] string |
 		#[since="1.20.5"] InventoryItem |
 	),
+	#[until="1.20.5"]
 	count: int,
 }
 
