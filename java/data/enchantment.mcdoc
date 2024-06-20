@@ -1,5 +1,6 @@
 use super::loot::LootCondition
 use super::util::NumberProvider
+use super::util::SoundEventRef
 use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
 use ::java::data::worldgen::feature::block_predicate::BlockPredicate
 use ::java::data::worldgen::FloatProvider
@@ -214,7 +215,7 @@ struct ExplodeEntityEffect {
 	}),
 	small_particle: Particle,
 	large_particle: Particle,
-	sound: #[id="sound_event"] string,
+	sound: SoundEventRef,
 }
 
 dispatch minecraft:entity_effect[explode] to ExplodeEntityEffect
@@ -229,7 +230,7 @@ dispatch minecraft:entity_effect[ignite] to IgniteEntityEffect
 dispatch minecraft:location_based_effect[ignite] to IgniteEntityEffect
 
 struct PlaySoundEntityEffect {
-	sound: #[id="sound_event"] string,
+	sound: SoundEventRef,
 	volume: FloatProvider<float @ 0.00001..10.0>,
 	pitch: FloatProvider<float @ 0.00001..2.0>,
 }
@@ -347,13 +348,11 @@ dispatch minecraft:effect_component[block_experience] to [struct BlockExperience
 /// Each entry in the list represents the sounds at one level of the Enchantment, so the first entry represents the sounds used by a level 1 Enchantment.
 dispatch minecraft:effect_component[crossbow_charge_sounds] to [struct CrossbowChargeSoundsEnchantmentEffect {
 	/// Start of charging.
-	start?: #[id="sound_event"] string,
+	start?: SoundEventRef,
 	/// Middle of charging.
-	mid?: #[id="sound_event"] string,
+	mid?: SoundEventRef,
 	/// End of charging.
-	end?: #[id="sound_event"] string,
-	/// Dummy value; actual effects are applied above
-	effect: struct {},
+	end?: SoundEventRef,
 }]
 
 /// Charge time of the Crossbow in seconds
@@ -547,7 +546,7 @@ dispatch minecraft:effect_component[trident_spin_attack_strength] to ValueEffect
 
 // Really mojang?
 /// Each entry in the list represents the sound at one level of the Enchantment, so the first entry represents the sound used by a level 1 Enchantment.
-dispatch minecraft:effect_component[trident_sound] to [#[id="sound_event"] string]
+dispatch minecraft:effect_component[trident_sound] to [SoundEventRef]
 
 type EnchantmentsType = (#[id(registry="enchantment", tags="allowed")] string | [#[id="enchantment"] string] @ 1..)
 
