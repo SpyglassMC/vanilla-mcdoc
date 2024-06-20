@@ -1,4 +1,7 @@
 use ::java::server::util::inventory::InventoryItem
+use ::java::server::util::TimedFlagMemory
+use ::java::server::util::TickMemory
+use ::java::server::util::PositionMemory
 
 struct VillagerBase {
 	/// Slots from 0 to 7.
@@ -9,6 +12,28 @@ struct VillagerBase {
 
 dispatch minecraft:entity[villager] to struct Villager {
 	...super::Breedable,
+	Brain?: struct {
+		memories?: struct {
+			/// Detected an iron golem recently.
+			#[since="1.16"]
+			[#[id="memory_module_type"] "golem_detected_recently"]: TimedFlagMemory,
+			/// Location of home.
+			[#[id="memory_module_type"] "home"]: PositionMemory,
+			/// Location of job site.
+			[#[id="memory_module_type"] "job_site"]: PositionMemory,
+			/// Gametick when it last slept.
+			[#[id="memory_module_type"] "last_slept"]: TickMemory,
+			/// Gametick when it last woke up.
+			[#[id="memory_module_type"] "last_woken"]: TickMemory,
+			/// Gametick when it last worked.
+			[#[id="memory_module_type"] "last_worked_at_poi"]: TickMemory,
+			/// Location of meeting point.
+			[#[id="memory_module_type"] "meeting_point"]: PositionMemory,
+			/// Location of a potential job site.
+			#[since="1.16"]
+			[#[id="memory_module_type"] "potential_job_site"]: PositionMemory,
+		},
+	},
 	VillagerData?: VillagerData,
 	FoodLevel?: byte, // TODO
 	/// Gossips it has heard.

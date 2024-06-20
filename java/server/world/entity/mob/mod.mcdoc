@@ -26,7 +26,11 @@ struct LivingEntity {
 	/// Z coordinate of where it is sleeping.
 	SleepingZ?: int,
 	/// The mob's brain, empty.
-	Brain?: Brain,
+	Brain?: struct {
+		memories?: struct {
+			[string]: struct {}
+		},
+	},
 	#[until="1.21"]
 	Attributes?: [Attribute],
 	#[since="1.21"]
@@ -127,13 +131,13 @@ type AttributeModifier = (
 )
 
 struct Brain {
-	/// The memories used by the mob's AI.
-	memories?: Memories,
+	/// The mobs memories, empty.
+	memories?: struct {},
 }
 
-struct Memories {
-	[#[id="memory_module_type"] string]: minecraft:memory_module[[%key]],
-}
+// struct Memories {
+// 	[#[id="memory_module_type"] string]: minecraft:memory_module[[%key]],
+// }
 
 struct UUIDLeash {
 	/// Upper bits of the other entity's UUID.
@@ -153,7 +157,6 @@ struct BlockLeash {
 
 dispatch minecraft:entity[
 	blaze,
-	breeze,
 	cave_spider,
 	elder_guardian,
 	giant,

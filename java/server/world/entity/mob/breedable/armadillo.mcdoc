@@ -1,6 +1,15 @@
+use ::java::server::util::TickMemory
+use ::java::server::util::TimedMemory
+
 #[since="1.20.5"]
 dispatch minecraft:entity[armadillo] to struct Armadillo {
 	...super::Breedable,
+	Brain?: struct {
+		memories?: struct {
+			[#[id="memory_module_type"] "gaze_cooldown_ticks"]: TickMemory,
+			[#[id="memory_module_type"] "danger_detected_recently"]: TimedMemory,
+		},
+	},
 	state?: ArmadilloState,
 	scute_time?: int @ 0..,
 }

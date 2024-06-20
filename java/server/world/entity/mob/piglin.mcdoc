@@ -1,4 +1,6 @@
 use ::java::server::util::InventoryItem
+use ::java::server::util::TimedFlagMemory
+use ::java::server::util::TimedEntityMemory
 
 struct PiglinBase {
 	...super::MobBase,
@@ -11,6 +13,21 @@ struct PiglinBase {
 #[since="1.16"]
 dispatch minecraft:entity[piglin] to struct Piglin {
 	...PiglinBase,
+	#[since="1.16"]
+	Brain?: struct {
+		memories?: struct {
+			/// Whether it cannot admire an item.
+			[#[id="memory_module_type"] "admiring_disabled"]: TimedFlagMemory,
+			/// Whether it is admiring an item.
+			[#[id="memory_module_type"] "admiring_disabled"]: TimedFlagMemory,
+			/// The target of the piglin.
+			[#[id="memory_module_type"] "angry_at"]: TimedEntityMemory,
+			/// Whether it hunted recently.
+			[#[id="memory_module_type"] "hunted_recently"]: TimedFlagMemory,
+			/// Whether it is being angered universally.
+			[#[id="memory_module_type"] "universal_anger"]: TimedFlagMemory,
+		},
+	},
 	/// Whether it is a baby.
 	IsBaby?: boolean,
 	/// Whether it does not hunt hoglins.
