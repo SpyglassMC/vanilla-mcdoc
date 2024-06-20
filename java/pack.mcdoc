@@ -4,8 +4,8 @@ use ::java::server::util::range::InclusiveRange
 struct Pack {
 	pack: struct {
 		description: Text,
-		pack_format: int @ 1..,
-		supported_formats?: InclusiveRange<int @ 1..>,
+		pack_format: #[pack_format] int @ 1..,
+		supported_formats?: InclusiveRange<#[pack_format] int @ 1..>,
 	},
 	#[since="1.19"]
 	filter?: PackFilter,
