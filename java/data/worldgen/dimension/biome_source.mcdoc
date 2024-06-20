@@ -25,7 +25,8 @@ dispatch minecraft:biome_source[multi_noise] to struct MultiNoise {
 		struct {
 			preset: (
 				#[until="1.18"] MultiNoisePreset |
-				#[until="1.18"] #[id] MultiNoisePreset |
+				#[since="1.18"] #[until="1.19.4"] #[id] MultiNoisePreset |
+				#[since="1.19.4"] #[id="worldgen/multi_noise_biome_source_parameter_list"] string |
 			),
 		} |
 		struct {
@@ -48,6 +49,10 @@ dispatch minecraft:biome_source[multi_noise] to struct MultiNoise {
 enum(string) MultiNoisePreset {
 	Nether = "nether",
 	#[since="1.18"] Overworld = "overworld",
+}
+
+dispatch minecraft:resource["worldgen/multi_noise_biome_source_parameter_list"] to struct MultiNoiseBiomeSourceParameterList {
+	preset: #[id] MultiNoisePreset
 }
 
 dispatch minecraft:resource["worldgen/noise"] to struct NoiseParameters {
