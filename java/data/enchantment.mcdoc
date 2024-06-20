@@ -93,6 +93,7 @@ dispatch minecraft:level_based_value[lookup] to struct LookupLevelValue {
 	fallback: LevelBasedValue,
 }
 
+// An effect value, referred to by Mojang as "value effect"
 struct ValueEffect {
 	type: #[id="enchantment_value_effect_type"] string,
 	...minecraft:value_effect[[type]],
