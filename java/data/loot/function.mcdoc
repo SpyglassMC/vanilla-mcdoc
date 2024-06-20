@@ -137,7 +137,10 @@ dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
 	),
 	/// The icon used to mark the destination on the map. Accepts any of the map icon text IDs (case insensitive).
 	/// If `mansion` or `monument` is used, the color of the lines on the item texture changes to match the corresponding explorer map.
-	decoration?: MapDecoration,
+	decoration?: (
+		#[until="1.20.5"] MapDecoration |
+		#[since="1.20.5"] #[id="map_decoration_type"] string |
+	),
 	/// Defaults to 2.
 	zoom?: int,
 	/// The size, in chunks, of the area to search for structures.
