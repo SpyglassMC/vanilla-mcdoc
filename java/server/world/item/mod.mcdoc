@@ -4,7 +4,7 @@ use ::java::server::util::attribute::LegacyOperation
 use ::java::server::util::attribute::AttributeOperation
 use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::block_state::BlockState
-use ::java::server::util::PotionComponent
+use ::java::server::util::effect::MobEffectInstance
 
 struct AttributeModifiers {
 	modifiers: [AttributeModifier],
@@ -33,7 +33,7 @@ type CustomData = (
 )
 
 dispatch mcdoc:custom_item_data[%fallback] to struct {
-	[string]: any
+	[string]: any,
 }
 
 dispatch minecraft:data_component[custom_name] to #[text_component] string
@@ -72,7 +72,7 @@ dispatch minecraft:data_component[enchantments] to (
 dispatch minecraft:data_component[fire_resistant] to struct {}
 
 struct FoodEffect {
-	effect: PotionComponent,
+	effect: MobEffectInstance,
 	/// Chance for the effect to be applied.
 	probability: float @ 0..1,
 }

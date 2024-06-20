@@ -27,7 +27,7 @@ type TextObject = (
 		...TextBase,
 	} |
 	struct {
-		selector: #[selector] string,
+		selector: #[entity] #[selector] string,
 		...TextBase,
 	} |
 	struct {
@@ -40,7 +40,7 @@ type TextObject = (
 		...TextNbtBase,
 	} |
 	struct {
-		entity: #[selector(amount=multiple,type=entities)] string,
+		entity: #[entity(amount=multiple,type=entities)] #[selector] string,
 		nbt: #[nbt_path=minecraft:entity[[entity]]] string,
 		...TextNbtBase,
 	} |

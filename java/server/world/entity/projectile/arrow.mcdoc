@@ -1,6 +1,5 @@
 use ::java::server::util::block_state::BlockState
-use ::java::server::util::effect::LegacyPotionEffect
-use ::java::server::util::PotionComponent
+use ::java::server::util::effect::MobEffectInstance
 use ::java::server::util::inventory::InventoryItem
 use super::ProjectileBase
 
@@ -56,10 +55,10 @@ dispatch minecraft:entity[arrow] to struct Arrow {
 	Color?: #[color="composite_int"] int,
 	/// Effects to give to the hit entity.
 	#[until="1.20.2"]
-	CustomPotionEffects?: [LegacyPotionEffect],
+	CustomPotionEffects?: [MobEffectInstance],
 	/// Effects to give to the hit entity.
 	#[since="1.20.2"] #[until="1.20.3"]
-	custom_potion_effects?: [LegacyPotionEffect],
+	custom_potion_effects?: [MobEffectInstance],
 	/// Name of the default potion effect.
 	#[until="1.20.3"]
 	Potion?: #[id="mob_effect"] string,

@@ -1,39 +1,38 @@
-/// A single potion effect
-struct LegacyPotionEffect {
-	Id?: EffectId,
-	Amplifier?: byte,
-	/// Since 1.19.4 a value of `-1` is supported, representing an infinite duration.
-	Duration?: (
-		#[until="1.19.4"] int @ 1.. |
-		#[since="1.19.4"] (int @ -1 | int @ 1..)
-	),
-	/// Whether particles are semi-transparent. (like with a Beacon)
-	Ambient?: boolean,
-	/// Whether particles should be shown.
-	ShowParticles?: boolean,
-	/// Whether the effect icon should be shown.
-	ShowIcon?: boolean,
-	/// A lower amplifier effect of the same type.
-	#[since="1.16"]
-	HiddenEffect?: LegacyPotionEffect,
-}
-
-struct PotionComponent {
-	id: #[id="mob_effect"] string,
-	/// Level I having value 0. Defaults to 0.
-	amplifier?: byte,
-	// TODO: Consider adding a time utility
-	/// Duration of the effect in ticks.
-	duration?: int @ 1..,
-	/// Whether the effect appears as a HUD icon in addition to in the inventory GUI (same behavior as beacons when `true`). Defaults to `false`.
-	ambient?: boolean,
-	/// Defaults to `true`.
-	show_particles?: boolean,
-	/// Whether the effect appears in the inventory GUI. Defaults to `true`
-	show_icon?: boolean,
-	/// A lower amplifier effect of the same type.
-	hidden_effect?: PotionComponent,
-}
+type MobEffectInstance = (
+	#[until="1.20.2"] struct {
+		Id?: EffectId,
+		Amplifier?: byte,
+		/// Duration of the effect in ticks. Infinite is represented by `-1`.
+		Duration?: (
+			int @ 1.. |
+			#[since="1.19.4"] -1 |
+		),
+		/// Whether particles are semi-transparent. (like with a Beacon)
+		Ambient?: boolean,
+		/// Whether particles should be shown.
+		ShowParticles?: boolean,
+		/// Whether the effect icon should be shown.
+		ShowIcon?: boolean,
+		/// A lower amplifier effect of the same type.
+		#[since="1.16"]
+		HiddenEffect?: MobEffectInstance,
+	} |
+	#[since="1.20.2"] struct {
+		id: #[id="mob_effect"] string,
+		/// Level I having value 0. Defaults to 0.
+		amplifier?: byte,
+		/// Duration of the effect in ticks. Infinite is represented by `-1`.
+		duration?: int,
+		/// Whether the effect appears as a HUD icon in addition to in the inventory GUI (same behavior as beacons when `true`). Defaults to `false`.
+		ambient?: boolean,
+		/// Defaults to `true`.
+		show_particles?: boolean,
+		/// Whether the effect appears in the inventory GUI. Defaults to `true`
+		show_icon?: boolean,
+		/// A lower amplifier effect of the same type.
+		hidden_effect?: MobEffectInstance,
+	} |
+)
 
 type EffectId = (
 	#[until="1.19"] EffectByteId |
