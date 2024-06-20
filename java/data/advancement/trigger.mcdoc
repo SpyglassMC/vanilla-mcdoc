@@ -120,6 +120,7 @@ dispatch minecraft:trigger[effects_changed] to struct EffectsChanged {
 	effects?: struct {
 		[#[id="mob_effect"] string]: MobEffectPredicate,
 	},
+	source?: CompositeEntity,
 }
 
 /// Player enchanted an item using an enchanting table; not with an anvil or through commands.
