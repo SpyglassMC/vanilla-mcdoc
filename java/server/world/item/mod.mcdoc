@@ -28,8 +28,8 @@ dispatch minecraft:data_component[can_break] to (
 )
 // TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to AnyItem.
 type CustomData = (
-	mcdoc:custom_item_data[[%parent.%parent.id]] |
-	#[nbt=mcdoc:custom_item_data[[%parent.%parent.id]]] string |
+	mcdoc:custom_item_data[[%parent.id]] |
+	#[nbt=mcdoc:custom_item_data[[%parent.id]]] string |
 )
 
 dispatch mcdoc:custom_item_data[%fallback] to struct {
@@ -263,7 +263,7 @@ struct AnyItem {
 	/// ID of the item.
 	id: #[id="item"] string,
 	#[since="1.20.5"]
-	components?: DataComponentPatch<minecraft:item_components[[id]]>,
+	components?: DataComponentPatch<minecraft:item_component[[id]]>,
 	#[until="1.20.5"]
 	tag?: minecraft:item[[id]],
 }
