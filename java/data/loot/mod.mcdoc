@@ -22,10 +22,30 @@ enum(string) LootContextType {
 	Barter = "barter",
 	AdvancementReward = "advancement_reward",
 	AdvancementEntity = "advancement_entity",
+	#[since="1.20"]
+	AdvancementLocation = "advancement_location",
 	Generic = "generic",
 	Block = "block",
 	#[since="1.20.5"]
+	BlockUse = "block_use",
+	#[since="1.20.5"]
 	Equipment = "equipment",
+	#[since="1.19.4"]
+	Archaeology = "archaeology",
+	#[since="1.20.5"]
+	Vault = "vault",
+	#[since="1.20.5"]
+	Shearing = "shearing",
+	#[since="1.21"]
+	EnchantedDamage = "enchanted_damage",
+	#[since="1.21"]
+	EnchantedItem = "enchanted_item",
+	#[since="1.21"]
+	EnchantedLocation = "enchanted_location",
+	#[since="1.21"]
+	EnchantedEntity = "enchanted_entity",
+	#[since="1.21"]
+	HitBlock = "hit_block",
 }
 
 enum(string) EntityTarget {
