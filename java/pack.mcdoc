@@ -31,7 +31,12 @@ struct PackFeatures {
 enum(string) FeatureFlag {
 	Vanilla = "vanilla",
 	Bundle = "bundle",
-	Update1120 = "update_1_20",
+	#[until="1.20"]
+	Update120 = "update_1_20",
+	#[since="1.20.2"]
+	TradeRebalance = "trade_rebalance",
+	#[since="1.20.3"] #[until="1.21"]
+	Update121 = "update_1_21",
 }
 
 struct PackOverlays {
@@ -40,5 +45,5 @@ struct PackOverlays {
 
 struct PackOverlay {
 	directory: string @ 1..,
-	formats: InclusiveRange<int @ 1..>,
+	formats: InclusiveRange<#[pack_format] int @ 1..>,
 }
