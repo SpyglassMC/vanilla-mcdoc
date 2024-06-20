@@ -33,7 +33,7 @@ type CustomData = (
 )
 
 dispatch mcdoc:custom_item_data[%fallback] to struct {
-	[string]: any
+	[string]: any,
 }
 
 dispatch minecraft:data_component[custom_name] to #[text_component] string
