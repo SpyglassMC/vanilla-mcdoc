@@ -1,3 +1,6 @@
+use ::java::server::util::FlagMemory
+use ::java::server::util::TickMemory
+
 struct Breedable {
 	...super::MobBase,
 	/// Ticks until it stops searching for a mate.
@@ -18,3 +21,16 @@ struct Breedable {
 }
 
 dispatch minecraft:entity[cow] to Breedable
+
+dispatch minecraft:memory_module[gaze_cooldown_ticks] to TickMemory
+
+/// Tempted by the player.
+dispatch minecraft:memory_module[is_tempted] to FlagMemory
+
+/// Ticks until it can be tempted again.
+dispatch minecraft:memory_module[temptation_cooldown_ticks] to TickMemory
+
+type BreedableMemories = (
+	"is_tempted" |
+	"temptation_cooldown_ticks" |
+)

@@ -1,21 +1,14 @@
 use ::java::server::util::FlagMemory
 use ::java::server::util::TickMemory
 
+/// Ticks until it can leap again.
+dispatch minecraft:memory_module[long_jump_cooling_down] to TickMemory
+/// Ticks until it can ram again.
+dispatch minecraft:memory_module[ram_cooldown_ticks] to TickMemory
+
 #[since="1.17"]
 dispatch minecraft:entity[goat] to struct Goat {
 	...super::Breedable,
-	Brain?: struct {
-		memories?: struct {
-			/// Tempted by the player.
-			[#[id="memory_module_type"] "is_tempted"]: FlagMemory,
-			/// Ticks until it can leap again.
-			[#[id="memory_module_type"] "long_jump_cooling_down"]: TickMemory,
-			/// Ticks until it can ram again.
-			[#[id="memory_module_type"] "ram_cooldown_ticks"]: TickMemory,
-			/// Ticks until it can be tempted again.
-			[#[id="memory_module_type"] "temptation_cooldown_ticks"]: TickMemory,
-		},
-	},
 	/// Whether it has its left horn.
 	#[since="1.19"]
 	HasLeftHorn?: boolean,
@@ -25,3 +18,9 @@ dispatch minecraft:entity[goat] to struct Goat {
 	/// Whether it is a screaming goat.
 	IsScreamingGoat?: boolean,
 }
+
+dispatch minecraft:entity_memory[goat] to (
+	super::BreedableMemories |
+	"long_jump_cooling_down" |
+	"ram_cooldown_ticks" |
+)

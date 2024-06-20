@@ -10,30 +10,27 @@ struct PiglinBase {
 	TimeInOverworld?: int,
 }
 
+dispatch minecraft:memory_module[admiring_disabled] to TimedFlagMemory
+dispatch minecraft:memory_module[angry_at] to TimedEntityMemory
+dispatch minecraft:memory_module[hunted_recently] to TimedFlagMemory
+dispatch minecraft:memory_module[universal_anger] to TimedFlagMemory
+
 #[since="1.16"]
 dispatch minecraft:entity[piglin] to struct Piglin {
 	...PiglinBase,
-	#[since="1.16"]
-	Brain?: struct {
-		memories?: struct {
-			/// Whether it cannot admire an item.
-			[#[id="memory_module_type"] "admiring_disabled"]: TimedFlagMemory,
-			/// Whether it is admiring an item.
-			[#[id="memory_module_type"] "admiring_disabled"]: TimedFlagMemory,
-			/// The target of the piglin.
-			[#[id="memory_module_type"] "angry_at"]: TimedEntityMemory,
-			/// Whether it hunted recently.
-			[#[id="memory_module_type"] "hunted_recently"]: TimedFlagMemory,
-			/// Whether it is being angered universally.
-			[#[id="memory_module_type"] "universal_anger"]: TimedFlagMemory,
-		},
-	},
 	/// Whether it is a baby.
 	IsBaby?: boolean,
 	/// Whether it does not hunt hoglins.
 	CannotHunt?: boolean,
 	Inventory?: [InventoryItem] @ 0..8,
 }
+
+dispatch minecraft:entity_memory[piglin] to (
+	"admiring_disabled" |
+	"angry_at" |
+	"hunted_recently" |
+	"universal_anger"
+)
 
 #[since="1.16"]
 dispatch minecraft:entity[piglin_brute] to PiglinBase

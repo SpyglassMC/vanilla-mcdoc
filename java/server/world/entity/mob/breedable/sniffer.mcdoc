@@ -1,17 +1,19 @@
 use ::java::server::util::TimedFlagMemory
 use ::java::server::util::TickMemory
 
+/// Ticks till it can explore another position.
+dispatch minecraft:memory_module[sniff_cooldown] to TimedFlagMemory
+/// Coordinates in the world that it has already explored.
+dispatch minecraft:memory_module[sniffer_explored_positions] to struct SnifferExploredPositions {
+	value?: [int[] @ 3] @ ..20,
+}
+
 #[since="1.19.4"]
 dispatch minecraft:entity[sniffer] to struct Sniffer {
 	...super::Breedable,
-	Brain?: struct {
-		memories?: struct {
-			/// Ticks till it can explore another position.
-			[#[id="memory_module_type"] "sniff_cooldown"]: TimedFlagMemory,
-			/// Coordinates in the world that it has already explored.
-			[#[id="memory_module_type"] "sniffer_explored_positions"]: struct {
-				value?: [int[] @ 3] @ ..20,
-			},
-		},
-	},
 }
+
+dispatch minecraft:entity_memory[sniffer] to (
+	"sniff_cooldown" |
+	"sniffer_explored_positions" |
+)

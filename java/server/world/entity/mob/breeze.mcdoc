@@ -1,16 +1,16 @@
 use ::java::server::util::TickMemory
 use ::java::server::util::PositionMemory
 
-dispatch minecraft:entity[breeze] to struct Breeze {
-	...super::MobBase,
-	Brain?: struct {
-		memories?: struct { // TODO: Better docs
-			[#[id="memory_module_type"] "breeze_jump_inhaling"]: TickMemory,
-			/// Position the breeze is going to jump to.
-			[#[id="memory_module_type"] "breeze_jump_target"]: PositionMemory,
-			[#[id="memory_module_type"] "breeze_shoot_cooldown"]: TickMemory,
-			[#[id="memory_module_type"] "breeze_shoot"]: TickMemory,
-			[#[id="memory_module_type"] "breeze_shoot_charging"]: TickMemory,
-		}
-	},
-}
+dispatch minecraft:memory_module[breeze_jump_inhaling] to TickMemory
+dispatch minecraft:memory_module[breeze_jump_target] to PositionMemory
+dispatch minecraft:memory_module[breeze_shoot_cooldown] to TickMemory
+dispatch minecraft:memory_module[breeze_shoot] to TickMemory
+dispatch minecraft:memory_module[breeze_shoot_charging] to TickMemory
+
+dispatch minecraft:entity_memory[breeze] to (
+	"breeze_jump_inhaling" |
+	"breeze_jump_target" |
+	"breeze_shoot_cooldown" |
+	"breeze_shoot" |
+	"breeze_shoot_charging"
+)

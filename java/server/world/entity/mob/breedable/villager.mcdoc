@@ -10,30 +10,25 @@ struct VillagerBase {
 	Offers?: Offers,
 }
 
+/// Detected an iron golem recently.
+dispatch minecraft:memory_module[golem_detected_recently] to TimedFlagMemory
+/// Location of home.
+dispatch minecraft:memory_module[home] to PositionMemory
+/// Location of job site.
+dispatch minecraft:memory_module[job_site] to PositionMemory
+/// Gametick when it last slept.
+dispatch minecraft:memory_module[last_slept] to TickMemory
+/// Gametick when it last woke up.
+dispatch minecraft:memory_module[last_woken] to TickMemory
+/// Gametick when it last worked.
+dispatch minecraft:memory_module[last_worked_at_poi] to TickMemory
+/// Location of meeting point.
+dispatch minecraft:memory_module[meeting_point] to PositionMemory
+/// Location of a potential job site.
+dispatch minecraft:memory_module[potential_job_site] to PositionMemory
+
 dispatch minecraft:entity[villager] to struct Villager {
 	...super::Breedable,
-	Brain?: struct {
-		memories?: struct {
-			/// Detected an iron golem recently.
-			#[since="1.16"]
-			[#[id="memory_module_type"] "golem_detected_recently"]: TimedFlagMemory,
-			/// Location of home.
-			[#[id="memory_module_type"] "home"]: PositionMemory,
-			/// Location of job site.
-			[#[id="memory_module_type"] "job_site"]: PositionMemory,
-			/// Gametick when it last slept.
-			[#[id="memory_module_type"] "last_slept"]: TickMemory,
-			/// Gametick when it last woke up.
-			[#[id="memory_module_type"] "last_woken"]: TickMemory,
-			/// Gametick when it last worked.
-			[#[id="memory_module_type"] "last_worked_at_poi"]: TickMemory,
-			/// Location of meeting point.
-			[#[id="memory_module_type"] "meeting_point"]: PositionMemory,
-			/// Location of a potential job site.
-			#[since="1.16"]
-			[#[id="memory_module_type"] "potential_job_site"]: PositionMemory,
-		},
-	},
 	VillagerData?: VillagerData,
 	FoodLevel?: byte, // TODO
 	/// Gossips it has heard.
@@ -47,6 +42,17 @@ dispatch minecraft:entity[villager] to struct Villager {
 	/// XP it has, increases with trading.
 	Xp?: int,
 }
+
+dispatch minecraft:entity_memory[villager] to (
+	"golem_detected_recently" |
+	"home" |
+	"job_site" |
+	"last_slept" |
+	"last_woken" |
+	"last_worked_at_poi" |
+	"meeting_point" |
+	"potential_job_site" |
+)
 
 struct VillagerData {
 	/// Used for trading and badge rendering.
