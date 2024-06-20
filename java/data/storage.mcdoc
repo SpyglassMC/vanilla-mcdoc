@@ -1,0 +1,3 @@
+dispatch minecraft:storage[%unknown] to struct {
+	[string]: any,
+}
