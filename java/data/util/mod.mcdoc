@@ -131,13 +131,3 @@ dispatch minecraft:nbt_provider[context] to struct ContextNbtProvider {
 dispatch minecraft:nbt_provider[storage] to struct StorageNbtProvider {
 	source: #[id="storage"] string,
 }
-
-enum(string) ArmorMaterials {
-	Leather = "leather",
-	Chainmail = "chainmail",
-	Iron = "iron",
-	Gold = "gold",
-	Diamond = "diamond",
-	Netherite = "netherite",
-	Turtle = "turtle",
-}
