@@ -1,6 +1,5 @@
-use ::java::server::util::LegacyPotionEffect
-use ::java::server::util::PotionComponent
-use ::java::server::util::Particle
+use ::java::server::util::effect::MobEffectInstance
+use ::java::server::util::particle::Particle
 
 dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	...super::EntityBase,
@@ -34,13 +33,16 @@ dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	/// Change in the radius per tick.
 	RadiusPerTick?: float,
 	/// Particle the area effect cloud displays.
-	Particle?: (#[until="1.20.5"] string | #[since="1.20.5"] Particle),
+	Particle?: (
+		#[until="1.20.5"] string |
+		#[since="1.20.5"] Particle
+	),
 	/// Default potion effect.
 	#[until="1.20.5"]
 	Potion?: #[id="potion"] string,
 	/// Potion effects that get applied on use.
 	#[until="1.20.5"]
-	Effects?: [LegacyPotionEffect],
+	Effects?: [MobEffectInstance],
 	#[since="1.20.5"]
 	potion_contents?: minecraft:data_component[potion_contents],
 }
