@@ -467,7 +467,7 @@
    "mcdoc.java.server.util.effect.PotionComponent.show_particles": "Defaults to `true`.",
    "mcdoc.java.server.util.effect.PotionComponent.show_icon": "Whether the effect appears in the inventory GUI. Defaults to `true`",
    "mcdoc.java.server.util.effect.PotionComponent.hidden_effect": "A lower amplifier effect of the same type.",
-   "mcdoc.java.server.util.effect.EffectId.enum": "Numerical ids for effects",
+   "mcdoc.java.server.util.effect.EffectByteId.enum": "Numerical ids for effects",
    "mcdoc.java.server.util.game_event.VibrationListener.range": "Range in blocks where vibrations can be detected",
    "mcdoc.java.server.util.game_event.VibrationListener.event": "Event that is being received, if any",
    "mcdoc.java.server.util.game_event.VibrationListener.event_distance": "Distance in blocks to the event that is being received",
