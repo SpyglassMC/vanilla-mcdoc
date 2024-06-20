@@ -18,7 +18,7 @@ type ItemPredicate = (
 		nbt?: #[nbt=minecraft:item[[item]]] string,
 	} |
 	#[since="1.20.5"] struct {
-		items: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
+		items?: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
 		count?: MinMaxBounds<int>,
 		components?: DataComponentPredicate,
 		predicates?: ItemSubPredicate,
@@ -235,7 +235,7 @@ struct EntityFlagsPredicate {
 }
 
 struct EntitySubPredicate {
-	type: SpecificType,
+	type: #[id] SpecificType,
 	...minecraft:entity_sub_predicate[[type]],
 }
 
