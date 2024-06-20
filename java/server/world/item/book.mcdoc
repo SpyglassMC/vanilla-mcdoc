@@ -15,12 +15,14 @@ dispatch minecraft:data_component[written_book_content] to struct WrittenBookCon
 	resolved?: boolean,
 }
 
+// Pre-1.20.5
 /// A writable book
 dispatch minecraft:item[writable_book] to struct WritableBook {
 	...super::ItemBase,
 	pages?: [string],
 }
 
+// Pre-1.20.5
 dispatch minecraft:item[written_book] to struct WrittenBook {
 	...super::ItemBase,
 	// TODO: Add filtered text
@@ -33,6 +35,16 @@ dispatch minecraft:item[written_book] to struct WrittenBook {
 	author?: string,
 	title?: string,
 }
+
+dispatch minecraft:item_component[writable_book] to (
+	super::ItemBaseComponents |
+	"writable_book_content" |
+)
+
+dispatch minecraft:item_component[written_book] to (
+	super::ItemBaseComponents |
+	"written_book_content" |
+)
 
 enum(int) Generation {
 	Original = 0,

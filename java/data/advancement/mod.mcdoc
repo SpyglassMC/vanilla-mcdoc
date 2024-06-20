@@ -1,6 +1,5 @@
 use ::java::server::util::text::Text
 use ::java::server::util::inventory::InventoryItem
-use ::java::server::world::item::DataComponentPatch
 
 dispatch minecraft:resource[advancement] to struct Advancement {
 	/// If present, advancement will be visible in the advancement tabs.

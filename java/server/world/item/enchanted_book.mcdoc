@@ -1,4 +1,12 @@
+dispatch minecraft:data_component[stored_enchantments] to super::Enchantments
+
+// Pre-1.20.5
 dispatch minecraft:item[enchanted_book] to struct EnchantedBook {
 	...super::ItemBase,
 	StoredEnchantments?: [super::Enchantment],
 }
+
+dispatch minecraft:item_component[enchanted_book] to (
+	super::ItemBaseComponents |
+	"stored_enchantments" |
+)

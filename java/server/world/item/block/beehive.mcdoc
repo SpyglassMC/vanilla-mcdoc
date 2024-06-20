@@ -5,3 +5,8 @@ struct Occupant {
 	min_ticks_in_hive: int,
 	ticks_in_hive: int,
 }
+
+dispatch minecraft:item_component[bee_nest, beehive] to (
+	super::BlockItemComponents |
+	"bees" |
+)

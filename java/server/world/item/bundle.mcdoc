@@ -1,3 +1,8 @@
 use ::java::server::util::inventory::InventoryItem
 
 dispatch minecraft:data_component[bundle_contents] to [InventoryItem]
+
+dispatch minecraft:item_component[bundle] to (
+	super::ItemBaseComponents |
+	"bundle_contents" |
+)

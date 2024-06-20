@@ -17,6 +17,15 @@ dispatch minecraft:data_component[block_entity_data] to struct BlockEntityData {
 /// Blockstate that the placed block will have.
 dispatch minecraft:data_component[block_state] to mcdoc:block_item_states[[%parent.id]]
 
+type BlockItemComponents = (
+	super::ItemBaseComponents |
+	"can_place_on" |
+	"block_entity_data" |
+	"block_state" |
+)
+
+dispatch minecraft:item_component[%blockitem] to BlockItemComponents
+
 /// An item that can be placed as a block
 dispatch minecraft:item[%blockitem] to struct BlockItem {
 	...super::ItemBase,

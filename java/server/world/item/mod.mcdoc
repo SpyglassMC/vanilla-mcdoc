@@ -192,6 +192,33 @@ dispatch minecraft:data_component[unbreakable] to struct Unbreakable {
 	show_in_tooltip?: boolean,
 }
 
+enum(string) ItemBaseComponents {
+	AttributeModifiers = "attribute_modifiers",
+	CanBreak = "can_break",
+	CustomData = "custom_data",
+	CustomModelData = "custom_model_data",
+	Damage = "damage",
+	EnchantmentGlintOverride = "enchantment_glint_override",
+	Enchantments = "enchantments",
+	FireResistant = "fire_resistant",
+	Food = "food",
+	HideAdditionalTooltip = "hide_additional_tooltip",
+	HideTooltip = "hide_tooltip",
+	ItemName = "item_name",
+	#[since="1.21"]
+	JukeboxPlayable = "jukebox_playable",
+	Lore = "lore",
+	MaxDamage = "max_damage",
+	MaxStackSize = "max_stack_size",
+	Rarity = "rarity",
+	RepairCost = "repair_cost",
+	Tool = "tool",
+	Trim = "trim",
+	Unbreakable = "unbreakable",
+}
+
+dispatch minecraft:item_component[%fallback] to ItemBaseComponents
+
 // Until 1.20.5
 struct ItemBase {
 	/// Damage that an item has. Only used for tools, armor, etc.
@@ -236,14 +263,14 @@ struct AnyItem {
 	/// ID of the item.
 	id: #[id="item"] string,
 	#[since="1.20.5"]
-	components?: DataComponentPatch,
+	components?: DataComponentPatch<minecraft:item_components[[id]]>,
 	#[until="1.20.5"]
 	tag?: minecraft:item[[id]],
 }
 
-struct DataComponentPatch {
-	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
-	[#[id(registry="data_component_type",prefix="!")] string]: struct {},
+type DataComponentPatch<T> = struct {
+	[#[id(registry="data_component_type", recommended=T)] string]: minecraft:data_component[[%key]],
+	[#[id(registry="data_component_type", recommended=T, prefix="!")] string]: struct {},
 }
 
 struct DataComponentPredicate {

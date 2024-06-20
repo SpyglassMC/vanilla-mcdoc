@@ -18,15 +18,27 @@ dispatch minecraft:data_component[firework_explosion] to struct Explosion {
 	has_twinkle?: boolean,
 }
 
+// Pre-1.20.5
 dispatch minecraft:item[firework_rocket] to struct FireworkRocket {
 	...super::ItemBase,
 	Fireworks?: LegacyFireworks,
 }
 
+// Pre-1.20.5
 dispatch minecraft:item[firework_star] to struct FireworkStar {
 	...super::ItemBase,
 	Explosion?: LegacyExplosion,
 }
+
+dispatch minecraft:item_component[firework_rocket] to (
+	super::ItemBaseComponents |
+	"fireworks" |
+)
+
+dispatch minecraft:item_component[firework_star] to (
+	super::ItemBaseComponents |
+	"firework_explosion" |
+)
 
 struct LegacyFireworks {
 	/// Duration of flight.

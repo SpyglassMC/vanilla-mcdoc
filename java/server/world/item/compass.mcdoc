@@ -9,6 +9,7 @@ dispatch minecraft:data_component[lodestone_tracker] to struct LodestoneTracker 
 	tracked?: boolean,
 }
 
+// Pre-1.20.5
 dispatch minecraft:item[compass] to struct Compass {
 	...super::ItemBase,
 	LodestoneDimension?: #[id="dimension"] string,
@@ -17,6 +18,11 @@ dispatch minecraft:item[compass] to struct Compass {
 	/// When true, the compass will reset if the lodestone at the position is removed.
 	LodestoneTracked?: boolean
 }
+
+dispatch minecraft:item_component[compass] to (
+	super::ItemBaseComponents |
+	"lodestone_tracker" |
+)
 
 struct LodestonePos {
 	X?: int,

@@ -9,6 +9,7 @@ dispatch minecraft:data_component[map_decorations] to struct MapDecorations {
 /// Map number, representing the shared state holding map contents and markers.
 dispatch minecraft:data_component[map_id] to int
 
+// Pre-1.20.5
 dispatch minecraft:item[filled_map] to struct FilledMap {
 	...super::ItemBase,
 	/// Map number, representing the shared state holding map contents and markers.
@@ -30,6 +31,13 @@ dispatch minecraft:item[filled_map] to struct FilledMap {
 		MapColor?: #[color="composite_int"] int,
 	},
 }
+
+dispatch minecraft:item_component[filled_map] to (
+	super::ItemBaseComponents |
+	"map_color" |
+	"map_decorations" |
+	"map_id" |
+)
 
 struct Decoration {
 	/// Decoration type.

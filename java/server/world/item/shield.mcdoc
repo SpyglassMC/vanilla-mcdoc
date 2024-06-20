@@ -4,6 +4,7 @@ use ::java::server::util::BannerPattern
 
 dispatch minecraft:data_component[base_color] to ColorString
 
+// Pre-1.20.5
 dispatch minecraft:item[shield] to struct Shield {
 	...super::ItemBase,
 	/// Banner Data.
@@ -13,6 +14,12 @@ dispatch minecraft:item[shield] to struct Shield {
 		Patterns?: [Pattern],
 	},
 }
+
+dispatch minecraft:item_component[shield] to (
+	super::ItemBaseComponents |
+	"banner_patterns" |
+	"base_color" |
+)
 
 struct Pattern {
 	/// Color of the pattern.

@@ -423,7 +423,7 @@ dispatch minecraft:loot_function[set_nbt] to struct SetNbt {
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_components] to struct SetComponents {
 	conditions?: [LootCondition],
-	components: DataComponentPatch,
+	components: DataComponentPatch<()>,
 }
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_custom_data] to struct SetCustomData {
