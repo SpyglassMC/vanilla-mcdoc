@@ -42,7 +42,7 @@ dispatch minecraft:item_component[filled_map] to (
 struct Decoration {
 	/// Decoration type.
 	type: (
-		#[since="1.20.5"] IconStringId |
+		#[since="1.20.5"] #[id="map_decoration_type"] string |
 		#[until="1.20.5"] IconByteId |
 	),
 	/// World x position.
@@ -51,46 +51,6 @@ struct Decoration {
 	z: double,
 	/// Rotation of the decoration, measured in degrees clockwise.
 	rot: float,
-}
-
-enum(string) IconStringId {
-	/// White pentagon.
-	Player = "player",
-	/// Green pentagon.
-	Frame = "frame",
-	/// Red pentagon.
-	RedMarker = "red_marker",
-	/// Blue pentagon.
-	BlueMarker = "blue_marker",
-	/// White x.
-	TargetX = "target_x",
-	/// Red triangle.
-	TargetPoint = "target_point",
-	/// Large white dot.
-	PlayerOffMap = "player_off_map",
-	/// Small white dot.
-	PlayerOffLimits = "player_off_limits",
-	/// Woodland mansion.
-	Mansion = "mansion",
-	/// Ocean monument.
-	Monument = "monument",
-	WhiteBanner = "white_banner",
-	OrangeBanner = "orange_banner",
-	MagentaBanner = "magenta_banner",
-	LightBlueBanner = "light_blue_banner",
-	YellowBanner = "yellow_banner",
-	LimeBanner = "lime_banner",
-	PinkBanner = "pink_banner",
-	GrayBanner = "gray_banner",
-	LightGrayBanner = "light_gray_banner",
-	CyanBanner = "cyan_banner",
-	PurpleBanner = "purple_banner",
-	BlueBanner = "blue_banner",
-	BrownBanner = "brown_banner",
-	GreenBanner = "green_banner",
-	RedBanner = "red_banner",
-	BlackBanner = "black_banner",
-	RedX = "red_x",
 }
 
 enum(byte) IconByteId {
