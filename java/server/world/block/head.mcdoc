@@ -1,15 +1,16 @@
-// TODO: update to 1.20.5
 dispatch minecraft:block_entity[skull] to struct PlayerHead {
 	...super::BlockEntity,
 	/// Owner of the skull.
 	#[until="1.16"]
 	Owner?: SkullOwner,
-	#[since="1.16"]
+	#[since="1.16"] #[until="1.20.5"]
 	SkullOwner?: SkullOwner,
 	/// Name of the owner, if exists will be converted to SkullOwner.
 	ExtraType?: string,
 	#[since="1.19.3"]
 	note_block_sound?: #[id="sound_event"] string,
+	#[since="1.20.5"]
+	profile?: minecraft:data_component[profile],
 }
 
 dispatch minecraft:block[player_head, player_wall_head] to minecraft:block_entity[skull]
