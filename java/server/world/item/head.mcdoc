@@ -18,8 +18,8 @@ struct ProfileProperty {
 	signature?: string,
 }
 
-/// Sound event to be played by a note block if this player head is placed above it.
-dispatch minecraft:data_component[note_block_sound] to (#[id="sound_event"] string)
+/// Sound to be played by a note block if this player head is placed above it.
+dispatch minecraft:data_component[note_block_sound] to (#[id="weighed_sound_event"] string)
 
 // Pre-1.20.5
 dispatch minecraft:item[player_head] to struct PlayerHead {

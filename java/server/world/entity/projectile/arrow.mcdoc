@@ -29,6 +29,8 @@ struct ArrowBase {
 	/// Number of entities it can pass through.
 	PierceLevel?: byte,
 	/// Sound event to play when it hits something.
+	///
+	/// Can only be vanilla sound events
 	SoundEvent?: #[id="sound_event"] string,
 	/// Upper bits of the owner's UUID.
 	#[until="1.16"]

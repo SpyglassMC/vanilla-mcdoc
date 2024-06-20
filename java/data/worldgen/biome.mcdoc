@@ -5,6 +5,7 @@ use super::feature::ConfiguredFeatureRef
 use super::feature::placement::PlacedFeatureRef
 use super::structure::StructureRef
 use super::surface_builder::ConfiguredSurfaceBuilderRef
+use super::super::util::SoundEventRef
 
 dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 	#[until="1.19"]
@@ -93,19 +94,19 @@ struct BiomeEffects {
 	grass_color?: #[color="composite_int"] int,
 	foliage_color?: #[color="composite_int"] int,
 	grass_color_modifier?: GrassColorModifier,
-	ambient_sound?: string,
+	ambient_sound?: SoundEventRef,
 	mood_sound?: struct {
-		sound: #[id="sound_event"] string,
+		sound: SoundEventRef,
 		tick_delay: int,
 		block_search_extent: int,
 		offset: float,
 	},
 	additions_sound?: struct {
-		sound: #[id="sound_event"] string,
+		sound: SoundEventRef,
 		tick_chance: float @ 0..1,
 	},
 	music?: struct {
-		sound: #[id="sound_event"] string,
+		sound: SoundEventRef,
 		min_delay: int @ 0..,
 		max_delay: int @ 0..,
 		replace_current_music: boolean,
