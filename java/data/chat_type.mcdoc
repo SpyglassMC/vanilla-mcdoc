@@ -46,5 +46,5 @@ enum(string) ChatDecorationParameter {
 	#[until="1.19.1"]
 	TeamName = "team_name",
 	#[since="1.19.1"]
-	Target = "target"
+	Target = "target",
 }
