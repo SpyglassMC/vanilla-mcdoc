@@ -9,6 +9,8 @@ struct ConfiguredDecorator {
 	config: minecraft:decorator_config[[type]],
 }
 
+dispatch minecraft:decorator_config[dark_oak_tree, end_gateway, iceberg, nope, spread_32_above, square] to struct {}
+
 dispatch minecraft:decorator_config[carving_mask] to struct CarvingMaskConfig {
 	step: CarveStep,
 	#[until="1.17"]
