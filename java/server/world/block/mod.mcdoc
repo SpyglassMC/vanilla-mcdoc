@@ -1,7 +1,7 @@
 use ::java::server::world::item::DataComponentPatch
 
 struct BlockEntity {
-	id?: #[id="block_entity"] string,
+	id?: #[id="block_entity_type"] string,
 	x?: int,
 	y?: int,
 	z?: int,
