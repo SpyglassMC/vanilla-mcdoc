@@ -63,7 +63,7 @@ struct Enchantments {
 }
 
 /// List of enchantments that are on the item.
-dispatch minecraft:data_component[enchantments] to (
+dispatch minecraft:data_component[enchantments,stored_enchantments] to (
 	#[canonical] Enchantments |
 	EnchantmentLevels |
 )
