@@ -73,8 +73,8 @@ dispatch minecraft:data_component[fire_resistant] to struct {}
 
 struct FoodEffect {
 	effect: MobEffectInstance,
-	/// Chance for the effect to be applied.
-	probability: float @ 0..1,
+	/// Chance for the effect to be applied. Defaults to 1.
+	probability?: float @ 0..1,
 }
 
 struct Food {
