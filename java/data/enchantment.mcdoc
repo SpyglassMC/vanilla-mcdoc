@@ -553,7 +553,7 @@ type EnchantmentsType = (#[id(registry="enchantment", tags="allowed")] string | 
 /// Returns a specified Enchantment
 dispatch minecraft:enchantment_provider[single] to struct SingleProvider {
 	enchantment: #[id="enchantment"] string,
-	level: IntProvider<int>
+	level: IntProvider<int>,
 }
 
 /// Gives one or more Enchantments from a set of options according to a given cost (similar to the cost value in the Enchantment Table).

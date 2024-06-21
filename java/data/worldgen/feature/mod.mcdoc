@@ -348,7 +348,7 @@ dispatch minecraft:feature_config[nether_forest_vegetation] to struct NetherFore
 	...struct {
 		spread_width: int @ 1..,
 		spread_height: int @ 1..,
-	}
+	},
 }
 
 dispatch minecraft:feature_config[netherrack_replace_blobs] to struct NetherrackReplaceBlobsConfig {

@@ -62,7 +62,7 @@ type IntProviderSettings<S, T> = (
 	#[until="1.20.5"] struct {
 		value: S<T>
 	} |
-	#[since="1.20.5"] S<T>
+	#[since="1.20.5"] S<T> |
 )
 
 type UniformIntProvider<T> = struct {
