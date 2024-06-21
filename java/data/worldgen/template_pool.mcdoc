@@ -9,7 +9,7 @@ dispatch minecraft:resource["worldgen/template_pool"] to struct TemplatePool {
 	...struct {
 		name?: string,
 	},
-	fallback: string,
+	fallback: #[id="worldgen/template_pool"] string,
 	elements: [WeightedElement],
 }
 
@@ -53,5 +53,6 @@ dispatch minecraft:template_pool_element[
 }
 
 dispatch minecraft:template_pool_element[list_pool_element] to struct ListElement {
+	...ElementBase,
 	elements: [Element],
 }
