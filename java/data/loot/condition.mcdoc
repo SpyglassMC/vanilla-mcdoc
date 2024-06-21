@@ -10,7 +10,20 @@ use super::super::advancement::predicate::LocationPredicate
 use super::super::advancement::predicate::DamageSourcePredicate
 
 /// Whether any condition within a list passes.
+#[until="1.20"]
 dispatch minecraft:loot_condition[alternative] to struct Alternative {
+	terms: [LootCondition],
+}
+
+#[since="1.20"]
+dispatch minecraft:loot_condition[any_of] to struct AnyOf {
+	/// Passes when any of these conditions pass.
+	terms: [LootCondition],
+}
+
+#[since="1.20"]
+dispatch minecraft:loot_condition[all_of] to struct AllOf {
+	/// Passes when all of these conditions pass.
 	terms: [LootCondition],
 }
 

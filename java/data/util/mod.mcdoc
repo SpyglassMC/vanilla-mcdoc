@@ -91,6 +91,15 @@ dispatch minecraft:number_provider[score] to struct ScoreNumberProvider {
 	scale?: float,
 }
 
+dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
+	source: #[id="storage"] string,
+	path: #[nbt_path=minecraft:storage[[source]]] string,
+}
+
+dispatch minecraft:number_provider[enchantment_level] to struct EnchantmentLevelProvider {
+	amount: LevelBasedValue,
+}
+
 type ScoreProvider = (
 	EntityTarget |
 	struct {
@@ -105,15 +114,6 @@ dispatch minecraft:score_provider[context] to struct ContextScoreProvider {
 
 dispatch minecraft:score_provider[fixed] to struct FixedScoreProvider {
 	name: #[score_holder] string,
-}
-
-dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
-	source: #[id="storage"] string,
-	path: string,
-}
-
-dispatch minecraft:number_provider[enchantment_level] to struct EnchantmentLevelProvider {
-	amount: LevelBasedValue,
 }
 
 type NbtProvider = (

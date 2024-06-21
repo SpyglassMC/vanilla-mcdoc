@@ -144,10 +144,8 @@ dispatch minecraft:structure_config[
 ] to struct Jigsaw {
 	start_pool: #[id="worldgen/template_pool"] string,
 	size: (
-		#[until="1.20.3"]
-		int @ 0..7 |
-		#[since="1.20.3"]
-		int @ 1..20
+		#[until="1.20.3"] int @ 0..7 |
+		#[since="1.20.3"] int @ 1..20
 	),
 	#[since="1.19"]
 	...struct {

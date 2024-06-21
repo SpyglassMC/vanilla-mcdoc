@@ -231,6 +231,18 @@ dispatch minecraft:loot_function[enchanted_count_increase] to struct EnchantedCo
 	enchantment: #[id="enchantment"] string,
 }
 
+#[since="1.20"]
+dispatch minecraft:loot_function[reference] to struct Reference {
+	/// Item modifier to reference.
+	name: #[id="item_modifier"] string,
+}
+
+#[since="1.20.2"]
+dispatch minecraft:loot_function[sequence] to struct Sequence {
+	/// List of functions to apply to this item.
+	functions: [LootFunction],
+}
+
 dispatch minecraft:loot_function[set_attributes] to struct SetAttributes {
 	/// List of attribute modifiers to apply to this item.
 	modifiers: [AttributeModifier],
@@ -374,9 +386,9 @@ dispatch minecraft:loot_function[set_damage] to struct {
 
 #[since="1.17"]
 dispatch minecraft:loot_function[set_enchantments] to struct SetEnchantments {
-	/// A map of enchantments to levels.
+	/// A map of enchantments to levels. Setting an enchantment to `0` removes it from the item.
 	enchantments: struct {
-		[#[id="enchantment"] string]: NumberProvider<int @ 1..>,
+		[#[id="enchantment"] string]: NumberProvider<int @ 0..>,
 	},
 	/// Whether to add to the level of each enchantment. Defaults to `false`.
 	add?: boolean,
@@ -416,22 +428,30 @@ dispatch minecraft:loot_function[set_name] to struct SetName {
 	name: Text,
 	/// Which name component to set. Defaults to `custom_name`.
 	#[since="1.20.5"]
-	target?: ("item_name" | "custom_name"),
+	target?: #[id="data_component_type"] SetNameTarget,
+}
+
+enum(string) SetNameTarget {
+	ItemName = "item_name",
+	CustomName = "custom_name",
 }
 
 #[until="1.20.5"]
 dispatch minecraft:loot_function[set_nbt] to struct SetNbt {
-	tag: #[nbt(registry=item)] string,
+	tag: #[nbt=minecraft:item[%fallback]] string,
 }
+
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_components] to struct SetComponents {
 	conditions?: [LootCondition],
 	components: DataComponentPatch<()>,
 }
+
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_custom_data] to struct SetCustomData {
 	tag: (#[nbt=mcdoc:custom_item_data[%fallback]] string | mcdoc:custom_item_data[%fallback]),
 }
+
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_custom_model_data] to struct SetCustomModelData {
 	/// Tag that describes the custom model an item will take.
@@ -480,7 +500,7 @@ dispatch minecraft:loot_function[set_firework_explosion] to struct SetFireworkEx
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_book_cover] to struct SetBookCover {
 	/// If omitted, the original title is kept (or an empty string is used if there was no component)
-	title?: Filterable<#[text_component] string>,
+	title?: Filterable<string @ 0..32>,
 	/// If omitted, the original author is kept (or an empty string is used if there was no component)
 	author?: string,
 	/// If omitted, the original generation is kept (or 0 is used if there was no component)
