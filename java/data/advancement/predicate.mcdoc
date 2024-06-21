@@ -242,6 +242,8 @@ struct EntitySubPredicate {
 enum(string) SpecificType {
 	#[until="1.20.5"]
 	Any = "any",
+	#[since="1.17"]
+	Axolotl = "axolotl",
 	Cat = "cat",
 	FishingHook = "fishing_hook",
 	Frog = "frog",
