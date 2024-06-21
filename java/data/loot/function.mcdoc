@@ -253,18 +253,21 @@ dispatch minecraft:loot_function[set_attributes] to struct SetAttributes {
 struct AttributeModifier {
 	/// The attribute type to modify.
 	attribute: string,
-	#[until="1.20"]
+	#[until="1.21"]
 	name: string,
-	#[until="1.20"]
+	#[until="1.21"]
 	...struct {
 		id?: #[uuid] string,
 	},
-	#[since="1.20"]
+	#[since="1.21"]
 	...struct {
 		/// The unique identifier of this attribute modifier.
 		id: #[id="attribute_modifier"] string,
 	},
-	amount: MinMaxBounds<float>,
+	amount: (
+		#[until="1.17"] RandomValueBounds |
+		#[since="1.17"] NumberProvider |
+	),
 	/// The operation used for this modifier.
 	operation: (
 		#[until="1.20.5"] ("addition" | "multiply_base" | "multiply_total") |
