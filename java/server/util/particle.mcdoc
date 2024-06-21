@@ -3,18 +3,24 @@ use super::inventory::InventoryItem
 
 struct Particle {
 	type: #[id="particle_type"] string,
-	#[until="1.20.5"]
-	value: minecraft:particle[[type]],
-	#[since="1.20.0"]
 	...(minecraft:particle[[type]]),
 }
 
-dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to (
+type ParticleSettings<S> = struct {
+	#[until="1.20.5"]
+	value: S,
+	#[since="1.20.5"]
+	...S,
+}
+
+dispatch minecraft:particle[%unknown] to struct {}
+
+dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to ParticleSettings<(
 	#[until="1.20.5"] BlockState |
 	#[since="1.20.5"] struct {
 		block_state: (#[id="block"] string | BlockState),
 	} |
-)
+)>
 
 /// Randomized color interpreted from three floats.
 ///
@@ -47,7 +53,7 @@ dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to (
 /// ```
 type DustColor = #[color="particle"] [float] @ 3
 
-dispatch minecraft:particle[dust] to (
+dispatch minecraft:particle[dust] to ParticleSettings<(
 	#[until="1.20.5"] struct {
 		r: float,
 		g: float,
@@ -58,9 +64,9 @@ dispatch minecraft:particle[dust] to (
 		color: DustColor,
 		scale: float @ 0.01..4,
 	} |
-)
+)>
 
-dispatch minecraft:particle[dust_color_transition] to struct {
+dispatch minecraft:particle[dust_color_transition] to ParticleSettings<struct {
 	#[until="1.20.5"]
 	fromColor: DustColor,
 	#[until="1.20.5"]
@@ -71,9 +77,9 @@ dispatch minecraft:particle[dust_color_transition] to struct {
 	#[since="1.20.5"]
 	to_color: DustColor,
 	scale: float @ 0.01..4,
-}
+}>
 
-dispatch minecraft:particle[entity_effect] to (
+dispatch minecraft:particle[entity_effect] to ParticleSettings<(
 	#[until="1.20.5"] struct {
 		r: float,
 		g: float,
@@ -105,32 +111,32 @@ dispatch minecraft:particle[entity_effect] to (
 		/// ```
 		color: #[color="translucent_particle"] [float] @ 4,
 	} |
-)
+)>
 
-dispatch minecraft:particle[item] to (
+dispatch minecraft:particle[item] to ParticleSettings<(
 	#[until="1.20.5"] InventoryItem |
 	#[since="1.20.5"] struct {
 		item: (#[id="item"] string | InventoryItem),
 	} |
-)
+)>
 
-dispatch minecraft:particle[sculk_charge] to (
+dispatch minecraft:particle[sculk_charge] to ParticleSettings<(
 	#[until="1.20.5"] float |
 	#[since="1.20.5"] struct {
 		/// Angle the particle texture is rotated to, measured in radians (π ~ 3.14 for 180° clockwise, negative for counter clockwise).
 		roll: float,
 	} |
-)
+)>
 
-dispatch minecraft:particle[shriek] to (
+dispatch minecraft:particle[shriek] to ParticleSettings<(
 	#[until="1.20.5"] int @ 0.. |
 	#[since="1.20.5"] struct {
 		/// Ticks until the particle renders.
 		delay: int @ 0..,
 	} |
-)
+)>
 
-dispatch minecraft:particle[vibration] to struct {
+dispatch minecraft:particle[vibration] to ParticleSettings<struct {
 	/// Ticks in which to interpolate the particle's initial position to the destination.
 	arrival_in_ticks: 10,
 
@@ -145,4 +151,4 @@ dispatch minecraft:particle[vibration] to struct {
 			uuid: int[] @ 4,
 		} |
 	),
-}
+}>
