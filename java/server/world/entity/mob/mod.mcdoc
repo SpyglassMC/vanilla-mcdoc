@@ -160,6 +160,7 @@ dispatch minecraft:entity[
 	wither_skeleton,
 ] to MobBase
 
-dispatch minecraft:entity[
-	polar_bear,
-] to NeutralMob
+dispatch minecraft:entity[polar_bear] to struct PolarBear {
+	...MobBase,
+	...NeutralMob,
+}
