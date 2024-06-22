@@ -62,6 +62,7 @@ dispatch minecraft:resource["worldgen/noise_settings"] to struct NoiseGeneratorS
 
 struct NoiseSettings {
 	/// Minimum height where blocks start generating.
+	#[since="1.17"]
 	min_y: int @ -2048..2047,
 	/// The total height where blocks can generate. Max Y = Min Y + Height.
 	height: (
@@ -106,7 +107,7 @@ struct NoiseSamplingSettings {
 
 struct NoiseSlideSettings {
 	/// The target density. Positive values add terrain and negative values remove terrain.
-	target: int,
+	target: float,
 	/// Defines a range of 'Size * Size vertical * 4' blocks where the existing density and target are interpolated.
 	size: int @ 0..256,
 	/// Defines an range of 'Offset * Size vertical * 4' blocks where the density is set to the target.

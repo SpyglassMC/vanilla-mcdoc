@@ -30,6 +30,12 @@ type Location = (
 	} |
 )
 
+type RecipeCrafted = struct {
+	...TriggerBase,
+	recipe_id: #[id="recipe"] string,
+	ingredients?: [ItemPredicate] @ 1..9,
+}
+
 #[since="1.19"]
 dispatch minecraft:trigger[allay_drop_item_on_block] to struct AllayDropItemOnBlock {
 	...TriggerBase,
@@ -95,11 +101,7 @@ dispatch minecraft:trigger[consume_item] to struct ConsumeItem {
 }
 
 #[since="1.20.5"]
-dispatch minecraft:trigger[crafter_recipe_crafted] to struct CrafterRecipeCrafted {
-	...TriggerBase,
-	recipe_id: #[id="recipe"] string,
-	ingredients?: [ItemPredicate] @ 1..9,
-}
+dispatch minecraft:trigger[crafter_recipe_crafted] to RecipeCrafted
 
 dispatch minecraft:trigger[cured_zombie_villager] to struct CuredZombieVillager {
 	...TriggerBase,
@@ -154,7 +156,7 @@ dispatch minecraft:trigger[fall_after_explosion] to struct FallAfterExplosion {
 	...TriggerBase,
 	start_position?: LocationPredicate,
 	distance?: DistancePredicate,
-	cause?: EntityPredicate,
+	cause?: CompositeEntity,
 }
 
 #[since="1.18"]
@@ -247,8 +249,8 @@ dispatch minecraft:trigger[levitation] to struct Levitation {
 /// Lightning bolt finished striking (it is already despawned), activates for all players within a 256 block radius of the strike.
 dispatch minecraft:trigger[lightning_strike] to struct LightningStrike {
 	...TriggerBase,
-	lightning?: EntityPredicate,
-	bystander?: EntityPredicate,
+	lightning?: CompositeEntity,
+	bystander?: CompositeEntity,
 }
 
 /// Activates every 20 ticks (1 second).
@@ -313,6 +315,9 @@ dispatch minecraft:trigger[player_killed_entity] to struct PlayerKilledEntity {
 	entity?: CompositeEntity,
 	killing_blow?: DamageSourcePredicate,
 }
+
+#[since="1.20"]
+dispatch minecraft:trigger[recipe_crafted] to RecipeCrafted
 
 /// Player unlocked a recipe by either crafting it, receiving it in an advancement reward, using a knowledge book, or receiving it through `/recipe`.
 dispatch minecraft:trigger[recipe_unlocked] to struct RecipeUnlocked {

@@ -186,6 +186,11 @@ struct BlockPlacer {
 	...minecraft:block_placer[[type]],
 }
 
+dispatch minecraft:block_placer[
+	simple_block_placer,
+	double_plant_placer,
+] to struct {}
+
 dispatch minecraft:block_placer[column_placer] to struct ColumnPlacer {
 	#[until="1.17"]
 	min_size: int,
@@ -339,8 +344,11 @@ dispatch minecraft:feature_config[large_dripstone] to struct LargeDripstoneConfi
 
 dispatch minecraft:feature_config[nether_forest_vegetation] to struct NetherForestVegetationConfig {
 	state_provider: BlockStateProvider,
-	spread_width: int @ 1..,
-	spread_height: int @ 1..,
+	#[since="1.18"]
+	...struct {
+		spread_width: int @ 1..,
+		spread_height: int @ 1..,
+	},
 }
 
 dispatch minecraft:feature_config[netherrack_replace_blobs] to struct NetherrackReplaceBlobsConfig {

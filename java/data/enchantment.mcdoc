@@ -1,5 +1,5 @@
 use super::loot::LootCondition
-use super::util::NumberProvider
+use super::worldgen::IntProvider
 use super::util::SoundEventRef
 use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
 use ::java::data::worldgen::feature::block_predicate::BlockPredicate
@@ -550,11 +550,17 @@ dispatch minecraft:effect_component[trident_sound] to [SoundEventRef]
 
 type EnchantmentsType = (#[id(registry="enchantment", tags="allowed")] string | [#[id="enchantment"] string] @ 1..)
 
+/// Returns a specified Enchantment
+dispatch minecraft:enchantment_provider[single] to struct SingleProvider {
+	enchantment: #[id="enchantment"] string,
+	level: IntProvider<int>,
+}
+
 /// Gives one or more Enchantments from a set of options according to a given cost (similar to the cost value in the Enchantment Table).
 dispatch minecraft:enchantment_provider[by_cost] to struct ByCostEnchantmentProvider {
 	enchantments: EnchantmentsType,
 	/// Cost to use for the Enchanting process.
-	cost: NumberProvider<int>,
+	cost: IntProvider<int>,
 }
 
 dispatch minecraft:enchantment_provider[by_cost_with_difficulty] to struct ByCostWithDifficultyEnchantmentProvider {

@@ -113,6 +113,8 @@ enum(string) Trigger {
 	PlayerHurtEntity = "player_hurt_entity",
 	#[since="1.16"] PlayerInteractedWithEntity = "player_interacted_with_entity",
 	PlayerKilledEntity = "player_killed_entity",
+	#[since="1.20"]
+	RecipeCrafted = "recipe_crafted",
 	RecipeUnlocked = "recipe_unlocked",
 	#[since="1.18"] RideEntityInLava = "ride_entity_in_lava",
 	ShotCrossbow = "shot_crossbow",
