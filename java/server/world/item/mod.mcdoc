@@ -32,7 +32,7 @@ type CustomData = (
 	#[nbt=mcdoc:custom_item_data[[%parent.id]]] string |
 )
 
-dispatch mcdoc:custom_item_data[%fallback] to struct {
+dispatch mcdoc:custom_item_data[%unknown] to struct {
 	[string]: any,
 }
 
@@ -61,6 +61,10 @@ struct Enchantments {
 }
 
 /// List of enchantments that are on the item.
+///
+/// An enchantment level of zero doesn't cause the enchantment section to be displayed in the tooltip, but the glint will still be shown, and the following rules apply:
+/// - Boolean enchantments are treated as level 1 (active).
+/// - Leveled enchantments are ignored.
 dispatch minecraft:data_component[enchantments,stored_enchantments] to (
 	#[canonical] Enchantments |
 	EnchantmentLevels |
@@ -215,7 +219,7 @@ enum(string) ItemBaseComponents {
 	Unbreakable = "unbreakable",
 }
 
-dispatch minecraft:item_component[%fallback] to ItemBaseComponents
+dispatch minecraft:item_component[%unknown] to ItemBaseComponents
 
 // Until 1.20.5
 struct ItemBase {
