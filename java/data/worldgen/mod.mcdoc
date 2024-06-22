@@ -104,7 +104,7 @@ type WeightListIntProvider<T> = struct {
 }
 
 #[since="1.18"]
-dispatch minecraft:int_provider[weighted_list] to WeightListIntProvider //Not using IntProviderSettings
+dispatch minecraft:int_provider[weighted_list] to WeightListIntProvider
 
 
 type FloatProvider<T> = (
