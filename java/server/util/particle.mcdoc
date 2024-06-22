@@ -6,16 +6,21 @@ struct Particle {
 	...(minecraft:particle[[type]]),
 }
 
+type ParticleSettings<S> = struct {
+	#[until="1.20.5"]
+	value: S,
+	#[since="1.20.5"]
+	...S,
+}
+
 dispatch minecraft:particle[%unknown] to struct {}
 
-dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to (
-	#[until="1.20.5"] struct {
-		value: BlockState
-	} |
+dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to ParticleSettings<(
+	#[until="1.20.5"] BlockState |
 	#[since="1.20.5"] struct {
 		block_state: (#[id="block"] string | BlockState),
 	} |
-)
+)>
 
 /// Randomized color interpreted from three floats.
 ///
@@ -48,44 +53,38 @@ dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to (
 /// ```
 type DustColor = #[color="particle"] [float] @ 3
 
-dispatch minecraft:particle[dust] to (
+dispatch minecraft:particle[dust] to ParticleSettings<(
 	#[until="1.20.5"] struct {
-		value: struct {
-			r: float,
-			g: float,
-			b: float,
-			scale: float @ 0.01..4,
-		},
+		r: float,
+		g: float,
+		b: float,
+		scale: float @ 0.01..4,
 	} |
 	#[since="1.20.5"] struct {
 		color: DustColor,
 		scale: float @ 0.01..4,
 	} |
-)
+)>
 
-dispatch minecraft:particle[dust_color_transition] to (
-	#[until="1.20.5"] struct {
-		value: struct {
-			fromColor: DustColor,
-			toColor: DustColor,
-			scale: float @ 0.01..4,
-		},
-	} |
-	#[since="1.20.5"] struct {
-		from_color: DustColor,
-		to_color: DustColor,
-		scale: float @ 0.01..4,
-	} |
-)
+dispatch minecraft:particle[dust_color_transition] to ParticleSettings<struct {
+	#[until="1.20.5"]
+	fromColor: DustColor,
+	#[until="1.20.5"]
+	toColor: DustColor,
 
-dispatch minecraft:particle[entity_effect] to (
+	#[since="1.20.5"]
+	from_color: DustColor,
+	#[since="1.20.5"]
+	to_color: DustColor,
+	scale: float @ 0.01..4,
+}>
+
+dispatch minecraft:particle[entity_effect] to ParticleSettings<(
 	#[until="1.20.5"] struct {
-		value: struct {
-			r: float,
-			g: float,
-			b: float,
-			a: float,
-		}
+		r: float,
+		g: float,
+		b: float,
+		a: float,
 	} |
 	#[since="1.20.5"] struct {
 		/// Translucent color interpreted from four floats.
@@ -112,40 +111,32 @@ dispatch minecraft:particle[entity_effect] to (
 		/// ```
 		color: #[color="translucent_particle"] [float] @ 4,
 	} |
-)
+)>
 
-dispatch minecraft:particle[item] to (
-	#[until="1.20.5"] struct {
-		value: InventoryItem
-	} |
+dispatch minecraft:particle[item] to ParticleSettings<(
+	#[until="1.20.5"] InventoryItem |
 	#[since="1.20.5"] struct {
 		item: (#[id="item"] string | InventoryItem),
 	} |
-)
+)>
 
-dispatch minecraft:particle[sculk_charge] to (
-	#[until="1.20.5"] struct {
-		/// Angle the particle texture is rotated to, measured in radians (π ~ 3.14 for 180° clockwise, negative for counter clockwise).
-		value: float
-	} |
+dispatch minecraft:particle[sculk_charge] to ParticleSettings<(
+	#[until="1.20.5"] float |
 	#[since="1.20.5"] struct {
 		/// Angle the particle texture is rotated to, measured in radians (π ~ 3.14 for 180° clockwise, negative for counter clockwise).
 		roll: float,
 	} |
-)
+)>
 
-dispatch minecraft:particle[shriek] to (
-	#[until="1.20.5"] struct {
-		/// Ticks until the particle renders.
-		value: int @ 0.. 
-	} |
+dispatch minecraft:particle[shriek] to ParticleSettings<(
+	#[until="1.20.5"] int @ 0.. |
 	#[since="1.20.5"] struct {
 		/// Ticks until the particle renders.
 		delay: int @ 0..,
 	} |
-)
+)>
 
-type VibrationParticleSettings = struct {
+dispatch minecraft:particle[vibration] to ParticleSettings<struct {
 	/// Ticks in which to interpolate the particle's initial position to the destination.
 	arrival_in_ticks: 10,
 
@@ -160,11 +151,4 @@ type VibrationParticleSettings = struct {
 			uuid: int[] @ 4,
 		} |
 	),
-}
-
-dispatch minecraft:particle[vibration] to (
-	#[until="1.20.5"] struct {
-		value: VibrationParticleSettings
-	} |
-	#[since="1.20.5"] VibrationParticleSettings |
-)
+}>
