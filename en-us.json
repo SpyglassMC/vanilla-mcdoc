@@ -804,7 +804,7 @@
    "mcdoc.java.server.world.item.mod.data_component.__dispatch.custom_model_data": "Tag that describes the custom model an item will take.\nUsed by the `custom_model_data` model overrides predicate.\nHas certain restrictions due to float conversion.",
    "mcdoc.java.server.world.item.mod.data_component.__dispatch.damage": "Damage that an item has. Only used for tools, armor, etc.",
    "mcdoc.java.server.world.item.mod.data_component.__dispatch.enchantment_glint_override": "If set, changes enchantment glint behavior. When true, this item will display a glint, even without enchantments. When false, this item will not display a glint, even with enchantments.",
-   "mcdoc.java.server.world.item.mod.data_component.__dispatch.enchantments": "List of enchantments that are on the item.",
+   "mcdoc.java.server.world.item.mod.data_component.__dispatch.enchantments": "List of enchantments that are on the item.\nAn enchantment level of zero doesn't cause the enchantment section to be displayed in the tooltip, but the glint will still be shown, and the following rules apply:\n- Boolean enchantments are treated as level 1 (active).\n- Leveled enchantments are ignored.",
    "mcdoc.java.server.world.item.mod.data_component.__dispatch_21": "If set, this item will not burn in fire or lava.",
    "mcdoc.java.server.world.item.mod.FoodEffect.probability": "Chance for the effect to be applied. Defaults to 1.",
    "mcdoc.java.server.world.item.mod.Food.nutrition": "Food points/haunches restored when eaten (capped to 20.0).",
