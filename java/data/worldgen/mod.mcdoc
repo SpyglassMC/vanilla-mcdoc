@@ -52,17 +52,10 @@ type ConstantIntProvider<T> = struct {
 }
 
 dispatch minecraft:int_provider[constant] to (
-	ConstantIntProvider |
 	#[until="1.20.5"] struct {
 		value: ConstantIntProvider
 	} |
-)
-
-type IntProviderSettings<S, T> = (
-	#[until="1.20.5"] struct {
-		value: S<T>
-	} |
-	#[since="1.20.5"] S<T> |
+	ConstantIntProvider |
 )
 
 type UniformIntProvider<T> = struct {
@@ -70,14 +63,24 @@ type UniformIntProvider<T> = struct {
 	max_inclusive: T,
 }
 
-dispatch minecraft:int_provider[uniform,biased_to_bottom] to IntProviderSettings<UniformIntProvider>
+dispatch minecraft:int_provider[uniform,biased_to_bottom]<T> to (
+	#[until="1.20.5"] struct {
+		value: UniformIntProvider<T>
+	} |
+	#[since="1.20.5"] UniformIntProvider<T> |
+)
 
 type ClampedIntProvider<T> = struct {
 	min_inclusive: T,
 	max_inclusive: T,
 	source: IntProvider<int>,
 }
-dispatch minecraft:int_provider[clamped] to IntProviderSettings<ClampedIntProvider>
+dispatch minecraft:int_provider[clamped]<T> to (
+	#[until="1.20.5"] struct {
+		value: ClampedIntProvider<T>
+	} |
+	#[since="1.20.5"] ClampedIntProvider<T> |
+)
 
 type ClampedNormalIntProvider<T> = struct {
 	...UniformIntProvider,
@@ -86,7 +89,12 @@ type ClampedNormalIntProvider<T> = struct {
 }
 
 #[since="1.18"]
-dispatch minecraft:int_provider[clamped_normal] to IntProviderSettings<ClampedNormalIntProvider>
+dispatch minecraft:int_provider[clamped_normal]<T> to (
+	#[until="1.20.5"] struct {
+		value: ClampedNormalIntProvider<T>
+	} |
+	#[since="1.20.5"] ClampedNormalIntProvider<T> |
+)
 
 type WeightListIntProvider<T> = struct {
 	distribution: [struct {
