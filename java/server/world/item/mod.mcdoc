@@ -56,9 +56,7 @@ struct EnchantmentLevels {
 }
 
 struct Enchantments {
-	levels: struct {
-		[#[id="enchantment"] string]: int @ 0..,
-	},
+	levels: EnchantmentLevels,
 	show_in_tooltip?: boolean,
 }
 
