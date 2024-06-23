@@ -90,8 +90,6 @@ struct Food {
 	eat_seconds?: float @ 0..,
 	/// Applied when eaten.
 	effects?: [FoodEffect],
-	/// Whether it can be fed to Wolves. Defaults to `false`.
-	is_meat?: boolean,
 	/// Works similarly to a milk bucket.
 	#[since="1.21"]
 	using_converts_to?: AnyItem,
