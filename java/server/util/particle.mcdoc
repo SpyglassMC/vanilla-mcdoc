@@ -138,17 +138,11 @@ dispatch minecraft:particle[shriek] to ParticleSettings<(
 
 dispatch minecraft:particle[vibration] to ParticleSettings<struct {
 	/// Ticks in which to interpolate the particle's initial position to the destination.
-	arrival_in_ticks: 10,
-
-	destination: (
-		struct {
-			type: "block",
-			pos: [0,0,0],
-		} |
-		// TODO: determine whether this should use a custom attribute (invalid in `/particle`) or if it should just be hardcoded
-		struct {
-			type: "entity",
-			uuid: int[] @ 4,
-		} |
-	),
+	arrival_in_ticks: int,
+	destination: SafePositionSource,
 }>
+
+struct SafePositionSource {
+	type: #[id="position_source_type"] "block",
+	pos: [int] @ 3,
+}
