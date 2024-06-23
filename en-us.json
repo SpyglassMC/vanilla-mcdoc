@@ -1183,6 +1183,7 @@
    "mcdoc.java.server.world.entity.mob.breedable.llama.Llama.OwnerUUID": "Player who tamed it.",
    "mcdoc.java.server.world.entity.mob.breedable.llama.Llama.Owner": "Player who tamed the horse.",
    "mcdoc.java.server.world.entity.mob.breedable.llama.Llama.DecorItem": "Carpet decoration on its back.",
+   "mcdoc.java.server.world.entity.mob.breedable.llama.Llama.body_armor_item": "Carpet decoration on its back.",
    "mcdoc.java.server.world.entity.mob.breedable.llama.Llama.ChestedHorse": "Whether it has a chest.",
    "mcdoc.java.server.world.entity.mob.breedable.llama.Llama.__spread.__union.__struct_0.Items": "Slots from 0 to 2. Scales with `Strength`.",
    "mcdoc.java.server.world.entity.mob.breedable.llama.Llama.__spread.__union.__struct_0.Strength": "Determines both the number of items it can carry and how likely it is for wolves to run away.",
