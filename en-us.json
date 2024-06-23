@@ -812,7 +812,6 @@
    "mcdoc.java.server.world.item.mod.Food.can_always_eat": "Whether the item can be eaten when the player's food points/haunches are full. Defaults to `false`",
    "mcdoc.java.server.world.item.mod.Food.eat_seconds": "Seconds it takes to eat the item. Defaults to `1.6`",
    "mcdoc.java.server.world.item.mod.Food.effects": "Applied when eaten.",
-   "mcdoc.java.server.world.item.mod.Food.is_meat": "Whether it can be fed to Wolves. Defaults to `false`.",
    "mcdoc.java.server.world.item.mod.Food.using_converts_to": "Works similarly to a milk bucket.",
    "mcdoc.java.server.world.item.mod.data_component.__dispatch.food": "If set, this item is considered as a food, and can be eaten.",
    "mcdoc.java.server.world.item.mod.data_component.__dispatch_25": "If set, several specific tooltip entries without an applicable `show_in_tooltip` option available are hidden.\nIncluded entries:\n- Banner pattern layers\n- Banner Pattern description\n- Decorated Pot sherds\n- Shulker Box items\n- Spawner entity type and interaction description\n- Bundle occupancy and items\n- Charged Crossbow projectiles\n- Painting variant\n- Disc Fragment description\n- Tropical Fish Bucket entity variant\n- Filled Map lock and scale level\n- Firework Rocket duration\n- Firework explosions\n- Goat Horn instrument\n- Potion effect, amplifier & duration\n- Music Disc description\n- Smithing Template description\n- Written Book author & generation",
