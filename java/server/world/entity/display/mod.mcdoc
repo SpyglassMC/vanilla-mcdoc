@@ -36,9 +36,9 @@ struct DisplayBase {
 	start_interpolation?: int @ 0..,
 	/// Ticks the interpolation should take to complete.
 	interpolation_duration?: int @ 0..,
-	/// Ticks each teleportation of the display should interpolate over. Defaults to 0 (no interpolation).
+	/// How long in game ticks the entity takes to interpolate from it's starting location to it's destination when teleported. Defaults to 0 (no interpolation).
 	#[since="1.20.2"]
-	teleport_duration?: int @ 0..,
+	teleport_duration?: int @ 0..59,
 	/// Controls if model should pivot to face player when rendered. Defaults to `fixed`.
 	billboard?: enum(string) Billboard {
 		/// No rotation.
