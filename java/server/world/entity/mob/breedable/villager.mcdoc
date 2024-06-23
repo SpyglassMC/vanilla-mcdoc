@@ -107,6 +107,7 @@ struct Recipe {
 }
 
 dispatch minecraft:entity[wandering_trader] to struct WanderingTrader {
+	...super::super::MobBase,
 	...VillagerBase,
 	/// Ticks until it despawns.
 	DespawnDelay?: int,

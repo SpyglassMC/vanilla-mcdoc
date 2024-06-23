@@ -22,9 +22,6 @@ dispatch minecraft:entity[llama] to struct Llama {
 	/// Carpet decoration on its back.
 	#[until="1.20.5"]
 	DecorItem?: InventoryItem,
-	/// Carpet decoration on its back.
-	#[since="1.20.5"]
-	body_armor_item?: InventoryItem,
 	/// Whether it has a chest.
 	ChestedHorse?: boolean,
 	...(

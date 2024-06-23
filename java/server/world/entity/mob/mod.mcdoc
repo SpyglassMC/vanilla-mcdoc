@@ -53,6 +53,12 @@ struct MobBase {
 	HandDropChances?: [float] @ 2,
 	/// Chance to drop the items it is wearing, in [feet, legs, body, head].
 	ArmorDropChances?: [float] @ 4,
+	/// Used for wolf armor & llama carpet decoration.
+	#[since="1.20.5"]
+	body_armor_item?: InventoryItem,
+	/// Chance to drop the item it is wearing.
+	#[since="1.20.5"]
+	body_armor_drop_chance?: float,
 	DeathLootTable?: #[id="loot_table"] string,
 	/// Seed for generating the death loot table.
 	DeathLootTableSeed?: long,
