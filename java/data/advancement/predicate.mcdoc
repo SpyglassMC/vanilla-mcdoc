@@ -53,7 +53,7 @@ dispatch minecraft:item_sub_predicate[container] to struct ContainerPredicate {
 	items?: CollectionPredicate<ItemPredicate>,
 }
 
-dispatch minecraft:item_sub_predicate[custom_data] to CustomData<mcdoc:custom_item_data[[%parent.items]]>
+dispatch minecraft:item_sub_predicate[custom_data] to CustomData
 
 dispatch minecraft:item_sub_predicate[damage] to struct ItemDamagePredicate {
 	damage?: MinMaxBounds<int>,

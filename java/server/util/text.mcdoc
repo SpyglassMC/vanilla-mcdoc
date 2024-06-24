@@ -161,7 +161,7 @@ dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 		#[until="1.20.5"]
 		tag?: #[nbt=minecraft:item[[id]]] string,
 		#[since="1.20.5"]
-		components?: DataComponentPatch<minecraft:item_component[[id]], mcdoc:custom_item_data[[id]]>,
+		components?: DataComponentPatch<minecraft:item_component[[id]]>,
 	},
 }
 
