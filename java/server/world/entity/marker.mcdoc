@@ -2,7 +2,9 @@
 dispatch minecraft:entity[marker] to struct Marker {
 	...super::EntityBase,
 	/// Any stored data
-	data?: MarkerData,
+	data?: struct {
+		[#[dispatcher_key="mcdoc:custom_marker_data"] string]: mcdoc:custom_marker_data[[%key]]
+	},
 }
 
-struct MarkerData { [string]: any }
+dispatch mcdoc:custom_marker_data[%unknown] to any

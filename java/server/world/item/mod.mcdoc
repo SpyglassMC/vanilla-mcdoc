@@ -26,19 +26,21 @@ dispatch minecraft:data_component[can_break] to (
 	#[canonical] AdventureModePredicate |
 	BlockPredicate |
 )
-// TODO: Determine if %parent.id can/should be used here. Ideally it should soft-fail to %any_item, but if this presents too much of a challenge it can be moved to AnyItem.
-type CustomData = (
-	mcdoc:custom_item_data[[%parent.id]] |
-	#[nbt=mcdoc:custom_item_data[[%parent.id]]] string |
-)
-
-dispatch mcdoc:custom_item_data[%unknown] to struct {
-	[string]: any,
-}
 
 dispatch minecraft:data_component[custom_name] to #[text_component] string
 
-dispatch minecraft:data_component[custom_data] to CustomData
+dispatch mcdoc:custom_data[%unknown] to any
+
+type CustomDataMap<S> = struct {
+	[#[dispatcher_key(dispatch="mcdoc:custom_data", recommended=S)] string]?: mcdoc:custom_data[[%key]],
+}
+
+type CustomData<S> = (
+	CustomDataMap<S> |
+	#[nbt=CustomDataMap<S>] string |
+)
+
+dispatch minecraft:data_component[custom_data]<S> to CustomData<S>
 
 /// Tag that describes the custom model an item will take.
 /// Used by the `custom_model_data` model overrides predicate.
@@ -265,13 +267,13 @@ struct AnyItem {
 	/// ID of the item.
 	id: #[id="item"] string,
 	#[since="1.20.5"]
-	components?: DataComponentPatch<minecraft:item_component[[id]]>,
+	components?: DataComponentPatch<minecraft:item_component[[id]], minecraft:custom_item_data[[id]]>,
 	#[until="1.20.5"]
 	tag?: minecraft:item[[id]],
 }
 
-type DataComponentPatch<T> = struct {
-	[#[id(registry="data_component_type", recommended=T)] string]: minecraft:data_component[[%key]],
+type DataComponentPatch<T, S> = struct {
+	[#[id(registry="data_component_type", recommended=T)] string]: minecraft:data_component[[%key]]<S>,
 	[#[id(registry="data_component_type", recommended=T, prefix="!")] string]: struct {},
 }
 

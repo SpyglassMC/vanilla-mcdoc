@@ -5,6 +5,7 @@ use ::java::server::util::firework::FireworkShape
 use ::java::server::util::text::Text
 use ::java::server::util::Filterable
 use ::java::server::world::item::DataComponentPredicate
+use ::java::server::world::item::CustomData
 use super::super::util::MinMaxBounds
 
 type ItemPredicate = (
@@ -52,10 +53,7 @@ dispatch minecraft:item_sub_predicate[container] to struct ContainerPredicate {
 	items?: CollectionPredicate<ItemPredicate>,
 }
 
-dispatch minecraft:item_sub_predicate[custom_data] to (
-	#[nbt=mcdoc:custom_item_data[%fallback]] string |
-	mcdoc:custom_item_data[%fallback] |
-)
+dispatch minecraft:item_sub_predicate[custom_data] to CustomData<mcdoc:custom_item_data[[%parent.items]]>
 
 dispatch minecraft:item_sub_predicate[damage] to struct ItemDamagePredicate {
 	damage?: MinMaxBounds<int>,

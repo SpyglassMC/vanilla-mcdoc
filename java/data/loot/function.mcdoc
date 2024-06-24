@@ -17,6 +17,7 @@ use ::java::server::util::text::Text
 use ::java::server::util::firework::FireworkShape
 use ::java::server::util::Filterable
 use ::java::server::world::item::DataComponentPatch
+use ::java::server::world::item::CustomData
 
 dispatch minecraft:loot_function[apply_bonus] to struct ApplyBonus {
 	enchantment: #[id="enchantment"] string,
@@ -49,7 +50,7 @@ struct CopyNbt {
 		source: #[nbt_path] string, // TODO
 		target: (
 			#[until="1.20.5"] #[nbt_path=minecraft:item[%fallback]] string |
-			#[since="1.20.5"] #[nbt_path=mcdoc:custom_item_data[%fallback]] string |
+			#[since="1.20.5"] #[nbt_path=mcdoc:custom_data[%fallback]] string |
 		),
 		op: CopyNbtStrategy
 	})],
@@ -447,12 +448,12 @@ dispatch minecraft:loot_function[set_nbt] to struct SetNbt {
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_components] to struct SetComponents {
 	conditions?: [LootCondition],
-	components: DataComponentPatch<()>,
+	components: DataComponentPatch,
 }
 
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_custom_data] to struct SetCustomData {
-	tag: (#[nbt=mcdoc:custom_item_data[%fallback]] string | mcdoc:custom_item_data[%fallback]),
+	tag: CustomData,
 }
 
 #[since="1.20.5"]
