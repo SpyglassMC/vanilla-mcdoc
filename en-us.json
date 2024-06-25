@@ -59,6 +59,8 @@
    "mcdoc.java.data.enchantment.Enchantment.min_cost": "Minimum experience cost.",
    "mcdoc.java.data.enchantment.Enchantment.max_cost": "Maximum experience cost.",
    "mcdoc.java.data.enchantment.Enchantment.anvil_cost": "Halved when an Enchantment is added to a book.\nThe effective fee is multiplied by the level of the Enchantment.",
+   "mcdoc.java.data.enchantment.EnchantmentCost.base": "Base cost at level 1.",
+   "mcdoc.java.data.enchantment.EnchantmentCost.per_level_above_first": "Cost increase per level above 1.",
    "mcdoc.java.data.enchantment.LinearLevelValue.base": "Base cost at level 1.",
    "mcdoc.java.data.enchantment.LinearLevelValue.per_level_above_first": "Cost increase per level above 1.",
    "mcdoc.java.data.enchantment.level_based_value.__dispatch.ClampedLevelValue": "Clamps another Level-Based Value",
