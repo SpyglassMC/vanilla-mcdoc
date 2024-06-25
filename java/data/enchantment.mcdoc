@@ -58,12 +58,12 @@ struct LevelBasedValueMap {
 
 type LevelBasedValue = (float | LevelBasedValueMap)
 
-type LinearLevelValue<T> = (struct {
+type LinearLevelValue<T> = struct {
 	/// Base cost at level 1.
 	base: T,
 	/// Cost increase per level above 1.
 	per_level_above_first: T,
-})
+}
 
 dispatch minecraft:level_based_value[linear] to LinearLevelValue<(int | float)>
 
