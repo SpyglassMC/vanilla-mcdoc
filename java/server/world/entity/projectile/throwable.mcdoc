@@ -38,7 +38,7 @@ dispatch minecraft:entity[potion] to struct Potion {
 	/// Item representation of the potion.
 	#[until="1.16"]
 	Potion?: InventoryItem,
-	/// Item representation of the pition.
+	/// Item representation of the potion.
 	#[since="1.16"]
 	Item?: InventoryItem,
 }
