@@ -33,9 +33,9 @@ dispatch minecraft:resource[enchantment] to struct Enchantment {
 	weight: int @ 0..,
 	max_level: int @ 1..,
 	/// Minimum experience cost.
-	min_cost: LinearLevelValue<int>,
+	min_cost: EnchantmentCost,
 	/// Maximum experience cost.
-	max_cost: LinearLevelValue<int>,
+	max_cost: EnchantmentCost,
 	/// Halved when an Enchantment is added to a book.
 	/// The effective fee is multiplied by the level of the Enchantment.
 	anvil_cost: int @ 0..,
@@ -43,6 +43,13 @@ dispatch minecraft:resource[enchantment] to struct Enchantment {
 	effects?: struct {
 		[#[id="enchantment_effect_component_type"] string]?: minecraft:effect_component[[%key]],
 	},
+}
+
+struct EnchantmentCost {
+	/// Base cost at level 1.
+	base: int,
+	/// Cost increase per level above 1.
+	per_level_above_first: int,
 }
 
 #[since="1.21"]
@@ -58,14 +65,12 @@ struct LevelBasedValueMap {
 
 type LevelBasedValue = (float | LevelBasedValueMap)
 
-type LinearLevelValue<T> = struct {
+dispatch minecraft:level_based_value[linear] to struct LinearLevelValue {
 	/// Base cost at level 1.
-	base: T,
+	base: float,
 	/// Cost increase per level above 1.
-	per_level_above_first: T,
+	per_level_above_first: float,
 }
-
-dispatch minecraft:level_based_value[linear] to LinearLevelValue<(int | float)>
 
 /// Clamps another Level-Based Value
 dispatch minecraft:level_based_value[clamped] to struct ClampedLevelValue {
