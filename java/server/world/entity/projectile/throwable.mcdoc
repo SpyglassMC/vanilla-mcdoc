@@ -34,7 +34,11 @@ dispatch minecraft:entity[egg,ender_pearl,experience_bottle,snowball] to struct 
 }
 
 dispatch minecraft:entity[potion] to struct Potion {
+	...Throwable,
 	/// Item representation of the potion.
 	#[until="1.16"]
 	Potion?: InventoryItem,
+	/// Item representation of the pition.
+	#[since="1.16"]
+	Item?: InventoryItem,
 }
