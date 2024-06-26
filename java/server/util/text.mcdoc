@@ -28,6 +28,8 @@ type TextObject = (
 	} |
 	struct {
 		selector: #[entity] #[selector] string,
+		#[since="1.17"]
+		separator?: Text,
 		...TextBase,
 	} |
 	struct {
