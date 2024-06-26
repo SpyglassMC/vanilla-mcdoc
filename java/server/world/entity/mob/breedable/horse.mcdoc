@@ -33,7 +33,7 @@ dispatch minecraft:entity[donkey, mule] to struct ChestedHorse {
 	/// Whether it has a chest.
 	ChestedHorse?: boolean,
 	/// Slots from 0 to 14.
-	Items?: [SlottedItem<byte @ 0..14>] @ 15,
+	Items?: [SlottedItem<byte @ 0..14>] @ 0..15,
 }
 
 dispatch minecraft:entity[skeleton_horse] to struct SkeletonHorse {
