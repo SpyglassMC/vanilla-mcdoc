@@ -50,7 +50,7 @@ dispatch minecraft:trigger[allay_drop_item_on_block] to struct AllayDropItemOnBl
 #[since="1.20.5"]
 dispatch minecraft:trigger[any_block_use] to struct AnyBlockUse {
 	...TriggerBase,
-	location?: LocationPredicate,
+	location?: [LootCondition],
 }
 
 dispatch minecraft:trigger[bee_nest_destroyed] to struct BeeNestDestroyed {
