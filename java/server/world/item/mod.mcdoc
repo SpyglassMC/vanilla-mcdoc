@@ -31,10 +31,8 @@ dispatch minecraft:data_component[custom_name] to #[text_component] string
 
 dispatch mcdoc:custom_data[%unknown] to any
 
-// TODO: provide autocomplete of keys, using for example:
-// #[dispatcher_key(dispatch="mcdoc:custom_data")] 
 type CustomDataMap = struct {
-	[string]?: mcdoc:custom_data[[%key]],
+	[#[dispatcher_key="mcdoc:custom_data"] string]?: mcdoc:custom_data[[%key]],
 }
 
 type CustomData = (
