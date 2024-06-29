@@ -307,7 +307,10 @@ dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 			[string]: boolean,
 		}),
 	},
-	gamemode?: (GameMode | [GameMode]),
+	gamemode?: (
+		#[until="1.21"] GameMode |
+		#[since="1.21"] [GameMode] |
+	),
 	/// Experience/XP level.
 	level?: MinMaxBounds<int>,
 	recipes?: struct {
