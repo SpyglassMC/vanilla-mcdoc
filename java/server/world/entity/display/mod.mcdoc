@@ -6,11 +6,11 @@ struct DisplayBase {
 	...super::EntityBase,
 	/// Transformation applied to model (after normal entity orientation). Defaults to identity. Interpolated.
 	/// See [Misode's tool](https://misode.github.io/transformation/) or [Singular value decomposition](https://en.wikipedia.org/wiki/Singular_value_decomposition).
+	///
+	/// Value is stored in decomposed object form for interpolation & ease-of-use,
+	/// Supports storing a non-canonical matrix form describing a row-major matrix, is automatically decomposed by the game with a performance cost.
 	transformation?: (
-		// Matrix form: describing a row-major matrix.
-		#[canonical] ([float] @ 16) | 
-		/// Decomposed form (used for saving & ease of use).
-		struct {
+		#[canonical] struct {
 			/// Translation in [x, y, z].
 			translation: [float] @ 3,
 			/// Using this rotation is enough for most transformations.
@@ -20,6 +20,7 @@ struct DisplayBase {
 			/// Scale in [x, y, z].
 			scale: [float] @ 3,
 		} |
+		([float] @ 16) | 
 	),
 	/// Size of shadow. Defaults to 0 (no shadow). Interpolated.
 	shadow_radius?: float @ 0..,
