@@ -501,7 +501,7 @@
    "mcdoc.java.server.util.particle.arrival_in_ticks": "Ticks in which to interpolate the particle's initial position to the destination.",
    "mcdoc.java.data.worldgen.dimension.biome_source.biome_source.__dispatch.Checkerboard": "Biomes generate in a checkerboard chunk pattern.",
    "mcdoc.java.data.worldgen.dimension.biome_source.biome_source.__dispatch.Fixed": "One biome for the whole world.",
-   "mcdoc.java.data.worldgen.dimension.biome_source.biome_source.__dispatch.MultiNoise": "Custom biome distribution with configurable parameters.",
+   "mcdoc.java.data.worldgen.dimension.biome_source.biome_source.__dispatch.BiomesMultiNoise": "Custom biome distribution with configurable parameters.",
    "mcdoc.java.data.worldgen.dimension.biome_source.biome_source.__dispatch.TheEnd": "Biome distribution for the End.",
    "mcdoc.java.data.worldgen.dimension.biome_source.biome_source.__dispatch.VanillaLayered": "Biome distribution for the Overworld.",
    "mcdoc.java.data.worldgen.dimension.mod.DimensionType.ultrawarm": "If true, water will evaporate and sponges will dry.",
