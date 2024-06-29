@@ -1,17 +1,18 @@
 use ::java::server::util::text::Text
 use ::java::server::util::range::InclusiveRange
 
+// `supported_formats` and `overlays` were introduced in 1.20.2,
+// but multi-version packs will use these with an older pack_format.
 struct Pack {
 	pack: struct {
 		description: Text,
-		pack_format: #[pack_format] int @ 1..,
-		supported_formats?: InclusiveRange<#[pack_format] int @ 1..>,
+		pack_format: #[pack_format] int @ 4..,
+		supported_formats?: InclusiveRange<#[pack_format] int @ 4..>,
 	},
 	#[since="1.19"]
 	filter?: PackFilter,
 	#[since="1.19.3"]
 	features?: PackFeatures,
-	#[since="1.20.2"]
 	overlays?: PackOverlays,
 }
 
@@ -45,5 +46,5 @@ struct PackOverlays {
 
 struct PackOverlay {
 	directory: string @ 1..,
-	formats: InclusiveRange<#[pack_format] int @ 1..>,
+	formats: InclusiveRange<#[pack_format] int @ 16..>,
 }
