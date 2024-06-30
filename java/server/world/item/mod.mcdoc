@@ -31,6 +31,7 @@ dispatch minecraft:data_component[custom_name] to #[text_component] string
 
 dispatch mcdoc:custom_data[%unknown] to any
 
+// TODO: when we add `recommended` to `dispatcher_key`, we should use it here; `mcdoc:custom_item_data[[%parent.id]]`.
 type CustomDataMap = struct {
 	[#[dispatcher_key="mcdoc:custom_data"] string]?: mcdoc:custom_data[[%key]],
 }
