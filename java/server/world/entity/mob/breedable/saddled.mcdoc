@@ -2,6 +2,7 @@ dispatch minecraft:entity[pig] to struct Saddled {
 	...super::Breedable,
 	/// Whether there is a saddle on it.
 	Saddle?: boolean,
+	[#[dispatcher_key="mcdoc:saddled_entity_data"] string]?: mcdoc:saddled_entity_data[[%key]],
 }
 
 #[since="1.16"]

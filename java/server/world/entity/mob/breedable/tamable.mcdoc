@@ -9,6 +9,7 @@ struct Tamable {
 	Owner?: int[] @ 4,
 	/// Whether the mob is sitting.
 	Sitting?: boolean,
+	[#[dispatcher_key="mcdoc:tamable_entity_data"] string]?: mcdoc:tamable_entity_data[[%key]],
 }
 
 dispatch minecraft:entity[cat] to struct Cat {

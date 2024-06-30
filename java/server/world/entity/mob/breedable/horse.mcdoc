@@ -21,6 +21,7 @@ dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	#[since="1.16"] #[uuid]
 	Owner?: int[] @ 4,
 	SaddleItem?: InventoryItem,
+	[#[dispatcher_key="mcdoc:horse_base_entity_data"] string]?: mcdoc:horse_base_entity_data[[%key]],
 }
 
 dispatch minecraft:entity[horse] to struct Horse {

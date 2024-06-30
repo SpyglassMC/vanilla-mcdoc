@@ -10,6 +10,12 @@ struct BlockEntity {
 	keepPacked?: boolean,
 	#[since="1.20.5"]
 	components?: DataComponentPatch<()>, // TODO: Figure out a good way to handle these generics
+	...BlockEntityData<mcdoc:block_entity_data[[id]]>,
+}
+
+type BlockEntityData<T> = struct {
+	// TODO: Add `recommended` here once it's supported
+	[#[dispatcher_key="mcdoc:block_entity_base_data"] string]?: mcdoc:block_entity_base_data[[%key]],
 }
 
 dispatch minecraft:block[
