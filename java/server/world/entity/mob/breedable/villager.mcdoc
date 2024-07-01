@@ -29,6 +29,7 @@ dispatch minecraft:memory_module[potential_job_site] to PositionMemory
 
 dispatch minecraft:entity[villager] to struct Villager {
 	...super::Breedable,
+	...VillagerBase,
 	VillagerData?: VillagerData,
 	FoodLevel?: byte, // TODO
 	/// Gossips it has heard.
