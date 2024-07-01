@@ -3,6 +3,13 @@ use super::super::entity::AnyEntity
 use ::java::server::util::BlockState
 use ::java::server::util::SlottedItem
 
+struct ContainerMinecart {
+	/// Loot table that will populate this minecart.
+	LootTable?: #[id="loot_table"] string,
+	/// Seed of the loot table.
+	LootTableSeed?: long,
+}
+
 dispatch minecraft:entity[minecart] to struct Minecart {
 	...super::EntityBase,
 	/// Whether to display a custom block.
@@ -16,10 +23,7 @@ dispatch minecraft:entity[minecart] to struct Minecart {
 
 dispatch minecraft:entity[chest_minecart] to struct ChestMinecart {
 	...Minecart,
-	/// Loot table that will populate this chest minecart.
-	LootTable?: #[id="loot_table"] string,
-	/// Seed of the loot table.
-	LootTableSeed?: long,
+	...ContainerMinecart,
 	/// Slots from 0 to 26.
 	Items?: [SlottedItem<byte @ 0..26>] @ 0..27,
 }
@@ -47,6 +51,7 @@ dispatch minecraft:entity[furnace_minecart] to struct FurnaceMinecart {
 
 dispatch minecraft:entity[hopper_minecart] to struct HopperMinecart {
 	...Minecart,
+	...ContainerMinecart,
 	/// Slots from 0 to 4.
 	Items?: [SlottedItem<byte @ 0..4>] @ 0..5,
 	/// Ticks until an item can be transferred.
