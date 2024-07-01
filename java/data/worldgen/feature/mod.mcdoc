@@ -511,8 +511,7 @@ dispatch minecraft:feature_config[vegetation_patch,waterlogged_vegetation_patch]
 	xz_radius: IntProvider<int>,
 	replaceable: (
 		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
-		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="1.18.2"] #[id(registry="block",tags="required")] string |
 	),
 	ground_state: BlockStateProvider,
 	vegetation_feature: FeatureRef,
