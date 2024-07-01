@@ -50,6 +50,8 @@ type TextObject = (
 		block: #[vector(dimension=3,integer=true)] string,
 		nbt: #[nbt_path=minecraft:block[%fallback]] string,
 		#[since="1.20.3"]
+		source?: "block",
+		#[since="1.20.3"]
 		type?: "nbt",
 		...TextNbtBase,
 	} |
@@ -57,12 +59,16 @@ type TextObject = (
 		entity: #[entity(amount=multiple,type=entities)] #[selector] string,
 		nbt: #[nbt_path=minecraft:entity[[entity]]] string,
 		#[since="1.20.3"]
+		source?: "entity",
+		#[since="1.20.3"]
 		type?: "nbt",
 		...TextNbtBase,
 	} |
 	struct {
 		storage: #[id="storage"] string,
 		nbt: #[nbt_path=minecraft:storage[[storage]]] string,
+		#[since="1.20.3"]
+		source?: "storage",
 		#[since="1.20.3"]
 		type?: "nbt",
 		...TextNbtBase,
