@@ -10,6 +10,8 @@ type Text = (
 type TextObject = (
 	struct {
 		text: string,
+		#[since="1.20.3"]
+		type?: "text",
 		...TextBase,
 	} |
 	struct {
@@ -17,6 +19,8 @@ type TextObject = (
 		with?: [Text],
 		#[since="1.19.4"]
 		fallback?: Text,
+		#[since="1.20.3"]
+		type?: "translatable",
 		...TextBase,
 	} |
 	struct {
@@ -24,31 +28,43 @@ type TextObject = (
 			objective: #[objective] string,
 			name: #[score_holder] string,
 		},
+		#[since="1.20.3"]
+		type?: "score",
 		...TextBase,
 	} |
 	struct {
 		selector: #[entity] #[selector] string,
 		#[since="1.17"]
 		separator?: Text,
+		#[since="1.20.3"]
+		type?: "selector",
 		...TextBase,
 	} |
 	struct {
 		keybind: Keybind,
+		#[since="1.20.3"]
+		type?: "keybind",
 		...TextBase,
 	} |
 	struct {
 		block: #[vector(dimension=3,integer=true)] string,
 		nbt: #[nbt_path=minecraft:block[%fallback]] string,
+		#[since="1.20.3"]
+		type?: "nbt",
 		...TextNbtBase,
 	} |
 	struct {
 		entity: #[entity(amount=multiple,type=entities)] #[selector] string,
 		nbt: #[nbt_path=minecraft:entity[[entity]]] string,
+		#[since="1.20.3"]
+		type?: "nbt",
 		...TextNbtBase,
 	} |
 	struct {
 		storage: #[id="storage"] string,
 		nbt: #[nbt_path=minecraft:storage[[storage]]] string,
+		#[since="1.20.3"]
+		type?: "nbt",
 		...TextNbtBase,
 	} |
 )
