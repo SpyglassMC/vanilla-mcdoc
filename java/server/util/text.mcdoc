@@ -11,7 +11,7 @@ type TextObject = (
 	struct {
 		text: string,
 		#[since="1.20.3"]
-		type?: "string",
+		type?: "text",
 		...TextBase,
 	} |
 	struct {
