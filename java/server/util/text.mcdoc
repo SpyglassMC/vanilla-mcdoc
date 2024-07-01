@@ -65,6 +65,15 @@ struct TextBase {
 	...TextStyle,
 }
 
+type JSONType = (
+	"text"
+	| "translatable"
+	| "score"
+	| "selector"
+	| "keybind"
+	| "nbt"
+)
+
 struct TextStyle {
 	color?: (
 		#[since="1.16"] #[color="hex"] string |
@@ -80,6 +89,8 @@ struct TextStyle {
 	insertion?: string,
 	clickEvent?: ClickEvent,
 	hoverEvent?: HoverEvent,
+	#[since="1.20.3"]
+	type?: JSONType
 }
 
 enum(string) TextColor {
