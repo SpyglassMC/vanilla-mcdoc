@@ -156,12 +156,13 @@ type VerticalAnchor = (
 	} |
 )
 
-struct HeightProvider {
-	type?: #[id="height_provider_type"] string,
-	...minecraft:height_provider[[type]],
-}
-
-dispatch minecraft:height_provider[%none] to VerticalAnchor
+type HeightProvider = (
+	struct {
+		type: #[id="height_provider_type"] string,
+		...minecraft:height_provider[[type]],
+	} |
+	VerticalAnchor
+)
 
 dispatch minecraft:height_provider[constant] to struct ConstantHeightProvider {
 	value: VerticalAnchor,
