@@ -521,7 +521,7 @@ dispatch minecraft:loot_function[set_writable_book_pages] to struct SetWriteable
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_written_book_pages] to struct SetWrittenBookPages {
 	/// Sets the pages of a written book.
-	pages: [Filterable<#[text_component] string>],
+	pages: [Filterable<Text>],
 	...ListOperation,
 }
 
