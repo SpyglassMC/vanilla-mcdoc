@@ -122,9 +122,14 @@ struct BlockEntityModifier {
 }
 
 dispatch minecraft:rule_block_entity_modifier[append_static] to struct AppendStatic {
-	data: any,
+	data: minecraft:block[[%parent.output_state.Name]],
 }
 
 dispatch minecraft:rule_block_entity_modifier[append_loot] to struct AppendLoot {
 	loot_table: #[id="loot_table"] string,
 }
+
+dispatch minecraft:rule_block_entity_modifier[
+	passthrough,
+	clear,
+] to struct {}
