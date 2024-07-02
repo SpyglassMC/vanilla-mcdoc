@@ -86,7 +86,6 @@ struct DisplayBase {
 	/// Override glow border color. If field is set to 0, uses team color. Defaults to 0.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	glow_color_override?: (0 | #[color="composite_rgb"] int),
-	[#[dispatcher_key="mcdoc:display_entity_data"] string]?: mcdoc:display_entity_data[[%key]],
 }
 
 type Rotation = (

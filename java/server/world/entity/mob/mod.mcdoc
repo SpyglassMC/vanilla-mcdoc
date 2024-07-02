@@ -40,7 +40,6 @@ struct LivingEntity {
 	NoAI?: boolean,
 	/// Team to join when it is spawned.
 	Team?: #[team] string,
-	[#[dispatcher_key="mcdoc:living_entity_data"] string]?: mcdoc:living_entity_data[[%key]],
 }
 
 /// Base NBT for all mobs.
@@ -76,8 +75,7 @@ struct MobBase {
 	#[since="1.20.5"]
 	leash?: (int[] @ 3 | struct {
 		UUID?: int[] @ 4
-	}),
-	[#[dispatcher_key="mcdoc:mob_entity_data"] string]?: mcdoc:mob_entity_data[[%key]],
+	})
 }
 
 struct NeutralMob {
@@ -85,7 +83,6 @@ struct NeutralMob {
 	AngerTime?: int,
 	#[uuid]
 	AngryAt?: int[] @ 4,
-	[#[dispatcher_key="mcdoc:neutral_entity_data"] string]?: mcdoc:neutral_entity_data[[%key]],
 }
 
 /// A single attribute.

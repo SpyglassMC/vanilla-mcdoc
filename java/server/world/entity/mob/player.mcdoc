@@ -80,7 +80,6 @@ dispatch minecraft:entity[player] to struct Player {
 	id?: (),
 	CustomName?: (),
 	CustomNameVisible?: (),
-	[#[dispatcher_key="mcdoc:player_entity_data"] string]?: mcdoc:player_entity_data[[%key]],
 }
 
 enum(int) Dimension {

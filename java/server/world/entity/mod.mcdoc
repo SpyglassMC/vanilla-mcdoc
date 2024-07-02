@@ -46,16 +46,9 @@ struct EntityBase {
 	/// This increases by one every tick the entity is in powdered snow, and decreases by two when it's out of it.
 	#[since="1.17"]
 	TicksFrozen?: int,
-	...EntityBaseData<()>,
 }
 
 struct AnyEntity {
 	id?: #[id="entity_type"] string,
 	...minecraft:entity[[id]],
-	// ...EntityBaseData<mcdoc:entity_data[[id]]>,
-}
-
-type EntityBaseData<T> = struct {
-	// TODO: Add `recommended` here once it's supported
-	[#[dispatcher_key="mcdoc:entity_base_data"] string]?: mcdoc:entity_base_data[[%key]],
 }

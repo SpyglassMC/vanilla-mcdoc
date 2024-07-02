@@ -10,7 +10,6 @@ struct ProjectileBase {
 	/// Whether it has left its owner.
 	#[since="1.16"]
 	LeftOwner?: boolean,
-	[#[dispatcher_key="mcdoc:projectile_entity_data"] string]?: mcdoc:projectile_entity_data[[%key]],
 }
 
 dispatch minecraft:entity[llama_spit] to struct LlamaSpit {
