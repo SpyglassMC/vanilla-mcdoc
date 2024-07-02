@@ -3,6 +3,6 @@ struct BlockState {
 	Properties?: mcdoc:block_states[[Name]],
 }
 
-dispatch mcdoc:block_states[%unknown] to struct {
+dispatch mcdoc:block_states[%unknown,%none] to struct {
 	[string]: string,
 }
