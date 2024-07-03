@@ -432,7 +432,7 @@ dispatch minecraft:loot_function[set_name] to struct SetName {
 	name: Text,
 	/// Which name component to set. Defaults to `custom_name`.
 	#[since="1.20.5"]
-	target?: #[id="data_component_type"] SetNameTarget,
+	target?: SetNameTarget,
 }
 
 enum(string) SetNameTarget {
@@ -529,7 +529,7 @@ dispatch minecraft:loot_function[set_written_book_pages] to struct SetWrittenBoo
 dispatch minecraft:loot_function[toggle_tooltips] to struct ToggleTooltips {
 	/// Toggles which tooltips are shown.
 	toggles: struct {
-		[#[id] ToggleableDataComponent]: boolean,
+		[ToggleableDataComponent]: boolean,
 	},
 }
 
