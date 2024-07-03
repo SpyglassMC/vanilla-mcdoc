@@ -529,7 +529,7 @@ dispatch minecraft:loot_function[set_written_book_pages] to struct SetWrittenBoo
 dispatch minecraft:loot_function[toggle_tooltips] to struct ToggleTooltips {
 	/// Toggles which tooltips are shown.
 	toggles: struct {
-		[ToggleableDataComponent]: boolean,
+		[#[id] ToggleableDataComponent]: boolean,
 	},
 }
 
