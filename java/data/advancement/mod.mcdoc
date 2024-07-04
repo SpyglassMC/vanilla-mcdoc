@@ -9,13 +9,13 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 	parent?: #[id="advancement"] string,
 	/// If `requirements` is not defined, all defined criteria will be required.
 	criteria: struct {
-		[string]: AdvancementCriterion,
+		[#[criterion(definition=true)] string]: AdvancementCriterion,
 	},
 	/// Contains all of the `criteria` keys.
 	/// If all criteria are required at once, this may be omitted.
 	/// With multiple criteria: this contains a list of lists with criteria (all criteria must be mentioned).
 	/// If all of the lists each have any criteria met, the advancement is complete (basically AND grouping of OR groups).
-	requirements?: [[string]], // TODO
+	requirements?: [[#[criterion] string]],
 	/// Provided to the player when this advancement is obtained.
 	rewards?: AdvancementRewards,
 	/// Defaults to `false`. The vanilla game client only reads this for advancements from the `minecraft` namespace.
