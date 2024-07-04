@@ -153,7 +153,7 @@ dispatch minecraft:click_event[run_command] to (#[command="slash"] string) // TO
 
 dispatch minecraft:click_event[suggest_command] to (string | #[command="slash"] string) 
 
-dispatch minecraft:click_event[change_page] to (int @ 0..)
+dispatch minecraft:click_event[change_page] to (#[number=int @ 0..] string)
 
 dispatch minecraft:click_event[copy_to_clipboard] to (string)
 
