@@ -49,7 +49,7 @@ struct DisplayBase {
 	/// - Updates are synchronized to clients at most once per tick, so multiple updates within command will still count as single update.
 	/// Previous current values are saved as "previous".
 	/// If interpolation is enabled, entity will transition between "previous" and "current" values over time.
-	start_interpolation?: int @ 0..,
+	start_interpolation?: int @ -1..,
 	/// Ticks the interpolation should take to complete.
 	interpolation_duration?: int @ 0..,
 	/// How long in game ticks the entity takes to interpolate from it's starting location to it's destination when teleported. Defaults to 0 (no interpolation).
