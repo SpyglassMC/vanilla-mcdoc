@@ -83,7 +83,7 @@ dispatch minecraft:int_provider[clamped]<T> to (
 )
 
 type ClampedNormalIntProvider<T> = struct {
-	...UniformIntProvider,
+	...UniformIntProvider<T>,
 	mean: float,
 	deviation: float,
 }
