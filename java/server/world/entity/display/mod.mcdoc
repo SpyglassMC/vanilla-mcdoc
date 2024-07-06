@@ -45,11 +45,13 @@ struct DisplayBase {
 	/// Info:
 	/// All interpolated properties are part of a single interpolation set.
 	/// Any update to an interpolated property will cause all values of the interpolation set to be saved as "current".
-	/// - Data command executions that do not change value of property (even if it's present in NBT) do not count as updates.
-	/// - Updates are synchronized to clients at most once per tick, so multiple updates within command will still count as single update.
+	///  - Data command executions that do not change value of property (even if it's present in NBT) do not count as updates.
+	///  - Updates are synchronized to clients at most once per tick, so multiple updates within command will still count as single update.
 	/// Previous current values are saved as "previous".
 	/// If interpolation is enabled, entity will transition between "previous" and "current" values over time.
-	start_interpolation?: int @ -1..,
+	/// `interpolation_duration` must be set every time an interpolatable property is updated to cause interpolation.
+	/// Negative values are allowed, will cause an instant jump to the subtracted duration value, then interpolation will continue as normal.
+	start_interpolation?: int,
 	/// Ticks the interpolation should take to complete.
 	interpolation_duration?: int @ 0..,
 	/// How long in game ticks the entity takes to interpolate from it's starting location to it's destination when teleported. Defaults to 0 (no interpolation).

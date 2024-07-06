@@ -3,7 +3,7 @@ dispatch minecraft:entity[marker] to struct Marker {
 	...super::EntityBase,
 	/// Any stored data
 	data?: struct {
-		[#[dispatcher_key="mcdoc:marker_data"] string]: mcdoc:marker_data[[%key]]
+		[#[dispatcher_key="mcdoc:marker_data"] string]: mcdoc:marker_data[[%key]],
 	},
 }
 
