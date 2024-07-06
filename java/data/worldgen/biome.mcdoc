@@ -87,12 +87,12 @@ enum(string) TemperatureModifier {
 }
 
 struct BiomeEffects {
-	sky_color: #[color="composite_int"] int,
-	fog_color: #[color="composite_int"] int,
-	water_color: #[color="composite_int"] int,
-	water_fog_color: #[color="composite_int"] int,
-	grass_color?: #[color="composite_int"] int,
-	foliage_color?: #[color="composite_int"] int,
+	sky_color: #[color="composite_rgb"] int,
+	fog_color: #[color="composite_rgb"] int,
+	water_color: #[color="composite_rgb"] int,
+	water_fog_color: #[color="composite_rgb"] int,
+	grass_color?: #[color="composite_rgb"] int,
+	foliage_color?: #[color="composite_rgb"] int,
 	grass_color_modifier?: GrassColorModifier,
 	ambient_sound?: SoundEventRef,
 	mood_sound?: struct {

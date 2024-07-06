@@ -52,7 +52,7 @@ dispatch minecraft:entity[arrow] to struct Arrow {
 	/// Color of the arrow's potion bubble trail particles.
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	#[until="1.20.5"]
-	Color?: #[color="composite_int"] int,
+	Color?: #[color="composite_rgb"] int,
 	/// Effects to give to the hit entity.
 	#[until="1.20.2"]
 	CustomPotionEffects?: [MobEffectInstance],

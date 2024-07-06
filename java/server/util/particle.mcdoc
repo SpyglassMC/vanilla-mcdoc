@@ -111,7 +111,7 @@ dispatch minecraft:particle[entity_effect] to ParticleSettings<(
 		/// 	return Math.abs((Math.floor(integer / 256) * 256)) + integer
 		/// }
 		/// ```
-		color: #[color="translucent_particle"] [float] @ 4,
+		color: (#[color="composite_argb"] int | #[color="dec_rgba"] [float] @ 4),
 	} |
 )>
 

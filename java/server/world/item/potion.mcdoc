@@ -3,7 +3,7 @@ use ::java::server::util::effect::MobEffectInstance
 struct PotionContents {
 	potion?: #[id="potion"] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	custom_color?: #[color="composite_int"] int,
+	custom_color?: #[color="composite_rgb"] int,
 	custom_effects?: [MobEffectInstance],
 }
 
@@ -21,7 +21,7 @@ dispatch minecraft:item[potion, splash_potion, lingering_potion, tipped_arrow] t
 	/// Default potion effect
 	Potion?: #[id="potion"] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	CustomPotionColor?: #[color="composite_int"] int,
+	CustomPotionColor?: #[color="composite_rgb"] int,
 }
 
 dispatch minecraft:item_component[potion, splash_potion, lingering_potion, tipped_arrow] to (

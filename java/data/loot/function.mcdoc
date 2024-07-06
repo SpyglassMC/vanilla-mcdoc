@@ -491,10 +491,10 @@ dispatch minecraft:loot_function[set_firework_explosion] to struct SetFireworkEx
 	shape?: FireworkShape,
 	/// If omitted, the original colors are kept (or `[]` is used if there was no component).
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	colors?: #[color="composite_int"] int[],
+	colors?: #[color="composite_rgb"] int[],
 	/// If omitted, the original fade colors are kept (or `[]` is used if there was no component).
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	fade_colors?: #[color="composite_int"] int[],
+	fade_colors?: #[color="composite_rgb"] int[],
 	/// If omitted, the original `has_trail` value is kept (or `false` is used if there was no component).
 	trail?: boolean,
 	/// If omitted, the original `has_twinkle` value is kept (or `false` is used if there was no component).
