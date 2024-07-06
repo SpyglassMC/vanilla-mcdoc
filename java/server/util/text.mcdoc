@@ -89,8 +89,8 @@ struct TextBase {
 
 struct TextStyle {
 	color?: (
-		#[since="1.16"] #[color="hex"] string |
-		TextColor |
+		#[since="1.16"] #[color="hex_rgb"] string |
+		#[color="named"] TextColor |
 	),
 	#[since="1.16"]
 	font?: #[id="font"] string,
