@@ -1,4 +1,9 @@
-dispatch minecraft:data_component[profile] to struct Profile {
+dispatch minecraft:data_component[profile] to (
+	#[canonical] Profile |
+	string |
+)
+
+struct Profile {
 	/// Name of a player profile, i.e. its username.
 	name?: string,
 	/// UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.
