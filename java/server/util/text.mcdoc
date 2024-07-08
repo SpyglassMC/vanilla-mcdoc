@@ -151,7 +151,7 @@ dispatch minecraft:click_event[open_url] to #[url] string
 
  // TODO: In 1.19.1+ commands that send signed messages are disallowed
 dispatch minecraft:click_event[run_command] to (
-	#[until="1.19.1"] #[command(slash="allowed")] string |
+	#[until="1.19.1"] #[command(slash="chat")] string |
 	#[since="1.19.1"] #[command(slash="required")] string |
 )
 
