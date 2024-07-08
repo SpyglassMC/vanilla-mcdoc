@@ -1,6 +1,6 @@
 dispatch minecraft:block_entity[structure_block] to struct StructureBlock {
 	...super::BlockEntity,
-	name?: #[id="structure"] string,
+	name?: (#[id="structure"] string | string @ 0),
 	/// Author of the structure.
 	author?: string,
 	/// Custom data for the structure. Stores the data id for "DATA" mode.

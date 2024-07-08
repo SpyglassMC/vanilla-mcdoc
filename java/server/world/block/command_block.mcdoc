@@ -1,7 +1,7 @@
 dispatch minecraft:block_entity[command_block] to struct CommandBlock {
 	...super::BlockEntity,
 	CustomName?: #[text_component] string,
-	Command?: #[command] string,
+	Command?: (#[command] string | string @ 0),
 	/// Success count of the last command.
 	SuccessCount?: int,
 	/// Output of the last command.
