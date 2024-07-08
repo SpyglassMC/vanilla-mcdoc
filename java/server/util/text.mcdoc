@@ -155,9 +155,9 @@ dispatch minecraft:click_event[run_command] to (
 	#[since="1.19.1"] #[command(slash="required")] string |
 )
 
-dispatch minecraft:click_event[suggest_command] to string
+dispatch minecraft:click_event[suggest_command] to #[command(slash="chat")] string
 
-dispatch minecraft:click_event[change_page] to #[number=int @ 0..] string
+dispatch minecraft:click_event[change_page] to #[integer(min=1)] string
 
 dispatch minecraft:click_event[copy_to_clipboard] to string
 
