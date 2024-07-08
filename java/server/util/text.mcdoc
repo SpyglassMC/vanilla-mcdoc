@@ -147,15 +147,19 @@ enum(string) ClickEventAction {
 	CopyToClipBoard = "copy_to_clipboard",
 }
 
-dispatch minecraft:click_event[open_url] to (#[url] string)
+dispatch minecraft:click_event[open_url] to #[url] string
 
-dispatch minecraft:click_event[run_command] to (#[command="slash"] string) // TODO: maybe do a special thing for 1.19.1+ to disallow signed message commands
+ // TODO: In 1.19.1+ commands that send signed messages are disallowed
+dispatch minecraft:click_event[run_command] to (
+	#[until="1.19.1"] #[command(slash="allowed")] string |
+	#[since="1.19.1"] #[command(slash="required")] string |
+)
 
-dispatch minecraft:click_event[suggest_command] to (string | #[command="slash"] string) 
+dispatch minecraft:click_event[suggest_command] to string
 
-dispatch minecraft:click_event[change_page] to (#[number=int @ 0..] string)
+dispatch minecraft:click_event[change_page] to #[number=int @ 0..] string
 
-dispatch minecraft:click_event[copy_to_clipboard] to (string)
+dispatch minecraft:click_event[copy_to_clipboard] to string
 
 struct HoverEvent {
 	action: HoverEventAction,
