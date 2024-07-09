@@ -232,7 +232,7 @@ struct ItemBase {
 	/// Only used for tools, armor, etc.
 	Unbreakable?: boolean,
 	/// List of the block states that can be destroyed by this item when holding it in adventure mode.
-	CanDestroy?: [BlockState],
+	CanDestroy?: [#[block_predicate] string],
 	/// Tag that describes the custom model an item will take.
 	/// Used by the `custom_model_data` model overrides predicate.
 	/// Has certain restrictions due to float conversion.

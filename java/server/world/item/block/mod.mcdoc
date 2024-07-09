@@ -34,7 +34,7 @@ dispatch minecraft:item_component[%blockitem] to BlockItemComponents
 dispatch minecraft:item[%blockitem] to struct BlockItem {
 	...super::ItemBase,
 	/// List of blockstates that this block item can be placed on.
-	CanPlaceOn?: [BlockState],
+	CanPlaceOn?: [#[block_predicate] string],
 	BlockEntityTag?: BlockEntityData,
 	/// Blockstate that the placed block will have.
 	BlockStateTag?: mcdoc:block_item_states[[%parent.id]],
