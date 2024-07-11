@@ -264,6 +264,8 @@ struct ItemBase {
 	Trim?: Trim,
 }
 
+dispatch minecraft:item[%unknown] to ItemBase
+
 struct AnyItem {
 	/// ID of the item.
 	id: #[id="item"] string,
