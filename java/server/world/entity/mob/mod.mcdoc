@@ -59,7 +59,7 @@ struct MobBase {
 	/// Chance to drop the item it is wearing.
 	#[since="1.20.5"]
 	body_armor_drop_chance?: float,
-	DeathLootTable?: #[id="loot_table"] string,
+	DeathLootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed for generating the death loot table.
 	DeathLootTableSeed?: long,
 	/// Whether it can pick up loot.
