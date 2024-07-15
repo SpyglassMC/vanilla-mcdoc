@@ -40,7 +40,7 @@ dispatch minecraft:resource[enchantment] to struct Enchantment {
 	/// The effective fee is multiplied by the level of the Enchantment.
 	anvil_cost: int @ 0..,
 	slots: [AttributeSlot],
-	effects?: struct {
+	effects?: struct EnchantmentEffects {
 		[#[id="enchantment_effect_component_type"] string]?: minecraft:effect_component[[%key]],
 	},
 }

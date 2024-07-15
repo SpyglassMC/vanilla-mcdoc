@@ -20,7 +20,7 @@ type PositionMemory = memory::PositionMemory
 type Particle = particle::Particle
 
 type Filterable<T> = (
-	struct {
+	struct FilteredText {
 		raw: T,
 		/// Shown only to players with chat filtering enabled.
 		filtered?: T,

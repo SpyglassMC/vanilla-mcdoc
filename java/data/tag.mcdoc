@@ -6,7 +6,7 @@ type Tag<E> = struct {
 type TagEntry<E> = (
 	E |
 	#[since="1.16.2"]
-	struct {
+	struct ExplicitTagEntry {
 		id: E,
 		required?: boolean,
 	} |

@@ -8,7 +8,7 @@ type ConfiguredSurfaceBuilderRef = (
 #[until="1.18"]
 dispatch minecraft:resource["worldgen/configured_surface_builder"] to struct ConfiguredSurfaceBuilder {
 	type: #[id="worldgen/surface_builder"] string,
-	config: struct {
+	config: struct Config {
 		top_material: BlockState,
 		under_material: BlockState,
 		underwater_material: BlockState,

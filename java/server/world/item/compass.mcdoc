@@ -1,6 +1,6 @@
 dispatch minecraft:data_component[lodestone_tracker] to struct LodestoneTracker {
 	/// Location of the lodestone. Optional. If not set, the compass will spin randomly.
-	target?: struct {
+	target?: struct LodestoneTarget {
 		/// Coordinates.
 		pos: int[] @ 3,
 		dimension: #[id="dimension"] string,

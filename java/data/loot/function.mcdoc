@@ -46,7 +46,7 @@ dispatch minecraft:loot_function[copy_name] to struct CopyName {
 
 struct CopyNbt {
 	source: NbtProvider,
-	ops: [(struct {
+	ops: [(struct CopyNbtOperation {
 		source: #[nbt_path] string, // TODO
 		target: (
 			#[until="1.20.5"] #[nbt_path=minecraft:item[%fallback]] string |
@@ -377,7 +377,7 @@ dispatch minecraft:loot_function[set_count] to struct SetCount {
 }
 
 /// Sets the durability of applicable items.
-dispatch minecraft:loot_function[set_damage] to struct {
+dispatch minecraft:loot_function[set_damage] to struct SetDamage {
 	/// Decimal percentage. Can be negative when used in combination with `add`.
 	damage: (
 		#[until="1.17"] RandomValueBounds |
@@ -479,7 +479,7 @@ dispatch minecraft:loot_function[set_stew_effect] to struct SetStewEffect {
 dispatch minecraft:loot_function[set_fireworks] to struct SetFireworks {
 	/// If omitted, the flight duration of the item is left untouched - or set to 0 if the component did not exist before.
 	flight_duration?: int @ 0..255,
-	explosions?: struct {
+	explosions?: struct FireworkExplosions {
 		values: [minecraft:data_component[firework_explosion]],
 		...ListOperation,
 	},

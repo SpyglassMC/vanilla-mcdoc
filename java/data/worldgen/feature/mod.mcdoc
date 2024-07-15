@@ -95,7 +95,7 @@ dispatch minecraft:feature_config[disk,ice_patch] to struct DiskConfig {
 
 struct RuleBasedBlockStateProvider {
 	fallback: BlockStateProvider,
-	rules: [struct {
+	rules: [struct BlockStateRuleProviderEntry {
 		if_true: BlockPredicate,
 		then: BlockStateProvider,
 	}]
@@ -152,7 +152,7 @@ dispatch minecraft:feature_config[flower,no_bonemeal_flower,random_patch] to str
 		#[since="1.17"] int @ 1.. |
 	),
 	#[until="1.18"]
-	...struct {
+	...struct OldPatchConfig {
 		can_replace?: boolean,
 		project?: boolean,
 		need_water?: boolean,
@@ -174,7 +174,7 @@ dispatch minecraft:feature_config[flower,no_bonemeal_flower,random_patch] to str
 		blacklist: [BlockState],
 	},
 	#[since="1.18"]
-	...struct {
+	...struct ModernPatchConfig {
 		xz_spread: int @ 0..,
 		y_spread: int @ 0..,
 		feature: FeatureRef,
@@ -345,7 +345,7 @@ dispatch minecraft:feature_config[large_dripstone] to struct LargeDripstoneConfi
 dispatch minecraft:feature_config[nether_forest_vegetation] to struct NetherForestVegetationConfig {
 	state_provider: BlockStateProvider,
 	#[since="1.18"]
-	...struct {
+	...struct ModernNetherVegetationConfig {
 		spread_width: int @ 1..,
 		spread_height: int @ 1..,
 	},
@@ -389,7 +389,7 @@ dispatch minecraft:feature_config[random_boolean_selector] to struct RandomBoole
 }
 
 dispatch minecraft:feature_config[random_selector] to struct RandomSelector {
-	features: [struct {
+	features: [struct RandomFeatureEntry {
 		chance: float @ 0..1,
 		feature: FeatureRef,
 	}],
@@ -447,13 +447,13 @@ dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
 		#[since="1.17"] BlockStateProvider |
 	),
 	#[until="1.17"]
-	...struct {
+	...struct OldSimpleBlockConfig {
 		place_on: [BlockState],
 		place_in: [BlockState],
 		place_under: [BlockState],
 	},
 	#[since="1.17"] #[until="1.18"]
-	...struct {
+	...struct OptionalSimpleBlockConfig {
 		place_on?: [BlockState],
 		place_in?: [BlockState],
 		place_under?: [BlockState],

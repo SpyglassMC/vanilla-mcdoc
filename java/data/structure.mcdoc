@@ -9,14 +9,14 @@ struct StructureNBT {
 
 	size: [int @ 0..] @ 3,
 
-	blocks: [struct {
-		/// Index of the block in the palette.
-		state: int @ 0.., // TODO
+	#[structure_blocks] // Note: Unimplemented
+	blocks: [struct StructureBlock {
+		state: int @ 0..,
 		pos: [int @ 0..] @ 3,
-		nbt?: struct {}, // TODO `minecraft:block[[id]]`
+		nbt?: minecraft:block[%fallback],
 	}],
 
-	entities: [struct {
+	entities: [struct StructureEntity {
 		pos: [double @ 0..] @ 3,
 		blockPos: [int @ 0..] @ 3,
 		nbt: AnyEntity,
@@ -26,19 +26,11 @@ struct StructureNBT {
 }
 
 type BlockPalette = (
-	struct {
+	struct Palette {
 		palette: [BlockState],
 	} |
-	struct {
+	struct RandomizedPalette {
+		/// Sets of different block states used in the structure, a random palette gets selected based on coordinates.
 		palettes: [[BlockState]],
 	} |
 )
-
-struct Palette {
-	palette: [BlockState]
-}
-
-struct Palettes {
-	/// Sets of different block states used in the structure, a random palette gets selected based on coordinates.
-	palettes: [[BlockState]]
-}

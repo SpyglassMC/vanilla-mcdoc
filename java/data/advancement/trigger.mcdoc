@@ -189,7 +189,7 @@ dispatch minecraft:trigger[impossible] to TriggerBase
 
 dispatch minecraft:trigger[inventory_changed] to struct InventoryChanged {
 	...TriggerBase,
-	slots?: struct {
+	slots?: struct InventoryChangedSlots {
 		/// Amount of empty slots.
 		empty?: MinMaxBounds<int>,
 		/// Amount of occupied slots.
@@ -335,7 +335,7 @@ dispatch minecraft:trigger[ride_entity_in_lava] to struct RideEntityInLava {
 #[until="1.16"]
 dispatch minecraft:trigger[safely_harvest_honey] to struct SafelyHarvestHoney {
 	...TriggerBase,
-	block?: struct {
+	block?: struct HoneyHarvestedBlock {
 		block?: #[id="block"] string,
 		tag?: #[id(registry="block",tags="implicit")] string,
 	},

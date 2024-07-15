@@ -24,7 +24,7 @@ struct LivingEntity {
 	SleepingY?: int,
 	/// Z coordinate of where it is sleeping.
 	SleepingZ?: int,
-	Brain?: struct {
+	Brain?: struct Brain {
 		memories?: Memories<minecraft:entity_memory[[%parent.id]]>,
 	},
 	#[until="1.21"]
@@ -73,7 +73,7 @@ struct MobBase {
 	Leash?: (UUIDLeash | BlockLeash),
 	/// What the leash is attached to.
 	#[since="1.20.5"]
-	leash?: (int[] @ 3 | struct {
+	leash?: (int[] @ 3 | struct LeashOwner {
 		UUID?: int[] @ 4
 	})
 }

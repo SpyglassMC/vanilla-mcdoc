@@ -4,52 +4,46 @@ dispatch minecraft:resource[model] to struct Model {
 	parent?: #[id="model"] string,
 	ambientocclusion?: boolean,
 	gui_light?: ("front" | "side"),
-	textures?: struct {
-		[string]: #[id="texture"] string, // TODO
+	textures?: struct ModelTextures {
+		[#[model_texture(definition=true)] string]: #[id="texture"] string,
 	},
 	particle?: #[id="texture"] string,
 	elements?: [ModelElement],
-	display?: struct {
-		[ItemTransformType]: ItemTransform,
+	display?: struct ModelDisplay {
+		[ItemTransformType]: struct ItemTransform {
+			rotation?: [float] @ 3,
+			translation?: [float @ -80..80] @ 3,
+			scale?: [float @ -4..4] @ 3,
+		},
 	},
-	overrides?: [ModelOverride],
+	#[model_override] // Currently unimplemented attribute to help with sorting rules.
+	overrides?: [struct ModelOverride {
+		#[model_override(predicate=true)] // Also unimplemented.
+		predicate: struct ModelOverridePredicates {
+			[Predicates]: float,
+		},
+		model: #[id="model"] string,
+	}],
 }
 
 struct ModelElement {
 	from: [float @ -16..32] @ 3,
 	to: [float @ -16..32] @ 3,
-	faces: struct {
-		[Direction]: ModelElementFace,
+	faces: struct ModelElementFaceMap {
+		[Direction]: struct ModelElementFace {
+			texture: #[model_texture] string,
+			uv?: [float] @ 4,
+			cullface?: Direction,
+			rotation?: int,
+			tintindex?: int,
+		},
 	},
-	rotation?: ModelElementRotation,
+	rotation?: struct ModelElementRotation {
+		origin: [float] @ 3,
+		axis: Axis,
+		angle: (-45.0 | -22.5 | 0.0 | 22.5 | 45.0),
+	},
 	shade?: boolean,
-}
-
-struct ModelElementFace {
-	texture: string, // TODO
-	uv?: [float] @ 4,
-	cullface?: Direction,
-	rotation?: int,
-	tintindex?: int,
-}
-
-struct ModelElementRotation {
-	origin: [float] @ 3,
-	axis: Axis,
-	angle: (-45.0 | -22.5 | 0.0 | 22.5 | 45.0),
-}
-
-struct ItemTransform {
-	rotation?: [float] @ 3,
-	translation?: [float @ -80..80] @ 3,
-	scale?: [float @ -4..4] @ 3,
-}
-
-struct ModelOverride {
-	predicate: struct {
-		[Predicates]: float,
-	},
-	model: #[id="model"] string,
 }
 
 enum(string) Axis {

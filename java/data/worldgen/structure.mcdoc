@@ -165,7 +165,7 @@ dispatch minecraft:structure_config[
 		#[since="1.20.3"] int @ 1..20
 	),
 	#[since="1.19"]
-	...struct {
+	...struct WildUpdateStructureConfig {
 		start_height: HeightProvider,
 		start_jigsaw_name?: #[id] string,
 		project_start_to_heightmap?: HeightmapType,
@@ -175,10 +175,10 @@ dispatch minecraft:structure_config[
 	#[since="1.20.3"]
 	pool_aliases?: [PoolAlias],
 	#[since="1.21"]
-	...struct {
+	...struct TrickyTrialsStructureConfig {
 		dimension_padding?: (
 			int @ 0.. |
-			struct {
+			struct DimensionPaddingConfig {
 				bottom?: int @ 0..,
 				top?: int @ 0..,
 			}
@@ -204,14 +204,14 @@ dispatch minecraft:worldgen/pool_alias_binding[direct] to struct DirectPoolAlias
 
 dispatch minecraft:worldgen/pool_alias_binding[random] to struct RandomPoolAlias {
 	alias: #[id] string,
-	targets: [struct {
+	targets: [struct PoolAliasTarget {
 		weight: int,
 		data: #[id="worldgen/template_pool"] string,
 	}],
 }
 
 dispatch minecraft:worldgen/pool_alias_binding[random_group] to struct RandomGroupPoolAlias {
-	groups: [struct {
+	groups: [struct PoolAliasGroup {
 		weight: int,
 		data: [PoolAlias],
 	}],

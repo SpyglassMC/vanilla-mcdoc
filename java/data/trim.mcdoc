@@ -11,7 +11,7 @@ dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 	/// Model override predicate float.
 	item_model_index: float @ 0..1,
 	/// Armor materials that should have a different color palette.
-	override_armor_materials?: struct {
+	override_armor_materials?: struct TrimMaterialOverrides {
 		[#[id] ArmorMaterial]: string,
 	},
 }

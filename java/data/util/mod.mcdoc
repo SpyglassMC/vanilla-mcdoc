@@ -138,7 +138,7 @@ dispatch minecraft:nbt_provider[storage] to struct StorageNbtProvider {
 type SoundEventRef = (
 	#[id="sound_event"] string |
 	#[until="1.19.3"] #[id="weighed_sound_event"] string |
-	#[since="1.19.3"] struct {
+	#[since="1.19.3"] struct WeightedSoundEvent {
 		sound_id: #[id="weighed_sound_event"] string,
 		// TODO: What is "variable range"?
 		/// Range in blocks. If the player is further than this range from the source of the sound, the sound will be inaudible. If omitted, the sound will have a variable range.

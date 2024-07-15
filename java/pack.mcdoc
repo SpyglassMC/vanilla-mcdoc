@@ -4,7 +4,7 @@ use ::java::server::util::range::InclusiveRange
 // `supported_formats` and `overlays` were introduced in 1.20.2,
 // but multi-version packs will use these with an older pack_format.
 struct Pack {
-	pack: struct {
+	pack: struct PackBase {
 		description: Text,
 		pack_format: #[pack_format] int @ 4..,
 		supported_formats?: InclusiveRange<#[pack_format] int @ 4..>,

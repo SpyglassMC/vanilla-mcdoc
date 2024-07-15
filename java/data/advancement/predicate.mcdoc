@@ -9,7 +9,7 @@ use ::java::server::world::item::CustomData
 use super::super::util::MinMaxBounds
 
 type ItemPredicate = (
-	#[until="1.20.5"] struct {
+	#[until="1.20.5"] struct PreComponentsItemPredicate {
 		#[until="1.17"]
 		item?: #[id="item"] string,
 		#[since="1.17"]
@@ -21,7 +21,7 @@ type ItemPredicate = (
 		stored_enchantments?: [EnchantmentPredicate],
 		nbt?: #[nbt=minecraft:item[[item]]] string,
 	} |
-	#[since="1.20.5"] struct {
+	#[since="1.20.5"] struct PostComponentsItemPredicate {
 		items?: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
 		count?: MinMaxBounds<int>,
 		components?: DataComponentPredicate,
@@ -125,13 +125,14 @@ struct FluidPredicate {
 	tag?: #[id(registry="fluid",tags="implicit")] string,
 	#[since="1.20.5"]
 	fluids?: (#[id(registry="fluid",tags="allowed")] string | [#[id="fluid"] string]),
-	state?: struct {
-		[string]: (MinMaxBounds<int> | boolean | string), // TODO
+	// TODO (mcdoc:fluid_states[[fluids]])
+	state?: struct FluidPredicateState {
+		[string]: (MinMaxBounds<int> | boolean | string),
 	},
 }
 
 struct LocationPredicate {
-	position?: struct {
+	position?: struct LocationPredicatePosition {
 		x?: MinMaxBounds<float>,
 		y?: MinMaxBounds<float>,
 		z?: MinMaxBounds<float>,
@@ -154,8 +155,8 @@ struct LocationPredicate {
 	structures?: (#[id=(registry="worldgen/structure",tags=allowed)] string | [#[id="worldgen/structure"] string]),
 	dimension?: #[id="dimension"] string,
 	/// Calculated using: `max(sky-darkening, block)`.
-	light?: struct {
-		light?: MinMaxBounds<int @ 0..15>,
+	light?: struct LocationPredicateLight {
+		light?: MinMaxBounds<int @ 0..15>, // :mojank:
 	},
 	block?: BlockPredicate,
 	fluid?: FluidPredicate,
@@ -189,7 +190,7 @@ struct EntityPredicate {
 	location?: LocationPredicate,
 	distance?: DistancePredicate,
 	flags?: EntityFlagsPredicate,
-	equipment?: struct {
+	equipment?: struct EntityEquipment {
 		[EquipmentSlot]: ItemPredicate,
 	},
 	#[until="1.19"]
@@ -209,11 +210,11 @@ struct EntityPredicate {
 	lightning_bolt?: LightningBoltPredicate,
 	#[until="1.19"]
 	catType?: string,
-	effects?: struct {
+	effects?: struct EntityEffects {
 		[#[id="mob_effect"] string]: MobEffectPredicate,
 	},
 	#[since="1.20.5"]
-	slots?: struct {
+	slots?: struct EntityInventorySlots {
 		[#[item_slots] string]: ItemPredicate,
 	},
 	#[since="1.21"]
@@ -302,9 +303,9 @@ dispatch minecraft:entity_sub_predicate[lightning] to struct LightningBoltPredic
 }
 
 dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
-	advancements?: struct {
-		[#[id="advancement"] string]: (boolean | struct {
-			[string]: boolean,
+	advancements?: struct PlayerAdvancements {
+		[#[id="advancement"] string]: (boolean | struct PlayerAdvancementCriteria {
+			[string]: boolean, // TODO: This should use `#[criterion]`, but it's not supported yet.
 		}),
 	},
 	gamemode?: (
@@ -313,7 +314,7 @@ dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 	),
 	/// Experience/XP level.
 	level?: MinMaxBounds<int>,
-	recipes?: struct {
+	recipes?: struct PlayerRecipes {
 		[#[id="recipe"] string]: boolean,
 	},
 	stats?: [StatisticPredicate],
@@ -382,7 +383,7 @@ struct DamagePredicate {
 
 struct DamageSourcePredicate {
 	#[until="1.19.4"]
-	...struct {
+	...struct DamageSourceFlags {
 		is_explosion?: boolean,
 		is_fire?: boolean,
 		is_magic?: boolean,

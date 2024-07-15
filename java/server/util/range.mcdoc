@@ -1,7 +1,7 @@
 type InclusiveRange<T> = (
 	T |
 	[T] @ 2 |
-	struct {
+	struct ExplicitInclusiveRange {
 		min_inclusive: T,
 		max_inclusive: T,
 	} |

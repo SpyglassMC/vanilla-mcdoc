@@ -83,7 +83,7 @@ dispatch minecraft:decorator_config[range_biased,range_very_biased] to OldRangeC
 
 dispatch minecraft:decorator_config[range] to (
 	#[until="1.17"] OldRangeConfig |
-	#[since="1.17"] struct {
+	#[since="1.17"] struct RangeConfig {
 		height: HeightProvider,
 	} |
 )

@@ -44,7 +44,7 @@ dispatch minecraft:biome_source[multi_noise] to struct BiomesMultiNoise {
 	altitude_noise: NoiseParameters,
 	#[since="1.16.2"] #[until="1.18"]
 	weirdness_noise: NoiseParameters,
-	biomes: [struct {
+	biomes: [struct BiomeNoiseEntry {
 		biome: #[id="worldgen/biome"] string,
 		parameters: ClimateParameters,
 	}],

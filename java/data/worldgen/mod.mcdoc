@@ -185,7 +185,7 @@ dispatch minecraft:height_provider[trapezoid] to struct TrapezoidHeightProvider 
 
 #[since="1.18"]
 dispatch minecraft:height_provider[weighted_list] to struct WeightListHeightProvider {
-	distribution: [struct {
+	distribution: [struct WeightDistribution {
 		weight: int,
 		data: HeightProvider,
 	}],

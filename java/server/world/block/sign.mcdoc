@@ -1,18 +1,18 @@
 use ::java::server::util::color::ColorString
 
-dispatch minecraft:block_entity[sign, hanging_sign] to struct Sign {
-	...super::BlockEntity,
-	// TODO: Add filtered text
+// TODO: Add filtered text
+dispatch minecraft:block_entity[sign, hanging_sign] to (
 	#[until="1.20"]
-	...OldSign,
+	OldSign |
 	#[since="1.20"]
-	...(struct {
+	struct Sign {
+		...super::BlockEntity,
 		back_text?: SignText,
 		front_text?: SignText,
 		/// Whether the sign can no longer be edited. If a sign is editable
 		is_waxed?: boolean,
-	}),
-}
+	} |
+)
 
 struct SignText {
 	messages: [#[text_component] string] @ 4,
@@ -22,6 +22,7 @@ struct SignText {
 }
 
 struct OldSign {
+	...super::BlockEntity,
 	/// Color the text has been dyed.
 	Color?: ColorString,
 	#[since="1.17"]

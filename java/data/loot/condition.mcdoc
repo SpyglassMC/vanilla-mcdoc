@@ -29,9 +29,8 @@ dispatch minecraft:loot_condition[all_of] to struct AllOf {
 
 dispatch minecraft:loot_condition[block_state_property] to struct BlockStateProperty {
 	block: #[id="block"] string,
-	properties?: struct { // TODO: was this optional in 1.20.2 and before? (wasn't codecified yet)
-		[string]: string, // TODO
-	},
+	// TODO: was this optional in 1.20.2 and before? (wasn't codecified yet)
+	properties?: mcdoc:block_states[[block]],
 }
 
 dispatch minecraft:loot_condition[damage_source_properties] to struct DamageSourceProperties {

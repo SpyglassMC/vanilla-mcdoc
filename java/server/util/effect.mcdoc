@@ -1,5 +1,5 @@
 type MobEffectInstance = (
-	#[until="1.20.2"] struct {
+	#[until="1.20.2"] struct OldMobEffect {
 		Id?: EffectId,
 		Amplifier?: byte,
 		/// Duration of the effect in ticks. Infinite is represented by `-1`.
@@ -17,7 +17,7 @@ type MobEffectInstance = (
 		#[since="1.16"]
 		HiddenEffect?: MobEffectInstance,
 	} |
-	#[since="1.20.2"] struct {
+	#[since="1.20.2"] struct ModernMobEffect {
 		id: #[id="mob_effect"] string,
 		/// Level I having value 0. Defaults to 0.
 		amplifier?: byte,

@@ -1,22 +1,22 @@
-type BlockDefinition = (
-	struct {
-		variants: struct {
-			[string]: ModelVariant,
+type BlockStateDefinition = (
+	struct BlockStateDefinitionVariant {
+		variants: struct BlockStateDefinitionVariantMap {
+			[string]: ModelVariant, // TODO: block state key
 		},
 	} |
-	struct {
-		multipart: [struct {
+	struct BlockStateDefinitionMultipart {
+		multipart: [struct BlockStateDefinitionMultipartEntry {
 			/// One condition or an array where at least one condition must apply.
 			when?: MultiPartCondition,
 			apply: ModelVariant,
 		}],
 	} |
 )
-dispatch minecraft:resource[block_state] to BlockDefinition
+dispatch minecraft:resource[block_state] to BlockStateDefinition
 
 type ModelVariant = (
 	ModelVariantBase |
-	[struct {
+	[struct WeightedModelVariant {
 		...ModelVariantBase,
 		weight?: int @ 1..,
 	}] |
@@ -31,10 +31,10 @@ struct ModelVariantBase {
 }
 
 type MultiPartCondition = (
-	struct {
+	struct MultiPartAlternatives {
 		OR: [MultiPartCondition],
 	} |
-	struct {
-		[string]: string,
+	struct MultiPartAnd {
+		[string]: string, // TODO: block state key
 	} |
 )

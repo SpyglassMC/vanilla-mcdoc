@@ -8,7 +8,7 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 	/// Circular references cause a loading failure.
 	parent?: #[id="advancement"] string,
 	/// If `requirements` is not defined, all defined criteria will be required.
-	criteria: struct {
+	criteria: struct AdvancementCriteriaMap {
 		[#[criterion(definition=true)] string]: AdvancementCriterion,
 	},
 	/// Contains all of the `criteria` keys.

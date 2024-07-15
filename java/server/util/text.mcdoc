@@ -8,13 +8,13 @@ type Text = (
 )
 
 type TextObject = (
-	struct {
+	struct NormalText {
 		text: string,
 		#[since="1.20.3"]
 		type?: "text",
 		...TextBase,
 	} |
-	struct {
+	struct TranslatedText {
 		translate: string, // TODO
 		with?: [Text],
 		#[since="1.19.4"]
@@ -23,8 +23,8 @@ type TextObject = (
 		type?: "translatable",
 		...TextBase,
 	} |
-	struct {
-		score: struct {
+	struct ScoreText {
+		score: struct ScoreHolder {
 			objective: #[objective] string,
 			name: #[score_holder] string,
 		},
@@ -32,7 +32,7 @@ type TextObject = (
 		type?: "score",
 		...TextBase,
 	} |
-	struct {
+	struct SelectorText {
 		selector: #[entity] #[selector] string,
 		#[since="1.17"]
 		separator?: Text,
@@ -40,13 +40,13 @@ type TextObject = (
 		type?: "selector",
 		...TextBase,
 	} |
-	struct {
+	struct KeybindText {
 		keybind: Keybind,
 		#[since="1.20.3"]
 		type?: "keybind",
 		...TextBase,
 	} |
-	struct {
+	struct BlockNbtText {
 		block: #[vector(dimension=3,integer=true)] string,
 		nbt: #[nbt_path=minecraft:block[%fallback]] string,
 		#[since="1.20.3"]
@@ -55,7 +55,7 @@ type TextObject = (
 		type?: "nbt",
 		...TextNbtBase,
 	} |
-	struct {
+	struct EntityNbtText {
 		entity: #[entity(amount=multiple,type=entities)] #[selector] string,
 		nbt: #[nbt_path=minecraft:entity[[entity]]] string,
 		#[since="1.20.3"]
@@ -64,7 +64,7 @@ type TextObject = (
 		type?: "nbt",
 		...TextNbtBase,
 	} |
-	struct {
+	struct StorageNbtText {
 		storage: #[id="storage"] string,
 		nbt: #[nbt_path=minecraft:storage[[storage]]] string,
 		#[since="1.20.3"]
@@ -183,7 +183,7 @@ dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 	#[deprecated="1.16"]
 	value?: #[nbt=InventoryItem] string,
 	#[since="1.16"]
-	contents?: struct {
+	contents?: struct ItemHoverContent {
 		id: #[id="item"] string,
 		count?: int,
 		#[until="1.20.5"]
@@ -195,13 +195,13 @@ dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 
 dispatch minecraft:hover_event[show_entity] to struct ShowEntityHoverEvent {
 	#[deprecated="1.16"]
-	value?: struct {
+	value?: struct OldEntityHover {
 		name?: string,
 		type?: string,
 		id?: string,
 	},
 	#[since="1.16"]
-	contents?: struct {
+	contents?: struct EntityHoverContent {
 		name?: Text,
 		type?: #[id="entity_type"] string,
 		id?: #[uuid] string,

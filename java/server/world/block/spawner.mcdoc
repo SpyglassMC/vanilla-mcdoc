@@ -34,10 +34,10 @@ dispatch minecraft:block_entity[trial_spawner] to struct TrialSpawner {
 	/// Spawning behavior when the player does not have the Bad Omen effect.
 	normal_config?: NormalConfig,
 	/// Spawning behavior when the player has the Bad Omen effect.
-	ominous_config?: struct {
+	ominous_config?: struct OminousConfig{
 		...NormalConfig,
 		/// Loot tables to use when summoning ominous item spawners.
-		loot_tables_to_eject: [struct {
+		loot_tables_to_eject: [struct TrialReward {
 			data: #[id="loot_table"] string,
 			weight: int,
 		}],

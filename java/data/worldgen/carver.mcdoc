@@ -10,7 +10,7 @@ type CarverRef = (
 
 dispatch minecraft:resource["worldgen/configured_carver"] to struct ConfiguredCarver {
 	type: #[id="worldgen/carver"] string,
-	config: struct {
+	config: struct CarverConfigBase {
 		probability: float @ 0..1,
 		#[since="1.19"]
 		replaceable?: (
@@ -18,7 +18,7 @@ dispatch minecraft:resource["worldgen/configured_carver"] to struct ConfiguredCa
 			#[id(registry="block",tags="allowed")] string |
 		),
 		#[since="1.17"]
-		...struct {
+		...struct ModernCarverConfig {
 			y: HeightProvider,
 			yScale: FloatProvider<float>,
 			lava_level: VerticalAnchor,
@@ -30,7 +30,7 @@ dispatch minecraft:resource["worldgen/configured_carver"] to struct ConfiguredCa
 	},
 }
 
-struct CarverDebugSettings{
+struct CarverDebugSettings {
 	debug_mode?: boolean,
 	air_state: BlockState,
 	water_state: BlockState,

@@ -1,10 +1,8 @@
 use ::java::server::util::FlagMemory
 
-// thanks mojang
-dispatch minecraft:memory_module[is_pregnant] to struct {
+dispatch minecraft:memory_module[is_pregnant] to struct IsPregnant {
 	value?: struct {},
 }
-
 
 #[since="1.19"]
 dispatch minecraft:entity[frog] to struct Frog {

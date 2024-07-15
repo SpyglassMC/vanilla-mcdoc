@@ -1,11 +1,11 @@
-type Credits = [struct {
+type Credits = [struct CreditsCompanySegment {
 	/// Company segment.
 	section: string,
-	disciplines: [struct {
-		discipline: (string | ""),
-		titles: [struct {
+	disciplines: [struct CreditsDiscipline {
+		discipline: (string @ 1.. | string @ 0),
+		titles: [struct CreditsJobTitle {
 			title: string,
-			/// People with the title.
+			/// Employees with the title.
 			names: [string],
 		}],
 	}],

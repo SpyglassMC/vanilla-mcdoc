@@ -37,7 +37,7 @@ dispatch minecraft:resource["worldgen/noise_settings"] to struct NoiseGeneratorS
 	/// If true, mobs will not spawn during generation.
 	disable_mob_generation: boolean,
 	#[since="1.17"]
-	...struct {
+	...struct ModernNoiseGeneratorSettings {
 		#[until="1.18.2"]
 		noise_caves_enabled: boolean,
 		#[until="1.18.2"]

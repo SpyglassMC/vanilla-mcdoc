@@ -95,23 +95,23 @@ struct BiomeEffects {
 	foliage_color?: #[color="composite_rgb"] int,
 	grass_color_modifier?: GrassColorModifier,
 	ambient_sound?: SoundEventRef,
-	mood_sound?: struct {
+	mood_sound?: struct MoodSound {
 		sound: SoundEventRef,
 		tick_delay: int,
 		block_search_extent: int,
 		offset: float,
 	},
-	additions_sound?: struct {
+	additions_sound?: struct BiomeSoundAdditions {
 		sound: SoundEventRef,
 		tick_chance: float @ 0..1,
 	},
-	music?: struct {
+	music?: struct BiomeMusic {
 		sound: SoundEventRef,
 		min_delay: int @ 0..,
 		max_delay: int @ 0..,
 		replace_current_music: boolean,
 	},
-	particle?: struct {
+	particle?: struct BiomeParticle {
 		options: Particle,
 		probability: float @ 0..1,
 	},

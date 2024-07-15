@@ -3,7 +3,7 @@ use ::java::server::util::inventory::InventoryItem
 // TODO: update with new fields
 #[since="1.20.5"]
 dispatch minecraft:block_entity[vault] to struct Vault {
-	server_data?: struct {
+	server_data?: struct ServerData {
 		/// Ticks until the loot table is ran again to update the display item.
 		state_updating_resumes_at?: long,
 		/// When a player is in this list they can no longer open the vault, but other players can.
@@ -13,7 +13,7 @@ dispatch minecraft:block_entity[vault] to struct Vault {
 		/// Number of items that the loot table started off the opening with, does not change while items are ejected.
 		total_ejections_needed?: int,
 	},
-	config?: struct {
+	config?: struct Config {
 		/// Item required to open the vault.
 		key_item?: InventoryItem,
 		/// Defaults to "minecraft:chests/trial_chambers/reward".
@@ -21,7 +21,7 @@ dispatch minecraft:block_entity[vault] to struct Vault {
 	},
 	/// When a player is in range of the vault, the same display item will be shown to all players.
 	/// This is also used for the items that are being ejected from the vault.
-	shared_data?: (struct {} | struct {
+	shared_data?: (struct {} | struct SharedData {
 		/// Item that is displayed to players when they are in range of the vault.
 		display_item?: InventoryItem,
 		connected_players?: [int[] @ 4],
