@@ -27,7 +27,12 @@ dispatch minecraft:data_component[can_break] to (
 	BlockPredicate |
 )
 
-dispatch minecraft:data_component[custom_name] to #[text_component] string
+type CustomName = (
+	#[canonical] #[text_component] string |
+	string |
+)
+
+dispatch minecraft:data_component[custom_name] to CustomName
 
 dispatch mcdoc:custom_data[%unknown] to any
 
@@ -133,7 +138,7 @@ dispatch minecraft:data_component[hide_tooltip] to struct {}
 /// - Can't be changed or removed in anvil.
 /// - Not styled with italics when displayed to player.
 /// - Does not show labels where applicable (for example: banner markers, names in item frames).
-dispatch minecraft:data_component[item_name] to (#[text_component] string)
+dispatch minecraft:data_component[item_name] to CustomName
 
 /// If set, this item can be played in a jukebox like a music disc.
 #[since="1.21"]

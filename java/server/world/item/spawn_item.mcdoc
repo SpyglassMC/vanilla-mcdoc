@@ -98,6 +98,7 @@ dispatch minecraft:item[
 	EntityTag?: EntityData,
 }
 
+// This notably does not include end crystals, tested.
 dispatch minecraft:item[armor_stand, item_frame, glow_item_frame, painting] to SpawnItem
 
 dispatch minecraft:item[
