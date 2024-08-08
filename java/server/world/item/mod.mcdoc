@@ -299,7 +299,12 @@ struct Enchantment {
 type AttributeModifier = (
 	#[since="1.20.5"] struct {
 		type: #[id="attribute"] string,
+		#[until="1.21"]
+		uuid: int[] @ 4,
+		#[until="1.21"]
+		name: string,
 		/// Used when equipping and unequipping the item to identify which modifier to add or remove from the entity.
+		#[since="1.21"]
 		id: #[id="attribute_modifier"] string,
 		/// Change in the attribute.
 		amount: double,
