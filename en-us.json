@@ -1131,6 +1131,8 @@
    "mcdoc.java.server.world.entity.projectile.throwable.ThrowableItem.Item": "Item representation of the projectile.",
    "mcdoc.java.server.world.entity.projectile.throwable.Potion.Potion": "Item representation of the potion.",
    "mcdoc.java.server.world.entity.projectile.throwable.Potion.Item": "Item representation of the potion.",
+   "mcdoc.java.server.world.item.block.container.ContainerSlot.slot": "The slot ID of the container.",
+   "mcdoc.java.server.world.item.block.container.ContainerSlot.item": "The item stack in this container slot.",
    "mcdoc.java.server.world.item.block.mod.data_component.__dispatch.can_place_on": "List of blocks that this block item can be placed on.",
    "mcdoc.java.server.world.item.block.mod.data_component.__dispatch.BlockEntityData": "NBT that the block entity that is placed can have.",
    "mcdoc.java.server.world.item.block.mod.data_component.__dispatch.block_state": "Blockstate that the placed block will have.",
