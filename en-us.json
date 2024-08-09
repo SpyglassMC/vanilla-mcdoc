@@ -1096,6 +1096,7 @@
    "mcdoc.java.server.world.entity.projectile.arrow.ArrowBase.inBlockState": "Block it is in.",
    "mcdoc.java.server.world.entity.projectile.arrow.ArrowBase.crit": "Whether it should do critical damage.",
    "mcdoc.java.server.world.entity.projectile.arrow.ArrowBase.ShotFromCrossbow": "Whether it was shot from a crossbow.",
+   "mcdoc.java.server.world.entity.projectile.arrow.ArrowBase.weapon": "The item which has shot this arrow.",
    "mcdoc.java.server.world.entity.projectile.arrow.ArrowBase.PierceLevel": "Number of entities it can pass through.",
    "mcdoc.java.server.world.entity.projectile.arrow.ArrowBase.SoundEvent": "Sound event to play when it hits something.\nCan only be vanilla sound events",
    "mcdoc.java.server.world.entity.projectile.arrow.ArrowBase.OwnerUUIDMost": "Upper bits of the owner's UUID.",
