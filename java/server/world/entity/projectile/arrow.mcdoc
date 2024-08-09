@@ -25,6 +25,9 @@ struct ArrowBase {
 	/// Whether it was shot from a crossbow.
 	#[until="1.21"]
 	ShotFromCrossbow?: boolean,
+	/// The item which has shot this arrow.
+	#[since="1.21"]
+	weapon?: InventoryItem,
 	/// Number of entities it can pass through.
 	PierceLevel?: byte,
 	/// Sound event to play when it hits something.
