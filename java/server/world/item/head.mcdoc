@@ -9,7 +9,10 @@ struct Profile {
 	/// UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.
 	id?: int[] @ 4,
 	/// Resolved textures hosted on the minecraft CDN.
-	properties?: [ProfileProperty]
+	properties?: (
+		#[canonical] [ProfileProperty] |
+		ProfilePropertyMap |
+	)
 }
 
 struct ProfileProperty {
@@ -21,6 +24,13 @@ struct ProfileProperty {
 	value: string,
 	/// Verifies the hash of the resulting texture.
 	signature?: string,
+}
+
+struct ProfilePropertyMap {
+	// TODO: Consider providing specific tooling for this.
+	/// The key is usually `textures`.
+	/// Base64 encoded JSON value of the texture index.
+	[string]: [string]
 }
 
 /// Sound to be played by a note block if this player head is placed above it.
