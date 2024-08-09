@@ -771,6 +771,7 @@
    "mcdoc.java.server.world.item.head.ProfileProperty.name": "Usually `textures`.",
    "mcdoc.java.server.world.item.head.ProfileProperty.value": "Base64 encoded JSON value of the texture index.",
    "mcdoc.java.server.world.item.head.ProfileProperty.signature": "Verifies the hash of the resulting texture.",
+   "mcdoc.java.server.world.item.head.ProfilePropertyMap.__map_key": "The key is usually `textures`.\nBase64 encoded JSON value of the texture index.",
    "mcdoc.java.server.world.item.head.data_component.__dispatch.note_block_sound": "Sound to be played by a note block if this player head is placed above it.",
    "mcdoc.java.server.world.item.head.SkullOwner.Id": "Optional.",
    "mcdoc.java.server.world.item.head.SkullOwner.Name": "Name of the owner, if missing appears as a steve head.",
