@@ -32,31 +32,55 @@ dispatch minecraft:block_entity[spawner] to struct Spawner {
 #[since="1.20.5"]
 dispatch minecraft:block_entity[trial_spawner] to struct TrialSpawner {
 	/// Spawning behavior when the player does not have the Bad Omen effect.
-	normal_config?: NormalConfig,
+	normal_config?: TrialSpawnerConfig,
 	/// Spawning behavior when the player has the Bad Omen effect.
-	ominous_config?: struct OminousConfig{
-		...NormalConfig,
-		/// Loot tables to use when summoning ominous item spawners.
-		loot_tables_to_eject: [struct TrialReward {
-			data: #[id="loot_table"] string,
-			weight: int,
-		}],
-	},
+	ominous_config?: TrialSpawnerConfig,
+	/// Maximum distance for players to activate the trial spawner, or join a battle
+	required_player_range?: int @ 1..128,
+	/// Time in ticks for the cooldown period. Included the time spend dispensing the reward.
+	target_cooldown_length?: int,
+	/// Players that are have been nearby during the current battle
+	registered_players?: [#[uuid] [int] @ 4],
+	/// All mobs that have been spawned by this trial spawner and are currently alive
+	current_mobs?: [#[uuid] [int] @ 4],
+	/// Gametime in ticks when the cooldown ends
+	cooldown_ends_at?: long,
+	/// Gametime in ticks when the next spawning attempt happens
+	next_mob_spawns_at?: long,
+	// Total amount of mobs spawned in this battle
+	total_mobs_spawned?: int,
+	/// The next entity to spawn, also controlls the entity displayed in the trial spawner
+	spawn_data?: SpawnerEntry,
+	/// The loot table selected to be used to determine the reward
+	ejecting_loot_table?: #[id="loot_table"] string
 }
 
 dispatch minecraft:block[spawner] to minecraft:block_entity[spawner]
 
 dispatch minecraft:block[trial_spawner] to minecraft:block_entity[trial_spawner]
 
-struct NormalConfig {
-	/// Number of entities that will be placed.
-	simultaneous_mobs: float,
-	/// Number of entities that will be added per player.
-	simultaneous_mobs_added_per_player: float,
+struct TrialSpawnerConfig {
+	/// Maximum distance from the spawner that en entity can spawn
+	spawn_range?: int @ 1..128,
+	/// Total amount of entities that are spawned during one activation, when 1 player is nearby
+	total_mobs?: float,
+	/// Number added to `total_mobs` for each additional player
+	total_mobs_added_per_player?: float,
+	/// Number of entities that that can be present at once, when 1 player is nearby
+	simultaneous_mobs?: float,
+	/// Number added to `simultaneous_mobs` for each additional player
+	simultaneous_mobs_added_per_player?: float,
 	/// Ticks until the next spawn.
-	ticks_between_spawn: int,
+	ticks_between_spawn?: int,
 	/// Entities that can be placed.
-	spawn_potentials: [SpawnPotential],
+	spawn_potentials?: [SpawnPotential],
+	/// Loot tables to use when ejecting loot. Chooses one loot table based on weight and then uses it as often as there are players nearby.
+	loot_tables_to_eject?: [struct {
+		data: #[id="loot_table"] string,
+		weight: int @ 1..,
+	}],
+	/// Loot table to use when summoning ominous item spawners. One roll seeded based on rough location to determine all items used during the battle.
+	items_to_drop_when_ominous?: #[id="loot_table"] string
 }
 
 // TODO: check this, probably wrong between 1.18 and 1.20.5
