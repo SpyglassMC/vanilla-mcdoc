@@ -88,5 +88,5 @@ dispatch minecraft:entity[tnt_minecart] to struct TntMinecart {
 	/// Ticks until it explodes.
 	TNTFuse?: int,
 	#[since="1.21.2"]
-	explosion_power?: float @0..128
+	explosion_power?: float @ 0..128
 }

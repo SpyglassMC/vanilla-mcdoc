@@ -11,5 +11,5 @@ dispatch minecraft:entity[tnt] to struct Tnt {
 	#[since="1.20.3"]
 	block_state?: BlockState,
 	#[since="1.21.2"]
-	explosion_power?: float@0..128,
+	explosion_power?: float @ 0..128,
 }
