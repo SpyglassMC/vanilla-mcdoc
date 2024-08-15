@@ -24,6 +24,7 @@ dispatch minecraft:placement_modifier[block_predicate_filter] to struct BlockPre
 	predicate: BlockPredicate,
 }
 
+#[until="1.21.2"]
 dispatch minecraft:placement_modifier[carving_mask] to struct CarvingMaskModifier {
 	step: CarveStep,
 }
