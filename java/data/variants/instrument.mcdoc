@@ -1,0 +1,12 @@
+use ::java::server::util::text::Text
+use ::java::data::util::SoundEventRef
+
+#[since="1.21.2"]
+dispatch minecraft:resource["instrument"] to struct {
+	sound_event: SoundEventRef,
+	/// Maximum range in blocks that the sound can be heard
+	range: float @0<..,
+	/// Duration of use in seconds, used as item cooldown
+	use_duration: float @0<..,
+	description: Text
+}

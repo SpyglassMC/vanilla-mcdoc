@@ -51,6 +51,12 @@ dispatch minecraft:data_component[custom_model_data] to int
 /// Damage that an item has. Only used for tools, armor, etc.
 dispatch minecraft:data_component[damage] to int @ 0..
 
+/// Makes an item enchantable in an enchanting table
+#[since="1.21.2"]
+dispatch minecraft:data_component[enchantable] to struct Enchantable{
+	value: int @ 1..
+}
+
 /// If set, changes enchantment glint behavior. When true, this item will display a glint, even without enchantments. When false, this item will not display a glint, even with enchantments.
 dispatch minecraft:data_component[enchantment_glint_override] to boolean
 
@@ -167,6 +173,12 @@ dispatch minecraft:data_component[rarity] to Rarity
 /// Number of experience levels to add to the base level cost when repairing, combining, or renaming this item with an anvil.
 dispatch minecraft:data_component[repair_cost] to int @ 0..
 
+/// Makes an item enchantable in an enchanting table
+#[since="1.21.2"]
+dispatch minecraft:data_component[repairable] to struct Repairable{
+	items: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
+}
+
 struct ToolRule {
 	blocks: (#[id="block"] string | [#[id="block"] string] | #[id(registry="block")] string),
 	/// Overrides the default mining speed.
@@ -203,6 +215,8 @@ enum(string) ItemBaseComponents {
 	CustomData = "custom_data",
 	CustomModelData = "custom_model_data",
 	Damage = "damage",
+	#[since="1.21.2"]
+	Enchantable = "enchantable",
 	EnchantmentGlintOverride = "enchantment_glint_override",
 	Enchantments = "enchantments",
 	FireResistant = "fire_resistant",
@@ -217,6 +231,8 @@ enum(string) ItemBaseComponents {
 	MaxStackSize = "max_stack_size",
 	Rarity = "rarity",
 	RepairCost = "repair_cost",
+	#[since="1.21.2"]
+	Repairable = "repairable",
 	Tool = "tool",
 	Trim = "trim",
 	Unbreakable = "unbreakable",
