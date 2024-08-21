@@ -862,7 +862,7 @@
    "mcdoc.java.server.world.item.mod.Trim.material": "Used by the `trim_type` model overrides predicate via the material `item_model_index` and armor rendering for the material's `asset_name` for the `armor_trims` atlas.",
    "mcdoc.java.server.world.item.mod.Trim.pattern": "Used by armor rendering for the pattern's `asset_id`.",
    "mcdoc.java.server.world.item.mod.UseCooldown.seconds": "The amount of seconds the cooldown will take place for.",
-   "mcdoc.java.server.world.item.mod.UseCooldown.cooldown_group": "If present, this item will be part of a cooldown group and no longer share cooldowns with its base item type.\nInstead, cooldowns applied to this item will only be shared with any other items that are part of the same cooldown group.",
+   "mcdoc.java.server.world.item.mod.UseCooldown.cooldownGroup": "If present, this item will be part of a cooldown group and no longer share cooldowns with its base item type.\nInstead, cooldowns applied to this item will only be shared with any other items that are part of the same cooldown group.",
    "mcdoc.java.server.world.item.mod.ItemBase.Damage": "Damage that an item has. Only used for tools, armor, etc.",
    "mcdoc.java.server.world.item.mod.ItemBase.Unbreakable": "Whether the item should be unbreakable.\nOnly used for tools, armor, etc.",
    "mcdoc.java.server.world.item.mod.ItemBase.CanDestroy": "List of the block states that can be destroyed by this item when holding it in adventure mode.",
