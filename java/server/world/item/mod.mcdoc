@@ -274,7 +274,7 @@ dispatch minecraft:data_component[use_cooldown] to struct UseCooldown {
 	seconds: float @ 0<..,
 	/// If present, this item will be part of a cooldown group and no longer share cooldowns with its base item type.
 	/// Instead, cooldowns applied to this item will only be shared with any other items that are part of the same cooldown group.
-	cooldown_group?: #[id="cooldown_group"] string,
+	cooldownGroup?: #[id="cooldown_group"] string,
 }
 
 dispatch minecraft:data_component[use_remainder] to InventoryItem
