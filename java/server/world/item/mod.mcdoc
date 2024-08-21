@@ -1,10 +1,12 @@
 use ::java::data::advancement::predicate::BlockPredicate
+use ::java::data::util::SoundEventRef
 use ::java::server::util::attribute::AttributeName
 use ::java::server::util::attribute::LegacyOperation
 use ::java::server::util::attribute::AttributeOperation
 use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::block_state::BlockState
 use ::java::server::util::effect::MobEffectInstance
+use ::java::server::util::inventory::InventoryItem
 
 struct AttributeModifiers {
 	modifiers: [AttributeModifier],
@@ -26,6 +28,61 @@ dispatch minecraft:data_component[can_break] to (
 	#[canonical] AdventureModePredicate |
 	BlockPredicate |
 )
+
+#[since="1.21.2"]
+dispatch minecraft:data_component[consumable] to struct Consumable {
+	/// The amount of seconds it takes for a player to consume the item. Defaults to 1.6.
+	consume_seconds?: float @ 0..,
+	/// The animation used during consumption of the item. Defaults to "eat".
+	animation?: ItemUseAnimation,
+	/// The sound used during and on completion of the item's consumption.
+	sound?: SoundEventRef,
+	/// Whether consumption particles are emitted while consuming this item. Defaults to true.
+	has_consume_particles?: boolean,
+	/// Side effects which take place as a result of consuming this item.
+	on_consume_effects?: [ConsumeEffect],
+}
+
+enum(string) ItemUseAnimation {
+	None = "none",
+	Eat = "eat",
+	Drink = "drink",
+	Block = "block",
+	Bow = "bow",
+	Spear = "spear",
+	Crossbow = "crossbow",
+	Spyglass = "spyglass",
+	TootHorn = "toot_horn",
+	Brush = "brush",
+}
+
+struct ConsumeEffect {
+	type: #[id="consume_effect_type"] string,
+	...minecraft:consume_effect[[type]],
+}
+
+dispatch minecraft:consume_effect[apply_effects] to struct ApplyEffectsConsumeEffect {
+	/// Status effect instances applied once consumed.
+	effects: [MobEffectInstance],
+	/// Probability that the effects will be applied once consumed.
+	probability?: float @ 0..1,
+}
+
+dispatch minecraft:consume_effect[remove_effects] to struct RemoveEffectsConsumeEffect {
+	effects: (#[id(registry="mob_effect",tags="allowed")] string | [#[id="mob_effect"] string]),
+}
+
+dispatch minecraft:consume_effect[clear_all_effects] to struct {}
+
+dispatch minecraft:consume_effect[teleport_randomly] to struct TeleportRandomlyConsumeEffect {
+	/// The diameter that the consumer will be teleported within. Defaults to 16.
+	diameter?: float @ 1..,
+}
+
+dispatch minecraft:consume_effect[play_sound] to struct PlaySoundConsumeEffect {
+	/// The sound played once consumed.
+	sound: SoundEventRef,
+}
 
 dispatch minecraft:data_component[custom_name] to (#[text_component] string)
 
@@ -96,11 +153,14 @@ struct Food {
 	/// Whether the item can be eaten when the player's food points/haunches are full. Defaults to `false`
 	can_always_eat?: boolean,
 	/// Seconds it takes to eat the item. Defaults to `1.6`
+	#[until="1.21.2"]
 	eat_seconds?: float @ 0..,
 	/// Applied when eaten.
+	#[until="1.21.2"]
 	effects?: [FoodEffect],
 	/// Works similarly to a milk bucket.
 	#[since="1.21"]
+	#[until="1.21.2"]
 	using_converts_to?: AnyItem,
 }
 
@@ -208,6 +268,16 @@ dispatch minecraft:data_component[trim] to struct Trim {
 dispatch minecraft:data_component[unbreakable] to struct Unbreakable {
 	show_in_tooltip?: boolean,
 }
+
+dispatch minecraft:data_component[use_cooldown] to struct UseCooldown {
+	/// The amount of seconds the cooldown will take place for.
+	seconds: float @ 0<..,
+	/// If present, this item will be part of a cooldown group and no longer share cooldowns with its base item type.
+	/// Instead, cooldowns applied to this item will only be shared with any other items that are part of the same cooldown group.
+	cooldown_group?: #[id="cooldown_group"] string,
+}
+
+dispatch minecraft:data_component[use_remainder] to InventoryItem
 
 enum(string) ItemBaseComponents {
 	AttributeModifiers = "attribute_modifiers",
