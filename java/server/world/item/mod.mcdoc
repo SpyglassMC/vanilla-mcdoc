@@ -31,15 +31,15 @@ dispatch minecraft:data_component[can_break] to (
 
 #[since="1.21.2"]
 dispatch minecraft:data_component[consumable] to struct Consumable {
-	/// The amount of seconds it takes for a player to consume the item. Defaults to 1.6.
+	/// Time taken for a player to consume the item. Defaults to 1.6.
 	consume_seconds?: float @ 0..,
-	/// The animation used during consumption of the item. Defaults to "eat".
+	/// View model/arms animation used during consumption of the item. Defaults to `eat`.
 	animation?: ItemUseAnimation,
-	/// The sound used during and on completion of the item's consumption.
+	/// Sound played during and on completion of item consumption.
 	sound?: SoundEventRef,
-	/// Whether consumption particles are emitted while consuming this item. Defaults to true.
+	/// Whether the `item` particle is emitted while consuming the item. Defaults to `true`.
 	has_consume_particles?: boolean,
-	/// Side effects which take place as a result of consuming this item.
+	/// Side effects which take place after consuming the item.
 	on_consume_effects?: [ConsumeEffect],
 }
 
@@ -49,9 +49,11 @@ enum(string) ItemUseAnimation {
 	Drink = "drink",
 	Block = "block",
 	Bow = "bow",
+	/// Used for Tridents.
 	Spear = "spear",
 	Crossbow = "crossbow",
 	Spyglass = "spyglass",
+	/// Used for Goat Horns.
 	TootHorn = "toot_horn",
 	Brush = "brush",
 }
@@ -61,26 +63,27 @@ struct ConsumeEffect {
 	...minecraft:consume_effect[[type]],
 }
 
+/// Adding status/mob effects to the player.
 dispatch minecraft:consume_effect[apply_effects] to struct ApplyEffectsConsumeEffect {
-	/// Status effect instances applied once consumed.
 	effects: [MobEffectInstance],
-	/// Probability that the effects will be applied once consumed.
+	/// Chance the effects will be applied once consumed.
 	probability?: float @ 0..1,
 }
 
+/// Removing specific status/mob effect types from the player.
 dispatch minecraft:consume_effect[remove_effects] to struct RemoveEffectsConsumeEffect {
 	effects: (#[id(registry="mob_effect",tags="allowed")] string | [#[id="mob_effect"] string]),
 }
 
+/// Removing all status/mob effects from the player.
 dispatch minecraft:consume_effect[clear_all_effects] to struct {}
 
 dispatch minecraft:consume_effect[teleport_randomly] to struct TeleportRandomlyConsumeEffect {
-	/// The diameter that the consumer will be teleported within. Defaults to 16.
+	/// Defaults to 16.
 	diameter?: float @ 1..,
 }
 
 dispatch minecraft:consume_effect[play_sound] to struct PlaySoundConsumeEffect {
-	/// The sound played once consumed.
 	sound: SoundEventRef,
 }
 
@@ -270,11 +273,12 @@ dispatch minecraft:data_component[unbreakable] to struct Unbreakable {
 }
 
 dispatch minecraft:data_component[use_cooldown] to struct UseCooldown {
-	/// The amount of seconds the cooldown will take place for.
+	/// Time the cooldown will last.
 	seconds: float @ 0<..,
 	/// If present, this item will be part of a cooldown group and no longer share cooldowns with its base item type.
 	/// Instead, cooldowns applied to this item will only be shared with any other items that are part of the same cooldown group.
-	cooldownGroup?: #[id="cooldown_group"] string,
+	/// The camel-cased key is a mojang typo and will be corrected in a future snapshot.
+	cooldownGroup?: #[id(registry="cooldown_group", definition=true)] string,
 }
 
 dispatch minecraft:data_component[use_remainder] to InventoryItem

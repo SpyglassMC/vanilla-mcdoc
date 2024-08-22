@@ -252,8 +252,8 @@ dispatch minecraft:loot_function[set_attributes] to struct SetAttributes {
 }
 
 struct AttributeModifier {
-	/// The attribute type to modify.
-	attribute: string,
+	/// Attribute type to modify.
+	attribute: #[id="attribute"] string,
 	#[until="1.21"]
 	name: string,
 	#[until="1.21"]
