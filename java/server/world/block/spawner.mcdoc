@@ -66,8 +66,6 @@ dispatch minecraft:block[spawner] to minecraft:block_entity[spawner]
 
 dispatch minecraft:block[trial_spawner] to minecraft:block_entity[trial_spawner]
 
-
-
 // TODO: check this, probably wrong between 1.18 and 1.20.5
 struct SpawnPotential {
 	#[until="1.20.5"]

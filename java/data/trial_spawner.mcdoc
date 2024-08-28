@@ -1,6 +1,5 @@
 use ::java::server::world::block::spawner::SpawnPotential
 
-
 struct TrialSpawnerConfig {
 	/// Maximum distance from the spawner that en entity can spawn
 	spawn_range?: int @ 1..128,
