@@ -74,6 +74,7 @@ enum(string) Predicates {
 	Damage = "damage",
 	Damaged = "damaged",
 	Firework = "firework",
+	HoneyLevel = "honey_level",
 	Lefthanded = "lefthanded",
 	Pull = "pull",
 	Pulling = "pulling",
