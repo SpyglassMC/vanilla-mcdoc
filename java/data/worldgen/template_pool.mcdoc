@@ -50,6 +50,13 @@ dispatch minecraft:template_pool_element[
 	...ElementBase,
 	location: #[id="structure"] string,
 	processors: ProcessorListRef,
+	#[since="1.21"]
+	override_liquid_settings: LiquidSettings,
+}
+
+enum(string) LiquidSettings {
+	ApplyWaterlogging = "apply_waterlogging",
+	IgnoreWaterlogging = "ignore_waterlogging",
 }
 
 dispatch minecraft:template_pool_element[list_pool_element] to struct ListElement {
