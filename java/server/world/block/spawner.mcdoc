@@ -59,7 +59,7 @@ dispatch minecraft:block[spawner] to minecraft:block_entity[spawner]
 
 dispatch minecraft:block[trial_spawner] to minecraft:block_entity[trial_spawner]
 
-struct TrialSpawnerConfig {
+dispatch minecraft:resource[trial_spawner] to struct TrialSpawnerConfig {
 	/// Maximum distance from the spawner that en entity can spawn
 	spawn_range?: int @ 1..128,
 	/// Total amount of entities that are spawned during one activation, when 1 player is nearby
