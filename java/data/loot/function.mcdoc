@@ -22,7 +22,7 @@ use ::java::server::world::item::CustomData
 dispatch minecraft:loot_function[apply_bonus] to struct ApplyBonus {
 	enchantment: #[id="enchantment"] string,
 	formula: #[id="apply_bonus_formula"] string,
-	parameters: minecraft:apply_bonus_formula[[formula]],
+	...minecraft:apply_bonus_formula[[formula]],
 }
 
 /// `Count * (max(0; random(0..Level + 2) - 1)+1)`
@@ -30,13 +30,17 @@ dispatch minecraft:apply_bonus_formula[ore_drops] to struct {}
 
 /// `level * bonusMultiplier`
 dispatch minecraft:apply_bonus_formula[uniform_bonus_count] to struct UniformBonusFormula {
-	bonusMultiplier: int,
+	parameters: struct {
+		bonusMultiplier: int,
+	},	
 }
 
 /// `n=level + extra`, `p=probability`
 dispatch minecraft:apply_bonus_formula[binomial_with_bonus_count] to struct BinomialWithBonusCountFormula {
-	extra: int @ 0..,
-	probability: float @ 0..1,
+	parameters: struct {
+		extra: int,
+		probability: float @ 0..1,
+	},
 }
 
 /// Copies `CustomName` tag from an entity or block entity into the item's `display.Name` tag.

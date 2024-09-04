@@ -4,6 +4,7 @@ use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::firework::FireworkShape
 use ::java::server::util::text::Text
 use ::java::server::util::Filterable
+use ::java::server::util::color::ColorString
 use ::java::server::world::item::DataComponentPredicate
 use ::java::server::world::item::CustomData
 use super::super::util::MinMaxBounds
@@ -254,13 +255,15 @@ enum(string) SpecificType {
 	Frog = "frog",
 	Lightning = "lightning",
 	Player = "player",
-	Slime = "slime",
-	#[since="1.20.5"]
-	Wolf = "wolf",
 	#[since="1.20.5"]
 	Painting = "painting",
 	#[since="1.20.5"]
 	Raider = "raider",
+	#[since="1.21.2"]
+	Sheep = "sheep",
+	Slime = "slime",
+	#[since="1.20.5"]
+	Wolf = "wolf",
 }
 
 dispatch minecraft:entity_sub_predicate[axolotl] to struct AxolotlPredicate {
@@ -328,6 +331,11 @@ dispatch minecraft:entity_sub_predicate[slime] to struct SlimePredicate {
 dispatch minecraft:entity_sub_predicate[raider] to struct RaiderPredicate {
 	has_raid?: boolean,
 	is_captain?: boolean,
+}
+
+dispatch minecraft:entity_sub_predicate[sheep] to struct SheepPredicate {
+	sheared?: boolean,
+	color?: ColorString,
 }
 
 struct DistancePredicate {
