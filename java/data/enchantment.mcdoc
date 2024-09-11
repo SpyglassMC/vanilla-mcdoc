@@ -201,7 +201,7 @@ struct ExplodeEntityEffect {
 	/// If omitted, the default explosion knockback is applied.
 	knockback_multiplier?: LevelBasedValue,
 	/// Relative coordinates to offset the explosion by. Defaults to `[0, 0, 0]`.
-	offset?: [int] @ 3,
+	offset?: [double] @ 3,
 	radius: LevelBasedValue,
 	/// Whether fire is placed within the explosion radius.
 	create_fire?: boolean,
