@@ -52,7 +52,7 @@ dispatch minecraft:template_pool_element[
 	location: #[id="structure"] string,
 	processors: ProcessorListRef,
 	#[since="1.21"]
-	override_liquid_settings: LiquidSettings,
+	override_liquid_settings?: LiquidSettings,
 }
 
 dispatch minecraft:template_pool_element[list_pool_element] to struct ListElement {
