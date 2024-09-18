@@ -39,6 +39,18 @@ dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShape
 	),
 }
 
+#[since="1.21.2"]
+dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTransmute {
+	group?: string,
+	/// Identifier for the category this goes in the recipe book.
+	category?: CraftingBookCategory,
+	/// The ingredient that will transfer its data components to the result item.
+	input: Ingredient,
+	/// An additional ingredient.
+	material: Ingredient,
+	result: #[id="item"] string,
+}
+
 dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
 	group?: string,
 	/// Identifier for the category this goes in the recipe book.
