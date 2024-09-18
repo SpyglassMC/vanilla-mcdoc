@@ -232,10 +232,21 @@ dispatch minecraft:trigger[kill_mob_near_sculk_catalyst] to struct KillMobNearSc
 }
 
 /// Player killed a mob or player using a projectile shot from a crossbow.
+#[until="1.21.2"]
 dispatch minecraft:trigger[killed_by_crossbow] to struct KilledByCrossbow {
 	...TriggerBase,
 	/// How many different types of entities were killed.
 	unique_entity_types?: MinMaxBounds<int>,
+	victims?: [CompositeEntity],
+}
+
+#[since="1.21.2"]
+dispatch minecraft:trigger[killed_by_arrow] to struct KilledByArrow {
+	...TriggerBase,
+	/// How many different types of entities were killed.
+	unique_entity_types?: MinMaxBounds<int>,
+	/// The weapon item that was used to fire the arrow.
+	fired_from_weapon?: ItemPredicate,
 	victims?: [CompositeEntity],
 }
 

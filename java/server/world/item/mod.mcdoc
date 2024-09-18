@@ -112,9 +112,22 @@ dispatch minecraft:data_component[custom_model_data] to int
 /// Damage that an item has. Only used for tools, armor, etc.
 dispatch minecraft:data_component[damage] to int @ 0..
 
+#[since="1.21.2"]
+dispatch minecraft:data_component[damage_resistant] to struct DamageResistant {
+	/// The damage types which the item is resistant to when in entity form.
+	/// Additionally, this also affects whether the equipped item will be damaged when the wearer is hurt by a specified damage type.
+	types: #[id(registry="damage_type",tags="required")] string,
+}
+
+#[since="1.21.2"]
+dispatch minecraft:data_component[death_protection] to struct DeathProtection {
+	/// Effects applied when the item protects the holder.
+	death_effects?: [ConsumeEffect]
+}
+
 /// Makes an item enchantable in an enchanting table
 #[since="1.21.2"]
-dispatch minecraft:data_component[enchantable] to struct Enchantable{
+dispatch minecraft:data_component[enchantable] to struct Enchantable {
 	value: int @ 1..
 }
 
@@ -152,9 +165,14 @@ dispatch minecraft:data_component[equippable] to struct Equippable {
 	allowed_entities?: (#[id(registry="entity_type",tags="allowed")] string | [#[id="entity_type"] string]),
 	/// Whether the item can be equipped by using a dispenser. Defaults to `true`.
 	dispensable?: boolean,
+	/// Whether the item can be equipped by right-clicking. Defaults to `true`.
+	swappable?: boolean,
+	/// Whether the item will be damaged when the wearer is damaged. Defaults to `true`.
+	damage_on_hurt?: boolean,
 }
 
 /// If set, this item will not burn in fire or lava.
+#[until="1.21.2"]
 dispatch minecraft:data_component[fire_resistant] to struct {}
 
 struct FoodEffect {

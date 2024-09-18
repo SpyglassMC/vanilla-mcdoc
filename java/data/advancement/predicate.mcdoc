@@ -260,6 +260,8 @@ enum(string) SpecificType {
 	#[since="1.20.5"]
 	Raider = "raider",
 	#[since="1.21.2"]
+	Salmon = "salmon",
+	#[since="1.21.2"]
 	Sheep = "sheep",
 	Slime = "slime",
 	#[since="1.20.5"]
@@ -334,13 +336,23 @@ dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 	},
 }
 
+dispatch minecraft:entity_sub_predicate[raider] to struct RaiderPredicate {
+	has_raid?: boolean,
+	is_captain?: boolean,
+}
+
 dispatch minecraft:entity_sub_predicate[slime] to struct SlimePredicate {
 	size?: MinMaxBounds<int>,
 }
 
-dispatch minecraft:entity_sub_predicate[raider] to struct RaiderPredicate {
-	has_raid?: boolean,
-	is_captain?: boolean,
+dispatch minecraft:entity_sub_predicate[salmon] to struct SalmonPredicate {
+	variant?: SalmonVariant,
+}
+
+enum(string) SalmonVariant {
+	Small = "small",
+	Medium = "medium",
+	Large = "large",
 }
 
 dispatch minecraft:entity_sub_predicate[sheep] to struct SheepPredicate {

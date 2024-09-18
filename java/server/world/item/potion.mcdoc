@@ -4,6 +4,8 @@ struct PotionContents {
 	potion?: #[id="potion"] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	custom_color?: #[color="composite_rgb"] int,
+	/// If present, is used to generate the item name using the translation key `item.minecraft.<potion_type>.effect.<custom_name>`.
+	custom_name?: string,
 	custom_effects?: [MobEffectInstance],
 }
 
