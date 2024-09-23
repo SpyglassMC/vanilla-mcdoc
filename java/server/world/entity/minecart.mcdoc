@@ -5,7 +5,7 @@ use ::java::server::util::SlottedItem
 
 struct ContainerMinecart {
 	/// Loot table that will populate this minecart.
-	LootTable?: #[id="loot_table"] string,
+	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.
 	LootTableSeed?: long,
 }

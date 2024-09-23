@@ -25,7 +25,7 @@ enum(string) BoatType {
 dispatch minecraft:entity[chest_boat] to struct ChestBoat {
 	...Boat,
 	/// Loot table that will populate this chest boat.
-	LootTable?: #[id="loot_table"] string,
+	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.
 	LootTableSeed?: long,
 	/// Slots from 0 to 26.

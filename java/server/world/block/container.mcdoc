@@ -7,7 +7,7 @@ struct ContainerBase {
 	/// Source is flattened to plain text and has formatting removed before the check.
 	Lock?: string,
 	/// Loot table that will populate this container.
-	LootTable?: #[id="loot_table"] string,
+	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.
 	LootTableSeed?: long,
 }
