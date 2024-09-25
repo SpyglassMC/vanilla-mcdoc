@@ -1,4 +1,5 @@
 use ::java::server::util::InventoryItem
+use ::java::data::advancement::predicate::ItemPredicate
 
 struct ContainerSlot {
 	/// The slot ID of the container.
@@ -14,7 +15,10 @@ dispatch minecraft:data_component[container_loot] to struct ContainerLoot {
 	seed?: long,
 }
 
-dispatch minecraft:data_component[lock] to string
+dispatch minecraft:data_component[lock] to (
+	#[until="1.21.2"] string |
+	#[since="1.21.2"] ItemPredicate |
+)
 
 dispatch minecraft:item_component[
 	barrel,

@@ -3,9 +3,7 @@ use ::java::server::util::inventory::SlottedItem
 struct ContainerBase {
 	...super::BlockEntity,
 	CustomName?: #[text_component] string,
-	/// Name of the item that a player has to be holding to open this container.
-	/// Source is flattened to plain text and has formatting removed before the check.
-	Lock?: string,
+	...super::Lockable,
 	/// Loot table that will populate this container.
 	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.

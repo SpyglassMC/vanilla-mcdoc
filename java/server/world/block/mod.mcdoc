@@ -1,4 +1,5 @@
 use ::java::server::world::item::DataComponentPatch
+use ::java::data::advancement::predicate::ItemPredicate
 
 struct BlockEntity {
 	id?: #[id="block_entity_type"] string,
@@ -19,3 +20,13 @@ dispatch minecraft:block[
 	ender_chest,
 	end_portal,
 ] to BlockEntity
+
+struct Lockable {
+	/// Name of the item that a player has to be holding to open this container.
+	/// Source is flattened to plain text and has formatting removed before the check.
+	#[until="1.21.2"]
+	Lock?: string,
+	/// Item predicate testing the item that a player has to be holding to open this container.
+	#[since="1.21.2"]
+	lock?: ItemPredicate,
+}

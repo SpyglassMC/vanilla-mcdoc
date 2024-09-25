@@ -3,9 +3,8 @@ use ::java::server::util::EffectId
 
 dispatch minecraft:block_entity[beacon] to struct Beacon {
 	...super::BlockEntity,
-	/// Name of the item that a player has to be holding to open this beacon.
-	/// Source is flattened to plain text and has formatting removed before the check.
-	Lock?: string,
+	CustomName?: #[text_component] string,
+	...super::Lockable,
 	/// Number of levels from the pyramid.
 	Levels?: int,
 	/// Potion effect.

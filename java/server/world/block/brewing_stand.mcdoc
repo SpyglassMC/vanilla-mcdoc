@@ -3,9 +3,7 @@ use ::java::server::util::inventory::SlottedItem
 dispatch minecraft:block_entity[brewing_stand] to struct BrewingStand {
 	...super::BlockEntity,
 	CustomName?: #[text_component] string,
-	/// Name of the item that a player has to be holding to open this brewing stand.
-	/// Source is flattened to plain text and has formatting removed before the check.
-	Lock?: string,
+	...super::Lockable,
 	/// * 0: left brewing slot
 	/// * 1: middle brewing slot
 	/// * 2: right brewing slot
