@@ -237,6 +237,8 @@
    "mcdoc.java.data.advancement.predicate.AxolotlVariant.Blue": "The rare variant.",
    "mcdoc.java.data.advancement.predicate.PlayerPredicate.level": "Experience/XP level.",
    "mcdoc.java.data.advancement.predicate.PlayerPredicate.input": "Checks the movement keys of the player.",
+   "mcdoc.java.data.advancement.predicate.RabbitVariant.Evil": "Killer rabbit",
+   "mcdoc.java.data.advancement.predicate.TropicalFishPredicate.variant": "The pattern of the tropical fish.",
    "mcdoc.java.data.advancement.predicate.DamagePredicate.dealt": "Amount of incoming damage before damage reduction.",
    "mcdoc.java.data.advancement.predicate.DamagePredicate.taken": "Amount of incoming damage after damage reduction.",
    "mcdoc.java.data.advancement.predicate.DamagePredicate.blocked": "Whether the damage was successfully blocked.",
