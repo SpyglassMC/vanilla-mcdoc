@@ -42,10 +42,10 @@ dispatch minecraft:entity[parrot] to struct Parrot {
 }
 
 enum(int) ParrotVariant {
-	Red = 0,
+	RedBlue = 0,
 	Blue = 1,
 	Green = 2,
-	Cyan = 3,
+	YellowBlue = 3,
 	Gray = 4,
 }
 

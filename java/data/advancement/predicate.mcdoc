@@ -7,6 +7,9 @@ use ::java::server::util::Filterable
 use ::java::server::util::color::ColorString
 use ::java::server::world::item::DataComponentPredicate
 use ::java::server::world::item::CustomData
+use ::java::server::world::entity::boat::BoatType
+use ::java::server::world::entity::mob::breedable::fox::FoxType
+use ::java::server::world::entity::mob::breedable::mooshroom::MooshroomType
 use super::super::util::MinMaxBounds
 
 type ItemPredicate = (
@@ -241,31 +244,33 @@ struct EntityFlagsPredicate {
 }
 
 struct EntitySubPredicate {
-	type: #[id] SpecificType,
+	type: (
+		#[until="1.20.5"] #[id] SpecificType |
+		#[since="1.20.5"] #[id="entity_sub_predicate_type"] string
+	),
 	...minecraft:entity_sub_predicate[[type]],
 }
 
+#[until="1.20.5"]
 enum(string) SpecificType {
-	#[until="1.20.5"]
 	Any = "any",
-	#[since="1.17"]
-	Axolotl = "axolotl",
+	#[since="1.19.3"] Axolotl = "axolotl",
+	#[since="1.19.3"] Boat = "boat", 
 	Cat = "cat",
 	FishingHook = "fishing_hook",
+	#[since="1.19.3"] Fox = "fox",
 	Frog = "frog",
+	#[since="1.19.3"] Horse = "horse",
 	Lightning = "lightning",
+	#[since="1.19.3"] Llama = "llama",
+	#[since="1.19.3"] Mooshroom = "mooshroom",
+	#[since="1.19.3"] Painting = "painting",
+	#[since="1.19.3"] Parrot = "parrot",
 	Player = "player",
-	#[since="1.20.5"]
-	Painting = "painting",
-	#[since="1.20.5"]
-	Raider = "raider",
-	#[since="1.21.2"]
-	Salmon = "salmon",
-	#[since="1.21.2"]
-	Sheep = "sheep",
+	#[since="1.19.3"] Rabbit = "rabbit",
 	Slime = "slime",
-	#[since="1.20.5"]
-	Wolf = "wolf",
+	#[since="1.19.3"] TropicalFish = "tropical_fish",
+	#[since="1.19.3"] Villager = "villager",
 }
 
 dispatch minecraft:entity_sub_predicate[axolotl] to struct AxolotlPredicate {
@@ -281,30 +286,86 @@ enum(string) AxolotlVariant {
 	Blue = "blue",
 }
 
+dispatch minecraft:entity_sub_predicate[boat] to struct BoatPredicate {
+	variant: BoatType,
+}
+
 dispatch minecraft:entity_sub_predicate[cat] to struct CatPredicate {
-	variant?: (#[id(registry="cat_variant",tags="allowed")] string | [#[id="cat_variant"] string]),
-}
-
-#[since="1.20.5"]
-dispatch minecraft:entity_sub_predicate[wolf] to struct WolfPredicate {
-	variant?: (#[id(registry="wolf_variant",tags="allowed")] string | [#[id="wolf_variant"] string]),
-}
-
-dispatch minecraft:entity_sub_predicate[painting] to struct PaintingPredicate {
-	variant?: (#[id(registry="painting_variant",tags="allowed")] string | [#[id="painting_variant"] string]),
+	variant: (
+		#[until="1.20.5"] #[id="cat_variant"] string |
+		#[since="1.20.5"] #[id(registry="cat_variant",tags="allowed")] string |
+		#[since="1.20.5"] [#[id="cat_variant"] string] |
+	),
 }
 
 dispatch minecraft:entity_sub_predicate[fishing_hook] to struct FishingHookPredicate {
 	in_open_water?: boolean,
 }
 
+dispatch minecraft:entity_sub_predicate[fox] to struct FoxPredicate {
+	variant: FoxType,
+}
+
 dispatch minecraft:entity_sub_predicate[frog] to struct FrogPredicate {
-	variant?: (#[id(registry="frog_variant",tags="allowed")] string | [#[id="frog_variant"] string]),
+	variant: (
+		#[until="1.20.5"] #[id="frog_variant"] string |
+		#[since="1.20.5"] #[id(registry="frog_variant",tags="allowed")] string |
+		#[since="1.20.5"] [#[id="frog_variant"] string] |
+	),
+}
+
+dispatch minecraft:entity_sub_predicate[horse] to struct HorsePredicate {
+	variant: HorseVariant,
+}
+
+enum(string) HorseVariant {
+    White = "white",
+    Creamy = "creamy",
+    Chestnut = "chestnut",
+    Brown = "brown",
+    Black = "black",
+    Gray = "gray",
+    DarkBrown = "dark_brown",
 }
 
 dispatch minecraft:entity_sub_predicate[lightning] to struct LightningBoltPredicate {
 	blocks_set_on_fire?: MinMaxBounds<int>,
 	entity_struck?: EntityPredicate,
+}
+
+dispatch minecraft:entity_sub_predicate[llama] to struct LlamaPredicate {
+	variant: LlamaVariant,
+}
+
+enum(string) LlamaVariant {
+	Creamy = "creamy",
+	White = "white",
+	Brown = "brown",
+	Gray = "gray",
+}
+
+dispatch minecraft:entity_sub_predicate[mooshroom] to struct MooshroomPredicate {
+	variant: MooshroomType,
+}
+
+dispatch minecraft:entity_sub_predicate[painting] to struct PaintingPredicate {
+	variant: (
+		#[until="1.20.5"] #[id="painting_variant"] string |
+		#[since="1.20.5"] #[id(registry="painting_variant",tags="allowed")] string |
+		#[since="1.20.5"] [#[id="painting_variant"] string] |
+	),
+}
+
+dispatch minecraft:entity_sub_predicate[parrot] to struct ParrotPredicate {
+	variant: ParrotVariant,
+}
+
+enum(string) ParrotVariant {
+	RedBlue = "red_blue",
+	Blue = "blue",
+	Green = "green",
+	YellowBlue = "yellow_blue",
+	Gray = "gray",
 }
 
 dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
@@ -336,6 +397,21 @@ dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 	},
 }
 
+dispatch minecraft:entity_sub_predicate[rabbit] to struct RabbitPredicate {
+	variant: string,
+}
+
+enum(string) RabbitVariant {
+	Brown = "brown",
+	White = "white",
+	Black = "black",
+	WhiteSplotched = "white_splotched",
+	Gold = "gold",
+	Salt = "salt",
+	/// Killer rabbit
+	Evil = "evil",
+}
+
 dispatch minecraft:entity_sub_predicate[raider] to struct RaiderPredicate {
 	has_raid?: boolean,
 	is_captain?: boolean,
@@ -358,6 +434,34 @@ enum(string) SalmonVariant {
 dispatch minecraft:entity_sub_predicate[sheep] to struct SheepPredicate {
 	sheared?: boolean,
 	color?: ColorString,
+}
+
+dispatch minecraft:entity_sub_predicate[tropical_fish] to struct TropicalFishPredicate {
+	/// The pattern of the tropical fish.
+	variant: TropicalFishPattern,
+}
+
+enum(string) TropicalFishPattern {
+	Kob = "kob",
+	Sunstreak = "sunstreak",
+	Snooper = "snooper",
+	Dasher = "dasher",
+	Brinely = "brinely",
+	Spotty = "spotty",
+	Flopper = "flopper",
+	Stripey = "stripey",
+	Glitter = "glitter",
+	Blockfish = "blockfish",
+	Betty = "betty",
+	Clayfish = "clayfish",
+}
+
+dispatch minecraft:entity_sub_predicate[villager] to struct VillagerPredicate {
+	variant: #[id="villager_type"] string,
+}
+
+dispatch minecraft:entity_sub_predicate[wolf] to struct WolfPredicate {
+	variant: (#[id(registry="wolf_variant",tags="allowed")] string | [#[id="wolf_variant"] string]),
 }
 
 struct DistancePredicate {

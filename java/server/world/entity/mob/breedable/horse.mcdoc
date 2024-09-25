@@ -25,7 +25,17 @@ dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 
 dispatch minecraft:entity[horse] to struct Horse {
 	...HorseBase,
-	Variant?: int, // TODO
+	Variant?: HorseVariant,
+}
+
+enum(int) HorseVariant {
+    White = 0,
+    Creamy = 1,
+    Chestnut = 2,
+    Brown = 3,
+    Black = 4,
+    Gray = 5,
+    DarkBrown = 6,
 }
 
 dispatch minecraft:entity[donkey, mule] to struct ChestedHorse {
