@@ -1,5 +1,8 @@
 use ::java::server::world::item::ItemStack
 
+/// @deprecated
+type InventoryItem = ItemStack
+
 type SlottedItem<T> = struct {
 	...ItemStack,
 	/// Inventory slot the item is in

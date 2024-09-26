@@ -471,6 +471,9 @@ struct SingleItem {
 	tag?: minecraft:item[[id]],
 }
 
+/// @deprecated
+type AnyItem = SingleItem
+
 type ItemStack = struct {
 	...SingleItem,
 	/// Number of items in the stack
