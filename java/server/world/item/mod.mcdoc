@@ -196,7 +196,7 @@ struct Food {
 	/// Works similarly to a milk bucket.
 	#[since="1.21"]
 	#[until="1.21.2"]
-	using_converts_to?: AnyItem,
+	using_converts_to?: SingleItem,
 }
 
 /// If set, this item is considered as a food, and can be eaten.
@@ -393,24 +393,6 @@ struct ItemBase {
 
 dispatch minecraft:item[%unknown] to ItemBase
 
-struct AnyItem {
-	/// ID of the item.
-	id: #[id="item"] string,
-	#[since="1.20.5"]
-	components?: DataComponentPatch<minecraft:item_component[[id]]>,
-	#[until="1.20.5"]
-	tag?: minecraft:item[[id]],
-}
-
-type DataComponentPatch<T> = struct {
-	[#[id(registry="data_component_type", recommended=T)] string]: minecraft:data_component[[%key]],
-	[#[id(registry="data_component_type", recommended=T, prefix="!")] string]: struct {},
-}
-
-struct DataComponentPredicate {
-	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
-}
-
 /// An individual enchantment, with ID and level.
 struct Enchantment {
 	/// Which enchantment is being described.
@@ -471,8 +453,26 @@ struct Display {
 	Lore?: [#[text_component] string],
 }
 
+type DataComponentPatch<T> = struct {
+	[#[id(registry="data_component_type", recommended=T)] string]: minecraft:data_component[[%key]],
+	[#[id(registry="data_component_type", recommended=T, prefix="!")] string]: struct {},
+}
+
+struct DataComponentPredicate {
+	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
+}
+
+struct SingleItem {
+	/// ID of the item.
+	id: #[id="item"] string, // TODO: exclude air in 1.20.5+
+	#[since="1.20.5"]
+	components?: DataComponentPatch<minecraft:item_component[[id]]>,
+	#[until="1.20.5"]
+	tag?: minecraft:item[[id]],
+}
+
 type ItemStack = struct {
-	...AnyItem,
+	...SingleItem,
 	/// Number of items in the stack
 	#[since="1.20.5"]
 	count?: int @ 1..99,

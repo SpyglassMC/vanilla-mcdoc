@@ -1,5 +1,5 @@
 use ::java::server::world::item::ItemStack
-use ::java::server::world::item::AnyItem
+use ::java::server::world::item::SingleItem
 
 dispatch minecraft:resource[recipe] to struct Recipe {
 	type: #[id="recipe_serializer"] string,
@@ -58,7 +58,7 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 	ingredient: Ingredient,
 	result: (
 		#[until="1.20.5"] #[id="item"] string |
-		#[since="1.20.5"] AnyItem |
+		#[since="1.20.5"] SingleItem |
 	),
 	experience?: float,
 	cookingtime?: int,
