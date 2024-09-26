@@ -1,4 +1,4 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 dispatch minecraft:entity[item_frame] to struct ItemFrame {
 	...super::EntityBase,
@@ -7,7 +7,7 @@ dispatch minecraft:entity[item_frame] to struct ItemFrame {
 	TileZ?: int,
 	/// Direction it is facing.
 	Facing?: Facing,
-	Item?: InventoryItem,
+	Item?: ItemStack,
 	/// Chance the item has to drop.
 	ItemDropChance?: float,
 	/// Rotation of the item.

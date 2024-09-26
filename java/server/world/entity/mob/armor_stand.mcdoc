@@ -1,4 +1,4 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 	...super::MobBase,

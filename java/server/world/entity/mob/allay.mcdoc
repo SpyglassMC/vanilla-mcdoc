@@ -1,4 +1,4 @@
-use ::java::server::util::InventoryItem
+use ::java::server::world::item::ItemStack
 use ::java::server::util::game_event::VibrationListener
 
 #[since="1.19"]
@@ -10,7 +10,7 @@ dispatch minecraft:entity[allay] to struct Allay {
 	DuplicationCooldown?: int,
 	/// Items it has picked up. Note that the item given by the player is in
 	/// the allay's `HandItems[0]` tag, not here.
-	Inventory?: [InventoryItem] @ 1,
+	Inventory?: [ItemStack] @ 1,
 	/// Vibration game event listener.
 	listener?: VibrationListener,
 }

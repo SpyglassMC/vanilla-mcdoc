@@ -1,4 +1,4 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 dispatch minecraft:entity[firework_rocket] to struct FireWorkRocket {
 	...super::EntityBase,
@@ -8,5 +8,5 @@ dispatch minecraft:entity[firework_rocket] to struct FireWorkRocket {
 	LifeTime?: int,
 	/// Whether it should move at an angle.
 	ShotAtAngle?: boolean,
-	FireworksItem?: InventoryItem,
+	FireworksItem?: ItemStack,
 }

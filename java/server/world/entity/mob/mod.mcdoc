@@ -1,7 +1,7 @@
 use ::java::server::util::attribute::AttributeName
 use ::java::server::util::attribute::LegacyOperation
 use ::java::server::util::attribute::AttributeOperation
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 use ::java::server::util::effect::MobEffectInstance
 use ::java::server::util::attribute::AttributeSlot
 
@@ -46,16 +46,16 @@ struct LivingEntity {
 struct MobBase {
 	...LivingEntity,
 	/// [main hand, offhand]
-	HandItems?: [(InventoryItem | struct {})] @ 2,
+	HandItems?: [(ItemStack | struct {})] @ 2,
 	/// [feet, legs, body, head]
-	ArmorItems?: [(InventoryItem | struct {})] @ 4,
+	ArmorItems?: [(ItemStack | struct {})] @ 4,
 	/// Chance to drop the items it is holding, in [main hand, offhand].
 	HandDropChances?: [float] @ 2,
 	/// Chance to drop the items it is wearing, in [feet, legs, body, head].
 	ArmorDropChances?: [float] @ 4,
 	/// Used for wolf armor & llama carpet decoration.
 	#[since="1.20.5"]
-	body_armor_item?: InventoryItem,
+	body_armor_item?: ItemStack,
 	/// Chance to drop the item it is wearing.
 	#[since="1.20.5"]
 	body_armor_drop_chance?: float,

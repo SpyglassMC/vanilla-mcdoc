@@ -1,4 +1,4 @@
-use ::java::server::util::InventoryItem
+use ::java::server::world::item::ItemStack
 
 dispatch minecraft:entity[witch] to struct RaiderBase {
 	...super::MobBase,
@@ -29,7 +29,7 @@ struct PatrolTarget {
 
 dispatch minecraft:entity[pillager] to struct Pillager {
 	...RaiderBase,
-	Inventory?: [InventoryItem] @ 0..5,
+	Inventory?: [ItemStack] @ 0..5,
 }
 
 dispatch minecraft:entity[ravager] to struct Ravager {

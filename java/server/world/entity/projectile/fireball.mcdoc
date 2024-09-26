@@ -1,5 +1,5 @@
 use super::ProjectileBase
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 dispatch minecraft:entity[breeze_wind_charge] to struct AcceleratingProjectileBase {
 	...ProjectileBase,
@@ -27,7 +27,7 @@ dispatch minecraft:entity[wither_skull] to struct WitherSkull {
 dispatch minecraft:entity[small_fireball] to struct FireballBase {
 	...DespawnableProjectileBase,
 	/// Item it should render as.
-	Item?: InventoryItem,
+	Item?: ItemStack,
 }
 
 dispatch minecraft:entity[fireball] to struct LargeFireball {

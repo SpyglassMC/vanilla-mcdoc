@@ -1,4 +1,4 @@
-use ::java::server::util::InventoryItem
+use ::java::server::world::item::ItemStack
 
 #[since="1.19.4"]
 dispatch minecraft:block_entity[decorated_pot] to struct DecoratedPot {
@@ -12,7 +12,7 @@ dispatch minecraft:block_entity[decorated_pot] to struct DecoratedPot {
 	#[since="1.20.3"]
 	LootTableSeed?: long,
 	#[since="1.20.3"]
-	item?: InventoryItem,
+	item?: ItemStack,
 }
 
 dispatch minecraft:block[decorated_pot] to minecraft:block_entity[decorated_pot]

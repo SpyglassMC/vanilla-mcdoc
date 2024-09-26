@@ -1,6 +1,6 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
-dispatch minecraft:data_component[bundle_contents] to [InventoryItem]
+dispatch minecraft:data_component[bundle_contents] to [ItemStack]
 
 dispatch minecraft:item_component[bundle] to (
 	super::ItemBaseComponents |

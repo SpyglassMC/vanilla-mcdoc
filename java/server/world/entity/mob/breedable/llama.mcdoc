@@ -1,4 +1,4 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 use ::java::server::util::inventory::SlottedItem
 
 dispatch minecraft:entity[llama] to struct Llama {
@@ -21,7 +21,7 @@ dispatch minecraft:entity[llama] to struct Llama {
 	Owner?: int[] @ 4,
 	/// Carpet decoration on its back.
 	#[until="1.20.5"]
-	DecorItem?: InventoryItem,
+	DecorItem?: ItemStack,
 	/// Whether it has a chest.
 	ChestedHorse?: boolean,
 	/// List of slots, scales with `Strength`.

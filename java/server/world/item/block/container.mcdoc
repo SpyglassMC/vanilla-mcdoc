@@ -1,11 +1,11 @@
-use ::java::server::util::InventoryItem
+use ::java::server::world::item::ItemStack
 use ::java::data::advancement::predicate::ItemPredicate
 
 struct ContainerSlot {
 	/// The slot ID of the container.
 	slot: int @ 0..255,
 	/// The item stack in this container slot.
-	item: InventoryItem,
+	item: ItemStack,
 }
 
 dispatch minecraft:data_component[container] to [ContainerSlot] @ ..256

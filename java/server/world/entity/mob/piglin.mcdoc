@@ -1,4 +1,4 @@
-use ::java::server::util::InventoryItem
+use ::java::server::world::item::ItemStack
 use ::java::server::util::FlagMemory
 use ::java::server::util::TimedFlagMemory
 use ::java::server::util::TimedEntityMemory
@@ -29,7 +29,7 @@ dispatch minecraft:entity[piglin] to struct Piglin {
 	IsBaby?: boolean,
 	/// Whether it does not hunt hoglins.
 	CannotHunt?: boolean,
-	Inventory?: [InventoryItem] @ 0..8,
+	Inventory?: [ItemStack] @ 0..8,
 }
 
 dispatch minecraft:entity_memory[piglin] to (

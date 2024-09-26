@@ -1,5 +1,5 @@
 use ::java::server::util::text::Text
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 dispatch minecraft:resource[advancement] to struct Advancement {
 	/// If present, advancement will be visible in the advancement tabs.
@@ -25,7 +25,7 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 struct AdvancementDisplay {
 	icon: (
 		#[until="1.20.5"] AdvancementIcon |
-		#[since="1.20.5"] InventoryItem |
+		#[since="1.20.5"] ItemStack |
 	),
 	title: Text,
 	description: Text,

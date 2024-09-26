@@ -1,17 +1,7 @@
-use ::java::server::world::item::AnyItem
-
-type InventoryItem = struct {
-	...AnyItem,
-	/// Number of items in the stack
-	#[since="1.20.5"]
-	count?: int @ 1..99,
-	/// Number of items in the stack
-	#[until="1.20.5"]
-	Count?: byte,
-}
+use ::java::server::world::item::ItemStack
 
 type SlottedItem<T> = struct {
-	...InventoryItem,
+	...ItemStack,
 	/// Inventory slot the item is in
 	Slot?: T,
 }

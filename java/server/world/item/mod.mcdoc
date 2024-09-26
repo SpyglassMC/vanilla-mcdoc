@@ -6,7 +6,6 @@ use ::java::server::util::attribute::AttributeOperation
 use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::block_state::BlockState
 use ::java::server::util::effect::MobEffectInstance
-use ::java::server::util::inventory::InventoryItem
 use ::java::server::util::inventory::EquipmentSlot
 
 struct AttributeModifiers {
@@ -319,7 +318,7 @@ dispatch minecraft:data_component[use_cooldown] to struct UseCooldown {
 	cooldown_group?: #[id(registry="cooldown_group", definition=true)] string,
 }
 
-dispatch minecraft:data_component[use_remainder] to InventoryItem
+dispatch minecraft:data_component[use_remainder] to ItemStack
 
 enum(string) ItemBaseComponents {
 	AttributeModifiers = "attribute_modifiers",
@@ -470,4 +469,14 @@ struct Display {
 	Name?: #[text_component] string,
 	/// A list of JSON text components, each element being a lore line.
 	Lore?: [#[text_component] string],
+}
+
+type ItemStack = struct {
+	...AnyItem,
+	/// Number of items in the stack
+	#[since="1.20.5"]
+	count?: int @ 1..99,
+	/// Number of items in the stack
+	#[until="1.20.5"]
+	Count?: byte,
 }

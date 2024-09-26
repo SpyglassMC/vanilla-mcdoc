@@ -1,4 +1,4 @@
-use ::java::server::util::InventoryItem
+use ::java::server::world::item::ItemStack
 
 dispatch minecraft:entity[item] to struct Item {
 	...super::EntityBase,
@@ -19,7 +19,7 @@ dispatch minecraft:entity[item] to struct Item {
 		#[until="1.16"] Uuid |
 		#[since="1.16"] int[] @ 4 |
 	),
-	Item?: InventoryItem,
+	Item?: ItemStack,
 }
 
 struct Uuid {

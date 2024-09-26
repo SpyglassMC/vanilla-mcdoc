@@ -1,4 +1,4 @@
-use super::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 use ::java::server::world::item::DataComponentPatch
 
 type Text = (
@@ -181,7 +181,7 @@ dispatch minecraft:hover_event[show_text] to struct ShowTextHoverEvent {
 
 dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 	#[deprecated="1.16"]
-	value?: #[nbt=InventoryItem] string,
+	value?: #[nbt=ItemStack] string,
 	#[since="1.16"]
 	contents?: struct ItemHoverContent {
 		id: #[id="item"] string,

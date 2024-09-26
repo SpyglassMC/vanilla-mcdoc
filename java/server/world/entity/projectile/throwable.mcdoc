@@ -1,4 +1,4 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 struct Throwable {
 	...super::ProjectileBase,
@@ -30,15 +30,15 @@ dispatch minecraft:entity[egg,ender_pearl,experience_bottle,snowball] to struct 
 	...Throwable,
 	/// Item representation of the projectile.
 	#[since="1.16"]
-	Item?: InventoryItem,
+	Item?: ItemStack,
 }
 
 dispatch minecraft:entity[potion] to struct Potion {
 	...Throwable,
 	/// Item representation of the potion.
 	#[until="1.16"]
-	Potion?: InventoryItem,
+	Potion?: ItemStack,
 	/// Item representation of the potion.
 	#[since="1.16"]
-	Item?: InventoryItem,
+	Item?: ItemStack,
 }

@@ -1,5 +1,5 @@
 use ::java::server::util::block_state::BlockState
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 use ::java::assets::model::ItemTransformType
 
 struct DisplayBase {
@@ -115,7 +115,7 @@ dispatch minecraft:entity[block_display] to struct BlockDisplay {
 dispatch minecraft:entity[item_display] to struct ItemDisplay {
 	...DisplayBase,
 	/// Item stack to display.
-	item?: InventoryItem,
+	item?: ItemStack,
 	/// Describes item model transform applied to item (as defined in `display` section in model JSON). Defaults to `fixed`.
 	item_display?: ItemTransformType,
 }

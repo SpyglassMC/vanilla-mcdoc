@@ -1,6 +1,6 @@
 use ::java::server::util::block_state::BlockState
 use ::java::server::util::effect::MobEffectInstance
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 use super::ProjectileBase
 
 struct ArrowBase {
@@ -27,7 +27,7 @@ struct ArrowBase {
 	ShotFromCrossbow?: boolean,
 	/// The item which has shot this arrow.
 	#[since="1.21"]
-	weapon?: InventoryItem,
+	weapon?: ItemStack,
 	/// Number of entities it can pass through.
 	PierceLevel?: byte,
 	/// Sound event to play when it hits something.
@@ -41,7 +41,7 @@ struct ArrowBase {
 	#[until="1.16"]
 	OwnerUUIDLeast?: long,
 	#[since="1.20.3"]
-	item?: InventoryItem,
+	item?: ItemStack,
 }
 
 enum(byte) Pickup {
@@ -76,7 +76,7 @@ dispatch minecraft:entity[spectral_arrow] to struct SpectralArrow {
 dispatch minecraft:entity[trident] to struct Trident {
 	...ArrowBase,
 	#[until="1.20.3"]
-	Trident?: InventoryItem,
+	Trident?: ItemStack,
 	/// Whether it has already damaged an entity.
 	DealtDamage?: boolean,
 }

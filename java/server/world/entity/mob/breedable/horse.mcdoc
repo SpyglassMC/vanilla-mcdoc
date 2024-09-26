@@ -1,4 +1,4 @@
-use ::java::server::util::InventoryItem
+use ::java::server::world::item::ItemStack
 use ::java::server::util::SlottedItem
 use ::java::server::util::FlagMemory
 use ::java::server::util::TickMemory
@@ -20,7 +20,7 @@ dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	/// Player who tamed it.
 	#[since="1.16"] #[uuid]
 	Owner?: int[] @ 4,
-	SaddleItem?: InventoryItem,
+	SaddleItem?: ItemStack,
 }
 
 dispatch minecraft:entity[horse] to struct Horse {

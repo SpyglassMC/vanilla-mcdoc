@@ -1,5 +1,5 @@
 use ::java::server::util::ColorByte
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 struct Tamable {
 	...super::Breedable,
@@ -61,5 +61,5 @@ dispatch minecraft:entity[wolf] to struct Wolf {
 	#[since="1.20.5"]
 	variant?: #[id="wolf_variant"] string,
 	#[since="1.20.5"]
-	body_armor_item?: InventoryItem,
+	body_armor_item?: ItemStack,
 }

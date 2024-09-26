@@ -1,8 +1,8 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 dispatch minecraft:block_entity[jukebox] to struct Jukebox {
 	...super::BlockEntity,
-	RecordItem?: InventoryItem,
+	RecordItem?: ItemStack,
 	TickCount?: long,
 	RecordStartTick?: long,
 	IsPlaying?: boolean,

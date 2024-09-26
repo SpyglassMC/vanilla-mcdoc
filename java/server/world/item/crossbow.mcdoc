@@ -1,7 +1,7 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 /// Crossbow projectiles that are loaded.
-dispatch minecraft:data_component[charged_projectiles] to [InventoryItem]
+dispatch minecraft:data_component[charged_projectiles] to [ItemStack]
 
 /// If set, this projectile item can't be picked up by a player when fired, except in creative mode. Can only be used within charged_projectiles components.
 dispatch minecraft:data_component[intangible_projectile] to struct {}
@@ -11,7 +11,7 @@ dispatch minecraft:data_component[intangible_projectile] to struct {}
 dispatch minecraft:item[crossbow] to struct Crossbow {
 	...super::ItemBase,
 	/// Projectiles that are loaded.
-	ChargedProjectiles?: [InventoryItem] @ 0..3,
+	ChargedProjectiles?: [ItemStack] @ 0..3,
 	/// Whether the crossbow is charged.
 	Charged?: boolean,
 }

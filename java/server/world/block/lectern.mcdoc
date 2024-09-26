@@ -1,8 +1,8 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 dispatch minecraft:block_entity[lectern] to struct Lectern {
 	...super::BlockEntity,
-	Book?: InventoryItem,
+	Book?: ItemStack,
 	/// Current page the book is on.
 	Page?: int,
 }

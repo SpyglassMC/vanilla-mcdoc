@@ -1,7 +1,7 @@
-use ::java::server::util::inventory::InventoryItem
+use ::java::server::world::item::ItemStack
 
 dispatch minecraft:entity[eye_of_ender] to struct EyeOfEnder {
 	...super::EntityBase,
 	/// Item to render as
-	Item?: InventoryItem,
+	Item?: ItemStack,
 }

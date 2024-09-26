@@ -1,5 +1,5 @@
 use ::java::server::util::GlobalPos
-use ::java::server::util::InventoryItem
+use ::java::server::world::item::ItemStack
 use ::java::server::util::SlottedItem
 use super::super::AnyEntity
 
