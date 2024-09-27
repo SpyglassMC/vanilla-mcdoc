@@ -64,7 +64,7 @@ struct AdvancementCriterion {
 		#[until="1.20.3"] #[id] Trigger |
 		#[since="1.20.3"] #[id="trigger_type"] string | 
 	),
-	conditions?: minecraft:trigger[[trigger]],
+	...minecraft:trigger[[trigger]],
 }
 
 struct AdvancementRewards {
