@@ -2,7 +2,7 @@ use ::java::server::util::text::Text
 use ::java::data::util::SoundEventRef
 
 #[since="1.21.2"]
-dispatch minecraft:resource["instrument"] to struct {
+dispatch minecraft:resource["instrument"] to struct Instrument {
 	sound_event: SoundEventRef,
 	/// Maximum range in blocks that the sound can be heard
 	range: float @ 0<..,

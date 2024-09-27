@@ -1,9 +1,12 @@
-use ::java::server::util::BannerPattern
+use ::java::data::variants::banner_pattern::BannerPattern
 use ::java::server::util::ColorString
 
 struct BannerPatternLayer {
 	color: ColorString,
-	pattern: #[id="banner_pattern"] string,
+	pattern: (
+		#[id="banner_pattern"] string |
+		BannerPattern |
+	),
 }
 
 dispatch minecraft:data_component[banner_patterns] to [BannerPatternLayer]

@@ -1,4 +1,6 @@
 use ::java::data::advancement::predicate::BlockPredicate
+use ::java::data::trim::TrimMaterial
+use ::java::data::trim::TrimPattern
 use ::java::data::util::SoundEventRef
 use ::java::server::util::attribute::AttributeName
 use ::java::server::util::attribute::LegacyOperation
@@ -299,10 +301,16 @@ dispatch minecraft:data_component[tooltip_style] to #[id] string
 
 /// Trim to apply to the item & armor when worn.
 dispatch minecraft:data_component[trim] to struct Trim {
-	/// Used by the `trim_type` model overrides predicate via the material `item_model_index` and armor rendering for the material's `asset_name` for the `armor_trims` atlas.
-	material: #[id="trim_material"] string,
-	/// Used by armor rendering for the pattern's `asset_id`.
-	pattern: #[id="trim_pattern"] string,
+	/// The trim material of this item..
+	material: (
+		#[id="trim_material"] string |
+		TrimMaterial |
+	),
+	/// The trim pattern of this item.
+	pattern: (
+		#[id="trim_pattern"] string |
+		TrimPattern |
+	),
 	show_in_tooltip?: boolean,
 }
 

@@ -1,3 +1,5 @@
+use ::java::data::variants::painting::PaintingVariant
+
 dispatch minecraft:entity[painting] to struct Painting {
 	...super::EntityBase,
 	TileX?: int,
@@ -10,7 +12,10 @@ dispatch minecraft:entity[painting] to struct Painting {
 	Motive?: #[id="motive"] string,
 	/// Type of painting.
 	#[since="1.19"]
-	variant?: #[id="painting_variant"] string,
+	variant?: (
+		#[id="painting_variant"] string |
+		#[since="1.21"] PaintingVariant |
+	),
 }
 
 enum(byte) Facing {

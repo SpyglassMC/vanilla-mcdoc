@@ -1,7 +1,7 @@
 use ::java::server::util::text::Text
 
 #[since="1.21"]
-dispatch minecraft:resource[painting_variant] to struct Painting {
+dispatch minecraft:resource[painting_variant] to struct PaintingVariant {
 	asset_id: #[id(registry="texture", path="painting")] string,
 	/// Dimension in blocks.
 	width: int @ 1..16,

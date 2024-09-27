@@ -1,4 +1,9 @@
-dispatch minecraft:data_component[instrument] to #[id="instrument"] string
+use ::java::data::variants::instrument::Instrument
+
+dispatch minecraft:data_component[instrument] to (
+	#[id="instrument"] string |
+	Instrument |
+)
 
 // Pre-1.20.5
 #[since="1.19"]
