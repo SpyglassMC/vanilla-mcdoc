@@ -1,7 +1,9 @@
-dispatch minecraft:data_component[entity_data] to struct EntityData {
+struct EntityData {
 	id: #[id="entity_type"] string,
 	...minecraft:entity[[id]],
 }
+
+dispatch minecraft:data_component[entity_data] to (EntityData | #[nbt=EntityData] string)
 
 // Flattening funny
 // TODO: While we wait for %spawnitem to be implemented we can use the below 250+ line hack :husk:.

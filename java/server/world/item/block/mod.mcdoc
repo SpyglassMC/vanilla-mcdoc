@@ -8,11 +8,13 @@ dispatch minecraft:data_component[can_place_on] to (
 	BlockPredicate |
 )
 
-/// NBT that the block entity that is placed can have.
-dispatch minecraft:data_component[block_entity_data] to struct BlockEntityData {
+struct BlockEntityData {
 	id: #[id="block_entity_type"] string,
 	...minecraft:block_entity[[id]],
 }
+
+/// NBT that the block entity that is placed can have.
+dispatch minecraft:data_component[block_entity_data] to (BlockEntityData | #[nbt=BlockEntityData] string)
 
 /// Blockstate that the placed block will have.
 dispatch minecraft:data_component[block_state] to mcdoc:block_item_states[[%parent.id]]
