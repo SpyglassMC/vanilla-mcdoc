@@ -1178,7 +1178,7 @@
    "mcdoc.java.server.world.item.block.container.ContainerSlot.slot": "The slot ID of the container.",
    "mcdoc.java.server.world.item.block.container.ContainerSlot.item": "The item stack in this container slot.",
    "mcdoc.java.server.world.item.block.mod.data_component.__dispatch.can_place_on": "List of blocks that this block item can be placed on.",
-   "mcdoc.java.server.world.item.block.mod.data_component.__dispatch.BlockEntityData": "NBT that the block entity that is placed can have.",
+   "mcdoc.java.server.world.item.block.mod.data_component.__dispatch.block_entity_data": "NBT that the block entity that is placed can have.",
    "mcdoc.java.server.world.item.block.mod.data_component.__dispatch.block_state": "Blockstate that the placed block will have.",
    "mcdoc.java.server.world.item.block.mod.item.__dispatch.BlockItem": "An item that can be placed as a block",
    "mcdoc.java.server.world.item.block.mod.BlockItem.CanPlaceOn": "List of blockstates that this block item can be placed on.",
