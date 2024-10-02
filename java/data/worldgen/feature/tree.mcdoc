@@ -214,3 +214,15 @@ dispatch minecraft:tree_decorator[leave_vine] to struct LeaveVineTreeDecorator {
 	#[since="1.19"]
 	probability: float @ 0..1,
 }
+
+#[since="1.21.2"]
+dispatch minecraft:tree_decorator[pale_moss] to struct PaleMossTreeDecorator {
+	leaves_probability: float @ 0..1,
+	trunk_probability: float @ 0..1,
+	ground_probability: float @ 0..1,
+}
+
+#[since="1.21.2"]
+dispatch minecraft:tree_decorator[creaking_heart] to struct CreakingHeartTreeDecorator {
+	probability: float @ 0..1,
+}
