@@ -18,12 +18,17 @@ type ParticleSettings<S> = (
 
 dispatch minecraft:particle[%unknown] to struct {}
 
+struct BlockParticle {
+	block_state: (#[id="block"] string | BlockState),
+}
+
 dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to ParticleSettings<(
 	#[until="1.20.5"] BlockState |
-	#[since="1.20.5"] struct BlockParticle {
-		block_state: (#[id="block"] string | BlockState),
-	} |
+	#[since="1.20.5"] BlockParticle |
 )>
+
+#[since="1.21.2"]
+dispatch minecraft:particle[block_crumble] to BlockParticle
 
 /// Randomized color interpreted from three floats.
 ///
@@ -140,6 +145,11 @@ dispatch minecraft:particle[shriek] to ParticleSettings<(
 		delay: int @ 0..,
 	} |
 )>
+
+dispatch minecraft:particle[trail] to struct TrailParticle {
+	target: [double] @ 3,
+	color: #[color="composite_argb"] int,
+}
 
 dispatch minecraft:particle[vibration] to ParticleSettings<struct VibrationParticle {
 	/// Ticks in which to interpolate the particle's initial position to the destination.
