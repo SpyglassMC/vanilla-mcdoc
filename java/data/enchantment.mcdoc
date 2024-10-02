@@ -183,12 +183,25 @@ struct DamageEntityEffect {
 dispatch minecraft:entity_effect[damage_entity] to DamageEntityEffect
 dispatch minecraft:location_based_effect[damage_entity] to DamageEntityEffect
 
-/// Applies damage to the Enchanted Item. The damage is not applied to items held by players in creative mode.
 struct DamageItemEffect {
+	/// Damage to apply to the enchanted item.
+	/// The damage is not applied to items held by players in creative mode.
 	amount: LevelBasedValue
 }
+#[until="1.21.2"]
 dispatch minecraft:entity_effect[damage_item] to DamageItemEffect
+#[until="1.21.2"]
 dispatch minecraft:location_based_effect[damage_item] to DamageItemEffect
+
+struct ChangeItemDamageEffect {
+	/// Damage to apply to the enchanted item. Negative values will repair the item.
+	/// The change is not applied to items held by players in creative mode.
+	amount: LevelBasedValue
+}
+#[since="1.21.2"]
+dispatch minecraft:entity_effect[change_item_damage] to ChangeItemDamageEffect
+#[since="1.21.2"]
+dispatch minecraft:location_based_effect[change_item_damage] to ChangeItemDamageEffect
 
 struct ExplodeEntityEffect {
 	/// Whether the explosion should be attributed to the user of the enchanted tool.
