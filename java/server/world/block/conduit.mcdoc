@@ -1,10 +1,11 @@
 dispatch minecraft:block_entity[conduit] to struct Conduit {
 	...super::BlockEntity,
-	#[uuid]
-	target_uuid?: (
-		#[until="1.16"] TargetUuid |
-		#[since="1.16"] int[] @ 4 |
-	),
+	/// The hostile mob that the conduit is currently attacking.
+	#[until="1.16"] 
+	target_uuid?: #[uuid] TargetUuid,
+	/// The hostile mob that the conduit is currently attacking.
+	#[since="1.16"]
+	Target?: #[uuid] int[] @ 4,
 }
 
 dispatch minecraft:block[conduit] to minecraft:block_entity[conduit]

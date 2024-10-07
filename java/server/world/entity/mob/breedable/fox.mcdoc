@@ -1,10 +1,11 @@
 dispatch minecraft:entity[fox] to struct Fox {
 	...super::Breedable,
 	/// List of trusted players.
-	TrustedUUIDs?: [#[uuid] (
-		#[until="1.16"] TrustedUUID |
-		#[since="1.16"] int[] @ 4 |
-	)],
+	#[until="1.16"]
+	TrustedUUIDs?: [#[uuid] TrustedUUID],
+	/// List of trusted players.
+	#[since="1.16"]
+	Trusted?: [#[uuid] int[] @ 4],
 	/// Whether it is sleeping.
 	Sleeping?: boolean,
 	/// The type of fox.
