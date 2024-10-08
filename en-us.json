@@ -846,6 +846,7 @@
    "mcdoc.java.server.world.item.mod.data_component.__dispatch.enchantments": "List of enchantments that are on the item.\nAn enchantment level of zero doesn't cause the enchantment section to be displayed in the tooltip, but the glint will still be shown, and the following rules apply:\n- Boolean enchantments are treated as level 1 (active).\n- Leveled enchantments are ignored.",
    "mcdoc.java.server.world.item.mod.Equippable.equip_sound": "Sound event to play when the item is equipped.\nIf not specified, the default armor equip sound will be played.",
    "mcdoc.java.server.world.item.mod.Equippable.model": "The equipment model to use when equipped.\nFalls back to rendering as the item itself when in the head slot (or no rendering if not applicable).",
+   "mcdoc.java.server.world.item.mod.Equippable.camera_overlay": "The overlay texture that should render in first person when equipped.",
    "mcdoc.java.server.world.item.mod.Equippable.allowed_entities": "Limits which entities can equip this item",
    "mcdoc.java.server.world.item.mod.Equippable.dispensable": "Whether the item can be equipped by using a dispenser. Defaults to `true`.",
    "mcdoc.java.server.world.item.mod.Equippable.swappable": "Whether the item can be equipped by right-clicking. Defaults to `true`.",
