@@ -15,7 +15,7 @@ type TextObject = (
 		...TextBase,
 	} |
 	struct TranslatedText {
-		translate: string, // TODO
+		translate: #[translation_key] string,
 		with?: [Text],
 		#[since="1.19.4"]
 		fallback?: Text,

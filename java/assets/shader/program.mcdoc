@@ -1,15 +1,31 @@
-dispatch minecraft:resource["shader/program"] to struct ShaderProgram {
-	vertex: string,
-	fragement: string,
+dispatch minecraft:resource["shader"] to struct ShaderProgram {
+	// The vertex shader, referencing a file ending with `.vsh`.
+	vertex: (
+		#[until="1.21.2"] string |
+		#[since="1.21.2"] #[id="shader/vertex"] string |
+	),
+	// The fragment shader, referencing a file ending with `.fsh`.
+	fragement: (
+		#[until="1.21.2"] string |
+		#[since="1.21.2"] #[id="shader/fragment"] string |
+	),
 	samplers?: [Sampler],
+	#[until="1.21.2"]
 	attributes?: [string],
 	uniforms: [Uniform],
+	/// Unused.
+	#[until="1.21.2"]
 	blend?: BlendMode,
+	#[until="1.21.2"]
 	cull?: boolean,
+	/// Defines GLSL directives to be injected into the shader source.
+	#[since="1.21.2"]
+	defines: Defines,
 }
 
 struct Sampler {
 	name: string,
+	#[until="1.21.2"]
 	file?: string,
 }
 
@@ -58,4 +74,13 @@ enum(string) BlendFactor {
 	OneSrcAlpha = "1-srcalpha",
 	DstAlpha = "dstalpha",
 	OneDstAlpha = "1-dstalpha",
+}
+
+struct Defines {
+	/// Values that will be injected as `#define <key> <value>` at the top of the file.
+	values?: struct DefinesValues {
+		[string]: string,
+	},
+	/// Flags that will be injected as `#define <key>` at the top of the file.
+	flags?: [string],
 }

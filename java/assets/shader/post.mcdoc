@@ -1,27 +1,66 @@
-dispatch minecraft:resource["shader/post"] to struct ShaderPost {
-	targets?: [(string | Target)],
+dispatch minecraft:resource["post_effect"] to struct PostEffect {
+	targets?: (
+		#[until="1.21.2"] [(string | OldTarget)] |
+		#[since="1.21.2"] Targets |
+	),
 	passes?: [Pass],
 }
 
-struct Target {
+struct OldTarget {
 	name: string,
 	width?: int,
 	height?: int,
 }
 
-struct Pass {
-	name: string,
-	intarget: string,
-	outtarget: string,
-	auxtargets?: [AuxTarget],
-	uniforms?: [Uniform],
+struct Targets {
+	[#[id="shader_target"] string]: (FixedSizedTarget | FullScreenTarget),
 }
+
+struct FixedSizedTarget {
+	width: int,
+	height: int,
+}
+
+struct FullScreenTarget {}
+
+type Pass = (
+	#[until="1.21.2"] struct {
+		name: string,
+		intarget: string,
+		outtarget: string,
+		auxtargets?: [AuxTarget],
+		use_linear_filter?: boolean,
+		uniforms?: [Uniform],
+	} |
+	#[since="1.21.2"] struct {
+		program: #[id="shader"] string,
+		inputs?: [(TargetInput | TextureInput)],
+		output?: #[id="shader_target"] string,
+		uniforms?: [Uniform],
+	} |
+)
 
 struct AuxTarget {
 	name: string,
 	id: string,
 	width?: int,
 	height?: int,
+	bilinear?: boolean,
+}
+
+struct TargetInput {
+	sampler_name: string,
+	location: string,
+	width: int @ 1..,
+	height: int @ 1..,
+	bilinear?: boolean,
+}
+
+struct TextureInput {
+	sampler_name: string,
+	target: #[id="shader_target"] string,
+	width: int @ 1..,
+	height: int @ 1..,
 	bilinear?: boolean,
 }
 
