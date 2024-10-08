@@ -1,4 +1,6 @@
 use super::block_state::BlockState
+use ::java::server::util::color::RGB
+use ::java::server::util::color::RGBA
 use ::java::server::world::item::ItemStack
 use ::java::server::world::item::SingleItem
 
@@ -59,7 +61,10 @@ dispatch minecraft:particle[block_crumble] to BlockParticle
 /// 	g = integerToByte(Math.floor(color[1] * randomBetween(0.8, 1) * baseShade * 255)),
 /// 	b = integerToByte(Math.floor(color[2] * randomBetween(0.8, 1) * baseShade * 255))
 /// ```
-type DustColor = #[color="particle"] [float] @ 3
+type DustColor = (
+	#[until="1.21.2"] #[color="particle"] [float] @ 3 |
+	#[since="1.21.2"] RGB |
+)
 
 dispatch minecraft:particle[dust] to ParticleSettings<(
 	#[until="1.20.5"] struct OldDustParticle {
@@ -119,7 +124,7 @@ dispatch minecraft:particle[entity_effect] to ParticleSettings<(
 		/// 	return Math.abs((Math.floor(integer / 256) * 256)) + integer
 		/// }
 		/// ```
-		color: (#[color="composite_argb"] int | #[color="dec_rgba"] [float] @ 4),
+		color: RGBA,
 	} |
 )>
 
@@ -146,9 +151,10 @@ dispatch minecraft:particle[shriek] to ParticleSettings<(
 	} |
 )>
 
+#[since="1.21.2"]
 dispatch minecraft:particle[trail] to struct TrailParticle {
 	target: [double] @ 3,
-	color: #[color="composite_rgb"] int,
+	color: RGB,
 }
 
 dispatch minecraft:particle[vibration] to ParticleSettings<struct VibrationParticle {

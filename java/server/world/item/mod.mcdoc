@@ -154,6 +154,7 @@ dispatch minecraft:data_component[enchantments,stored_enchantments] to (
 	EnchantmentLevels |
 )
 
+#[since="1.21.2"]
 dispatch minecraft:data_component[equippable] to struct Equippable {
 	slot: EquipmentSlot,
 	/// Sound event to play when the item is equipped.
@@ -161,7 +162,9 @@ dispatch minecraft:data_component[equippable] to struct Equippable {
 	equip_sound?: SoundEventRef,
 	/// The equipment model to use when equipped.
 	/// Falls back to rendering as the item itself when in the head slot (or no rendering if not applicable).
-	model?: #[id] string,
+	model?: #[id="model"] string,
+	/// The overlay texture that should render in first person when equipped.
+	camera_overlay?: #[id="texture"] string,
 	/// Limits which entities can equip this item
 	allowed_entities?: (#[id(registry="entity_type",tags="allowed")] string | [#[id="entity_type"] string]),
 	/// Whether the item can be equipped by using a dispenser. Defaults to `true`.
