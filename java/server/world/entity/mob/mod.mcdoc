@@ -156,6 +156,8 @@ dispatch minecraft:entity[
 	blaze,
 	breeze,
 	cave_spider,
+	creaking,
+	creaking_transient,
 	elder_guardian,
 	giant,
 	guardian,
