@@ -1,13 +1,16 @@
 dispatch minecraft:resource[font] to struct Font {
-	providers: [Provider],
+	providers: [GlyphProvider],
 }
 
-struct Provider {
-	type: ProviderType, // TODO: This shouldn't need an enum; it should be provided by minecraft:glyph_provider
+struct GlyphProvider {
+	type: GlyphProviderType,
 	...minecraft:glyph_provider[[type]],
+	filter?: struct {
+		[FontOption]: boolean,
+	}
 }
 
-enum(string) ProviderType {
+enum(string) GlyphProviderType {
 	Bitmap = "bitmap",
 	TrueType = "ttf",
 	#[until="1.20"]
@@ -18,15 +21,23 @@ enum(string) ProviderType {
 	Reference = "reference",
 }
 
+enum(string) FontOption {
+	Uniform = "uniform",
+	JapaneseVariants = "jp",
+}
+
 dispatch minecraft:glyph_provider[bitmap] to struct BitmapProvider {
-	file: string, // TODO
+	file: #[id(registry="texture",suffix=".png")] string,
 	height?: int,
 	ascent: int,
 	chars: [string @ 1..] @ 1..,
 }
 
 dispatch minecraft:glyph_provider[ttf] to struct TtfProvider {
-	file: string, // TODO
+	file: (
+		#[id(registry="font/ttf",suffix=".ttf")] string |
+		#[id(registry="font/otf",suffix=".otf")] string |
+	),
 	size?: float,
 	oversample?: float,
 	shift?: [float, float],
@@ -42,12 +53,12 @@ dispatch minecraft:glyph_provider[legacy_unicode] to struct LegacyUnicodeProvide
 #[since="1.20"]
 dispatch minecraft:glyph_provider[unihex] to struct UnihexProvider {
 	/// ZIP archive containing one or more *.hex files (files in archive with different extensions are ignored).
-	hex_file: string, // TODO
+	hex_file: #[id(registry="font/unihex",suffix=".zip")] string,
 	size_overrides?: struct UnihexSizeOverrides {
 		/// Minimum in codepoint range (inclusive).
 		from: string, // TODO: codepoint; "\u3001"
 		/// Maximum in codepoint range (inclusive).
-		"to": string,
+		to: string,
 		/// Position of left-most column of the glyph.
 		left: int @ 0..,
 		/// Position of right-most column of the glyph.

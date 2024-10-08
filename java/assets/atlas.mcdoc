@@ -12,7 +12,7 @@ enum(string) SpriteSourceType {
 	Single = "single",
 	Directory = "directory",
 	Filter = "filter",
-	Unstitch = "unstitch", // TODO: Figure out when this was added
+	Unstitch = "unstitch",
 	#[since="1.19.4"]
 	PalettedPermutations = "paletted_permutations",
 }
