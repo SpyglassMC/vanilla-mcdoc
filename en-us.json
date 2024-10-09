@@ -1073,6 +1073,7 @@
    "mcdoc.java.server.world.entity.mob.player.Player.seenCredits": "Whether the player has gone to the overworld after defeating the Ender Dragon.",
    "mcdoc.java.server.world.entity.mob.player.Player.recipeBook": "Recipes that the player has.",
    "mcdoc.java.server.world.entity.mob.player.Player.warden_spawn_tracker": "Tracking the warden spawning process for this player.",
+   "mcdoc.java.server.world.entity.mob.player.Player.ender_pearls": "Ender pearls thrown by this player.",
    "mcdoc.java.server.world.entity.mob.player.Abilities.walkSpeed": "Speed that the player walks at.",
    "mcdoc.java.server.world.entity.mob.player.Abilities.flySpeed": "Speed that the player flies at.",
    "mcdoc.java.server.world.entity.mob.player.Abilities.mayfly": "Whether the player can fly.",
