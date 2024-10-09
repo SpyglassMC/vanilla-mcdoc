@@ -15,55 +15,55 @@ dispatch minecraft:memory_module[%unknown] to ()
 
 dispatch minecraft:memory_module[home] to struct Home {
 	...ExpirableValue,
-	// Position of the villager's home.
+	/// Position of the villager's home.
 	value: GlobalPos,
 }
 
 dispatch minecraft:memory_module[job_site] to struct JobSite {
 	...ExpirableValue,
-	// Position of the villager's job site.
+	/// Position of the villager's job site.
 	value: GlobalPos,
 }
 
 dispatch minecraft:memory_module[potential_job_site] to struct PotentialJobSite {
 	...ExpirableValue,
-	// Position of a potential job site of the villager.
+	/// Position of a potential job site of the villager.
 	value: GlobalPos,
 }
 
 dispatch minecraft:memory_module[meeting_point] to struct MeetingPoint {
 	...ExpirableValue,
-	// Position of the villager's meeting point.
+	/// Position of the villager's meeting point.
 	value: GlobalPos,
 }
 
 dispatch minecraft:memory_module[golem_detected_recently] to struct GolemDetectedRecently {
 	...ExpirableValue,
-	// Whether the villager has detected an iron golem recently.
+	/// Whether the villager has detected an iron golem recently.
 	value: boolean,
 }
 
 dispatch minecraft:memory_module[danger_detected_recently] to struct DangerDetectedRecently {
 	...ExpirableValue,
-	// Whether the armadillo has detected danger recently.
+	/// Whether the armadillo has detected danger recently.
 	value: boolean,
 }
 
 dispatch minecraft:memory_module[last_slept] to struct LastSlept {
 	...ExpirableValue,
-	// The gametime tick that the villager last slept in a bed.
+	/// The gametime tick that the villager last slept in a bed.
 	value: long,
 }
 
 dispatch minecraft:memory_module[last_woken] to struct LastWoken {
 	...ExpirableValue,
-	// The gametime tick that the villager last woke up from a bed.
+	/// The gametime tick that the villager last woke up from a bed.
 	value: long,
 }
 
 dispatch minecraft:memory_module[last_worked_at_poi] to struct LastWorkedAtPoi {
 	...ExpirableValue,
-	// The gametime tick that the villager last worked at their job site.
+	/// The gametime tick that the villager last worked at their job site.
 	value: long,
 }
 
@@ -75,13 +75,13 @@ dispatch minecraft:memory_module[play_dead_ticks] to struct PlayDeadTicks {
 
 dispatch minecraft:memory_module[temptation_cooldown_ticks] to struct TemptationCooldownTicks {
 	...ExpirableValue,
-	// Ticks before the mob can be tempted again.
+	/// Ticks before the mob can be tempted again.
 	value: int,
 }
 
 dispatch minecraft:memory_module[gaze_cooldown_ticks] to struct GazeCooldownTicks {
 	...ExpirableValue,
-	// Ticks before the armadillo or camel can randomly look around again.
+	/// Ticks before the armadillo or camel can randomly look around again.
 	value: int,
 }
 
@@ -99,13 +99,13 @@ dispatch minecraft:memory_module[long_jump_cooling_down] to struct LongJumpCooli
 
 dispatch minecraft:memory_module[has_hunting_cooldown] to struct HasHuntingCooldown {
 	...ExpirableValue,
-	// Whether the axolotl is in a hunting cooldown.
+	/// Whether the axolotl is in a hunting cooldown.
 	value: boolean,
 }
 
 dispatch minecraft:memory_module[ram_cooldown_ticks] to struct RamCooldownTicks {
 	...ExpirableValue,
-	// Ticks before the goat can ram again.
+	/// Ticks before the goat can ram again.
 	value: int,
 }
 
@@ -123,7 +123,7 @@ dispatch minecraft:memory_module[is_pregnant] to struct IsPregnant {
 
 dispatch minecraft:memory_module[is_panicking] to struct IsPanicking {
 	...ExpirableValue,
-	// Whether the mob is currently panicking.
+	/// Whether the mob is currently panicking.
 	value: boolean,
 }
 
@@ -135,7 +135,7 @@ dispatch minecraft:memory_module[angry_at] to struct AngryAt {
 
 dispatch minecraft:memory_module[universal_anger] to struct UniversalAnger {
 	...ExpirableValue,
-	// Whether the piglin is being universally angered. Only used when the `universalAnger` gamerule is enabled.
+	/// Whether the piglin is being universally angered. Only used when the `universalAnger` gamerule is enabled.
 	value: boolean,
 }
 
@@ -161,73 +161,73 @@ dispatch minecraft:memory_module[hunted_recently] to struct HuntedRecently {
 
 dispatch minecraft:memory_module[recent_projectile] to struct RecentProjectile {
 	...ExpirableValue,
-	// Whether the warden has recently noticed a projectile vibration.
+	/// Whether the warden has recently noticed a projectile vibration.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[is_sniffing] to struct IsSniffing {
 	...ExpirableValue,
-	// Whether the warden or sniffer is currently sniffing.
+	/// Whether the warden or sniffer is currently sniffing.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[is_emerging] to struct IsEmerging {
 	...ExpirableValue,
-	// Whether the warden is currently emerging from the ground.
+	/// Whether the warden is currently emerging from the ground.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[roar_sound_delay] to struct RoarSoundDelay {
 	...ExpirableValue,
-	// If present, the warden doesn't roar.
+	/// If present, the warden doesn't roar.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[dig_cooldown] to struct DigCooldown {
 	...ExpirableValue,
-	// If present, the warden will not dig down.
+	/// If present, the warden will not dig down.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[roar_sound_cooldown] to struct RoarSoundCooldown {
 	...ExpirableValue,
-	// If present, the warden doesn't roar.
+	/// If present, the warden doesn't roar.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[sniff_cooldown] to struct SniffCooldown {
 	...ExpirableValue,
-	// If present, the warden or sniffer will not sniff.
+	/// If present, the warden or sniffer will not sniff.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[touch_cooldown] to struct TouchCooldown {
 	...ExpirableValue,
-	// If present, the warden will not react to being pushed by another mob. Set to 20 when touched.
+	/// If present, the warden will not react to being pushed by another mob. Set to 20 when touched.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[vibration_cooldown] to struct VibrationCooldown {
 	...ExpirableValue,
-	// If present, the warden will not react to vibrations. Set to 40 when receiving a vibration.
+	/// If present, the warden will not react to vibrations. Set to 40 when receiving a vibration.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[sonic_boom_cooldown] to struct SonicBoomCooldown {
 	...ExpirableValue,
-	// If present, the warden will not use the sonic boom attack.
+	/// If present, the warden will not use the sonic boom attack.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[sonic_boom_sound_cooldown] to struct SonicBoomSoundCooldown {
 	...ExpirableValue,
-	// If present, the warden's sonic boom animation will not spawn particles and play sounds.
+	/// If present, the warden's sonic boom animation will not spawn particles and play sounds.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[sonic_boom_sound_delay] to struct SonicBoomSoundDelay {
 	...ExpirableValue,
-	// If present, will delay the warden's sonic boom animation.
+	/// If present, will delay the warden's sonic boom animation.
 	value: struct {},
 }
 
@@ -263,37 +263,37 @@ dispatch minecraft:memory_module[sniffer_explored_positions] to struct SnifferEx
 
 dispatch minecraft:memory_module[breeze_jump_cooldown] to struct BreezeJumpCooldown {
 	...ExpirableValue,
-	// If present, the breeze will not long jump or slide. Set after performing a long jump.
+	/// If present, the breeze will not long jump or slide. Set after performing a long jump.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[breeze_shoot] to struct BreezeShoot {
 	...ExpirableValue,
-	// If present, the breeze is able to shoot a wind charge, and will not long jump or slide.
+	/// If present, the breeze is able to shoot a wind charge, and will not long jump or slide.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[breeze_shoot_charging] to struct BreezeShootCharging {
 	...ExpirableValue,
-	// If present, the breeze will not shoot a wind charge. Set when starting to shoot.
+	/// If present, the breeze will not shoot a wind charge. Set when starting to shoot.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[breeze_shoot_recover] to struct BreezeShootRecover {
 	...ExpirableValue,
-	// If present, the breeze will not shoot a wind charge.
+	/// If present, the breeze will not shoot a wind charge.
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[breeze_shoot_cooldown] to struct BreezeShootCooldown {
 	...ExpirableValue,
-	// If present, the breeze will not shoot a wind charge. Set after shooting
+	/// If present, the breeze will not shoot a wind charge. Set after shooting
 	value: struct {},
 }
 
 dispatch minecraft:memory_module[breeze_jump_inhaling] to struct BreezeJumpInhaling {
 	...ExpirableValue,
-	// If present, the breeze will not long jump or shoot a wind charge when stuck.
+	/// If present, the breeze will not long jump or shoot a wind charge when stuck.
 	value: struct {},
 }
 
@@ -305,6 +305,6 @@ dispatch minecraft:memory_module[breeze_jump_target] to struct BreezeJumpTarget 
 
 dispatch minecraft:memory_module[breeze_leaving_water] to struct BreezeLeavingWater {
 	...ExpirableValue,
-	// If present, the breeze is in water.
+	/// If present, the breeze is in water.
 	value: struct {},
 }
