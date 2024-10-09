@@ -76,6 +76,9 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Tracking the warden spawning process for this player.
 	#[since="1.19"]
 	warden_spawn_tracker?: WardenSpawnTracker,
+	/// Ender pearls thrown by this player.
+	#[since="1.21.2"]
+	ender_pearls?: [EnderPearl],
 	// these are not included
 	id?: (),
 	CustomName?: (),
@@ -158,4 +161,9 @@ struct WardenSpawnTracker {
 	ticks_since_last_warning?: int @ 0..,
 	/// The warden will spawn at level 3.
 	warning_level?: int @ 0..3,
+}
+
+struct EnderPearl {
+	ender_pearl_dimension: #[id="dimension"] string,
+	...AnyEntity,
 }
