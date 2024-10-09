@@ -1,11 +1,3 @@
-use ::java::server::util::FlagMemory
-use ::java::server::util::TickMemory
-
-/// Hunting cooldown active.
-dispatch minecraft:memory_module[has_hunting_cooldown] to FlagMemory
-/// Ticks until it stops playing dead.
-dispatch minecraft:memory_module[play_dead_ticks] to TickMemory
-
 #[since="1.17"]
 dispatch minecraft:entity[axolotl] to struct Axolotl {
 	...super::Breedable,
@@ -14,12 +6,6 @@ dispatch minecraft:entity[axolotl] to struct Axolotl {
 	/// If this axolotl was released from a bucket.
 	FromBucket?: boolean
 }
-
-dispatch minecraft:entity_memory[axolotl] to (
-	super::BreedableMemories |
-	"has_hunting_cooldown" |
-	"play_dead_ticks" |
-)
 
 enum(int) Variant {
 	Lucy = 0,

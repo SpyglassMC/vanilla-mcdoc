@@ -1,11 +1,3 @@
-use ::java::server::util::FlagMemory
-use ::java::server::util::TickMemory
-
-/// Ticks until it can leap again.
-dispatch minecraft:memory_module[long_jump_cooling_down] to TickMemory
-/// Ticks until it can ram again.
-dispatch minecraft:memory_module[ram_cooldown_ticks] to TickMemory
-
 #[since="1.17"]
 dispatch minecraft:entity[goat] to struct Goat {
 	...super::Breedable,
@@ -18,9 +10,3 @@ dispatch minecraft:entity[goat] to struct Goat {
 	/// Whether it is a screaming goat.
 	IsScreamingGoat?: boolean,
 }
-
-dispatch minecraft:entity_memory[goat] to (
-	super::BreedableMemories |
-	"long_jump_cooling_down" |
-	"ram_cooldown_ticks" |
-)

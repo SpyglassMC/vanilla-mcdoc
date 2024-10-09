@@ -1,16 +1,5 @@
-use ::java::server::util::FlagMemory
-
-dispatch minecraft:memory_module[is_pregnant] to struct IsPregnant {
-	value?: struct {},
-}
-
 #[since="1.19"]
 dispatch minecraft:entity[frog] to struct Frog {
 	...super::Breedable,
 	variant?: #[id="frog_variant"] string,
 }
-
-dispatch minecraft:entity_memory[frog] to (
-	super::BreedableMemories |
-	"is_pregnant" |
-)

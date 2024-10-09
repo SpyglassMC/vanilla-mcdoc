@@ -10,12 +10,6 @@ type ColorString = color::ColorString
 type EffectId = effect::EffectId
 type GlobalPos = global_pos::GlobalPos
 type SlottedItem<T> = inventory::SlottedItem<T>
-type TickMemory = memory::TickMemory
-type TimedMemory = memory::TimedMemory
-type FlagMemory = memory::FlagMemory
-type TimedFlagMemory = memory::TimedFlagMemory
-type TimedEntityMemory = memory::TimedEntityMemory
-type PositionMemory = memory::PositionMemory
 type Particle = particle::Particle
 
 type Filterable<T> = (

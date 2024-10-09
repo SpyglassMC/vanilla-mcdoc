@@ -1,18 +1,9 @@
-use ::java::server::util::TimedMemory
-
-dispatch minecraft:memory_module[danger_detected_recently] to TimedMemory
-
 #[since="1.20.5"]
 dispatch minecraft:entity[armadillo] to struct Armadillo {
 	...super::Breedable,
 	state?: ArmadilloState,
 	scute_time?: int @ 0..,
 }
-
-dispatch minecraft:entity_memory[armadillo] to (
-	"gaze_cooldown_ticks" |
-	"danger_detected_recently" |
-)
 
 enum(string) ArmadilloState {
 	Idle = "idle",

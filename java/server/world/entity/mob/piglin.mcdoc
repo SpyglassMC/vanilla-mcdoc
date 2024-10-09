@@ -1,7 +1,4 @@
 use ::java::server::world::item::ItemStack
-use ::java::server::util::FlagMemory
-use ::java::server::util::TimedFlagMemory
-use ::java::server::util::TimedEntityMemory
 
 struct PiglinBase {
 	...super::MobBase,
@@ -10,17 +7,6 @@ struct PiglinBase {
 	/// Ticks it has been in the overworld.
 	TimeInOverworld?: int,
 }
-
-/// Whether it cannot admire an item.
-dispatch minecraft:memory_module[admiring_disabled] to TimedFlagMemory
-/// Whether it is admiring an item.
-dispatch minecraft:memory_module[admiring_item] to FlagMemory
-/// The target of the piglin.
-dispatch minecraft:memory_module[angry_at] to TimedEntityMemory
-/// Whether it hunted recently.
-dispatch minecraft:memory_module[hunted_recently] to TimedFlagMemory
-/// Whether it is being angered universally.
-dispatch minecraft:memory_module[universal_anger] to TimedFlagMemory
 
 #[since="1.16"]
 dispatch minecraft:entity[piglin] to struct Piglin {
@@ -32,13 +18,5 @@ dispatch minecraft:entity[piglin] to struct Piglin {
 	Inventory?: [ItemStack] @ 0..8,
 }
 
-dispatch minecraft:entity_memory[piglin] to (
-	"admiring_disabled" |
-	"admiring_item" |
-	"angry_at" |
-	"hunted_recently" |
-	"universal_anger"
-)
-
-#[since="1.16"]
+#[since="1.16.2"]
 dispatch minecraft:entity[piglin_brute] to PiglinBase

@@ -4,6 +4,7 @@ use ::java::server::util::attribute::AttributeOperation
 use ::java::server::world::item::ItemStack
 use ::java::server::util::effect::MobEffectInstance
 use ::java::server::util::attribute::AttributeSlot
+use ::java::server::util::memory::Memories
 
 struct LivingEntity {
 	...super::EntityBase,
@@ -25,7 +26,7 @@ struct LivingEntity {
 	/// Z coordinate of where it is sleeping.
 	SleepingZ?: int,
 	Brain?: struct Brain {
-		memories?: Memories<minecraft:entity_memory[[%parent.id]]>,
+		memories?: Memories,
 	},
 	#[until="1.21"]
 	Attributes?: [Attribute],
@@ -131,10 +132,6 @@ type AttributeModifier = (
 		UUID?: int[] @ 4,
 	} |
 )
-
-type Memories<T> = struct {
-	[#[id(registry="memory_module_type", recommended=T)] string]: minecraft:memory_module[[%key]],
-}
 
 struct UUIDLeash {
 	/// Upper bits of the other entity's UUID.

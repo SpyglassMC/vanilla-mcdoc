@@ -62,8 +62,3 @@ dispatch minecraft:entity[camel] to struct Camel {
 	/// The tick when it started changing its pose.
 	LastPoseTick?: long
 }
-
-dispatch minecraft:entity_memory[camel] to (
-	super::BreedableMemories |
-	"gaze_cooldown_ticks" |
-)
