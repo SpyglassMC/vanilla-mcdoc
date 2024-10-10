@@ -475,7 +475,10 @@ struct DataComponentPredicate {
 
 struct SingleItem {
 	/// ID of the item.
-	id: #[id="item"] string, // TODO: exclude air in 1.20.5+
+	id: (
+		#[until="1.20.5"] #[id="item"] string |
+		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |	
+	),
 	#[since="1.20.5"]
 	components?: DataComponentPatch<minecraft:item_component[[id]]>,
 	#[until="1.20.5"]

@@ -131,7 +131,7 @@ dispatch minecraft:particle[entity_effect] to ParticleSettings<(
 dispatch minecraft:particle[item] to ParticleSettings<(
 	#[until="1.20.5"] ItemStack |
 	#[since="1.20.5"] struct ItemParticle {
-		item: (#[id="item"] string | SingleItem), // TODO: exclude air
+		item: (#[id(registry="item", exclude=["air"]] string | SingleItem),
 	} |
 )>
 

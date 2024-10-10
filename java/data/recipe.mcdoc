@@ -117,6 +117,7 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 	)
 }
 
+#[until="1.20.5"]
 struct ItemResult {
 	item: #[id="item"] string,
 	count?: int
@@ -125,11 +126,11 @@ struct ItemResult {
 type Ingredient = (
 	#[until="1.21.2"] IngredientValue |
 	#[until="1.21.2"] [IngredientValue] |
-	// TODO: does not accept 'air'
-	#[since="1.21.2"] [#[id="item"] string] @ 1.. |
-	#[since="1.21.2"] #[id=(registry="item",tags="allowed")] string |
+	#[since="1.21.2"] [#[id(registry="item",exclude=["air"])] string] @ 1.. |
+	#[since="1.21.2"] #[id(registry="item",tags="allowed",exclude=["air"])] string | // TODO: forbid empty tags
 )
 
+#[until="1.21.2"]
 type IngredientValue = (
 	struct IngredientItem {
 		item: #[id="item"] string,
