@@ -110,7 +110,10 @@ enum(string) DynamicDrops {
 
 /// Adds a single item.
 dispatch minecraft:loot_pool_entry[item] to struct ItemPoolEntry {
-	name: #[id="item"] string,
+	name: (
+		#[until="1.21.2"] #[id="item"] string |
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+	),
 	...SingletonPoolEntry,
 }
 

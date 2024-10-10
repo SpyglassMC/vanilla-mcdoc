@@ -367,7 +367,10 @@ enum(string) ContainerComponents {
 
 /// Replaces item type of item stack without changing count and components
 dispatch minecraft:loot_function[set_item] to struct SetItem {
-	item: #[id="item"] string,
+	item: (
+		#[until="1.21.2"] #[id="item"] string |
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+	),
 }
 
 dispatch minecraft:loot_function[set_count] to struct SetCount {
