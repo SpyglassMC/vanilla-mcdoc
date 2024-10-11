@@ -1,7 +1,5 @@
 use ::java::server::world::item::ItemStack
 use ::java::server::util::SlottedItem
-use ::java::server::util::FlagMemory
-use ::java::server::util::TickMemory
 
 dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	...super::Breedable,

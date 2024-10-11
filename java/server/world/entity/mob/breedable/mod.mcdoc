@@ -21,8 +21,3 @@ dispatch minecraft:entity[cow] to Breedable
 
 #[since="1.19.4"]
 dispatch minecraft:entity[sniffer] to Breedable
-
-type BreedableMemories = (
-	"is_tempted" |
-	"temptation_cooldown_ticks" |
-)
