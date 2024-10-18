@@ -19,7 +19,11 @@ dispatch minecraft:data_component[potion_contents] to (
 dispatch minecraft:item[potion, splash_potion, lingering_potion, tipped_arrow] to struct EffectItem {
 	...super::ItemBase,
 	/// List of the effects that will be applied with this item.
+	#[until="1.20.2"]
 	CustomPotionEffects?: [MobEffectInstance],
+	/// List of the effects that will be applied with this item.
+	#[since="1.20.2"]
+	custom_potion_effects?: [MobEffectInstance],
 	/// Default potion effect
 	Potion?: #[id="potion"] string,
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
