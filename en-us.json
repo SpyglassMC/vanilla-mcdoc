@@ -963,6 +963,7 @@
    "mcdoc.java.server.world.item.potion.PotionContents.custom_name": "If present, is used to generate the item name using the translation key `item.minecraft.<potion_type>.effect.<custom_name>`.",
    "mcdoc.java.server.world.item.potion.item.__dispatch.EffectItem": "An item that has a potion effect",
    "mcdoc.java.server.world.item.potion.EffectItem.CustomPotionEffects": "List of the effects that will be applied with this item.",
+   "mcdoc.java.server.world.item.potion.EffectItem.custom_potion_effects": "List of the effects that will be applied with this item.",
    "mcdoc.java.server.world.item.potion.EffectItem.Potion": "Default potion effect",
    "mcdoc.java.server.world.item.potion.EffectItem.CustomPotionColor": "Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.",
    "mcdoc.java.server.world.item.shield.Shield.BlockEntityTag": "Banner Data.",
