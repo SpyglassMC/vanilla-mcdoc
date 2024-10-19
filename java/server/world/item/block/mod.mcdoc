@@ -25,7 +25,6 @@ dispatch mcdoc:block_item_states[%unknown,%none] to struct {
 
 type BlockItemComponents = (
 	super::ItemBaseComponents |
-	"can_place_on" |
 	"block_entity_data" |
 	"block_state" |
 )
@@ -35,8 +34,6 @@ dispatch minecraft:item_component[%blockitem] to BlockItemComponents
 /// An item that can be placed as a block
 dispatch minecraft:item[%blockitem] to struct BlockItem {
 	...super::ItemBase,
-	/// List of blockstates that this block item can be placed on.
-	CanPlaceOn?: [#[block_predicate] string],
 	BlockEntityTag?: BlockEntityData,
 	/// Blockstate that the placed block will have.
 	BlockStateTag?: mcdoc:block_item_states[[%parent.id]],

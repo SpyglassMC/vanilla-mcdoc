@@ -334,6 +334,7 @@ dispatch minecraft:data_component[use_remainder] to ItemStack
 enum(string) ItemBaseComponents {
 	AttributeModifiers = "attribute_modifiers",
 	CanBreak = "can_break",
+	CanPlaceOn = "can_place_on",
 	CustomData = "custom_data",
 	CustomModelData = "custom_model_data",
 	Damage = "damage",
@@ -371,6 +372,8 @@ struct ItemBase {
 	Unbreakable?: boolean,
 	/// List of the block states that can be destroyed by this item when holding it in adventure mode.
 	CanDestroy?: [#[block_predicate] string],
+	/// List of blockstates that this block item can be placed on.
+	CanPlaceOn?: [#[block_predicate] string],
 	/// Tag that describes the custom model an item will take.
 	/// Used by the `custom_model_data` model overrides predicate.
 	/// Has certain restrictions due to float conversion.
