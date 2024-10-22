@@ -1031,7 +1031,7 @@
    "mcdoc.java.server.world.entity.mob.dolphin.Dolphin.TreasurePosY": "Y coordinate of the treasure it leads to.",
    "mcdoc.java.server.world.entity.mob.dolphin.Dolphin.TreasurePosZ": "Z coordinate of the treasure it leads to.",
    "mcdoc.java.server.world.entity.mob.dolphin.Dolphin.GotFish": "Whether it has gotten fish from a player.",
-   "mcdoc.java.server.world.entity.mob.dolphin.Dolphin.CanFindTreasure": "Whether it will lead a player to treasure.",
+   "mcdoc.java.server.world.entity.mob.dolphin.Dolphin.Moistness": "Moistness level of the dolphin.\nSet to 2400 when the dolphin is in water or rain, otherwise decreases by 1 every tick.\nThe dolphin takes damage when level is at 0 or below.",
    "mcdoc.java.server.world.entity.mob.ender_dragon.EnderDragon.DragonPhase": "Fighting phase it is in.",
    "mcdoc.java.server.world.entity.mob.enderman.Enderman.carriedBlockState": "Block it is carrying.",
    "mcdoc.java.server.world.entity.mob.endermite.Endermite.Lifetime": "How long it has existed.",
