@@ -86,6 +86,15 @@ struct NeutralMob {
 	AngryAt?: int[] @ 4,
 }
 
+struct AgeableMob {
+	/// The age of the mob in ticks. When negative, the mob is a baby. When 0 or above, the mob is an adult.
+	/// If this mob is breedable, when 0 or above, represents the number of ticks before it can breed again.
+	Age?: int,
+	/// A value of age assigned to this mob when it grows up.
+	/// Incremented when a baby mob is fed.
+	ForcedAge?: int,
+}
+
 /// A single attribute.
 struct Attribute {
 	#[until="1.21"]
@@ -160,7 +169,6 @@ dispatch minecraft:entity[
 	guardian,
 	silverfish,
 	spider,
-	squid,
 	stray,
 	wither_skeleton,
 ] to MobBase
@@ -168,4 +176,10 @@ dispatch minecraft:entity[
 dispatch minecraft:entity[polar_bear] to struct PolarBear {
 	...MobBase,
 	...NeutralMob,
+}
+
+dispatch minecraft:entity[squid] to struct Squid {
+	...MobBase,
+	#[since="1.21.2"]
+	...AgeableMob,
 }

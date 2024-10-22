@@ -1,7 +1,20 @@
-dispatch minecraft:entity[cod,salmon] to struct Fish {
+dispatch minecraft:entity[cod] to struct Fish {
 	...super::MobBase,
 	/// If it was released from a bucket.
 	FromBucket?: boolean,
+}
+
+dispatch minecraft:entity[salmon] to struct Salmon {
+	...Fish,
+	/// The size variant of the salmon.
+	#[since="1.21.2"]
+	type: SalmonType,
+}
+
+enum(string) SalmonType {
+	Small = "small",
+	Medium = "medium",
+	Large = "large",
 }
 
 dispatch minecraft:entity[tropical_fish] to struct TropicalFish {

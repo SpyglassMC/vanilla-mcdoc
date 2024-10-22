@@ -1,11 +1,8 @@
 struct Breedable {
 	...super::MobBase,
+	...super::AgeableMob,
 	/// Ticks until it stops searching for a mate.
 	InLove?: int @ 0..,
-	Age?: int,
-	/// A value of age assigned to this mob when it grows up.
-	/// Incremented when a baby mob is fed.
-	ForcedAge?: int,
 	/// Lower bits of the UUID of the player that caused this mob to breed.
 	#[until="1.16"]
 	LoveCauseLeast?: long,
