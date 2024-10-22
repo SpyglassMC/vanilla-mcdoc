@@ -1,5 +1,7 @@
 dispatch minecraft:entity[dolphin] to struct Dolphin {
 	...super::MobBase,
+	#[since="1.21.2"]
+	...super::AgeableMob,
 	/// X coordinate of the treasure it leads to.
 	TreasurePosX?: int,
 	/// Y coordinate of the treasure it leads to.
