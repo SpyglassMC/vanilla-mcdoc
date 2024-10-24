@@ -338,7 +338,7 @@
    "mcdoc.java.data.loot.function.ExplorationMap.search_radius": "The size, in chunks, of the area to search for structures.\nThe area checked is square, not circular.\nRadius `0` causes only the current chunk to be searched, radius `1` causes the current chunk and eight adjacent chunks to be searched, and so on.\nDefaults to `50`.",
    "mcdoc.java.data.loot.function.ExplorationMap.skip_existing_chunks": "Whether to not search in chunks that have already been generated. Defaults to `true`.",
    "mcdoc.java.data.loot.function.loot_function.__dispatch_36": "Removes some items from a stack, if there was an explosion. Each item has a chance of 1/explosion radius to be lost.",
-   "mcdoc.java.data.loot.function.loot_condition.__dispatch.Filtered": "Applies loot function(s) to items that match an item predicate.",
+   "mcdoc.java.data.loot.function.loot_function.__dispatch.Filtered": "Applies loot function(s) to items that match an item predicate.",
    "mcdoc.java.data.loot.function.Filtered.item_filter": "Item predicate to select items to modify.",
    "mcdoc.java.data.loot.function.Filtered.modifier": "Loot function to apply to the selected items.",
    "mcdoc.java.data.loot.function.loot_function.__dispatch_38": "Smelts the item as it would be in a furnace (used in combination with the `entity_properties` condition to cook food from animals on death).",
