@@ -582,6 +582,7 @@
    "mcdoc.java.data.worldgen.dimension.mod.DimensionType.infiniburn": "Block tag defining what blocks keep fire infinitely burning.",
    "mcdoc.java.data.worldgen.dimension.mod.DimensionType.min_y": "The minimum height in which blocks can exist.",
    "mcdoc.java.data.worldgen.dimension.mod.DimensionType.height": "The total height in which blocks can exist. Max Y = Min Y + Height.",
+   "mcdoc.java.data.worldgen.feature.block_predicate.PredicateOffset.offset": "The block offset to check.",
    "mcdoc.java.data.worldgen.feature.block_predicate.block_predicate.__dispatch.UnobstructedPredicate": "Whether the selected block is unobstructed (no entities are in the space of the block).",
    "mcdoc.java.data.worldgen.feature.mod.DripstoneClusterConfig.max_stalagmite_stalactite_height_diff": "Max height difference between the stalagmite and stalactite.",
    "mcdoc.java.data.worldgen.feature.mod.FossilConfig.max_empty_corners_allowed": "If more corners are exposed to air, feature placement is cancelled.",
