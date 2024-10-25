@@ -7,7 +7,8 @@ struct BlockPredicate {
 }
 
 struct PredicateOffset {
-	offset?: any // TODO: FIXME
+	/// The block offset to check.
+	offset?: [int @ -16..16] @ 3,
 }
 
 dispatch minecraft:block_predicate[all_of,any_of] to struct CombiningPredicate {
