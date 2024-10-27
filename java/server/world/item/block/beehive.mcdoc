@@ -1,7 +1,9 @@
+use ::java::server::world::entity::AnyEntity
+
 dispatch minecraft:data_component[bees] to [Occupant]
 
 struct Occupant {
-	entity_data: minecraft:entity[[EntityTag.id]],
+	entity_data: AnyEntity,
 	min_ticks_in_hive: int,
 	ticks_in_hive: int,
 }
