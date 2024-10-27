@@ -30,7 +30,7 @@ dispatch minecraft:biome_source[fixed] to struct Fixed {
 
 struct MultiNoiseBase {
 	#[until="1.18"]
-	seed: long,
+	seed: #[random] long,
 }
 
 /// Custom biome distribution with configurable parameters.
@@ -89,13 +89,13 @@ type ClimateParameter = (
 /// Biome distribution for the End.
 dispatch minecraft:biome_source[the_end] to struct TheEnd {
 	#[until="1.19"]
-	seed: long,
+	seed: #[random] long,
 }
 
 /// Biome distribution for the Overworld.
 #[until="1.18"]
 dispatch minecraft:biome_source[vanilla_layered] to struct VanillaLayered {
-	seed: long,
+	seed: #[random] long,
 	large_biomes?: boolean,
 	legacy_biome_init_layer?: boolean,
 }

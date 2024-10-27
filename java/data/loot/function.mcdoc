@@ -419,7 +419,7 @@ dispatch minecraft:loot_function[set_loot_table] to struct SetLootTable {
 	/// The loot table to set to the container block item.
 	name: #[id="loot_table"] string,
 	/// The container seed to use. Defaults to a random seed.
-	seed?: long,
+	seed?: #[random] long,
 }
 
 dispatch minecraft:loot_function[set_lore] to struct SetLore {
