@@ -157,7 +157,6 @@ struct LootFunction {
 		#[since="1.16"] #[id="loot_function_type"] string |
 	),
 	...minecraft:loot_function[[function]],
-	conditions?: [LootCondition],
 }
 
 struct LootCondition {

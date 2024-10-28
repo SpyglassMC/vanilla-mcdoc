@@ -19,10 +19,15 @@ use ::java::server::util::Filterable
 use ::java::server::world::item::DataComponentPatch
 use ::java::server::world::item::CustomData
 
+struct Conditions {
+	conditions?: [LootCondition],
+}
+
 dispatch minecraft:loot_function[apply_bonus] to struct ApplyBonus {
 	enchantment: #[id="enchantment"] string,
 	formula: #[id="apply_bonus_formula"] string,
 	...minecraft:apply_bonus_formula[[formula]],
+	...Conditions,
 }
 
 /// `Count * (max(0; random(0..Level + 2) - 1)+1)`
@@ -46,6 +51,7 @@ dispatch minecraft:apply_bonus_formula[binomial_with_bonus_count] to struct Bino
 /// Copies `CustomName` tag from an entity or block entity into the item's `display.Name` tag.
 dispatch minecraft:loot_function[copy_name] to struct CopyName {
 	source: CopyNameSource,
+	...Conditions,
 }
 
 struct CopyNbt {
@@ -58,6 +64,7 @@ struct CopyNbt {
 		),
 		op: CopyNbtStrategy
 	})],
+	...Conditions,
 }
 
 #[until="1.20.5"]
@@ -73,6 +80,7 @@ dispatch minecraft:loot_function[copy_components] to struct CopyComponents {
 	include?: [#[id="data_component_type"] string],
 	/// Defaults to none.
 	exclude?: [#[id="data_component_type"] string],
+	...Conditions,
 }
 
 enum(string) CopyNameSource {
@@ -102,6 +110,7 @@ enum(string) CopyNbtStrategy {
 dispatch minecraft:loot_function[copy_state] to struct CopyState {
 	block: #[id="block"] string,
 	properties: [mcdoc:block_states[[block]][key]], // TODO
+	...Conditions,
 }
 
 /// Enchants the item with one randomly-selected enchantment. The level of the enchantment, if applicable, is random.
@@ -115,6 +124,7 @@ dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {
 	///
 	/// Note: Books are considered compatible with all Enchantments.
 	only_compatible?: boolean,
+	...Conditions,
 }
 
 /// Enchants the item, with the specified [enchantment level](https://minecraft.wiki/w/Enchanting_mechanics#How_enchantments_are_chosen).
@@ -131,6 +141,7 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 	/// Whether treasure enchantments are allowed on this item.
 	#[until="1.21"]
 	treasure?: boolean,
+	...Conditions,
 }
 
 /// Converts an empty map into an `explorer map` leading to a nearby generated structure.
@@ -155,6 +166,7 @@ dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
 	search_radius?: int,
 	/// Whether to not search in chunks that have already been generated. Defaults to `true`.
 	skip_existing_chunks?: boolean,
+	...Conditions,
 }
 
 enum(string) MapDecoration {
@@ -188,7 +200,9 @@ enum(string) MapDecoration {
 }
 
 /// Removes some items from a stack, if there was an explosion. Each item has a chance of 1/explosion radius to be lost.
-dispatch minecraft:loot_function[explosion_decay] to struct {}
+dispatch minecraft:loot_function[explosion_decay] to struct {
+	...Conditions,
+}
 
 /// Applies loot function(s) to items that match an item predicate.
 #[since="1.20.5"]
@@ -197,17 +211,19 @@ dispatch minecraft:loot_function[filtered] to struct Filtered {
 	item_filter: ItemPredicate,
 	/// Loot function to apply to the selected items.
 	modifier: (LootFunction | [LootFunction]),
+	...Conditions,
 }
 
 /// Smelts the item as it would be in a furnace (used in combination with the `entity_properties` condition to cook food from animals on death).
-dispatch minecraft:loot_function[furnace_smelt] to struct {}
+dispatch minecraft:loot_function[furnace_smelt] to struct {
+	...Conditions,
+}
 
 dispatch minecraft:loot_function[fill_player_head] to struct FillPlayerHead {
 	/// `this` to use the entity that died or the player that gained the advancement, opened the container, or broke the block.
 	entity: EntityTarget,
+	...Conditions,
 }
-
-
 
 dispatch minecraft:loot_function[limit_count] to struct LimitCount {
 	/// Limits the count of the item to a range.
@@ -215,6 +231,7 @@ dispatch minecraft:loot_function[limit_count] to struct LimitCount {
 		#[until="1.17"] IntLimiter |
 		#[since="1.17"] IntRange |
 	),
+	...Conditions,
 }
 
 /// Adjusts the stack size based on the level of the `Looting` enchantment on the `killer` entity's weapon.
@@ -227,6 +244,7 @@ dispatch minecraft:loot_function[looting_enchant] to struct LootingEnchant {
 	),
 	/// Limits the count of the item to a range.
 	limit?: int,
+	...Conditions,
 }
 
 #[since="1.21"]
@@ -234,18 +252,21 @@ dispatch minecraft:loot_function[enchanted_count_increase] to struct EnchantedCo
 	...LootingEnchant,
 	/// Enchantment that increases yields.
 	enchantment: #[id="enchantment"] string,
+	...Conditions,
 }
 
 #[since="1.20"]
 dispatch minecraft:loot_function[reference] to struct Reference {
 	/// Item modifier to reference.
 	name: #[id="item_modifier"] string,
+	...Conditions,
 }
 
 #[since="1.20.2"]
 dispatch minecraft:loot_function[sequence] to struct Sequence {
 	/// List of functions to apply to this item.
 	functions: [LootFunction],
+	// Intentionally doesn't include conditions, see MC-275648
 }
 
 dispatch minecraft:loot_function[set_attributes] to struct SetAttributes {
@@ -253,6 +274,7 @@ dispatch minecraft:loot_function[set_attributes] to struct SetAttributes {
 	modifiers: [AttributeModifier],
 	/// Whether to replace existing attributes (otherwise append to existing). Defaults to `true`.
 	replace?: boolean,
+	...Conditions,
 }
 
 struct AttributeModifier {
@@ -288,6 +310,7 @@ dispatch minecraft:loot_function[set_banner_pattern] to struct SetBannerPattern 
 	patterns: [BannerPatternLayer],
 	/// Whether to add to the banner pattern list.
 	append: boolean,
+	...Conditions,
 }
 
 struct BannerPatternLayer {
@@ -350,6 +373,7 @@ dispatch minecraft:loot_function[set_contents] to struct SetContents {
 	#[since="1.20.5"]
 	component: #[id] ContainerComponents,
 	entries: [LootPoolEntry],
+	...Conditions,
 }
 
 dispatch minecraft:loot_function[modify_contents] to struct ModifyContents {
@@ -357,6 +381,7 @@ dispatch minecraft:loot_function[modify_contents] to struct ModifyContents {
 	component: #[id] ContainerComponents,
 	/// Applied to every item inside container.
 	modifier: (LootFunction | [LootFunction]),
+	...Conditions,
 }
 
 enum(string) ContainerComponents {
@@ -371,6 +396,7 @@ dispatch minecraft:loot_function[set_item] to struct SetItem {
 		#[until="1.21.2"] #[id="item"] string |
 		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
 	),
+	...Conditions,
 }
 
 dispatch minecraft:loot_function[set_count] to struct SetCount {
@@ -381,6 +407,7 @@ dispatch minecraft:loot_function[set_count] to struct SetCount {
 	/// Whether to add to the existing count. Defaults to `false`.
 	#[since="1.17"]
 	add?: boolean,
+	...Conditions,
 }
 
 /// Sets the durability of applicable items.
@@ -393,6 +420,7 @@ dispatch minecraft:loot_function[set_damage] to struct SetDamage {
 	/// Whether to add to the existing damage of the item. Defaults to `false`.
 	#[since="1.17"]
 	add?: boolean,
+	...Conditions,
 }
 
 #[since="1.17"]
@@ -403,12 +431,14 @@ dispatch minecraft:loot_function[set_enchantments] to struct SetEnchantments {
 	},
 	/// Whether to add to the level of each enchantment. Defaults to `false`.
 	add?: boolean,
+	...Conditions,
 }
 
 #[since="1.19"]
 dispatch minecraft:loot_function[set_instrument] to struct SetInstrument {
 	/// Sets the instrument tag for a goat horn.
 	options: #[id(registry="instrument",tags="required")] string,
+	...Conditions,
 }
 
 /// For a container block item's loot table.
@@ -420,6 +450,7 @@ dispatch minecraft:loot_function[set_loot_table] to struct SetLootTable {
 	name: #[id="loot_table"] string,
 	/// The container seed to use. Defaults to a random seed.
 	seed?: #[random] long,
+	...Conditions,
 }
 
 dispatch minecraft:loot_function[set_lore] to struct SetLore {
@@ -431,6 +462,7 @@ dispatch minecraft:loot_function[set_lore] to struct SetLore {
 	replace?: boolean,
 	#[since="1.20.5"]
 	...ListOperation,
+	...Conditions,
 }
 
 dispatch minecraft:loot_function[set_name] to struct SetName {
@@ -440,6 +472,7 @@ dispatch minecraft:loot_function[set_name] to struct SetName {
 	/// Which name component to set. Defaults to `custom_name`.
 	#[since="1.20.5"]
 	target?: SetNameTarget,
+	...Conditions,
 }
 
 enum(string) SetNameTarget {
@@ -450,17 +483,19 @@ enum(string) SetNameTarget {
 #[until="1.20.5"]
 dispatch minecraft:loot_function[set_nbt] to struct SetNbt {
 	tag: #[nbt=minecraft:item[%fallback]] string,
+	...Conditions,
 }
 
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_components] to struct SetComponents {
-	conditions?: [LootCondition],
 	components: DataComponentPatch<()>,
+	...Conditions,
 }
 
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_custom_data] to struct SetCustomData {
 	tag: CustomData,
+	...Conditions,
 }
 
 #[since="1.20.5"]
@@ -469,17 +504,20 @@ dispatch minecraft:loot_function[set_custom_model_data] to struct SetCustomModel
 	/// Used by the `custom_model_data` model overrides predicate.
 	/// Has certain restrictions due to float conversion.
 	value: NumberProvider<int>,
+	...Conditions,
 }
 
 #[since="1.18"]
 dispatch minecraft:loot_function[set_potion] to struct SetPotion {
 	/// The potion identifier.
 	id: #[id="potion"] string,
+	...Conditions,
 }
 
 dispatch minecraft:loot_function[set_stew_effect] to struct SetStewEffect {
 	/// Sets the status effects for suspicious stew.
 	effects?: [StewEffect],
+	...Conditions,
 }
 
 #[since="1.20.5"]
@@ -490,6 +528,7 @@ dispatch minecraft:loot_function[set_fireworks] to struct SetFireworks {
 		values: [minecraft:data_component[firework_explosion]],
 		...ListOperation,
 	},
+	...Conditions,
 }
 
 #[since="1.20.5"]
@@ -506,6 +545,7 @@ dispatch minecraft:loot_function[set_firework_explosion] to struct SetFireworkEx
 	trail?: boolean,
 	/// If omitted, the original `has_twinkle` value is kept (or `false` is used if there was no component).
 	twinkle?: boolean,
+	...Conditions,
 }
 
 #[since="1.20.5"]
@@ -516,6 +556,7 @@ dispatch minecraft:loot_function[set_book_cover] to struct SetBookCover {
 	author?: string,
 	/// If omitted, the original generation is kept (or 0 is used if there was no component)
 	generation?: int @ 0..3,
+	...Conditions,
 }
 
 #[since="1.20.5"]
@@ -523,6 +564,7 @@ dispatch minecraft:loot_function[set_writable_book_pages] to struct SetWriteable
 	/// Sets the pages of a book and quill.
 	pages: [Filterable<string>],
 	...ListOperation,
+	...Conditions,
 }
 
 #[since="1.20.5"]
@@ -530,6 +572,7 @@ dispatch minecraft:loot_function[set_written_book_pages] to struct SetWrittenBoo
 	/// Sets the pages of a written book.
 	pages: [Filterable<Text>],
 	...ListOperation,
+	...Conditions,
 }
 
 #[since="1.20.5"]
@@ -538,11 +581,13 @@ dispatch minecraft:loot_function[toggle_tooltips] to struct ToggleTooltips {
 	toggles: struct {
 		[#[id] ToggleableDataComponent]: boolean,
 	},
+	...Conditions,
 }
 
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_ominous_bottle_amplifier] to struct SetOminousBottleAmplifier {
 	amplifier: NumberProvider,
+	...Conditions,
 }
 
 enum(string) ToggleableDataComponent {
