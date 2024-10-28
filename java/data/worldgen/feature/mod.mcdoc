@@ -147,6 +147,7 @@ dispatch minecraft:feature_config[fill_layer] to struct FillLayerConfig {
 }
 
 dispatch minecraft:feature_config[flower,no_bonemeal_flower,random_patch] to struct RandomPatchConfig {
+	/// How many attempts will be made to find a placement. Defaults to 128.
 	tries?: (
 		#[until="1.17"] int |
 		#[since="1.17"] int @ 1.. |
@@ -175,8 +176,10 @@ dispatch minecraft:feature_config[flower,no_bonemeal_flower,random_patch] to str
 	},
 	#[since="1.18"]
 	...struct ModernPatchConfig {
-		xz_spread: int @ 0..,
-		y_spread: int @ 0..,
+		/// Defaults to 7.
+		xz_spread?: int @ 0..,
+		/// Defaults to 3.
+		y_spread?: int @ 0..,
 		feature: FeatureRef,
 	},
 }

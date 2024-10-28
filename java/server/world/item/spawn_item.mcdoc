@@ -1,9 +1,6 @@
-struct EntityData {
-	id: #[id="entity_type"] string,
-	...minecraft:entity[[id]],
-}
+use ::java::server::world::entity::AnyEntity
 
-dispatch minecraft:data_component[entity_data] to (EntityData | #[nbt=EntityData] string)
+dispatch minecraft:data_component[entity_data] to (AnyEntity | #[nbt=AnyEntity] string)
 
 // Flattening funny
 // TODO: While we wait for %spawnitem to be implemented we can use the below 250+ line hack :husk:.
@@ -97,7 +94,7 @@ dispatch minecraft:item[
 	// EntityTag has this weird value because the id for the spawned entity can be
 	// changed by both the id inside the tag and also the id of the item (as a default)
 	/// Data of the spawned entity.
-	EntityTag?: EntityData,
+	EntityTag?: AnyEntity,
 }
 
 // This notably does not include end crystals, tested.

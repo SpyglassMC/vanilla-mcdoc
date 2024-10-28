@@ -1,7 +1,7 @@
-use super::spawn_item::EntityData
+use ::java::server::world::entity::AnyEntity
 
 dispatch minecraft:data_component[bucket_entity_data] to struct BucketEntityData {
-	...EntityData,
+	...AnyEntity,
 	/// Turns into the expiry time of the memory module `has_hunting_cooldown` for axolotls.
 	HuntingCooldown: long,
 	/// Turns into the `Variant` entity tag for tropical fish.
@@ -15,13 +15,13 @@ dispatch minecraft:item[
 	pufferfish_bucket,
 	tadpole_bucket
 ] to struct BasicFishBucket {
-	EntityTag?: EntityData,
+	EntityTag?: AnyEntity,
 }
 
 // Pre-1.20.5
 dispatch minecraft:item[tropical_fish_bucket] to struct AxolotlBucket {
 	...super::ItemBase,
-	EntityTag?: EntityData,
+	EntityTag?: AnyEntity,
 	/// Turns into the `Variant` entity tag.
 	BucketVariantTag?: int,
 }
