@@ -234,9 +234,7 @@ dispatch minecraft:loot_function[limit_count] to struct LimitCount {
 	...Conditions,
 }
 
-/// Adjusts the stack size based on the level of the `Looting` enchantment on the `killer` entity's weapon.
-#[until="1.21"]
-dispatch minecraft:loot_function[looting_enchant] to struct LootingEnchant {
+struct EnchantedCountBase {
 	/// If the number is fractional the result is rounded *after* the number was multiplied by the looting level.
 	count: (
 		#[until="1.17"] MinMaxBounds<float> |
@@ -244,12 +242,18 @@ dispatch minecraft:loot_function[looting_enchant] to struct LootingEnchant {
 	),
 	/// Limits the count of the item to a range.
 	limit?: int,
+}
+
+/// Adjusts the stack size based on the level of the `Looting` enchantment on the `killer` entity's weapon.
+#[until="1.21"]
+dispatch minecraft:loot_function[looting_enchant] to struct LootingEnchant {
+	...EnchantedCountBase,
 	...Conditions,
 }
 
 #[since="1.21"]
 dispatch minecraft:loot_function[enchanted_count_increase] to struct EnchantedCountIncrease {
-	...LootingEnchant,
+	...EnchantedCountBase,
 	/// Enchantment that increases yields.
 	enchantment: #[id="enchantment"] string,
 	...Conditions,
