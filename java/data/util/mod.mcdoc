@@ -12,7 +12,7 @@ type MinMaxBounds<T> = (
 
 // Since 1.17
 type IntRange = (
-	NumberProvider<int> |
+	int |
 	struct {
 		min?: NumberProvider<int>,
 		max?: NumberProvider<int>,
