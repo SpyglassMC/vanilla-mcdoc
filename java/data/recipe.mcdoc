@@ -6,6 +6,8 @@ dispatch minecraft:resource[recipe] to struct Recipe {
 	...minecraft:recipe_serializer[[type]],
 }
 
+dispatch minecraft:recipe_serializer[%unknown] to struct {}
+
 dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 	/// Identifier to group multiple recipes in the recipe book.
 	group?: string, // TODO
