@@ -155,6 +155,8 @@ dispatch minecraft:particle[shriek] to ParticleSettings<(
 dispatch minecraft:particle[trail] to struct TrailParticle {
 	target: [double] @ 3,
 	color: RGB,
+	#[since="1.21.4"]
+	duration: int @ 1..,
 }
 
 dispatch minecraft:particle[vibration] to ParticleSettings<struct VibrationParticle {

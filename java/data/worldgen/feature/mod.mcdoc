@@ -449,6 +449,9 @@ dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
 		#[until="1.17"] BlockState |
 		#[since="1.17"] BlockStateProvider |
 	),
+	/// Whether to schedule a block update. Defaults to `false`.
+	#[since="1.21.4"]
+	schedule_tick?: boolean,
 	#[until="1.17"]
 	...struct OldSimpleBlockConfig {
 		place_on: [BlockState],

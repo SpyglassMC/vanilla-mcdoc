@@ -111,12 +111,16 @@ struct BiomeEffects {
 		sound: SoundEventRef,
 		tick_chance: float @ 0..1,
 	},
-	music?: struct BiomeMusic {
-		sound: SoundEventRef,
-		min_delay: int @ 0..,
-		max_delay: int @ 0..,
-		replace_current_music: boolean,
-	},
+	music?: (
+		#[until="1.21.4"] BiomeMusic |
+		#[since="1.21.4"] [struct {
+			weight: int @ 1..,
+			data: BiomeMusic,
+		}]
+	),
+	/// The volume of the music in this biome. Defaults to 1.
+	/// The game will smoothly transition between the current music volume and the new volume when entering the biome.
+	music_volume?: float,
 	particle?: struct BiomeParticle {
 		options: Particle,
 		probability: float @ 0..1,
@@ -127,6 +131,13 @@ enum(string) GrassColorModifier {
 	None = "none",
 	DarkForest = "dark_forest",
 	Swamp = "swamp",
+}
+
+struct BiomeMusic {
+	sound: SoundEventRef,
+	min_delay: int @ 0..,
+	max_delay: int @ 0..,
+	replace_current_music: boolean,
 }
 
 enum(string) MobCategory {

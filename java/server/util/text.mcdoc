@@ -1,3 +1,4 @@
+use ::java::server::util::color::RGBA
 use ::java::server::world::item::ItemStack
 use ::java::server::world::item::DataComponentPatch
 
@@ -92,6 +93,10 @@ struct TextStyle {
 		#[since="1.16"] #[color="hex_rgb"] string |
 		#[color="named"] TextColor |
 	),
+	/// Overrides the shadow properties of the text.
+	/// If specified as 0, the shadow will never be displayed.
+	#[since="1.21.4"]
+	shadow_color?: RGBA,
 	#[since="1.16"]
 	font?: #[id="font"] string,
 	bold?: boolean,
