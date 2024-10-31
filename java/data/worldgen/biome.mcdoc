@@ -19,7 +19,7 @@ dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 	temperature: float,
 	downfall: float,
 	#[until="1.19.4"]
-	precipitation: Precipication,
+	precipitation: Precipitation,
 	#[since="1.19.4"]
 	has_precipitation: boolean,
 	temperature_modifier?: TemperatureModifier,
@@ -81,7 +81,7 @@ enum (string) BiomeCategory {
 	#[since="1.17"] Underground = "underground",
 }
 
-enum(string) Precipication {
+enum(string) Precipitation {
 	None = "none",
 	Rain = "rain",
 	Snow = "snow",
