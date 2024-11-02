@@ -109,7 +109,7 @@ enum(string) CopyNbtStrategy {
 /// Copies state properties from dropped block to the item's `BlockStateTag` tag. Fails if the block doesn't match.
 dispatch minecraft:loot_function[copy_state] to struct CopyState {
 	block: #[id="block"] string,
-	properties: [mcdoc:block_state_keys[[block]]],
+	properties: [mcdoc:block_state_keys[[%parent.block]]],
 	...Conditions,
 }
 
