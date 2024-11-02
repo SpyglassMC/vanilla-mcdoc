@@ -109,9 +109,11 @@ enum(string) CopyNbtStrategy {
 /// Copies state properties from dropped block to the item's `BlockStateTag` tag. Fails if the block doesn't match.
 dispatch minecraft:loot_function[copy_state] to struct CopyState {
 	block: #[id="block"] string,
-	properties: [mcdoc:block_states[[block]][key]], // TODO
+	properties: [mcdoc:block_state_keys[[block]]],
 	...Conditions,
 }
+
+dispatch mcdoc:block_state_keys[%unknown,%none] to string
 
 /// Enchants the item with one randomly-selected enchantment. The level of the enchantment, if applicable, is random.
 dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {
