@@ -57,6 +57,7 @@
    "mcdoc.java.data.damage_type.DeathMessageType.IntentionalGameDesign": "Resulting translation key of `death.attack.` + message_id + `.link`.",
    "mcdoc.java.data.enchantment.Enchantment.primary_items": "Item types for which this Enchantment shows up in Enchanting Tables and on traded equipment.\nMust be a subset of `supported_items`.",
    "mcdoc.java.data.enchantment.Enchantment.weight": "How commonly the Enchantment appears, compared to the total combined `weight` of all available Enchantments.",
+   "mcdoc.java.data.enchantment.Enchantment.max_level": "Maxumum level of the enchantment.",
    "mcdoc.java.data.enchantment.Enchantment.min_cost": "Minimum experience cost.",
    "mcdoc.java.data.enchantment.Enchantment.max_cost": "Maximum experience cost.",
    "mcdoc.java.data.enchantment.Enchantment.anvil_cost": "Halved when an Enchantment is added to a book.\nThe effective fee is multiplied by the level of the Enchantment.",
