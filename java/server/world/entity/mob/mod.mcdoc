@@ -62,7 +62,7 @@ struct MobBase {
 	body_armor_drop_chance?: float,
 	DeathLootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed for generating the death loot table.
-	DeathLootTableSeed?: long,
+	DeathLootTableSeed?: #[random] long,
 	/// Whether it can pick up loot.
 	CanPickUpLoot?: boolean,
 	/// Whether it should not despawn naturally.

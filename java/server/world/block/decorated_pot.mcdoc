@@ -10,7 +10,7 @@ dispatch minecraft:block_entity[decorated_pot] to struct DecoratedPot {
 	LootTable?: #[id(registry="loot_table",empty="allowed")] string,
 	/// Seed of the loot table.
 	#[since="1.20.3"]
-	LootTableSeed?: long,
+	LootTableSeed?: #[random] long,
 	#[since="1.20.3"]
 	item?: ItemStack,
 }

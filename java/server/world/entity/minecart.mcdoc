@@ -7,7 +7,7 @@ struct ContainerMinecart {
 	/// Loot table that will populate this minecart.
 	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.
-	LootTableSeed?: long,
+	LootTableSeed?: #[random] long,
 }
 
 dispatch minecraft:entity[minecart] to struct Minecart {

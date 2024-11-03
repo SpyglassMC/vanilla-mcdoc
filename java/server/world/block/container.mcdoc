@@ -7,7 +7,7 @@ struct ContainerBase {
 	/// Loot table that will populate this container.
 	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.
-	LootTableSeed?: long,
+	LootTableSeed?: #[random] long,
 }
 
 dispatch minecraft:block_entity[container] to struct Container27 {

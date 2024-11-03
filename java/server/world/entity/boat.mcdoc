@@ -44,7 +44,7 @@ struct ChestBoat {
 	/// Loot table that will populate this chest boat.
 	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.
-	LootTableSeed?: long,
+	LootTableSeed?: #[random] long,
 	/// Slots from 0 to 26.
 	Items?: [SlottedItem<byte @ 0..26>] @ 0..27,
 }
