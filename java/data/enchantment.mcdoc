@@ -30,8 +30,9 @@ dispatch minecraft:resource[enchantment] to struct Enchantment {
 		[#[id="item"] string] |
 	),
 	/// How commonly the Enchantment appears, compared to the total combined `weight` of all available Enchantments.
-	weight: int @ 0..,
-	max_level: int @ 1..,
+	weight: int @ 1..1024,
+	/// Maxumum level of the enchantment.
+	max_level: int @ 1..255,
 	/// Minimum experience cost.
 	min_cost: EnchantmentCost,
 	/// Maximum experience cost.
