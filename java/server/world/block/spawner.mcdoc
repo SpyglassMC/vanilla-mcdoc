@@ -3,7 +3,7 @@ use super::super::super::util::range::InclusiveRange
 use super::super::super::util::inventory::EquipmentSlot
 use ::java::data::trial_spawner::TrialSpawnerConfig
 
-dispatch minecraft:block_entity[spawner] to struct Spawner {
+dispatch minecraft:block_entity[mob_spawner] to struct Spawner {
 	...super::BlockEntity,
 	/// Entities that can be placed.
 	SpawnPotentials?: [SpawnPotential],
@@ -62,7 +62,7 @@ dispatch minecraft:block_entity[trial_spawner] to struct TrialSpawner {
 	ejecting_loot_table?: #[id="loot_table"] string
 }
 
-dispatch minecraft:block[spawner] to minecraft:block_entity[spawner]
+dispatch minecraft:block[spawner] to minecraft:block_entity[mob_spawner]
 
 dispatch minecraft:block[trial_spawner] to minecraft:block_entity[trial_spawner]
 
