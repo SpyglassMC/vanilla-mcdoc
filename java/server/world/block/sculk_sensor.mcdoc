@@ -8,4 +8,10 @@ dispatch minecraft:block_entity[sculk_sensor] to struct SculkSensor {
 	listener?: VibrationListener,
 }
 
+#[since="1.20"]
+dispatch minecraft:block_entity[calibrated_sculk_sensor] to SculkSensor
+
 dispatch minecraft:block[sculk_sensor] to minecraft:block_entity[sculk_sensor]
+
+#[since="1.20"]
+dispatch minecraft:block[calibrated_sculk_sensor] to minecraft:block_entity[sculk_sensor]
