@@ -1,18 +1,7 @@
-type BiomeSource = (
-	struct Dispatch {
-		type: #[id="worldgen/biome_source"] string,
-		...minecraft:biome_source[[type]],
-	} |
-	struct PresetMultiNoise {
-		type: #[id="worldgen/biome_source"] "multi_noise",
-		...MultiNoiseBase,
-		preset: (
-			#[until="1.18"] MultiNoisePreset |
-			#[since="1.18"] #[until="1.19.4"] #[id] MultiNoisePreset |
-			#[since="1.19.4"] #[id="worldgen/multi_noise_biome_source_parameter_list"] string |
-		),
-	} |
-)
+struct BiomeSource {
+	type: #[id="worldgen/biome_source"] string,
+	...minecraft:biome_source[[type]],
+}
 
 /// Biomes generate in a checkerboard chunk pattern.
 dispatch minecraft:biome_source[checkerboard] to struct Checkerboard {
@@ -34,8 +23,19 @@ struct MultiNoiseBase {
 }
 
 /// Custom biome distribution with configurable parameters.
-dispatch minecraft:biome_source[multi_noise] to struct BiomesMultiNoise {
+dispatch minecraft:biome_source[multi_noise] to struct MultiNoise {
 	...MultiNoiseBase,
+	preset?: (
+		#[until="1.18"] MultiNoisePreset |
+		#[since="1.18"] #[until="1.19.4"] #[id] MultiNoisePreset |
+		#[since="1.19.4"] #[id="worldgen/multi_noise_biome_source_parameter_list"] string |
+	),
+	...minecraft:multi_noise_biome_source[[preset]],
+}
+
+dispatch minecraft:multi_noise_biome_source[%unknown] to struct {}
+
+dispatch minecraft:multi_noise_biome_source[%none] to struct DirectMultiNoise {
 	#[since="1.16.2"] #[until="1.18"]
 	temperature_noise: NoiseParameters,
 	#[since="1.16.2"] #[until="1.18"]
