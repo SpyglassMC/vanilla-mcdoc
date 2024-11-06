@@ -1,0 +1,239 @@
+use ::java::server::util::color::ColorString
+use ::java::server::util::direction::Direction
+
+#[since="1.21.4"]
+dispatch minecraft:resource[item_model] to struct ItemModel {
+	type: #[id] ItemModeltype,
+	...minecraft:item_model[[type]],
+}
+
+enum(string) ItemModeltype {
+	BundleSelectedItem = "bundle/selected_item",
+	Composite = "composite",
+	Condition = "condition",
+	Model = "model",
+	RangeDispatch = "range_dispatch",
+	Select = "select",
+	Special = "special",
+}
+
+dispatch minecraft:item_model["bundle/selected_item"] to struct {}
+
+dispatch minecraft:item_model[composite] to struct Composite {
+	models: [ItemModel],
+}
+
+dispatch minecraft:item_model[condition] to struct Condition {
+	property: #[id] ConditionalPropertyType,
+	...minecraft:conditional_item_property[[property]],
+	on_true: ItemModel,
+	on_false: ItemModel,
+}
+
+dispatch minecraft:item_model[model] to struct Model {
+	model: #[id="model"] string,
+	tints?: [ModelTint],
+}
+
+dispatch minecraft:item_model[range_dispatch] to struct RangeDispatch {
+	property: #[id] NumericPropertyType,
+	...minecraft:numeric_item_property[[property]],
+	/// Factor to multiply the property value with. Defaults to 1.
+	scale?: float,
+	/// List of ranges. Will select last entry with threshold less or equal to value.
+	/// Order does not matter, list will be sorted by threshold in ascending order.
+	entries: [struct RangeDispatchEntry {
+		threshold: float,
+		model: ItemModel,
+	}],
+	/// Item model to render if no entries were less or equal to the value.
+	fallback?: ItemModel,
+}
+
+dispatch minecraft:item_model[select] to struct Select {
+	property: #[id] SelectPropertyType,
+	...minecraft:select_item_property[[property]],
+	cases: [struct SelectCase {
+		when: (string | [string]),
+		model: ItemModel
+	}],
+	/// Item model to render if none of the cases matched the value.
+	fallback?: ItemModel,
+}
+
+dispatch minecraft:item_model[special] to struct Special {
+	/// Renders a special hardcoded model.
+	model: struct SpecialModel {
+		type: #[id] SpecialModelType,
+		...minecraft:special_item_model[[type]],
+	},
+	/// Base model, providing transformations, particle texture and GUI light.
+	base: #[id="model"] string,
+}
+
+
+struct ModelTint {
+	type: #[id="tint_source_type"] string,
+	...minecraft:tint_source[[type]],
+}
+
+
+enum(string) ConditionalPropertyType {
+	Broken = "broken",
+	BundleHasSelectedItem = "bundle/has_selected_item",
+	Carried = "carried",
+	CustomModelData = "custom_model_data",
+	Damaged = "damaged",
+	FishingRod = "fishing_rod/cast",
+	HasComponent = "has_component",
+	ShiftDown = "shift_down",
+	Selected = "selected",
+	UsingItem = "using_item",
+	Xmas = "xmas",
+}
+
+dispatch minecraft:conditional_item_property[%unknown] to struct {}
+
+dispatch minecraft:conditional_item_property[has_component] to struct HasComponent {
+	component: #[id="data_component_type"] string,
+}
+
+dispatch minecraft:conditional_item_property[custom_model_data] to struct CustomModelDataFlags {
+	/// The index of the `flags` list in the `custom_model_data` component. Defaults to 0.
+	index?: int @ 0..,
+}
+
+
+enum(string) NumericPropertyType {
+	BundleFullness = "bundle/fullness",
+	Compass = "compass",
+	Cooldown = "cooldown",
+	Count = "count",
+	CrossbowPull = "crossbow/pull",
+	CustomModelData = "custom_model_data",
+	Damage = "damage",
+	Time = "time",
+	UseCycle = "use_cycle",
+	UseDuration = "use_duration",
+}
+
+dispatch minecraft:numeric_item_property[%unknown] to struct {}
+
+dispatch minecraft:numeric_item_property[custom_model_data] to struct CustomModelDataFloats {
+	/// The index of the `floats` list in the `custom_model_data` component. Defaults to 0.
+	index?: int @ 0..,
+}
+
+dispatch minecraft:numeric_item_property[damage] to struct Damage {
+	/// If false, returns value of damage, clamped to `0..max_damage`.
+	/// If true, returns value of damage divided by the `max_damage` component, clamped to `0..1`.
+	/// Defaults to true.
+	normalize?: boolean,
+}
+
+dispatch minecraft:numeric_item_property[count] to struct Count {
+	/// If false, returns count clamped to `0..max_stack_size`.
+	/// If true, returns count divided by the `max_stack_size` component, clamped to `0..1`.
+	/// Defaults to true.
+	normalize?: boolean,
+}
+
+dispatch minecraft:numeric_item_property[time] to struct Time {
+	/// If true, value is random in dimensions with `natural=false`. Defaults to true.
+	natural_only?: boolean,
+	/// Whether to oscillate for some time around target before settling. Defaults to true.
+	wobble?: boolean,
+}
+
+dispatch minecraft:numeric_item_property[compass] to struct Compass {
+	target: CompassTarget,
+	/// Whether to oscillate for some time around target before settling. Defaults to true.
+	wobble?: boolean,
+}
+
+enum(string) CompassTarget {
+	/// Points at world spawn.
+	Spawn = "spawn",
+	/// Points at the location stored in the `lodestone_tracker` component.
+	Lodestone = "lodestone",
+	/// Points at the last player death location.
+	Recovery = "recovery",
+}
+
+dispatch minecraft:numeric_item_property[use_duration] to struct UseDuration {
+	/// If true, returns remaining item use ticks.
+	/// If false, returns item use ticks so far.
+	/// Defaults to false.
+	remaining?: boolean,
+}
+
+dispatch minecraft:numeric_item_property[use_cycle] to struct UseCycle {
+	/// returns remaining item use ticks modulo `period`.
+	/// Defaults to 1.
+	period?: float,
+}
+
+
+enum(string) SelectPropertyType {
+	BlockState = "block_state",
+	ChargeType = "charge_type",
+	CustomModelData = "custom_model_data",
+	DisplayContext = "display_context",
+	MainHand = "main_hand",
+	TrimMaterial = "trim_material",
+}
+
+dispatch minecraft:select_item_property[%unknown] to struct {}
+
+dispatch minecraft:select_item_property[block_state] to struct BlockState {
+	block_state_property: mcdoc:block_state_keys[%fallback],
+}
+
+dispatch minecraft:select_item_property[custom_model_data] to struct CustomModelDataStrings {
+	/// The index of the `strings` list in the `custom_model_data` component. Defaults to 0.
+	index?: int @ 0..,
+}
+
+
+enum(string) SpecialModelType {
+	Banner = "banner",
+	Bed = "bed",
+	Conduit = "conduit",
+	Chest = "chest",
+	DecoratedPot = "decorated_pot",
+	Head = "head",
+	Shield = "shield",
+	ShulkerBox = "shulker_box",
+	Trident = "trident",
+}
+
+dispatch minecraft:special_item_model[%unknown] to struct {}
+
+dispatch minecraft:special_item_model[banner] to struct Banner {
+	color: ColorString,
+}
+
+dispatch minecraft:special_item_model[bed] to struct Bed {
+	texture: #[id(registry="texture",path="entity/bed/")] string,
+}
+
+dispatch minecraft:special_item_model[head] to struct Head {
+	kind: HeadType,
+}
+
+enum(string) HeadType {
+	Creeper = "creeper",
+	Dragon = "dragon",
+	Piglin = "piglin",
+	Player = "player",
+	Skeleton = "skeleton",
+	WitherSkeleton = "wither_skeleton",
+	Zombie = "zombie",
+}
+
+dispatch minecraft:special_item_model[shulker_box] to struct ShulkerBox {
+	texture: #[id(registry="texture",path="entity/shulker/")] string,
+	openness?: float @ 0..1,
+	/// Defaults to `up`.
+	orientation?: Direction,
+}
