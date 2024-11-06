@@ -3,7 +3,11 @@ use ::java::server::util::color::ColorString
 use ::java::server::util::direction::Direction
 
 #[since="1.21.4"]
-dispatch minecraft:resource[item_model] to struct ItemModel {
+dispatch minecraft:resource[item_definition] to struct ItemDefinition {
+	model: ItemModel,
+}
+
+struct ItemModel {
 	type: #[id] ItemModeltype,
 	...minecraft:item_model[[type]],
 }
