@@ -30,7 +30,7 @@ dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShape
 	group?: string,
 	/// Identifier for the category this goes in the recipe book.
 	category?: CraftingBookCategory,
-	ingredients?: [Ingredient] @ 1..9,
+	ingredients: [Ingredient] @ 1..9,
 	result: (
 		#[until="1.20.5"] ItemResult |
 		#[since="1.20.5"] ItemStack |
