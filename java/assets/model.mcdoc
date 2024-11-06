@@ -16,9 +16,8 @@ dispatch minecraft:resource[model] to struct Model {
 			scale?: [float @ -4..4] @ 3,
 		},
 	},
-	#[model_override] // Currently unimplemented attribute to help with sorting rules.
+	#[until="1.21.4"]
 	overrides?: [struct ModelOverride {
-		#[model_override(predicate=true)] // Also unimplemented.
 		predicate: struct ModelOverridePredicates {
 			[Predicates]: float,
 		},

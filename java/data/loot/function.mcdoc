@@ -16,6 +16,7 @@ use ::java::server::util::color::ColorString
 use ::java::server::util::text::Text
 use ::java::server::util::firework::FireworkShape
 use ::java::server::util::Filterable
+use ::java::server::util::color::RGB
 use ::java::server::world::item::DataComponentPatch
 use ::java::server::world::item::CustomData
 
@@ -509,7 +510,27 @@ dispatch minecraft:loot_function[set_custom_model_data] to struct SetCustomModel
 	/// Tag that describes the custom model an item will take.
 	/// Used by the `custom_model_data` model overrides predicate.
 	/// Has certain restrictions due to float conversion.
-	value: NumberProvider<int>,
+	#[until="1.21.4"]
+	value: NumberProvider,
+	#[since="1.21.4"]
+	...struct {
+		floats?: struct CustomModelDataFloats {
+			values: [NumberProvider],
+			...ListOperation,
+		},
+		flags?: struct CustomModelDataFlags {
+			values: [boolean],
+			...ListOperation,
+		},
+		strings?: struct CustomModelDataStrings {
+			values: [string],
+			...ListOperation,
+		},
+		colors?: struct CustomModelDataColors {
+			values: [(NumberProvider | RGB)],
+			...ListOperation,
+		},
+	},
 	...Conditions,
 }
 

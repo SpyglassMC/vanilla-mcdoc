@@ -9,6 +9,7 @@ use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::block_state::BlockState
 use ::java::server::util::effect::MobEffectInstance
 use ::java::server::util::inventory::EquipmentSlot
+use ::java::server::util::color::RGB
 
 struct AttributeModifiers {
 	modifiers: [AttributeModifier],
@@ -105,10 +106,15 @@ type CustomData = (
 
 dispatch minecraft:data_component[custom_data] to CustomData
 
-/// Tag that describes the custom model an item will take.
-/// Used by the `custom_model_data` model overrides predicate.
-/// Has certain restrictions due to float conversion.
-dispatch minecraft:data_component[custom_model_data] to int
+dispatch minecraft:data_component[custom_model_data] to (
+	#[until="1.21.4"] int |
+	#[since="1.21.4"] struct CustomModelData {
+		floats?: [float],
+		flags?: [boolean],
+		strings?: [string],
+		colors?: [RGB],
+	} |
+)
 
 /// Damage that an item has. Only used for tools, armor, etc.
 dispatch minecraft:data_component[damage] to int @ 0..
@@ -162,7 +168,10 @@ dispatch minecraft:data_component[equippable] to struct Equippable {
 	equip_sound?: SoundEventRef,
 	/// The equipment model to use when equipped.
 	/// Falls back to rendering as the item itself when in the head slot (or no rendering if not applicable).
+	#[until="1.21.4"]
 	model?: #[id="model"] string,
+	#[since="1.21.4"]
+	asset_id?: #[id="equipment"] string,
 	/// The overlay texture that should render in first person when equipped.
 	camera_overlay?: #[id="texture"] string,
 	/// Limits which entities can equip this item
@@ -235,7 +244,10 @@ dispatch minecraft:data_component[hide_additional_tooltip] to struct {}
 /// If set, it will completely hide this item's tooltip, including its name.
 dispatch minecraft:data_component[hide_tooltip] to struct {}
 
-dispatch minecraft:data_component[item_model] to #[id] string
+dispatch minecraft:data_component[item_model] to (
+	#[until="1.21.4"] #[id(registry="model",path="item/")] string |
+	#[since="1.21.4"] #[id(registry="item_model")] string |
+)
 
 /// Replaces default item name with contained chat component.
 ///
