@@ -25,6 +25,7 @@
    "mcdoc.java.assets.item_definition.PotionTint.default": "Tint to apply when the `potion_contents` component is not present, or it has no effects and no `custom_color` is set.",
    "mcdoc.java.assets.item_definition.MapColorTint.default": "Tint to apply when the `map_color` component is not present.",
    "mcdoc.java.assets.item_definition.CustomModelDataTint.index": "The index of the `colors` list in the `custom_model_data` component. Defaults to 0.",
+   "mcdoc.java.assets.item_definition.CustomModelDataTint.default": "Tint to apply when the `custom_model_data` component is not present, or when it doesn't have a color in the specified index.",
    "mcdoc.java.assets.item_definition.CustomModelDataFlags.index": "The index of the `flags` list in the `custom_model_data` component. Defaults to 0.",
    "mcdoc.java.assets.item_definition.CustomModelDataFloats.index": "The index of the `floats` list in the `custom_model_data` component. Defaults to 0.",
    "mcdoc.java.assets.item_definition.Damage.normalize": "If false, returns value of damage, clamped to `0..max_damage`.\nIf true, returns value of damage divided by the `max_damage` component, clamped to `0..1`.\nDefaults to true.",
