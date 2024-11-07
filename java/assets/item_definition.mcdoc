@@ -116,6 +116,8 @@ dispatch minecraft:tint_source[map_color] to struct MapColorTint {
 dispatch minecraft:tint_source[custom_model_data] to struct CustomModelDataTint {
 	/// The index of the `colors` list in the `custom_model_data` component. Defaults to 0.
 	index?: int @ 0..,
+	/// Tint to apply when the `custom_model_data` component is not present, or when it doesn't have a color in the specified index.
+	default: RGB,
 }
 
 
