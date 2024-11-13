@@ -1,6 +1,7 @@
 use ::java::server::util::color::RGB
 use ::java::server::util::color::ColorString
 use ::java::server::util::direction::Direction
+use ::java::server::util::text::Keybind
 
 #[since="1.21.4"]
 dispatch minecraft:resource[item_definition] to struct ItemDefinition {
@@ -127,23 +128,30 @@ enum(string) ConditionalPropertyType {
 	Carried = "carried",
 	CustomModelData = "custom_model_data",
 	Damaged = "damaged",
+	ExtendedView = "extended_view",
 	FishingRod = "fishing_rod/cast",
 	HasComponent = "has_component",
-	ShiftDown = "shift_down",
+	KeybindDown = "keybind_down",
 	Selected = "selected",
 	UsingItem = "using_item",
-	Xmas = "xmas",
 }
 
 dispatch minecraft:conditional_item_property[%unknown] to struct {}
 
-dispatch minecraft:conditional_item_property[has_component] to struct HasComponent {
-	component: #[id="data_component_type"] string,
-}
-
 dispatch minecraft:conditional_item_property[custom_model_data] to struct CustomModelDataFlags {
 	/// The index of the `flags` list in the `custom_model_data` component. Defaults to 0.
 	index?: int @ 0..,
+}
+
+dispatch minecraft:conditional_item_property[has_component] to struct HasComponent {
+	component: #[id="data_component_type"] string,
+	/// Whether the default components should be handled as "no component". Defaults to false.
+	ignore_default?: boolean,
+}
+
+dispatch minecraft:conditional_item_property[keybind_down] to struct KeybindDown {
+	/// The keybind ID to check for.
+	keybind: Keybind,
 }
 
 
@@ -222,6 +230,8 @@ enum(string) SelectPropertyType {
 	ChargeType = "charge_type",
 	CustomModelData = "custom_model_data",
 	DisplayContext = "display_context",
+	HolderType = "holder_type",
+	LocalTime = "local_time",
 	MainHand = "main_hand",
 	TrimMaterial = "trim_material",
 }
@@ -237,6 +247,18 @@ dispatch minecraft:select_item_property[custom_model_data] to struct CustomModel
 	index?: int @ 0..,
 }
 
+dispatch minecraft:select_item_property[local_time] to struct LocalTime {
+	/// Format to use for time formatting.
+	/// Examples: `yyyy-MM-dd`, `HH:mm:ss`.
+	pattern: #[time_pattern] string,
+	/// Defaults to the root locale.
+	/// Examples: `en_US`, `cs_AU@numbers=thai;calendar=japanese`.
+	locale?: string, // TODO
+	/// Defaults to the timezone set on the client.
+	/// Examples: `Europe/Stockholm`, `GMT+0:45`.
+	time_zone?: string,
+}
+
 
 enum(string) SpecialModelType {
 	Banner = "banner",
@@ -244,9 +266,11 @@ enum(string) SpecialModelType {
 	Conduit = "conduit",
 	Chest = "chest",
 	DecoratedPot = "decorated_pot",
+	HangingSign = "hanging_sign",
 	Head = "head",
 	Shield = "shield",
 	ShulkerBox = "shulker_box",
+	StandingSign = "standing_sign",
 	Trident = "trident",
 }
 
@@ -260,8 +284,32 @@ dispatch minecraft:special_item_model[bed] to struct Bed {
 	texture: #[id(registry="texture",path="entity/bed/")] string,
 }
 
+dispatch minecraft:special_item_model[hanging_sign] to struct HangingSign {
+	wood_type: WoodType,
+	texture: #[id(registry="texture",path="entity/signs/hanging/")] string,
+}
+
+enum(string) WoodType {
+	Oak = "oak",
+	Spruce = "spruce",
+	Birch = "birch",
+	Acacia = "acacia",
+	Cherry = "cherry",
+	Jungle = "jungle",
+	DarkOak = "dark_oak",
+	PaleOak = "pale_oak",
+	Mangrove = "mangrove",
+	Bamboo = "bamboo",
+	Crimson = "crimson",
+	Warped = "warped",
+}
+
 dispatch minecraft:special_item_model[head] to struct Head {
 	kind: HeadType,
+	/// Texture to use instead of the texture from `kind`.
+	/// If present, will ignore the `profile` compnent.
+	#[since="1.21.4"]
+	texture?: #[id(registry="texture",path="entity/")] string,
 }
 
 enum(string) HeadType {
@@ -279,4 +327,9 @@ dispatch minecraft:special_item_model[shulker_box] to struct ShulkerBox {
 	openness?: float @ 0..1,
 	/// Defaults to `up`.
 	orientation?: Direction,
+}
+
+dispatch minecraft:special_item_model[standing_sign] to struct StandingSign {
+	wood_type: WoodType,
+	texture: #[id(registry="texture",path="entity/signs/")] string,
 }

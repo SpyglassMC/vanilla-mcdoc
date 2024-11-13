@@ -59,6 +59,8 @@ enum(string) ItemUseAnimation {
 	/// Used for Goat Horns.
 	TootHorn = "toot_horn",
 	Brush = "brush",
+	#[since="1.21.4"]
+	Bundle = "bundle",
 }
 
 struct ConsumeEffect {

@@ -1,0 +1,10 @@
+#[since="1.21.2"]
+dispatch minecraft:entity[creaking] to struct Creaking {
+	...super::MobBase,
+	/// The creaking heart block that this is linked to.
+	#[since="1.21.4"]
+	home_pos?: [int] @ 3,
+}
+
+#[since="1.21.2"] #[until="1.21.4"]
+dispatch minecraft:entity[creaking_transient] to Creaking
