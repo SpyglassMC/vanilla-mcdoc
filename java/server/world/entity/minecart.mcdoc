@@ -1,4 +1,5 @@
 use super::super::block::spawner::SpawnPotential
+use super::super::block::spawner::SpawnerEntry
 use super::super::entity::AnyEntity
 use ::java::server::util::BlockState
 use ::java::server::util::SlottedItem
@@ -66,7 +67,10 @@ dispatch minecraft:entity[spawner_minecart] to struct SpawnerMinecart {
 	SpawnPotentials?: [SpawnPotential],
 	/// Data for the next mob to place.
 	/// Will be overwritten by `SpawnPotentials`.
-	SpawnData?: AnyEntity,
+	SpawnData?: (
+		#[until="1.18"] AnyEntity |
+		#[since="1.18"] SpawnerEntry |
+	),
 	/// Number of entities that will be placed.
 	SpawnCount: short,
 	/// Range that the spawned entities will be placed in.
