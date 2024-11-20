@@ -6,6 +6,9 @@ use ::java::server::util::text::Keybind
 #[since="1.21.4"]
 dispatch minecraft:resource[item_definition] to struct ItemDefinition {
 	model: ItemModel,
+	/// Whether the down-and-up animation should be played in first-person view when the item stack is changed.
+	/// Defaults to `true`.
+	hand_animation_on_swap?: boolean,
 }
 
 struct ItemModel {
@@ -17,6 +20,7 @@ enum(string) ItemModeltype {
 	BundleSelectedItem = "bundle/selected_item",
 	Composite = "composite",
 	Condition = "condition",
+	Empty = "empty",
 	Model = "model",
 	RangeDispatch = "range_dispatch",
 	Select = "select",
@@ -79,8 +83,19 @@ dispatch minecraft:item_model[special] to struct Special {
 
 
 struct ModelTint {
-	type: #[id="tint_source_type"] string,
+	type: #[id] TintSourceType,
 	...minecraft:tint_source[[type]],
+}
+
+enum(string) TintSourceType {
+	Constant = "constant",
+	CustomModelData = "custom_model_data",
+	Dye = "dye",
+	Firework = "firework",
+	Grass = "grass",
+	MapColor = "map_color",
+	Potion = "potion",
+	Team = "team",
 }
 
 dispatch minecraft:tint_source[constant] to struct ConstantTint {
@@ -121,6 +136,11 @@ dispatch minecraft:tint_source[custom_model_data] to struct CustomModelDataTint 
 	default: RGB,
 }
 
+dispatch minecraft:tint_source[team] to struct TeamTint {
+	/// Tint to apply when there is no context entity, entity is not in a team or the team has no color.
+	default?: RGB,
+}
+
 
 enum(string) ConditionalPropertyType {
 	Broken = "broken",
@@ -134,6 +154,7 @@ enum(string) ConditionalPropertyType {
 	KeybindDown = "keybind_down",
 	Selected = "selected",
 	UsingItem = "using_item",
+	ViewEntity = "view_entity",
 }
 
 dispatch minecraft:conditional_item_property[%unknown] to struct {}
@@ -152,6 +173,10 @@ dispatch minecraft:conditional_item_property[has_component] to struct HasCompone
 dispatch minecraft:conditional_item_property[keybind_down] to struct KeybindDown {
 	/// The keybind ID to check for.
 	keybind: Keybind,
+}
+
+dispatch minecraft:conditional_item_property[view_entity] to struct ViewEntity {
+
 }
 
 
@@ -190,10 +215,15 @@ dispatch minecraft:numeric_item_property[count] to struct Count {
 }
 
 dispatch minecraft:numeric_item_property[time] to struct Time {
-	/// If true, value is random in dimensions with `natural=false`. Defaults to true.
-	natural_only?: boolean,
+	source: TimeSource,
 	/// Whether to oscillate for some time around target before settling. Defaults to true.
 	wobble?: boolean,
+}
+
+enum(string) TimeSource {
+	Daytime = "daytime",
+	MoonPhase = "moon_phase",
+	Random = "random",
 }
 
 dispatch minecraft:numeric_item_property[compass] to struct Compass {
@@ -203,6 +233,8 @@ dispatch minecraft:numeric_item_property[compass] to struct Compass {
 }
 
 enum(string) CompassTarget {
+	/// Always an invalid target.
+	None = "none",
 	/// Points at world spawn.
 	Spawn = "spawn",
 	/// Points at the location stored in the `lodestone_tracker` component.
@@ -228,9 +260,10 @@ dispatch minecraft:numeric_item_property[use_cycle] to struct UseCycle {
 enum(string) SelectPropertyType {
 	BlockState = "block_state",
 	ChargeType = "charge_type",
+	ContextDimension = "context_dimension",
+	ContextEntityType = "context_entity_type",
 	CustomModelData = "custom_model_data",
 	DisplayContext = "display_context",
-	HolderType = "holder_type",
 	LocalTime = "local_time",
 	MainHand = "main_hand",
 	TrimMaterial = "trim_material",
@@ -308,8 +341,9 @@ dispatch minecraft:special_item_model[head] to struct Head {
 	kind: HeadType,
 	/// Texture to use instead of the texture from `kind`.
 	/// If present, will ignore the `profile` compnent.
-	#[since="1.21.4"]
 	texture?: #[id(registry="texture",path="entity/")] string,
+	/// Controls the animation time for piglin and dragon heads. Defaults to `0`.
+	animation?: float,
 }
 
 enum(string) HeadType {
