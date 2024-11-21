@@ -19,9 +19,12 @@ dispatch minecraft:entity[text_display] to struct TextDisplay {
 	/// Should text be visible through blocks. Defaults to false.
 	see_through?: boolean,
 	/// How text should be aligned. Defaults to `center`.
-	alignment?: enum(string) {
-		Center = "center",
-		Left = "left",
-		Right = "right",
-	},
+	/// Will log an error when not specified, see [MC-261036](https://bugs.mojang.com/browse/MC-261036).
+	alignment: TextAlignment,
+}
+
+enum(string) TextAlignment {
+	Center = "center",
+	Left = "left",
+	Right = "right",
 }
