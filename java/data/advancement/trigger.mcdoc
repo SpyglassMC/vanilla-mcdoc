@@ -28,7 +28,7 @@ struct TriggerBase {
 }
 
 type Location = (
-	#[deprecated="1.16"]
+	#[deprecated="1.16"] #[until="1.19"]
 	LocationPredicate |
 	#[since="1.16"]
 	struct {
