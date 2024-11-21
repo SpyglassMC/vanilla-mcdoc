@@ -1,7 +1,7 @@
 #[since="1.20.5"]
 dispatch minecraft:resource[banner_pattern] to struct BannerPattern {
 	/// Also resolves to `assets/<namespace>/textures/entity/shield/<name>.png`.
-	asset_id: #[id(registry="texture", path="entity/banner")] string,
+	asset_id: #[id(registry="texture", path="entity/banner/")] string,
 	/// Translation key prefix per dye color (e.g. `block.minecraft.banner.custom.pattern` resolves to `block.minecraft.banner.custom.pattern.<dye color>`).
 	translation_key: string,
 }

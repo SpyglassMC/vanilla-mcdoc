@@ -3,7 +3,7 @@ use ::java::server::util::text::Text
 #[since="1.19.4"]
 dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 	/// ID which will be used in the resource pack.
-	asset_name: #[id(registry="texture", path="trims/color_palettes")] string,
+	asset_name: #[id(registry="texture", path="trims/color_palettes/")] string,
 	/// Text displayed in the item tooltip.
 	description: Text,
 	/// Item used in the smithing table for this material.
@@ -33,7 +33,7 @@ enum(string) ArmorMaterial {
 #[since="1.19.4"]
 dispatch minecraft:resource[trim_pattern] to struct TrimPattern {
 	/// ID of the pattern that will be used in the resource pack as an overlay on the armor.
-	asset_id: #[id(registry="texture", path="trims/models/armor")] string,
+	asset_id: #[id(registry="texture", path="trims/models/armor/")] string,
 	/// Text displayed in the item tooltip.
 	description: Text,
 	/// The item used in the smithing table for this pattern.
