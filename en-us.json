@@ -1061,7 +1061,7 @@
    "mcdoc.java.server.world.entity.display.text.TextDisplay.default_background": "If true, overrides `background` & rendering uses default text background color (same as in chat). Defaults to false.",
    "mcdoc.java.server.world.entity.display.text.TextDisplay.shadow": "Should text be displayed with shadow. Defaults to false.",
    "mcdoc.java.server.world.entity.display.text.TextDisplay.see_through": "Should text be visible through blocks. Defaults to false.",
-   "mcdoc.java.server.world.entity.display.text.TextDisplay.alignment": "How text should be aligned. Defaults to `center`.",
+   "mcdoc.java.server.world.entity.display.text.TextDisplay.alignment": "How text should be aligned. Defaults to `center`.\nWill log an error when not specified, see [MC-261036](https://bugs.mojang.com/browse/MC-261036).",
    "mcdoc.java.server.world.entity.mob.allay.Allay.CanDuplicate": "Whether the allay can duplicate. This is set to false when the allay duplicates.",
    "mcdoc.java.server.world.entity.mob.allay.Allay.DuplicationCooldown": "Ticks until `CanDuplicate` is set to true. This is set to 6000 game ticks (5 minutes) when the allay duplicates.",
    "mcdoc.java.server.world.entity.mob.allay.Allay.Inventory": "Items it has picked up. Note that the item given by the player is in\nthe allay's `HandItems[0]` tag, not here.",
