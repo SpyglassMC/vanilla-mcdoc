@@ -248,7 +248,7 @@ dispatch minecraft:data_component[hide_tooltip] to struct {}
 
 dispatch minecraft:data_component[item_model] to (
 	#[until="1.21.4"] #[id(registry="model",path="item/")] string |
-	#[since="1.21.4"] #[id(registry="item_model")] string |
+	#[since="1.21.4"] #[id(registry="item_definition")] string |
 )
 
 /// Replaces default item name with contained chat component.
