@@ -1,0 +1,37 @@
+use ::java::server::util::color::RGB
+
+#[since="1.21.2"]
+dispatch minecraft:resource[equipment] to struct Equipment {
+	/// List of layers for each model layer type.
+	layers: Layers,
+}
+
+struct Layers {
+	humanoid: Layer<#[id(registry="texture",path="entity/equipment/humanoid/")] string>,
+	humanoid_leggings: Layer<#[id(registry="texture",path="entity/equipment/humanoid_leggings/")] string>,
+	wings: WingsLayer<#[id(registry="texture",path="entity/equipment/wings/")] string>,
+	wolf_body: Layer<#[id(registry="texture",path="entity/equipment/wolf_body/")] string>,
+	horse_body: Layer<#[id(registry="texture",path="entity/equipment/horse_body/")] string>,
+	llama_body: Layer<#[id(registry="texture",path="entity/equipment/llama_body/")] string>,
+}
+
+type Layer<T> = struct {
+	/// Texture location for this layer, inside `entity/equipment/<layer>/`.
+	texture: T,
+	/// Configures how this layer behaves when dyed (in the `#dyeable` item tag, and has the `dyed_color` component).
+	dyeable?: Dyeable,
+}
+
+struct Dyeable {
+	/// If specified, this layer will be tinted by the color contained in the `dyed_color` component.
+	/// If the item is not dyeable or not dyed, it will be tinted by this color.
+	/// If not specified and the item is not dyed, the layer will be hidden.
+	color_when_undyed?: RGB,
+}
+
+type WingsLayer<T> = struct {
+	...Layer<T>,
+	/// Whether this layer texture should be overridden by the player's custom elytra texture.
+	/// Defaults to `false`.
+	use_player_texture?: boolean,
+}
