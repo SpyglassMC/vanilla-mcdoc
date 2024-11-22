@@ -6,7 +6,7 @@ use ::java::server::world::item::SingleItem
 
 struct Particle {
 	type: #[id="particle_type"] string,
-	...(minecraft:particle[[type]]),
+	...minecraft:particle[[type]],
 }
 
 type ParticleSettings<S> = (

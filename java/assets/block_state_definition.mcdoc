@@ -1,3 +1,5 @@
+use ::java::assets::model::ModelRef
+
 type BlockStateDefinition = (
 	struct BlockStateDefinitionVariant {
 		variants: struct BlockStateDefinitionVariantMap {
@@ -23,7 +25,7 @@ type ModelVariant = (
 )
 
 struct ModelVariantBase {
-	model: #[id="model"] string,
+	model: ModelRef,
 	x?: (0 | 90 | 180 | 270),
 	y?: (0 | 90 | 180 | 270),
 	/// If set to `true`, the textures are not rotated with the block.

@@ -171,7 +171,7 @@ dispatch minecraft:data_component[equippable] to struct Equippable {
 	/// The equipment model to use when equipped.
 	/// Falls back to rendering as the item itself when in the head slot (or no rendering if not applicable).
 	#[until="1.21.4"]
-	model?: #[id="model"] string,
+	model?: #[id="equipment"] string,
 	#[since="1.21.4"]
 	asset_id?: #[id="equipment"] string,
 	/// The overlay texture that should render in first person when equipped.

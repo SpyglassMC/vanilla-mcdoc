@@ -35,7 +35,7 @@ dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	/// Particle the area effect cloud displays.
 	Particle?: (
 		#[until="1.20.5"] string |
-		#[since="1.20.5"] Particle
+		#[since="1.20.5"] Particle |
 	),
 	/// Default potion effect.
 	#[until="1.20.5"]

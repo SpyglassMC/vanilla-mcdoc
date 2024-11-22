@@ -1,3 +1,4 @@
+use ::java::assets::model::ModelRef
 use ::java::server::util::color::RGB
 use ::java::server::util::color::ColorString
 use ::java::server::util::direction::Direction
@@ -41,7 +42,7 @@ dispatch minecraft:item_model[condition] to struct Condition {
 }
 
 dispatch minecraft:item_model[model] to struct Model {
-	model: #[id="model"] string,
+	model: ModelRef,
 	tints?: [ModelTint],
 }
 
@@ -78,7 +79,7 @@ dispatch minecraft:item_model[special] to struct Special {
 		...minecraft:special_item_model[[type]],
 	},
 	/// Base model, providing transformations, particle texture and GUI light.
-	base: #[id="model"] string,
+	base: ModelRef,
 }
 
 
