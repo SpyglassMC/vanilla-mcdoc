@@ -7,12 +7,12 @@ dispatch minecraft:resource[equipment] to struct Equipment {
 }
 
 struct Layers {
-	humanoid: [Layer<#[id(registry="texture",path="entity/equipment/humanoid/")] string>],
-	humanoid_leggings: [Layer<#[id(registry="texture",path="entity/equipment/humanoid_leggings/")] string>],
-	wings: [WingsLayer<#[id(registry="texture",path="entity/equipment/wings/")] string>],
-	wolf_body: [Layer<#[id(registry="texture",path="entity/equipment/wolf_body/")] string>],
-	horse_body: [Layer<#[id(registry="texture",path="entity/equipment/horse_body/")] string>],
-	llama_body: [Layer<#[id(registry="texture",path="entity/equipment/llama_body/")] string>],
+	humanoid?: [Layer<#[id(registry="texture",path="entity/equipment/humanoid/")] string>],
+	humanoid_leggings?: [Layer<#[id(registry="texture",path="entity/equipment/humanoid_leggings/")] string>],
+	wings?: [WingsLayer<#[id(registry="texture",path="entity/equipment/wings/")] string>],
+	wolf_body?: [Layer<#[id(registry="texture",path="entity/equipment/wolf_body/")] string>],
+	horse_body?: [Layer<#[id(registry="texture",path="entity/equipment/horse_body/")] string>],
+	llama_body?: [Layer<#[id(registry="texture",path="entity/equipment/llama_body/")] string>],
 }
 
 type Layer<T> = struct {
