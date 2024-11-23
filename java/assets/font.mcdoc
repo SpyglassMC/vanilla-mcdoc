@@ -13,6 +13,8 @@ struct GlyphProvider {
 enum(string) GlyphProviderType {
 	Bitmap = "bitmap",
 	TrueType = "ttf",
+	#[since="1.19"]
+	Space = "space",
 	#[until="1.20"]
 	LegacyUnicode = "legacy_unicode",
 	#[since="1.20"]
@@ -31,6 +33,12 @@ dispatch minecraft:glyph_provider[bitmap] to struct BitmapProvider {
 	height?: int,
 	ascent: int,
 	chars: [string @ 1..] @ 1..,
+}
+
+dispatch minecraft:glyph_provider[space] to struct SpaceProvider {
+	advances: struct {
+		[string @ 1]: float,
+	},
 }
 
 dispatch minecraft:glyph_provider[ttf] to struct TtfProvider {
