@@ -5,7 +5,7 @@ dispatch minecraft:resource["shader"] to struct ShaderProgram {
 		#[since="1.21.2"] #[id="shader/vertex"] string |
 	),
 	// The fragment shader, referencing a file ending with `.fsh`.
-	fragement: (
+	fragment: (
 		#[until="1.21.2"] string |
 		#[since="1.21.2"] #[id="shader/fragment"] string |
 	),
@@ -20,7 +20,7 @@ dispatch minecraft:resource["shader"] to struct ShaderProgram {
 	cull?: boolean,
 	/// Defines GLSL directives to be injected into the shader source.
 	#[since="1.21.2"]
-	defines: Defines,
+	defines?: Defines,
 }
 
 struct Sampler {
