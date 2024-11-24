@@ -29,7 +29,7 @@ enum(string) FontOption {
 }
 
 dispatch minecraft:glyph_provider[bitmap] to struct BitmapProvider {
-	file: #[id(registry="texture",suffix=".png")] string,
+	file: string, // TODO
 	height?: int,
 	ascent: int,
 	chars: [string @ 1..] @ 1..,
@@ -42,10 +42,7 @@ dispatch minecraft:glyph_provider[space] to struct SpaceProvider {
 }
 
 dispatch minecraft:glyph_provider[ttf] to struct TtfProvider {
-	file: (
-		#[id(registry="font/ttf",suffix=".ttf")] string |
-		#[id(registry="font/otf",suffix=".otf")] string |
-	),
+	file: string, // TODO
 	size?: float,
 	oversample?: float,
 	shift?: [float, float],
@@ -61,7 +58,7 @@ dispatch minecraft:glyph_provider[legacy_unicode] to struct LegacyUnicodeProvide
 #[since="1.20"]
 dispatch minecraft:glyph_provider[unihex] to struct UnihexProvider {
 	/// ZIP archive containing one or more *.hex files (files in archive with different extensions are ignored).
-	hex_file: #[id(registry="font/unihex",suffix=".zip")] string,
+	hex_file: string, // TODO
 	/// List of ranges to override the size of.
 	size_overrides?: [UnihexOverrideRange],
 }

@@ -30,7 +30,7 @@ struct AdvancementDisplay {
 	title: Text,
 	description: Text,
 	/// Used for the advancement tab (root advancement only).
-	background?: #[id="texture"] string,
+	background?: string, // TODO
 	/// Controls the advancement tile frame. Defaults to `task`.
 	frame?: AdvancementFrame,
 	/// Whether to show the toast pop up after completing this advancement. Defaults to `true`.
