@@ -49,16 +49,16 @@ struct AuxTarget {
 }
 
 struct TextureInput {
-	sampler_name: string,
 	location: string,
+	sampler_name: string,
 	width: int @ 1..,
 	height: int @ 1..,
 	bilinear?: boolean,
 }
 
 struct TargetInput {
-	sampler_name: string,
 	target: #[id="shader_target"] string,
+	sampler_name: string,
 	use_depth_buffer?: boolean,
 	bilinear?: boolean,
 }
