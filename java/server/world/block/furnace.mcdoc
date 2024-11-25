@@ -9,12 +9,24 @@ dispatch minecraft:block_entity[furnace, blast_furnace, smoker] to struct Furnac
 	/// * 1: Fuel
 	/// * 2: Output
 	Items?: [SlottedItem<byte @ 0..2>] @ 0..3,
-	/// Ticks until the fuel runs out.
-	BurnTime?: short,
-	/// Ticks the item has been smelting for.
-	CookTime?: short,
-	/// Ticks the item will take to be smelted.
-	CookTimeTotal?: short,
+	#[until="1.21.4"] ...struct {
+		/// Ticks until the fuel runs out.
+		BurnTime?: short,
+		/// Ticks the item has been smelting for.
+		CookTime?: short,
+		/// Ticks the item will take to be smelted.
+		CookTimeTotal?: short,
+	},
+	#[since="1.21.4"] ...struct {
+		/// Ticks the item will take to be smelted.
+		cooking_total_time?: short,
+		/// Ticks the item has been smelting for.
+		cooking_time_spent?: short,
+		/// Ticks until the fuel runs out.
+		lit_time_remaining?: short,
+		/// Ticks the fuel has been burning for.
+		lit_total_time?: short,
+	},
 }
 
 dispatch minecraft:block[furnace, blast_furnace, smoker] to minecraft:block_entity[furnace]
