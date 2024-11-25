@@ -27,6 +27,12 @@ dispatch minecraft:block_entity[furnace, blast_furnace, smoker] to struct Furnac
 		/// Ticks the fuel has been burning for.
 		lit_total_time?: short,
 	},
+	/// Recipes that have been used since the last time a result item was removed from the GUI. Used to calculate the experience to give to the player.
+	#[since="1.16"]
+	RecipesUsed?: struct RecipesUsed {
+		/// How many times this recipe has been used.
+		[#[id="recipe"] string]: int,
+	},
 }
 
 dispatch minecraft:block[furnace, blast_furnace, smoker] to minecraft:block_entity[furnace]
