@@ -688,6 +688,8 @@
    "mcdoc.java.server.world.block.furnace.cooking_time_spent": "Ticks the item has been smelting for.",
    "mcdoc.java.server.world.block.furnace.lit_time_remaining": "Ticks until the fuel runs out.",
    "mcdoc.java.server.world.block.furnace.lit_total_time": "Ticks the fuel has been burning for.",
+   "mcdoc.java.server.world.block.furnace.Furnace.RecipesUsed": "Recipes that have been used since the last time a result item was removed from the GUI. Used to calculate the experience to give to the player.",
+   "mcdoc.java.server.world.block.furnace.RecipesUsed.__map_key": "How many times this recipe has been used.",
    "mcdoc.java.server.world.block.head.PlayerHead.Owner": "Owner of the skull.",
    "mcdoc.java.server.world.block.head.PlayerHead.ExtraType": "Name of the owner, if exists will be converted to SkullOwner.",
    "mcdoc.java.server.world.block.head.SkullOwner.Id": "Optional.",
