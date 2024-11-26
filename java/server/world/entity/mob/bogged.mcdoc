@@ -1,0 +1,5 @@
+dispatch minecraft:entity[bogged] to struct Bogged {
+	...super::MobBase,
+	/// Whether the mushrooms on this bogged have been sheared.
+	sheared?: boolean,
+}
