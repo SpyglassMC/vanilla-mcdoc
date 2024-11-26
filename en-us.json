@@ -1086,6 +1086,7 @@
    "mcdoc.java.server.world.entity.mob.armor_stand.ArmorStand.DisabledSlots": "A bitfield of the slots that cannot be used.",
    "mcdoc.java.server.world.entity.mob.armor_stand.ArmorStand.Pose": "Body part rotations.",
    "mcdoc.java.server.world.entity.mob.bat.Bat.BatFlags": "Whether it is upside down.",
+   "mcdoc.java.server.world.entity.mob.bogged.Bogged.sheared": "Whether the mushrooms on this bogged have been sheared.",
    "mcdoc.java.server.world.entity.mob.creaking.Creaking.home_pos": "The creaking heart block that this is linked to.",
    "mcdoc.java.server.world.entity.mob.creeper.Creeper.powered": "Whether it is being struck by lightning.",
    "mcdoc.java.server.world.entity.mob.creeper.Creeper.ExplosionRadius": "Radius of the explosion.",
