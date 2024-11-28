@@ -51,6 +51,7 @@
    "mcdoc.java.assets.item_definition.LocalTime.pattern": "Format to use for time formatting.\nExamples: `yyyy-MM-dd`, `HH:mm:ss`.",
    "mcdoc.java.assets.item_definition.LocalTime.locale": "Defaults to the root locale.\nExamples: `en_US`, `cs_AU@numbers=thai;calendar=japanese`.",
    "mcdoc.java.assets.item_definition.LocalTime.time_zone": "Defaults to the timezone set on the client.\nExamples: `Europe/Stockholm`, `GMT+0:45`.",
+   "mcdoc.java.assets.item_definition.Chest.openness": "Defaults to `0`.",
    "mcdoc.java.assets.item_definition.Head.texture": "Texture to use instead of the texture from `kind`.\nIf present, will ignore the `profile` compnent.",
    "mcdoc.java.assets.item_definition.Head.animation": "Controls the animation time for piglin and dragon heads. Defaults to `0`.",
    "mcdoc.java.assets.item_definition.ShulkerBox.orientation": "Defaults to `up`.",
