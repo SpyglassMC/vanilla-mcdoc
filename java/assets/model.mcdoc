@@ -47,6 +47,8 @@ struct ModelElement {
 		rescale?: boolean,
 	},
 	shade?: boolean,
+	#[since="1.21.2"]
+	light_emission?: int @ 0..15,
 }
 
 enum(string) Axis {
