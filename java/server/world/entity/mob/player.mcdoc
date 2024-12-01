@@ -30,6 +30,9 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Dimension of the player's respawn point.
 	#[since="1.16"]
 	SpawnDimension?: #[id="dimension"] string,
+	/// The Y-rotation of the player's respawn point.
+	#[since="1.16.2"]
+	SpawnAngle?: float,
 	/// X coordinate of the player's spawn point.
 	SpawnX?: int,
 	/// Y coordinate of the player's spawn point.
