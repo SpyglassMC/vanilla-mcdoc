@@ -1163,6 +1163,7 @@
    "mcdoc.java.server.world.entity.mob.player.Player.SelectedItemSlot": "Hotbar slot the player has selected.",
    "mcdoc.java.server.world.entity.mob.player.Player.SelectedItem": "Item in the hotbar slot the player has selected.",
    "mcdoc.java.server.world.entity.mob.player.Player.SpawnDimension": "Dimension of the player's respawn point.",
+   "mcdoc.java.server.world.entity.mob.player.Player.SpawnAngle": "The Y-rotation of the player's respawn point.",
    "mcdoc.java.server.world.entity.mob.player.Player.SpawnX": "X coordinate of the player's spawn point.",
    "mcdoc.java.server.world.entity.mob.player.Player.SpawnY": "Y coordinate of the player's spawn point.",
    "mcdoc.java.server.world.entity.mob.player.Player.SpawnZ": "Z coordinate of the player's spawn point.",
