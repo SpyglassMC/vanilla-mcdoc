@@ -386,6 +386,7 @@ dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 	stats?: [StatisticPredicate],
 	looking_at?: EntityPredicate,
 	/// Checks the movement keys of the player.
+	#[since="1.21.2"]
 	input?: struct InputPredicate {
 		forward?: boolean,
 		backward?: boolean,
