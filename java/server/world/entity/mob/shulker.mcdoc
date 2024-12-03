@@ -8,10 +8,13 @@ dispatch minecraft:entity[shulker] to struct Shulker {
 	AttachFace?: AttachFace,
 	Color?: (ColorInt | ShulkerColor),
 	/// Approximate x coordinate of the shulker.
+	#[until="1.17"]
 	APX?: int,
 	/// Approximate y coordinate of the shulker.
+	#[until="1.17"]
 	APY?: int,
 	/// Approximate z coordinate of the shulker.
+	#[until="1.17"]
 	APZ?: int,
 }
 
