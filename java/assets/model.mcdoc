@@ -79,11 +79,17 @@ enum(string) Predicates {
 	Damage = "damage",
 	Damaged = "damaged",
 	Firework = "firework",
+	/// The honey level on bee nests and beehives.
 	HoneyLevel = "honey_level",
 	Lefthanded = "lefthanded",
+	/// The `level` block state on light items.
+	Level = "level",
 	Pull = "pull",
 	Pulling = "pulling",
+	/// Whether the trident is being used.
 	Throwing = "throwing",
 	Time = "time",
+	/// Whether the goat horn is being used.
+	Tooting = "tooting",
 	TrimType = "trim_type",
 }
