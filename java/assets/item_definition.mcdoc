@@ -106,7 +106,10 @@ dispatch minecraft:tint_source[constant] to struct ConstantTint {
 
 dispatch minecraft:tint_source[dye] to struct DyeTint {
 	/// Tint to apply when the `dyed_color` component is not present.
-	default: RGB
+	default: (
+		#[canonical] #[color="composite_argb"] int |
+		#[color="dec_rgb"] [float] @ 3 |
+	),
 }
 
 /// Applies a tint color based on the `textures/colormap/grass.png` color map.
@@ -117,17 +120,20 @@ dispatch minecraft:tint_source[grass] to struct GrassTint {
 
 dispatch minecraft:tint_source[firework] to struct FireworkTint {
 	/// Tint to apply when the `firework_explosion` component is not present.
-	default?: RGB,
+	default: (
+		#[canonical] #[color="composite_argb"] int |
+		#[color="dec_rgb"] [float] @ 3 |
+	),
 }
 
 dispatch minecraft:tint_source[potion] to struct PotionTint {
 	/// Tint to apply when the `potion_contents` component is not present, or it has no effects and no `custom_color` is set.
-	default?: RGB,
+	default: RGB,
 }
 
 dispatch minecraft:tint_source[map_color] to struct MapColorTint {
 	/// Tint to apply when the `map_color` component is not present.
-	default?: RGB,
+	default: RGB,
 }
 
 dispatch minecraft:tint_source[custom_model_data] to struct CustomModelDataTint {
@@ -139,7 +145,7 @@ dispatch minecraft:tint_source[custom_model_data] to struct CustomModelDataTint 
 
 dispatch minecraft:tint_source[team] to struct TeamTint {
 	/// Tint to apply when there is no context entity, entity is not in a team or the team has no color.
-	default?: RGB,
+	default: RGB,
 }
 
 
