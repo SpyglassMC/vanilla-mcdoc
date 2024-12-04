@@ -644,6 +644,7 @@
    "mcdoc.java.data.worldgen.feature.mod.GeodeBlockSettings.invalid_blocks": "When encountering an invalid block, feature placement is cancelled.",
    "mcdoc.java.data.worldgen.feature.mod.OreConfig.discard_chance_on_air_exposure": "Chance that feature placement will be discarded if the ore is exposed to air blocks.",
    "mcdoc.java.data.worldgen.feature.mod.SimpleBlockConfig.schedule_tick": "Whether to schedule a block update. Defaults to `false`.",
+   "mcdoc.java.data.worldgen.feature.placement.FixedPlacementModifier.positions": "Fixed list of block positions to place the feature at.",
    "mcdoc.java.server.world.block.banner.Banner.CustomName": "Shows up on map markers",
    "mcdoc.java.server.world.block.beacon.Beacon.Levels": "Number of levels from the pyramid.",
    "mcdoc.java.server.world.block.beacon.Beacon.Primary": "Potion effect.",
