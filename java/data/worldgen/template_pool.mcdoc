@@ -1,4 +1,6 @@
 use super::processor_list::ProcessorListRef
+use super::feature::ConfiguredFeatureRef
+use super::feature::placement::PlacedFeatureRef
 use super::structure::LiquidSettings
 
 dispatch minecraft:resource["worldgen/template_pool"] to struct TemplatePool {
@@ -39,8 +41,8 @@ enum(string) Projection {
 dispatch minecraft:template_pool_element[feature_pool_element] to struct FeatureElement {
 	...ElementBase,
 	feature: (
-		#[until="1.18"] #[id="worldgen/configured_feature"] string |
-		#[since="1.18"] #[id="worldgen/placed_feature"] string |
+		#[until="1.18"] ConfiguredFeatureRef |
+		#[since="1.18"] PlacedFeatureRef |
 	),
 }
 
