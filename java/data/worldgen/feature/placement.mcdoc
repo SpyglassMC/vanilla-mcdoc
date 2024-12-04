@@ -61,6 +61,12 @@ enum(string) SearchDirection {
 	Down = "down",
 }
 
+#[since="1.21"]
+dispatch minecraft:placement_modifier[fixed_placement] to struct FixedPlacementModifier {
+	/// Fixed list of block positions to place the feature at.
+	positions: [[int] @ 3],
+}
+
 dispatch minecraft:placement_modifier[heightmap] to struct HeightmapModifier {
 	heightmap: HeightmapType,
 }
