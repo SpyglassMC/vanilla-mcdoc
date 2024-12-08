@@ -240,7 +240,7 @@ struct GeodeBlockSettings {
 	alternate_inner_layer_provider: BlockStateProvider,
 	middle_layer_provider: BlockStateProvider,
 	outer_layer_provider: BlockStateProvider,
-	inner_placements: [BlockState],
+	inner_placements: [BlockState] @ 1..,
 	/// Blocks that will not be replaced by the geode.
 	cannot_replace: (
 		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
