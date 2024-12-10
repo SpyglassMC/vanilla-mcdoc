@@ -7,9 +7,14 @@ type ProcessorListRef = (
 	ProcessorList |
 )
 
-dispatch minecraft:resource["worldgen/processor_list"] to struct ProcessorList {
-	processors: [Processor],
-}
+type ProcessorList = (
+	[Processor] |
+	struct ProcessorListObject {
+		processors: [Processor],
+	} |
+)
+
+dispatch minecraft:resource["worldgen/processor_list"] to ProcessorList
 
 struct Processor {
 	processor_type: #[id="worldgen/structure_processor"] string,
