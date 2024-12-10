@@ -871,6 +871,7 @@
    "mcdoc.java.server.world.entity.mod.EntityBase.Glowing": "Whether the entity should glow.",
    "mcdoc.java.server.world.entity.mod.EntityBase.Tags": "Labelling tags on the entity.",
    "mcdoc.java.server.world.entity.mod.EntityBase.TicksFrozen": "Ticks that this entity has been freezing. Although this tag is defined for all entities,\nit is actually only used by mobs that are not in the `freeze_immune_entity_types` entity type tag.\nThis increases by one every tick the entity is in powdered snow, and decreases by two when it's out of it.",
+   "mcdoc.java.server.world.entity.mod.AnyEntity.id": "The ID of this entity. Not present on player entities.",
    "mcdoc.java.server.world.entity.painting.Painting.Facing": "Direction it is facing.",
    "mcdoc.java.server.world.entity.painting.Painting.Motive": "Type of painting.",
    "mcdoc.java.server.world.entity.painting.Painting.variant": "Type of painting.",
