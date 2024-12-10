@@ -9,6 +9,7 @@ use super::IntProvider
 use super::FloatProvider
 use super::CaveSurface
 use ::java::server::util::block_state::BlockState
+use ::java::server::util::fluid_state::FluidState
 use ::java::server::util::direction::Direction
 
 type ConfiguredFeatureRef = (
@@ -482,7 +483,7 @@ dispatch minecraft:feature_config[small_dripstone] to struct SmallDripstoneConfi
 }
 
 dispatch minecraft:feature_config[spring_feature] to struct SpringConfig {
-	state: BlockState,
+	state: FluidState,
 	rock_count: int,
 	hole_count: int,
 	requires_block_below: boolean,
