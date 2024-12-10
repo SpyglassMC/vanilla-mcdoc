@@ -20,6 +20,8 @@ type ParticleSettings<S> = (
 
 dispatch minecraft:particle[%unknown] to struct {}
 
+dispatch minecraft:particle[%none] to any
+
 struct BlockParticle {
 	block_state: (#[id="block"] string | BlockState),
 }
