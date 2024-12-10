@@ -49,6 +49,7 @@ struct EntityBase {
 }
 
 struct AnyEntity {
+	/// The ID of this entity. Not present on player entities.
 	id: #[id="entity_type"] string,
 	...minecraft:entity[[id]],
 }

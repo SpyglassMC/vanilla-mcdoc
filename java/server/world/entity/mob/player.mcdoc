@@ -83,7 +83,6 @@ dispatch minecraft:entity[player] to struct Player {
 	#[since="1.21.2"]
 	ender_pearls?: [EnderPearl],
 	// these are not included
-	id?: (),
 	CustomName?: (),
 	CustomNameVisible?: (),
 }
