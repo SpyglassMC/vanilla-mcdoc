@@ -8,40 +8,38 @@ on:
 
 jobs:
   generate:
-    name: Generate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - uses: actions/checkout@v3
         with:
-          ref: locale
-          path: './out/locale'
-          
-      # - uses: actions/checkout@v3
-      #   with:
-      #     ref: generated
-      #     path: './out/generated'
+          ref: generated
+          path: './out/generated'
+
+      - uses: actions/checkout@v3
+        with:
+          ref: locales
+          path: './out/locales'
 
       - uses: actions/setup-node@v3
         with:
           node-version: 21
 
-      # I shouldn't have to do npx twice like this, but I tried npm i -g
-      - run: npx @spyglassmc/mcdoc-cli generate ./ -l # -p -m
+      - run: npx @spyglassmc/mcdoc-cli locale ./out/locales/en.json --upgrade --verbose
 
-      # - run: npx @spyglassmc/mcdoc-cli update_locales
+      - run: npx @spyglassmc/mcdoc-cli export ./out/generated/symbols.json --gzip --verbose
 
       - uses: EndBug/add-and-commit@v9
         with:
-          cwd: './out/locale/'
+          cwd: './out/generated'
+          author_name: GitHub Actions
+          author_email: actions@github.com
+          message: '🚀 Update exported symbols'
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          cwd: './out/locales'
           author_name: 'GitHub Actions'
           author_email: actions@github.com
-          message: '🌐 Update base localization'
-      
-      # - uses: EndBug/add-and-commit@v9
-      #   with:
-      #     cwd: out/generated
-      #     author_name: GitHub Actions
-      #     author_email: actions@github.com
-      #     message:  Update generated serialized AST
+          message: '🌐 Update localization'
