@@ -9,6 +9,8 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    concurrency:
+      group: main
     steps:
       - uses: actions/checkout@v3
 
