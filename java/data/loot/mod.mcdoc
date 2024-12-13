@@ -79,7 +79,10 @@ struct LootPool {
 }
 
 struct LootPoolEntry {
-	type: #[id="loot_pool_entry_type"] string,
+	type: (
+		#[until="1.16"] #[id] LootEntryType |
+		#[since="1.16"] #[id="loot_pool_entry_type"] string |
+	),
 	...minecraft:loot_pool_entry[[type]],
 }
 
@@ -169,12 +172,59 @@ struct LootCondition {
 	...minecraft:loot_condition[[condition]],
 }
 
-// TODO: Actually write these
-
-enum(string) LootFunctionType {
-	EnchantWithLevels = "enchant_with_levels",
+// Until 1.16
+enum(string) LootEntryType {
+	Alternatives = "alternatives",
+	Dynamic = "dynamic",
+	Empty = "empty",
+	group = "group",
+	Item = "item",
+	LootTable = "loot_table",
+	Sequence = "sequence",
+	Tag = "tag",
 }
 
+// Until 1.16
+enum(string) LootFunctionType {
+	ApplyBonus = "apply_bonus",
+	CopyName = "copy_name",
+	CopyNbt = "copy_nbt",
+	CopyState = "copy_state",
+	EnchantRandomly = "enchant_randomly",
+	EnchantWithLevels = "enchant_with_levels",
+	ExplosionDecay = "explosion_decay",
+	ExplorationMap = "exploration_map",
+	FillPlayerHead = "fill_player_head",
+	FurnaceSmelt = "furnace_smelt",
+	LimitCount = "limit_count",
+	LootingEnchant = "looting_enchant",
+	SetAttributes = "set_attributes",
+	SetContents = "set_contents",
+	SetCount = "set_count",
+	SetDamage = "set_damage",
+	SetLootTable = "set_loot_table",
+	SetLore = "set_lore",
+	SetName = "set_name",
+	SetNbt = "set_nbt",
+	SetStewEffect = "set_stew_effect",
+}
+
+// Until 1.16
 enum(string) LootConditionType {
+	Alternative = "alternative",
+	BlockStateProperty = "block_state_property",
+	DamageSourceProperties = "damage_source_properties",
+	EntityProperties = "entity_properties",
+	EntityScores = "entity_scores",
+	Inverted = "inverted",
+	KilledByPlayer = "killed_by_player",
+	LocationCheck = "location_check",
+	MatchTool = "match_tool",
 	RandomChance = "random_chance",
+	RandomChanceWithLooting = "random_chance_with_looting",
+	Reference = "reference",
+	SurvivesExplosion = "survives_explosion",
+	TableBonus = "table_bonus",
+	TimeCheck = "time_check",
+	WeatherCheck = "weather_check",
 }
