@@ -28,7 +28,7 @@ jobs:
 
       - run: npx @spyglassmc/mcdoc-cli locale ./out/locales/en.json --upgrade --verbose
 
-      - run: npx @spyglassmc/mcdoc-cli export ./out/generated/symbols.json --gzip --verbose
+      - run: npx @spyglassmc/mcdoc-cli export ./out/generated/symbols.json --gzip --ref --verbose
 
       - uses: EndBug/add-and-commit@v9
         with:
