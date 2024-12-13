@@ -1,5 +1,5 @@
 {
-	"ref": "819ae3a3305d60a42e1e1b57ac83ca4315ffc89d",
+	"ref": "feb0ce8d9612f495686a7cf2feb30860f7792a48",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -23528,8 +23528,68 @@
 			"enumKind": "string",
 			"values": [
 				{
+					"identifier": "Alternative",
+					"value": "alternative"
+				},
+				{
+					"identifier": "BlockStateProperty",
+					"value": "block_state_property"
+				},
+				{
+					"identifier": "DamageSourceProperties",
+					"value": "damage_source_properties"
+				},
+				{
+					"identifier": "EntityProperties",
+					"value": "entity_properties"
+				},
+				{
+					"identifier": "EntityScores",
+					"value": "entity_scores"
+				},
+				{
+					"identifier": "Inverted",
+					"value": "inverted"
+				},
+				{
+					"identifier": "KilledByPlayer",
+					"value": "killed_by_player"
+				},
+				{
+					"identifier": "LocationCheck",
+					"value": "location_check"
+				},
+				{
+					"identifier": "MatchTool",
+					"value": "match_tool"
+				},
+				{
 					"identifier": "RandomChance",
 					"value": "random_chance"
+				},
+				{
+					"identifier": "RandomChanceWithLooting",
+					"value": "random_chance_with_looting"
+				},
+				{
+					"identifier": "Reference",
+					"value": "reference"
+				},
+				{
+					"identifier": "SurvivesExplosion",
+					"value": "survives_explosion"
+				},
+				{
+					"identifier": "TableBonus",
+					"value": "table_bonus"
+				},
+				{
+					"identifier": "TimeCheck",
+					"value": "time_check"
+				},
+				{
+					"identifier": "WeatherCheck",
+					"value": "weather_check"
 				}
 			]
 		},
@@ -23763,6 +23823,44 @@
 				}
 			]
 		},
+		"::java::data::loot::LootEntryType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Alternatives",
+					"value": "alternatives"
+				},
+				{
+					"identifier": "Dynamic",
+					"value": "dynamic"
+				},
+				{
+					"identifier": "Empty",
+					"value": "empty"
+				},
+				{
+					"identifier": "group",
+					"value": "group"
+				},
+				{
+					"identifier": "Item",
+					"value": "item"
+				},
+				{
+					"identifier": "LootTable",
+					"value": "loot_table"
+				},
+				{
+					"identifier": "Sequence",
+					"value": "sequence"
+				},
+				{
+					"identifier": "Tag",
+					"value": "tag"
+				}
+			]
+		},
 		"::java::data::loot::LootFunction": {
 			"kind": "struct",
 			"fields": [
@@ -23841,8 +23939,88 @@
 			"enumKind": "string",
 			"values": [
 				{
+					"identifier": "ApplyBonus",
+					"value": "apply_bonus"
+				},
+				{
+					"identifier": "CopyName",
+					"value": "copy_name"
+				},
+				{
+					"identifier": "CopyNbt",
+					"value": "copy_nbt"
+				},
+				{
+					"identifier": "CopyState",
+					"value": "copy_state"
+				},
+				{
+					"identifier": "EnchantRandomly",
+					"value": "enchant_randomly"
+				},
+				{
 					"identifier": "EnchantWithLevels",
 					"value": "enchant_with_levels"
+				},
+				{
+					"identifier": "ExplosionDecay",
+					"value": "explosion_decay"
+				},
+				{
+					"identifier": "ExplorationMap",
+					"value": "exploration_map"
+				},
+				{
+					"identifier": "FillPlayerHead",
+					"value": "fill_player_head"
+				},
+				{
+					"identifier": "FurnaceSmelt",
+					"value": "furnace_smelt"
+				},
+				{
+					"identifier": "LimitCount",
+					"value": "limit_count"
+				},
+				{
+					"identifier": "LootingEnchant",
+					"value": "looting_enchant"
+				},
+				{
+					"identifier": "SetAttributes",
+					"value": "set_attributes"
+				},
+				{
+					"identifier": "SetContents",
+					"value": "set_contents"
+				},
+				{
+					"identifier": "SetCount",
+					"value": "set_count"
+				},
+				{
+					"identifier": "SetDamage",
+					"value": "set_damage"
+				},
+				{
+					"identifier": "SetLootTable",
+					"value": "set_loot_table"
+				},
+				{
+					"identifier": "SetLore",
+					"value": "set_lore"
+				},
+				{
+					"identifier": "SetName",
+					"value": "set_name"
+				},
+				{
+					"identifier": "SetNbt",
+					"value": "set_nbt"
+				},
+				{
+					"identifier": "SetStewEffect",
+					"value": "set_stew_effect"
 				}
 			]
 		},
@@ -23984,17 +24162,51 @@
 					"kind": "pair",
 					"key": "type",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "loot_pool_entry_type"
+								"kind": "reference",
+								"path": "::java::data::loot::LootEntryType",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.16"
+											}
+										}
+									},
+									{
+										"name": "id"
 									}
-								}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.16"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "loot_pool_entry_type"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
