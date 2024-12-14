@@ -1,5 +1,5 @@
 dispatch minecraft:resource[lang] to struct Lang {
-	[#[translation_key(definition=true)] string]: string,
+	[#[translation_key(definition=true)] string]: #[translation_value] string,
 }
 
 dispatch minecraft:resource["lang/deprecated"] to struct LangDeprecated {

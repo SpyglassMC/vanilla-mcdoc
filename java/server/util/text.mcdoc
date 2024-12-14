@@ -17,9 +17,9 @@ type TextObject = (
 	} |
 	struct TranslatedText {
 		translate: #[translation_key] string,
-		with?: [Text],
 		#[since="1.19.4"]
-		fallback?: Text,
+		fallback?: #[translation_value] string,
+		with?: [Text],
 		#[since="1.20.3"]
 		type?: "translatable",
 		...TextBase,
