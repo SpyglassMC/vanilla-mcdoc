@@ -1,6 +1,6 @@
 #[since="1.16"]
 dispatch minecraft:resource[gpu_warnlist] to struct GpuWarnlist {
-	renderer: [#[regex_pattern] string],
-	version: [#[regex_pattern] string],
-	vendor: [#[regex_pattern] string],
+	renderer?: [#[regex_pattern] string],
+	version?: [#[regex_pattern] string],
+	vendor?: [#[regex_pattern] string],
 }
