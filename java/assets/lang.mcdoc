@@ -1,3 +1,12 @@
 dispatch minecraft:resource[lang] to struct Lang {
 	[#[translation_key(definition=true)] string]: string,
 }
+
+dispatch minecraft:resources["lang/deprecated"] to struct LangDeprecated {
+	/// List of removed ranslation keys.
+	removed: [#[translation_key(removed=true)] string],
+	/// Mapping renamed translation keys from old to new keys.
+	renamed: struct {
+		[#[translation_key(renamed=true)] string]: #[translation_key(definition=true)] string
+	},
+}
