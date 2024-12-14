@@ -1,5 +1,5 @@
 {
-	"ref": "feb0ce8d9612f495686a7cf2feb30860f7792a48",
+	"ref": "1814a28e29f15ec1c0bfff02e6ebacf07972602a",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -3893,15 +3893,15 @@
 									"kind": "string",
 									"attributes": [
 										{
-											"name": "model_texture",
+											"name": "texture_slot",
 											"value": {
 												"kind": "tree",
 												"values": {
-													"definition": {
+													"kind": {
 														"kind": "literal",
 														"value": {
-															"kind": "boolean",
-															"value": true
+															"kind": "string",
+															"value": "definition"
 														}
 													}
 												}
@@ -3913,36 +3913,21 @@
 									"kind": "string",
 									"attributes": [
 										{
-											"name": "id",
+											"name": "texture_slot",
 											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "texture"
+												"kind": "tree",
+												"values": {
+													"kind": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "value"
+														}
+													}
 												}
 											}
 										}
 									]
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "particle",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "texture"
-									}
 								}
 							}
 						]
@@ -4235,7 +4220,19 @@
 												"kind": "string",
 												"attributes": [
 													{
-														"name": "model_texture"
+														"name": "texture_slot",
+														"value": {
+															"kind": "tree",
+															"values": {
+																"kind": {
+																	"kind": "literal",
+																	"value": {
+																		"kind": "string",
+																		"value": "reference"
+																	}
+																}
+															}
+														}
 													}
 												]
 											}
@@ -4448,7 +4445,19 @@
 						"kind": "string",
 						"attributes": [
 							{
-								"name": "model_texture"
+								"name": "texture_slot",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"kind": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "reference"
+											}
+										}
+									}
+								}
 							}
 						]
 					}
@@ -4545,7 +4554,19 @@
 									"kind": "string",
 									"attributes": [
 										{
-											"name": "model_texture"
+											"name": "texture_slot",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"kind": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "reference"
+														}
+													}
+												}
+											}
 										}
 									]
 								}
@@ -4802,15 +4823,15 @@
 						"kind": "string",
 						"attributes": [
 							{
-								"name": "model_texture",
+								"name": "texture_slot",
 								"value": {
 									"kind": "tree",
 									"values": {
-										"definition": {
+										"kind": {
 											"kind": "literal",
 											"value": {
-												"kind": "boolean",
-												"value": true
+												"kind": "string",
+												"value": "definition"
 											}
 										}
 									}
@@ -4822,12 +4843,17 @@
 						"kind": "string",
 						"attributes": [
 							{
-								"name": "id",
+								"name": "texture_slot",
 								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "texture"
+									"kind": "tree",
+									"values": {
+										"kind": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "value"
+											}
+										}
 									}
 								}
 							}
