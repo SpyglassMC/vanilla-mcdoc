@@ -7,9 +7,8 @@ dispatch minecraft:resource[model] to struct Model {
 	ambientocclusion?: boolean,
 	gui_light?: ("front" | "side"),
 	textures?: struct ModelTextures {
-		[#[model_texture(definition=true)] string]: #[id="texture"] string, // TODO allow texture references
+		[#[texture_slot(kind="definition")] string]: #[texture_slot(kind="value")] string,
 	},
-	particle?: #[id="texture"] string, // TODO allow texture references
 	elements?: [ModelElement],
 	display?: struct ModelDisplay {
 		[ItemTransformType]: struct ItemTransform {
@@ -32,7 +31,7 @@ struct ModelElement {
 	to: [float @ -16..32] @ 3,
 	faces: struct ModelElementFaceMap {
 		[Direction]: struct ModelElementFace {
-			texture: #[model_texture] string,
+			texture: #[texture_slot(kind="reference")] string,
 			uv?: [float] @ 4,
 			cullface?: Direction,
 			rotation?: (0 | 90 | 180 | 270),
