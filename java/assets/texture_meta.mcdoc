@@ -1,5 +1,5 @@
 dispatch minecraft:resource[texture_meta] to struct TextureMeta {
-	animation: struct TextureAnimation {
+	animation?: struct TextureAnimation {
 		/// If true, additional frames will be generated between frames with a frame time greater than 1 between them. Defaults to false.
 		interpolate?: boolean,
 		/// The width of the tile, as a direct ratio rather than in pixels. Can be used by resource packs to have frames that are not perfect squares.
@@ -20,12 +20,12 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 		)],
 	},
 	/// Only available for villager textures.
-	villager: struct VillagerTextureMeta {
+	villager?: struct VillagerTextureMeta {
 		/// Determines whether the villager's 'profession' hat layer should allow the 'type' hat layer to render or not. If this mcmeta is undefined the default is used.
 		hat?: ("full" | "partial")
 	},
 	/// Only available for colormaps.
-	texture: struct ColormapTextureMeta {
+	texture?: struct ColormapTextureMeta {
 		/// Causes the texture to blur when viewed from close up. Defaults to false.
 		blur?: boolean,
 		/// Causes the texture to stretch instead of tiling in cases where it otherwise would, such as on the shadow. Defaults to false.
