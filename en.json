@@ -54,6 +54,8 @@
 	"::java::assets::item_definition::Time.wobble": "Whether to oscillate for some time around target before settling. Defaults to true.",
 	"::java::assets::item_definition::UseCycle.period": "returns remaining item use ticks modulo `period`.\nDefaults to 1.",
 	"::java::assets::item_definition::UseDuration.remaining": "If true, returns remaining item use ticks.\nIf false, returns item use ticks so far.\nDefaults to false.",
+	"::java::assets::lang::LangDeprecated.removed": "List of removed ranslation keys.",
+	"::java::assets::lang::LangDeprecated.renamed": "Mapping renamed translation keys from old to new keys.",
 	"::java::assets::model::ModelElementRotation.rescale": "Defaults to `false`.",
 	"::java::assets::model::Predicates.HoneyLevel": "The honey level on bee nests and beehives.",
 	"::java::assets::model::Predicates.Level": "The `level` block state on light items.",
