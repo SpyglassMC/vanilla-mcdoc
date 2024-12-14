@@ -1,5 +1,5 @@
 {
-	"ref": "3df90a196a6c7070b2125038e78ae2d88595bd6d",
+	"ref": "175b5daa31072c1d016b4a281485226301192748",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -86705,6 +86705,10 @@
 				"kind": "reference",
 				"path": "::java::assets::lang::Lang"
 			},
+			"lang_deprecated": {
+				"kind": "reference",
+				"path": "::java::assets::lang::LangDeprecated"
+			},
 			"loot_table": {
 				"kind": "reference",
 				"path": "::java::data::loot::LootTable"
@@ -86936,12 +86940,6 @@
 			"worldgen/world_preset": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::world_preset::WorldPreset"
-			}
-		},
-		"minecraft:resources": {
-			"lang_deprecated": {
-				"kind": "reference",
-				"path": "::java::assets::lang::LangDeprecated"
 			}
 		},
 		"minecraft:root_placer": {
