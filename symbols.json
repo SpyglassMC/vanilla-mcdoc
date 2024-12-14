@@ -1,5 +1,5 @@
 {
-	"ref": "6aee6ed69757c3daad9b8288b8abf3e33e0eec2d",
+	"ref": "4b0f19cb0a3b3b31f060a43c994e4808d05ec0cc",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -5167,8 +5167,11 @@
 						"kind": "string"
 					},
 					"type": {
-						"kind": "reference",
-						"path": "::java::assets::regional_compliancies::Notification"
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::assets::regional_compliancies::Notification"
+						}
 					}
 				}
 			]
@@ -6348,9 +6351,8 @@
 					"type": {
 						"kind": "float",
 						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
+							"kind": 2,
+							"min": 0
 						}
 					},
 					"optional": true
@@ -6362,7 +6364,7 @@
 					"type": {
 						"kind": "float",
 						"valueRange": {
-							"kind": 0,
+							"kind": 2,
 							"min": 0
 						}
 					},
