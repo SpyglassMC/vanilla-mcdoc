@@ -1,5 +1,5 @@
 {
-	"ref": "3fed6bd568bbc08335bb86f53090eb6f92e46393",
+	"ref": "35b0d73dc7a98eecf9cd3b65d6f03444c646604d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -3753,7 +3753,12 @@
 						]
 					},
 					"type": {
-						"kind": "string"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "translation_value"
+							}
+						]
 					}
 				}
 			]
@@ -53898,18 +53903,6 @@
 						},
 						{
 							"kind": "pair",
-							"key": "with",
-							"type": {
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::server::util::text::Text"
-								}
-							},
-							"optional": true
-						},
-						{
-							"kind": "pair",
 							"attributes": [
 								{
 									"name": "since",
@@ -53924,8 +53917,24 @@
 							],
 							"key": "fallback",
 							"type": {
-								"kind": "reference",
-								"path": "::java::server::util::text::Text"
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "translation_value"
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "with",
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::server::util::text::Text"
+								}
 							},
 							"optional": true
 						},
@@ -54670,18 +54679,6 @@
 				},
 				{
 					"kind": "pair",
-					"key": "with",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::server::util::text::Text"
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
 					"attributes": [
 						{
 							"name": "since",
@@ -54696,8 +54693,24 @@
 					],
 					"key": "fallback",
 					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::text::Text"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "translation_value"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "with",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::server::util::text::Text"
+						}
 					},
 					"optional": true
 				},
