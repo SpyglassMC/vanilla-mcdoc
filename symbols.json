@@ -1,5 +1,5 @@
 {
-	"ref": "f2d2d91807d61de40f8075dec8e9dcc2faeda0a1",
+	"ref": "3df90a196a6c7070b2125038e78ae2d88595bd6d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -6710,7 +6710,8 @@
 								"optional": true
 							}
 						]
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -6745,7 +6746,8 @@
 								"optional": true
 							}
 						]
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -6782,7 +6784,8 @@
 								"optional": true
 							}
 						]
-					}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -86936,7 +86939,7 @@
 			}
 		},
 		"minecraft:resources": {
-			"lang/deprecated": {
+			"lang_deprecated": {
 				"kind": "reference",
 				"path": "::java::assets::lang::LangDeprecated"
 			}
