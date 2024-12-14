@@ -1,5 +1,5 @@
 {
-	"ref": "4b0f19cb0a3b3b31f060a43c994e4808d05ec0cc",
+	"ref": "3fed6bd568bbc08335bb86f53090eb6f92e46393",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -86710,7 +86710,7 @@
 				"kind": "reference",
 				"path": "::java::assets::lang::Lang"
 			},
-			"lang_deprecated": {
+			"lang/deprecated": {
 				"kind": "reference",
 				"path": "::java::assets::lang::LangDeprecated"
 			},
