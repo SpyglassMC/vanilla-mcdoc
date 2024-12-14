@@ -1,5 +1,5 @@
 {
-	"ref": "1814a28e29f15ec1c0bfff02e6ebacf07972602a",
+	"ref": "f2d2d91807d61de40f8075dec8e9dcc2faeda0a1",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -3676,6 +3676,54 @@
 				}
 			]
 		},
+		"::java::assets::lang::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "translation_key",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"renamed": {
+											"kind": "literal",
+											"value": {
+												"kind": "boolean",
+												"value": true
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "translation_key",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"definition": {
+											"kind": "literal",
+											"value": {
+												"kind": "boolean",
+												"value": true
+											}
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::assets::lang::Lang": {
 			"kind": "struct",
 			"fields": [
@@ -3703,6 +3751,92 @@
 					},
 					"type": {
 						"kind": "string"
+					}
+				}
+			]
+		},
+		"::java::assets::lang::LangDeprecated": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "List of removed ranslation keys.\n",
+					"key": "removed",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "translation_key",
+									"value": {
+										"kind": "tree",
+										"values": {
+											"removed": {
+												"kind": "literal",
+												"value": {
+													"kind": "boolean",
+													"value": true
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Mapping renamed translation keys from old to new keys.\n",
+					"key": "renamed",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "translation_key",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"renamed": {
+														"kind": "literal",
+														"value": {
+															"kind": "boolean",
+															"value": true
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "translation_key",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"definition": {
+														"kind": "literal",
+														"value": {
+															"kind": "boolean",
+															"value": true
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						]
 					}
 				}
 			]
@@ -86799,6 +86933,12 @@
 			"worldgen/world_preset": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::world_preset::WorldPreset"
+			}
+		},
+		"minecraft:resources": {
+			"lang/deprecated": {
+				"kind": "reference",
+				"path": "::java::assets::lang::LangDeprecated"
 			}
 		},
 		"minecraft:root_placer": {
