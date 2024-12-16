@@ -1,5 +1,5 @@
 {
-	"ref": "35b0d73dc7a98eecf9cd3b65d6f03444c646604d",
+	"ref": "47a80e5098d3f3e22abd08a0f292f39edeb200bd",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -6455,7 +6455,12 @@
 					"desc": "Translated as the subtitle when Show Subtitles is enabled. Section sign formatting codes are supported.\n",
 					"key": "subtitle",
 					"type": {
-						"kind": "string"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "translation_key"
+							}
+						]
 					},
 					"optional": true
 				}
