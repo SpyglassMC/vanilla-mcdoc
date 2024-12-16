@@ -10,7 +10,7 @@ struct SoundEventRegistration {
 	/// False if the sounds listed should be added. If undefined. Defaults to false.
 	replace?: boolean,
 	/// Translated as the subtitle when Show Subtitles is enabled. Section sign formatting codes are supported.
-	subtitle?: string,
+	subtitle?: #[translation_key] string,
 }
 
 struct Sound {
