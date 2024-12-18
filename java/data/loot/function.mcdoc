@@ -26,9 +26,15 @@ struct Conditions {
 
 dispatch minecraft:loot_function[apply_bonus] to struct ApplyBonus {
 	enchantment: #[id="enchantment"] string,
-	formula: #[id="apply_bonus_formula"] string,
+	formula: #[id] ApplyBonusFormula,
 	...minecraft:apply_bonus_formula[[formula]],
 	...Conditions,
+}
+
+enum(string) ApplyBonusFormula {
+	OreDrops = "ore_drops",
+	UniformBonusCount = "uniform_bonus_count",
+	BinomialWithBonusCount = "binomial_with_bonus_count",
 }
 
 /// `Count * (max(0; random(0..Level + 2) - 1)+1)`
