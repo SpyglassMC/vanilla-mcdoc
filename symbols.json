@@ -1,5 +1,5 @@
 {
-	"ref": "3233eeee94d8e55d13a47acc4fa689013db7677b",
+	"ref": "89846f4e37fdd066ff6a33aa124ba6068b978c1c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -20900,17 +20900,11 @@
 					"kind": "pair",
 					"key": "formula",
 					"type": {
-						"kind": "string",
+						"kind": "reference",
+						"path": "::java::data::loot::function::ApplyBonusFormula",
 						"attributes": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "apply_bonus_formula"
-									}
-								}
+								"name": "id"
 							}
 						]
 					}
@@ -20936,6 +20930,24 @@
 						"kind": "reference",
 						"path": "::java::data::loot::function::Conditions"
 					}
+				}
+			]
+		},
+		"::java::data::loot::function::ApplyBonusFormula": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "OreDrops",
+					"value": "ore_drops"
+				},
+				{
+					"identifier": "UniformBonusCount",
+					"value": "uniform_bonus_count"
+				},
+				{
+					"identifier": "BinomialWithBonusCount",
+					"value": "binomial_with_bonus_count"
 				}
 			]
 		},
