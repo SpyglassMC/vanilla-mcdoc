@@ -130,6 +130,7 @@ dispatch minecraft:trigger[effects_changed] to Conditions<struct EffectsChanged 
 	effects?: struct {
 		[#[id="mob_effect"] string]: MobEffectPredicate,
 	},
+	#[since="1.17"]
 	source?: CompositeEntity,
 }>
 
@@ -373,6 +374,9 @@ dispatch minecraft:trigger[slide_down_block] to Conditions<struct SlideDownBlock
 	...TriggerBase,
 	block?: #[id="block"] string,
 }>
+
+#[since="1.17"]
+dispatch minecraft:trigger[started_riding] to Conditions<TriggerBase>
 
 /// Activated when the last required block is placed for summoning
 /// iron golems (pumpkin and iron blocks), snow golems (pumpkin and snow blocks), the ender dragon (end crystals),
