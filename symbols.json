@@ -1,5 +1,5 @@
 {
-	"ref": "89846f4e37fdd066ff6a33aa124ba6068b978c1c",
+	"ref": "53e7d00d6bf43b644d20a91d34886b499c0932df",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -14777,6 +14777,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.17"
+								}
+							}
+						}
+					],
 					"key": "source",
 					"type": {
 						"kind": "reference",
@@ -89382,6 +89394,31 @@
 					{
 						"kind": "reference",
 						"path": "::java::data::advancement::trigger::SlideDownBlock"
+					}
+				]
+			},
+			"started_riding": {
+				"kind": "concrete",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::advancement::trigger::Conditions"
+				},
+				"typeArgs": [
+					{
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::TriggerBase"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.17"
+							}
+						}
 					}
 				]
 			},
