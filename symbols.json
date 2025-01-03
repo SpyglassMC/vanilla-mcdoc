@@ -1,5 +1,5 @@
 {
-	"ref": "53e7d00d6bf43b644d20a91d34886b499c0932df",
+	"ref": "d35a98c848b9cc19aeea738782439cef475ac918",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -78788,7 +78788,19 @@
 					},
 					{
 						"kind": "reference",
-						"path": "::java::server::world::block::sign::Sign"
+						"path": "::java::server::world::block::sign::Sign",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20"
+									}
+								}
+							}
+						]
 					}
 				]
 			},
@@ -78885,7 +78897,19 @@
 					},
 					{
 						"kind": "reference",
-						"path": "::java::server::world::block::sign::Sign"
+						"path": "::java::server::world::block::sign::Sign",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20"
+									}
+								}
+							}
+						]
 					}
 				]
 			},
@@ -79504,7 +79528,19 @@
 					},
 					{
 						"kind": "reference",
-						"path": "::java::server::world::item::CustomModelData"
+						"path": "::java::server::world::item::CustomModelData",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.4"
+									}
+								}
+							}
+						]
 					}
 				]
 			},
@@ -80268,7 +80304,19 @@
 					},
 					{
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::decorator::RangeConfig"
+						"path": "::java::data::worldgen::feature::decorator::RangeConfig",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.17"
+									}
+								}
+							}
+						]
 					}
 				]
 			},
@@ -87036,11 +87084,35 @@
 						"members": [
 							{
 								"kind": "reference",
-								"path": "::java::server::util::particle::OldDustParticle"
+								"path": "::java::server::util::particle::OldDustParticle",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							},
 							{
 								"kind": "reference",
-								"path": "::java::server::util::particle::DustParticle"
+								"path": "::java::server::util::particle::DustParticle",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -87058,11 +87130,35 @@
 						"members": [
 							{
 								"kind": "reference",
-								"path": "::java::server::util::particle::OldDustTransition"
+								"path": "::java::server::util::particle::OldDustTransition",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							},
 							{
 								"kind": "reference",
-								"path": "::java::server::util::particle::DustTransition"
+								"path": "::java::server::util::particle::DustTransition",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -87126,11 +87222,35 @@
 						"members": [
 							{
 								"kind": "reference",
-								"path": "::java::server::util::particle::OldEntityEffect"
+								"path": "::java::server::util::particle::OldEntityEffect",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							},
 							{
 								"kind": "reference",
-								"path": "::java::server::util::particle::EntityEffect"
+								"path": "::java::server::util::particle::EntityEffect",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -87210,7 +87330,19 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::server::util::particle::ItemParticle"
+								"path": "::java::server::util::particle::ItemParticle",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -87243,7 +87375,19 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::server::util::particle::SculkCharge"
+								"path": "::java::server::util::particle::SculkCharge",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -87280,7 +87424,19 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::server::util::particle::ShriekParticle"
+								"path": "::java::server::util::particle::ShriekParticle",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -88126,6 +88282,10 @@
 				"kind": "reference",
 				"path": "::java::assets::item_definition::Bed"
 			},
+			"chest": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::Chest"
+			},
 			"hanging_sign": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::HangingSign"
@@ -88141,10 +88301,6 @@
 			"standing_sign": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::StandingSign"
-			},
-			"texture": {
-				"kind": "reference",
-				"path": "::java::assets::item_definition::Chest"
 			}
 		},
 		"minecraft:sprite_source": {
