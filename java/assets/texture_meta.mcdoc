@@ -19,6 +19,10 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 			int |
 		)],
 	},
+	gui?: struct GuiMeta {
+		/// Configures how the GUI texture should be scaled. Defaults to `stretch`.
+		scaling?: GuiSpriteScaling,
+	},
 	/// Only available for villager textures.
 	villager?: struct VillagerTextureMeta {
 		/// Determines whether the villager's 'profession' hat layer should allow the 'type' hat layer to render or not. If this mcmeta is undefined the default is used.
@@ -33,4 +37,37 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 		/// Custom mipmap values for the texture.
 		mipmaps?: int[],
 	},
+}
+
+struct GuiSpriteScaling {
+	type: GuiSpriteScalingType,
+	...minecraft:gui_sprite_scaling[[type]],
+}
+
+enum(string) GuiSpriteScalingType {
+	Stretch = "stretch",
+	Tile = "tile",
+	NineSlice = "nine_slice",
+}
+
+dispatch minecraft:gui_sprite_scaling[stretch] to struct {}
+
+dispatch minecraft:gui_sprite_scaling[tile] to struct TileScaling {
+	width: int @ 1..,
+	height: int @ 1..,
+}
+
+dispatch minecraft:gui_sprite_scaling[nine_slice] to struct NineSlice {
+	width: int @ 0..,
+	height: int @ 0..,
+	border: (int @ 1.. | NineSliceBorder),
+	/// Defaults to `false`.
+	stretch_inner?: boolean,
+}
+
+struct NineSliceBorder {
+	left: int @ 0..,
+	top: int @ 0..,
+	right: int @ 0..,
+	bottom: int @ 0..,
 }
