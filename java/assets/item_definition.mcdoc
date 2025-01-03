@@ -324,7 +324,7 @@ dispatch minecraft:special_item_model[bed] to struct Bed {
 	texture: #[id(registry="texture",path="entity/bed/")] string,
 }
 
-dispatch minecraft:special_item_model[texture] to struct Chest {
+dispatch minecraft:special_item_model[chest] to struct Chest {
 	texture: #[id(registry="texture",path="entity/chest/")] string,
 	/// Defaults to `0`.
 	openness?: float @ 0..1,
