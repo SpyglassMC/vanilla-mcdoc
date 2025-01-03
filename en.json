@@ -81,6 +81,8 @@
 	"::java::assets::texture_meta::ColormapTextureMeta.blur": "Causes the texture to blur when viewed from close up. Defaults to false.",
 	"::java::assets::texture_meta::ColormapTextureMeta.clamp": "Causes the texture to stretch instead of tiling in cases where it otherwise would, such as on the shadow. Defaults to false.",
 	"::java::assets::texture_meta::ColormapTextureMeta.mipmaps": "Custom mipmap values for the texture.",
+	"::java::assets::texture_meta::GuiMeta.scaling": "Configures how the GUI texture should be scaled. Defaults to `stretch`.",
+	"::java::assets::texture_meta::NineSlice.stretch_inner": "Defaults to `false`.",
 	"::java::assets::texture_meta::TextureAnimation.frames": "Defaults to displaying all the frames from top to bottom.",
 	"::java::assets::texture_meta::TextureAnimation.frames.index": "A number corresponding to position of a frame from the top, with the top frame being 0.",
 	"::java::assets::texture_meta::TextureAnimation.frames.time": "The time in ticks to show this frame, overriding `frametime` above.",
