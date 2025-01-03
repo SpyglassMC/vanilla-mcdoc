@@ -1,5 +1,5 @@
 {
-	"ref": "d35a98c848b9cc19aeea738782439cef475ac918",
+	"ref": "962b375d4e6692c6673f3b8c55a458f91ade8903",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -7512,6 +7512,10 @@
 				}
 			]
 		},
+		"::java::assets::texture_meta::<anonymous 0>": {
+			"kind": "struct",
+			"fields": []
+		},
 		"::java::assets::texture_meta::ColormapTextureMeta": {
 			"kind": "struct",
 			"fields": [
@@ -7541,6 +7545,172 @@
 						"kind": "int_array"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::assets::texture_meta::GuiMeta": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Configures how the GUI texture should be scaled. Defaults to `stretch`.\n",
+					"key": "scaling",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::texture_meta::GuiSpriteScaling"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::assets::texture_meta::GuiSpriteScaling": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::texture_meta::GuiSpriteScalingType"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:gui_sprite_scaling"
+					}
+				}
+			]
+		},
+		"::java::assets::texture_meta::GuiSpriteScalingType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Stretch",
+					"value": "stretch"
+				},
+				{
+					"identifier": "Tile",
+					"value": "tile"
+				},
+				{
+					"identifier": "NineSlice",
+					"value": "nine_slice"
+				}
+			]
+		},
+		"::java::assets::texture_meta::NineSlice": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "width",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "height",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "border",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								}
+							},
+							{
+								"kind": "reference",
+								"path": "::java::assets::texture_meta::NineSliceBorder"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `false`.\n",
+					"key": "stretch_inner",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::assets::texture_meta::NineSliceBorder": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "left",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "top",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "right",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "bottom",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
 				}
 			]
 		},
@@ -7733,6 +7903,26 @@
 				},
 				{
 					"kind": "pair",
+					"key": "gui",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Configures how the GUI texture should be scaled. Defaults to `stretch`.\n",
+								"key": "scaling",
+								"type": {
+									"kind": "reference",
+									"path": "::java::assets::texture_meta::GuiSpriteScaling"
+								},
+								"optional": true
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"desc": "Only available for villager textures.\n",
 					"key": "villager",
 					"type": {
@@ -7804,6 +7994,33 @@
 						]
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::assets::texture_meta::TileScaling": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "width",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "height",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
 				}
 			]
 		},
@@ -82615,6 +82832,20 @@
 						}
 					}
 				]
+			}
+		},
+		"minecraft:gui_sprite_scaling": {
+			"nine_slice": {
+				"kind": "reference",
+				"path": "::java::assets::texture_meta::NineSlice"
+			},
+			"stretch": {
+				"kind": "struct",
+				"fields": []
+			},
+			"tile": {
+				"kind": "reference",
+				"path": "::java::assets::texture_meta::TileScaling"
 			}
 		},
 		"minecraft:height_provider": {
