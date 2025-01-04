@@ -1,5 +1,5 @@
 {
-	"ref": "962b375d4e6692c6673f3b8c55a458f91ade8903",
+	"ref": "8247f672a8a027741594add81e967001cd42c610",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -65398,6 +65398,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Variant of the horse. Stored as `baseColor | (markings << 8)`.\n",
 					"key": "Variant",
 					"type": {
 						"kind": "reference",
@@ -65555,6 +65556,118 @@
 				{
 					"identifier": "DarkBrown",
 					"value": 6
+				},
+				{
+					"identifier": "White_With_WhiteStockings",
+					"value": 256
+				},
+				{
+					"identifier": "Creamy_With_WhiteStockings",
+					"value": 257
+				},
+				{
+					"identifier": "Chestnut_With_WhiteStockings",
+					"value": 258
+				},
+				{
+					"identifier": "Brown_With_WhiteStockings",
+					"value": 259
+				},
+				{
+					"identifier": "Black_With_WhiteStockings",
+					"value": 260
+				},
+				{
+					"identifier": "Gray_With_WhiteStockings",
+					"value": 261
+				},
+				{
+					"identifier": "DarkBrown_With_WhiteStockings",
+					"value": 262
+				},
+				{
+					"identifier": "White_With_WhiteField",
+					"value": 512
+				},
+				{
+					"identifier": "Creamy_With_WhiteField",
+					"value": 513
+				},
+				{
+					"identifier": "Chestnut_With_WhiteField",
+					"value": 514
+				},
+				{
+					"identifier": "Brown_With_WhiteField",
+					"value": 515
+				},
+				{
+					"identifier": "Black_With_WhiteField",
+					"value": 516
+				},
+				{
+					"identifier": "Gray_With_WhiteField",
+					"value": 517
+				},
+				{
+					"identifier": "DarkBrown_With_WhiteField",
+					"value": 518
+				},
+				{
+					"identifier": "White_With_WhiteDots",
+					"value": 768
+				},
+				{
+					"identifier": "Creamy_With_WhiteDots",
+					"value": 769
+				},
+				{
+					"identifier": "Chestnut_With_WhiteDots",
+					"value": 770
+				},
+				{
+					"identifier": "Brown_With_WhiteDots",
+					"value": 771
+				},
+				{
+					"identifier": "Black_With_WhiteDots",
+					"value": 772
+				},
+				{
+					"identifier": "Gray_With_WhiteDots",
+					"value": 773
+				},
+				{
+					"identifier": "DarkBrown_With_WhiteDots",
+					"value": 774
+				},
+				{
+					"identifier": "White_With_Black_Dots",
+					"value": 1024
+				},
+				{
+					"identifier": "Creamy_With_Black_Dots",
+					"value": 1025
+				},
+				{
+					"identifier": "Chestnut_With_Black_Dots",
+					"value": 1026
+				},
+				{
+					"identifier": "Brown_With_Black_Dots",
+					"value": 1027
+				},
+				{
+					"identifier": "Black_With_Black_Dots",
+					"value": 1028
+				},
+				{
+					"identifier": "Gray_With_Black_Dots",
+					"value": 1029
+				},
+				{
+					"identifier": "DarkBrown_With_Black_Dots",
+					"value": 1030
 				}
 			]
 		},
