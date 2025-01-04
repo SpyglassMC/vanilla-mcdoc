@@ -932,6 +932,7 @@
 	"::java::server::world::entity::mob::breedable::horse::Camel.LastPoseTick": "The tick when it started changing its pose.",
 	"::java::server::world::entity::mob::breedable::horse::ChestedHorse.ChestedHorse": "Whether it has a chest.",
 	"::java::server::world::entity::mob::breedable::horse::ChestedHorse.Items": "Slots from 0 to 14.",
+	"::java::server::world::entity::mob::breedable::horse::Horse.Variant": "Variant of the horse. Stored as `baseColor | (markings << 8)`.",
 	"::java::server::world::entity::mob::breedable::horse::HorseBase.Bred": "Unknown use.\nRemains `0` even if it was bred.",
 	"::java::server::world::entity::mob::breedable::horse::HorseBase.EatingHaystack": "Whether it is eating a haystack.",
 	"::java::server::world::entity::mob::breedable::horse::HorseBase.Owner": "Player who tamed it.",
