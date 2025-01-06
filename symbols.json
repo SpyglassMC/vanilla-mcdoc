@@ -1,5 +1,5 @@
 {
-	"ref": "8247f672a8a027741594add81e967001cd42c610",
+	"ref": "5c52b696795f5ce17f223dfbb896915a5accae7a",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -75448,6 +75448,16 @@
 						"path": "::java::server::world::item::Trim"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Custom item NBT tags\n",
+					"key": {
+						"kind": "string"
+					},
+					"type": {
+						"kind": "any"
+					}
 				}
 			]
 		},
