@@ -1276,6 +1276,7 @@
 	"::java::server::world::item::head::SkullOwner.Id": "Optional.",
 	"::java::server::world::item::head::SkullOwner.Name": "Name of the owner, if missing appears as a steve head.",
 	"::java::server::world::item::head::Texture.Value": "Base64 encoded JSON value of the texture index.",
+	"::java::server::world::item::ItemBase.[string]": "Custom item NBT tags",
 	"::java::server::world::item::ItemBase.AttributeModifiers": "Applied to an entity that has equipped the item.",
 	"::java::server::world::item::ItemBase.CanDestroy": "List of the block states that can be destroyed by this item when holding it in adventure mode.",
 	"::java::server::world::item::ItemBase.CanPlaceOn": "List of blockstates that this block item can be placed on.",
