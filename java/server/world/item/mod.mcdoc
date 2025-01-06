@@ -417,6 +417,8 @@ struct ItemBase {
 	/// Trim to apply to the item & armor when worn.
 	#[since="1.19.4"]
 	Trim?: Trim,
+	/// Custom item NBT tags
+	[string]: any,
 }
 
 dispatch minecraft:item[%unknown] to ItemBase
