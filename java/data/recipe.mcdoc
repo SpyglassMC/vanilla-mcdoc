@@ -46,7 +46,11 @@ dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTrans
 	input: Ingredient,
 	/// An additional ingredient.
 	material: Ingredient,
-	result: #[id="item"] string,
+	/// The result item that will be merged with the input ingredient.
+	result: (
+		#[id="item"] string |
+		#[since="1.21.5"] ItemStack |
+	),
 }
 
 dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
@@ -90,7 +94,7 @@ type SmithingIngredients = (
 		template: Ingredient,
 	} |
 	#[since="1.21.2"] struct OptionalSmithingIngredients {
-		/// Ingredient specifying an item to be trimmed. (eg. `"#minecraft:trimmable_armor" }`)
+		/// Ingredient specifying an item to be trimmed. (eg. `"#minecraft:trimmable_armor"`)
 		base?: Ingredient,
 		/// Material that will be used. (eg. `"#minecraft:trim_materials"`)
 		addition?: Ingredient,

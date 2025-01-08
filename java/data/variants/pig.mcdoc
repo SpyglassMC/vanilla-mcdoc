@@ -1,0 +1,13 @@
+#[since="1.21.5"]
+dispatch minecraft:resource[pig_variant] to struct PigVariant {
+	model?: ModelType,
+	texture: #[id="texture"] string,
+	/// Biomes in which this variant natually spawns.
+	/// If not specified, this variant will only be selected if no other variant matches the current biome.
+	biomes?: (#[id(registry="worldgen/biome",tags="allowed")] string | [#[id="worldgen/biome"] string]),
+}
+
+enum(string) ModelType {
+	Normal = "normal",
+	Cold = "cold",
+}

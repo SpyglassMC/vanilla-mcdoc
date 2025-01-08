@@ -322,6 +322,8 @@ dispatch minecraft:data_component[tool] to struct Tool {
 	default_mining_speed?: float,
 	/// Amount of durability to remove each time a block is broken with this tool. Must be a non-negative integer.
 	damage_per_block?: int,
+	/// If `false`, players cannot break blocks while holding this tool in creative mode. Defaults to `true`.
+	can_destroy_blocks_in_creative?: boolean,
 }
 
 dispatch minecraft:data_component[tooltip_style] to #[id] string
@@ -354,6 +356,15 @@ dispatch minecraft:data_component[use_cooldown] to struct UseCooldown {
 }
 
 dispatch minecraft:data_component[use_remainder] to ItemStack
+
+/// When present, the 'Item Used' statistic will be incremented for each attack with the item.
+#[since="1.21.5"]
+dispatch minecraft:data_component[weapon] to struct Weapon {
+	/// The amount to damage the weapon item for each attack performed.
+	damage_per_attack?: int @ 0..,
+	/// If `true`, will disable a blocking Shield on successful attack. Defaults to `false`.
+	can_disable_blocking?: boolean,
+}
 
 enum(string) ItemBaseComponents {
 	AttributeModifiers = "attribute_modifiers",
