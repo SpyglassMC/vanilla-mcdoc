@@ -1,5 +1,5 @@
 {
-	"ref": "5c52b696795f5ce17f223dfbb896915a5accae7a",
+	"ref": "608efa1a37752787d9f92f73cf088d4a5decdded",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -56007,18 +56007,11 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"desc": "Shows up on map markers\n",
-					"key": "CustomName",
+					"kind": "spread",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "text_component"
-							}
-						]
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::server::world::block::Nameable"
+					}
 				},
 				{
 					"kind": "pair",
@@ -56138,17 +56131,11 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "CustomName",
+					"kind": "spread",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "text_component"
-							}
-						]
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::server::world::block::Nameable"
+					}
 				},
 				{
 					"kind": "spread",
@@ -56628,17 +56615,11 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "CustomName",
+					"kind": "spread",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "text_component"
-							}
-						]
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::server::world::block::Nameable"
+					}
 				},
 				{
 					"kind": "spread",
@@ -56914,17 +56895,11 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "CustomName",
+					"kind": "spread",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "text_component"
-							}
-						]
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::server::world::block::Nameable"
+					}
 				},
 				{
 					"kind": "pair",
@@ -57250,17 +57225,11 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "CustomName",
+					"kind": "spread",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "text_component"
-							}
-						]
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::server::world::block::Nameable"
+					}
 				},
 				{
 					"kind": "spread",
@@ -57753,17 +57722,11 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "CustomName",
+					"kind": "spread",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "text_component"
-							}
-						]
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::server::world::block::Nameable"
+					}
 				}
 			]
 		},
@@ -57958,17 +57921,11 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "CustomName",
+					"kind": "spread",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "text_component"
-							}
-						]
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::server::world::block::Nameable"
+					}
 				},
 				{
 					"kind": "spread",
@@ -58823,6 +58780,56 @@
 				}
 			]
 		},
+		"::java::server::world::block::Nameable": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The custom name of this block.\n",
+					"key": "CustomName",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "text_component"
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::server::util::text::Text",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::server::world::block::sculk_catalyst::ChargeCursor": {
 			"kind": "struct",
 			"fields": [
@@ -59128,6 +59135,63 @@
 				}
 			]
 		},
+		"::java::server::world::block::sign::SignLines": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "list",
+					"item": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "text_component"
+							}
+						]
+					},
+					"lengthRange": {
+						"kind": 0,
+						"min": 4,
+						"max": 4
+					},
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "reference",
+						"path": "::java::server::util::text::Text"
+					},
+					"lengthRange": {
+						"kind": 0,
+						"min": 4,
+						"max": 4
+					},
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
 		"::java::server::world::block::sign::SignText": {
 			"kind": "struct",
 			"fields": [
@@ -59135,40 +59199,16 @@
 					"kind": "pair",
 					"key": "messages",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "string",
-							"attributes": [
-								{
-									"name": "text_component"
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 4,
-							"max": 4
-						}
+						"kind": "reference",
+						"path": "::java::server::world::block::sign::SignLines"
 					}
 				},
 				{
 					"kind": "pair",
 					"key": "filtered_messages",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "string",
-							"attributes": [
-								{
-									"name": "text_component"
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 4,
-							"max": 4
-						}
+						"kind": "reference",
+						"path": "::java::server::world::block::sign::SignLines"
 					},
 					"optional": true
 				},
@@ -60107,6 +60147,36 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Whether to show invisible blocks inside the bounding box.\n",
+					"key": "showair",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "If set to `true`, the blocks in the placed structure will trigger block (entity) updates and shape updates. Defaults to `false`.\n",
+					"key": "strict",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"desc": "Chance for each block to stay.\n",
 					"key": "integrity",
 					"type": {
@@ -60125,15 +60195,6 @@
 								"name": "random"
 							}
 						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether to show invisible blocks inside the bounding box.\n",
-					"key": "showair",
-					"type": {
-						"kind": "boolean"
 					},
 					"optional": true
 				}
@@ -60738,6 +60799,27 @@
 							}
 						],
 						"registry": "minecraft:data_component"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "The duration of the potion effect applied is scaled by this factor. Defaults to `1`.\n\nWill be `0.25` when throwing lingering potions.\n",
+					"key": "potion_duration_scale",
+					"type": {
+						"kind": "float"
 					},
 					"optional": true
 				}
@@ -61513,10 +61595,41 @@
 					"desc": "Text to display. Components are resolved with the executor set to the display entity and the position set to `0 0 0`.\n",
 					"key": "text",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "text_component"
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "text_component"
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::server::util::text::Text",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -61916,10 +62029,41 @@
 					"kind": "pair",
 					"key": "CustomName",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "text_component"
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "text_component"
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::server::util::text::Text",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -67299,6 +67443,25 @@
 				}
 			]
 		},
+		"::java::server::world::entity::mob::DropChances": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "reference",
+						"path": "::java::server::util::inventory::EquipmentSlot"
+					},
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				}
+			]
+		},
 		"::java::server::world::entity::mob::ender_dragon::DragonPhase": {
 			"kind": "enum",
 			"enumKind": "int",
@@ -67994,6 +68157,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Chance to drop the items it is holding, in [main hand, offhand].\n",
 					"key": "HandDropChances",
 					"type": {
@@ -68011,6 +68186,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Chance to drop the items it is wearing, in [feet, legs, body, head].\n",
 					"key": "ArmorDropChances",
 					"type": {
@@ -68060,12 +68247,44 @@
 									"value": "1.20.5"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
 						}
 					],
 					"desc": "Chance to drop the item it is wearing.\n",
 					"key": "body_armor_drop_chance",
 					"type": {
 						"kind": "float"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Chances of the mob dropping an equipment slot on deapth.\n",
+					"key": "drop_chances",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::mob::DropChances"
 					},
 					"optional": true
 				},
@@ -73295,10 +73514,41 @@
 							},
 							"typeArgs": [
 								{
-									"kind": "string",
-									"attributes": [
+									"kind": "union",
+									"members": [
 										{
-											"name": "text_component"
+											"kind": "string",
+											"attributes": [
+												{
+													"name": "until",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "1.21.5"
+														}
+													}
+												},
+												{
+													"name": "text_component"
+												}
+											]
+										},
+										{
+											"kind": "reference",
+											"path": "::java::server::util::text::Text",
+											"attributes": [
+												{
+													"name": "since",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "1.21.5"
+														}
+													}
+												}
+											]
 										}
 									]
 								}
@@ -79891,7 +80141,33 @@
 						"kind": "string",
 						"attributes": [
 							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
+							},
+							{
 								"name": "text_component"
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::server::util::text::Text",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
 							}
 						]
 					}
@@ -80190,7 +80466,33 @@
 						"kind": "string",
 						"attributes": [
 							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
+							},
+							{
 								"name": "text_component"
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::server::util::text::Text",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
 							}
 						]
 					}
@@ -80255,10 +80557,41 @@
 			"lore": {
 				"kind": "list",
 				"item": {
-					"kind": "string",
-					"attributes": [
+					"kind": "union",
+					"members": [
 						{
-							"name": "text_component"
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.21.5"
+										}
+									}
+								},
+								{
+									"name": "text_component"
+								}
+							]
+						},
+						{
+							"kind": "reference",
+							"path": "::java::server::util::text::Text",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.21.5"
+										}
+									}
+								}
+							]
 						}
 					]
 				}
