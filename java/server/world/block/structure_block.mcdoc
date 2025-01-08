@@ -22,12 +22,15 @@ dispatch minecraft:block_entity[structure_block] to struct StructureBlock {
 	showboundingbox?: boolean,
 	/// Whether it has been powered by redstone.
 	powered?: boolean,
+	/// Whether to show invisible blocks inside the bounding box.
+	showair?: boolean,
+	/// If set to `true`, the blocks in the placed structure will trigger block (entity) updates and shape updates. Defaults to `false`.
+	#[since="1.21.5"]
+	strict?: boolean,
 	/// Chance for each block to stay.
 	integrity?: float,
 	/// Seed for the integrity random.
 	seed?: #[random] long,
-	/// Whether to show invisible blocks inside the bounding box.
-	showair?: boolean,
 }
 
 dispatch minecraft:block[structure_block] to minecraft:block_entity[structure_block]

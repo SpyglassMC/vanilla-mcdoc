@@ -45,4 +45,8 @@ dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	Effects?: [MobEffectInstance],
 	#[since="1.20.5"]
 	potion_contents?: minecraft:data_component[potion_contents],
+	/// The duration of the potion effect applied is scaled by this factor. Defaults to `1`.
+	/// Will be `0.25` when throwing lingering potions.
+	#[since="1.21.5"]
+	potion_duration_scale?: float,
 }
