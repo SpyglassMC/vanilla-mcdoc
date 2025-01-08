@@ -1,3 +1,5 @@
+use ::java::server::util::text::Text
+
 /// Base NBT for all entities,
 struct EntityBase {
 	Pos?: [double] @ 3,
@@ -30,7 +32,10 @@ struct EntityBase {
 	#[uuid]
 	#[since="1.16"]
 	UUID?: int[] @ 4,
-	CustomName?: #[text_component] string,
+	CustomName?: (
+		#[until="1.21.5"] #[text_component] string |
+		#[since="1.21.5"] Text |
+	),
 	/// Whether the custom name should always be visible.
 	CustomNameVisible?: boolean,
 	/// Whether the entity should make any sound.

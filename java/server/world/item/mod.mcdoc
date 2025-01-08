@@ -10,6 +10,7 @@ use ::java::server::util::block_state::BlockState
 use ::java::server::util::effect::MobEffectInstance
 use ::java::server::util::inventory::EquipmentSlot
 use ::java::server::util::color::RGB
+use ::java::server::util::text::Text
 
 struct AttributeModifiers {
 	modifiers: [AttributeModifier],
@@ -92,7 +93,10 @@ dispatch minecraft:consume_effect[play_sound] to struct PlaySoundConsumeEffect {
 	sound: SoundEventRef,
 }
 
-dispatch minecraft:data_component[custom_name] to (#[text_component] string)
+dispatch minecraft:data_component[custom_name] to (
+	#[until="1.21.5"] #[text_component] string |
+	#[since="1.21.5"] Text |
+)
 
 dispatch mcdoc:custom_data[%unknown] to any
 
@@ -257,7 +261,10 @@ dispatch minecraft:data_component[item_model] to (
 /// - Can't be changed or removed in anvil.
 /// - Not styled with italics when displayed to player.
 /// - Does not show labels where applicable (for example: banner markers, names in item frames).
-dispatch minecraft:data_component[item_name] to (#[text_component] string)
+dispatch minecraft:data_component[item_name] to (
+	#[until="1.21.5"] #[text_component] string |
+	#[since="1.21.5"] Text |
+)
 
 /// If set, this item can be played in a jukebox like a music disc.
 #[since="1.21"]
@@ -267,7 +274,10 @@ dispatch minecraft:data_component[jukebox_playable] to struct JukeboxPlayable {
 }
 
 /// A list of JSON text components, each element being a lore line.
-dispatch minecraft:data_component[lore] to [#[text_component] string]
+dispatch minecraft:data_component[lore] to [(
+	#[until="1.21.5"] #[text_component] string |
+	#[since="1.21.5"] Text |
+)]
 
 /// Maximum amount of damage that this item can take (ie. **Durability**). If not set, this item cannot take damage. Cannot be combined with the `max_stack_size` component.
 dispatch minecraft:data_component[max_damage] to int @ 1..

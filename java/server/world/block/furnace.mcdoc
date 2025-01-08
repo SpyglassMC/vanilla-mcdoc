@@ -2,7 +2,7 @@ use ::java::server::util::inventory::SlottedItem
 
 dispatch minecraft:block_entity[furnace, blast_furnace, smoker] to struct Furnace {
 	...super::BlockEntity,
-	CustomName?: #[text_component] string,
+	...super::Nameable,
 	...super::Lockable,
 	/// The items in this furnace, with slots:
 	/// * 0: Item being smelted

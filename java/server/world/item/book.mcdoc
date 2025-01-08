@@ -6,7 +6,10 @@ dispatch minecraft:data_component[writable_book_content] to struct WritableBookC
 }
 
 dispatch minecraft:data_component[written_book_content] to struct WrittenBookContent {
-	pages?: [Filterable<#[text_component] string>],
+	pages?: [Filterable<(
+		#[until="1.21.5"] #[text_component] string |
+		#[since="1.21.5"] Text |
+	)>],
 	title: (Filterable<string @ ..32>),
 	author: string,
 	/// Number of times this written book has been copied. Defaults to 0. If the value is greater than 1, the book cannot be copied.

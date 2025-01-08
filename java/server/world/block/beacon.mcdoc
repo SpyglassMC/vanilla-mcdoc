@@ -3,7 +3,7 @@ use ::java::server::util::EffectId
 
 dispatch minecraft:block_entity[beacon] to struct Beacon {
 	...super::BlockEntity,
-	CustomName?: #[text_component] string,
+	...super::Nameable,
 	...super::Lockable,
 	/// Number of levels from the pyramid.
 	Levels?: int,

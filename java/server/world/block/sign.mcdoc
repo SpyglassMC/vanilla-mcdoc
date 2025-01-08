@@ -1,4 +1,5 @@
 use ::java::server::util::color::ColorString
+use ::java::server::util::text::Text
 
 // TODO: Add filtered text
 dispatch minecraft:block_entity[sign, hanging_sign] to (
@@ -15,11 +16,16 @@ dispatch minecraft:block_entity[sign, hanging_sign] to (
 )
 
 struct SignText {
-	messages: [#[text_component] string] @ 4,
-	filtered_messages?: [#[text_component] string] @ 4,
+	messages: SignLines,
+	filtered_messages?: SignLines,
 	color?: ColorString,
 	has_glowing_text?: boolean,
 }
+
+type SignLines = (
+	#[until="1.21.5"] [#[text_component] string] @ 4 |
+	#[since="1.21.5"] [Text] @ 4 |
+)
 
 struct OldSign {
 	...super::BlockEntity,

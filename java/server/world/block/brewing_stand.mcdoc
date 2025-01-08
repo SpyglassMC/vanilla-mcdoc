@@ -2,7 +2,7 @@ use ::java::server::util::inventory::SlottedItem
 
 dispatch minecraft:block_entity[brewing_stand] to struct BrewingStand {
 	...super::BlockEntity,
-	CustomName?: #[text_component] string,
+	...super::Nameable,
 	...super::Lockable,
 	/// * 0: left brewing slot
 	/// * 1: middle brewing slot

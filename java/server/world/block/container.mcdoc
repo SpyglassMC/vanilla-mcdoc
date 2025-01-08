@@ -2,7 +2,7 @@ use ::java::server::util::inventory::SlottedItem
 
 struct ContainerBase {
 	...super::BlockEntity,
-	CustomName?: #[text_component] string,
+	...super::Nameable,
 	...super::Lockable,
 	/// Loot table that will populate this container.
 	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
