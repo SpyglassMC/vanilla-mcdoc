@@ -222,6 +222,18 @@ dispatch minecraft:tree_decorator[pale_moss] to struct PaleMossTreeDecorator {
 	ground_probability: float @ 0..1,
 }
 
+#[since="1.21.5"]
+dispatch minecraft:tree_decorator[place_on_ground] to struct PlaceOnGroundTreeDecorator {
+	/// Defaults to `128`.
+	tries?: int @ 1..,
+	/// Defaults to `2`.
+	radius?: int @ 0..,
+	/// Defaults to `1`.
+	height?: int @ 0..,
+	/// The block to place on the ground.
+	block_state_provider: BlockStateProvider,
+}
+
 #[since="1.21.2"]
 dispatch minecraft:tree_decorator[creaking_heart] to struct CreakingHeartTreeDecorator {
 	probability: float @ 0..1,
