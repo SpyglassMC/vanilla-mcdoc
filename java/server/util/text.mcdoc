@@ -105,8 +105,14 @@ struct TextStyle {
 	strikethrough?: boolean,
 	obfuscated?: boolean,
 	insertion?: string,
+	#[until="1.21.5"]
 	clickEvent?: ClickEvent,
+	#[since="1.21.5"]
+	click_event?: ClickEvent,
+	#[until="1.21.5"]
 	hoverEvent?: HoverEvent,
+	#[since="1.21.5"]
+	hover_event?: HoverEvent,
 }
 
 enum(string) TextColor {
@@ -140,7 +146,7 @@ enum(string) TextFormat {
 
 struct ClickEvent {
 	action: ClickEventAction,
-	value: minecraft:click_event[[action]],
+	...minecraft:click_event[[action]],
 }
 
 enum(string) ClickEventAction {
@@ -149,22 +155,46 @@ enum(string) ClickEventAction {
 	RunCommand = "run_command",
 	SuggestCommand = "suggest_command",
 	ChangePage = "change_page",
-	CopyToClipBoard = "copy_to_clipboard",
+	CopyToClipboard = "copy_to_clipboard",
 }
 
-dispatch minecraft:click_event[open_url] to #[url] string
+dispatch minecraft:click_event[open_url] to struct OpenUrl {
+	#[until="1.21.5"]
+	value: #[url] string,
+	#[since="1.21.5"]
+	url: #[url] string,
+}
 
- // TODO: In 1.19.1+ commands that send signed messages are disallowed
-dispatch minecraft:click_event[run_command] to (
-	#[until="1.19.1"] #[command(slash="chat")] string |
-	#[since="1.19.1"] #[command(slash="required")] string |
-)
+// TODO: In 1.19.1+ commands that send signed messages are disallowed
+dispatch minecraft:click_event[run_command] to struct RunCommand {
+	#[until="1.21.5"]
+	value: (
+		#[until="1.19.1"] #[command(slash="chat")] string |
+		#[since="1.19.1"] #[command(slash="required")] string |
+	),
+	#[since="1.21.5"]
+	command: #[command(slash="allowed")] string,
+}
 
-dispatch minecraft:click_event[suggest_command] to #[command(slash="chat")] string
+dispatch minecraft:click_event[suggest_command] to struct SuggestCommand {
+	#[until="1.21.5"]
+	value: #[command(slash="chat")] string,
+	#[since="1.21.5"]
+	command: #[command(slash="chat")] string,
+}
 
-dispatch minecraft:click_event[change_page] to #[integer(min=1)] string
+dispatch minecraft:click_event[change_page] to struct ChangePage {
+	/// The page number to go to.
+	value: (
+		#[until="1.21.5"] #[integer(min=1)] string |
+		#[since="1.21.5"] int @ 1.. |
+	),
+}
 
-dispatch minecraft:click_event[copy_to_clipboard] to string
+dispatch minecraft:click_event[copy_to_clipboard] to struct CopyToClipboard {
+	/// The text value to copy to the clipboard.
+	value: string,
+}
 
 struct HoverEvent {
 	action: HoverEventAction,
@@ -177,17 +207,19 @@ enum(string) HoverEventAction {
 	ShowEntity = "show_entity",
 }
 
-dispatch minecraft:hover_event[show_text] to struct ShowTextHoverEvent {
-	#[deprecated="1.16"]
+dispatch minecraft:hover_event[show_text] to struct ShowText {
+	#[deprecated="1.16"] #[until="1.21.5"]
 	value?: Text,
-	#[since="1.16"]
+	#[since="1.16"] #[until="1.21.5"]
 	contents?: Text,
+	#[since="1.21.5"]
+	text: Text,
 }
 
-dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
-	#[deprecated="1.16"]
+dispatch minecraft:hover_event[show_item] to struct ShowItem {
+	#[deprecated="1.16"] #[until="1.21.5"]
 	value?: #[nbt=ItemStack] string,
-	#[since="1.16"]
+	#[since="1.16"] #[until="1.21.5"]
 	contents?: struct ItemHoverContent {
 		id: #[id="item"] string,
 		count?: int,
@@ -196,21 +228,29 @@ dispatch minecraft:hover_event[show_item] to struct ShowItemHoverEvent {
 		#[since="1.20.5"]
 		components?: DataComponentPatch<minecraft:item_component[[id]]>,
 	},
+	#[since="1.21.5"]
+	...ItemStack,
 }
 
-dispatch minecraft:hover_event[show_entity] to struct ShowEntityHoverEvent {
-	#[deprecated="1.16"]
-	value?: struct OldEntityHover {
+dispatch minecraft:hover_event[show_entity] to struct ShowEntity {
+	#[deprecated="1.16"] #[until="1.21.5"]
+	value?: struct EntityHoverValue {
 		name?: string,
 		type?: string,
 		id?: string,
 	},
 	#[since="1.16"]
 	contents?: struct EntityHoverContent {
+		type: #[id="entity_type"] string,
+		id: #[uuid] (#[canonical] [int] @ 4 | string),
 		name?: Text,
-		type?: #[id="entity_type"] string,
-		id?: #[uuid] string,
 	},
+	#[since="1.21.5"]
+	...struct EntityTooltipInfo {
+		id: #[id="entity_type"] string,
+		uuid: #[uuid] (#[canonical] [int] @ 4 | string),
+		name?: Text,
+	}
 }
 
 enum(string) Keybind {

@@ -1,7 +1,13 @@
-dispatch minecraft:entity[pig] to struct Saddled {
+struct Saddled {
 	...super::Breedable,
 	/// Whether there is a saddle on it.
 	Saddle?: boolean,
+}
+
+dispatch minecraft:entity[pig] to struct Pig {
+	...Saddled,
+	#[since="1.21.5"]
+	variant?: #[id="pig_variant"] string,
 }
 
 #[since="1.16"]

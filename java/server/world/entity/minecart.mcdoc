@@ -1,5 +1,6 @@
 use super::super::block::spawner::SpawnPotential
 use super::super::block::spawner::SpawnerEntry
+use super::super::block::command_block::BaseCommandBlock
 use super::super::entity::AnyEntity
 use ::java::server::util::BlockState
 use ::java::server::util::SlottedItem
@@ -31,13 +32,7 @@ dispatch minecraft:entity[chest_minecart] to struct ChestMinecart {
 
 dispatch minecraft:entity[command_block_minecart] to struct CommandBlockMinecart {
 	...Minecart,
-	Command?: #[command(slash="allowed",empty="allowed",max_length=32500)] string,
-	/// Success count of the last command.
-	SuccessCount?: int,
-	/// Output of the last command.
-	LastOutput?: string,
-	/// Whether to record command output.
-	TrackOutput?: boolean,
+	...BaseCommandBlock,
 }
 
 dispatch minecraft:entity[furnace_minecart] to struct FurnaceMinecart {
