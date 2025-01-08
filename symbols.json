@@ -1,5 +1,5 @@
 {
-	"ref": "608efa1a37752787d9f92f73cf088d4a5decdded",
+	"ref": "7c0a94853a4da60983dcc2be613364409f6d37c8",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -26280,19 +26280,41 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "The result item that will be merged with the input ingredient.\n",
 					"key": "result",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "item"
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::server::world::item::ItemStack",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -26625,7 +26647,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Ingredient specifying an item to be trimmed. (eg. `\"#minecraft:trimmable_armor\" }`)\n",
+					"desc": "Ingredient specifying an item to be trimmed. (eg. `\"#minecraft:trimmable_armor\"`)\n",
 					"key": "base",
 					"type": {
 						"kind": "reference",
@@ -26928,7 +26950,7 @@
 					"fields": [
 						{
 							"kind": "pair",
-							"desc": "Ingredient specifying an item to be trimmed. (eg. `\"#minecraft:trimmable_armor\" }`)\n",
+							"desc": "Ingredient specifying an item to be trimmed. (eg. `\"#minecraft:trimmable_armor\"`)\n",
 							"key": "base",
 							"type": {
 								"kind": "reference",
@@ -29466,6 +29488,109 @@
 						"kind": "reference",
 						"path": "::java::server::util::text::Text"
 					}
+				}
+			]
+		},
+		"::java::data::variants::pig::ModelType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Normal",
+					"value": "normal"
+				},
+				{
+					"identifier": "Cold",
+					"value": "cold"
+				}
+			]
+		},
+		"::java::data::variants::pig::PigVariant": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "model",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::pig::ModelType"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "texture",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Biomes in which this variant natually spawns.\n\nIf not specified, this variant will only be selected if no other variant matches the current biome.\n",
+					"key": "biomes",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "worldgen/biome"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "worldgen/biome"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -53691,6 +53816,70 @@
 				}
 			]
 		},
+		"::java::server::util::text::ChangePage": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The page number to go to.\n",
+					"key": "value",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "integer",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"min": {
+													"kind": "literal",
+													"value": {
+														"kind": "int",
+														"value": 1
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::server::util::text::ClickEvent": {
 			"kind": "struct",
 			"fields": [
@@ -53703,8 +53892,7 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "value",
+					"kind": "spread",
 					"type": {
 						"kind": "dispatcher",
 						"parallelIndices": [
@@ -53741,23 +53929,27 @@
 					"value": "change_page"
 				},
 				{
-					"identifier": "CopyToClipBoard",
+					"identifier": "CopyToClipboard",
 					"value": "copy_to_clipboard"
+				}
+			]
+		},
+		"::java::server::util::text::CopyToClipboard": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The text value to copy to the clipboard.\n",
+					"key": "value",
+					"type": {
+						"kind": "string"
+					}
 				}
 			]
 		},
 		"::java::server::util::text::EntityHoverContent": {
 			"kind": "struct",
 			"fields": [
-				{
-					"kind": "pair",
-					"key": "name",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::text::Text"
-					},
-					"optional": true
-				},
 				{
 					"kind": "pair",
 					"key": "type",
@@ -53775,6 +53967,68 @@
 								}
 							}
 						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "id",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "int"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 4,
+									"max": 4
+								},
+								"attributes": [
+									{
+										"name": "canonical"
+									}
+								]
+							},
+							{
+								"kind": "string"
+							}
+						],
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "name",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::text::Text"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::server::util::text::EntityHoverValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "name",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string"
 					},
 					"optional": true
 				},
@@ -53782,12 +54036,7 @@
 					"kind": "pair",
 					"key": "id",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "uuid"
-							}
-						]
+						"kind": "string"
 					},
 					"optional": true
 				}
@@ -53902,6 +54151,72 @@
 						"kind": "reference",
 						"path": "::java::server::util::text::TextNbtBase"
 					}
+				}
+			]
+		},
+		"::java::server::util::text::EntityTooltipInfo": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "entity_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "uuid",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "int"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 4,
+									"max": 4
+								},
+								"attributes": [
+									{
+										"name": "canonical"
+									}
+								]
+							},
+							{
+								"kind": "string"
+							}
+						],
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "name",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::text::Text"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -54283,32 +54598,178 @@
 				}
 			]
 		},
-		"::java::server::util::text::OldEntityHover": {
+		"::java::server::util::text::OpenUrl": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "name",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "value",
 					"type": {
-						"kind": "string"
-					},
-					"optional": true
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "url"
+							}
+						]
+					}
 				},
 				{
 					"kind": "pair",
-					"key": "type",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "url",
 					"type": {
-						"kind": "string"
-					},
-					"optional": true
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "url"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::server::util::text::RunCommand": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "value",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.19.1"
+											}
+										}
+									},
+									{
+										"name": "command",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"slash": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "chat"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.19.1"
+											}
+										}
+									},
+									{
+										"name": "command",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"slash": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "required"
+													}
+												}
+											}
+										}
+									}
+								]
+							}
+						]
+					}
 				},
 				{
 					"kind": "pair",
-					"key": "id",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "command",
 					"type": {
-						"kind": "string"
-					},
-					"optional": true
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "command",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"slash": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "allowed"
+											}
+										}
+									}
+								}
+							}
+						]
+					}
 				}
 			]
 		},
@@ -54482,7 +54943,7 @@
 				}
 			]
 		},
-		"::java::server::util::text::ShowEntityHoverEvent": {
+		"::java::server::util::text::ShowEntity": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -54495,6 +54956,16 @@
 								"value": {
 									"kind": "string",
 									"value": "1.16"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
 								}
 							}
 						}
@@ -54551,15 +55022,6 @@
 						"fields": [
 							{
 								"kind": "pair",
-								"key": "name",
-								"type": {
-									"kind": "reference",
-									"path": "::java::server::util::text::Text"
-								},
-								"optional": true
-							},
-							{
-								"kind": "pair",
 								"key": "type",
 								"type": {
 									"kind": "string",
@@ -54575,9 +55037,71 @@
 											}
 										}
 									]
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "id",
+								"type": {
+									"kind": "union",
+									"members": [
+										{
+											"kind": "list",
+											"item": {
+												"kind": "int"
+											},
+											"lengthRange": {
+												"kind": 0,
+												"min": 4,
+												"max": 4
+											},
+											"attributes": [
+												{
+													"name": "canonical"
+												}
+											]
+										},
+										{
+											"kind": "string"
+										}
+									],
+									"attributes": [
+										{
+											"name": "uuid"
+										}
+									]
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "name",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::text::Text"
 								},
 								"optional": true
-							},
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
 							{
 								"kind": "pair",
 								"key": "id",
@@ -54585,19 +55109,66 @@
 									"kind": "string",
 									"attributes": [
 										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "entity_type"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "uuid",
+								"type": {
+									"kind": "union",
+									"members": [
+										{
+											"kind": "list",
+											"item": {
+												"kind": "int"
+											},
+											"lengthRange": {
+												"kind": 0,
+												"min": 4,
+												"max": 4
+											},
+											"attributes": [
+												{
+													"name": "canonical"
+												}
+											]
+										},
+										{
+											"kind": "string"
+										}
+									],
+									"attributes": [
+										{
 											"name": "uuid"
 										}
 									]
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "name",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::text::Text"
 								},
 								"optional": true
 							}
 						]
-					},
-					"optional": true
+					}
 				}
 			]
 		},
-		"::java::server::util::text::ShowItemHoverEvent": {
+		"::java::server::util::text::ShowItem": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -54610,6 +55181,16 @@
 								"value": {
 									"kind": "string",
 									"value": "1.16"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
 								}
 							}
 						}
@@ -54639,6 +55220,16 @@
 								"value": {
 									"kind": "string",
 									"value": "1.16"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
 								}
 							}
 						}
@@ -54752,10 +55343,29 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::item::ItemStack"
+					}
 				}
 			]
 		},
-		"::java::server::util::text::ShowTextHoverEvent": {
+		"::java::server::util::text::ShowText": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -54768,6 +55378,16 @@
 								"value": {
 									"kind": "string",
 									"value": "1.16"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
 								}
 							}
 						}
@@ -54791,6 +55411,16 @@
 									"value": "1.16"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
 						}
 					],
 					"key": "contents",
@@ -54799,6 +55429,26 @@
 						"path": "::java::server::util::text::Text"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "text",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::text::Text"
+					}
 				}
 			]
 		},
@@ -54901,6 +55551,83 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::server::util::text::TextNbtBase"
+					}
+				}
+			]
+		},
+		"::java::server::util::text::SuggestCommand": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "value",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "command",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"slash": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "chat"
+											}
+										}
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "command",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "command",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"slash": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "chat"
+											}
+										}
+									}
+								}
+							}
+						]
 					}
 				}
 			]
@@ -55893,6 +56620,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "clickEvent",
 					"type": {
 						"kind": "reference",
@@ -55902,7 +56641,61 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "click_event",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::text::ClickEvent"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "hoverEvent",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::text::HoverEvent"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "hover_event",
 					"type": {
 						"kind": "reference",
 						"path": "::java::server::util::text::HoverEvent"
@@ -56884,25 +57677,12 @@
 				}
 			]
 		},
-		"::java::server::world::block::command_block::CommandBlock": {
+		"::java::server::world::block::command_block::BaseCommandBlock": {
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::world::block::BlockEntity"
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::world::block::Nameable"
-					}
-				},
-				{
 					"kind": "pair",
+					"desc": "The command to run.\n",
 					"key": "Command",
 					"type": {
 						"kind": "string",
@@ -56954,7 +57734,43 @@
 					"desc": "Output of the last command.\n",
 					"key": "LastOutput",
 					"type": {
-						"kind": "string"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "text_component"
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::server::util::text::Text",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				},
@@ -56966,6 +57782,50 @@
 						"kind": "boolean"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether to record the tick of the latest command execution.\n",
+					"key": "UpdateLastExecution",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Tick of the latest command execution.\n",
+					"key": "LastExecution",
+					"type": {
+						"kind": "long"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::server::world::block::command_block::CommandBlock": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::block::BlockEntity"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::block::Nameable"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::block::command_block::BaseCommandBlock"
+					}
 				},
 				{
 					"kind": "pair",
@@ -56991,24 +57851,6 @@
 					"key": "conditionMet",
 					"type": {
 						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether to record the tick of the latest command execution.\n",
-					"key": "UpdateLastExecution",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Tick of the latest command execution.\n",
-					"key": "LastExecution",
-					"type": {
-						"kind": "long"
 					},
 					"optional": true
 				}
@@ -63052,70 +63894,11 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "Command",
+					"kind": "spread",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "command",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"slash": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "allowed"
-											}
-										},
-										"empty": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "allowed"
-											}
-										},
-										"max_length": {
-											"kind": "literal",
-											"value": {
-												"kind": "int",
-												"value": 32500
-											}
-										}
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Success count of the last command.\n",
-					"key": "SuccessCount",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Output of the last command.\n",
-					"key": "LastOutput",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether to record command output.\n",
-					"key": "TrackOutput",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::server::world::block::command_block::BaseCommandBlock"
+					}
 				}
 			]
 		},
@@ -66328,6 +67111,50 @@
 				{
 					"identifier": "Killer",
 					"value": 99
+				}
+			]
+		},
+		"::java::server::world::entity::mob::breedable::saddled::Pig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::mob::breedable::saddled::Saddled"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "variant",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "pig_variant"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -77260,6 +78087,15 @@
 						"kind": "int"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If `false`, players cannot break blocks while holding this tool in creative mode. Defaults to `true`.\n",
+					"key": "can_destroy_blocks_in_creative",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -77477,6 +78313,33 @@
 								}
 							}
 						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::server::world::item::Weapon": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The amount to damage the weapon item for each attack performed.\n",
+					"key": "damage_per_attack",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If `true`, will disable a blocking Shield on successful attack. Defaults to `false`.\n",
+					"key": "can_disable_blocking",
+					"type": {
+						"kind": "boolean"
 					},
 					"optional": true
 				}
@@ -79756,120 +80619,24 @@
 		},
 		"minecraft:click_event": {
 			"change_page": {
-				"kind": "string",
-				"attributes": [
-					{
-						"name": "integer",
-						"value": {
-							"kind": "tree",
-							"values": {
-								"min": {
-									"kind": "literal",
-									"value": {
-										"kind": "int",
-										"value": 1
-									}
-								}
-							}
-						}
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::text::ChangePage"
 			},
 			"copy_to_clipboard": {
-				"kind": "string"
+				"kind": "reference",
+				"path": "::java::server::util::text::CopyToClipboard"
 			},
 			"open_url": {
-				"kind": "string",
-				"attributes": [
-					{
-						"name": "url"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::text::OpenUrl"
 			},
 			"run_command": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "until",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "1.19.1"
-									}
-								}
-							},
-							{
-								"name": "command",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"slash": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "chat"
-											}
-										}
-									}
-								}
-							}
-						]
-					},
-					{
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "since",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "1.19.1"
-									}
-								}
-							},
-							{
-								"name": "command",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"slash": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "required"
-											}
-										}
-									}
-								}
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::text::RunCommand"
 			},
 			"suggest_command": {
-				"kind": "string",
-				"attributes": [
-					{
-						"name": "command",
-						"value": {
-							"kind": "tree",
-							"values": {
-								"slash": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "chat"
-									}
-								}
-							}
-						}
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::text::SuggestCommand"
 			}
 		},
 		"minecraft:conditional_item_property": {
@@ -80707,6 +81474,25 @@
 					}
 				]
 			},
+			"potion_duration_scale": {
+				"kind": "float",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				},
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"profile": {
 				"kind": "union",
 				"members": [
@@ -80821,6 +81607,22 @@
 			"use_remainder": {
 				"kind": "reference",
 				"path": "::java::server::world::item::ItemStack"
+			},
+			"weapon": {
+				"kind": "reference",
+				"path": "::java::server::world::item::Weapon",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"writable_book_content": {
 				"kind": "reference",
@@ -82225,7 +83027,7 @@
 			},
 			"pig": {
 				"kind": "reference",
-				"path": "::java::server::world::entity::mob::breedable::saddled::Saddled"
+				"path": "::java::server::world::entity::mob::breedable::saddled::Pig"
 			},
 			"piglin": {
 				"kind": "reference",
@@ -83345,15 +84147,15 @@
 		"minecraft:hover_event": {
 			"show_entity": {
 				"kind": "reference",
-				"path": "::java::server::util::text::ShowEntityHoverEvent"
+				"path": "::java::server::util::text::ShowEntity"
 			},
 			"show_item": {
 				"kind": "reference",
-				"path": "::java::server::util::text::ShowItemHoverEvent"
+				"path": "::java::server::util::text::ShowItem"
 			},
 			"show_text": {
 				"kind": "reference",
-				"path": "::java::server::util::text::ShowTextHoverEvent"
+				"path": "::java::server::util::text::ShowText"
 			}
 		},
 		"minecraft:int_provider": {
@@ -88629,6 +89431,22 @@
 			"particle": {
 				"kind": "reference",
 				"path": "::java::assets::particle::Particle"
+			},
+			"pig_variant": {
+				"kind": "reference",
+				"path": "::java::data::variants::pig::PigVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"post_effect": {
 				"kind": "reference",
