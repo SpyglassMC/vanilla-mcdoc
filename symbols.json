@@ -1,5 +1,5 @@
 {
-	"ref": "7c0a94853a4da60983dcc2be613364409f6d37c8",
+	"ref": "511b91030c665a68e01e6e371b32f1744a157963",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -42048,6 +42048,59 @@
 								]
 							}
 						]
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::tree::PlaceOnGroundTreeDecorator": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to `128`.\n",
+					"key": "tries",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `2`.\n",
+					"key": "radius",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `1`.\n",
+					"key": "height",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The block to place on the ground.\n",
+					"key": "block_state_provider",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
 					}
 				}
 			]
@@ -90286,6 +90339,22 @@
 							"value": {
 								"kind": "string",
 								"value": "1.21.2"
+							}
+						}
+					}
+				]
+			},
+			"place_on_ground": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::tree::PlaceOnGroundTreeDecorator",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
 							}
 						}
 					}
