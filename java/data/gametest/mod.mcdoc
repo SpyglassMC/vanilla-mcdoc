@@ -14,7 +14,6 @@ dispatch minecraft:test_instance[function] to struct FunctionTestInstance {
 	function: #[id="test_function"] string,
 }
 
-
 struct TestData {
 	batch: (
 		#[id="test_environment"] string |
