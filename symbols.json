@@ -1,5 +1,5 @@
 {
-	"ref": "3acd5990e7d93e2d79bdcc1f40d990e549b704b1",
+	"ref": "ba4906520a500232a88db1562c62ace9be5ed18b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -19968,6 +19968,499 @@
 							}
 						],
 						"registry": "minecraft:value_effect"
+					}
+				}
+			]
+		},
+		"::java::data::gametest::BlockBasedTestInstance": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::gametest::TestData"
+					}
+				}
+			]
+		},
+		"::java::data::gametest::FunctionTestInstance": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::gametest::TestData"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Test function (Java code) to run.\n",
+					"key": "function",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "test_function"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::gametest::Rotation": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "None",
+					"value": "none"
+				},
+				{
+					"identifier": "Clockwise90",
+					"value": "clockwise_90"
+				},
+				{
+					"identifier": "Clockwise180",
+					"value": "180"
+				},
+				{
+					"identifier": "CounterClockwise90",
+					"value": "counterclockwise_90"
+				}
+			]
+		},
+		"::java::data::gametest::test_environment::AllOffTestEnvironment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "definitions",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::gametest::test_environment::TestEnvironment"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::gametest::test_environment::BoolGameRule": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "rule",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "game_rule",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"type": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "boolean"
+											}
+										}
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
+		},
+		"::java::data::gametest::test_environment::FunctionTestEnvironment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "setup",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "function"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "teardown",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "function"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::gametest::test_environment::GameRulesTestEnvironment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "bool_rules",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::gametest::test_environment::BoolGameRule"
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "int_rules",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::gametest::test_environment::IntGameRule"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::gametest::test_environment::IntGameRule": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "rule",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "game_rule",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"type": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "int"
+											}
+										}
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::gametest::test_environment::RainingTestEnvironment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "weather",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::gametest::test_environment::Weather"
+					}
+				}
+			]
+		},
+		"::java::data::gametest::test_environment::TestEnvironment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "test_environment_definition_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:test_environment_definition"
+					}
+				}
+			]
+		},
+		"::java::data::gametest::test_environment::TimeOfDayTestEnvironment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "time",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				}
+			]
+		},
+		"::java::data::gametest::test_environment::Weather": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Clear",
+					"value": "clear"
+				},
+				{
+					"identifier": "Rain",
+					"value": "rain"
+				},
+				{
+					"identifier": "Thunder",
+					"value": "thunder"
+				}
+			]
+		},
+		"::java::data::gametest::TestData": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The test environment to run this test as part of.\n",
+					"key": "batch",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "test_environment"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::gametest::TestEnvironment"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Structure NBT file to use for the test.\n",
+					"key": "structure",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "structure"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Maximum number of ticks allowed to pass before the test is considered timed out.\n",
+					"key": "max_ticks",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Ticks to wait after placing the structure before starting the test. Defaults to `0`.\n",
+					"key": "setup_ticks",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the test is considered required to pass for the full test suite to pass. Defaults to `true`.\n",
+					"key": "required",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Rotation to apply to the test structure. Defaults to `none`.\n",
+					"key": "rotation",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::gametest::Rotation"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If `true`, test is not included as part of automated test runs. Defaults to `false`.\n",
+					"key": "manual_only",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Number of attempts to run the test. Defaults to `1`.\n",
+					"key": "max_attempts",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Number of attempts that must succeed for the test to be considered successful. Defaults to `1`.\n",
+					"key": "required_successes",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the test needs clear access to the sky. Defaults to `false`.\n\nIf `false`, test is enclosed in barrier blocks. If `true`, the top is left open.\n",
+					"key": "sky_accesss",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::gametest::TestInstance": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "test_instance_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:test_instance"
 					}
 				}
 			]
@@ -61174,6 +61667,244 @@
 				}
 			]
 		},
+		"::java::server::world::block::test_block::TestBlock": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::block::BlockEntity"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "mode",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::block::test_block::TestBlockMode"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "message",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "powered",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::server::world::block::test_block::TestBlockMode": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Start",
+					"value": "start"
+				},
+				{
+					"identifier": "Log",
+					"value": "log"
+				},
+				{
+					"identifier": "Fail",
+					"value": "fail"
+				},
+				{
+					"identifier": "Accept",
+					"value": "accept"
+				}
+			]
+		},
+		"::java::server::world::block::test_instance_block::TestInstanceBlock": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::block::BlockEntity"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "data",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "test",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "test_instance"
+												}
+											}
+										}
+									]
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"key": "size",
+								"type": {
+									"kind": "list",
+									"item": {
+										"kind": "int"
+									},
+									"lengthRange": {
+										"kind": 0,
+										"min": 3,
+										"max": 3
+									}
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "rotation",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::gametest::Rotation"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "ignore_entities",
+								"type": {
+									"kind": "boolean"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "status",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::world::block::test_instance_block::TestInstanceBlockStatus"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "error_message",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::text::Text"
+								},
+								"optional": true
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::server::world::block::test_instance_block::TestInstanceBlockData": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "test",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "test_instance"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "size",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "int"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "rotation",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::gametest::Rotation"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "ignore_entities",
+					"type": {
+						"kind": "boolean"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "status",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::block::test_instance_block::TestInstanceBlockStatus"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "error_message",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::text::Text"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::server::world::block::test_instance_block::TestInstanceBlockStatus": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Cleared",
+					"value": "cleared"
+				},
+				{
+					"identifier": "Running",
+					"value": "running"
+				},
+				{
+					"identifier": "Finished",
+					"value": "finished"
+				}
+			]
+		},
 		"::java::server::world::block::vault::<anonymous 0>": {
 			"kind": "struct",
 			"fields": []
@@ -80301,6 +81032,26 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"test_block": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "test_block"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"test_instance_block": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "test_instance_block"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"trapped_chest": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -80754,6 +81505,14 @@
 			"structure_block": {
 				"kind": "reference",
 				"path": "::java::server::world::block::structure_block::StructureBlock"
+			},
+			"test_block": {
+				"kind": "reference",
+				"path": "::java::server::world::block::test_block::TestBlock"
+			},
+			"test_instance_block": {
+				"kind": "reference",
+				"path": "::java::server::world::block::test_instance_block::TestInstanceBlock"
 			},
 			"trial_spawner": {
 				"kind": "reference",
@@ -89861,6 +90620,14 @@
 				"kind": "reference",
 				"path": "::java::assets::sounds::Sounds"
 			},
+			"test_environment": {
+				"kind": "reference",
+				"path": "::java::data::gametest::test_environment::TestEnvironment"
+			},
+			"test_instance": {
+				"kind": "reference",
+				"path": "::java::data::gametest::TestInstance"
+			},
 			"texture_meta": {
 				"kind": "reference",
 				"path": "::java::assets::texture_meta::TextureMeta"
@@ -90579,6 +91346,38 @@
 			"rule": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::processor_list::Rule"
+			}
+		},
+		"minecraft:test_environment_definition": {
+			"all_of": {
+				"kind": "reference",
+				"path": "::java::data::gametest::test_environment::AllOffTestEnvironment"
+			},
+			"function": {
+				"kind": "reference",
+				"path": "::java::data::gametest::test_environment::FunctionTestEnvironment"
+			},
+			"game_rules": {
+				"kind": "reference",
+				"path": "::java::data::gametest::test_environment::GameRulesTestEnvironment"
+			},
+			"raining": {
+				"kind": "reference",
+				"path": "::java::data::gametest::test_environment::RainingTestEnvironment"
+			},
+			"time_of_day": {
+				"kind": "reference",
+				"path": "::java::data::gametest::test_environment::TimeOfDayTestEnvironment"
+			}
+		},
+		"minecraft:test_instance": {
+			"block_based": {
+				"kind": "reference",
+				"path": "::java::data::gametest::BlockBasedTestInstance"
+			},
+			"function": {
+				"kind": "reference",
+				"path": "::java::data::gametest::FunctionTestInstance"
 			}
 		},
 		"minecraft:tint_source": {
