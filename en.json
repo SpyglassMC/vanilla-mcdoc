@@ -804,6 +804,7 @@
 	"::java::server::world::entity::EntityBase": "Base NBT for all entities,",
 	"::java::server::world::entity::EntityBase.Air": "Ticks of air left.",
 	"::java::server::world::entity::EntityBase.CustomNameVisible": "Whether the custom name should always be visible.",
+	"::java::server::world::entity::EntityBase.fall_distance": "How far the entity has fallen.",
 	"::java::server::world::entity::EntityBase.FallDistance": "How far the entity has fallen.",
 	"::java::server::world::entity::EntityBase.Fire": "Ticks of fire left, or if negative, ticks until the entity starts to burn.",
 	"::java::server::world::entity::EntityBase.Glowing": "Whether the entity should glow.",
@@ -1249,10 +1250,11 @@
 	"::java::server::world::item::Enchantment": "An individual enchantment, with ID and level.",
 	"::java::server::world::item::Enchantment.id": "Which enchantment is being described.",
 	"::java::server::world::item::Enchantment.lvl": "Which level the enchantment is.",
-	"::java::server::world::item::Equippable.allowed_entities": "Limits which entities can equip this item",
+	"::java::server::world::item::Equippable.allowed_entities": "Limits which entities can equip this item.",
 	"::java::server::world::item::Equippable.camera_overlay": "The overlay texture that should render in first person when equipped.",
 	"::java::server::world::item::Equippable.damage_on_hurt": "Whether the item will be damaged when the wearer is damaged. Defaults to `true`.",
 	"::java::server::world::item::Equippable.dispensable": "Whether the item can be equipped by using a dispenser. Defaults to `true`.",
+	"::java::server::world::item::Equippable.equip_on_interact": "Whether players can equip this item onto a target mob by right-clicking it (as long as this item can be equipped on the target at all).\nThe item will not be equipped if the target already has an item in the relevant slot.\nDefaults to `false`.",
 	"::java::server::world::item::Equippable.equip_sound": "Sound event to play when the item is equipped.\nIf not specified, the default armor equip sound will be played.",
 	"::java::server::world::item::Equippable.model": "The equipment model to use when equipped.\nFalls back to rendering as the item itself when in the head slot (or no rendering if not applicable).",
 	"::java::server::world::item::Equippable.swappable": "Whether the item can be equipped by right-clicking. Defaults to `true`.",
@@ -1359,5 +1361,5 @@
 	"::java::server::world::item::UseCooldown.cooldown_group": "If present, this item will be part of a cooldown group and no longer share cooldowns with its base item type.\nInstead, cooldowns applied to this item will only be shared with any other items that are part of the same cooldown group.",
 	"::java::server::world::item::UseCooldown.seconds": "Time the cooldown will last.",
 	"::java::server::world::item::Weapon.can_disable_blocking": "If `true`, will disable a blocking Shield on successful attack. Defaults to `false`.",
-	"::java::server::world::item::Weapon.damage_per_attack": "The amount to damage the weapon item for each attack performed."
+	"::java::server::world::item::Weapon.item_damage_per_attack": "The amount to damage to the weapon item for each attack performed. Defaults to `1`."
 }
