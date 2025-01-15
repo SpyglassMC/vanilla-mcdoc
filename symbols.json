@@ -1,5 +1,5 @@
 {
-	"ref": "f4476d5f852fba4e5a75720cca26905eab6374d8",
+	"ref": "108600603e9095e66a7cc8f8587ecca2e8295f2a",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -8750,35 +8750,8 @@
 					"key": "variant",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::predicate::AxolotlVariant"
+						"path": "::java::server::world::entity::mob::breedable::axolotl::AxolotlVariant"
 					}
-				}
-			]
-		},
-		"::java::data::advancement::predicate::AxolotlVariant": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Lucy",
-					"value": "lucy"
-				},
-				{
-					"identifier": "Wild",
-					"value": "wild"
-				},
-				{
-					"identifier": "Gold",
-					"value": "gold"
-				},
-				{
-					"identifier": "Cyan",
-					"value": "cyan"
-				},
-				{
-					"desc": "The rare variant.\n",
-					"identifier": "Blue",
-					"value": "blue"
 				}
 			]
 		},
@@ -10983,42 +10956,8 @@
 					"key": "variant",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::predicate::HorseVariant"
+						"path": "::java::server::world::entity::mob::breedable::horse::HorseVariant"
 					}
-				}
-			]
-		},
-		"::java::data::advancement::predicate::HorseVariant": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "White",
-					"value": "white"
-				},
-				{
-					"identifier": "Creamy",
-					"value": "creamy"
-				},
-				{
-					"identifier": "Chestnut",
-					"value": "chestnut"
-				},
-				{
-					"identifier": "Brown",
-					"value": "brown"
-				},
-				{
-					"identifier": "Black",
-					"value": "black"
-				},
-				{
-					"identifier": "Gray",
-					"value": "gray"
-				},
-				{
-					"identifier": "DarkBrown",
-					"value": "dark_brown"
 				}
 			]
 		},
@@ -11572,30 +11511,8 @@
 					"key": "variant",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LlamaVariant"
+						"path": "::java::server::world::entity::mob::breedable::llama::LlamaVariant"
 					}
-				}
-			]
-		},
-		"::java::data::advancement::predicate::LlamaVariant": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Creamy",
-					"value": "creamy"
-				},
-				{
-					"identifier": "White",
-					"value": "white"
-				},
-				{
-					"identifier": "Brown",
-					"value": "brown"
-				},
-				{
-					"identifier": "Gray",
-					"value": "gray"
 				}
 			]
 		},
@@ -12471,34 +12388,8 @@
 					"key": "variant",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ParrotVariant"
+						"path": "::java::server::world::entity::mob::breedable::tamable::ParrotVariant"
 					}
-				}
-			]
-		},
-		"::java::data::advancement::predicate::ParrotVariant": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "RedBlue",
-					"value": "red_blue"
-				},
-				{
-					"identifier": "Blue",
-					"value": "blue"
-				},
-				{
-					"identifier": "Green",
-					"value": "green"
-				},
-				{
-					"identifier": "YellowBlue",
-					"value": "yellow_blue"
-				},
-				{
-					"identifier": "Gray",
-					"value": "gray"
 				}
 			]
 		},
@@ -13152,43 +13043,9 @@
 					"kind": "pair",
 					"key": "variant",
 					"type": {
-						"kind": "string"
+						"kind": "reference",
+						"path": "::java::server::world::entity::mob::breedable::rabbit::RabbitVariant"
 					}
-				}
-			]
-		},
-		"::java::data::advancement::predicate::RabbitVariant": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Brown",
-					"value": "brown"
-				},
-				{
-					"identifier": "White",
-					"value": "white"
-				},
-				{
-					"identifier": "Black",
-					"value": "black"
-				},
-				{
-					"identifier": "WhiteSplotched",
-					"value": "white_splotched"
-				},
-				{
-					"identifier": "Gold",
-					"value": "gold"
-				},
-				{
-					"identifier": "Salt",
-					"value": "salt"
-				},
-				{
-					"desc": "Killer rabbit\n",
-					"identifier": "Evil",
-					"value": "evil"
 				}
 			]
 		},
@@ -66541,7 +66398,7 @@
 					"key": "Variant",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::world::entity::mob::breedable::axolotl::Variant"
+						"path": "::java::server::world::entity::mob::breedable::axolotl::AxolotlVariantInt"
 					},
 					"optional": true
 				},
@@ -66556,7 +66413,34 @@
 				}
 			]
 		},
-		"::java::server::world::entity::mob::breedable::axolotl::Variant": {
+		"::java::server::world::entity::mob::breedable::axolotl::AxolotlVariant": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Lucy",
+					"value": "lucy"
+				},
+				{
+					"identifier": "Wild",
+					"value": "wild"
+				},
+				{
+					"identifier": "Gold",
+					"value": "gold"
+				},
+				{
+					"identifier": "Cyan",
+					"value": "cyan"
+				},
+				{
+					"desc": "The rare variant.\n",
+					"identifier": "Blue",
+					"value": "blue"
+				}
+			]
+		},
+		"::java::server::world::entity::mob::breedable::axolotl::AxolotlVariantInt": {
 			"kind": "enum",
 			"enumKind": "int",
 			"values": [
@@ -67385,7 +67269,7 @@
 					"key": "Variant",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::world::entity::mob::breedable::horse::HorseVariant"
+						"path": "::java::server::world::entity::mob::breedable::horse::HorseVariantAndMarkings"
 					},
 					"optional": true
 				}
@@ -67521,6 +67405,40 @@
 			]
 		},
 		"::java::server::world::entity::mob::breedable::horse::HorseVariant": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "White",
+					"value": "white"
+				},
+				{
+					"identifier": "Creamy",
+					"value": "creamy"
+				},
+				{
+					"identifier": "Chestnut",
+					"value": "chestnut"
+				},
+				{
+					"identifier": "Brown",
+					"value": "brown"
+				},
+				{
+					"identifier": "Black",
+					"value": "black"
+				},
+				{
+					"identifier": "Gray",
+					"value": "gray"
+				},
+				{
+					"identifier": "DarkBrown",
+					"value": "dark_brown"
+				}
+			]
+		},
+		"::java::server::world::entity::mob::breedable::horse::HorseVariantAndMarkings": {
 			"kind": "enum",
 			"enumKind": "int",
 			"values": [
@@ -67878,6 +67796,28 @@
 		},
 		"::java::server::world::entity::mob::breedable::llama::LlamaVariant": {
 			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Creamy",
+					"value": "creamy"
+				},
+				{
+					"identifier": "White",
+					"value": "white"
+				},
+				{
+					"identifier": "Brown",
+					"value": "brown"
+				},
+				{
+					"identifier": "Gray",
+					"value": "gray"
+				}
+			]
+		},
+		"::java::server::world::entity::mob::breedable::llama::LlamaVariantInt": {
+			"kind": "enum",
 			"enumKind": "int",
 			"values": [
 				{
@@ -68182,6 +68122,41 @@
 				}
 			]
 		},
+		"::java::server::world::entity::mob::breedable::rabbit::RabbitVariant": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Brown",
+					"value": "brown"
+				},
+				{
+					"identifier": "White",
+					"value": "white"
+				},
+				{
+					"identifier": "Black",
+					"value": "black"
+				},
+				{
+					"identifier": "WhiteSplotched",
+					"value": "white_splotched"
+				},
+				{
+					"identifier": "Gold",
+					"value": "gold"
+				},
+				{
+					"identifier": "Salt",
+					"value": "salt"
+				},
+				{
+					"desc": "Killer rabbit\n",
+					"identifier": "Evil",
+					"value": "evil"
+				}
+			]
+		},
 		"::java::server::world::entity::mob::breedable::saddled::Pig": {
 			"kind": "struct",
 			"fields": [
@@ -68433,13 +68408,39 @@
 					"key": "Variant",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::world::entity::mob::breedable::tamable::ParrotVariant"
+						"path": "::java::server::world::entity::mob::breedable::tamable::ParrotVariantInt"
 					},
 					"optional": true
 				}
 			]
 		},
 		"::java::server::world::entity::mob::breedable::tamable::ParrotVariant": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "RedBlue",
+					"value": "red_blue"
+				},
+				{
+					"identifier": "Blue",
+					"value": "blue"
+				},
+				{
+					"identifier": "Green",
+					"value": "green"
+				},
+				{
+					"identifier": "YellowBlue",
+					"value": "yellow_blue"
+				},
+				{
+					"identifier": "Gray",
+					"value": "gray"
+				}
+			]
+		},
+		"::java::server::world::entity::mob::breedable::tamable::ParrotVariantInt": {
 			"kind": "enum",
 			"enumKind": "int",
 			"values": [
@@ -69657,6 +69658,56 @@
 						"kind": "int"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::server::world::entity::mob::fish::TropicalFishPattern": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Kob",
+					"value": "kob"
+				},
+				{
+					"identifier": "Sunstreak",
+					"value": "sunstreak"
+				},
+				{
+					"identifier": "Dasher",
+					"value": "dasher"
+				},
+				{
+					"identifier": "Brinely",
+					"value": "brinely"
+				},
+				{
+					"identifier": "Spotty",
+					"value": "spotty"
+				},
+				{
+					"identifier": "Flopper",
+					"value": "flopper"
+				},
+				{
+					"identifier": "Stripey",
+					"value": "stripey"
+				},
+				{
+					"identifier": "Glitter",
+					"value": "glitter"
+				},
+				{
+					"identifier": "Blockfish",
+					"value": "blockfish"
+				},
+				{
+					"identifier": "Betty",
+					"value": "betty"
+				},
+				{
+					"identifier": "Clayfish",
+					"value": "clayfish"
 				}
 			]
 		},
@@ -81841,6 +81892,22 @@
 					}
 				]
 			},
+			"axolotl/variant": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::mob::breedable::axolotl::AxolotlVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"banner_patterns": {
 				"kind": "list",
 				"item": {
@@ -81956,6 +82023,47 @@
 					{
 						"kind": "reference",
 						"path": "::java::data::advancement::predicate::BlockPredicate"
+					}
+				]
+			},
+			"cat/collar": {
+				"kind": "reference",
+				"path": "::java::server::util::color::ColorString",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"cat/variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "cat_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
 					}
 				]
 			},
@@ -82250,6 +82358,47 @@
 				"kind": "reference",
 				"path": "::java::server::world::item::Food"
 			},
+			"fox/variant": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::mob::breedable::fox::FoxType",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"frog/variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "frog_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"glider": {
 				"kind": "struct",
 				"fields": []
@@ -82261,6 +82410,22 @@
 			"hide_tooltip": {
 				"kind": "struct",
 				"fields": []
+			},
+			"horse/variant": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::mob::breedable::horse::HorseVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"instrument": {
 				"kind": "union",
@@ -82417,6 +82582,10 @@
 					}
 				]
 			},
+			"llama/variant": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::mob::breedable::llama::LlamaVariant"
+			},
 			"lock": {
 				"kind": "union",
 				"members": [
@@ -82536,6 +82705,22 @@
 					"max": 99
 				}
 			},
+			"mooshroom/variant": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::mob::breedable::mooshroom::MooshroomType",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"note_block_sound": {
 				"kind": "union",
 				"members": [
@@ -82563,6 +82748,83 @@
 					"min": 0,
 					"max": 4
 				}
+			},
+			"painting/variant": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "painting_variant"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::variants::painting::PaintingVariant"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"parrot/variant": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::mob::breedable::tamable::ParrotVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"pig/variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "pig_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"pot_decorations": {
 				"kind": "list",
@@ -82646,6 +82908,22 @@
 					}
 				]
 			},
+			"rabbit/variant": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::mob::breedable::rabbit::RabbitVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"rarity": {
 				"kind": "reference",
 				"path": "::java::server::world::item::Rarity"
@@ -82686,6 +82964,54 @@
 							"value": {
 								"kind": "string",
 								"value": "1.21.2"
+							}
+						}
+					}
+				]
+			},
+			"salmon/size": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::mob::fish::SalmonType",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"sheep/color": {
+				"kind": "reference",
+				"path": "::java::server::util::color::ColorString",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"shulker/color": {
+				"kind": "reference",
+				"path": "::java::server::util::color::ColorString",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
 							}
 						}
 					}
@@ -82732,6 +83058,54 @@
 				"kind": "reference",
 				"path": "::java::server::world::item::Trim"
 			},
+			"tropical_fish/base_color": {
+				"kind": "reference",
+				"path": "::java::server::util::color::ColorString",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"tropical_fish/pattern": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::mob::fish::TropicalFishPattern",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"tropical_fish/pattern_color": {
+				"kind": "reference",
+				"path": "::java::server::util::color::ColorString",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"unbreakable": {
 				"kind": "reference",
 				"path": "::java::server::world::item::Unbreakable"
@@ -82744,10 +83118,76 @@
 				"kind": "reference",
 				"path": "::java::server::world::item::ItemStack"
 			},
+			"villager/variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "villager_type"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"weapon": {
 				"kind": "reference",
 				"path": "::java::server::world::item::Weapon",
 				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"wolf/collar": {
+				"kind": "reference",
+				"path": "::java::server::util::color::ColorString",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"wolf/variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "wolf_variant"
+							}
+						}
+					},
 					{
 						"name": "since",
 						"value": {
