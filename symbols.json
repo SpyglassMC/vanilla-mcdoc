@@ -1,5 +1,5 @@
 {
-	"ref": "511b91030c665a68e01e6e371b32f1744a157963",
+	"ref": "3acd5990e7d93e2d79bdcc1f40d990e549b704b1",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -49824,6 +49824,22 @@
 					],
 					"identifier": "Body",
 					"value": "body"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"identifier": "Saddle",
+					"value": "saddle"
 				}
 			]
 		},
@@ -51745,6 +51761,22 @@
 					],
 					"identifier": "Body",
 					"value": "body"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"identifier": "Saddle",
+					"value": "saddle"
 				}
 			]
 		},
@@ -53756,6 +53788,53 @@
 				}
 			]
 		},
+		"::java::server::util::text::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "deprecated",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					],
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::text::Text"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					],
+					"key": "contents",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::text::Text"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::server::util::text::BlockNbtText": {
 			"kind": "struct",
 			"fields": [
@@ -55422,20 +55501,72 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "pair",
+					"kind": "spread",
 					"attributes": [
 						{
-							"name": "deprecated",
+							"name": "until",
 							"value": {
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "1.16"
+									"value": "1.21.5"
 								}
 							}
-						},
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"attributes": [
+									{
+										"name": "deprecated",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.16"
+											}
+										}
+									}
+								],
+								"key": "value",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::text::Text"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.16"
+											}
+										}
+									}
+								],
+								"key": "contents",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::text::Text"
+								},
+								"optional": true
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
 						{
-							"name": "until",
+							"name": "since",
 							"value": {
 								"kind": "literal",
 								"value": {
@@ -55446,58 +55577,6 @@
 						}
 					],
 					"key": "value",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::text::Text"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16"
-								}
-							}
-						},
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"key": "contents",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::text::Text"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"key": "text",
 					"type": {
 						"kind": "reference",
 						"path": "::java::server::util::text::Text"
@@ -62768,10 +62847,43 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "How far the entity has fallen.\n",
 					"key": "FallDistance",
 					"type": {
 						"kind": "float"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "How far the entity has fallen.\n",
+					"key": "fall_distance",
+					"type": {
+						"kind": "double"
 					},
 					"optional": true
 				},
@@ -64391,13 +64503,173 @@
 		},
 		"::java::server::world::entity::mob::<anonymous 0>": {
 			"kind": "struct",
-			"fields": []
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "[main hand, offhand]\n",
+					"key": "HandItems",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "reference",
+									"path": "::java::server::world::item::ItemStack"
+								},
+								{
+									"kind": "struct",
+									"fields": []
+								}
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 2,
+							"max": 2
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Chance to drop the items it is holding, in [main hand, offhand].\n",
+					"key": "HandDropChances",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "float"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 2,
+							"max": 2
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "[feet, legs, body, head]\n",
+					"key": "ArmorItems",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "reference",
+									"path": "::java::server::world::item::ItemStack"
+								},
+								{
+									"kind": "struct",
+									"fields": []
+								}
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Chance to drop the items it is wearing, in [feet, legs, body, head].\n",
+					"key": "ArmorDropChances",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "float"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"desc": "Used for wolf armor & llama carpet decoration.\n",
+					"key": "body_armor_item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::item::ItemStack"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"desc": "Chance to drop the item it is wearing.\n",
+					"key": "body_armor_drop_chance",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				}
+			]
 		},
 		"::java::server::world::entity::mob::<anonymous 1>": {
 			"kind": "struct",
 			"fields": []
 		},
 		"::java::server::world::entity::mob::<anonymous 2>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::server::world::entity::mob::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "equipment",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::mob::EntityEquipment"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Chances of the mob dropping an equipment slot on deapth.\n",
+					"key": "drop_chances",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::mob::DropChances"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::server::world::entity::mob::<anonymous 4>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -64451,7 +64723,7 @@
 				}
 			]
 		},
-		"::java::server::world::entity::mob::<anonymous 3>": {
+		"::java::server::world::entity::mob::<anonymous 5>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -66496,6 +66768,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "SaddleItem",
 					"type": {
 						"kind": "reference",
@@ -67223,6 +67507,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Whether there is a saddle on it.\n",
 					"key": "Saddle",
 					"type": {
@@ -68485,6 +68781,22 @@
 				}
 			]
 		},
+		"::java::server::world::entity::mob::EntityEquipment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "reference",
+						"path": "::java::server::util::inventory::EquipmentSlot"
+					},
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::item::ItemStack"
+					}
+				}
+			]
+		},
 		"::java::server::world::entity::mob::fish::Fish": {
 			"kind": "struct",
 			"fields": [
@@ -68982,172 +69294,158 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"desc": "[main hand, offhand]\n",
-					"key": "HandItems",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "union",
-							"members": [
-								{
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "[main hand, offhand]\n",
+								"key": "HandItems",
+								"type": {
+									"kind": "list",
+									"item": {
+										"kind": "union",
+										"members": [
+											{
+												"kind": "reference",
+												"path": "::java::server::world::item::ItemStack"
+											},
+											{
+												"kind": "struct",
+												"fields": []
+											}
+										]
+									},
+									"lengthRange": {
+										"kind": 0,
+										"min": 2,
+										"max": 2
+									}
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Chance to drop the items it is holding, in [main hand, offhand].\n",
+								"key": "HandDropChances",
+								"type": {
+									"kind": "list",
+									"item": {
+										"kind": "float"
+									},
+									"lengthRange": {
+										"kind": 0,
+										"min": 2,
+										"max": 2
+									}
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "[feet, legs, body, head]\n",
+								"key": "ArmorItems",
+								"type": {
+									"kind": "list",
+									"item": {
+										"kind": "union",
+										"members": [
+											{
+												"kind": "reference",
+												"path": "::java::server::world::item::ItemStack"
+											},
+											{
+												"kind": "struct",
+												"fields": []
+											}
+										]
+									},
+									"lengthRange": {
+										"kind": 0,
+										"min": 4,
+										"max": 4
+									}
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Chance to drop the items it is wearing, in [feet, legs, body, head].\n",
+								"key": "ArmorDropChances",
+								"type": {
+									"kind": "list",
+									"item": {
+										"kind": "float"
+									},
+									"lengthRange": {
+										"kind": 0,
+										"min": 4,
+										"max": 4
+									}
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								],
+								"desc": "Used for wolf armor & llama carpet decoration.\n",
+								"key": "body_armor_item",
+								"type": {
 									"kind": "reference",
 									"path": "::java::server::world::item::ItemStack"
 								},
-								{
-									"kind": "struct",
-									"fields": []
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 2,
-							"max": 2
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "[feet, legs, body, head]\n",
-					"key": "ArmorItems",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "union",
-							"members": [
-								{
-									"kind": "reference",
-									"path": "::java::server::world::item::ItemStack"
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								],
+								"desc": "Chance to drop the item it is wearing.\n",
+								"key": "body_armor_drop_chance",
+								"type": {
+									"kind": "float"
 								},
-								{
-									"kind": "struct",
-									"fields": []
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 4,
-							"max": 4
-						}
-					},
-					"optional": true
+								"optional": true
+							}
+						]
+					}
 				},
 				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"desc": "Chance to drop the items it is holding, in [main hand, offhand].\n",
-					"key": "HandDropChances",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "float"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 2,
-							"max": 2
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"desc": "Chance to drop the items it is wearing, in [feet, legs, body, head].\n",
-					"key": "ArmorDropChances",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "float"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 4,
-							"max": 4
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"desc": "Used for wolf armor & llama carpet decoration.\n",
-					"key": "body_armor_item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::world::item::ItemStack"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						},
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"desc": "Chance to drop the item it is wearing.\n",
-					"key": "body_armor_drop_chance",
-					"type": {
-						"kind": "float"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
+					"kind": "spread",
 					"attributes": [
 						{
 							"name": "since",
@@ -69160,13 +69458,30 @@
 							}
 						}
 					],
-					"desc": "Chances of the mob dropping an equipment slot on deapth.\n",
-					"key": "drop_chances",
 					"type": {
-						"kind": "reference",
-						"path": "::java::server::world::entity::mob::DropChances"
-					},
-					"optional": true
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "equipment",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::world::entity::mob::EntityEquipment"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Chances of the mob dropping an equipment slot on deapth.\n",
+								"key": "drop_chances",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::world::entity::mob::DropChances"
+								},
+								"optional": true
+							}
+						]
+					}
 				},
 				{
 					"kind": "pair",
@@ -75494,7 +75809,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Limits which entities can equip this item\n",
+					"desc": "Limits which entities can equip this item.\n",
 					"key": "allowed_entities",
 					"type": {
 						"kind": "union",
@@ -75570,6 +75885,15 @@
 					"kind": "pair",
 					"desc": "Whether the item will be damaged when the wearer is damaged. Defaults to `true`.\n",
 					"key": "damage_on_hurt",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether players can equip this item onto a target mob by right-clicking it (as long as this item can be equipped on the target at all).\n\nThe item will not be equipped if the target already has an item in the relevant slot.\n\nDefaults to `false`.\n",
+					"key": "equip_on_interact",
 					"type": {
 						"kind": "boolean"
 					},
@@ -78376,8 +78700,8 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The amount to damage the weapon item for each attack performed.\n",
-					"key": "damage_per_attack",
+					"desc": "The amount to damage to the weapon item for each attack performed. Defaults to `1`.\n",
+					"key": "item_damage_per_attack",
 					"type": {
 						"kind": "int",
 						"valueRange": {
