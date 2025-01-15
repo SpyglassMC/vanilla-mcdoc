@@ -10,7 +10,7 @@ dispatch minecraft:block_entity[test_instance_block] to struct TestBlock {
 		ignore_entities: boolean,
 		status: TestInstanceBlockStatus,
 		error_message?: Text,
-	}
+	},
 }
 
 dispatch minecraft:block[test_instance_block] to minecraft:block_entity[test_instance_block]
@@ -18,5 +18,5 @@ dispatch minecraft:block[test_instance_block] to minecraft:block_entity[test_ins
 enum(string) TestInstanceBlockStatus {
 	Cleared = "cleared",
 	Running = "running",
-	Finished = "finished"
+	Finished = "finished",
 }
