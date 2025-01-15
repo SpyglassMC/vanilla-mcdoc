@@ -47,25 +47,27 @@ struct LivingEntity {
 /// Base NBT for all mobs.
 struct MobBase {
 	...LivingEntity,
-	/// [main hand, offhand]
-	HandItems?: [(ItemStack | struct {})] @ 2,
-	/// [feet, legs, body, head]
-	ArmorItems?: [(ItemStack | struct {})] @ 4,
-	/// Chance to drop the items it is holding, in [main hand, offhand].
-	#[until="1.21.5"]
-	HandDropChances?: [float] @ 2,
-	/// Chance to drop the items it is wearing, in [feet, legs, body, head].
-	#[until="1.21.5"]
-	ArmorDropChances?: [float] @ 4,
-	/// Used for wolf armor & llama carpet decoration.
-	#[since="1.20.5"]
-	body_armor_item?: ItemStack,
-	/// Chance to drop the item it is wearing.
-	#[since="1.20.5"] #[until="1.21.5"]
-	body_armor_drop_chance?: float,
-	/// Chances of the mob dropping an equipment slot on deapth.
-	#[since="1.21.5"]
-	drop_chances?: DropChances,
+	#[until="1.21.5"] ...struct {
+		/// [main hand, offhand]
+		HandItems?: [(ItemStack | struct {})] @ 2,
+		/// Chance to drop the items it is holding, in [main hand, offhand].
+		HandDropChances?: [float] @ 2,
+		/// [feet, legs, body, head]
+		ArmorItems?: [(ItemStack | struct {})] @ 4,
+		/// Chance to drop the items it is wearing, in [feet, legs, body, head].
+		ArmorDropChances?: [float] @ 4,
+		/// Used for wolf armor & llama carpet decoration.
+		#[since="1.20.5"]
+		body_armor_item?: ItemStack,
+		/// Chance to drop the item it is wearing.
+		#[since="1.20.5"]
+		body_armor_drop_chance?: float,
+	},
+	#[since="1.21.5"] ...struct {
+		equipment?: EntityEquipment,
+		/// Chances of the mob dropping an equipment slot on deapth.
+		drop_chances?: DropChances,
+	},
 	DeathLootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed for generating the death loot table.
 	DeathLootTableSeed?: #[random] long,
@@ -83,6 +85,10 @@ struct MobBase {
 	leash?: (int[] @ 3 | struct LeashOwner {
 		UUID?: int[] @ 4
 	})
+}
+
+struct EntityEquipment {
+	[EquipmentSlot]: ItemStack,
 }
 
 struct DropChances {

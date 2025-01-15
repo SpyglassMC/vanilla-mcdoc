@@ -180,7 +180,7 @@ dispatch minecraft:data_component[equippable] to struct Equippable {
 	asset_id?: #[id="equipment"] string,
 	/// The overlay texture that should render in first person when equipped.
 	camera_overlay?: #[id="texture"] string,
-	/// Limits which entities can equip this item
+	/// Limits which entities can equip this item.
 	allowed_entities?: (#[id(registry="entity_type",tags="allowed")] string | [#[id="entity_type"] string]),
 	/// Whether the item can be equipped by using a dispenser. Defaults to `true`.
 	dispensable?: boolean,
@@ -188,6 +188,10 @@ dispatch minecraft:data_component[equippable] to struct Equippable {
 	swappable?: boolean,
 	/// Whether the item will be damaged when the wearer is damaged. Defaults to `true`.
 	damage_on_hurt?: boolean,
+	/// Whether players can equip this item onto a target mob by right-clicking it (as long as this item can be equipped on the target at all).
+	/// The item will not be equipped if the target already has an item in the relevant slot.
+	/// Defaults to `false`.
+	equip_on_interact?: boolean,
 }
 
 /// If set, this item will not burn in fire or lava.
@@ -360,8 +364,8 @@ dispatch minecraft:data_component[use_remainder] to ItemStack
 /// When present, the 'Item Used' statistic will be incremented for each attack with the item.
 #[since="1.21.5"]
 dispatch minecraft:data_component[weapon] to struct Weapon {
-	/// The amount to damage the weapon item for each attack performed.
-	damage_per_attack?: int @ 0..,
+	/// The amount to damage to the weapon item for each attack performed. Defaults to `1`.
+	item_damage_per_attack?: int @ 0..,
 	/// If `true`, will disable a blocking Shield on successful attack. Defaults to `false`.
 	can_disable_blocking?: boolean,
 }

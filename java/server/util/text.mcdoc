@@ -208,12 +208,15 @@ enum(string) HoverEventAction {
 }
 
 dispatch minecraft:hover_event[show_text] to struct ShowText {
-	#[deprecated="1.16"] #[until="1.21.5"]
-	value?: Text,
-	#[since="1.16"] #[until="1.21.5"]
-	contents?: Text,
+	#[until="1.21.5"]
+	...struct {
+		#[deprecated="1.16"] 
+		value?: Text,
+		#[since="1.16"]
+		contents?: Text,
+	},
 	#[since="1.21.5"]
-	text: Text,
+	value: Text,
 }
 
 dispatch minecraft:hover_event[show_item] to struct ShowItem {

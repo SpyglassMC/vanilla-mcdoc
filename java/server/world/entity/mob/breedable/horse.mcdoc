@@ -18,6 +18,7 @@ dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	/// Player who tamed it.
 	#[since="1.16"] #[uuid]
 	Owner?: int[] @ 4,
+	#[until="1.21.5"]
 	SaddleItem?: ItemStack,
 }
 

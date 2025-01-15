@@ -7,7 +7,11 @@ struct EntityBase {
 	/// Rotation in [y-rotation, x-rotation]
 	Rotation?: [float] @ 2,
 	/// How far the entity has fallen.
+	#[until="1.21.5"]
 	FallDistance?: float,
+	/// How far the entity has fallen.
+	#[since="1.21.5"]
+	fall_distance?: double,
 	/// Ticks of fire left, or if negative, ticks until the entity starts to burn.
 	Fire?: short,
 	/// Ticks of air left.

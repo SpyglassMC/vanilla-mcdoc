@@ -1,6 +1,7 @@
 struct Saddled {
 	...super::Breedable,
 	/// Whether there is a saddle on it.
+	#[until="1.21.5"]
 	Saddle?: boolean,
 }
 
