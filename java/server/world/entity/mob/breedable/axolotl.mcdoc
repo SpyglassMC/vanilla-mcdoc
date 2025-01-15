@@ -1,13 +1,25 @@
+#[since="1.21.5"]
+dispatch minecraft:data_component["axolotl/variant"] to AxolotlVariant
+
+enum(string) AxolotlVariant {
+	Lucy = "lucy",
+	Wild = "wild",
+	Gold = "gold",
+	Cyan = "cyan",
+	/// The rare variant.
+	Blue = "blue",
+}
+
 #[since="1.17"]
 dispatch minecraft:entity[axolotl] to struct Axolotl {
 	...super::Breedable,
 	/// The variant of the axolotl.
-	Variant?: Variant,
+	Variant?: AxolotlVariantInt,
 	/// If this axolotl was released from a bucket.
 	FromBucket?: boolean
 }
 
-enum(int) Variant {
+enum(int) AxolotlVariantInt {
 	Lucy = 0,
 	Wild = 1,
 	Gold = 2,

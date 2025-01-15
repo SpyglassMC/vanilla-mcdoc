@@ -1,3 +1,6 @@
+#[since="1.21.5"]
+dispatch minecraft:data_component["fox/variant"] to FoxType
+
 dispatch minecraft:entity[fox] to struct Fox {
 	...super::Breedable,
 	/// List of trusted players.

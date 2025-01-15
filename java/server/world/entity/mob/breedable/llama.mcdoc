@@ -1,6 +1,15 @@
 use ::java::server::world::item::ItemStack
 use ::java::server::util::inventory::SlottedItem
 
+dispatch minecraft:data_component["llama/variant"] to LlamaVariant
+
+enum(string) LlamaVariant {
+	Creamy = "creamy",
+	White = "white",
+	Brown = "brown",
+	Gray = "gray",
+}
+
 dispatch minecraft:entity[llama] to struct Llama {
 	...super::Breedable,
 	/// Unknown use.
@@ -46,7 +55,7 @@ dispatch minecraft:llama_strength["4"] to ([SlottedItem<byte @ 0..11>] @ 0..12)
 // TODO: Add "Slots from 0 to 14. Scales with `Strength`." doc here once we support numerical indexing of dispatches.
 dispatch minecraft:llama_strength[%none, "5"] to ([SlottedItem<byte @ 0..14>] @ 0..15)
 
-enum(int) LlamaVariant {
+enum(int) LlamaVariantInt {
 	Creamy = 0,
 	White = 1,
 	Brown = 2,

@@ -1,3 +1,17 @@
+#[since="1.21.5"]
+dispatch minecraft:data_component["rabbit/variant"] to RabbitVariant
+
+enum(string) RabbitVariant {
+	Brown = "brown",
+	White = "white",
+	Black = "black",
+	WhiteSplotched = "white_splotched",
+	Gold = "gold",
+	Salt = "salt",
+	/// Killer rabbit
+	Evil = "evil",
+}
+
 dispatch minecraft:entity[rabbit] to struct Rabbit {
 	...super::Breedable,
 	RabbitType?: RabbitType,

@@ -1,3 +1,6 @@
+#[since="1.21.5"]
+dispatch minecraft:data_component["frog/variant"] to #[id="frog_variant"] string
+
 #[since="1.19"]
 dispatch minecraft:entity[frog] to struct Frog {
 	...super::Breedable,

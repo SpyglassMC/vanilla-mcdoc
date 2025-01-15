@@ -5,6 +5,9 @@ struct Saddled {
 	Saddle?: boolean,
 }
 
+#[since="1.21.5"]
+dispatch minecraft:data_component["pig/variant"] to #[id="pig_variant"] string
+
 dispatch minecraft:entity[pig] to struct Pig {
 	...Saddled,
 	#[since="1.21.5"]

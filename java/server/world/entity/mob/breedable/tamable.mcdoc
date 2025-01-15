@@ -1,4 +1,5 @@
 use ::java::server::util::ColorByte
+use ::java::server::util::color::ColorString
 use ::java::server::world::item::ItemStack
 
 struct Tamable {
@@ -10,6 +11,12 @@ struct Tamable {
 	/// Whether the mob is sitting.
 	Sitting?: boolean,
 }
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["cat/variant"] to #[id="cat_variant"] string
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["cat/collar"] to ColorString
 
 dispatch minecraft:entity[cat] to struct Cat {
 	...Tamable,
@@ -36,18 +43,35 @@ enum(int) CatType {
 	Black = 10
 }
 
-dispatch minecraft:entity[parrot] to struct Parrot {
-	...Tamable,
-	Variant?: ParrotVariant,
+#[since="1.21.5"]
+dispatch minecraft:data_component["parrot/variant"] to ParrotVariant
+
+enum(string) ParrotVariant {
+	RedBlue = "red_blue",
+	Blue = "blue",
+	Green = "green",
+	YellowBlue = "yellow_blue",
+	Gray = "gray",
 }
 
-enum(int) ParrotVariant {
+dispatch minecraft:entity[parrot] to struct Parrot {
+	...Tamable,
+	Variant?: ParrotVariantInt,
+}
+
+enum(int) ParrotVariantInt {
 	RedBlue = 0,
 	Blue = 1,
 	Green = 2,
 	YellowBlue = 3,
 	Gray = 4,
 }
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["wolf/variant"] to #[id="wolf_variant"] string
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["wolf/collar"] to ColorString
 
 dispatch minecraft:entity[wolf] to struct Wolf {
 	...Tamable,

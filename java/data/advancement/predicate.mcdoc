@@ -8,8 +8,13 @@ use ::java::server::util::color::ColorString
 use ::java::server::world::item::DataComponentPredicate
 use ::java::server::world::item::CustomData
 use ::java::server::world::entity::boat::BoatType
+use ::java::server::world::entity::mob::breedable::axolotl::AxolotlVariant
 use ::java::server::world::entity::mob::breedable::fox::FoxType
+use ::java::server::world::entity::mob::breedable::horse::HorseVariant
+use ::java::server::world::entity::mob::breedable::llama::LlamaVariant
 use ::java::server::world::entity::mob::breedable::mooshroom::MooshroomType
+use ::java::server::world::entity::mob::breedable::rabbit::RabbitVariant
+use ::java::server::world::entity::mob::breedable::tamable::ParrotVariant
 use super::super::util::MinMaxBounds
 
 type ItemPredicate = (
@@ -277,15 +282,6 @@ dispatch minecraft:entity_sub_predicate[axolotl] to struct AxolotlPredicate {
 	variant: AxolotlVariant,
 }
 
-enum(string) AxolotlVariant {
-	Lucy = "lucy",
-	Wild = "wild",
-	Gold = "gold",
-	Cyan = "cyan",
-	/// The rare variant.
-	Blue = "blue",
-}
-
 dispatch minecraft:entity_sub_predicate[boat] to struct BoatPredicate {
 	variant: BoatType,
 }
@@ -318,16 +314,6 @@ dispatch minecraft:entity_sub_predicate[horse] to struct HorsePredicate {
 	variant: HorseVariant,
 }
 
-enum(string) HorseVariant {
-    White = "white",
-    Creamy = "creamy",
-    Chestnut = "chestnut",
-    Brown = "brown",
-    Black = "black",
-    Gray = "gray",
-    DarkBrown = "dark_brown",
-}
-
 dispatch minecraft:entity_sub_predicate[lightning] to struct LightningBoltPredicate {
 	blocks_set_on_fire?: MinMaxBounds<int>,
 	entity_struck?: EntityPredicate,
@@ -335,13 +321,6 @@ dispatch minecraft:entity_sub_predicate[lightning] to struct LightningBoltPredic
 
 dispatch minecraft:entity_sub_predicate[llama] to struct LlamaPredicate {
 	variant: LlamaVariant,
-}
-
-enum(string) LlamaVariant {
-	Creamy = "creamy",
-	White = "white",
-	Brown = "brown",
-	Gray = "gray",
 }
 
 dispatch minecraft:entity_sub_predicate[mooshroom] to struct MooshroomPredicate {
@@ -358,14 +337,6 @@ dispatch minecraft:entity_sub_predicate[painting] to struct PaintingPredicate {
 
 dispatch minecraft:entity_sub_predicate[parrot] to struct ParrotPredicate {
 	variant: ParrotVariant,
-}
-
-enum(string) ParrotVariant {
-	RedBlue = "red_blue",
-	Blue = "blue",
-	Green = "green",
-	YellowBlue = "yellow_blue",
-	Gray = "gray",
 }
 
 dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
@@ -399,18 +370,7 @@ dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 }
 
 dispatch minecraft:entity_sub_predicate[rabbit] to struct RabbitPredicate {
-	variant: string,
-}
-
-enum(string) RabbitVariant {
-	Brown = "brown",
-	White = "white",
-	Black = "black",
-	WhiteSplotched = "white_splotched",
-	Gold = "gold",
-	Salt = "salt",
-	/// Killer rabbit
-	Evil = "evil",
+	variant: RabbitVariant,
 }
 
 dispatch minecraft:entity_sub_predicate[raider] to struct RaiderPredicate {
