@@ -1,9 +1,9 @@
 use ::java::data::gametest::Rotation
 use ::java::server::util::text::Text
 
-dispatch minecraft:block_entity[test_instance_block] to struct TestBlock {
+dispatch minecraft:block_entity[test_instance_block] to struct TestInstanceBlock {
 	...super::BlockEntity,
-	data?: struct TestBlockData {
+	data?: struct TestInstanceBlockData {
 		test?: #[id="test_instance"] string,
 		size: [int] @ 3,
 		rotation: Rotation,
