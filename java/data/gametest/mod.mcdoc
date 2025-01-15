@@ -1,0 +1,39 @@
+use TestEnvironment
+
+dispatch minecraft:resource[test_instance] to struct TestInstance {
+	type: #[id="test_instance_type"] string,
+	...minecraft:test_instance[[type]],
+}
+
+dispatch minecraft:test_instance[block_based] to struct BlockBasedTestInstance {
+	...TestData,
+}
+
+dispatch minecraft:test_instance[function] to struct FunctionTestInstance {
+	...TestData,
+	function: #[id="test_function"] string,
+}
+
+
+struct TestData {
+	batch: (
+		#[id="test_environment"] string |
+		TestEnvironment |
+	),
+	structure: #[id="structure"] string,
+	max_ticks: int @ 1..,
+	setup_ticks?: int @ 0..,
+	required?: boolean,
+	rotation?: Rotation,
+	manual_only?: boolean,
+	max_attempts?: int @ 1..,
+	required_successes?: int @ 1..,
+	sky_accesss?: boolean,
+}
+
+enum(string) Rotation {
+	None = "none",
+	Clockwise90 = "clockwise_90",
+	Clockwise180 = "180",
+	CounterClockwise90 = "counterclockwise_90",
+}
