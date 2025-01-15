@@ -1,0 +1,20 @@
+use ::java::data::gametest::Rotation
+use ::java::server::util::text::Text
+
+dispatch minecraft:block_entity[test_instance_block] to struct TestBlock {
+	...super::BlockEntity,
+	test?: #[id="test_instance"] string,
+	size: [int] @ 3,
+	rotation: Rotation,
+	ignore_entities: boolean,
+	status: TestInstanceBlockStatus,
+	error_message?: Text,
+}
+
+dispatch minecraft:block[test_instance_block] to minecraft:block_entity[test_instance_block]
+
+enum(string) TestInstanceBlockStatus {
+	Cleared = "cleared",
+	Running = "running",
+	Finished = "finished"
+}
