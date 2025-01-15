@@ -1,0 +1,43 @@
+
+dispatch minecraft:resource[test_environment] to struct TestEnvironment {
+	type: #[id="test_environment_definition_type"] string,
+	...minecraft:test_environment_definition[[type]],
+}
+
+dispatch minecraft:test_environment_definition[all_of] to struct AllOffTestEnvironment {
+	definitions: [TestEnvironment],
+}
+
+dispatch minecraft:test_environment_definition[function] to struct FunctionTestEnvironment {
+	setup?: #[id="function"] string,
+	teardown?: #[id="function"] string,
+}
+
+dispatch minecraft:test_environment_definition[game_rules] to struct GameRulesTestEnvironment {
+	bool_rules: [BoolGameRule],
+	int_rules: [IntGameRule],
+}
+
+struct BoolGameRule {
+	rule: #[game_rule(type="boolean")] string,
+	value: boolean,
+}
+
+struct IntGameRule {
+	rule: #[game_rule(type="int")] string,
+	value: int,
+}
+
+dispatch minecraft:test_environment_definition[time_of_day] to struct TimeOfDayTestEnvironment {
+	time: int @ 0..
+}
+
+dispatch minecraft:test_environment_definition[raining] to struct RainingTestEnvironment {
+	weather: Weather,
+}
+
+enum(string) Weather {
+	Clear = "clear",
+	Rain = "rain",
+	Thunder = "thunder",
+}

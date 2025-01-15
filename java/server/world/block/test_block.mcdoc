@@ -1,0 +1,15 @@
+dispatch minecraft:block_entity[test_block] to struct TestBlock {
+	...super::BlockEntity,
+	mode?: TestBlockMode,
+	message?: string,
+	powered?: boolean,
+}
+
+enum(string) TestBlockMode {
+	Start = "start",
+	Log = "log",
+	Fail = "fail",
+	Accept = "accept",
+}
+
+dispatch minecraft:block[test_block] to minecraft:block_entity[test_block]
