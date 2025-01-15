@@ -83,7 +83,6 @@
 	"::java::data::advancement::AdvancementRewards.function": "執行的函數，`@s`是玩家，但`~ ~ ~`不是玩家位置。不能指定函數標籤。",
 	"::java::data::advancement::AdvancementRewards.loot": "獲得的戰利品表。",
 	"::java::data::advancement::AdvancementRewards.recipes": "獲得的合成配方。",
-	"::java::data::advancement::predicate::AxolotlVariant.Blue": "稀有的藍色變種。",
 	"::java::data::advancement::predicate::DamagePredicate.blocked": "傷害是否成功被格擋。",
 	"::java::data::advancement::predicate::DamagePredicate.dealt": "發動的傷害（計算傷害防禦前）。",
 	"::java::data::advancement::predicate::DamagePredicate.source_entity": "傷害的源頭（例：射出箭矢的骷髏、點燃TNT的玩家）。",
@@ -103,7 +102,6 @@
 	"::java::data::advancement::predicate::LocationPredicate.smokey": "方塊是否在任一種營火上方5格內。",
 	"::java::data::advancement::predicate::PlayerPredicate.input": "測試玩家按壓的移動控制鍵。",
 	"::java::data::advancement::predicate::PlayerPredicate.level": "等級。",
-	"::java::data::advancement::predicate::RabbitVariant.Evil": "殺手兔",
 	"::java::data::advancement::predicate::TropicalFishPredicate.variant": "熱帶魚的類型。",
 	"::java::data::advancement::trigger::BeeNestDestroyed.item": "用於破壞方塊的物品。",
 	"::java::data::advancement::trigger::BeeNestDestroyed.num_bees_inside": "破壞蜂窩、蜂箱前，裡面的蜜蜂數量。",
@@ -151,5 +149,7 @@
 	"::java::data::enchantment::ApplyMobEffectEntityEffect.to_apply": "指定多種狀態時，隨機選取其中一種。",
 	"::java::data::enchantment::AttributeEffect.amount": "屬性值的變化量。",
 	"::java::data::enchantment::AttributeEffect.id": "識別屬性修改的ID，必須是唯一的。\n\n實際裝備附魔時，ID後面會附加上欄位名稱，以保持多件裝備的相容性。",
-	"::java::data::enchantment::AttributeEffect.operation": "屬性值的計算模式。"
+	"::java::data::enchantment::AttributeEffect.operation": "屬性值的計算模式。",
+	"::java::server::world::entity::mob::breedable::axolotl::AxolotlVariant.Blue": "稀有的藍色變種。",
+	"::java::server::world::entity::mob::breedable::rabbit::RabbitVariant.Evil": "殺手兔"
 }
