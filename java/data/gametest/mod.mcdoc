@@ -1,4 +1,4 @@
-use TestEnvironment
+use ::java::data::gametest::test_environment::TestEnvironment
 
 dispatch minecraft:resource[test_instance] to struct TestInstance {
 	type: #[id="test_instance_type"] string,
