@@ -1,5 +1,5 @@
 {
-	"ref": "ba4906520a500232a88db1562c62ace9be5ed18b",
+	"ref": "f4476d5f852fba4e5a75720cca26905eab6374d8",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -20311,7 +20311,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::gametest::TestEnvironment"
+								"path": "::java::data::gametest::test_environment::TestEnvironment"
 							}
 						]
 					}
