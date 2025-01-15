@@ -1,8 +1,8 @@
 dispatch minecraft:block_entity[test_block] to struct TestBlock {
 	...super::BlockEntity,
-	mode: TestBlockMode,
-	message: string,
-	powered: boolean,
+	mode?: TestBlockMode,
+	message?: string,
+	powered?: boolean,
 }
 
 enum(string) TestBlockMode {
