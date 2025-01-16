@@ -23,6 +23,7 @@
 	"::java::assets::item_definition::CompassTarget.None": "Always an invalid target.",
 	"::java::assets::item_definition::CompassTarget.Recovery": "Points at the last player death location.",
 	"::java::assets::item_definition::CompassTarget.Spawn": "Points at world spawn.",
+	"::java::assets::item_definition::Component.component": "The component type to check the values of.",
 	"::java::assets::item_definition::ConstantTint.value": "Constant tint color to apply.",
 	"::java::assets::item_definition::Count.normalize": "If false, returns count clamped to `0..max_stack_size`.\nIf true, returns count divided by the `max_stack_size` component, clamped to `0..1`.\nDefaults to true.",
 	"::java::assets::item_definition::CustomModelDataFlags.index": "The index of the `flags` list in the `custom_model_data` component. Defaults to 0.",
