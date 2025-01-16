@@ -129,6 +129,7 @@
 	"::java::data::advancement::predicate::DamageSourcePredicate.tags": "Damage type tags that the damage type is in.",
 	"::java::data::advancement::predicate::DamageTagPredicate.expected": "Whether the damage is expected to have or not have the tag.",
 	"::java::data::advancement::predicate::DamageTagPredicate.id": "The damage type tag to check.",
+	"::java::data::advancement::predicate::EntityPredicate.components": "Match exact data component values on the entity.",
 	"::java::data::advancement::predicate::EntityPredicate.movement_affected_by": "Whether the block at most 0.5 blocks below the entity is present which can affect its movement.",
 	"::java::data::advancement::predicate::EntityPredicate.periodic_tick": "True every `n` ticks of an entity's lifetime.",
 	"::java::data::advancement::predicate::EntityPredicate.targeted_entity": "The entity that a mob's AI/aggro is targeting.",
