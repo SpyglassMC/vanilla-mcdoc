@@ -118,7 +118,7 @@ dispatch minecraft:score_provider[fixed] to struct FixedScoreProvider {
 }
 
 type NbtProvider = (
-	CopyNameSource |
+	NbtContextTarget |
 	struct {
 		type: #[id="loot_nbt_provider_type"] string,
 		...minecraft:nbt_provider[[type]],
@@ -126,7 +126,18 @@ type NbtProvider = (
 )
 
 dispatch minecraft:nbt_provider[context] to struct ContextNbtProvider {
-	target: CopyNameSource,
+	target: NbtContextTarget,
+}
+
+enum(string) NbtContextTarget {
+	This = "this",
+	#[until="1.21"] Killer = "killer",
+	#[since="1.21"] Attacker = "attacker",
+	#[until="1.21"] DirectKiller = "direct_killer",
+	#[since="1.21"] DirectAttacker = "direct_attacker",
+	#[until="1.21"] KillerPlayer = "killer_player",
+	#[since="1.21"] AttackingPlayer = "attacking_player",
+	BlockEntity = "block_entity",
 }
 
 dispatch minecraft:nbt_provider[storage] to struct StorageNbtProvider {

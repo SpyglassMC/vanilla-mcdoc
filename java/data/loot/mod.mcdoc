@@ -50,18 +50,12 @@ enum(string) LootContextType {
 
 enum(string) EntityTarget {
 	This = "this",
-	#[until="1.21"]
-	Killer = "killer",
-	#[until="1.21"]
-	DirectKiller = "direct_killer",
-	#[until="1.21"]
-	KillerPlayer = "killer_player",
-	#[since="1.21"]
-	Attacker = "attacker",
-	#[since="1.21"]
-	DirectAttacker = "direct_attacker",
-	#[since="1.21"]
-	AttackingPlayer = "attacking_player",
+	#[until="1.21"] Killer = "killer",
+	#[since="1.21"] Attacker = "attacker",
+	#[until="1.21"] DirectKiller = "direct_killer",
+	#[since="1.21"] DirectAttacker = "direct_attacker",
+	#[until="1.21"] KillerPlayer = "killer_player",
+	#[since="1.21"] AttackingPlayer = "attacking_player",
 }
 
 struct LootPool {

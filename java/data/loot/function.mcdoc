@@ -55,10 +55,19 @@ dispatch minecraft:apply_bonus_formula[binomial_with_bonus_count] to struct Bino
 	},
 }
 
-/// Copies `CustomName` tag from an entity or block entity into the item's `display.Name` tag.
+/// Copies `CustomName` tag from an entity or block entity into the item's `custom_name` component.
 dispatch minecraft:loot_function[copy_name] to struct CopyName {
 	source: CopyNameSource,
 	...Conditions,
+}
+
+enum(string) CopyNameSource {
+	This = "this",
+	#[until="1.21"] Killer = "killer",
+	#[since="1.21"] AttackingEntity = "attacking_entity",
+	#[until="1.21"] KillerPlayer = "killer_player",
+	#[since="1.21"] LastDamagePlayer = "last_damage_player",
+	BlockEntity = "block_entity",
 }
 
 struct CopyNbt {
@@ -88,20 +97,6 @@ dispatch minecraft:loot_function[copy_components] to struct CopyComponents {
 	/// Defaults to none.
 	exclude?: [#[id="data_component_type"] string],
 	...Conditions,
-}
-
-enum(string) CopyNameSource {
-	This = "this",
-	#[until="1.21"]
-	Killer = "killer",
-	#[since="1.21"]
-	AttackingEntity = "attacking_entity",
-	#[until="1.21"]
-	KillerPlayer = "killer_player",
-	#[since="1.21"]
-	LastDamagePlayer = "last_damage_player",
-	DirectKiller = "direct_killer",
-	BlockEntity = "block_entity",
 }
 
 enum(string) CopyNbtStrategy {
