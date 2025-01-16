@@ -1,5 +1,5 @@
 {
-	"ref": "108600603e9095e66a7cc8f8587ecca2e8295f2a",
+	"ref": "f4a5280ec682cbd10e2532465806229f7cd29208",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -10427,6 +10427,28 @@
 						"path": "::java::data::advancement::predicate::LocationPredicate"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Match exact data component values on the entity.\n",
+					"key": "components",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::item::DataComponentPredicate"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -13115,6 +13137,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "color",
 					"type": {
 						"kind": "reference",
@@ -13539,60 +13573,6 @@
 				}
 			]
 		},
-		"::java::data::advancement::predicate::TropicalFishPattern": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Kob",
-					"value": "kob"
-				},
-				{
-					"identifier": "Sunstreak",
-					"value": "sunstreak"
-				},
-				{
-					"identifier": "Snooper",
-					"value": "snooper"
-				},
-				{
-					"identifier": "Dasher",
-					"value": "dasher"
-				},
-				{
-					"identifier": "Brinely",
-					"value": "brinely"
-				},
-				{
-					"identifier": "Spotty",
-					"value": "spotty"
-				},
-				{
-					"identifier": "Flopper",
-					"value": "flopper"
-				},
-				{
-					"identifier": "Stripey",
-					"value": "stripey"
-				},
-				{
-					"identifier": "Glitter",
-					"value": "glitter"
-				},
-				{
-					"identifier": "Blockfish",
-					"value": "blockfish"
-				},
-				{
-					"identifier": "Betty",
-					"value": "betty"
-				},
-				{
-					"identifier": "Clayfish",
-					"value": "clayfish"
-				}
-			]
-		},
 		"::java::data::advancement::predicate::TropicalFishPredicate": {
 			"kind": "struct",
 			"fields": [
@@ -13602,7 +13582,7 @@
 					"key": "variant",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::predicate::TropicalFishPattern"
+						"path": "::java::server::world::entity::mob::fish::TropicalFishPattern"
 					}
 				}
 			]
@@ -85007,7 +84987,19 @@
 		"minecraft:entity_sub_predicate": {
 			"axolotl": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::AxolotlPredicate"
+				"path": "::java::data::advancement::predicate::AxolotlPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"boat": {
 				"kind": "reference",
@@ -85015,7 +85007,19 @@
 			},
 			"cat": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::CatPredicate"
+				"path": "::java::data::advancement::predicate::CatPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"fishing_hook": {
 				"kind": "reference",
@@ -85023,15 +85027,51 @@
 			},
 			"fox": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::FoxPredicate"
+				"path": "::java::data::advancement::predicate::FoxPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"frog": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::FrogPredicate"
+				"path": "::java::data::advancement::predicate::FrogPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"horse": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::HorsePredicate"
+				"path": "::java::data::advancement::predicate::HorsePredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"lightning": {
 				"kind": "reference",
@@ -85039,19 +85079,67 @@
 			},
 			"llama": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::LlamaPredicate"
+				"path": "::java::data::advancement::predicate::LlamaPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"mooshroom": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::MooshroomPredicate"
+				"path": "::java::data::advancement::predicate::MooshroomPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"painting": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::PaintingPredicate"
+				"path": "::java::data::advancement::predicate::PaintingPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"parrot": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::ParrotPredicate"
+				"path": "::java::data::advancement::predicate::ParrotPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"player": {
 				"kind": "reference",
@@ -85059,7 +85147,19 @@
 			},
 			"rabbit": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::RabbitPredicate"
+				"path": "::java::data::advancement::predicate::RabbitPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"raider": {
 				"kind": "reference",
@@ -85067,7 +85167,19 @@
 			},
 			"salmon": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::SalmonPredicate"
+				"path": "::java::data::advancement::predicate::SalmonPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"sheep": {
 				"kind": "reference",
@@ -85079,15 +85191,51 @@
 			},
 			"tropical_fish": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::TropicalFishPredicate"
+				"path": "::java::data::advancement::predicate::TropicalFishPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"villager": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::VillagerPredicate"
+				"path": "::java::data::advancement::predicate::VillagerPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"wolf": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::WolfPredicate"
+				"path": "::java::data::advancement::predicate::WolfPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			}
 		},
 		"minecraft:feature_config": {
