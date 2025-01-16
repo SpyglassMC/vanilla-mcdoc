@@ -1,5 +1,5 @@
 {
-	"ref": "ff2353fcb414337e3314b099b78e492e6d93891c",
+	"ref": "24d793cb3255bd14b7ae2b658998a31d90ed7553",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -21449,38 +21449,6 @@
 				{
 					"attributes": [
 						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21"
-								}
-							}
-						}
-					],
-					"identifier": "DirectKiller",
-					"value": "direct_killer"
-				},
-				{
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21"
-								}
-							}
-						}
-					],
-					"identifier": "KillerPlayer",
-					"value": "killer_player"
-				},
-				{
-					"attributes": [
-						{
 							"name": "since",
 							"value": {
 								"kind": "literal",
@@ -21497,6 +21465,22 @@
 				{
 					"attributes": [
 						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"identifier": "DirectKiller",
+					"value": "direct_killer"
+				},
+				{
+					"attributes": [
+						{
 							"name": "since",
 							"value": {
 								"kind": "literal",
@@ -21509,6 +21493,22 @@
 					],
 					"identifier": "DirectAttacker",
 					"value": "direct_attacker"
+				},
+				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"identifier": "KillerPlayer",
+					"value": "killer_player"
 				},
 				{
 					"attributes": [
@@ -22609,10 +22609,6 @@
 					],
 					"identifier": "LastDamagePlayer",
 					"value": "last_damage_player"
-				},
-				{
-					"identifier": "DirectKiller",
-					"value": "direct_killer"
 				},
 				{
 					"identifier": "BlockEntity",
@@ -29287,7 +29283,7 @@
 					"key": "target",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::loot::function::CopyNameSource"
+						"path": "::java::data::util::NbtContextTarget"
 					}
 				}
 			]
@@ -29443,12 +29439,122 @@
 				}
 			]
 		},
+		"::java::data::util::NbtContextTarget": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "This",
+					"value": "this"
+				},
+				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"identifier": "Killer",
+					"value": "killer"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"identifier": "Attacker",
+					"value": "attacker"
+				},
+				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"identifier": "DirectKiller",
+					"value": "direct_killer"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"identifier": "DirectAttacker",
+					"value": "direct_attacker"
+				},
+				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"identifier": "KillerPlayer",
+					"value": "killer_player"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"identifier": "AttackingPlayer",
+					"value": "attacking_player"
+				},
+				{
+					"identifier": "BlockEntity",
+					"value": "block_entity"
+				}
+			]
+		},
 		"::java::data::util::NbtProvider": {
 			"kind": "union",
 			"members": [
 				{
 					"kind": "reference",
-					"path": "::java::data::loot::function::CopyNameSource"
+					"path": "::java::data::util::NbtContextTarget"
 				},
 				{
 					"kind": "struct",
