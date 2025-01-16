@@ -1,5 +1,5 @@
 {
-	"ref": "f4a5280ec682cbd10e2532465806229f7cd29208",
+	"ref": "ff2353fcb414337e3314b099b78e492e6d93891c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -1463,6 +1463,358 @@
 						}
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "pig_saddle",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/pig_saddle/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "strider_saddle",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/strider_saddle/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "camel_saddle",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/camel_saddle/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "horse_saddle",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/horse_saddle/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "donkey_saddle",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/donkey_saddle/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "mule_saddle",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/mule_saddle/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "zombie_horse_saddle",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/zombie_horse_saddle/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "skeleton_horse_saddle",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/skeleton_horse_saddle/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -2182,6 +2534,31 @@
 					"desc": "Points at the last player death location.\n",
 					"identifier": "Recovery",
 					"value": "recovery"
+				}
+			]
+		},
+		"::java::assets::item_definition::Component": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The component type to check the values of.\n",
+					"key": "component",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "data_component"
+									}
+								}
+							}
+						]
+					}
 				}
 			]
 		},
@@ -3232,6 +3609,22 @@
 				{
 					"identifier": "ChargeType",
 					"value": "charge_type"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"identifier": "Component",
+					"value": "component"
 				},
 				{
 					"identifier": "ContextDimension",
@@ -91449,6 +91842,10 @@
 			"block_state": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::BlockState"
+			},
+			"component": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::Component"
 			},
 			"custom_model_data": {
 				"kind": "reference",
