@@ -13,6 +13,14 @@ struct Layers {
 	wolf_body?: [Layer<#[id(registry="texture",path="entity/equipment/wolf_body/")] string>],
 	horse_body?: [Layer<#[id(registry="texture",path="entity/equipment/horse_body/")] string>],
 	llama_body?: [Layer<#[id(registry="texture",path="entity/equipment/llama_body/")] string>],
+	pig_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/pig_saddle/")] string>],
+	strider_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/strider_saddle/")] string>],
+	camel_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/camel_saddle/")] string>],
+	horse_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/horse_saddle/")] string>],
+	donkey_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/donkey_saddle/")] string>],
+	mule_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/mule_saddle/")] string>],
+	zombie_horse_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/zombie_horse_saddle/")] string>],
+	skeleton_horse_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/skeleton_horse_saddle/")] string>],
 }
 
 type Layer<T> = struct {

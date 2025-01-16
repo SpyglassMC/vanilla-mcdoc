@@ -267,6 +267,7 @@ dispatch minecraft:numeric_item_property[use_cycle] to struct UseCycle {
 enum(string) SelectPropertyType {
 	BlockState = "block_state",
 	ChargeType = "charge_type",
+	#[since="1.21.5"] Component = "component",
 	ContextDimension = "context_dimension",
 	ContextEntityType = "context_entity_type",
 	CustomModelData = "custom_model_data",
@@ -280,6 +281,11 @@ dispatch minecraft:select_item_property[%unknown] to struct {}
 
 dispatch minecraft:select_item_property[block_state] to struct BlockState {
 	block_state_property: mcdoc:block_state_keys[%fallback],
+}
+
+dispatch minecraft:select_item_property[component] to struct Component {
+	/// The component type to check the values of.
+	component: #[id="data_component"] string,
 }
 
 dispatch minecraft:select_item_property[custom_model_data] to struct CustomModelDataStrings {
