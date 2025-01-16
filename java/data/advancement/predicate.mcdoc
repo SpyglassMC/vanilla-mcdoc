@@ -15,6 +15,7 @@ use ::java::server::world::entity::mob::breedable::llama::LlamaVariant
 use ::java::server::world::entity::mob::breedable::mooshroom::MooshroomType
 use ::java::server::world::entity::mob::breedable::rabbit::RabbitVariant
 use ::java::server::world::entity::mob::breedable::tamable::ParrotVariant
+use ::java::server::world::entity::mob::fish::TropicalFishPattern
 use super::super::util::MinMaxBounds
 
 type ItemPredicate = (
@@ -234,6 +235,9 @@ struct EntityPredicate {
 	/// Whether the block at most 0.5 blocks below the entity is present which can affect its movement.
 	#[since="1.21"]
 	movement_affected_by?: LocationPredicate,
+	/// Match exact data component values on the entity.
+	#[since="1.21.5"]
+	components?: DataComponentPredicate,
 }
 
 struct EntityFlagsPredicate {
@@ -278,6 +282,7 @@ enum(string) SpecificType {
 	#[since="1.19.3"] Villager = "villager",
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[axolotl] to struct AxolotlPredicate {
 	variant: AxolotlVariant,
 }
@@ -286,6 +291,7 @@ dispatch minecraft:entity_sub_predicate[boat] to struct BoatPredicate {
 	variant: BoatType,
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[cat] to struct CatPredicate {
 	variant: (
 		#[until="1.20.5"] #[id="cat_variant"] string |
@@ -298,10 +304,12 @@ dispatch minecraft:entity_sub_predicate[fishing_hook] to struct FishingHookPredi
 	in_open_water?: boolean,
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[fox] to struct FoxPredicate {
 	variant: FoxType,
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[frog] to struct FrogPredicate {
 	variant: (
 		#[until="1.20.5"] #[id="frog_variant"] string |
@@ -310,6 +318,7 @@ dispatch minecraft:entity_sub_predicate[frog] to struct FrogPredicate {
 	),
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[horse] to struct HorsePredicate {
 	variant: HorseVariant,
 }
@@ -319,14 +328,17 @@ dispatch minecraft:entity_sub_predicate[lightning] to struct LightningBoltPredic
 	entity_struck?: EntityPredicate,
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[llama] to struct LlamaPredicate {
 	variant: LlamaVariant,
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[mooshroom] to struct MooshroomPredicate {
 	variant: MooshroomType,
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[painting] to struct PaintingPredicate {
 	variant: (
 		#[until="1.20.5"] #[id="painting_variant"] string |
@@ -335,6 +347,7 @@ dispatch minecraft:entity_sub_predicate[painting] to struct PaintingPredicate {
 	),
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[parrot] to struct ParrotPredicate {
 	variant: ParrotVariant,
 }
@@ -369,6 +382,7 @@ dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 	},
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[rabbit] to struct RabbitPredicate {
 	variant: RabbitVariant,
 }
@@ -382,6 +396,7 @@ dispatch minecraft:entity_sub_predicate[slime] to struct SlimePredicate {
 	size?: MinMaxBounds<int>,
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[salmon] to struct SalmonPredicate {
 	variant?: SalmonVariant,
 }
@@ -394,33 +409,22 @@ enum(string) SalmonVariant {
 
 dispatch minecraft:entity_sub_predicate[sheep] to struct SheepPredicate {
 	sheared?: boolean,
+	#[until="1.21.5"]
 	color?: ColorString,
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[tropical_fish] to struct TropicalFishPredicate {
 	/// The pattern of the tropical fish.
 	variant: TropicalFishPattern,
 }
 
-enum(string) TropicalFishPattern {
-	Kob = "kob",
-	Sunstreak = "sunstreak",
-	Snooper = "snooper",
-	Dasher = "dasher",
-	Brinely = "brinely",
-	Spotty = "spotty",
-	Flopper = "flopper",
-	Stripey = "stripey",
-	Glitter = "glitter",
-	Blockfish = "blockfish",
-	Betty = "betty",
-	Clayfish = "clayfish",
-}
-
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[villager] to struct VillagerPredicate {
 	variant: #[id="villager_type"] string,
 }
 
+#[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[wolf] to struct WolfPredicate {
 	variant: (#[id(registry="wolf_variant",tags="allowed")] string | [#[id="wolf_variant"] string]),
 }
