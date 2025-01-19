@@ -1,5 +1,5 @@
 {
-	"ref": "24d793cb3255bd14b7ae2b658998a31d90ed7553",
+	"ref": "855612e4a0c33889fbfbe9a4ecd97c8caf9e7234",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -53841,11 +53841,101 @@
 			"kind": "struct",
 			"fields": []
 		},
+		"::java::server::util::particle::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::particle::DustColor"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "scale",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0.01,
+							"max": 4
+						}
+					}
+				}
+			]
+		},
+		"::java::server::util::particle::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "from_color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::particle::DustColor"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "to_color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::particle::DustColor"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "scale",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0.01,
+							"max": 4
+						}
+					}
+				}
+			]
+		},
 		"::java::server::util::particle::BlockParticle": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::block_state::BlockState"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
 					"key": "block_state",
 					"type": {
 						"kind": "union",
@@ -53928,110 +54018,278 @@
 				}
 			]
 		},
+		"::java::server::util::particle::DustColorTransitionParticle": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "value",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "fromColor",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::particle::DustColor"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "toColor",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::particle::DustColor"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "scale",
+								"type": {
+									"kind": "float",
+									"valueRange": {
+										"kind": 0,
+										"min": 0.01,
+										"max": 4
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "from_color",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::particle::DustColor"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "to_color",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::particle::DustColor"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "scale",
+								"type": {
+									"kind": "float",
+									"valueRange": {
+										"kind": 0,
+										"min": 0.01,
+										"max": 4
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::server::util::particle::DustParticle": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "color",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "value",
 					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::particle::DustColor"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "r",
+								"type": {
+									"kind": "float"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "g",
+								"type": {
+									"kind": "float"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "b",
+								"type": {
+									"kind": "float"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "scale",
+								"type": {
+									"kind": "float",
+									"valueRange": {
+										"kind": 0,
+										"min": 0.01,
+										"max": 4
+									}
+								}
+							}
+						]
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "scale",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0.01,
-							"max": 4
-						}
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "color",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::particle::DustColor"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "scale",
+								"type": {
+									"kind": "float",
+									"valueRange": {
+										"kind": 0,
+										"min": 0.01,
+										"max": 4
+									}
+								}
+							}
+						]
 					}
 				}
 			]
 		},
-		"::java::server::util::particle::DustTransition": {
+		"::java::server::util::particle::EntityEffectParticle": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "from_color",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "value",
 					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::particle::DustColor"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "r",
+								"type": {
+									"kind": "float"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "g",
+								"type": {
+									"kind": "float"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "b",
+								"type": {
+									"kind": "float"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "a",
+								"type": {
+									"kind": "float"
+								}
+							}
+						]
 					}
 				},
 				{
 					"kind": "pair",
-					"key": "to_color",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::particle::DustColor"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "scale",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0.01,
-							"max": 4
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
 						}
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
-					}
-				}
-			]
-		},
-		"::java::server::util::particle::EntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
+					],
 					"desc": " Translucent color interpreted from four floats.\n\n\n\n Cheat Sheet:\n\n - Floats between 0 and 1 are interpreted as a percentage of the original color.\n\n - Negative values & values above 1 simply loop the 0-255 range, since there isn't randomization there's no weirdness.\n\n\n\n Simplified internal behavior ([graph demo](https://www.desmos.com/calculator/drwzjaxgks)):\n\n ```js\n\n function integerToByte(integer) {\n\n \tif (integer >= 0) {\n\n \t\t// Integer is positive\n\n \t\tif (integer <= 255) {\n\n \t\t\t// Integer already fits in a color channel\n\n \t\t\treturn integer\n\n \t\t}\n\n \t\t// Integer doesn't fit in color channel; modulo it\n\n \t\treturn integer % 256\n\n \t}\n\n \t// Integer is negative\n\n \treturn Math.abs((Math.floor(integer / 256) * 256)) + integer\n\n }\n\n ```\n",
 					"key": "color",
 					"type": {
 						"kind": "reference",
 						"path": "::java::server::util::color::RGBA"
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
 					}
 				}
 			]
@@ -54041,6 +54299,38 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::item::ItemStack"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
 					"key": "item",
 					"type": {
 						"kind": "union",
@@ -54084,18 +54374,6 @@
 						]
 					}
 				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
-					}
-				}
 			]
 		},
 		"::java::server::util::particle::OldDustParticle": {
@@ -54134,18 +54412,6 @@
 						}
 					}
 				}
-			],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
-					}
-				}
 			]
 		},
 		"::java::server::util::particle::OldDustTransition": {
@@ -54176,18 +54442,6 @@
 							"kind": 0,
 							"min": 0.01,
 							"max": 4
-						}
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
 						}
 					}
 				}
@@ -54222,43 +54476,6 @@
 					"key": "a",
 					"type": {
 						"kind": "float"
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
-					}
-				}
-			]
-		},
-		"::java::server::util::particle::OldParticleSettings": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "value",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::particle::S"
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
 					}
 				}
 			]
@@ -54299,60 +54516,6 @@
 						],
 						"registry": "minecraft:particle"
 					}
-				}
-			]
-		},
-		"::java::server::util::particle::ParticleSettings": {
-			"kind": "template",
-			"child": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": "value",
-								"type": {
-									"kind": "reference",
-									"path": "::java::server::util::particle::S"
-								}
-							}
-						],
-						"attributes": [
-							{
-								"name": "until",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "1.20.5"
-									}
-								}
-							}
-						]
-					},
-					{
-						"kind": "reference",
-						"path": "::java::server::util::particle::S",
-						"attributes": [
-							{
-								"name": "since",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "1.20.5"
-									}
-								}
-							}
-						]
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::server::util::particle::S"
 				}
 			]
 		},
@@ -54399,27 +54562,46 @@
 				}
 			]
 		},
-		"::java::server::util::particle::SculkCharge": {
+		"::java::server::util::particle::SculkChargeParticle": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "value",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
 					"desc": "Angle the particle texture is rotated to, measured in radians (π ~ 3.14 for 180° clockwise, negative for counter clockwise).\n",
 					"key": "roll",
 					"type": {
 						"kind": "float"
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
 					}
 				}
 			]
@@ -54429,8 +54611,19 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Ticks until the particle renders.\n",
-					"key": "delay",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "value",
 					"type": {
 						"kind": "int",
 						"valueRange": {
@@ -54438,16 +54631,28 @@
 							"min": 0
 						}
 					}
-				}
-			],
-			"attributes": [
+				},
 				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"desc": "Ticks until the particle renders.\n",
+					"key": "delay",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
 						}
 					}
 				}
@@ -54505,6 +54710,50 @@
 			]
 		},
 		"::java::server::util::particle::VibrationParticle": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::particle::VibrationParticleData"
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::particle::VibrationParticleData"
+					}
+				}
+			]
+		},
+		"::java::server::util::particle::VibrationParticleData": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -65717,6 +65966,7 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "The equipment items of the mob, such as armor or weapons.\n",
 					"key": "equipment",
 					"type": {
 						"kind": "reference",
@@ -65726,7 +65976,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Chances of the mob dropping an equipment slot on deapth.\n",
+					"desc": "Chances of the mob dropping an equipment slot on death.\n",
 					"key": "drop_chances",
 					"type": {
 						"kind": "reference",
@@ -70724,6 +70974,7 @@
 						"fields": [
 							{
 								"kind": "pair",
+								"desc": "The equipment items of the mob, such as armor or weapons.\n",
 								"key": "equipment",
 								"type": {
 									"kind": "reference",
@@ -70733,7 +70984,7 @@
 							},
 							{
 								"kind": "pair",
-								"desc": "Chances of the mob dropping an equipment slot on deapth.\n",
+								"desc": "Chances of the mob dropping an equipment slot on death.\n",
 								"key": "drop_chances",
 								"type": {
 									"kind": "reference",
@@ -70746,6 +70997,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Loot table that is dropped when the mob dies.\n",
 					"key": "DeathLootTable",
 					"type": {
 						"kind": "string",
@@ -90677,50 +90929,8 @@
 				"fields": []
 			},
 			"block": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::server::util::block_state::BlockState",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::BlockParticle",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::BlockParticle"
 			},
 			"block_crumble": {
 				"kind": "reference",
@@ -90739,420 +90949,40 @@
 				]
 			},
 			"block_marker": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::server::util::block_state::BlockState",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::BlockParticle",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::BlockParticle"
 			},
 			"dust": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::OldDustParticle",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::DustParticle",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::DustParticle"
 			},
 			"dust_color_transition": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::OldDustTransition",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::DustTransition",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::DustColorTransitionParticle"
 			},
 			"dust_pillar": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::server::util::block_state::BlockState",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::BlockParticle",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::BlockParticle"
 			},
 			"entity_effect": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::OldEntityEffect",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::EntityEffect",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::EntityEffectParticle"
 			},
 			"falling_dust": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::server::util::block_state::BlockState",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::BlockParticle",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::BlockParticle"
 			},
 			"item": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::server::world::item::ItemStack",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::ItemParticle",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::ItemParticle"
 			},
 			"sculk_charge": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "union",
-						"members": [
-							{
-								"kind": "float",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::SculkCharge",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::SculkChargeParticle"
 			},
 			"shriek": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "union",
-						"members": [
-							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 0
-								},
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::server::util::particle::ShriekParticle",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::ShriekParticle"
 			},
 			"trail": {
 				"kind": "reference",
@@ -91171,17 +91001,8 @@
 				]
 			},
 			"vibration": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::server::util::particle::ParticleSettings"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::server::util::particle::VibrationParticle"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::util::particle::VibrationParticle"
 			}
 		},
 		"minecraft:placement_modifier": {
