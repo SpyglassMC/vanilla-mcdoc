@@ -1,4 +1,5 @@
 use ::java::assets::model::ModelRef
+use ::java::assets::model::ItemTransformType
 use ::java::server::util::color::RGB
 use ::java::server::util::color::ColorString
 use ::java::server::util::direction::Direction
@@ -64,12 +65,14 @@ dispatch minecraft:item_model[range_dispatch] to struct RangeDispatch {
 dispatch minecraft:item_model[select] to struct Select {
 	property: #[id] SelectPropertyType,
 	...minecraft:select_item_property[[property]],
-	cases: [struct SelectCase {
-		when: (string | [string]),
-		model: ItemModel
-	}],
+	cases: [SelectCase<minecraft:select_item_type[[%parent.property]]<minecraft:data_component[[%parent.component]]>>],
 	/// Item model to render if none of the cases matched the value.
 	fallback?: ItemModel,
+}
+
+type SelectCase<T> = struct {
+	when: (T | [T]),
+	model: ItemModel
 }
 
 dispatch minecraft:item_model[special] to struct Special {
@@ -285,7 +288,7 @@ dispatch minecraft:select_item_property[block_state] to struct BlockState {
 
 dispatch minecraft:select_item_property[component] to struct Component {
 	/// The component type to check the values of.
-	component: #[id="data_component"] string,
+	component: #[id="data_component_type"] string,
 }
 
 dispatch minecraft:select_item_property[custom_model_data] to struct CustomModelDataStrings {
@@ -304,6 +307,26 @@ dispatch minecraft:select_item_property[local_time] to struct LocalTime {
 	/// Examples: `Europe/Stockholm`, `GMT+0:45`.
 	time_zone?: string,
 }
+
+dispatch minecraft:select_item_type[%unknown] to string
+
+dispatch minecraft:select_item_type[charge_type] to enum(string) CrossbowChargeType {
+	NONE = "none",
+	ARROW = "arrow",
+	ROCKET = "rocket"
+}
+
+dispatch minecraft:select_item_type[component]<Comp> to Comp
+
+dispatch minecraft:select_item_type[context_dimension] to #[id="dimension"] string
+
+dispatch minecraft:select_item_type[context_entity_type] to #[id="entity_type"] string
+
+dispatch minecraft:select_item_type[display_context] to ItemTransformType
+
+dispatch minecraft:select_item_type[main_hand] to ("left" | "right")
+
+dispatch minecraft:select_item_type[trim_material] to #[id="trim_material"] string
 
 
 enum(string) SpecialModelType {
