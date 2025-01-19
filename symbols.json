@@ -1,5 +1,5 @@
 {
-	"ref": "855612e4a0c33889fbfbe9a4ecd97c8caf9e7234",
+	"ref": "1659c40234c48452cb8cd0c3ce41bfd7f282d9dc",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -66330,7 +66330,7 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::world::entity::mob::MobBase"
+						"path": "::java::server::world::entity::mob::LivingEntity"
 					}
 				},
 				{
