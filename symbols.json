@@ -1,5 +1,5 @@
 {
-	"ref": "eb3e718ed47a6fb7f9541277dea4fc2c6aecab4e",
+	"ref": "0f20eb920a0f52760e49f23f763d7a6692676ac0",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -2357,7 +2357,36 @@
 		},
 		"::java::assets::item_definition::<anonymous 1>": {
 			"kind": "struct",
-			"fields": []
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "when",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::assets::item_definition::T"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::assets::item_definition::T"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "model",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::item_definition::ItemModel"
+					}
+				}
+			]
 		},
 		"::java::assets::item_definition::<anonymous 2>": {
 			"kind": "struct",
@@ -2368,6 +2397,10 @@
 			"fields": []
 		},
 		"::java::assets::item_definition::<anonymous 4>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::assets::item_definition::<anonymous 5>": {
 			"kind": "struct",
 			"fields": []
 		},
@@ -2553,7 +2586,7 @@
 									"kind": "literal",
 									"value": {
 										"kind": "string",
-										"value": "data_component"
+										"value": "data_component_type"
 									}
 								}
 							}
@@ -2706,6 +2739,24 @@
 						"kind": "boolean"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::assets::item_definition::CrossbowChargeType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "NONE",
+					"value": "none"
+				},
+				{
+					"identifier": "ARROW",
+					"value": "arrow"
+				},
+				{
+					"identifier": "ROCKET",
+					"value": "rocket"
 				}
 			]
 		},
@@ -3523,33 +3574,46 @@
 					"type": {
 						"kind": "list",
 						"item": {
-							"kind": "struct",
-							"fields": [
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::item_definition::SelectCase"
+							},
+							"typeArgs": [
 								{
-									"kind": "pair",
-									"key": "when",
-									"type": {
-										"kind": "union",
-										"members": [
+									"kind": "concrete",
+									"child": {
+										"kind": "dispatcher",
+										"parallelIndices": [
 											{
-												"kind": "string"
-											},
-											{
-												"kind": "list",
-												"item": {
-													"kind": "string"
-												}
+												"kind": "dynamic",
+												"accessor": [
+													{
+														"keyword": "parent"
+													},
+													"property"
+												]
 											}
-										]
-									}
-								},
-								{
-									"kind": "pair",
-									"key": "model",
-									"type": {
-										"kind": "reference",
-										"path": "::java::assets::item_definition::ItemModel"
-									}
+										],
+										"registry": "minecraft:select_item_type"
+									},
+									"typeArgs": [
+										{
+											"kind": "dispatcher",
+											"parallelIndices": [
+												{
+													"kind": "dynamic",
+													"accessor": [
+														{
+															"keyword": "parent"
+														},
+														"component"
+													]
+												}
+											],
+											"registry": "minecraft:data_component"
+										}
+									]
 								}
 							]
 						}
@@ -3568,33 +3632,43 @@
 			]
 		},
 		"::java::assets::item_definition::SelectCase": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "when",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "string"
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "when",
+						"type": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "reference",
+									"path": "::java::assets::item_definition::T"
+								},
+								{
+									"kind": "list",
+									"item": {
+										"kind": "reference",
+										"path": "::java::assets::item_definition::T"
+									}
 								}
-							}
-						]
+							]
+						}
+					},
+					{
+						"kind": "pair",
+						"key": "model",
+						"type": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::ItemModel"
+						}
 					}
-				},
+				]
+			},
+			"typeParams": [
 				{
-					"kind": "pair",
-					"key": "model",
-					"type": {
-						"kind": "reference",
-						"path": "::java::assets::item_definition::ItemModel"
-					}
+					"path": "::java::assets::item_definition::T"
 				}
 			]
 		},
@@ -91607,6 +91681,95 @@
 			"local_time": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::LocalTime"
+			}
+		},
+		"minecraft:select_item_type": {
+			"%unknown": {
+				"kind": "string"
+			},
+			"charge_type": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::CrossbowChargeType"
+			},
+			"component": {
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::assets::item_definition::Comp"
+				},
+				"typeParams": [
+					{
+						"path": "::java::assets::item_definition::Comp"
+					}
+				]
+			},
+			"context_dimension": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "dimension"
+							}
+						}
+					}
+				]
+			},
+			"context_entity_type": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "entity_type"
+							}
+						}
+					}
+				]
+			},
+			"display_context": {
+				"kind": "reference",
+				"path": "::java::assets::model::ItemTransformType"
+			},
+			"main_hand": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "left"
+						}
+					},
+					{
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "right"
+						}
+					}
+				]
+			},
+			"trim_material": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "trim_material"
+							}
+						}
+					}
+				]
 			}
 		},
 		"minecraft:sound_type": {
