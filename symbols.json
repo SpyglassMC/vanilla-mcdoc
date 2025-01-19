@@ -1,5 +1,5 @@
 {
-	"ref": "1659c40234c48452cb8cd0c3ce41bfd7f282d9dc",
+	"ref": "eb3e718ed47a6fb7f9541277dea4fc2c6aecab4e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -24116,17 +24116,8 @@
 					"kind": "pair",
 					"key": "components",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::server::world::item::DataComponentPatch"
-						},
-						"typeArgs": [
-							{
-								"kind": "union",
-								"members": []
-							}
-						]
+						"kind": "reference",
+						"path": "::java::server::world::item::DataComponentPatch"
 					}
 				},
 				{
@@ -55559,25 +55550,8 @@
 					],
 					"key": "components",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::server::world::item::DataComponentPatch"
-						},
-						"typeArgs": [
-							{
-								"kind": "dispatcher",
-								"parallelIndices": [
-									{
-										"kind": "dynamic",
-										"accessor": [
-											"id"
-										]
-									}
-								],
-								"registry": "minecraft:item_component"
-							}
-						]
+						"kind": "reference",
+						"path": "::java::server::world::item::DataComponentPatch"
 					},
 					"optional": true
 				}
@@ -56528,25 +56502,8 @@
 								],
 								"key": "components",
 								"type": {
-									"kind": "concrete",
-									"child": {
-										"kind": "reference",
-										"path": "::java::server::world::item::DataComponentPatch"
-									},
-									"typeArgs": [
-										{
-											"kind": "dispatcher",
-											"parallelIndices": [
-												{
-													"kind": "dynamic",
-													"accessor": [
-														"id"
-													]
-												}
-											],
-											"registry": "minecraft:item_component"
-										}
-									]
+									"kind": "reference",
+									"path": "::java::server::world::item::DataComponentPatch"
 								},
 								"optional": true
 							}
@@ -58591,17 +58548,8 @@
 					],
 					"key": "components",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::server::world::item::DataComponentPatch"
-						},
-						"typeArgs": [
-							{
-								"kind": "union",
-								"members": []
-							}
-						]
+						"kind": "reference",
+						"path": "::java::server::world::item::DataComponentPatch"
 					},
 					"optional": true
 				}
@@ -74869,10 +74817,6 @@
 		},
 		"::java::server::world::item::<anonymous 10>": {
 			"kind": "struct",
-			"fields": []
-		},
-		"::java::server::world::item::<anonymous 11>": {
-			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
@@ -75330,87 +75274,7 @@
 		},
 		"::java::server::world::item::<anonymous 9>": {
 			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "data_component_type"
-											}
-										},
-										"recommended": {
-											"kind": "reference",
-											"path": "::java::server::world::item::T"
-										}
-									}
-								}
-							}
-						]
-					},
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									{
-										"keyword": "key"
-									}
-								]
-							}
-						],
-						"registry": "minecraft:data_component"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "data_component_type"
-											}
-										},
-										"recommended": {
-											"kind": "reference",
-											"path": "::java::server::world::item::T"
-										},
-										"prefix": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "!"
-											}
-										}
-									}
-								}
-							}
-						]
-					},
-					"type": {
-						"kind": "struct",
-						"fields": []
-					}
-				}
-			]
+			"fields": []
 		},
 		"::java::server::world::item::AdventureModePredicate": {
 			"kind": "struct",
@@ -76792,94 +76656,73 @@
 			]
 		},
 		"::java::server::world::item::DataComponentPatch": {
-			"kind": "template",
-			"child": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "pair",
-						"key": {
-							"kind": "string",
-							"attributes": [
-								{
-									"name": "id",
-									"value": {
-										"kind": "tree",
-										"values": {
-											"registry": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "data_component_type"
-												}
-											},
-											"recommended": {
-												"kind": "reference",
-												"path": "::java::server::world::item::T"
-											}
-										}
-									}
-								}
-							]
-						},
-						"type": {
-							"kind": "dispatcher",
-							"parallelIndices": [
-								{
-									"kind": "dynamic",
-									"accessor": [
-										{
-											"keyword": "key"
-										}
-									]
-								}
-							],
-							"registry": "minecraft:data_component"
-						}
-					},
-					{
-						"kind": "pair",
-						"key": {
-							"kind": "string",
-							"attributes": [
-								{
-									"name": "id",
-									"value": {
-										"kind": "tree",
-										"values": {
-											"registry": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "data_component_type"
-												}
-											},
-											"recommended": {
-												"kind": "reference",
-												"path": "::java::server::world::item::T"
-											},
-											"prefix": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "!"
-												}
-											}
-										}
-									}
-								}
-							]
-						},
-						"type": {
-							"kind": "struct",
-							"fields": []
-						}
-					}
-				]
-			},
-			"typeParams": [
+			"kind": "struct",
+			"fields": [
 				{
-					"path": "::java::server::world::item::T"
+					"kind": "pair",
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "data_component_type"
+									}
+								}
+							}
+						]
+					},
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "key"
+									}
+								]
+							}
+						],
+						"registry": "minecraft:data_component"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "data_component_type"
+											}
+										},
+										"prefix": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "!"
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"type": {
+						"kind": "struct",
+						"fields": []
+					}
 				}
 			]
 		},
@@ -79747,25 +79590,8 @@
 					],
 					"key": "components",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::server::world::item::DataComponentPatch"
-						},
-						"typeArgs": [
-							{
-								"kind": "dispatcher",
-								"parallelIndices": [
-									{
-										"kind": "dynamic",
-										"accessor": [
-											"id"
-										]
-									}
-								],
-								"registry": "minecraft:item_component"
-							}
-						]
+						"kind": "reference",
+						"path": "::java::server::world::item::DataComponentPatch"
 					},
 					"optional": true
 				},
