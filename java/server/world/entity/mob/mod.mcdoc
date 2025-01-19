@@ -64,10 +64,12 @@ struct MobBase {
 		body_armor_drop_chance?: float,
 	},
 	#[since="1.21.5"] ...struct {
+		/// The equipment items of the mob, such as armor or weapons.
 		equipment?: EntityEquipment,
-		/// Chances of the mob dropping an equipment slot on deapth.
+		/// Chances of the mob dropping an equipment slot on death.
 		drop_chances?: DropChances,
 	},
+	/// Loot table that is dropped when the mob dies.
 	DeathLootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed for generating the death loot table.
 	DeathLootTableSeed?: #[random] long,
