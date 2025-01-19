@@ -100,7 +100,6 @@ dispatch minecraft:data_component[custom_name] to (
 
 dispatch mcdoc:custom_data[%unknown] to any
 
-// TODO: when we add `recommended` to `dispatcher_key`, we should use it here; `mcdoc:custom_item_data[[%parent.id]]`.
 type CustomDataMap = struct {
 	[#[dispatcher_key="mcdoc:custom_data"] string]?: mcdoc:custom_data[[%key]],
 }
@@ -508,9 +507,9 @@ struct Display {
 	Lore?: [#[text_component] string],
 }
 
-type DataComponentPatch<T> = struct {
-	[#[id(registry="data_component_type", recommended=T)] string]: minecraft:data_component[[%key]],
-	[#[id(registry="data_component_type", recommended=T, prefix="!")] string]: struct {},
+struct DataComponentPatch {
+	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
+	[#[id(registry="data_component_type", prefix="!")] string]: struct {},
 }
 
 struct DataComponentPredicate {
@@ -524,7 +523,7 @@ struct SingleItem {
 		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |	
 	),
 	#[since="1.20.5"]
-	components?: DataComponentPatch<minecraft:item_component[[id]]>,
+	components?: DataComponentPatch,
 	#[until="1.20.5"]
 	tag?: minecraft:item[[id]],
 }

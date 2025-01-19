@@ -229,7 +229,7 @@ dispatch minecraft:hover_event[show_item] to struct ShowItem {
 		#[until="1.20.5"]
 		tag?: #[nbt=minecraft:item[[id]]] string,
 		#[since="1.20.5"]
-		components?: DataComponentPatch<minecraft:item_component[[id]]>,
+		components?: DataComponentPatch,
 	},
 	#[since="1.21.5"]
 	...ItemStack,
