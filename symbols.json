@@ -1,5 +1,5 @@
 {
-	"ref": "0f20eb920a0f52760e49f23f763d7a6692676ac0",
+	"ref": "6b1404d9d6683720dcd8c682e8847935cc56eb36",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -2360,6 +2360,31 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"key": "cases",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::item_definition::SelectCase"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::assets::item_definition::T"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"::java::assets::item_definition::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"key": "when",
 					"type": {
 						"kind": "union",
@@ -2388,10 +2413,6 @@
 				}
 			]
 		},
-		"::java::assets::item_definition::<anonymous 2>": {
-			"kind": "struct",
-			"fields": []
-		},
 		"::java::assets::item_definition::<anonymous 3>": {
 			"kind": "struct",
 			"fields": []
@@ -2401,6 +2422,26 @@
 			"fields": []
 		},
 		"::java::assets::item_definition::<anonymous 5>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "string"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::assets::item_definition::<anonymous 6>": {
 			"kind": "struct",
 			"fields": []
 		},
@@ -2468,6 +2509,42 @@
 							}
 						],
 						"registry": "mcdoc:block_state_keys"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "string"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::assets::item_definition::ChargeType": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::assets::item_definition::CrossbowChargeType"
+							}
+						]
 					}
 				}
 			]
@@ -2589,6 +2666,30 @@
 										"value": "data_component_type"
 									}
 								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"component"
+										]
+									}
+								],
+								"registry": "minecraft:data_component"
 							}
 						]
 					}
@@ -2728,6 +2829,70 @@
 				}
 			]
 		},
+		"::java::assets::item_definition::ContextDimension": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "dimension"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::assets::item_definition::ContextEntityType": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "entity_type"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::assets::item_definition::Count": {
 			"kind": "struct",
 			"fields": [
@@ -2811,6 +2976,21 @@
 						}
 					},
 					"optional": true
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "string"
+							}
+						]
+					}
 				}
 			]
 		},
@@ -2852,6 +3032,27 @@
 						"kind": "boolean"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::assets::item_definition::DisplayContext": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::assets::model::ItemTransformType"
+							}
+						]
+					}
 				}
 			]
 		},
@@ -3302,6 +3503,57 @@
 						"kind": "string"
 					},
 					"optional": true
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "string"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::assets::item_definition::MainHand": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "union",
+								"members": [
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "left"
+										}
+									},
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "right"
+										}
+									}
+								]
+							}
+						]
+					}
 				}
 			]
 		},
@@ -3570,57 +3822,6 @@
 				},
 				{
 					"kind": "pair",
-					"key": "cases",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "concrete",
-							"child": {
-								"kind": "reference",
-								"path": "::java::assets::item_definition::SelectCase"
-							},
-							"typeArgs": [
-								{
-									"kind": "concrete",
-									"child": {
-										"kind": "dispatcher",
-										"parallelIndices": [
-											{
-												"kind": "dynamic",
-												"accessor": [
-													{
-														"keyword": "parent"
-													},
-													"property"
-												]
-											}
-										],
-										"registry": "minecraft:select_item_type"
-									},
-									"typeArgs": [
-										{
-											"kind": "dispatcher",
-											"parallelIndices": [
-												{
-													"kind": "dynamic",
-													"accessor": [
-														{
-															"keyword": "parent"
-														},
-														"component"
-													]
-												}
-											],
-											"registry": "minecraft:data_component"
-										}
-									]
-								}
-							]
-						}
-					}
-				},
-				{
-					"kind": "pair",
 					"desc": "Item model to render if none of the cases matched the value.\n",
 					"key": "fallback",
 					"type": {
@@ -3662,6 +3863,39 @@
 						"type": {
 							"kind": "reference",
 							"path": "::java::assets::item_definition::ItemModel"
+						}
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::assets::item_definition::T"
+				}
+			]
+		},
+		"::java::assets::item_definition::SelectCases": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "cases",
+						"type": {
+							"kind": "list",
+							"item": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::assets::item_definition::SelectCase"
+								},
+								"typeArgs": [
+									{
+										"kind": "reference",
+										"path": "::java::assets::item_definition::T"
+									}
+								]
+							}
 						}
 					}
 				]
@@ -4057,6 +4291,38 @@
 				{
 					"identifier": "Team",
 					"value": "team"
+				}
+			]
+		},
+		"::java::assets::item_definition::TrimMaterial": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::assets::item_definition::SelectCases"
+						},
+						"typeArgs": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "trim_material"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
 				}
 			]
 		},
@@ -91664,112 +91930,63 @@
 		"minecraft:select_item_property": {
 			"%unknown": {
 				"kind": "struct",
-				"fields": []
+				"fields": [
+					{
+						"kind": "spread",
+						"type": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::item_definition::SelectCases"
+							},
+							"typeArgs": [
+								{
+									"kind": "string"
+								}
+							]
+						}
+					}
+				]
 			},
 			"block_state": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::BlockState"
 			},
+			"charge_type": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::ChargeType"
+			},
 			"component": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::Component"
+			},
+			"context_dimension": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::ContextDimension"
+			},
+			"context_entity_type": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::ContextEntityType"
 			},
 			"custom_model_data": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::CustomModelDataStrings"
 			},
+			"display_context": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::DisplayContext"
+			},
 			"local_time": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::LocalTime"
-			}
-		},
-		"minecraft:select_item_type": {
-			"%unknown": {
-				"kind": "string"
-			},
-			"charge_type": {
-				"kind": "reference",
-				"path": "::java::assets::item_definition::CrossbowChargeType"
-			},
-			"component": {
-				"kind": "template",
-				"child": {
-					"kind": "reference",
-					"path": "::java::assets::item_definition::Comp"
-				},
-				"typeParams": [
-					{
-						"path": "::java::assets::item_definition::Comp"
-					}
-				]
-			},
-			"context_dimension": {
-				"kind": "string",
-				"attributes": [
-					{
-						"name": "id",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "dimension"
-							}
-						}
-					}
-				]
-			},
-			"context_entity_type": {
-				"kind": "string",
-				"attributes": [
-					{
-						"name": "id",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "entity_type"
-							}
-						}
-					}
-				]
-			},
-			"display_context": {
-				"kind": "reference",
-				"path": "::java::assets::model::ItemTransformType"
 			},
 			"main_hand": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "left"
-						}
-					},
-					{
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "right"
-						}
-					}
-				]
+				"kind": "reference",
+				"path": "::java::assets::item_definition::MainHand"
 			},
 			"trim_material": {
-				"kind": "string",
-				"attributes": [
-					{
-						"name": "id",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "trim_material"
-							}
-						}
-					}
-				]
+				"kind": "reference",
+				"path": "::java::assets::item_definition::TrimMaterial"
 			}
 		},
 		"minecraft:sound_type": {
