@@ -65,9 +65,12 @@ dispatch minecraft:item_model[range_dispatch] to struct RangeDispatch {
 dispatch minecraft:item_model[select] to struct Select {
 	property: #[id] SelectPropertyType,
 	...minecraft:select_item_property[[property]],
-	cases: [SelectCase<minecraft:select_item_type[[%parent.property]]<minecraft:data_component[[%parent.component]]>>],
 	/// Item model to render if none of the cases matched the value.
 	fallback?: ItemModel,
+}
+
+type SelectCases<T> = struct {
+  cases: [SelectCase<T>]
 }
 
 type SelectCase<T> = struct {
@@ -280,20 +283,48 @@ enum(string) SelectPropertyType {
 	TrimMaterial = "trim_material",
 }
 
-dispatch minecraft:select_item_property[%unknown] to struct {}
+dispatch minecraft:select_item_property[%unknown] to struct {
+	...SelectCases<string>
+}
+
+enum(string) CrossbowChargeType {
+	NONE = "none",
+	ARROW = "arrow",
+	ROCKET = "rocket"
+}
+
+dispatch minecraft:select_item_property[charge_type] to struct ChargeType {
+	...SelectCases<CrossbowChargeType>
+}
+
 
 dispatch minecraft:select_item_property[block_state] to struct BlockState {
 	block_state_property: mcdoc:block_state_keys[%fallback],
+	...SelectCases<string>
 }
 
 dispatch minecraft:select_item_property[component] to struct Component {
 	/// The component type to check the values of.
 	component: #[id="data_component_type"] string,
+	...SelectCases<minecraft:data_component[[component]]>
 }
 
 dispatch minecraft:select_item_property[custom_model_data] to struct CustomModelDataStrings {
 	/// The index of the `strings` list in the `custom_model_data` component. Defaults to 0.
 	index?: int @ 0..,
+	...SelectCases<string>
+}
+
+dispatch minecraft:select_item_property[context_dimension] to struct ContextDimension{
+	...SelectCases<#[id="dimension"] string>
+} 
+
+dispatch minecraft:select_item_property[context_entity_type] to struct ContextEntityType{
+	...SelectCases<#[id="entity_type"] string>
+}
+
+dispatch minecraft:select_item_property[display_context] to struct DisplayContext{
+	...SelectCases<ItemTransformType>
 }
 
 dispatch minecraft:select_item_property[local_time] to struct LocalTime {
@@ -306,28 +337,16 @@ dispatch minecraft:select_item_property[local_time] to struct LocalTime {
 	/// Defaults to the timezone set on the client.
 	/// Examples: `Europe/Stockholm`, `GMT+0:45`.
 	time_zone?: string,
+	...SelectCases<string>
 }
 
-dispatch minecraft:select_item_type[%unknown] to string
-
-dispatch minecraft:select_item_type[charge_type] to enum(string) CrossbowChargeType {
-	NONE = "none",
-	ARROW = "arrow",
-	ROCKET = "rocket"
+dispatch minecraft:select_item_property[main_hand] to struct MainHand{
+	...SelectCases<("left" | "right")>
 }
 
-dispatch minecraft:select_item_type[component]<Comp> to Comp
-
-dispatch minecraft:select_item_type[context_dimension] to #[id="dimension"] string
-
-dispatch minecraft:select_item_type[context_entity_type] to #[id="entity_type"] string
-
-dispatch minecraft:select_item_type[display_context] to ItemTransformType
-
-dispatch minecraft:select_item_type[main_hand] to ("left" | "right")
-
-dispatch minecraft:select_item_type[trim_material] to #[id="trim_material"] string
-
+dispatch minecraft:select_item_property[trim_material] to struct TrimMaterial{
+	...SelectCases<#[id="trim_material"] string>
+}
 
 enum(string) SpecialModelType {
 	Banner = "banner",
