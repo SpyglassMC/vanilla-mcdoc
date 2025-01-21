@@ -1,5 +1,5 @@
 {
-	"ref": "6b1404d9d6683720dcd8c682e8847935cc56eb36",
+	"ref": "288acedb4775ce8cf1696eeba8d9d3d07f7089d9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -80146,6 +80146,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "If `false`, players cannot break blocks while holding this tool in creative mode. Defaults to `true`.\n",
 					"key": "can_destroy_blocks_in_creative",
 					"type": {
@@ -80170,10 +80182,22 @@
 									{
 										"name": "id",
 										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "block"
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
 											}
 										}
 									}
@@ -80196,26 +80220,6 @@
 										}
 									]
 								}
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "block"
-													}
-												}
-											}
-										}
-									}
-								]
 							}
 						]
 					}
