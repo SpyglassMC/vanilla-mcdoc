@@ -311,7 +311,7 @@ dispatch minecraft:data_component[repairable] to struct Repairable{
 }
 
 struct ToolRule {
-	blocks: (#[id="block"] string | [#[id="block"] string] | #[id(registry="block")] string),
+	blocks: (#[id(registry="block",tags="allowed")] string | [#[id="block"] string]),
 	/// Overrides the default mining speed.
 	speed?: float,
 	/// Overrides whether or not this tool is considered correct to mine at its most efficient speed, and to drop items if the block's loot table requires it.
@@ -326,6 +326,7 @@ dispatch minecraft:data_component[tool] to struct Tool {
 	/// Amount of durability to remove each time a block is broken with this tool. Must be a non-negative integer.
 	damage_per_block?: int,
 	/// If `false`, players cannot break blocks while holding this tool in creative mode. Defaults to `true`.
+	#[since="1.21.5"]
 	can_destroy_blocks_in_creative?: boolean,
 }
 
