@@ -39,7 +39,7 @@ struct TestData {
 	required_successes?: int @ 1..,
 	/// Whether the test needs clear access to the sky. Defaults to `false`.
 	/// If `false`, test is enclosed in barrier blocks. If `true`, the top is left open.
-	sky_accesss?: boolean,
+	sky_access?: boolean,
 }
 
 enum(string) Rotation {
