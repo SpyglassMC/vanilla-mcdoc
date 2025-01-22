@@ -1,5 +1,5 @@
 {
-	"ref": "55547496d85bc92898d10f43d5b02b0816f5d628",
+	"ref": "033aec264b8c6386b5a7718a0adf25e28a740dd7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -85311,7 +85311,7 @@
 									"kind": "literal",
 									"value": {
 										"kind": "string",
-										"value": "required"
+										"value": "implicit"
 									}
 								}
 							}
