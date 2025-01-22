@@ -1,3 +1,5 @@
+use ::java::server::util::color::RGB
+
 struct DyedColor {
 	/// Color of the armor.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
@@ -6,8 +8,11 @@ struct DyedColor {
 }
 
 dispatch minecraft:data_component[dyed_color] to (
-	#[canonical] DyedColor |
-	#[color="composite_rgb"] int |
+	#[until="1.21.5"] (
+		#[canonical] DyedColor |
+		#[color="composite_rgb"] int |
+	) |
+	#[since="1.21.5"] RGB |
 )
 
 // Pre-1.20.5

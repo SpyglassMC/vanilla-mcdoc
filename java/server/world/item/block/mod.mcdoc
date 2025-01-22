@@ -3,10 +3,7 @@ use ::java::data::advancement::predicate::BlockPredicate
 use ::java::server::util::block_state::BlockState
 
 /// List of blocks that this block item can be placed on.
-dispatch minecraft:data_component[can_place_on] to (
-	#[canonical] AdventureModePredicate |
-	BlockPredicate |
-)
+dispatch minecraft:data_component[can_place_on] to AdventureModePredicate
 
 struct BlockEntityData {
 	id: #[id="block_entity_type"] string,

@@ -19,19 +19,67 @@ struct AttributeModifiers {
 
 /// Applied to an entity that has equipped/is holding the item.
 dispatch minecraft:data_component[attribute_modifiers] to (
-	#[canonical] AttributeModifiers |
+	#[until="1.21.5"] #[canonical] AttributeModifiers |
 	[AttributeModifier] |
 )
 
-struct AdventureModePredicate {
-	predicates: [BlockPredicate] @ 1..,
-	show_in_tooltip?: boolean,
+#[since="1.21.5"]
+dispatch minecraft:data_component[blocks_attacks] to struct blocks_attacks {
+	/// Number of seconds that right-click must be held before successfully blocking attacks.
+	/// Defaults to `0`.
+	block_delay_seconds?: float @ 0..,
+	/// Multiplier applied to the number of seconds that the item will be on cooldown for when attacked by a disabling attack (`disable_blocking_for_seconds` on the `weapon` component).
+	/// Defaults to `1`.
+	/// If `0`, this item can never be disabled by attacks.
+	disable_cooldown_scale?: float @ 0..,
+	/// Controls how much damage should be blocked in a given attack. If not specified, all damage is blocked.
+	/// Each entry in the list contributes an amount of damage to be blocked, optionally filtered by a damage type.
+	/// Each entry adds to blocked damage, determined by `clamp(base + factor * dealt_damage, 0, dealt_damage)`.
+	/// The final damage applied in the attack to the entity is determined by `dealt_damage - clamp(blocked_damage, 0, dealt_damage)`.
+	damage_reductions?: [DamageReduction],
+	/// Controls how much damage should be applied to the item from a given attack.
+	/// If not specified, a point of durability is removed for every point of damage dealt.
+	/// The final damage applied to the item is determined by `floor(base + factor * dealt_damage)`.
+	/// The final value may be negative, causing the item to be repaired.
+	item_damage?: [ItemDamageFunction],
+	/// Sound played when an attack is successfully blocked.
+	block_sound?: SoundEventRef,
+	/// Sound played when the item goes on its disabled cooldown due to an attack.
+	disabled_sound?: SoundEventRef,
 }
 
-dispatch minecraft:data_component[can_break] to (
-	#[canonical] AdventureModePredicate |
+struct DamageReduction {
+	/// An optional damage type to filter this reduction by.
+	/// If not specified, any damage type is accepted for this reduction.
+	type?: (#[id(registry="damage_type",tags="allowed")] string | [#[id="damage_type"] string]),
+	/// Constant amount of damage to be blocked.
+	base: float,
+	/// Fraction of the dealt damage that should be blocked.
+	factor: float,
+}
+
+struct ItemDamageFunction {
+	/// Minimum amount of damage dealt by the attack before this item damage is applied to the item.
+	threshold: float @ 0..,
+	/// Constant amount of damage applied to the item, if `threshold` is passed.
+	base: float,
+	/// Fraction of the dealt damage that should be applied to the item, if `threshold` is passed.
+	factor: float,
+}
+
+#[since="1.21.5"]
+dispatch minecraft:data_component[break_sound] to SoundEventRef
+
+type AdventureModePredicate = (
+	#[until="1.21.5"] #[canonical] struct {
+		predicates: [BlockPredicate] @ 1..,
+		show_in_tooltip?: boolean,
+	} |
+	#[since="1.21.5"] #[canonical] [BlockPredicate] |
 	BlockPredicate |
 )
+
+dispatch minecraft:data_component[can_break] to AdventureModePredicate
 
 #[since="1.21.2"]
 dispatch minecraft:data_component[consumable] to struct Consumable {
@@ -161,7 +209,7 @@ struct Enchantments {
 /// - Boolean enchantments are treated as level 1 (active).
 /// - Leveled enchantments are ignored.
 dispatch minecraft:data_component[enchantments,stored_enchantments] to (
-	#[canonical] Enchantments |
+	#[until="1.21.5"] #[canonical] Enchantments |
 	EnchantmentLevels |
 )
 
@@ -248,9 +296,11 @@ dispatch minecraft:data_component[glider] to struct {}
 /// - Music Disc description
 /// - Smithing Template description
 /// - Written Book author & generation
+#[until="1.21.5"]
 dispatch minecraft:data_component[hide_additional_tooltip] to struct {}
 
 /// If set, it will completely hide this item's tooltip, including its name.
+#[until="1.21.5"]
 dispatch minecraft:data_component[hide_tooltip] to struct {}
 
 dispatch minecraft:data_component[item_model] to (
@@ -271,12 +321,15 @@ dispatch minecraft:data_component[item_name] to (
 
 /// If set, this item can be played in a jukebox like a music disc.
 #[since="1.21"]
-dispatch minecraft:data_component[jukebox_playable] to struct JukeboxPlayable {
-	song: #[id="jukebox_song"] string,
-	show_in_tooltip?: boolean,
-}
+dispatch minecraft:data_component[jukebox_playable] to (
+	#[until="1.21.5"] struct JukeboxPlayable {
+		song: #[id="jukebox_song"] string,
+		show_in_tooltip?: boolean,
+	} |
+	#[since="1.21.5"] #[id="jukebox_song"] string |
+)
 
-/// A list of JSON text components, each element being a lore line.
+/// A list of text components, each element being a lore line.
 dispatch minecraft:data_component[lore] to [(
 	#[until="1.21.5"] #[text_component] string |
 	#[since="1.21.5"] Text |
@@ -286,6 +339,12 @@ dispatch minecraft:data_component[lore] to [(
 dispatch minecraft:data_component[max_damage] to int @ 1..
 
 dispatch minecraft:data_component[max_stack_size] to int @ 1..99
+
+/// When present, this item can be placed in the pattern slot of a loom.
+dispatch minecraft:data_component[provides_banner_patterns] to #[id(registry="banner_pattern",tags="required")] string
+
+/// When present, this item will provide the specified trim material when used in a trimming recipe.
+dispatch minecraft:data_component[provides_trim_material] to #[id="trim_material"] string
 
 enum(string) Rarity {
 	/// White name, or aqua when enchanted.
@@ -330,6 +389,14 @@ dispatch minecraft:data_component[tool] to struct Tool {
 	can_destroy_blocks_in_creative?: boolean,
 }
 
+#[since="1.21.5"]
+dispatch minecraft:data_component[tooltip_display] to struct TooltipDisplay {
+	/// If `true`, the item will have no tooltip when hovered. Defaults to `false`.
+	hide_tooltip?: boolean,
+	/// List of components that should be hidden in the item tooltip.
+	hidden_components?: [#[id="data_component_type"] string],
+}
+
 dispatch minecraft:data_component[tooltip_style] to #[id] string
 
 /// Trim to apply to the item & armor when worn.
@@ -344,10 +411,12 @@ dispatch minecraft:data_component[trim] to struct Trim {
 		#[id="trim_pattern"] string |
 		TrimPattern |
 	),
+	#[until="1.21.5"]
 	show_in_tooltip?: boolean,
 }
 
 dispatch minecraft:data_component[unbreakable] to struct Unbreakable {
+	#[until="1.21.5"]
 	show_in_tooltip?: boolean,
 }
 
@@ -366,8 +435,8 @@ dispatch minecraft:data_component[use_remainder] to ItemStack
 dispatch minecraft:data_component[weapon] to struct Weapon {
 	/// The amount to damage to the weapon item for each attack performed. Defaults to `1`.
 	item_damage_per_attack?: int @ 0..,
-	/// If `true`, will disable a blocking Shield on successful attack. Defaults to `false`.
-	can_disable_blocking?: boolean,
+	/// If non-zero, will disable a blocking shield on successful attack for the specified amount of seconds.
+	disable_blocking_for_seconds?: float @ 0..,
 }
 
 enum(string) ItemBaseComponents {
