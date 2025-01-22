@@ -341,7 +341,7 @@ dispatch minecraft:data_component[max_damage] to int @ 1..
 dispatch minecraft:data_component[max_stack_size] to int @ 1..99
 
 /// When present, this item can be placed in the pattern slot of a loom.
-dispatch minecraft:data_component[provides_banner_patterns] to #[id(registry="banner_pattern",tags="required")] string
+dispatch minecraft:data_component[provides_banner_patterns] to #[id(registry="banner_pattern",tags="implicit")] string
 
 /// When present, this item will provide the specified trim material when used in a trimming recipe.
 dispatch minecraft:data_component[provides_trim_material] to #[id="trim_material"] string
