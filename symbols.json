@@ -1,5 +1,5 @@
 {
-	"ref": "033aec264b8c6386b5a7718a0adf25e28a740dd7",
+	"ref": "da1fcd9a5c27d23c5ea34f3257dc487335f80827",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -20861,19 +20861,6 @@
 				}
 			]
 		},
-		"::java::data::gametest::test_environment::RainingTestEnvironment": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "weather",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::gametest::test_environment::Weather"
-					}
-				}
-			]
-		},
 		"::java::data::gametest::test_environment::TestEnvironment": {
 			"kind": "struct",
 			"fields": [
@@ -20947,13 +20934,26 @@
 				}
 			]
 		},
+		"::java::data::gametest::test_environment::WeatherTestEnvironment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "weather",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::gametest::test_environment::Weather"
+					}
+				}
+			]
+		},
 		"::java::data::gametest::TestData": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
 					"desc": "The test environment to run this test as part of.\n",
-					"key": "batch",
+					"key": "environment",
 					"type": {
 						"kind": "union",
 						"members": [
@@ -94140,13 +94140,13 @@
 				"kind": "reference",
 				"path": "::java::data::gametest::test_environment::GameRulesTestEnvironment"
 			},
-			"raining": {
-				"kind": "reference",
-				"path": "::java::data::gametest::test_environment::RainingTestEnvironment"
-			},
 			"time_of_day": {
 				"kind": "reference",
 				"path": "::java::data::gametest::test_environment::TimeOfDayTestEnvironment"
+			},
+			"weather": {
+				"kind": "reference",
+				"path": "::java::data::gametest::test_environment::WeatherTestEnvironment"
 			}
 		},
 		"minecraft:test_instance": {
