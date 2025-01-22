@@ -1,5 +1,5 @@
 {
-	"ref": "da1fcd9a5c27d23c5ea34f3257dc487335f80827",
+	"ref": "547b9d7db0dde05b21231eee209c0cc5b30e34ee",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -21081,7 +21081,7 @@
 				{
 					"kind": "pair",
 					"desc": "Whether the test needs clear access to the sky. Defaults to `false`.\n\nIf `false`, test is enclosed in barrier blocks. If `true`, the top is left open.\n",
-					"key": "sky_accesss",
+					"key": "sky_access",
 					"type": {
 						"kind": "boolean"
 					},
