@@ -285,7 +285,7 @@
 	"::java::data::enchantment::TridentReturnAccelerationEnchantmentEffect.effect": "Amount of acceleration applied to the returning trident.",
 	"::java::data::enchantment::TridentReturnAccelerationEnchantmentEffect.requirements": "Predicate context: Entity Parameters.\n\n`this` is the trident entity.",
 	"::java::data::gametest::FunctionTestInstance.function": "Test function (Java code) to run.",
-	"::java::data::gametest::TestData.batch": "The test environment to run this test as part of.",
+	"::java::data::gametest::TestData.environment": "The test environment to run this test as part of.",
 	"::java::data::gametest::TestData.manual_only": "If `true`, test is not included as part of automated test runs. Defaults to `false`.",
 	"::java::data::gametest::TestData.max_attempts": "Number of attempts to run the test. Defaults to `1`.",
 	"::java::data::gametest::TestData.max_ticks": "Maximum number of ticks allowed to pass before the test is considered timed out.",
