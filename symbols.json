@@ -1,5 +1,5 @@
 {
-	"ref": "288acedb4775ce8cf1696eeba8d9d3d07f7089d9",
+	"ref": "fae8a93fc6e8877643939a315b6c4d312a9110d9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -170,6 +170,15 @@
 							}
 						]
 					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Value to use when joining the texture and permutation names to produce the sprite name.\n\nDefaults to `_`.\n",
+					"key": "separator",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -2647,12 +2656,54 @@
 				}
 			]
 		},
-		"::java::assets::item_definition::Component": {
+		"::java::assets::item_definition::ComponentFlags": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The component type to check the values of.\n",
+					"desc": "The component predicate to check.\n",
+					"key": "predicate",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "item_sub_predicate_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The predicate-specific value.\n",
+					"key": "value",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"predicate"
+								]
+							}
+						],
+						"registry": "minecraft:item_sub_predicate"
+					}
+				}
+			]
+		},
+		"::java::assets::item_definition::ComponentStrings": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The component type to check the values of.\n\nIf the selected value comes from a registry that the client doesn't have access to,\n\nthe entry will be silently ignored.\n",
 					"key": "component",
 					"type": {
 						"kind": "string",
@@ -9070,7 +9121,49 @@
 					"desc": "Used for the advancement tab (root advancement only).\n",
 					"key": "background",
 					"type": {
-						"kind": "string"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				},
@@ -22151,12 +22244,57 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": {
 						"kind": "reference",
 						"path": "::java::data::loot::function::ToggleableDataComponent",
 						"attributes": [
 							{
 								"name": "id"
+							}
+						]
+					},
+					"type": {
+						"kind": "boolean"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "data_component_type"
+									}
+								}
 							}
 						]
 					},
@@ -25788,12 +25926,57 @@
 						"fields": [
 							{
 								"kind": "pair",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								],
 								"key": {
 									"kind": "reference",
 									"path": "::java::data::loot::function::ToggleableDataComponent",
 									"attributes": [
 										{
 											"name": "id"
+										}
+									]
+								},
+								"type": {
+									"kind": "boolean"
+								}
+							},
+							{
+								"kind": "pair",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								],
+								"key": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "data_component_type"
+												}
+											}
 										}
 									]
 								},
@@ -27002,6 +27185,54 @@
 			"kind": "struct",
 			"fields": []
 		},
+		"::java::data::recipe::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Material that will be used.\n",
+					"key": "addition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Template item that will be used for the pattern.\n",
+					"key": "template",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Material that will be used.\n",
+					"key": "addition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Template item that will be used for the pattern.\n",
+					"key": "template",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::recipe::CookingBookCategory": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -28044,50 +28275,94 @@
 				}
 			]
 		},
-		"::java::data::recipe::SmithingResult": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "item",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "item"
-									}
-								}
-							}
-						]
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
-					}
-				}
-			]
-		},
 		"::java::data::recipe::SmithingTransform": {
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "spread",
+					"kind": "pair",
+					"desc": "Ingredient specifying an item to be transformed.\n",
+					"key": "base",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::recipe::SmithingIngredients"
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.2"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Material that will be used.\n",
+								"key": "addition",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::recipe::Ingredient"
+								}
+							},
+							{
+								"kind": "pair",
+								"desc": "Template item that will be used for the pattern.\n",
+								"key": "template",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::recipe::Ingredient"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.2"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Material that will be used.\n",
+								"key": "addition",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::recipe::Ingredient"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Template item that will be used for the pattern.\n",
+								"key": "template",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::recipe::Ingredient"
+								},
+								"optional": true
+							}
+						]
 					}
 				},
 				{
@@ -28150,6 +28425,204 @@
 								]
 							}
 						]
+					}
+				}
+			]
+		},
+		"::java::data::recipe::SmithingTransformResult": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "item",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "item"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.20.5"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::SmithingTrim": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Ingredient specifying an item to be trimmed.\n",
+					"key": "base",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Material that will be used.\n",
+					"key": "addition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Template item that will be used for the pattern.\n",
+					"key": "template",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "The trim pattern to apply to the result item.\n",
+					"key": "pattern",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "trim_pattern"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Resulting trimmed item.\n",
+					"key": "result",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "struct",
+								"fields": [
+									{
+										"kind": "pair",
+										"key": "item",
+										"type": {
+											"kind": "string",
+											"attributes": [
+												{
+													"name": "id",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "item"
+														}
+													}
+												}
+											]
+										}
+									}
+								],
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::server::world::item::ItemStack",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::recipe::SmithingTrimResult": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "item",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "item"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.20.5"
+						}
 					}
 				}
 			]
@@ -29013,6 +29486,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Item used in the smithing table for this material.\n",
 					"key": "ingredient",
 					"type": {
@@ -29207,6 +29692,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "The item used in the smithing table for this pattern.\n",
 					"key": "template_item",
 					"type": {
@@ -30459,6 +30956,130 @@
 				}
 			]
 		},
+		"::java::data::variants::BiomeCheck": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Checks if the entity is spawning in specific biomes.\n",
+					"key": "biomes",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "worldgen/biome"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "worldgen/biome"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::variants::cat::CatVariant": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The cat texture to use for this variant.\n",
+					"key": "asset_id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::SpawnPrioritySelectors"
+					}
+				}
+			]
+		},
+		"::java::data::variants::frog::FrogVariant": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The frog texture to use for this variant.\n",
+					"key": "asset_id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::SpawnPrioritySelectors"
+					}
+				}
+			]
+		},
 		"::java::data::variants::instrument::Instrument": {
 			"kind": "struct",
 			"fields": [
@@ -30545,6 +31166,28 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::util::SoundEventRef"
+					}
+				}
+			]
+		},
+		"::java::data::variants::MoonBrightnessCheck": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Checks if the current moon brightness is within a certain range.\n",
+					"key": "range",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "double"
+							}
+						]
 					}
 				}
 			]
@@ -30679,7 +31322,8 @@
 				},
 				{
 					"kind": "pair",
-					"key": "texture",
+					"desc": "The pig texture to use for this variant.\n",
+					"key": "asset_id",
 					"type": {
 						"kind": "string",
 						"attributes": [
@@ -30697,9 +31341,100 @@
 					}
 				},
 				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::SpawnPrioritySelectors"
+					}
+				}
+			]
+		},
+		"::java::data::variants::SpawnCondition": {
+			"kind": "struct",
+			"fields": [
+				{
 					"kind": "pair",
-					"desc": "Biomes in which this variant natually spawns.\n\nIf not specified, this variant will only be selected if no other variant matches the current biome.\n",
-					"key": "biomes",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "spawn_condition_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:spawn_condition"
+					}
+				}
+			]
+		},
+		"::java::data::variants::SpawnPrioritySelector": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The spawn condition to check. If not present, the condition always matches.\n",
+					"key": "condition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::SpawnCondition"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The spawn priority to use.\n",
+					"key": "priority",
+					"type": {
+						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::variants::SpawnPrioritySelectors": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The spawn conditions for this variant. Selection process:\n\n- Conditions for all variants for the given entity type are evaluated for the spawn position\n\n- Entries with a priority lower than the maximum priority of the remaining entries are removed\n\n- A random entry is picked out of the remaining ones\n\n- If no conditions are remaining, the variant remains unchanged from the default\n",
+					"key": "spawn_conditions",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::variants::SpawnPrioritySelector"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::variants::StructureCheck": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Checks if the entity is spawning in specific structures.\n",
+					"key": "structures",
 					"type": {
 						"kind": "union",
 						"members": [
@@ -30715,7 +31450,7 @@
 													"kind": "literal",
 													"value": {
 														"kind": "string",
-														"value": "worldgen/biome"
+														"value": "worldgen/structure"
 													}
 												},
 												"tags": {
@@ -30741,7 +31476,7 @@
 												"kind": "literal",
 												"value": {
 													"kind": "string",
-													"value": "worldgen/biome"
+													"value": "worldgen/structure"
 												}
 											}
 										}
@@ -30749,12 +31484,11 @@
 								}
 							}
 						]
-					},
-					"optional": true
+					}
 				}
 			]
 		},
-		"::java::data::variants::wolf::WolfVariant": {
+		"::java::data::variants::wolf::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -30852,6 +31586,261 @@
 				{
 					"kind": "pair",
 					"key": "angry_texture",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::variants::wolf::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The texture set to use for this wolf variant.\r\n",
+					"key": "assets",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::wolf::WolfVariantAssetInfo"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::SpawnPrioritySelectors"
+					}
+				}
+			]
+		},
+		"::java::data::variants::wolf::WolfVariant": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "biomes",
+								"type": {
+									"kind": "union",
+									"members": [
+										{
+											"kind": "string",
+											"attributes": [
+												{
+													"name": "id",
+													"value": {
+														"kind": "tree",
+														"values": {
+															"registry": {
+																"kind": "literal",
+																"value": {
+																	"kind": "string",
+																	"value": "worldgen/biome"
+																}
+															},
+															"tags": {
+																"kind": "literal",
+																"value": {
+																	"kind": "string",
+																	"value": "allowed"
+																}
+															}
+														}
+													}
+												}
+											]
+										},
+										{
+											"kind": "list",
+											"item": {
+												"kind": "string",
+												"attributes": [
+													{
+														"name": "id",
+														"value": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "worldgen/biome"
+															}
+														}
+													}
+												]
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "wild_texture",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "texture"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "tame_texture",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "texture"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "angry_texture",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "texture"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "The texture set to use for this wolf variant.\r\n",
+								"key": "assets",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::variants::wolf::WolfVariantAssetInfo"
+								}
+							},
+							{
+								"kind": "spread",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::variants::SpawnPrioritySelectors"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::variants::wolf::WolfVariantAssetInfo": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "wild",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "tame",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "angry",
 					"type": {
 						"kind": "string",
 						"attributes": [
@@ -75115,47 +76104,56 @@
 		},
 		"::java::server::world::item::<anonymous 0>": {
 			"kind": "struct",
-			"fields": []
-		},
-		"::java::server::world::item::<anonymous 1>": {
-			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"key": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "dispatcher_key",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "mcdoc:custom_data"
-									}
-								}
-							}
-						]
-					},
+					"key": "predicates",
 					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									{
-										"keyword": "key"
-									}
-								]
-							}
-						],
-						"registry": "mcdoc:custom_data"
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::advancement::predicate::BlockPredicate"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "show_in_tooltip",
+					"type": {
+						"kind": "boolean"
 					},
 					"optional": true
 				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.5"
+						}
+					}
+				},
+				{
+					"name": "canonical"
+				}
 			]
 		},
+		"::java::server::world::item::<anonymous 1>": {
+			"kind": "struct",
+			"fields": []
+		},
 		"::java::server::world::item::<anonymous 10>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::server::world::item::<anonymous 11>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -75216,7 +76214,41 @@
 		},
 		"::java::server::world::item::<anonymous 2>": {
 			"kind": "struct",
-			"fields": []
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "dispatcher_key",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "mcdoc:custom_data"
+									}
+								}
+							}
+						]
+					},
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "key"
+									}
+								]
+							}
+						],
+						"registry": "mcdoc:custom_data"
+					},
+					"optional": true
+				}
+			]
 		},
 		"::java::server::world::item::<anonymous 3>": {
 			"kind": "struct",
@@ -75231,6 +76263,10 @@
 			"fields": []
 		},
 		"::java::server::world::item::<anonymous 6>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::server::world::item::<anonymous 7>": {
 			"kind": "enum",
 			"enumKind": "int",
 			"values": [
@@ -75292,7 +76328,7 @@
 				}
 			]
 		},
-		"::java::server::world::item::<anonymous 7>": {
+		"::java::server::world::item::<anonymous 8>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -75429,7 +76465,7 @@
 				}
 			]
 		},
-		"::java::server::world::item::<anonymous 8>": {
+		"::java::server::world::item::<anonymous 9>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -75612,35 +76648,77 @@
 				}
 			]
 		},
-		"::java::server::world::item::<anonymous 9>": {
-			"kind": "struct",
-			"fields": []
-		},
 		"::java::server::world::item::AdventureModePredicate": {
-			"kind": "struct",
-			"fields": [
+			"kind": "union",
+			"members": [
 				{
-					"kind": "pair",
-					"key": "predicates",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::advancement::predicate::BlockPredicate"
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "predicates",
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::advancement::predicate::BlockPredicate"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 1
+								}
+							}
 						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 1
+						{
+							"kind": "pair",
+							"key": "show_in_tooltip",
+							"type": {
+								"kind": "boolean"
+							},
+							"optional": true
 						}
-					}
+					],
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						},
+						{
+							"name": "canonical"
+						}
+					]
 				},
 				{
-					"kind": "pair",
-					"key": "show_in_tooltip",
-					"type": {
-						"kind": "boolean"
+					"kind": "list",
+					"item": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::BlockPredicate"
 					},
-					"optional": true
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						},
+						{
+							"name": "canonical"
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::advancement::predicate::BlockPredicate"
 				}
 			]
 		},
@@ -76274,6 +77352,83 @@
 						"kind": "reference",
 						"path": "::java::server::world::item::ItemStack"
 					}
+				}
+			]
+		},
+		"::java::server::world::item::blocks_attacks": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Number of seconds that right-click must be held before successfully blocking attacks.\n\nDefaults to `0`.\n",
+					"key": "block_delay_seconds",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Multiplier applied to the number of seconds that the item will be on cooldown for when attacked by a disabling attack (`disable_blocking_for_seconds` on the `weapon` component).\n\nDefaults to `1`.\n\nIf `0`, this item can never be disabled by attacks.\n",
+					"key": "disable_cooldown_scale",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Controls how much damage should be blocked in a given attack. If not specified, all damage is blocked.\n\nEach entry in the list contributes an amount of damage to be blocked, optionally filtered by a damage type.\n\nEach entry adds to blocked damage, determined by `clamp(base + factor * dealt_damage, 0, dealt_damage)`.\n\nThe final damage applied in the attack to the entity is determined by `dealt_damage - clamp(blocked_damage, 0, dealt_damage)`.\n",
+					"key": "damage_reductions",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::server::world::item::DamageReduction"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Controls how much damage should be applied to the item from a given attack.\n\nIf not specified, a point of durability is removed for every point of damage dealt.\n\nThe final damage applied to the item is determined by `floor(base + factor * dealt_damage)`.\n\nThe final value may be negative, causing the item to be repaired.\n",
+					"key": "item_damage",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::server::world::item::ItemDamageFunction"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Sound played when an attack is successfully blocked.\n",
+					"key": "block_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Sound played when the item goes on its disabled cooldown due to an attack.\n",
+					"key": "disabled_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -76954,6 +78109,83 @@
 							"kind": "string",
 							"value": "1.21.4"
 						}
+					}
+				}
+			]
+		},
+		"::java::server::world::item::DamageReduction": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "An optional damage type to filter this reduction by.\n\nIf not specified, any damage type is accepted for this reduction.\n",
+					"key": "type",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "damage_type"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "damage_type"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Constant amount of damage to be blocked.\n",
+					"key": "base",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Fraction of the dealt damage that should be blocked.\n",
+					"key": "factor",
+					"type": {
+						"kind": "float"
 					}
 				}
 			]
@@ -78749,6 +79981,39 @@
 				}
 			]
 		},
+		"::java::server::world::item::ItemDamageFunction": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Minimum amount of damage dealt by the attack before this item damage is applied to the item.\n",
+					"key": "threshold",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Constant amount of damage applied to the item, if `threshold` is passed.\n",
+					"key": "base",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Fraction of the dealt damage that should be applied to the item, if `threshold` is passed.\n",
+					"key": "factor",
+					"type": {
+						"kind": "float"
+					}
+				}
+			]
+		},
 		"::java::server::world::item::ItemStack": {
 			"kind": "struct",
 			"fields": [
@@ -78901,6 +80166,18 @@
 						"kind": "boolean"
 					},
 					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.5"
+						}
+					}
 				}
 			]
 		},
@@ -80244,6 +81521,44 @@
 				}
 			]
 		},
+		"::java::server::world::item::TooltipDisplay": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If `true`, the item will have no tooltip when hovered. Defaults to `false`.\n",
+					"key": "hide_tooltip",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "List of components that should be hidden in the item tooltip.\n",
+					"key": "hidden_components",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "id",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "data_component_type"
+										}
+									}
+								}
+							]
+						}
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::server::world::item::Trim": {
 			"kind": "struct",
 			"fields": [
@@ -80307,6 +81622,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "show_in_tooltip",
 					"type": {
 						"kind": "boolean"
@@ -80320,6 +81647,18 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "show_in_tooltip",
 					"type": {
 						"kind": "boolean"
@@ -80396,10 +81735,14 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "If `true`, will disable a blocking Shield on successful attack. Defaults to `false`.\n",
-					"key": "can_disable_blocking",
+					"desc": "If non-zero, will disable a blocking shield on successful attack for the specified amount of seconds.\n",
+					"key": "disable_blocking_for_seconds",
 					"type": {
-						"kind": "boolean"
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
 					},
 					"optional": true
 				}
@@ -82732,6 +84075,10 @@
 				"kind": "struct",
 				"fields": []
 			},
+			"component": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::ComponentFlags"
+			},
 			"custom_model_data": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::CustomModelDataFlags"
@@ -82779,6 +84126,16 @@
 						"kind": "reference",
 						"path": "::java::server::world::item::AttributeModifiers",
 						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
+							},
 							{
 								"name": "canonical"
 							}
@@ -82863,6 +84220,38 @@
 				],
 				"registry": "mcdoc:block_item_states"
 			},
+			"blocks_attacks": {
+				"kind": "reference",
+				"path": "::java::server::world::item::blocks_attacks",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"break_sound": {
+				"kind": "reference",
+				"path": "::java::data::util::SoundEventRef",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"bucket_entity_data": {
 				"kind": "union",
 				"members": [
@@ -82892,40 +84281,12 @@
 				}
 			},
 			"can_break": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "reference",
-						"path": "::java::server::world::item::AdventureModePredicate",
-						"attributes": [
-							{
-								"name": "canonical"
-							}
-						]
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::BlockPredicate"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::world::item::AdventureModePredicate"
 			},
 			"can_place_on": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "reference",
-						"path": "::java::server::world::item::AdventureModePredicate",
-						"attributes": [
-							{
-								"name": "canonical"
-							}
-						]
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::BlockPredicate"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::server::world::item::AdventureModePredicate"
 			},
 			"cat/collar": {
 				"kind": "reference",
@@ -83132,24 +84493,57 @@
 				"kind": "union",
 				"members": [
 					{
-						"kind": "reference",
-						"path": "::java::server::world::item::leather_armor::DyedColor",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "canonical"
+								"kind": "reference",
+								"path": "::java::server::world::item::leather_armor::DyedColor",
+								"attributes": [
+									{
+										"name": "canonical"
+									}
+								]
+							},
+							{
+								"kind": "int",
+								"attributes": [
+									{
+										"name": "color",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "composite_rgb"
+											}
+										}
+									}
+								]
 							}
-						]
-					},
-					{
-						"kind": "int",
+						],
 						"attributes": [
 							{
-								"name": "color",
+								"name": "until",
 								"value": {
 									"kind": "literal",
 									"value": {
 										"kind": "string",
-										"value": "composite_rgb"
+										"value": "1.21.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::server::util::color::RGB",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
 									}
 								}
 							}
@@ -83183,6 +84577,16 @@
 						"kind": "reference",
 						"path": "::java::server::world::item::Enchantments",
 						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
+							},
 							{
 								"name": "canonical"
 							}
@@ -83306,11 +84710,35 @@
 			},
 			"hide_additional_tooltip": {
 				"kind": "struct",
-				"fields": []
+				"fields": [],
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"hide_tooltip": {
 				"kind": "struct",
-				"fields": []
+				"fields": [],
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"horse/variant": {
 				"kind": "reference",
@@ -83468,8 +84896,50 @@
 				]
 			},
 			"jukebox_playable": {
-				"kind": "reference",
-				"path": "::java::server::world::item::JukeboxPlayable",
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::server::world::item::JukeboxPlayable",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
+							},
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "jukebox_song"
+									}
+								}
+							}
+						]
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -83809,6 +85279,48 @@
 					}
 				]
 			},
+			"provides_banner_patterns": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "tree",
+							"values": {
+								"registry": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "banner_pattern"
+									}
+								},
+								"tags": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "required"
+									}
+								}
+							}
+						}
+					}
+				]
+			},
+			"provides_trim_material": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "trim_material"
+							}
+						}
+					}
+				]
+			},
 			"rabbit/variant": {
 				"kind": "reference",
 				"path": "::java::server::world::entity::mob::breedable::rabbit::RabbitVariant",
@@ -83926,6 +85438,16 @@
 						"path": "::java::server::world::item::Enchantments",
 						"attributes": [
 							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
+							},
+							{
 								"name": "canonical"
 							}
 						]
@@ -83946,6 +85468,22 @@
 			"tool": {
 				"kind": "reference",
 				"path": "::java::server::world::item::Tool"
+			},
+			"tooltip_display": {
+				"kind": "reference",
+				"path": "::java::server::world::item::TooltipDisplay",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"tooltip_style": {
 				"kind": "string",
@@ -85342,6 +86880,22 @@
 					}
 				]
 			},
+			"lingering_potion": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::projectile::throwable::Potion",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"llama": {
 				"kind": "reference",
 				"path": "::java::server::world::entity::mob::breedable::llama::Llama"
@@ -85637,6 +87191,22 @@
 			"spider": {
 				"kind": "reference",
 				"path": "::java::server::world::entity::mob::MobBase"
+			},
+			"splash_potion": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::projectile::throwable::Potion",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"spruce_boat": {
 				"kind": "reference",
@@ -91370,7 +92940,7 @@
 			},
 			"smithing_trim": {
 				"kind": "reference",
-				"path": "::java::data::recipe::SmithingIngredients",
+				"path": "::java::data::recipe::SmithingTrim",
 				"attributes": [
 					{
 						"name": "since",
@@ -91433,6 +93003,22 @@
 			"block_definition": {
 				"kind": "reference",
 				"path": "::java::assets::block_state_definition::BlockStateDefinition"
+			},
+			"cat_variant": {
+				"kind": "reference",
+				"path": "::java::data::variants::cat::CatVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"chat_type": {
 				"kind": "reference",
@@ -91529,6 +93115,22 @@
 			"font": {
 				"kind": "reference",
 				"path": "::java::assets::font::Font"
+			},
+			"frog_variant": {
+				"kind": "reference",
+				"path": "::java::data::variants::frog::FrogVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"gpu_warnlist": {
 				"kind": "reference",
@@ -91962,7 +93564,19 @@
 			},
 			"component": {
 				"kind": "reference",
-				"path": "::java::assets::item_definition::Component"
+				"path": "::java::assets::item_definition::ComponentStrings",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"context_dimension": {
 				"kind": "reference",
@@ -92038,6 +93652,20 @@
 						}
 					}
 				]
+			}
+		},
+		"minecraft:spawn_condition": {
+			"biome": {
+				"kind": "reference",
+				"path": "::java::data::variants::BiomeCheck"
+			},
+			"moon_brightness": {
+				"kind": "reference",
+				"path": "::java::data::variants::MoonBrightnessCheck"
+			},
+			"structure": {
+				"kind": "reference",
+				"path": "::java::data::variants::StructureCheck"
 			}
 		},
 		"minecraft:special_item_model": {
