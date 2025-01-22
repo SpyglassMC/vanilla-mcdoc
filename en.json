@@ -293,7 +293,7 @@
 	"::java::data::gametest::TestData.required_successes": "Number of attempts that must succeed for the test to be considered successful. Defaults to `1`.",
 	"::java::data::gametest::TestData.rotation": "Rotation to apply to the test structure. Defaults to `none`.",
 	"::java::data::gametest::TestData.setup_ticks": "Ticks to wait after placing the structure before starting the test. Defaults to `0`.",
-	"::java::data::gametest::TestData.sky_accesss": "Whether the test needs clear access to the sky. Defaults to `false`.\nIf `false`, test is enclosed in barrier blocks. If `true`, the top is left open.",
+	"::java::data::gametest::TestData.sky_access": "Whether the test needs clear access to the sky. Defaults to `false`.\nIf `false`, test is enclosed in barrier blocks. If `true`, the top is left open.",
 	"::java::data::gametest::TestData.structure": "Structure NBT file to use for the test.",
 	"::java::data::loot::condition::AllOf.terms": "Passes when all of these conditions pass.",
 	"::java::data::loot::condition::AnyOf.terms": "Passes when any of these conditions pass.",
