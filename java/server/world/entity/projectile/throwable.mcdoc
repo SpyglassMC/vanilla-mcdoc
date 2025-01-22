@@ -42,3 +42,6 @@ dispatch minecraft:entity[potion] to struct Potion {
 	#[since="1.16"]
 	Item?: ItemStack,
 }
+
+#[since="1.21.5"]
+dispatch minecraft:entity[splash_potion,lingering_potion] to Potion

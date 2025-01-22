@@ -104,16 +104,47 @@ type SmithingIngredients = (
 )
 
 #[since="1.19.4"]
-dispatch minecraft:recipe_serializer[smithing_trim] to SmithingIngredients
-
-#[since="1.19.4"]
 dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTransform {
-	...SmithingIngredients,
-
+	/// Ingredient specifying an item to be transformed.
+	base: Ingredient,
+	#[until="1.21.2"]
+	...struct {
+		/// Material that will be used.
+		addition: Ingredient,
+		/// Template item that will be used for the pattern.
+		template: Ingredient,
+	},
+	#[since="1.21.2"]
+	...struct {
+		/// Material that will be used.
+		addition?: Ingredient,
+		/// Template item that will be used for the pattern.
+		template?: Ingredient,
+	},
 	/// Resulting transformed item.
 	result: (
-		#[until="1.20.5"] struct SmithingResult {
-			item: #[id="item"] string, // Fun
+		#[until="1.20.5"] struct SmithingTransformResult {
+			item: #[id="item"] string,
+		} |
+		#[since="1.20.5"] ItemStack |
+	)
+}
+
+#[since="1.19.4"]
+dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
+	/// Ingredient specifying an item to be trimmed.
+	base: Ingredient,
+	/// Material that will be used.
+	addition: Ingredient,
+	/// Template item that will be used for the pattern.
+	template: Ingredient,
+	/// The trim pattern to apply to the result item.
+	#[since="1.21.5"]
+	pattern: #[id="trim_pattern"] string,
+	/// Resulting trimmed item.
+	result: (
+		#[until="1.20.5"] struct SmithingTrimResult {
+			item: #[id="item"] string,
 		} |
 		#[since="1.20.5"] ItemStack |
 	)

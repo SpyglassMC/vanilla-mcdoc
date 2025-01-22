@@ -43,6 +43,9 @@ dispatch minecraft:sprite_source[paletted_permutations] to struct PalettedPermut
 	permutations: struct PermutationsMap {
 		[#[permutation(definition=true)] string]: #[id="texture"] string,
 	},
+	/// Value to use when joining the texture and permutation names to produce the sprite name.
+	/// Defaults to `_`.
+	separator?: string,
 }
 
 dispatch minecraft:sprite_source[unstitch] to struct Unstitch {
