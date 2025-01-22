@@ -17,7 +17,7 @@ dispatch minecraft:test_instance[function] to struct FunctionTestInstance {
 
 struct TestData {
 	/// The test environment to run this test as part of.
-	batch: (
+	environment: (
 		#[id="test_environment"] string |
 		TestEnvironment |
 	),

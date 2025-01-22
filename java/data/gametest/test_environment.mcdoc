@@ -32,7 +32,7 @@ dispatch minecraft:test_environment_definition[time_of_day] to struct TimeOfDayT
 	time: int @ 0..
 }
 
-dispatch minecraft:test_environment_definition[raining] to struct RainingTestEnvironment {
+dispatch minecraft:test_environment_definition[weather] to struct WeatherTestEnvironment {
 	weather: Weather,
 }
 
