@@ -1,5 +1,5 @@
 {
-	"ref": "fae8a93fc6e8877643939a315b6c4d312a9110d9",
+	"ref": "55547496d85bc92898d10f43d5b02b0816f5d628",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -55978,6 +55978,19 @@
 				}
 			]
 		},
+		"::java::server::util::particle::TintedLeavesParticle": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::color::RGBA"
+					}
+				}
+			]
+		},
 		"::java::server::util::particle::TrailParticle": {
 			"kind": "struct",
 			"fields": [
@@ -92723,6 +92736,22 @@
 			"shriek": {
 				"kind": "reference",
 				"path": "::java::server::util::particle::ShriekParticle"
+			},
+			"tinted_leaves": {
+				"kind": "reference",
+				"path": "::java::server::util::particle::TintedLeavesParticle",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"trail": {
 				"kind": "reference",
