@@ -1,0 +1,37 @@
+use ::java::data::util::MinMaxBounds
+
+struct SpawnPrioritySelectors {
+	/// The spawn conditions for this variant. Selection process:
+	/// - Conditions for all variants for the given entity type are evaluated for the spawn position
+	/// - Entries with a priority lower than the maximum priority of the remaining entries are removed
+	/// - A random entry is picked out of the remaining ones
+	/// - If no conditions are remaining, the variant remains unchanged from the default
+	spawn_conditions: [SpawnPrioritySelector],
+}
+
+struct SpawnPrioritySelector {
+	/// The spawn condition to check. If not present, the condition always matches.
+	condition?: SpawnCondition,
+	/// The spawn priority to use.
+	priority: int,
+}
+
+struct SpawnCondition {
+	type: #[id="spawn_condition_type"] string,
+	...minecraft:spawn_condition[[type]],
+}
+
+dispatch minecraft:spawn_condition[biome] to struct BiomeCheck {
+	/// Checks if the entity is spawning in specific biomes.
+	biomes: (#[id=(registry="worldgen/biome",tags="allowed")] string | [#[id="worldgen/biome"] string]),
+}
+
+dispatch minecraft:spawn_condition[moon_brightness] to struct MoonBrightnessCheck {
+	/// Checks if the current moon brightness is within a certain range.
+	range: MinMaxBounds<double>,
+}
+
+dispatch minecraft:spawn_condition[structure] to struct StructureCheck {
+	/// Checks if the entity is spawning in specific structures.
+	structures: (#[id=(registry="worldgen/structure",tags="allowed")] string | [#[id="worldgen/structure"] string]),
+}
