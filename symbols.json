@@ -1,5 +1,5 @@
 {
-	"ref": "547b9d7db0dde05b21231eee209c0cc5b30e34ee",
+	"ref": "1997414305806360ba6e28a31387d6517ad1f247",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -67536,6 +67536,14 @@
 			]
 		},
 		"::java::server::world::entity::mob::armor_stand::<anonymous 0>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::server::world::entity::mob::armor_stand::<anonymous 1>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::server::world::entity::mob::armor_stand::<anonymous 2>": {
 			"kind": "enum",
 			"enumKind": "int",
 			"values": [
@@ -67621,6 +67629,105 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::server::world::entity::mob::LivingEntity"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "[main hand, offhand]\n",
+					"key": "HandItems",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "reference",
+									"path": "::java::server::world::item::ItemStack"
+								},
+								{
+									"kind": "struct",
+									"fields": []
+								}
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 2,
+							"max": 2
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "[feet, legs, body, head]\n",
+					"key": "ArmorItems",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "reference",
+									"path": "::java::server::world::item::ItemStack"
+								},
+								{
+									"kind": "struct",
+									"fields": []
+								}
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "The equipment items of the armor stand.\n",
+					"key": "equipment",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::mob::EntityEquipment"
 					}
 				},
 				{
