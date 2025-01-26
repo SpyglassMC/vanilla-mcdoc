@@ -1,5 +1,5 @@
 {
-	"ref": "1997414305806360ba6e28a31387d6517ad1f247",
+	"ref": "67e36b5cea28da599895e09cfda8f250f58684a9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -77522,11 +77522,8 @@
 					"desc": "Controls how much damage should be applied to the item from a given attack.\n\nIf not specified, a point of durability is removed for every point of damage dealt.\n\nThe final damage applied to the item is determined by `floor(base + factor * dealt_damage)`.\n\nThe final value may be negative, causing the item to be repaired.\n",
 					"key": "item_damage",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::server::world::item::ItemDamageFunction"
-						}
+						"kind": "reference",
+						"path": "::java::server::world::item::ItemDamageFunction"
 					},
 					"optional": true
 				},
