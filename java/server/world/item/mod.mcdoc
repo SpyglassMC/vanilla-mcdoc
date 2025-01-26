@@ -41,7 +41,7 @@ dispatch minecraft:data_component[blocks_attacks] to struct blocks_attacks {
 	/// If not specified, a point of durability is removed for every point of damage dealt.
 	/// The final damage applied to the item is determined by `floor(base + factor * dealt_damage)`.
 	/// The final value may be negative, causing the item to be repaired.
-	item_damage?: [ItemDamageFunction],
+	item_damage?: ItemDamageFunction,
 	/// Sound played when an attack is successfully blocked.
 	block_sound?: SoundEventRef,
 	/// Sound played when the item goes on its disabled cooldown due to an attack.
