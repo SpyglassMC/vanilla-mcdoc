@@ -57,6 +57,7 @@ enum(string) Axis {
 }
 
 enum(string) ItemTransformType {
+	None = "none",
 	FirstPersonRighthand = "firstperson_righthand",
 	FirstPersonLefthand = "firstperson_lefthand",
 	ThirdPersonRighthand = "thirdperson_righthand",
