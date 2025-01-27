@@ -1,5 +1,5 @@
 {
-	"ref": "67e36b5cea28da599895e09cfda8f250f58684a9",
+	"ref": "9d7f996b84ff6a4610d605a1d6d0ec309226daae",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -4718,6 +4718,10 @@
 			"kind": "enum",
 			"enumKind": "string",
 			"values": [
+				{
+					"identifier": "None",
+					"value": "none"
+				},
 				{
 					"identifier": "FirstPersonRighthand",
 					"value": "firstperson_righthand"
