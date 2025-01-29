@@ -40,10 +40,13 @@ type ItemPredicate = (
 )
 
 struct ItemSubPredicate {
-	[#[id="item_sub_predicate_type"] string]: minecraft:item_sub_predicate[[%key]],
+	[(
+		#[until="1.21.5"] #[id="item_sub_predicate_type"] string |
+		#[since="1.21.5"] #[id="data_component_predicate_type"] string |
+	)]: minecraft:data_component_predicate[[%key]],
 }
 
-dispatch minecraft:item_sub_predicate[attribute_modifiers] to struct AttributeModifiersPredicate {
+dispatch minecraft:data_component_predicate[attribute_modifiers] to struct AttributeModifiersPredicate {
 	modifiers?: CollectionPredicate<AttributeModifiersPredicateEntry>,
 }
 
@@ -55,50 +58,50 @@ struct AttributeModifiersPredicateEntry {
 	slot?: AttributeSlot,
 }
 
-dispatch minecraft:item_sub_predicate[bundle_contents] to struct BundleContentsPredicate {
+dispatch minecraft:data_component_predicate[bundle_contents] to struct BundleContentsPredicate {
 	items?: CollectionPredicate<ItemPredicate>,
 }
 
-dispatch minecraft:item_sub_predicate[container] to struct ContainerPredicate {
+dispatch minecraft:data_component_predicate[container] to struct ContainerPredicate {
 	items?: CollectionPredicate<ItemPredicate>,
 }
 
-dispatch minecraft:item_sub_predicate[custom_data] to CustomData
+dispatch minecraft:data_component_predicate[custom_data] to CustomData
 
-dispatch minecraft:item_sub_predicate[damage] to struct ItemDamagePredicate {
+dispatch minecraft:data_component_predicate[damage] to struct ItemDamagePredicate {
 	damage?: MinMaxBounds<int>,
 	durability?: MinMaxBounds<int>,
 }
 
-dispatch minecraft:item_sub_predicate[enchantments, stored_enchantments] to [EnchantmentPredicate]
+dispatch minecraft:data_component_predicate[enchantments, stored_enchantments] to [EnchantmentPredicate]
 
-dispatch minecraft:item_sub_predicate[fireworks] to struct FireworksPredicate {
+dispatch minecraft:data_component_predicate[fireworks] to struct FireworksPredicate {
 	explosions?: CollectionPredicate<FireworkExplosionPredicate>,
 	flight_duration?: MinMaxBounds<int>,
 }
 
-dispatch minecraft:item_sub_predicate[firework_explosion] to struct FireworkExplosionPredicate {
+dispatch minecraft:data_component_predicate[firework_explosion] to struct FireworkExplosionPredicate {
 	shape?: FireworkShape,
 	has_twinkle?: boolean,
 	has_trail?: boolean,
 }
 
-dispatch minecraft:item_sub_predicate[jukebox_playable] to struct JukeboxPlayablePredicate {
+dispatch minecraft:data_component_predicate[jukebox_playable] to struct JukeboxPlayablePredicate {
 	song?: (#[id(registry="jukebox_song",tags="allowed")] string | [#[id="jukebox_song"] string]),
 }
 
-dispatch minecraft:item_sub_predicate[potion_contents] to (#[id(registry="potion",tags="allowed")] string | [#[id="potion"] string])
+dispatch minecraft:data_component_predicate[potion_contents] to (#[id(registry="potion",tags="allowed")] string | [#[id="potion"] string])
 
-dispatch minecraft:item_sub_predicate[trim] to struct TrimPredicate {
+dispatch minecraft:data_component_predicate[trim] to struct TrimPredicate {
 	material?: (#[id(registry="trim_material",tags="allowed")] string | [#[id="trim_material"] string]),
 	pattern?: (#[id(registry="trim_pattern",tags="allowed")] string | [#[id="trim_pattern"] string]),
 }
 
-dispatch minecraft:item_sub_predicate[writable_book_content] to struct WritableBookPredicate {
+dispatch minecraft:data_component_predicate[writable_book_content] to struct WritableBookPredicate {
 	pages?: CollectionPredicate<Filterable<string>>,
 }
 
-dispatch minecraft:item_sub_predicate[written_book_content] to struct WrittenBookPredicate {
+dispatch minecraft:data_component_predicate[written_book_content] to struct WrittenBookPredicate {
 	pages?: CollectionPredicate<Filterable<Text>>,
 	author?: string,
 	title?: string,

@@ -174,9 +174,12 @@ dispatch minecraft:conditional_item_property[%unknown] to struct {}
 
 dispatch minecraft:conditional_item_property[component] to struct ComponentFlags {
 	/// The component predicate to check.
-	predicate: #[id="item_sub_predicate_type"] string,
+	predicate: (
+		#[until="1.21.5"] #[id="item_sub_predicate_type"] string |
+		#[since="1.21.5"] #[id="data_component_predicate_type"] string |
+	),
 	/// The predicate-specific value.
-	value: minecraft:item_sub_predicate[[predicate]],
+	value: minecraft:data_component_predicate[[predicate]],
 }
 
 dispatch minecraft:conditional_item_property[custom_model_data] to struct CustomModelDataFlags {
