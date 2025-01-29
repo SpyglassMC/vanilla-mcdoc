@@ -1,0 +1,13 @@
+#[since="1.21.5"]
+dispatch minecraft:resource[cow_variant] to struct CowVariant {
+	model?: ModelType,
+	/// The cow texture to use for this variant.
+	asset_id: #[id="texture"] string,
+	...super::SpawnPrioritySelectors,
+}
+
+enum(string) ModelType {
+	Normal = "normal",
+	Cold = "cold",
+	Warm = "warm",
+}

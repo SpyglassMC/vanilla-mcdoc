@@ -46,6 +46,8 @@ dispatch minecraft:data_component[blocks_attacks] to struct blocks_attacks {
 	block_sound?: SoundEventRef,
 	/// Sound played when the item goes on its disabled cooldown due to an attack.
 	disabled_sound?: SoundEventRef,
+	/// Damage types in this tag are bypassing the blocking
+	bypassed_by?: #[id(registry="damage_type",tags="required")] string,
 }
 
 struct DamageReduction {
@@ -56,6 +58,8 @@ struct DamageReduction {
 	base: float,
 	/// Fraction of the dealt damage that should be blocked.
 	factor: float,
+	/// Maximum angle between facing direction and incoming attack direction for the blocking to be effective
+	horizontal_blocking_angle?: float @ 0<..,
 }
 
 struct ItemDamageFunction {
