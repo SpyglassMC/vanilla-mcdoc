@@ -1,5 +1,5 @@
 {
-	"ref": "3f0e41de374833dfad6ac89a199cf75181c05b8a",
+	"ref": "758263cfe6aefa7b5a2914d80cb7aa8d6d46b0a8",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -69088,6 +69088,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "variant",
 					"type": {
 						"kind": "string",
