@@ -1,5 +1,5 @@
 {
-	"ref": "305215deaeab979dafe779be197e69a9baeff1d4",
+	"ref": "f90c48d81b988c6708db5d650d387440c6419fdf",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -2664,17 +2664,57 @@
 					"desc": "The component predicate to check.\n",
 					"key": "predicate",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "item_sub_predicate_type"
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item_sub_predicate_type"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "data_component_predicate_type"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -2693,7 +2733,7 @@
 								]
 							}
 						],
-						"registry": "minecraft:item_sub_predicate"
+						"registry": "minecraft:data_component_predicate"
 					}
 				}
 			]
@@ -12233,17 +12273,57 @@
 				{
 					"kind": "pair",
 					"key": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "item_sub_predicate_type"
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item_sub_predicate_type"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "data_component_predicate_type"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -12259,7 +12339,7 @@
 								]
 							}
 						],
-						"registry": "minecraft:item_sub_predicate"
+						"registry": "minecraft:data_component_predicate"
 					}
 				}
 			]
@@ -85943,6 +86023,116 @@
 				"path": "::java::server::world::item::book::WrittenBookContent"
 			}
 		},
+		"minecraft:data_component_predicate": {
+			"attribute_modifiers": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::AttributeModifiersPredicate"
+			},
+			"bundle_contents": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::BundleContentsPredicate"
+			},
+			"container": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::ContainerPredicate"
+			},
+			"custom_data": {
+				"kind": "reference",
+				"path": "::java::server::world::item::CustomData"
+			},
+			"damage": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::ItemDamagePredicate"
+			},
+			"enchantments": {
+				"kind": "list",
+				"item": {
+					"kind": "reference",
+					"path": "::java::data::advancement::predicate::EnchantmentPredicate"
+				}
+			},
+			"firework_explosion": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::FireworkExplosionPredicate"
+			},
+			"fireworks": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::FireworksPredicate"
+			},
+			"jukebox_playable": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::JukeboxPlayablePredicate"
+			},
+			"potion_contents": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "potion"
+											}
+										},
+										"tags": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "allowed"
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "id",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "potion"
+										}
+									}
+								}
+							]
+						}
+					}
+				]
+			},
+			"stored_enchantments": {
+				"kind": "list",
+				"item": {
+					"kind": "reference",
+					"path": "::java::data::advancement::predicate::EnchantmentPredicate"
+				}
+			},
+			"trim": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::TrimPredicate"
+			},
+			"writable_book_content": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::WritableBookPredicate"
+			},
+			"written_book_content": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::WrittenBookPredicate"
+			}
+		},
 		"minecraft:decorator_config": {
 			"carving_mask": {
 				"kind": "reference",
@@ -91557,116 +91747,6 @@
 			"special": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::Special"
-			}
-		},
-		"minecraft:item_sub_predicate": {
-			"attribute_modifiers": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::AttributeModifiersPredicate"
-			},
-			"bundle_contents": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::BundleContentsPredicate"
-			},
-			"container": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::ContainerPredicate"
-			},
-			"custom_data": {
-				"kind": "reference",
-				"path": "::java::server::world::item::CustomData"
-			},
-			"damage": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::ItemDamagePredicate"
-			},
-			"enchantments": {
-				"kind": "list",
-				"item": {
-					"kind": "reference",
-					"path": "::java::data::advancement::predicate::EnchantmentPredicate"
-				}
-			},
-			"firework_explosion": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::FireworkExplosionPredicate"
-			},
-			"fireworks": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::FireworksPredicate"
-			},
-			"jukebox_playable": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::JukeboxPlayablePredicate"
-			},
-			"potion_contents": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "potion"
-											}
-										},
-										"tags": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "allowed"
-											}
-										}
-									}
-								}
-							}
-						]
-					},
-					{
-						"kind": "list",
-						"item": {
-							"kind": "string",
-							"attributes": [
-								{
-									"name": "id",
-									"value": {
-										"kind": "literal",
-										"value": {
-											"kind": "string",
-											"value": "potion"
-										}
-									}
-								}
-							]
-						}
-					}
-				]
-			},
-			"stored_enchantments": {
-				"kind": "list",
-				"item": {
-					"kind": "reference",
-					"path": "::java::data::advancement::predicate::EnchantmentPredicate"
-				}
-			},
-			"trim": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::TrimPredicate"
-			},
-			"writable_book_content": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::WritableBookPredicate"
-			},
-			"written_book_content": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::WrittenBookPredicate"
 			}
 		},
 		"minecraft:jigsaw_max_distance_from_center": {
