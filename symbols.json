@@ -1,5 +1,5 @@
 {
-	"ref": "9d7f996b84ff6a4610d605a1d6d0ec309226daae",
+	"ref": "3f0e41de374833dfad6ac89a199cf75181c05b8a",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -31049,6 +31049,65 @@
 						"kind": "reference",
 						"path": "::java::data::variants::SpawnPrioritySelectors"
 					}
+				}
+			]
+		},
+		"::java::data::variants::cow::CowVariant": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "model",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::cow::ModelType"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The cow texture to use for this variant.\n",
+					"key": "asset_id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::SpawnPrioritySelectors"
+					}
+				}
+			]
+		},
+		"::java::data::variants::cow::ModelType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Normal",
+					"value": "normal"
+				},
+				{
+					"identifier": "Cold",
+					"value": "cold"
+				},
+				{
+					"identifier": "Warm",
+					"value": "warm"
 				}
 			]
 		},
@@ -69017,6 +69076,38 @@
 				}
 			]
 		},
+		"::java::server::world::entity::mob::breedable::cow::Cow": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::mob::breedable::Breedable"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "variant",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "cow_variant"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::server::world::entity::mob::breedable::fox::Fox": {
 			"kind": "struct",
 			"fields": [
@@ -77550,6 +77641,39 @@
 						"path": "::java::data::util::SoundEventRef"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Damage types in this tag are bypassing the blocking\n",
+					"key": "bypassed_by",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "damage_type"
+											}
+										},
+										"tags": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "required"
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -78308,6 +78432,19 @@
 					"type": {
 						"kind": "float"
 					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Maximum angle between facing direction and incoming attack direction for the blocking to be effective\n",
+					"key": "horizontal_blocking_angle",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 2,
+							"min": 0
+						}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -84488,6 +84625,31 @@
 				"kind": "reference",
 				"path": "::java::server::world::item::block::container::ContainerLoot"
 			},
+			"cow/variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "cow_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"custom_data": {
 				"kind": "reference",
 				"path": "::java::server::world::item::CustomData"
@@ -86665,7 +86827,7 @@
 			},
 			"cow": {
 				"kind": "reference",
-				"path": "::java::server::world::entity::mob::breedable::Breedable"
+				"path": "::java::server::world::entity::mob::breedable::cow::Cow"
 			},
 			"creaking": {
 				"kind": "reference",
@@ -93160,6 +93322,22 @@
 			"chat_type": {
 				"kind": "reference",
 				"path": "::java::data::chat_type::ChatType"
+			},
+			"cow_variant": {
+				"kind": "reference",
+				"path": "::java::data::variants::cow::CowVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"credits": {
 				"kind": "reference",
