@@ -3,5 +3,6 @@ dispatch minecraft:data_component["cow/variant"] to #[id="cow_variant"] string
 
 dispatch minecraft:entity[cow] to struct Cow {
 	...super::Breedable,
+	#[since="1.21.5"]
 	variant?: #[id="cow_variant"] string,
 }
