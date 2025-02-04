@@ -1,5 +1,5 @@
 {
-	"ref": "f90c48d81b988c6708db5d650d387440c6419fdf",
+	"ref": "0c0c4ff52bb7a70f8c470a5302a3a8decb309896",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -82541,6 +82541,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"black_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"blast_furnace": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -82571,6 +82581,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"blue_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"brewing_stand": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -82597,6 +82617,16 @@
 					{
 						"kind": "static",
 						"value": "container"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"brown_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -82853,6 +82883,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"cyan_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"dark_oak_hanging_sign": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -83017,6 +83057,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"gray_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"green_banner": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -83033,6 +83083,16 @@
 					{
 						"kind": "static",
 						"value": "container"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"green_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -83161,6 +83221,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"light_blue_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"light_gray_banner": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -83177,6 +83247,16 @@
 					{
 						"kind": "static",
 						"value": "container"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"light_gray_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -83201,6 +83281,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"lime_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"magenta_banner": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -83217,6 +83307,16 @@
 					{
 						"kind": "static",
 						"value": "container"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"magenta_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -83403,6 +83503,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"orange_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"pink_banner": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -83419,6 +83529,16 @@
 					{
 						"kind": "static",
 						"value": "container"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"pink_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -83463,6 +83583,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"purple_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"red_banner": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -83479,6 +83609,16 @@
 					{
 						"kind": "static",
 						"value": "container"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"red_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -83835,6 +83975,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"white_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"wither_skeleton_skull": {
 				"kind": "reference",
 				"path": "::java::server::world::block::BlockEntity"
@@ -83859,6 +84009,16 @@
 					{
 						"kind": "static",
 						"value": "container"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"yellow_wall_banner": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "banner"
 					}
 				],
 				"registry": "minecraft:block_entity"
