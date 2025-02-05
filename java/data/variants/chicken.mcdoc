@@ -1,12 +1,12 @@
 #[since="1.21.5"]
-dispatch minecraft:resource[pig_variant] to struct PigVariant {
-	model?: PigModelType,
+dispatch minecraft:resource[chicken_variant] to struct ChickenVariant {
+	model?: ChickenModelType,
 	/// The pig texture to use for this variant.
 	asset_id: #[id="texture"] string,
 	...super::SpawnPrioritySelectors,
 }
 
-enum(string) PigModelType {
+enum(string) ChickenModelType {
 	Normal = "normal",
 	Cold = "cold",
 }
