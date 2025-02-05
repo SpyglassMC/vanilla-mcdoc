@@ -1,5 +1,5 @@
 {
-	"ref": "ae6ed85cd9e69cc67ba4fa959a6764f031c925a3",
+	"ref": "c556254871d621a1d1ffb718a820460496cd359f",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -31160,7 +31160,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The pig texture to use for this variant.\n",
+					"desc": "The chicken texture to use for this variant.\n",
 					"key": "asset_id",
 					"type": {
 						"kind": "string",
