@@ -431,6 +431,7 @@
 	"::java::data::variants::banner_pattern::BannerPattern.translation_key": "Translation key prefix per dye color (e.g. `block.minecraft.banner.custom.pattern` resolves to `block.minecraft.banner.custom.pattern.<dye color>`).",
 	"::java::data::variants::BiomeCheck.biomes": "Checks if the entity is spawning in specific biomes.",
 	"::java::data::variants::cat::CatVariant.asset_id": "The cat texture to use for this variant.",
+	"::java::data::variants::chicken::ChickenVariant.asset_id": "The pig texture to use for this variant.",
 	"::java::data::variants::cow::CowVariant.asset_id": "The cow texture to use for this variant.",
 	"::java::data::variants::frog::FrogVariant.asset_id": "The frog texture to use for this variant.",
 	"::java::data::variants::instrument::Instrument.range": "Maximum range in blocks that the sound can be heard",
