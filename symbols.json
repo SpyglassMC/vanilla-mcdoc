@@ -1,5 +1,5 @@
 {
-	"ref": "0c0c4ff52bb7a70f8c470a5302a3a8decb309896",
+	"ref": "ae6ed85cd9e69cc67ba4fa959a6764f031c925a3",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -31132,6 +31132,79 @@
 				}
 			]
 		},
+		"::java::data::variants::chicken::ChickenModelType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Normal",
+					"value": "normal"
+				},
+				{
+					"identifier": "Cold",
+					"value": "cold"
+				}
+			]
+		},
+		"::java::data::variants::chicken::ChickenVariant": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "model",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::chicken::ChickenModelType"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The pig texture to use for this variant.\n",
+					"key": "asset_id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::SpawnPrioritySelectors"
+					}
+				}
+			]
+		},
+		"::java::data::variants::cow::CowModelType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Normal",
+					"value": "normal"
+				},
+				{
+					"identifier": "Cold",
+					"value": "cold"
+				},
+				{
+					"identifier": "Warm",
+					"value": "warm"
+				}
+			]
+		},
 		"::java::data::variants::cow::CowVariant": {
 			"kind": "struct",
 			"fields": [
@@ -31140,7 +31213,7 @@
 					"key": "model",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::variants::cow::ModelType"
+						"path": "::java::data::variants::cow::CowModelType"
 					},
 					"optional": true
 				},
@@ -31170,24 +31243,6 @@
 						"kind": "reference",
 						"path": "::java::data::variants::SpawnPrioritySelectors"
 					}
-				}
-			]
-		},
-		"::java::data::variants::cow::ModelType": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Normal",
-					"value": "normal"
-				},
-				{
-					"identifier": "Cold",
-					"value": "cold"
-				},
-				{
-					"identifier": "Warm",
-					"value": "warm"
 				}
 			]
 		},
@@ -31437,7 +31492,7 @@
 				}
 			]
 		},
-		"::java::data::variants::pig::ModelType": {
+		"::java::data::variants::pig::PigModelType": {
 			"kind": "enum",
 			"enumKind": "string",
 			"values": [
@@ -31459,7 +31514,7 @@
 					"key": "model",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::variants::pig::ModelType"
+						"path": "::java::data::variants::pig::PigModelType"
 					},
 					"optional": true
 				},
@@ -69153,6 +69208,38 @@
 						"kind": "int"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "variant",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "chicken_variant"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -84846,6 +84933,31 @@
 					"path": "::java::server::world::item::ItemStack"
 				}
 			},
+			"chicken/variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "chicken_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"consumable": {
 				"kind": "reference",
 				"path": "::java::server::world::item::Consumable",
@@ -93574,6 +93686,22 @@
 			"chat_type": {
 				"kind": "reference",
 				"path": "::java::data::chat_type::ChatType"
+			},
+			"chicken_variant": {
+				"kind": "reference",
+				"path": "::java::data::variants::chicken::ChickenVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"cow_variant": {
 				"kind": "reference",
