@@ -1,5 +1,5 @@
 {
-	"ref": "19cd26cd75f4c9c8aecf8368e885a48a1ef776ed",
+	"ref": "de18751905f435f54985e4b9c40a9d6cdffd2aab",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -2867,6 +2867,22 @@
 				{
 					"identifier": "Carried",
 					"value": "carried"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"identifier": "Component",
+					"value": "component"
 				},
 				{
 					"identifier": "CustomModelData",
