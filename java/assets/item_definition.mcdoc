@@ -159,6 +159,8 @@ enum(string) ConditionalPropertyType {
 	Broken = "broken",
 	BundleHasSelectedItem = "bundle/has_selected_item",
 	Carried = "carried",
+	#[since="1.21.5"]
+	Component = "component",
 	CustomModelData = "custom_model_data",
 	Damaged = "damaged",
 	ExtendedView = "extended_view",
