@@ -1,5 +1,5 @@
 {
-	"ref": "de18751905f435f54985e4b9c40a9d6cdffd2aab",
+	"ref": "2ae717b068650a36f38f5a885b64045975334d24",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -64619,6 +64619,103 @@
 				}
 			]
 		},
+		"::java::server::world::entity::BlockAttachedEntity": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::EntityBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "TileX",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "TileY",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "TileZ",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "block_pos",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::server::world::entity::boat::Boat": {
 			"kind": "struct",
 			"fields": [
@@ -66183,7 +66280,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Block state for the placed block.\n",
+					"desc": "Block state for the placed block. Defaults to sand.\n",
 					"key": "BlockState",
 					"type": {
 						"kind": "reference",
@@ -66439,32 +66536,8 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::world::entity::EntityBase"
+						"path": "::java::server::world::entity::BlockAttachedEntity"
 					}
-				},
-				{
-					"kind": "pair",
-					"key": "TileX",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "TileY",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "TileZ",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -67058,7 +67131,19 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether to display a custom block.\n",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Whether to display a custom block. Must be true for custom display block to be displayed.\n",
 					"key": "CustomDisplayTile",
 					"type": {
 						"kind": "boolean"
@@ -67067,7 +67152,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Custom block to display.\n\nOnly has effects when `CustomDisplayTile` is true.\n",
+					"desc": "Custom block to display.\n",
 					"key": "DisplayState",
 					"type": {
 						"kind": "reference",
@@ -67077,7 +67162,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Vertical offset of the custom block display.\n",
+					"desc": "Vertical offset of the block display.\n",
 					"key": "DisplayOffset",
 					"type": {
 						"kind": "int"
@@ -67703,6 +67788,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Whether the allay can duplicate. This is set to false when the allay duplicates.\n",
 					"key": "CanDuplicate",
 					"type": {
@@ -67712,7 +67809,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Ticks until `CanDuplicate` is set to true. This is set to 6000 game ticks (5 minutes) when the allay duplicates.\n",
+					"desc": "Ticks until the allay can duplicate. This is set to 6000 game ticks (5 minutes) when the allay duplicates.\n",
 					"key": "DuplicationCooldown",
 					"type": {
 						"kind": "int"
@@ -70713,7 +70810,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Collar color, present for stray cats.\n",
+					"desc": "Collar color, present for stray cats. Defaults to 14 (red).\n",
 					"key": "CollarColor",
 					"type": {
 						"kind": "reference",
@@ -71008,7 +71105,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Collar color, present for wild wolfs.\n",
+					"desc": "Collar color, present for wild wolfs. Defaults to 14 (red).\n",
 					"key": "CollarColor",
 					"type": {
 						"kind": "reference",
@@ -71083,6 +71180,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Whether it has an egg.\n",
 					"key": "HasEgg",
 					"type": {
@@ -71092,6 +71201,39 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Whether it has an egg.\n",
+					"key": "has_egg",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "HomePosX",
 					"type": {
 						"kind": "int"
@@ -71100,6 +71242,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "HomePosY",
 					"type": {
 						"kind": "int"
@@ -71108,6 +71262,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "HomePosZ",
 					"type": {
 						"kind": "int"
@@ -71116,6 +71282,43 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "home_pos",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "X coordinate of its travel target.\n",
 					"key": "TravelPosX",
 					"type": {
@@ -71125,6 +71328,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Y coordinate of its travel target.\n",
 					"key": "TravelPosY",
 					"type": {
@@ -71134,6 +71349,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Z coordinate of its travel target.\n",
 					"key": "TravelPosZ",
 					"type": {
@@ -71722,6 +71949,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "X coordinate of the treasure it leads to.\n",
 					"key": "TreasurePosX",
 					"type": {
@@ -71731,6 +71970,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Y coordinate of the treasure it leads to.\n",
 					"key": "TreasurePosY",
 					"type": {
@@ -71740,6 +71991,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Z coordinate of the treasure it leads to.\n",
 					"key": "TreasurePosZ",
 					"type": {
@@ -72315,6 +72578,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "X coordinate of where it is sleeping.\n",
 					"key": "SleepingX",
 					"type": {
@@ -72324,6 +72599,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Y coordinate of where it is sleeping.\n",
 					"key": "SleepingY",
 					"type": {
@@ -72333,10 +72620,47 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Z coordinate of where it is sleeping.\n",
 					"key": "SleepingZ",
 					"type": {
 						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "sleeping_pos",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
 					},
 					"optional": true
 				},
@@ -72882,6 +73206,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Approximate circle x coordinate.\n",
 					"key": "AX",
 					"type": {
@@ -72891,6 +73227,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Approximate circle y coordinate.\n",
 					"key": "AY",
 					"type": {
@@ -72900,6 +73248,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Approximate circle z coordinate.\n",
 					"key": "AZ",
 					"type": {
@@ -72909,7 +73269,70 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Approximate circle coordinates.\n",
+					"key": "anchor_pos",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "Size",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 64
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "size",
 					"type": {
 						"kind": "int",
 						"valueRange": {
@@ -73355,6 +73778,16 @@
 									"value": "1.16"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
 						}
 					],
 					"desc": "Dimension of the player's respawn point.\n",
@@ -73388,6 +73821,16 @@
 									"value": "1.16.2"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
 						}
 					],
 					"desc": "The Y-rotation of the player's respawn point.\n",
@@ -73399,6 +73842,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "X coordinate of the player's spawn point.\n",
 					"key": "SpawnX",
 					"type": {
@@ -73408,6 +73863,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Y coordinate of the player's spawn point.\n",
 					"key": "SpawnY",
 					"type": {
@@ -73417,6 +73884,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Z coordinate of the player's spawn point.\n",
 					"key": "SpawnZ",
 					"type": {
@@ -73426,10 +73905,43 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Whether the player must spawn at the spawn point.\n",
 					"key": "SpawnForced",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "respawn",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::mob::player::Respawn"
 					},
 					"optional": true
 				},
@@ -73583,11 +74095,52 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Position that the player entered the nether at.\n",
 					"key": "enteredNetherPosition",
 					"type": {
 						"kind": "reference",
 						"path": "::java::server::world::entity::mob::player::EnteredNetherPosition"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Position that the player entered the nether at.\n",
+					"key": "entered_nether_pos",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "double"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
 					},
 					"optional": true
 				},
@@ -73812,6 +74365,63 @@
 					"kind": "pair",
 					"desc": "Whether the player has the crafting book open in the furnace.\n",
 					"key": "isFurnaceGuiOpen",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::server::world::entity::mob::player::Respawn": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The block coordinates of the player's respawn point\n",
+					"key": "pos",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The Y-rotation of the player's respawn point\n",
+					"key": "angle",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Dimension of the player's respawn point. Defaults to overworld.\n",
+					"key": "dimension",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "dimension"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the player must spawn at the respawn point.\n",
+					"key": "forced",
 					"type": {
 						"kind": "boolean"
 					},
@@ -74598,6 +75208,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "X coordinate of the center of its wander bounds.\n",
 					"key": "BoundX",
 					"type": {
@@ -74607,6 +75229,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Y coordinate of the center of its wander bounds.\n",
 					"key": "BoundY",
 					"type": {
@@ -74616,6 +75250,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Z coordinate of the center of its wander bounds.\n",
 					"key": "BoundZ",
 					"type": {
@@ -74625,8 +75271,67 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Coordinates of the center of its wander bounds.\n",
+					"key": "bound_pos",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Ticks until it starts to die.\n",
 					"key": "LifeTicks",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Ticks until it starts to die.\n",
+					"key": "life_ticks",
 					"type": {
 						"kind": "int"
 					},
@@ -75069,32 +75774,8 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::world::entity::EntityBase"
+						"path": "::java::server::world::entity::BlockAttachedEntity"
 					}
-				},
-				{
-					"kind": "pair",
-					"key": "TileX",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "TileY",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "TileZ",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -76478,6 +77159,7 @@
 							}
 						}
 					],
+					"desc": "Defaults to tnt.\n",
 					"key": "block_state",
 					"type": {
 						"kind": "reference",
@@ -87651,6 +88333,10 @@
 						}
 					}
 				]
+			},
+			"leash_knot": {
+				"kind": "reference",
+				"path": "::java::server::world::entity::BlockAttachedEntity"
 			},
 			"lingering_potion": {
 				"kind": "reference",
