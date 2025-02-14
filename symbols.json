@@ -1,5 +1,5 @@
 {
-	"ref": "2ae717b068650a36f38f5a885b64045975334d24",
+	"ref": "f77ad5392f7abdb0d07ff331745d1171275cb686",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -53632,27 +53632,84 @@
 						"fields": [
 							{
 								"kind": "pair",
-								"key": "raw",
+								"desc": "A list of tests. For each test, there must be at least one page whose raw contents match\n\nexactly.\n",
+								"key": "contains",
 								"type": {
-									"kind": "reference",
-									"path": "::java::server::util::T"
-								}
+									"kind": "list",
+									"item": {
+										"kind": "reference",
+										"path": "::java::server::util::T"
+									}
+								},
+								"optional": true
 							},
 							{
 								"kind": "pair",
-								"desc": "Shown only to players with chat filtering enabled.\n",
-								"key": "filtered",
+								"desc": "When set total number of pages must match exactly or lie within the range.\n",
+								"key": "size",
 								"type": {
-									"kind": "reference",
-									"path": "::java::server::util::T"
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::util::MinMaxBounds"
+									},
+									"typeArgs": [
+										{
+											"kind": "int",
+											"valueRange": {
+												"kind": 0,
+												"min": 0
+											}
+										}
+									]
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Checks the total number of pages that match this test.\n",
+								"key": "count",
+								"type": {
+									"kind": "list",
+									"item": {
+										"kind": "struct",
+										"fields": [
+											{
+												"kind": "pair",
+												"desc": "The contents this page's raw text must match exactly.\n",
+												"key": "test",
+												"type": {
+													"kind": "reference",
+													"path": "::java::server::util::T"
+												}
+											},
+											{
+												"kind": "pair",
+												"desc": "The number of pages that must match the test.\n",
+												"key": "count",
+												"type": {
+													"kind": "concrete",
+													"child": {
+														"kind": "reference",
+														"path": "::java::data::util::MinMaxBounds"
+													},
+													"typeArgs": [
+														{
+															"kind": "int",
+															"valueRange": {
+																"kind": 0,
+																"min": 1
+															}
+														}
+													]
+												}
+											}
+										]
+									}
 								},
 								"optional": true
 							}
 						]
-					},
-					{
-						"kind": "reference",
-						"path": "::java::server::util::T"
 					}
 				]
 			},
@@ -53667,7 +53724,92 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "raw",
+					"desc": "A list of tests. For each test, there must be at least one page whose raw contents match\n\nexactly.\n",
+					"key": "contains",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::server::util::T"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "When set total number of pages must match exactly or lie within the range.\n",
+					"key": "size",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Checks the total number of pages that match this test.\n",
+					"key": "count",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"desc": "The contents this page's raw text must match exactly.\n",
+									"key": "test",
+									"type": {
+										"kind": "reference",
+										"path": "::java::server::util::T"
+									}
+								},
+								{
+									"kind": "pair",
+									"desc": "The number of pages that must match the test.\n",
+									"key": "count",
+									"type": {
+										"kind": "concrete",
+										"child": {
+											"kind": "reference",
+											"path": "::java::data::util::MinMaxBounds"
+										},
+										"typeArgs": [
+											{
+												"kind": "int",
+												"valueRange": {
+													"kind": 0,
+													"min": 1
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::server::util::FilteredTextCountTest": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The contents this page's raw text must match exactly.\n",
+					"key": "test",
 					"type": {
 						"kind": "reference",
 						"path": "::java::server::util::T"
@@ -53675,13 +53817,24 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Shown only to players with chat filtering enabled.\n",
-					"key": "filtered",
+					"desc": "The number of pages that must match the test.\n",
+					"key": "count",
 					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::T"
-					},
-					"optional": true
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								}
+							}
+						]
+					}
 				}
 			]
 		},
