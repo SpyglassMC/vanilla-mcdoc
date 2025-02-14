@@ -1,5 +1,5 @@
 {
-	"ref": "f2d0e9d777b86776ab229f61ba4a259a81c6e7f6",
+	"ref": "61d0fe2bad313038726e89e4716550626e6fc1e8",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -14611,6 +14611,7 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "Matches the raw text, instead of filtered.\n",
 					"key": "pages",
 					"type": {
 						"kind": "concrete",
@@ -14620,16 +14621,7 @@
 						},
 						"typeArgs": [
 							{
-								"kind": "concrete",
-								"child": {
-									"kind": "reference",
-									"path": "::java::server::util::Filterable"
-								},
-								"typeArgs": [
-									{
-										"kind": "string"
-									}
-								]
+								"kind": "string"
 							}
 						]
 					},
@@ -14642,6 +14634,7 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "Matches the raw text, instead of filtered.\n",
 					"key": "pages",
 					"type": {
 						"kind": "concrete",
@@ -14651,17 +14644,8 @@
 						},
 						"typeArgs": [
 							{
-								"kind": "concrete",
-								"child": {
-									"kind": "reference",
-									"path": "::java::server::util::Filterable"
-								},
-								"typeArgs": [
-									{
-										"kind": "reference",
-										"path": "::java::server::util::text::Text"
-									}
-								]
+								"kind": "reference",
+								"path": "::java::server::util::text::Text"
 							}
 						]
 					},
