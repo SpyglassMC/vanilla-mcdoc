@@ -1,3 +1,5 @@
+use ::java::data::util::MinMaxBounds
+
 // Some aliases for common utils.
 
 // TODO - Add exports for all utilities to this file and refactor existing imports
@@ -14,9 +16,19 @@ type Particle = particle::Particle
 
 type Filterable<T> = (
 	struct FilteredText {
-		raw: T,
-		/// Shown only to players with chat filtering enabled.
-		filtered?: T,
-	} |
-	T |
+		/// A list of tests. For each test, there must be at least one page whose raw contents match
+		/// exactly.
+		contains?: [T],
+		/// When set total number of pages must match exactly or lie within the range.
+		size?: MinMaxBounds<int @ 0..>,
+		/// Checks the total number of pages that match this test.
+		count?: [
+			struct FilteredTextCountTest {
+				/// The contents this page's raw text must match exactly.
+				test: T,
+				/// The number of pages that must match the test.
+				count: MinMaxBounds<int @ 1..>
+			}
+		]
+	}
 )
