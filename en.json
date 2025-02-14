@@ -147,6 +147,8 @@
 	"::java::data::advancement::predicate::PlayerPredicate.input": "Checks the movement keys of the player.",
 	"::java::data::advancement::predicate::PlayerPredicate.level": "Experience/XP level.",
 	"::java::data::advancement::predicate::TropicalFishPredicate.variant": "The pattern of the tropical fish.",
+	"::java::data::advancement::predicate::WritableBookPredicate.pages": "Matches the raw text, instead of filtered.",
+	"::java::data::advancement::predicate::WrittenBookPredicate.pages": "Matches the raw text, instead of filtered.",
 	"::java::data::advancement::trigger::BeeNestDestroyed.item": "Item used to break the block.",
 	"::java::data::advancement::trigger::BeeNestDestroyed.num_bees_inside": "Number of bees that were inside the bee nest/beehive before it was broken.",
 	"::java::data::advancement::trigger::ConstructBeacon.level": "Tier of the updated beacon base.",
