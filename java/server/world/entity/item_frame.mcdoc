@@ -1,10 +1,7 @@
 use ::java::server::world::item::ItemStack
 
 dispatch minecraft:entity[item_frame] to struct ItemFrame {
-	...super::EntityBase,
-	TileX?: int,
-	TileY?: int,
-	TileZ?: int,
+	...super::BlockAttachedEntity,
 	/// Direction it is facing.
 	Facing?: Facing,
 	Item?: ItemStack,

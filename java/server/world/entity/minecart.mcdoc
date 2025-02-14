@@ -14,12 +14,12 @@ struct ContainerMinecart {
 
 dispatch minecraft:entity[minecart] to struct Minecart {
 	...super::EntityBase,
-	/// Whether to display a custom block.
+	/// Whether to display a custom block. Must be true for custom display block to be displayed.
+	#[until="1.21.5"]
 	CustomDisplayTile?: boolean,
 	/// Custom block to display.
-	/// Only has effects when `CustomDisplayTile` is true.
 	DisplayState?: BlockState,
-	/// Vertical offset of the custom block display.
+	/// Vertical offset of the block display.
 	DisplayOffset?: int,
 }
 

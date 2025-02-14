@@ -29,18 +29,26 @@ dispatch minecraft:entity[player] to struct Player {
 	SelectedItem?: SlottedItem<PlayerSlot>,
 	/// Dimension of the player's respawn point.
 	#[since="1.16"]
+	#[until="1.21.5"]
 	SpawnDimension?: #[id="dimension"] string,
 	/// The Y-rotation of the player's respawn point.
 	#[since="1.16.2"]
+	#[until="1.21.5"]
 	SpawnAngle?: float,
 	/// X coordinate of the player's spawn point.
+	#[until="1.21.5"]
 	SpawnX?: int,
 	/// Y coordinate of the player's spawn point.
+	#[until="1.21.5"]
 	SpawnY?: int,
 	/// Z coordinate of the player's spawn point.
+	#[until="1.21.5"]
 	SpawnZ?: int,
 	/// Whether the player must spawn at the spawn point.
+	#[until="1.21.5"]
 	SpawnForced?: boolean,
+	#[since="1.21.5"]
+	respawn?: Respawn,
 	/// Ticks the player has been in bed.
 	SleepTimer?: short,
 	/// Level of the hunger bar.
@@ -65,7 +73,11 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Abilities of the player.
 	abilities?: Abilities,
 	/// Position that the player entered the nether at.
+	#[until="1.21.5"]
 	enteredNetherPosition?: EnteredNetherPosition,
+	/// Position that the player entered the nether at.
+	#[since="1.21.5"]
+	entered_nether_pos?: [double] @ 3,
 	/// Entity that the player is riding.
 	RootVehicle?: RootVehicle,
 	/// Entity that is on the player's left shoulder.
@@ -168,4 +180,16 @@ struct WardenSpawnTracker {
 struct EnderPearl {
 	ender_pearl_dimension: #[id="dimension"] string,
 	...AnyEntity,
+}
+
+// CODEC is in net/minecraft/server/level/ServerPlayer (Mojang mappings)
+struct Respawn {
+	/// The block coordinates of the player's respawn point
+	pos: int[] @ 3,
+	/// The Y-rotation of the player's respawn point
+	angle?: float,
+	/// Dimension of the player's respawn point. Defaults to overworld.
+	dimension?: #[id="dimension"] string,
+	/// Whether the player must spawn at the respawn point.
+	forced?: boolean,
 }

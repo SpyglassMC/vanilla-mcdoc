@@ -3,10 +3,13 @@ dispatch minecraft:entity[dolphin] to struct Dolphin {
 	#[since="1.21.2"]
 	...super::AgeableMob,
 	/// X coordinate of the treasure it leads to.
+	#[until="1.21.5"]
 	TreasurePosX?: int,
 	/// Y coordinate of the treasure it leads to.
+	#[until="1.21.5"]
 	TreasurePosY?: int,
 	/// Z coordinate of the treasure it leads to.
+	#[until="1.21.5"]
 	TreasurePosZ?: int,
 	/// Whether it has gotten fish from a player.
 	GotFish?: boolean,

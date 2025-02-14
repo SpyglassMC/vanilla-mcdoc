@@ -4,7 +4,7 @@ dispatch minecraft:entity[falling_block] to struct FallingBlock {
 	...super::EntityBase,
 	/// NBT data for the placed block.
 	TileEntityData?: minecraft:block[[BlockState.Name]],
-	/// Block state for the placed block.
+	/// Block state for the placed block. Defaults to sand.
 	BlockState?: BlockState,
 	/// Ticks it has existed.
 	Time?: int,

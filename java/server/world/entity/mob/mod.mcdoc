@@ -21,11 +21,16 @@ struct LivingEntity {
 	/// Whether it will glide when it falls.
 	FallFlying?: boolean,
 	/// X coordinate of where it is sleeping.
+	#[until="1.21.5"]
 	SleepingX?: int,
 	/// Y coordinate of where it is sleeping.
+	#[until="1.21.5"]
 	SleepingY?: int,
 	/// Z coordinate of where it is sleeping.
+	#[until="1.21.5"]
 	SleepingZ?: int,
+	#[since="1.21.5"]
+	sleeping_pos?: int[] @ 3,
 	Brain?: struct Brain {
 		memories?: Memories,
 	},

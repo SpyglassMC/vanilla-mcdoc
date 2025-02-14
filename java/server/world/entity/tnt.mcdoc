@@ -8,6 +8,7 @@ dispatch minecraft:entity[tnt] to struct Tnt {
 	/// Ticks until it explodes.
 	#[since="1.20.3"]
 	fuse?: short,
+	/// Defaults to tnt.
 	#[since="1.20.3"]
 	block_state?: BlockState,
 	#[since="1.21.2"]

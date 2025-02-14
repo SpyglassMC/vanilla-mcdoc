@@ -57,6 +57,20 @@ struct EntityBase {
 	TicksFrozen?: int,
 }
 
+struct BlockAttachedEntity {
+	...EntityBase,
+	#[until="1.21.5"]
+	TileX?: int,
+	#[until="1.21.5"]
+	TileY?: int,
+	#[until="1.21.5"]
+	TileZ?: int,
+	#[since="1.21.5"]
+	block_pos?: int[] @ 3,
+}
+
+dispatch minecraft:entity[leash_knot] to BlockAttachedEntity
+
 struct AnyEntity {
 	/// The ID of this entity. Not present on player entities.
 	id: #[id="entity_type"] string,

@@ -7,10 +7,7 @@ dispatch minecraft:data_component["painting/variant"] to (
 )
 
 dispatch minecraft:entity[painting] to struct Painting {
-	...super::EntityBase,
-	TileX?: int,
-	TileY?: int,
-	TileZ?: int,
+	...super::BlockAttachedEntity,
 	/// Direction it is facing.
 	Facing?: Facing,
 	/// Type of painting.
