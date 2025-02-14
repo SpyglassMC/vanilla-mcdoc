@@ -1,5 +1,5 @@
 {
-	"ref": "5d8c0ff537ae2d05497f5dd0724073cb2b949813",
+	"ref": "f2d0e9d777b86776ab229f61ba4a259a81c6e7f6",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -9424,7 +9424,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "A list of tests. For each test, there must be at least one page whose contents match exactly.\n",
+					"desc": "A list of tests. For each test, there must be at least one entry whose contents match exactly.\n",
 					"key": "contains",
 					"type": {
 						"kind": "list",
@@ -9445,7 +9445,7 @@
 							"fields": [
 								{
 									"kind": "pair",
-									"desc": "The contents a page's text must match exactly.\n",
+									"desc": "The contents an entry's text must match exactly.\n",
 									"key": "test",
 									"type": {
 										"kind": "reference",
@@ -9454,7 +9454,7 @@
 								},
 								{
 									"kind": "pair",
-									"desc": "The number of pages that must match the test.\n",
+									"desc": "The number of entries that must match the test.\n",
 									"key": "count",
 									"type": {
 										"kind": "concrete",
@@ -9476,7 +9476,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "When set, total number of pages must match exactly or lie within the range.\n",
+					"desc": "When set, total number of entries in the this collection.\n",
 					"key": "size",
 					"type": {
 						"kind": "concrete",
@@ -9992,7 +9992,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The contents a page's text must match exactly.\n",
+					"desc": "The contents an entry's text must match exactly.\n",
 					"key": "test",
 					"type": {
 						"kind": "reference",
@@ -10001,7 +10001,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The number of pages that must match the test.\n",
+					"desc": "The number of entries that must match the test.\n",
 					"key": "count",
 					"type": {
 						"kind": "concrete",
@@ -10025,7 +10025,7 @@
 				"fields": [
 					{
 						"kind": "pair",
-						"desc": "A list of tests. For each test, there must be at least one page whose contents match exactly.\n",
+						"desc": "A list of tests. For each test, there must be at least one entry whose contents match exactly.\n",
 						"key": "contains",
 						"type": {
 							"kind": "list",
@@ -10046,7 +10046,7 @@
 								"fields": [
 									{
 										"kind": "pair",
-										"desc": "The contents a page's text must match exactly.\n",
+										"desc": "The contents an entry's text must match exactly.\n",
 										"key": "test",
 										"type": {
 											"kind": "reference",
@@ -10055,7 +10055,7 @@
 									},
 									{
 										"kind": "pair",
-										"desc": "The number of pages that must match the test.\n",
+										"desc": "The number of entries that must match the test.\n",
 										"key": "count",
 										"type": {
 											"kind": "concrete",
@@ -10077,7 +10077,7 @@
 					},
 					{
 						"kind": "pair",
-						"desc": "When set, total number of pages must match exactly or lie within the range.\n",
+						"desc": "When set, total number of entries in the this collection.\n",
 						"key": "size",
 						"type": {
 							"kind": "concrete",
