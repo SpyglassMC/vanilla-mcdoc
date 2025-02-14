@@ -98,11 +98,13 @@ dispatch minecraft:data_component_predicate[trim] to struct TrimPredicate {
 }
 
 dispatch minecraft:data_component_predicate[writable_book_content] to struct WritableBookPredicate {
-	pages?: CollectionPredicate<Filterable<string>>,
+	/// Matches the raw text, instead of filtered.
+	pages?: CollectionPredicate<string>,
 }
 
 dispatch minecraft:data_component_predicate[written_book_content] to struct WrittenBookPredicate {
-	pages?: CollectionPredicate<Filterable<Text>>,
+	/// Matches the raw text, instead of filtered.
+	pages?: CollectionPredicate<Text>,
 	author?: string,
 	title?: string,
 	generation?: MinMaxBounds<int>,
