@@ -515,14 +515,14 @@ struct DamageTagPredicate {
 }
 
 type CollectionPredicate<P> = struct {
-	/// A list of tests. For each test, there must be at least one page whose contents match exactly.
+	/// A list of tests. For each test, there must be at least one entry whose contents match exactly.
 	contains?: [P],
 	count?: [struct CollectionCountPredicate {
-		/// The contents a page's text must match exactly.
+		/// The contents an entry's text must match exactly.
 		test: P,
-		/// The number of pages that must match the test.
+		/// The number of entries that must match the test.
 		count: MinMaxBounds<int>,
 	}],
-	/// When set, total number of pages must match exactly or lie within the range.
+	/// When set, total number of entries in the this collection.
 	size?: MinMaxBounds<int>,
 }
