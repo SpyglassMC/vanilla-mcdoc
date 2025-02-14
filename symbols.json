@@ -1,5 +1,5 @@
 {
-	"ref": "3b148c3089b8d39dad680d25528961f639ac670d",
+	"ref": "5d8c0ff537ae2d05497f5dd0724073cb2b949813",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -9424,6 +9424,7 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "A list of tests. For each test, there must be at least one page whose contents match exactly.\n",
 					"key": "contains",
 					"type": {
 						"kind": "list",
@@ -9444,6 +9445,7 @@
 							"fields": [
 								{
 									"kind": "pair",
+									"desc": "The contents a page's text must match exactly.\n",
 									"key": "test",
 									"type": {
 										"kind": "reference",
@@ -9452,6 +9454,7 @@
 								},
 								{
 									"kind": "pair",
+									"desc": "The number of pages that must match the test.\n",
 									"key": "count",
 									"type": {
 										"kind": "concrete",
@@ -9473,6 +9476,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "When set, total number of pages must match exactly or lie within the range.\n",
 					"key": "size",
 					"type": {
 						"kind": "concrete",
@@ -9988,6 +9992,7 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "The contents a page's text must match exactly.\n",
 					"key": "test",
 					"type": {
 						"kind": "reference",
@@ -9996,6 +10001,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "The number of pages that must match the test.\n",
 					"key": "count",
 					"type": {
 						"kind": "concrete",
@@ -10019,6 +10025,7 @@
 				"fields": [
 					{
 						"kind": "pair",
+						"desc": "A list of tests. For each test, there must be at least one page whose contents match exactly.\n",
 						"key": "contains",
 						"type": {
 							"kind": "list",
@@ -10039,6 +10046,7 @@
 								"fields": [
 									{
 										"kind": "pair",
+										"desc": "The contents a page's text must match exactly.\n",
 										"key": "test",
 										"type": {
 											"kind": "reference",
@@ -10047,6 +10055,7 @@
 									},
 									{
 										"kind": "pair",
+										"desc": "The number of pages that must match the test.\n",
 										"key": "count",
 										"type": {
 											"kind": "concrete",
@@ -10068,6 +10077,7 @@
 					},
 					{
 						"kind": "pair",
+						"desc": "When set, total number of pages must match exactly or lie within the range.\n",
 						"key": "size",
 						"type": {
 							"kind": "concrete",
