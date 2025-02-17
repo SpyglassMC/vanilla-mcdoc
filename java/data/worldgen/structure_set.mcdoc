@@ -10,8 +10,8 @@ dispatch minecraft:resource["worldgen/structure_set"] to struct StructureSet {
 
 struct StructureSetElement {
 	structure: (
-		#[until="1.19"] #[id(registry="worldgen/configured_structure_feature",tags=allowed)] string |
-		#[since="1.19"] #[id(registry="worldgen/structure",tags=allowed)] string |
+		#[until="1.19"] #[id(registry="worldgen/configured_structure_feature")] string |
+		#[since="1.19"] #[id(registry="worldgen/structure")] string |
 	),
 	weight: int @ 1..,
 }
