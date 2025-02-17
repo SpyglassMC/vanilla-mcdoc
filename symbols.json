@@ -1,5 +1,5 @@
 {
-	"ref": "61d0fe2bad313038726e89e4716550626e6fc1e8",
+	"ref": "756cb685b663d1748d4a32a28384068acde89b34",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -48372,10 +48372,6 @@
 														"kind": "string",
 														"value": "worldgen/configured_structure_feature"
 													}
-												},
-												"tags": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::structure_set::allowed"
 												}
 											}
 										}
@@ -48406,10 +48402,6 @@
 														"kind": "string",
 														"value": "worldgen/structure"
 													}
-												},
-												"tags": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::structure_set::allowed"
 												}
 											}
 										}
