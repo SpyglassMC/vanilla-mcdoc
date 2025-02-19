@@ -99,6 +99,8 @@ struct BiomeEffects {
 	water_fog_color: #[color="composite_rgb"] int,
 	grass_color?: #[color="composite_rgb"] int,
 	foliage_color?: #[color="composite_rgb"] int,
+	#[since="1.21.5"]
+	dry_foliage_color?: #[color="composite_rgb"] int,
 	grass_color_modifier?: GrassColorModifier,
 	ambient_sound?: SoundEventRef,
 	mood_sound?: struct MoodSound {
