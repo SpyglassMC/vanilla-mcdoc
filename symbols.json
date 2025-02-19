@@ -1,5 +1,5 @@
 {
-	"ref": "756cb685b663d1748d4a32a28384068acde89b34",
+	"ref": "16794af1fb8bf4b243c74bb8cf75392e5f8d3eff",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -31833,6 +31833,59 @@
 				}
 			]
 		},
+		"::java::data::variants::wolf::WolfSoundVariant": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "death_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "growl_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "hurt_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "pant_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "whine_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				}
+			]
+		},
 		"::java::data::variants::wolf::WolfVariant": {
 			"kind": "struct",
 			"fields": [
@@ -33479,6 +33532,38 @@
 				{
 					"kind": "pair",
 					"key": "foliage_color",
+					"type": {
+						"kind": "int",
+						"attributes": [
+							{
+								"name": "color",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "composite_rgb"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "dry_foliage_color",
 					"type": {
 						"kind": "int",
 						"attributes": [
@@ -71113,6 +71198,27 @@
 							}
 						}
 					],
+					"key": "body_armor_item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::item::ItemStack"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
 					"key": "variant",
 					"type": {
 						"kind": "string",
@@ -71140,15 +71246,26 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "1.20.5"
+									"value": "1.21.5"
 								}
 							}
 						}
 					],
-					"key": "body_armor_item",
+					"key": "sound_variant",
 					"type": {
-						"kind": "reference",
-						"path": "::java::server::world::item::ItemStack"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "wolf_sound_variant"
+									}
+								}
+							}
+						]
 					},
 					"optional": true
 				}
@@ -86944,6 +87061,31 @@
 					}
 				]
 			},
+			"wolf/sound_variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "wolf_sound_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"wolf/variant": {
 				"kind": "string",
 				"attributes": [
@@ -94737,6 +94879,22 @@
 							"value": {
 								"kind": "string",
 								"value": "1.19.4"
+							}
+						}
+					}
+				]
+			},
+			"wolf_sound_variant": {
+				"kind": "reference",
+				"path": "::java::data::variants::wolf::WolfSoundVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
 							}
 						}
 					}
