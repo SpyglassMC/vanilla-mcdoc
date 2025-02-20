@@ -51,17 +51,19 @@ struct LegacyExplosion {
 	Flicker?: boolean,
 	/// Whether the explosion should have a trail.
 	Trail?: boolean,
-	Type?: (enum(byte) {
-		SmallBall = 0,
-		LargeBall = 1,
-		Star = 2,
-		Creeper = 3,
-		Burst = 4,
-	}),
+	Type?: LegacyExplosionType,
 	/// Colors of the explosion.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	Colors?: #[color="composite_rgb"] int[],
 	/// Colors of the explosion fade.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	FadeColors?: #[color="composite_rgb"] int[],
+}
+
+enum(byte) LegacyExplosionType {
+	SmallBall = 0,
+	LargeBall = 1,
+	Star = 2,
+	Creeper = 3,
+	Burst = 4,
 }

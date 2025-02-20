@@ -24,19 +24,7 @@ struct DisplayBase {
 	///  - `w`: This value is used as a divisor of all other values (except `i0`-`i2`). i.e. all the other values get divided by `w` before doing any further calculations.
 	///  - `tx`, `ty`, `tz`: Translation value, this is used directly as the `transformation.translation` after dividing by `w`. i.e. `transformation:{translation:[tx/w, ty/w, tz/w]}`.
 	///  - `s0`-`s8`: After dividing each element by `w`, this top left 3x3 of the matrix is passed through the [Singular Value Decomposition](https://en.wikipedia.org/wiki/Singular_value_decomposition) algorithm to extract the `transformation.left_rotation`, `transformation.scale`, and `transformation.right_rotation`. The exact values of this decomposition are difficult to predict.
-	transformation?: (
-		#[canonical] struct DecomposedTransformation {
-			/// Translation in [x, y, z].
-			translation: [float] @ 3,
-			/// Using this rotation is enough for most transformations.
-			left_rotation: Rotation,
-			/// For more complex transformations.
-			right_rotation: Rotation,
-			/// Scale in [x, y, z].
-			scale: [float] @ 3,
-		} |
-		([float] @ 16) | 
-	),
+	transformation?: Transformation,
 	/// Size of shadow. Defaults to 0 (no shadow). Interpolated.
 	shadow_radius?: float @ 0..,
 	/// Strength of the shadow. Controls the opacity of the shadow as a function of distance to block below. Defaults to 1. Interpolated.
@@ -58,23 +46,9 @@ struct DisplayBase {
 	#[since="1.20.2"]
 	teleport_duration?: int @ 0..59,
 	/// Controls if model should pivot to face player when rendered. Defaults to `fixed`.
-	billboard?: enum(string) Billboard {
-		/// No rotation.
-		Fixed = "fixed",
-		/// Pivot around vertical axis.
-		Vertical = "vertical",
-		/// Pivot around horizontal axis.
-		Horizontal = "horizontal",
-		/// Pivot around both axes.
-		Center = "center",
-	},
+	billboard?: Billboard,
 	/// When defined, overrides light values used for rendering. Omitted by default (which means rendering uses values from entity position).
-	brightness?: struct Brightness {
-		/// Value of skylight.
-		sky: int @ 0..15,
-		/// Value of block light.
-		block: int @ 0..15,
-	},
+	brightness?: Brightness,
 	/// Maximum view range of this entity. Actual distance depends on client-side render distance and entity distance scaling. Default value 1.0 (roughly the same as fireball).
 	view_range?: float @ 0..,
 	/// Describe width of culling bounding box.
@@ -90,12 +64,44 @@ struct DisplayBase {
 	glow_color_override?: (0 | #[color="composite_rgb"] int),
 }
 
+type Transformation = (
+	#[canonical] struct DecomposedTransformation {
+		/// Translation in [x, y, z].
+		translation: [float] @ 3,
+		/// Using this rotation is enough for most transformations.
+		left_rotation: Rotation,
+		/// For more complex transformations.
+		right_rotation: Rotation,
+		/// Scale in [x, y, z].
+		scale: [float] @ 3,
+	} |
+	([float] @ 16) | 
+)
+
 type Rotation = (
 	// Quaternion form (used for saving) in [x, y, z, w].
 	[float] @ 4 |
 	// Axis-angle form.
 	AxisAngle |
 )
+
+enum(string) Billboard {
+	/// No rotation.
+	Fixed = "fixed",
+	/// Pivot around vertical axis.
+	Vertical = "vertical",
+	/// Pivot around horizontal axis.
+	Horizontal = "horizontal",
+	/// Pivot around both axes.
+	Center = "center",
+}
+
+struct Brightness {
+	/// Value of skylight.
+	sky: int @ 0..15,
+	/// Value of block light.
+	block: int @ 0..15,
+}
 
 struct AxisAngle {
 	/// Local position of the axis in [x, y, z].

@@ -220,21 +220,23 @@ struct ExplodeEntityEffect {
 	/// Whether fire is placed within the explosion radius.
 	create_fire?: boolean,
 	/// Whether the explosion has special effects on blocks.
-	block_interaction: (enum(string) {
-		/// No item drops or special behavior.
-		None = "none",
-		/// Drops items as if a block caused the explosion; `blockExplosionDropDecay` game rule applies.
-		Block = "block",
-		/// Drops items as if a mob caused the explosion; `mobExplosionDropDecay` game rule applies.
-		Mob = "mob",
-		/// Drops items as if TNT caused the explosion; `tntExplosionDropDecay` game rule applies.
-		TNT = "tnt",
-		/// Triggers redstone-activated blocks.
-		Trigger = "trigger",
-	}),
+	block_interaction: BlockInteraction,
 	small_particle: Particle,
 	large_particle: Particle,
 	sound: SoundEventRef,
+}
+
+enum(string) BlockInteraction {
+	/// No item drops or special behavior.
+	None = "none",
+	/// Drops items as if a block caused the explosion; `blockExplosionDropDecay` game rule applies.
+	Block = "block",
+	/// Drops items as if a mob caused the explosion; `mobExplosionDropDecay` game rule applies.
+	Mob = "mob",
+	/// Drops items as if TNT caused the explosion; `tntExplosionDropDecay` game rule applies.
+	TNT = "tnt",
+	/// Triggers redstone-activated blocks.
+	Trigger = "trigger",
 }
 
 dispatch minecraft:entity_effect[explode] to ExplodeEntityEffect
