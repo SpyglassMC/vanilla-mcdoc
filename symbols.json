@@ -1,5 +1,5 @@
 {
-	"ref": "577473c6e3d4c94a0ef0c428ea088aca44783e91",
+	"ref": "eb2fa075eba29ba5d17e287e91daa845d19ba5b4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -17991,45 +17991,14 @@
 			]
 		},
 		"::java::data::enchantment::<anonymous 0>": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"desc": "No item drops or special behavior.\n",
-					"identifier": "None",
-					"value": "none"
-				},
-				{
-					"desc": "Drops items as if a block caused the explosion; `blockExplosionDropDecay` game rule applies.\n",
-					"identifier": "Block",
-					"value": "block"
-				},
-				{
-					"desc": "Drops items as if a mob caused the explosion; `mobExplosionDropDecay` game rule applies.\n",
-					"identifier": "Mob",
-					"value": "mob"
-				},
-				{
-					"desc": "Drops items as if TNT caused the explosion; `tntExplosionDropDecay` game rule applies.\n",
-					"identifier": "TNT",
-					"value": "tnt"
-				},
-				{
-					"desc": "Triggers redstone-activated blocks.\n",
-					"identifier": "Trigger",
-					"value": "trigger"
-				}
-			]
+			"kind": "struct",
+			"fields": []
 		},
 		"::java::data::enchantment::<anonymous 1>": {
 			"kind": "struct",
 			"fields": []
 		},
 		"::java::data::enchantment::<anonymous 2>": {
-			"kind": "struct",
-			"fields": []
-		},
-		"::java::data::enchantment::<anonymous 3>": {
 			"kind": "struct",
 			"fields": []
 		},
@@ -18347,6 +18316,37 @@
 						"kind": "reference",
 						"path": "::java::data::enchantment::ValueEffect"
 					}
+				}
+			]
+		},
+		"::java::data::enchantment::BlockInteraction": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"desc": "No item drops or special behavior.\n",
+					"identifier": "None",
+					"value": "none"
+				},
+				{
+					"desc": "Drops items as if a block caused the explosion; `blockExplosionDropDecay` game rule applies.\n",
+					"identifier": "Block",
+					"value": "block"
+				},
+				{
+					"desc": "Drops items as if a mob caused the explosion; `mobExplosionDropDecay` game rule applies.\n",
+					"identifier": "Mob",
+					"value": "mob"
+				},
+				{
+					"desc": "Drops items as if TNT caused the explosion; `tntExplosionDropDecay` game rule applies.\n",
+					"identifier": "TNT",
+					"value": "tnt"
+				},
+				{
+					"desc": "Triggers redstone-activated blocks.\n",
+					"identifier": "Trigger",
+					"value": "trigger"
 				}
 			]
 		},
@@ -19333,40 +19333,8 @@
 					"desc": "Whether the explosion has special effects on blocks.\n",
 					"key": "block_interaction",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "enum",
-								"enumKind": "string",
-								"values": [
-									{
-										"desc": "No item drops or special behavior.\n",
-										"identifier": "None",
-										"value": "none"
-									},
-									{
-										"desc": "Drops items as if a block caused the explosion; `blockExplosionDropDecay` game rule applies.\n",
-										"identifier": "Block",
-										"value": "block"
-									},
-									{
-										"desc": "Drops items as if a mob caused the explosion; `mobExplosionDropDecay` game rule applies.\n",
-										"identifier": "Mob",
-										"value": "mob"
-									},
-									{
-										"desc": "Drops items as if TNT caused the explosion; `tntExplosionDropDecay` game rule applies.\n",
-										"identifier": "TNT",
-										"value": "tnt"
-									},
-									{
-										"desc": "Triggers redstone-activated blocks.\n",
-										"identifier": "Trigger",
-										"value": "trigger"
-									}
-								]
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::enchantment::BlockInteraction"
 					}
 				},
 				{
@@ -65172,85 +65140,8 @@
 					"desc": " Transformation applied to model (after normal entity orientation). Defaults to identity. Interpolated.\n\n For an easy GUI, check out [Misode's tool](https://misode.github.io/transformation/).\n\n\n\n The value is stored in decomposed object form for interpolation & ease-of-use,\n\n Supports storing a non-canonical matrix form describing a row-major matrix, is automatically decomposed by the game with a performance cost.\n\n\n\n The matrix takes the following form:\n\n ```js\n\n [ \n\n \ts0, s1, s2, tx,\n\n \ts3, s4, s5, ty,\n\n \ts6, s7, s8, tz,\n\n \ti0, i1, i2, w\n\n ]\n\n ```\n\n Where:\n\n  - `i0`-`i2`: Ignored values, these can be anything, but the game will ignore the values.\n\n  - `w`: This value is used as a divisor of all other values (except `i0`-`i2`). i.e. all the other values get divided by `w` before doing any further calculations.\n\n  - `tx`, `ty`, `tz`: Translation value, this is used directly as the `transformation.translation` after dividing by `w`. i.e. `transformation:{translation:[tx/w, ty/w, tz/w]}`.\n\n  - `s0`-`s8`: After dividing each element by `w`, this top left 3x3 of the matrix is passed through the [Singular Value Decomposition](https://en.wikipedia.org/wiki/Singular_value_decomposition) algorithm to extract the `transformation.left_rotation`, `transformation.scale`, and `transformation.right_rotation`. The exact values of this decomposition are difficult to predict.\n",
 					"key": "transformation",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "struct",
-								"fields": [
-									{
-										"kind": "pair",
-										"desc": "Translation in [x, y, z].\n",
-										"key": "translation",
-										"type": {
-											"kind": "list",
-											"item": {
-												"kind": "float"
-											},
-											"lengthRange": {
-												"kind": 0,
-												"min": 3,
-												"max": 3
-											}
-										}
-									},
-									{
-										"kind": "pair",
-										"desc": "Using this rotation is enough for most transformations.\n",
-										"key": "left_rotation",
-										"type": {
-											"kind": "reference",
-											"path": "::java::server::world::entity::display::Rotation"
-										}
-									},
-									{
-										"kind": "pair",
-										"desc": "For more complex transformations.\n",
-										"key": "right_rotation",
-										"type": {
-											"kind": "reference",
-											"path": "::java::server::world::entity::display::Rotation"
-										}
-									},
-									{
-										"kind": "pair",
-										"desc": "Scale in [x, y, z].\n",
-										"key": "scale",
-										"type": {
-											"kind": "list",
-											"item": {
-												"kind": "float"
-											},
-											"lengthRange": {
-												"kind": 0,
-												"min": 3,
-												"max": 3
-											}
-										}
-									}
-								],
-								"attributes": [
-									{
-										"name": "canonical"
-									}
-								]
-							},
-							{
-								"kind": "union",
-								"members": [
-									{
-										"kind": "list",
-										"item": {
-											"kind": "float"
-										},
-										"lengthRange": {
-											"kind": 0,
-											"min": 16,
-											"max": 16
-										}
-									}
-								]
-							}
-						]
+						"kind": "reference",
+						"path": "::java::server::world::entity::display::Transformation"
 					},
 					"optional": true
 				},
@@ -65334,30 +65225,8 @@
 					"desc": "Controls if model should pivot to face player when rendered. Defaults to `fixed`.\n",
 					"key": "billboard",
 					"type": {
-						"kind": "enum",
-						"enumKind": "string",
-						"values": [
-							{
-								"desc": "No rotation.\n",
-								"identifier": "Fixed",
-								"value": "fixed"
-							},
-							{
-								"desc": "Pivot around vertical axis.\n",
-								"identifier": "Vertical",
-								"value": "vertical"
-							},
-							{
-								"desc": "Pivot around horizontal axis.\n",
-								"identifier": "Horizontal",
-								"value": "horizontal"
-							},
-							{
-								"desc": "Pivot around both axes.\n",
-								"identifier": "Center",
-								"value": "center"
-							}
-						]
+						"kind": "reference",
+						"path": "::java::server::world::entity::display::Billboard"
 					},
 					"optional": true
 				},
@@ -65366,35 +65235,8 @@
 					"desc": "When defined, overrides light values used for rendering. Omitted by default (which means rendering uses values from entity position).\n",
 					"key": "brightness",
 					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"desc": "Value of skylight.\n",
-								"key": "sky",
-								"type": {
-									"kind": "int",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 15
-									}
-								}
-							},
-							{
-								"kind": "pair",
-								"desc": "Value of block light.\n",
-								"key": "block",
-								"type": {
-									"kind": "int",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 15
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::server::world::entity::display::Brightness"
 					},
 					"optional": true
 				},
@@ -65680,6 +65522,87 @@
 						"kind": "reference",
 						"path": "::java::server::world::entity::display::text::TextAlignment"
 					}
+				}
+			]
+		},
+		"::java::server::world::entity::display::Transformation": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"desc": "Translation in [x, y, z].\n",
+							"key": "translation",
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "float"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 3,
+									"max": 3
+								}
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Using this rotation is enough for most transformations.\n",
+							"key": "left_rotation",
+							"type": {
+								"kind": "reference",
+								"path": "::java::server::world::entity::display::Rotation"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "For more complex transformations.\n",
+							"key": "right_rotation",
+							"type": {
+								"kind": "reference",
+								"path": "::java::server::world::entity::display::Rotation"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Scale in [x, y, z].\n",
+							"key": "scale",
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "float"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 3,
+									"max": 3
+								}
+							}
+						}
+					],
+					"attributes": [
+						{
+							"name": "canonical"
+						}
+					]
+				},
+				{
+					"kind": "union",
+					"members": [
+						{
+							"kind": "list",
+							"item": {
+								"kind": "float"
+							},
+							"lengthRange": {
+								"kind": 0,
+								"min": 16,
+								"max": 16
+							}
+						}
+					]
 				}
 			]
 		},
@@ -80067,32 +79990,6 @@
 				}
 			]
 		},
-		"::java::server::world::item::firework::<anonymous 0>": {
-			"kind": "enum",
-			"enumKind": "byte",
-			"values": [
-				{
-					"identifier": "SmallBall",
-					"value": 0
-				},
-				{
-					"identifier": "LargeBall",
-					"value": 1
-				},
-				{
-					"identifier": "Star",
-					"value": 2
-				},
-				{
-					"identifier": "Creeper",
-					"value": 3
-				},
-				{
-					"identifier": "Burst",
-					"value": 4
-				}
-			]
-		},
 		"::java::server::world::item::firework::Explosion": {
 			"kind": "struct",
 			"fields": [
@@ -80263,35 +80160,8 @@
 					"kind": "pair",
 					"key": "Type",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "enum",
-								"enumKind": "byte",
-								"values": [
-									{
-										"identifier": "SmallBall",
-										"value": 0
-									},
-									{
-										"identifier": "LargeBall",
-										"value": 1
-									},
-									{
-										"identifier": "Star",
-										"value": 2
-									},
-									{
-										"identifier": "Creeper",
-										"value": 3
-									},
-									{
-										"identifier": "Burst",
-										"value": 4
-									}
-								]
-							}
-						]
+						"kind": "reference",
+						"path": "::java::server::world::item::firework::LegacyExplosionType"
 					},
 					"optional": true
 				},
@@ -80336,6 +80206,32 @@
 						]
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::server::world::item::firework::LegacyExplosionType": {
+			"kind": "enum",
+			"enumKind": "byte",
+			"values": [
+				{
+					"identifier": "SmallBall",
+					"value": 0
+				},
+				{
+					"identifier": "LargeBall",
+					"value": 1
+				},
+				{
+					"identifier": "Star",
+					"value": 2
+				},
+				{
+					"identifier": "Creeper",
+					"value": 3
+				},
+				{
+					"identifier": "Burst",
+					"value": 4
 				}
 			]
 		},
