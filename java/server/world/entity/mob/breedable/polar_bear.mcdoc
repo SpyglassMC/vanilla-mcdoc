@@ -1,0 +1,4 @@
+dispatch minecraft:entity[polar_bear] to struct PolarBear {
+	...super::Breedable,
+	...super::super::NeutralMob,
+}

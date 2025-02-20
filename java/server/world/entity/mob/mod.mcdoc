@@ -194,11 +194,6 @@ dispatch minecraft:entity[
 	wither_skeleton,
 ] to MobBase
 
-dispatch minecraft:entity[polar_bear] to struct PolarBear {
-	...MobBase,
-	...NeutralMob,
-}
-
 dispatch minecraft:entity[squid] to struct Squid {
 	...MobBase,
 	#[since="1.21.2"]
