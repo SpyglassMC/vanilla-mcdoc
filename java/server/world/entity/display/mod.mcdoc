@@ -8,22 +8,7 @@ struct DisplayBase {
 	/// For an easy GUI, check out [Misode's tool](https://misode.github.io/transformation/).
 	///
 	/// The value is stored in decomposed object form for interpolation & ease-of-use,
-	/// Supports storing a non-canonical matrix form describing a row-major matrix, is automatically decomposed by the game with a performance cost.
-	///
-	/// The matrix takes the following form:
-	/// ```js
-	/// [ 
-	/// 	s0, s1, s2, tx,
-	/// 	s3, s4, s5, ty,
-	/// 	s6, s7, s8, tz,
-	/// 	i0, i1, i2, w
-	/// ]
-	/// ```
-	/// Where:
-	///  - `i0`-`i2`: Ignored values, these can be anything, but the game will ignore the values.
-	///  - `w`: This value is used as a divisor of all other values (except `i0`-`i2`). i.e. all the other values get divided by `w` before doing any further calculations.
-	///  - `tx`, `ty`, `tz`: Translation value, this is used directly as the `transformation.translation` after dividing by `w`. i.e. `transformation:{translation:[tx/w, ty/w, tz/w]}`.
-	///  - `s0`-`s8`: After dividing each element by `w`, this top left 3x3 of the matrix is passed through the [Singular Value Decomposition](https://en.wikipedia.org/wiki/Singular_value_decomposition) algorithm to extract the `transformation.left_rotation`, `transformation.scale`, and `transformation.right_rotation`. The exact values of this decomposition are difficult to predict.
+	/// Supports storing a [non-canonical matrix form](https://gist.github.com/MulverineX/f473dbfd7cc8dadb326074fef05ad76a) describing a row-major matrix, is automatically decomposed by the game with a performance cost.
 	transformation?: Transformation,
 	/// Size of shadow. Defaults to 0 (no shadow). Interpolated.
 	shadow_radius?: float @ 0..,
