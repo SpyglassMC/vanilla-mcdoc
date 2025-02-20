@@ -1,5 +1,5 @@
 {
-	"ref": "16794af1fb8bf4b243c74bb8cf75392e5f8d3eff",
+	"ref": "577473c6e3d4c94a0ef0c428ea088aca44783e91",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -70642,6 +70642,25 @@
 				}
 			]
 		},
+		"::java::server::world::entity::mob::breedable::polar_bear::PolarBear": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::mob::breedable::Breedable"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::mob::NeutralMob"
+					}
+				}
+			]
+		},
 		"::java::server::world::entity::mob::breedable::rabbit::Rabbit": {
 			"kind": "struct",
 			"fields": [
@@ -74660,25 +74679,6 @@
 						}
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::server::world::entity::mob::PolarBear": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::world::entity::mob::MobBase"
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::world::entity::mob::NeutralMob"
-					}
 				}
 			]
 		},
@@ -88688,7 +88688,7 @@
 			},
 			"polar_bear": {
 				"kind": "reference",
-				"path": "::java::server::world::entity::mob::PolarBear"
+				"path": "::java::server::world::entity::mob::breedable::polar_bear::PolarBear"
 			},
 			"potion": {
 				"kind": "reference",
