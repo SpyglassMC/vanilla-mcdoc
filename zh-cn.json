@@ -105,5 +105,5 @@
 	"::java::assets::texture_meta::VillagerTextureMeta.hat": "确定村民的'职业'帽子图层是否应允许'类型'帽子层渲染。如果未定义此mcmeta，则使用默认值none。\n村民纹理帽子的渲染方式。必须为none、partial或full之一。\n如果村民职业服装纹理帽子渲染方式为none，或职业服装渲染方式为partial时生物群系服装纹理不为full，则渲染村民生物群系服装中的帽子纹理；其他情况下，则不渲染村民生物群系服装中的帽子纹理。",
 	"::java::data::advancement::Advancement.criteria": "如果未定义`requirements`，则需要满足所有定义的条件。",
 	"::java::data::advancement::Advancement.display": "如果存在，进度将在进度页面中可见。",
-	"::java::data::advancement::Advancement.parent": "如果此字段不存在，则此进度为根进度。\n循环引用会导致加载失败。"
+	"::java::data::advancement::Advancement.parent": "此进度的上游进度的命名空间ID。\n若此项不存在，则此进度为根进度。\n循环引用将导致加载失败。"
 }
