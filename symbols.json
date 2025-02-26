@@ -1,5 +1,5 @@
 {
-	"ref": "b9a334f39c22347385dbaef4f8a849132e9b9609",
+	"ref": "10eec955b22da234a5068ce0910a5e9cd0a14e85",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -43560,6 +43560,50 @@
 						"item": {
 							"kind": "reference",
 							"path": "::java::server::util::direction::Direction"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::tree::AttachedToLogsTreeDecorator": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "probability",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "block_provider",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "direction",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::server::util::direction::Direction"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
 						}
 					}
 				}
@@ -43812,6 +43856,62 @@
 							"kind": 0,
 							"min": 0,
 							"max": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::tree::FallenTreeConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "trunk_provider",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "log_length",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 16
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "stump_decorators",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::feature::tree::TreeDecorator"
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "log_decorators",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::feature::tree::TreeDecorator"
 						}
 					}
 				}
@@ -89292,6 +89392,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::EndSpikeConfig"
 			},
+			"fallen_tree": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::tree::FallenTreeConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
 			"fill_layer": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::FillLayerConfig"
@@ -95608,6 +95724,22 @@
 			"attached_to_leaves": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::tree::AttachedToLeavesTreeDecorator"
+			},
+			"attached_to_logs": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::tree::AttachedToLogsTreeDecorator",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"beehive": {
 				"kind": "reference",
