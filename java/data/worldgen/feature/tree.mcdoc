@@ -30,6 +30,14 @@ dispatch minecraft:feature_config[tree] to struct TreeConfig {
 	decorators: [TreeDecorator],
 }
 
+#[since="1.21.5"]
+dispatch minecraft:feature_config[fallen_tree] to struct FallenTreeConfig {
+	trunk_provider: BlockStateProvider,
+	log_length: IntProvider<int @ 0..16>,
+	stump_decorators: [TreeDecorator],
+	log_decorators: [TreeDecorator],
+}
+
 struct FeatureSize {
 	type: #[id="worldgen/feature_size_type"] string,
 	...minecraft:feature_size[[type]],
@@ -199,7 +207,7 @@ dispatch minecraft:tree_decorator[attached_to_leaves] to struct AttachedToLeaves
 	exclusion_radius_y: int @ 0..16,
 	required_empty_blocks: int @ 1..16,
 	block_provider: BlockStateProvider,
-	directions: [Direction],
+	directions: [Direction] @ 1..,
 }
 
 dispatch minecraft:tree_decorator[beehive] to struct BeehiveTreeDecorator {
@@ -222,6 +230,11 @@ dispatch minecraft:tree_decorator[pale_moss] to struct PaleMossTreeDecorator {
 	ground_probability: float @ 0..1,
 }
 
+#[since="1.21.2"]
+dispatch minecraft:tree_decorator[creaking_heart] to struct CreakingHeartTreeDecorator {
+	probability: float @ 0..1,
+}
+
 #[since="1.21.5"]
 dispatch minecraft:tree_decorator[place_on_ground] to struct PlaceOnGroundTreeDecorator {
 	/// Defaults to `128`.
@@ -234,7 +247,10 @@ dispatch minecraft:tree_decorator[place_on_ground] to struct PlaceOnGroundTreeDe
 	block_state_provider: BlockStateProvider,
 }
 
-#[since="1.21.2"]
-dispatch minecraft:tree_decorator[creaking_heart] to struct CreakingHeartTreeDecorator {
+#[since="1.21.5"]
+dispatch minecraft:tree_decorator[attached_to_logs] to struct AttachedToLogsTreeDecorator {
 	probability: float @ 0..1,
+	block_provider: BlockStateProvider,
+	direction: [Direction] @ 1..,
 }
+
