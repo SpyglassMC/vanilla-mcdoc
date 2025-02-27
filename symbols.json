@@ -1,5 +1,5 @@
 {
-	"ref": "10eec955b22da234a5068ce0910a5e9cd0a14e85",
+	"ref": "ee6c7407e8984236b722dd561082eae66feabb03",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -43594,7 +43594,7 @@
 				},
 				{
 					"kind": "pair",
-					"key": "direction",
+					"key": "directions",
 					"type": {
 						"kind": "list",
 						"item": {
