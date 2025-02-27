@@ -251,6 +251,6 @@ dispatch minecraft:tree_decorator[place_on_ground] to struct PlaceOnGroundTreeDe
 dispatch minecraft:tree_decorator[attached_to_logs] to struct AttachedToLogsTreeDecorator {
 	probability: float @ 0..1,
 	block_provider: BlockStateProvider,
-	direction: [Direction] @ 1..,
+	directions: [Direction] @ 1..,
 }
 
