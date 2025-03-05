@@ -1,5 +1,5 @@
 {
-	"ref": "ee6c7407e8984236b722dd561082eae66feabb03",
+	"ref": "4aa635f3c1bbe1be55aac8d2ca59603fd5312ecd",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -9842,6 +9842,50 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Match exact data component values on the block entity.\n",
+					"key": "components",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::item::DataComponentPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Test data component values on the block entity.\n",
+					"key": "predicates",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemSubPredicate"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -11343,6 +11387,28 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::server::world::item::DataComponentPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Test data component values on the entity.\n",
+					"key": "predicates",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemSubPredicate"
 					},
 					"optional": true
 				}
@@ -66153,6 +66219,28 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Any stored data\n",
+					"key": "data",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::item::CustomData"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
 									"value": "1.17"
 								}
 							}
@@ -66942,6 +67030,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "Any stored data\n",
 					"key": "data",
 					"type": {
@@ -79245,7 +79345,12 @@
 			"members": [
 				{
 					"kind": "reference",
-					"path": "::java::server::world::item::CustomDataMap"
+					"path": "::java::server::world::item::CustomDataMap",
+					"attributes": [
+						{
+							"name": "canonical"
+						}
+					]
 				},
 				{
 					"kind": "string",
