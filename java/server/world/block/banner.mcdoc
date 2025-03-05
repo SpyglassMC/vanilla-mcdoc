@@ -1,6 +1,7 @@
 use ::java::server::util::BannerPattern
 use ::java::server::util::ColorInt
 use ::java::server::util::ColorString
+use super::super::item::block::banner::BannerPatternLayer
 
 dispatch minecraft:block_entity[banner] to struct Banner {
 	...super::BlockEntity,
@@ -8,7 +9,7 @@ dispatch minecraft:block_entity[banner] to struct Banner {
 	#[until="1.20.5"]
 	Patterns?: [LegacyPattern],
 	#[since="1.20.5"]
-	patterns?: [Pattern]
+	patterns?: [BannerPatternLayer]
 }
 
 dispatch minecraft:block[
@@ -49,8 +50,4 @@ dispatch minecraft:block[
 struct LegacyPattern {
 	Color?: ColorInt,
 	Pattern?: BannerPattern,
-}
-struct Pattern {
-	color?: ColorString,
-	pattern?: #[id="banner_pattern"] string,
 }
