@@ -1,5 +1,5 @@
 {
-	"ref": "4aa635f3c1bbe1be55aac8d2ca59603fd5312ecd",
+	"ref": "02b5fd2a91170fef0e5a77819c54fa5affe5d7be",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -65532,6 +65532,35 @@
 				}
 			]
 		},
+		"::java::server::world::entity::display::text::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "How text should be aligned. Defaults to `center`.\n\nWill log an error when not specified, see [MC-261036](https://bugs.mojang.com/browse/MC-261036).\n",
+					"key": "alignment",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::display::text::TextAlignment"
+					}
+				}
+			]
+		},
+		"::java::server::world::entity::display::text::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "How text should be aligned. Defaults to `center`.\n",
+					"key": "alignment",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::entity::display::text::TextAlignment"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::server::world::entity::display::text::TextAlignment": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -65681,12 +65710,62 @@
 					"optional": true
 				},
 				{
-					"kind": "pair",
-					"desc": "How text should be aligned. Defaults to `center`.\n\nWill log an error when not specified, see [MC-261036](https://bugs.mojang.com/browse/MC-261036).\n",
-					"key": "alignment",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "reference",
-						"path": "::java::server::world::entity::display::text::TextAlignment"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "How text should be aligned. Defaults to `center`.\n\nWill log an error when not specified, see [MC-261036](https://bugs.mojang.com/browse/MC-261036).\n",
+								"key": "alignment",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::world::entity::display::text::TextAlignment"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "How text should be aligned. Defaults to `center`.\n",
+								"key": "alignment",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::world::entity::display::text::TextAlignment"
+								},
+								"optional": true
+							}
+						]
 					}
 				}
 			]
