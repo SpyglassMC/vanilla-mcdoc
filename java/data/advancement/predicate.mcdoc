@@ -131,6 +131,12 @@ struct BlockPredicate {
 	tag?: #[id(registry="block",tags="implicit")] string,
 	state?: mcdoc:block_states[[blocks]],
 	nbt?: #[nbt=minecraft:block[[blocks]]] string,
+	/// Match exact data component values on the block entity.
+	#[since="1.21.5"]
+	components?: DataComponentPredicate,
+	/// Test data component values on the block entity.
+	#[since="1.21.5"]
+	predicates?: ItemSubPredicate,
 }
 
 struct FluidPredicate {
@@ -243,6 +249,9 @@ struct EntityPredicate {
 	/// Match exact data component values on the entity.
 	#[since="1.21.5"]
 	components?: DataComponentPredicate,
+	/// Test data component values on the entity.
+	#[since="1.21.5"]
+	predicates?: ItemSubPredicate,
 }
 
 struct EntityFlagsPredicate {
