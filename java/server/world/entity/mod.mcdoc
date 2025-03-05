@@ -1,4 +1,5 @@
 use ::java::server::util::text::Text
+use ::java::server::world::item::CustomData
 
 /// Base NBT for all entities,
 struct EntityBase {
@@ -50,6 +51,9 @@ struct EntityBase {
 	Glowing?: boolean,
 	/// Labelling tags on the entity.
 	Tags?: [#[tag] string],
+	/// Any stored data
+	#[since="1.21.5"]
+	data?: CustomData,
 	/// Ticks that this entity has been freezing. Although this tag is defined for all entities,
 	/// it is actually only used by mobs that are not in the `freeze_immune_entity_types` entity type tag.
 	/// This increases by one every tick the entity is in powdered snow, and decreases by two when it's out of it.

@@ -157,7 +157,7 @@ type CustomDataMap = struct {
 }
 
 type CustomData = (
-	CustomDataMap |
+	#[canonical] CustomDataMap |
 	#[nbt=CustomDataMap] string |
 )
 
