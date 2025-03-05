@@ -822,7 +822,7 @@
 	"::java::server::world::entity::display::DisplayBase.width": "Describe width of culling bounding box.\nBounding box spans vertically y to y+height and horizontally width/2 in all directions from entity position.\nIf field is set to 0, culling is disabled. Defaults to 0.",
 	"::java::server::world::entity::display::ItemDisplay.item": "Item stack to display.",
 	"::java::server::world::entity::display::ItemDisplay.item_display": "Describes item model transform applied to item (as defined in `display` section in model JSON). Defaults to `fixed`.",
-	"::java::server::world::entity::display::text::TextDisplay.alignment": "How text should be aligned. Defaults to `center`.\nWill log an error when not specified, see [MC-261036](https://bugs.mojang.com/browse/MC-261036).",
+	"::java::server::world::entity::display::text::TextDisplay.alignment": "How text should be aligned. Defaults to `center`.",
 	"::java::server::world::entity::display::text::TextDisplay.background": "Color of background. Includes alpha channel. Defaults to 0x40000000. Interpolated.\nCalculated as `ALPHA << 24 | RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.",
 	"::java::server::world::entity::display::text::TextDisplay.default_background": "If true, overrides `background` & rendering uses default text background color (same as in chat). Defaults to false.",
 	"::java::server::world::entity::display::text::TextDisplay.line_width": "Line width in pixels used to split lines (note: new line can be also added with \\n characters). Defaults to 200.",
