@@ -1,5 +1,5 @@
 {
-	"ref": "02b5fd2a91170fef0e5a77819c54fa5affe5d7be",
+	"ref": "13aa0486aa1e3b75ee8584c9ddd7c3b87068abe9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -59777,7 +59777,7 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::server::world::block::banner::Pattern"
+							"path": "::java::server::world::item::block::banner::BannerPatternLayer"
 						}
 					},
 					"optional": true
@@ -59802,40 +59802,6 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::server::util::BannerPattern"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::server::world::block::banner::Pattern": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "color",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::ColorString"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "pattern",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "banner_pattern"
-									}
-								}
-							}
-						]
 					},
 					"optional": true
 				}
