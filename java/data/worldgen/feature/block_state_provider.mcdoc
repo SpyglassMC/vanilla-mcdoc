@@ -1,7 +1,7 @@
 use super::super::IntProvider
 use super::super::dimension::biome_source::NoiseParameters
 use ::java::server::util::block_state::BlockState
-use ::java::server::util::range::InclusiveRange
+use ::java::server::util::InclusiveRange
 
 struct BlockStateProvider {
 	type: #[id="worldgen/block_state_provider_type"] string,

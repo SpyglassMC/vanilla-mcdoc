@@ -1,5 +1,5 @@
 use super::super::entity::AnyEntity
-use super::super::super::util::range::InclusiveRange
+use super::super::super::util::InclusiveRange
 use super::super::super::util::inventory::EquipmentSlot
 use ::java::data::trial_spawner::TrialSpawnerConfig
 

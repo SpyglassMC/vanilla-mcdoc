@@ -1,4 +1,4 @@
-use ::java::server::util::global_pos::GlobalPos
+use ::java::server::util::GlobalPos
 
 struct Memories {
 	[#[id="memory_module_type"] string]: minecraft:memory_module[[%key]],
