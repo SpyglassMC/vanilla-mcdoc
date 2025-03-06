@@ -3,7 +3,7 @@ use super::super::block::spawner::SpawnerEntry
 use super::super::block::command_block::BaseCommandBlock
 use super::super::entity::AnyEntity
 use ::java::util::BlockState
-use ::java::util::SlottedItem
+use ::java::util::slot::SlottedItem
 
 struct ContainerMinecart {
 	/// Loot table that will populate this minecart.
