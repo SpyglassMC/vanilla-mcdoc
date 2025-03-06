@@ -4,10 +4,10 @@ use super::util::SoundEventRef
 use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
 use ::java::data::worldgen::feature::block_predicate::BlockPredicate
 use ::java::data::worldgen::FloatProvider
-use ::java::server::util::text::Text
-use ::java::server::util::particle::Particle
-use ::java::server::util::attribute::AttributeSlot
-use ::java::server::util::attribute::AttributeOperation
+use ::java::util::text::Text
+use ::java::util::particle::Particle
+use ::java::util::attribute::AttributeSlot
+use ::java::util::attribute::AttributeOperation
 
 // TODO: handle the "location based effects" thing
 

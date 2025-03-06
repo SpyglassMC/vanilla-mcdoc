@@ -4,7 +4,7 @@ use super::density_function::CubicSpline
 use super::structure_set::ConcentricRingsPlacement
 use super::structure_set::RandomSpreadPlacement
 use super::surface_rule::SurfaceRule
-use ::java::server::util::block_state::BlockState
+use ::java::util::block_state::BlockState
 
 type NoiseGeneratorSettingsRef = (
 	#[since="1.16.2"] #[id="worldgen/noise_settings"] string |

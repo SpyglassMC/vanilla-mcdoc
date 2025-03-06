@@ -3,7 +3,7 @@ use super::super::UniformInt
 use super::block_state_provider::BlockStateProvider
 use super::super::IntProvider
 use super::super::UniformIntProvider
-use ::java::server::util::direction::Direction
+use ::java::util::direction::Direction
 
 dispatch minecraft:feature_config[tree] to struct TreeConfig {
 	#[until="1.17"]
@@ -253,4 +253,3 @@ dispatch minecraft:tree_decorator[attached_to_logs] to struct AttachedToLogsTree
 	block_provider: BlockStateProvider,
 	directions: [Direction] @ 1..,
 }
-

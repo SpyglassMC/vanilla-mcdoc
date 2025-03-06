@@ -1,4 +1,4 @@
-use ::java::server::util::text::Text
+use ::java::util::text::Text
 
 #[since="1.19.4"]
 dispatch minecraft:resource[damage_type] to struct DamageType {

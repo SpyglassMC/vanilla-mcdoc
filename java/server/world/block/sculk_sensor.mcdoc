@@ -1,4 +1,4 @@
-use ::java::server::util::game_event::VibrationListener
+use ::java::util::game_event::VibrationListener
 
 #[since="1.17"]
 dispatch minecraft:block_entity[sculk_sensor] to struct SculkSensor {

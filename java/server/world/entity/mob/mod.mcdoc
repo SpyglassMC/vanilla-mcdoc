@@ -1,11 +1,11 @@
-use ::java::server::util::attribute::AttributeName
-use ::java::server::util::attribute::LegacyOperation
-use ::java::server::util::attribute::AttributeOperation
+use ::java::util::attribute::AttributeName
+use ::java::util::attribute::LegacyOperation
+use ::java::util::attribute::AttributeOperation
 use ::java::server::world::item::ItemStack
-use ::java::server::util::effect::MobEffectInstance
-use ::java::server::util::attribute::AttributeSlot
-use ::java::server::util::memory::Memories
-use ::java::server::util::inventory::EquipmentSlot
+use ::java::util::effect::MobEffectInstance
+use ::java::util::attribute::AttributeSlot
+use ::java::util::memory::Memories
+use ::java::util::inventory::EquipmentSlot
 
 struct LivingEntity {
 	...super::EntityBase,

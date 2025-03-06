@@ -1,4 +1,4 @@
-use ::java::server::util::direction::Direction
+use ::java::util::direction::Direction
 
 type ModelRef = #[id(registry="model",exclude=["builtin/generated","builtin/entity"])] string
 

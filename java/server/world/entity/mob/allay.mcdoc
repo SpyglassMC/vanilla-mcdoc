@@ -1,5 +1,5 @@
 use ::java::server::world::item::ItemStack
-use ::java::server::util::game_event::VibrationListener
+use ::java::util::game_event::VibrationListener
 
 #[since="1.19"]
 dispatch minecraft:entity[allay] to struct Allay {

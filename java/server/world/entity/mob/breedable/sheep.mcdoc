@@ -1,5 +1,5 @@
-use ::java::server::util::ColorByte
-use ::java::server::util::color::ColorString
+use ::java::util::ColorByte
+use ::java::util::color::ColorString
 
 #[since="1.21.5"]
 dispatch minecraft:data_component["sheep/color"] to ColorString

@@ -1,4 +1,4 @@
-use ::java::server::util::text::Text
+use ::java::util::text::Text
 use super::util::MinMaxBounds
 use super::util::NumberProvider
 use super::util::RandomIntGenerator

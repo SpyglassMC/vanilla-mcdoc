@@ -1,6 +1,6 @@
 use super::AdventureModePredicate
 use ::java::data::advancement::predicate::BlockPredicate
-use ::java::server::util::block_state::BlockState
+use ::java::util::block_state::BlockState
 
 /// List of blocks that this block item can be placed on.
 dispatch minecraft:data_component[can_place_on] to AdventureModePredicate

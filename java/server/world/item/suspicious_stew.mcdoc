@@ -1,4 +1,4 @@
-use ::java::server::util::EffectId
+use ::java::util::EffectId
 
 struct SuspiciousStewEffect {
 	id: #[id="mob_effect"] string,

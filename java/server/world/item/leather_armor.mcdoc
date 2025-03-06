@@ -1,4 +1,4 @@
-use ::java::server::util::color::RGB
+use ::java::util::color::RGB
 
 struct DyedColor {
 	/// Color of the armor.

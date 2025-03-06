@@ -1,6 +1,6 @@
 use ::java::server::world::item::DataComponentPatch
 use ::java::data::advancement::predicate::ItemPredicate
-use ::java::server::util::text::Text
+use ::java::util::text::Text
 
 struct BlockEntity {
 	id?: #[id="block_entity_type"] string,

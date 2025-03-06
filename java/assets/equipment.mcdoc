@@ -1,4 +1,4 @@
-use ::java::server::util::color::RGB
+use ::java::util::color::RGB
 
 #[since="1.21.2"]
 dispatch minecraft:resource[equipment] to struct Equipment {

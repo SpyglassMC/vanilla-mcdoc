@@ -1,5 +1,5 @@
-use ::java::server::util::ColorInt
-use ::java::server::util::EffectId
+use ::java::util::ColorInt
+use ::java::util::EffectId
 
 dispatch minecraft:block_entity[beacon] to struct Beacon {
 	...super::BlockEntity,

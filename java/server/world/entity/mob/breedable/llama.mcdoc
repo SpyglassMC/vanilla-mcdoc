@@ -1,5 +1,5 @@
 use ::java::server::world::item::ItemStack
-use ::java::server::util::inventory::SlottedItem
+use ::java::util::inventory::SlottedItem
 
 dispatch minecraft:data_component["llama/variant"] to LlamaVariant
 

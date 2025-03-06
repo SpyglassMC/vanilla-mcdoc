@@ -1,5 +1,5 @@
-use ::java::server::util::text::Text
-use ::java::server::util::InclusiveRange
+use ::java::util::text::Text
+use ::java::util::InclusiveRange
 
 // `supported_formats` and `overlays` were introduced in 1.20.2,
 // but multi-version packs will use these with an older pack_format.

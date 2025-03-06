@@ -2,15 +2,15 @@ use ::java::data::advancement::predicate::BlockPredicate
 use ::java::data::trim::TrimMaterial
 use ::java::data::trim::TrimPattern
 use ::java::data::util::SoundEventRef
-use ::java::server::util::attribute::AttributeName
-use ::java::server::util::attribute::LegacyOperation
-use ::java::server::util::attribute::AttributeOperation
-use ::java::server::util::attribute::AttributeSlot
-use ::java::server::util::block_state::BlockState
-use ::java::server::util::effect::MobEffectInstance
-use ::java::server::util::inventory::EquipmentSlot
-use ::java::server::util::color::RGB
-use ::java::server::util::text::Text
+use ::java::util::attribute::AttributeName
+use ::java::util::attribute::LegacyOperation
+use ::java::util::attribute::AttributeOperation
+use ::java::util::attribute::AttributeSlot
+use ::java::util::block_state::BlockState
+use ::java::util::effect::MobEffectInstance
+use ::java::util::inventory::EquipmentSlot
+use ::java::util::color::RGB
+use ::java::util::text::Text
 
 struct AttributeModifiers {
 	modifiers: [AttributeModifier],

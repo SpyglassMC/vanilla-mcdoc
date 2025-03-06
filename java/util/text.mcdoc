@@ -1,4 +1,4 @@
-use ::java::server::util::color::RGBA
+use ::java::util::color::RGBA
 use ::java::server::world::item::ItemStack
 use ::java::server::world::item::DataComponentPatch
 

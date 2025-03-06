@@ -1,4 +1,4 @@
-use ::java::server::util::direction::DirectionInt
+use ::java::util::direction::DirectionInt
 use ::java::server::world::item::ItemStack
 
 dispatch minecraft:block_entity[brushable_block] to struct BrushableBlock {

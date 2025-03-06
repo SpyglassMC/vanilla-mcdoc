@@ -1,5 +1,5 @@
-use ::java::server::util::ColorByte
-use ::java::server::util::color::ColorString
+use ::java::util::ColorByte
+use ::java::util::color::ColorString
 use ::java::server::world::item::ItemStack
 
 struct Tamable {

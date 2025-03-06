@@ -1,4 +1,4 @@
-use ::java::server::util::SlottedItem
+use ::java::util::SlottedItem
 
 dispatch minecraft:block_entity[chiseled_bookshelf] to struct ChiseledBookshelf {
 	...super::BlockEntity,

@@ -1,5 +1,5 @@
-use ::java::server::util::color::ColorString
-use ::java::server::util::color::ColorInt
+use ::java::util::color::ColorString
+use ::java::util::color::ColorInt
 use ::java::server::world::block::banner::BannerPatternLayer
 
 dispatch minecraft:data_component[base_color] to ColorString

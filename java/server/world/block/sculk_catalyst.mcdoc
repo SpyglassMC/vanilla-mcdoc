@@ -1,4 +1,4 @@
-use ::java::server::util::direction::Direction
+use ::java::util::direction::Direction
 
 #[since="1.19"]
 dispatch minecraft:block_entity[sculk_catalyst] to struct SculkCatalyst {

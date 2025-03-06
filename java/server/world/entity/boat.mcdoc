@@ -1,4 +1,4 @@
-use ::java::server::util::inventory::SlottedItem
+use ::java::util::inventory::SlottedItem
 
 struct Boat {
 	...super::EntityBase,

@@ -1,6 +1,6 @@
-use ::java::server::util::GlobalPos
+use ::java::util::GlobalPos
 use ::java::server::world::item::ItemStack
-use ::java::server::util::SlottedItem
+use ::java::util::SlottedItem
 use super::super::AnyEntity
 
 type PlayerSlot = (byte @ 0..35 | byte @ 100..103 | byte @ -106)

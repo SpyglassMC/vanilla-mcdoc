@@ -1,5 +1,5 @@
 use ::java::server::world::entity::AnyEntity
-use ::java::server::util::block_state::BlockState
+use ::java::util::block_state::BlockState
 
 struct StructureNBT {
 	/// [Data version](https://minecraft.fandom.com/wiki/Data_version).

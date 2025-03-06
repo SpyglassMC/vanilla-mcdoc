@@ -1,6 +1,6 @@
 use super::CaveSurface
 use super::VerticalAnchor
-use ::java::server::util::block_state::BlockState
+use ::java::util::block_state::BlockState
 
 struct SurfaceRule {
 	type: #[id="worldgen/material_rule"] string,

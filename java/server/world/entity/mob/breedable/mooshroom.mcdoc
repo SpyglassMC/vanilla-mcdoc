@@ -1,4 +1,4 @@
-use ::java::server::util::effect::EffectId
+use ::java::util::effect::EffectId
 
 #[since="1.21.5"]
 dispatch minecraft:data_component["mooshroom/variant"] to MooshroomType

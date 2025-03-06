@@ -1,5 +1,5 @@
-use ::java::server::util::color::ColorString
-use ::java::server::util::text::Text
+use ::java::util::color::ColorString
+use ::java::util::text::Text
 
 // TODO: Add filtered text
 dispatch minecraft:block_entity[sign, hanging_sign] to (

@@ -1,4 +1,4 @@
-use ::java::server::util::text::Text
+use ::java::util::text::Text
 use super::DisplayBase
 
 dispatch minecraft:entity[text_display] to struct TextDisplay {

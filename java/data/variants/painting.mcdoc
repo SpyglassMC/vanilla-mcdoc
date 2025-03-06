@@ -1,4 +1,4 @@
-use ::java::server::util::text::Text
+use ::java::util::text::Text
 
 #[since="1.21"]
 dispatch minecraft:resource[painting_variant] to struct PaintingVariant {

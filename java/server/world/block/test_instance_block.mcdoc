@@ -1,5 +1,5 @@
 use ::java::data::gametest::Rotation
-use ::java::server::util::text::Text
+use ::java::util::text::Text
 
 dispatch minecraft:block_entity[test_instance_block] to struct TestInstanceBlock {
 	...super::BlockEntity,

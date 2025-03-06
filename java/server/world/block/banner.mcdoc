@@ -1,6 +1,6 @@
 use ::java::data::variants::banner_pattern::BannerPattern
-use ::java::server::util::ColorInt
-use ::java::server::util::ColorString
+use ::java::util::ColorInt
+use ::java::util::ColorString
 
 dispatch minecraft:block_entity[banner] to struct Banner {
 	...super::BlockEntity,

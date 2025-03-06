@@ -1,4 +1,4 @@
-use ::java::server::util::effect::EffectId
+use ::java::util::effect::EffectId
 use super::super::entity::AnyEntity
 
 dispatch minecraft:block_entity[beehive] to struct Beehive {

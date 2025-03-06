@@ -1,4 +1,4 @@
-use ::java::server::util::block_state::BlockState
+use ::java::util::block_state::BlockState
 
 dispatch minecraft:entity[tnt] to struct Tnt {
 	...super::EntityBase,

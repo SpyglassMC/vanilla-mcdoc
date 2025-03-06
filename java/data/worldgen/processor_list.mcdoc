@@ -1,4 +1,4 @@
-use ::java::server::util::block_state::BlockState
+use ::java::util::block_state::BlockState
 use super::HeightmapType
 use super::IntProvider
 

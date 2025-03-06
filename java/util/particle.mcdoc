@@ -1,6 +1,6 @@
 use super::block_state::BlockState
-use ::java::server::util::color::RGB
-use ::java::server::util::color::RGBA
+use ::java::util::color::RGB
+use ::java::util::color::RGBA
 use ::java::server::world::item::ItemStack
 use ::java::server::world::item::SingleItem
 

@@ -1,4 +1,4 @@
-use ::java::server::util::text::Text
+use ::java::util::text::Text
 
 dispatch minecraft:block_entity[command_block] to struct CommandBlock {
 	...super::BlockEntity,

@@ -8,9 +8,9 @@ use super::UniformInt
 use super::IntProvider
 use super::FloatProvider
 use super::CaveSurface
-use ::java::server::util::block_state::BlockState
-use ::java::server::util::fluid_state::FluidState
-use ::java::server::util::direction::Direction
+use ::java::util::block_state::BlockState
+use ::java::util::fluid_state::FluidState
+use ::java::util::direction::Direction
 
 type ConfiguredFeatureRef = (
 	#[id="worldgen/configured_feature"] string |

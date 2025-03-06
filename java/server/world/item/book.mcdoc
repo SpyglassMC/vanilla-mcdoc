@@ -1,5 +1,5 @@
-use ::java::server::util::text::Text
-use ::java::server::util::Filterable
+use ::java::util::text::Text
+use ::java::util::Filterable
 
 dispatch minecraft:data_component[writable_book_content] to struct WritableBookContent {
 	pages: [Filterable<string>],

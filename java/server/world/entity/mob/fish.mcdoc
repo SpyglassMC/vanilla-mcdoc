@@ -1,4 +1,4 @@
-use ::java::server::util::color::ColorString
+use ::java::util::color::ColorString
 
 dispatch minecraft:entity[cod] to struct Fish {
 	...super::MobBase,
