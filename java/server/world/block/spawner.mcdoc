@@ -1,6 +1,6 @@
 use super::super::entity::AnyEntity
-use super::super::super::util::InclusiveRange
-use super::super::super::util::inventory::EquipmentSlot
+use ::java::util::InclusiveRange
+use ::java::util::slot::EquipmentSlot
 use ::java::data::trial_spawner::TrialSpawnerConfig
 
 dispatch minecraft:block_entity[mob_spawner] to struct Spawner {

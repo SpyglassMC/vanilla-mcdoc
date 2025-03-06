@@ -1,4 +1,4 @@
-use ::java::util::inventory::SlottedItem
+use ::java::util::slot::SlottedItem
 
 struct ContainerBase {
 	...super::BlockEntity,

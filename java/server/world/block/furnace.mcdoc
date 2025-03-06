@@ -1,4 +1,4 @@
-use ::java::util::inventory::SlottedItem
+use ::java::util::slot::SlottedItem
 
 dispatch minecraft:block_entity[furnace, blast_furnace, smoker] to struct Furnace {
 	...super::BlockEntity,

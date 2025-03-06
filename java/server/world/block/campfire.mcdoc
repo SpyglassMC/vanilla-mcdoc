@@ -1,4 +1,4 @@
-use ::java::util::inventory::SlottedItem
+use ::java::util::slot::SlottedItem
 
 dispatch minecraft:block_entity[campfire] to struct Campfire {
 	...super::BlockEntity,

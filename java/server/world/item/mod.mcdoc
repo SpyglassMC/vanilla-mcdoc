@@ -5,10 +5,10 @@ use ::java::data::util::SoundEventRef
 use ::java::util::attribute::AttributeName
 use ::java::util::attribute::LegacyOperation
 use ::java::util::attribute::AttributeOperation
-use ::java::util::attribute::AttributeSlot
+use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::block_state::BlockState
 use ::java::util::effect::MobEffectInstance
-use ::java::util::inventory::EquipmentSlot
+use ::java::util::slot::EquipmentSlot
 use ::java::util::color::RGB
 use ::java::util::text::Text
 
@@ -547,7 +547,7 @@ type AttributeModifier = (
 		amount: double,
 		operation: AttributeOperation,
 		/// Slot or slot type the item must be in for the modifier to take effect. Defaults to `any`.
-		slot?: AttributeSlot,
+		slot?: EquipmentSlotGroup,
 	} |
 	#[until="1.20.5"] struct {
 		AttributeName?: (
@@ -557,7 +557,7 @@ type AttributeModifier = (
 		/// Identifying name of the modifier, has no real effect.
 		Name?: string,
 		/// Slot that the modifier is active in.
-		Slot?: AttributeSlot,
+		Slot?: EquipmentSlotGroup,
 		Operation?: LegacyOperation,
 		/// Change in the attribute.
 		Amount?: double,
@@ -601,9 +601,6 @@ struct SingleItem {
 	#[until="1.20.5"]
 	tag?: minecraft:item[[id]],
 }
-
-/// @deprecated
-type AnyItem = SingleItem
 
 type ItemStack = struct {
 	...SingleItem,

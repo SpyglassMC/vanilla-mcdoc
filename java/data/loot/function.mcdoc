@@ -10,7 +10,7 @@ use super::super::util::IntLimiter
 use super::super::util::NbtProvider
 use super::super::util::NumberProvider
 use ::java::data::advancement::predicate::ItemPredicate
-use ::java::util::attribute::AttributeSlot
+use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::attribute::AttributeOperation
 use ::java::util::color::ColorString
 use ::java::util::text::Text
@@ -309,7 +309,7 @@ struct AttributeModifier {
 		#[since="1.20.5"] AttributeOperation |
 	),
 	/// If a list, one of the listed slots will be chosen randomly.
-	slot: (AttributeSlot | [AttributeSlot]),
+	slot: (EquipmentSlotGroup | [EquipmentSlotGroup]),
 }
 
 #[since="1.17"]

@@ -3,9 +3,9 @@ use ::java::util::attribute::LegacyOperation
 use ::java::util::attribute::AttributeOperation
 use ::java::server::world::item::ItemStack
 use ::java::util::effect::MobEffectInstance
-use ::java::util::attribute::AttributeSlot
+use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::memory::Memories
-use ::java::util::inventory::EquipmentSlot
+use ::java::util::slot::EquipmentSlot
 
 struct LivingEntity {
 	...super::EntityBase,
@@ -149,7 +149,7 @@ type AttributeModifier = (
 		/// Has no real effect.
 		Name?: string,
 		/// Slot that the modifier is active in.
-		Slot?: AttributeSlot,
+		Slot?: EquipmentSlotGroup,
 		Operation?: LegacyOperation,
 		/// Change in the attribute.
 		Amount?: double,

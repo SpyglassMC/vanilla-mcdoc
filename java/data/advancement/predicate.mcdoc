@@ -1,6 +1,6 @@
-use ::java::util::inventory::EquipmentSlot
+use ::java::util::slot::EquipmentSlot
 use ::java::util::attribute::AttributeOperation
-use ::java::util::attribute::AttributeSlot
+use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::text::Text
 use ::java::util::Filterable
 use ::java::util::color::ColorString
@@ -55,7 +55,7 @@ struct AttributeModifiersPredicateEntry {
 	id?: #[id="attribute_modifier"] string,
 	amount?: MinMaxBounds<double>,
 	operation?: AttributeOperation,
-	slot?: AttributeSlot,
+	slot?: EquipmentSlotGroup,
 }
 
 dispatch minecraft:data_component_predicate[bundle_contents] to struct BundleContentsPredicate {

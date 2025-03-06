@@ -7,7 +7,6 @@ type ColorByte = color::ColorByte
 type ColorInt = color::ColorInt
 type ColorString = color::ColorString
 type EffectId = effect::EffectId
-type SlottedItem<T> = inventory::SlottedItem<T>
 type Particle = particle::Particle
 
 type Filterable<T> = (

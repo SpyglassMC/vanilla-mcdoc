@@ -6,7 +6,7 @@ use ::java::data::worldgen::feature::block_predicate::BlockPredicate
 use ::java::data::worldgen::FloatProvider
 use ::java::util::text::Text
 use ::java::util::particle::Particle
-use ::java::util::attribute::AttributeSlot
+use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::attribute::AttributeOperation
 
 // TODO: handle the "location based effects" thing
@@ -40,7 +40,7 @@ dispatch minecraft:resource[enchantment] to struct Enchantment {
 	/// Halved when an Enchantment is added to a book.
 	/// The effective fee is multiplied by the level of the Enchantment.
 	anvil_cost: int @ 0..,
-	slots: [AttributeSlot],
+	slots: [EquipmentSlotGroup],
 	effects?: struct EnchantmentEffects {
 		[#[id="enchantment_effect_component_type"] string]?: minecraft:effect_component[[%key]],
 	},
