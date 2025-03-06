@@ -1,5 +1,5 @@
 {
-	"ref": "8268a6380cccfae6ea03fb5f96216cf8174c8156",
+	"ref": "17809628223211f2ce79d87d24a0bc832120fd47",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -53429,7 +53429,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -60060,7 +60060,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -60220,7 +60220,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -62885,7 +62885,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -66948,7 +66948,7 @@
 						"kind": "concrete",
 						"child": {
 							"kind": "reference",
-							"path": "::java::util::SlottedItem"
+							"path": "::java::util::slot::SlottedItem"
 						},
 						"typeArgs": [
 							{
@@ -67228,7 +67228,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -67255,7 +67255,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
