@@ -1,5 +1,6 @@
 #[since="1.19.3"]
 dispatch minecraft:resource[atlas] to struct Atlas {
+	/// List of sprite sources which can add or remove sprite textures to this atlas.
 	sources: [SpriteSource],
 }
 
@@ -18,16 +19,22 @@ enum(string) SpriteSourceType {
 }
 
 dispatch minecraft:sprite_source[single] to struct Single {
+	/// A single texture location of the source.
 	resource: #[id="texture"] string,
+	/// The identifier of the sprite that can referenced.
+	/// If not specified, matches `resource`.
 	sprite?: #[id(registry="texture",definition=true)] string,
 }
 
 dispatch minecraft:sprite_source[directory] to struct Directory {
+	/// Directory of texture locations to include, relative to the `textures` folder, not including the trailing `/`.
 	source: string,
+	/// The sprite name prefix, usually ending with `/`.
 	prefix: string,
 }
 
 dispatch minecraft:sprite_source[filter] to struct Filter {
+	/// Pattern to remove sprite identifiers already in the atlas. The order of sprite sources is important.
 	pattern: FilterPattern,
 }
 
