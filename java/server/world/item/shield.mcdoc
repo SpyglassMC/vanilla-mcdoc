@@ -1,8 +1,8 @@
-use ::java::util::color::ColorString
-use ::java::util::color::ColorInt
+use ::java::util::color::DyeColor
+use ::java::util::color::DyeColorInt
 use ::java::server::world::block::banner::BannerPatternLayer
 
-dispatch minecraft:data_component[base_color] to ColorString
+dispatch minecraft:data_component[base_color] to DyeColor
 
 // Pre-1.20.5
 dispatch minecraft:item[shield] to struct Shield {
@@ -10,7 +10,7 @@ dispatch minecraft:item[shield] to struct Shield {
 	/// Banner Data.
 	BlockEntityTag?: struct BlockEntityTag {
 		/// Base color.
-		Base?: ColorInt,
+		Base?: DyeColorInt,
 		Patterns?: [BannerPatternLayer],
 	},
 }

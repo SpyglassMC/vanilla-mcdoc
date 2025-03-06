@@ -8,7 +8,7 @@ type RGBA = (
 	#[color="dec_rgba"] [float] @ 4 |
 )
 
-enum(string) ColorString {
+enum(string) DyeColor {
 	White = "white",
 	Orange = "orange",
 	Magenta = "magenta",
@@ -27,7 +27,7 @@ enum(string) ColorString {
 	Black = "black",
 }
 
-enum(byte) ColorByte {
+enum(byte) DyeColorByte {
 	White = 0,
 	Orange = 1,
 	Magenta = 2,
@@ -46,7 +46,7 @@ enum(byte) ColorByte {
 	Black = 15,
 }
 
-enum(int) ColorInt {
+enum(int) DyeColorInt {
 	White = 0,
 	Orange = 1,
 	Magenta = 2,

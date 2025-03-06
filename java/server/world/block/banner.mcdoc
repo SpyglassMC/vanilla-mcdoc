@@ -1,6 +1,6 @@
 use ::java::data::variants::banner_pattern::BannerPattern
-use ::java::util::ColorInt
-use ::java::util::ColorString
+use ::java::util::DyeColorInt
+use ::java::util::DyeColor
 
 dispatch minecraft:block_entity[banner] to struct Banner {
 	...super::BlockEntity,
@@ -14,13 +14,13 @@ dispatch minecraft:block_entity[banner] to struct Banner {
 type BannerPatternLayer = (
 	#[until="1.20.5"] struct {
 		/// The dye color of the pattern.
-		Color?: ColorInt,
+		Color?: DyeColorInt,
 		/// The pattern ID.
 		Pattern?: BannerPatternType,
 	} |
 	#[since="1.20.5"] struct {
 		/// The dye color of the pattern.
-		color: ColorString,
+		color: DyeColor,
 		/// The banner pattern.
 		pattern: (#[id="banner_pattern"] string | BannerPattern),
 	} |

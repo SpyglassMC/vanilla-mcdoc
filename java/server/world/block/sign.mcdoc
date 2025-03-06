@@ -1,4 +1,4 @@
-use ::java::util::color::ColorString
+use ::java::util::color::DyeColor
 use ::java::util::text::Text
 
 // TODO: Add filtered text
@@ -18,7 +18,7 @@ dispatch minecraft:block_entity[sign, hanging_sign] to (
 struct SignText {
 	messages: SignLines,
 	filtered_messages?: SignLines,
-	color?: ColorString,
+	color?: DyeColor,
 	has_glowing_text?: boolean,
 }
 
@@ -30,7 +30,7 @@ type SignLines = (
 struct OldSign {
 	...super::BlockEntity,
 	/// Color the text has been dyed.
-	Color?: ColorString,
+	Color?: DyeColor,
 	#[since="1.17"]
 	GlowingText?: boolean,
 	/// First line of text.

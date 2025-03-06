@@ -12,7 +12,7 @@ use super::super::util::NumberProvider
 use ::java::data::advancement::predicate::ItemPredicate
 use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::attribute::AttributeOperation
-use ::java::util::color::ColorString
+use ::java::util::color::DyeColor
 use ::java::util::text::Text
 use ::java::util::Filterable
 use ::java::util::color::RGB
@@ -326,7 +326,7 @@ struct BannerPatternLayer {
 		#[until="1.20.4"] BannerPattern |
 		#[since="1.20.4"] #[id="banner_pattern"] string |
 	),
-	color: ColorString,
+	color: DyeColor,
 }
 
 enum(string) BannerPattern {

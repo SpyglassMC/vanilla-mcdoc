@@ -3,7 +3,7 @@ use ::java::util::attribute::AttributeOperation
 use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::text::Text
 use ::java::util::Filterable
-use ::java::util::color::ColorString
+use ::java::util::color::DyeColor
 use ::java::server::world::item::DataComponentPredicate
 use ::java::server::world::item::CustomData
 use ::java::server::world::item::firework::FireworkShape
@@ -424,7 +424,7 @@ enum(string) SalmonVariant {
 dispatch minecraft:entity_sub_predicate[sheep] to struct SheepPredicate {
 	sheared?: boolean,
 	#[until="1.21.5"]
-	color?: ColorString,
+	color?: DyeColor,
 }
 
 #[until="1.21.5"]

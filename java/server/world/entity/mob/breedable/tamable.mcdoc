@@ -1,5 +1,5 @@
-use ::java::util::ColorByte
-use ::java::util::color::ColorString
+use ::java::util::DyeColorByte
+use ::java::util::color::DyeColor
 use ::java::server::world::item::ItemStack
 
 struct Tamable {
@@ -16,14 +16,14 @@ struct Tamable {
 dispatch minecraft:data_component["cat/variant"] to #[id="cat_variant"] string
 
 #[since="1.21.5"]
-dispatch minecraft:data_component["cat/collar"] to ColorString
+dispatch minecraft:data_component["cat/collar"] to DyeColor
 
 dispatch minecraft:entity[cat] to struct Cat {
 	...Tamable,
 	#[until="1.19"]
 	CatType?: CatType,
 	/// Collar color, present for stray cats. Defaults to 14 (red).
-	CollarColor?: ColorByte,
+	CollarColor?: DyeColorByte,
 	#[since="1.19"]
 	variant?: #[id="cat_variant"] string,
 }
@@ -74,7 +74,7 @@ dispatch minecraft:data_component["wolf/variant"] to #[id="wolf_variant"] string
 dispatch minecraft:data_component["wolf/sound_variant"] to #[id="wolf_sound_variant"] string
 
 #[since="1.21.5"]
-dispatch minecraft:data_component["wolf/collar"] to ColorString
+dispatch minecraft:data_component["wolf/collar"] to DyeColor
 
 dispatch minecraft:entity[wolf] to struct Wolf {
 	...Tamable,
@@ -84,7 +84,7 @@ dispatch minecraft:entity[wolf] to struct Wolf {
 	#[until="1.16"]
 	Angry?: boolean,
 	/// Collar color, present for wild wolfs. Defaults to 14 (red).
-	CollarColor?: ColorByte,
+	CollarColor?: DyeColorByte,
 	#[since="1.20.5"]
 	body_armor_item?: ItemStack,
 	#[since="1.20.5"]

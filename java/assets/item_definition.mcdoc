@@ -1,7 +1,7 @@
 use ::java::assets::model::ModelRef
 use ::java::assets::model::ItemTransformType
 use ::java::util::color::RGB
-use ::java::util::color::ColorString
+use ::java::util::color::DyeColor
 use ::java::util::direction::Direction
 use ::java::util::text::Keybind
 
@@ -380,7 +380,7 @@ enum(string) SpecialModelType {
 dispatch minecraft:special_item_model[%unknown] to struct {}
 
 dispatch minecraft:special_item_model[banner] to struct Banner {
-	color: ColorString,
+	color: DyeColor,
 }
 
 dispatch minecraft:special_item_model[bed] to struct Bed {

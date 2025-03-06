@@ -1,4 +1,4 @@
-use ::java::util::color::ColorString
+use ::java::util::color::DyeColor
 
 dispatch minecraft:entity[cod] to struct Fish {
 	...super::MobBase,
@@ -40,10 +40,10 @@ enum(string) TropicalFishPattern {
 }
 
 #[since="1.21.5"]
-dispatch minecraft:data_component["tropical_fish/base_color"] to ColorString
+dispatch minecraft:data_component["tropical_fish/base_color"] to DyeColor
 
 #[since="1.21.5"]
-dispatch minecraft:data_component["tropical_fish/pattern_color"] to ColorString
+dispatch minecraft:data_component["tropical_fish/pattern_color"] to DyeColor
 
 dispatch minecraft:entity[tropical_fish] to struct TropicalFish {
 	...Fish,

@@ -1,12 +1,12 @@
-use ::java::util::ColorByte
-use ::java::util::color::ColorString
+use ::java::util::DyeColorByte
+use ::java::util::color::DyeColor
 
 #[since="1.21.5"]
-dispatch minecraft:data_component["sheep/color"] to ColorString
+dispatch minecraft:data_component["sheep/color"] to DyeColor
 
 dispatch minecraft:entity[sheep] to struct Sheep {
 	...super::Breedable,
 	/// Whether it has been shorn.
 	Sheared?: boolean,
-	Color?: ColorByte,
+	Color?: DyeColorByte,
 }
