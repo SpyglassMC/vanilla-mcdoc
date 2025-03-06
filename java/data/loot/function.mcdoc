@@ -14,11 +14,11 @@ use ::java::server::util::attribute::AttributeSlot
 use ::java::server::util::attribute::AttributeOperation
 use ::java::server::util::color::ColorString
 use ::java::server::util::text::Text
-use ::java::server::util::firework::FireworkShape
 use ::java::server::util::Filterable
 use ::java::server::util::color::RGB
 use ::java::server::world::item::DataComponentPatch
 use ::java::server::world::item::CustomData
+use ::java::server::world::item::firework::FireworkShape
 
 struct Conditions {
 	conditions?: [LootCondition],
