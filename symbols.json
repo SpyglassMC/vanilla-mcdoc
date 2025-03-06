@@ -1,5 +1,5 @@
 {
-	"ref": "13aa0486aa1e3b75ee8584c9ddd7c3b87068abe9",
+	"ref": "db46591765614b7ece682ce8e876256488614fa5",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -11495,7 +11495,7 @@
 					"key": "shape",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::util::firework::FireworkShape"
+						"path": "::java::server::world::item::firework::FireworkShape"
 					},
 					"optional": true
 				},
@@ -25253,7 +25253,7 @@
 					"key": "shape",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::util::firework::FireworkShape"
+						"path": "::java::server::world::item::firework::FireworkShape"
 					},
 					"optional": true
 				},
@@ -52432,228 +52432,6 @@
 				}
 			]
 		},
-		"::java::server::util::banner_pattern::BannerPattern": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"desc": "Bottom Stripe (Base)\n",
-					"identifier": "BottomStripe",
-					"value": "bs"
-				},
-				{
-					"desc": "Top Stripe (Chief)\n",
-					"identifier": "TopStripe",
-					"value": "ts"
-				},
-				{
-					"desc": "Left Stripe (Pale dexter)\n",
-					"identifier": "LeftStripe",
-					"value": "ls"
-				},
-				{
-					"desc": "Right Stripe (Pale sinister)\n",
-					"identifier": "RightStripe",
-					"value": "rs"
-				},
-				{
-					"desc": "Center Stripe (Vertical) (Pale)\n",
-					"identifier": "CenterStripeVertical",
-					"value": "cs"
-				},
-				{
-					"desc": "Middle Stripe (Horizontal) (Fess)\n",
-					"identifier": "MiddleStripeHorizontal",
-					"value": "ms"
-				},
-				{
-					"desc": "Down Right Stripe (Bend)\n",
-					"identifier": "DownRightStripe",
-					"value": "drs"
-				},
-				{
-					"desc": "Down Left Stripe (Bend sinister)\n",
-					"identifier": "DownLeftStripe",
-					"value": "dls"
-				},
-				{
-					"desc": "Small (Vertical) Stripes (Paly)\n",
-					"identifier": "SmallVerticalStripes",
-					"value": "ss"
-				},
-				{
-					"desc": "Diagonal Cross (Saltire)\n",
-					"identifier": "DiagonalCross",
-					"value": "cr"
-				},
-				{
-					"desc": "Square Cross (Cross)\n",
-					"identifier": "SquareCross",
-					"value": "sc"
-				},
-				{
-					"desc": "Left of Diagonal (Per bend sinister)\n",
-					"identifier": "LeftOfDiagonal",
-					"value": "ld"
-				},
-				{
-					"desc": "Right of upside-down Diagonal (Per bend)\n",
-					"identifier": "RightOfUpsideDownDiagonal",
-					"value": "rud"
-				},
-				{
-					"desc": "Left of upside-down Diagonal (Per bend inverted)\n",
-					"identifier": "LeftOfUpsideDownDiagonal",
-					"value": "lud"
-				},
-				{
-					"desc": "Right of Diagonal (Per bend sinister inverted)\n",
-					"identifier": "RightOfDiagonal",
-					"value": "rd"
-				},
-				{
-					"desc": "Vertical Half (left) (Per pale)\n",
-					"identifier": "VerticalHalfLeft",
-					"value": "vh"
-				},
-				{
-					"desc": "Vertical Half (right) (Per pale inverted)\n",
-					"identifier": "VerticalHalfRight",
-					"value": "vhr"
-				},
-				{
-					"desc": "Horizontal Half (top) (Per fess)\n",
-					"identifier": "HorizontalHalfTop",
-					"value": "hh"
-				},
-				{
-					"desc": "Horizontal Half (bottom) (Per fess inverted)\n",
-					"identifier": "HorizontalHalfBottom",
-					"value": "hhb"
-				},
-				{
-					"desc": "Bottom Left Corner (Base dexter canton)\n",
-					"identifier": "BottomLeftCorner",
-					"value": "bl"
-				},
-				{
-					"desc": "Bottom Right Corner (Base sinister canton)\n",
-					"identifier": "BottomRightCorner",
-					"value": "br"
-				},
-				{
-					"desc": "Top Left Corner (Chief dexter canton)\n",
-					"identifier": "TopLeftCorner",
-					"value": "tl"
-				},
-				{
-					"desc": "Top Right Corner (Chief sinister canton)\n",
-					"identifier": "TopRightCorner",
-					"value": "tr"
-				},
-				{
-					"desc": "Bottom Triangle (Chevron)\n",
-					"identifier": "BottomTriangle",
-					"value": "bt"
-				},
-				{
-					"desc": "Top Triangle (Inverted chevron)\n",
-					"identifier": "TopTriangle",
-					"value": "tt"
-				},
-				{
-					"desc": "Bottom Triangle Sawtooth (Base indented)\n",
-					"identifier": "BottomTriangleSawtooth",
-					"value": "bts"
-				},
-				{
-					"desc": "Top Triangle Sawtooth (Chief indented)\n",
-					"identifier": "TopTriangleSawtooth",
-					"value": "tts"
-				},
-				{
-					"desc": "Middle Circle (Roundel)\n",
-					"identifier": "MiddleCircle",
-					"value": "mc"
-				},
-				{
-					"desc": "Middle Rhombus (Lozenge)\n",
-					"identifier": "MiddleRhombus",
-					"value": "mr"
-				},
-				{
-					"desc": "Border (Bordure)\n",
-					"identifier": "Border",
-					"value": "bo"
-				},
-				{
-					"desc": "Curly Border (Bordure indented)\n",
-					"identifier": "CurlyBorder",
-					"value": "cbo"
-				},
-				{
-					"desc": "Brick (Field masoned)\n",
-					"identifier": "Brick",
-					"value": "bri"
-				},
-				{
-					"desc": "Gradient (Gradient)\n",
-					"identifier": "Gradient",
-					"value": "gra"
-				},
-				{
-					"desc": "Gradient upside-down (Base gradient)\n",
-					"identifier": "GradientUpsideDown",
-					"value": "gru"
-				},
-				{
-					"desc": "Creeper (Creeper charge)\n",
-					"identifier": "Creeper",
-					"value": "cre"
-				},
-				{
-					"desc": "Skull (Skull charge)\n",
-					"identifier": "Skull",
-					"value": "sku"
-				},
-				{
-					"desc": "Flower (Flower charge)\n",
-					"identifier": "Flower",
-					"value": "flo"
-				},
-				{
-					"desc": "Mojang (Thing)\n",
-					"identifier": "Mojang",
-					"value": "moj"
-				},
-				{
-					"desc": "Globe (Globe)\n",
-					"identifier": "Globe",
-					"value": "glb"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16"
-								}
-							}
-						}
-					],
-					"desc": "Piglin (Piglin)\n",
-					"identifier": "Piglin",
-					"value": "pig"
-				}
-			]
-		},
-		"::java::server::util::BannerPattern": {
-			"kind": "reference",
-			"path": "::java::server::util::banner_pattern::BannerPattern"
-		},
 		"::java::server::util::block_state::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
@@ -53887,32 +53665,6 @@
 						"path": "::java::server::util::T"
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::server::util::firework::FireworkShape": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "SmallBall",
-					"value": "small_ball"
-				},
-				{
-					"identifier": "LargeBall",
-					"value": "large_ball"
-				},
-				{
-					"identifier": "Star",
-					"value": "star"
-				},
-				{
-					"identifier": "Creeper",
-					"value": "creeper"
-				},
-				{
-					"identifier": "Burst",
-					"value": "burst"
 				}
 			]
 		},
@@ -59717,6 +59469,98 @@
 				}
 			]
 		},
+		"::java::server::world::block::banner::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The dye color of the pattern.\n",
+					"key": "Color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::ColorInt"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The pattern ID.\n",
+					"key": "Pattern",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::block::banner::BannerPatternType"
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.20.5"
+						}
+					}
+				}
+			]
+		},
+		"::java::server::world::block::banner::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The dye color of the pattern.\n",
+					"key": "color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::ColorString"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The banner pattern.\n",
+					"key": "pattern",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "banner_pattern"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::variants::banner_pattern::BannerPattern"
+							}
+						]
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.20.5"
+						}
+					}
+				}
+			]
+		},
 		"::java::server::world::block::banner::Banner": {
 			"kind": "struct",
 			"fields": [
@@ -59753,7 +59597,7 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::server::world::block::banner::LegacyPattern"
+							"path": "::java::server::world::block::banner::BannerPatternLayer"
 						}
 					},
 					"optional": true
@@ -59777,33 +59621,325 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::server::world::item::block::banner::BannerPatternLayer"
+							"path": "::java::server::world::block::banner::BannerPatternLayer"
 						}
 					},
 					"optional": true
 				}
 			]
 		},
-		"::java::server::world::block::banner::LegacyPattern": {
-			"kind": "struct",
-			"fields": [
+		"::java::server::world::block::banner::BannerPatternLayer": {
+			"kind": "union",
+			"members": [
 				{
-					"kind": "pair",
-					"key": "Color",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::ColorInt"
-					},
-					"optional": true
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"desc": "The dye color of the pattern.\n",
+							"key": "Color",
+							"type": {
+								"kind": "reference",
+								"path": "::java::server::util::ColorInt"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "The pattern ID.\n",
+							"key": "Pattern",
+							"type": {
+								"kind": "reference",
+								"path": "::java::server::world::block::banner::BannerPatternType"
+							},
+							"optional": true
+						}
+					],
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					]
 				},
 				{
-					"kind": "pair",
-					"key": "Pattern",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::BannerPattern"
-					},
-					"optional": true
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"desc": "The dye color of the pattern.\n",
+							"key": "color",
+							"type": {
+								"kind": "reference",
+								"path": "::java::server::util::ColorString"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "The banner pattern.\n",
+							"key": "pattern",
+							"type": {
+								"kind": "union",
+								"members": [
+									{
+										"kind": "string",
+										"attributes": [
+											{
+												"name": "id",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "banner_pattern"
+													}
+												}
+											}
+										]
+									},
+									{
+										"kind": "reference",
+										"path": "::java::data::variants::banner_pattern::BannerPattern"
+									}
+								]
+							}
+						}
+					],
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::server::world::block::banner::BannerPatternType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"desc": "Bottom Stripe (Base)\n",
+					"identifier": "BottomStripe",
+					"value": "bs"
+				},
+				{
+					"desc": "Top Stripe (Chief)\n",
+					"identifier": "TopStripe",
+					"value": "ts"
+				},
+				{
+					"desc": "Left Stripe (Pale dexter)\n",
+					"identifier": "LeftStripe",
+					"value": "ls"
+				},
+				{
+					"desc": "Right Stripe (Pale sinister)\n",
+					"identifier": "RightStripe",
+					"value": "rs"
+				},
+				{
+					"desc": "Center Stripe (Vertical) (Pale)\n",
+					"identifier": "CenterStripeVertical",
+					"value": "cs"
+				},
+				{
+					"desc": "Middle Stripe (Horizontal) (Fess)\n",
+					"identifier": "MiddleStripeHorizontal",
+					"value": "ms"
+				},
+				{
+					"desc": "Down Right Stripe (Bend)\n",
+					"identifier": "DownRightStripe",
+					"value": "drs"
+				},
+				{
+					"desc": "Down Left Stripe (Bend sinister)\n",
+					"identifier": "DownLeftStripe",
+					"value": "dls"
+				},
+				{
+					"desc": "Small (Vertical) Stripes (Paly)\n",
+					"identifier": "SmallVerticalStripes",
+					"value": "ss"
+				},
+				{
+					"desc": "Diagonal Cross (Saltire)\n",
+					"identifier": "DiagonalCross",
+					"value": "cr"
+				},
+				{
+					"desc": "Square Cross (Cross)\n",
+					"identifier": "SquareCross",
+					"value": "sc"
+				},
+				{
+					"desc": "Left of Diagonal (Per bend sinister)\n",
+					"identifier": "LeftOfDiagonal",
+					"value": "ld"
+				},
+				{
+					"desc": "Right of upside-down Diagonal (Per bend)\n",
+					"identifier": "RightOfUpsideDownDiagonal",
+					"value": "rud"
+				},
+				{
+					"desc": "Left of upside-down Diagonal (Per bend inverted)\n",
+					"identifier": "LeftOfUpsideDownDiagonal",
+					"value": "lud"
+				},
+				{
+					"desc": "Right of Diagonal (Per bend sinister inverted)\n",
+					"identifier": "RightOfDiagonal",
+					"value": "rd"
+				},
+				{
+					"desc": "Vertical Half (left) (Per pale)\n",
+					"identifier": "VerticalHalfLeft",
+					"value": "vh"
+				},
+				{
+					"desc": "Vertical Half (right) (Per pale inverted)\n",
+					"identifier": "VerticalHalfRight",
+					"value": "vhr"
+				},
+				{
+					"desc": "Horizontal Half (top) (Per fess)\n",
+					"identifier": "HorizontalHalfTop",
+					"value": "hh"
+				},
+				{
+					"desc": "Horizontal Half (bottom) (Per fess inverted)\n",
+					"identifier": "HorizontalHalfBottom",
+					"value": "hhb"
+				},
+				{
+					"desc": "Bottom Left Corner (Base dexter canton)\n",
+					"identifier": "BottomLeftCorner",
+					"value": "bl"
+				},
+				{
+					"desc": "Bottom Right Corner (Base sinister canton)\n",
+					"identifier": "BottomRightCorner",
+					"value": "br"
+				},
+				{
+					"desc": "Top Left Corner (Chief dexter canton)\n",
+					"identifier": "TopLeftCorner",
+					"value": "tl"
+				},
+				{
+					"desc": "Top Right Corner (Chief sinister canton)\n",
+					"identifier": "TopRightCorner",
+					"value": "tr"
+				},
+				{
+					"desc": "Bottom Triangle (Chevron)\n",
+					"identifier": "BottomTriangle",
+					"value": "bt"
+				},
+				{
+					"desc": "Top Triangle (Inverted chevron)\n",
+					"identifier": "TopTriangle",
+					"value": "tt"
+				},
+				{
+					"desc": "Bottom Triangle Sawtooth (Base indented)\n",
+					"identifier": "BottomTriangleSawtooth",
+					"value": "bts"
+				},
+				{
+					"desc": "Top Triangle Sawtooth (Chief indented)\n",
+					"identifier": "TopTriangleSawtooth",
+					"value": "tts"
+				},
+				{
+					"desc": "Middle Circle (Roundel)\n",
+					"identifier": "MiddleCircle",
+					"value": "mc"
+				},
+				{
+					"desc": "Middle Rhombus (Lozenge)\n",
+					"identifier": "MiddleRhombus",
+					"value": "mr"
+				},
+				{
+					"desc": "Border (Bordure)\n",
+					"identifier": "Border",
+					"value": "bo"
+				},
+				{
+					"desc": "Curly Border (Bordure indented)\n",
+					"identifier": "CurlyBorder",
+					"value": "cbo"
+				},
+				{
+					"desc": "Brick (Field masoned)\n",
+					"identifier": "Brick",
+					"value": "bri"
+				},
+				{
+					"desc": "Gradient (Gradient)\n",
+					"identifier": "Gradient",
+					"value": "gra"
+				},
+				{
+					"desc": "Gradient upside-down (Base gradient)\n",
+					"identifier": "GradientUpsideDown",
+					"value": "gru"
+				},
+				{
+					"desc": "Creeper (Creeper charge)\n",
+					"identifier": "Creeper",
+					"value": "cre"
+				},
+				{
+					"desc": "Skull (Skull charge)\n",
+					"identifier": "Skull",
+					"value": "sku"
+				},
+				{
+					"desc": "Flower (Flower charge)\n",
+					"identifier": "Flower",
+					"value": "flo"
+				},
+				{
+					"desc": "Mojang (Thing)\n",
+					"identifier": "Mojang",
+					"value": "moj"
+				},
+				{
+					"desc": "Globe (Globe)\n",
+					"identifier": "Globe",
+					"value": "glb"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					],
+					"desc": "Piglin (Piglin)\n",
+					"identifier": "Piglin",
+					"value": "pig"
 				}
 			]
 		},
@@ -78482,47 +78618,6 @@
 				}
 			]
 		},
-		"::java::server::world::item::block::banner::BannerPatternLayer": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "color",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::ColorString"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "pattern",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "banner_pattern"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::variants::banner_pattern::BannerPattern"
-							}
-						]
-					}
-				}
-			]
-		},
 		"::java::server::world::item::block::beehive::Occupant": {
 			"kind": "struct",
 			"fields": [
@@ -80248,7 +80343,7 @@
 					"key": "shape",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::util::firework::FireworkShape"
+						"path": "::java::server::world::item::firework::FireworkShape"
 					}
 				},
 				{
@@ -80361,6 +80456,32 @@
 						"kind": "byte"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::server::world::item::firework::FireworkShape": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "SmallBall",
+					"value": "small_ball"
+				},
+				{
+					"identifier": "LargeBall",
+					"value": "large_ball"
+				},
+				{
+					"identifier": "Star",
+					"value": "star"
+				},
+				{
+					"identifier": "Creeper",
+					"value": "creeper"
+				},
+				{
+					"identifier": "Burst",
+					"value": "burst"
 				}
 			]
 		},
@@ -82418,33 +82539,8 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::server::world::item::shield::Pattern"
+							"path": "::java::server::world::block::banner::BannerPatternLayer"
 						}
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::server::world::item::shield::Pattern": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Color of the pattern.\n",
-					"key": "Color",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::color::ColorInt"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Pattern id.\n",
-					"key": "Pattern",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::BannerPattern"
 					},
 					"optional": true
 				}
@@ -82484,7 +82580,7 @@
 									"kind": "list",
 									"item": {
 										"kind": "reference",
-										"path": "::java::server::world::item::shield::Pattern"
+										"path": "::java::server::world::block::banner::BannerPatternLayer"
 									}
 								},
 								"optional": true
@@ -85714,7 +85810,7 @@
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::server::world::item::block::banner::BannerPatternLayer"
+					"path": "::java::server::world::block::banner::BannerPatternLayer"
 				}
 			},
 			"base_color": {
