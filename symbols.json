@@ -1,11 +1,12 @@
 {
-	"ref": "db46591765614b7ece682ce8e876256488614fa5",
+	"ref": "2db0dfec0f0cd07a7ab9f176d97ffeb0702ee6d4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "List of sprite sources which can add or remove sprite textures to this atlas.\n",
 					"key": "sources",
 					"type": {
 						"kind": "list",
@@ -22,6 +23,7 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "Directory of texture locations to include, relative to the `textures` folder, not including the trailing `/`.\n",
 					"key": "source",
 					"type": {
 						"kind": "string"
@@ -29,6 +31,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "The sprite name prefix, usually ending with `/`.\n",
 					"key": "prefix",
 					"type": {
 						"kind": "string"
@@ -41,6 +44,7 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "Pattern to remove sprite identifiers already in the atlas. The order of sprite sources is important.\n",
 					"key": "pattern",
 					"type": {
 						"kind": "reference",
@@ -230,6 +234,7 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "A single texture location of the source.\n",
 					"key": "resource",
 					"type": {
 						"kind": "string",
@@ -249,6 +254,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "The identifier of the sprite that can referenced.\n\nIf not specified, matches `resource`.\n",
 					"key": "sprite",
 					"type": {
 						"kind": "string",
@@ -38004,7 +38010,7 @@
 						"kind": "concrete",
 						"child": {
 							"kind": "reference",
-							"path": "::java::server::util::range::InclusiveRange"
+							"path": "::java::server::util::InclusiveRange"
 						},
 						"typeArgs": [
 							{
@@ -51990,7 +51996,7 @@
 									"kind": "concrete",
 									"child": {
 										"kind": "reference",
-										"path": "::java::server::util::range::InclusiveRange"
+										"path": "::java::server::util::InclusiveRange"
 									},
 									"typeArgs": [
 										{
@@ -52115,7 +52121,7 @@
 						"kind": "concrete",
 						"child": {
 							"kind": "reference",
-							"path": "::java::server::util::range::InclusiveRange"
+							"path": "::java::server::util::InclusiveRange"
 						},
 						"typeArgs": [
 							{
@@ -52190,7 +52196,7 @@
 						"kind": "concrete",
 						"child": {
 							"kind": "reference",
-							"path": "::java::server::util::range::InclusiveRange"
+							"path": "::java::server::util::InclusiveRange"
 						},
 						"typeArgs": [
 							{
@@ -53605,6 +53611,27 @@
 			"kind": "reference",
 			"path": "::java::server::util::effect::EffectId"
 		},
+		"::java::server::util::ExplicitInclusiveRange": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min_inclusive",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::T"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max_inclusive",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::util::T"
+					}
+				}
+			]
+		},
 		"::java::server::util::Filterable": {
 			"kind": "template",
 			"child": {
@@ -53974,7 +54001,7 @@
 				}
 			]
 		},
-		"::java::server::util::global_pos::GlobalPos": {
+		"::java::server::util::GlobalPos": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -54012,9 +54039,55 @@
 				}
 			]
 		},
-		"::java::server::util::GlobalPos": {
-			"kind": "reference",
-			"path": "::java::server::util::global_pos::GlobalPos"
+		"::java::server::util::InclusiveRange": {
+			"kind": "template",
+			"child": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::server::util::T"
+					},
+					{
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::server::util::T"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 2,
+							"max": 2
+						}
+					},
+					{
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "min_inclusive",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::T"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "max_inclusive",
+								"type": {
+									"kind": "reference",
+									"path": "::java::server::util::T"
+								}
+							}
+						]
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::server::util::T"
+				}
+			]
 		},
 		"::java::server::util::inventory::<anonymous 0>": {
 			"kind": "struct",
@@ -54603,7 +54676,7 @@
 					"key": "value",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::util::global_pos::GlobalPos"
+						"path": "::java::server::util::GlobalPos"
 					}
 				}
 			]
@@ -54788,7 +54861,7 @@
 					"key": "value",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::util::global_pos::GlobalPos"
+						"path": "::java::server::util::GlobalPos"
 					}
 				}
 			]
@@ -54869,7 +54942,7 @@
 					"key": "value",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::util::global_pos::GlobalPos"
+						"path": "::java::server::util::GlobalPos"
 					}
 				}
 			]
@@ -54960,7 +55033,7 @@
 					"key": "value",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::util::global_pos::GlobalPos"
+						"path": "::java::server::util::GlobalPos"
 					}
 				}
 			]
@@ -55038,7 +55111,7 @@
 					"key": "value",
 					"type": {
 						"kind": "reference",
-						"path": "::java::server::util::global_pos::GlobalPos"
+						"path": "::java::server::util::GlobalPos"
 					}
 				}
 			]
@@ -56275,77 +56348,6 @@
 						"kind": "reference",
 						"path": "::java::server::util::particle::SafePositionSource"
 					}
-				}
-			]
-		},
-		"::java::server::util::range::ExplicitInclusiveRange": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "min_inclusive",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::range::T"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "max_inclusive",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::util::range::T"
-					}
-				}
-			]
-		},
-		"::java::server::util::range::InclusiveRange": {
-			"kind": "template",
-			"child": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "reference",
-						"path": "::java::server::util::range::T"
-					},
-					{
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::server::util::range::T"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 2,
-							"max": 2
-						}
-					},
-					{
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": "min_inclusive",
-								"type": {
-									"kind": "reference",
-									"path": "::java::server::util::range::T"
-								}
-							},
-							{
-								"kind": "pair",
-								"key": "max_inclusive",
-								"type": {
-									"kind": "reference",
-									"path": "::java::server::util::range::T"
-								}
-							}
-						]
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::server::util::range::T"
 				}
 			]
 		},
@@ -63125,7 +63127,7 @@
 						"kind": "concrete",
 						"child": {
 							"kind": "reference",
-							"path": "::java::server::util::range::InclusiveRange"
+							"path": "::java::server::util::InclusiveRange"
 						},
 						"typeArgs": [
 							{
@@ -63148,7 +63150,7 @@
 						"kind": "concrete",
 						"child": {
 							"kind": "reference",
-							"path": "::java::server::util::range::InclusiveRange"
+							"path": "::java::server::util::InclusiveRange"
 						},
 						"typeArgs": [
 							{
