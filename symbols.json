@@ -1,5 +1,5 @@
 {
-	"ref": "4a30ddd16a54302c5c5eb3d58b637fb8a2bb6801",
+	"ref": "1cdf1b469d1cfa3e7eda455d119737dc4c6af25f",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -2468,7 +2468,7 @@
 					"key": "color",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::color::ColorString"
+						"path": "::java::util::color::DyeColor"
 					}
 				}
 			]
@@ -9632,7 +9632,7 @@
 					"key": "slot",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::attribute::AttributeSlot"
+						"path": "::java::util::slot::EquipmentSlotGroup"
 					},
 					"optional": true
 				}
@@ -10758,7 +10758,7 @@
 					"kind": "pair",
 					"key": {
 						"kind": "reference",
-						"path": "::java::util::inventory::EquipmentSlot"
+						"path": "::java::util::slot::EquipmentSlot"
 					},
 					"type": {
 						"kind": "reference",
@@ -11038,7 +11038,7 @@
 								"kind": "pair",
 								"key": {
 									"kind": "reference",
-									"path": "::java::util::inventory::EquipmentSlot"
+									"path": "::java::util::slot::EquipmentSlot"
 								},
 								"type": {
 									"kind": "reference",
@@ -14160,7 +14160,7 @@
 					"key": "color",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::color::ColorString"
+						"path": "::java::util::color::DyeColor"
 					},
 					"optional": true
 				}
@@ -18967,7 +18967,7 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::util::attribute::AttributeSlot"
+							"path": "::java::util::slot::EquipmentSlotGroup"
 						}
 					}
 				},
@@ -22744,13 +22744,13 @@
 						"members": [
 							{
 								"kind": "reference",
-								"path": "::java::util::attribute::AttributeSlot"
+								"path": "::java::util::slot::EquipmentSlotGroup"
 							},
 							{
 								"kind": "list",
 								"item": {
 									"kind": "reference",
-									"path": "::java::util::attribute::AttributeSlot"
+									"path": "::java::util::slot::EquipmentSlotGroup"
 								}
 							}
 						]
@@ -22986,7 +22986,7 @@
 					"key": "color",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::color::ColorString"
+						"path": "::java::util::color::DyeColor"
 					}
 				}
 			]
@@ -52237,7 +52237,7 @@
 					"key": "Color",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::ColorInt"
+						"path": "::java::util::DyeColorInt"
 					},
 					"optional": true
 				},
@@ -52274,7 +52274,7 @@
 					"key": "color",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::ColorString"
+						"path": "::java::util::DyeColor"
 					}
 				},
 				{
@@ -52399,7 +52399,7 @@
 							"key": "Color",
 							"type": {
 								"kind": "reference",
-								"path": "::java::util::ColorInt"
+								"path": "::java::util::DyeColorInt"
 							},
 							"optional": true
 						},
@@ -52436,7 +52436,7 @@
 							"key": "color",
 							"type": {
 								"kind": "reference",
-								"path": "::java::util::ColorString"
+								"path": "::java::util::DyeColor"
 							}
 						},
 						{
@@ -53211,7 +53211,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -53350,7 +53350,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -53770,7 +53770,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -53813,7 +53813,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -53929,7 +53929,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -54566,7 +54566,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -55624,7 +55624,7 @@
 					"key": "Color",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::color::ColorString"
+						"path": "::java::util::color::DyeColor"
 					},
 					"optional": true
 				},
@@ -55839,7 +55839,7 @@
 					"key": "color",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::color::ColorString"
+						"path": "::java::util::color::DyeColor"
 					},
 					"optional": true
 				},
@@ -55860,7 +55860,7 @@
 					"kind": "pair",
 					"key": {
 						"kind": "reference",
-						"path": "::java::server::util::inventory::EquipmentSlot"
+						"path": "::java::util::slot::EquipmentSlot"
 					},
 					"type": {
 						"kind": "float",
@@ -55884,7 +55884,7 @@
 						"kind": "concrete",
 						"child": {
 							"kind": "reference",
-							"path": "::java::server::util::InclusiveRange"
+							"path": "::java::util::InclusiveRange"
 						},
 						"typeArgs": [
 							{
@@ -55907,7 +55907,7 @@
 						"kind": "concrete",
 						"child": {
 							"kind": "reference",
-							"path": "::java::server::util::InclusiveRange"
+							"path": "::java::util::InclusiveRange"
 						},
 						"typeArgs": [
 							{
@@ -55969,7 +55969,7 @@
 										"kind": "pair",
 										"key": {
 											"kind": "reference",
-											"path": "::java::server::util::inventory::EquipmentSlot"
+											"path": "::java::util::slot::EquipmentSlot"
 										},
 										"type": {
 											"kind": "float",
@@ -57961,7 +57961,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -60781,7 +60781,7 @@
 					"key": "Slot",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::attribute::AttributeSlot"
+						"path": "::java::util::slot::EquipmentSlotGroup"
 					},
 					"optional": true
 				},
@@ -61702,7 +61702,7 @@
 							"key": "Slot",
 							"type": {
 								"kind": "reference",
-								"path": "::java::util::attribute::AttributeSlot"
+								"path": "::java::util::slot::EquipmentSlotGroup"
 							},
 							"optional": true
 						},
@@ -63924,7 +63924,7 @@
 					"key": "Color",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::ColorByte"
+						"path": "::java::util::DyeColorByte"
 					},
 					"optional": true
 				}
@@ -63967,7 +63967,7 @@
 					"key": "CollarColor",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::ColorByte"
+						"path": "::java::util::DyeColorByte"
 					},
 					"optional": true
 				},
@@ -64262,7 +64262,7 @@
 					"key": "CollarColor",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::ColorByte"
+						"path": "::java::util::DyeColorByte"
 					},
 					"optional": true
 				},
@@ -65222,7 +65222,7 @@
 					"kind": "pair",
 					"key": {
 						"kind": "reference",
-						"path": "::java::util::inventory::EquipmentSlot"
+						"path": "::java::util::slot::EquipmentSlot"
 					},
 					"type": {
 						"kind": "float",
@@ -65384,7 +65384,7 @@
 					"kind": "pair",
 					"key": {
 						"kind": "reference",
-						"path": "::java::util::inventory::EquipmentSlot"
+						"path": "::java::util::slot::EquipmentSlot"
 					},
 					"type": {
 						"kind": "reference",
@@ -68073,7 +68073,7 @@
 						"members": [
 							{
 								"kind": "reference",
-								"path": "::java::util::color::ColorInt"
+								"path": "::java::util::color::DyeColorInt"
 							},
 							{
 								"kind": "reference",
@@ -70705,7 +70705,7 @@
 					"key": "slot",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::attribute::AttributeSlot"
+						"path": "::java::util::slot::EquipmentSlotGroup"
 					},
 					"optional": true
 				}
@@ -70800,7 +70800,7 @@
 					"key": "Slot",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::attribute::AttributeSlot"
+						"path": "::java::util::slot::EquipmentSlotGroup"
 					},
 					"optional": true
 				},
@@ -70980,10 +70980,6 @@
 				}
 			]
 		},
-		"::java::server::world::item::AnyItem": {
-			"kind": "reference",
-			"path": "::java::server::world::item::SingleItem"
-		},
 		"::java::server::world::item::ApplyEffectsConsumeEffect": {
 			"kind": "struct",
 			"fields": [
@@ -71136,7 +71132,7 @@
 							"key": "slot",
 							"type": {
 								"kind": "reference",
-								"path": "::java::util::attribute::AttributeSlot"
+								"path": "::java::util::slot::EquipmentSlotGroup"
 							},
 							"optional": true
 						}
@@ -71231,7 +71227,7 @@
 							"key": "Slot",
 							"type": {
 								"kind": "reference",
-								"path": "::java::util::attribute::AttributeSlot"
+								"path": "::java::util::slot::EquipmentSlotGroup"
 							},
 							"optional": true
 						},
@@ -72901,7 +72897,7 @@
 					"key": "slot",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::inventory::EquipmentSlot"
+						"path": "::java::util::slot::EquipmentSlot"
 					}
 				},
 				{
@@ -75287,7 +75283,7 @@
 					"key": "Base",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::color::ColorInt"
+						"path": "::java::util::color::DyeColorInt"
 					},
 					"optional": true
 				},
@@ -75328,7 +75324,7 @@
 								"key": "Base",
 								"type": {
 									"kind": "reference",
-									"path": "::java::util::color::ColorInt"
+									"path": "::java::util::color::DyeColorInt"
 								},
 								"optional": true
 							},
@@ -76066,116 +76062,6 @@
 				}
 			]
 		},
-		"::java::util::attribute::AttributeSlot": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Mainhand",
-					"value": "mainhand"
-				},
-				{
-					"identifier": "Offhand",
-					"value": "offhand"
-				},
-				{
-					"identifier": "Head",
-					"value": "head"
-				},
-				{
-					"identifier": "Chest",
-					"value": "chest"
-				},
-				{
-					"identifier": "Legs",
-					"value": "legs"
-				},
-				{
-					"identifier": "Feet",
-					"value": "feet"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"identifier": "Hand",
-					"value": "hand"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"identifier": "Armor",
-					"value": "armor"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"identifier": "Any",
-					"value": "any"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"identifier": "Body",
-					"value": "body"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"identifier": "Saddle",
-					"value": "saddle"
-				}
-			]
-		},
 		"::java::util::attribute::LegacyOperation": {
 			"kind": "enum",
 			"enumKind": "int",
@@ -76256,7 +76142,77 @@
 			"kind": "reference",
 			"path": "::java::util::block_state::BlockState"
 		},
-		"::java::util::color::ColorByte": {
+		"::java::util::color::DyeColor": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "White",
+					"value": "white"
+				},
+				{
+					"identifier": "Orange",
+					"value": "orange"
+				},
+				{
+					"identifier": "Magenta",
+					"value": "magenta"
+				},
+				{
+					"identifier": "LightBlue",
+					"value": "light_blue"
+				},
+				{
+					"identifier": "Yellow",
+					"value": "yellow"
+				},
+				{
+					"identifier": "Lime",
+					"value": "lime"
+				},
+				{
+					"identifier": "Pink",
+					"value": "pink"
+				},
+				{
+					"identifier": "Gray",
+					"value": "gray"
+				},
+				{
+					"identifier": "LightGray",
+					"value": "light_gray"
+				},
+				{
+					"identifier": "Cyan",
+					"value": "cyan"
+				},
+				{
+					"identifier": "Purple",
+					"value": "purple"
+				},
+				{
+					"identifier": "Blue",
+					"value": "blue"
+				},
+				{
+					"identifier": "Brown",
+					"value": "brown"
+				},
+				{
+					"identifier": "Green",
+					"value": "green"
+				},
+				{
+					"identifier": "Red",
+					"value": "red"
+				},
+				{
+					"identifier": "Black",
+					"value": "black"
+				}
+			]
+		},
+		"::java::util::color::DyeColorByte": {
 			"kind": "enum",
 			"enumKind": "byte",
 			"values": [
@@ -76326,7 +76282,7 @@
 				}
 			]
 		},
-		"::java::util::color::ColorInt": {
+		"::java::util::color::DyeColorInt": {
 			"kind": "enum",
 			"enumKind": "int",
 			"values": [
@@ -76393,76 +76349,6 @@
 				{
 					"identifier": "Black",
 					"value": 15
-				}
-			]
-		},
-		"::java::util::color::ColorString": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "White",
-					"value": "white"
-				},
-				{
-					"identifier": "Orange",
-					"value": "orange"
-				},
-				{
-					"identifier": "Magenta",
-					"value": "magenta"
-				},
-				{
-					"identifier": "LightBlue",
-					"value": "light_blue"
-				},
-				{
-					"identifier": "Yellow",
-					"value": "yellow"
-				},
-				{
-					"identifier": "Lime",
-					"value": "lime"
-				},
-				{
-					"identifier": "Pink",
-					"value": "pink"
-				},
-				{
-					"identifier": "Gray",
-					"value": "gray"
-				},
-				{
-					"identifier": "LightGray",
-					"value": "light_gray"
-				},
-				{
-					"identifier": "Cyan",
-					"value": "cyan"
-				},
-				{
-					"identifier": "Purple",
-					"value": "purple"
-				},
-				{
-					"identifier": "Blue",
-					"value": "blue"
-				},
-				{
-					"identifier": "Brown",
-					"value": "brown"
-				},
-				{
-					"identifier": "Green",
-					"value": "green"
-				},
-				{
-					"identifier": "Red",
-					"value": "red"
-				},
-				{
-					"identifier": "Black",
-					"value": "black"
 				}
 			]
 		},
@@ -76558,18 +76444,6 @@
 				}
 			]
 		},
-		"::java::util::ColorByte": {
-			"kind": "reference",
-			"path": "::java::util::color::ColorByte"
-		},
-		"::java::util::ColorInt": {
-			"kind": "reference",
-			"path": "::java::util::color::ColorInt"
-		},
-		"::java::util::ColorString": {
-			"kind": "reference",
-			"path": "::java::util::color::ColorString"
-		},
 		"::java::util::direction::Direction": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -76629,6 +76503,18 @@
 					"value": 5
 				}
 			]
+		},
+		"::java::util::DyeColor": {
+			"kind": "reference",
+			"path": "::java::util::color::DyeColor"
+		},
+		"::java::util::DyeColorByte": {
+			"kind": "reference",
+			"path": "::java::util::color::DyeColorByte"
+		},
+		"::java::util::DyeColorInt": {
+			"kind": "reference",
+			"path": "::java::util::color::DyeColorInt"
 		},
 		"::java::util::effect::EffectByteId": {
 			"kind": "enum",
@@ -77845,124 +77731,6 @@
 			"typeParams": [
 				{
 					"path": "::java::util::T"
-				}
-			]
-		},
-		"::java::util::inventory::<anonymous 0>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::server::world::item::ItemStack"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Inventory slot the item is in\n",
-					"key": "Slot",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::inventory::T"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::util::inventory::EquipmentSlot": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Mainhand",
-					"value": "mainhand"
-				},
-				{
-					"identifier": "Offhand",
-					"value": "offhand"
-				},
-				{
-					"identifier": "Head",
-					"value": "head"
-				},
-				{
-					"identifier": "Chest",
-					"value": "chest"
-				},
-				{
-					"identifier": "Legs",
-					"value": "legs"
-				},
-				{
-					"identifier": "Feet",
-					"value": "feet"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"identifier": "Body",
-					"value": "body"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"identifier": "Saddle",
-					"value": "saddle"
-				}
-			]
-		},
-		"::java::util::inventory::InventoryItem": {
-			"kind": "reference",
-			"path": "::java::server::world::item::ItemStack"
-		},
-		"::java::util::inventory::SlottedItem": {
-			"kind": "template",
-			"child": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "spread",
-						"type": {
-							"kind": "reference",
-							"path": "::java::server::world::item::ItemStack"
-						}
-					},
-					{
-						"kind": "pair",
-						"desc": "Inventory slot the item is in\n",
-						"key": "Slot",
-						"type": {
-							"kind": "reference",
-							"path": "::java::util::inventory::T"
-						},
-						"optional": true
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::util::inventory::T"
 				}
 			]
 		},
@@ -80110,24 +79878,227 @@
 				}
 			]
 		},
-		"::java::util::SlottedItem": {
+		"::java::util::slot::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::server::world::item::ItemStack"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Inventory slot the item is in\n",
+					"key": "Slot",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::slot::T"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::util::slot::EquipmentSlot": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Mainhand",
+					"value": "mainhand"
+				},
+				{
+					"identifier": "Offhand",
+					"value": "offhand"
+				},
+				{
+					"identifier": "Head",
+					"value": "head"
+				},
+				{
+					"identifier": "Chest",
+					"value": "chest"
+				},
+				{
+					"identifier": "Legs",
+					"value": "legs"
+				},
+				{
+					"identifier": "Feet",
+					"value": "feet"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"identifier": "Body",
+					"value": "body"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"identifier": "Saddle",
+					"value": "saddle"
+				}
+			]
+		},
+		"::java::util::slot::EquipmentSlotGroup": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Mainhand",
+					"value": "mainhand"
+				},
+				{
+					"identifier": "Offhand",
+					"value": "offhand"
+				},
+				{
+					"identifier": "Head",
+					"value": "head"
+				},
+				{
+					"identifier": "Chest",
+					"value": "chest"
+				},
+				{
+					"identifier": "Legs",
+					"value": "legs"
+				},
+				{
+					"identifier": "Feet",
+					"value": "feet"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"identifier": "Hand",
+					"value": "hand"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"identifier": "Armor",
+					"value": "armor"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"identifier": "Any",
+					"value": "any"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"identifier": "Body",
+					"value": "body"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"identifier": "Saddle",
+					"value": "saddle"
+				}
+			]
+		},
+		"::java::util::slot::SlottedItem": {
 			"kind": "template",
 			"child": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::util::inventory::SlottedItem"
-				},
-				"typeArgs": [
+				"kind": "struct",
+				"fields": [
 					{
-						"kind": "reference",
-						"path": "::java::util::T"
+						"kind": "spread",
+						"type": {
+							"kind": "reference",
+							"path": "::java::server::world::item::ItemStack"
+						}
+					},
+					{
+						"kind": "pair",
+						"desc": "Inventory slot the item is in\n",
+						"key": "Slot",
+						"type": {
+							"kind": "reference",
+							"path": "::java::util::slot::T"
+						},
+						"optional": true
 					}
 				]
 			},
 			"typeParams": [
 				{
-					"path": "::java::util::T"
+					"path": "::java::util::slot::T"
 				}
 			]
 		},
@@ -85817,7 +85788,7 @@
 			},
 			"base_color": {
 				"kind": "reference",
-				"path": "::java::util::color::ColorString"
+				"path": "::java::util::color::DyeColor"
 			},
 			"bees": {
 				"kind": "list",
@@ -85932,7 +85903,7 @@
 			},
 			"cat/collar": {
 				"kind": "reference",
-				"path": "::java::util::color::ColorString",
+				"path": "::java::util::color::DyeColor",
 				"attributes": [
 					{
 						"name": "since",
@@ -87091,7 +87062,7 @@
 			},
 			"sheep/color": {
 				"kind": "reference",
-				"path": "::java::util::color::ColorString",
+				"path": "::java::util::color::DyeColor",
 				"attributes": [
 					{
 						"name": "since",
@@ -87107,7 +87078,7 @@
 			},
 			"shulker/color": {
 				"kind": "reference",
-				"path": "::java::util::color::ColorString",
+				"path": "::java::util::color::DyeColor",
 				"attributes": [
 					{
 						"name": "since",
@@ -87190,7 +87161,7 @@
 			},
 			"tropical_fish/base_color": {
 				"kind": "reference",
-				"path": "::java::util::color::ColorString",
+				"path": "::java::util::color::DyeColor",
 				"attributes": [
 					{
 						"name": "since",
@@ -87222,7 +87193,7 @@
 			},
 			"tropical_fish/pattern_color": {
 				"kind": "reference",
-				"path": "::java::util::color::ColorString",
+				"path": "::java::util::color::DyeColor",
 				"attributes": [
 					{
 						"name": "since",
@@ -87291,7 +87262,7 @@
 			},
 			"wolf/collar": {
 				"kind": "reference",
-				"path": "::java::util::color::ColorString",
+				"path": "::java::util::color::DyeColor",
 				"attributes": [
 					{
 						"name": "since",
@@ -93202,7 +93173,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -93232,7 +93203,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -93262,7 +93233,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -93292,7 +93263,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -93322,7 +93293,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
@@ -93352,7 +93323,7 @@
 							"kind": "concrete",
 							"child": {
 								"kind": "reference",
-								"path": "::java::util::inventory::SlottedItem"
+								"path": "::java::util::slot::SlottedItem"
 							},
 							"typeArgs": [
 								{
