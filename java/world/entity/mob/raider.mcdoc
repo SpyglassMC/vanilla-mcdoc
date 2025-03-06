@@ -1,0 +1,55 @@
+use ::java::world::item::ItemStack
+
+dispatch minecraft:entity[witch] to struct RaiderBase {
+	...super::MobBase,
+	/// Whether the raider is patrolling.
+	Patrolling?: boolean,
+	/// Whether the raider is leading the patrol.
+	PatrolLeader?: boolean,
+	/// Where the raider is heading towards.
+	#[until="1.20.5"]
+	PatrolTarget?: PatrolTarget,
+	/// Where the raider is heading towards.
+	#[since="1.20.5"]
+	patrol_target?: int[] @ 3,
+	/// Whether the raider can join raids and count towards the progress bar.
+	#[since="1.16"]
+	CanJoinRaid?: boolean,
+	/// Id of the raid that the raider is in.
+	RaidId?: int,
+	/// Wave that the raider is in.
+	Wave?: int @ 0..8,
+}
+
+struct PatrolTarget {
+	X?: int,
+	Y?: int,
+	Z?: int,
+}
+
+dispatch minecraft:entity[pillager] to struct Pillager {
+	...RaiderBase,
+	Inventory?: [ItemStack] @ 0..5,
+}
+
+dispatch minecraft:entity[ravager] to struct Ravager {
+	...RaiderBase,
+	/// Ticks until it can attack.
+	AttackTick?: int,
+	/// Ticks until it can roar.
+	RoarTick?: int,
+	/// Ticks it is stunned for.
+	StunTick?: int,
+}
+
+dispatch minecraft:entity[evoker,illusioner] to struct Spellcaster {
+	...RaiderBase,
+	/// Ticks until the raider can cast its spell.
+	SpellTicks?: int,
+}
+
+dispatch minecraft:entity[vindicator] to struct Vindicator {
+	...RaiderBase,
+	/// Whether it should try to attack most other mobs.
+	Johnny?: boolean,
+}

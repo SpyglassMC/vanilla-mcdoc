@@ -1,0 +1,17 @@
+use ::java::util::direction::DirectionInt
+use ::java::world::item::ItemStack
+
+dispatch minecraft:block_entity[brushable_block] to struct BrushableBlock {
+	...super::BlockEntity,
+	/// Loot table that will decide the brushed loot.
+	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
+	/// Seed of the loot table.
+	LootTableSeed?: #[random] long,
+	/// Item that was rolled from the loot table, which is currently peeking out.
+	item?: ItemStack,
+	/// Direction of the block that was interacted with.
+	/// Write-only, is not saved by the game.
+	hit_direction?: DirectionInt,
+}
+
+dispatch minecraft:block[suspicious_sand,suspicious_gravel] to minecraft:block_entity[brushable_block]

@@ -1,4 +1,4 @@
-use ::java::server::world::block::spawner::SpawnPotential
+use ::java::world::block::spawner::SpawnPotential
 
 struct TrialSpawnerConfig {
 	/// Maximum distance from the spawner that en entity can spawn

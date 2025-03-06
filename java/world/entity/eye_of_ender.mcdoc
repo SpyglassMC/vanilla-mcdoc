@@ -1,0 +1,7 @@
+use ::java::world::item::ItemStack
+
+dispatch minecraft:entity[eye_of_ender] to struct EyeOfEnder {
+	...super::EntityBase,
+	/// Item to render as
+	Item?: ItemStack,
+}

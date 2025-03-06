@@ -1,0 +1,17 @@
+use ::java::world::item::ItemStack
+use ::java::util::game_event::VibrationListener
+
+#[since="1.19"]
+dispatch minecraft:entity[allay] to struct Allay {
+	...super::MobBase,
+	/// Whether the allay can duplicate. This is set to false when the allay duplicates.
+	#[until="1.21.5"]
+	CanDuplicate?: boolean,
+	/// Ticks until the allay can duplicate. This is set to 6000 game ticks (5 minutes) when the allay duplicates.
+	DuplicationCooldown?: int,
+	/// Items it has picked up. Note that the item given by the player is in
+	/// the allay's `HandItems[0]` tag, not here.
+	Inventory?: [ItemStack] @ 1,
+	/// Vibration game event listener.
+	listener?: VibrationListener,
+}

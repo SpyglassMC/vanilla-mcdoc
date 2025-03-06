@@ -1,8 +1,8 @@
 use super::block_state::BlockState
 use ::java::util::color::RGB
 use ::java::util::color::RGBA
-use ::java::server::world::item::ItemStack
-use ::java::server::world::item::SingleItem
+use ::java::world::item::ItemStack
+use ::java::world::item::SingleItem
 
 struct Particle {
 	type: #[id="particle_type"] string,

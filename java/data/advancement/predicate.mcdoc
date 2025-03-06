@@ -4,18 +4,18 @@ use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::text::Text
 use ::java::util::Filterable
 use ::java::util::color::DyeColor
-use ::java::server::world::item::DataComponentPredicate
-use ::java::server::world::item::CustomData
-use ::java::server::world::item::firework::FireworkShape
-use ::java::server::world::entity::boat::BoatType
-use ::java::server::world::entity::mob::breedable::axolotl::AxolotlVariant
-use ::java::server::world::entity::mob::breedable::fox::FoxType
-use ::java::server::world::entity::mob::breedable::horse::HorseVariant
-use ::java::server::world::entity::mob::breedable::llama::LlamaVariant
-use ::java::server::world::entity::mob::breedable::mooshroom::MooshroomType
-use ::java::server::world::entity::mob::breedable::rabbit::RabbitVariant
-use ::java::server::world::entity::mob::breedable::tamable::ParrotVariant
-use ::java::server::world::entity::mob::fish::TropicalFishPattern
+use ::java::world::item::DataComponentPredicate
+use ::java::world::item::CustomData
+use ::java::world::item::firework::FireworkShape
+use ::java::world::entity::boat::BoatType
+use ::java::world::entity::mob::breedable::axolotl::AxolotlVariant
+use ::java::world::entity::mob::breedable::fox::FoxType
+use ::java::world::entity::mob::breedable::horse::HorseVariant
+use ::java::world::entity::mob::breedable::llama::LlamaVariant
+use ::java::world::entity::mob::breedable::mooshroom::MooshroomType
+use ::java::world::entity::mob::breedable::rabbit::RabbitVariant
+use ::java::world::entity::mob::breedable::tamable::ParrotVariant
+use ::java::world::entity::mob::fish::TropicalFishPattern
 use super::super::util::MinMaxBounds
 
 type ItemPredicate = (

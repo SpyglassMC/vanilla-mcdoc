@@ -1,4 +1,4 @@
-use ::java::server::world::item::ItemStack
+use ::java::world::item::ItemStack
 
 type SlottedItem<T> = struct {
 	...ItemStack,

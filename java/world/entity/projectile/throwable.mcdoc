@@ -1,0 +1,47 @@
+use ::java::world::item::ItemStack
+
+struct Throwable {
+	...super::ProjectileBase,
+	#[until="1.16"]
+	xTile?: int,
+	#[until="1.16"]
+	yTile?: int,
+	#[until="1.16"]
+	zTile?: int,
+	/// Shake it creates.
+	#[until="1.16"]
+	shake?: byte,
+	/// Entity that threw it.
+	#[until="1.16"]
+	owner?: Owner,
+	/// Whether it is in the ground.
+	#[until="1.16"]
+	inGround?: boolean,
+}
+
+struct Owner {
+	/// Upper bits of the owner's UUID.
+	M?: long,
+	/// Lower bits of the owner's UUID.
+	L?: long,
+}
+
+dispatch minecraft:entity[egg,ender_pearl,experience_bottle,snowball] to struct ThrowableItem {
+	...Throwable,
+	/// Item representation of the projectile.
+	#[since="1.16"]
+	Item?: ItemStack,
+}
+
+dispatch minecraft:entity[potion] to struct Potion {
+	...Throwable,
+	/// Item representation of the potion.
+	#[until="1.16"]
+	Potion?: ItemStack,
+	/// Item representation of the potion.
+	#[since="1.16"]
+	Item?: ItemStack,
+}
+
+#[since="1.21.5"]
+dispatch minecraft:entity[splash_potion,lingering_potion] to Potion

@@ -1,0 +1,30 @@
+use ::java::world::item::ItemStack
+
+dispatch minecraft:entity[item] to struct Item {
+	...super::EntityBase,
+	/// Ticks it has existed.
+	Age?: short,
+	Health?: short,
+	/// Ticks until an entity can pick up this item.
+	PickupDelay?: short,
+	/// Only this entity can pick up the item.
+	#[uuid]
+	Owner?: (
+		#[until="1.16"] Uuid |
+		#[since="1.16"] int[] @ 4 |
+	),
+	/// Player who threw the item. Can be set and/or changed to any entity.
+	#[uuid]
+	Thrower?: (
+		#[until="1.16"] Uuid |
+		#[since="1.16"] int[] @ 4 |
+	),
+	Item?: ItemStack,
+}
+
+struct Uuid {
+	/// Lower bits of the target player's UUID
+	L?: long,
+	/// Upper bits of the target player's UUID
+	M?: long,
+}

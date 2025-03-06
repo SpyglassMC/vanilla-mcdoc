@@ -1,0 +1,7 @@
+use ::java::world::item::ItemStack
+
+dispatch minecraft:entity[ominous_item_spawner] to struct OminousItemSpawner {
+	...super::EntityBase,
+	item?: ItemStack,
+	spawn_item_after_ticks?: long,
+}

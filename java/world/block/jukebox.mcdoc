@@ -1,0 +1,11 @@
+use ::java::world::item::ItemStack
+
+dispatch minecraft:block_entity[jukebox] to struct Jukebox {
+	...super::BlockEntity,
+	RecordItem?: ItemStack,
+	TickCount?: long,
+	RecordStartTick?: long,
+	IsPlaying?: boolean,
+}
+
+dispatch minecraft:block[jukebox] to minecraft:block_entity[jukebox]

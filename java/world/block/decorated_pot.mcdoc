@@ -1,0 +1,48 @@
+use ::java::world::item::ItemStack
+
+#[since="1.19.4"]
+dispatch minecraft:block_entity[decorated_pot] to struct DecoratedPot {
+	...super::BlockEntity,
+	/// Item ID of what was used for each side of the pot.
+	sherds?: [#[id] Sherd] @ 4,
+	/// Loot table that will populate this container.
+	#[since="1.20.3"]
+	LootTable?: #[id(registry="loot_table",empty="allowed")] string,
+	/// Seed of the loot table.
+	#[since="1.20.3"]
+	LootTableSeed?: #[random] long,
+	#[since="1.20.3"]
+	item?: ItemStack,
+}
+
+dispatch minecraft:block[decorated_pot] to minecraft:block_entity[decorated_pot]
+
+enum(string) Sherd {
+	Angler = "angler_pottery_sherd",
+	Archer = "archer_pottery_sherd",
+	ArmsUp = "arms_up_pottery_sherd",
+	Blade = "blade_pottery_sherd",
+	Brewer = "brewer_pottery_sherd",
+	Brick = "brick",
+	Burn = "burn_pottery_sherd",
+	Danger = "danger_pottery_sherd",
+	Explorer = "explorer_pottery_sherd",
+	Friend = "friend_pottery_sherd",
+	Heart = "heart_pottery_sherd",
+	Heartbreak = "heartbreak_pottery_sherd",
+	Howl = "howl_pottery_sherd",
+	Miner = "miner_pottery_sherd",
+	Mourner = "mourner_pottery_sherd",
+	Plenty = "plenty_pottery_sherd",
+	Prize = "prize_pottery_sherd",
+	Sheaf = "sheaf_pottery_sherd",
+	Shelter = "shelter_pottery_sherd",
+	Skull = "skull_pottery_sherd",
+	Snort = "snort_pottery_sherd",
+	#[since="1.20.5"]
+	Flow = "flow_pottery_sherd",
+	#[since="1.20.5"]
+	Guster = "guster_pottery_sherd",
+	#[since="1.20.5"]
+	Scrape = "scrape_pottery_sherd",
+}

@@ -1,4 +1,4 @@
-use ::java::server::world::entity::AnyEntity
+use ::java::world::entity::AnyEntity
 use ::java::util::block_state::BlockState
 
 struct StructureNBT {

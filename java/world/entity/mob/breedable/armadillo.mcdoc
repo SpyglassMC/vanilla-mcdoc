@@ -1,0 +1,13 @@
+#[since="1.20.5"]
+dispatch minecraft:entity[armadillo] to struct Armadillo {
+	...super::Breedable,
+	state?: ArmadilloState,
+	scute_time?: int @ 0..,
+}
+
+enum(string) ArmadilloState {
+	Idle = "idle",
+	Rolling = "rolling",
+	Scared = "scared",
+	Unrolling = "unrolling",
+}

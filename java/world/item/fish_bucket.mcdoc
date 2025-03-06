@@ -1,0 +1,42 @@
+use ::java::world::entity::AnyEntity
+
+struct BucketEntityData {
+	...AnyEntity,
+	/// Turns into the expiry time of the memory module `has_hunting_cooldown` for axolotls.
+	HuntingCooldown: long,
+	/// Turns into the `Variant` entity tag for tropical fish.
+	BucketVariantTag: int,
+}
+
+dispatch minecraft:data_component[bucket_entity_data] to (BucketEntityData | #[nbt=BucketEntityData] string)
+
+dispatch minecraft:item[
+	axolotl_bucket,
+	cod_bucket,
+	salmon_bucket,
+	pufferfish_bucket,
+	tadpole_bucket
+] to struct BasicFishBucket {
+	EntityTag?: AnyEntity,
+}
+
+// Pre-1.20.5
+dispatch minecraft:item[tropical_fish_bucket] to struct AxolotlBucket {
+	...super::ItemBase,
+	EntityTag?: AnyEntity,
+	/// Turns into the `Variant` entity tag.
+	BucketVariantTag?: int,
+}
+
+dispatch minecraft:item_component[
+	axolotl_bucket,
+	cod_bucket,
+	salmon_bucket,
+	squid_bucket,
+	pufferfish_bucket,
+	tropical_fish_bucket,
+	tadpole_bucket
+] to (
+	super::ItemBaseComponents |
+	"bucket_entity_data" |
+)

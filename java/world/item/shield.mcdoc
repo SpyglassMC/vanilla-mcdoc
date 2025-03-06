@@ -1,0 +1,22 @@
+use ::java::util::color::DyeColor
+use ::java::util::color::DyeColorInt
+use ::java::world::block::banner::BannerPatternLayer
+
+dispatch minecraft:data_component[base_color] to DyeColor
+
+// Pre-1.20.5
+dispatch minecraft:item[shield] to struct Shield {
+	...super::ItemBase,
+	/// Banner Data.
+	BlockEntityTag?: struct BlockEntityTag {
+		/// Base color.
+		Base?: DyeColorInt,
+		Patterns?: [BannerPatternLayer],
+	},
+}
+
+dispatch minecraft:item_component[shield] to (
+	super::ItemBaseComponents |
+	"banner_patterns" |
+	"base_color" |
+)

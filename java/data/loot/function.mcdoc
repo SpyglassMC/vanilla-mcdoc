@@ -16,9 +16,9 @@ use ::java::util::color::DyeColor
 use ::java::util::text::Text
 use ::java::util::Filterable
 use ::java::util::color::RGB
-use ::java::server::world::item::DataComponentPatch
-use ::java::server::world::item::CustomData
-use ::java::server::world::item::firework::FireworkShape
+use ::java::world::item::DataComponentPatch
+use ::java::world::item::CustomData
+use ::java::world::item::firework::FireworkShape
 
 struct Conditions {
 	conditions?: [LootCondition],

@@ -1,0 +1,14 @@
+use ::java::world::entity::AnyEntity
+
+dispatch minecraft:data_component[bees] to [Occupant]
+
+struct Occupant {
+	entity_data: AnyEntity,
+	min_ticks_in_hive: int,
+	ticks_in_hive: int,
+}
+
+dispatch minecraft:item_component[bee_nest, beehive] to (
+	super::BlockItemComponents |
+	"bees" |
+)

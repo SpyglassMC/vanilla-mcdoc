@@ -1,5 +1,5 @@
-use ::java::server::world::item::ItemStack
-use ::java::server::world::item::SingleItem
+use ::java::world::item::ItemStack
+use ::java::world::item::SingleItem
 
 dispatch minecraft:resource[recipe] to struct Recipe {
 	type: #[id="recipe_serializer"] string,

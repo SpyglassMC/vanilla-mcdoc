@@ -1,0 +1,201 @@
+use ::java::util::attribute::AttributeName
+use ::java::util::attribute::LegacyOperation
+use ::java::util::attribute::AttributeOperation
+use ::java::world::item::ItemStack
+use ::java::util::effect::MobEffectInstance
+use ::java::util::slot::EquipmentSlotGroup
+use ::java::util::memory::Memories
+use ::java::util::slot::EquipmentSlot
+
+struct LivingEntity {
+	...super::EntityBase,
+	Health?: float,
+	/// How much absorption health it has.
+	AbsorptionAmount?: float,
+	/// Timer since it has been damaged. Counts down to zero.
+	HurtTime?: short,
+	/// Ticks since it was last damaged, from its creation.
+	HurtByTimestamp?: int,
+	/// Timer since it was marked as dead. Counts down to zero.
+	DeathTime?: short,
+	/// Whether it will glide when it falls.
+	FallFlying?: boolean,
+	/// X coordinate of where it is sleeping.
+	#[until="1.21.5"]
+	SleepingX?: int,
+	/// Y coordinate of where it is sleeping.
+	#[until="1.21.5"]
+	SleepingY?: int,
+	/// Z coordinate of where it is sleeping.
+	#[until="1.21.5"]
+	SleepingZ?: int,
+	#[since="1.21.5"]
+	sleeping_pos?: int[] @ 3,
+	Brain?: struct Brain {
+		memories?: Memories,
+	},
+	#[until="1.21"]
+	Attributes?: [Attribute],
+	#[since="1.21"]
+	attributes?: [Attribute],
+	/// Active potion effects
+	#[until="1.20.2"]
+	ActiveEffects?: [MobEffectInstance],
+	#[since="1.20.2"]
+	active_effects?: [MobEffectInstance],
+	/// Whether it should have an AI.
+	NoAI?: boolean,
+	/// Team to join when it is spawned.
+	Team?: #[team] string,
+}
+
+/// Base NBT for all mobs.
+struct MobBase {
+	...LivingEntity,
+	#[until="1.21.5"] ...struct {
+		/// [main hand, offhand]
+		HandItems?: [(ItemStack | struct {})] @ 2,
+		/// Chance to drop the items it is holding, in [main hand, offhand].
+		HandDropChances?: [float] @ 2,
+		/// [feet, legs, body, head]
+		ArmorItems?: [(ItemStack | struct {})] @ 4,
+		/// Chance to drop the items it is wearing, in [feet, legs, body, head].
+		ArmorDropChances?: [float] @ 4,
+		/// Used for wolf armor & llama carpet decoration.
+		#[since="1.20.5"]
+		body_armor_item?: ItemStack,
+		/// Chance to drop the item it is wearing.
+		#[since="1.20.5"]
+		body_armor_drop_chance?: float,
+	},
+	#[since="1.21.5"] ...struct {
+		/// The equipment items of the mob, such as armor or weapons.
+		equipment?: EntityEquipment,
+		/// Chances of the mob dropping an equipment slot on death.
+		drop_chances?: DropChances,
+	},
+	/// Loot table that is dropped when the mob dies.
+	DeathLootTable?: #[id(registry="loot_table", empty="allowed")] string,
+	/// Seed for generating the death loot table.
+	DeathLootTableSeed?: #[random] long,
+	/// Whether it can pick up loot.
+	CanPickUpLoot?: boolean,
+	/// Whether it should not despawn naturally.
+	PersistenceRequired?: boolean,
+	/// Whether it is left handed.
+	LeftHanded?: boolean,
+	/// What the leash is attached to.
+	#[until="1.20.5"]
+	Leash?: (UUIDLeash | BlockLeash),
+	/// What the leash is attached to.
+	#[since="1.20.5"]
+	leash?: (int[] @ 3 | struct LeashOwner {
+		UUID?: int[] @ 4
+	})
+}
+
+struct EntityEquipment {
+	[EquipmentSlot]: ItemStack,
+}
+
+struct DropChances {
+	[EquipmentSlot]: float @ 0..,
+}
+
+struct NeutralMob {
+	/// Ticks that it will be angry for.
+	AngerTime?: int,
+	#[uuid]
+	AngryAt?: int[] @ 4,
+}
+
+struct AgeableMob {
+	/// The age of the mob in ticks. When negative, the mob is a baby. When 0 or above, the mob is an adult.
+	/// If this mob is breedable, when 0 or above, represents the number of ticks before it can breed again.
+	Age?: int,
+	/// A value of age assigned to this mob when it grows up.
+	/// Incremented when a baby mob is fed.
+	ForcedAge?: int,
+}
+
+/// A single attribute.
+struct Attribute {
+	#[until="1.21"]
+	Name?: (
+		#[until="1.16"] (AttributeName | string) |
+		#[since="1.16"] #[id="attribute"] string |
+	),
+	#[until="1.21"]
+	Base?: double,
+	/// Modifiers that act on it.
+	#[until="1.21"]
+	Modifiers?: [AttributeModifier],
+	#[since="1.21"]
+	id?: #[id="attribute"] string,
+	#[since="1.21"]
+	base?: double,
+	#[since="1.21"]
+	modifiers?: [AttributeModifier],
+}
+
+/// A single attribute modifier
+type AttributeModifier = (
+	#[since="1.21"] struct {
+		id?: #[id="attribute_modifier"] string,
+		amount?: double,
+		operation?: AttributeOperation,
+	} |
+	#[until="1.21"] struct {
+		/// Has no real effect.
+		Name?: string,
+		/// Slot that the modifier is active in.
+		Slot?: EquipmentSlotGroup,
+		Operation?: LegacyOperation,
+		/// Change in the attribute.
+		Amount?: double,
+		/// Upper bits of the modifier's UUID.
+		#[until="1.16"]
+		UUIDMost?: long,
+		/// Lower bits of the modifier's UUID.
+		#[until="1.16"]
+		UUIDLeast?: long,
+		#[uuid]
+		#[since="1.16"]
+		UUID?: int[] @ 4,
+	} |
+)
+
+struct UUIDLeash {
+	/// Upper bits of the other entity's UUID.
+	UUIDMost?: long,
+	/// Lower bits of the other entity's UUID.
+	UUIDLeast?: long,
+}
+
+struct BlockLeash {
+	/// X coordiante of leash knot.
+	X?: int,
+	/// Y coordiante of leash knot.
+	Y?: int,
+	/// Z coordiante of leash knot.
+	Z?: int,
+}
+
+dispatch minecraft:entity[
+	blaze,
+	breeze,
+	cave_spider,
+	elder_guardian,
+	giant,
+	guardian,
+	silverfish,
+	spider,
+	stray,
+	wither_skeleton,
+] to MobBase
+
+dispatch minecraft:entity[squid] to struct Squid {
+	...MobBase,
+	#[since="1.21.2"]
+	...AgeableMob,
+}
