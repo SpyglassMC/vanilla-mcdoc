@@ -1,5 +1,5 @@
 {
-	"ref": "1cdf1b469d1cfa3e7eda455d119737dc4c6af25f",
+	"ref": "8268a6380cccfae6ea03fb5f96216cf8174c8156",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -52227,6 +52227,14 @@
 					}
 				}
 			]
+		},
+		"::java::server::util::text::Text": {
+			"kind": "reference",
+			"path": "::java::util::text::Text"
+		},
+		"::java::server::util::text::TextStyle": {
+			"kind": "reference",
+			"path": "::java::util::text::TextStyle"
 		},
 		"::java::server::world::block::banner::<anonymous 0>": {
 			"kind": "struct",
