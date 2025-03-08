@@ -1,5 +1,5 @@
 {
-	"ref": "c5a6c4058db72f285e3ab09d8961c32c1f94dd8b",
+	"ref": "94fc1b9ebcbd5162a3212369970cf52fea132e28",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -74647,6 +74647,56 @@
 						"item": {
 							"kind": "reference",
 							"path": "::java::world::entity::mob::player::EnderPearl"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.3"
+								}
+							}
+						}
+					],
+					"desc": "Used by the game for wind charges.\n",
+					"key": "ignore_fall_damage_from_current_explosion",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.3"
+								}
+							}
+						}
+					],
+					"desc": "Added mid-air after being hit by an explosion.\n",
+					"key": "current_explosion_impact_pos",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "double"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
 						}
 					},
 					"optional": true
