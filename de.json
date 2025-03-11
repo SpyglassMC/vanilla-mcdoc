@@ -1,1 +1,4 @@
-{}
+{
+	"::java::assets::atlas::Single.resource": "Ein einzelner Textur Speicherort aus der Quelle.",
+	"::java::assets::equipment::Equipment.layers": "Liste der Ebenen für jeden Ebenen-modell Typ."
+}
