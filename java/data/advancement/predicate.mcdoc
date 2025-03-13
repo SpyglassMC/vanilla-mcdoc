@@ -4,8 +4,8 @@ use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::text::Text
 use ::java::util::Filterable
 use ::java::util::color::DyeColor
-use ::java::world::item::DataComponentPredicate
-use ::java::world::item::CustomData
+use ::java::world::component::DataComponentPredicate
+use ::java::world::component::CustomData
 use ::java::world::item::firework::FireworkShape
 use ::java::world::entity::boat::BoatType
 use ::java::world::component::entity::AxolotlVariant

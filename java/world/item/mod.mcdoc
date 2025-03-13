@@ -11,6 +11,29 @@ use ::java::util::effect::MobEffectInstance
 use ::java::util::slot::EquipmentSlot
 use ::java::util::color::RGB
 use ::java::util::text::Text
+use ::java::world::component::DataComponentPatch
+
+struct SingleItem {
+	/// ID of the item.
+	id: (
+		#[until="1.20.5"] #[id="item"] string |
+		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |	
+	),
+	#[since="1.20.5"]
+	components?: DataComponentPatch,
+	#[until="1.20.5"]
+	tag?: minecraft:item[[id]],
+}
+
+type ItemStack = struct {
+	...SingleItem,
+	/// Number of items in the stack
+	#[since="1.20.5"]
+	count?: int @ 1..99,
+	/// Number of items in the stack
+	#[until="1.20.5"]
+	Count?: byte,
+}
 
 struct AttributeModifiers {
 	modifiers: [AttributeModifier],
@@ -144,24 +167,6 @@ dispatch minecraft:consume_effect[teleport_randomly] to struct TeleportRandomlyC
 dispatch minecraft:consume_effect[play_sound] to struct PlaySoundConsumeEffect {
 	sound: SoundEventRef,
 }
-
-dispatch minecraft:data_component[custom_name] to (
-	#[until="1.21.5"] #[text_component] string |
-	#[since="1.21.5"] Text |
-)
-
-dispatch mcdoc:custom_data[%unknown] to any
-
-type CustomDataMap = struct {
-	[#[dispatcher_key="mcdoc:custom_data"] string]?: mcdoc:custom_data[[%key]],
-}
-
-type CustomData = (
-	#[canonical] CustomDataMap |
-	#[nbt=CustomDataMap] string |
-)
-
-dispatch minecraft:data_component[custom_data] to CustomData
 
 dispatch minecraft:data_component[custom_model_data] to (
 	#[until="1.21.4"] int |
@@ -579,35 +584,4 @@ struct Display {
 	Name?: #[text_component] string,
 	/// A list of JSON text components, each element being a lore line.
 	Lore?: [#[text_component] string],
-}
-
-struct DataComponentPatch {
-	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
-	[#[id(registry="data_component_type", prefix="!")] string]: struct {},
-}
-
-struct DataComponentPredicate {
-	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
-}
-
-struct SingleItem {
-	/// ID of the item.
-	id: (
-		#[until="1.20.5"] #[id="item"] string |
-		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |	
-	),
-	#[since="1.20.5"]
-	components?: DataComponentPatch,
-	#[until="1.20.5"]
-	tag?: minecraft:item[[id]],
-}
-
-type ItemStack = struct {
-	...SingleItem,
-	/// Number of items in the stack
-	#[since="1.20.5"]
-	count?: int @ 1..99,
-	/// Number of items in the stack
-	#[until="1.20.5"]
-	Count?: byte,
 }

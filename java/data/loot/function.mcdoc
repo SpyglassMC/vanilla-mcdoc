@@ -16,7 +16,7 @@ use ::java::util::color::DyeColor
 use ::java::util::text::Text
 use ::java::util::Filterable
 use ::java::util::color::RGB
-use ::java::world::item::DataComponentPatch
+use ::java::world::component::DataComponentPatch
 use ::java::world::item::CustomData
 use ::java::world::item::firework::FireworkShape
 

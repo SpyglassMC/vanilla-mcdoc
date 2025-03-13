@@ -1,6 +1,6 @@
 use ::java::util::color::RGBA
 use ::java::world::item::ItemStack
-use ::java::world::item::DataComponentPatch
+use ::java::world::component::DataComponentPatch
 
 type Text = (
 	string |
