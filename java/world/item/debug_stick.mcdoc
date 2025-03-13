@@ -1,8 +1,5 @@
-dispatch minecraft:data_component[debug_stick_state] to struct DebugStickState {
-	[#[id="block"] string]: string, // TODO: FIXME
-}
+use ::java::world::component::item::DebugStickState
 
-// Pre-1.20.5
 dispatch minecraft:item[debug_stick] to struct DebugStick {
 	...super::ItemBase,
 	#[since="1.19"]

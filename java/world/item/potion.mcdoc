@@ -1,24 +1,5 @@
 use ::java::util::effect::MobEffectInstance
 
-struct PotionContents {
-	potion?: #[id="potion"] string,
-	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	custom_color?: #[color="composite_rgb"] int,
-	/// If present, is used to generate the item name using the translation key `item.minecraft.<potion_type>.effect.<custom_name>`.
-	custom_name?: string,
-	custom_effects?: [MobEffectInstance],
-}
-
-dispatch minecraft:data_component[potion_contents] to (
-	#[canonical] PotionContents |
-	#[id="potion"] string |
-)
-
-/// When present, for items that have the `potion_contents` component, the duration of the applied effects will be scaled by this factor. Defaults to `1`.
-#[since="1.21.5"]
-dispatch minecraft:data_component[potion_duration_scale] to float @ 0..
-
-// Pre-1.20.5
 /// An item that has a potion effect
 dispatch minecraft:item[potion, splash_potion, lingering_potion, tipped_arrow] to struct EffectItem {
 	...super::ItemBase,

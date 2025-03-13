@@ -17,7 +17,7 @@ use ::java::util::text::Text
 use ::java::util::Filterable
 use ::java::util::color::RGB
 use ::java::world::component::DataComponentPatch
-use ::java::world::item::CustomData
+use ::java::world::component::CustomData
 use ::java::world::item::firework::FireworkShape
 
 struct Conditions {
