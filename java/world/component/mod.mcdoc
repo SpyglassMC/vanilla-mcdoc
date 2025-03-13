@@ -5,8 +5,15 @@ struct DataComponentPatch {
 	[#[id(registry="data_component_type", prefix="!")] string]: struct {},
 }
 
-struct DataComponentPredicate {
+struct DataComponentExactPredicate {
 	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
+}
+
+struct DataComponentPredicate {
+	[(
+		#[until="1.21.5"] #[id="item_sub_predicate_type"] string |
+		#[since="1.21.5"] #[id="data_component_predicate_type"] string |
+	)]: minecraft:data_component_predicate[[%key]],
 }
 
 
