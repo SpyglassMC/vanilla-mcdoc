@@ -141,13 +141,6 @@ dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
 	/// The trim pattern to apply to the result item.
 	#[since="1.21.5"]
 	pattern: #[id="trim_pattern"] string,
-	/// Resulting trimmed item.
-	result: (
-		#[until="1.20.5"] struct SmithingTrimResult {
-			item: #[id="item"] string,
-		} |
-		#[since="1.20.5"] ItemStack |
-	)
 }
 
 #[until="1.20.5"]
