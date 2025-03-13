@@ -8,14 +8,14 @@ use ::java::world::item::DataComponentPredicate
 use ::java::world::item::CustomData
 use ::java::world::item::firework::FireworkShape
 use ::java::world::entity::boat::BoatType
-use ::java::world::entity::mob::breedable::axolotl::AxolotlVariant
-use ::java::world::entity::mob::breedable::fox::FoxType
-use ::java::world::entity::mob::breedable::horse::HorseVariant
-use ::java::world::entity::mob::breedable::llama::LlamaVariant
-use ::java::world::entity::mob::breedable::mooshroom::MooshroomType
-use ::java::world::entity::mob::breedable::rabbit::RabbitVariant
-use ::java::world::entity::mob::breedable::tamable::ParrotVariant
-use ::java::world::entity::mob::fish::TropicalFishPattern
+use ::java::world::component::entity::AxolotlVariant
+use ::java::world::component::entity::FoxType
+use ::java::world::component::entity::HorseVariant
+use ::java::world::component::entity::LlamaVariant
+use ::java::world::component::entity::MooshroomType
+use ::java::world::component::entity::RabbitVariant
+use ::java::world::component::entity::ParrotVariant
+use ::java::world::component::entity::TropicalFishPattern
 use super::super::util::MinMaxBounds
 
 type ItemPredicate = (

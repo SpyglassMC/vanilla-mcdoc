@@ -1,11 +1,5 @@
 use ::java::data::variants::painting::PaintingVariant
 
-#[since="1.21.5"]
-dispatch minecraft:data_component["painting/variant"] to (
-	#[id="painting_variant"] string |
-	PaintingVariant |
-)
-
 dispatch minecraft:entity[painting] to struct Painting {
 	...super::BlockAttachedEntity,
 	/// Direction it is facing.

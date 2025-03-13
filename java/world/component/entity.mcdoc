@@ -1,0 +1,151 @@
+use ::java::data::variants::painting::PaintingVariant
+use ::java::util::color::DyeColor
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["axolotl/variant"] to AxolotlVariant
+
+enum(string) AxolotlVariant {
+	Lucy = "lucy",
+	Wild = "wild",
+	Gold = "gold",
+	Cyan = "cyan",
+	/// The rare variant.
+	Blue = "blue",
+}
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["cat/collar"] to DyeColor
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["cat/variant"] to #[id="cat_variant"] string
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["chicken/variant"] to #[id="chicken_variant"] string
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["cow/variant"] to #[id="cow_variant"] string
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["fox/variant"] to FoxType
+
+enum(string) FoxType {
+	Red = "red",
+	Snow = "snow",
+}
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["frog/variant"] to #[id="frog_variant"] string
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["horse/variant"] to HorseVariant
+
+enum(string) HorseVariant {
+    White = "white",
+    Creamy = "creamy",
+    Chestnut = "chestnut",
+    Brown = "brown",
+    Black = "black",
+    Gray = "gray",
+    DarkBrown = "dark_brown",
+}
+
+dispatch minecraft:data_component["llama/variant"] to LlamaVariant
+
+enum(string) LlamaVariant {
+	Creamy = "creamy",
+	White = "white",
+	Brown = "brown",
+	Gray = "gray",
+}
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["mooshroom/variant"] to MooshroomType
+
+enum(string) MooshroomType {
+	Red = "red",
+	Brown = "brown",
+}
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["parrot/variant"] to ParrotVariant
+
+enum(string) ParrotVariant {
+	RedBlue = "red_blue",
+	Blue = "blue",
+	Green = "green",
+	YellowBlue = "yellow_blue",
+	Gray = "gray",
+}
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["painting/variant"] to (
+	#[id="painting_variant"] string |
+	PaintingVariant |
+)
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["rabbit/variant"] to RabbitVariant
+
+enum(string) RabbitVariant {
+	Brown = "brown",
+	White = "white",
+	Black = "black",
+	WhiteSplotched = "white_splotched",
+	Gold = "gold",
+	Salt = "salt",
+	/// Killer rabbit
+	Evil = "evil",
+}
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["pig/variant"] to #[id="pig_variant"] string
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["salmon/size"] to 
+
+enum(string) SalmonType {
+	Small = "small",
+	Medium = "medium",
+	Large = "large",
+}
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["sheep/color"] to DyeColor
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["tropical_fish/base_color"] to DyeColor
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["tropical_fish/pattern"] to TropicalFishPattern
+
+enum(string) TropicalFishPattern {
+	Kob = "kob",
+	Sunstreak = "sunstreak",
+	Dasher = "dasher",
+	Brinely = "brinely",
+	Spotty = "spotty",
+	Flopper = "flopper",
+	Stripey = "stripey",
+	Glitter = "glitter",
+	Blockfish = "blockfish",
+	Betty = "betty",
+	Clayfish = "clayfish",
+}
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["tropical_fish/pattern_color"] to DyeColor
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["shulker/color"] to DyeColor
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["villager/variant"] to #[id="villager_type"] string
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["wolf/collar"] to DyeColor
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["wolf/sound_variant"] to #[id="wolf_sound_variant"] string
+
+#[since="1.21.5"]
+dispatch minecraft:data_component["wolf/variant"] to #[id="wolf_variant"] string

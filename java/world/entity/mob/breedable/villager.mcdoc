@@ -1,8 +1,5 @@
 use ::java::world::item::ItemStack
 
-#[since="1.21.5"]
-dispatch minecraft:data_component["villager/variant"] to #[id="villager_type"] string
-
 struct VillagerBase {
 	/// Slots from 0 to 7.
 	Inventory?: [ItemStack] @ 0..8,
