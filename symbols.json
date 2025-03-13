@@ -1,5 +1,5 @@
 {
-	"ref": "94fc1b9ebcbd5162a3212369970cf52fea132e28",
+	"ref": "b5461dcee52b916964e094ef36587c265ea332df",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -28659,104 +28659,6 @@
 								}
 							}
 						]
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Resulting trimmed item.\n",
-					"key": "result",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "struct",
-								"fields": [
-									{
-										"kind": "pair",
-										"key": "item",
-										"type": {
-											"kind": "string",
-											"attributes": [
-												{
-													"name": "id",
-													"value": {
-														"kind": "literal",
-														"value": {
-															"kind": "string",
-															"value": "item"
-														}
-													}
-												}
-											]
-										}
-									}
-								],
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::world::item::ItemStack",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				}
-			]
-		},
-		"::java::data::recipe::SmithingTrimResult": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "item",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "item"
-									}
-								}
-							}
-						]
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
 					}
 				}
 			]
