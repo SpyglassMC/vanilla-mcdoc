@@ -1,5 +1,5 @@
 use ::java::util::text::Text
-use ::java::world::item::CustomData
+use ::java::world::component::CustomData
 
 /// Base NBT for all entities,
 struct EntityBase {

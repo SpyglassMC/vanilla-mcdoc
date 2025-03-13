@@ -1,4 +1,5 @@
 use ::java::util::color::DyeColor
+use ::java::world::component::entity::SalmonType
 
 dispatch minecraft:entity[cod] to struct Fish {
 	...super::MobBase,
@@ -6,44 +7,12 @@ dispatch minecraft:entity[cod] to struct Fish {
 	FromBucket?: boolean,
 }
 
-#[since="1.21.5"]
-dispatch minecraft:data_component["salmon/size"] to SalmonType
-
 dispatch minecraft:entity[salmon] to struct Salmon {
 	...Fish,
 	/// The size variant of the salmon.
 	#[since="1.21.2"]
 	type: SalmonType,
 }
-
-enum(string) SalmonType {
-	Small = "small",
-	Medium = "medium",
-	Large = "large",
-}
-
-#[since="1.21.5"]
-dispatch minecraft:data_component["tropical_fish/pattern"] to TropicalFishPattern
-
-enum(string) TropicalFishPattern {
-	Kob = "kob",
-	Sunstreak = "sunstreak",
-	Dasher = "dasher",
-	Brinely = "brinely",
-	Spotty = "spotty",
-	Flopper = "flopper",
-	Stripey = "stripey",
-	Glitter = "glitter",
-	Blockfish = "blockfish",
-	Betty = "betty",
-	Clayfish = "clayfish",
-}
-
-#[since="1.21.5"]
-dispatch minecraft:data_component["tropical_fish/base_color"] to DyeColor
-
-#[since="1.21.5"]
-dispatch minecraft:data_component["tropical_fish/pattern_color"] to DyeColor
 
 dispatch minecraft:entity[tropical_fish] to struct TropicalFish {
 	...Fish,

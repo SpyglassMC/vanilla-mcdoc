@@ -1,13 +1,8 @@
 use ::java::world::entity::AnyEntity
 
-dispatch minecraft:data_component[entity_data] to (AnyEntity | #[nbt=AnyEntity] string)
-
-// Flattening funny
-// TODO: While we wait for %spawnitem to be implemented we can use the below 250+ line hack :husk:.
+// List can be generated using the following code:
 // https://github.com/misode/mcmeta/raw/registries/item/data.min.json
 // `document.body.textContent.split('\n')[0].filter(item => item.includes('_egg')).join(',\n')`
-//
-// Pre-1.20.5
 dispatch minecraft:item[
 	allay_spawn_egg,
 	armadillo_spawn_egg,

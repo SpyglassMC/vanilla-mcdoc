@@ -1,21 +1,19 @@
 use ::java::util::slot::EquipmentSlot
-use ::java::util::attribute::AttributeOperation
-use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::text::Text
 use ::java::util::Filterable
 use ::java::util::color::DyeColor
-use ::java::world::item::DataComponentPredicate
-use ::java::world::item::CustomData
-use ::java::world::item::firework::FireworkShape
+use ::java::world::component::DataComponentExactPredicate
+use ::java::world::component::DataComponentPredicate
+use ::java::world::component::CustomData
 use ::java::world::entity::boat::BoatType
-use ::java::world::entity::mob::breedable::axolotl::AxolotlVariant
-use ::java::world::entity::mob::breedable::fox::FoxType
-use ::java::world::entity::mob::breedable::horse::HorseVariant
-use ::java::world::entity::mob::breedable::llama::LlamaVariant
-use ::java::world::entity::mob::breedable::mooshroom::MooshroomType
-use ::java::world::entity::mob::breedable::rabbit::RabbitVariant
-use ::java::world::entity::mob::breedable::tamable::ParrotVariant
-use ::java::world::entity::mob::fish::TropicalFishPattern
+use ::java::world::component::entity::AxolotlVariant
+use ::java::world::component::entity::FoxType
+use ::java::world::component::entity::HorseVariant
+use ::java::world::component::entity::LlamaVariant
+use ::java::world::component::entity::MooshroomType
+use ::java::world::component::entity::RabbitVariant
+use ::java::world::component::entity::ParrotVariant
+use ::java::world::component::entity::TropicalFishPattern
 use super::super::util::MinMaxBounds
 
 type ItemPredicate = (
@@ -34,82 +32,10 @@ type ItemPredicate = (
 	#[since="1.20.5"] struct PostComponentsItemPredicate {
 		items?: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
 		count?: MinMaxBounds<int>,
-		components?: DataComponentPredicate,
-		predicates?: ItemSubPredicate,
+		components?: DataComponentExactPredicate,
+		predicates?: DataComponentPredicate,
 	} |
 )
-
-struct ItemSubPredicate {
-	[(
-		#[until="1.21.5"] #[id="item_sub_predicate_type"] string |
-		#[since="1.21.5"] #[id="data_component_predicate_type"] string |
-	)]: minecraft:data_component_predicate[[%key]],
-}
-
-dispatch minecraft:data_component_predicate[attribute_modifiers] to struct AttributeModifiersPredicate {
-	modifiers?: CollectionPredicate<AttributeModifiersPredicateEntry>,
-}
-
-struct AttributeModifiersPredicateEntry {
-	attribute?: (#[id(registry="attribute",tags="allowed")] string | [#[id="attribute"] string] ),
-	id?: #[id="attribute_modifier"] string,
-	amount?: MinMaxBounds<double>,
-	operation?: AttributeOperation,
-	slot?: EquipmentSlotGroup,
-}
-
-dispatch minecraft:data_component_predicate[bundle_contents] to struct BundleContentsPredicate {
-	items?: CollectionPredicate<ItemPredicate>,
-}
-
-dispatch minecraft:data_component_predicate[container] to struct ContainerPredicate {
-	items?: CollectionPredicate<ItemPredicate>,
-}
-
-dispatch minecraft:data_component_predicate[custom_data] to CustomData
-
-dispatch minecraft:data_component_predicate[damage] to struct ItemDamagePredicate {
-	damage?: MinMaxBounds<int>,
-	durability?: MinMaxBounds<int>,
-}
-
-dispatch minecraft:data_component_predicate[enchantments, stored_enchantments] to [EnchantmentPredicate]
-
-dispatch minecraft:data_component_predicate[fireworks] to struct FireworksPredicate {
-	explosions?: CollectionPredicate<FireworkExplosionPredicate>,
-	flight_duration?: MinMaxBounds<int>,
-}
-
-dispatch minecraft:data_component_predicate[firework_explosion] to struct FireworkExplosionPredicate {
-	shape?: FireworkShape,
-	has_twinkle?: boolean,
-	has_trail?: boolean,
-}
-
-dispatch minecraft:data_component_predicate[jukebox_playable] to struct JukeboxPlayablePredicate {
-	song?: (#[id(registry="jukebox_song",tags="allowed")] string | [#[id="jukebox_song"] string]),
-}
-
-dispatch minecraft:data_component_predicate[potion_contents] to (#[id(registry="potion",tags="allowed")] string | [#[id="potion"] string])
-
-dispatch minecraft:data_component_predicate[trim] to struct TrimPredicate {
-	material?: (#[id(registry="trim_material",tags="allowed")] string | [#[id="trim_material"] string]),
-	pattern?: (#[id(registry="trim_pattern",tags="allowed")] string | [#[id="trim_pattern"] string]),
-}
-
-dispatch minecraft:data_component_predicate[writable_book_content] to struct WritableBookPredicate {
-	/// Matches the raw text, instead of filtered.
-	pages?: CollectionPredicate<string>,
-}
-
-dispatch minecraft:data_component_predicate[written_book_content] to struct WrittenBookPredicate {
-	/// Matches the raw text, instead of filtered.
-	pages?: CollectionPredicate<Text>,
-	author?: string,
-	title?: string,
-	generation?: MinMaxBounds<int>,
-	resolved?: boolean,
-}
 
 struct EnchantmentPredicate {
 	#[until="1.21"]
@@ -133,10 +59,10 @@ struct BlockPredicate {
 	nbt?: #[nbt=minecraft:block[[blocks]]] string,
 	/// Match exact data component values on the block entity.
 	#[since="1.21.5"]
-	components?: DataComponentPredicate,
+	components?: DataComponentExactPredicate,
 	/// Test data component values on the block entity.
 	#[since="1.21.5"]
-	predicates?: ItemSubPredicate,
+	predicates?: DataComponentPredicate,
 }
 
 struct FluidPredicate {
@@ -248,10 +174,10 @@ struct EntityPredicate {
 	movement_affected_by?: LocationPredicate,
 	/// Match exact data component values on the entity.
 	#[since="1.21.5"]
-	components?: DataComponentPredicate,
+	components?: DataComponentExactPredicate,
 	/// Test data component values on the entity.
 	#[since="1.21.5"]
-	predicates?: ItemSubPredicate,
+	predicates?: DataComponentPredicate,
 }
 
 struct EntityFlagsPredicate {
@@ -523,17 +449,4 @@ struct DamageTagPredicate {
 	id: #[id(registry="damage_type",tags="implicit")] string,
 	/// Whether the damage is expected to have or not have the tag.
 	expected: boolean,
-}
-
-type CollectionPredicate<P> = struct {
-	/// A list of tests. For each test, there must be at least one entry whose contents match exactly.
-	contains?: [P],
-	count?: [struct CollectionCountPredicate {
-		/// The contents an entry's text must match exactly.
-		test: P,
-		/// The number of entries that must match the test.
-		count: MinMaxBounds<int>,
-	}],
-	/// When set, total number of entries in the this collection.
-	size?: MinMaxBounds<int>,
 }

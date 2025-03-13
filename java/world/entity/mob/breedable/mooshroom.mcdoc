@@ -1,7 +1,5 @@
+use ::java::world::component::entity::MooshroomType
 use ::java::util::effect::EffectId
-
-#[since="1.21.5"]
-dispatch minecraft:data_component["mooshroom/variant"] to MooshroomType
 
 dispatch minecraft:entity[mooshroom] to struct Mooshroom {
 	...super::Breedable,
@@ -14,9 +12,4 @@ dispatch minecraft:entity[mooshroom] to struct Mooshroom {
 	EffectDuration?: int,
 	#[since="1.20.2"]
 	stew_effects?: minecraft:data_component[suspicious_stew_effects],
-}
-
-enum(string) MooshroomType {
-	Red = "red",
-	Brown = "brown",
 }

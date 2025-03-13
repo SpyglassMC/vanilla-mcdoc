@@ -22,19 +22,6 @@ dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	SaddleItem?: ItemStack,
 }
 
-#[since="1.21.5"]
-dispatch minecraft:data_component["horse/variant"] to HorseVariant
-
-enum(string) HorseVariant {
-    White = "white",
-    Creamy = "creamy",
-    Chestnut = "chestnut",
-    Brown = "brown",
-    Black = "black",
-    Gray = "gray",
-    DarkBrown = "dark_brown",
-}
-
 dispatch minecraft:entity[horse] to struct Horse {
 	...HorseBase,
 	/// Variant of the horse. Stored as `baseColor | (markings << 8)`.

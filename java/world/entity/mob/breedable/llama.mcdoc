@@ -1,14 +1,6 @@
+use ::java::world::component::entity::LlamaVariant
 use ::java::world::item::ItemStack
 use ::java::util::slot::SlottedItem
-
-dispatch minecraft:data_component["llama/variant"] to LlamaVariant
-
-enum(string) LlamaVariant {
-	Creamy = "creamy",
-	White = "white",
-	Brown = "brown",
-	Gray = "gray",
-}
 
 dispatch minecraft:entity[llama] to struct Llama {
 	...super::Breedable,

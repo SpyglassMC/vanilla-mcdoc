@@ -1,9 +1,6 @@
 use ::java::util::color::DyeColorInt
 use ::java::util::color::DyeColor
 
-#[since="1.21.5"]
-dispatch minecraft:data_component["shulker/color"] to DyeColor
-
 dispatch minecraft:entity[shulker] to struct Shulker {
 	...super::MobBase,
 	/// Whether it is peeking.

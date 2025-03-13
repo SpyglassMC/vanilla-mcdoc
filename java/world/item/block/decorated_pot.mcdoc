@@ -1,7 +1,3 @@
-use ::java::world::block::decorated_pot::Sherd
-
-dispatch minecraft:data_component[pot_decorations] to [#[id] Sherd] @ ..4
-
 dispatch minecraft:item_component[decorated_pot] to (
 	super::BlockItemComponents |
 	"pot_decorations" |

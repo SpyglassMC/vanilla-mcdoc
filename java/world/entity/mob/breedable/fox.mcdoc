@@ -1,5 +1,4 @@
-#[since="1.21.5"]
-dispatch minecraft:data_component["fox/variant"] to FoxType
+use ::java::world::component::entity::FoxType
 
 dispatch minecraft:entity[fox] to struct Fox {
 	...super::Breedable,
@@ -24,9 +23,4 @@ struct TrustedUUID {
 	L?: long,
 	/// Upper bits of the trusted player's UUID.
 	M?: long,
-}
-
-enum(string) FoxType {
-	Red = "red",
-	Snow = "snow",
 }

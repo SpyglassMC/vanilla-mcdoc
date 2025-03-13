@@ -1,0 +1,36 @@
+use ::java::util::text::Text
+
+struct DataComponentPatch {
+	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
+	[#[id(registry="data_component_type", prefix="!")] string]: struct {},
+}
+
+struct DataComponentExactPredicate {
+	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
+}
+
+struct DataComponentPredicate {
+	[(
+		#[until="1.21.5"] #[id="item_sub_predicate_type"] string |
+		#[since="1.21.5"] #[id="data_component_predicate_type"] string |
+	)]: minecraft:data_component_predicate[[%key]],
+}
+
+
+dispatch minecraft:data_component[custom_data] to CustomData
+
+type CustomData = (
+	#[canonical] CustomDataMap |
+	#[nbt=CustomDataMap] string |
+)
+
+type CustomDataMap = struct {
+	[#[dispatcher_key="mcdoc:custom_data"] string]?: mcdoc:custom_data[[%key]],
+}
+
+dispatch mcdoc:custom_data[%unknown] to any
+
+dispatch minecraft:data_component[custom_name] to (
+	#[until="1.21.5"] #[text_component] string |
+	#[since="1.21.5"] Text |
+)

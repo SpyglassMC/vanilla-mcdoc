@@ -1,21 +1,5 @@
 use ::java::util::color::RGB
 
-struct DyedColor {
-	/// Color of the armor.
-	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	rgb: #[color="composite_rgb"] int,
-	show_in_tooltip?: boolean,
-}
-
-dispatch minecraft:data_component[dyed_color] to (
-	#[until="1.21.5"] (
-		#[canonical] DyedColor |
-		#[color="composite_rgb"] int |
-	) |
-	#[since="1.21.5"] RGB |
-)
-
-// Pre-1.20.5
 dispatch minecraft:item[
 	leather_boots,
 	leather_leggings,

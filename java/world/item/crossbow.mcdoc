@@ -1,12 +1,5 @@
 use ::java::world::item::ItemStack
 
-/// Crossbow projectiles that are loaded.
-dispatch minecraft:data_component[charged_projectiles] to [ItemStack]
-
-/// If set, this projectile item can't be picked up by a player when fired, except in creative mode. Can only be used within charged_projectiles components.
-dispatch minecraft:data_component[intangible_projectile] to struct {}
-
-// Pre-1.20.5
 /// A crossbow
 dispatch minecraft:item[crossbow] to struct Crossbow {
 	...super::ItemBase,
