@@ -416,7 +416,6 @@
 	"::java::data::recipe::SmithingTrim.addition": "Material that will be used.",
 	"::java::data::recipe::SmithingTrim.base": "Ingredient specifying an item to be trimmed.",
 	"::java::data::recipe::SmithingTrim.pattern": "The trim pattern to apply to the result item.",
-	"::java::data::recipe::SmithingTrim.result": "Resulting trimmed item.",
 	"::java::data::recipe::SmithingTrim.template": "Template item that will be used for the pattern.",
 	"::java::data::structure::BlockPalette.palettes": "Sets of different block states used in the structure, a random palette gets selected based on coordinates.",
 	"::java::data::structure::RandomizedPalette.palettes": "Sets of different block states used in the structure, a random palette gets selected based on coordinates.",
