@@ -1,0 +1,54 @@
+use ::java::data::advancement::predicate::ItemPredicate
+use ::java::world::block::BlockEntityData
+use ::java::world::block::banner::BannerPatternLayer
+use ::java::world::block::decorated_pot::Sherd
+use ::java::world::component::item::AdventureModePredicate
+use ::java::world::entity::AnyEntity
+use ::java::world::item::ItemStack
+
+dispatch minecraft:data_component[banner_patterns] to [BannerPatternLayer]
+
+dispatch minecraft:data_component[bees] to [Occupant]
+
+struct Occupant {
+	entity_data: AnyEntity,
+	min_ticks_in_hive: int,
+	ticks_in_hive: int,
+}
+
+/// NBT that the block entity that is placed can have.
+dispatch minecraft:data_component[block_entity_data] to (
+	#[canonical] BlockEntityData |
+	#[nbt=BlockEntityData] string |
+)
+
+/// Blockstate that the placed block will have.
+dispatch minecraft:data_component[block_state] to mcdoc:block_item_states[[%parent.id]]
+
+dispatch mcdoc:block_item_states[%unknown,%none] to struct {
+	[string]: string,
+}
+
+/// List of blocks that this block item can be placed on.
+dispatch minecraft:data_component[can_place_on] to AdventureModePredicate
+
+dispatch minecraft:data_component[container] to [ContainerSlot] @ ..256
+
+struct ContainerSlot {
+	/// The slot ID of the container.
+	slot: int @ 0..255,
+	/// The item stack in this container slot.
+	item: ItemStack,
+}
+
+dispatch minecraft:data_component[container_loot] to struct ContainerLoot {
+	loot_table: #[id="loot_table"] string,
+	seed?: #[random] long,
+}
+
+dispatch minecraft:data_component[lock] to (
+	#[until="1.21.2"] string |
+	#[since="1.21.2"] ItemPredicate |
+)
+
+dispatch minecraft:data_component[pot_decorations] to [#[id] Sherd] @ ..4

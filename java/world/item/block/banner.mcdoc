@@ -1,7 +1,3 @@
-use ::java::world::block::banner::BannerPatternLayer
-
-dispatch minecraft:data_component[banner_patterns] to [BannerPatternLayer]
-
 dispatch minecraft:item_component[
 	white_banner,
 	orange_banner,
