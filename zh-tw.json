@@ -1,4 +1,5 @@
 {
+	"::java::assets::atlas::PalettedPermutations.separator": "用於連接紋理和排列名稱以產生精靈名稱的值。\n預設為`_`。",
 	"::java::assets::equipment::Dyeable.color_when_undyed": "這個圖層會優先使用`dyed_color`元件指定的顏色。\n如果物品不可染色或沒有染色，則使用此欄位指定的預設顏色。\n如果沒有指定此欄位，且物品不可染色或沒有染色，則隱藏這個圖層。",
 	"::java::assets::equipment::Equipment.layers": "各個裝備部位的圖層列表。",
 	"::java::assets::equipment::Layer.dyeable": "指定這個圖層在染色時（在`#dyeable`標籤中，且有`dyed_color`元件）的表現。",
