@@ -1,5 +1,3 @@
-use ::java::util::slot::SlottedItem
-
 dispatch minecraft:block_entity[crafter] to struct Crafter {
 	...super::BlockEntity,
 	crafting_ticks_remaining?: int,

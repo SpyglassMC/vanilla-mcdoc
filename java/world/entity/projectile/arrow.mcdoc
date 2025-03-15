@@ -1,10 +1,9 @@
 use ::java::util::block_state::BlockState
 use ::java::util::effect::MobEffectInstance
 use ::java::world::item::ItemStack
-use super::ProjectileBase
 
 struct ArrowBase {
-	...ProjectileBase,
+	...super::ProjectileBase,
 	/// Shake it creates.
 	shake?: byte,
 	/// How players can pick up it.

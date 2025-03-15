@@ -1,5 +1,4 @@
 use ::java::util::DyeColorByte
-use ::java::util::color::DyeColor
 use ::java::world::item::ItemStack
 
 struct Tamable {

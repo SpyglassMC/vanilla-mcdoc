@@ -1,4 +1,3 @@
-use ::java::util::color::DyeColor
 use ::java::world::component::entity::SalmonType
 
 dispatch minecraft:entity[cod] to struct Fish {

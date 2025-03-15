@@ -1,8 +1,7 @@
-use super::ProjectileBase
 use ::java::world::item::ItemStack
 
 dispatch minecraft:entity[breeze_wind_charge] to struct AcceleratingProjectileBase {
-	...ProjectileBase,
+	...super::ProjectileBase,
 	/// Acceleration
 	#[until="1.21"]
 	power?: [double] @ 3,

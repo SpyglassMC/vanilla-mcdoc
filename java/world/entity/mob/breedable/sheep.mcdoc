@@ -1,5 +1,4 @@
 use ::java::util::DyeColorByte
-use ::java::util::color::DyeColor
 
 dispatch minecraft:entity[sheep] to struct Sheep {
 	...super::Breedable,
