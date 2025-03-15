@@ -1,6 +1,5 @@
 use ::java::world::item::ItemStack
 
-/// A crossbow
 dispatch minecraft:item[crossbow] to struct Crossbow {
 	...super::ItemBase,
 	/// Projectiles that are loaded.
@@ -8,13 +7,3 @@ dispatch minecraft:item[crossbow] to struct Crossbow {
 	/// Whether the crossbow is charged.
 	Charged?: boolean,
 }
-
-dispatch minecraft:item_component[crossbow] to (
-	super::ItemBaseComponents |
-	"charged_projectiles" |
-)
-
-dispatch minecraft:item_component[arrow, spectral_arrow] to (
-	super::ItemBaseComponents |
-	"intangible_projectile" |
-)

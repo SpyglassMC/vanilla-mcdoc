@@ -18,7 +18,7 @@ use ::java::util::Filterable
 use ::java::util::color::RGB
 use ::java::world::component::DataComponentPatch
 use ::java::world::component::CustomData
-use ::java::world::item::firework::FireworkShape
+use ::java::world::component::item::FireworkShape
 
 struct Conditions {
 	conditions?: [LootCondition],

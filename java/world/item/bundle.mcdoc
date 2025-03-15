@@ -1,6 +1,0 @@
-use ::java::world::item::ItemStack
-
-dispatch minecraft:item_component[bundle] to (
-	super::ItemBaseComponents |
-	"bundle_contents" |
-)

@@ -20,13 +20,6 @@ dispatch minecraft:item[filled_map] to struct FilledMap {
 	},
 }
 
-dispatch minecraft:item_component[filled_map] to (
-	super::ItemBaseComponents |
-	"map_color" |
-	"map_decorations" |
-	"map_id" |
-)
-
 struct Decoration {
 	/// Decoration type.
 	type: IconByteId,

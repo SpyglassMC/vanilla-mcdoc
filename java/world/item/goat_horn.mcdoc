@@ -3,8 +3,3 @@ dispatch minecraft:item[goat_horn] to struct GoatHorn {
 	...super::ItemBase,
 	instrument?: #[id="instrument"] string,
 }
-
-dispatch minecraft:item_component[goat_horn] to (
-	super::ItemBaseComponents |
-	"instrument" |
-)

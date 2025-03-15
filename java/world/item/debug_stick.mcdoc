@@ -5,8 +5,3 @@ dispatch minecraft:item[debug_stick] to struct DebugStick {
 	#[since="1.19"]
 	DebugProperty?: DebugStickState,
 }
-
-dispatch minecraft:item_component[debug_stick] to (
-	super::ItemBaseComponents |
-	"debug_stick_state" |
-)

@@ -2,8 +2,3 @@ dispatch minecraft:item[knowledge_book] to struct KnowledgeBook {
 	...super::ItemBase,
 	Recipes?: [#[id="recipe"] string],
 }
-
-dispatch minecraft:item_component[knowledge_book] to (
-	super::ItemBaseComponents |
-	"recipes" |
-)

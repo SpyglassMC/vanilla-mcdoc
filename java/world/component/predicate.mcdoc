@@ -5,7 +5,7 @@ use ::java::util::attribute::AttributeOperation
 use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::text::Text
 use ::java::world::component::CustomData
-use ::java::world::item::firework::FireworkShape
+use ::java::world::component::item::FireworkShape
 
 dispatch minecraft:data_component_predicate[attribute_modifiers] to struct AttributeModifiersPredicate {
 	modifiers?: CollectionPredicate<AttributeModifiersPredicateEntry>,

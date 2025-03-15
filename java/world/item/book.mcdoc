@@ -17,13 +17,3 @@ dispatch minecraft:item[written_book] to struct WrittenBook {
 	author?: string,
 	title?: string,
 }
-
-dispatch minecraft:item_component[writable_book] to (
-	super::ItemBaseComponents |
-	"writable_book_content" |
-)
-
-dispatch minecraft:item_component[written_book] to (
-	super::ItemBaseComponents |
-	"written_book_content" |
-)

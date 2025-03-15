@@ -1,4 +1,0 @@
-dispatch minecraft:item_component[bee_nest, beehive] to (
-	super::BlockItemComponents |
-	"bees" |
-)

@@ -6,11 +6,6 @@ dispatch minecraft:item[suspicious_stew] to struct SuspiciousStew {
 	Effects?: [Effect],
 }
 
-dispatch minecraft:item_component[suspicious_stew] to (
-	super::ItemBaseComponents |
-	"suspicious_stew_effects" |
-)
-
 /// A suspicious stew effect.
 struct Effect {
 	EffectId?: EffectId,

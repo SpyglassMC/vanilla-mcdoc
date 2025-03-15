@@ -3,11 +3,6 @@ dispatch minecraft:item[player_head] to struct PlayerHead {
 	SkullOwner?: (SkullOwner | string),
 }
 
-dispatch minecraft:item_component[player_head] to (
-	super::ItemBaseComponents |
-	"profile" |
-)
-
 struct SkullOwner {
 	/// Optional.
 	#[uuid]

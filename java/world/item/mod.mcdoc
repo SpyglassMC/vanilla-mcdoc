@@ -1,11 +1,7 @@
-use ::java::data::util::SoundEventRef
 use ::java::util::attribute::AttributeName
 use ::java::util::attribute::LegacyOperation
 use ::java::util::slot::EquipmentSlotGroup
-use ::java::util::block_state::BlockState
-use ::java::util::effect::MobEffectInstance
-use ::java::util::color::RGB
-use ::java::util::text::Text
+use ::java::world::block::BlockEntityData
 use ::java::world::component::DataComponentPatch
 use ::java::world::component::item::Trim
 
@@ -30,38 +26,6 @@ type ItemStack = struct {
 	#[until="1.20.5"]
 	Count?: byte,
 }
-
-enum(string) ItemBaseComponents {
-	AttributeModifiers = "attribute_modifiers",
-	CanBreak = "can_break",
-	CanPlaceOn = "can_place_on",
-	CustomData = "custom_data",
-	CustomModelData = "custom_model_data",
-	Damage = "damage",
-	#[since="1.21.2"]
-	Enchantable = "enchantable",
-	EnchantmentGlintOverride = "enchantment_glint_override",
-	Enchantments = "enchantments",
-	FireResistant = "fire_resistant",
-	Food = "food",
-	HideAdditionalTooltip = "hide_additional_tooltip",
-	HideTooltip = "hide_tooltip",
-	ItemName = "item_name",
-	#[since="1.21"]
-	JukeboxPlayable = "jukebox_playable",
-	Lore = "lore",
-	MaxDamage = "max_damage",
-	MaxStackSize = "max_stack_size",
-	Rarity = "rarity",
-	RepairCost = "repair_cost",
-	#[since="1.21.2"]
-	Repairable = "repairable",
-	Tool = "tool",
-	Trim = "trim",
-	Unbreakable = "unbreakable",
-}
-
-dispatch minecraft:item_component[%unknown] to ItemBaseComponents
 
 // Until 1.20.5
 struct ItemBase {
@@ -150,4 +114,12 @@ struct Display {
 	Name?: #[text_component] string,
 	/// A list of JSON text components, each element being a lore line.
 	Lore?: [#[text_component] string],
+}
+
+/// An item that can be placed as a block
+dispatch minecraft:item[%blockitem] to struct BlockItem {
+	...ItemBase,
+	BlockEntityTag?: BlockEntityData,
+	/// Blockstate that the placed block will have.
+	BlockStateTag?: mcdoc:block_item_states[[%parent.id]],
 }

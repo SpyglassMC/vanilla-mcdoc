@@ -16,16 +16,3 @@ dispatch minecraft:item[tropical_fish_bucket] to struct AxolotlBucket {
 	/// Turns into the `Variant` entity tag.
 	BucketVariantTag?: int,
 }
-
-dispatch minecraft:item_component[
-	axolotl_bucket,
-	cod_bucket,
-	salmon_bucket,
-	squid_bucket,
-	pufferfish_bucket,
-	tropical_fish_bucket,
-	tadpole_bucket
-] to (
-	super::ItemBaseComponents |
-	"bucket_entity_data" |
-)

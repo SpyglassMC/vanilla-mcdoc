@@ -1,5 +1,3 @@
-use ::java::util::color::RGB
-
 dispatch minecraft:item[
 	leather_boots,
 	leather_leggings,
@@ -10,17 +8,6 @@ dispatch minecraft:item[
 	...super::ItemBase,
 	display?: ColorDisplay,
 }
-
-dispatch minecraft:item_component[
-	leather_boots,
-	leather_leggings,
-	leather_chestplate,
-	leather_helmet,
-	leather_horse_armor
-] to (
-	super::ItemBaseComponents |
-	"dyed_color" |
-)
 
 struct ColorDisplay {
 	...super::Display,

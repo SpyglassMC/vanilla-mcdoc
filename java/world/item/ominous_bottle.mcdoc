@@ -1,4 +1,0 @@
-dispatch minecraft:item_component[ominous_bottle] to (
-	super::ItemBaseComponents |
-	"ominous_bottle_amplifier" |
-)

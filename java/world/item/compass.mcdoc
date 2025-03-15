@@ -7,11 +7,6 @@ dispatch minecraft:item[compass] to struct Compass {
 	LodestoneTracked?: boolean
 }
 
-dispatch minecraft:item_component[compass] to (
-	super::ItemBaseComponents |
-	"lodestone_tracker" |
-)
-
 struct LodestonePos {
 	X?: int,
 	Y?: int,

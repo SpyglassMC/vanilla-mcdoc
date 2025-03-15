@@ -1,4 +1,0 @@
-dispatch minecraft:item_component[decorated_pot] to (
-	super::BlockItemComponents |
-	"pot_decorations" |
-)
