@@ -1,0 +1,86 @@
+use ::java::data::advancement::predicate::ItemPredicate
+use ::java::data::advancement::predicate::EnchantmentPredicate
+use ::java::data::util::MinMaxBounds
+use ::java::util::attribute::AttributeOperation
+use ::java::util::slot::EquipmentSlotGroup
+use ::java::util::text::Text
+use ::java::world::component::CustomData
+use ::java::world::component::item::FireworkShape
+
+dispatch minecraft:data_component_predicate[attribute_modifiers] to struct AttributeModifiersPredicate {
+	modifiers?: CollectionPredicate<AttributeModifiersPredicateEntry>,
+}
+
+struct AttributeModifiersPredicateEntry {
+	attribute?: (#[id(registry="attribute",tags="allowed")] string | [#[id="attribute"] string] ),
+	id?: #[id="attribute_modifier"] string,
+	amount?: MinMaxBounds<double>,
+	operation?: AttributeOperation,
+	slot?: EquipmentSlotGroup,
+}
+
+dispatch minecraft:data_component_predicate[bundle_contents] to struct BundleContentsPredicate {
+	items?: CollectionPredicate<ItemPredicate>,
+}
+
+dispatch minecraft:data_component_predicate[container] to struct ContainerPredicate {
+	items?: CollectionPredicate<ItemPredicate>,
+}
+
+dispatch minecraft:data_component_predicate[custom_data] to CustomData
+
+dispatch minecraft:data_component_predicate[damage] to struct ItemDamagePredicate {
+	damage?: MinMaxBounds<int>,
+	durability?: MinMaxBounds<int>,
+}
+
+dispatch minecraft:data_component_predicate[enchantments, stored_enchantments] to [EnchantmentPredicate]
+
+dispatch minecraft:data_component_predicate[fireworks] to struct FireworksPredicate {
+	explosions?: CollectionPredicate<FireworkExplosionPredicate>,
+	flight_duration?: MinMaxBounds<int>,
+}
+
+dispatch minecraft:data_component_predicate[firework_explosion] to struct FireworkExplosionPredicate {
+	shape?: FireworkShape,
+	has_twinkle?: boolean,
+	has_trail?: boolean,
+}
+
+dispatch minecraft:data_component_predicate[jukebox_playable] to struct JukeboxPlayablePredicate {
+	song?: (#[id(registry="jukebox_song",tags="allowed")] string | [#[id="jukebox_song"] string]),
+}
+
+dispatch minecraft:data_component_predicate[potion_contents] to (#[id(registry="potion",tags="allowed")] string | [#[id="potion"] string])
+
+dispatch minecraft:data_component_predicate[trim] to struct TrimPredicate {
+	material?: (#[id(registry="trim_material",tags="allowed")] string | [#[id="trim_material"] string]),
+	pattern?: (#[id(registry="trim_pattern",tags="allowed")] string | [#[id="trim_pattern"] string]),
+}
+
+dispatch minecraft:data_component_predicate[writable_book_content] to struct WritableBookPredicate {
+	/// Matches the raw text, instead of filtered.
+	pages?: CollectionPredicate<string>,
+}
+
+dispatch minecraft:data_component_predicate[written_book_content] to struct WrittenBookPredicate {
+	/// Matches the raw text, instead of filtered.
+	pages?: CollectionPredicate<Text>,
+	author?: string,
+	title?: string,
+	generation?: MinMaxBounds<int>,
+	resolved?: boolean,
+}
+
+type CollectionPredicate<P> = struct {
+	/// A list of tests. For each test, there must be at least one entry whose contents match exactly.
+	contains?: [P],
+	count?: [struct CollectionCountPredicate {
+		/// The contents an entry's text must match exactly.
+		test: P,
+		/// The number of entries that must match the test.
+		count: MinMaxBounds<int>,
+	}],
+	/// When set, total number of entries in the this collection.
+	size?: MinMaxBounds<int>,
+}

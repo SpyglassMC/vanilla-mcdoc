@@ -1,18 +1,5 @@
-use ::java::data::variants::instrument::Instrument
-
-dispatch minecraft:data_component[instrument] to (
-	#[id="instrument"] string |
-	Instrument |
-)
-
-// Pre-1.20.5
 #[since="1.19"]
 dispatch minecraft:item[goat_horn] to struct GoatHorn {
 	...super::ItemBase,
 	instrument?: #[id="instrument"] string,
 }
-
-dispatch minecraft:item_component[goat_horn] to (
-	super::ItemBaseComponents |
-	"instrument" |
-)

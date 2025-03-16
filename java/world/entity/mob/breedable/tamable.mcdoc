@@ -1,5 +1,4 @@
 use ::java::util::DyeColorByte
-use ::java::util::color::DyeColor
 use ::java::world::item::ItemStack
 
 struct Tamable {
@@ -11,12 +10,6 @@ struct Tamable {
 	/// Whether the mob is sitting.
 	Sitting?: boolean,
 }
-
-#[since="1.21.5"]
-dispatch minecraft:data_component["cat/variant"] to #[id="cat_variant"] string
-
-#[since="1.21.5"]
-dispatch minecraft:data_component["cat/collar"] to DyeColor
 
 dispatch minecraft:entity[cat] to struct Cat {
 	...Tamable,
@@ -43,17 +36,6 @@ enum(int) CatType {
 	Black = 10
 }
 
-#[since="1.21.5"]
-dispatch minecraft:data_component["parrot/variant"] to ParrotVariant
-
-enum(string) ParrotVariant {
-	RedBlue = "red_blue",
-	Blue = "blue",
-	Green = "green",
-	YellowBlue = "yellow_blue",
-	Gray = "gray",
-}
-
 dispatch minecraft:entity[parrot] to struct Parrot {
 	...Tamable,
 	Variant?: ParrotVariantInt,
@@ -66,15 +48,6 @@ enum(int) ParrotVariantInt {
 	YellowBlue = 3,
 	Gray = 4,
 }
-
-#[since="1.21.5"]
-dispatch minecraft:data_component["wolf/variant"] to #[id="wolf_variant"] string
-
-#[since="1.21.5"]
-dispatch minecraft:data_component["wolf/sound_variant"] to #[id="wolf_sound_variant"] string
-
-#[since="1.21.5"]
-dispatch minecraft:data_component["wolf/collar"] to DyeColor
 
 dispatch minecraft:entity[wolf] to struct Wolf {
 	...Tamable,

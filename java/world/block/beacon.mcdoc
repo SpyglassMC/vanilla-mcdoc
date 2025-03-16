@@ -1,4 +1,3 @@
-use ::java::util::DyeColorInt
 use ::java::util::EffectId
 
 dispatch minecraft:block_entity[beacon] to struct Beacon {

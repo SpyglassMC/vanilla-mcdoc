@@ -1,63 +1,25 @@
-dispatch minecraft:data_component[fireworks] to struct Fireworks {
-	explosions?: [Explosion] @ 0..256,
-	flight_duration?: byte
-}
-
-dispatch minecraft:data_component[firework_explosion] to struct Explosion {
-	shape: FireworkShape,
-	/// Colors of the initial particles of the explosion, randomly selected from.
-	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	colors?: #[color="composite_rgb"] int[],
-	/// Colors of the fading particles of the explosion
-	fade_colors?: #[color="composite_rgb"] int[],
-	/// Added to a firework star via Diamond.
-	has_trail?: boolean,
-	/// Added to a firework star via Glowstone Dust.
-	has_twinkle?: boolean,
-}
-
-enum(string) FireworkShape {
-	SmallBall = "small_ball",
-	LargeBall = "large_ball",
-	Star = "star",
-	Creeper = "creeper",
-	Burst = "burst",
-}
-
-// Pre-1.20.5
 dispatch minecraft:item[firework_rocket] to struct FireworkRocket {
 	...super::ItemBase,
-	Fireworks?: LegacyFireworks,
+	Fireworks?: Fireworks,
 }
 
-// Pre-1.20.5
 dispatch minecraft:item[firework_star] to struct FireworkStar {
 	...super::ItemBase,
-	Explosion?: LegacyExplosion,
+	Explosion?: Explosion,
 }
 
-dispatch minecraft:item_component[firework_rocket] to (
-	super::ItemBaseComponents |
-	"fireworks" |
-)
-
-dispatch minecraft:item_component[firework_star] to (
-	super::ItemBaseComponents |
-	"firework_explosion" |
-)
-
-struct LegacyFireworks {
+struct Fireworks {
 	/// Duration of flight.
 	Flight?: byte,
-	Explosions?: [LegacyExplosion],
+	Explosions?: [Explosion],
 }
 
-struct LegacyExplosion {
+struct Explosion {
 	/// Whether the explosion should flicker.
 	Flicker?: boolean,
 	/// Whether the explosion should have a trail.
 	Trail?: boolean,
-	Type?: LegacyExplosionType,
+	Type?: ExplosionType,
 	/// Colors of the explosion.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 	Colors?: #[color="composite_rgb"] int[],
@@ -66,7 +28,7 @@ struct LegacyExplosion {
 	FadeColors?: #[color="composite_rgb"] int[],
 }
 
-enum(byte) LegacyExplosionType {
+enum(byte) ExplosionType {
 	SmallBall = 0,
 	LargeBall = 1,
 	Star = 2,

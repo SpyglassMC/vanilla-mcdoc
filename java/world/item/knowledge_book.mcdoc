@@ -1,12 +1,4 @@
-dispatch minecraft:data_component[recipes] to [#[id="recipe"] string]
-
-// Pre-1.20.5
 dispatch minecraft:item[knowledge_book] to struct KnowledgeBook {
 	...super::ItemBase,
 	Recipes?: [#[id="recipe"] string],
 }
-
-dispatch minecraft:item_component[knowledge_book] to (
-	super::ItemBaseComponents |
-	"recipes" |
-)

@@ -1,6 +1,3 @@
-#[since="1.21.5"]
-dispatch minecraft:data_component["chicken/variant"] to #[id="chicken_variant"] string
-
 dispatch minecraft:entity[chicken] to struct Chicken {
 	...super::Breedable,
 	/// Whether it is from a chicken jockey.

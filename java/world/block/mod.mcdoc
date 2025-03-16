@@ -1,4 +1,4 @@
-use ::java::world::item::DataComponentPatch
+use ::java::world::component::DataComponentPatch
 use ::java::data::advancement::predicate::ItemPredicate
 use ::java::util::text::Text
 
@@ -12,6 +12,11 @@ struct BlockEntity {
 	keepPacked?: boolean,
 	#[since="1.20.5"]
 	components?: DataComponentPatch,
+}
+
+struct BlockEntityData {
+	id: #[id="block_entity_type"] string,
+	...minecraft:block_entity[[id]],
 }
 
 dispatch minecraft:block[

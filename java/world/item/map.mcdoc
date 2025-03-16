@@ -1,15 +1,3 @@
-/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-dispatch minecraft:data_component[map_color] to #[color="composite_rgb"] int
-
-/// Key-value pairs of the icons to display, where the key is an arbitrary unique string identifying the decoration.
-dispatch minecraft:data_component[map_decorations] to struct MapDecorations {
-	[string]: Decoration
-}
-
-/// Map number, representing the shared state holding map contents and markers.
-dispatch minecraft:data_component[map_id] to int
-
-// Pre-1.20.5
 dispatch minecraft:item[filled_map] to struct FilledMap {
 	...super::ItemBase,
 	/// Map number, representing the shared state holding map contents and markers.
@@ -32,19 +20,9 @@ dispatch minecraft:item[filled_map] to struct FilledMap {
 	},
 }
 
-dispatch minecraft:item_component[filled_map] to (
-	super::ItemBaseComponents |
-	"map_color" |
-	"map_decorations" |
-	"map_id" |
-)
-
 struct Decoration {
 	/// Decoration type.
-	type: (
-		#[since="1.20.5"] #[id="map_decoration_type"] string |
-		#[until="1.20.5"] IconByteId |
-	),
+	type: IconByteId,
 	/// World x position.
 	x: double,
 	/// World z position.
