@@ -122,8 +122,8 @@
 	"::java::data::advancement::AdvancementRewards.function": "要执行的函数，此函数的执行者为达成此进度的玩家，执行位置不为玩家位置。为函数的命名空间，不能为函数标签。\n等同于一个未知位置的命名方块执行了一次/execute as (达成进度的玩家) run function <函数>。",
 	"::java::data::advancement::AdvancementRewards.loot": "要给予的战利品表。",
 	"::java::data::advancement::AdvancementRewards.recipes": "要解锁的配方。",
-	"::java::data::advancement::predicate::CollectionCountPredicate.count": "统计并检查符合特定谓词的属性修饰符的数量。",
-	"::java::data::advancement::predicate::CollectionCountPredicate.test": "一个谓词。属性修饰符集合内容谓词。",
-	"::java::data::advancement::predicate::CollectionPredicate.contains": "检查是否有物品堆叠符合特定谓词。要求每个谓词都有至少一个物品堆叠符合，一个物品堆叠不必符合所有谓词。",
-	"::java::data::advancement::predicate::CollectionPredicate.size": "检查的数量。匹配一个精确值，或者检测数值是否在范围之间。"
+	"::java::world::component::predicate::CollectionCountPredicate.count": "统计并检查符合特定谓词的属性修饰符的数量。",
+	"::java::world::component::predicate::CollectionCountPredicate.test": "一个谓词。属性修饰符集合内容谓词。",
+	"::java::world::component::predicate::CollectionPredicate.contains": "检查是否有物品堆叠符合特定谓词。要求每个谓词都有至少一个物品堆叠符合，一个物品堆叠不必符合所有谓词。",
+	"::java::world::component::predicate::CollectionPredicate.size": "检查的数量。匹配一个精确值，或者检测数值是否在范围之间。"
 }
