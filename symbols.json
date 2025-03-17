@@ -1,5 +1,5 @@
 {
-	"ref": "c432d1d15ad900bbb49cd05e2321c48ae4fed86a",
+	"ref": "563a968e7229e22b98829b52ed52a287cadb69f1",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -51807,6 +51807,36 @@
 				}
 			]
 		},
+		"::java::util::direction::DirectionByte": {
+			"kind": "enum",
+			"enumKind": "byte",
+			"values": [
+				{
+					"identifier": "Down",
+					"value": 0
+				},
+				{
+					"identifier": "Up",
+					"value": 1
+				},
+				{
+					"identifier": "North",
+					"value": 2
+				},
+				{
+					"identifier": "South",
+					"value": 3
+				},
+				{
+					"identifier": "West",
+					"value": 4
+				},
+				{
+					"identifier": "East",
+					"value": 5
+				}
+			]
+		},
 		"::java::util::direction::DirectionInt": {
 			"kind": "enum",
 			"enumKind": "int",
@@ -80005,6 +80035,15 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::world::entity::projectile::shulker_bullet::BulletTarget"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "Dir",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::direction::DirectionByte"
 					},
 					"optional": true
 				},
