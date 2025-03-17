@@ -1,3 +1,5 @@
+use ::java::util::direction::DirectionByte
+
 dispatch minecraft:entity[shulker_bullet] to struct ShulkerBullet {
 	...super::ProjectileBase,
 	#[until="1.16"]
@@ -5,6 +7,7 @@ dispatch minecraft:entity[shulker_bullet] to struct ShulkerBullet {
 	/// Steps it takes to reach the target
 	Steps?: int,
 	Target?: BulletTarget,
+	Dir?: DirectionByte,
 	/// X offset to move based on the target's location.
 	TXD?: double,
 	/// Y offset to move based on the target's location.
