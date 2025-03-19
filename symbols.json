@@ -1,5 +1,5 @@
 {
-	"ref": "563a968e7229e22b98829b52ed52a287cadb69f1",
+	"ref": "ecd1a659a707c08e17733da9077f3266306bba4e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -88613,11 +88613,39 @@
 			},
 			"zombie_pigman": {
 				"kind": "reference",
-				"path": "::java::world::entity::mob::zombified_piglin::ZombiePigman"
+				"path": "::java::world::entity::mob::zombified_piglin::ZombiePigman",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.16"
+							}
+						}
+					}
+				]
 			},
 			"zombie_villager": {
 				"kind": "reference",
 				"path": "::java::world::entity::mob::zombie::ZombieVillager"
+			},
+			"zombified_piglin": {
+				"kind": "reference",
+				"path": "::java::world::entity::mob::zombified_piglin::ZombiePigman",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.16"
+							}
+						}
+					}
+				]
 			}
 		},
 		"minecraft:entity_effect": {
