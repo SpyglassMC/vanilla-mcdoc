@@ -306,9 +306,15 @@ dispatch minecraft:data_component[firework_explosion] to struct Explosion {
 	shape: FireworkShape,
 	/// Colors of the initial particles of the explosion, randomly selected from.
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-	colors?: #[color="composite_rgb"] int[],
+	colors?: (
+		#[until="1.21.5"] #[color="composite_rgb"] int[] |
+		#[since="1.21.5"] [#[color="composite_rgb"] int] |
+	),
 	/// Colors of the fading particles of the explosion
-	fade_colors?: #[color="composite_rgb"] int[],
+	fade_colors?: (
+		#[until="1.21.5"] #[color="composite_rgb"] int[] |
+		#[since="1.21.5"] [#[color="composite_rgb"] int] |
+	),
 	/// Added to a firework star via Diamond.
 	has_trail?: boolean,
 	/// Added to a firework star via Glowstone Dust.
