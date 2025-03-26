@@ -1,5 +1,5 @@
 {
-	"ref": "70e92c5d1f044d9be5339057091bf02718a46821",
+	"ref": "66f5e5f9acfa157c93a638daf343b1e822503607",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -24446,17 +24446,62 @@
 					"desc": "If omitted, the original colors are kept (or `[]` is used if there was no component).\n\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.\n",
 					"key": "colors",
 					"type": {
-						"kind": "int_array",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "color",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "composite_rgb"
+								"kind": "int_array",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "color",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "composite_rgb"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "int",
+									"attributes": [
+										{
+											"name": "color",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "composite_rgb"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -24467,17 +24512,62 @@
 					"desc": "If omitted, the original fade colors are kept (or `[]` is used if there was no component).\n\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.\n",
 					"key": "fade_colors",
 					"type": {
-						"kind": "int_array",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "color",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "composite_rgb"
+								"kind": "int_array",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "color",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "composite_rgb"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "int",
+									"attributes": [
+										{
+											"name": "color",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "composite_rgb"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -65473,17 +65563,62 @@
 					"desc": "Colors of the initial particles of the explosion, randomly selected from.\n\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.\n",
 					"key": "colors",
 					"type": {
-						"kind": "int_array",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "color",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "composite_rgb"
+								"kind": "int_array",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "color",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "composite_rgb"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "int",
+									"attributes": [
+										{
+											"name": "color",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "composite_rgb"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -65494,17 +65629,62 @@
 					"desc": "Colors of the fading particles of the explosion\n",
 					"key": "fade_colors",
 					"type": {
-						"kind": "int_array",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "color",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "composite_rgb"
+								"kind": "int_array",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "color",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "composite_rgb"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "int",
+									"attributes": [
+										{
+											"name": "color",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "composite_rgb"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
