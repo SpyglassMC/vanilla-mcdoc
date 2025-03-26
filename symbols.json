@@ -1,5 +1,5 @@
 {
-	"ref": "ecd1a659a707c08e17733da9077f3266306bba4e",
+	"ref": "70e92c5d1f044d9be5339057091bf02718a46821",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -71420,7 +71420,8 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::world::entity::mob::EntityEquipment"
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
