@@ -10,7 +10,7 @@ dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 	ArmorItems?: [(ItemStack | struct {})] @ 4,
 	/// The equipment items of the armor stand.
 	#[since="1.21.5"]
-	equipment: super::EntityEquipment,
+	equipment?: super::EntityEquipment,
 	/// Whether it should be invisible.
 	Invisible?: boolean,
 	/// Whether it has no hitbox.
