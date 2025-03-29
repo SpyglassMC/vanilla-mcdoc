@@ -1,5 +1,5 @@
 {
-	"ref": "69edd48497b26b831a31dfa960d2b80b24009816",
+	"ref": "ec2e4b6fa9dda19cf9cedc7db106fa3b9d55b3a4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -73762,11 +73762,11 @@
 					"desc": "List of slots, scales with `Strength`. Only when `ChestedHorse` is `true`.\n",
 					"key": "Items",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "list",
-								"item": {
+						"kind": "list",
+						"item": {
+							"kind": "union",
+							"members": [
+								{
 									"kind": "concrete",
 									"child": {
 										"kind": "reference",
@@ -73783,17 +73783,17 @@
 										}
 									]
 								},
-								"lengthRange": {
-									"kind": 0,
-									"min": 0,
-									"max": 15
+								{
+									"kind": "struct",
+									"fields": []
 								}
-							},
-							{
-								"kind": "struct",
-								"fields": []
-							}
-						]
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 15
+						}
 					},
 					"optional": true
 				},
