@@ -1,5 +1,5 @@
 {
-	"ref": "66f5e5f9acfa157c93a638daf343b1e822503607",
+	"ref": "6b809638edf36c25485d3955382aa000f674052a",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -55720,61 +55720,63 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"desc": "The page number to go to.\n",
 					"key": "value",
 					"type": {
-						"kind": "union",
-						"members": [
+						"kind": "string",
+						"attributes": [
 							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
+								"name": "integer",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"min": {
 											"kind": "literal",
 											"value": {
-												"kind": "string",
-												"value": "1.21.5"
-											}
-										}
-									},
-									{
-										"name": "integer",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"min": {
-													"kind": "literal",
-													"value": {
-														"kind": "int",
-														"value": 1
-													}
-												}
+												"kind": "int",
+												"value": 1
 											}
 										}
 									}
-								]
-							},
-							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 1
-								},
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.21.5"
-											}
-										}
-									}
-								]
+								}
 							}
 						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "The page number to go to.\n",
+					"key": "page",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
 					}
 				}
 			]
