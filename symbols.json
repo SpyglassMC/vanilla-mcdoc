@@ -1,5 +1,5 @@
 {
-	"ref": "6b809638edf36c25485d3955382aa000f674052a",
+	"ref": "69edd48497b26b831a31dfa960d2b80b24009816",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -73616,6 +73616,10 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::breedable::llama::<anonymous 0>": {
+			"kind": "struct",
+			"fields": []
+		},
 		"::java::world::entity::mob::breedable::llama::Llama": {
 			"kind": "struct",
 			"fields": [
@@ -73755,19 +73759,41 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "List of slots, scales with `Strength`.\n",
+					"desc": "List of slots, scales with `Strength`. Only when `ChestedHorse` is `true`.\n",
 					"key": "Items",
 					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
+						"kind": "union",
+						"members": [
 							{
-								"kind": "dynamic",
-								"accessor": [
-									"Strength"
-								]
+								"kind": "list",
+								"item": {
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::util::slot::SlottedItem"
+									},
+									"typeArgs": [
+										{
+											"kind": "byte",
+											"valueRange": {
+												"kind": 0,
+												"min": 0,
+												"max": 14
+											}
+										}
+									]
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 15
+								}
+							},
+							{
+								"kind": "struct",
+								"fields": []
 							}
-						],
-						"registry": "minecraft:llama_strength"
+						]
 					},
 					"optional": true
 				},
@@ -90859,188 +90885,6 @@
 			"replace_section": {
 				"kind": "reference",
 				"path": "::java::data::loot::function::ReplaceSectionListOperation"
-			}
-		},
-		"minecraft:llama_strength": {
-			"1": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "list",
-						"item": {
-							"kind": "concrete",
-							"child": {
-								"kind": "reference",
-								"path": "::java::util::slot::SlottedItem"
-							},
-							"typeArgs": [
-								{
-									"kind": "byte",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 2
-									}
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 3
-						}
-					}
-				]
-			},
-			"2": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "list",
-						"item": {
-							"kind": "concrete",
-							"child": {
-								"kind": "reference",
-								"path": "::java::util::slot::SlottedItem"
-							},
-							"typeArgs": [
-								{
-									"kind": "byte",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 5
-									}
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 6
-						}
-					}
-				]
-			},
-			"3": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "list",
-						"item": {
-							"kind": "concrete",
-							"child": {
-								"kind": "reference",
-								"path": "::java::util::slot::SlottedItem"
-							},
-							"typeArgs": [
-								{
-									"kind": "byte",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 8
-									}
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 9
-						}
-					}
-				]
-			},
-			"4": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "list",
-						"item": {
-							"kind": "concrete",
-							"child": {
-								"kind": "reference",
-								"path": "::java::util::slot::SlottedItem"
-							},
-							"typeArgs": [
-								{
-									"kind": "byte",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 11
-									}
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 12
-						}
-					}
-				]
-			},
-			"5": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "list",
-						"item": {
-							"kind": "concrete",
-							"child": {
-								"kind": "reference",
-								"path": "::java::util::slot::SlottedItem"
-							},
-							"typeArgs": [
-								{
-									"kind": "byte",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 14
-									}
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 15
-						}
-					}
-				]
-			},
-			"%none": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "list",
-						"item": {
-							"kind": "concrete",
-							"child": {
-								"kind": "reference",
-								"path": "::java::util::slot::SlottedItem"
-							},
-							"typeArgs": [
-								{
-									"kind": "byte",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 14
-									}
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 15
-						}
-					}
-				]
 			}
 		},
 		"minecraft:location_based_effect": {
