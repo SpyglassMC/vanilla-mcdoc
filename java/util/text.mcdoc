@@ -185,10 +185,11 @@ dispatch minecraft:click_event[suggest_command] to struct SuggestCommand {
 
 dispatch minecraft:click_event[change_page] to struct ChangePage {
 	/// The page number to go to.
-	value: (
-		#[until="1.21.5"] #[integer(min=1)] string |
-		#[since="1.21.5"] int @ 1.. |
-	),
+	#[until="1.21.5"]
+	value: #[integer(min=1)] string,
+	/// The page number to go to.
+	#[since="1.21.5"]
+	page: int @ 1..,
 }
 
 dispatch minecraft:click_event[copy_to_clipboard] to struct CopyToClipboard {
