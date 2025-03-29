@@ -25,27 +25,12 @@ dispatch minecraft:entity[llama] to struct Llama {
 	DecorItem?: ItemStack,
 	/// Whether it has a chest.
 	ChestedHorse?: boolean,
-	/// List of slots, scales with `Strength`.
-	Items?: minecraft:llama_strength[[Strength]],
+	/// List of slots, scales with `Strength`. Only when `ChestedHorse` is `true`.
+	Items?: ([SlottedItem<byte @ 0..14>] @ 0..15 | struct {}),
 	/// Determines both the number of items it can carry and how likely it is for wolves to run away.
 	Strength?: int @ 1..5,
 	Variant?: LlamaVariant,
 }
-
-/// Slots from 0 to 2. Scales with `Strength`.
-dispatch minecraft:llama_strength["1"] to ([SlottedItem<byte @ 0..2>] @ 0..3)
-
-/// Slots from 0 to 5. Scales with `Strength`.
-dispatch minecraft:llama_strength["2"] to ([SlottedItem<byte @ 0..5>] @ 0..6)
-
-/// Slots from 0 to 8. Scales with `Strength`.
-dispatch minecraft:llama_strength["3"] to ([SlottedItem<byte @ 0..8>] @ 0..9)
-
-/// Slots from 0 to 11. Scales with `Strength`.
-dispatch minecraft:llama_strength["4"] to ([SlottedItem<byte @ 0..11>] @ 0..12)
-
-// TODO: Add "Slots from 0 to 14. Scales with `Strength`." doc here once we support numerical indexing of dispatches.
-dispatch minecraft:llama_strength[%none, "5"] to ([SlottedItem<byte @ 0..14>] @ 0..15)
 
 enum(int) LlamaVariantInt {
 	Creamy = 0,
