@@ -1,5 +1,5 @@
 {
-	"ref": "ec2e4b6fa9dda19cf9cedc7db106fa3b9d55b3a4",
+	"ref": "5af28da4a5aad4022ae4c55803db79bfd2395590",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -73586,6 +73586,64 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::breedable::horse::Llama": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::breedable::horse::ChestedHorse"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Determines both the number of items it can carry and how likely it is for wolves to run away.\n",
+					"key": "Strength",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 5
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The variant of this llama.\n",
+					"key": "Variant",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::breedable::horse::LlamaVariantInt"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::breedable::horse::LlamaVariantInt": {
+			"kind": "enum",
+			"enumKind": "int",
+			"values": [
+				{
+					"identifier": "Creamy",
+					"value": 0
+				},
+				{
+					"identifier": "White",
+					"value": 1
+				},
+				{
+					"identifier": "Brown",
+					"value": 2
+				},
+				{
+					"identifier": "Gray",
+					"value": 3
+				}
+			]
+		},
 		"::java::world::entity::mob::breedable::horse::SkeletonHorse": {
 			"kind": "struct",
 			"fields": [
@@ -73616,242 +73674,14 @@
 				}
 			]
 		},
-		"::java::world::entity::mob::breedable::llama::<anonymous 0>": {
-			"kind": "struct",
-			"fields": []
-		},
-		"::java::world::entity::mob::breedable::llama::Llama": {
+		"::java::world::entity::mob::breedable::horse::TraderLlama": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::entity::mob::breedable::Breedable"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Unknown use.\n\nRemains `0` even if it was bred.\n",
-					"key": "Bred",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether it is grazing.\n",
-					"key": "EatingHaystack",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether it has been tamed.\n",
-					"key": "Tame",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Higher values make it easier to tame.\n\nIncreases with feeding.\n",
-					"key": "Temper",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 100
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16"
-								}
-							}
-						}
-					],
-					"desc": "Player who tamed it.\n",
-					"key": "OwnerUUID",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "uuid"
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16"
-								}
-							}
-						},
-						{
-							"name": "uuid"
-						}
-					],
-					"desc": "Player who tamed the horse.\n",
-					"key": "Owner",
-					"type": {
-						"kind": "int_array",
-						"lengthRange": {
-							"kind": 0,
-							"min": 4,
-							"max": 4
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"desc": "Carpet decoration on its back.\n",
-					"key": "DecorItem",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::item::ItemStack"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether it has a chest.\n",
-					"key": "ChestedHorse",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "List of slots, scales with `Strength`. Only when `ChestedHorse` is `true`.\n",
-					"key": "Items",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "union",
-							"members": [
-								{
-									"kind": "concrete",
-									"child": {
-										"kind": "reference",
-										"path": "::java::util::slot::SlottedItem"
-									},
-									"typeArgs": [
-										{
-											"kind": "byte",
-											"valueRange": {
-												"kind": 0,
-												"min": 0,
-												"max": 14
-											}
-										}
-									]
-								},
-								{
-									"kind": "struct",
-									"fields": []
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 15
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Determines both the number of items it can carry and how likely it is for wolves to run away.\n",
-					"key": "Strength",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1,
-							"max": 5
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "Variant",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::component::entity::LlamaVariant"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::world::entity::mob::breedable::llama::LlamaVariantInt": {
-			"kind": "enum",
-			"enumKind": "int",
-			"values": [
-				{
-					"identifier": "Creamy",
-					"value": 0
-				},
-				{
-					"identifier": "White",
-					"value": 1
-				},
-				{
-					"identifier": "Brown",
-					"value": 2
-				},
-				{
-					"identifier": "Gray",
-					"value": 3
-				}
-			]
-		},
-		"::java::world::entity::mob::breedable::llama::TraderLlama": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::entity::mob::breedable::llama::Llama"
+						"path": "::java::world::entity::mob::breedable::horse::Llama"
 					}
 				},
 				{
@@ -88334,7 +88164,7 @@
 			},
 			"llama": {
 				"kind": "reference",
-				"path": "::java::world::entity::mob::breedable::llama::Llama"
+				"path": "::java::world::entity::mob::breedable::horse::Llama"
 			},
 			"llama_spit": {
 				"kind": "reference",
@@ -88730,7 +88560,7 @@
 			},
 			"trader_llama": {
 				"kind": "reference",
-				"path": "::java::world::entity::mob::breedable::llama::TraderLlama"
+				"path": "::java::world::entity::mob::breedable::horse::TraderLlama"
 			},
 			"trident": {
 				"kind": "reference",
