@@ -1094,7 +1094,7 @@
 	"::java::world::entity::mob::breedable::llama::Llama.ChestedHorse": "Whether it has a chest.",
 	"::java::world::entity::mob::breedable::llama::Llama.DecorItem": "Carpet decoration on its back.",
 	"::java::world::entity::mob::breedable::llama::Llama.EatingHaystack": "Whether it is grazing.",
-	"::java::world::entity::mob::breedable::llama::Llama.Items": "List of slots, scales with `Strength`.",
+	"::java::world::entity::mob::breedable::llama::Llama.Items": "List of slots, scales with `Strength`. Only when `ChestedHorse` is `true`.",
 	"::java::world::entity::mob::breedable::llama::Llama.Owner": "Player who tamed the horse.",
 	"::java::world::entity::mob::breedable::llama::Llama.OwnerUUID": "Player who tamed it.",
 	"::java::world::entity::mob::breedable::llama::Llama.Strength": "Determines both the number of items it can carry and how likely it is for wolves to run away.",
