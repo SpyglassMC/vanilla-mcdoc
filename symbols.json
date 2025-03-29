@@ -1,5 +1,5 @@
 {
-	"ref": "5af28da4a5aad4022ae4c55803db79bfd2395590",
+	"ref": "f35464d757a4c9786e0d804ac6c0146371dd45c1",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -73207,6 +73207,10 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::breedable::horse::<anonymous 0>": {
+			"kind": "struct",
+			"fields": []
+		},
 		"::java::world::entity::mob::breedable::horse::Camel": {
 			"kind": "struct",
 			"fields": [
@@ -73263,19 +73267,28 @@
 					"type": {
 						"kind": "list",
 						"item": {
-							"kind": "concrete",
-							"child": {
-								"kind": "reference",
-								"path": "::java::util::slot::SlottedItem"
-							},
-							"typeArgs": [
+							"kind": "union",
+							"members": [
 								{
-									"kind": "byte",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 14
-									}
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::util::slot::SlottedItem"
+									},
+									"typeArgs": [
+										{
+											"kind": "byte",
+											"valueRange": {
+												"kind": 0,
+												"min": 0,
+												"max": 14
+											}
+										}
+									]
+								},
+								{
+									"kind": "struct",
+									"fields": []
 								}
 							]
 						},
