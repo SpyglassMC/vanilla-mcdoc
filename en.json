@@ -602,6 +602,7 @@
 	"::java::util::particle::ShriekParticle.delay": "Ticks until the particle renders.",
 	"::java::util::particle::VibrationParticleData.arrival_in_ticks": "Ticks in which to interpolate the particle's initial position to the destination.",
 	"::java::util::slot::SlottedItem.Slot": "Inventory slot the item is in",
+	"::java::util::text::ChangePage.page": "The page number to go to.",
 	"::java::util::text::ChangePage.value": "The page number to go to.",
 	"::java::util::text::CopyToClipboard.value": "The text value to copy to the clipboard.",
 	"::java::util::text::TextStyle.shadow_color": "Overrides the shadow properties of the text.\nIf specified as 0, the shadow will never be displayed.",
