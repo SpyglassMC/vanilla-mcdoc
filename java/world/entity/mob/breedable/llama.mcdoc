@@ -26,7 +26,7 @@ dispatch minecraft:entity[llama] to struct Llama {
 	/// Whether it has a chest.
 	ChestedHorse?: boolean,
 	/// List of slots, scales with `Strength`. Only when `ChestedHorse` is `true`.
-	Items?: ([SlottedItem<byte @ 0..14>] @ 0..15 | struct {}),
+	Items?: [(SlottedItem<byte @ 0..14> | struct {})] @ 0..15,
 	/// Determines both the number of items it can carry and how likely it is for wolves to run away.
 	Strength?: int @ 1..5,
 	Variant?: LlamaVariant,
