@@ -1,5 +1,5 @@
 {
-	"ref": "f35464d757a4c9786e0d804ac6c0146371dd45c1",
+	"ref": "2938af36b288b2d1bca379c1996f0fa0b5316b10",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -69907,54 +69907,6 @@
 				}
 			]
 		},
-		"::java::world::entity::firework_rocket::FireWorkRocket": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::entity::EntityBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Ticks it has existed.\n",
-					"key": "Life",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Ticks it will exist.\n",
-					"key": "LifeTime",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether it should move at an angle.\n",
-					"key": "ShotAtAngle",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "FireworksItem",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::item::ItemStack"
-					},
-					"optional": true
-				}
-			]
-		},
 		"::java::world::entity::interaction::Action": {
 			"kind": "struct",
 			"fields": [
@@ -79801,6 +79753,54 @@
 				}
 			]
 		},
+		"::java::world::entity::projectile::firework_rocket::FireWorkRocket": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::projectile::ProjectileBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Ticks it has existed.\n",
+					"key": "Life",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Ticks it will exist.\n",
+					"key": "LifeTime",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether it should move at an angle.\n",
+					"key": "ShotAtAngle",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "FireworksItem",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStack"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::world::entity::projectile::LlamaSpit": {
 			"kind": "struct",
 			"fields": [
@@ -87973,7 +87973,7 @@
 			},
 			"firework_rocket": {
 				"kind": "reference",
-				"path": "::java::world::entity::firework_rocket::FireWorkRocket"
+				"path": "::java::world::entity::projectile::firework_rocket::FireWorkRocket"
 			},
 			"fox": {
 				"kind": "reference",
