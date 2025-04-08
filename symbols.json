@@ -1,5 +1,5 @@
 {
-	"ref": "99b9bbe6608886b460d67520df84c9ff88bc5091",
+	"ref": "771014acdfa0040ef4d11c884c4e76c92e9f7500",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -77705,6 +77705,30 @@
 						}
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"desc": "Used by fall damage logic. Decreases by 1 every tick.\n",
+					"key": "current_impulse_context_reset_grace_time",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
 				},
 				{
 					"kind": "pair",
