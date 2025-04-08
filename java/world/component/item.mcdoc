@@ -41,6 +41,28 @@ struct AttributeModifier {
 	operation: AttributeOperation,
 	/// Slot or slot type the item must be in for the modifier to take effect. Defaults to `any`.
 	slot?: EquipmentSlotGroup,
+	/// Controls how this modifier is shown in the item tooltip.
+	#[since="1.21.6"]
+	display?: AttributeDisplay,
+}
+
+struct AttributeDisplay {
+	type: AttributeDisplayType,
+	...minecraft:attribute_display[[type]],
+}
+
+enum(string) AttributeDisplayType {
+	/// Shows the calculated attribute modifier values on the tooltip.
+	Default = "default",
+	/// Does not show the attribute modifier entry in tooltips.
+	Hidden = "hidden",
+	/// Replaces the shown attribute modifier text.
+	Override = "override",
+}
+
+dispatch minecraft:attribute_display[override] to struct AttributeDisplayOverride {
+	/// The text contents to show for this attribute modifer entry.
+	value: Text,
 }
 
 /// The base color of a shield.

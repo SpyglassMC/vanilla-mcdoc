@@ -62,6 +62,9 @@ dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	monster_spawn_light_level: IntProvider<int @ 0..15>,
 	#[since="1.19"]
 	monster_spawn_block_light_limit: int @ 0..15,
+	/// The Y-level where the clouds start in the dimension. If not present, no clouds will be visible.
+	#[since="1.21.6"]
+	cloud_height?: int @ -2032..2031,
 }
 
 enum(string) DimensionTypeEffects {
