@@ -1,5 +1,5 @@
 {
-	"ref": "2938af36b288b2d1bca379c1996f0fa0b5316b10",
+	"ref": "5411eb6ec1f10da3447bdd60ae6cbdc7f37cfe0c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -1478,6 +1478,61 @@
 						}
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"key": "happy_ghast_body",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/happy_ghast_body/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					}
 				},
 				{
 					"kind": "pair",
@@ -36628,6 +36683,32 @@
 							"max": 15
 						}
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"desc": "The Y-level where the clouds start in the dimension. If not present, no clouds will be visible.\n",
+					"key": "cloud_height",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": -2032,
+							"max": 2031
+						}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -64608,6 +64689,69 @@
 				}
 			]
 		},
+		"::java::world::component::item::AttributeDisplay": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::item::AttributeDisplayType"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:attribute_display"
+					}
+				}
+			]
+		},
+		"::java::world::component::item::AttributeDisplayOverride": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The text contents to show for this attribute modifer entry.\n",
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					}
+				}
+			]
+		},
+		"::java::world::component::item::AttributeDisplayType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"desc": "Shows the calculated attribute modifier values on the tooltip.\n",
+					"identifier": "Default",
+					"value": "default"
+				},
+				{
+					"desc": "Does not show the attribute modifier entry in tooltips.\n",
+					"identifier": "Hidden",
+					"value": "hidden"
+				},
+				{
+					"desc": "Replaces the shown attribute modifier text.\n",
+					"identifier": "Override",
+					"value": "override"
+				}
+			]
+		},
 		"::java::world::component::item::AttributeModifier": {
 			"kind": "struct",
 			"fields": [
@@ -64728,6 +64872,28 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::util::slot::EquipmentSlotGroup"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"desc": "Controls how this modifier is shown in the item tooltip.\n",
+					"key": "display",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::item::AttributeDisplay"
 					},
 					"optional": true
 				}
@@ -67966,6 +68132,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
 					"desc": "Particle the area effect cloud displays.\n",
 					"key": "Particle",
 					"type": {
@@ -68003,6 +68181,28 @@
 								]
 							}
 						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"desc": "If present, the particle that the area effect cloud displays instead of the default `entity_effect` particle based on the potion contents.\n",
+					"key": "custom_particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::particle::Particle"
 					},
 					"optional": true
 				},
@@ -82786,6 +82986,12 @@
 			"uniform_bonus_count": {
 				"kind": "reference",
 				"path": "::java::data::loot::function::UniformBonusFormula"
+			}
+		},
+		"minecraft:attribute_display": {
+			"override": {
+				"kind": "reference",
+				"path": "::java::world::component::item::AttributeDisplayOverride"
 			}
 		},
 		"minecraft:biome_source": {
