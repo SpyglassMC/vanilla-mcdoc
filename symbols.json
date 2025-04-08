@@ -1,5 +1,5 @@
 {
-	"ref": "5411eb6ec1f10da3447bdd60ae6cbdc7f37cfe0c",
+	"ref": "99b9bbe6608886b460d67520df84c9ff88bc5091",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -64894,8 +64894,7 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::world::component::item::AttributeDisplay"
-					},
-					"optional": true
+					}
 				}
 			]
 		},
@@ -76198,6 +76197,27 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"key": "locator_bar_icon",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::WaypointIcon"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -78850,6 +78870,60 @@
 						"path": "::java::util::game_event::VibrationListener"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::WaypointIcon": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "alpha_fade",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::WaypointIconFade"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::color::RGB"
+					}
+				}
+			]
+		},
+		"::java::world::entity::mob::WaypointIconFade": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "near_dist",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "far_dist",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "near_alpha",
+					"type": {
+						"kind": "byte"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "far_alpha",
+					"type": {
+						"kind": "byte"
+					}
 				}
 			]
 		},
