@@ -2,6 +2,7 @@ use ::java::util::attribute::AttributeName
 use ::java::util::attribute::LegacyOperation
 use ::java::util::attribute::AttributeOperation
 use ::java::world::item::ItemStack
+use ::java::util::color::RGB
 use ::java::util::effect::MobEffectInstance
 use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::memory::Memories
@@ -47,6 +48,8 @@ struct LivingEntity {
 	NoAI?: boolean,
 	/// Team to join when it is spawned.
 	Team?: #[team] string,
+	#[since="1.21.6"]
+	locator_bar_icon?: WaypointIcon,
 }
 
 /// Base NBT for all mobs.
@@ -179,6 +182,18 @@ struct BlockLeash {
 	Y?: int,
 	/// Z coordiante of leash knot.
 	Z?: int,
+}
+
+struct WaypointIcon {
+	alpha_fade: WaypointIconFade,
+	color: RGB,
+}
+
+struct WaypointIconFade {
+	near_dist: int,
+	far_dist: int,
+	near_alpha: byte,
+	far_alpha: byte,
 }
 
 dispatch minecraft:entity[

@@ -43,7 +43,7 @@ struct AttributeModifier {
 	slot?: EquipmentSlotGroup,
 	/// Controls how this modifier is shown in the item tooltip.
 	#[since="1.21.6"]
-	display?: AttributeDisplay,
+	display: AttributeDisplay,
 }
 
 struct AttributeDisplay {
