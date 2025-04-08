@@ -1210,6 +1210,7 @@
 	"::java::world::entity::mob::player::Abilities.walkSpeed": "Speed that the player walks at.",
 	"::java::world::entity::mob::player::Player.abilities": "Abilities of the player.",
 	"::java::world::entity::mob::player::Player.current_explosion_impact_pos": "Added mid-air after being hit by an explosion.",
+	"::java::world::entity::mob::player::Player.current_impulse_context_reset_grace_time": "Used by fall damage logic. Decreases by 1 every tick.",
 	"::java::world::entity::mob::player::Player.DataVersion": "Version of the player NBT structure",
 	"::java::world::entity::mob::player::Player.ender_pearls": "Ender pearls thrown by this player.",
 	"::java::world::entity::mob::player::Player.EnderItems": "The player's enderchest inventory.",
