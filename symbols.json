@@ -1,5 +1,5 @@
 {
-	"ref": "771014acdfa0040ef4d11c884c4e76c92e9f7500",
+	"ref": "97799ef1bd18f75e5dec211d749a2586269b1bd1",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -77729,6 +77729,120 @@
 							"min": 0
 						}
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.4"
+								}
+							}
+						}
+					],
+					"desc": "The UUID of the attacking player that last hurt this player. Stored for 100 ticks.\n",
+					"key": "last_hurt_by_player",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.4"
+								}
+							}
+						}
+					],
+					"desc": "Amount of ticks that this player will remember the attacking player that last hurt this player.\n\nCounts down from 100 to 0.\n",
+					"key": "last_hurt_by_player_memory_time",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 100
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.4"
+								}
+							}
+						}
+					],
+					"desc": "The UUID of the mob that last hurt this player. Stored for 100 ticks.\n",
+					"key": "last_hurt_by_mob",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.4"
+								}
+							}
+						}
+					],
+					"desc": "Amount of ticks since the player was last hurt by a mob.\n\nCounts up from 0 to 100.\n",
+					"key": "ticks_since_last_hurt_by_mob",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 100
+						}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
