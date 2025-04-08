@@ -48,6 +48,20 @@ struct LivingEntity {
 	NoAI?: boolean,
 	/// Team to join when it is spawned.
 	Team?: #[team] string,
+	/// The UUID of the player that last hurt this entity. Stored for 100 ticks.
+	#[since="1.21.4"]
+	last_hurt_by_player?: #[uuid] int[] @ 4,
+	/// Amount of ticks that this entity will remember the player that last hurt this entity.
+	/// Counts down from 100 to 0.
+	#[since="1.21.4"]
+	last_hurt_by_player_memory_time?: int @ 0..100,
+	/// The UUID of the mob that last hurt this entity. Stored for 100 ticks.
+	#[since="1.21.4"]
+	last_hurt_by_mob?: #[uuid] int[] @ 4,
+	/// Amount of ticks since this entity was last hurt by a mob.
+	/// Counts up from 0 to 100.
+	#[since="1.21.4"]
+	ticks_since_last_hurt_by_mob?: int @ 0..100,
 	#[since="1.21.6"]
 	locator_bar_icon?: WaypointIcon,
 }
