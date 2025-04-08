@@ -100,6 +100,9 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Added mid-air after being hit by an explosion.
 	#[since="1.20.3"]
 	current_explosion_impact_pos?: [double] @ 3,
+	/// Used by fall damage logic. Decreases by 1 every tick.
+	#[since="1.21"]
+	current_impulse_context_reset_grace_time: int @ 0..,
 	// these are not included
 	CustomName?: (),
 	CustomNameVisible?: (),
