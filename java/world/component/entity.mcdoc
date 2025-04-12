@@ -121,6 +121,7 @@ dispatch minecraft:data_component["tropical_fish/pattern"] to TropicalFishPatter
 enum(string) TropicalFishPattern {
 	Kob = "kob",
 	Sunstreak = "sunstreak",
+	Snooper = "snooper",
 	Dasher = "dasher",
 	Brinely = "brinely",
 	Spotty = "spotty",
