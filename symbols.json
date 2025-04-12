@@ -1,5 +1,5 @@
 {
-	"ref": "af48a76f07b14a62d1aba9974fdc42779165215d",
+	"ref": "963c07057a0dd902f83316f11b468ad52b5bf587",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -64479,6 +64479,10 @@
 				{
 					"identifier": "Sunstreak",
 					"value": "sunstreak"
+				},
+				{
+					"identifier": "Snooper",
+					"value": "snooper"
 				},
 				{
 					"identifier": "Dasher",
