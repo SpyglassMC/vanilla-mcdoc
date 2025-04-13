@@ -1,5 +1,5 @@
 {
-	"ref": "c7b71ac5311cc1c3c8aa31f801be27df0d5a3d9e",
+	"ref": "beaf700b686ceb168925302f4ded31ad380489dd",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -3217,7 +3217,7 @@
 						"typeArgs": [
 							{
 								"kind": "reference",
-								"path": "::java::assets::model::ItemTransformType"
+								"path": "::java::assets::model::ItemDisplayContext"
 							}
 						]
 					}
@@ -4768,6 +4768,86 @@
 				}
 			]
 		},
+		"::java::assets::model::CustomizableItemDisplayContext": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "FirstPersonRighthand",
+					"value": "firstperson_righthand"
+				},
+				{
+					"identifier": "FirstPersonLefthand",
+					"value": "firstperson_lefthand"
+				},
+				{
+					"identifier": "ThirdPersonRighthand",
+					"value": "thirdperson_righthand"
+				},
+				{
+					"identifier": "ThirdPersonLefthand",
+					"value": "thirdperson_lefthand"
+				},
+				{
+					"identifier": "Gui",
+					"value": "gui"
+				},
+				{
+					"identifier": "Head",
+					"value": "head"
+				},
+				{
+					"identifier": "Ground",
+					"value": "ground"
+				},
+				{
+					"identifier": "Fixed",
+					"value": "fixed"
+				}
+			]
+		},
+		"::java::assets::model::ItemDisplayContext": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "None",
+					"value": "none"
+				},
+				{
+					"identifier": "FirstPersonRighthand",
+					"value": "firstperson_righthand"
+				},
+				{
+					"identifier": "FirstPersonLefthand",
+					"value": "firstperson_lefthand"
+				},
+				{
+					"identifier": "ThirdPersonRighthand",
+					"value": "thirdperson_righthand"
+				},
+				{
+					"identifier": "ThirdPersonLefthand",
+					"value": "thirdperson_lefthand"
+				},
+				{
+					"identifier": "Gui",
+					"value": "gui"
+				},
+				{
+					"identifier": "Head",
+					"value": "head"
+				},
+				{
+					"identifier": "Ground",
+					"value": "ground"
+				},
+				{
+					"identifier": "Fixed",
+					"value": "fixed"
+				}
+			]
+		},
 		"::java::assets::model::ItemTransform": {
 			"kind": "struct",
 			"fields": [
@@ -4828,48 +4908,6 @@
 						}
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::assets::model::ItemTransformType": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "None",
-					"value": "none"
-				},
-				{
-					"identifier": "FirstPersonRighthand",
-					"value": "firstperson_righthand"
-				},
-				{
-					"identifier": "FirstPersonLefthand",
-					"value": "firstperson_lefthand"
-				},
-				{
-					"identifier": "ThirdPersonRighthand",
-					"value": "thirdperson_righthand"
-				},
-				{
-					"identifier": "ThirdPersonLefthand",
-					"value": "thirdperson_lefthand"
-				},
-				{
-					"identifier": "Gui",
-					"value": "gui"
-				},
-				{
-					"identifier": "Head",
-					"value": "head"
-				},
-				{
-					"identifier": "Ground",
-					"value": "ground"
-				},
-				{
-					"identifier": "Fixed",
-					"value": "fixed"
 				}
 			]
 		},
@@ -5003,7 +5041,7 @@
 								"kind": "pair",
 								"key": {
 									"kind": "reference",
-									"path": "::java::assets::model::ItemTransformType"
+									"path": "::java::assets::model::CustomizableItemDisplayContext"
 								},
 								"type": {
 									"kind": "struct",
@@ -5134,7 +5172,7 @@
 					"kind": "pair",
 					"key": {
 						"kind": "reference",
-						"path": "::java::assets::model::ItemTransformType"
+						"path": "::java::assets::model::CustomizableItemDisplayContext"
 					},
 					"type": {
 						"kind": "struct",
@@ -69042,7 +69080,7 @@
 					"key": "item_display",
 					"type": {
 						"kind": "reference",
-						"path": "::java::assets::model::ItemTransformType"
+						"path": "::java::assets::model::ItemDisplayContext"
 					},
 					"optional": true
 				}
