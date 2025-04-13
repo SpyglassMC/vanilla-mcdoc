@@ -178,9 +178,9 @@ dispatch minecraft:click_event[run_command] to struct RunCommand {
 
 dispatch minecraft:click_event[suggest_command] to struct SuggestCommand {
 	#[until="1.21.5"]
-	value: #[command(slash="chat")] string,
+	value: #[command(slash="chat",incomplete="allowed")] string,
 	#[since="1.21.5"]
-	command: #[command(slash="chat")] string,
+	command: #[command(slash="chat",incomplete="allowed")] string,
 }
 
 dispatch minecraft:click_event[change_page] to struct ChangePage {
