@@ -1,4 +1,4 @@
-use ::java::assets::model::ItemTransformType
+use ::java::assets::model::ItemDisplayContext
 use ::java::util::block_state::BlockState
 use ::java::util::text::Text
 use ::java::world::item::ItemStack
@@ -109,7 +109,7 @@ dispatch minecraft:entity[item_display] to struct ItemDisplay {
 	/// Item stack to display.
 	item?: ItemStack,
 	/// Describes item model transform applied to item (as defined in `display` section in model JSON). Defaults to `fixed`.
-	item_display?: ItemTransformType,
+	item_display?: ItemDisplayContext,
 }
 
 dispatch minecraft:entity[text_display] to struct TextDisplay {

@@ -1,5 +1,5 @@
 use ::java::assets::model::ModelRef
-use ::java::assets::model::ItemTransformType
+use ::java::assets::model::ItemDisplayContext
 use ::java::util::color::RGB
 use ::java::util::color::DyeColor
 use ::java::util::direction::Direction
@@ -339,7 +339,7 @@ dispatch minecraft:select_item_property[context_entity_type] to struct ContextEn
 }
 
 dispatch minecraft:select_item_property[display_context] to struct DisplayContext{
-	...SelectCases<ItemTransformType>
+	...SelectCases<ItemDisplayContext>
 }
 
 dispatch minecraft:select_item_property[local_time] to struct LocalTime {

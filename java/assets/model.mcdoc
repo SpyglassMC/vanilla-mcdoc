@@ -11,7 +11,7 @@ dispatch minecraft:resource[model] to struct Model {
 	},
 	elements?: [ModelElement],
 	display?: struct ModelDisplay {
-		[ItemTransformType]: struct ItemTransform {
+		[CustomizableItemDisplayContext]: struct ItemTransform {
 			rotation?: [float] @ 3,
 			translation?: [float @ -80..80] @ 3,
 			scale?: [float @ -4..4] @ 3,
@@ -56,8 +56,19 @@ enum(string) Axis {
 	Z = "z",
 }
 
-enum(string) ItemTransformType {
+enum(string) ItemDisplayContext {
 	None = "none",
+	FirstPersonRighthand = "firstperson_righthand",
+	FirstPersonLefthand = "firstperson_lefthand",
+	ThirdPersonRighthand = "thirdperson_righthand",
+	ThirdPersonLefthand = "thirdperson_lefthand",
+	Gui = "gui",
+	Head = "head",
+	Ground = "ground",
+	Fixed = "fixed",
+}
+
+enum(string) CustomizableItemDisplayContext {
 	FirstPersonRighthand = "firstperson_righthand",
 	FirstPersonLefthand = "firstperson_lefthand",
 	ThirdPersonRighthand = "thirdperson_righthand",
