@@ -1,5 +1,5 @@
 {
-	"ref": "963c07057a0dd902f83316f11b468ad52b5bf587",
+	"ref": "c7b71ac5311cc1c3c8aa31f801be27df0d5a3d9e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -57535,6 +57535,13 @@
 												"kind": "string",
 												"value": "chat"
 											}
+										},
+										"incomplete": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "allowed"
+											}
 										}
 									}
 								}
@@ -57570,6 +57577,13 @@
 											"value": {
 												"kind": "string",
 												"value": "chat"
+											}
+										},
+										"incomplete": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "allowed"
 											}
 										}
 									}
