@@ -1,5 +1,5 @@
 {
-	"ref": "beaf700b686ceb168925302f4ded31ad380489dd",
+	"ref": "f1b4a1588793f3a530f105c29002424e9a241475",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -1532,7 +1532,8 @@
 								}
 							]
 						}
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
