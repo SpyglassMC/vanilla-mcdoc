@@ -41,7 +41,10 @@ struct ModelElement {
 	rotation?: struct ModelElementRotation {
 		origin: [float] @ 3,
 		axis: Axis,
-		angle: (-45.0 | -22.5 | 0.0 | 22.5 | 45.0),
+		angle: (
+			#[until="1.21.6"] (-45.0 | -22.5 | 0.0 | 22.5 | 45.0) |
+			#[since="1.21.6"] float @ -45..45 |
+		),
 		/// Defaults to `false`.
 		rescale?: boolean,
 	},

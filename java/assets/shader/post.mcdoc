@@ -1,3 +1,5 @@
+use ::java::util::color::RGBA
+
 dispatch minecraft:resource["post_effect"] to struct PostEffect {
 	targets?: (
 		#[until="1.21.2"] [(string | OldTarget)] |
@@ -13,7 +15,11 @@ struct OldTarget {
 }
 
 struct Targets {
-	[#[id="shader_target"] string]: (FixedSizedTarget | FullScreenTarget),
+	[#[id="shader_target"] string]: (
+		#[until="1.21.6"] FixedSizedTarget |
+		#[until="1.21.6"] FullScreenTarget |
+		#[since="1.21.6"] InternalTarget |
+	),
 }
 
 struct FixedSizedTarget {
@@ -23,6 +29,16 @@ struct FixedSizedTarget {
 
 struct FullScreenTarget {}
 
+struct InternalTarget {
+	width?: int,
+	height?: int,
+	/// If `true`, target will be persistent across frames. Defaults to `false`.
+	/// The contents of the target will be cleared when the screen is resized.
+	persistent?: boolean,
+	/// Target will be filled with this color when created or cleared. Defaults to `0`.
+	clear_color?: RGBA,
+}
+
 type Pass = (
 	#[until="1.21.2"] struct {
 		name: string,
@@ -30,13 +46,19 @@ type Pass = (
 		outtarget: string,
 		auxtargets?: [AuxTarget],
 		use_linear_filter?: boolean,
-		uniforms?: [Uniform],
+		uniforms?: (
+			#[until="1.21.6"] [UniformValue] |
+			#[since="1.21.6"] UniformBlocks |
+		),
 	} |
 	#[since="1.21.2"] struct {
 		program: #[id="shader"] string,
 		inputs?: [(TargetInput | TextureInput)],
-		output?: #[id="shader_target"] string,
-		uniforms?: [Uniform],
+		output: #[id="shader_target"] string,
+		uniforms?: (
+			#[until="1.21.6"] [UniformValue] |
+			#[since="1.21.6"] UniformBlocks |
+		),
 	} |
 )
 
@@ -63,8 +85,46 @@ struct TargetInput {
 	bilinear?: boolean,
 }
 
-struct Uniform {
-	name: string,
-	values: [float] @ 0..4,
-	// TODO: add additional fields
+struct UniformBlocks {
+	/// List of uniform values in this block. The order must match the order in the shader file.
+	[string]: [UniformValue],
 }
+
+struct UniformValue {
+	#[until="1.21.6"] ...struct {
+		name: string,
+	},
+	#[since="1.21.6"] ...struct {
+		/// Unused by the game, but good to set in practice.
+		name?: string,
+	},
+	type: UniformValueType,
+	#[until="1.21.6"]
+	values: [float] @ 0..4,
+	#[since="1.21.6"]
+	value: minecraft:uniform_value[[type]],
+}
+
+enum(string) UniformValueType {
+	Int = "int",
+	Ivec3 = "ivec3",
+	Float = "float",
+	Vec2 = "vec2",
+	Vec3 = "vec3",
+	Vec4 = "vec4",
+	Matrix4x4 = "matrix4x4",
+}
+
+dispatch minecraft:uniform_value["int"] to int
+
+dispatch minecraft:uniform_value[ivec3] to [int] @ 3
+
+dispatch minecraft:uniform_value["float"] to float
+
+dispatch minecraft:uniform_value[vec2] to [float] @ 2
+
+dispatch minecraft:uniform_value[vec3] to [float] @ 3
+
+dispatch minecraft:uniform_value[vec4] to [float] @ 4
+
+dispatch minecraft:uniform_value[matrix4x4] to [float] @ 16

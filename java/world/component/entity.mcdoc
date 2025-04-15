@@ -80,7 +80,7 @@ enum(string) ParrotVariant {
 #[since="1.21.5"]
 dispatch minecraft:data_component["painting/variant"] to (
 	#[id="painting_variant"] string |
-	PaintingVariant |
+	#[until="1.21.6"] PaintingVariant |
 )
 
 #[since="1.21.5"]
