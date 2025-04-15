@@ -11,7 +11,7 @@ dispatch minecraft:entity[painting] to struct Painting {
 	#[since="1.19"]
 	variant?: (
 		#[id="painting_variant"] string |
-		#[since="1.21"] PaintingVariant |
+		#[since="1.21"] #[until="1.21.6"] PaintingVariant |
 	),
 }
 
