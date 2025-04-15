@@ -1,5 +1,5 @@
 {
-	"ref": "f1b4a1588793f3a530f105c29002424e9a241475",
+	"ref": "548fb75f92d4f6c99cbf40dbfee1ab52f0048617",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -5436,39 +5436,76 @@
 									"kind": "union",
 									"members": [
 										{
-											"kind": "literal",
-											"value": {
-												"kind": "double",
-												"value": -45
-											}
+											"kind": "union",
+											"members": [
+												{
+													"kind": "literal",
+													"value": {
+														"kind": "double",
+														"value": -45
+													}
+												},
+												{
+													"kind": "literal",
+													"value": {
+														"kind": "double",
+														"value": -22.5
+													}
+												},
+												{
+													"kind": "literal",
+													"value": {
+														"kind": "double",
+														"value": 0
+													}
+												},
+												{
+													"kind": "literal",
+													"value": {
+														"kind": "double",
+														"value": 22.5
+													}
+												},
+												{
+													"kind": "literal",
+													"value": {
+														"kind": "double",
+														"value": 45
+													}
+												}
+											],
+											"attributes": [
+												{
+													"name": "until",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "1.21.6"
+														}
+													}
+												}
+											]
 										},
 										{
-											"kind": "literal",
-											"value": {
-												"kind": "double",
-												"value": -22.5
-											}
-										},
-										{
-											"kind": "literal",
-											"value": {
-												"kind": "double",
-												"value": 0
-											}
-										},
-										{
-											"kind": "literal",
-											"value": {
-												"kind": "double",
-												"value": 22.5
-											}
-										},
-										{
-											"kind": "literal",
-											"value": {
-												"kind": "double",
-												"value": 45
-											}
+											"kind": "float",
+											"valueRange": {
+												"kind": 0,
+												"min": -45,
+												"max": 45
+											},
+											"attributes": [
+												{
+													"name": "since",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "1.21.6"
+														}
+													}
+												}
+											]
 										}
 									]
 								}
@@ -5766,39 +5803,76 @@
 						"kind": "union",
 						"members": [
 							{
-								"kind": "literal",
-								"value": {
-									"kind": "double",
-									"value": -45
-								}
+								"kind": "union",
+								"members": [
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "double",
+											"value": -45
+										}
+									},
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "double",
+											"value": -22.5
+										}
+									},
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "double",
+											"value": 0
+										}
+									},
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "double",
+											"value": 22.5
+										}
+									},
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "double",
+											"value": 45
+										}
+									}
+								],
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								]
 							},
 							{
-								"kind": "literal",
-								"value": {
-									"kind": "double",
-									"value": -22.5
-								}
-							},
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "double",
-									"value": 0
-								}
-							},
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "double",
-									"value": 22.5
-								}
-							},
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "double",
-									"value": 45
-								}
+								"kind": "float",
+								"valueRange": {
+									"kind": 0,
+									"min": -45,
+									"max": 45
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -7176,11 +7250,44 @@
 					"kind": "pair",
 					"key": "uniforms",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::assets::shader::post::Uniform"
-						}
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::assets::shader::post::UniformValue"
+								},
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::assets::shader::post::UniformBlocks",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				}
@@ -7258,18 +7365,50 @@
 								}
 							}
 						]
-					},
-					"optional": true
+					}
 				},
 				{
 					"kind": "pair",
 					"key": "uniforms",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::assets::shader::post::Uniform"
-						}
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::assets::shader::post::UniformValue"
+								},
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::assets::shader::post::UniformBlocks",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				}
@@ -7284,6 +7423,32 @@
 							"value": "1.21.2"
 						}
 					}
+				}
+			]
+		},
+		"::java::assets::shader::post::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "name",
+					"type": {
+						"kind": "string"
+					}
+				}
+			]
+		},
+		"::java::assets::shader::post::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Unused by the game, but good to set in practice.\n",
+					"key": "name",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -7352,6 +7517,46 @@
 		"::java::assets::shader::post::FullScreenTarget": {
 			"kind": "struct",
 			"fields": []
+		},
+		"::java::assets::shader::post::InternalTarget": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "width",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "height",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If `true`, target will be persistent across frames. Defaults to `false`.\n\nThe contents of the target will be cleared when the screen is resized.\n",
+					"key": "persistent",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Target will be filled with this color when created or cleared. Defaults to `0`.\n",
+					"key": "clear_color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::color::RGBA"
+					},
+					"optional": true
+				}
+			]
 		},
 		"::java::assets::shader::post::OldTarget": {
 			"kind": "struct",
@@ -7432,11 +7637,44 @@
 							"kind": "pair",
 							"key": "uniforms",
 							"type": {
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::assets::shader::post::Uniform"
-								}
+								"kind": "union",
+								"members": [
+									{
+										"kind": "list",
+										"item": {
+											"kind": "reference",
+											"path": "::java::assets::shader::post::UniformValue"
+										},
+										"attributes": [
+											{
+												"name": "until",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "1.21.6"
+													}
+												}
+											}
+										]
+									},
+									{
+										"kind": "reference",
+										"path": "::java::assets::shader::post::UniformBlocks",
+										"attributes": [
+											{
+												"name": "since",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "1.21.6"
+													}
+												}
+											}
+										]
+									}
+								]
 							},
 							"optional": true
 						}
@@ -7514,18 +7752,50 @@
 										}
 									}
 								]
-							},
-							"optional": true
+							}
 						},
 						{
 							"kind": "pair",
 							"key": "uniforms",
 							"type": {
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::assets::shader::post::Uniform"
-								}
+								"kind": "union",
+								"members": [
+									{
+										"kind": "list",
+										"item": {
+											"kind": "reference",
+											"path": "::java::assets::shader::post::UniformValue"
+										},
+										"attributes": [
+											{
+												"name": "until",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "1.21.6"
+													}
+												}
+											}
+										]
+									},
+									{
+										"kind": "reference",
+										"path": "::java::assets::shader::post::UniformBlocks",
+										"attributes": [
+											{
+												"name": "since",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "1.21.6"
+													}
+												}
+											}
+										]
+									}
+								]
 							},
 							"optional": true
 						}
@@ -7687,11 +7957,51 @@
 						"members": [
 							{
 								"kind": "reference",
-								"path": "::java::assets::shader::post::FixedSizedTarget"
+								"path": "::java::assets::shader::post::FixedSizedTarget",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								]
 							},
 							{
 								"kind": "reference",
-								"path": "::java::assets::shader::post::FullScreenTarget"
+								"path": "::java::assets::shader::post::FullScreenTarget",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::assets::shader::post::InternalTarget",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -7747,18 +8057,106 @@
 				}
 			]
 		},
-		"::java::assets::shader::post::Uniform": {
+		"::java::assets::shader::post::UniformBlocks": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "name",
-					"type": {
+					"desc": "List of uniform values in this block. The order must match the order in the shader file.\n",
+					"key": {
 						"kind": "string"
+					},
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::assets::shader::post::UniformValue"
+						}
+					}
+				}
+			]
+		},
+		"::java::assets::shader::post::UniformValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "name",
+								"type": {
+									"kind": "string"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Unused by the game, but good to set in practice.\n",
+								"key": "name",
+								"type": {
+									"kind": "string"
+								},
+								"optional": true
+							}
+						]
 					}
 				},
 				{
 					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::shader::post::UniformValueType"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
 					"key": "values",
 					"type": {
 						"kind": "list",
@@ -7771,6 +8169,68 @@
 							"max": 4
 						}
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"key": "value",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:uniform_value"
+					}
+				}
+			]
+		},
+		"::java::assets::shader::post::UniformValueType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Int",
+					"value": "int"
+				},
+				{
+					"identifier": "Ivec3",
+					"value": "ivec3"
+				},
+				{
+					"identifier": "Float",
+					"value": "float"
+				},
+				{
+					"identifier": "Vec2",
+					"value": "vec2"
+				},
+				{
+					"identifier": "Vec3",
+					"value": "vec3"
+				},
+				{
+					"identifier": "Vec4",
+					"value": "vec4"
+				},
+				{
+					"identifier": "Matrix4x4",
+					"value": "matrix4x4"
 				}
 			]
 		},
@@ -86756,7 +87216,19 @@
 					},
 					{
 						"kind": "reference",
-						"path": "::java::data::variants::painting::PaintingVariant"
+						"path": "::java::data::variants::painting::PaintingVariant",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.6"
+									}
+								}
+							}
+						]
 					}
 				],
 				"attributes": [
@@ -94936,6 +95408,69 @@
 						}
 					}
 				]
+			}
+		},
+		"minecraft:uniform_value": {
+			"float": {
+				"kind": "float"
+			},
+			"int": {
+				"kind": "int"
+			},
+			"ivec3": {
+				"kind": "list",
+				"item": {
+					"kind": "int"
+				},
+				"lengthRange": {
+					"kind": 0,
+					"min": 3,
+					"max": 3
+				}
+			},
+			"matrix4x4": {
+				"kind": "list",
+				"item": {
+					"kind": "float"
+				},
+				"lengthRange": {
+					"kind": 0,
+					"min": 16,
+					"max": 16
+				}
+			},
+			"vec2": {
+				"kind": "list",
+				"item": {
+					"kind": "float"
+				},
+				"lengthRange": {
+					"kind": 0,
+					"min": 2,
+					"max": 2
+				}
+			},
+			"vec3": {
+				"kind": "list",
+				"item": {
+					"kind": "float"
+				},
+				"lengthRange": {
+					"kind": 0,
+					"min": 3,
+					"max": 3
+				}
+			},
+			"vec4": {
+				"kind": "list",
+				"item": {
+					"kind": "float"
+				},
+				"lengthRange": {
+					"kind": 0,
+					"min": 4,
+					"max": 4
+				}
 			}
 		},
 		"minecraft:value_effect": {
