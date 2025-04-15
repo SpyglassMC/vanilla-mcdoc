@@ -1,4 +1,3 @@
-use super::loot::LootCondition
 use super::worldgen::IntProvider
 use super::util::SoundEventRef
 use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
@@ -8,6 +7,11 @@ use ::java::util::text::Text
 use ::java::util::particle::Particle
 use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::attribute::AttributeOperation
+
+struct EnchantmentCondition {
+	function: #[id(registry="loot_function_type",exclude=["reference"])] string,
+	...minecraft:loot_function[[function]],
+}
 
 // TODO: handle the "location based effects" thing
 
@@ -343,7 +347,7 @@ dispatch minecraft:entity_effect[summon_entity] to struct SummonEntityEffect {
 
 struct DamageEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Determines armor effectiveness; `0.0` for no effect, `1.0` for full effect.
 	effect: ValueEffect,
 }
@@ -354,14 +358,14 @@ dispatch minecraft:effect_component[attributes] to [AttributeEffect]
 
 dispatch minecraft:effect_component[ammo_use] to [struct AmmoUseEnchantmentEffect {
 	/// Predicate context: Item Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of ammunition being used up.
 	effect: ValueEffect,
 }]
 
 dispatch minecraft:effect_component[block_experience] to [struct BlockExperienceEnchantmentEffect {
 	/// Predicate context: Item Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of experience awarded.
 	effect: ValueEffect,
 }]
@@ -384,14 +388,14 @@ dispatch minecraft:effect_component[damage] to [DamageEnchantmentEffect]
 /// Complete damage immunity given the conditions are met.
 dispatch minecraft:effect_component[damage_immunity] to [struct DamageImmunityEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Dummy value; this is a boolean effect.
 	effect: struct {},
 }]
 
 dispatch minecraft:effect_component[damage_protection] to [struct DamageProtectionEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of damage being absorbed; as "fake armor".
 	effect: ValueEffect,
 }]
@@ -399,7 +403,7 @@ dispatch minecraft:effect_component[damage_protection] to [struct DamageProtecti
 /// Chance of equipment dropping when a target is killed by the owner of the Enchanted Item.
 dispatch minecraft:effect_component[equipment_drops] to [struct EquipmentDropsEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Chance between `0.0` and `1.0` of an equipped piece dropping.
 	effect: ValueEffect,
 	/// Which subject needs to be enchanted for the effect to apply.
@@ -410,7 +414,7 @@ dispatch minecraft:effect_component[fishing_luck_bonus] to [struct FishingLuckBo
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the player fishing.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of luck being added.
 	effect: ValueEffect,
 }]
@@ -419,7 +423,7 @@ dispatch minecraft:effect_component[fishing_time_reduction] to [struct FishingTi
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the player fishing.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Time reduction in seconds (higher values mean less time until a fish bites).
 	effect: ValueEffect,
 }]
@@ -428,28 +432,28 @@ dispatch minecraft:effect_component[hit_block] to [struct HitBlockEnchantmentEff
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the entity hitting the Block, unless during a projectile attack, then, `this` is the projectile.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// On the entity hitting the Block
 	effect: EntityEffect,
 }]
 
 dispatch minecraft:effect_component[knockback] to [struct KnockbackEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of knockback being applied.
 	effect: ValueEffect,
 }]
 
 dispatch minecraft:effect_component[item_damage] to [struct ItemDamageEnchantmentEffect {
 	/// Predicate context: Item Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of damage being dealt to the item.
 	effect: ValueEffect,
 }]
 
 dispatch minecraft:effect_component[location_changed] to [struct LocationChangedEnchantmentEffect {
 	/// Predicate context: Location Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// On the entity changing location.
 	effect: LocationBasedEffect,
 }]
@@ -458,14 +462,14 @@ dispatch minecraft:effect_component[mob_experience] to [struct MobExperienceEnch
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the killed mob.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of experience awarded.
 	effect: ValueEffect,
 }]
 
 dispatch minecraft:effect_component[post_attack] to [struct PostAttackEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Examples:
 	/// - A Fire Aspect Enchant would specify that when the attacker is enchanted, the ignite effect is applied, and the affected party is the victim.
 	/// - Thorns would specify that when the victim is enchanted, the damage_entity effect is applied, and the affected party is the attacker.
@@ -490,7 +494,7 @@ dispatch minecraft:effect_component[projectile_count] to [struct ProjectileCount
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the entity drawing the weapon.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of projectiles being loaded/drawn.
 	effect: ValueEffect,
 }]
@@ -500,7 +504,7 @@ dispatch minecraft:effect_component[projectile_piercing] to [struct ProjectilePi
 	/// Predicate context: Item Parameters.
 	///
 	/// Tool is the ammunition item.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of entities the projectile will pierce through before despawning.
 	effect: ValueEffect,
 }]
@@ -510,7 +514,7 @@ dispatch minecraft:effect_component[projectile_spread] to [struct ProjectileSpre
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the entity shooting the projectile.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Maximum spread of projectiles measured in degrees from the aim line.
 	effect: ValueEffect,
 }]
@@ -520,7 +524,7 @@ dispatch minecraft:effect_component[projectile_spawned] to [struct ProjectileSpa
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the newly spawned projectile.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// On the newly spawned projectile.
 	effect: EntityEffect,
 }]
@@ -528,7 +532,7 @@ dispatch minecraft:effect_component[projectile_spawned] to [struct ProjectileSpa
 /// Repairs the enchanted item with experience points picked up by the player.
 dispatch minecraft:effect_component[repair_with_xp] to [struct RepairWithXpEnchantmentEffect {
 	/// Predicate context: Item Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of durability increase per experience point, `mending` uses 2x.
 	effect: ValueEffect,
 }]
@@ -536,7 +540,7 @@ dispatch minecraft:effect_component[repair_with_xp] to [struct RepairWithXpEncha
 /// Amount of damage caused by a Mace's smash attack per block fallen.
 dispatch minecraft:effect_component[smash_damage_per_block_fallen] to [struct SmashDamagePerBlockFallenEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of damage dealt per block fallen.
 	effect: ValueEffect,
 }]
@@ -545,7 +549,7 @@ dispatch minecraft:effect_component[tick] to [struct TickEnchantmentEffect {
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the entity with the Enchanted Item.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// On every tick. Performance recommendation: don't use with `run_function` unless necessary.
 	effect: EntityEffect,
 }]
@@ -554,7 +558,7 @@ dispatch minecraft:effect_component[trident_return_acceleration] to [struct Trid
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the trident entity.
-	requirements?: (LootCondition | [LootCondition]),
+	requirements?: (EnchantmentCondition | [EnchantmentCondition]),
 	/// Amount of acceleration applied to the returning trident.
 	effect: ValueEffect,
 }]
