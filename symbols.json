@@ -1,5 +1,5 @@
 {
-	"ref": "548fb75f92d4f6c99cbf40dbfee1ab52f0048617",
+	"ref": "2a0ff1e176d069cf299a1ed9c6c5ed610e56f1bf",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -80021,6 +80021,16 @@
 											"value": {
 												"kind": "string",
 												"value": "1.21"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
 											}
 										}
 									}
