@@ -1,5 +1,5 @@
 {
-	"ref": "2a0ff1e176d069cf299a1ed9c6c5ed610e56f1bf",
+	"ref": "07b7f0f4ca2d2d4baa24aee8d34fecf8551269bf",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -77822,6 +77822,27 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": "equipment",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::player::PlayerEquipment"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
 									"value": "1.16"
 								}
 							}
@@ -78378,6 +78399,56 @@
 						"members": []
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::player::PlayerEquipment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::player::PlayerEquipmentSlot"
+					},
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStack"
+					}
+				}
+			]
+		},
+		"::java::world::entity::mob::player::PlayerEquipmentSlot": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Offhand",
+					"value": "offhand"
+				},
+				{
+					"identifier": "Head",
+					"value": "head"
+				},
+				{
+					"identifier": "Chest",
+					"value": "chest"
+				},
+				{
+					"identifier": "Legs",
+					"value": "legs"
+				},
+				{
+					"identifier": "Feet",
+					"value": "feet"
+				},
+				{
+					"identifier": "Body",
+					"value": "body"
+				},
+				{
+					"identifier": "Saddle",
+					"value": "saddle"
 				}
 			]
 		},
