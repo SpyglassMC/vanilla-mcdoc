@@ -1319,6 +1319,7 @@
 	"::java::world::entity::mob::zombified_piglin::ZombiePigman.Anger": "Ticks that it will be angry for.",
 	"::java::world::entity::mob::zombified_piglin::ZombiePigman.HurtBy": "Last player to hit a zombie pigman in this zombie pigman's detection range.",
 	"::java::world::entity::mob::zombified_piglin::ZombiePigman.IsBaby": "Whether it is a baby.",
+	"::java::world::entity::painting::Painting.facing": "Direction it is facing.",
 	"::java::world::entity::painting::Painting.Facing": "Direction it is facing.",
 	"::java::world::entity::painting::Painting.Motive": "Type of painting.",
 	"::java::world::entity::painting::Painting.variant": "Type of painting.",
