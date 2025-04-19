@@ -1,5 +1,5 @@
 {
-	"ref": "07b7f0f4ca2d2d4baa24aee8d34fecf8551269bf",
+	"ref": "8e48ca9f2a67262e562f7e79e5c7ef192a8ac1cf",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -80006,8 +80006,42 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.19"
+								}
+							}
+						}
+					],
 					"desc": "Direction it is facing.\n",
 					"key": "Facing",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::painting::Facing"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.19"
+								}
+							}
+						}
+					],
+					"desc": "Direction it is facing.\n",
+					"key": "facing",
 					"type": {
 						"kind": "reference",
 						"path": "::java::world::entity::painting::Facing"
