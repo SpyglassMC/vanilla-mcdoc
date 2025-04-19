@@ -3,7 +3,11 @@ use ::java::data::variants::painting::PaintingVariant
 dispatch minecraft:entity[painting] to struct Painting {
 	...super::BlockAttachedEntity,
 	/// Direction it is facing.
+	#[until="1.19"]
 	Facing?: Facing,
+	/// Direction it is facing.
+	#[since="1.19"]
+	facing?: Facing,
 	/// Type of painting.
 	#[until="1.19"]
 	Motive?: #[id="motive"] string,
