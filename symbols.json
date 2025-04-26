@@ -1,5 +1,5 @@
 {
-	"ref": "8e48ca9f2a67262e562f7e79e5c7ef192a8ac1cf",
+	"ref": "146b47c9c228364b8594e06684420156f442d333",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -9455,6 +9455,77 @@
 						]
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::assets::waypoint_style::WaypointStyle": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to 128.\n",
+					"key": "near_distance",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 60000000
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to 322.\n",
+					"key": "far_distance",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 60000000
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "sprites",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "id",
+									"value": {
+										"kind": "tree",
+										"values": {
+											"registry": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "texture"
+												}
+											},
+											"path": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "gui/sprites/hud/locator_bar_dot/"
+												}
+											}
+										}
+									}
+								}
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
 				}
 			]
 		},
@@ -79604,10 +79675,21 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "alpha_fade",
+					"key": "style",
 					"type": {
-						"kind": "reference",
-						"path": "::java::world::entity::mob::WaypointIconFade"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "waypoint_style"
+									}
+								}
+							}
+						]
 					}
 				},
 				{
@@ -79616,40 +79698,8 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::util::color::RGB"
-					}
-				}
-			]
-		},
-		"::java::world::entity::mob::WaypointIconFade": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "near_dist",
-					"type": {
-						"kind": "int"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "far_dist",
-					"type": {
-						"kind": "int"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "near_alpha",
-					"type": {
-						"kind": "byte"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "far_alpha",
-					"type": {
-						"kind": "byte"
-					}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -93557,6 +93607,22 @@
 							"value": {
 								"kind": "string",
 								"value": "1.19.4"
+							}
+						}
+					}
+				]
+			},
+			"waypoint_style": {
+				"kind": "reference",
+				"path": "::java::assets::waypoint_style::WaypointStyle",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.6"
 							}
 						}
 					}
