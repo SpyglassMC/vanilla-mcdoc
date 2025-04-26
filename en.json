@@ -113,6 +113,8 @@
 	"::java::assets::texture_meta::TextureMeta.villager": "Only available for villager textures.",
 	"::java::assets::texture_meta::TextureMeta.villager.hat": "Determines whether the villager's 'profession' hat layer should allow the 'type' hat layer to render or not. If this mcmeta is undefined the default is used.",
 	"::java::assets::texture_meta::VillagerTextureMeta.hat": "Determines whether the villager's 'profession' hat layer should allow the 'type' hat layer to render or not. If this mcmeta is undefined the default is used.",
+	"::java::assets::waypoint_style::WaypointStyle.far_distance": "Defaults to 322.",
+	"::java::assets::waypoint_style::WaypointStyle.near_distance": "Defaults to 128.",
 	"::java::data::advancement::Advancement.criteria": "If `requirements` is not defined, all defined criteria will be required.",
 	"::java::data::advancement::Advancement.display": "If present, advancement will be visible in the advancement tabs.",
 	"::java::data::advancement::Advancement.parent": "If this field is absent, this advancement is a root advancement.\nCircular references cause a loading failure.",
