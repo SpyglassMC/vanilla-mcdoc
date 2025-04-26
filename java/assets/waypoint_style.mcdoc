@@ -1,0 +1,10 @@
+#[since="1.21.6"]
+dispatch minecraft:resource[waypoint_style] to struct WaypointStyle {
+	// The range 0..60000000 is defined in DISTANCE_CODEC
+
+	/// Defaults to 128.
+	near_distance?: int @ 0..60000000,
+	/// Defaults to 322.
+	far_distance?: int @ 0..60000000,
+	sprites: [#[id(registry="texture",path="gui/sprites/hud/locator_bar_dot/")] string] @ 1..,
+}

@@ -199,15 +199,8 @@ struct BlockLeash {
 }
 
 struct WaypointIcon {
-	alpha_fade: WaypointIconFade,
-	color: RGB,
-}
-
-struct WaypointIconFade {
-	near_dist: int,
-	far_dist: int,
-	near_alpha: byte,
-	far_alpha: byte,
+	style: #[id="waypoint_style"] string,
+	color?: RGB,
 }
 
 dispatch minecraft:entity[
