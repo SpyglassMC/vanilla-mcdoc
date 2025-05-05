@@ -108,7 +108,13 @@ struct MobBase {
 	#[since="1.20.5"]
 	leash?: (int[] @ 3 | struct LeashOwner {
 		UUID?: int[] @ 4
-	})
+	}),
+	/// Defaults to -1, which represents "no home".
+	#[since="1.21.6"]
+	home_radius?: int,
+	/// This field will be discarded if `home_radius` is less than 0.
+	#[since="1.21.6"]
+	home_pos?: int[] @ 3,
 }
 
 struct EntityEquipment {
