@@ -1,5 +1,5 @@
 {
-	"ref": "f214b07b1509e1146f5409e55f57b3755dcfd5bd",
+	"ref": "8c7ba31b8abee766920a14d78e4dc9139c935d66",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -76436,7 +76436,8 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::world::component::entity::SalmonType"
-					}
+					},
+					"optional": true
 				}
 			]
 		},
