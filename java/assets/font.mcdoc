@@ -59,8 +59,14 @@ dispatch minecraft:glyph_provider[legacy_unicode] to struct LegacyUnicodeProvide
 dispatch minecraft:glyph_provider[unihex] to struct UnihexProvider {
 	/// ZIP archive containing one or more *.hex files (files in archive with different extensions are ignored).
 	hex_file: string, // TODO
-	/// List of ranges to override the size of.
-	size_overrides?: [UnihexOverrideRange],
+	#[until="1.21.6"] ...struct {
+		/// List of ranges to override the size of.
+		size_overrides: [UnihexOverrideRange],
+	},
+	#[since="1.21.6"] ...struct {
+		/// List of ranges to override the size of.
+		size_overrides?: [UnihexOverrideRange],
+	},
 }
 
 struct UnihexOverrideRange {
