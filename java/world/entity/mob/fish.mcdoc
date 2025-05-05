@@ -10,7 +10,7 @@ dispatch minecraft:entity[salmon] to struct Salmon {
 	...Fish,
 	/// The size variant of the salmon.
 	#[since="1.21.2"]
-	type: SalmonType,
+	type?: SalmonType,
 }
 
 dispatch minecraft:entity[tropical_fish] to struct TropicalFish {
