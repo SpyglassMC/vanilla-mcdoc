@@ -1198,6 +1198,8 @@
 	"::java::world::entity::mob::MobBase.equipment": "The equipment items of the mob, such as armor or weapons.",
 	"::java::world::entity::mob::MobBase.HandDropChances": "Chance to drop the items it is holding, in [main hand, offhand].",
 	"::java::world::entity::mob::MobBase.HandItems": "[main hand, offhand]",
+	"::java::world::entity::mob::MobBase.home_pos": "This field will be discarded if `home_radius` is less than 0.",
+	"::java::world::entity::mob::MobBase.home_radius": "Defaults to -1, which represents \"no home\".",
 	"::java::world::entity::mob::MobBase.leash": "What the leash is attached to.",
 	"::java::world::entity::mob::MobBase.Leash": "What the leash is attached to.",
 	"::java::world::entity::mob::MobBase.LeftHanded": "Whether it is left handed.",
