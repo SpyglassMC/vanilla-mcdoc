@@ -14,6 +14,6 @@ dispatch minecraft:entity[tnt] to struct Tnt {
 	#[since="1.21.2"]
 	explosion_power?: float @ 0..128,
 	/// The entity that primed this TNT.
-	#[since="1.21.6"] #[uuid]
-	owner?: int[] @ 4,
+	#[since="1.21.6"]
+	owner?: #[uuid] int[] @ 4,
 }
