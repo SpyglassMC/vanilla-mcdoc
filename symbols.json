@@ -1,5 +1,5 @@
 {
-	"ref": "8c7ba31b8abee766920a14d78e4dc9139c935d66",
+	"ref": "31924cf3a770f0d9ac464314e856331f2e43bf70",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -79715,6 +79715,37 @@
 						"kind": "int"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"desc": "The owner of this vex.\n",
+					"key": "owner",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -81702,6 +81733,37 @@
 							"min": 0,
 							"max": 128
 						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"desc": "The entity that primed this TNT.\n",
+					"key": "owner",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				}
