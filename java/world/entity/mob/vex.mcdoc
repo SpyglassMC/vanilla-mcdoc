@@ -18,4 +18,7 @@ dispatch minecraft:entity[vex] to struct Vex {
 	/// Ticks until it starts to die.
 	#[since="1.21.5"]
 	life_ticks?: int,
+	/// The owner of this Vex.
+	#[since="1.21.6"] #[uuid]
+	owner?: int[] @ 4,
 }
