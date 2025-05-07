@@ -3,7 +3,11 @@ use ::java::world::item::ItemStack
 use ::java::util::slot::SlottedItem
 use super::super::AnyEntity
 
-type PlayerSlot = (byte @ 0..35 | byte @ 100..103 | byte @ -106)
+type PlayerSlot = (
+	byte @ 0..35 |
+	#[until="1.21.5"] byte @ 100..103 |
+	#[until="1.21.5"] byte @ -106 |
+)
 
 dispatch minecraft:entity[player] to struct Player {
 	...super::LivingEntity,
@@ -26,7 +30,7 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Hotbar slot the player has selected.
 	SelectedItemSlot?: int @ 0..8,
 	/// Item in the hotbar slot the player has selected.
-	SelectedItem?: SlottedItem<PlayerSlot>,
+	SelectedItem?: SlottedItem<byte @ 0..8>,
 	#[since="1.21.5"]
 	equipment?: PlayerEquipment,
 	/// Dimension of the player's respawn point.
