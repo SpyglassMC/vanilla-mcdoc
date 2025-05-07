@@ -1,5 +1,5 @@
 {
-	"ref": "58c56c34a2922a3b519f98eb953a5b1871be6587",
+	"ref": "cd89414284eacb9f4f39d42f85366df1aa70c672",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -78036,8 +78036,12 @@
 						},
 						"typeArgs": [
 							{
-								"kind": "reference",
-								"path": "::java::world::entity::mob::player::PlayerSlot"
+								"kind": "byte",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 8
+								}
 							}
 						]
 					},
@@ -78699,7 +78703,19 @@
 						"kind": 0,
 						"min": 100,
 						"max": 103
-					}
+					},
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					]
 				},
 				{
 					"kind": "byte",
@@ -78707,7 +78723,19 @@
 						"kind": 0,
 						"min": -106,
 						"max": -106
-					}
+					},
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
