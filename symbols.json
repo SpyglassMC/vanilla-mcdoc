@@ -1,5 +1,5 @@
 {
-	"ref": "31924cf3a770f0d9ac464314e856331f2e43bf70",
+	"ref": "58c56c34a2922a3b519f98eb953a5b1871be6587",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -37256,7 +37256,19 @@
 							"kind": 0,
 							"min": -2032,
 							"max": 2031
-						}
+						},
+						"attributes": [
+							{
+								"name": "divisible_by",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "int",
+										"value": 16
+									}
+								}
+							}
+						]
 					}
 				},
 				{
@@ -37281,7 +37293,19 @@
 							"kind": 0,
 							"min": 16,
 							"max": 4064
-						}
+						},
+						"attributes": [
+							{
+								"name": "divisible_by",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "int",
+										"value": 16
+									}
+								}
+							}
+						]
 					}
 				},
 				{
