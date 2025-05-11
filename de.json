@@ -1,4 +1,9 @@
 {
 	"::java::assets::atlas::Single.resource": "Ein einzelner Textur Speicherort aus der Quelle.",
-	"::java::assets::equipment::Equipment.layers": "Liste der Ebenen für jeden Ebenen-modell Typ."
+	"::java::assets::equipment::Equipment.layers": "Liste der Ebenen für jeden Ebenen-modell Typ.",
+	"::java::assets::item_definition::Chest.openness": "Der Standardwert ist '0'.",
+	"::java::assets::model::ModelElementRotation.rescale": "Der Standardwert ist 'Falsch'.",
+	"::java::assets::sounds::Sound.pitch": "Der Standardwert ist 1,0.",
+	"::java::assets::waypoint_style::WaypointStyle.far_distance": "Der Standardwert ist 322.",
+	"::java::assets::waypoint_style::WaypointStyle.near_distance": "Der Standardwert ist 128."
 }
