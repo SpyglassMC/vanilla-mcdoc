@@ -1,5 +1,5 @@
 {
-	"ref": "141801792136ac86a4c65609f4727d292ac60539",
+	"ref": "0b0e3a14d9eb44b7819e21088e65901ab3fb5cc2",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -17957,21 +17957,21 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "id",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "dialog_body_type"
-								}
-							}
-						}
-					],
 					"key": "type",
 					"type": {
-						"kind": "string"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "dialog_body_type"
+									}
+								}
+							}
+						]
 					}
 				},
 				{
@@ -18200,21 +18200,21 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "id",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "dialog_type"
-								}
-							}
-						}
-					],
 					"key": "type",
 					"type": {
-						"kind": "string"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "dialog_type"
+									}
+								}
+							}
+						]
 					}
 				},
 				{
@@ -18360,21 +18360,21 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "id",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "input_control_type"
-								}
-							}
-						}
-					],
 					"key": "type",
 					"type": {
-						"kind": "string"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "input_control_type"
+									}
+								}
+							}
+						]
 					}
 				},
 				{
@@ -18386,7 +18386,19 @@
 						"lengthRange": {
 							"kind": 0,
 							"min": 1
-						}
+						},
+						"attributes": [
+							{
+								"name": "match_regex",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "^[A-Za-z0-9_]*$"
+									}
+								}
+							}
+						]
 					}
 				},
 				{
@@ -18851,7 +18863,19 @@
 						"kind": "string",
 						"attributes": [
 							{
-								"name": "command"
+								"name": "command",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"macro": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "implicit"
+											}
+										}
+									}
+								}
 							}
 						]
 					}
@@ -18900,7 +18924,19 @@
 						"kind": "string",
 						"attributes": [
 							{
-								"name": "command"
+								"name": "command",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"macro": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "implicit"
+											}
+										}
+									}
+								}
 							}
 						]
 					}
@@ -18912,21 +18948,21 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "id",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "submit_method_type"
-								}
-							}
-						}
-					],
 					"key": "type",
 					"type": {
-						"kind": "string"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "submit_method_type"
+									}
+								}
+							}
+						]
 					}
 				},
 				{
