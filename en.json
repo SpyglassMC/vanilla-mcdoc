@@ -218,7 +218,7 @@
 	"::java::data::dialog::input::BooleanInput.on_true": "String to send when the control is checked.\nDefaults to `\"true\"`.",
 	"::java::data::dialog::input::InputControl.key": "The input key.",
 	"::java::data::dialog::input::NumberRangeInput.end": "End value, inclusive.",
-	"::java::data::dialog::input::NumberRangeInput.initial": "Initial value of the slider. Rounded down nearest step.\nDefaults to `min`.",
+	"::java::data::dialog::input::NumberRangeInput.initial": "Initial value of the slider. Rounded down nearest step.\nDefaults to `start`.",
 	"::java::data::dialog::input::NumberRangeInput.label": "Label displayed on the slider.",
 	"::java::data::dialog::input::NumberRangeInput.label_format": "The translation to be used for building label.\n`%1$s` is replaced by `label`; `%2$s` is replaced by current value of the slider.\nDefaults to `options.generic_value`.",
 	"::java::data::dialog::input::NumberRangeInput.start": "Start value, inclusive.",
