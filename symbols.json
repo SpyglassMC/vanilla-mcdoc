@@ -1,5 +1,5 @@
 {
-	"ref": "cd89414284eacb9f4f39d42f85366df1aa70c672",
+	"ref": "7c940d0a402066bfe5c9caa602b92d54b111a3f0",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -17949,6 +17949,1017 @@
 					"desc": "Resulting translation key of `death.attack.` + message_id + `.link`.\n",
 					"identifier": "IntentionalGameDesign",
 					"value": "intentional_game_design"
+				}
+			]
+		},
+		"::java::data::dialog::body::DialogBody": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "dialog_body_type"
+								}
+							}
+						}
+					],
+					"key": "type",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:dialog_body"
+					}
+				}
+			]
+		},
+		"::java::data::dialog::body::ItemBody": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStack"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The description text rendered to the right of item.\n",
+					"key": "description",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::body::PlainMessage"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether count and damage bar are rendered over the item.\n\nDefaults to `true`.\n",
+					"key": "show_decorations",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether item tooltip shows up when the item is hovered.\n\nDefaults to `true`.\n",
+					"key": "show_tooltip",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Width of the item.\n\nDefaults to 16.\n",
+					"key": "width",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Height of the item.\n\nDefaults to 16.\n",
+					"key": "height",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::body::PlainMessage": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "A multiline label.\n",
+					"key": "contents",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Maximum width of message.\n\nDefaults to 200.\n",
+					"key": "width",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::ButtonBase": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "label",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "tooltip",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Width of the button.\n\nDefaults to 150.\n",
+					"key": "width",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::ButtonListDialogBase": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::ListDialogBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Width of buttons in the list.\n\nDefaults to 150.\n",
+					"key": "button_width",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::ClickAction": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::ButtonBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "If not present, clicking button will simply close dialog without any action.\n",
+					"key": "on_click",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::ClickEvent"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::ConfirmationDialog": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::DialogBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "yes",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::ClickAction"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "no",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::ClickAction"
+					}
+				}
+			]
+		},
+		"::java::data::dialog::Dialog": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "dialog_type"
+								}
+							}
+						}
+					],
+					"key": "type",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:dialog"
+					}
+				}
+			]
+		},
+		"::java::data::dialog::DialogBase": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "title",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Name to be used for a button leading to this dialog.\n\nIf not present, `title` will be used instead.\n",
+					"key": "external_title",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "body",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::dialog::body::DialogBody"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::dialog::body::DialogBody"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the dialog can be closed with ESC key.\n\nDefaults to `true`.\n",
+					"key": "can_close_with_escape",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::FormDialogBase": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::DialogBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "inputs",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::dialog::input::InputControl"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::dialog::input::BooleanInput": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Label displayed to the rignt of control.\n",
+					"key": "label",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Initial value of the control.\n\nDefaults to `false` (unchecked).\n",
+					"key": "initial",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "String to send when the control is checked.\n\nDefaults to `\"true\"`.\n",
+					"key": "on_true",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "String to send when the control is unchecked.\n\nDefaults to `\"false\"`.\n",
+					"key": "on_false",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::input::InputControl": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "input_control_type"
+								}
+							}
+						}
+					],
+					"key": "type",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The input key.\n",
+					"key": "key",
+					"type": {
+						"kind": "string",
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:input_control"
+					}
+				}
+			]
+		},
+		"::java::data::dialog::input::NumberRangeInput": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to 200.\n",
+					"key": "width",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Label displayed on the slider.\n",
+					"key": "label",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The translation to be used for building label.\n\n`%1$s` is replaced by `label`; `%2$s` is replaced by current value of the slider.\n\nDefaults to `options.generic_value`.\n",
+					"key": "label_format",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "translation_key"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Start value, inclusive.\n",
+					"key": "start",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "End value, inclusive.\n",
+					"key": "end",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Number of increments.\n\nFor example, value of 1 means that the slider will have two positions (start and end).\n",
+					"key": "steps",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Initial value of the slider. Rounded down nearest step.\n\nDefaults to `min`.\n",
+					"key": "initial",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::input::Option": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "String to send on submit.\n",
+					"key": "id",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Label displayed on the button.\n\nWhen not present, `id` will be used instead.\n",
+					"key": "display",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether this option is the initial value.\n\nOnly one option can have this field set to `true`.\n",
+					"key": "initial",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::input::SingleOptionInput": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to 200.\n",
+					"key": "width",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Label displayed on the button.\n",
+					"key": "label",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `true`.\n",
+					"key": "label_visible",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "options",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "reference",
+									"path": "::java::data::dialog::input::Option"
+								},
+								{
+									"kind": "string"
+								}
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::dialog::input::TextInput": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to 200.\n",
+					"key": "width",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Label displayed to the left of control.\n",
+					"key": "label",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `true`.\n",
+					"key": "label_visible",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Initial contents of the text input.\n\nDefaults to `\"\"` (empty string).\n",
+					"key": "initial",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::ListDialogBase": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::DialogBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "When present, the label of the button in footer will be `gui.cancel`.\n\nWhen not present, the label will be `gui.back`.\n",
+					"key": "on_cancel",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::ClickEvent"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The number of columns.\n\nDefaults to 2.\n",
+					"key": "columns",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::MultiActionDialog": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::ListDialogBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "actions",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::dialog::ClickAction"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::dialog::MultiActionInputFormDialog": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::FormDialogBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "action",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::dialog::SubmitAction"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::dialog::NoticeDialog": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::DialogBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The only action in footer.\n\nDefaults to `gui.ok` label with no action or tooltip.\n",
+					"key": "action",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::ClickAction"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::RedirectDialog": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::ButtonListDialogBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "dialogs",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "dialog"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "dialog"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "required"
+													}
+												}
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::dialog::ServerLinksDialog": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::ButtonListDialogBase"
+					}
+				}
+			]
+		},
+		"::java::data::dialog::SimpleInputFormDialog": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::FormDialogBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "action",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::SubmitAction"
+					}
+				}
+			]
+		},
+		"::java::data::dialog::submit::CommandTemplateMethod": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "A macro template to be interpred as a command.\n",
+					"key": "template",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "command"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::dialog::submit::CustomFormMethod": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "ID of a custom action.\n\nHas no functionality on vanilla servers.\n",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::dialog::submit::CustomTemplateMethod": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "ID of a custom action.\n\nHas no functionality on vanilla servers.\n",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "A macro template to be interpred as a command.\n",
+					"key": "template",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "command"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::dialog::submit::SubmitMethod": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "submit_method_type"
+								}
+							}
+						}
+					],
+					"key": "type",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:submit_method"
+					}
+				}
+			]
+		},
+		"::java::data::dialog::SubmitAction": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::ButtonBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Provided to an input with key `action`.\n",
+					"key": "id",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "on_submit",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::dialog::submit::SubmitMethod"
+					}
 				}
 			]
 		},
@@ -56594,6 +57605,38 @@
 				{
 					"identifier": "CopyToClipboard",
 					"value": "copy_to_clipboard"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"identifier": "ShowDialog",
+					"value": "show_dialog"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"identifier": "Custom",
+					"value": "custom"
 				}
 			]
 		},
@@ -56607,6 +57650,32 @@
 					"type": {
 						"kind": "string"
 					}
+				}
+			]
+		},
+		"::java::util::text::CustomAction": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "ID of a custom action.\n\nHas no functionality on vanilla servers.\n",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "payload",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -57585,6 +58654,39 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::util::text::TextBase"
+					}
+				}
+			]
+		},
+		"::java::util::text::ShowDialog": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "dialog",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "dialog"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::dialog::Dialog"
+							}
+						]
 					}
 				}
 			]
@@ -66407,6 +67509,49 @@
 					"key": "equip_on_interact",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"desc": "Whether players can use shears to remove this item from a mob by right-clicking it (as long as other shearing conditions are satisfied).\n\nDefaults to `true`.\n",
+					"key": "can_be_sheared",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"desc": "Sound event to play when the item is sheared from a mob.\n\nIf not specified, the default shearing sound (`item.shears.snip`) will be played.\n",
+					"key": "shearing_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
 					},
 					"optional": true
 				}
@@ -86482,6 +87627,10 @@
 				"kind": "reference",
 				"path": "::java::util::text::CopyToClipboard"
 			},
+			"custom": {
+				"kind": "reference",
+				"path": "::java::util::text::CustomAction"
+			},
 			"open_url": {
 				"kind": "reference",
 				"path": "::java::util::text::OpenUrl"
@@ -86489,6 +87638,10 @@
 			"run_command": {
 				"kind": "reference",
 				"path": "::java::util::text::RunCommand"
+			},
+			"show_dialog": {
+				"kind": "reference",
+				"path": "::java::util::text::ShowDialog"
 			},
 			"suggest_command": {
 				"kind": "reference",
@@ -88663,6 +89816,46 @@
 			"y_clamped_gradient": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::YClampedGradient"
+			}
+		},
+		"minecraft:dialog": {
+			"confirmation": {
+				"kind": "reference",
+				"path": "::java::data::dialog::ConfirmationDialog"
+			},
+			"dialog_list": {
+				"kind": "reference",
+				"path": "::java::data::dialog::RedirectDialog"
+			},
+			"multi_action": {
+				"kind": "reference",
+				"path": "::java::data::dialog::MultiActionDialog"
+			},
+			"multi_action_input_form": {
+				"kind": "reference",
+				"path": "::java::data::dialog::MultiActionInputFormDialog"
+			},
+			"notice": {
+				"kind": "reference",
+				"path": "::java::data::dialog::NoticeDialog"
+			},
+			"server_links": {
+				"kind": "reference",
+				"path": "::java::data::dialog::ServerLinksDialog"
+			},
+			"simple_input_form": {
+				"kind": "reference",
+				"path": "::java::data::dialog::SimpleInputFormDialog"
+			}
+		},
+		"minecraft:dialog_body": {
+			"item": {
+				"kind": "reference",
+				"path": "::java::data::dialog::body::ItemBody"
+			},
+			"plain_message": {
+				"kind": "reference",
+				"path": "::java::data::dialog::body::PlainMessage"
 			}
 		},
 		"minecraft:effect_component": {
@@ -91055,6 +92248,24 @@
 			"show_text": {
 				"kind": "reference",
 				"path": "::java::util::text::ShowText"
+			}
+		},
+		"minecraft:input_control": {
+			"boolean": {
+				"kind": "reference",
+				"path": "::java::data::dialog::input::BooleanInput"
+			},
+			"number_range": {
+				"kind": "reference",
+				"path": "::java::data::dialog::input::NumberRangeInput"
+			},
+			"single_option": {
+				"kind": "reference",
+				"path": "::java::data::dialog::input::SingleOptionInput"
+			},
+			"text": {
+				"kind": "reference",
+				"path": "::java::data::dialog::input::TextInput"
 			}
 		},
 		"minecraft:int_provider": {
@@ -93545,6 +94756,22 @@
 					}
 				]
 			},
+			"dialog": {
+				"kind": "reference",
+				"path": "::java::data::dialog::Dialog",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.6"
+							}
+						}
+					}
+				]
+			},
 			"dimension": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::dimension::Dimension",
@@ -94513,6 +95740,20 @@
 			"random_spread": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::structure_set::RandomSpreadPlacement"
+			}
+		},
+		"minecraft:submit_method": {
+			"command_template": {
+				"kind": "reference",
+				"path": "::java::data::dialog::submit::CommandTemplateMethod"
+			},
+			"custom_form": {
+				"kind": "reference",
+				"path": "::java::data::dialog::submit::CustomFormMethod"
+			},
+			"custom_template": {
+				"kind": "reference",
+				"path": "::java::data::dialog::submit::CustomTemplateMethod"
 			}
 		},
 		"minecraft:surface_condition": {
