@@ -6,7 +6,7 @@ use submit::SubmitMethod
 
 #[since="1.21.6"]
 dispatch minecraft:resource[dialog] to struct Dialog {
-	#[id="dialog_type"] type: string,
+	type: #[id="dialog_type"] string,
 	...minecraft:dialog[[type]],
 }
 

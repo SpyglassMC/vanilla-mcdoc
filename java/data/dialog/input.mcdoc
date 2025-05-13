@@ -1,10 +1,9 @@
 use ::java::util::text::Text
 
 struct InputControl {
-	#[id="input_control_type"] type: string,
-	// TODO: verify content format - ^[A-Za-z0-9_]+$
+	type: #[id="input_control_type"] string,
 	/// The input key.
-	key: string @ 1..,
+	key: #[match_regex="^[A-Za-z0-9_]*$"] string @ 1..,
 	...minecraft:input_control[[type]],
 }
 

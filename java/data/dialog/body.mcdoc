@@ -2,11 +2,10 @@ use ::java::util::text::Text
 use ::java::world::item::ItemStack
 
 struct DialogBody {
-	#[id="dialog_body_type"] type: string,
+	type: #[id="dialog_body_type"] string,
 	...minecraft:dialog_body[[type]],
 }
 
-// TODO: the codec of PlainMessage probably accepts text component
 dispatch minecraft:dialog_body[plain_message] to struct PlainMessage {
 	/// A multiline label.
 	contents: Text,

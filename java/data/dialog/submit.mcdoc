@@ -1,21 +1,19 @@
 struct SubmitMethod {
-	#[id="submit_method_type"] type: string,
+	type: #[id="submit_method_type"] string,
 	...minecraft:submit_method[[type]],
 }
 
 dispatch minecraft:submit_method[command_template] to struct CommandTemplateMethod {
-	// TODO: make this #[command] attribute parse macro template
 	/// A macro template to be interpred as a command.
-	template: #[command] string,
+	template: #[command(macro="implicit")] string,
 }
 
 dispatch minecraft:submit_method[custom_template] to struct CustomTemplateMethod {
 	/// ID of a custom action.
 	/// Has no functionality on vanilla servers.
 	id: #[id] string,
-	// TODO: make this #[command] attribute parse macro template
 	/// A macro template to be interpred as a command.
-	template: #[command] string,
+	template: #[command(macro="implicit")] string,
 }
 
 dispatch minecraft:submit_method[custom_form] to struct CustomFormMethod {
