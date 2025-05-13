@@ -1,0 +1,103 @@
+use ::java::util::text::Text
+use ::java::util::text::ClickEvent
+use body::DialogBody
+use input::InputControl
+use submit::SubmitMethod
+
+#[since="1.21.6"]
+dispatch minecraft:resource[dialog] to struct Dialog {
+	#[id="dialog_type"] type: string,
+	...minecraft:dialog[[type]],
+}
+
+struct DialogBase {
+	title: Text,
+	/// Name to be used for a button leading to this dialog.
+	/// If not present, `title` will be used instead.
+	external_title?: Text,
+	body?: (DialogBody | [DialogBody]),
+	/// Whether the dialog can be closed with ESC key.
+	/// Defaults to `true`.
+	can_close_with_escape?: boolean,
+}
+
+struct ButtonBase {
+	label: Text,
+	tooltip?: Text,
+	/// Width of the button.
+	/// Defaults to 150.
+	width?: int @ 1..,
+}
+
+struct ClickAction {
+	...ButtonBase,
+	/// If not present, clicking button will simply close dialog without any action.
+	on_click?: ClickEvent,
+}
+
+dispatch minecraft:dialog[notice] to struct NoticeDialog {
+	...DialogBase,
+	/// The only action in footer.
+	/// Defaults to `gui.ok` label with no action or tooltip.
+	action?: ClickAction,
+}
+
+dispatch minecraft:dialog[confirmation] to struct ConfirmationDialog {
+	...DialogBase,
+	yes: ClickAction,
+	no: ClickAction,
+}
+
+struct ListDialogBase {
+	...DialogBase,
+	/// When present, the label of the button in footer will be `gui.cancel`.
+	/// When not present, the label will be `gui.back`.
+	on_cancel?: ClickEvent,
+	/// The number of columns.
+	/// Defaults to 2.
+	columns?: int @ 1..,
+}
+
+dispatch minecraft:dialog[multi_action] to struct MultiActionDialog {
+	...ListDialogBase,
+	actions: [ClickAction] @ 1..,
+}
+
+struct ButtonListDialogBase {
+	...ListDialogBase,
+	/// Width of buttons in the list.
+	/// Defaults to 150.
+	button_width?: int @ 1..,
+}
+
+dispatch minecraft:dialog[server_links] to struct ServerLinksDialog {
+	...ButtonListDialogBase,
+}
+
+dispatch minecraft:dialog[dialog_list] to struct RedirectDialog {
+	...ButtonListDialogBase,
+	// TODO: check if inline definition is allowed here
+	dialogs: ([#[id="dialog"] string] | #[id=(registry="dialog", tags="required")] string),
+}
+
+struct FormDialogBase {
+	...DialogBase,
+	inputs: [InputControl] @ 1..,
+}
+
+struct SubmitAction {
+	...ButtonBase,
+	/// Provided to an input with key `action`.
+	id: string,
+	on_submit: SubmitMethod,
+}
+
+dispatch minecraft:dialog[simple_input_form] to struct SimpleInputFormDialog {
+	...FormDialogBase,
+	action: SubmitAction,
+}
+
+dispatch minecraft:dialog[multi_action_input_form] to struct MultiActionInputFormDialog {
+	...FormDialogBase,
+	action: [SubmitAction] @ 1..,
+}

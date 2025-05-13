@@ -1,0 +1,77 @@
+use ::java::util::text::Text
+
+struct InputControl {
+	#[id="input_control_type"] type: string,
+	// TODO: verify content format - ^[A-Za-z0-9_]+$
+	/// The input key.
+	key: string @ 1..,
+	...minecraft:input_control[[type]],
+}
+
+dispatch minecraft:input_control[text] to struct TextInput {
+	/// Defaults to 200.
+	width?: int @ 1..,
+	/// Label displayed to the left of control.
+	label: Text,
+	/// Defaults to `true`.
+	label_visible?: boolean,
+	/// Initial contents of the text input.
+	/// Defaults to `""` (empty string).
+	initial?: string,
+}
+
+dispatch minecraft:input_control["boolean"] to struct BooleanInput {
+	/// Label displayed to the rignt of control.
+	label: Text,
+	/// Initial value of the control.
+	/// Defaults to `false` (unchecked).
+	initial?: boolean,
+	/// String to send when the control is checked.
+	/// Defaults to `"true"`.
+	on_true?: string,
+	/// String to send when the control is unchecked.
+	/// Defaults to `"false"`.
+	on_false?: string,
+}
+
+dispatch minecraft:input_control[single_option] to struct SingleOptionInput {
+	/// Defaults to 200.
+	width?: int @ 1..,
+	/// Label displayed on the button.
+	label: Text,
+	/// Defaults to `true`.
+	label_visible?: boolean,
+	options: [(Option | string)] @ 1..,
+}
+struct Option {
+	/// String to send on submit.
+	id: string,
+	/// Label displayed on the button.
+	/// When not present, `id` will be used instead.
+	display?: Text,
+	// TODO: implement "one hot" check here if possible
+	/// Whether this option is the initial value.
+	/// Only one option can have this field set to `true`.
+	initial?: boolean,
+}
+
+dispatch minecraft:input_control[number_range] to struct NumberRangeInput {
+	/// Defaults to 200.
+	width?: int @ 1..,
+	/// Label displayed on the slider.
+	label: Text,
+	/// The translation to be used for building label.
+	/// `%1$s` is replaced by `label`; `%2$s` is replaced by current value of the slider.
+	/// Defaults to `options.generic_value`.
+	label_format?: #[translation_key] string,
+	/// Start value, inclusive.
+	start: float,
+	/// End value, inclusive.
+	end: float,
+	/// Number of increments.
+	/// For example, value of 1 means that the slider will have two positions (start and end).
+	steps: int @ 1..,
+	/// Initial value of the slider. Rounded down nearest step.
+	/// Defaults to `min`.
+	initial?: float,
+}

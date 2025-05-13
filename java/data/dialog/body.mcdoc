@@ -1,0 +1,35 @@
+use ::java::util::text::Text
+use ::java::world::item::ItemStack
+
+struct DialogBody {
+	#[id="dialog_body_type"] type: string,
+	...minecraft:dialog_body[[type]],
+}
+
+// TODO: the codec of PlainMessage probably accepts text component
+dispatch minecraft:dialog_body[plain_message] to struct PlainMessage {
+	/// A multiline label.
+	contents: Text,
+	/// Maximum width of message.
+	/// Defaults to 200.
+	width?: int @ 1..,
+}
+
+dispatch minecraft:dialog_body[item] to struct ItemBody {
+	item: ItemStack,
+	// game code implementation shares the same PlainMessage codec so it's safe to reuse the type
+	/// The description text rendered to the right of item.
+	description?: PlainMessage,
+	/// Whether count and damage bar are rendered over the item.
+	/// Defaults to `true`.
+	show_decorations?: boolean,
+	/// Whether item tooltip shows up when the item is hovered.
+	/// Defaults to `true`.
+	show_tooltip?: boolean,
+	/// Width of the item.
+	/// Defaults to 16.
+	width?: int @ 1..,
+	/// Height of the item.
+	/// Defaults to 16.
+	height?: int @ 1..,
+}
