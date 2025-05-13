@@ -76,8 +76,12 @@ dispatch minecraft:dialog[server_links] to struct ServerLinksDialog {
 
 dispatch minecraft:dialog[dialog_list] to struct RedirectDialog {
 	...ButtonListDialogBase,
-	// TODO: check if inline definition is allowed here
-	dialogs: ([#[id="dialog"] string] | #[id=(registry="dialog", tags="required")] string),
+	dialogs: (
+		[#[id="dialog"] string] |
+		#[id=(registry="dialog", tags="allowed")] string |
+		[Dialog] |
+		Dialog |
+	),
 }
 
 struct FormDialogBase {
@@ -99,5 +103,5 @@ dispatch minecraft:dialog[simple_input_form] to struct SimpleInputFormDialog {
 
 dispatch minecraft:dialog[multi_action_input_form] to struct MultiActionInputFormDialog {
 	...FormDialogBase,
-	action: [SubmitAction] @ 1..,
+	actions: [SubmitAction] @ 1..,
 }
