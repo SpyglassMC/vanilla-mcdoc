@@ -1,5 +1,5 @@
 {
-	"ref": "7c940d0a402066bfe5c9caa602b92d54b111a3f0",
+	"ref": "141801792136ac86a4c65609f4727d292ac60539",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -18475,7 +18475,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Initial value of the slider. Rounded down nearest step.\n\nDefaults to `min`.\n",
+					"desc": "Initial value of the slider. Rounded down nearest step.\n\nDefaults to `start`.\n",
 					"key": "initial",
 					"type": {
 						"kind": "float"
@@ -18694,7 +18694,7 @@
 				},
 				{
 					"kind": "pair",
-					"key": "action",
+					"key": "actions",
 					"type": {
 						"kind": "list",
 						"item": {
@@ -18784,13 +18784,24 @@
 													"kind": "literal",
 													"value": {
 														"kind": "string",
-														"value": "required"
+														"value": "allowed"
 													}
 												}
 											}
 										}
 									}
 								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::dialog::Dialog"
+								}
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::dialog::Dialog"
 							}
 						]
 					}
