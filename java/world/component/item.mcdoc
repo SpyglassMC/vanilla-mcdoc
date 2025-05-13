@@ -312,6 +312,14 @@ dispatch minecraft:data_component[equippable] to struct Equippable {
 	/// The item will not be equipped if the target already has an item in the relevant slot.
 	/// Defaults to `false`.
 	equip_on_interact?: boolean,
+	/// Whether players can use shears to remove this item from a mob by right-clicking it (as long as other shearing conditions are satisfied).
+	/// Defaults to `true`.
+	#[since="1.21.6"]
+	can_be_sheared?: boolean,
+	/// Sound event to play when the item is sheared from a mob.
+	/// If not specified, the default shearing sound (`item.shears.snip`) will be played.
+	#[since="1.21.6"]
+	shearing_sound?: SoundEventRef,
 }
 
 /// If set, this item will not burn in fire or lava.
