@@ -1,6 +1,7 @@
 use ::java::util::color::RGBA
 use ::java::world::item::ItemStack
 use ::java::world::component::DataComponentPatch
+use ::java::data::dialog::Dialog
 
 type Text = (
 	string |
@@ -156,6 +157,10 @@ enum(string) ClickEventAction {
 	SuggestCommand = "suggest_command",
 	ChangePage = "change_page",
 	CopyToClipboard = "copy_to_clipboard",
+	#[since="1.21.6"]
+	ShowDialog = "show_dialog",
+	#[since="1.21.6"]
+	Custom = "custom",
 }
 
 dispatch minecraft:click_event[open_url] to struct OpenUrl {
@@ -195,6 +200,17 @@ dispatch minecraft:click_event[change_page] to struct ChangePage {
 dispatch minecraft:click_event[copy_to_clipboard] to struct CopyToClipboard {
 	/// The text value to copy to the clipboard.
 	value: string,
+}
+
+dispatch minecraft:click_event[show_dialog] to struct ShowDialog {
+	dialog: (#[id="dialog"] string | Dialog),
+}
+
+dispatch minecraft:click_event[custom] to struct CustomAction {
+	/// ID of a custom action.
+	/// Has no functionality on vanilla servers.
+	id: #[id] string,
+	payload?: string,
 }
 
 struct HoverEvent {

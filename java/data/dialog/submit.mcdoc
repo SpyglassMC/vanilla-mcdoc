@@ -10,7 +10,8 @@ dispatch minecraft:submit_method[command_template] to struct CommandTemplateMeth
 }
 
 dispatch minecraft:submit_method[custom_template] to struct CustomTemplateMethod {
-	// TODO: what ID is this?
+	/// ID of a custom action.
+	/// Has no functionality on vanilla servers.
 	id: #[id] string,
 	// TODO: make this #[command] attribute parse macro template
 	/// A macro template to be interpred as a command.
@@ -18,6 +19,7 @@ dispatch minecraft:submit_method[custom_template] to struct CustomTemplateMethod
 }
 
 dispatch minecraft:submit_method[custom_form] to struct CustomFormMethod {
-	// TODO: what ID is this?
+	/// ID of a custom action.
+	/// Has no functionality on vanilla servers.
 	id: #[id] string,
 }
