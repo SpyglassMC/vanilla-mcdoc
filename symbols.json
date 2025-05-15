@@ -1,5 +1,5 @@
 {
-	"ref": "0b0e3a14d9eb44b7819e21088e65901ab3fb5cc2",
+	"ref": "1e40613121ad181023ff484ce6226504b898d2c5",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -18475,7 +18475,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Number of increments.\n\nFor example, value of 1 means that the slider will have two positions (start and end).\n",
+					"desc": "Number of uniform increments between `start` & `end`.\n\nFor example, to achieve a step size of `25` with a `0..100` range, you would use a `steps` value of `4`.\n",
 					"key": "steps",
 					"type": {
 						"kind": "int",
