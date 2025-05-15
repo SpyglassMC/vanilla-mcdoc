@@ -222,7 +222,7 @@
 	"::java::data::dialog::input::NumberRangeInput.label": "Label displayed on the slider.",
 	"::java::data::dialog::input::NumberRangeInput.label_format": "The translation to be used for building label.\n`%1$s` is replaced by `label`; `%2$s` is replaced by current value of the slider.\nDefaults to `options.generic_value`.",
 	"::java::data::dialog::input::NumberRangeInput.start": "Start value, inclusive.",
-	"::java::data::dialog::input::NumberRangeInput.steps": "Number of increments.\nFor example, value of 1 means that the slider will have two positions (start and end).",
+	"::java::data::dialog::input::NumberRangeInput.steps": "Number of uniform increments between `start` & `end`.\nFor example, to achieve a step size of `25` with a `0..100` range, you would use a `steps` value of `4`.",
 	"::java::data::dialog::input::NumberRangeInput.width": "Defaults to 200.",
 	"::java::data::dialog::input::Option.display": "Label displayed on the button.\nWhen not present, `id` will be used instead.",
 	"::java::data::dialog::input::Option.id": "String to send on submit.",
