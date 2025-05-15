@@ -67,8 +67,8 @@ dispatch minecraft:input_control[number_range] to struct NumberRangeInput {
 	start: float,
 	/// End value, inclusive.
 	end: float,
-	/// Number of increments.
-	/// For example, value of 1 means that the slider will have two positions (start and end).
+	/// Number of uniform increments between `start` & `end`.
+	/// For example, to achieve a step size of `25` with a `0..100` range, you would use a `steps` value of `4`.
 	steps: int @ 1..,
 	/// Initial value of the slider. Rounded down nearest step.
 	/// Defaults to `start`.
