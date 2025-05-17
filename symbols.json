@@ -1,5 +1,5 @@
 {
-	"ref": "e2ca996a5a05cd95f3598d9e0bcdcebb2554a315",
+	"ref": "92ed15b5b81f3475a40fead49ff374ac40d5ffec",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -18007,8 +18007,17 @@
 					"desc": "The description text rendered to the right of item.\n",
 					"key": "description",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::dialog::body::PlainMessage"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::dialog::body::PlainMessage"
+							},
+							{
+								"kind": "reference",
+								"path": "::java::util::text::Text"
+							}
+						]
 					},
 					"optional": true
 				},
