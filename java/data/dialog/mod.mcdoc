@@ -77,9 +77,8 @@ dispatch minecraft:dialog[server_links] to struct ServerLinksDialog {
 dispatch minecraft:dialog[dialog_list] to struct RedirectDialog {
 	...ButtonListDialogBase,
 	dialogs: (
-		[#[id="dialog"] string] |
+		[(#[id="dialog"] string | Dialog)] |
 		#[id=(registry="dialog", tags="allowed")] string |
-		[Dialog] |
 		Dialog |
 	),
 }
