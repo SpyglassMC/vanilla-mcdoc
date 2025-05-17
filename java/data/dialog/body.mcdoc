@@ -18,7 +18,7 @@ dispatch minecraft:dialog_body[item] to struct ItemBody {
 	item: ItemStack,
 	// game code implementation shares the same PlainMessage codec so it's safe to reuse the type
 	/// The description text rendered to the right of item.
-	description?: PlainMessage,
+	description?: (PlainMessage | Text),
 	/// Whether count and damage bar are rendered over the item.
 	/// Defaults to `true`.
 	show_decorations?: boolean,
