@@ -1,5 +1,5 @@
 {
-	"ref": "1e40613121ad181023ff484ce6226504b898d2c5",
+	"ref": "e2ca996a5a05cd95f3598d9e0bcdcebb2554a315",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -18762,17 +18762,26 @@
 							{
 								"kind": "list",
 								"item": {
-									"kind": "string",
-									"attributes": [
+									"kind": "union",
+									"members": [
 										{
-											"name": "id",
-											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "dialog"
+											"kind": "string",
+											"attributes": [
+												{
+													"name": "id",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "dialog"
+														}
+													}
 												}
-											}
+											]
+										},
+										{
+											"kind": "reference",
+											"path": "::java::data::dialog::Dialog"
 										}
 									]
 								}
@@ -18803,13 +18812,6 @@
 										}
 									}
 								]
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::dialog::Dialog"
-								}
 							},
 							{
 								"kind": "reference",
