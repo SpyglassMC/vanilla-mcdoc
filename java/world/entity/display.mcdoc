@@ -56,7 +56,7 @@ type Transformation = (
 		translation: [float] @ 3,
 		/// Using this rotation is enough for most transformations.
 		left_rotation: Rotation,
-		/// For more complex transformations.
+		/// For more complex transformations. Applied **before** scaling.
 		right_rotation: Rotation,
 		/// Scale in [x, y, z].
 		scale: [float] @ 3,
