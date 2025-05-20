@@ -26,7 +26,7 @@ struct ButtonBase {
 	tooltip?: Text,
 	/// Width of the button.
 	/// Defaults to 150.
-	width?: int @ 1..,
+	width?: int @ 1..1024,
 }
 
 struct ClickAction {
@@ -103,4 +103,7 @@ dispatch minecraft:dialog[simple_input_form] to struct SimpleInputFormDialog {
 dispatch minecraft:dialog[multi_action_input_form] to struct MultiActionInputFormDialog {
 	...FormDialogBase,
 	actions: [SubmitAction] @ 1..,
+	/// The number of columns.
+	/// Defaults to 2.
+	columns?: int @ 1..,
 }

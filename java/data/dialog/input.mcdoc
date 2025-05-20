@@ -9,7 +9,7 @@ struct InputControl {
 
 dispatch minecraft:input_control[text] to struct TextInput {
 	/// Defaults to 200.
-	width?: int @ 1..,
+	width?: int @ 1..1024,
 	/// Label displayed to the left of control.
 	label: Text,
 	/// Defaults to `true`.
@@ -17,6 +17,18 @@ dispatch minecraft:input_control[text] to struct TextInput {
 	/// Initial contents of the text input.
 	/// Defaults to `""` (empty string).
 	initial?: string,
+	/// Maximum length of input
+	/// Defaults to 32.
+	max_length?: int @ 1..,
+	/// If present, allows users to input multiple lines.
+	multiline?: struct MultiLine {
+		max_lines?: int @ 1..,
+		/// Height of the input.
+		/// If this field is not present:
+		/// - If `max_lines` is present, the height will be chosen to fit the maximum number of lines.
+		/// - If `max_lines` is also not present, the height will be chosen to fit 4 lines.
+		height?: int @ 1..512,
+	},
 }
 
 dispatch minecraft:input_control["boolean"] to struct BooleanInput {
@@ -35,7 +47,7 @@ dispatch minecraft:input_control["boolean"] to struct BooleanInput {
 
 dispatch minecraft:input_control[single_option] to struct SingleOptionInput {
 	/// Defaults to 200.
-	width?: int @ 1..,
+	width?: int @ 1..1024,
 	/// Label displayed on the button.
 	label: Text,
 	/// Defaults to `true`.
@@ -56,7 +68,7 @@ struct Option {
 
 dispatch minecraft:input_control[number_range] to struct NumberRangeInput {
 	/// Defaults to 200.
-	width?: int @ 1..,
+	width?: int @ 1..1024,
 	/// Label displayed on the slider.
 	label: Text,
 	/// The translation to be used for building label.
@@ -67,10 +79,10 @@ dispatch minecraft:input_control[number_range] to struct NumberRangeInput {
 	start: float,
 	/// End value, inclusive.
 	end: float,
-	/// Number of uniform increments between `start` & `end`.
-	/// For example, to achieve a step size of `25` with a `0..100` range, you would use a `steps` value of `4`.
-	steps: int @ 1..,
+	/// Step size of the input.
+	/// If not present, any value from range is allowed.
+	step?: float @ 0<..,
 	/// Initial value of the slider. Rounded down nearest step.
-	/// Defaults to `start`.
+	/// Defaults to the middle of the range.
 	initial?: float,
 }
