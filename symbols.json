@@ -1,5 +1,5 @@
 {
-	"ref": "92ed15b5b81f3475a40fead49ff374ac40d5ffec",
+	"ref": "670faead4baa434e9b2cabb180f6ae265b51f797",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -63594,25 +63594,9 @@
 				}
 			]
 		},
-		"::java::world::block::jukebox::Jukebox": {
+		"::java::world::block::jukebox::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::block::BlockEntity"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "RecordItem",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::item::ItemStack"
-					},
-					"optional": true
-				},
 				{
 					"kind": "pair",
 					"key": "TickCount",
@@ -63634,6 +63618,91 @@
 					"key": "IsPlaying",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::block::jukebox::Jukebox": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "RecordItem",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStack"
+					},
+					"optional": true
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "TickCount",
+								"type": {
+									"kind": "long"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"key": "RecordStartTick",
+								"type": {
+									"kind": "long"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"key": "IsPlaying",
+								"type": {
+									"kind": "boolean"
+								},
+								"optional": true
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"key": "ticks_since_song_started",
+					"type": {
+						"kind": "long"
 					},
 					"optional": true
 				}
@@ -64139,7 +64208,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether the sign can no longer be edited. If a sign is editable\n",
+					"desc": "Whether the sign has been made uneditable by applying wax.\n",
 					"key": "is_waxed",
 					"type": {
 						"kind": "boolean"
@@ -64230,6 +64299,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Shown to players with the profanity filter enabled on Realms.\n",
 					"key": "filtered_messages",
 					"type": {
 						"kind": "reference",
@@ -70681,7 +70751,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "For more complex transformations.\n",
+					"desc": "For more complex transformations. Applied **before** scaling.\n",
 					"key": "right_rotation",
 					"type": {
 						"kind": "reference",
@@ -71194,7 +71264,7 @@
 						},
 						{
 							"kind": "pair",
-							"desc": "For more complex transformations.\n",
+							"desc": "For more complex transformations. Applied **before** scaling.\n",
 							"key": "right_rotation",
 							"type": {
 								"kind": "reference",
@@ -83358,6 +83428,58 @@
 				}
 			]
 		},
+		"::java::world::item::book::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "raw",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "text_component"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Shown to Realms players with the profanity filter enabled\n",
+					"key": "filtered",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "text_component"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::item::book::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "raw",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Shown to Realms players with the profanity filter enabled\n",
+					"key": "filtered",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::world::item::book::WritableBook": {
 			"kind": "struct",
 			"fields": [
@@ -83407,10 +83529,46 @@
 					"type": {
 						"kind": "list",
 						"item": {
-							"kind": "string",
-							"attributes": [
+							"kind": "union",
+							"members": [
 								{
-									"name": "text_component"
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "text_component"
+										}
+									]
+								},
+								{
+									"kind": "struct",
+									"fields": [
+										{
+											"kind": "pair",
+											"key": "raw",
+											"type": {
+												"kind": "string",
+												"attributes": [
+													{
+														"name": "text_component"
+													}
+												]
+											}
+										},
+										{
+											"kind": "pair",
+											"desc": "Shown to Realms players with the profanity filter enabled\n",
+											"key": "filtered",
+											"type": {
+												"kind": "string",
+												"attributes": [
+													{
+														"name": "text_component"
+													}
+												]
+											},
+											"optional": true
+										}
+									]
 								}
 							]
 						}
@@ -83419,7 +83577,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Generation of the book.\n",
+					"desc": "Generation of the book. 0 = original, 1 = copy of original, 2 = copy of copy, 3 = tattered.\n",
 					"key": "generation",
 					"type": {
 						"kind": "reference",
@@ -83439,7 +83597,33 @@
 					"kind": "pair",
 					"key": "title",
 					"type": {
-						"kind": "string"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string"
+							},
+							{
+								"kind": "struct",
+								"fields": [
+									{
+										"kind": "pair",
+										"key": "raw",
+										"type": {
+											"kind": "string"
+										}
+									},
+									{
+										"kind": "pair",
+										"desc": "Shown to Realms players with the profanity filter enabled\n",
+										"key": "filtered",
+										"type": {
+											"kind": "string"
+										},
+										"optional": true
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				}
