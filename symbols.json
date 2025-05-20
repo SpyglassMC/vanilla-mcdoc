@@ -1,5 +1,5 @@
 {
-	"ref": "670faead4baa434e9b2cabb180f6ae265b51f797",
+	"ref": "2587db62d53a54344fb93760bc7d25f0401fa702",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -18047,7 +18047,8 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 1,
+							"max": 256
 						}
 					},
 					"optional": true
@@ -18060,7 +18061,8 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 1,
+							"max": 256
 						}
 					},
 					"optional": true
@@ -18087,7 +18089,8 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 1,
+							"max": 1024
 						}
 					},
 					"optional": true
@@ -18122,7 +18125,8 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 1,
+							"max": 1024
 						}
 					},
 					"optional": true
@@ -18427,6 +18431,37 @@
 				}
 			]
 		},
+		"::java::data::dialog::input::MultiLine": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "max_lines",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Height of the input.\n\nIf this field is not present:\n\n- If `max_lines` is present, the height will be chosen to fit the maximum number of lines.\n\n- If `max_lines` is also not present, the height will be chosen to fit 4 lines.\n",
+					"key": "height",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 512
+						}
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::dialog::input::NumberRangeInput": {
 			"kind": "struct",
 			"fields": [
@@ -18438,7 +18473,8 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 1,
+							"max": 1024
 						}
 					},
 					"optional": true
@@ -18484,19 +18520,20 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Number of uniform increments between `start` & `end`.\n\nFor example, to achieve a step size of `25` with a `0..100` range, you would use a `steps` value of `4`.\n",
-					"key": "steps",
+					"desc": "Step size of the input.\n\nIf not present, any value from range is allowed.\n",
+					"key": "step",
 					"type": {
-						"kind": "int",
+						"kind": "float",
 						"valueRange": {
-							"kind": 0,
-							"min": 1
+							"kind": 2,
+							"min": 0
 						}
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "Initial value of the slider. Rounded down nearest step.\n\nDefaults to `start`.\n",
+					"desc": "Initial value of the slider. Rounded down nearest step.\n\nDefaults to the middle of the range.\n",
 					"key": "initial",
 					"type": {
 						"kind": "float"
@@ -18548,7 +18585,8 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 1,
+							"max": 1024
 						}
 					},
 					"optional": true
@@ -18607,7 +18645,8 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 1,
+							"max": 1024
 						}
 					},
 					"optional": true
@@ -18636,6 +18675,56 @@
 					"key": "initial",
 					"type": {
 						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Maximum length of input\n\nDefaults to 32.\n",
+					"key": "max_length",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If present, allows users to input multiple lines.\n",
+					"key": "multiline",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "max_lines",
+								"type": {
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 1
+									}
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Height of the input.\n\nIf this field is not present:\n\n- If `max_lines` is present, the height will be chosen to fit the maximum number of lines.\n\n- If `max_lines` is also not present, the height will be chosen to fit 4 lines.\n",
+								"key": "height",
+								"type": {
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 1,
+										"max": 512
+									}
+								},
+								"optional": true
+							}
+						]
 					},
 					"optional": true
 				}
@@ -18727,6 +18816,19 @@
 							"min": 1
 						}
 					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The number of columns.\n\nDefaults to 2.\n",
+					"key": "columns",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -66823,7 +66925,8 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::world::component::item::AttributeDisplay"
-					}
+					},
+					"optional": true
 				}
 			]
 		},
