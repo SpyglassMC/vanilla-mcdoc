@@ -3,9 +3,14 @@ use ::java::world::item::ItemStack
 dispatch minecraft:block_entity[jukebox] to struct Jukebox {
 	...super::BlockEntity,
 	RecordItem?: ItemStack,
-	TickCount?: long,
-	RecordStartTick?: long,
-	IsPlaying?: boolean,
+	#[until="1.21"]
+	...struct {
+		TickCount?: long,
+		RecordStartTick?: long,
+		IsPlaying?: boolean,
+	},
+	#[since="1.21"]
+	ticks_since_song_started?: long
 }
 
 dispatch minecraft:block[jukebox] to minecraft:block_entity[jukebox]

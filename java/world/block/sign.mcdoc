@@ -10,13 +10,14 @@ dispatch minecraft:block_entity[sign, hanging_sign] to (
 		...super::BlockEntity,
 		back_text?: SignText,
 		front_text?: SignText,
-		/// Whether the sign can no longer be edited. If a sign is editable
+		/// Whether the sign has been made uneditable by applying wax.
 		is_waxed?: boolean,
 	} |
 )
 
 struct SignText {
 	messages: SignLines,
+	/// Shown to players with the profanity filter enabled on Realms.
 	filtered_messages?: SignLines,
 	color?: DyeColor,
 	has_glowing_text?: boolean,
