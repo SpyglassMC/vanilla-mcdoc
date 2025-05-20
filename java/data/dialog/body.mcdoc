@@ -11,7 +11,7 @@ dispatch minecraft:dialog_body[plain_message] to struct PlainMessage {
 	contents: Text,
 	/// Maximum width of message.
 	/// Defaults to 200.
-	width?: int @ 1..,
+	width?: int @ 1..1024,
 }
 
 dispatch minecraft:dialog_body[item] to struct ItemBody {
@@ -27,8 +27,8 @@ dispatch minecraft:dialog_body[item] to struct ItemBody {
 	show_tooltip?: boolean,
 	/// Width of the item.
 	/// Defaults to 16.
-	width?: int @ 1..,
+	width?: int @ 1..256,
 	/// Height of the item.
 	/// Defaults to 16.
-	height?: int @ 1..,
+	height?: int @ 1..256,
 }
