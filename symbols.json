@@ -1,5 +1,5 @@
 {
-	"ref": "2587db62d53a54344fb93760bc7d25f0401fa702",
+	"ref": "61b698f150ec3453d98d7d1d6de19cedf7b83304",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -7397,6 +7397,18 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
 					"key": "program",
 					"type": {
 						"kind": "string",
@@ -7409,6 +7421,64 @@
 										"kind": "string",
 										"value": "shader"
 									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "vertex_shader",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "shader/vertex"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "fragment_shader",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "shader/fragment"
+												}
+											}
+										}
+									]
 								}
 							}
 						]
@@ -7518,6 +7588,49 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"key": "vertex_shader",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "shader/vertex"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "fragment_shader",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "shader/fragment"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::assets::shader::post::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"key": "name",
 					"type": {
 						"kind": "string"
@@ -7525,7 +7638,7 @@
 				}
 			]
 		},
-		"::java::assets::shader::post::<anonymous 3>": {
+		"::java::assets::shader::post::<anonymous 4>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -7784,6 +7897,18 @@
 					"fields": [
 						{
 							"kind": "pair",
+							"attributes": [
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.21.5"
+										}
+									}
+								}
+							],
 							"key": "program",
 							"type": {
 								"kind": "string",
@@ -7796,6 +7921,64 @@
 												"kind": "string",
 												"value": "shader"
 											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "spread",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.21.5"
+										}
+									}
+								}
+							],
+							"type": {
+								"kind": "struct",
+								"fields": [
+									{
+										"kind": "pair",
+										"key": "vertex_shader",
+										"type": {
+											"kind": "string",
+											"attributes": [
+												{
+													"name": "id",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "shader/vertex"
+														}
+													}
+												}
+											]
+										}
+									},
+									{
+										"kind": "pair",
+										"key": "fragment_shader",
+										"type": {
+											"kind": "string",
+											"attributes": [
+												{
+													"name": "id",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "shader/fragment"
+														}
+													}
+												}
+											]
 										}
 									}
 								]
