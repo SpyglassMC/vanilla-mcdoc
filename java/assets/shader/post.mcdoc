@@ -52,7 +52,11 @@ type Pass = (
 		),
 	} |
 	#[since="1.21.2"] struct {
-		program: #[id="shader"] string,
+		#[until="1.21.5"] program: #[id="shader"] string,
+		#[since="1.21.5"] ...struct {
+			vertex_shader: #[id="shader/vertex"] string,
+			fragment_shader: #[id="shader/fragment"] string,
+		},
 		inputs?: [(TargetInput | TextureInput)],
 		output: #[id="shader_target"] string,
 		uniforms?: (
