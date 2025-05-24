@@ -1,4 +1,5 @@
 use ::java::world::component::item::BookGeneration
+use ::java::util::Filterable
 
 dispatch minecraft:item[writable_book] to struct WritableBook {
 	...super::ItemBase,
@@ -10,23 +11,9 @@ dispatch minecraft:item[written_book] to struct WrittenBook {
 	/// Whether the dynamic content on the pages has been resolved.
 	resolved?: boolean,
 	/// Pages of the book as JSON text components.
-	pages?: [(
-		#[text_component] string |
-		struct {
-			raw: #[text_component] string,
-			/// Shown to Realms players with the profanity filter enabled
-			filtered?: #[text_component] string
-		}
-	)],
+	pages?: [Filterable<#[text_component] string>],
 	/// Generation of the book. 0 = original, 1 = copy of original, 2 = copy of copy, 3 = tattered.
 	generation?: BookGeneration,
 	author?: string,
-	title?: (
-		string | 
-		struct {
-			raw: string,
-			/// Shown to Realms players with the profanity filter enabled
-			filtered?: string,
-		}
-	),
+	title?: Filterable<string>,
 }
