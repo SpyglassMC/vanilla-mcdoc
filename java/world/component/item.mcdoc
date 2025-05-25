@@ -278,7 +278,7 @@ struct Enchantments {
 }
 
 struct EnchantmentLevels {
-	[#[id="enchantment"] string]: int @ 0..255,
+	[#[id="enchantment"] string]: int @ 1..255,
 }
 
 dispatch minecraft:data_component[entity_data] to (
