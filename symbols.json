@@ -1,5 +1,5 @@
 {
-	"ref": "91155a22484a7f58f6943359cb3b69c2b3bc189f",
+	"ref": "6778c5d4ef55fa78cf314a4380c87f678ffde76b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -67699,7 +67699,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 0,
+							"min": 1,
 							"max": 255
 						}
 					}
