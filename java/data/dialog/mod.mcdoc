@@ -16,6 +16,8 @@ struct DialogBase {
 	/// If not present, `title` will be used instead.
 	external_title?: Text,
 	body?: (DialogBody | [DialogBody]),
+	// TODO: check if this field accepts single InputControl like the body field
+	inputs?: [InputControl],
 	/// Whether the dialog can be closed with ESC key.
 	/// Defaults to `true`.
 	can_close_with_escape?: boolean,
@@ -59,6 +61,7 @@ dispatch minecraft:dialog[notice] to struct NoticeDialog {
 dispatch minecraft:dialog[confirmation] to struct ConfirmationDialog {
 	...DialogBase,
 	yes: Button,
+	/// This action is also used for ESC-triggered exit.
 	no: Button,
 }
 
