@@ -210,7 +210,7 @@ dispatch minecraft:click_event[custom] to struct CustomAction {
 	/// ID of a custom action.
 	/// Has no functionality on vanilla servers.
 	id: #[id] string,
-	payload?: string,
+	payload?: any,
 }
 
 struct HoverEvent {

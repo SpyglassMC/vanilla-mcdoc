@@ -11,6 +11,11 @@ dispatch minecraft:resource[item_definition] to struct ItemDefinition {
 	/// Whether the down-and-up animation should be played in first-person view when the item stack is changed.
 	/// Defaults to `true`.
 	hand_animation_on_swap?: boolean,
+	/// Whether the item model is allowed to be bigger than its item slot.
+	/// Defaults to `false`, which clips the item model in GUI to the item slot size.
+	/// The behavior of `true` is **not** officially supported.
+	#[since="1.21.6"]
+	oversized_in_gui?: boolean,
 }
 
 struct ItemModel {
