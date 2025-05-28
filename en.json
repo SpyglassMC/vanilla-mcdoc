@@ -223,7 +223,7 @@
 	"::java::data::dialog::DialogBase.external_title": "Name to be used for a button leading to this dialog.\nIf not present, `title` will be used instead.",
 	"::java::data::dialog::DialogBase.pause": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
 	"::java::data::dialog::input::BooleanInput.initial": "Initial value of the control.\nDefaults to `false` (unchecked).",
-	"::java::data::dialog::input::BooleanInput.label": "Label displayed to the rignt of control.",
+	"::java::data::dialog::input::BooleanInput.label": "Label displayed to the right of control.",
 	"::java::data::dialog::input::BooleanInput.on_false": "String to send when the control is unchecked.\nDefaults to `\"false\"`.",
 	"::java::data::dialog::input::BooleanInput.on_true": "String to send when the control is checked.\nDefaults to `\"true\"`.",
 	"::java::data::dialog::input::InputControl.key": "The input key, which is used to build macro command and generate custom action payload.",
