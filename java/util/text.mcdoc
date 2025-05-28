@@ -210,8 +210,18 @@ dispatch minecraft:click_event[custom] to struct CustomAction {
 	/// ID of a custom action.
 	/// Has no functionality on vanilla servers.
 	id: #[id] string,
-	payload?: string,
+	payload?: CustomActionPayload,
 }
+
+type CustomActionPayload = (
+	#[canonical] CustomActionPayloadMap |
+	#[nbt=CustomActionPayloadMap] string |
+)
+
+struct CustomActionPayloadMap {
+	[#[dispatcher_key="mcdoc:custom_payload"] string]?: mcdoc:custom_payload[[%key]],
+}
+dispatch mcdoc:custom_payload[%unknown] to any
 
 struct HoverEvent {
 	action: HoverEventAction,

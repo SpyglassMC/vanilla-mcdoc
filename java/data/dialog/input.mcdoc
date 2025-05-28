@@ -2,8 +2,8 @@ use ::java::util::text::Text
 
 struct InputControl {
 	type: #[id="input_control_type"] string,
-	/// The input key.
-	key: #[match_regex="^[A-Za-z0-9_]*$"] string @ 1..,
+	/// The input key, which is used to build macro command and generate custom action payload.
+	key: #[dispatcher_key="mcdoc:custom_payload"] string,
 	...minecraft:input_control[[type]],
 }
 
