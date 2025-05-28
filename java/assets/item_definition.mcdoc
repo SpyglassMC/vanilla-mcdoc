@@ -427,9 +427,6 @@ dispatch minecraft:special_item_model[head] to struct Head {
 	animation?: float,
 }
 
-// Actually covered by the %unknown case so no need to dispatch again
-// #[since="1.21.6"] dispatch minecraft:special_item_model[player_head] to struct {}
-
 enum(string) HeadType {
 	Creeper = "creeper",
 	Dragon = "dragon",

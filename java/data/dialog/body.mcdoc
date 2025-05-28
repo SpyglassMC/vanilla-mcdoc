@@ -8,7 +8,7 @@ struct DialogBody {
 
 dispatch minecraft:dialog_body[plain_message] to struct PlainMessage {
 	/// A multiline label.
-	/// Click events in the text work as expected, and trigger `after_action` like any other action.
+	/// Click events in the text trigger `after_action` like any other action.
 	contents: Text,
 	/// Maximum width of message.
 	/// Defaults to 200.

@@ -209,11 +209,9 @@ dispatch minecraft:click_event[show_dialog] to struct ShowDialog {
 dispatch minecraft:click_event[custom] to struct CustomAction {
 	/// ID of a custom action.
 	/// Has no functionality on vanilla servers.
-	id: #[id] #[dispatcher_key="mcdoc:custom_payload"] string,
-	payload?: mcdoc:custom_payload[[%key]],
+	id: #[id] string,
+	payload?: any,
 }
-
-dispatch mcdoc:custom_payload[%unknown] to any
 
 struct HoverEvent {
 	action: HoverEventAction,
