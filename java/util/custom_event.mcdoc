@@ -1,0 +1,16 @@
+dispatch mcdoc:custom_event[%unknown] to any
+
+// dispatch mcdoc:custom_dynamic_event[%unknown] to struct UnknownDynamic {
+// 	[string]: any,
+// }
+
+dispatch mcdoc:custom_dynamic_event_keys[%unknown] to (string)
+
+dispatch mcdoc:custom_dynamic_event_additions[%unknown] to struct UnknownDynamicAdditions {
+	[string]: any,
+}
+
+// type CustomDynamicEvent<E> = struct {
+// 	...mcdoc:custom_dynamic_event[[E]],
+// 	...mcdoc:custom_dynamic_event_additions[[E]],
+// }
