@@ -22,7 +22,7 @@ enum(string) AttributeOperation {
 	AddMultipliedBase = "add_multiplied_base",
 	/// For every modifier, multiplies the current value of the attribute by `(1 + x)`,
 	/// where `x` is the amount of the particular modifier.
-	AddMultipliedTotal = "add_multiplied_total"
+	AddMultipliedTotal = "add_multiplied_total",
 }
 
 enum(int) LegacyOperation {

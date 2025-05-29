@@ -5,7 +5,8 @@ struct Tamable {
 	...super::Breedable,
 	#[until="1.16"]
 	OwnerUUID?: #[uuid] string,
-	#[since="1.16"] #[uuid]
+	#[since="1.16"]
+	#[uuid]
 	Owner?: int[] @ 4,
 	/// Whether the mob is sitting.
 	Sitting?: boolean,
@@ -33,7 +34,7 @@ enum(int) CatType {
 	Ragdoll = 7,
 	White = 8,
 	Jellie = 9,
-	Black = 10
+	Black = 10,
 }
 
 dispatch minecraft:entity[parrot] to struct Parrot {
