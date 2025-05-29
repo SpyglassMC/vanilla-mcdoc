@@ -8,7 +8,7 @@ dispatch minecraft:resource[loot_table] to struct LootTable {
 	pools?: [LootPool],
 	functions?: [LootFunction],
 	#[since="1.20"]
-	random_sequence?: #[id(registry="random_sequence", definition=true)] string,
+	random_sequence?: #[id(registry="random_sequence",definition=true)] string,
 }
 
 enum(string) LootContextType {
@@ -50,23 +50,23 @@ enum(string) LootContextType {
 
 enum(string) EntityTarget {
 	This = "this",
-	#[until="1.21"]
-	Killer = "killer",
-	#[since="1.21"]
-	Attacker = "attacker",
-	#[until="1.21"]
-	DirectKiller = "direct_killer",
-	#[since="1.21"]
-	DirectAttacker = "direct_attacker",
-	#[until="1.21"]
-	KillerPlayer = "killer_player",
-	#[since="1.21"]
-	AttackingPlayer = "attacking_player",
+	#[until="1.21"] Killer = "killer",
+	#[since="1.21"] Attacker = "attacker",
+	#[until="1.21"] DirectKiller = "direct_killer",
+	#[since="1.21"] DirectAttacker = "direct_attacker",
+	#[until="1.21"] KillerPlayer = "killer_player",
+	#[since="1.21"] AttackingPlayer = "attacking_player",
 }
 
 struct LootPool {
-	rolls: (#[until="1.17"] RandomIntGenerator | #[since="1.17"] NumberProvider),
-	bonus_rolls?: (#[until="1.17"] MinMaxBounds<float> | #[since="1.17"] NumberProvider),
+	rolls: (
+		#[until="1.17"] RandomIntGenerator |
+		#[since="1.17"] NumberProvider |
+	),
+	bonus_rolls?: (
+		#[until="1.17"] MinMaxBounds<float> |
+		#[since="1.17"] NumberProvider |
+	),
 	entries: [LootPoolEntry],
 	functions?: [LootFunction],
 	conditions?: [LootCondition],
@@ -111,7 +111,7 @@ enum(string) DynamicDrops {
 dispatch minecraft:loot_pool_entry[item] to struct ItemPoolEntry {
 	name: (
 		#[until="1.21.2"] #[id="item"] string |
-		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
 	),
 	...SingletonPoolEntry,
 }
@@ -121,13 +121,16 @@ dispatch minecraft:loot_pool_entry[loot_table] to struct LootTablePoolEntry {
 	#[until="1.20.5"]
 	name: #[id="loot_table"] string,
 	#[since="1.20.5"]
-	value: (#[id="loot_table"] string | LootTable),
+	value: (
+		#[id="loot_table"] string |
+		LootTable |
+	),
 	...SingletonPoolEntry,
 }
 
 /// Adds the contents of an item tag.
 dispatch minecraft:loot_pool_entry[tag] to struct TagPoolEntry {
-	name: #[id(registry="item", tags="implicit")] string,
+	name: #[id(registry="item",tags="implicit")] string,
 	/// If `true`, drops a random item from the tag. If `false`, drops all items in the tag.
 	expand: boolean,
 	...SingletonPoolEntry,

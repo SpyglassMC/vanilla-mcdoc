@@ -7,7 +7,7 @@ struct GlyphProvider {
 	...minecraft:glyph_provider[[type]],
 	filter?: struct {
 		[FontOption]: boolean,
-	},
+	}
 }
 
 enum(string) GlyphProviderType {
@@ -29,8 +29,7 @@ enum(string) FontOption {
 }
 
 dispatch minecraft:glyph_provider[bitmap] to struct BitmapProvider {
-	file: string,
-	// TODO
+	file: string, // TODO
 	height?: int,
 	ascent: int,
 	chars: [string @ 1..] @ 1..,
@@ -43,8 +42,7 @@ dispatch minecraft:glyph_provider[space] to struct SpaceProvider {
 }
 
 dispatch minecraft:glyph_provider[ttf] to struct TtfProvider {
-	file: string,
-	// TODO
+	file: string, // TODO
 	size?: float,
 	oversample?: float,
 	shift?: [float, float],
@@ -60,15 +58,12 @@ dispatch minecraft:glyph_provider[legacy_unicode] to struct LegacyUnicodeProvide
 #[since="1.20"]
 dispatch minecraft:glyph_provider[unihex] to struct UnihexProvider {
 	/// ZIP archive containing one or more *.hex files (files in archive with different extensions are ignored).
-	hex_file: string,
-	// TODO
-	#[until="1.21.6"]
-	...struct {
+	hex_file: string, // TODO
+	#[until="1.21.6"] ...struct {
 		/// List of ranges to override the size of.
 		size_overrides: [UnihexOverrideRange],
 	},
-	#[since="1.21.6"]
-	...struct {
+	#[since="1.21.6"] ...struct {
 		/// List of ranges to override the size of.
 		size_overrides?: [UnihexOverrideRange],
 	},
@@ -76,8 +71,7 @@ dispatch minecraft:glyph_provider[unihex] to struct UnihexProvider {
 
 struct UnihexOverrideRange {
 	/// Minimum in codepoint range (inclusive).
-	from: string,
-	// TODO: codepoint; "\u3001"
+	from: string, // TODO: codepoint; "\u3001"
 	/// Maximum in codepoint range (inclusive).
 	to: string,
 	/// Position of left-most column of the glyph.

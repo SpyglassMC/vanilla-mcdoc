@@ -25,7 +25,6 @@ struct LegacyBee {
 	TicksInHive?: int,
 	EntityData?: AnyEntity,
 }
-
 struct Bee {
 	min_ticks_in_hive: int,
 	ticks_in_hive: int,

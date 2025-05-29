@@ -11,7 +11,7 @@ struct PredicateOffset {
 	offset?: [int @ -16..16] @ 3,
 }
 
-dispatch minecraft:block_predicate[all_of, any_of] to struct CombiningPredicate {
+dispatch minecraft:block_predicate[all_of,any_of] to struct CombiningPredicate {
 	predicates: [BlockPredicate],
 }
 
@@ -26,14 +26,14 @@ dispatch minecraft:block_predicate[inside_world_bounds] to struct InsideWorldBou
 
 dispatch minecraft:block_predicate[matching_block_tag] to struct MatchingBlockTagPredicate {
 	...PredicateOffset,
-	tag: #[id(registry="block", tags="implicit")] string,
+	tag: #[id(registry="block",tags="implicit")] string,
 }
 
 dispatch minecraft:block_predicate[matching_blocks] to struct MatchingBlocksPredicate {
 	...PredicateOffset,
 	blocks: (
 		[#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block", tags="allowed")] string |
+		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string|
 	),
 }
 
@@ -41,7 +41,7 @@ dispatch minecraft:block_predicate[matching_fluids] to struct MatchingFluidsPred
 	...PredicateOffset,
 	fluids: (
 		[#[id="fluid"] string] |
-		#[since="1.18.2"] #[id(registry="fluid", tags="allowed")] string |
+		#[since="1.18.2"] #[id(registry="fluid",tags="allowed")] string |
 	),
 }
 

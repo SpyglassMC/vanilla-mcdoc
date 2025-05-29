@@ -3,8 +3,10 @@ use ::java::util::text::Text
 
 // TODO: Add filtered text
 dispatch minecraft:block_entity[sign, hanging_sign] to (
-	#[until="1.20"] OldSign |
-	#[since="1.20"] struct Sign {
+	#[until="1.20"]
+	OldSign |
+	#[since="1.20"]
+	struct Sign {
 		...super::BlockEntity,
 		back_text?: SignText,
 		front_text?: SignText,
@@ -58,10 +60,18 @@ dispatch minecraft:block[
 ] to minecraft:block_entity[sign]
 
 #[since="1.17"]
-dispatch minecraft:block[crimson_sign, warped_sign, crimson_wall_sign, warped_wall_sign] to minecraft:block_entity[sign]
+dispatch minecraft:block[
+	crimson_sign,
+	warped_sign,
+	crimson_wall_sign,
+	warped_wall_sign,
+] to minecraft:block_entity[sign]
 
 #[since="1.19"]
-dispatch minecraft:block[mangrove_sign, mangrove_wall_sign] to minecraft:block_entity[sign]
+dispatch minecraft:block[
+	mangrove_sign,
+	mangrove_wall_sign,
+] to minecraft:block_entity[sign]
 
 #[since="1.19.3"]
 dispatch minecraft:block[
@@ -90,4 +100,7 @@ dispatch minecraft:block[
 ] to minecraft:block_entity[sign]
 
 #[since="1.19.4"]
-dispatch minecraft:block[cherry_sign, cherry_wall_sign] to minecraft:block_entity[sign]
+dispatch minecraft:block[
+	cherry_sign,
+	cherry_wall_sign,
+] to minecraft:block_entity[sign]

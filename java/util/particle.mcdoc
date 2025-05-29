@@ -52,7 +52,10 @@ dispatch minecraft:particle[block_crumble] to BlockParticle
 /// 	g = integerToByte(Math.floor(color[1] * randomBetween(0.8, 1) * baseShade * 255)),
 /// 	b = integerToByte(Math.floor(color[2] * randomBetween(0.8, 1) * baseShade * 255))
 /// ```
-type DustColor = (#[until="1.21.2"] #[color="particle"] [float] @ 3 | #[since="1.21.2"] RGB)
+type DustColor = (
+	#[until="1.21.2"] #[color="particle"] [float] @ 3 |
+	#[since="1.21.2"] RGB |
+)
 
 dispatch minecraft:particle[dust] to struct DustParticle {
 	#[until="1.20.5"]
@@ -143,7 +146,7 @@ dispatch minecraft:particle[shriek] to struct ShriekParticle {
 
 #[since="1.21.5"]
 dispatch minecraft:particle[tinted_leaves] to struct TintedLeavesParticle {
-	color: RGBA,
+	color: RGBA
 }
 
 #[since="1.21.2"]
@@ -161,7 +164,7 @@ dispatch minecraft:particle[vibration] to struct VibrationParticle {
 	...VibrationParticleData,
 }
 
-struct VibrationParticleData {
+struct VibrationParticleData {	
 	/// Ticks in which to interpolate the particle's initial position to the destination.
 	arrival_in_ticks: int,
 	destination: SafePositionSource,
