@@ -10,7 +10,6 @@ use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::attribute::AttributeOperation
 
 // TODO: handle the "location based effects" thing
-
 #[since="1.21"]
 dispatch minecraft:resource[enchantment] to struct Enchantment {
 	description: Text,
@@ -18,17 +17,11 @@ dispatch minecraft:resource[enchantment] to struct Enchantment {
 		#[id(registry="enchantment", tags="allowed")] string |
 		[#[id="enchantment"] string] |
 	),
-	supported_items: (
-		#[id(registry="item", tags="allowed")] string |
-		[#[id="item"] string] |
-	),
+	supported_items: (#[id(registry="item", tags="allowed")] string | [#[id="item"] string]),
 	/// Item types for which this Enchantment shows up in Enchanting Tables and on traded equipment.
 	///
 	/// Must be a subset of `supported_items`.
-	primary_items?: (
-		#[id(registry="item", tags="allowed")] string |
-		[#[id="item"] string] |
-	),
+	primary_items?: (#[id(registry="item", tags="allowed")] string | [#[id="item"] string]),
 	/// How commonly the Enchantment appears, compared to the total combined `weight` of all available Enchantments.
 	weight: int @ 1..1024,
 	/// Maximum level of the enchantment.
@@ -166,13 +159,18 @@ dispatch minecraft:location_based_effect[all_of] to struct AllOfLocationBasedEff
 
 struct ApplyMobEffectEntityEffect {
 	/// If multiple mob effects are specified, a random effect is selected.
-	to_apply: (#[id(registry="mob_effect", tags="allowed")] string | [#[id="mob_effect"] string]),
+	to_apply: (
+		#[id(registry="mob_effect", tags="allowed")] string |
+		[#[id="mob_effect"] string] |
+	),
 	min_duration: LevelBasedValue,
 	max_duration: LevelBasedValue,
 	min_amplifier: LevelBasedValue,
 	max_amplifier: LevelBasedValue,
 }
+
 dispatch minecraft:entity_effect[apply_mob_effect] to ApplyMobEffectEntityEffect
+
 dispatch minecraft:location_based_effect[apply_mob_effect] to ApplyMobEffectEntityEffect
 
 struct DamageEntityEffect {
@@ -181,26 +179,32 @@ struct DamageEntityEffect {
 	min_damage: LevelBasedValue,
 	max_damage: LevelBasedValue,
 }
+
 dispatch minecraft:entity_effect[damage_entity] to DamageEntityEffect
+
 dispatch minecraft:location_based_effect[damage_entity] to DamageEntityEffect
 
 struct DamageItemEffect {
 	/// Damage to apply to the enchanted item.
 	/// The damage is not applied to items held by players in creative mode.
-	amount: LevelBasedValue
+	amount: LevelBasedValue,
 }
+
 #[until="1.21.2"]
 dispatch minecraft:entity_effect[damage_item] to DamageItemEffect
+
 #[until="1.21.2"]
 dispatch minecraft:location_based_effect[damage_item] to DamageItemEffect
 
 struct ChangeItemDamageEffect {
 	/// Damage to apply to the enchanted item. Negative values will repair the item.
 	/// The change is not applied to items held by players in creative mode.
-	amount: LevelBasedValue
+	amount: LevelBasedValue,
 }
+
 #[since="1.21.2"]
 dispatch minecraft:entity_effect[change_item_damage] to ChangeItemDamageEffect
+
 #[since="1.21.2"]
 dispatch minecraft:location_based_effect[change_item_damage] to ChangeItemDamageEffect
 
@@ -240,6 +244,7 @@ enum(string) BlockInteraction {
 }
 
 dispatch minecraft:entity_effect[explode] to ExplodeEntityEffect
+
 dispatch minecraft:location_based_effect[explode] to ExplodeEntityEffect
 
 struct IgniteEntityEffect {
@@ -248,15 +253,17 @@ struct IgniteEntityEffect {
 }
 
 dispatch minecraft:entity_effect[ignite] to IgniteEntityEffect
+
 dispatch minecraft:location_based_effect[ignite] to IgniteEntityEffect
 
 struct PlaySoundEntityEffect {
 	sound: SoundEventRef,
-	volume: FloatProvider<float @ 0.00001..10.0>,
-	pitch: FloatProvider<float @ 0.00001..2.0>,
+	volume: FloatProvider<float @ 0.00001..10>,
+	pitch: FloatProvider<float @ 0.00001..2>,
 }
 
 dispatch minecraft:entity_effect[play_sound] to PlaySoundEntityEffect
+
 dispatch minecraft:location_based_effect[play_sound] to PlaySoundEntityEffect
 
 struct ReplaceBlockEntityEffect {
@@ -270,6 +277,7 @@ struct ReplaceBlockEntityEffect {
 }
 
 dispatch minecraft:entity_effect[replace_block] to ReplaceBlockEntityEffect
+
 dispatch minecraft:location_based_effect[replace_block] to ReplaceBlockEntityEffect
 
 struct ReplaceDiskEntityEffect {
@@ -281,6 +289,7 @@ struct ReplaceDiskEntityEffect {
 }
 
 dispatch minecraft:entity_effect[replace_disk] to ReplaceDiskEntityEffect
+
 dispatch minecraft:location_based_effect[replace_disk] to ReplaceDiskEntityEffect
 
 /// Runs an mcfunction as/at the entity.
@@ -291,6 +300,7 @@ struct RunFunctionEntityEffect {
 }
 
 dispatch minecraft:entity_effect[run_function] to RunFunctionEntityEffect
+
 dispatch minecraft:location_based_effect[run_function] to RunFunctionEntityEffect
 
 struct SetBlockPropertiesEntityEffect {
@@ -302,6 +312,7 @@ struct SetBlockPropertiesEntityEffect {
 }
 
 dispatch minecraft:entity_effect[set_block_properties] to SetBlockPropertiesEntityEffect
+
 dispatch minecraft:location_based_effect[set_block_properties] to SetBlockPropertiesEntityEffect
 
 struct SpawnParticlesEntityEffect {
@@ -310,14 +321,14 @@ struct SpawnParticlesEntityEffect {
 	vertical_position: ParticlePosition,
 	horizontal_velocity: ParticleVelocity,
 	vertical_velocity: ParticleVelocity,
-	speed?: float
+	speed?: float,
 }
 
 dispatch minecraft:entity_effect[spawn_particles] to SpawnParticlesEntityEffect
+
 dispatch minecraft:location_based_effect[spawn_particles] to SpawnParticlesEntityEffect
 
 dispatch minecraft:location_based_effect[attribute] to AttributeEffect
-
 
 struct ParticlePosition {
 	type: ("entity_position" | "in_bounding_box"),
@@ -336,7 +347,10 @@ struct ParticleVelocity {
 
 dispatch minecraft:entity_effect[summon_entity] to struct SummonEntityEffect {
 	/// If multiple entity types are specified, a random entity type is selected.
-	entity: (#[id(registry="entity_type", tags="allowed")] string | [#[id="entity_type"] string]),
+	entity: (
+		#[id(registry="entity_type", tags="allowed")] string |
+		[#[id="entity_type"] string] |
+	),
 	/// Whether the summoned entity should join the team of the owner of the Enchanted Item.
 	join_team?: boolean,
 }
@@ -567,7 +581,10 @@ dispatch minecraft:effect_component[trident_spin_attack_strength] to ValueEffect
 /// Each entry in the list represents the sound at one level of the Enchantment, so the first entry represents the sound used by a level 1 Enchantment.
 dispatch minecraft:effect_component[trident_sound] to [SoundEventRef]
 
-type EnchantmentsType = (#[id(registry="enchantment", tags="allowed")] string | [#[id="enchantment"] string] @ 1..)
+type EnchantmentsType = (
+	#[id(registry="enchantment", tags="allowed")] string |
+	[#[id="enchantment"] string] @ 1.. |
+)
 
 /// Returns a specified Enchantment
 dispatch minecraft:enchantment_provider[single] to struct SingleProvider {
