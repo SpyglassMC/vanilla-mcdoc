@@ -8,7 +8,7 @@ dispatch minecraft:block_entity[banner] to struct Banner {
 	#[until="1.20.5"]
 	Patterns?: [BannerPatternLayer],
 	#[since="1.20.5"]
-	patterns?: [BannerPatternLayer],
+	patterns?: [BannerPatternLayer]
 }
 
 type BannerPatternLayer = (

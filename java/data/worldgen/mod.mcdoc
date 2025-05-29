@@ -23,7 +23,7 @@ enum(string) DecorationStep {
 	UndergroundDecoration = "underground_decoration",
 	FluidSprings = "fluid_springs",
 	VegetalDecoration = "vegetal_decoration",
-	TopLayerModification = "top_layer_modification",
+	TopLayerModification = "top_layer_modification"
 }
 
 enum(string) CaveSurface {
@@ -53,7 +53,7 @@ type ConstantIntProvider<T> = struct {
 
 dispatch minecraft:int_provider[constant] to (
 	#[until="1.20.5"] struct {
-		value: ConstantIntProvider,
+		value: ConstantIntProvider
 	} |
 	ConstantIntProvider |
 )
@@ -63,9 +63,9 @@ type UniformIntProvider<T> = struct {
 	max_inclusive: T,
 }
 
-dispatch minecraft:int_provider[uniform, biased_to_bottom] <T>to (
+dispatch minecraft:int_provider[uniform,biased_to_bottom]<T> to (
 	#[until="1.20.5"] struct {
-		value: UniformIntProvider<T>,
+		value: UniformIntProvider<T>
 	} |
 	#[since="1.20.5"] UniformIntProvider<T> |
 )
@@ -75,10 +75,9 @@ type ClampedIntProvider<T> = struct {
 	max_inclusive: T,
 	source: IntProvider<int>,
 }
-
-dispatch minecraft:int_provider[clamped] <T>to (
+dispatch minecraft:int_provider[clamped]<T> to (
 	#[until="1.20.5"] struct {
-		value: ClampedIntProvider<T>,
+		value: ClampedIntProvider<T>
 	} |
 	#[since="1.20.5"] ClampedIntProvider<T> |
 )
@@ -90,9 +89,9 @@ type ClampedNormalIntProvider<T> = struct {
 }
 
 #[since="1.18"]
-dispatch minecraft:int_provider[clamped_normal] <T>to (
+dispatch minecraft:int_provider[clamped_normal]<T> to (
 	#[until="1.20.5"] struct {
-		value: ClampedNormalIntProvider<T>,
+		value: ClampedNormalIntProvider<T>
 	} |
 	#[since="1.20.5"] ClampedNormalIntProvider<T> |
 )
@@ -106,6 +105,7 @@ type WeightListIntProvider<T> = struct {
 
 #[since="1.18"]
 dispatch minecraft:int_provider[weighted_list] to WeightListIntProvider
+
 
 type FloatProvider<T> = (
 	T |
@@ -121,14 +121,12 @@ type FloatProvider<T> = (
 type ConstantFloatProvider<T> = struct {
 	value: T,
 }
-
 dispatch minecraft:float_provider[constant] to ConstantFloatProvider
 
 type UniformFloatProvider<T> = struct {
 	min_inclusive: T,
 	max_exclusive: T,
 }
-
 dispatch minecraft:float_provider[uniform] to UniformFloatProvider
 
 type ClampedNormalFloatProvider<T> = struct {
@@ -137,7 +135,6 @@ type ClampedNormalFloatProvider<T> = struct {
 	mean: float,
 	deviation: float,
 }
-
 dispatch minecraft:float_provider[clamped_normal] to ClampedNormalFloatProvider
 
 type TrapezoidFloatProvider<T> = struct {
@@ -145,7 +142,6 @@ type TrapezoidFloatProvider<T> = struct {
 	max: T,
 	plateau: float,
 }
-
 dispatch minecraft:float_provider[trapezoid] to TrapezoidFloatProvider
 
 type VerticalAnchor = (
@@ -165,7 +161,7 @@ type HeightProvider = (
 		type: #[id="height_provider_type"] string,
 		...minecraft:height_provider[[type]],
 	} |
-	VerticalAnchor |
+	VerticalAnchor
 )
 
 dispatch minecraft:height_provider[constant] to struct ConstantHeightProvider {
@@ -177,7 +173,7 @@ dispatch minecraft:height_provider[uniform] to struct UniformHeightProvider {
 	max_inclusive: VerticalAnchor,
 }
 
-dispatch minecraft:height_provider[biased_to_bottom, very_biased_to_bottom] to struct BottomBiasHeightProvider {
+dispatch minecraft:height_provider[biased_to_bottom,very_biased_to_bottom] to struct BottomBiasHeightProvider {
 	...UniformHeightProvider,
 	inner?: int @ 1..,
 }

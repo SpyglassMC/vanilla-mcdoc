@@ -6,4 +6,4 @@ dispatch minecraft:block_entity[sculk_shrieker] to struct SculkShrieker {
 	listener?: VibrationListener,
 }
 
-dispatch minecraft:block[sculk_shrieker] to minecraft:block_entity[sculk_shrieker]
+dispatch minecraft:block[sculk_shrieker] to minecraft:block_entity[sculk_shrieker] 

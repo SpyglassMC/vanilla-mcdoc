@@ -1,6 +1,9 @@
 use ::java::util::block_state::BlockState
 
-type ConfiguredSurfaceBuilderRef = (#[id="worldgen/configured_surface_builder"] string | ConfiguredSurfaceBuilder)
+type ConfiguredSurfaceBuilderRef = (
+	#[id="worldgen/configured_surface_builder"] string |
+	ConfiguredSurfaceBuilder |
+)
 
 #[until="1.18"]
 dispatch minecraft:resource["worldgen/configured_surface_builder"] to struct ConfiguredSurfaceBuilder {

@@ -1,7 +1,10 @@
 use ::java::util::color::RGBA
 
 dispatch minecraft:resource["post_effect"] to struct PostEffect {
-	targets?: (#[until="1.21.2"] [(string | OldTarget)] | #[since="1.21.2"] Targets),
+	targets?: (
+		#[until="1.21.2"] [(string | OldTarget)] |
+		#[since="1.21.2"] Targets |
+	),
 	passes?: [Pass],
 }
 
@@ -43,19 +46,23 @@ type Pass = (
 		outtarget: string,
 		auxtargets?: [AuxTarget],
 		use_linear_filter?: boolean,
-		uniforms?: (#[until="1.21.6"] [UniformValue] | #[since="1.21.6"] UniformBlocks),
+		uniforms?: (
+			#[until="1.21.6"] [UniformValue] |
+			#[since="1.21.6"] UniformBlocks |
+		),
 	} |
 	#[since="1.21.2"] struct {
-		#[until="1.21.5"]
-		program: #[id="shader"] string,
-		#[since="1.21.5"]
-		...struct {
+		#[until="1.21.5"] program: #[id="shader"] string,
+		#[since="1.21.5"] ...struct {
 			vertex_shader: #[id="shader/vertex"] string,
 			fragment_shader: #[id="shader/fragment"] string,
 		},
 		inputs?: [(TargetInput | TextureInput)],
 		output: #[id="shader_target"] string,
-		uniforms?: (#[until="1.21.6"] [UniformValue] | #[since="1.21.6"] UniformBlocks),
+		uniforms?: (
+			#[until="1.21.6"] [UniformValue] |
+			#[since="1.21.6"] UniformBlocks |
+		),
 	} |
 )
 
@@ -88,12 +95,10 @@ struct UniformBlocks {
 }
 
 struct UniformValue {
-	#[until="1.21.6"]
-	...struct {
+	#[until="1.21.6"] ...struct {
 		name: string,
 	},
-	#[since="1.21.6"]
-	...struct {
+	#[since="1.21.6"] ...struct {
 		/// Unused by the game, but good to set in practice.
 		name?: string,
 	},

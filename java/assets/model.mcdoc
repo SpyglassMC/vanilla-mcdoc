@@ -1,6 +1,6 @@
 use ::java::util::direction::Direction
 
-type ModelRef = #[id(registry="model", exclude=["builtin/generated", "builtin/entity"])] string
+type ModelRef = #[id(registry="model",exclude=["builtin/generated","builtin/entity"])] string
 
 dispatch minecraft:resource[model] to struct Model {
 	parent?: #[id="model"] string,
@@ -42,7 +42,7 @@ struct ModelElement {
 		origin: [float] @ 3,
 		axis: Axis,
 		angle: (
-			#[until="1.21.6"] (-45 | -22.5 | 0 | 22.5 | 45) |
+			#[until="1.21.6"] (-45.0 | -22.5 | 0.0 | 22.5 | 45.0) |
 			#[since="1.21.6"] float @ -45..45 |
 		),
 		/// Defaults to `false`.

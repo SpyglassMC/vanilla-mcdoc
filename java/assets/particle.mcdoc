@@ -1,3 +1,3 @@
 dispatch minecraft:resource[particle] to struct Particle {
-	textures: [#[id(registry="texture", path="particle/")] string],
+	textures: [#[id(registry="texture",path="particle/")] string],
 }

@@ -1,15 +1,12 @@
 // Some aliases for common utils.
+
 // TODO - Add exports for all utilities to this file and refactor existing imports
+
 type BlockState = block_state::BlockState
-
 type DyeColorByte = color::DyeColorByte
-
 type DyeColorInt = color::DyeColorInt
-
 type DyeColor = color::DyeColor
-
 type EffectId = effect::EffectId
-
 type Particle = particle::Particle
 
 type Filterable<T> = (

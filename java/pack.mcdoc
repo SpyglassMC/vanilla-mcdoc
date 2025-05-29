@@ -33,22 +33,13 @@ struct PackFeatures {
 
 enum(string) FeatureFlag {
 	Vanilla = "vanilla",
-	#[until="1.20"]
-	Update120 = "update_1_20",
-	#[until="1.21.2"]
-	Bundle = "bundle",
-	#[since="1.20.2"]
-	TradeRebalance = "trade_rebalance",
-	#[since="1.20.3"]
-	#[until="1.21"]
-	Update121 = "update_1_21",
-	#[since="1.21.2"]
-	RedstoneExperiments = "redstone_experiments",
-	#[since="1.21.2"]
-	MinecartImprovements = "minecart_improvements",
-	#[since="1.21.2"]
-	#[until="1.21.4"]
-	WinterDrop = "winter_drop",
+	#[until="1.20"] Update120 = "update_1_20",
+	#[until="1.21.2"] Bundle = "bundle",
+	#[since="1.20.2"] TradeRebalance = "trade_rebalance",
+	#[since="1.20.3"] #[until="1.21"] Update121 = "update_1_21",
+	#[since="1.21.2"] RedstoneExperiments = "redstone_experiments",
+	#[since="1.21.2"] MinecartImprovements = "minecart_improvements",
+	#[since="1.21.2"] #[until="1.21.4"] WinterDrop = "winter_drop",
 }
 
 struct PackOverlays {
