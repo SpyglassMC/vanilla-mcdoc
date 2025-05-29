@@ -3,7 +3,6 @@ use ::java::world::item::ItemStack
 type SlottedItem<T> = struct {
 	...ItemStack,
 	/// Inventory slot the item is in
-
 	Slot?: T,
 }
 

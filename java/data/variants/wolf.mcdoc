@@ -4,10 +4,7 @@ use ::java::data::util::SoundEventRef
 dispatch minecraft:resource[wolf_variant] to struct WolfVariant {
 	#[until="1.21.5"]
 	...struct {
-		biomes: (
-			#[id(registry="worldgen/biome", tags="allowed")] string |
-			[#[id="worldgen/biome"] string] |
-		),
+		biomes: (#[id(registry="worldgen/biome",tags="allowed")] string | [#[id="worldgen/biome"] string]),
 		wild_texture: #[id="texture"] string,
 		tame_texture: #[id="texture"] string,
 		angry_texture: #[id="texture"] string,
@@ -15,7 +12,6 @@ dispatch minecraft:resource[wolf_variant] to struct WolfVariant {
 	#[since="1.21.5"]
 	...struct {
 		/// The texture set to use for this wolf variant.
-
 		assets: WolfVariantAssetInfo,
 		...super::SpawnPrioritySelectors,
 	},

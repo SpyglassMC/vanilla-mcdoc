@@ -5,54 +5,38 @@ use ::java::world::item::ItemStack
 struct ArrowBase {
 	...super::ProjectileBase,
 	/// Shake it creates.
-
 	shake?: byte,
 	/// How players can pick up it.
-
 	pickup?: Pickup,
 	/// Whether a player shot it.
-
 	#[until="1.16"]
 	player?: boolean,
 	/// Ticks since it last moved.
-
 	life?: short,
 	/// Damage it should deal.
-
 	damage?: double,
 	/// Whether it is in the ground.
-
 	inGround?: boolean,
 	/// Block it is in.
-
 	inBlockState?: BlockState,
 	/// Whether it should do critical damage.
-
 	crit?: boolean,
 	/// Whether it was shot from a crossbow.
-
 	#[until="1.21"]
 	ShotFromCrossbow?: boolean,
 	/// The item which has shot this arrow.
-
 	#[since="1.21"]
 	weapon?: ItemStack,
 	/// Number of entities it can pass through.
-
 	PierceLevel?: byte,
 	/// Sound event to play when it hits something.
-
 	///
-
 	/// Can only be vanilla sound events
-
 	SoundEvent?: #[id="sound_event"] string,
 	/// Upper bits of the owner's UUID.
-
 	#[until="1.16"]
 	OwnerUUIDMost?: long,
 	/// Lower bits of the owner's UUID.
-
 	#[until="1.16"]
 	OwnerUUIDLeast?: long,
 	#[since="1.20.3"]
@@ -68,22 +52,16 @@ enum(byte) Pickup {
 dispatch minecraft:entity[arrow] to struct Arrow {
 	...ArrowBase,
 	/// Color of the arrow's potion bubble trail particles.
-
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-
 	#[until="1.20.5"]
 	Color?: #[color="composite_rgb"] int,
 	/// Effects to give to the hit entity.
-
 	#[until="1.20.2"]
 	CustomPotionEffects?: [MobEffectInstance],
 	/// Effects to give to the hit entity.
-
-	#[since="1.20.2"]
-	#[until="1.20.3"]
+	#[since="1.20.2"] #[until="1.20.3"]
 	custom_potion_effects?: [MobEffectInstance],
 	/// Name of the default potion effect.
-
 	#[until="1.20.3"]
 	Potion?: #[id="mob_effect"] string,
 }
@@ -91,7 +69,6 @@ dispatch minecraft:entity[arrow] to struct Arrow {
 dispatch minecraft:entity[spectral_arrow] to struct SpectralArrow {
 	...ArrowBase,
 	/// Ticks the glowing effect lasts.
-
 	Duration?: int,
 }
 
@@ -100,6 +77,5 @@ dispatch minecraft:entity[trident] to struct Trident {
 	#[until="1.20.3"]
 	Trident?: ItemStack,
 	/// Whether it has already damaged an entity.
-
 	DealtDamage?: boolean,
 }

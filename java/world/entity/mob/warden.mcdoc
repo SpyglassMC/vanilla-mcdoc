@@ -4,22 +4,18 @@ use ::java::util::game_event::VibrationListener
 dispatch minecraft:entity[warden] to struct Warden {
 	...super::MobBase,
 	/// Anger management
-
 	anger?: AngerManagement,
 	/// Vibration listener
-
 	listener?: VibrationListener,
 }
 
 struct AngerManagement {
 	/// Suspects that have angered the warden.
-
 	suspects?: [Suspect],
 }
 
 struct Suspect {
 	/// Level of anger that will decrease by 1 every second.
-
 	anger?: int @ 1..150,
 	#[uuid]
 	uuid?: int[] @ 4,

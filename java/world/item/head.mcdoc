@@ -5,11 +5,12 @@ dispatch minecraft:item[player_head] to struct PlayerHead {
 
 struct SkullOwner {
 	/// Optional.
-
 	#[uuid]
-	Id?: (#[until="1.16"] string | #[since="1.16"] int[] @ 4),
+	Id?: (
+		#[until="1.16"] string |
+		#[since="1.16"] int[] @ 4 |
+	),
 	/// Name of the owner, if missing appears as a steve head.
-
 	Name?: string,
 	Properties?: Properties,
 }
@@ -21,6 +22,5 @@ struct Properties {
 struct Texture {
 	Signature?: string,
 	/// Base64 encoded JSON value of the texture index.
-
 	Value?: string,
 }

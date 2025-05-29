@@ -3,32 +3,24 @@ use ::java::world::component::entity::FoxType
 dispatch minecraft:entity[fox] to struct Fox {
 	...super::Breedable,
 	/// List of trusted players.
-
 	#[until="1.16"]
 	TrustedUUIDs?: [#[uuid] TrustedUUID],
 	/// List of trusted players.
-
 	#[since="1.16"]
 	Trusted?: [#[uuid] int[] @ 4],
 	/// Whether it is sleeping.
-
 	Sleeping?: boolean,
 	/// The type of fox.
-
 	Type?: FoxType,
 	/// Whether it is sitting.
-
 	Sitting?: boolean,
 	/// Whether it is crouching.
-
 	Crouching?: boolean,
 }
 
 struct TrustedUUID {
 	/// Lower bits of the trusted player's UUID.
-
 	L?: long,
 	/// Upper bits of the trusted player's UUID.
-
 	M?: long,
 }

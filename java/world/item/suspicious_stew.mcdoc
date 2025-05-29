@@ -3,15 +3,12 @@ use ::java::util::EffectId
 dispatch minecraft:item[suspicious_stew] to struct SuspiciousStew {
 	...super::ItemBase,
 	/// Effects this stew will give.
-
 	Effects?: [Effect],
 }
 
 /// A suspicious stew effect.
-
 struct Effect {
 	EffectId?: EffectId,
 	/// Duration in ticks.
-
 	EffectDuration?: int @ 1..,
 }

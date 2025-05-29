@@ -3,7 +3,7 @@ dispatch minecraft:item[
 	leather_leggings,
 	leather_chestplate,
 	leather_helmet,
-	leather_horse_armor,
+	leather_horse_armor
 ] to struct LeatherArmor {
 	...super::ItemBase,
 	display?: ColorDisplay,
@@ -12,8 +12,6 @@ dispatch minecraft:item[
 struct ColorDisplay {
 	...super::Display,
 	/// Color of the armor.
-
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
-
 	color?: #[color="composite_rgb"] int,
 }

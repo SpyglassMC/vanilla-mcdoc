@@ -12,42 +12,33 @@ dispatch minecraft:test_instance[block_based] to struct BlockBasedTestInstance {
 dispatch minecraft:test_instance[function] to struct FunctionTestInstance {
 	...TestData,
 	/// Test function (Java code) to run.
-
 	function: #[id="test_function"] string,
 }
 
 struct TestData {
 	/// The test environment to run this test as part of.
-
-	environment: (#[id="test_environment"] string | TestEnvironment),
+	environment: (
+		#[id="test_environment"] string |
+		TestEnvironment |
+	),
 	/// Structure NBT file to use for the test.
-
 	structure: #[id="structure"] string,
 	/// Maximum number of ticks allowed to pass before the test is considered timed out.
-
 	max_ticks: int @ 1..,
 	/// Ticks to wait after placing the structure before starting the test. Defaults to `0`.
-
 	setup_ticks?: int @ 0..,
 	/// Whether the test is considered required to pass for the full test suite to pass. Defaults to `true`.
-
 	required?: boolean,
 	/// Rotation to apply to the test structure. Defaults to `none`.
-
 	rotation?: Rotation,
 	/// If `true`, test is not included as part of automated test runs. Defaults to `false`.
-
 	manual_only?: boolean,
 	/// Number of attempts to run the test. Defaults to `1`.
-
 	max_attempts?: int @ 1..,
 	/// Number of attempts that must succeed for the test to be considered successful. Defaults to `1`.
-
 	required_successes?: int @ 1..,
 	/// Whether the test needs clear access to the sky. Defaults to `false`.
-
 	/// If `false`, test is enclosed in barrier blocks. If `true`, the top is left open.
-
 	sky_access?: boolean,
 }
 

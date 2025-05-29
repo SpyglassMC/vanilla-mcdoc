@@ -5,47 +5,32 @@ dispatch minecraft:block_entity[furnace, blast_furnace, smoker] to struct Furnac
 	...super::Nameable,
 	...super::Lockable,
 	/// The items in this furnace, with slots:
-
 	/// * 0: Item being smelted
-
 	/// * 1: Fuel
-
 	/// * 2: Output
-
 	Items?: [SlottedItem<byte @ 0..2>] @ 0..3,
-	#[until="1.21.4"]
-	...struct {
+	#[until="1.21.4"] ...struct {
 		/// Ticks until the current fuel runs out.
-
 		BurnTime?: short,
 		/// Ticks the item has been smelting for.
-
 		CookTime?: short,
 		/// Total ticks the item will take to be smelted.
-
 		CookTimeTotal?: short,
 	},
-	#[since="1.21.4"]
-	...struct {
+	#[since="1.21.4"] ...struct {
 		/// Total ticks the item will take to be smelted.
-
 		cooking_total_time?: short,
 		/// Ticks the item has been smelting for.
-
 		cooking_time_spent?: short,
 		/// Ticks until the current fuel runs out.
-
 		lit_time_remaining?: short,
 		/// Total ticks the current fuel will burn.
-
 		lit_total_time?: short,
 	},
 	/// Recipes that have been used since the last time a result item was removed from the GUI. Used to calculate the experience to give to the player.
-
 	#[since="1.16"]
 	RecipesUsed?: struct RecipesUsed {
 		/// How many times this recipe has been used.
-
 		[#[id="recipe"] string]: int,
 	},
 }

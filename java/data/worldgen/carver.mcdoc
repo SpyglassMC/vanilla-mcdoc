@@ -3,14 +3,20 @@ use super::HeightProvider
 use super::VerticalAnchor
 use super::FloatProvider
 
-type CarverRef = (#[id="worldgen/configured_carver"] string | ConfiguredCarver)
+type CarverRef = (
+	#[id="worldgen/configured_carver"] string |
+	ConfiguredCarver |
+)
 
 dispatch minecraft:resource["worldgen/configured_carver"] to struct ConfiguredCarver {
 	type: #[id="worldgen/carver"] string,
 	config: struct CarverConfigBase {
 		probability: float @ 0..1,
 		#[since="1.19"]
-		replaceable?: ([#[id="block"] string] | #[id(registry="block", tags="allowed")] string),
+		replaceable?: (
+			[#[id="block"] string] |
+			#[id(registry="block",tags="allowed")] string |
+		),
 		#[since="1.17"]
 		...struct ModernCarverConfig {
 			y: HeightProvider,
@@ -48,7 +54,7 @@ struct CanyonShape {
 }
 
 #[since="1.17"]
-dispatch minecraft:carver_config[cave, nether_cave] to struct CaveConfig {
+dispatch minecraft:carver_config[cave,nether_cave] to struct CaveConfig {
 	horizontal_radius_multiplier: FloatProvider<float>,
 	vertical_radius_multiplier: FloatProvider<float>,
 	floor_level: FloatProvider<float @ -1..1>,

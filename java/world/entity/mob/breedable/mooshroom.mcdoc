@@ -5,11 +5,9 @@ dispatch minecraft:entity[mooshroom] to struct Mooshroom {
 	...super::Breedable,
 	Type?: MooshroomType,
 	/// Effect that the mooshroom gives to suspicious stew.
-
 	#[until="1.20.2"]
 	EffectId?: EffectId,
 	/// Duration of the suspicious stew effect.
-
 	#[until="1.20.2"]
 	EffectDuration?: int,
 	#[since="1.20.2"]

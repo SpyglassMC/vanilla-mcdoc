@@ -5,7 +5,10 @@ use super::super::IntProvider
 use super::super::HeightmapType
 use super::super::HeightProvider
 
-type PlacedFeatureRef = (#[id="worldgen/placed_feature"] string | PlacedFeature)
+type PlacedFeatureRef = (
+	#[id="worldgen/placed_feature"] string |
+	PlacedFeature |
+)
 
 dispatch minecraft:resource["worldgen/placed_feature"] to struct PlacedFeature {
 	feature: ConfiguredFeatureRef,
@@ -30,7 +33,7 @@ dispatch minecraft:placement_modifier[rarity_filter] to struct RarityFilter {
 	chance: int @ 0..,
 }
 
-dispatch minecraft:placement_modifier[count, count_on_every_layer] to struct CountModifier {
+dispatch minecraft:placement_modifier[count,count_on_every_layer] to struct CountModifier {
 	count: IntProvider<int @ 0..256>,
 }
 
@@ -61,7 +64,6 @@ enum(string) SearchDirection {
 #[since="1.21"]
 dispatch minecraft:placement_modifier[fixed_placement] to struct FixedPlacementModifier {
 	/// Fixed list of block positions to place the feature at.
-
 	positions: [[int] @ 3],
 }
 

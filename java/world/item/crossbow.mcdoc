@@ -3,9 +3,7 @@ use ::java::world::item::ItemStack
 dispatch minecraft:item[crossbow] to struct Crossbow {
 	...super::ItemBase,
 	/// Projectiles that are loaded.
-
 	ChargedProjectiles?: [ItemStack] @ 0..3,
 	/// Whether the crossbow is charged.
-
 	Charged?: boolean,
 }

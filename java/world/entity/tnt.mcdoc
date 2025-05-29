@@ -3,21 +3,17 @@ use ::java::util::block_state::BlockState
 dispatch minecraft:entity[tnt] to struct Tnt {
 	...super::EntityBase,
 	/// Ticks until it explodes.
-
 	#[until="1.20.3"]
 	Fuse?: short,
 	/// Ticks until it explodes.
-
 	#[since="1.20.3"]
 	fuse?: short,
 	/// Defaults to tnt.
-
 	#[since="1.20.3"]
 	block_state?: BlockState,
 	#[since="1.21.2"]
 	explosion_power?: float @ 0..128,
 	/// The entity that primed this TNT.
-
 	#[since="1.21.6"]
 	owner?: #[uuid] int[] @ 4,
 }

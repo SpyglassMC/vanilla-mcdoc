@@ -7,24 +7,19 @@ use ::java::util::slot::SlottedItem
 
 struct ContainerMinecart {
 	/// Loot table that will populate this minecart.
-
 	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.
-
 	LootTableSeed?: #[random] long,
 }
 
 dispatch minecraft:entity[minecart] to struct Minecart {
 	...super::EntityBase,
 	/// Whether to display a custom block. Must be true for custom display block to be displayed.
-
 	#[until="1.21.5"]
 	CustomDisplayTile?: boolean,
 	/// Custom block to display.
-
 	DisplayState?: BlockState,
 	/// Vertical offset of the block display.
-
 	DisplayOffset?: int,
 }
 
@@ -32,7 +27,6 @@ dispatch minecraft:entity[chest_minecart] to struct ChestMinecart {
 	...Minecart,
 	...ContainerMinecart,
 	/// Slots from 0 to 26.
-
 	Items?: [SlottedItem<byte @ 0..26>] @ 0..27,
 }
 
@@ -44,13 +38,10 @@ dispatch minecraft:entity[command_block_minecart] to struct CommandBlockMinecart
 dispatch minecraft:entity[furnace_minecart] to struct FurnaceMinecart {
 	...Minecart,
 	/// Acceleration in x axis.
-
 	PushX?: double,
 	/// Acceleration in z axis.
-
 	PushZ?: double,
 	/// Ticks until the fuel runs out.
-
 	Fuel?: short,
 }
 
@@ -58,63 +49,50 @@ dispatch minecraft:entity[hopper_minecart] to struct HopperMinecart {
 	...Minecart,
 	...ContainerMinecart,
 	/// Slots from 0 to 4.
-
 	Items?: [SlottedItem<byte @ 0..4>] @ 0..5,
 	/// Ticks until an item can be transferred.
-
 	TransferCooldown?: int,
 	/// Whether it should pick up items.
-
 	Enabled?: boolean,
 }
 
 dispatch minecraft:entity[spawner_minecart] to struct SpawnerMinecart {
 	...Minecart,
 	/// List of potential entities to place next.
-
 	SpawnPotentials?: [SpawnPotential],
 	/// Data for the next mob to place.
-
 	/// Will be overwritten by `SpawnPotentials`.
-
-	SpawnData?: (#[until="1.18"] AnyEntity | #[since="1.18"] SpawnerEntry),
+	SpawnData?: (
+		#[until="1.18"] AnyEntity |
+		#[since="1.18"] SpawnerEntry |
+	),
 	/// Number of entities that will be placed.
-
 	SpawnCount: short,
 	/// Range that the spawned entities will be placed in.
-
 	SpawnRange?: short,
 	/// Ticks until the next spawn.
-
 	Delay?: short,
 	/// Minimum random delay for the next spawn.
-
 	MinSpawnDelay?: short,
 	/// Maximum random delay for the next spawn.
-
 	MaxSpawnDelay?: short,
 	/// Maximum number of entities nearby.
-
 	MaxNearbyEntities?: short,
 	/// Radius in blocks that a player has to be within to spawn entities.
-
 	RequiredPlayerRange?: short,
 }
 
 dispatch minecraft:entity[tnt_minecart] to struct TntMinecart {
 	...Minecart,
 	/// Ticks until it explodes.
-
 	#[until="1.21.4"]
 	TNTFuse?: int,
 	/// Ticks until it explodes.
-
 	#[since="1.21.4"]
 	fuse?: int,
 	#[since="1.21.2"]
 	explosion_power?: float @ 0..128,
 	/// Controls the amount of added damage depending on the speed of the minecart.
-
 	#[since="1.21.4"]
 	explosion_speed_factor?: float @ 0..128,
 }

@@ -3,7 +3,6 @@ use ::java::world::item::ItemStack
 dispatch minecraft:entity[breeze_wind_charge] to struct AcceleratingProjectileBase {
 	...super::ProjectileBase,
 	/// Acceleration
-
 	#[until="1.21"]
 	power?: [double] @ 3,
 	#[since="1.21"]
@@ -15,11 +14,9 @@ dispatch minecraft:entity[dragon_fireball] to struct DespawnableProjectileBase {
 	#[until="1.16"]
 	direction?: [double] @ 3,
 	/// Ticks since it last moved.
-
 	#[until="1.16"]
 	life?: short,
 }
-
 dispatch minecraft:entity[wither_skull] to struct WitherSkull {
 	...DespawnableProjectileBase,
 	#[since="1.20.3"]
@@ -29,13 +26,11 @@ dispatch minecraft:entity[wither_skull] to struct WitherSkull {
 dispatch minecraft:entity[small_fireball] to struct FireballBase {
 	...DespawnableProjectileBase,
 	/// Item it should render as.
-
 	Item?: ItemStack,
 }
 
 dispatch minecraft:entity[fireball] to struct LargeFireball {
 	...FireballBase,
 	/// Explosion radius.
-
 	ExplosionPower?: int,
 }

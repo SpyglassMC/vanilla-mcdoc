@@ -4,10 +4,8 @@ use ::java::world::block::banner::BannerPatternLayer
 dispatch minecraft:item[shield] to struct Shield {
 	...super::ItemBase,
 	/// Banner Data.
-
 	BlockEntityTag?: struct BlockEntityTag {
 		/// Base color.
-
 		Base?: DyeColorInt,
 		Patterns?: [BannerPatternLayer],
 	},

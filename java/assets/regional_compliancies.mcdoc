@@ -4,7 +4,6 @@ dispatch minecraft:resource[regional_compliancies] to struct RegionalCompliancie
 }
 
 /// Region code.
-
 struct Notification {
 	delay?: long,
 	period: long,

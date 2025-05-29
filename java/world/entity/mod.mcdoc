@@ -2,80 +2,61 @@ use ::java::util::text::Text
 use ::java::world::component::CustomData
 
 /// Base NBT for all entities,
-
 struct EntityBase {
 	Pos?: [double] @ 3,
 	Motion?: [double] @ 3,
 	/// Rotation in [y-rotation, x-rotation]
-
 	Rotation?: [float] @ 2,
 	/// How far the entity has fallen.
-
 	#[until="1.21.5"]
 	FallDistance?: float,
 	/// How far the entity has fallen.
-
 	#[since="1.21.5"]
 	fall_distance?: double,
 	/// Ticks of fire left, or if negative, ticks until the entity starts to burn.
-
 	Fire?: short,
 	/// Ticks of air left.
-
 	Air?: short,
 	/// Whether the entity has visual fire.
-
 	#[since="1.17"]
 	HasVisualFire?: boolean,
 	/// Whether the entity is on the ground.
-
 	OnGround?: boolean,
 	/// Whether the entity should be effected by gravity.
-
 	NoGravity?: boolean,
 	/// Whether the entity should take damage.
-
 	Invulnerable?: boolean,
 	/// How long until the entity can go through a nether portal.
-
 	PortalCooldown?: int,
 	/// Upper bits of the entity's UUID.
-
 	#[until="1.16"]
 	UUIDMost?: long,
 	/// Lower bits of the entity's UUID.
-
 	#[until="1.16"]
 	UUIDLeast?: long,
 	#[uuid]
 	#[since="1.16"]
 	UUID?: int[] @ 4,
-	CustomName?: (#[until="1.21.5"] #[text_component] string | #[since="1.21.5"] Text),
+	CustomName?: (
+		#[until="1.21.5"] #[text_component] string |
+		#[since="1.21.5"] Text |
+	),
 	/// Whether the custom name should always be visible.
-
 	CustomNameVisible?: boolean,
 	/// Whether the entity should make any sound.
-
 	Silent?: boolean,
 	/// Passengers on the entity.
-
 	Passengers?: [AnyEntity],
 	/// Whether the entity should glow.
-
 	Glowing?: boolean,
 	/// Labelling tags on the entity.
-
 	Tags?: [#[tag] string],
 	/// Any stored data
-
 	#[since="1.21.5"]
 	data?: CustomData,
 	/// Ticks that this entity has been freezing. Although this tag is defined for all entities,
-
 	/// it is actually only used by mobs that are not in the `freeze_immune_entity_types` entity type tag.
-
 	/// This increases by one every tick the entity is in powdered snow, and decreases by two when it's out of it.
-
 	#[since="1.17"]
 	TicksFrozen?: int,
 }
@@ -96,7 +77,6 @@ dispatch minecraft:entity[leash_knot] to BlockAttachedEntity
 
 struct AnyEntity {
 	/// The ID of this entity. Not present on player entities.
-
 	id: #[id="entity_type"] string,
 	...minecraft:entity[[id]],
 }

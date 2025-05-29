@@ -2,7 +2,6 @@
 dispatch minecraft:resource[cow_variant] to struct CowVariant {
 	model?: CowModelType,
 	/// The cow texture to use for this variant.
-
 	asset_id: #[id="texture"] string,
 	...super::SpawnPrioritySelectors,
 }

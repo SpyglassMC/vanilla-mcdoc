@@ -10,56 +10,58 @@ dispatch minecraft:recipe_serializer[%unknown] to struct {}
 
 dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 	/// Identifier to group multiple recipes in the recipe book.
-
-	group?: string,
-	// TODO
+	group?: string, // TODO
 	/// Identifier for the category this goes in the recipe book.
-
 	category?: CraftingBookCategory,
 	pattern: [#[crafting_ingredient(definition=true)] string @ 1..3] @ 1..3,
 	key: struct CraftingIngredients {
 		[#[crafting_ingredient] string]: Ingredient,
 	},
-	result: (#[until="1.20.5"] ItemResult | #[since="1.20.5"] ItemStack),
+	result: (
+		#[until="1.20.5"] ItemResult |
+		#[since="1.20.5"] ItemStack |
+	),
 	/// Determines if a notification is shown when unlocking this recipe. Defaults to true.
-
 	#[since="1.19.4"]
-	show_notification?: boolean,
+	show_notification?: boolean
 }
 
 dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShapeless {
 	group?: string,
 	/// Identifier for the category this goes in the recipe book.
-
 	category?: CraftingBookCategory,
 	ingredients: [Ingredient] @ 1..9,
-	result: (#[until="1.20.5"] ItemResult | #[since="1.20.5"] ItemStack),
+	result: (
+		#[until="1.20.5"] ItemResult |
+		#[since="1.20.5"] ItemStack |
+	),
 }
 
 #[since="1.21.2"]
 dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTransmute {
 	group?: string,
 	/// Identifier for the category this goes in the recipe book.
-
 	category?: CraftingBookCategory,
 	/// The ingredient that will transfer its data components to the result item.
-
 	input: Ingredient,
 	/// An additional ingredient.
-
 	material: Ingredient,
 	/// The result item that will be merged with the input ingredient.
-
-	result: (#[id="item"] string | #[since="1.21.5"] ItemStack),
+	result: (
+		#[id="item"] string |
+		#[since="1.21.5"] ItemStack |
+	),
 }
 
-dispatch minecraft:recipe_serializer[smelting, blasting, smoking, campfire_cooking] to struct Smelting {
+dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
 	group?: string,
 	/// Identifier for the category this goes in the recipe book.
-
 	category?: CookingBookCategory,
 	ingredient: Ingredient,
-	result: (#[until="1.20.5"] #[id="item"] string | #[since="1.20.5"] SingleItem),
+	result: (
+		#[until="1.20.5"] #[id="item"] string |
+		#[since="1.20.5"] SingleItem |
+	),
 	experience?: float,
 	cookingtime?: int,
 }
@@ -67,7 +69,10 @@ dispatch minecraft:recipe_serializer[smelting, blasting, smoking, campfire_cooki
 dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
 	group?: string,
 	ingredient: Ingredient,
-	result: (#[until="1.20.5"] #[id="item"] string | #[since="1.20.5"] ItemStack),
+	result: (
+		#[until="1.20.5"] #[id="item"] string |
+		#[since="1.20.5"] ItemStack |
+	),
 	#[until="1.20.5"]
 	count: int,
 }
@@ -82,24 +87,18 @@ dispatch minecraft:recipe_serializer[smithing] to struct Smithing {
 type SmithingIngredients = (
 	#[until="1.21.2"] struct RequiredSmithingIngredients {
 		/// Ingredient specifying an item to be trimmed. (eg. `{ "tag": "minecraft:trimmable_armor" }`)
-
 		base: Ingredient,
 		/// Material that will be used. (eg. `{ "tag": "minecraft:trim_materials" }`)
-
 		addition: Ingredient,
 		/// Template item that will be used for the pattern.
-
 		template: Ingredient,
 	} |
 	#[since="1.21.2"] struct OptionalSmithingIngredients {
 		/// Ingredient specifying an item to be trimmed. (eg. `"#minecraft:trimmable_armor"`)
-
 		base?: Ingredient,
 		/// Material that will be used. (eg. `"#minecraft:trim_materials"`)
-
 		addition?: Ingredient,
 		/// Template item that will be used for the pattern.
-
 		template?: Ingredient,
 	} |
 )
@@ -107,49 +106,39 @@ type SmithingIngredients = (
 #[since="1.19.4"]
 dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTransform {
 	/// Ingredient specifying an item to be transformed.
-
 	base: Ingredient,
 	#[until="1.21.2"]
 	...struct {
 		/// Material that will be used.
-
 		addition: Ingredient,
 		/// Template item that will be used for the pattern.
-
 		template: Ingredient,
 	},
 	#[since="1.21.2"]
 	...struct {
 		/// Material that will be used.
-
 		addition?: Ingredient,
 		/// Template item that will be used for the pattern.
-
 		template?: Ingredient,
 	},
 	/// Resulting transformed item.
-
 	result: (
 		#[until="1.20.5"] struct SmithingTransformResult {
 			item: #[id="item"] string,
 		} |
 		#[since="1.20.5"] ItemStack |
-	),
+	)
 }
 
 #[since="1.19.4"]
 dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
 	/// Ingredient specifying an item to be trimmed.
-
 	base: Ingredient,
 	/// Material that will be used.
-
 	addition: Ingredient,
 	/// Template item that will be used for the pattern.
-
 	template: Ingredient,
 	/// The trim pattern to apply to the result item.
-
 	#[since="1.21.5"]
 	pattern: #[id="trim_pattern"] string,
 }
@@ -157,24 +146,23 @@ dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
 #[until="1.20.5"]
 struct ItemResult {
 	item: #[id="item"] string,
-	count?: int,
+	count?: int
 }
 
 type Ingredient = (
 	#[until="1.21.2"] IngredientValue |
 	#[until="1.21.2"] [IngredientValue] |
-	#[since="1.21.2"] [#[id(registry="item", exclude=["air"])] string] @ 1.. |
-	#[since="1.21.2"] #[id(registry="item", tags="allowed", exclude=["air"])] string |
+	#[since="1.21.2"] [#[id(registry="item",exclude=["air"])] string] @ 1.. |
+	#[since="1.21.2"] #[id(registry="item",tags="allowed",exclude=["air"])] string | // TODO: forbid empty tags
 )
 
-// TODO: forbid empty tags
 #[until="1.21.2"]
 type IngredientValue = (
 	struct IngredientItem {
 		item: #[id="item"] string,
 	} |
 	struct IngredientTag {
-		tag: #[id(registry="item", tags="implicit")] string,
+		tag: #[id(registry="item",tags="implicit")] string,
 	} |
 )
 

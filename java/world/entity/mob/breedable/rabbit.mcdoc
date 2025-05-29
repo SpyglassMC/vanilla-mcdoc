@@ -2,7 +2,6 @@ dispatch minecraft:entity[rabbit] to struct Rabbit {
 	...super::Breedable,
 	RabbitType?: RabbitType,
 	/// Ticks down once a carrot crop is eaten
-
 	MoreCarrotTicks?: int,
 }
 

@@ -1,22 +1,18 @@
 // Some aliases for common utils.
+
 // TODO - Add exports for all utilities to this file and refactor existing imports
+
 type BlockState = block_state::BlockState
-
 type DyeColorByte = color::DyeColorByte
-
 type DyeColorInt = color::DyeColorInt
-
 type DyeColor = color::DyeColor
-
 type EffectId = effect::EffectId
-
 type Particle = particle::Particle
 
 type Filterable<T> = (
 	struct FilteredText {
 		raw: T,
 		/// Shown only to players with chat filtering enabled.
-
 		filtered?: T,
 	} |
 	T |
@@ -24,10 +20,8 @@ type Filterable<T> = (
 
 struct GlobalPos {
 	/// Coordinates of the location in [x, y, z]
-
 	pos: int[] @ 3,
 	/// Dimension of the location
-
 	dimension: #[id="dimension"] string,
 }
 

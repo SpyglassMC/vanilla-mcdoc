@@ -1,6 +1,6 @@
 use ::java::util::direction::Direction
 
-type ModelRef = #[id(registry="model", exclude=["builtin/generated", "builtin/entity"])] string
+type ModelRef = #[id(registry="model",exclude=["builtin/generated","builtin/entity"])] string
 
 dispatch minecraft:resource[model] to struct Model {
 	parent?: #[id="model"] string,
@@ -42,11 +42,10 @@ struct ModelElement {
 		origin: [float] @ 3,
 		axis: Axis,
 		angle: (
-			#[until="1.21.6"] (-45 | -22.5 | 0 | 22.5 | 45) |
+			#[until="1.21.6"] (-45.0 | -22.5 | 0.0 | 22.5 | 45.0) |
 			#[since="1.21.6"] float @ -45..45 |
 		),
 		/// Defaults to `false`.
-
 		rescale?: boolean,
 	},
 	shade?: boolean,
@@ -95,20 +94,16 @@ enum(string) Predicates {
 	Damaged = "damaged",
 	Firework = "firework",
 	/// The honey level on bee nests and beehives.
-
 	HoneyLevel = "honey_level",
 	Lefthanded = "lefthanded",
 	/// The `level` block state on light items.
-
 	Level = "level",
 	Pull = "pull",
 	Pulling = "pulling",
 	/// Whether the trident is being used.
-
 	Throwing = "throwing",
 	Time = "time",
 	/// Whether the goat horn is being used.
-
 	Tooting = "tooting",
 	TrimType = "trim_type",
 }

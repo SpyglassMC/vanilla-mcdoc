@@ -1,7 +1,6 @@
 dispatch minecraft:entity[ender_dragon] to struct EnderDragon {
 	...super::MobBase,
 	/// Fighting phase it is in.
-
 	DragonPhase?: DragonPhase,
 }
 

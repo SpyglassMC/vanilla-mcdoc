@@ -7,10 +7,9 @@ use ::java::world::component::item::Trim
 
 struct SingleItem {
 	/// ID of the item.
-
 	id: (
 		#[until="1.20.5"] #[id="item"] string |
-		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |
+		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |	
 	),
 	#[since="1.20.5"]
 	components?: DataComponentPatch,
@@ -21,11 +20,9 @@ struct SingleItem {
 type ItemStack = struct {
 	...SingleItem,
 	/// Number of items in the stack
-
 	#[since="1.20.5"]
 	count?: int @ 1..99,
 	/// Number of items in the stack
-
 	#[until="1.20.5"]
 	Count?: byte,
 }
@@ -33,100 +30,77 @@ type ItemStack = struct {
 // Until 1.20.5
 struct ItemBase {
 	/// Damage that an item has. Only used for tools, armor, etc.
-
 	Damage?: int,
 	/// Whether the item should be unbreakable.
-
 	/// Only used for tools, armor, etc.
-
 	Unbreakable?: boolean,
 	/// List of the block states that can be destroyed by this item when holding it in adventure mode.
-
 	CanDestroy?: [#[block_predicate] string],
 	/// List of blockstates that this block item can be placed on.
-
 	CanPlaceOn?: [#[block_predicate] string],
 	/// Tag that describes the custom model an item will take.
-
 	/// Used by the `custom_model_data` model overrides predicate.
-
 	/// Has certain restrictions due to float conversion.
-
 	CustomModelData?: int,
 	/// List of enchantments that are on the item.
-
 	Enchantments?: [Enchantment],
 	/// Number of experience levels to add to the base level cost when repairing, combining, or renaming this item with an anvil.
-
 	RepairCost?: int,
 	/// Applied to an entity that has equipped the item.
-
 	AttributeModifiers?: [AttributeModifier],
 	/// Display settings.
-
 	display?: Display,
 	/// Bitfield for which flags to hide on an item.
-
-	#[bitfield(
-		enum(int) {
-			Enchantments = 1,
-			AttributeModifiers = 2,
-			Unbreakable = 3,
-			CanDestroy = 4,
-			CanPlaceOn = 5,
-			Other = 6,
-			#[since="1.16.2"]
-			LeatherColor = 7,
-			#[since="1.19.4"]
-			Trim = 8,
-		},
-	)]
+	#[bitfield(enum (int) {
+		Enchantments = 1,
+		AttributeModifiers = 2,
+		Unbreakable = 3,
+		CanDestroy = 4,
+		CanPlaceOn = 5,
+		Other = 6,
+		#[since="1.16.2"]
+		LeatherColor = 7,
+		#[since="1.19.4"]
+		Trim = 8
+	})]
 	HideFlags?: int,
 	/// Trim to apply to the item & armor when worn.
-
 	#[since="1.19.4"]
 	Trim?: Trim,
 	/// Custom item NBT tags
-
 	[string]: any,
 }
 
 dispatch minecraft:item[%unknown] to ItemBase
 
 /// An individual enchantment, with ID and level.
-
 struct Enchantment {
 	/// Which enchantment is being described.
-
 	id?: #[id="enchantment"] string,
 	/// Which level the enchantment is.
-
-	lvl?: (#[until="1.17"] (short @ 1.. | int @ 1..) | #[since="1.17"] int @ 0..255),
+	lvl?: (
+		#[until="1.17"] (short @ 1.. | int @ 1..) |
+		#[since="1.17"] int @ 0..255 |
+	),
 }
 
 /// A single attribute modifier.
-
 struct AttributeModifier {
 	AttributeName?: (
 		#[until="1.16"] (AttributeName | string) |
 		#[since="1.16"] #[id="attribute"] string |
 	),
 	/// Identifying name of the modifier, has no real effect.
-
 	Name?: string,
 	/// Slot that the modifier is active in.
-
 	Slot?: EquipmentSlotGroup,
 	Operation?: LegacyOperation,
 	/// Change in the attribute.
-
 	Amount?: double,
 	/// Upper bits of the modifier's UUID.
-
 	#[until="1.16"]
 	UUIDMost?: long,
 	/// Lower bits of the modifier's UUID.
-
 	#[until="1.16"]
 	UUIDLeast?: long,
 	#[uuid]
@@ -135,22 +109,17 @@ struct AttributeModifier {
 }
 
 /// Display settings of an item.
-
 struct Display {
 	/// A JSON text component.
-
 	Name?: #[text_component] string,
 	/// A list of JSON text components, each element being a lore line.
-
 	Lore?: [#[text_component] string],
 }
 
 /// An item that can be placed as a block
-
 dispatch minecraft:item[%blockitem] to struct BlockItem {
 	...ItemBase,
 	BlockEntityTag?: BlockEntityData,
 	/// Blockstate that the placed block will have.
-
 	BlockStateTag?: mcdoc:block_item_states[[%parent.id]],
 }

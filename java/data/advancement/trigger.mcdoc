@@ -16,7 +16,11 @@ type RequiredConditions<C> = struct {
 	conditions: C,
 }
 
-type CompositeEntity = (EntityPredicate | #[since="1.16"] [LootCondition])
+type CompositeEntity = (
+	EntityPredicate |
+	#[since="1.16"]
+	[LootCondition] |
+)
 
 struct TriggerBase {
 	#[since="1.16"]
@@ -24,8 +28,10 @@ struct TriggerBase {
 }
 
 type Location = (
-	#[deprecated="1.16"] #[until="1.19"] LocationPredicate |
-	#[since="1.16"] struct {
+	#[deprecated="1.16"] #[until="1.19"]
+	LocationPredicate |
+	#[since="1.16"]
+	struct {
 		...TriggerBase,
 		#[until="1.19"]
 		location?: LocationPredicate,
@@ -43,7 +49,10 @@ dispatch minecraft:trigger[allay_drop_item_on_block] to Conditions<struct AllayD
 	...TriggerBase,
 	#[until="1.20"]
 	item?: ItemPredicate,
-	location?: (#[until="1.20"] LocationPredicate | #[since="1.20"] [LootCondition]),
+	location?: (
+		#[until="1.20"] LocationPredicate |
+		#[since="1.20"] [LootCondition] |
+	),
 }>
 
 #[since="1.20.5"]
@@ -56,10 +65,8 @@ dispatch minecraft:trigger[bee_nest_destroyed] to Conditions<struct BeeNestDestr
 	...TriggerBase,
 	block?: #[id="block"] string,
 	/// Number of bees that were inside the bee nest/beehive before it was broken.
-
 	num_bees_inside?: int,
 	/// Item used to break the block.
-
 	item?: ItemPredicate,
 }>
 
@@ -71,7 +78,6 @@ dispatch minecraft:trigger[bred_animals] to Conditions<struct BredAnimals {
 }>
 
 /// Player took any item out of a brewing stand.
-
 dispatch minecraft:trigger[brewed_potion] to Conditions<struct BrewedPotion {
 	...TriggerBase,
 	potion?: #[id="potion"] string,
@@ -84,23 +90,19 @@ dispatch minecraft:trigger[changed_dimension] to Conditions<struct ChangedDimens
 }>
 
 /// Player successfully used the Channeling enchantment on an entity.
-
 dispatch minecraft:trigger[channeled_lightning] to Conditions<struct ChanneledLightning {
 	...TriggerBase,
 	victims?: [CompositeEntity],
 }>
 
 /// Player changed the base of a beacon to a valid base; when the beacon updates itself, occurs both on setup & expansion.
-
 dispatch minecraft:trigger[construct_beacon] to Conditions<struct ConstructBeacon {
 	...TriggerBase,
 	/// Tier of the updated beacon base.
-
 	level?: MinMaxBounds<int>,
 }>
 
 /// Player had a status effect applied or taken from them.
-
 dispatch minecraft:trigger[consume_item] to Conditions<struct ConsumeItem {
 	...TriggerBase,
 	item?: ItemPredicate,
@@ -119,12 +121,10 @@ dispatch minecraft:trigger[cured_zombie_villager] to Conditions<struct CuredZomb
 dispatch minecraft:trigger[default_block_use] to Conditions<struct DefaultBlockUse {
 	...TriggerBase,
 	/// The location of the block.
-
 	location?: [LootCondition],
 }>
 
 /// Player had a status effect applied or taken from them.
-
 dispatch minecraft:trigger[effects_changed] to Conditions<struct EffectsChanged {
 	...TriggerBase,
 	effects?: struct {
@@ -135,7 +135,6 @@ dispatch minecraft:trigger[effects_changed] to Conditions<struct EffectsChanged 
 }>
 
 /// Player enchanted an item using an enchanting table; not with an anvil or through commands.
-
 dispatch minecraft:trigger[enchanted_item] to Conditions<struct EnchantedItem {
 	...TriggerBase,
 	item?: ItemPredicate,
@@ -143,9 +142,7 @@ dispatch minecraft:trigger[enchanted_item] to Conditions<struct EnchantedItem {
 }>
 
 /// Player stands in a block.
-
 /// Checked every tick and will trigger for each successful match (up to 8 times, the maximum amount of blocks a player can stand in).
-
 dispatch minecraft:trigger[enter_block] to Conditions<struct EnterBlock {
 	...TriggerBase,
 	block?: #[id="block"] string,
@@ -184,22 +181,17 @@ dispatch minecraft:trigger[filled_bucket] to Conditions<struct FilledBucket {
 }>
 
 /// Player successfully caught an item with a fishing rod or pulled an entity.
-
 dispatch minecraft:trigger[fishing_rod_hooked] to Conditions<struct FishingRodHooked {
 	...TriggerBase,
 	/// Entity that was pulled.
-
 	entity?: CompositeEntity,
 	/// Item that was caught.
-
 	item?: ItemPredicate,
 	/// Fishing rod used.
-
 	rod?: ItemPredicate,
 }>
 
 /// Player killed the last mob of the last wave in a raid.
-
 dispatch minecraft:trigger[hero_of_the_village] to Conditions<Location>
 
 dispatch minecraft:trigger[impossible] to Conditions<TriggerBase>
@@ -208,42 +200,37 @@ dispatch minecraft:trigger[inventory_changed] to Conditions<struct InventoryChan
 	...TriggerBase,
 	slots?: struct InventoryChangedSlots {
 		/// Amount of empty slots.
-
 		empty?: MinMaxBounds<int>,
 		/// Amount of occupied slots.
-
 		occupied?: MinMaxBounds<int>,
 		/// Amount of slots that are a full stack.
-
 		full?: MinMaxBounds<int>,
 	},
 	items?: [ItemPredicate],
 }>
 
 /// Any equipped item was damaged or repaired.
-
 dispatch minecraft:trigger[item_durability_changed] to Conditions<struct ItemDurabilityChanged {
 	...TriggerBase,
 	/// Change in durability (negative numbers are used to indicate a decrease in durability).
-
 	delta?: MinMaxBounds<int>,
 	/// The resulting durability.
-
 	durability?: MinMaxBounds<int>,
 	/// The item before its durability changed.
-
 	item?: ItemPredicate,
 }>
 
 // TODO: List said interactions.
 /// Player interacted with a block with an empty hand or an item. Only occurs for specific registered interactions.
-
 #[since="1.16"]
 dispatch minecraft:trigger[item_used_on_block] to Conditions<struct ItemUsedOnBlock {
 	...TriggerBase,
 	#[until="1.20"]
 	item?: ItemPredicate,
-	location?: (#[until="1.20"] LocationPredicate | #[since="1.20"] [LootCondition]),
+	location?: (
+		#[until="1.20"] LocationPredicate |
+		#[since="1.20"] [LootCondition] |
+	),
 }>
 
 #[since="1.19"]
@@ -254,12 +241,10 @@ dispatch minecraft:trigger[kill_mob_near_sculk_catalyst] to Conditions<struct Ki
 }>
 
 /// Player killed a mob or player using a projectile shot from a crossbow.
-
 #[until="1.21.2"]
 dispatch minecraft:trigger[killed_by_crossbow] to Conditions<struct KilledByCrossbow {
 	...TriggerBase,
 	/// How many different types of entities were killed.
-
 	unique_entity_types?: MinMaxBounds<int>,
 	victims?: [CompositeEntity],
 }>
@@ -268,16 +253,13 @@ dispatch minecraft:trigger[killed_by_crossbow] to Conditions<struct KilledByCros
 dispatch minecraft:trigger[killed_by_arrow] to Conditions<struct KilledByArrow {
 	...TriggerBase,
 	/// How many different types of entities were killed.
-
 	unique_entity_types?: MinMaxBounds<int>,
 	/// The weapon item that was used to fire the arrow.
-
 	fired_from_weapon?: ItemPredicate,
 	victims?: [CompositeEntity],
 }>
 
 /// Player has the levitation status effect.
-
 dispatch minecraft:trigger[levitation] to Conditions<struct Levitation {
 	...TriggerBase,
 	distance?: DistancePredicate,
@@ -285,7 +267,6 @@ dispatch minecraft:trigger[levitation] to Conditions<struct Levitation {
 }>
 
 /// Lightning bolt finished striking (it is already despawned), activates for all players within a 256 block radius of the strike.
-
 dispatch minecraft:trigger[lightning_strike] to Conditions<struct LightningStrike {
 	...TriggerBase,
 	lightning?: CompositeEntity,
@@ -293,26 +274,20 @@ dispatch minecraft:trigger[lightning_strike] to Conditions<struct LightningStrik
 }>
 
 /// Activates every 20 ticks (1 second).
-
 dispatch minecraft:trigger[location] to Conditions<Location>
 
 /// Player returned to the Overworld after traveling to the Nether.
-
 dispatch minecraft:trigger[nether_travel] to Conditions<struct NetherTravel {
 	...TriggerBase,
 	/// Where in the Overworld the player was when they travelled to the Nether.
-
 	#[since="1.18"]
 	start_position?: LocationPredicate,
 	/// How far the player now is from the coordinate they started at in the Overworld before travelling.
-
 	distance?: DistancePredicate,
 	/// Where in the Overworld the player was when they travelled to the Nether.
-
 	#[until="1.18"]
 	entered?: LocationPredicate,
 	/// Where in the Nether the player was when they travelled back to the Overworld.
-
 	#[until="1.18"]
 	exited?: LocationPredicate,
 }>
@@ -324,16 +299,16 @@ dispatch minecraft:trigger[placed_block] to Conditions<struct PlacedBlock {
 	#[until="1.20"]
 	state?: mcdoc:block_states[[block]],
 	/// Item that was used to place the block before the item was consumed.
-
 	#[until="1.20"]
 	item?: ItemPredicate,
 	/// Where the block was placed.
-
-	location?: (#[until="1.20"] LocationPredicate | #[since="1.20"] [LootCondition]),
+	location?: (
+		#[until="1.20"] LocationPredicate |
+		#[since="1.20"] [LootCondition]
+	),
 }>
 
 /// Player generated the contents of a container upon opening it with the set loot table.
-
 #[since="1.16"]
 dispatch minecraft:trigger[player_generates_container_loot] to RequiredConditions<struct PlayerGeneratesContainerLoot {
 	...TriggerBase,
@@ -348,7 +323,6 @@ dispatch minecraft:trigger[player_hurt_entity] to Conditions<struct PlayerHurtEn
 
 // TODO: List said interactions.
 /// Only occurs for specific registered interactions.
-
 #[since="1.16"]
 dispatch minecraft:trigger[player_interacted_with_entity] to Conditions<struct PlayerInteractedWithEntity {
 	...TriggerBase,
@@ -366,7 +340,6 @@ dispatch minecraft:trigger[player_killed_entity] to Conditions<struct PlayerKill
 dispatch minecraft:trigger[recipe_crafted] to RequiredConditions<RecipeCrafted>
 
 /// Player unlocked a recipe by either crafting it, receiving it in an advancement reward, using a knowledge book, or receiving it through `/recipe`.
-
 dispatch minecraft:trigger[recipe_unlocked] to RequiredConditions<struct RecipeUnlocked {
 	...TriggerBase,
 	recipe: #[id="recipe"] string,
@@ -384,7 +357,7 @@ dispatch minecraft:trigger[safely_harvest_honey] to Conditions<struct SafelyHarv
 	...TriggerBase,
 	block?: struct HoneyHarvestedBlock {
 		block?: #[id="block"] string,
-		tag?: #[id(registry="block", tags="implicit")] string,
+		tag?: #[id(registry="block",tags="implicit")] string,
 	},
 	item?: ItemPredicate,
 }>
@@ -392,7 +365,6 @@ dispatch minecraft:trigger[safely_harvest_honey] to Conditions<struct SafelyHarv
 dispatch minecraft:trigger[shot_crossbow] to Conditions<struct ShotCrossbow {
 	...TriggerBase,
 	/// Crossbow that was used.
-
 	item?: ItemPredicate,
 }>
 
@@ -407,25 +379,15 @@ dispatch minecraft:trigger[slide_down_block] to Conditions<struct SlideDownBlock
 dispatch minecraft:trigger[started_riding] to Conditions<TriggerBase>
 
 /// Activated when the last required block is placed for summoning
-
 /// iron golems (pumpkin and iron blocks), snow golems (pumpkin and snow blocks), the ender dragon (end crystals),
-
 /// or the wither (wither skulls and soul sand/soul soil).
-
 ///
-
 /// When the block is not placed by a player directly this will activate for all players within an area:
-
 /// - Golems: from the golem's position, their hitbox plus 5 blocks in each direction.
-
 /// - Wither: from the wither's position, their hitbox plus 50 blocks in each direction.
-
 /// - Ender dragon: 192 blocks from `0, 128, 0`.
-
 ///
-
 /// (Spawn eggs, commands and mob spawners do not activate this)
-
 dispatch minecraft:trigger[summoned_entity] to Conditions<struct SummonedEntity {
 	...TriggerBase,
 	entity?: CompositeEntity,
@@ -445,7 +407,6 @@ dispatch minecraft:trigger[target_hit] to Conditions<struct TargetHit {
 }>
 
 /// Player had thrown an item and an entity picked it up.
-
 #[since="1.16"]
 dispatch minecraft:trigger[thrown_item_picked_up_by_entity] to Conditions<struct ThrownItemPickedUpByEntity {
 	...TriggerBase,
@@ -454,7 +415,6 @@ dispatch minecraft:trigger[thrown_item_picked_up_by_entity] to Conditions<struct
 }>
 
 /// Player had thrown an item and any player picked it up (optimized shortcut for entity type condition).
-
 #[since="1.19"]
 dispatch minecraft:trigger[thrown_item_picked_up_by_player] to Conditions<struct ThrownItemPickedUpByPlayer {
 	...TriggerBase,
@@ -463,15 +423,12 @@ dispatch minecraft:trigger[thrown_item_picked_up_by_player] to Conditions<struct
 }>
 
 /// Activates every tick (20 times a second). Should only be used in-place of `#minecraft:tick` when utilizing multiple criteria to optimize.
-
 dispatch minecraft:trigger[tick] to Conditions<TriggerBase>
 
 /// Player used an eye of ender (in a world where strongholds generate).
-
 dispatch minecraft:trigger[used_ender_eye] to Conditions<struct UsedEnderEye {
 	...TriggerBase,
 	/// Horizontal distance between the player and the stronghold.
-
 	distance?: MinMaxBounds<float>,
 }>
 
@@ -490,10 +447,8 @@ dispatch minecraft:trigger[villager_trade] to Conditions<struct VillagerTrade {
 	...TriggerBase,
 	villager?: CompositeEntity,
 	/// Item that was purchased. `count` tag checks the item count from one trade, not the total amount traded for.
-
 	item?: ItemPredicate,
 }>
 
 /// Player caused a raid to start.
-
 dispatch minecraft:trigger[voluntary_exile] to Conditions<Location>

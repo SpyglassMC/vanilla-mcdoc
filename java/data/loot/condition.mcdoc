@@ -10,7 +10,6 @@ use super::super::advancement::predicate::LocationPredicate
 use super::super::advancement::predicate::DamageSourcePredicate
 
 /// Whether any condition within a list passes.
-
 #[until="1.20"]
 dispatch minecraft:loot_condition[alternative] to struct Alternative {
 	terms: [LootCondition],
@@ -19,14 +18,12 @@ dispatch minecraft:loot_condition[alternative] to struct Alternative {
 #[since="1.20"]
 dispatch minecraft:loot_condition[any_of] to struct AnyOf {
 	/// Passes when any of these conditions pass.
-
 	terms: [LootCondition],
 }
 
 #[since="1.20"]
 dispatch minecraft:loot_condition[all_of] to struct AllOf {
 	/// Passes when all of these conditions pass.
-
 	terms: [LootCondition],
 }
 
@@ -41,7 +38,6 @@ dispatch minecraft:loot_condition[damage_source_properties] to struct DamageSour
 }
 
 /// Requires the "Enchantment Active" parameter to exist in the context, which currently means it only works in Enchantment conditions.
-
 dispatch minecraft:loot_condition[enchantment_active_check] to struct EnchantmentActiveCheck {
 	active: boolean,
 }
@@ -54,12 +50,14 @@ dispatch minecraft:loot_condition[entity_properties] to struct EntityProperties 
 dispatch minecraft:loot_condition[entity_scores] to struct EntityScores {
 	entity: EntityTarget,
 	scores: struct {
-		[#[objective] string]: (#[until="1.17"] RandomValueBounds | #[since="1.17"] IntRange),
+		[#[objective] string]: (
+			#[until="1.17"] RandomValueBounds |
+			#[since="1.17"] IntRange |
+		),
 	},
 }
 
 /// Whether a condition does not pass.
-
 dispatch minecraft:loot_condition[inverted] to struct Inverted {
 	term: LootCondition,
 }
@@ -80,14 +78,16 @@ dispatch minecraft:loot_condition[match_tool] to struct MatchTool {
 }
 
 dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
-	chance: (#[until="1.21"] float @ 0..1 | #[since="1.21"] NumberProvider<float>),
+	chance: (
+		#[until="1.21"] float @ 0..1 |
+		#[since="1.21"] NumberProvider<float> |
+	),
 }
 
 #[until="1.21"]
 dispatch minecraft:loot_condition[random_chance_with_looting] to struct RandomChanceWithLooting {
 	chance: float @ 0..1,
 	/// Looting adjustment to the base success rate. Formula is `chance + (looting_level * looting_multiplier)` .
-
 	looting_multiplier: float,
 }
 
@@ -99,28 +99,25 @@ dispatch minecraft:loot_condition[random_chance_with_enchanted_bonus] to struct 
 }
 
 /// Whether another predicate passes.
-
 dispatch minecraft:loot_condition[reference] to struct Reference {
 	/// A cyclic reference causes a parsing failure.
-
 	name: #[id="predicate"] string,
 }
 
 dispatch minecraft:loot_condition[table_bonus] to struct TableBonus {
 	enchantment: #[id="enchantment"] string,
 	/// Probabilities for each enchantment level
-
 	chances: [float @ 0..1],
 }
 
 dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
 	/// Check the current game tick.
-
-	value: (#[until="1.17"] RandomValueBounds | #[since="1.17"] IntRange),
+	value: (
+		#[until="1.17"] RandomValueBounds |
+		#[since="1.17"] IntRange |
+	),
 	/// Game tick supplied to `value` check gets modulo-divided by this.
-
 	/// For example, if set to 24000, `value` operates on a time period of days.
-
 	period?: long,
 }
 
@@ -128,7 +125,6 @@ dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
 dispatch minecraft:loot_condition[value_check] to struct ValueCheck {
 	value: NumberProvider<int>,
 	/// Passes when `value` is within this range.
-
 	range: IntRange,
 }
 

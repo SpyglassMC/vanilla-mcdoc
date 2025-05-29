@@ -2,20 +2,15 @@ struct Breedable {
 	...super::MobBase,
 	...super::AgeableMob,
 	/// Ticks until it stops searching for a mate.
-
 	InLove?: int @ 0..,
 	/// Lower bits of the UUID of the player that caused this mob to breed.
-
 	#[until="1.16"]
 	LoveCauseLeast?: long,
 	/// Upper bits of the UUID of the player that caused this mob to breed.
-
 	#[until="1.16"]
 	LoveCauseMost?: long,
 	/// Player that caused this mob to breed.
-
-	#[since="1.16"]
-	#[uuid]
+	#[since="1.16"] #[uuid]
 	LoveCause?: int[] @ 4,
 }
 

@@ -12,30 +12,22 @@ struct LivingEntity {
 	...super::EntityBase,
 	Health?: float,
 	/// How much absorption health it has.
-
 	AbsorptionAmount?: float,
 	/// Timer since it has been damaged. Counts down to zero.
-
 	HurtTime?: short,
 	/// Ticks since it was last damaged, from its creation.
-
 	HurtByTimestamp?: int,
 	/// Timer since it was marked as dead. Counts down to zero.
-
 	DeathTime?: short,
 	/// Whether it will glide when it falls.
-
 	FallFlying?: boolean,
 	/// X coordinate of where it is sleeping.
-
 	#[until="1.21.5"]
 	SleepingX?: int,
 	/// Y coordinate of where it is sleeping.
-
 	#[until="1.21.5"]
 	SleepingY?: int,
 	/// Z coordinate of where it is sleeping.
-
 	#[until="1.21.5"]
 	SleepingZ?: int,
 	#[since="1.21.5"]
@@ -48,35 +40,26 @@ struct LivingEntity {
 	#[since="1.21"]
 	attributes?: [Attribute],
 	/// Active potion effects
-
 	#[until="1.20.2"]
 	ActiveEffects?: [MobEffectInstance],
 	#[since="1.20.2"]
 	active_effects?: [MobEffectInstance],
 	/// Whether it should have an AI.
-
 	NoAI?: boolean,
 	/// Team to join when it is spawned.
-
 	Team?: #[team] string,
 	/// The UUID of the player that last hurt this entity. Stored for 100 ticks.
-
 	#[since="1.21.4"]
 	last_hurt_by_player?: #[uuid] int[] @ 4,
 	/// Amount of ticks that this entity will remember the player that last hurt this entity.
-
 	/// Counts down from 100 to 0.
-
 	#[since="1.21.4"]
 	last_hurt_by_player_memory_time?: int @ 0..100,
 	/// The UUID of the mob that last hurt this entity. Stored for 100 ticks.
-
 	#[since="1.21.4"]
 	last_hurt_by_mob?: #[uuid] int[] @ 4,
 	/// Amount of ticks since this entity was last hurt by a mob.
-
 	/// Counts up from 0 to 100.
-
 	#[since="1.21.4"]
 	ticks_since_last_hurt_by_mob?: int @ 0..100,
 	#[since="1.21.6"]
@@ -84,81 +67,52 @@ struct LivingEntity {
 }
 
 /// Base NBT for all mobs.
-
 struct MobBase {
 	...LivingEntity,
-	#[until="1.21.5"]
-	...struct {
+	#[until="1.21.5"] ...struct {
 		/// [main hand, offhand]
-
-		HandItems?: [(
-			ItemStack |
-			struct {} |
-		)] @ 2,
+		HandItems?: [(ItemStack | struct {})] @ 2,
 		/// Chance to drop the items it is holding, in [main hand, offhand].
-
 		HandDropChances?: [float] @ 2,
 		/// [feet, legs, body, head]
-
-		ArmorItems?: [(
-			ItemStack |
-			struct {} |
-		)] @ 4,
+		ArmorItems?: [(ItemStack | struct {})] @ 4,
 		/// Chance to drop the items it is wearing, in [feet, legs, body, head].
-
 		ArmorDropChances?: [float] @ 4,
 		/// Used for wolf armor & llama carpet decoration.
-
 		#[since="1.20.5"]
 		body_armor_item?: ItemStack,
 		/// Chance to drop the item it is wearing.
-
 		#[since="1.20.5"]
 		body_armor_drop_chance?: float,
 	},
-	#[since="1.21.5"]
-	...struct {
+	#[since="1.21.5"] ...struct {
 		/// The equipment items of the mob, such as armor or weapons.
-
 		equipment?: EntityEquipment,
 		/// Chances of the mob dropping an equipment slot on death.
-
 		drop_chances?: DropChances,
 	},
 	/// Loot table that is dropped when the mob dies.
-
 	DeathLootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed for generating the death loot table.
-
 	DeathLootTableSeed?: #[random] long,
 	/// Whether it can pick up loot.
-
 	CanPickUpLoot?: boolean,
 	/// Whether it should not despawn naturally.
-
 	PersistenceRequired?: boolean,
 	/// Whether it is left handed.
-
 	LeftHanded?: boolean,
 	/// What the leash is attached to.
-
 	#[until="1.20.5"]
 	Leash?: (UUIDLeash | BlockLeash),
 	/// What the leash is attached to.
-
 	#[since="1.20.5"]
-	leash?: (
-		int[] @ 3 |
-		struct LeashOwner {
-			UUID?: int[] @ 4,
-		} |
-	),
+	leash?: (int[] @ 3 | struct LeashOwner {
+		UUID?: int[] @ 4
+	}),
 	/// Defaults to -1, which represents "no home".
-
 	#[since="1.21.6"]
 	home_radius?: int,
 	/// This field will be discarded if `home_radius` is less than 0.
-
 	#[since="1.21.6"]
 	home_pos?: int[] @ 3,
 }
@@ -173,7 +127,6 @@ struct DropChances {
 
 struct NeutralMob {
 	/// Ticks that it will be angry for.
-
 	AngerTime?: int,
 	#[uuid]
 	AngryAt?: int[] @ 4,
@@ -181,19 +134,14 @@ struct NeutralMob {
 
 struct AgeableMob {
 	/// The age of the mob in ticks. When negative, the mob is a baby. When 0 or above, the mob is an adult.
-
 	/// If this mob is breedable, when 0 or above, represents the number of ticks before it can breed again.
-
 	Age?: int,
 	/// A value of age assigned to this mob when it grows up.
-
 	/// Incremented when a baby mob is fed.
-
 	ForcedAge?: int,
 }
 
 /// A single attribute.
-
 struct Attribute {
 	#[until="1.21"]
 	Name?: (
@@ -203,7 +151,6 @@ struct Attribute {
 	#[until="1.21"]
 	Base?: double,
 	/// Modifiers that act on it.
-
 	#[until="1.21"]
 	Modifiers?: [AttributeModifier],
 	#[since="1.21"]
@@ -215,7 +162,6 @@ struct Attribute {
 }
 
 /// A single attribute modifier
-
 type AttributeModifier = (
 	#[since="1.21"] struct {
 		id?: #[id="attribute_modifier"] string,
@@ -224,21 +170,16 @@ type AttributeModifier = (
 	} |
 	#[until="1.21"] struct {
 		/// Has no real effect.
-
 		Name?: string,
 		/// Slot that the modifier is active in.
-
 		Slot?: EquipmentSlotGroup,
 		Operation?: LegacyOperation,
 		/// Change in the attribute.
-
 		Amount?: double,
 		/// Upper bits of the modifier's UUID.
-
 		#[until="1.16"]
 		UUIDMost?: long,
 		/// Lower bits of the modifier's UUID.
-
 		#[until="1.16"]
 		UUIDLeast?: long,
 		#[uuid]
@@ -249,22 +190,17 @@ type AttributeModifier = (
 
 struct UUIDLeash {
 	/// Upper bits of the other entity's UUID.
-
 	UUIDMost?: long,
 	/// Lower bits of the other entity's UUID.
-
 	UUIDLeast?: long,
 }
 
 struct BlockLeash {
 	/// X coordiante of leash knot.
-
 	X?: int,
 	/// Y coordiante of leash knot.
-
 	Y?: int,
 	/// Z coordiante of leash knot.
-
 	Z?: int,
 }
 

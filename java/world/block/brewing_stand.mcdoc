@@ -5,21 +5,14 @@ dispatch minecraft:block_entity[brewing_stand] to struct BrewingStand {
 	...super::Nameable,
 	...super::Lockable,
 	/// * 0: left brewing slot
-
 	/// * 1: middle brewing slot
-
 	/// * 2: right brewing slot
-
 	/// * 3: ingredient slot
-
 	/// * 4: fuel slot
-
 	Items?: [SlottedItem<byte @ 0..4>] @ 0..5,
 	/// Number of ticks until the brewing is complete.
-
 	BrewTime?: short,
 	/// Amount of fuel the brewing stand has left.
-
 	Fuel?: byte,
 }
 

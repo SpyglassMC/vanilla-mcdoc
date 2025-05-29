@@ -9,13 +9,10 @@ dispatch minecraft:item[writable_book] to struct WritableBook {
 dispatch minecraft:item[written_book] to struct WrittenBook {
 	...super::ItemBase,
 	/// Whether the dynamic content on the pages has been resolved.
-
 	resolved?: boolean,
 	/// Pages of the book as JSON text components.
-
 	pages?: [Filterable<#[text_component] string>],
 	/// Generation of the book. 0 = original, 1 = copy of original, 2 = copy of copy, 3 = tattered.
-
 	generation?: BookGeneration,
 	author?: string,
 	title?: Filterable<string>,

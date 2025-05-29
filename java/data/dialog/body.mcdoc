@@ -8,14 +8,10 @@ struct DialogBody {
 
 dispatch minecraft:dialog_body[plain_message] to struct PlainMessage {
 	/// A multiline label.
-
 	/// Click events in the text trigger `after_action` like any other action.
-
 	contents: Text,
 	/// Maximum width of message.
-
 	/// Defaults to 200.
-
 	width?: int @ 1..1024,
 }
 
@@ -23,26 +19,17 @@ dispatch minecraft:dialog_body[item] to struct ItemBody {
 	item: ItemStack,
 	// game code implementation shares the same PlainMessage codec so it's safe to reuse the type
 	/// The description text rendered to the right of item.
-
 	description?: (PlainMessage | Text),
 	/// Whether count and damage bar are rendered over the item.
-
 	/// Defaults to `true`.
-
 	show_decorations?: boolean,
 	/// Whether item tooltip shows up when the item is hovered.
-
 	/// Defaults to `true`.
-
 	show_tooltip?: boolean,
 	/// Width of the item.
-
 	/// Defaults to 16.
-
 	width?: int @ 1..256,
 	/// Height of the item.
-
 	/// Defaults to 16.
-
 	height?: int @ 1..256,
 }

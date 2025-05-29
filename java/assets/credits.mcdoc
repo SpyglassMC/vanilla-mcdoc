@@ -1,16 +1,13 @@
 type Credits = [struct CreditsCompanySegment {
 	/// Company segment.
-
 	section: string,
 	disciplines: [struct CreditsDiscipline {
 		discipline: (string @ 1.. | string @ 0),
 		titles: [struct CreditsJobTitle {
 			title: string,
 			/// Employees with the title.
-
 			names: [string],
 		}],
 	}],
 }]
-
 dispatch minecraft:resource[credits] to Credits

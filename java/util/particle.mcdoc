@@ -24,64 +24,38 @@ dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to s
 dispatch minecraft:particle[block_crumble] to BlockParticle
 
 /// Randomized color interpreted from three floats.
-
 ///
-
 /// Cheat Sheet:
-
 /// - Floats between 0 and 1 are interpreted as a percentage of the original color. Weirdness begins when floats are outside of this range.
-
 /// - 0-20% of darkness is added per channel.
-
 /// - The final color is 0-40% darker. 
-
 /// - `1e100000f` produces a solid channel with no randomization.
-
 ///
-
 /// Simplified internal behavior ([graph demo](https://www.desmos.com/calculator/drwzjaxgks)):
-
 /// ```js
-
 /// function integerToByte(integer) {
-
 /// 	if (integer >= 0) {
-
 /// 		// Integer is positive
-
 /// 		if (integer <= 255) {
-
 /// 			// Integer already fits in a color channel
-
 /// 			return integer
-
 /// 		}
-
 /// 		// Integer doesn't fit in color channel; modulo it
-
 /// 		return integer % 256
-
 /// 	}
-
 /// 	// Integer is negative
-
 /// 	return Math.abs((Math.floor(integer / 256) * 256)) + integer
-
 /// }
-
 /// 
-
 /// var baseShade = randomBetween(0.6, 1),
-
 /// 	r = integerToByte(Math.floor(color[0] * randomBetween(0.8, 1) * baseShade * 255)),
-
 /// 	g = integerToByte(Math.floor(color[1] * randomBetween(0.8, 1) * baseShade * 255)),
-
 /// 	b = integerToByte(Math.floor(color[2] * randomBetween(0.8, 1) * baseShade * 255))
-
 /// ```
-
-type DustColor = (#[until="1.21.2"] #[color="particle"] [float] @ 3 | #[since="1.21.2"] RGB)
+type DustColor = (
+	#[until="1.21.2"] #[color="particle"] [float] @ 3 |
+	#[since="1.21.2"] RGB |
+)
 
 dispatch minecraft:particle[dust] to struct DustParticle {
 	#[until="1.20.5"]
@@ -122,49 +96,27 @@ dispatch minecraft:particle[entity_effect] to struct EntityEffectParticle {
 		a: float,
 	},
 	/// Translucent color interpreted from four floats.
-
 	///
-
 	/// Cheat Sheet:
-
 	/// - Floats between 0 and 1 are interpreted as a percentage of the original color.
-
 	/// - Negative values & values above 1 simply loop the 0-255 range, since there isn't randomization there's no weirdness.
-
 	///
-
 	/// Simplified internal behavior ([graph demo](https://www.desmos.com/calculator/drwzjaxgks)):
-
 	/// ```js
-
 	/// function integerToByte(integer) {
-
 	/// 	if (integer >= 0) {
-
 	/// 		// Integer is positive
-
 	/// 		if (integer <= 255) {
-
 	/// 			// Integer already fits in a color channel
-
 	/// 			return integer
-
 	/// 		}
-
 	/// 		// Integer doesn't fit in color channel; modulo it
-
 	/// 		return integer % 256
-
 	/// 	}
-
 	/// 	// Integer is negative
-
 	/// 	return Math.abs((Math.floor(integer / 256) * 256)) + integer
-
 	/// }
-
 	/// ```
-
 	#[since="1.20.5"]
 	color: RGBA,
 }
@@ -180,7 +132,6 @@ dispatch minecraft:particle[sculk_charge] to struct SculkChargeParticle {
 	#[until="1.20.5"]
 	value: float,
 	/// Angle the particle texture is rotated to, measured in radians (π ~ 3.14 for 180° clockwise, negative for counter clockwise).
-
 	#[since="1.20.5"]
 	roll: float,
 }
@@ -189,14 +140,13 @@ dispatch minecraft:particle[shriek] to struct ShriekParticle {
 	#[until="1.20.5"]
 	value: int @ 0..,
 	/// Ticks until the particle renders.
-
 	#[since="1.20.5"]
 	delay: int @ 0..,
 }
 
 #[since="1.21.5"]
 dispatch minecraft:particle[tinted_leaves] to struct TintedLeavesParticle {
-	color: RGBA,
+	color: RGBA
 }
 
 #[since="1.21.2"]
@@ -214,9 +164,8 @@ dispatch minecraft:particle[vibration] to struct VibrationParticle {
 	...VibrationParticleData,
 }
 
-struct VibrationParticleData {
+struct VibrationParticleData {	
 	/// Ticks in which to interpolate the particle's initial position to the destination.
-
 	arrival_in_ticks: int,
 	destination: SafePositionSource,
 }

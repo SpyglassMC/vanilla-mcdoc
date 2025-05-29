@@ -3,7 +3,11 @@ use ::java::world::item::ItemStack
 use ::java::world::component::DataComponentPatch
 use ::java::data::dialog::Dialog
 
-type Text = (string | TextObject | [Text])
+type Text = (
+	string |
+	TextObject |
+	[Text] |
+)
 
 type TextObject = (
 	struct NormalText {
@@ -45,7 +49,7 @@ type TextObject = (
 		...TextBase,
 	} |
 	struct BlockNbtText {
-		block: #[vector(dimension=3, integer=true)] string,
+		block: #[vector(dimension=3,integer=true)] string,
 		nbt: #[nbt_path=minecraft:block[%fallback]] string,
 		#[since="1.20.3"]
 		source?: "block",
@@ -54,7 +58,7 @@ type TextObject = (
 		...TextNbtBase,
 	} |
 	struct EntityNbtText {
-		entity: #[entity(amount=multiple, type=entities)] #[selector] string,
+		entity: #[entity(amount=multiple,type=entities)] #[selector] string,
 		nbt: #[nbt_path=minecraft:entity[[entity]]] string,
 		#[since="1.20.3"]
 		source?: "entity",
@@ -86,11 +90,12 @@ struct TextBase {
 }
 
 struct TextStyle {
-	color?: (#[since="1.16"] #[color="hex_rgb"] string | #[color="named"] TextColor),
+	color?: (
+		#[since="1.16"] #[color="hex_rgb"] string |
+		#[color="named"] TextColor |
+	),
 	/// Overrides the shadow properties of the text.
-
 	/// If specified as 0, the shadow will never be displayed.
-
 	#[since="1.21.4"]
 	shadow_color?: RGBA,
 	#[since="1.16"]
@@ -178,25 +183,22 @@ dispatch minecraft:click_event[run_command] to struct RunCommand {
 
 dispatch minecraft:click_event[suggest_command] to struct SuggestCommand {
 	#[until="1.21.5"]
-	value: #[command(slash="chat", incomplete="allowed")] string,
+	value: #[command(slash="chat",incomplete="allowed")] string,
 	#[since="1.21.5"]
-	command: #[command(slash="chat", incomplete="allowed")] string,
+	command: #[command(slash="chat",incomplete="allowed")] string,
 }
 
 dispatch minecraft:click_event[change_page] to struct ChangePage {
 	/// The page number to go to.
-
 	#[until="1.21.5"]
 	value: #[integer(min=1)] string,
 	/// The page number to go to.
-
 	#[since="1.21.5"]
 	page: int @ 1..,
 }
 
 dispatch minecraft:click_event[copy_to_clipboard] to struct CopyToClipboard {
 	/// The text value to copy to the clipboard.
-
 	value: string,
 }
 
@@ -206,11 +208,9 @@ dispatch minecraft:click_event[show_dialog] to struct ShowDialog {
 
 dispatch minecraft:click_event[custom] to struct CustomAction {
 	/// ID of a custom action.
-
 	/// Has no functionality on vanilla servers.
-
 	id: #[id] #[dispatcher_key="mcdoc:custom_event"] string,
-	payload?: mcdoc:custom_event[[id]],
+    payload?: mcdoc:custom_event[[id]],
 }
 
 struct HoverEvent {
@@ -227,7 +227,7 @@ enum(string) HoverEventAction {
 dispatch minecraft:hover_event[show_text] to struct ShowText {
 	#[until="1.21.5"]
 	...struct {
-		#[deprecated="1.16"]
+		#[deprecated="1.16"] 
 		value?: Text,
 		#[since="1.16"]
 		contents?: Text,
@@ -237,11 +237,9 @@ dispatch minecraft:hover_event[show_text] to struct ShowText {
 }
 
 dispatch minecraft:hover_event[show_item] to struct ShowItem {
-	#[deprecated="1.16"]
-	#[until="1.21.5"]
+	#[deprecated="1.16"] #[until="1.21.5"]
 	value?: #[nbt=ItemStack] string,
-	#[since="1.16"]
-	#[until="1.21.5"]
+	#[since="1.16"] #[until="1.21.5"]
 	contents?: struct ItemHoverContent {
 		id: #[id="item"] string,
 		count?: int,
@@ -255,8 +253,7 @@ dispatch minecraft:hover_event[show_item] to struct ShowItem {
 }
 
 dispatch minecraft:hover_event[show_entity] to struct ShowEntity {
-	#[deprecated="1.16"]
-	#[until="1.21.5"]
+	#[deprecated="1.16"] #[until="1.21.5"]
 	value?: struct EntityHoverValue {
 		name?: string,
 		type?: string,
@@ -273,7 +270,7 @@ dispatch minecraft:hover_event[show_entity] to struct ShowEntity {
 		id: #[id="entity_type"] string,
 		uuid: #[uuid] (#[canonical] [int] @ 4 | string),
 		name?: Text,
-	},
+	}
 }
 
 enum(string) Keybind {

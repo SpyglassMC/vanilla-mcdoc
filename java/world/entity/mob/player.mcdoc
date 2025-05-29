@@ -12,134 +12,101 @@ type PlayerSlot = (
 dispatch minecraft:entity[player] to struct Player {
 	...super::LivingEntity,
 	/// Version of the player NBT structure
-
 	DataVersion?: int,
-	Dimension?: (#[until="1.16"] Dimension | #[since="1.16"] #[id="dimension"] string),
+	Dimension?: (
+		#[until="1.16"] Dimension |
+		#[since="1.16"] #[id="dimension"] string |
+	),
 	/// Location of the player's last death.
-
 	#[since="1.19"]
 	LastDeathLocation?: GlobalPos,
 	/// Game mode that the player is in.
-
 	playerGameType?: Gamemode,
 	/// Previous game mode that the player was in.
-
 	#[since="1.16"]
 	previousPlayerGameType?: Gamemode,
 	/// Score to display upon death.
-
 	Score?: int,
 	/// Hotbar slot the player has selected.
-
 	SelectedItemSlot?: int @ 0..8,
 	/// Item in the hotbar slot the player has selected.
-
 	SelectedItem?: SlottedItem<byte @ 0..8>,
 	#[since="1.21.5"]
 	equipment?: PlayerEquipment,
 	/// Dimension of the player's respawn point.
-
 	#[since="1.16"]
 	#[until="1.21.5"]
 	SpawnDimension?: #[id="dimension"] string,
 	/// The Y-rotation of the player's respawn point.
-
 	#[since="1.16.2"]
 	#[until="1.21.5"]
 	SpawnAngle?: float,
 	/// X coordinate of the player's spawn point.
-
 	#[until="1.21.5"]
 	SpawnX?: int,
 	/// Y coordinate of the player's spawn point.
-
 	#[until="1.21.5"]
 	SpawnY?: int,
 	/// Z coordinate of the player's spawn point.
-
 	#[until="1.21.5"]
 	SpawnZ?: int,
 	/// Whether the player must spawn at the spawn point.
-
 	#[until="1.21.5"]
 	SpawnForced?: boolean,
 	#[since="1.21.5"]
 	respawn?: Respawn,
 	/// Ticks the player has been in bed.
-
 	SleepTimer?: short,
 	/// Level of the hunger bar.
-
 	foodLevel?: int,
 	/// Rate at which the `foodSaturationLevel` depletes.
-
 	foodExhaustionLevel?: float,
 	/// Rate at which the hunger bar depletes.
-
 	foodSaturationLevel?: float,
 	/// Ticks until the player heals or takes starvation damage.
-
 	foodTickTimer?: int,
 	/// Number of experience levels the player has.
-
 	XpLevel?: int,
 	/// Percentage the experience bar is filled up.
-
 	XpP?: float,
 	/// Total experience the player has.
-
 	XpTotal?: int,
 	/// Seed for enchantments.
-
 	XpSeed?: int,
 	Inventory?: [SlottedItem<PlayerSlot>] @ 0..41,
 	/// The player's enderchest inventory.
-
 	EnderItems?: [SlottedItem<byte @ 0..26>] @ 0..27,
 	/// Abilities of the player.
-
 	abilities?: Abilities,
 	/// Position that the player entered the nether at.
-
 	#[until="1.21.5"]
 	enteredNetherPosition?: EnteredNetherPosition,
 	/// Position that the player entered the nether at.
-
 	#[since="1.21.5"]
 	entered_nether_pos?: [double] @ 3,
 	/// Entity that the player is riding.
-
 	RootVehicle?: RootVehicle,
 	/// Entity that is on the player's left shoulder.
-
 	ShoulderEntityLeft?: AnyEntity,
 	/// Entity that is on the player's right shoulder.
-
 	ShoulderEntityRight?: AnyEntity,
 	/// Whether the player has gone to the overworld after defeating the Ender Dragon.
-
 	seenCredits?: boolean,
 	/// Recipes that the player has.
-
 	recipeBook?: RecipeBook,
 	/// Tracking the warden spawning process for this player.
-
 	#[since="1.19"]
 	warden_spawn_tracker?: WardenSpawnTracker,
 	/// Ender pearls thrown by this player.
-
 	#[since="1.21.2"]
 	ender_pearls?: [EnderPearl],
 	/// Used by the game for wind charges.
-
 	#[since="1.20.3"]
 	ignore_fall_damage_from_current_explosion?: boolean,
 	/// Added mid-air after being hit by an explosion.
-
 	#[since="1.20.3"]
 	current_explosion_impact_pos?: [double] @ 3,
 	/// Used by fall damage logic. Decreases by 1 every tick.
-
 	#[since="1.21"]
 	current_impulse_context_reset_grace_time: int @ 0..,
 	// these are not included
@@ -162,25 +129,18 @@ enum(int) Gamemode {
 
 struct Abilities {
 	/// Speed that the player walks at.
-
 	walkSpeed?: float @ 0.1,
 	/// Speed that the player flies at.
-
 	flySpeed?: float @ 0.05,
 	/// Whether the player can fly.
-
 	mayfly?: boolean,
 	/// Whether the player is flying.
-
 	flying?: boolean,
 	/// Whether the player can only take damage from the void.
-
 	invulnerable?: boolean,
 	/// Whether the player may build.
-
 	mayBuild?: boolean,
 	/// Whether the player destroys blocks instantly.
-
 	instabuild?: boolean,
 }
 
@@ -192,59 +152,43 @@ struct EnteredNetherPosition {
 
 struct RootVehicle {
 	/// Upper bits of the ridden entity's UUID.
-
 	#[until="1.16"]
 	AttachMost?: long,
 	/// Lower bits of the ridden entity's UUID.
-
 	#[until="1.16"]
 	AttachLeast?: long,
 	/// Ridden entity's UUID.
-
 	#[uuid]
 	#[since="1.16"]
 	Attach?: int[] @ 4,
 	/// The ridden entity.
-
 	Entity?: AnyEntity,
 }
 
 struct RecipeBook {
 	/// Recipes the player has acquired.
-
 	recipes?: #[id="recipe"] string,
 	/// Recipes that should pulse in the crafting book.
-
 	toBeDisplayed?: #[id="recipe"] string,
 	/// Whether the player has filtered crafting on in the crafting table.
-
 	isFilteringCraftable?: boolean,
 	/// Whether the player has the crafting book open in the crafting table.
-
 	isGuiOpen?: boolean,
 	/// Whether the player has filtered crafting on in the furnace.
-
 	isFurnaceFilteringCraftable?: boolean,
 	/// Whether the player has the crafting book open in the furnace.
-
 	isFurnaceGuiOpen?: boolean,
 }
 
 struct WardenSpawnTracker {
 	/// Ticks before the `warning_level` can be increased again.
-
 	/// Decreases by 1 every tick. It is set to 200 game ticks (10 seconds) every time the warning level is increased.
-
 	cooldown_ticks?: int @ 0..,
 	/// Ticks since the player was warned for warden spawning.
-
 	/// Increases by 1 every tick. After 12000 game ticks (10 minutes) it will be set back to 0,
-
 	/// and the `warning_level` will be decreased by 1.
-
 	ticks_since_last_warning?: int @ 0..,
 	/// The warden will spawn at level 3.
-
 	warning_level?: int @ 0..3,
 }
 
@@ -256,16 +200,12 @@ struct EnderPearl {
 // CODEC is in net/minecraft/server/level/ServerPlayer (Mojang mappings)
 struct Respawn {
 	/// The block coordinates of the player's respawn point
-
 	pos: int[] @ 3,
 	/// The Y-rotation of the player's respawn point
-
 	angle?: float,
 	/// Dimension of the player's respawn point. Defaults to overworld.
-
 	dimension?: #[id="dimension"] string,
 	/// Whether the player must spawn at the respawn point.
-
 	forced?: boolean,
 }
 
