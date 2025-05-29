@@ -1,7 +1,4 @@
-type StructureSetRef = (
-	#[id="worldgen/structure_set"] string |
-	StructureSet |
-)
+type StructureSetRef = (#[id="worldgen/structure_set"] string | StructureSet)
 
 dispatch minecraft:resource["worldgen/structure_set"] to struct StructureSet {
 	structures: [StructureSetElement],
@@ -48,7 +45,7 @@ dispatch minecraft:structure_placement[concentric_rings] to struct ConcentricRin
 	#[since="1.19"]
 	preferred_biomes: (
 		[#[id="worldgen/biome"] string] |
-		#[id(registry="worldgen/biome",tags=allowed)] string |
+		#[id(registry="worldgen/biome", tags=allowed)] string |
 	),
 }
 
@@ -61,7 +58,8 @@ dispatch minecraft:structure_placement[random_spread] to struct RandomSpreadPlac
 	salt: int @ 0..,
 	#[since="1.18.2"]
 	spread_type?: SpreadType,
-	#[since="1.18.2"] #[until="1.19"]
+	#[since="1.18.2"]
+	#[until="1.19"]
 	locate_offset?: [int @ -16..16] @ 3,
 }
 

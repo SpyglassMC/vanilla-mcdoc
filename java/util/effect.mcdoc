@@ -3,10 +3,7 @@ type MobEffectInstance = (
 		Id?: EffectId,
 		Amplifier?: byte,
 		/// Duration of the effect in ticks. Infinite is represented by `-1`.
-		Duration?: (
-			int @ 1.. |
-			#[since="1.19.4"] -1 |
-		),
+		Duration?: (int @ 1.. | #[since="1.19.4"] -1),
 		/// Whether particles are semi-transparent. (like with a Beacon)
 		Ambient?: boolean,
 		/// Whether particles should be shown.
@@ -34,10 +31,7 @@ type MobEffectInstance = (
 	} |
 )
 
-type EffectId = (
-	#[until="1.19"] EffectByteId |
-	#[since="1.19"] EffectIntId |
-)
+type EffectId = (#[until="1.19"] EffectByteId | #[since="1.19"] EffectIntId)
 
 /// Numerical ids for effects
 enum(byte) EffectByteId {

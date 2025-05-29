@@ -4,10 +4,16 @@ dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 	...super::LivingEntity,
 	/// [main hand, offhand]
 	#[until="1.21.5"]
-	HandItems?: [(ItemStack | struct {})] @ 2,
+	HandItems?: [(
+		ItemStack |
+		struct {} |
+	)] @ 2,
 	/// [feet, legs, body, head]
 	#[until="1.21.5"]
-	ArmorItems?: [(ItemStack | struct {})] @ 4,
+	ArmorItems?: [(
+		ItemStack |
+		struct {} |
+	)] @ 4,
 	/// The equipment items of the armor stand.
 	#[since="1.21.5"]
 	equipment?: super::EntityEquipment,
@@ -22,26 +28,28 @@ dispatch minecraft:entity[armor_stand] to struct ArmorStand {
 	/// Whether it is small.
 	Small?: boolean,
 	/// A bitfield of the slots that cannot be used.
-	#[bitfield(enum (int) {
-		HandAll = 1,
-		BootsAll = 2,
-		LeggingsAll = 3,
-		ChestplateAll = 4,
-		HelmetAll = 5,
-		OffhandAll = 6,
-		HandReplace = 7,
-		BootsReplace = 8,
-		LeggingsReplace = 9,
-		ChestplateReplace = 10,
-		HelmetReplace = 11,
-		OffhandReplace = 12,
-		HandPlace = 13,
-		BootsPlace = 14,
-		LeggingsPlace = 15,
-		ChestplatePlace = 16,
-		HelmetPlace = 17,
-		OffhandPlace = 18,
-	})]
+	#[bitfield(
+		enum(int) {
+			HandAll = 1,
+			BootsAll = 2,
+			LeggingsAll = 3,
+			ChestplateAll = 4,
+			HelmetAll = 5,
+			OffhandAll = 6,
+			HandReplace = 7,
+			BootsReplace = 8,
+			LeggingsReplace = 9,
+			ChestplateReplace = 10,
+			HelmetReplace = 11,
+			OffhandReplace = 12,
+			HandPlace = 13,
+			BootsPlace = 14,
+			LeggingsPlace = 15,
+			ChestplatePlace = 16,
+			HelmetPlace = 17,
+			OffhandPlace = 18,
+		},
+	)]
 	DisabledSlots?: int,
 	/// Body part rotations.
 	Pose?: Pose,

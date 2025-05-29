@@ -16,7 +16,8 @@ dispatch minecraft:feature_config[tree] to struct TreeConfig {
 	minimum_size: FeatureSize,
 	#[since="1.17"]
 	dirt_provider: BlockStateProvider,
-	#[since="1.17"] #[until="1.18"]
+	#[since="1.17"]
+	#[until="1.18"]
 	sapling_provider: BlockStateProvider,
 	trunk_provider: BlockStateProvider,
 	#[until="1.17"]
@@ -80,14 +81,8 @@ struct MangroveRootPlacement {
 	max_root_width: int @ 1..12,
 	max_root_length: int @ 1..64,
 	random_skew_chance: float @ 0..1,
-	can_grow_through: (
-		[#[id="block"] string] |
-		#[id(registry="block",tags="allowed")] string |
-	),
-	muddy_roots_in: (
-		[#[id="block"] string] |
-		#[id(registry="block",tags="allowed")] string |
-	),
+	can_grow_through: ([#[id="block"] string] | #[id(registry="block", tags="allowed")] string),
+	muddy_roots_in: ([#[id="block"] string] | #[id(registry="block", tags="allowed")] string),
 	muddy_roots_provider: BlockStateProvider,
 }
 
@@ -119,10 +114,7 @@ dispatch minecraft:trunk_placer[upwards_branching_trunk_placer] to struct Upward
 	extra_branch_steps: IntProvider<int @ 1..>,
 	extra_branch_length: IntProvider<int @ 0..>,
 	place_branch_per_log_probability: float @ 0..1,
-	can_grow_through: (
-		[#[id="block"] string] |
-		#[id(registry="block",tags="allowed")] string |
-	),
+	can_grow_through: ([#[id="block"] string] | #[id(registry="block", tags="allowed")] string),
 }
 
 #[since="1.19.4"]

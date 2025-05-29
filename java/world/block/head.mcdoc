@@ -3,7 +3,8 @@ dispatch minecraft:block_entity[skull] to struct PlayerHead {
 	/// Owner of the skull.
 	#[until="1.16"]
 	Owner?: SkullOwner,
-	#[since="1.16"] #[until="1.20.5"]
+	#[since="1.16"]
+	#[until="1.20.5"]
 	SkullOwner?: SkullOwner,
 	/// Name of the owner, if exists will be converted to SkullOwner.
 	ExtraType?: string,
@@ -32,10 +33,7 @@ dispatch minecraft:block[
 struct SkullOwner {
 	/// Optional.
 	#[uuid]
-	Id?: (
-		#[until="1.16"] string |
-		#[since="1.16"] int[] @ 4 |
-	),
+	Id?: (#[until="1.16"] string | #[since="1.16"] int[] @ 4),
 	/// If missing appears as a steve head.
 	Name?: string,
 	Properties?: Properties,

@@ -13,10 +13,7 @@ dispatch minecraft:entity[player] to struct Player {
 	...super::LivingEntity,
 	/// Version of the player NBT structure
 	DataVersion?: int,
-	Dimension?: (
-		#[until="1.16"] Dimension |
-		#[since="1.16"] #[id="dimension"] string |
-	),
+	Dimension?: (#[until="1.16"] Dimension | #[since="1.16"] #[id="dimension"] string),
 	/// Location of the player's last death.
 	#[since="1.19"]
 	LastDeathLocation?: GlobalPos,

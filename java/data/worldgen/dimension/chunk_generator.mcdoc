@@ -21,7 +21,7 @@ struct FlatGeneratorSettings {
 	structures: StructureSettings,
 	#[since="1.18.2"]
 	structure_overrides?: (
-		[#[id(registry="worldgen/structure_set"] string] |
+		[#[id(registry="worldgen/structure_set")] string] |
 		#[id(registry="worldgen/structure_set", tags=allowed)] string |
 	),
 }
