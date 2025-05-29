@@ -7,7 +7,7 @@ dispatch minecraft:block_entity[decorated_pot] to struct DecoratedPot {
 	sherds?: [#[id] Sherd] @ 4,
 	/// Loot table that will populate this container.
 	#[since="1.20.3"]
-	LootTable?: #[id(registry="loot_table",empty="allowed")] string,
+	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.
 	#[since="1.20.3"]
 	LootTableSeed?: #[random] long,

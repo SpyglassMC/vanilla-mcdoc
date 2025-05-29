@@ -62,10 +62,7 @@ dispatch minecraft:entity[spawner_minecart] to struct SpawnerMinecart {
 	SpawnPotentials?: [SpawnPotential],
 	/// Data for the next mob to place.
 	/// Will be overwritten by `SpawnPotentials`.
-	SpawnData?: (
-		#[until="1.18"] AnyEntity |
-		#[since="1.18"] SpawnerEntry |
-	),
+	SpawnData?: (#[until="1.18"] AnyEntity | #[since="1.18"] SpawnerEntry),
 	/// Number of entities that will be placed.
 	SpawnCount: short,
 	/// Range that the spawned entities will be placed in.

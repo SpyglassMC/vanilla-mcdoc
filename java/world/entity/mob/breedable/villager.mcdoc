@@ -11,7 +11,8 @@ dispatch minecraft:entity[villager] to struct Villager {
 	...super::Breedable,
 	...VillagerBase,
 	VillagerData?: VillagerData,
-	FoodLevel?: byte, // TODO
+	FoodLevel?: byte,
+	// TODO
 	/// Gossips it has heard.
 	Gossips?: [Gossip],
 	/// Tick of the last time it has restocked.
@@ -44,7 +45,7 @@ enum(string) GossipType {
 	MajorNegative = "major_negative",
 	MinorNegative = "minor_negative",
 	MajorPositive = "major_positive",
-	MinorPositive = "minor_positive", 
+	MinorPositive = "minor_positive",
 	Trading = "trading",
 }
 

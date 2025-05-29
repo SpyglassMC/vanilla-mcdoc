@@ -17,10 +17,7 @@ use ::java::world::item::SingleItem
 use ::java::world::entity::AnyEntity
 
 /// Applied to an entity that has equipped/is holding the item.
-dispatch minecraft:data_component[attribute_modifiers] to (
-	#[until="1.21.5"] #[canonical] AttributeModifiers |
-	[AttributeModifier] |
-)
+dispatch minecraft:data_component[attribute_modifiers] to (#[until="1.21.5"] #[canonical] AttributeModifiers | [AttributeModifier])
 
 struct AttributeModifiers {
 	modifiers: [AttributeModifier],
@@ -92,13 +89,16 @@ dispatch minecraft:data_component[blocks_attacks] to struct blocks_attacks {
 	/// Sound played when the item goes on its disabled cooldown due to an attack.
 	disabled_sound?: SoundEventRef,
 	/// Damage types in this tag are bypassing the blocking
-	bypassed_by?: #[id(registry="damage_type",tags="required")] string,
+	bypassed_by?: #[id(registry="damage_type", tags="required")] string,
 }
 
 struct DamageReduction {
 	/// An optional damage type to filter this reduction by.
 	/// If not specified, any damage type is accepted for this reduction.
-	type?: (#[id(registry="damage_type",tags="allowed")] string | [#[id="damage_type"] string]),
+	type?: (
+		#[id(registry="damage_type", tags="allowed")] string |
+		[#[id="damage_type"] string] |
+	),
 	/// Constant amount of damage to be blocked.
 	base: float,
 	/// Fraction of the dealt damage that should be blocked.
@@ -119,10 +119,7 @@ struct ItemDamageFunction {
 #[since="1.21.5"]
 dispatch minecraft:data_component[break_sound] to SoundEventRef
 
-dispatch minecraft:data_component[bucket_entity_data] to (
-	#[canonical] BucketEntityData |
-	#[nbt=BucketEntityData] string |
-)
+dispatch minecraft:data_component[bucket_entity_data] to (#[canonical] BucketEntityData | #[nbt=BucketEntityData] string)
 
 struct BucketEntityData {
 	...AnyEntity,
@@ -193,7 +190,10 @@ dispatch minecraft:consume_effect[apply_effects] to struct ApplyEffectsConsumeEf
 
 /// Removing specific status/mob effect types from the player.
 dispatch minecraft:consume_effect[remove_effects] to struct RemoveEffectsConsumeEffect {
-	effects: (#[id(registry="mob_effect",tags="allowed")] string | [#[id="mob_effect"] string]),
+	effects: (
+		#[id(registry="mob_effect", tags="allowed")] string |
+		[#[id="mob_effect"] string] |
+	),
 }
 
 /// Removing all status/mob effects from the player.
@@ -225,24 +225,22 @@ dispatch minecraft:data_component[damage] to int @ 0..
 dispatch minecraft:data_component[damage_resistant] to struct DamageResistant {
 	/// The damage types which the item is resistant to when in entity form.
 	/// Additionally, this also affects whether the equipped item will be damaged when the wearer is hurt by a specified damage type.
-	types: #[id(registry="damage_type",tags="required")] string,
+	types: #[id(registry="damage_type", tags="required")] string,
 }
 
 #[since="1.21.2"]
 dispatch minecraft:data_component[death_protection] to struct DeathProtection {
 	/// Effects applied when the item protects the holder.
-	death_effects?: [ConsumeEffect]
+	death_effects?: [ConsumeEffect],
 }
 
 dispatch minecraft:data_component[debug_stick_state] to struct DebugStickState {
-	[#[id="block"] string]: string, // TODO
+	[#[id="block"] string]: string,
 }
 
+// TODO
 dispatch minecraft:data_component[dyed_color] to (
-	#[until="1.21.5"] (
-		#[canonical] DyedColor |
-		#[color="composite_rgb"] int |
-	) |
+	#[until="1.21.5"] (#[canonical] DyedColor | #[color="composite_rgb"] int) |
 	#[since="1.21.5"] RGB |
 )
 
@@ -256,7 +254,7 @@ struct DyedColor {
 /// Makes an item enchantable in an enchanting table
 #[since="1.21.2"]
 dispatch minecraft:data_component[enchantable] to struct Enchantable {
-	value: int @ 1..
+	value: int @ 1..,
 }
 
 /// If set, changes enchantment glint behavior. When true, this item will display a glint, even without enchantments. When false, this item will not display a glint, even with enchantments.
@@ -267,10 +265,7 @@ dispatch minecraft:data_component[enchantment_glint_override] to boolean
 /// An enchantment level of zero doesn't cause the enchantment section to be displayed in the tooltip, but the glint will still be shown, and the following rules apply:
 /// - Boolean enchantments are treated as level 1 (active).
 /// - Leveled enchantments are ignored.
-dispatch minecraft:data_component[enchantments,stored_enchantments] to (
-	#[until="1.21.5"] #[canonical] Enchantments |
-	EnchantmentLevels |
-)
+dispatch minecraft:data_component[enchantments, stored_enchantments] to (#[until="1.21.5"] #[canonical] Enchantments | EnchantmentLevels)
 
 struct Enchantments {
 	levels: EnchantmentLevels,
@@ -281,10 +276,7 @@ struct EnchantmentLevels {
 	[#[id="enchantment"] string]: int @ 1..255,
 }
 
-dispatch minecraft:data_component[entity_data] to (
-	#[canonical] AnyEntity |
-	#[nbt=AnyEntity] string |
-)
+dispatch minecraft:data_component[entity_data] to (#[canonical] AnyEntity | #[nbt=AnyEntity] string)
 
 #[since="1.21.2"]
 dispatch minecraft:data_component[equippable] to struct Equippable {
@@ -301,7 +293,10 @@ dispatch minecraft:data_component[equippable] to struct Equippable {
 	/// The overlay texture that should render in first person when equipped.
 	camera_overlay?: #[id="texture"] string,
 	/// Limits which entities can equip this item.
-	allowed_entities?: (#[id(registry="entity_type",tags="allowed")] string | [#[id="entity_type"] string]),
+	allowed_entities?: (
+		#[id(registry="entity_type", tags="allowed")] string |
+		[#[id="entity_type"] string] |
+	),
 	/// Whether the item can be equipped by using a dispenser. Defaults to `true`.
 	dispensable?: boolean,
 	/// Whether the item can be equipped by right-clicking. Defaults to `true`.
@@ -328,7 +323,7 @@ dispatch minecraft:data_component[fire_resistant] to struct {}
 
 dispatch minecraft:data_component[fireworks] to struct Fireworks {
 	explosions?: [Explosion] @ 0..256,
-	flight_duration?: byte
+	flight_duration?: byte,
 }
 
 dispatch minecraft:data_component[firework_explosion] to struct Explosion {
@@ -418,16 +413,13 @@ dispatch minecraft:data_component[hide_additional_tooltip] to struct {}
 dispatch minecraft:data_component[hide_tooltip] to struct {}
 
 /// The instrument of a goat horn.
-dispatch minecraft:data_component[instrument] to (
-	#[id="instrument"] string |
-	Instrument |
-)
+dispatch minecraft:data_component[instrument] to (#[id="instrument"] string | Instrument)
 
 /// If set, this projectile item can't be picked up by a player when fired, except in creative mode. Can only be used within charged_projectiles components.
 dispatch minecraft:data_component[intangible_projectile] to struct {}
 
 dispatch minecraft:data_component[item_model] to (
-	#[until="1.21.4"] #[id(registry="model",path="item/")] string |
+	#[until="1.21.4"] #[id(registry="model", path="item/")] string |
 	#[since="1.21.4"] #[id(registry="item_definition")] string |
 )
 
@@ -437,10 +429,7 @@ dispatch minecraft:data_component[item_model] to (
 /// - Can't be changed or removed in anvil.
 /// - Not styled with italics when displayed to player.
 /// - Does not show labels where applicable (for example: banner markers, names in item frames).
-dispatch minecraft:data_component[item_name] to (
-	#[until="1.21.5"] #[text_component] string |
-	#[since="1.21.5"] Text |
-)
+dispatch minecraft:data_component[item_name] to (#[until="1.21.5"] #[text_component] string | #[since="1.21.5"] Text)
 
 /// If set, this item can be played in a jukebox like a music disc.
 #[since="1.21"]
@@ -460,17 +449,14 @@ dispatch minecraft:data_component[lodestone_tracker] to struct LodestoneTracker 
 }
 
 /// A list of text components, each element being a lore line.
-dispatch minecraft:data_component[lore] to [(
-	#[until="1.21.5"] #[text_component] string |
-	#[since="1.21.5"] Text |
-)]
+dispatch minecraft:data_component[lore] to [(#[until="1.21.5"] #[text_component] string | #[since="1.21.5"] Text)]
 
 /// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
 dispatch minecraft:data_component[map_color] to #[color="composite_rgb"] int
 
 /// Key-value pairs of the icons to display, where the key is an arbitrary unique string identifying the decoration.
 dispatch minecraft:data_component[map_decorations] to struct MapDecorations {
-	[string]: MapDecoration
+	[string]: MapDecoration,
 }
 
 struct MapDecoration {
@@ -498,10 +484,7 @@ dispatch minecraft:data_component[note_block_sound] to (#[id="weighed_sound_even
 /// Bad omen amplifier level +1 (value of `0` corresponds to `Bad Omen I`).
 dispatch minecraft:data_component[ominous_bottle_amplifier] to int @ 0..4
 
-dispatch minecraft:data_component[potion_contents] to (
-	#[canonical] PotionContents |
-	#[id="potion"] string |
-)
+dispatch minecraft:data_component[potion_contents] to (#[canonical] PotionContents | #[id="potion"] string)
 
 struct PotionContents {
 	potion?: #[id="potion"] string,
@@ -516,10 +499,7 @@ struct PotionContents {
 #[since="1.21.5"]
 dispatch minecraft:data_component[potion_duration_scale] to float @ 0..
 
-dispatch minecraft:data_component[profile] to (
-	#[canonical] Profile |
-	string |
-)
+dispatch minecraft:data_component[profile] to (#[canonical] Profile | string)
 
 struct Profile {
 	/// Username of a player profile.
@@ -527,10 +507,7 @@ struct Profile {
 	/// UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.
 	id?: int[] @ 4,
 	/// Resolved textures hosted on the minecraft CDN.
-	properties?: (
-		#[canonical] [ProfileProperty] |
-		ProfilePropertyMap |
-	)
+	properties?: (#[canonical] [ProfileProperty] | ProfilePropertyMap),
 }
 
 struct ProfileProperty {
@@ -548,11 +525,11 @@ struct ProfilePropertyMap {
 	// TODO: Consider providing specific tooling for this.
 	/// The key is usually `textures`.
 	/// Base64 encoded JSON value of the texture index.
-	[string]: [string]
+	[string]: [string],
 }
 
 /// When present, this item can be placed in the pattern slot of a loom.
-dispatch minecraft:data_component[provides_banner_patterns] to #[id(registry="banner_pattern",tags="required")] string
+dispatch minecraft:data_component[provides_banner_patterns] to #[id(registry="banner_pattern", tags="required")] string
 
 /// When present, this item will provide the specified trim material when used in a trimming recipe.
 dispatch minecraft:data_component[provides_trim_material] to #[id="trim_material"] string
@@ -579,8 +556,8 @@ dispatch minecraft:data_component[repair_cost] to int @ 0..
 
 /// Makes an item enchantable in an enchanting table
 #[since="1.21.2"]
-dispatch minecraft:data_component[repairable] to struct Repairable{
-	items: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
+dispatch minecraft:data_component[repairable] to struct Repairable {
+	items: (#[id(registry="item", tags="allowed")] string | [#[id="item"] string]),
 }
 
 dispatch minecraft:data_component[suspicious_stew_effects] to [SuspiciousStewEffect]
@@ -604,7 +581,7 @@ dispatch minecraft:data_component[tool] to struct Tool {
 }
 
 struct ToolRule {
-	blocks: (#[id(registry="block",tags="allowed")] string | [#[id="block"] string]),
+	blocks: (#[id(registry="block", tags="allowed")] string | [#[id="block"] string]),
 	/// Overrides the default mining speed.
 	speed?: float,
 	/// Overrides whether or not this tool is considered correct to mine at its most efficient speed, and to drop items if the block's loot table requires it.
@@ -624,15 +601,9 @@ dispatch minecraft:data_component[tooltip_style] to #[id] string
 /// Trim to apply to the item & armor when worn.
 dispatch minecraft:data_component[trim] to struct Trim {
 	/// The trim material of this item..
-	material: (
-		#[id="trim_material"] string |
-		TrimMaterial |
-	),
+	material: (#[id="trim_material"] string | TrimMaterial),
 	/// The trim pattern of this item.
-	pattern: (
-		#[id="trim_pattern"] string |
-		TrimPattern |
-	),
+	pattern: (#[id="trim_pattern"] string | TrimPattern),
 	#[until="1.21.5"]
 	show_in_tooltip?: boolean,
 }
@@ -666,10 +637,7 @@ dispatch minecraft:data_component[writable_book_content] to struct WritableBookC
 }
 
 dispatch minecraft:data_component[written_book_content] to struct WrittenBookContent {
-	pages?: [Filterable<(
-		#[until="1.21.5"] #[text_component] string |
-		#[since="1.21.5"] Text |
-	)>],
+	pages?: [Filterable<(#[until="1.21.5"] #[text_component] string | #[since="1.21.5"] Text)>],
 	title: (Filterable<string @ ..32>),
 	author: string,
 	/// Number of times this written book has been copied. Defaults to 0. If the value is greater than 1, the book cannot be copied.

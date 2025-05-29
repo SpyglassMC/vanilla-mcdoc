@@ -49,7 +49,8 @@ struct ChestBoat {
 	Items?: [SlottedItem<byte @ 0..26>] @ 0..27,
 }
 
-#[since="1.19"] #[until="1.21.2"]
+#[since="1.19"]
+#[until="1.21.2"]
 dispatch minecraft:entity[chest_boat] to ChestBoat
 
 #[since="1.21.2"]

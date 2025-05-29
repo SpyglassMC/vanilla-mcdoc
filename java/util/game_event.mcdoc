@@ -5,7 +5,7 @@ struct VibrationListener {
 	/// Event that is being received, if any
 	event?: ReceivingEvent,
 	/// Distance in blocks to the event that is being received
-	event_distance?: float @ 0.0..,
+	event_distance?: float @ 0..,
 	/// Delay in ticks until the event reaches this listener
 	event_delay?: int @ 1..,
 }
@@ -19,9 +19,10 @@ struct ReceivingEvent {
 	/// UUID of the source entity of the event, if one exists
 	source?: #[uuid] [int] @ 4,
 	/// UUID of the owner of the projectile, if one exists
-	projectile_owner?: #[uuid] [int] @ 4, // TODO: Double check if these are int arrays
+	projectile_owner?: #[uuid] [int] @ 4,
 }
 
+// TODO: Double check if these are int arrays
 struct PositionSource {
 	type: #[id="position_source_type"] string,
 	...minecraft:position_source[[type]],

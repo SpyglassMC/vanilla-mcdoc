@@ -10,7 +10,7 @@ dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 	#[until="1.21.5"]
 	ingredient: (
 		#[until="1.21.2"] #[id="item"] string |
-		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |
 	),
 	/// Model override predicate float.
 	#[until="1.21.4"]
@@ -41,7 +41,7 @@ dispatch minecraft:resource[trim_pattern] to struct TrimPattern {
 	#[until="1.21.5"]
 	template_item: (
 		#[until="1.21.2"] #[id="item"] string |
-		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |
 	),
 	/// Whether the pattern texture will be masked based on the underlying armor. Defaults to `false`.
 	#[since="1.20.2"]
