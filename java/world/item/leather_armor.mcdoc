@@ -3,7 +3,7 @@ dispatch minecraft:item[
 	leather_leggings,
 	leather_chestplate,
 	leather_helmet,
-	leather_horse_armor
+	leather_horse_armor,
 ] to struct LeatherArmor {
 	...super::ItemBase,
 	display?: ColorDisplay,

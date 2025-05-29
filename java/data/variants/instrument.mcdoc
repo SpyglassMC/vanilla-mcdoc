@@ -8,5 +8,5 @@ dispatch minecraft:resource["instrument"] to struct Instrument {
 	range: float @ 0<..,
 	/// Duration of use in seconds, used as item cooldown
 	use_duration: float @ 0<..,
-	description: Text
+	description: Text,
 }

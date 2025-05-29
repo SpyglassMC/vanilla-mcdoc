@@ -14,4 +14,4 @@ dispatch minecraft:block_entity[brushable_block] to struct BrushableBlock {
 	hit_direction?: DirectionInt,
 }
 
-dispatch minecraft:block[suspicious_sand,suspicious_gravel] to minecraft:block_entity[brushable_block]
+dispatch minecraft:block[suspicious_sand, suspicious_gravel] to minecraft:block_entity[brushable_block]

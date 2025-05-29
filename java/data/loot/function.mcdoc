@@ -44,7 +44,7 @@ dispatch minecraft:apply_bonus_formula[ore_drops] to struct {}
 dispatch minecraft:apply_bonus_formula[uniform_bonus_count] to struct UniformBonusFormula {
 	parameters: struct {
 		bonusMultiplier: int,
-	},	
+	},
 }
 
 /// `n=level + extra`, `p=probability`
@@ -63,23 +63,30 @@ dispatch minecraft:loot_function[copy_name] to struct CopyName {
 
 enum(string) CopyNameSource {
 	This = "this",
-	#[until="1.21"] Killer = "killer",
-	#[since="1.21"] AttackingEntity = "attacking_entity",
-	#[until="1.21"] KillerPlayer = "killer_player",
-	#[since="1.21"] LastDamagePlayer = "last_damage_player",
+	#[until="1.21"]
+	Killer = "killer",
+	#[since="1.21"]
+	AttackingEntity = "attacking_entity",
+	#[until="1.21"]
+	KillerPlayer = "killer_player",
+	#[since="1.21"]
+	LastDamagePlayer = "last_damage_player",
 	BlockEntity = "block_entity",
 }
 
 struct CopyNbt {
 	source: NbtProvider,
-	ops: [(struct CopyNbtOperation {
-		source: #[nbt_path] string, // TODO
-		target: (
-			#[until="1.20.5"] #[nbt_path=minecraft:item[%fallback]] string |
-			#[since="1.20.5"] #[nbt_path=mcdoc:custom_data[%fallback]] string |
-		),
-		op: CopyNbtStrategy
-	})],
+	ops: [(
+		struct CopyNbtOperation {
+			source: #[nbt_path] string,
+			// TODO
+			target: (
+				#[until="1.20.5"] #[nbt_path=minecraft:item[%fallback]] string |
+				#[since="1.20.5"] #[nbt_path=mcdoc:custom_data[%fallback]] string |
+			),
+			op: CopyNbtStrategy,
+		} |
+	)],
 	...Conditions,
 }
 
@@ -115,7 +122,7 @@ dispatch minecraft:loot_function[copy_state] to struct CopyState {
 	...Conditions,
 }
 
-dispatch mcdoc:block_state_keys[%unknown,%none] to string
+dispatch mcdoc:block_state_keys[%unknown, %none] to string
 
 /// Enchants the item with one randomly-selected enchantment. The level of the enchantment, if applicable, is random.
 dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {
@@ -123,7 +130,10 @@ dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {
 	#[until="1.21"]
 	enchantments?: [#[id="enchantment"] string],
 	/// The allowed enchantments. If omitted, all enchantments applicable to the item are possible.
-	options?: (#[id(registry="enchantment",tags="allowed")] string | [#[id="enchantment"] string]),
+	options?: (
+		#[id(registry="enchantment", tags="allowed")] string |
+		[#[id="enchantment"] string] |
+	),
 	/// Whether to only enchant with item-compatible enchantments. Defaults to `true`.
 	///
 	/// Note: Books are considered compatible with all Enchantments.
@@ -135,13 +145,13 @@ dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {
 /// (roughly equivalent to using an enchantment table at that level)
 dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevels {
 	/// The levels to enchant this item with.
-	levels: (
-		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] NumberProvider |
-	),
+	levels: (#[until="1.17"] RandomIntGenerator | #[since="1.17"] NumberProvider),
 	/// The allowed enchantments. If omitted, all enchantments applicable to the item are possible.
 	#[since="1.21"]
-	options?: (#[id(registry="enchantment",tags="allowed")] string | [#[id="enchantment"] string]),
+	options?: (
+		#[id(registry="enchantment", tags="allowed")] string |
+		[#[id="enchantment"] string] |
+	),
 	/// Whether treasure enchantments are allowed on this item.
 	#[until="1.21"]
 	treasure?: boolean,
@@ -152,8 +162,9 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
 	/// Generated structure to locate. Accepts any of the structure types used by the `/locate` command. Defaults to buried treasure.
 	destination?: (
-		#[until="1.19"] string | // TODO: low-priority, this is an enum
-		#[since="1.19"] #[id(registry="worldgen/structure",tags=implicit)] string |
+		#[until="1.19"] string |
+		// TODO: low-priority, this is an enum
+		#[since="1.19"] #[id(registry="worldgen/structure", tags=implicit)] string |
 	),
 	/// The icon used to mark the destination on the map. Accepts any of the map icon text IDs (case insensitive).
 	/// If `mansion` or `monument` is used, the color of the lines on the item texture changes to match the corresponding explorer map.
@@ -231,19 +242,13 @@ dispatch minecraft:loot_function[fill_player_head] to struct FillPlayerHead {
 
 dispatch minecraft:loot_function[limit_count] to struct LimitCount {
 	/// Limits the count of the item to a range.
-	limit: (
-		#[until="1.17"] IntLimiter |
-		#[since="1.17"] IntRange |
-	),
+	limit: (#[until="1.17"] IntLimiter | #[since="1.17"] IntRange),
 	...Conditions,
 }
 
 struct EnchantedCountBase {
 	/// If the number is fractional the result is rounded *after* the number was multiplied by the looting level.
-	count: (
-		#[until="1.17"] MinMaxBounds<float> |
-		#[since="1.17"] NumberProvider |
-	),
+	count: (#[until="1.17"] MinMaxBounds<float> | #[since="1.17"] NumberProvider),
 	/// Limits the count of the item to a range.
 	limit?: int,
 }
@@ -299,13 +304,10 @@ struct AttributeModifier {
 		/// The unique identifier of this attribute modifier.
 		id: #[id="attribute_modifier"] string,
 	},
-	amount: (
-		#[until="1.17"] RandomValueBounds |
-		#[since="1.17"] NumberProvider |
-	),
+	amount: (#[until="1.17"] RandomValueBounds | #[since="1.17"] NumberProvider),
 	/// The operation used for this modifier.
 	operation: (
-		#[until="1.20.5"] ("addition" | "multiply_base" | "multiply_total") |
+		(#[until="1.20.5"]"addition" | "multiply_base" | "multiply_total") |
 		#[since="1.20.5"] AttributeOperation |
 	),
 	/// If a list, one of the listed slots will be chosen randomly.
@@ -375,7 +377,8 @@ enum(string) BannerPattern {
 
 /// For a container block item's contents.
 dispatch minecraft:loot_function[set_contents] to struct SetContents {
-	#[since="1.18"] #[until="1.20.5"]
+	#[since="1.18"]
+	#[until="1.20.5"]
 	type: #[id="block_entity_type"] string,
 	/// Describes target component to be filled with items.
 	#[since="1.20.5"]
@@ -402,16 +405,13 @@ enum(string) ContainerComponents {
 dispatch minecraft:loot_function[set_item] to struct SetItem {
 	item: (
 		#[until="1.21.2"] #[id="item"] string |
-		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |
 	),
 	...Conditions,
 }
 
 dispatch minecraft:loot_function[set_count] to struct SetCount {
-	count: (
-		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] NumberProvider |
-	),
+	count: (#[until="1.17"] RandomIntGenerator | #[since="1.17"] NumberProvider),
 	/// Whether to add to the existing count. Defaults to `false`.
 	#[since="1.17"]
 	add?: boolean,
@@ -445,7 +445,7 @@ dispatch minecraft:loot_function[set_enchantments] to struct SetEnchantments {
 #[since="1.19"]
 dispatch minecraft:loot_function[set_instrument] to struct SetInstrument {
 	/// Sets the instrument tag for a goat horn.
-	options: #[id(registry="instrument",tags="required")] string,
+	options: #[id(registry="instrument", tags="required")] string,
 	...Conditions,
 }
 
@@ -672,8 +672,5 @@ struct StewEffect {
 	/// The status effect of this stew effect.
 	type: #[id="mob_effect"] string,
 	/// The duration of this stew effect, in seconds.
-	duration: (
-		#[until="1.17"] MinMaxBounds<float> |
-		#[since="1.17"] NumberProvider |
-	),
+	duration: (#[until="1.17"] MinMaxBounds<float> | #[since="1.17"] NumberProvider),
 }

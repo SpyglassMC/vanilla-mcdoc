@@ -10,4 +10,5 @@ type Credits = [struct CreditsCompanySegment {
 		}],
 	}],
 }]
+
 dispatch minecraft:resource[credits] to Credits

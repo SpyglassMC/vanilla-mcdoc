@@ -61,7 +61,7 @@ type Transformation = (
 		/// Scale in [x, y, z].
 		scale: [float] @ 3,
 	} |
-	([float] @ 16) | 
+	([float] @ 16) |
 )
 
 type Rotation = (
@@ -115,10 +115,7 @@ dispatch minecraft:entity[item_display] to struct ItemDisplay {
 dispatch minecraft:entity[text_display] to struct TextDisplay {
 	...DisplayBase,
 	/// Text to display. Components are resolved with the executor set to the display entity and the position set to `0 0 0`.
-	text?: (
-		#[until="1.21.5"] #[text_component] string |
-		#[since="1.21.5"] Text |
-	),
+	text?: (#[until="1.21.5"] #[text_component] string | #[since="1.21.5"] Text),
 	/// Line width in pixels used to split lines (note: new line can be also added with \n characters). Defaults to 200.
 	line_width?: int @ 0..,
 	/// Opacity (alpha component) of rendered text. Defaults to 255. Interpolated.

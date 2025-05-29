@@ -9,7 +9,7 @@ struct SingleItem {
 	/// ID of the item.
 	id: (
 		#[until="1.20.5"] #[id="item"] string |
-		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |
 	),
 	#[since="1.20.5"]
 	components?: DataComponentPatch,
@@ -51,18 +51,20 @@ struct ItemBase {
 	/// Display settings.
 	display?: Display,
 	/// Bitfield for which flags to hide on an item.
-	#[bitfield(enum (int) {
-		Enchantments = 1,
-		AttributeModifiers = 2,
-		Unbreakable = 3,
-		CanDestroy = 4,
-		CanPlaceOn = 5,
-		Other = 6,
-		#[since="1.16.2"]
-		LeatherColor = 7,
-		#[since="1.19.4"]
-		Trim = 8
-	})]
+	#[bitfield(
+		enum(int) {
+			Enchantments = 1,
+			AttributeModifiers = 2,
+			Unbreakable = 3,
+			CanDestroy = 4,
+			CanPlaceOn = 5,
+			Other = 6,
+			#[since="1.16.2"]
+			LeatherColor = 7,
+			#[since="1.19.4"]
+			Trim = 8,
+		},
+	)]
 	HideFlags?: int,
 	/// Trim to apply to the item & armor when worn.
 	#[since="1.19.4"]
@@ -78,16 +80,13 @@ struct Enchantment {
 	/// Which enchantment is being described.
 	id?: #[id="enchantment"] string,
 	/// Which level the enchantment is.
-	lvl?: (
-		#[until="1.17"] (short @ 1.. | int @ 1..) |
-		#[since="1.17"] int @ 0..255 |
-	),
+	lvl?: ((#[until="1.17"]short @ 1.. | int @ 1..) | #[since="1.17"] int @ 0..255),
 }
 
 /// A single attribute modifier.
 struct AttributeModifier {
 	AttributeName?: (
-		#[until="1.16"] (AttributeName | string) |
+		(#[until="1.16"]AttributeName | string) |
 		#[since="1.16"] #[id="attribute"] string |
 	),
 	/// Identifying name of the modifier, has no real effect.

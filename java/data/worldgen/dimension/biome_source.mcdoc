@@ -8,7 +8,7 @@ dispatch minecraft:biome_source[checkerboard] to struct Checkerboard {
 	scale?: int @ 0..62,
 	biomes: (
 		[#[id="worldgen/biome"] string] |
-		#[since="1.18.2"] #[id(registry="worldgen/biome",tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="worldgen/biome", tags=allowed)] string |
 	),
 }
 
@@ -36,13 +36,17 @@ dispatch minecraft:biome_source[multi_noise] to struct MultiNoise {
 dispatch minecraft:multi_noise_biome_source[%unknown] to struct {}
 
 dispatch minecraft:multi_noise_biome_source[%none] to struct DirectMultiNoise {
-	#[since="1.16.2"] #[until="1.18"]
+	#[since="1.16.2"]
+	#[until="1.18"]
 	temperature_noise: NoiseParameters,
-	#[since="1.16.2"] #[until="1.18"]
+	#[since="1.16.2"]
+	#[until="1.18"]
 	humidity_noise: NoiseParameters,
-	#[since="1.16.2"] #[until="1.18"]
+	#[since="1.16.2"]
+	#[until="1.18"]
 	altitude_noise: NoiseParameters,
-	#[since="1.16.2"] #[until="1.18"]
+	#[since="1.16.2"]
+	#[until="1.18"]
 	weirdness_noise: NoiseParameters,
 	biomes: [struct BiomeNoiseEntry {
 		biome: #[id="worldgen/biome"] string,
@@ -52,11 +56,12 @@ dispatch minecraft:multi_noise_biome_source[%none] to struct DirectMultiNoise {
 
 enum(string) MultiNoisePreset {
 	Nether = "nether",
-	#[since="1.18"] Overworld = "overworld",
+	#[since="1.18"]
+	Overworld = "overworld",
 }
 
 dispatch minecraft:resource["worldgen/multi_noise_biome_source_parameter_list"] to struct MultiNoiseBiomeSourceParameterList {
-	preset: #[id] MultiNoisePreset
+	preset: #[id] MultiNoisePreset,
 }
 
 dispatch minecraft:resource["worldgen/noise"] to struct NoiseParameters {
@@ -79,12 +84,7 @@ struct ClimateParameters {
 	offset: float @ 0..1,
 }
 
-type ClimateParameter = (
-	float @ -2..2 |
-	#[since="1.18"]
-	[float @ -2..2] @ 2 |
-)
-
+type ClimateParameter = (float @ -2..2 | #[since="1.18"] [float @ -2..2] @ 2)
 
 /// Biome distribution for the End.
 dispatch minecraft:biome_source[the_end] to struct TheEnd {

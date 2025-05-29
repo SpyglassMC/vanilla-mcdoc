@@ -16,13 +16,9 @@ struct DataComponentPredicate {
 	)]: minecraft:data_component_predicate[[%key]],
 }
 
-
 dispatch minecraft:data_component[custom_data] to CustomData
 
-type CustomData = (
-	#[canonical] CustomDataMap |
-	#[nbt=CustomDataMap] string |
-)
+type CustomData = (#[canonical] CustomDataMap | #[nbt=CustomDataMap] string)
 
 type CustomDataMap = struct {
 	[#[dispatcher_key="mcdoc:custom_data"] string]?: mcdoc:custom_data[[%key]],
@@ -30,7 +26,4 @@ type CustomDataMap = struct {
 
 dispatch mcdoc:custom_data[%unknown] to any
 
-dispatch minecraft:data_component[custom_name] to (
-	#[until="1.21.5"] #[text_component] string |
-	#[since="1.21.5"] Text |
-)
+dispatch minecraft:data_component[custom_name] to (#[until="1.21.5"] #[text_component] string | #[since="1.21.5"] Text)
