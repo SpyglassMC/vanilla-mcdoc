@@ -1,6 +1,12 @@
 use ::java::world::entity::AnyEntity
 
-dispatch minecraft:item[axolotl_bucket, cod_bucket, salmon_bucket, pufferfish_bucket, tadpole_bucket] to struct BasicFishBucket {
+dispatch minecraft:item[
+	axolotl_bucket,
+	cod_bucket,
+	salmon_bucket,
+	pufferfish_bucket,
+	tadpole_bucket
+] to struct BasicFishBucket {
 	EntityTag?: AnyEntity,
 }
 

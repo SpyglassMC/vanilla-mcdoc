@@ -1,8 +1,14 @@
 dispatch minecraft:resource["shader"] to struct ShaderProgram {
 	// The vertex shader, referencing a file ending with `.vsh`.
-	vertex: (#[until="1.21.2"] string | #[since="1.21.2"] #[id="shader/vertex"] string),
+	vertex: (
+		#[until="1.21.2"] string |
+		#[since="1.21.2"] #[id="shader/vertex"] string |
+	),
 	// The fragment shader, referencing a file ending with `.fsh`.
-	fragment: (#[until="1.21.2"] string | #[since="1.21.2"] #[id="shader/fragment"] string),
+	fragment: (
+		#[until="1.21.2"] string |
+		#[since="1.21.2"] #[id="shader/fragment"] string |
+	),
 	samplers?: [Sampler],
 	#[until="1.21.2"]
 	attributes?: [string],

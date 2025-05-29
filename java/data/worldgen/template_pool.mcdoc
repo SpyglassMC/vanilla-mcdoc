@@ -17,7 +17,10 @@ dispatch minecraft:resource["worldgen/template_pool"] to struct TemplatePool {
 }
 
 struct WeightedElement {
-	weight: (#[until="1.17"] int @ 1.. | #[since="1.17"] int @ 1..150),
+	weight: (
+		#[until="1.17"] int @ 1.. |
+		#[since="1.17"] int @ 1..150 |
+	),
 	element: Element,
 }
 
@@ -37,10 +40,16 @@ enum(string) Projection {
 
 dispatch minecraft:template_pool_element[feature_pool_element] to struct FeatureElement {
 	...ElementBase,
-	feature: (#[until="1.18"] ConfiguredFeatureRef | #[since="1.18"] PlacedFeatureRef),
+	feature: (
+		#[until="1.18"] ConfiguredFeatureRef |
+		#[since="1.18"] PlacedFeatureRef |
+	),
 }
 
-dispatch minecraft:template_pool_element[legacy_single_pool_element, single_pool_element] to struct SingleElement {
+dispatch minecraft:template_pool_element[
+	legacy_single_pool_element,
+	single_pool_element,
+] to struct SingleElement {
 	...ElementBase,
 	location: #[id="structure"] string,
 	processors: ProcessorListRef,

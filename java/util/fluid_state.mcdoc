@@ -3,6 +3,6 @@ struct FluidState {
 	Properties?: mcdoc:fluid_states[[Name]],
 }
 
-dispatch mcdoc:fluid_states[%unknown, %none] to struct {
+dispatch mcdoc:fluid_states[%unknown,%none] to struct {
 	[string]: string,
 }

@@ -42,24 +42,24 @@ dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 		#[until="1.21.2"] struct CarversPerStep {
 			[CarveStep]: (
 				[CarverRef] |
-				#[since="1.18.2"] #[id(registry="worldgen/configured_carver", tags=allowed)] string |
+				#[since="1.18.2"] #[id(registry="worldgen/configured_carver",tags=allowed)] string |
 			),
 		} |
 		#[since="1.21.2"] (
 			[CarverRef] |
-			#[id(registry="worldgen/configured_carver", tags=allowed)] string |
+			#[id(registry="worldgen/configured_carver",tags=allowed)] string |
 		) |
 	),
 	features: (
 		#[until="1.18"] [[ConfiguredFeatureRef]] @ ..10 |
 		#[since="1.18"] [(
 			[PlacedFeatureRef] |
-			#[since="1.18.2"] #[id(registry="worldgen/placed_feature", tags=allowed)] string |
+			#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags=allowed)] string |
 		)] @ ..11 |
 	),
 }
 
-enum(string) BiomeCategory {
+enum (string) BiomeCategory {
 	Beach = "beach",
 	Desert = "desert",
 	ExtremeHills = "extreme_hills",
@@ -67,8 +67,7 @@ enum(string) BiomeCategory {
 	Icy = "icy",
 	Jungle = "jungle",
 	Mesa = "mesa",
-	#[since="1.18"]
-	Mountain = "mountain",
+	#[since="1.18"] Mountain = "mountain",
 	Mushroom = "mushroom",
 	Nether = "nether",
 	None = "none",
@@ -79,8 +78,7 @@ enum(string) BiomeCategory {
 	Swamp = "swamp",
 	Taiga = "taiga",
 	TheEnd = "the_end",
-	#[since="1.17"]
-	Underground = "underground",
+	#[since="1.17"] Underground = "underground",
 }
 
 enum(string) Precipitation {
@@ -120,7 +118,7 @@ struct BiomeEffects {
 		#[since="1.21.4"] [struct {
 			weight: int @ 1..,
 			data: BiomeMusic,
-		}] |
+		}]
 	),
 	/// The volume of the music in this biome. Defaults to 1.
 	/// The game will smoothly transition between the current music volume and the new volume when entering the biome.
@@ -148,10 +146,8 @@ enum(string) MobCategory {
 	Monster = "monster",
 	Creature = "creature",
 	Ambient = "ambient",
-	#[since="1.18"]
-	Axolotls = "axolotls",
-	#[since="1.17"]
-	UndergroundWaterCreature = "underground_water_creature",
+	#[since="1.18"] Axolotls = "axolotls",
+	#[since="1.17"] UndergroundWaterCreature = "underground_water_creature",
 	WaterCreature = "water_creature",
 	WaterAmbient = "water_ambient",
 	Misc = "misc",
