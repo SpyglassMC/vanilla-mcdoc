@@ -4,10 +4,13 @@ use super::ProjectileBase
 dispatch minecraft:entity[firework_rocket] to struct FireWorkRocket {
 	...ProjectileBase,
 	/// Ticks it has existed.
+
 	Life?: int,
 	/// Ticks it will exist.
+
 	LifeTime?: int,
 	/// Whether it should move at an angle.
+
 	ShotAtAngle?: boolean,
 	FireworksItem?: ItemStack,
 }

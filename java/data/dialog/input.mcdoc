@@ -4,86 +4,129 @@ struct InputControl {
 	type: #[id="input_control_type"] string,
 	// TODO: Narrowing the type here would require the weird JSON IMP Doc stuff that we don't have yet or some really advanced specialized attribute nonsense
 	/// The input key, which is used to build macro command and generate custom action payload.
-	key: ((#[match_regex="^[A-Za-z0-9_]*$"] string @ 1..) | mcdoc:custom_dynamic_event_keys[%fallback]),
+
+	key: (
+		(#[match_regex="^[A-Za-z0-9_]*$"] string @ 1..) |
+		mcdoc:custom_dynamic_event_keys[%fallback] |
+	),
 	...minecraft:input_control[[type]],
 }
 
 dispatch minecraft:input_control[text] to struct TextInput {
 	/// Defaults to 200.
+
 	width?: int @ 1..1024,
 	/// Label displayed to the left of control.
+
 	label: Text,
 	/// Defaults to `true`.
+
 	label_visible?: boolean,
 	/// Initial contents of the text input.
+
 	/// Defaults to `""` (empty string).
+
 	initial?: string,
 	/// Maximum length of input
+
 	/// Defaults to 32.
+
 	max_length?: int @ 1..,
 	/// If present, allows users to input multiple lines.
+
 	multiline?: struct MultiLine {
 		max_lines?: int @ 1..,
 		/// Height of the input.
+
 		/// If this field is not present:
+
 		/// - If `max_lines` is present, the height will be chosen to fit the maximum number of lines.
+
 		/// - If `max_lines` is also not present, the height will be chosen to fit 4 lines.
+
 		height?: int @ 1..512,
 	},
 }
 
 dispatch minecraft:input_control["boolean"] to struct BooleanInput {
 	/// Label displayed to the right of control.
+
 	label: Text,
 	/// Initial value of the control.
+
 	/// Defaults to `false` (unchecked).
+
 	initial?: boolean,
 	/// String to send when the control is checked.
+
 	/// Defaults to `"true"`.
+
 	on_true?: string,
 	/// String to send when the control is unchecked.
+
 	/// Defaults to `"false"`.
+
 	on_false?: string,
 }
 
 dispatch minecraft:input_control[single_option] to struct SingleOptionInput {
 	/// Defaults to 200.
+
 	width?: int @ 1..1024,
 	/// Label displayed on the button.
+
 	label: Text,
 	/// Defaults to `true`.
+
 	label_visible?: boolean,
 	options: [(Option | string)] @ 1..,
 }
+
 struct Option {
 	/// String to send on submit.
+
 	id: string,
 	/// Label displayed on the button.
+
 	/// When not present, `id` will be used instead.
+
 	display?: Text,
 	// TODO: implement "one hot" check here if possible
 	/// Whether this option is the initial value.
+
 	/// Only one option can have this field set to `true`.
+
 	initial?: boolean,
 }
 
 dispatch minecraft:input_control[number_range] to struct NumberRangeInput {
 	/// Defaults to 200.
+
 	width?: int @ 1..1024,
 	/// Label displayed on the slider.
+
 	label: Text,
 	/// The translation to be used for building label.
+
 	/// `%1$s` is replaced by `label`; `%2$s` is replaced by current value of the slider.
+
 	/// Defaults to `options.generic_value`.
+
 	label_format?: #[translation_key] string,
 	/// Start value, inclusive.
+
 	start: float,
 	/// End value, inclusive.
+
 	end: float,
 	/// Step size of the input.
+
 	/// If not present, any value from range is allowed.
+
 	step?: float @ 0<..,
 	/// Initial value of the slider. Rounded down nearest step.
+
 	/// Defaults to the middle of the range.
+
 	initial?: float,
 }

@@ -3,47 +3,59 @@ use ::java::world::item::ItemStack
 
 dispatch minecraft:resource[advancement] to struct Advancement {
 	/// If present, advancement will be visible in the advancement tabs.
+
 	display?: AdvancementDisplay,
 	/// If this field is absent, this advancement is a root advancement.
+
 	/// Circular references cause a loading failure.
+
 	parent?: #[id="advancement"] string,
 	/// If `requirements` is not defined, all defined criteria will be required.
+
 	criteria: struct AdvancementCriteriaMap {
 		[#[criterion(definition=true)] string]: AdvancementCriterion,
 	},
 	/// Contains all of the `criteria` keys.
+
 	/// If all criteria are required at once, this may be omitted.
+
 	/// With multiple criteria: this contains a list of lists with criteria (all criteria must be mentioned).
+
 	/// If all of the lists each have any criteria met, the advancement is complete (basically AND grouping of OR groups).
+
 	requirements?: [[#[criterion] string]],
 	/// Provided to the player when this advancement is obtained.
+
 	rewards?: AdvancementRewards,
 	/// Defaults to `false`. The vanilla game client only reads this for advancements from the `minecraft` namespace.
+
 	sends_telemetry_event?: boolean,
 }
 
 struct AdvancementDisplay {
-	icon: (
-		#[until="1.20.5"] AdvancementIcon |
-		#[since="1.20.5"] ItemStack |
-	),
+	icon: (#[until="1.20.5"] AdvancementIcon | #[since="1.20.5"] ItemStack),
 	title: Text,
 	description: Text,
 	/// Used for the advancement tab (root advancement only).
-	background?: (
-		#[until="1.21.5"] string |
-		#[since="1.21.5"] #[id="texture"] string |
-	),
+
+	background?: (#[until="1.21.5"] string | #[since="1.21.5"] #[id="texture"] string),
 	/// Controls the advancement tile frame. Defaults to `task`.
+
 	frame?: AdvancementFrame,
 	/// Whether to show the toast pop up after completing this advancement. Defaults to `true`.
+
 	show_toast?: boolean,
 	/// Whether to announce in the chat when this advancement has been completed. Defaults to `true`.
+
 	announce_to_chat?: boolean,
 	/// Whether or not to hide this advancement and all its children from the advancement screen,
+
 	/// until this advancement have been completed.
+
 	/// Has no effect on root advancements themselves, but still affects all their children.
+
 	/// Defaults to `false`.
+
 	hidden?: boolean,
 }
 
@@ -54,36 +66,46 @@ struct AdvancementIcon {
 
 enum(string) AdvancementFrame {
 	/// Normal border.
+
 	Task = "task",
 	/// Fancy spiked border (used for the kill all mobs advancement).
+
 	Challenge = "challenge",
 	/// Rounded border (used for the full beacon advancement).
+
 	Goal = "goal",
 }
 
 struct AdvancementCriterion {
 	/// Many triggers can occur multiple times, however, the reward will only be provided multiple times if the advancement is first revoked, which is often done within the function reward.
+
 	trigger: (
 		#[until="1.20.3"] #[id] Trigger |
-		#[since="1.20.3"] #[id="trigger_type"] string | 
+		#[since="1.20.3"] #[id="trigger_type"] string |
 	),
 	...minecraft:trigger[[trigger]],
 }
 
 struct AdvancementRewards {
 	/// Function to run as the player (not at). Function group tags are not allowed.
+
 	function?: #[id="function"] string,
 	/// Loot tables to give.
+
 	loot?: [#[id="loot_table"] string],
 	/// Recipes to unlock.
+
 	recipes?: [#[id="recipe"] string],
 	/// XP to add.
+
 	experience?: int,
 }
 
 enum(string) Trigger {
-	#[since="1.19"] AllayDropItemOnBlock = "allay_drop_item_on_block",
-	#[since="1.19"] AvoidVibration = "avoid_vibration",
+	#[since="1.19"]
+	AllayDropItemOnBlock = "allay_drop_item_on_block",
+	#[since="1.19"]
+	AvoidVibration = "avoid_vibration",
 	BeeNestDestroyed = "bee_nest_destroyed",
 	BredAnimals = "bred_animals",
 	BrewedPotion = "brewed_potion",
@@ -97,43 +119,56 @@ enum(string) Trigger {
 	EnterBlock = "enter_block",
 	EntityHurtPlayer = "entity_hurt_player",
 	EntityKilledPlayer = "entity_killed_player",
-	#[since="1.18"] FallFromHeight = "fall_from_height",
+	#[since="1.18"]
+	FallFromHeight = "fall_from_height",
 	FilledBucket = "filled_bucket",
 	FishingRodHooked = "fishing_rod_hooked",
 	HeroOfTheVillage = "hero_of_the_village",
 	Impossible = "impossible",
 	InventoryChanged = "inventory_changed",
 	ItemDurabilityChanged = "item_durability_changed",
-	#[since="1.16"] ItemUsedOnBlock = "item_used_on_block",
-	#[since="1.19"] KillMobNearSculkCatalyst = "kill_mob_near_sculk_catalyst",
+	#[since="1.16"]
+	ItemUsedOnBlock = "item_used_on_block",
+	#[since="1.19"]
+	KillMobNearSculkCatalyst = "kill_mob_near_sculk_catalyst",
 	KilledByCrossbow = "killed_by_crossbow",
 	Levitation = "levitation",
-	#[since="1.17"] LightningStrike = "lightning_strike",
+	#[since="1.17"]
+	LightningStrike = "lightning_strike",
 	Location = "location",
 	NetherTravel = "nether_travel",
 	PlacedBlock = "placed_block",
-	#[since="1.16"] PlayerGeneratesContainerLoot = "player_generates_container_loot",
+	#[since="1.16"]
+	PlayerGeneratesContainerLoot = "player_generates_container_loot",
 	PlayerHurtEntity = "player_hurt_entity",
-	#[since="1.16"] PlayerInteractedWithEntity = "player_interacted_with_entity",
+	#[since="1.16"]
+	PlayerInteractedWithEntity = "player_interacted_with_entity",
 	PlayerKilledEntity = "player_killed_entity",
 	#[since="1.20"]
 	RecipeCrafted = "recipe_crafted",
 	RecipeUnlocked = "recipe_unlocked",
-	#[since="1.18"] RideEntityInLava = "ride_entity_in_lava",
+	#[since="1.18"]
+	RideEntityInLava = "ride_entity_in_lava",
 	ShotCrossbow = "shot_crossbow",
-	#[until="1.16"] SafelyHarvestHoney = "safely_harvest_honey",
+	#[until="1.16"]
+	SafelyHarvestHoney = "safely_harvest_honey",
 	SleptInBed = "slept_in_bed",
 	SlideDownBlock = "slide_down_block",
-	#[since="1.17"] StartedRiding = "started_riding",
+	#[since="1.17"]
+	StartedRiding = "started_riding",
 	SummonedEntity = "summoned_entity",
 	TameAnimal = "tame_animal",
-	#[since="1.16"] TargetHit = "target_hit",
-	#[since="1.16"] ThrownItemPickedUpByEntity = "thrown_item_picked_up_by_entity",
-	#[since="1.19"] ThrownItemPickedUpByPlayer = "thrown_item_picked_up_by_player",
+	#[since="1.16"]
+	TargetHit = "target_hit",
+	#[since="1.16"]
+	ThrownItemPickedUpByEntity = "thrown_item_picked_up_by_entity",
+	#[since="1.19"]
+	ThrownItemPickedUpByPlayer = "thrown_item_picked_up_by_player",
 	Tick = "tick",
 	UsedEnderEye = "used_ender_eye",
 	UsedTotem = "used_totem",
-	#[since="1.17"] UsingItem = "using_item",
+	#[since="1.17"]
+	UsingItem = "using_item",
 	VillagerTrade = "villager_trade",
 	VoluntaryExile = "voluntary_exile",
 }

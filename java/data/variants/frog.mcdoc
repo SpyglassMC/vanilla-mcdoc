@@ -1,6 +1,7 @@
 #[since="1.21.5"]
 dispatch minecraft:resource[frog_variant] to struct FrogVariant {
 	/// The frog texture to use for this variant.
+
 	asset_id: #[id="texture"] string,
 	...super::SpawnPrioritySelectors,
 }

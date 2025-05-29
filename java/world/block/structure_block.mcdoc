@@ -1,15 +1,20 @@
 dispatch minecraft:block_entity[structure_block] to struct StructureBlock {
 	...super::BlockEntity,
-	name?: #[id(registry="structure",empty="allowed")] string,
+	name?: #[id(registry="structure", empty="allowed")] string,
 	/// Author of the structure.
+
 	author?: string,
 	/// Custom data for the structure. Stores the data id for "DATA" mode.
+
 	metadata?: string,
 	/// Relative offset.
+
 	posX?: int,
 	/// Relative offset.
+
 	posY?: int,
 	/// Relative offset.
+
 	posZ?: int,
 	sizeX?: int,
 	sizeY?: int,
@@ -19,17 +24,23 @@ dispatch minecraft:block_entity[structure_block] to struct StructureBlock {
 	mode?: Mode,
 	ignoreEntities?: boolean,
 	/// Whether to show the bounding box.
+
 	showboundingbox?: boolean,
 	/// Whether it has been powered by redstone.
+
 	powered?: boolean,
 	/// Whether to show invisible blocks inside the bounding box.
+
 	showair?: boolean,
 	/// If set to `true`, the blocks in the placed structure will trigger block (entity) updates and shape updates. Defaults to `false`.
+
 	#[since="1.21.5"]
 	strict?: boolean,
 	/// Chance for each block to stay.
+
 	integrity?: float,
 	/// Seed for the integrity random.
+
 	seed?: #[random] long,
 }
 

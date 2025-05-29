@@ -3,17 +3,20 @@ use ::java::assets::model::ModelRef
 type BlockStateDefinition = (
 	struct BlockStateDefinitionVariant {
 		variants: struct BlockStateDefinitionVariantMap {
-			[string]: ModelVariant, // TODO: block state key
+			[string]: ModelVariant,
 		},
 	} |
+	// TODO: block state key
 	struct BlockStateDefinitionMultipart {
 		multipart: [struct BlockStateDefinitionMultipartEntry {
 			/// One condition or an array where at least one condition must apply.
+
 			when?: MultiPartCondition,
 			apply: ModelVariant,
 		}],
 	} |
 )
+
 dispatch minecraft:resource[block_definition] to BlockStateDefinition
 
 type ModelVariant = (
@@ -29,6 +32,7 @@ struct ModelVariantBase {
 	x?: (0 | 90 | 180 | 270),
 	y?: (0 | 90 | 180 | 270),
 	/// If set to `true`, the textures are not rotated with the block.
+
 	uvlock?: boolean,
 }
 
@@ -37,6 +41,8 @@ type MultiPartCondition = (
 		OR: [MultiPartCondition],
 	} |
 	struct MultiPartAnd {
-		[string]: string, // TODO: block state key
+		[string]: string,
 	} |
 )
+
+// TODO: block state key

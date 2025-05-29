@@ -5,26 +5,33 @@ use ::java::world::entity::AnyEntity
 dispatch minecraft:block_entity[mob_spawner] to struct Spawner {
 	...super::BlockEntity,
 	/// Entities that can be placed.
+
 	SpawnPotentials?: [SpawnPotential],
 	/// Data for the next mob to spawn.
+
 	/// Overwritten by `SpawnPotentials`.
-	SpawnData?: (
-		#[until="1.18"] AnyEntity |
-		#[since="1.18"] SpawnerEntry |
-	),
+
+	SpawnData?: (#[until="1.18"] AnyEntity | #[since="1.18"] SpawnerEntry),
 	/// Number of entities that will be placed.
+
 	SpawnCount?: short,
 	/// Range that the spawned entities will be placed.
+
 	SpawnRange?: short,
 	/// Ticks until the next spawn.
+
 	Delay?: short,
 	/// Minimum random delay for the next spawn.
+
 	MinSpawnDelay?: short,
 	/// Maximum random delay for the next spawn.
+
 	MaxSpawnDelay?: short,
 	/// Maximum number of entities nearby.
+
 	MaxNearbyEntities?: short,
 	/// Radius in blocks that a player has to be within to spawn entities.
+
 	RequiredPlayerRange?: short,
 }
 
@@ -32,33 +39,37 @@ dispatch minecraft:block_entity[mob_spawner] to struct Spawner {
 #[since="1.20.5"]
 dispatch minecraft:block_entity[trial_spawner] to struct TrialSpawner {
 	/// Spawning behavior when the player does not have the Bad Omen effect.
-	normal_config?: (
-		TrialSpawnerConfig |
-		#[since="1.21.2"] #[id="trial_spawner"] string |
-	),
+
+	normal_config?: (TrialSpawnerConfig | #[since="1.21.2"] #[id="trial_spawner"] string),
 	/// Spawning behavior when the player has the Bad Omen effect.
-	ominous_config?: (
-		TrialSpawnerConfig |
-		#[since="1.21.2"] #[id="trial_spawner"] string |
-	),
+
+	ominous_config?: (TrialSpawnerConfig | #[since="1.21.2"] #[id="trial_spawner"] string),
 	/// Maximum distance for players to activate the trial spawner, or join a battle
+
 	required_player_range?: int @ 1..128,
 	/// Time in ticks for the cooldown period. Included the time spend dispensing the reward.
+
 	target_cooldown_length?: int,
 	/// Players that are have been nearby during the current battle
+
 	registered_players?: [#[uuid] [int] @ 4],
 	/// All mobs that have been spawned by this trial spawner and are currently alive
+
 	current_mobs?: [#[uuid] [int] @ 4],
 	/// Gametime in ticks when the cooldown ends
+
 	cooldown_ends_at?: long,
 	/// Gametime in ticks when the next spawning attempt happens
+
 	next_mob_spawns_at?: long,
 	// Total amount of mobs spawned in this battle
 	total_mobs_spawned?: int,
 	/// The next entity to spawn, also controlls the entity displayed in the trial spawner
+
 	spawn_data?: SpawnerEntry,
 	/// The loot table selected to be used to determine the reward
-	ejecting_loot_table?: #[id="loot_table"] string
+
+	ejecting_loot_table?: #[id="loot_table"] string,
 }
 
 dispatch minecraft:block[spawner] to minecraft:block_entity[mob_spawner]
@@ -68,27 +79,25 @@ dispatch minecraft:block[trial_spawner] to minecraft:block_entity[trial_spawner]
 // TODO: check this, probably wrong between 1.18 and 1.20.5
 struct SpawnPotential {
 	#[until="1.20.5"]
-	Entity?: (
-		#[until="1.18"] AnyEntity |
-		#[since="1.18"] SpawnerEntry |
-	),
+	Entity?: (#[until="1.18"] AnyEntity | #[since="1.18"] SpawnerEntry),
 	#[since="1.20.5"]
 	data: SpawnerEntry,
 	/// Weight for this entry to be chosen.
+
 	#[until="1.18"]
-	Weight?: (
-		#[until="1.17"] int @ 0.. | 
-		#[since="1.17"] byte @ 0.. |
-	),
+	Weight?: (#[until="1.17"] int @ 0.. | #[since="1.17"] byte @ 0..),
 	/// Weight for this entry to be chosen.
+
 	#[since="1.18"]
 	weight: int @ 0..,
 }
 
 struct SpawnEquipment {
 	/// Generates the equipment.
+
 	loot_table: #[id="loot_table"] string,
 	/// Chance the mob will drop the equipment on death.
+
 	slot_drop_chances: (
 		float @ 0..1 |
 		struct {
@@ -101,13 +110,16 @@ struct SpawnerEntry {
 	entity: AnyEntity,
 	custom_spawn_rules?: CustomSpawnRules,
 	/// Rolled items from the specified loot table will be equipped to the mob that spawns.
+
 	#[since="1.20.5"]
 	equipment?: SpawnEquipment,
 }
 
 struct CustomSpawnRules {
 	/// Range of block light level required for the entity to spawn.
+
 	block_light_limit?: InclusiveRange<int @ 0..15>,
 	/// Range of sky light level required for the entity to spawn.
+
 	sky_light_limit?: InclusiveRange<int @ 0..15>,
 }

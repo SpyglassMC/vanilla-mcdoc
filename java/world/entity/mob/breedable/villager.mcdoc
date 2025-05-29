@@ -2,8 +2,10 @@ use ::java::world::item::ItemStack
 
 struct VillagerBase {
 	/// Slots from 0 to 7.
+
 	Inventory?: [ItemStack] @ 0..8,
 	/// Trade offers it has.
+
 	Offers?: Offers,
 }
 
@@ -11,21 +13,28 @@ dispatch minecraft:entity[villager] to struct Villager {
 	...super::Breedable,
 	...VillagerBase,
 	VillagerData?: VillagerData,
-	FoodLevel?: byte, // TODO
+	FoodLevel?: byte,
+	// TODO
 	/// Gossips it has heard.
+
 	Gossips?: [Gossip],
 	/// Tick of the last time it has restocked.
+
 	LastRestock?: long,
 	/// Tick of the last time its gossips have decreased in strength.
+
 	LastGossipDecay?: long,
 	/// Times it has restocked in the past ten minutes.
+
 	RestocksToday?: int,
 	/// XP it has, increases with trading.
+
 	Xp?: int,
 }
 
 struct VillagerData {
 	/// Used for trading and badge rendering.
+
 	level?: int,
 	profession?: #[id="villager_profession"] string,
 	type?: #[id="villager_type"] string,
@@ -35,8 +44,10 @@ struct Gossip {
 	Type?: GossipType,
 	Value?: int,
 	/// Upper bits of the gossip target's UUID.
+
 	TargetMost?: long,
 	/// Lower bits of the gossip target's UUID.
+
 	TargetLeast?: long,
 }
 
@@ -44,35 +55,46 @@ enum(string) GossipType {
 	MajorNegative = "major_negative",
 	MinorNegative = "minor_negative",
 	MajorPositive = "major_positive",
-	MinorPositive = "minor_positive", 
+	MinorPositive = "minor_positive",
 	Trading = "trading",
 }
 
 struct Offers {
 	/// Trades it has to offer.
+
 	Recipes?: [Recipe],
 }
 
 struct Recipe {
 	/// Whether it should reward experience for using this trade.
+
 	rewardExp?: boolean,
 	/// Maximum number of uses for this trade before it has to restock.
+
 	maxUses?: int,
 	/// Times this trade has been used since it last restocked.
+
 	uses?: int,
 	/// First item it buys.
+
 	buy?: ItemStack,
 	/// Second item it buys.
+
 	buyB?: ItemStack,
 	/// Item it sells.
+
 	sell?: ItemStack,
 	/// XP it gains from the trade.
+
 	xp?: int,
 	/// Multiplier on the demand price adjuster.
+
 	priceMultiplier?: float,
 	/// Modifier added to the original price of the first cost item.
+
 	specialPrice?: int,
 	/// Price adjuster of the first cost item based on demand.
+
 	demand?: int,
 }
 
@@ -80,11 +102,14 @@ dispatch minecraft:entity[wandering_trader] to struct WanderingTrader {
 	...super::super::MobBase,
 	...VillagerBase,
 	/// Ticks until it despawns.
+
 	DespawnDelay?: int,
 	/// Where it is heading to.
+
 	#[until="1.20.5"]
 	WanderTarget?: WanderTarget,
 	/// Where it is heading to.
+
 	#[since="1.20.5"]
 	wander_target?: int[] @ 3,
 }

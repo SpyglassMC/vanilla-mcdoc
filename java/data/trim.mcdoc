@@ -3,19 +3,24 @@ use ::java::util::text::Text
 #[since="1.19.4"]
 dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 	/// ID which will be used in the resource pack.
+
 	asset_name: #[id(registry="texture", path="trims/color_palettes/")] string,
 	/// Text displayed in the item tooltip.
+
 	description: Text,
 	/// Item used in the smithing table for this material.
+
 	#[until="1.21.5"]
 	ingredient: (
 		#[until="1.21.2"] #[id="item"] string |
-		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |
 	),
 	/// Model override predicate float.
+
 	#[until="1.21.4"]
 	item_model_index: float @ 0..1,
 	/// Armor materials that should have a different color palette.
+
 	override_armor_materials?: struct TrimMaterialOverrides {
 		[#[id] ArmorMaterial]: string,
 	},
@@ -34,16 +39,20 @@ enum(string) ArmorMaterial {
 #[since="1.19.4"]
 dispatch minecraft:resource[trim_pattern] to struct TrimPattern {
 	/// ID of the pattern that will be used in the resource pack as an overlay on the armor.
+
 	asset_id: #[id(registry="texture", path="trims/models/armor/")] string,
 	/// Text displayed in the item tooltip.
+
 	description: Text,
 	/// The item used in the smithing table for this pattern.
+
 	#[until="1.21.5"]
 	template_item: (
 		#[until="1.21.2"] #[id="item"] string |
-		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |
 	),
 	/// Whether the pattern texture will be masked based on the underlying armor. Defaults to `false`.
+
 	#[since="1.20.2"]
 	decal?: boolean,
 }

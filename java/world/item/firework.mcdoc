@@ -10,21 +10,28 @@ dispatch minecraft:item[firework_star] to struct FireworkStar {
 
 struct Fireworks {
 	/// Duration of flight.
+
 	Flight?: byte,
 	Explosions?: [Explosion],
 }
 
 struct Explosion {
 	/// Whether the explosion should flicker.
+
 	Flicker?: boolean,
 	/// Whether the explosion should have a trail.
+
 	Trail?: boolean,
 	Type?: ExplosionType,
 	/// Colors of the explosion.
+
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
+
 	Colors?: #[color="composite_rgb"] int[],
 	/// Colors of the explosion fade.
+
 	/// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
+
 	FadeColors?: #[color="composite_rgb"] int[],
 }
 

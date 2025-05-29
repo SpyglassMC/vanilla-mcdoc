@@ -3,24 +3,28 @@ use ::java::world::component::entity::SalmonType
 dispatch minecraft:entity[cod] to struct Fish {
 	...super::MobBase,
 	/// If it was released from a bucket.
+
 	FromBucket?: boolean,
 }
 
 dispatch minecraft:entity[salmon] to struct Salmon {
 	...Fish,
 	/// The size variant of the salmon.
+
 	#[since="1.21.2"]
 	type?: SalmonType,
 }
 
 dispatch minecraft:entity[tropical_fish] to struct TropicalFish {
 	...Fish,
-	Variant?: int, // TODO
+	Variant?: int,
 }
 
+// TODO
 dispatch minecraft:entity[pufferfish] to struct Pufferfish {
 	...Fish,
 	/// How puffed it is.
+
 	PuffState?: PuffState,
 }
 

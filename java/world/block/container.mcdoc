@@ -5,28 +5,34 @@ struct ContainerBase {
 	...super::Nameable,
 	...super::Lockable,
 	/// Loot table that will populate this container.
+
 	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.
+
 	LootTableSeed?: #[random] long,
 }
 
 dispatch minecraft:block_entity[container] to struct Container27 {
 	...ContainerBase,
 	/// Slots from 0 to 26.
+
 	Items?: [SlottedItem<byte @ 0..26>] @ 0..27,
 }
 
 dispatch minecraft:block_entity[dispenser, dropper] to struct Container9 {
 	...ContainerBase,
 	/// Slots from 0 to 8.
+
 	Items?: [SlottedItem<byte @ 0..8>] @ 0..9,
 }
 
 dispatch minecraft:block_entity[hopper] to struct Hopper {
 	...ContainerBase,
 	/// Slots from 0 to 4.
+
 	Items?: [SlottedItem<byte @ 0..4>] @ 0..5,
 	/// Ticks until an item can be transferred.
+
 	TransferCooldown?: int,
 }
 

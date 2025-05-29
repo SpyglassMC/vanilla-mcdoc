@@ -3,6 +3,7 @@ use ::java::util::slot::SlottedItem
 struct Boat {
 	...super::EntityBase,
 	/// Wood type of this boat
+
 	#[until="1.21.2"]
 	Type?: BoatType,
 }
@@ -42,14 +43,18 @@ enum(string) BoatType {
 struct ChestBoat {
 	...Boat,
 	/// Loot table that will populate this chest boat.
+
 	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
 	/// Seed of the loot table.
+
 	LootTableSeed?: #[random] long,
 	/// Slots from 0 to 26.
+
 	Items?: [SlottedItem<byte @ 0..26>] @ 0..27,
 }
 
-#[since="1.19"] #[until="1.21.2"]
+#[since="1.19"]
+#[until="1.21.2"]
 dispatch minecraft:entity[chest_boat] to ChestBoat
 
 #[since="1.21.2"]

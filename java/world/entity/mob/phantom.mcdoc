@@ -1,15 +1,19 @@
 dispatch minecraft:entity[phantom] to struct Phantom {
 	...super::MobBase,
 	/// Approximate circle x coordinate.
+
 	#[until="1.21.5"]
 	AX?: int,
 	/// Approximate circle y coordinate.
+
 	#[until="1.21.5"]
 	AY?: int,
 	/// Approximate circle z coordinate.
+
 	#[until="1.21.5"]
 	AZ?: int,
 	/// Approximate circle coordinates.
+
 	#[since="1.21.5"]
 	anchor_pos?: int[] @ 3,
 	#[until="1.21.5"]

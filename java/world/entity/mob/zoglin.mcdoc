@@ -2,5 +2,6 @@
 dispatch minecraft:entity[zoglin] to struct Zoglin {
 	...super::MobBase,
 	/// Whether it is a baby.
+
 	IsBaby?: boolean,
 }

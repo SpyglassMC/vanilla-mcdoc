@@ -1,11 +1,15 @@
 dispatch minecraft:entity[creeper] to struct Creeper {
 	...super::MobBase,
 	/// Whether it is being struck by lightning.
+
 	powered?: boolean,
 	/// Radius of the explosion.
+
 	ExplosionRadius?: byte,
 	/// Ticks until it explodes.
+
 	Fuse?: short,
 	/// Whether it was lit with flint and steel.
+
 	ignited?: boolean,
 }

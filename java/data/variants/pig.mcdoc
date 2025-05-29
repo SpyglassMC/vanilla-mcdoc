@@ -2,6 +2,7 @@
 dispatch minecraft:resource[pig_variant] to struct PigVariant {
 	model?: PigModelType,
 	/// The pig texture to use for this variant.
+
 	asset_id: #[id="texture"] string,
 	...super::SpawnPrioritySelectors,
 }

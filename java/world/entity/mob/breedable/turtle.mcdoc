@@ -1,9 +1,11 @@
 dispatch minecraft:entity[turtle] to struct Turtle {
 	...super::Breedable,
 	/// Whether it has an egg.
+
 	#[until="1.21.5"]
 	HasEgg?: boolean,
 	/// Whether it has an egg.
+
 	#[since="1.21.5"]
 	has_egg?: boolean,
 	#[until="1.21.5"]
@@ -15,12 +17,15 @@ dispatch minecraft:entity[turtle] to struct Turtle {
 	#[since="1.21.5"]
 	home_pos?: int[] @ 3,
 	/// X coordinate of its travel target.
+
 	#[until="1.21.5"]
 	TravelPosX?: int,
 	/// Y coordinate of its travel target.
+
 	#[until="1.21.5"]
 	TravelPosY?: int,
 	/// Z coordinate of its travel target.
+
 	#[until="1.21.5"]
 	TravelPosZ?: int,
 }

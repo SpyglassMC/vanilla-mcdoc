@@ -5,11 +5,14 @@ dispatch minecraft:block_entity[beacon] to struct Beacon {
 	...super::Nameable,
 	...super::Lockable,
 	/// Number of levels from the pyramid.
+
 	Levels?: int,
 	/// Potion effect.
+
 	#[until="1.20.2"]
 	Primary?: (NoneId | EffectId),
 	/// Potion effect.
+
 	#[until="1.20.2"]
 	Secondary?: (NoneId | EffectId),
 	#[since="1.20.2"]
@@ -20,7 +23,4 @@ dispatch minecraft:block_entity[beacon] to struct Beacon {
 
 dispatch minecraft:block[beacon] to minecraft:block_entity[beacon]
 
-type NoneId = (
-	#[until="1.16"] 0 |
-	#[since="1.16"] -1 |
-)
+type NoneId = (#[until="1.16"] 0 | #[since="1.16"] -1)

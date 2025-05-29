@@ -4,53 +4,69 @@ use ::java::util::particle::Particle
 dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	...super::EntityBase,
 	/// Number of ticks it has existed.
+
 	/// Controls when it will despawn; when greater than `Duration + WaitTime`.
+
 	Age?: int,
 	/// Color of the particles.
+
 	/// calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive
+
 	Color?: int,
 	/// Maximum number of ticks until it will disappear after `WaitTime` is done
+
 	Duration?: int,
 	/// Number of ticks until the effects are reapplied.
+
 	ReapplicationDelay?: int,
 	/// Number of ticks until it appears.
+
 	WaitTime?: int,
 	/// Amount the duration changes when it is active.
+
 	DurationOnUse?: int,
 	/// Upper bits of the owner's UUID.
+
 	#[until="1.16"]
 	OwnerUUIDMost?: long,
 	/// Lower bits of the owner's UUID.
+
 	#[until="1.16"]
 	OwnerUUIDLeast?: long,
 	#[uuid]
 	#[since="1.16"]
 	Owner?: int[] @ 4,
 	/// Radius of the particles & effect applications.
+
 	Radius?: float,
 	/// Change in the radius when it is used.
+
 	RadiusOnUse?: float,
 	/// Change in the radius per tick.
+
 	RadiusPerTick?: float,
 	/// Particle the area effect cloud displays.
+
 	#[until="1.21.6"]
-	Particle?: (
-		#[until="1.20.5"] string |
-		#[since="1.20.5"] Particle |
-	),
+	Particle?: (#[until="1.20.5"] string | #[since="1.20.5"] Particle),
 	/// If present, the particle that the area effect cloud displays instead of the default `entity_effect` particle based on the potion contents.
+
 	#[since="1.21.6"]
 	custom_particle?: Particle,
 	/// Default potion effect.
+
 	#[until="1.20.5"]
 	Potion?: #[id="potion"] string,
 	/// Potion effects that get applied on use.
+
 	#[until="1.20.5"]
 	Effects?: [MobEffectInstance],
 	#[since="1.20.5"]
 	potion_contents?: minecraft:data_component[potion_contents],
 	/// The duration of the potion effect applied is scaled by this factor. Defaults to `1`.
+
 	/// Will be `0.25` when throwing lingering potions.
+
 	#[since="1.21.5"]
 	potion_duration_scale?: float,
 }

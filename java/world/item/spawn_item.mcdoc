@@ -89,6 +89,7 @@ dispatch minecraft:item[
 	// EntityTag has this weird value because the id for the spawned entity can be
 	// changed by both the id inside the tag and also the id of the item (as a default)
 	/// Data of the spawned entity.
+
 	EntityTag?: AnyEntity,
 }
 

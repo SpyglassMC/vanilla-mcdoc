@@ -17,27 +17,29 @@ struct Occupant {
 }
 
 /// NBT that the block entity that is placed can have.
-dispatch minecraft:data_component[block_entity_data] to (
-	#[canonical] BlockEntityData |
-	#[nbt=BlockEntityData] string |
-)
+
+dispatch minecraft:data_component[block_entity_data] to (#[canonical] BlockEntityData | #[nbt=BlockEntityData] string)
 
 /// Blockstate that the placed block will have.
+
 dispatch minecraft:data_component[block_state] to mcdoc:block_item_states[[%parent.id]]
 
-dispatch mcdoc:block_item_states[%unknown,%none] to struct {
+dispatch mcdoc:block_item_states[%unknown, %none] to struct {
 	[string]: string,
 }
 
 /// List of blocks that this block item can be placed on.
+
 dispatch minecraft:data_component[can_place_on] to AdventureModePredicate
 
 dispatch minecraft:data_component[container] to [ContainerSlot] @ ..256
 
 struct ContainerSlot {
 	/// The slot ID of the container.
+
 	slot: int @ 0..255,
 	/// The item stack in this container slot.
+
 	item: ItemStack,
 }
 
@@ -46,9 +48,6 @@ dispatch minecraft:data_component[container_loot] to struct ContainerLoot {
 	seed?: #[random] long,
 }
 
-dispatch minecraft:data_component[lock] to (
-	#[until="1.21.2"] string |
-	#[since="1.21.2"] ItemPredicate |
-)
+dispatch minecraft:data_component[lock] to (#[until="1.21.2"] string | #[since="1.21.2"] ItemPredicate)
 
 dispatch minecraft:data_component[pot_decorations] to [#[id] Sherd] @ ..4

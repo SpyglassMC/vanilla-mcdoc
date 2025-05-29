@@ -4,19 +4,27 @@ use ::java::util::slot::SlottedItem
 dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 	...super::Breedable,
 	/// Unknown use.
+
 	/// Remains `0` even if it was bred.
+
 	Bred?: boolean,
 	/// Whether it is eating a haystack.
+
 	EatingHaystack?: boolean,
 	/// Whether it has been tamed.
+
 	Tame?: boolean,
 	/// Higher values make it easier to tame. Increases with feeding.
+
 	Temper?: int @ 0..100,
 	/// Player who tamed it.
+
 	#[until="1.16"]
 	OwnerUUID?: #[uuid] string,
 	/// Player who tamed it.
-	#[since="1.16"] #[uuid]
+
+	#[since="1.16"]
+	#[uuid]
 	Owner?: int[] @ 4,
 	#[until="1.21.5"]
 	SaddleItem?: ItemStack,
@@ -25,64 +33,68 @@ dispatch minecraft:entity[zombie_horse] to struct HorseBase {
 dispatch minecraft:entity[horse] to struct Horse {
 	...HorseBase,
 	/// Variant of the horse. Stored as `baseColor | (markings << 8)`.
+
 	Variant?: HorseVariantAndMarkings,
 }
 
 enum(int) HorseVariantAndMarkings {
-    White = 0,
-    Creamy = 1,
-    Chestnut = 2,
-    Brown = 3,
-    Black = 4,
-    Gray = 5,
-    DarkBrown = 6,
-
-    White_With_WhiteStockings = 256,
-    Creamy_With_WhiteStockings = 257,
-    Chestnut_With_WhiteStockings = 258,
-    Brown_With_WhiteStockings = 259,
-    Black_With_WhiteStockings = 260,
-    Gray_With_WhiteStockings = 261,
-    DarkBrown_With_WhiteStockings = 262,
-
-    White_With_WhiteField = 512,
-    Creamy_With_WhiteField = 513,
-    Chestnut_With_WhiteField = 514,
-    Brown_With_WhiteField = 515,
-    Black_With_WhiteField = 516,
-    Gray_With_WhiteField = 517,
-    DarkBrown_With_WhiteField = 518,
-
-    White_With_WhiteDots = 768,
-    Creamy_With_WhiteDots = 769,
-    Chestnut_With_WhiteDots = 770,
-    Brown_With_WhiteDots = 771,
-    Black_With_WhiteDots = 772,
-    Gray_With_WhiteDots = 773,
-    DarkBrown_With_WhiteDots = 774,
-
-    White_With_Black_Dots = 1024,
-    Creamy_With_Black_Dots = 1025,
-    Chestnut_With_Black_Dots = 1026,
-    Brown_With_Black_Dots = 1027,
-    Black_With_Black_Dots = 1028,
-    Gray_With_Black_Dots = 1029,
-    DarkBrown_With_Black_Dots = 1030,
+	White = 0,
+	Creamy = 1,
+	Chestnut = 2,
+	Brown = 3,
+	Black = 4,
+	Gray = 5,
+	DarkBrown = 6,
+	White_With_WhiteStockings = 256,
+	Creamy_With_WhiteStockings = 257,
+	Chestnut_With_WhiteStockings = 258,
+	Brown_With_WhiteStockings = 259,
+	Black_With_WhiteStockings = 260,
+	Gray_With_WhiteStockings = 261,
+	DarkBrown_With_WhiteStockings = 262,
+	White_With_WhiteField = 512,
+	Creamy_With_WhiteField = 513,
+	Chestnut_With_WhiteField = 514,
+	Brown_With_WhiteField = 515,
+	Black_With_WhiteField = 516,
+	Gray_With_WhiteField = 517,
+	DarkBrown_With_WhiteField = 518,
+	White_With_WhiteDots = 768,
+	Creamy_With_WhiteDots = 769,
+	Chestnut_With_WhiteDots = 770,
+	Brown_With_WhiteDots = 771,
+	Black_With_WhiteDots = 772,
+	Gray_With_WhiteDots = 773,
+	DarkBrown_With_WhiteDots = 774,
+	White_With_Black_Dots = 1024,
+	Creamy_With_Black_Dots = 1025,
+	Chestnut_With_Black_Dots = 1026,
+	Brown_With_Black_Dots = 1027,
+	Black_With_Black_Dots = 1028,
+	Gray_With_Black_Dots = 1029,
+	DarkBrown_With_Black_Dots = 1030,
 }
 
 dispatch minecraft:entity[donkey, mule] to struct ChestedHorse {
 	...HorseBase,
 	/// Whether it has a chest.
+
 	ChestedHorse?: boolean,
 	/// Slots from 0 to 14.
-	Items?: [(SlottedItem<byte @ 0..14> | struct {})] @ 0..15,
+
+	Items?: [(
+		SlottedItem<byte @ 0..14> |
+		struct {} |
+	)] @ 0..15,
 }
 
 dispatch minecraft:entity[skeleton_horse] to struct SkeletonHorse {
 	...HorseBase,
 	/// Whether it was spawned by a trap.
+
 	SkeletonTrap?: boolean,
 	/// Ticks it has existed.
+
 	SkeletonTrapTime?: int,
 }
 
@@ -90,16 +102,20 @@ dispatch minecraft:entity[skeleton_horse] to struct SkeletonHorse {
 dispatch minecraft:entity[camel] to struct Camel {
 	...HorseBase,
 	/// Whether it is sitting.
+
 	IsSitting?: boolean,
 	/// The tick when it started changing its pose.
-	LastPoseTick?: long
+
+	LastPoseTick?: long,
 }
 
 dispatch minecraft:entity[llama] to struct Llama {
 	...super::horse::ChestedHorse,
 	/// Determines both the number of items it can carry and how likely it is for wolves to run away.
+
 	Strength?: int @ 1..5,
 	/// The variant of this llama.
+
 	Variant?: LlamaVariantInt,
 }
 
@@ -113,5 +129,6 @@ enum(int) LlamaVariantInt {
 dispatch minecraft:entity[trader_llama] to struct TraderLlama {
 	...Llama,
 	/// When it will despawn.
+
 	DespawnDelay?: int,
 }

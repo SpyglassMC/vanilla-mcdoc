@@ -4,6 +4,7 @@ dispatch minecraft:block_entity[lectern] to struct Lectern {
 	...super::BlockEntity,
 	Book?: ItemStack,
 	/// Current page the book is on.
+
 	Page?: int,
 }
 

@@ -2,11 +2,14 @@
 dispatch minecraft:entity[goat] to struct Goat {
 	...super::Breedable,
 	/// Whether it has its left horn.
+
 	#[since="1.19"]
 	HasLeftHorn?: boolean,
 	/// Whether it has its right horn.
+
 	#[since="1.19"]
 	HasRightHorn?: boolean,
 	/// Whether it is a screaming goat.
+
 	IsScreamingGoat?: boolean,
 }

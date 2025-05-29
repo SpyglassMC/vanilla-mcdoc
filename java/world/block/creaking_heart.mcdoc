@@ -2,6 +2,7 @@
 dispatch minecraft:block_entity[creaking_heart] to struct CreakingHeart {
 	...super::BlockEntity,
 	/// The creaking mob that is linked to this heart.
+
 	#[since="1.21.4"]
 	creaking?: #[uuid] [int] @ 4,
 }

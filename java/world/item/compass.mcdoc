@@ -3,12 +3,14 @@ dispatch minecraft:item[compass] to struct Compass {
 	LodestoneDimension?: #[id="dimension"] string,
 	LodestonePos?: LodestonePos,
 	/// Whether the compass should be linked to a lodestone.
+
 	/// When true, the compass will reset if the lodestone at the position is removed.
-	LodestoneTracked?: boolean
+
+	LodestoneTracked?: boolean,
 }
 
 struct LodestonePos {
 	X?: int,
 	Y?: int,
-	Z?: int
-} 
+	Z?: int,
+}
