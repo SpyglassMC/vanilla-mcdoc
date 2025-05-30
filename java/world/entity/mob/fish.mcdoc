@@ -15,10 +15,9 @@ dispatch minecraft:entity[salmon] to struct Salmon {
 
 dispatch minecraft:entity[tropical_fish] to struct TropicalFish {
 	...Fish,
-	Variant?: int,
+	Variant?: int, // TODO
 }
 
-// TODO
 dispatch minecraft:entity[pufferfish] to struct Pufferfish {
 	...Fish,
 	/// How puffed it is.

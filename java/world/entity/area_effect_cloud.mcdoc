@@ -34,7 +34,10 @@ dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	RadiusPerTick?: float,
 	/// Particle the area effect cloud displays.
 	#[until="1.21.6"]
-	Particle?: (#[until="1.20.5"] string | #[since="1.20.5"] Particle),
+	Particle?: (
+		#[until="1.20.5"] string |
+		#[since="1.20.5"] Particle |
+	),
 	/// If present, the particle that the area effect cloud displays instead of the default `entity_effect` particle based on the potion contents.
 	#[since="1.21.6"]
 	custom_particle?: Particle,

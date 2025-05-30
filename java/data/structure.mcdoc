@@ -4,19 +4,22 @@ use ::java::util::block_state::BlockState
 struct StructureNBT {
 	/// [Data version](https://minecraft.fandom.com/wiki/Data_version).
 	DataVersion: int @ 0..,
+
 	size: [int @ 0..] @ 3,
-	// Note: Unimplemented
-	#[structure_blocks]
+
+	#[structure_blocks] // Note: Unimplemented
 	blocks: [struct StructureBlock {
 		state: int @ 0..,
 		pos: [int @ 0..] @ 3,
 		nbt?: minecraft:block[%fallback],
 	}],
+
 	entities: [struct StructureEntity {
 		pos: [double @ 0..] @ 3,
 		blockPos: [int @ 0..] @ 3,
 		nbt: AnyEntity,
 	}],
+
 	...BlockPalette,
 }
 

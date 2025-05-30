@@ -3,7 +3,10 @@ dispatch minecraft:entity[evoker_fangs] to struct EvokerFangs {
 	/// Ticks until the fangs pop out of the ground.
 	Warmup?: int,
 	#[uuid]
-	Owner?: (#[until="1.16"] Owner | #[since="1.16"] int[] @ 4),
+	Owner?: (
+		#[until="1.16"] Owner |
+		#[since="1.16"] int[] @ 4 |
+	),
 }
 
 struct Owner {

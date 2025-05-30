@@ -18,14 +18,13 @@ type Structure = struct {
 	#[since="1.18.2"]
 	biomes: (
 		[#[id="worldgen/biome"] string] |
-		#[id(registry="worldgen/biome", tags=allowed)] string |
+		#[id(registry="worldgen/biome",tags=allowed)] string |
 	),
 	/// The step when the structure generates.
 	#[since="1.19"]
 	step: DecorationStep,
 	/// Whether to add extra terrain below the structure.
-	#[since="1.18.2"]
-	#[until="1.19"]
+	#[since="1.18.2"] #[until="1.19"]
 	adapt_noise?: boolean,
 	#[since="1.19"]
 	terrain_adaptation?: TerrainAdaptation,
@@ -41,7 +40,6 @@ type Structure = struct {
 
 #[since="1.18.2"]
 dispatch minecraft:resource["worldgen/structure"] to Structure
-
 #[until="1.18.2"]
 dispatch minecraft:resource["worldgen/configured_structure_feature"] to Structure
 
@@ -50,7 +48,7 @@ enum(string) TerrainAdaptation {
 	BeardThin = "beard_thin",
 	BeardBox = "beard_box",
 	Bury = "bury",
-	Encapsulate = "encapsulate",
+	Encapsulate = "encapsulate"
 }
 
 struct SpawnOverride {
@@ -63,9 +61,9 @@ enum(string) BoundingBox {
 	Full = "full",
 }
 
-dispatch minecraft:jigsaw_max_distance_from_center[%none, %unknown] to int @ 1..128
+dispatch minecraft:jigsaw_max_distance_from_center[%none,%unknown] to int @ 1..128
 
-dispatch minecraft:jigsaw_max_distance_from_center[beard_thin, beard_box, bury] to int @ 1..116
+dispatch minecraft:jigsaw_max_distance_from_center[beard_thin,beard_box,bury] to int @ 1..116
 
 dispatch minecraft:structure_config[
 	desert_pyramid,
@@ -155,9 +153,17 @@ dispatch minecraft:structure_config[shipwreck] to struct Shipwreck {
 	is_beached?: boolean,
 }
 
-dispatch minecraft:structure_config[bastion_remnant, jigsaw, pillager_outpost, village] to struct Jigsaw {
+dispatch minecraft:structure_config[
+	bastion_remnant,
+	jigsaw,
+	pillager_outpost,
+	village,
+] to struct Jigsaw {
 	start_pool: #[id="worldgen/template_pool"] string,
-	size: (#[until="1.20.3"] int @ 0..7 | #[since="1.20.3"] int @ 1..20),
+	size: (
+		#[until="1.20.3"] int @ 0..7 |
+		#[since="1.20.3"] int @ 1..20
+	),
 	#[since="1.19"]
 	...struct WildUpdateStructureConfig {
 		start_height: HeightProvider,
@@ -175,7 +181,7 @@ dispatch minecraft:structure_config[bastion_remnant, jigsaw, pillager_outpost, v
 			struct DimensionPaddingConfig {
 				bottom?: int @ 0..,
 				top?: int @ 0..,
-			} |
+			}
 		),
 		liquid_settings?: LiquidSettings,
 	},

@@ -17,7 +17,10 @@ dispatch minecraft:test_instance[function] to struct FunctionTestInstance {
 
 struct TestData {
 	/// The test environment to run this test as part of.
-	environment: (#[id="test_environment"] string | TestEnvironment),
+	environment: (
+		#[id="test_environment"] string |
+		TestEnvironment |
+	),
 	/// Structure NBT file to use for the test.
 	structure: #[id="structure"] string,
 	/// Maximum number of ticks allowed to pass before the test is considered timed out.

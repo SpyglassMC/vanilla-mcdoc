@@ -69,20 +69,13 @@ struct LivingEntity {
 /// Base NBT for all mobs.
 struct MobBase {
 	...LivingEntity,
-	#[until="1.21.5"]
-	...struct {
+	#[until="1.21.5"] ...struct {
 		/// [main hand, offhand]
-		HandItems?: [(
-			ItemStack |
-			struct {} |
-		)] @ 2,
+		HandItems?: [(ItemStack | struct {})] @ 2,
 		/// Chance to drop the items it is holding, in [main hand, offhand].
 		HandDropChances?: [float] @ 2,
 		/// [feet, legs, body, head]
-		ArmorItems?: [(
-			ItemStack |
-			struct {} |
-		)] @ 4,
+		ArmorItems?: [(ItemStack | struct {})] @ 4,
 		/// Chance to drop the items it is wearing, in [feet, legs, body, head].
 		ArmorDropChances?: [float] @ 4,
 		/// Used for wolf armor & llama carpet decoration.
@@ -92,8 +85,7 @@ struct MobBase {
 		#[since="1.20.5"]
 		body_armor_drop_chance?: float,
 	},
-	#[since="1.21.5"]
-	...struct {
+	#[since="1.21.5"] ...struct {
 		/// The equipment items of the mob, such as armor or weapons.
 		equipment?: EntityEquipment,
 		/// Chances of the mob dropping an equipment slot on death.
@@ -114,12 +106,9 @@ struct MobBase {
 	Leash?: (UUIDLeash | BlockLeash),
 	/// What the leash is attached to.
 	#[since="1.20.5"]
-	leash?: (
-		int[] @ 3 |
-		struct LeashOwner {
-			UUID?: int[] @ 4,
-		} |
-	),
+	leash?: (int[] @ 3 | struct LeashOwner {
+		UUID?: int[] @ 4
+	}),
 	/// Defaults to -1, which represents "no home".
 	#[since="1.21.6"]
 	home_radius?: int,

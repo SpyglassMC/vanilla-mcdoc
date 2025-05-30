@@ -4,7 +4,7 @@ dispatch minecraft:entity[axolotl] to struct Axolotl {
 	/// The variant of the axolotl.
 	Variant?: AxolotlVariantInt,
 	/// If this axolotl was released from a bucket.
-	FromBucket?: boolean,
+	FromBucket?: boolean
 }
 
 enum(int) AxolotlVariantInt {
@@ -12,5 +12,5 @@ enum(int) AxolotlVariantInt {
 	Wild = 1,
 	Gold = 2,
 	Cyan = 3,
-	Blue = 4,
+	Blue = 4
 }

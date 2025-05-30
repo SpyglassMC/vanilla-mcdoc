@@ -5,8 +5,7 @@ struct ProjectileBase {
 	/// game event once.
 	#[since="1.17"]
 	HasBeenShot?: boolean,
-	#[since="1.16"]
-	#[uuid]
+	#[since="1.16"] #[uuid]
 	Owner?: int[] @ 4,
 	/// Whether it has left its owner.
 	#[since="1.16"]
@@ -15,8 +14,7 @@ struct ProjectileBase {
 
 dispatch minecraft:entity[llama_spit] to struct LlamaSpit {
 	...ProjectileBase,
-	#[until="1.16"]
-	#[uuid]
+	#[until="1.16"] #[uuid]
 	Owner?: OwnerUuid,
 }
 
@@ -24,5 +22,5 @@ struct OwnerUuid {
 	/// Upper bits of the owner's UUID.
 	OwnerUUIDMost?: long,
 	/// Lower bits of the owner's UUID.
-	OwnerUUIDLeast?: long,
+	OwnerUUIDLeast?: long
 }

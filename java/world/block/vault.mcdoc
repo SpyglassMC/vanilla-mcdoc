@@ -21,14 +21,11 @@ dispatch minecraft:block_entity[vault] to struct Vault {
 	},
 	/// When a player is in range of the vault, the same display item will be shown to all players.
 	/// This is also used for the items that are being ejected from the vault.
-	shared_data?: (
-		struct {} |
-		struct SharedData {
-			/// Item that is displayed to players when they are in range of the vault.
-			display_item?: ItemStack,
-			connected_players?: [int[] @ 4],
-		} |
-	),
+	shared_data?: (struct {} | struct SharedData {
+		/// Item that is displayed to players when they are in range of the vault.
+		display_item?: ItemStack,
+		connected_players?: [int[] @ 4],
+	}),
 }
 
 dispatch minecraft:block[vault] to minecraft:block_entity[vault]

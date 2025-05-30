@@ -1,6 +1,5 @@
 #[until="1.16"]
 dispatch minecraft:entity[zombie_pigman] to ZombiePigman
-
 #[since="1.16"]
 dispatch minecraft:entity[zombified_piglin] to ZombiePigman
 
