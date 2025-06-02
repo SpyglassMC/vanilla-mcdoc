@@ -16,7 +16,6 @@ struct DialogBase {
 	/// If not present, `title` will be used instead.
 	external_title?: Text,
 	body?: (DialogBody | [DialogBody]),
-	// TODO: check if this field accepts single InputControl like the body field
 	inputs?: [InputControl],
 	/// Whether the dialog can be closed with ESC key.
 	/// Defaults to `true`.
@@ -35,6 +34,7 @@ enum(string) AfterAction {
 	Close = "close",
 	/// Does nothing.
 	/// Only available if `pause` is set to `false`.
+	// TODO: implement this restriction
 	None = "none",
 	/// Replaces the dialog with a "Waiting for Response" screen.
 	/// The waiting screen unpauses the game in single-player mode.
