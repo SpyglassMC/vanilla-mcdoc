@@ -49,7 +49,7 @@ enum(string) RandomIntGeneratorType {
 	Constant = "constant",
 }
 
-dispatch minecraft:random_int_generator[uniform,%none] to struct UniformIntGenerator {
+dispatch minecraft:random_int_generator[uniform, %none] to struct UniformIntGenerator {
 	min?: int,
 	max?: int,
 }
@@ -72,7 +72,7 @@ type NumberProvider = (
 	} |
 )
 
-dispatch minecraft:number_provider[uniform,%none] to struct UniformNumberProvider {
+dispatch minecraft:number_provider[uniform, %none] to struct UniformNumberProvider {
 	min?: NumberProvider,
 	max?: NumberProvider,
 }
@@ -131,12 +131,18 @@ dispatch minecraft:nbt_provider[context] to struct ContextNbtProvider {
 
 enum(string) NbtContextTarget {
 	This = "this",
-	#[until="1.21"] Killer = "killer",
-	#[since="1.21"] Attacker = "attacker",
-	#[until="1.21"] DirectKiller = "direct_killer",
-	#[since="1.21"] DirectAttacker = "direct_attacker",
-	#[until="1.21"] KillerPlayer = "killer_player",
-	#[since="1.21"] AttackingPlayer = "attacking_player",
+	#[until="1.21"]
+	Killer = "killer",
+	#[since="1.21"]
+	Attacker = "attacker",
+	#[until="1.21"]
+	DirectKiller = "direct_killer",
+	#[since="1.21"]
+	DirectAttacker = "direct_attacker",
+	#[until="1.21"]
+	KillerPlayer = "killer_player",
+	#[since="1.21"]
+	AttackingPlayer = "attacking_player",
 	BlockEntity = "block_entity",
 }
 
@@ -153,6 +159,6 @@ type SoundEventRef = (
 		sound_id: #[id(registry="weighed_sound_event", empty="allowed")] string,
 		// TODO: What is "variable range"?
 		/// Range in blocks. If the player is further than this range from the source of the sound, the sound will be inaudible. If omitted, the sound will have a variable range.
-		range?: float
+		range?: float,
 	} |
 )

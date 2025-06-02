@@ -10,7 +10,7 @@ dispatch minecraft:resource[dimension] to struct Dimension {
 type DimensionTypeRef = (
 	#[id="dimension_type"] string |
 	#[until="1.19"] struct {
-		name: #[id=(registry=dimension_type,definition=true)] string,
+		name: #[id(registry=dimension_type, definition=true)] string,
 		...DimensionType,
 	} |
 )
@@ -40,17 +40,14 @@ dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	/// Setting this value will keep the sun in a fixed position.
 	fixed_time?: int,
 	/// Portals can't spawn and chorus fruit can't teleport players above this height.
-	logical_height: (
-		#[until="1.17"] int @ 0..256 |
-		#[since="1.17"] int @ 0..4064 |
-	),
+	logical_height: (#[until="1.17"] int @ 0..256 | #[since="1.17"] int @ 0..4064),
 	/// Sky effects.
 	#[since="1.16.2"]
 	effects: #[id] DimensionTypeEffects,
 	/// Block tag defining what blocks keep fire infinitely burning.
 	infiniburn: (
-		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
-		#[since="1.18.2"] #[id(registry="block",tags="required")] string |
+		#[until="1.18.2"] #[id(registry="block", tags="implicit")] string |
+		#[since="1.18.2"] #[id(registry="block", tags="required")] string |
 	),
 	/// The minimum height in which blocks can exist.
 	#[since="1.17"]

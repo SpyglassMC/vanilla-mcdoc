@@ -23,7 +23,10 @@ struct SpawnCondition {
 
 dispatch minecraft:spawn_condition[biome] to struct BiomeCheck {
 	/// Checks if the entity is spawning in specific biomes.
-	biomes: (#[id=(registry="worldgen/biome",tags="allowed")] string | [#[id="worldgen/biome"] string]),
+	biomes: (
+		#[id(registry="worldgen/biome", tags="allowed")] string |
+		[#[id="worldgen/biome"] string] |
+	),
 }
 
 dispatch minecraft:spawn_condition[moon_brightness] to struct MoonBrightnessCheck {
@@ -33,5 +36,8 @@ dispatch minecraft:spawn_condition[moon_brightness] to struct MoonBrightnessChec
 
 dispatch minecraft:spawn_condition[structure] to struct StructureCheck {
 	/// Checks if the entity is spawning in specific structures.
-	structures: (#[id=(registry="worldgen/structure",tags="allowed")] string | [#[id="worldgen/structure"] string]),
+	structures: (
+		#[id(registry="worldgen/structure", tags="allowed")] string |
+		[#[id="worldgen/structure"] string] |
+	),
 }

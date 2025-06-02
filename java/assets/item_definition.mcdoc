@@ -75,12 +75,12 @@ dispatch minecraft:item_model[select] to struct Select {
 }
 
 type SelectCases<T> = struct {
-  cases: [SelectCase<T>]
+	cases: [SelectCase<T>],
 }
 
 type SelectCase<T> = struct {
 	when: (T | [T]),
-	model: ItemModel
+	model: ItemModel,
 }
 
 dispatch minecraft:item_model[special] to struct Special {
@@ -92,7 +92,6 @@ dispatch minecraft:item_model[special] to struct Special {
 	/// Base model, providing transformations, particle texture and GUI light.
 	base: ModelRef,
 }
-
 
 struct ModelTint {
 	type: #[id] TintSourceType,
@@ -117,10 +116,7 @@ dispatch minecraft:tint_source[constant] to struct ConstantTint {
 
 dispatch minecraft:tint_source[dye] to struct DyeTint {
 	/// Tint to apply when the `dyed_color` component is not present.
-	default: (
-		#[canonical] #[color="composite_argb"] int |
-		#[color="dec_rgb"] [float] @ 3 |
-	),
+	default: (#[canonical] #[color="composite_argb"] int | #[color="dec_rgb"] [float] @ 3),
 }
 
 /// Applies a tint color based on the `textures/colormap/grass.png` color map.
@@ -131,10 +127,7 @@ dispatch minecraft:tint_source[grass] to struct GrassTint {
 
 dispatch minecraft:tint_source[firework] to struct FireworkTint {
 	/// Tint to apply when the `firework_explosion` component is not present.
-	default: (
-		#[canonical] #[color="composite_argb"] int |
-		#[color="dec_rgb"] [float] @ 3 |
-	),
+	default: (#[canonical] #[color="composite_argb"] int | #[color="dec_rgb"] [float] @ 3),
 }
 
 dispatch minecraft:tint_source[potion] to struct PotionTint {
@@ -158,7 +151,6 @@ dispatch minecraft:tint_source[team] to struct TeamTint {
 	/// Tint to apply when there is no context entity, entity is not in a team or the team has no color.
 	default: RGB,
 }
-
 
 enum(string) ConditionalPropertyType {
 	Broken = "broken",
@@ -205,10 +197,7 @@ dispatch minecraft:conditional_item_property[keybind_down] to struct KeybindDown
 	keybind: Keybind,
 }
 
-dispatch minecraft:conditional_item_property[view_entity] to struct ViewEntity {
-
-}
-
+dispatch minecraft:conditional_item_property[view_entity] to struct ViewEntity {}
 
 enum(string) NumericPropertyType {
 	BundleFullness = "bundle/fullness",
@@ -286,11 +275,11 @@ dispatch minecraft:numeric_item_property[use_cycle] to struct UseCycle {
 	period?: float,
 }
 
-
 enum(string) SelectPropertyType {
 	BlockState = "block_state",
 	ChargeType = "charge_type",
-	#[since="1.21.5"] Component = "component",
+	#[since="1.21.5"]
+	Component = "component",
 	ContextDimension = "context_dimension",
 	ContextEntityType = "context_entity_type",
 	CustomModelData = "custom_model_data",
@@ -301,23 +290,22 @@ enum(string) SelectPropertyType {
 }
 
 dispatch minecraft:select_item_property[%unknown] to struct {
-	...SelectCases<string>
+	...SelectCases<string>,
 }
 
 enum(string) CrossbowChargeType {
 	NONE = "none",
 	ARROW = "arrow",
-	ROCKET = "rocket"
+	ROCKET = "rocket",
 }
 
 dispatch minecraft:select_item_property[charge_type] to struct ChargeType {
-	...SelectCases<CrossbowChargeType>
+	...SelectCases<CrossbowChargeType>,
 }
-
 
 dispatch minecraft:select_item_property[block_state] to struct BlockState {
 	block_state_property: mcdoc:block_state_keys[%fallback],
-	...SelectCases<string>
+	...SelectCases<string>,
 }
 
 #[since="1.21.5"]
@@ -326,25 +314,25 @@ dispatch minecraft:select_item_property[component] to struct ComponentStrings {
 	/// If the selected value comes from a registry that the client doesn't have access to,
 	/// the entry will be silently ignored.
 	component: #[id="data_component_type"] string,
-	...SelectCases<minecraft:data_component[[component]]>
+	...SelectCases<minecraft:data_component[[component]]>,
 }
 
 dispatch minecraft:select_item_property[custom_model_data] to struct CustomModelDataStrings {
 	/// The index of the `strings` list in the `custom_model_data` component. Defaults to 0.
 	index?: int @ 0..,
-	...SelectCases<string>
+	...SelectCases<string>,
 }
 
-dispatch minecraft:select_item_property[context_dimension] to struct ContextDimension{
-	...SelectCases<#[id="dimension"] string>
-} 
-
-dispatch minecraft:select_item_property[context_entity_type] to struct ContextEntityType{
-	...SelectCases<#[id="entity_type"] string>
+dispatch minecraft:select_item_property[context_dimension] to struct ContextDimension {
+	...SelectCases<#[id="dimension"] string>,
 }
 
-dispatch minecraft:select_item_property[display_context] to struct DisplayContext{
-	...SelectCases<ItemDisplayContext>
+dispatch minecraft:select_item_property[context_entity_type] to struct ContextEntityType {
+	...SelectCases<#[id="entity_type"] string>,
+}
+
+dispatch minecraft:select_item_property[display_context] to struct DisplayContext {
+	...SelectCases<ItemDisplayContext>,
 }
 
 dispatch minecraft:select_item_property[local_time] to struct LocalTime {
@@ -353,19 +341,20 @@ dispatch minecraft:select_item_property[local_time] to struct LocalTime {
 	pattern: #[time_pattern] string,
 	/// Defaults to the root locale.
 	/// Examples: `en_US`, `cs_AU@numbers=thai;calendar=japanese`.
-	locale?: string, // TODO
+	locale?: string,
+	// TODO
 	/// Defaults to the timezone set on the client.
 	/// Examples: `Europe/Stockholm`, `GMT+0:45`.
 	time_zone?: string,
-	...SelectCases<string>
+	...SelectCases<string>,
 }
 
-dispatch minecraft:select_item_property[main_hand] to struct MainHand{
-	...SelectCases<("left" | "right")>
+dispatch minecraft:select_item_property[main_hand] to struct MainHand {
+	...SelectCases<("left" | "right")>,
 }
 
-dispatch minecraft:select_item_property[trim_material] to struct TrimMaterial{
-	...SelectCases<#[id="trim_material"] string>
+dispatch minecraft:select_item_property[trim_material] to struct TrimMaterial {
+	...SelectCases<#[id="trim_material"] string>,
 }
 
 enum(string) SpecialModelType {
@@ -389,18 +378,18 @@ dispatch minecraft:special_item_model[banner] to struct Banner {
 }
 
 dispatch minecraft:special_item_model[bed] to struct Bed {
-	texture: #[id(registry="texture",path="entity/bed/")] string,
+	texture: #[id(registry="texture", path="entity/bed/")] string,
 }
 
 dispatch minecraft:special_item_model[chest] to struct Chest {
-	texture: #[id(registry="texture",path="entity/chest/")] string,
+	texture: #[id(registry="texture", path="entity/chest/")] string,
 	/// Defaults to `0`.
 	openness?: float @ 0..1,
 }
 
 dispatch minecraft:special_item_model[hanging_sign] to struct HangingSign {
 	wood_type: WoodType,
-	texture: #[id(registry="texture",path="entity/signs/hanging/")] string,
+	texture: #[id(registry="texture", path="entity/signs/hanging/")] string,
 }
 
 enum(string) WoodType {
@@ -422,7 +411,7 @@ dispatch minecraft:special_item_model[head] to struct Head {
 	kind: HeadType,
 	/// Texture to use instead of the texture from `kind`.
 	/// If present, will ignore the `profile` compnent.
-	texture?: #[id(registry="texture",path="entity/")] string,
+	texture?: #[id(registry="texture", path="entity/")] string,
 	/// Controls the animation time for piglin and dragon heads. Defaults to `0`.
 	animation?: float,
 }
@@ -438,7 +427,7 @@ enum(string) HeadType {
 }
 
 dispatch minecraft:special_item_model[shulker_box] to struct ShulkerBox {
-	texture: #[id(registry="texture",path="entity/shulker/")] string,
+	texture: #[id(registry="texture", path="entity/shulker/")] string,
 	openness?: float @ 0..1,
 	/// Defaults to `up`.
 	orientation?: Direction,
@@ -446,5 +435,5 @@ dispatch minecraft:special_item_model[shulker_box] to struct ShulkerBox {
 
 dispatch minecraft:special_item_model[standing_sign] to struct StandingSign {
 	wood_type: WoodType,
-	texture: #[id(registry="texture",path="entity/signs/")] string,
+	texture: #[id(registry="texture", path="entity/signs/")] string,
 }

@@ -1,12 +1,6 @@
-type RGB = (
-	#[canonical] #[color="composite_rgb"] int |
-	#[color="dec_rgb"] [float] @ 3 |
-)
+type RGB = (#[canonical] #[color="composite_rgb"] int | #[color="dec_rgb"] [float] @ 3)
 
-type RGBA = (
-	#[canonical] #[color="composite_argb"] int |
-	#[color="dec_rgba"] [float] @ 4 |
-)
+type RGBA = (#[canonical] #[color="composite_argb"] int | #[color="dec_rgba"] [float] @ 4)
 
 enum(string) DyeColor {
 	White = "white",
