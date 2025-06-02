@@ -21,6 +21,7 @@ dispatch minecraft:dialog_action[suggest_command] to SuggestCommand
 
 dispatch minecraft:dialog_action["dynamic/run_command"] to struct DynamicRunCommand {
 	/// A macro template to be interpred as a command.
+	/// Special characters (including both `'` and `"`) from text input will be escaped to fit in SNBT literal.
 	template: #[command(macro="implicit")] string,
 }
 
