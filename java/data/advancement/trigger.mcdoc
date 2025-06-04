@@ -38,6 +38,12 @@ type Location = (
 	} |
 )
 
+type PlayerInteract = struct {
+	...TriggerBase,
+	item?: ItemPredicate,
+	entity?: CompositeEntity,
+}
+
 type RecipeCrafted = struct {
 	...TriggerBase,
 	recipe_id: #[id="recipe"] string,
@@ -325,20 +331,15 @@ dispatch minecraft:trigger[player_hurt_entity] to Conditions<struct PlayerHurtEn
 /// Only occurs for specific registered interactions.
 #[since="1.16"]
 dispatch minecraft:trigger[player_interacted_with_entity] to Conditions<PlayerInteract>
-#[since="1.21.6"]
-dispatch minecraft:trigger[player_sheared_entity] to Conditions<PlayerInteract>
-
-struct PlayerInteract {
-	...TriggerBase,
-	item?: ItemPredicate,
-	entity?: CompositeEntity,
-}
 
 dispatch minecraft:trigger[player_killed_entity] to Conditions<struct PlayerKilledEntity {
 	...TriggerBase,
 	entity?: CompositeEntity,
 	killing_blow?: DamageSourcePredicate,
 }>
+
+#[since="1.21.6"]
+dispatch minecraft:trigger[player_sheared_entity] to Conditions<PlayerInteract>
 
 #[since="1.20"]
 dispatch minecraft:trigger[recipe_crafted] to RequiredConditions<RecipeCrafted>
