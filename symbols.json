@@ -1,5 +1,5 @@
 {
-	"ref": "04a38ac4a42019d075b9954d30ab8ae7ff7f8609",
+	"ref": "df234b45777202a77f3918963d69bc30b9f4bd5c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -15354,6 +15354,36 @@
 				},
 				{
 					"kind": "pair",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "entity",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::CompositeEntity"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::TriggerBase"
+					}
+				},
+				{
+					"kind": "pair",
 					"key": "recipe_id",
 					"type": {
 						"kind": "string",
@@ -15390,7 +15420,7 @@
 				}
 			]
 		},
-		"::java::data::advancement::trigger::<anonymous 4>": {
+		"::java::data::advancement::trigger::<anonymous 5>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -17106,7 +17136,7 @@
 				}
 			]
 		},
-		"::java::data::advancement::trigger::PlayerInteractedWithEntity": {
+		"::java::data::advancement::trigger::PlayerInteract": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -97088,7 +97118,7 @@
 				"typeArgs": [
 					{
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerInteractedWithEntity"
+						"path": "::java::data::advancement::trigger::PlayerInteract"
 					}
 				],
 				"attributes": [
@@ -97114,6 +97144,31 @@
 					{
 						"kind": "reference",
 						"path": "::java::data::advancement::trigger::PlayerKilledEntity"
+					}
+				]
+			},
+			"player_sheared_entity": {
+				"kind": "concrete",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::advancement::trigger::Conditions"
+				},
+				"typeArgs": [
+					{
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerInteract"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.6"
+							}
+						}
 					}
 				]
 			},
