@@ -324,11 +324,15 @@ dispatch minecraft:trigger[player_hurt_entity] to Conditions<struct PlayerHurtEn
 // TODO: List said interactions.
 /// Only occurs for specific registered interactions.
 #[since="1.16"]
-dispatch minecraft:trigger[player_interacted_with_entity] to Conditions<struct PlayerInteractedWithEntity {
+dispatch minecraft:trigger[player_interacted_with_entity] to Conditions<PlayerInteract>
+#[since="1.21.6"]
+dispatch minecraft:trigger[player_sheared_entity] to Conditions<PlayerInteract>
+
+struct PlayerInteract {
 	...TriggerBase,
 	item?: ItemPredicate,
 	entity?: CompositeEntity,
-}>
+}
 
 dispatch minecraft:trigger[player_killed_entity] to Conditions<struct PlayerKilledEntity {
 	...TriggerBase,
