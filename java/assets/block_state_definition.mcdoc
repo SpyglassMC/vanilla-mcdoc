@@ -3,7 +3,8 @@ use ::java::assets::model::ModelRef
 type BlockStateDefinition = (
 	struct BlockStateDefinitionVariant {
 		variants: struct BlockStateDefinitionVariantMap {
-			[string]: ModelVariant, // TODO: block state key
+			// TODO: block state key
+			[string]: ModelVariant,
 		},
 	} |
 	struct BlockStateDefinitionMultipart {
@@ -14,6 +15,7 @@ type BlockStateDefinition = (
 		}],
 	} |
 )
+
 dispatch minecraft:resource[block_definition] to BlockStateDefinition
 
 type ModelVariant = (
@@ -37,6 +39,7 @@ type MultiPartCondition = (
 		OR: [MultiPartCondition],
 	} |
 	struct MultiPartAnd {
-		[string]: string, // TODO: block state key
+		// TODO: block state key
+		[string]: string,
 	} |
 )

@@ -13,10 +13,8 @@ enum(string) EquipmentSlot {
 	Chest = "chest",
 	Legs = "legs",
 	Feet = "feet",
-	#[since="1.20.5"]
-	Body = "body",
-	#[since="1.21.5"]
-	Saddle = "saddle",
+	#[since="1.20.5"] Body = "body",
+	#[since="1.21.5"] Saddle = "saddle",
 }
 
 enum(string) EquipmentSlotGroup {
@@ -26,14 +24,9 @@ enum(string) EquipmentSlotGroup {
 	Chest = "chest",
 	Legs = "legs",
 	Feet = "feet",
-	#[since="1.20.5"]
-	Hand = "hand",
-	#[since="1.20.5"]
-	Armor = "armor",
-	#[since="1.20.5"]
-	Any = "any",
-	#[since="1.20.5"]
-	Body = "body",
-	#[since="1.21.5"]
-	Saddle = "saddle",
+	#[since="1.20.5"] Hand = "hand",
+	#[since="1.20.5"] Armor = "armor",
+	#[since="1.20.5"] Any = "any",
+	#[since="1.20.5"] Body = "body",
+	#[since="1.21.5"] Saddle = "saddle",
 }

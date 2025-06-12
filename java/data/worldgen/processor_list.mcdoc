@@ -30,10 +30,10 @@ dispatch minecraft:template_processor[block_ignore] to struct BlockIgnore {
 }
 
 dispatch minecraft:template_processor[block_rot] to struct BlockRot {
-	integrity: float @ 0..1,
+	integrity: float @ 0.0..1.0,
 	rottable_blocks?: (
 		[#[id="block"] string] |
-		#[id(registry="block",tags="allowed")] string |
+		#[id(registry="block", tags="allowed")] string |
 	),
 }
 
@@ -45,8 +45,8 @@ dispatch minecraft:template_processor[gravity] to struct Gravity {
 #[since="1.17"]
 dispatch minecraft:template_processor[protected_blocks] to struct ProtectedBlocks {
 	value: (
-		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
-		#[since="1.18.2"] #[id(registry="block",tags="required")] string |
+		#[until="1.18.2"] #[id(registry="block", tags="implicit")] string |
+		#[since="1.18.2"] #[id(registry="block", tags="required")] string |
 	),
 }
 
@@ -57,7 +57,7 @@ dispatch minecraft:template_processor[rule] to struct Rule {
 #[since="1.19"]
 dispatch minecraft:template_processor[capped] to struct Capped {
 	delegate: Processor,
-	limit: IntProvider<int@0..>,
+	limit: IntProvider<int @ 0..>,
 }
 
 struct ProcessorRule {
@@ -79,8 +79,8 @@ struct PosRuleTest {
 dispatch minecraft:pos_rule_test[linear_pos] to struct LinearPos {
 	min_dist?: int @ 0..255,
 	max_dist?: int @ 0..255,
-	min_chance?: float @ 0..1,
-	max_chance?: float @ 0..1,
+	min_chance?: float @ 0.0..1.0,
+	max_chance?: float @ 0.0..1.0,
 }
 
 dispatch minecraft:pos_rule_test[axis_aligned_linear_pos] to struct AxisAlignedLinearPos {
@@ -109,16 +109,16 @@ dispatch minecraft:rule_test[blockstate_match] to struct BlockStateMatch {
 
 dispatch minecraft:rule_test[random_block_match] to struct RandomBlockMatch {
 	block: #[id="block"] string,
-	probability: float @ 0..1,
+	probability: float @ 0.0..1.0,
 }
 
 dispatch minecraft:rule_test[random_blockstate_match] to struct RandomBlockStateMatch {
 	block_state: BlockState,
-	probability: float @ 0..1,
+	probability: float @ 0.0..1.0,
 }
 
 dispatch minecraft:rule_test[tag_match] to struct TagMatch {
-	tag: #[id(registry="block",tags="implicit")] string,
+	tag: #[id(registry="block", tags="implicit")] string,
 }
 
 struct BlockEntityModifier {

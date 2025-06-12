@@ -25,7 +25,7 @@ dispatch minecraft:data_component[block_entity_data] to (
 /// Blockstate that the placed block will have.
 dispatch minecraft:data_component[block_state] to mcdoc:block_item_states[[%parent.id]]
 
-dispatch mcdoc:block_item_states[%unknown,%none] to struct {
+dispatch mcdoc:block_item_states[%unknown, %none] to struct {
 	[string]: string,
 }
 

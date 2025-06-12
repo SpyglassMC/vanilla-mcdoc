@@ -14,8 +14,7 @@ enum(string) SpriteSourceType {
 	Directory = "directory",
 	Filter = "filter",
 	Unstitch = "unstitch",
-	#[since="1.19.4"]
-	PalettedPermutations = "paletted_permutations",
+	#[since="1.19.4"] PalettedPermutations = "paletted_permutations",
 }
 
 dispatch minecraft:sprite_source[single] to struct Single {
@@ -23,7 +22,7 @@ dispatch minecraft:sprite_source[single] to struct Single {
 	resource: #[id="texture"] string,
 	/// The identifier of the sprite that can referenced.
 	/// If not specified, matches `resource`.
-	sprite?: #[id(registry="texture",definition=true)] string,
+	sprite?: #[id(registry="texture", definition=true)] string,
 }
 
 dispatch minecraft:sprite_source[directory] to struct Directory {
@@ -65,7 +64,7 @@ dispatch minecraft:sprite_source[unstitch] to struct Unstitch {
 }
 
 struct UnstitchRegion {
-	sprite: #[id(registry="texture",definition=true)] string,
+	sprite: #[id(registry="texture", definition=true)] string,
 	x: double,
 	y: double,
 	width: double,

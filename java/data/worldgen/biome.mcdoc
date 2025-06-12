@@ -26,7 +26,7 @@ dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 	/// If true, the world spawn will be preferred in this biome.
 	#[until="1.18"]
 	player_spawn_friendly?: boolean,
-	creature_spawn_probability?: float @ 0..1,
+	creature_spawn_probability?: float @ 0.0..1.0,
 	effects: BiomeEffects,
 	#[until="1.18"]
 	surface_builder: ConfiguredSurfaceBuilderRef,
@@ -42,24 +42,24 @@ dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 		#[until="1.21.2"] struct CarversPerStep {
 			[CarveStep]: (
 				[CarverRef] |
-				#[since="1.18.2"] #[id(registry="worldgen/configured_carver",tags=allowed)] string |
+				#[since="1.18.2"] #[id(registry="worldgen/configured_carver", tags=allowed)] string |
 			),
 		} |
 		#[since="1.21.2"] (
 			[CarverRef] |
-			#[id(registry="worldgen/configured_carver",tags=allowed)] string |
+			#[id(registry="worldgen/configured_carver", tags=allowed)] string |
 		) |
 	),
 	features: (
 		#[until="1.18"] [[ConfiguredFeatureRef]] @ ..10 |
 		#[since="1.18"] [(
 			[PlacedFeatureRef] |
-			#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags=allowed)] string |
+			#[since="1.18.2"] #[id(registry="worldgen/placed_feature", tags=allowed)] string |
 		)] @ ..11 |
 	),
 }
 
-enum (string) BiomeCategory {
+enum(string) BiomeCategory {
 	Beach = "beach",
 	Desert = "desert",
 	ExtremeHills = "extreme_hills",
@@ -111,21 +111,21 @@ struct BiomeEffects {
 	},
 	additions_sound?: struct BiomeSoundAdditions {
 		sound: SoundEventRef,
-		tick_chance: float @ 0..1,
+		tick_chance: float @ 0.0..1.0,
 	},
 	music?: (
 		#[until="1.21.4"] BiomeMusic |
 		#[since="1.21.4"] [struct {
 			weight: int @ 1..,
 			data: BiomeMusic,
-		}]
+		}] |
 	),
 	/// The volume of the music in this biome. Defaults to 1.
 	/// The game will smoothly transition between the current music volume and the new volume when entering the biome.
 	music_volume?: float,
 	particle?: struct BiomeParticle {
 		options: Particle,
-		probability: float @ 0..1,
+		probability: float @ 0.0..1.0,
 	},
 }
 

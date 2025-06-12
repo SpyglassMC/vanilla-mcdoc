@@ -6,6 +6,6 @@ dispatch minecraft:resource[jukebox_song] to struct JukeboxSong {
 	/// Displayed in the HUD actionbar & item tooltip.
 	description: Text,
 	comparator_output: int @ 0..15,
-	length_in_seconds: float @ 0<..,
+	length_in_seconds: float @ 0.0<..,
 	sound_event: SoundEventRef,
 }

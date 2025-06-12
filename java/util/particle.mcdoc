@@ -17,7 +17,10 @@ dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to s
 	#[until="1.20.5"]
 	value: BlockState,
 	#[since="1.20.5"]
-	block_state: (#[id="block"] string | BlockState),
+	block_state: (
+		#[id="block"] string |
+		BlockState |
+	),
 }
 
 #[since="1.21.2"]
@@ -63,12 +66,12 @@ dispatch minecraft:particle[dust] to struct DustParticle {
 		r: float,
 		g: float,
 		b: float,
-		scale: float @ 0.01..4,
+		scale: float @ 0.01..4.0,
 	},
 	#[since="1.20.5"]
 	...struct {
 		color: DustColor,
-		scale: float @ 0.01..4,
+		scale: float @ 0.01..4.0,
 	},
 }
 
@@ -77,13 +80,13 @@ dispatch minecraft:particle[dust_color_transition] to struct DustColorTransition
 	value: struct OldDustTransition {
 		fromColor: DustColor,
 		toColor: DustColor,
-		scale: float @ 0.01..4,
+		scale: float @ 0.01..4.0,
 	},
 	#[since="1.20.5"]
 	...struct {
 		from_color: DustColor,
 		to_color: DustColor,
-		scale: float @ 0.01..4,
+		scale: float @ 0.01..4.0,
 	},
 }
 
@@ -125,7 +128,10 @@ dispatch minecraft:particle[item] to struct ItemParticle {
 	#[until="1.20.5"]
 	value: ItemStack,
 	#[since="1.20.5"]
-	item: (#[id(registry="item", exclude=["air"])] string | SingleItem),
+	item: (
+		#[id(registry="item", exclude=["air"])] string |
+		SingleItem |
+	),
 }
 
 dispatch minecraft:particle[sculk_charge] to struct SculkChargeParticle {
@@ -146,7 +152,7 @@ dispatch minecraft:particle[shriek] to struct ShriekParticle {
 
 #[since="1.21.5"]
 dispatch minecraft:particle[tinted_leaves] to struct TintedLeavesParticle {
-	color: RGBA
+	color: RGBA,
 }
 
 #[since="1.21.2"]
@@ -164,7 +170,7 @@ dispatch minecraft:particle[vibration] to struct VibrationParticle {
 	...VibrationParticleData,
 }
 
-struct VibrationParticleData {	
+struct VibrationParticleData {
 	/// Ticks in which to interpolate the particle's initial position to the destination.
 	arrival_in_ticks: int,
 	destination: SafePositionSource,

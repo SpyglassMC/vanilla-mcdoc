@@ -32,9 +32,9 @@ enum(string) AfterAction {
 	/// Closes the dialog.
 	/// Returns to the previous non-dialog screen, if any.
 	Close = "close",
+	// TODO: implement this restriction
 	/// Does nothing.
 	/// Only available if `pause` is set to `false`.
-	// TODO: implement this restriction
 	None = "none",
 	/// Replaces the dialog with a "Waiting for Response" screen.
 	/// The waiting screen unpauses the game in single-player mode.
@@ -94,8 +94,11 @@ dispatch minecraft:dialog[server_links] to struct ServerLinksDialog {
 dispatch minecraft:dialog[dialog_list] to struct RedirectDialog {
 	...ButtonListDialogBase,
 	dialogs: (
-		[(#[id="dialog"] string | Dialog)] |
-		#[id=(registry="dialog", tags="allowed")] string |
+		[(
+			#[id="dialog"] string |
+			Dialog |
+		)] |
+		#[id(registry="dialog", tags="allowed")] string |
 		Dialog |
 	),
 }

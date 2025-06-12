@@ -18,9 +18,9 @@ struct Sound {
 	type?: SoundType,
 	name: minecraft:sound_type[[type]],
 	/// Defaults to 1.0.
-	volume?: float @ 0<..,
+	volume?: float @ 0.0<..,
 	/// Default is 1.0.
-	pitch?: float @ 0<..,
+	pitch?: float @ 0.0<..,
 	/// Chance that this sound is selected to play. Defaults to 1.
 	weight?: int @ 1..,
 	// TODO: Find difference between this and stream.
@@ -40,6 +40,6 @@ enum(string) SoundType {
 	SoundEvent = "event",
 }
 
-dispatch minecraft:sound_type[file,%none] to #[id="sound"] string
+dispatch minecraft:sound_type[file, %none] to #[id="sound"] string
 
 dispatch minecraft:sound_type[event] to #[id="weighed_sound_event"] string

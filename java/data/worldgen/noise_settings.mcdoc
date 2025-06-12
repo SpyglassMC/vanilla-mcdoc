@@ -9,7 +9,7 @@ use ::java::util::block_state::BlockState
 type NoiseGeneratorSettingsRef = (
 	#[since="1.16.2"] #[id="worldgen/noise_settings"] string |
 	struct {
-		name: #[id=(registry="worldgen/noise_settings",definition=true)] string,
+		name: #[id(registry="worldgen/noise_settings", definition=true)] string,
 		...NoiseGeneratorSettings,
 	} |
 )
@@ -99,10 +99,10 @@ struct NoiseSettings {
 }
 
 struct NoiseSamplingSettings {
-	xz_scale: double @ 0.001..1000,
-	y_scale: double @ 0.001..1000,
-	xz_factor: double @ 0.001..1000,
-	y_factor: double @ 0.001..1000,
+	xz_scale: double @ 0.001..1000.0,
+	y_scale: double @ 0.001..1000.0,
+	xz_factor: double @ 0.001..1000.0,
+	y_factor: double @ 0.001..1000.0,
 }
 
 struct NoiseSlideSettings {
@@ -141,6 +141,6 @@ struct NoiseRouter {
 struct StructureSettings {
 	stronghold?: ConcentricRingsPlacement,
 	structures: struct {
-		[#[id="worldgen/structure_feature"] string]: RandomSpreadPlacement
+		[#[id="worldgen/structure_feature"] string]: RandomSpreadPlacement,
 	},
 }
