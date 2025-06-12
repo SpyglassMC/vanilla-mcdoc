@@ -73,7 +73,8 @@ enum(string) CopyNameSource {
 struct CopyNbt {
 	source: NbtProvider,
 	ops: [(struct CopyNbtOperation {
-		source: #[nbt_path] string, // TODO
+		// TODO
+		source: #[nbt_path] string,
 		target: (
 			#[until="1.20.5"] #[nbt_path=minecraft:item[%fallback]] string |
 			#[since="1.20.5"] #[nbt_path=mcdoc:custom_data[%fallback]] string |
@@ -152,7 +153,8 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
 	/// Generated structure to locate. Accepts any of the structure types used by the `/locate` command. Defaults to buried treasure.
 	destination?: (
-		#[until="1.19"] string | // TODO: low-priority, this is an enum
+		// TODO: low-priority, this is an enum
+		#[until="1.19"] string |
 		#[since="1.19"] #[id(registry="worldgen/structure",tags=implicit)] string |
 	),
 	/// The icon used to mark the destination on the map. Accepts any of the map icon text IDs (case insensitive).

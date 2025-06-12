@@ -351,9 +351,10 @@ dispatch minecraft:select_item_property[local_time] to struct LocalTime {
 	/// Format to use for time formatting.
 	/// Examples: `yyyy-MM-dd`, `HH:mm:ss`.
 	pattern: #[time_pattern] string,
+	// TODO
 	/// Defaults to the root locale.
 	/// Examples: `en_US`, `cs_AU@numbers=thai;calendar=japanese`.
-	locale?: string, // TODO
+	locale?: string,
 	/// Defaults to the timezone set on the client.
 	/// Examples: `Europe/Stockholm`, `GMT+0:45`.
 	time_zone?: string,

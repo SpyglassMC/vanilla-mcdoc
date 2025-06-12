@@ -18,8 +18,9 @@ struct ReceivingEvent {
 	pos: [float] @ 3,
 	/// UUID of the source entity of the event, if one exists
 	source?: #[uuid] [int] @ 4,
+	// TODO: Double check if these are int arrays
 	/// UUID of the owner of the projectile, if one exists
-	projectile_owner?: #[uuid] [int] @ 4, // TODO: Double check if these are int arrays
+	projectile_owner?: #[uuid] [int] @ 4,
 }
 
 struct PositionSource {

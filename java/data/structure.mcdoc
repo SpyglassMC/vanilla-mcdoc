@@ -7,7 +7,8 @@ struct StructureNBT {
 
 	size: [int @ 0..] @ 3,
 
-	#[structure_blocks] // Note: Unimplemented
+	// Note: Unimplemented
+	#[structure_blocks]
 	blocks: [struct StructureBlock {
 		state: int @ 0..,
 		pos: [int @ 0..] @ 3,

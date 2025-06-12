@@ -11,7 +11,8 @@ dispatch minecraft:entity[villager] to struct Villager {
 	...super::Breedable,
 	...VillagerBase,
 	VillagerData?: VillagerData,
-	FoodLevel?: byte, // TODO
+	// TODO
+	FoodLevel?: byte,
 	/// Gossips it has heard.
 	Gossips?: [Gossip],
 	/// Tick of the last time it has restocked.

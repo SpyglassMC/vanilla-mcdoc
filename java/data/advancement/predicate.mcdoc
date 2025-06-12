@@ -103,7 +103,8 @@ struct LocationPredicate {
 	dimension?: #[id="dimension"] string,
 	/// Calculated using: `max(sky-darkening, block)`.
 	light?: struct LocationPredicateLight {
-		light?: MinMaxBounds<int @ 0..15>, // :mojank:
+		// :mojank:
+		light?: MinMaxBounds<int @ 0..15>,
 	},
 	block?: BlockPredicate,
 	fluid?: FluidPredicate,
@@ -295,7 +296,8 @@ dispatch minecraft:entity_sub_predicate[parrot] to struct ParrotPredicate {
 dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 	advancements?: struct PlayerAdvancements {
 		[#[id="advancement"] string]: (boolean | struct PlayerAdvancementCriteria {
-			[string]: boolean, // TODO: This should use `#[criterion]`, but it's not supported yet.
+			// TODO: This should use `#[criterion]`, but it's not supported yet.
+			[string]: boolean,
 		}),
 	},
 	gamemode?: (
