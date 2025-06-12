@@ -13,7 +13,7 @@ struct VibrationListener {
 struct ReceivingEvent {
 	game_event: #[id="game_event"] string,
 	/// Distance in blocks to the source
-	distance: float @ 0..,
+	distance: float @ 0.0..,
 	/// Origin of the event
 	pos: [float] @ 3,
 	/// UUID of the source entity of the event, if one exists

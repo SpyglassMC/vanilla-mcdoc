@@ -24,7 +24,7 @@ struct StructurePlacement {
 	#[since="1.19"]
 	frequency_reduction_method?: FrequencyReductionMethod,
 	#[since="1.19"]
-	frequency?: float @ 0..1,
+	frequency?: float @ 0.0..1.0,
 	exclusion_zone?: ExclusionZone,
 	locate_offset?: [int @ -16..16] @ 3,
 }
@@ -48,7 +48,7 @@ dispatch minecraft:structure_placement[concentric_rings] to struct ConcentricRin
 	#[since="1.19"]
 	preferred_biomes: (
 		[#[id="worldgen/biome"] string] |
-		#[id(registry="worldgen/biome",tags=allowed)] string |
+		#[id(registry="worldgen/biome", tags=allowed)] string |
 	),
 }
 

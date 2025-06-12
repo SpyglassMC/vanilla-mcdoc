@@ -7,20 +7,16 @@ struct GlyphProvider {
 	...minecraft:glyph_provider[[type]],
 	filter?: struct {
 		[FontOption]: boolean,
-	}
+	},
 }
 
 enum(string) GlyphProviderType {
 	Bitmap = "bitmap",
 	TrueType = "ttf",
-	#[since="1.19"]
-	Space = "space",
-	#[until="1.20"]
-	LegacyUnicode = "legacy_unicode",
-	#[since="1.20"]
-	Unihex = "unihex",
-	#[since="1.20"]
-	Reference = "reference",
+	#[since="1.19"] Space = "space",
+	#[until="1.20"] LegacyUnicode = "legacy_unicode",
+	#[since="1.20"] Unihex = "unihex",
+	#[since="1.20"] Reference = "reference",
 }
 
 enum(string) FontOption {
@@ -61,12 +57,14 @@ dispatch minecraft:glyph_provider[legacy_unicode] to struct LegacyUnicodeProvide
 dispatch minecraft:glyph_provider[unihex] to struct UnihexProvider {
 	// TODO
 	/// ZIP archive containing one or more *.hex files (files in archive with different extensions are ignored).
-	hex_file: string, 
-	#[until="1.21.6"] ...struct {
+	hex_file: string,
+	#[until="1.21.6"]
+	...struct {
 		/// List of ranges to override the size of.
 		size_overrides: [UnihexOverrideRange],
 	},
-	#[since="1.21.6"] ...struct {
+	#[since="1.21.6"]
+	...struct {
 		/// List of ranges to override the size of.
 		size_overrides?: [UnihexOverrideRange],
 	},

@@ -40,6 +40,7 @@ type EffectId = (
 )
 
 /// Numerical ids for effects
+/// Numerical ids for effects
 enum(byte) EffectByteId {
 	Speed = 1,
 	Slowness = 2,

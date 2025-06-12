@@ -27,8 +27,8 @@ type FeatureRef = (
 	#[since="1.18"] PlacedFeatureRef |
 )
 
-dispatch minecraft:feature_config[bamboo,seagrass] to struct ProbabilityConfig {
-	probability: float @ 0..1,
+dispatch minecraft:feature_config[bamboo, seagrass] to struct ProbabilityConfig {
+	probability: float @ 0.0..1.0,
 }
 
 dispatch minecraft:feature_config[basalt_columns] to struct ColumnsConfig {
@@ -78,7 +78,7 @@ dispatch minecraft:feature_config[delta_feature] to struct DeltaConfig {
 	),
 }
 
-dispatch minecraft:feature_config[disk,ice_patch] to struct DiskConfig {
+dispatch minecraft:feature_config[disk, ice_patch] to struct DiskConfig {
 	#[until="1.19"]
 	state: BlockState,
 	#[since="1.19"]
@@ -99,7 +99,7 @@ struct RuleBasedBlockStateProvider {
 	rules: [struct BlockStateRuleProviderEntry {
 		if_true: BlockPredicate,
 		then: BlockStateProvider,
-	}]
+	}],
 }
 
 dispatch minecraft:feature_config[emerald_ore] to struct EmeraldOreConfig {
@@ -135,9 +135,9 @@ dispatch minecraft:feature_config[dripstone_cluster] to struct DripstoneClusterC
 	max_stalagmite_stalactite_height_diff: int @ 0..64,
 	height_deviation: int @ 1..64,
 	dripstone_block_layer_thickness: IntProvider<int @ 0..128>,
-	density: FloatProvider<float @ 0..2>,
-	wetness: FloatProvider<float @ 0..2>,
-	chance_of_dripstone_column_at_max_distance_from_center: float @ 0..1,
+	density: FloatProvider<float @ 0.0..2.0>,
+	wetness: FloatProvider<float @ 0.0..2.0>,
+	chance_of_dripstone_column_at_max_distance_from_center: float @ 0.0..1.0,
 	max_distance_from_edge_affecting_chance_of_dripstone_column: int @ 1..64,
 	max_distance_from_center_affecting_height_bias: int @ 1..64,
 }
@@ -147,7 +147,7 @@ dispatch minecraft:feature_config[fill_layer] to struct FillLayerConfig {
 	height: int @ 0..255,
 }
 
-dispatch minecraft:feature_config[flower,no_bonemeal_flower,random_patch] to struct RandomPatchConfig {
+dispatch minecraft:feature_config[flower, no_bonemeal_flower, random_patch] to struct RandomPatchConfig {
 	/// How many attempts will be made to find a placement. Defaults to 128.
 	tries?: (
 		#[until="1.17"] int |
@@ -190,10 +190,7 @@ struct BlockPlacer {
 	...minecraft:block_placer[[type]],
 }
 
-dispatch minecraft:block_placer[
-	simple_block_placer,
-	double_plant_placer,
-] to struct {}
+dispatch minecraft:block_placer[simple_block_placer, double_plant_placer] to struct {}
 
 dispatch minecraft:block_placer[column_placer] to struct ColumnPlacer {
 	#[until="1.17"]
@@ -223,9 +220,9 @@ dispatch minecraft:feature_config[geode] to struct GeodeConfig {
 	blocks: GeodeBlockSettings,
 	layers: GeodeLayerSettings,
 	crack: GeodeCrackSettings,
-	noise_multiplier?: float @ 0..1,
-	use_potential_placements_chance?: float @ 0..1,
-	use_alternate_layer0_chance?: float @ 0..1,
+	noise_multiplier?: float @ 0.0..1.0,
+	use_potential_placements_chance?: float @ 0.0..1.0,
+	use_alternate_layer0_chance?: float @ 0.0..1.0,
 	placements_require_layer0_alternate?: boolean,
 	outer_wall_distance?: IntProvider<int @ 1..20>,
 	distribution_points?: IntProvider<int @ 1..20>,
@@ -244,44 +241,44 @@ struct GeodeBlockSettings {
 	inner_placements: [BlockState] @ 1..,
 	/// Blocks that will not be replaced by the geode.
 	cannot_replace: (
-		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
+		#[until="1.18.2"] #[id(registry="block", tags="implicit")] string |
 		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="1.18.2"] #[id(registry="block", tags="allowed")] string |
 	),
 	/// When encountering an invalid block, feature placement is cancelled.
 	invalid_blocks: (
-		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
+		#[until="1.18.2"] #[id(registry="block", tags="implicit")] string |
 		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="1.18.2"] #[id(registry="block", tags="allowed")] string |
 	),
 }
 
 struct GeodeLayerSettings {
-	filling?: float @ 0.01..50,
-	inner_layer?: float @ 0.01..50,
-	middle_layer?: float @ 0.01..50,
-	outer_layer?: float @ 0.01..50,
+	filling?: float @ 0.01..50.0,
+	inner_layer?: float @ 0.01..50.0,
+	middle_layer?: float @ 0.01..50.0,
+	outer_layer?: float @ 0.01..50.0,
 }
 
 struct GeodeCrackSettings {
-	generate_crack_chance?: float @ 0..1,
-	base_crack_size?: float @ 0..5,
+	generate_crack_chance?: float @ 0.0..1.0,
+	base_crack_size?: float @ 0.0..5.0,
 	crack_point_offset?: int @ 0..10,
 }
 
 #[since="1.17"]
-dispatch minecraft:feature_config[glow_lichen,multiface_growth] to struct MultifaceGrowthConfig {
+dispatch minecraft:feature_config[glow_lichen, multiface_growth] to struct MultifaceGrowthConfig {
 	#[since="1.19"]
 	block?: #[id] MultifaceBlock,
 	search_range?: int @ 1..64,
-	chance_of_spreading?: float @ 0..1,
+	chance_of_spreading?: float @ 0.0..1.0,
 	can_place_on_floor?: boolean,
 	can_place_on_ceiling?: boolean,
 	can_place_on_wall?: boolean,
 	can_be_placed_on?: (
 		#[until="1.18"] [BlockState] |
 		#[since="1.18"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="1.18.2"] #[id(registry="block", tags="allowed")] string |
 	),
 }
 
@@ -304,7 +301,7 @@ struct GrowingPlantHeight {
 	data: IntProvider<int>,
 }
 
-dispatch minecraft:feature_config[huge_brown_mushroom,huge_red_mushroom] to struct HugeMushroomConfig {
+dispatch minecraft:feature_config[huge_brown_mushroom, huge_red_mushroom] to struct HugeMushroomConfig {
 	cap_provider: BlockStateProvider,
 	stem_provider: BlockStateProvider,
 	foliage_radius: int,
@@ -337,13 +334,13 @@ dispatch minecraft:feature_config[lake] to struct LakeConfig {
 dispatch minecraft:feature_config[large_dripstone] to struct LargeDripstoneConfig {
 	floor_to_ceiling_search_range?: int @ 1..512,
 	column_radius: IntProvider<int @ 0..60>,
-	height_scale: FloatProvider<float @ 0..20>,
-	max_column_radius_to_cave_height_ratio: float @ 0..1,
-	stalactite_bluntness: FloatProvider<float @ 0.1..10>,
-	stalagmite_bluntness: FloatProvider<float @ 0.1..10>,
-	wind_speed: FloatProvider<float @ 0..2>,
+	height_scale: FloatProvider<float @ 0.0..20.0>,
+	max_column_radius_to_cave_height_ratio: float @ 0.0..1.0,
+	stalactite_bluntness: FloatProvider<float @ 0.1..10.0>,
+	stalagmite_bluntness: FloatProvider<float @ 0.1..10.0>,
+	wind_speed: FloatProvider<float @ 0.0..2.0>,
 	min_radius_for_wind: int @ 0..100,
-	min_bluntness_for_wind: float @ 0..1,
+	min_bluntness_for_wind: float @ 0.0..1.0,
 }
 
 dispatch minecraft:feature_config[nether_forest_vegetation] to struct NetherForestVegetationConfig {
@@ -364,7 +361,7 @@ dispatch minecraft:feature_config[netherrack_replace_blobs] to struct Netherrack
 	),
 }
 
-dispatch minecraft:feature_config[no_surface_ore,ore,scattered_ore] to struct OreConfig {
+dispatch minecraft:feature_config[no_surface_ore, ore, scattered_ore] to struct OreConfig {
 	#[until="1.17"]
 	...TargetBlock,
 	#[since="1.17"]
@@ -372,7 +369,7 @@ dispatch minecraft:feature_config[no_surface_ore,ore,scattered_ore] to struct Or
 	size: int @ 0..64,
 	/// Chance that feature placement will be discarded if the ore is exposed to air blocks.
 	#[since="1.17"]
-	discard_chance_on_air_exposure: float @ 0..1,
+	discard_chance_on_air_exposure: float @ 0.0..1.0,
 }
 
 struct TargetBlock {
@@ -381,10 +378,10 @@ struct TargetBlock {
 }
 
 dispatch minecraft:feature_config[pointed_dripstone] to struct PointedDripstoneConfig {
-	chance_of_taller_dripstone?: float @ 0..1,
-	chance_of_directional_spread?: float @ 0..1,
-	chance_of_spread_radius2?: float @ 0..1,
-	chance_of_spread_radius3?: float @ 0..1,
+	chance_of_taller_dripstone?: float @ 0.0..1.0,
+	chance_of_directional_spread?: float @ 0.0..1.0,
+	chance_of_spread_radius2?: float @ 0.0..1.0,
+	chance_of_spread_radius3?: float @ 0.0..1.0,
 }
 
 dispatch minecraft:feature_config[random_boolean_selector] to struct RandomBooleanSelector {
@@ -394,7 +391,7 @@ dispatch minecraft:feature_config[random_boolean_selector] to struct RandomBoole
 
 dispatch minecraft:feature_config[random_selector] to struct RandomSelector {
 	features: [struct RandomFeatureEntry {
-		chance: float @ 0..1,
+		chance: float @ 0.0..1.0,
 		feature: FeatureRef,
 	}],
 	default: FeatureRef,
@@ -416,15 +413,15 @@ dispatch minecraft:feature_config[root_system] to struct RootSystemConfig {
 	hanging_root_placement_attempts: int @ 0..256,
 	allowed_vertical_water_for_tree: int @ 1..64,
 	root_replaceable: (
-		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
+		#[until="1.18.2"] #[id(registry="block", tags="implicit")] string |
 		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="1.18.2"] #[id(registry="block", tags="allowed")] string |
 	),
 	root_state_provider: BlockStateProvider,
 	hanging_root_state_provider: BlockStateProvider,
 	#[since="1.18"]
 	allowed_tree_position: BlockPredicate,
-	feature: FeatureRef
+	feature: FeatureRef,
 }
 
 #[since="1.19"]
@@ -435,7 +432,7 @@ dispatch minecraft:feature_config[sculk_patch] to struct SculkPatchConfig {
 	growth_rounds: int @ 0..8,
 	spread_rounds: int @ 0..8,
 	extra_rare_growths: IntProvider<int>,
-	catalyst_chance: float @ 0..1,
+	catalyst_chance: float @ 0.0..1.0,
 }
 
 dispatch minecraft:feature_config[sea_pickle] to struct SeaPickleConfig {
@@ -470,7 +467,7 @@ dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
 dispatch minecraft:feature_config[simple_random_selector] to struct SimpleRandomSelectorConfig {
 	features: (
 		[FeatureRef] |
-		#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="worldgen/placed_feature", tags=allowed)] string |
 	),
 }
 
@@ -479,7 +476,7 @@ dispatch minecraft:feature_config[small_dripstone] to struct SmallDripstoneConfi
 	max_placements?: int @ 0..100,
 	empty_space_search_radius?: int @ 0..20,
 	max_offset_from_origin?: int @ 0..20,
-	chance_of_taller_dripstone?: float @ 0..1,
+	chance_of_taller_dripstone?: float @ 0.0..1.0,
 }
 
 dispatch minecraft:feature_config[spring_feature] to struct SpringConfig {
@@ -489,7 +486,7 @@ dispatch minecraft:feature_config[spring_feature] to struct SpringConfig {
 	requires_block_below: boolean,
 	valid_blocks: (
 		[#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="1.18.2"] #[id(registry="block", tags="allowed")] string |
 	),
 }
 
@@ -504,21 +501,21 @@ dispatch minecraft:feature_config[twisting_vines] to struct TwistingVinesConfig 
 dispatch minecraft:feature_config[underwater_magma] to struct UnderwaterMagmaConfig {
 	floor_search_range: int @ 0..512,
 	placement_radius_around_floor: int @ 0..64,
-	placement_probability_per_valid_position: float @ 0..1,
+	placement_probability_per_valid_position: float @ 0.0..1.0,
 }
 
 #[since="1.17"]
-dispatch minecraft:feature_config[vegetation_patch,waterlogged_vegetation_patch] to struct VegetationPatchConfig {
+dispatch minecraft:feature_config[vegetation_patch, waterlogged_vegetation_patch] to struct VegetationPatchConfig {
 	surface: CaveSurface,
 	depth: IntProvider<int @ 1..128>,
 	vertical_range: int @ 1..256,
-	extra_bottom_block_chance: float @ 0..1,
-	extra_edge_column_chance: float @ 0..1,
-	vegetation_chance: float @ 0..1,
+	extra_bottom_block_chance: float @ 0.0..1.0,
+	extra_edge_column_chance: float @ 0.0..1.0,
+	vegetation_chance: float @ 0.0..1.0,
 	xz_radius: IntProvider<int>,
 	replaceable: (
-		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
-		#[since="1.18.2"] #[id(registry="block",tags="required")] string |
+		#[until="1.18.2"] #[id(registry="block", tags="implicit")] string |
+		#[since="1.18.2"] #[id(registry="block", tags="required")] string |
 	),
 	ground_state: BlockStateProvider,
 	vegetation_feature: FeatureRef,

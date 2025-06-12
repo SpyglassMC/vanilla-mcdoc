@@ -15,6 +15,7 @@ type BlockStateDefinition = (
 		}],
 	} |
 )
+
 dispatch minecraft:resource[block_definition] to BlockStateDefinition
 
 type ModelVariant = (

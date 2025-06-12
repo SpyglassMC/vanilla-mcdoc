@@ -34,8 +34,7 @@ struct EntityBase {
 	/// Lower bits of the entity's UUID.
 	#[until="1.16"]
 	UUIDLeast?: long,
-	#[uuid]
-	#[since="1.16"]
+	#[uuid] #[since="1.16"]
 	UUID?: int[] @ 4,
 	CustomName?: (
 		#[until="1.21.5"] #[text_component] string |

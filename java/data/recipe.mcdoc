@@ -24,7 +24,7 @@ dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 	),
 	/// Determines if a notification is shown when unlocking this recipe. Defaults to true.
 	#[since="1.19.4"]
-	show_notification?: boolean
+	show_notification?: boolean,
 }
 
 dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShapeless {
@@ -54,7 +54,7 @@ dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTrans
 	),
 }
 
-dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
+dispatch minecraft:recipe_serializer[smelting, blasting, smoking, campfire_cooking] to struct Smelting {
 	group?: string,
 	/// Identifier for the category this goes in the recipe book.
 	category?: CookingBookCategory,
@@ -128,7 +128,7 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 			item: #[id="item"] string,
 		} |
 		#[since="1.20.5"] ItemStack |
-	)
+	),
 }
 
 #[since="1.19.4"]
@@ -147,15 +147,15 @@ dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
 #[until="1.20.5"]
 struct ItemResult {
 	item: #[id="item"] string,
-	count?: int
+	count?: int,
 }
 
 type Ingredient = (
 	#[until="1.21.2"] IngredientValue |
 	#[until="1.21.2"] [IngredientValue] |
-	#[since="1.21.2"] [#[id(registry="item",exclude=["air"])] string] @ 1.. |
+	#[since="1.21.2"] [#[id(registry="item", exclude=["air"])] string] @ 1.. |
 	// TODO: forbid empty tags
-	#[since="1.21.2"] #[id(registry="item",tags="allowed",exclude=["air"])] string |
+	#[since="1.21.2"] #[id(registry="item", tags="allowed", exclude=["air"])] string |
 )
 
 #[until="1.21.2"]
@@ -164,7 +164,7 @@ type IngredientValue = (
 		item: #[id="item"] string,
 	} |
 	struct IngredientTag {
-		tag: #[id(registry="item",tags="implicit")] string,
+		tag: #[id(registry="item", tags="implicit")] string,
 	} |
 )
 

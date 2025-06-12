@@ -58,7 +58,7 @@ dispatch minecraft:block_entity[trial_spawner] to struct TrialSpawner {
 	/// The next entity to spawn, also controlls the entity displayed in the trial spawner
 	spawn_data?: SpawnerEntry,
 	/// The loot table selected to be used to determine the reward
-	ejecting_loot_table?: #[id="loot_table"] string
+	ejecting_loot_table?: #[id="loot_table"] string,
 }
 
 dispatch minecraft:block[spawner] to minecraft:block_entity[mob_spawner]
@@ -77,7 +77,7 @@ struct SpawnPotential {
 	/// Weight for this entry to be chosen.
 	#[until="1.18"]
 	Weight?: (
-		#[until="1.17"] int @ 0.. | 
+		#[until="1.17"] int @ 0.. |
 		#[since="1.17"] byte @ 0.. |
 	),
 	/// Weight for this entry to be chosen.
@@ -90,9 +90,9 @@ struct SpawnEquipment {
 	loot_table: #[id="loot_table"] string,
 	/// Chance the mob will drop the equipment on death.
 	slot_drop_chances: (
-		float @ 0..1 |
+		float @ 0.0..1.0 |
 		struct {
-			[EquipmentSlot]: float @ 0..1,
+			[EquipmentSlot]: float @ 0.0..1.0,
 		} |
 	),
 }

@@ -45,7 +45,7 @@ enum(string) GossipType {
 	MajorNegative = "major_negative",
 	MinorNegative = "minor_negative",
 	MajorPositive = "major_positive",
-	MinorPositive = "minor_positive", 
+	MinorPositive = "minor_positive",
 	Trading = "trading",
 }
 

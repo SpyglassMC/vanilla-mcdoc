@@ -33,7 +33,7 @@ enum(int) CatType {
 	Ragdoll = 7,
 	White = 8,
 	Jellie = 9,
-	Black = 10
+	Black = 10,
 }
 
 dispatch minecraft:entity[parrot] to struct Parrot {
