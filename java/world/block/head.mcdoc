@@ -1,4 +1,4 @@
-dispatch minecraft:block_entity[skull] to struct PlayerHead {
+dispatch minecraft:block_entity[skull] to struct Skull {
 	...super::BlockEntity,
 	/// Owner of the skull.
 	#[until="1.16"]
@@ -7,10 +7,15 @@ dispatch minecraft:block_entity[skull] to struct PlayerHead {
 	SkullOwner?: SkullOwner,
 	/// Name of the owner, if exists will be converted to SkullOwner.
 	ExtraType?: string,
+	/// Sound to play when played with a note block.
+	/// Only works on player head.
 	#[since="1.19.3"]
-	note_block_sound?: #[id="weighed_sound_event"] string,
+	note_block_sound?: minecraft:data_component[note_block_sound],
+	/// Only works on player head.
 	#[since="1.20.5"]
 	profile?: minecraft:data_component[profile],
+	#[since="1.20.5"]
+	custom_name?: minecraft:data_component[custom_name],
 }
 
 dispatch minecraft:block[player_head, player_wall_head] to minecraft:block_entity[skull]
@@ -27,7 +32,10 @@ dispatch minecraft:block[
 	creeper_wall_head,
 	zombie_wall_head,
 	dragon_wall_head,
-] to super::BlockEntity
+] to (
+	#[until="1.20.5"] super::BlockEntity |
+	#[since="1.20.5"] Skull |
+)
 
 struct SkullOwner {
 	/// Optional.
