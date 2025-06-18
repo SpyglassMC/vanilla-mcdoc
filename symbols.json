@@ -1,5 +1,5 @@
 {
-	"ref": "df234b45777202a77f3918963d69bc30b9f4bd5c",
+	"ref": "feb0dcafdd6cb64e60ac11f38c53eda20e726d39",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -63467,7 +63467,24 @@
 				}
 			]
 		},
-		"::java::world::block::head::PlayerHead": {
+		"::java::world::block::head::Properties": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "textures",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::world::block::head::Texture"
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::block::head::Skull": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -63553,21 +63570,17 @@
 							}
 						}
 					],
+					"desc": "Sound to play when played with a note block.\n\nOnly works on player head.\n",
 					"key": "note_block_sound",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "dispatcher",
+						"parallelIndices": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "weighed_sound_event"
-									}
-								}
+								"kind": "static",
+								"value": "note_block_sound"
 							}
-						]
+						],
+						"registry": "minecraft:data_component"
 					},
 					"optional": true
 				},
@@ -63585,6 +63598,7 @@
 							}
 						}
 					],
+					"desc": "Only works on player head.\n",
 					"key": "profile",
 					"type": {
 						"kind": "dispatcher",
@@ -63597,21 +63611,31 @@
 						"registry": "minecraft:data_component"
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::world::block::head::Properties": {
-			"kind": "struct",
-			"fields": [
+				},
 				{
 					"kind": "pair",
-					"key": "textures",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::world::block::head::Texture"
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
 						}
+					],
+					"key": "custom_name",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "static",
+								"value": "custom_name"
+							}
+						],
+						"registry": "minecraft:data_component"
 					},
 					"optional": true
 				}
@@ -86296,12 +86320,78 @@
 				"registry": "minecraft:block_entity"
 			},
 			"creeper_head": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::block::head::Skull",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"creeper_wall_head": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::block::head::Skull",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"crimson_hanging_sign": {
 				"kind": "dispatcher",
@@ -86510,12 +86600,78 @@
 				"registry": "minecraft:block_entity"
 			},
 			"dragon_head": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::block::head::Skull",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"dragon_wall_head": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::block::head::Skull",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"dropper": {
 				"kind": "dispatcher",
@@ -87202,12 +87358,78 @@
 				"registry": "minecraft:block_entity"
 			},
 			"skeleton_skull": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::block::head::Skull",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"skeleton_wall_skull": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::block::head::Skull",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"smoker": {
 				"kind": "dispatcher",
@@ -87514,12 +87736,78 @@
 				"registry": "minecraft:block_entity"
 			},
 			"wither_skeleton_skull": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::block::head::Skull",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"wither_skeleton_wall_skull": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::block::head::Skull",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"yellow_banner": {
 				"kind": "dispatcher",
@@ -87552,12 +87840,78 @@
 				"registry": "minecraft:block_entity"
 			},
 			"zombie_head": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::block::head::Skull",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"zombie_wall_head": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::block::head::Skull",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				]
 			}
 		},
 		"minecraft:block_entity": {
@@ -87829,7 +88183,7 @@
 			},
 			"skull": {
 				"kind": "reference",
-				"path": "::java::world::block::head::PlayerHead"
+				"path": "::java::world::block::head::Skull"
 			},
 			"smoker": {
 				"kind": "reference",
