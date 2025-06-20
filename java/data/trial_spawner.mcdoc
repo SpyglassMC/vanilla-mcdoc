@@ -21,7 +21,7 @@ struct TrialSpawnerConfig {
 		weight: int @ 1..,
 	}],
 	/// Loot table to use when summoning ominous item spawners. One roll seeded based on rough location to determine all items used during the battle.
-	items_to_drop_when_ominous?: #[id="loot_table"] string
+	items_to_drop_when_ominous?: #[id="loot_table"] string,
 }
 
 #[since="1.21.2"]

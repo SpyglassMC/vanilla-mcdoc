@@ -2,7 +2,7 @@ use super::breedable::villager::VillagerData
 use super::breedable::villager::Gossip
 use super::breedable::villager::Offers
 
-dispatch minecraft:entity[drowned,husk,zombie] to struct Zombie {
+dispatch minecraft:entity[drowned, husk, zombie] to struct Zombie {
 	...super::MobBase,
 	/// Whether it is a baby.
 	IsBaby?: boolean,
@@ -31,7 +31,6 @@ dispatch minecraft:entity[zombie_villager] to struct ZombieVillager {
 	#[until="1.16"]
 	ConversionPlayerMost?: long,
 	/// Player who triggered the conversion.
-	#[uuid]
-	#[since="1.16"]
+	#[uuid] #[since="1.16"]
 	ConversionPlayer?: int[] @ 4,
 }

@@ -79,21 +79,21 @@ dispatch minecraft:loot_condition[match_tool] to struct MatchTool {
 
 dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
 	chance: (
-		#[until="1.21"] float @ 0..1 |
+		#[until="1.21"] float @ 0.0..1.0 |
 		#[since="1.21"] NumberProvider<float> |
 	),
 }
 
 #[until="1.21"]
 dispatch minecraft:loot_condition[random_chance_with_looting] to struct RandomChanceWithLooting {
-	chance: float @ 0..1,
+	chance: float @ 0.0..1.0,
 	/// Looting adjustment to the base success rate. Formula is `chance + (looting_level * looting_multiplier)` .
 	looting_multiplier: float,
 }
 
 #[since="1.21"]
 dispatch minecraft:loot_condition[random_chance_with_enchanted_bonus] to struct RandomChanceWithEnchantedBonus {
-	unenchanted_chance: float @ 0..1,
+	unenchanted_chance: float @ 0.0..1.0,
 	enchanted_chance: LevelBasedValue,
 	enchantment: #[id="enchantment"] string,
 }
@@ -107,7 +107,7 @@ dispatch minecraft:loot_condition[reference] to struct Reference {
 dispatch minecraft:loot_condition[table_bonus] to struct TableBonus {
 	enchantment: #[id="enchantment"] string,
 	/// Probabilities for each enchantment level
-	chances: [float @ 0..1],
+	chances: [float @ 0.0..1.0],
 }
 
 dispatch minecraft:loot_condition[time_check] to struct TimeCheck {

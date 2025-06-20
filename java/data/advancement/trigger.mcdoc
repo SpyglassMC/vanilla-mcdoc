@@ -18,8 +18,7 @@ type RequiredConditions<C> = struct {
 
 type CompositeEntity = (
 	EntityPredicate |
-	#[since="1.16"]
-	[LootCondition] |
+	#[since="1.16"] [LootCondition] |
 )
 
 struct TriggerBase {
@@ -28,10 +27,8 @@ struct TriggerBase {
 }
 
 type Location = (
-	#[deprecated="1.16"] #[until="1.19"]
-	LocationPredicate |
-	#[since="1.16"]
-	struct {
+	#[deprecated="1.16"] #[until="1.19"] LocationPredicate |
+	#[since="1.16"] struct {
 		...TriggerBase,
 		#[until="1.19"]
 		location?: LocationPredicate,
@@ -310,7 +307,7 @@ dispatch minecraft:trigger[placed_block] to Conditions<struct PlacedBlock {
 	/// Where the block was placed.
 	location?: (
 		#[until="1.20"] LocationPredicate |
-		#[since="1.20"] [LootCondition]
+		#[since="1.20"] [LootCondition] |
 	),
 }>
 
@@ -362,7 +359,7 @@ dispatch minecraft:trigger[safely_harvest_honey] to Conditions<struct SafelyHarv
 	...TriggerBase,
 	block?: struct HoneyHarvestedBlock {
 		block?: #[id="block"] string,
-		tag?: #[id(registry="block",tags="implicit")] string,
+		tag?: #[id(registry="block", tags="implicit")] string,
 	},
 	item?: ItemPredicate,
 }>

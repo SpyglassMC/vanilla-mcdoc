@@ -22,5 +22,5 @@ struct OwnerUuid {
 	/// Upper bits of the owner's UUID.
 	OwnerUUIDMost?: long,
 	/// Lower bits of the owner's UUID.
-	OwnerUUIDLeast?: long
+	OwnerUUIDLeast?: long,
 }

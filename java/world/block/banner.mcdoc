@@ -8,7 +8,7 @@ dispatch minecraft:block_entity[banner] to struct Banner {
 	#[until="1.20.5"]
 	Patterns?: [BannerPatternLayer],
 	#[since="1.20.5"]
-	patterns?: [BannerPatternLayer]
+	patterns?: [BannerPatternLayer],
 }
 
 type BannerPatternLayer = (
@@ -22,7 +22,10 @@ type BannerPatternLayer = (
 		/// The dye color of the pattern.
 		color: DyeColor,
 		/// The banner pattern.
-		pattern: (#[id="banner_pattern"] string | BannerPattern),
+		pattern: (
+			#[id="banner_pattern"] string |
+			BannerPattern |
+		),
 	} |
 )
 
@@ -142,6 +145,5 @@ enum(string) BannerPatternType {
 	/// Globe (Globe)
 	Globe = "glb",
 	/// Piglin (Piglin)
-	#[since="1.16"]
-	Piglin = "pig",
+	#[since="1.16"] Piglin = "pig",
 }

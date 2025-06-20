@@ -16,7 +16,6 @@ struct DataComponentPredicate {
 	)]: minecraft:data_component_predicate[[%key]],
 }
 
-
 dispatch minecraft:data_component[custom_data] to CustomData
 
 type CustomData = (

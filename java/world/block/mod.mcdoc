@@ -19,13 +19,7 @@ struct BlockEntityData {
 	...minecraft:block_entity[[id]],
 }
 
-dispatch minecraft:block[
-	bed,
-	bell,
-	daylight_detector,
-	ender_chest,
-	end_portal,
-] to BlockEntity
+dispatch minecraft:block[bed, bell, daylight_detector, ender_chest, end_portal] to BlockEntity
 
 struct Lockable {
 	/// Name of the item that a player has to be holding to open this container.

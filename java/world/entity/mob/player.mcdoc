@@ -34,12 +34,10 @@ dispatch minecraft:entity[player] to struct Player {
 	#[since="1.21.5"]
 	equipment?: PlayerEquipment,
 	/// Dimension of the player's respawn point.
-	#[since="1.16"]
-	#[until="1.21.5"]
+	#[since="1.16"] #[until="1.21.5"]
 	SpawnDimension?: #[id="dimension"] string,
 	/// The Y-rotation of the player's respawn point.
-	#[since="1.16.2"]
-	#[until="1.21.5"]
+	#[since="1.16.2"] #[until="1.21.5"]
 	SpawnAngle?: float,
 	/// X coordinate of the player's spawn point.
 	#[until="1.21.5"]
@@ -158,8 +156,7 @@ struct RootVehicle {
 	#[until="1.16"]
 	AttachLeast?: long,
 	/// Ridden entity's UUID.
-	#[uuid]
-	#[since="1.16"]
+	#[uuid] #[since="1.16"]
 	Attach?: int[] @ 4,
 	/// The ridden entity.
 	Entity?: AnyEntity,

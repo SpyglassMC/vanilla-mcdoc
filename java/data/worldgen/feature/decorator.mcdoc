@@ -14,7 +14,7 @@ dispatch minecraft:decorator_config[dark_oak_tree, end_gateway, iceberg, nope, s
 dispatch minecraft:decorator_config[carving_mask] to struct CarvingMaskConfig {
 	step: CarveStep,
 	#[until="1.17"]
-	probability: float @ 0..1,
+	probability: float @ 0.0..1.0,
 }
 
 #[since="1.17"]
@@ -23,14 +23,14 @@ dispatch minecraft:decorator_config[cave_surface] to struct CaveSurface {
 	floor_to_ceiling_search_range: int,
 }
 
-dispatch minecraft:decorator_config[chance,lava_lake] to struct ChanceConfig {
+dispatch minecraft:decorator_config[chance, lava_lake] to struct ChanceConfig {
 	chance: int @ 0..,
 }
 
 #[until="1.17"]
 dispatch minecraft:decorator_config[water_lake] to ChanceConfig
 
-dispatch minecraft:decorator_config[count,count_multilayer,fire,glowstone] to struct CountConfig {
+dispatch minecraft:decorator_config[count, count_multilayer, fire, glowstone] to struct CountConfig {
 	count: (
 		#[until="1.17"] UniformInt<int @ -10..128, int @ 0..128> |
 		#[since="1.17"] IntProvider<int @ 0..256> |
@@ -46,7 +46,7 @@ dispatch minecraft:decorator_config[count_extra] to struct CountExtraConfig {
 		#[until="1.17"] int |
 		#[since="1.17"] int @ 0.. |
 	),
-	extra_chance: float @ 0..1,
+	extra_chance: float @ 0.0..1.0,
 }
 
 dispatch minecraft:decorator_config[count_noise] to struct CountNoiseConfig {
@@ -79,7 +79,7 @@ struct OldRangeConfig {
 }
 
 #[until="1.17"]
-dispatch minecraft:decorator_config[range_biased,range_very_biased] to OldRangeConfig
+dispatch minecraft:decorator_config[range_biased, range_very_biased] to OldRangeConfig
 
 dispatch minecraft:decorator_config[range] to (
 	#[until="1.17"] OldRangeConfig |

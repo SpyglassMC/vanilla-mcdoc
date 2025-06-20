@@ -112,7 +112,7 @@ dispatch minecraft:memory_module[ram_cooldown_ticks] to struct RamCooldownTicks 
 dispatch minecraft:memory_module[is_in_water] to struct IsInWater {
 	...ExpirableValue,
 	/// Whether the frog is currently in water.
-	value: struct {}
+	value: struct {},
 }
 
 dispatch minecraft:memory_module[is_pregnant] to struct IsPregnant {

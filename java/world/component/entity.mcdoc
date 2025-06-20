@@ -40,13 +40,13 @@ dispatch minecraft:data_component["frog/variant"] to #[id="frog_variant"] string
 dispatch minecraft:data_component["horse/variant"] to HorseVariant
 
 enum(string) HorseVariant {
-    White = "white",
-    Creamy = "creamy",
-    Chestnut = "chestnut",
-    Brown = "brown",
-    Black = "black",
-    Gray = "gray",
-    DarkBrown = "dark_brown",
+	White = "white",
+	Creamy = "creamy",
+	Chestnut = "chestnut",
+	Brown = "brown",
+	Black = "black",
+	Gray = "gray",
+	DarkBrown = "dark_brown",
 }
 
 dispatch minecraft:data_component["llama/variant"] to LlamaVariant
@@ -101,9 +101,7 @@ enum(string) RabbitVariant {
 dispatch minecraft:data_component["pig/variant"] to #[id="pig_variant"] string
 
 #[since="1.21.5"]
-dispatch minecraft:data_component["salmon/size"] to 
-
-enum(string) SalmonType {
+dispatch minecraft:data_component["salmon/size"] to enum(string) SalmonType {
 	Small = "small",
 	Medium = "medium",
 	Large = "large",

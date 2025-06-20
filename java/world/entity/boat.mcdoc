@@ -31,12 +31,9 @@ enum(string) BoatType {
 	Jungle = "jungle",
 	Acacia = "acacia",
 	DarkOak = "dark_oak",
-	#[since="1.19"]
-	Mangrove = "mangrove",
-	#[since="1.19.3"]
-	Bamboo = "bamboo",
-	#[since="1.19.4"]
-	Cherry = "cherry",
+	#[since="1.19"] Mangrove = "mangrove",
+	#[since="1.19.3"] Bamboo = "bamboo",
+	#[since="1.19.4"] Cherry = "cherry",
 }
 
 struct ChestBoat {

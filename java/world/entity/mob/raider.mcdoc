@@ -42,7 +42,7 @@ dispatch minecraft:entity[ravager] to struct Ravager {
 	StunTick?: int,
 }
 
-dispatch minecraft:entity[evoker,illusioner] to struct Spellcaster {
+dispatch minecraft:entity[evoker, illusioner] to struct Spellcaster {
 	...RaiderBase,
 	/// Ticks until the raider can cast its spell.
 	SpellTicks?: int,
