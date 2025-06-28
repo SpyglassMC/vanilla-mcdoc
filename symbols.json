@@ -1,5 +1,5 @@
 {
-	"ref": "feb0dcafdd6cb64e60ac11f38c53eda20e726d39",
+	"ref": "25617d4487d613f44a5d544504cde91ba24eb932",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -70544,13 +70544,48 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "1.20.5"
+									"value": "1.20.2"
 								}
 							}
 						}
 					],
 					"desc": "Potion effects that get applied on use.\n",
 					"key": "Effects",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::util::effect::MobEffectInstance"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.2"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"desc": "Potion effects that get applied on use.\n",
+					"key": "effects",
 					"type": {
 						"kind": "list",
 						"item": {
@@ -82100,7 +82135,7 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "1.20.3"
+									"value": "1.20.5"
 								}
 							}
 						}
@@ -82125,7 +82160,7 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "1.20.3"
+									"value": "1.20.5"
 								}
 							}
 						}
@@ -84132,7 +84167,7 @@
 								]
 							},
 							{
-								"kind": "int",
+								"kind": "short",
 								"valueRange": {
 									"kind": 0,
 									"min": 0,
