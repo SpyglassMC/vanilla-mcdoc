@@ -950,6 +950,7 @@
 	"::java::world::entity::area_effect_cloud::AreaEffectCloud.custom_particle": "If present, the particle that the area effect cloud displays instead of the default `entity_effect` particle based on the potion contents.",
 	"::java::world::entity::area_effect_cloud::AreaEffectCloud.Duration": "Maximum number of ticks until it will disappear after `WaitTime` is done",
 	"::java::world::entity::area_effect_cloud::AreaEffectCloud.DurationOnUse": "Amount the duration changes when it is active.",
+	"::java::world::entity::area_effect_cloud::AreaEffectCloud.effects": "Potion effects that get applied on use.",
 	"::java::world::entity::area_effect_cloud::AreaEffectCloud.Effects": "Potion effects that get applied on use.",
 	"::java::world::entity::area_effect_cloud::AreaEffectCloud.OwnerUUIDLeast": "Lower bits of the owner's UUID.",
 	"::java::world::entity::area_effect_cloud::AreaEffectCloud.OwnerUUIDMost": "Upper bits of the owner's UUID.",
