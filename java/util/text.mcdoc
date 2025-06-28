@@ -6,7 +6,7 @@ use ::java::data::dialog::Dialog
 type Text = (
 	string |
 	TextObject |
-	[Text] |
+	[Text] @ 1.. |
 )
 
 type TextObject = (
@@ -20,7 +20,7 @@ type TextObject = (
 		translate: #[translation_key] string,
 		#[since="1.19.4"]
 		fallback?: #[translation_value] string,
-		with?: [Text],
+		with?: [Text] @ 1..,
 		#[since="1.20.3"]
 		type?: "translatable",
 		...TextBase,
@@ -85,7 +85,7 @@ struct TextNbtBase {
 }
 
 struct TextBase {
-	extra?: [Text],
+	extra?: [Text] @ 1..,
 	...TextStyle,
 }
 
