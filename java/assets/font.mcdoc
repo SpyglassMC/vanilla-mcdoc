@@ -7,20 +7,16 @@ struct GlyphProvider {
 	...minecraft:glyph_provider[[type]],
 	filter?: struct {
 		[FontOption]: boolean,
-	}
+	},
 }
 
 enum(string) GlyphProviderType {
 	Bitmap = "bitmap",
 	TrueType = "ttf",
-	#[since="1.19"]
-	Space = "space",
-	#[until="1.20"]
-	LegacyUnicode = "legacy_unicode",
-	#[since="1.20"]
-	Unihex = "unihex",
-	#[since="1.20"]
-	Reference = "reference",
+	#[since="1.19"] Space = "space",
+	#[until="1.20"] LegacyUnicode = "legacy_unicode",
+	#[since="1.20"] Unihex = "unihex",
+	#[since="1.20"] Reference = "reference",
 }
 
 enum(string) FontOption {
@@ -29,7 +25,8 @@ enum(string) FontOption {
 }
 
 dispatch minecraft:glyph_provider[bitmap] to struct BitmapProvider {
-	file: string, // TODO
+	// TODO
+	file: string,
 	height?: int,
 	ascent: int,
 	chars: [string @ 1..] @ 1..,
@@ -42,7 +39,8 @@ dispatch minecraft:glyph_provider[space] to struct SpaceProvider {
 }
 
 dispatch minecraft:glyph_provider[ttf] to struct TtfProvider {
-	file: string, // TODO
+	// TODO
+	file: string,
 	size?: float,
 	oversample?: float,
 	shift?: [float, float],
@@ -57,21 +55,25 @@ dispatch minecraft:glyph_provider[legacy_unicode] to struct LegacyUnicodeProvide
 
 #[since="1.20"]
 dispatch minecraft:glyph_provider[unihex] to struct UnihexProvider {
+	// TODO
 	/// ZIP archive containing one or more *.hex files (files in archive with different extensions are ignored).
-	hex_file: string, // TODO
-	#[until="1.21.6"] ...struct {
+	hex_file: string,
+	#[until="1.21.6"]
+	...struct {
 		/// List of ranges to override the size of.
 		size_overrides: [UnihexOverrideRange],
 	},
-	#[since="1.21.6"] ...struct {
+	#[since="1.21.6"]
+	...struct {
 		/// List of ranges to override the size of.
 		size_overrides?: [UnihexOverrideRange],
 	},
 }
 
 struct UnihexOverrideRange {
+	// TODO: codepoint; "\u3001"
 	/// Minimum in codepoint range (inclusive).
-	from: string, // TODO: codepoint; "\u3001"
+	from: string,
 	/// Maximum in codepoint range (inclusive).
 	to: string,
 	/// Position of left-most column of the glyph.

@@ -8,7 +8,7 @@ dispatch minecraft:biome_source[checkerboard] to struct Checkerboard {
 	scale?: int @ 0..62,
 	biomes: (
 		[#[id="worldgen/biome"] string] |
-		#[since="1.18.2"] #[id(registry="worldgen/biome",tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="worldgen/biome", tags=allowed)] string |
 	),
 }
 
@@ -56,7 +56,7 @@ enum(string) MultiNoisePreset {
 }
 
 dispatch minecraft:resource["worldgen/multi_noise_biome_source_parameter_list"] to struct MultiNoiseBiomeSourceParameterList {
-	preset: #[id] MultiNoisePreset
+	preset: #[id] MultiNoisePreset,
 }
 
 dispatch minecraft:resource["worldgen/noise"] to struct NoiseParameters {
@@ -68,7 +68,7 @@ struct ClimateParameters {
 	temperature: ClimateParameter,
 	humidity: ClimateParameter,
 	#[until="1.18"]
-	altitude: float @ -2..2,
+	altitude: float @ -2.0..2.0,
 	#[since="1.18"]
 	continentalness: ClimateParameter,
 	#[since="1.18"]
@@ -76,15 +76,13 @@ struct ClimateParameters {
 	weirdness: ClimateParameter,
 	#[since="1.18"]
 	depth: ClimateParameter,
-	offset: float @ 0..1,
+	offset: float @ 0.0..1.0,
 }
 
 type ClimateParameter = (
-	float @ -2..2 |
-	#[since="1.18"]
-	[float @ -2..2] @ 2 |
+	float @ -2.0..2.0 |
+	#[since="1.18"] [float @ -2.0..2.0] @ 2 |
 )
-
 
 /// Biome distribution for the End.
 dispatch minecraft:biome_source[the_end] to struct TheEnd {

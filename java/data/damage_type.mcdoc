@@ -6,7 +6,7 @@ dispatch minecraft:resource[damage_type] to struct DamageType {
 	/// Is combined with the result of `death_message_type` to form a translation key.
 	message_id: string,
 	/// Amount of hunger exhaustion to cause.
-	exhaustion: float @ 0..,
+	exhaustion: float @ 0.0..,
 	/// Whether to scale damage with difficulty levels.
 	scaling: DamageScaling,
 	/// Controls how damage manifests when inflicted on players. Defaults to `hurt`.

@@ -8,7 +8,7 @@ dispatch minecraft:resource[loot_table] to struct LootTable {
 	pools?: [LootPool],
 	functions?: [LootFunction],
 	#[since="1.20"]
-	random_sequence?: #[id(registry="random_sequence",definition=true)] string,
+	random_sequence?: #[id(registry="random_sequence", definition=true)] string,
 }
 
 enum(string) LootContextType {
@@ -22,30 +22,19 @@ enum(string) LootContextType {
 	Barter = "barter",
 	AdvancementReward = "advancement_reward",
 	AdvancementEntity = "advancement_entity",
-	#[since="1.20"]
-	AdvancementLocation = "advancement_location",
+	#[since="1.20"] AdvancementLocation = "advancement_location",
 	Generic = "generic",
 	Block = "block",
-	#[since="1.20.5"]
-	BlockUse = "block_use",
-	#[since="1.20.5"]
-	Equipment = "equipment",
-	#[since="1.19.4"]
-	Archaeology = "archaeology",
-	#[since="1.20.5"]
-	Vault = "vault",
-	#[since="1.20.5"]
-	Shearing = "shearing",
-	#[since="1.21"]
-	EnchantedDamage = "enchanted_damage",
-	#[since="1.21"]
-	EnchantedItem = "enchanted_item",
-	#[since="1.21"]
-	EnchantedLocation = "enchanted_location",
-	#[since="1.21"]
-	EnchantedEntity = "enchanted_entity",
-	#[since="1.21"]
-	HitBlock = "hit_block",
+	#[since="1.20.5"] BlockUse = "block_use",
+	#[since="1.20.5"] Equipment = "equipment",
+	#[since="1.19.4"] Archaeology = "archaeology",
+	#[since="1.20.5"] Vault = "vault",
+	#[since="1.20.5"] Shearing = "shearing",
+	#[since="1.21"] EnchantedDamage = "enchanted_damage",
+	#[since="1.21"] EnchantedItem = "enchanted_item",
+	#[since="1.21"] EnchantedLocation = "enchanted_location",
+	#[since="1.21"] EnchantedEntity = "enchanted_entity",
+	#[since="1.21"] HitBlock = "hit_block",
 }
 
 enum(string) EntityTarget {
@@ -103,15 +92,14 @@ enum(string) DynamicDrops {
 	/// Drops the items in a shulker box.
 	Contents = "contents",
 	/// Drops the sherds of a decorated pot.
-	#[since="1.20"]
-	Sherds = "sherds",
+	#[since="1.20"] Sherds = "sherds",
 }
 
 /// Adds a single item.
 dispatch minecraft:loot_pool_entry[item] to struct ItemPoolEntry {
 	name: (
 		#[until="1.21.2"] #[id="item"] string |
-		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |
 	),
 	...SingletonPoolEntry,
 }
@@ -130,7 +118,7 @@ dispatch minecraft:loot_pool_entry[loot_table] to struct LootTablePoolEntry {
 
 /// Adds the contents of an item tag.
 dispatch minecraft:loot_pool_entry[tag] to struct TagPoolEntry {
-	name: #[id(registry="item",tags="implicit")] string,
+	name: #[id(registry="item", tags="implicit")] string,
 	/// If `true`, drops a random item from the tag. If `false`, drops all items in the tag.
 	expand: boolean,
 	...SingletonPoolEntry,

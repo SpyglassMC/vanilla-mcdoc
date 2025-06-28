@@ -11,7 +11,7 @@ struct BlockStateProvider {
 struct BaseNoiseProvider {
 	seed: #[random] int,
 	noise: NoiseParameters,
-	scale: float @ 0..,
+	scale: float @ 0.0..,
 }
 
 #[since="1.18"]
@@ -19,15 +19,15 @@ dispatch minecraft:block_state_provider[dual_noise_provider] to struct DualNoise
 	...BaseNoiseProvider,
 	variety: InclusiveRange<int @ 1..64>,
 	slow_noise: NoiseParameters,
-	slow_scale: float @ 0..,
+	slow_scale: float @ 0.0..,
 	states: [BlockState],
 }
 
 #[since="1.18"]
 dispatch minecraft:block_state_provider[noise_threshold_provider] to struct NoiseThresholdProvider {
 	...BaseNoiseProvider,
-	threshold: float @ -1..1,
-	high_chance: float @ 0..1,
+	threshold: float @ -1.0..1.0,
+	high_chance: float @ 0.0..1.0,
 	default_state: BlockState,
 	low_states: [BlockState],
 	high_states: [BlockState],
@@ -46,7 +46,7 @@ dispatch minecraft:block_state_provider[randomized_int_state_provider] to struct
 	source: BlockStateProvider,
 }
 
-dispatch minecraft:block_state_provider[rotated_block_provider,simple_state_provider] to struct SimpleStateProvider {
+dispatch minecraft:block_state_provider[rotated_block_provider, simple_state_provider] to struct SimpleStateProvider {
 	state: BlockState,
 }
 

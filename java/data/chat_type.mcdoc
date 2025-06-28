@@ -9,7 +9,7 @@ dispatch minecraft:resource[chat_type] to struct ChatType {
 	overlay?: TextDisplay,
 	narration?: (
 		#[until="1.19.1"] Narration |
-		#[since="1.19.1"] ChatDecoration
+		#[since="1.19.1"] ChatDecoration |
 	),
 }
 
@@ -43,8 +43,6 @@ struct ChatDecoration {
 enum(string) ChatDecorationParameter {
 	Sender = "sender",
 	Content = "content",
-	#[until="1.19.1"]
-	TeamName = "team_name",
-	#[since="1.19.1"]
-	Target = "target",
+	#[until="1.19.1"] TeamName = "team_name",
+	#[since="1.19.1"] Target = "target",
 }

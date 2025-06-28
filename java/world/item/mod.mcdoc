@@ -9,7 +9,7 @@ struct SingleItem {
 	/// ID of the item.
 	id: (
 		#[until="1.20.5"] #[id="item"] string |
-		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |
 	),
 	#[since="1.20.5"]
 	components?: DataComponentPatch,
@@ -51,18 +51,18 @@ struct ItemBase {
 	/// Display settings.
 	display?: Display,
 	/// Bitfield for which flags to hide on an item.
-	#[bitfield(enum (int) {
-		Enchantments = 1,
-		AttributeModifiers = 2,
-		Unbreakable = 3,
-		CanDestroy = 4,
-		CanPlaceOn = 5,
-		Other = 6,
-		#[since="1.16.2"]
-		LeatherColor = 7,
-		#[since="1.19.4"]
-		Trim = 8
-	})]
+	#[bitfield(
+		enum(int) {
+			Enchantments = 1,
+			AttributeModifiers = 2,
+			Unbreakable = 3,
+			CanDestroy = 4,
+			CanPlaceOn = 5,
+			Other = 6,
+			#[since="1.16.2"] LeatherColor = 7,
+			#[since="1.19.4"] Trim = 8,
+		},
+	)]
 	HideFlags?: int,
 	/// Trim to apply to the item & armor when worn.
 	#[since="1.19.4"]
@@ -103,8 +103,7 @@ struct AttributeModifier {
 	/// Lower bits of the modifier's UUID.
 	#[until="1.16"]
 	UUIDLeast?: long,
-	#[uuid]
-	#[since="1.16"]
+	#[uuid] #[since="1.16"]
 	UUID?: int[] @ 4,
 }
 

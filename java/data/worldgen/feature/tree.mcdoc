@@ -44,14 +44,14 @@ struct FeatureSize {
 }
 
 dispatch minecraft:feature_size[two_layers_feature_size] to struct TwoLayersFeatureSize {
-	min_clipped_height?: float @ 0..80,
+	min_clipped_height?: float @ 0.0..80.0,
 	limit?: int @ 0..81,
 	lower_size?: int @ 0..16,
 	upper_size?: int @ 0..16,
 }
 
 dispatch minecraft:feature_size[three_layers_feature_size] to struct ThreeLayersFeatureSize {
-	min_clipped_height?: float @ 0..80,
+	min_clipped_height?: float @ 0.0..80.0,
 	limit?: int @ 0..80,
 	upper_limit?: int @ 0..80,
 	lower_size?: int @ 0..16,
@@ -69,7 +69,7 @@ struct RootPlacer {
 
 struct AboveRootPlacement {
 	above_root_provider: BlockStateProvider,
-	above_root_placement_chance: float @ 0..1,
+	above_root_placement_chance: float @ 0.0..1.0,
 }
 
 dispatch minecraft:root_placer[mangrove_root_placer] to struct MangroveRootPlacer {
@@ -79,14 +79,14 @@ dispatch minecraft:root_placer[mangrove_root_placer] to struct MangroveRootPlace
 struct MangroveRootPlacement {
 	max_root_width: int @ 1..12,
 	max_root_length: int @ 1..64,
-	random_skew_chance: float @ 0..1,
+	random_skew_chance: float @ 0.0..1.0,
 	can_grow_through: (
 		[#[id="block"] string] |
-		#[id(registry="block",tags="allowed")] string |
+		#[id(registry="block", tags="allowed")] string |
 	),
 	muddy_roots_in: (
 		[#[id="block"] string] |
-		#[id(registry="block",tags="allowed")] string |
+		#[id(registry="block", tags="allowed")] string |
 	),
 	muddy_roots_provider: BlockStateProvider,
 }
@@ -118,10 +118,10 @@ dispatch minecraft:trunk_placer[bending_trunk_placer] to struct BendingTrunkPlac
 dispatch minecraft:trunk_placer[upwards_branching_trunk_placer] to struct UpwardsBranchingTrunkPlacer {
 	extra_branch_steps: IntProvider<int @ 1..>,
 	extra_branch_length: IntProvider<int @ 0..>,
-	place_branch_per_log_probability: float @ 0..1,
+	place_branch_per_log_probability: float @ 0.0..1.0,
 	can_grow_through: (
 		[#[id="block"] string] |
-		#[id(registry="block",tags="allowed")] string |
+		#[id(registry="block", tags="allowed")] string |
 	),
 }
 
@@ -186,10 +186,10 @@ dispatch minecraft:foliage_placer[spruce_foliage_placer] to struct SprucePineFol
 #[since="1.19.4"]
 dispatch minecraft:foliage_placer[cherry_foliage_placer] to struct CherryFoliagePlacer {
 	height: IntProvider<int @ 4..16>,
-	wide_bottom_layer_hole_chance: float @ 0..1,
-	corner_hole_chance: float @ 0..1,
-	hanging_leaves_chance: float @ 0..1,
-	hanging_leaves_extension_chance: float @ 0..1,
+	wide_bottom_layer_hole_chance: float @ 0.0..1.0,
+	corner_hole_chance: float @ 0.0..1.0,
+	hanging_leaves_chance: float @ 0.0..1.0,
+	hanging_leaves_extension_chance: float @ 0.0..1.0,
 }
 
 struct TreeDecorator {
@@ -202,7 +202,7 @@ dispatch minecraft:tree_decorator[alter_ground] to struct AlterGroundTreeDecorat
 }
 
 dispatch minecraft:tree_decorator[attached_to_leaves] to struct AttachedToLeavesTreeDecorator {
-	probability: float @ 0..1,
+	probability: float @ 0.0..1.0,
 	exclusion_radius_xz: int @ 0..16,
 	exclusion_radius_y: int @ 0..16,
 	required_empty_blocks: int @ 1..16,
@@ -211,28 +211,28 @@ dispatch minecraft:tree_decorator[attached_to_leaves] to struct AttachedToLeaves
 }
 
 dispatch minecraft:tree_decorator[beehive] to struct BeehiveTreeDecorator {
-	probability: float @ 0..1,
+	probability: float @ 0.0..1.0,
 }
 
 dispatch minecraft:tree_decorator[cocoa] to struct CocoaTreeDecorator {
-	probability: float @ 0..1,
+	probability: float @ 0.0..1.0,
 }
 
 dispatch minecraft:tree_decorator[leave_vine] to struct LeaveVineTreeDecorator {
 	#[since="1.19"]
-	probability: float @ 0..1,
+	probability: float @ 0.0..1.0,
 }
 
 #[since="1.21.2"]
 dispatch minecraft:tree_decorator[pale_moss] to struct PaleMossTreeDecorator {
-	leaves_probability: float @ 0..1,
-	trunk_probability: float @ 0..1,
-	ground_probability: float @ 0..1,
+	leaves_probability: float @ 0.0..1.0,
+	trunk_probability: float @ 0.0..1.0,
+	ground_probability: float @ 0.0..1.0,
 }
 
 #[since="1.21.2"]
 dispatch minecraft:tree_decorator[creaking_heart] to struct CreakingHeartTreeDecorator {
-	probability: float @ 0..1,
+	probability: float @ 0.0..1.0,
 }
 
 #[since="1.21.5"]
@@ -249,7 +249,7 @@ dispatch minecraft:tree_decorator[place_on_ground] to struct PlaceOnGroundTreeDe
 
 #[since="1.21.5"]
 dispatch minecraft:tree_decorator[attached_to_logs] to struct AttachedToLogsTreeDecorator {
-	probability: float @ 0..1,
+	probability: float @ 0.0..1.0,
 	block_provider: BlockStateProvider,
 	directions: [Direction] @ 1..,
 }

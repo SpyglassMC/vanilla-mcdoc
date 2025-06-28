@@ -4,7 +4,12 @@ struct InputControl {
 	type: #[id="input_control_type"] string,
 	// TODO: Narrowing the type here would require the weird JSON IMP Doc stuff that we don't have yet or some really advanced specialized attribute nonsense
 	/// The input key, which is used to build macro command and generate custom action payload.
-	key: ((#[match_regex="^[A-Za-z0-9_]*$"] string @ 1..) | mcdoc:custom_dynamic_event_keys[%fallback]),
+	key: (
+		(
+			#[match_regex="^[A-Za-z0-9_]*$"] string @ 1.. |
+		) |
+		mcdoc:custom_dynamic_event_keys[%fallback] |
+	),
 	...minecraft:input_control[[type]],
 }
 
@@ -55,6 +60,7 @@ dispatch minecraft:input_control[single_option] to struct SingleOptionInput {
 	label_visible?: boolean,
 	options: [(Option | string)] @ 1..,
 }
+
 struct Option {
 	/// String to send on submit.
 	id: string,
@@ -82,7 +88,7 @@ dispatch minecraft:input_control[number_range] to struct NumberRangeInput {
 	end: float,
 	/// Step size of the input.
 	/// If not present, any value from range is allowed.
-	step?: float @ 0<..,
+	step?: float @ 0.0<..,
 	/// Initial value of the slider. Rounded down nearest step.
 	/// Defaults to the middle of the range.
 	initial?: float,

@@ -26,7 +26,7 @@ struct Owner {
 	L?: long,
 }
 
-dispatch minecraft:entity[egg,ender_pearl,experience_bottle,snowball] to struct ThrowableItem {
+dispatch minecraft:entity[egg, ender_pearl, experience_bottle, snowball] to struct ThrowableItem {
 	...Throwable,
 	/// Item representation of the projectile.
 	#[since="1.16"]
@@ -44,4 +44,4 @@ dispatch minecraft:entity[potion] to struct Potion {
 }
 
 #[since="1.21.5"]
-dispatch minecraft:entity[splash_potion,lingering_potion] to Potion
+dispatch minecraft:entity[splash_potion, lingering_potion] to Potion

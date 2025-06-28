@@ -3,10 +3,10 @@ type DensityFunctionRef = (
 	DensityFunction |
 )
 
-type NoiseRange = float @ -1000000..1000000
+type NoiseRange = float @ -1000000.0..1000000.0
 
 type DensityFunction = (
-	NoiseRange | 
+	NoiseRange |
 	struct {
 		type: #[id="worldgen/density_function_type"] string,
 		...minecraft:density_function[[type]],
@@ -33,12 +33,7 @@ dispatch minecraft:density_function[
 	argument: DensityFunctionRef,
 }
 
-dispatch minecraft:density_function[
-	add,
-	max,
-	min,
-	mul,
-] to struct TwoArguments {
+dispatch minecraft:density_function[add, max, min, mul] to struct TwoArguments {
 	argument1: DensityFunctionRef,
 	argument2: DensityFunctionRef,
 }
@@ -65,7 +60,7 @@ dispatch minecraft:density_function[old_blended_noise] to struct OldBlendedNoise
 	y_scale: float,
 	xz_factor: float,
 	y_factor: float,
-	smear_scale_multiplier: float @ 1..8,
+	smear_scale_multiplier: float @ 1.0..8.0,
 }
 
 dispatch minecraft:density_function[range_choice] to struct RangeChoice {
@@ -83,11 +78,7 @@ dispatch minecraft:density_function[shifted_noise] to struct ShiftedNoise {
 	shift_z: DensityFunctionRef,
 }
 
-dispatch minecraft:density_function[
-	shift,
-	shift_a,
-	shift_b,
-] to struct Shift {
+dispatch minecraft:density_function[shift, shift_a, shift_b] to struct Shift {
 	argument: #[id="worldgen/noise"] string,
 }
 

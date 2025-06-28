@@ -3,14 +3,14 @@ use super::dimension::chunk_generator::FlatGeneratorSettings
 
 dispatch minecraft:resource["worldgen/world_preset"] to struct WorldPreset {
 	dimensions: struct {
-		[#[id(registry="dimension",definition=true)] string]: Dimension,
+		[#[id(registry="dimension", definition=true)] string]: Dimension,
 	},
 }
 
 dispatch minecraft:resource["worldgen/flat_level_generator_preset"] to struct FlatGeneratorPreset {
 	display: (
 		#[until="1.21.2"] #[id="item"] string |
-		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |
 	),
 	settings: FlatGeneratorSettings,
 }

@@ -15,7 +15,7 @@ dispatch minecraft:block_entity[command_block] to struct CommandBlock {
 
 struct BaseCommandBlock {
 	/// The command to run.
-	Command?: #[command(slash="allowed",empty="allowed",max_length=32500)] string,
+	Command?: #[command(slash="allowed", empty="allowed", max_length=32500)] string,
 	/// Success count of the last command.
 	SuccessCount?: int,
 	/// Output of the last command.
@@ -31,8 +31,4 @@ struct BaseCommandBlock {
 	LastExecution?: long,
 }
 
-dispatch minecraft:block[
-	command_block,
-	chain_command_block,
-	repeating_command_block,
-] to minecraft:block_entity[command_block]
+dispatch minecraft:block[command_block, chain_command_block, repeating_command_block] to minecraft:block_entity[command_block]
