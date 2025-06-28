@@ -1,5 +1,5 @@
 {
-	"ref": "982047150e3ae060750f90814e8d9f91fe4609fe",
+	"ref": "e4b86a0c7070a8fe942efbe021a2a6e763e3831d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -59750,6 +59750,10 @@
 					"item": {
 						"kind": "reference",
 						"path": "::java::util::text::Text"
+					},
+					"lengthRange": {
+						"kind": 0,
+						"min": 1
 					}
 				}
 			]
@@ -59765,6 +59769,10 @@
 						"item": {
 							"kind": "reference",
 							"path": "::java::util::text::Text"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
 						}
 					},
 					"optional": true
@@ -60013,6 +60021,10 @@
 								"item": {
 									"kind": "reference",
 									"path": "::java::util::text::Text"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 1
 								}
 							},
 							"optional": true
@@ -60855,6 +60867,10 @@
 						"item": {
 							"kind": "reference",
 							"path": "::java::util::text::Text"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
 						}
 					},
 					"optional": true
