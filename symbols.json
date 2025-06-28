@@ -1,5 +1,5 @@
 {
-	"ref": "25617d4487d613f44a5d544504cde91ba24eb932",
+	"ref": "982047150e3ae060750f90814e8d9f91fe4609fe",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -70994,7 +70994,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Angle to rotate around axis in radians.\n",
+					"desc": "Angle to rotate around the axis in radians.\n",
 					"key": "angle",
 					"type": {
 						"kind": "float"
@@ -71012,12 +71012,12 @@
 					"value": "fixed"
 				},
 				{
-					"desc": "Pivot around vertical axis.\n",
+					"desc": "Pivot around the vertical axis.\n",
 					"identifier": "Vertical",
 					"value": "vertical"
 				},
 				{
-					"desc": "Pivot around horizontal axis.\n",
+					"desc": "Pivot around the horizontal axis.\n",
 					"identifier": "Horizontal",
 					"value": "horizontal"
 				},
@@ -71153,7 +71153,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": " Transformation applied to model (after normal entity orientation). Defaults to identity. Interpolated.\n\n For an easy GUI, check out [Misode's tool](https://misode.github.io/transformation/).\n\n\n\n The value is stored in decomposed object form for interpolation & ease-of-use,\n\n Supports storing a [non-canonical matrix form](https://gist.github.com/MulverineX/f473dbfd7cc8dadb326074fef05ad76a) describing a row-major matrix, is automatically decomposed by the game with a performance cost.\n",
+					"desc": " Transformation applied to model (after normal entity orientation). Defaults to identity. Interpolated.\n\n For an easy GUI, check out [Misode's tool](https://misode.github.io/transformation/).\n\n\n\n The value is stored in decomposed object form for interpolation & ease-of-use,\n\n Supports storing a [non-canonical matrix form](https://gist.github.com/MulverineX/f473dbfd7cc8dadb326074fef05ad76a) describing a row-major matrix, which is automatically decomposed by the game with a performance cost.\n",
 					"key": "transformation",
 					"type": {
 						"kind": "reference",
@@ -71176,7 +71176,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Strength of the shadow. Controls the opacity of the shadow as a function of distance to block below. Defaults to 1. Interpolated.\n",
+					"desc": "Strength of the shadow. Controls the opacity of the shadow as a function of distance to the block below. Defaults to 1. Interpolated.\n",
 					"key": "shadow_strength",
 					"type": {
 						"kind": "float",
@@ -71190,7 +71190,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Ticks after the next client tick to wait until starting the interpolation.\n\nInfo:\n\nAll interpolated properties are part of a single interpolation set.\n\nAny update to an interpolated property will cause all values of the interpolation set to be saved as \"current\".\n\n - Data command executions that do not change value of property (even if it's present in NBT) do not count as updates.\n\n - Updates are synchronized to clients at most once per tick, so multiple updates within command will still count as single update.\n\nPrevious current values are saved as \"previous\".\n\nIf interpolation is enabled, entity will transition between \"previous\" and \"current\" values over time.\n\n`interpolation_duration` must be set every time an interpolatable property is updated to cause interpolation.\n\nNegative values are allowed, will cause an instant jump to the subtracted duration value, then interpolation will continue as normal.\n",
+					"desc": "Ticks after the next client tick to wait until starting the interpolation.\n\nInfo:\n\nAll interpolated properties are part of a single interpolation set.\n\nAny update to an interpolated property will cause all values of the interpolation set to be saved as \"current\".\n\n - Data command executions that do not change the value of a property (even if it's present in NBT) do not count as updates.\n\n - Updates are synchronized to clients at most once per tick, so multiple updates within a single command or a function will still count as a single update.\n\nPrevious current values are saved as \"previous\".\n\nIf interpolation is enabled, the entity will transition between \"previous\" and \"current\" values over time.\n\n`interpolation_duration` must be set every time an interpolatable property is updated to cause interpolation.\n\nNegative values are allowed, will cause an instant jump to the subtracted duration value, then interpolation will continue as normal.\n",
 					"key": "start_interpolation",
 					"type": {
 						"kind": "int"
@@ -71224,7 +71224,7 @@
 							}
 						}
 					],
-					"desc": "How long in game ticks the entity takes to interpolate from it's starting location to it's destination when teleported. Defaults to 0 (no interpolation).\n",
+					"desc": "How long in game ticks the entity takes to interpolate from its starting location to its destination when teleported. Defaults to 0 (no interpolation).\n",
 					"key": "teleport_duration",
 					"type": {
 						"kind": "int",
@@ -71238,7 +71238,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Controls if model should pivot to face player when rendered. Defaults to `fixed`.\n",
+					"desc": "Controls if the model should pivot to face the player when rendered. Defaults to `fixed`.\n",
 					"key": "billboard",
 					"type": {
 						"kind": "reference",
@@ -71248,7 +71248,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "When defined, overrides light values used for rendering. Omitted by default (which means rendering uses values from entity position).\n",
+					"desc": "When defined, overrides light values used for rendering. Omitted by default (which means rendering uses values from the entity position).\n",
 					"key": "brightness",
 					"type": {
 						"kind": "reference",
@@ -71271,7 +71271,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Describe width of culling bounding box.\n\nBounding box spans vertically y to y+height and horizontally width/2 in all directions from entity position.\n\nIf field is set to 0, culling is disabled. Defaults to 0.\n",
+					"desc": "Describe width of the culling bounding box.\n\nBounding box spans vertically from y to y+height and horizontally width/2 in all directions from the entity position.\n\nIf set to 0, culling is disabled. Defaults to 0.\n",
 					"key": "width",
 					"type": {
 						"kind": "float",
@@ -71284,7 +71284,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Describe height of culling bounding box.\n\nBounding box spans vertically y to y+height and horizontally width/2 in all directions from entity position.\n\nIf field is set to 0, culling is disabled. Defaults to 0.\n",
+					"desc": "Describes height of the culling bounding box.\n\nBounding box spans vertically from y to y+height and horizontally width/2 in all directions from the entity position.\n\nIf set to 0, culling is disabled. Defaults to 0.\n",
 					"key": "height",
 					"type": {
 						"kind": "float",
@@ -71297,7 +71297,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Override glow border color. If field is set to 0, uses team color. Defaults to 0.\n\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.\n",
+					"desc": "Override glow border color. If set to 0, uses team color. Defaults to 0.\n\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.\n",
 					"key": "glow_color_override",
 					"type": {
 						"kind": "union",
@@ -71352,7 +71352,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Describes item model transform applied to item (as defined in `display` section in model JSON). Defaults to `fixed`.\n",
+					"desc": "Describes item model transform applied to item (as defined in the `display` section in model JSON). Defaults to `fixed`.\n",
 					"key": "item_display",
 					"type": {
 						"kind": "reference",
@@ -71457,7 +71457,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Line width in pixels used to split lines (note: new line can be also added with \\n characters). Defaults to 200.\n",
+					"desc": "Line width in pixels used to split lines (note: new line can also be added with `\\n` characters). Defaults to 200.\n",
 					"key": "line_width",
 					"type": {
 						"kind": "int",
@@ -71514,7 +71514,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Should text be displayed with shadow. Defaults to false.\n",
+					"desc": " Whether to display the text with shadows. Defaults to false.\n",
 					"key": "shadow",
 					"type": {
 						"kind": "boolean"
@@ -71523,7 +71523,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Should text be visible through blocks. Defaults to false.\n",
+					"desc": "Whether the text should be visible through opaque blocks. Defaults to false.\n",
 					"key": "see_through",
 					"type": {
 						"kind": "boolean"
