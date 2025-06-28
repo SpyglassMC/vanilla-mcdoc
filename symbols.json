@@ -1,5 +1,5 @@
 {
-	"ref": "e4b86a0c7070a8fe942efbe021a2a6e763e3831d",
+	"ref": "65156cc5f0185932b921cb48e1a96fb4b42098c3",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -9906,7 +9906,15 @@
 										"name": "criterion"
 									}
 								]
+							},
+							"lengthRange": {
+								"kind": 0,
+								"min": 1
 							}
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
 						}
 					},
 					"optional": true
