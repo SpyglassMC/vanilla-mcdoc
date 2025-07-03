@@ -1,5 +1,5 @@
 {
-	"ref": "5f696b45a7b9f5084ed7ce9c368fc7e57b37a039",
+	"ref": "752cffd60d574ee304145fc05024843089325287",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -58551,6 +58551,22 @@
 					"value": "key.playerlist"
 				},
 				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"identifier": "QuickActions",
+					"value": "key.quickActions"
+				},
+				{
 					"identifier": "Right",
 					"value": "key.right"
 				},
@@ -58589,22 +58605,6 @@
 				{
 					"identifier": "Use",
 					"value": "key.use"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.6"
-								}
-							}
-						}
-					],
-					"identifier": "QuickActions",
-					"value": "key.quickActions"
 				}
 			]
 		},
