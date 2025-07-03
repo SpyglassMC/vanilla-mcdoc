@@ -297,6 +297,8 @@ enum(string) Keybind {
 	LoadToolbarActivator = "key.loadToolbarActivator",
 	PickItem = "key.pickItem",
 	Playerlist = "key.playerlist",
+	#[since="1.21.6"]
+	QuickActions = "key.quickActions",
 	Right = "key.right",
 	SaveToolbarActivator = "key.saveToolbarActivator",
 	Screenshot = "key.screenshot",
@@ -307,6 +309,4 @@ enum(string) Keybind {
 	SwapOffhand = "key.swapOffhand",
 	TogglePerspective = "key.togglePerspective",
 	Use = "key.use",
-	#[since="1.21.6"]
-	QuickActions = "key.quickActions",
 }
