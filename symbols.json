@@ -1,5 +1,5 @@
 {
-	"ref": "65156cc5f0185932b921cb48e1a96fb4b42098c3",
+	"ref": "5f696b45a7b9f5084ed7ce9c368fc7e57b37a039",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -58589,6 +58589,22 @@
 				{
 					"identifier": "Use",
 					"value": "key.use"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"identifier": "QuickActions",
+					"value": "key.quickActions"
 				}
 			]
 		},
