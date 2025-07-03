@@ -307,4 +307,6 @@ enum(string) Keybind {
 	SwapOffhand = "key.swapOffhand",
 	TogglePerspective = "key.togglePerspective",
 	Use = "key.use",
+	#[since="1.21.6"]
+	QuickActions = "key.quickActions",
 }
