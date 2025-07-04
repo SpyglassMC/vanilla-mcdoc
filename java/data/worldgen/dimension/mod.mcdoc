@@ -46,7 +46,7 @@ dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	),
 	/// Sky effects.
 	#[since="1.16.2"]
-	effects: #[id] DimensionTypeEffects,
+	effects?: #[id] DimensionTypeEffects,
 	/// Block tag defining what blocks keep fire infinitely burning.
 	infiniburn: (
 		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
