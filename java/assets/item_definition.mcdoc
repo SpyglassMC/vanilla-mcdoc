@@ -376,6 +376,8 @@ enum(string) SpecialModelType {
 	DecoratedPot = "decorated_pot",
 	HangingSign = "hanging_sign",
 	Head = "head",
+	#[since="1.21.6"]
+	PlayerHead = "player_head",
 	Shield = "shield",
 	ShulkerBox = "shulker_box",
 	StandingSign = "standing_sign",
@@ -420,9 +422,17 @@ enum(string) WoodType {
 
 dispatch minecraft:special_item_model[head] to struct Head {
 	kind: HeadType,
-	/// Texture to use instead of the texture from `kind`.
-	/// If present, will ignore the `profile` compnent.
-	texture?: #[id(registry="texture",path="entity/")] string,
+	#[until="1.21.6"]
+	... struct {
+		/// Texture to use instead of the texture from `kind`.
+		/// If present, will ignore the `profile` component.
+		texture?: #[id(registry="texture",path="entity/")] string,
+	},
+	#[since="1.21.6"]
+	... struct {
+		/// Texture to use instead of the texture from `kind`.
+		texture?: #[id(registry="texture",path="entity/")] string,
+	},
 	/// Controls the animation time for piglin and dragon heads. Defaults to `0`.
 	animation?: float,
 }
