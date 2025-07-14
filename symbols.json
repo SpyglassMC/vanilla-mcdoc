@@ -1,5 +1,5 @@
 {
-	"ref": "a65e8413a534cfb2cc2ff426776dc2e4139c567d",
+	"ref": "136e61e62ce54adbf3ad7a72eec15040d8d8f2f3",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -30439,7 +30439,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "[Data version](https://minecraft.fandom.com/wiki/Data_version).\n",
+					"desc": "[Data version](https://minecraft.wiki/w/Data_version).\n",
 					"key": "DataVersion",
 					"type": {
 						"kind": "int",
@@ -30470,11 +30470,6 @@
 				},
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "structure_blocks"
-						}
-					],
 					"key": "blocks",
 					"type": {
 						"kind": "list",
@@ -58330,9 +58325,6 @@
 										}
 									}
 								}
-							},
-							{
-								"name": "selector"
 							}
 						]
 					}
@@ -59145,9 +59137,6 @@
 						"attributes": [
 							{
 								"name": "entity"
-							},
-							{
-								"name": "selector"
 							}
 						]
 					}
@@ -60332,9 +60321,6 @@
 								"attributes": [
 									{
 										"name": "entity"
-									},
-									{
-										"name": "selector"
 									}
 								]
 							}
@@ -60574,9 +60560,6 @@
 												}
 											}
 										}
-									},
-									{
-										"name": "selector"
 									}
 								]
 							}
@@ -97742,7 +97725,7 @@
 					}
 				]
 			},
-			"player_sheared_entity": {
+			"player_sheared_equipment": {
 				"kind": "concrete",
 				"child": {
 					"kind": "reference",
