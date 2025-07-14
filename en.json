@@ -45,7 +45,7 @@
 	"::java::assets::item_definition::FireworkTint.default": "Tint to apply when the `firework_explosion` component is not present.",
 	"::java::assets::item_definition::HasComponent.ignore_default": "Whether the default components should be handled as \"no component\". Defaults to false.",
 	"::java::assets::item_definition::Head.animation": "Controls the animation time for piglin and dragon heads. Defaults to `0`.",
-	"::java::assets::item_definition::Head.texture": "Texture to use instead of the texture from `kind`.\nIf present, will ignore the `profile` compnent.",
+	"::java::assets::item_definition::Head.texture": "Texture to use instead of the texture from `kind`.",
 	"::java::assets::item_definition::ItemDefinition.hand_animation_on_swap": "Whether the down-and-up animation should be played in first-person view when the item stack is changed.\nDefaults to `true`.",
 	"::java::assets::item_definition::ItemDefinition.oversized_in_gui": "Whether the item model is allowed to be bigger than its item slot.\nDefaults to `false`, which clips the item model in GUI to the item slot size.\nThe behavior of `true` is **not** officially supported.",
 	"::java::assets::item_definition::KeybindDown.keybind": "The keybind ID to check for.",
