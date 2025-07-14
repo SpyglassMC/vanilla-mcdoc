@@ -339,7 +339,7 @@ dispatch minecraft:trigger[player_killed_entity] to Conditions<struct PlayerKill
 }>
 
 #[since="1.21.6"]
-dispatch minecraft:trigger[player_sheared_entity] to Conditions<PlayerInteract>
+dispatch minecraft:trigger[player_sheared_equipment] to Conditions<PlayerInteract>
 
 #[since="1.20"]
 dispatch minecraft:trigger[recipe_crafted] to RequiredConditions<RecipeCrafted>

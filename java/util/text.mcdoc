@@ -35,7 +35,7 @@ type TextObject = (
 		...TextBase,
 	} |
 	struct SelectorText {
-		selector: #[entity] #[selector] string,
+		selector: #[entity] string,
 		#[since="1.17"]
 		separator?: Text,
 		#[since="1.20.3"]
@@ -58,7 +58,7 @@ type TextObject = (
 		...TextNbtBase,
 	} |
 	struct EntityNbtText {
-		entity: #[entity(amount=multiple,type=entities)] #[selector] string,
+		entity: #[entity(amount=multiple,type=entities)] string,
 		nbt: #[nbt_path=minecraft:entity[[entity]]] string,
 		#[since="1.20.3"]
 		source?: "entity",
