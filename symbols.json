@@ -1,5 +1,5 @@
 {
-	"ref": "9764777aec9cd3066dd51826b16fa0d62fa5efe1",
+	"ref": "a65e8413a534cfb2cc2ff426776dc2e4139c567d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -2603,6 +2603,82 @@
 			"kind": "struct",
 			"fields": []
 		},
+		"::java::assets::item_definition::<anonymous 7>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Texture to use instead of the texture from `kind`.\n\nIf present, will ignore the `profile` component.\n",
+					"key": "texture",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										},
+										"path": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "entity/"
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::assets::item_definition::<anonymous 8>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Texture to use instead of the texture from `kind`.\n",
+					"key": "texture",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										},
+										"path": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "entity/"
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::assets::item_definition::Banner": {
 			"kind": "struct",
 			"fields": [
@@ -3542,37 +3618,110 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"desc": "Texture to use instead of the texture from `kind`.\n\nIf present, will ignore the `profile` compnent.\n",
-					"key": "texture",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
 								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "texture"
-											}
-										},
-										"path": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "entity/"
-											}
-										}
-									}
+									"kind": "string",
+									"value": "1.21.6"
 								}
 							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Texture to use instead of the texture from `kind`.\n\nIf present, will ignore the `profile` component.\n",
+								"key": "texture",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								"optional": true
+							}
 						]
-					},
-					"optional": true
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Texture to use instead of the texture from `kind`.\n",
+								"key": "texture",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								"optional": true
+							}
+						]
+					}
 				},
 				{
 					"kind": "pair",
@@ -4416,6 +4565,22 @@
 				{
 					"identifier": "Head",
 					"value": "head"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"identifier": "PlayerHead",
+					"value": "player_head"
 				},
 				{
 					"identifier": "Shield",
