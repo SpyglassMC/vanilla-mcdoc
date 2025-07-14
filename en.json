@@ -470,7 +470,7 @@
 	"::java::data::recipe::SmithingTrim.template": "Template item that will be used for the pattern.",
 	"::java::data::structure::BlockPalette.palettes": "Sets of different block states used in the structure, a random palette gets selected based on coordinates.",
 	"::java::data::structure::RandomizedPalette.palettes": "Sets of different block states used in the structure, a random palette gets selected based on coordinates.",
-	"::java::data::structure::StructureNBT.DataVersion": "[Data version](https://minecraft.fandom.com/wiki/Data_version).",
+	"::java::data::structure::StructureNBT.DataVersion": "[Data version](https://minecraft.wiki/w/Data_version).",
 	"::java::data::trial_spawner::TrialSpawnerConfig.items_to_drop_when_ominous": "Loot table to use when summoning ominous item spawners. One roll seeded based on rough location to determine all items used during the battle.",
 	"::java::data::trial_spawner::TrialSpawnerConfig.loot_tables_to_eject": "Loot tables to use when ejecting loot. Chooses one loot table based on weight and then uses it as often as there are players nearby.",
 	"::java::data::trial_spawner::TrialSpawnerConfig.simultaneous_mobs": "Number of entities that that can be present at once, when 1 player is nearby",
