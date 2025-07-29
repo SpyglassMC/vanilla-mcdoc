@@ -313,7 +313,7 @@ dispatch minecraft:data_component[equippable] to struct Equippable {
 	/// Defaults to `false`.
 	equip_on_interact?: boolean,
 	/// Whether players can use shears to remove this item from a mob by right-clicking it (as long as other shearing conditions are satisfied).
-	/// Defaults to `true`.
+	/// Defaults to `false`.
 	#[since="1.21.6"]
 	can_be_sheared?: boolean,
 	/// Sound event to play when the item is sheared from a mob.
