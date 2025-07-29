@@ -58,9 +58,8 @@ dispatch minecraft:density_function[constant] to struct Constant {
 dispatch minecraft:density_function[find_top_surface] to struct FindTopSurface {
 	density: DensityFunctionRef,
 	upper_bound: DensityFunctionRef,
-	// TODO: calculate and fill up the constant range of this field
 	// the range is (DimensionType.MIN_Y * 2)..(DimensionType.MAX_Y * 2)
-	lower_bound: int,
+	lower_bound: int @ -4064..4062,
 	cell_height: int @ 1..,
 }
 
