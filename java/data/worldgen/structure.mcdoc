@@ -61,9 +61,21 @@ enum(string) BoundingBox {
 	Full = "full",
 }
 
-dispatch minecraft:jigsaw_max_distance_from_center[%none,%unknown] to int @ 1..128
+dispatch minecraft:jigsaw_max_distance_from_center[%none,%unknown] to (
+	int @ 1..128 |
+	#[since="1.21.9"] JigsawDistanceLimits<int @ 1..128> |
+)
 
-dispatch minecraft:jigsaw_max_distance_from_center[beard_thin,beard_box,bury] to int @ 1..116
+dispatch minecraft:jigsaw_max_distance_from_center[beard_thin,beard_box,bury] to (
+	int @ 1..116 |
+	#[since="1.21.9"] JigsawDistanceLimits<int @ 1..116> |
+)
+
+type JigsawDistanceLimits<T> = struct {
+	horizontal: T,
+	/// Defaults to 4096
+	vertical?: int @ 1..4096,
+}
 
 dispatch minecraft:structure_config[
 	desert_pyramid,

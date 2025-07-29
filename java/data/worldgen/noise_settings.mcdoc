@@ -134,7 +134,10 @@ struct NoiseRouter {
 	erosion: DensityFunctionRef,
 	depth: DensityFunctionRef,
 	ridges: DensityFunctionRef,
+	#[until="1.21.9"]
 	initial_density_without_jaggedness: DensityFunctionRef,
+	#[since="1.21.9"]
+	preliminary_surface_level: DensityFunctionRef,
 	final_density: DensityFunctionRef,
 }
 

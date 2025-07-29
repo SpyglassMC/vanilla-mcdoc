@@ -56,6 +56,8 @@ enum(string) EntityTarget {
 	#[since="1.21"] DirectAttacker = "direct_attacker",
 	#[until="1.21"] KillerPlayer = "killer_player",
 	#[since="1.21"] AttackingPlayer = "attacking_player",
+	#[since="1.21.9"] TargetEntity = "target_entity",
+	#[since="1.21.9"] InteractingEntity = "interacting_entity",
 }
 
 struct LootPool {
