@@ -1,22 +1,51 @@
 use ::java::util::text::Text
 use ::java::util::InclusiveRange
 
+type ResourcePack = Pack<int @ 1..64, int @ 65..>
+type DataPack = Pack<int @ 4..81, int @ 82..>
+
+type Pack<TOldRange, TNewRange> = (
+	BasePack<OldPackVersionInfo<TOldRange>, PackOverlays<OldPackOverlay<TOldRange>>>
+	| BasePack<NewPackVersionInfo<TNewRange>, NewPackOverlays<TNewRange>>
+	| BasePack<NewOldPackVersionInfo<TOldRange, TNewRange>, PackOverlays<NewOldPackOverlay>>
+)
+
 // `supported_formats` and `overlays` were introduced in 1.20.2,
 // but multi-version packs will use these with an older pack_format.
-struct Pack {
-	pack: struct PackBase {
-		description: Text,
-		pack_format: #[pack_format] int,
-		#[since="1.20.2"]
-		supported_formats?: InclusiveRange<#[pack_format] int>,
-	},
+type BasePack<VersionInfo, TOverlays> = struct {
+	pack: VersionInfo,
 	#[since="1.19"]
 	filter?: PackFilter,
 	#[since="1.19.3"]
 	features?: PackFeatures,
 	#[since="1.20.2"]
-	overlays?: PackOverlays,
+	overlays?: TOverlays,
 }
+
+type OldPackVersionInfo<TOldRange> = struct {
+	pack_format: #[pack_format] TOldRange,
+	// This is technically only allowed to be a list of two integers in 21w31a, but that's likely
+	// a bug.
+	#[since="1.20.2"]
+	supported_formats?: InclusiveRange<#[pack_format] TOldRange>,
+}
+
+type NewPackVersionInfo<TNewRange> = struct {
+	pack_format?: #[pack_format] PackFormat<TNewRange>,
+	min_format: #[pack_format] PackFormat<TNewRange>,
+	max_format: #[pack_format] PackFormat<TNewRange>,
+}
+
+type NewOldPackVersionInfo<TOldRange, TNewRange> = struct {
+	pack_format: #[pack_format] int,
+	min_format: #[pack_format] PackFormat<TOldRange>,
+	max_format: #[pack_format] PackFormat<TNewRange>,
+	supported_formats: [#[pack_format] TOldRange, #[pack_format] TNewRange],
+}
+
+type PackVersionInfo<TOldRange, TNewRange> = (OldPackVersionInfo<TOldRange> | NewPackVersionInfo<TNewRange> | NewOldPackVersionInfo<TOldRange, TNewRange>)
+
+type PackFormat<T> = (T | [T] @ 1 | [T, int @ 0..])
 
 struct PackFilter {
 	block: [BlockPattern],
@@ -42,11 +71,33 @@ enum(string) FeatureFlag {
 	#[since="1.21.2"] #[until="1.21.4"] WinterDrop = "winter_drop",
 }
 
-struct PackOverlays {
-	entries: [PackOverlay],
+// Either a list of only the new format, or a list of the format supporting old _and_ new.
+// In the latter case, at least one of the overlays must have a format version in the TOldRange.
+type NewPackOverlays<TNewRange> = (
+	PackOverlays<NewOldPackOverlay> |
+	PackOverlays<NewPackOverlay<TNewRange>>
+)
+
+type PackOverlays<T> = struct {
+	entries: [T],
 }
 
-struct PackOverlay {
+type OldPackOverlay<TOldRange> = struct {
 	directory: string @ 1..,
-	formats: InclusiveRange<#[pack_format] int>,
+	// This is technically only allowed to be a list of two integers in 21w31a, but that's likely
+	// a bug.
+	formats: InclusiveRange<#[pack_format] TOldRange>,
+}
+
+type NewPackOverlay<TNewRange> = struct {
+	directory: string @ 1..,
+	min_format: #[pack_format] PackFormat<TNewRange>,
+	max_format: #[pack_format] PackFormat<TNewRange>,
+}
+
+struct NewOldPackOverlay {
+	directory: string @ 1..,
+	formats: [#[pack_format] int] @ 2,
+	min_format: #[pack_format] PackFormat<int>,
+	max_format: #[pack_format] PackFormat<int>,
 }
