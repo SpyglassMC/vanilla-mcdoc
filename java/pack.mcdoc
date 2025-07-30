@@ -6,18 +6,9 @@ use ::java::util::InclusiveRange
 struct Pack {
 	pack: struct PackBase {
 		description: Text,
-		#[until="1.21.9"]
-		...struct {
-			pack_format: #[pack_format] int,
-			#[since="1.20.2"]
-			supported_formats?: InclusiveRange<#[pack_format] int>,
-		},
-		#[since="1.21.9"]
-		...struct {
-			pack_format?: #[pack_format] int,
-			min_format: TwoPartPackFormat,
-			max_format: TwoPartPackFormat,
-		},
+		pack_format: #[pack_format] int,
+		#[since="1.20.2"]
+		supported_formats?: InclusiveRange<#[pack_format] int>,
 	},
 	#[since="1.19"]
 	filter?: PackFilter,
@@ -26,13 +17,6 @@ struct Pack {
 	#[since="1.20.2"]
 	overlays?: PackOverlays,
 }
-
-type TwoPartPackFormat = (
-	#[pack_format] int |
-	[#[pack_format] int] @ 1 |
-	// TODO: determine how to use the #[pack_format] attribute
-	[int] @ 2 |
-)
 
 struct PackFilter {
 	block: [BlockPattern],
@@ -64,9 +48,5 @@ struct PackOverlays {
 
 struct PackOverlay {
 	directory: string @ 1..,
-	#[until="1.21.9"]
 	formats: InclusiveRange<#[pack_format] int>,
-	#[since="1.21.9"]
-	min_format: TwoPartPackFormat,
-	max_format: TwoPartPackFormat,
 }
