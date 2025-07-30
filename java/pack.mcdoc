@@ -74,8 +74,8 @@ enum(string) FeatureFlag {
 type OldPackOverlays<TOldRange> = PackOverlays<OldPackOverlay<TOldRange>>
 type NewPackOverlays<TNewRange> = PackOverlays<NewPackOverlay<TNewRange>>
 
-// This enforces all overlays to include the formats field.min_version and max_version also must
-// be present, if the format is outside the TOldRange, and are otherwise optional.
+// This enforces all overlays to include the formats field. min_version and max_version also must
+// be present if the format is outside the TOldRange, and are otherwise optional.
 type NewOldPackOverlays<TOldRange> = PackOverlays<
 	(OldPackOverlay<TOldRange> | NewOldPackOverlay)
 >
@@ -85,7 +85,10 @@ type NewOldPackOverlays<TOldRange> = PackOverlays<
 // outside of TOldRange, min_format and max_format become optional.
 //
 // This is used in case the min_format / max_format range is in the TNewRange. This still allows
-// for overlays for versions outside of the range without guranteeing compatiblity
+// for overlays for versions outside of the range without guranteeing compatiblity.
+//
+// In Minecraft, it is only possible to define overlays with the `formats` field if at least one
+// overlay is targeting TOldRange. This is not validated by this type due to limitations of mcdoc.
 type NewOrNewOldPackOverlays<TOldRange, TNewRange> = (
 	NewOldPackOverlays<TOldRange> |
 	NewPackOverlays<TNewRange>
