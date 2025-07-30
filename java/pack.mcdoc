@@ -6,7 +6,7 @@ type DataPack = Pack<int @ 4..81, int @ 82..>
 
 type Pack<TOldRange, TNewRange> = (
 	BasePack<OldPackVersionInfo<TOldRange>, PackOverlays<OldPackOverlay<TOldRange>>>
-	| BasePack<NewPackVersionInfo<TNewRange>, NewPackOverlays<TNewRange>>
+	| BasePack<NewPackVersionInfo<TNewRange>, NewOrNewOldPackOverlays<TNewRange>>
 	| BasePack<NewOldPackVersionInfo<TOldRange, TNewRange>, PackOverlays<NewOldPackOverlay>>
 )
 
@@ -73,7 +73,7 @@ enum(string) FeatureFlag {
 
 // Either a list of only the new format, or a list of the format supporting old _and_ new.
 // In the latter case, at least one of the overlays must have a format version in the TOldRange.
-type NewPackOverlays<TNewRange> = (
+type NewOrNewOldPackOverlays<TNewRange> = (
 	PackOverlays<NewOldPackOverlay> |
 	PackOverlays<NewPackOverlay<TNewRange>>
 )
