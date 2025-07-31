@@ -31,7 +31,7 @@ type OldPackVersionInfo<TOldRange> = struct {
 }
 
 type NewPackVersionInfo<TNewRange> = struct {
-	pack_format?: #[pack_format] PackFormat<TNewRange>,
+	pack_format?: #[pack_format] TNewRange,
 	description: Text,
 	min_format: #[pack_format] PackFormat<TNewRange>,
 	max_format: #[pack_format] PackFormat<TNewRange>,
