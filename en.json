@@ -876,7 +876,7 @@
 	"::java::world::component::item::DyedColor.rgb": "Color of the armor.\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.",
 	"::java::world::component::item::Equippable.allowed_entities": "Limits which entities can equip this item.",
 	"::java::world::component::item::Equippable.camera_overlay": "The overlay texture that should render in first person when equipped.",
-	"::java::world::component::item::Equippable.can_be_sheared": "Whether players can use shears to remove this item from a mob by right-clicking it (as long as other shearing conditions are satisfied).\nDefaults to `true`.",
+	"::java::world::component::item::Equippable.can_be_sheared": "Whether players can use shears to remove this item from a mob by right-clicking it (as long as other shearing conditions are satisfied).\nDefaults to `false`.",
 	"::java::world::component::item::Equippable.damage_on_hurt": "Whether the item will be damaged when the wearer is damaged. Defaults to `true`.",
 	"::java::world::component::item::Equippable.dispensable": "Whether the item can be equipped by using a dispenser. Defaults to `true`.",
 	"::java::world::component::item::Equippable.equip_on_interact": "Whether players can equip this item onto a target mob by right-clicking it (as long as this item can be equipped on the target at all).\nThe item will not be equipped if the target already has an item in the relevant slot.\nDefaults to `false`.",
