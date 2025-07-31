@@ -6,8 +6,8 @@ type DataPack = Pack<int @ 4..81, int @ 82..>
 
 type Pack<TOldRange, TNewRange> = (
 	BasePack<OldPackVersionInfo<TOldRange>, OldPackOverlays<TOldRange>>
-	| BasePack<NewPackVersionInfo<TNewRange>, NewOrNewOldPackOverlays<TNewRange>>
-	| BasePack<NewOldPackVersionInfo<TOldRange, TNewRange>, NewOldPackOverlays<TOldRange>>
+	| BasePack<NewPackVersionInfo<TNewRange>, NewOrIntermediatePackOverlays<TNewRange>>
+	| BasePack<IntermediatePackVersionInfo<TOldRange, TNewRange>, IntermediatePackOverlays<TOldRange>>
 )
 
 // `supported_formats` and `overlays` were introduced in 1.20.2,
@@ -36,14 +36,14 @@ type NewPackVersionInfo<TNewRange> = struct {
 	max_format: #[pack_format] PackFormat<TNewRange>,
 }
 
-type NewOldPackVersionInfo<TOldRange, TNewRange> = struct {
+type IntermediatePackVersionInfo<TOldRange, TNewRange> = struct {
 	pack_format: #[pack_format] int,
 	min_format: #[pack_format] PackFormat<TOldRange>,
 	max_format: #[pack_format] PackFormat<TNewRange>,
 	supported_formats: [#[pack_format] TOldRange, #[pack_format] TNewRange],
 }
 
-type PackVersionInfo<TOldRange, TNewRange> = (OldPackVersionInfo<TOldRange> | NewPackVersionInfo<TNewRange> | NewOldPackVersionInfo<TOldRange, TNewRange>)
+type PackVersionInfo<TOldRange, TNewRange> = (OldPackVersionInfo<TOldRange> | NewPackVersionInfo<TNewRange> | IntermediatePackVersionInfo<TOldRange, TNewRange>)
 
 type PackFormat<T> = (T | [T] @ 1 | [T, int @ 0..])
 
@@ -76,8 +76,8 @@ type NewPackOverlays<TNewRange> = PackOverlays<NewPackOverlay<TNewRange>>
 
 // This enforces all overlays to include the formats field. min_version and max_version also must
 // be present if the format is outside the TOldRange, and are otherwise optional.
-type NewOldPackOverlays<TOldRange> = PackOverlays<
-	(OldPackOverlay<TOldRange> | NewOldPackOverlay)
+type IntermediatePackOverlays<TOldRange> = PackOverlays<
+	(OldPackOverlay<TOldRange> | IntermediatePackOverlay)
 >
 
 // This enforces either a list of overlays without the formats field and only
@@ -89,8 +89,8 @@ type NewOldPackOverlays<TOldRange> = PackOverlays<
 //
 // In Minecraft, it is only possible to define overlays with the `formats` field if at least one
 // overlay is targeting TOldRange. This is not validated by this type due to limitations of mcdoc.
-type NewOrNewOldPackOverlays<TOldRange, TNewRange> = (
-	NewOldPackOverlays<TOldRange> |
+type NewOrIntermediatePackOverlays<TOldRange, TNewRange> = (
+	IntermediatePackOverlays<TOldRange> |
 	NewPackOverlays<TNewRange>
 )
 
@@ -111,7 +111,7 @@ type NewPackOverlay<TNewRange> = struct {
 	max_format: #[pack_format] PackFormat<TNewRange>,
 }
 
-struct NewOldPackOverlay {
+struct IntermediatePackOverlay {
 	directory: string @ 1..,
 	formats: [#[pack_format] int] @ 2,
 	min_format: #[pack_format] PackFormat<int>,
