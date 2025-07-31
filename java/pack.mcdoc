@@ -24,6 +24,7 @@ type BasePack<VersionInfo, TOverlays> = struct {
 
 type OldPackVersionInfo<TOldRange> = struct {
 	pack_format: #[pack_format] TOldRange,
+	description: Text,
 	// This is technically only allowed to be a list of two integers in 21w31a, but that's likely
 	// a bug.
 	#[since="1.20.2"]
