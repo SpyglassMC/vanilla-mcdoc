@@ -32,12 +32,14 @@ type OldPackVersionInfo<TOldRange> = struct {
 
 type NewPackVersionInfo<TNewRange> = struct {
 	pack_format?: #[pack_format] PackFormat<TNewRange>,
+	description: Text,
 	min_format: #[pack_format] PackFormat<TNewRange>,
 	max_format: #[pack_format] PackFormat<TNewRange>,
 }
 
 type IntermediatePackVersionInfo<TOldRange, TNewRange> = struct {
 	pack_format: #[pack_format] int,
+	description: Text,
 	min_format: #[pack_format] PackFormat<TOldRange>,
 	max_format: #[pack_format] PackFormat<TNewRange>,
 	supported_formats: [#[pack_format] TOldRange, #[pack_format] TNewRange],
