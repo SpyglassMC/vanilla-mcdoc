@@ -1,5 +1,5 @@
 {
-	"ref": "136e61e62ce54adbf3ad7a72eec15040d8d8f2f3",
+	"ref": "b7caac202adad343e9d5f128e02ebed206d20897",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -68168,7 +68168,7 @@
 							}
 						}
 					],
-					"desc": "Whether players can use shears to remove this item from a mob by right-clicking it (as long as other shearing conditions are satisfied).\n\nDefaults to `true`.\n",
+					"desc": "Whether players can use shears to remove this item from a mob by right-clicking it (as long as other shearing conditions are satisfied).\n\nDefaults to `false`.\n",
 					"key": "can_be_sheared",
 					"type": {
 						"kind": "boolean"
