@@ -5,7 +5,7 @@ dispatch minecraft:resource[atlas] to struct Atlas {
 }
 
 struct SpriteSource {
-	type: SpriteSourceType,
+	type: #[id] SpriteSourceType,
 	...minecraft:sprite_source[[type]],
 }
 
