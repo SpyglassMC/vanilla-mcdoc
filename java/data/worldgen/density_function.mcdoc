@@ -25,6 +25,7 @@ dispatch minecraft:density_function[
 	flat_cache,
 	half_negative,
 	interpolated,
+	invert,
 	quarter_negative,
 	slide,
 	square,
@@ -51,6 +52,15 @@ dispatch minecraft:density_function[clamp] to struct Clamp {
 
 dispatch minecraft:density_function[constant] to struct Constant {
 	argument: NoiseRange,
+}
+
+#[since="1.21.9"]
+dispatch minecraft:density_function[find_top_surface] to struct FindTopSurface {
+	density: DensityFunctionRef,
+	upper_bound: DensityFunctionRef,
+	// the range is (DimensionType.MIN_Y * 2)..(DimensionType.MAX_Y * 2)
+	lower_bound: int @ -4064..4062,
+	cell_height: int @ 1..,
 }
 
 dispatch minecraft:density_function[noise] to struct Noise {

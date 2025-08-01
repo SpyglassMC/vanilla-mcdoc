@@ -1,0 +1,17 @@
+use super::MobBase
+
+dispatch minecraft:entity[copper_golem] to struct CopperGolem {
+	...MobBase,
+	/// Gametime in ticks when the copper golem oxidizes
+	/// -2 represents "waxed"
+	/// -1 will be replaced with a random time between 504000 and 552000 ticks later
+	next_weather_age?: long @ -2..,
+	weather_state?: WeatherState,
+}
+
+enum(int) WeatherState {
+	Unaffected = 0,
+	Exposed = 1,
+	Weathered = 2,
+	Oxidized = 3,
+}

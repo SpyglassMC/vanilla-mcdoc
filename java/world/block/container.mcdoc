@@ -10,7 +10,12 @@ struct ContainerBase {
 	LootTableSeed?: #[random] long,
 }
 
-dispatch minecraft:block_entity[container] to struct Container27 {
+dispatch minecraft:block_entity[
+	barrel,
+	chest,
+	trapped_chest,
+	shulker_box,
+] to struct Container27 {
 	...ContainerBase,
 	/// Slots from 0 to 26.
 	Items?: [SlottedItem<byte @ 0..26>] @ 0..27,
@@ -22,6 +27,12 @@ dispatch minecraft:block_entity[dispenser, dropper] to struct Container9 {
 	Items?: [SlottedItem<byte @ 0..8>] @ 0..9,
 }
 
+dispatch minecraft:block_entity[shelf] to struct Container3 {
+	...ContainerBase,
+	/// Slots from 0 to 2.
+	Items?: [SlottedItem<byte @ 0..2>] @ 0..3,
+}
+
 dispatch minecraft:block_entity[hopper] to struct Hopper {
 	...ContainerBase,
 	/// Slots from 0 to 4.
@@ -30,10 +41,23 @@ dispatch minecraft:block_entity[hopper] to struct Hopper {
 	TransferCooldown?: int,
 }
 
+dispatch minecraft:block[barrel] to minecraft:block_entity[barrel]
+
 dispatch minecraft:block[
-	barrel,
 	chest,
-	trapped_chest,
+	copper_chest,
+	exposed_copper_chest,
+	weathered_copper_chest,
+	oxidized_copper_chest,
+	waxed_copper_chest,
+	waxed_exposed_copper_chest,
+	waxed_weathered_copper_chest,
+	waxed_oxidized_copper_chest,
+] to minecraft:block_entity[chest]
+
+dispatch minecraft:block[trapped_chest] to minecraft:block_entity[trapped_chest]
+
+dispatch minecraft:block[
 	shulker_box,
 	white_shulker_box,
 	orange_shulker_box,
@@ -51,8 +75,23 @@ dispatch minecraft:block[
 	green_shulker_box,
 	red_shulker_box,
 	black_shulker_box,
-] to minecraft:block_entity[container]
+] to minecraft:block_entity[shulker_box]
 
 dispatch minecraft:block[dispenser, dropper] to minecraft:block_entity[dispenser]
+
+dispatch minecraft:block[
+	oak_shelf,
+	spruce_shelf,
+	birch_shelf,
+	jungle_shelf,
+	acacia_shelf,
+	dark_oak_shelf,
+	mangrove_shelf,
+	cherry_shelf,
+	pale_oak_shelf,
+	bamboo_shelf,
+	crimson_shelf,
+	warped_shelf,
+] to minecraft:block_entity[shelf]
 
 dispatch minecraft:block[hopper] to minecraft:block_entity[hopper]

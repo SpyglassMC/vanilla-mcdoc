@@ -25,6 +25,14 @@ dispatch minecraft:block[
 	daylight_detector,
 	ender_chest,
 	end_portal,
+	copper_golem_statue,
+	exposed_copper_golem_statue,
+	weathered_copper_golem_statue,
+	oxidized_copper_golem_statue,
+	waxed_copper_golem_statue,
+	waxed_exposed_copper_golem_statue,
+	waxed_weathered_copper_golem_statue,
+	waxed_oxidized_copper_golem_statue,
 ] to BlockEntity
 
 struct Lockable {
