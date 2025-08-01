@@ -10,9 +10,7 @@ struct ContainerBase {
 	LootTableSeed?: #[random] long,
 }
 
-// TODO: check if the id "container" was valid in some old versions before 1.21.9
 dispatch minecraft:block_entity[
-	container,
 	barrel,
 	chest,
 	trapped_chest,
