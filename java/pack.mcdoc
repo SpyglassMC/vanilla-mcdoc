@@ -6,7 +6,7 @@ type DataPack = Pack<int @ 4..81, int @ 82..>
 
 type Pack<TOldRange, TNewRange> = (
 	BasePack<OldPackVersionInfo<TOldRange>, OldPackOverlays<TOldRange>>
-	| BasePack<NewPackVersionInfo<TNewRange>, NewOrIntermediatePackOverlays<TNewRange>>
+	| BasePack<NewPackVersionInfo<TNewRange>, NewOrIntermediatePackOverlays<TOldRange, TNewRange>>
 	| BasePack<IntermediatePackVersionInfo<TOldRange, TNewRange>, IntermediatePackOverlays<TOldRange>>
 )
 
