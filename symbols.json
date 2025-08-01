@@ -1,5 +1,5 @@
 {
-	"ref": "b7caac202adad343e9d5f128e02ebed206d20897",
+	"ref": "6e16f7d1b622f916cf3cbc393e57ca6d2cb5be49",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -295,7 +295,12 @@
 					"key": "type",
 					"type": {
 						"kind": "reference",
-						"path": "::java::assets::atlas::SpriteSourceType"
+						"path": "::java::assets::atlas::SpriteSourceType",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
 					}
 				},
 				{
