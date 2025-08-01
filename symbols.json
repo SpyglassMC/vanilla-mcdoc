@@ -1,5 +1,5 @@
 {
-	"ref": "6e16f7d1b622f916cf3cbc393e57ca6d2cb5be49",
+	"ref": "0d3a06cf31aea3bb59690a8644e4e743e07a2c02",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -23496,6 +23496,38 @@
 					],
 					"identifier": "AttackingPlayer",
 					"value": "attacking_player"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"identifier": "TargetEntity",
+					"value": "target_entity"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"identifier": "InteractingEntity",
+					"value": "interacting_entity"
 				}
 			]
 		},
@@ -36831,6 +36863,50 @@
 				}
 			]
 		},
+		"::java::data::worldgen::density_function::FindTopSurface": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "density",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "upper_bound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "lower_bound",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": -4064,
+							"max": 4062
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "cell_height",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::density_function::Noise": {
 			"kind": "struct",
 			"fields": [
@@ -48188,7 +48264,39 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
 					"key": "initial_density_without_jaggedness",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"key": "preliminary_surface_level",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
@@ -50420,9 +50528,36 @@
 		},
 		"::java::data::worldgen::structure::<anonymous 2>": {
 			"kind": "struct",
-			"fields": []
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "horizontal",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::structure::T"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to 4096\n",
+					"key": "vertical",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 4096
+						}
+					},
+					"optional": true
+				}
+			]
 		},
 		"::java::data::worldgen::structure::<anonymous 3>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::worldgen::structure::<anonymous 4>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -50825,6 +50960,41 @@
 							}
 						]
 					}
+				}
+			]
+		},
+		"::java::data::worldgen::structure::JigsawDistanceLimits": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "horizontal",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::structure::T"
+						}
+					},
+					{
+						"kind": "pair",
+						"desc": "Defaults to 4096\n",
+						"key": "vertical",
+						"type": {
+							"kind": "int",
+							"valueRange": {
+								"kind": 0,
+								"min": 1,
+								"max": 4096
+							}
+						},
+						"optional": true
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::worldgen::structure::T"
 				}
 			]
 		},
@@ -62684,6 +62854,49 @@
 							"kind": 0,
 							"min": 0,
 							"max": 27
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::block::container::Container3": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::block::container::ContainerBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Slots from 0 to 2.\n",
+					"key": "Items",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::util::slot::SlottedItem"
+							},
+							"typeArgs": [
+								{
+									"kind": "byte",
+									"valueRange": {
+										"kind": 0,
+										"min": 0,
+										"max": 2
+									}
+								}
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 3
 						}
 					},
 					"optional": true
@@ -77818,6 +78031,62 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::copper_golem::CopperGolem": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::MobBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Gametime in ticks when the copper golem oxidizes\n\n-2 represents \"waxed\"\n\n-1 will be replaced with a random time between 504000 and 552000 ticks later\n",
+					"key": "next_weather_age",
+					"type": {
+						"kind": "long",
+						"valueRange": {
+							"kind": 0,
+							"min": -2
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "weather_state",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::copper_golem::WeatherState"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::copper_golem::WeatherState": {
+			"kind": "enum",
+			"enumKind": "int",
+			"values": [
+				{
+					"identifier": "Unaffected",
+					"value": 0
+				},
+				{
+					"identifier": "Exposed",
+					"value": 1
+				},
+				{
+					"identifier": "Weathered",
+					"value": 2
+				},
+				{
+					"identifier": "Oxidized",
+					"value": 3
+				}
+			]
+		},
 		"::java::world::entity::mob::creaking::Creaking": {
 			"kind": "struct",
 			"fields": [
@@ -86060,6 +86329,16 @@
 					}
 				]
 			},
+			"acacia_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"acacia_sign": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -86123,6 +86402,16 @@
 						}
 					}
 				]
+			},
+			"bamboo_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
 			},
 			"bamboo_sign": {
 				"kind": "dispatcher",
@@ -86195,7 +86484,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "barrel"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -86260,6 +86549,16 @@
 					}
 				]
 			},
+			"birch_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"birch_sign": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -86317,7 +86616,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -86357,7 +86656,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -86397,7 +86696,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -86454,6 +86753,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"cherry_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"cherry_sign": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -86503,7 +86812,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "chest"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -86547,6 +86856,20 @@
 					}
 				],
 				"registry": "minecraft:block_entity"
+			},
+			"copper_chest": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "chest"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"copper_golem_statue": {
+				"kind": "reference",
+				"path": "::java::world::block::BlockEntity"
 			},
 			"creeper_head": {
 				"kind": "union",
@@ -86644,6 +86967,16 @@
 					}
 				]
 			},
+			"crimson_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"crimson_sign": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -86725,7 +87058,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -86761,6 +87094,16 @@
 						}
 					}
 				]
+			},
+			"dark_oak_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
 			},
 			"dark_oak_sign": {
 				"kind": "dispatcher",
@@ -86940,6 +87283,20 @@
 				"kind": "reference",
 				"path": "::java::world::block::BlockEntity"
 			},
+			"exposed_copper_chest": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "chest"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"exposed_copper_golem_statue": {
+				"kind": "reference",
+				"path": "::java::world::block::BlockEntity"
+			},
 			"furnace": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -86965,7 +87322,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -86995,7 +87352,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87061,6 +87418,16 @@
 						}
 					}
 				]
+			},
+			"jungle_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
 			},
 			"jungle_sign": {
 				"kind": "dispatcher",
@@ -87129,7 +87496,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87159,7 +87526,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87189,7 +87556,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87219,7 +87586,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87255,6 +87622,16 @@
 						}
 					}
 				]
+			},
+			"mangrove_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
 			},
 			"mangrove_sign": {
 				"kind": "dispatcher",
@@ -87354,6 +87731,16 @@
 					}
 				]
 			},
+			"oak_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"oak_sign": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -87411,7 +87798,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87422,6 +87809,30 @@
 					{
 						"kind": "static",
 						"value": "banner"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"oxidized_copper_chest": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "chest"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"oxidized_copper_golem_statue": {
+				"kind": "reference",
+				"path": "::java::world::block::BlockEntity"
+			},
+			"pale_oak_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87441,7 +87852,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87491,7 +87902,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87521,7 +87932,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87581,7 +87992,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87724,6 +88135,16 @@
 					}
 				]
 			},
+			"spruce_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"spruce_sign": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -87821,7 +88242,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "trapped_chest"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -87867,6 +88288,16 @@
 						}
 					}
 				]
+			},
+			"warped_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity"
 			},
 			"warped_sign": {
 				"kind": "dispatcher",
@@ -87934,6 +88365,76 @@
 					}
 				]
 			},
+			"waxed_copper_chest": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "chest"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"waxed_copper_golem_statue": {
+				"kind": "reference",
+				"path": "::java::world::block::BlockEntity"
+			},
+			"waxed_exposed_copper_chest": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "chest"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"waxed_exposed_copper_golem_statue": {
+				"kind": "reference",
+				"path": "::java::world::block::BlockEntity"
+			},
+			"waxed_oxidized_copper_chest": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "chest"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"waxed_oxidized_copper_golem_statue": {
+				"kind": "reference",
+				"path": "::java::world::block::BlockEntity"
+			},
+			"waxed_weathered_copper_chest": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "chest"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"waxed_weathered_copper_golem_statue": {
+				"kind": "reference",
+				"path": "::java::world::block::BlockEntity"
+			},
+			"weathered_copper_chest": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "chest"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
+			"weathered_copper_golem_statue": {
+				"kind": "reference",
+				"path": "::java::world::block::BlockEntity"
+			},
 			"white_banner": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -87949,7 +88450,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -88053,7 +88554,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "container"
+						"value": "shulker_box"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -88148,6 +88649,10 @@
 				"kind": "reference",
 				"path": "::java::world::block::banner::Banner"
 			},
+			"barrel": {
+				"kind": "reference",
+				"path": "::java::world::block::container::Container27"
+			},
 			"beacon": {
 				"kind": "reference",
 				"path": "::java::world::block::beacon::Beacon"
@@ -88188,6 +88693,10 @@
 				"kind": "reference",
 				"path": "::java::world::block::campfire::Campfire"
 			},
+			"chest": {
+				"kind": "reference",
+				"path": "::java::world::block::container::Container27"
+			},
 			"chiseled_bookshelf": {
 				"kind": "reference",
 				"path": "::java::world::block::chiseled_bookshelf::ChiseledBookshelf"
@@ -88203,10 +88712,6 @@
 			"conduit": {
 				"kind": "reference",
 				"path": "::java::world::block::conduit::Conduit"
-			},
-			"container": {
-				"kind": "reference",
-				"path": "::java::world::block::container::Container27"
 			},
 			"crafter": {
 				"kind": "reference",
@@ -88373,6 +88878,14 @@
 					}
 				]
 			},
+			"shelf": {
+				"kind": "reference",
+				"path": "::java::world::block::container::Container3"
+			},
+			"shulker_box": {
+				"kind": "reference",
+				"path": "::java::world::block::container::Container27"
+			},
 			"sign": {
 				"kind": "union",
 				"members": [
@@ -88429,6 +88942,10 @@
 			"test_instance_block": {
 				"kind": "reference",
 				"path": "::java::world::block::test_instance_block::TestInstanceBlock"
+			},
+			"trapped_chest": {
+				"kind": "reference",
+				"path": "::java::world::block::container::Container27"
 			},
 			"trial_spawner": {
 				"kind": "reference",
@@ -90760,6 +91277,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::OneArgument"
 			},
+			"find_top_surface": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::FindTopSurface",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
+			},
 			"flat_cache": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::OneArgument"
@@ -90769,6 +91302,10 @@
 				"path": "::java::data::worldgen::density_function::OneArgument"
 			},
 			"interpolated": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::OneArgument"
+			},
+			"invert": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::OneArgument"
 			},
@@ -91451,6 +91988,10 @@
 			"command_block_minecart": {
 				"kind": "reference",
 				"path": "::java::world::entity::minecart::CommandBlockMinecart"
+			},
+			"copper_golem": {
+				"kind": "reference",
+				"path": "::java::world::entity::mob::copper_golem::CopperGolem"
 			},
 			"cow": {
 				"kind": "reference",
@@ -94303,44 +94844,214 @@
 		},
 		"minecraft:jigsaw_max_distance_from_center": {
 			"%none": {
-				"kind": "int",
-				"valueRange": {
-					"kind": 0,
-					"min": 1,
-					"max": 128
-				}
+				"kind": "union",
+				"members": [
+					{
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 128
+						}
+					},
+					{
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::structure::JigsawDistanceLimits"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 128
+								}
+							}
+						],
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.9"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"%unknown": {
-				"kind": "int",
-				"valueRange": {
-					"kind": 0,
-					"min": 1,
-					"max": 128
-				}
+				"kind": "union",
+				"members": [
+					{
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 128
+						}
+					},
+					{
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::structure::JigsawDistanceLimits"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 128
+								}
+							}
+						],
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.9"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"beard_box": {
-				"kind": "int",
-				"valueRange": {
-					"kind": 0,
-					"min": 1,
-					"max": 116
-				}
+				"kind": "union",
+				"members": [
+					{
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 116
+						}
+					},
+					{
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::structure::JigsawDistanceLimits"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 116
+								}
+							}
+						],
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.9"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"beard_thin": {
-				"kind": "int",
-				"valueRange": {
-					"kind": 0,
-					"min": 1,
-					"max": 116
-				}
+				"kind": "union",
+				"members": [
+					{
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 116
+						}
+					},
+					{
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::structure::JigsawDistanceLimits"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 116
+								}
+							}
+						],
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.9"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"bury": {
-				"kind": "int",
-				"valueRange": {
-					"kind": 0,
-					"min": 1,
-					"max": 116
-				}
+				"kind": "union",
+				"members": [
+					{
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 116
+						}
+					},
+					{
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::structure::JigsawDistanceLimits"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 116
+								}
+							}
+						],
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.9"
+									}
+								}
+							}
+						]
+					}
+				]
 			}
 		},
 		"minecraft:level_based_value": {
