@@ -10,7 +10,10 @@ type Pack<TOldRange, TNewRange> = (
 type OldPack<TOldRange> = BasePack<OldPackVersionInfo<TOldRange>, OldPackOverlays<TOldRange>>
 
 type IntermediatePack<TOldRange, TNewRange> =
-	BasePack<IntermediatePackVersionInfo<TOldRange, TNewRange>, IntermediatePackOverlays<TOldRange>>
+	BasePack<
+		IntermediatePackVersionInfo<TOldRange, TNewRange>,
+		NewOrIntermediatePackOverlays<TOldRange, TNewRange>
+	>
 
 type NewPack<TOldRange, TNewRange> =
 	BasePack<NewPackVersionInfo<TNewRange>, NewOrIntermediatePackOverlays<TOldRange, TNewRange>>
