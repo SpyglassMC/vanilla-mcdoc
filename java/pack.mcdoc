@@ -1,14 +1,19 @@
 use ::java::util::text::Text
 use ::java::util::InclusiveRange
 
-type ResourcePack = Pack<int @ 1..64, int @ 65..>
-type DataPack = Pack<int @ 4..81, int @ 82..>
-
 type Pack<TOldRange, TNewRange> = (
-	BasePack<OldPackVersionInfo<TOldRange>, OldPackOverlays<TOldRange>>
-	| BasePack<NewPackVersionInfo<TNewRange>, NewOrIntermediatePackOverlays<TOldRange, TNewRange>>
-	| BasePack<IntermediatePackVersionInfo<TOldRange, TNewRange>, IntermediatePackOverlays<TOldRange>>
+	OldPack<TOldRange>
+	| IntermediatePack<TOldRange, TNewRange>
+	| NewPack<TOldRange, TNewRange>
 )
+
+type OldPack<TOldRange> = BasePack<OldPackVersionInfo<TOldRange>, OldPackOverlays<TOldRange>>
+
+type IntermediatePack<TOldRange, TNewRange> =
+	BasePack<IntermediatePackVersionInfo<TOldRange, TNewRange>, IntermediatePackOverlays<TOldRange>>
+
+type NewPack<TOldRange, TNewRange> =
+	BasePack<NewPackVersionInfo<TNewRange>, NewOrIntermediatePackOverlays<TOldRange, TNewRange>>
 
 // `supported_formats` and `overlays` were introduced in 1.20.2,
 // but multi-version packs will use these with an older pack_format.
