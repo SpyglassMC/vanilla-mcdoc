@@ -1,5 +1,5 @@
 {
-	"ref": "0d3a06cf31aea3bb59690a8644e4e743e07a2c02",
+	"ref": "61ff0cbb786299f06659f05a24b95f2b85349933",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -294,11 +294,42 @@
 					"kind": "pair",
 					"key": "type",
 					"type": {
-						"kind": "reference",
-						"path": "::java::assets::atlas::SpriteSourceType",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id"
+								"kind": "reference",
+								"path": "::java::assets::atlas::SpriteSourceType",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::assets::atlas::SpriteSourceType",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "id"
+									}
+								]
 							}
 						]
 					}
@@ -58058,6 +58089,82 @@
 				}
 			]
 		},
+		"::java::util::text::AtlasNbtText": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to `minecraft:blocks`\n",
+					"key": "atlas",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "atlas"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "sprite",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "object"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::TextBase"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.9"
+						}
+					}
+				}
+			]
+		},
 		"::java::util::text::BlockNbtText": {
 			"kind": "struct",
 			"fields": [
@@ -60919,6 +61026,82 @@
 							"type": {
 								"kind": "reference",
 								"path": "::java::util::text::TextNbtBase"
+							}
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"desc": "Defaults to `minecraft:blocks`\n",
+							"key": "atlas",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "atlas"
+											}
+										}
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "sprite",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "type",
+							"type": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "object"
+								}
+							},
+							"optional": true
+						},
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::util::text::TextBase"
+							}
+						}
+					],
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
 							}
 						}
 					]
@@ -78067,23 +78250,23 @@
 		},
 		"::java::world::entity::mob::copper_golem::WeatherState": {
 			"kind": "enum",
-			"enumKind": "int",
+			"enumKind": "string",
 			"values": [
 				{
 					"identifier": "Unaffected",
-					"value": 0
+					"value": "unaffected"
 				},
 				{
 					"identifier": "Exposed",
-					"value": 1
+					"value": "exposed"
 				},
 				{
 					"identifier": "Weathered",
-					"value": 2
+					"value": "weathered"
 				},
 				{
 					"identifier": "Oxidized",
-					"value": 3
+					"value": "oxidized"
 				}
 			]
 		},
