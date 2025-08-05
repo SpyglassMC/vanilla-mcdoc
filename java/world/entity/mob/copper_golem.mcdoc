@@ -9,9 +9,9 @@ dispatch minecraft:entity[copper_golem] to struct CopperGolem {
 	weather_state?: WeatherState,
 }
 
-enum(int) WeatherState {
-	Unaffected = 0,
-	Exposed = 1,
-	Weathered = 2,
-	Oxidized = 3,
+enum(string) WeatherState {
+	Unaffected = "unaffected",
+	Exposed = "exposed",
+	Weathered = "weathered",
+	Oxidized = "oxidized",
 }
