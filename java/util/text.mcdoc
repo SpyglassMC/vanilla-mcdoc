@@ -81,7 +81,7 @@ type TextObject = (
 		atlas?: #[id="atlas"] string,
 		sprite: #[id="texture"] string,
 		type?: "object",
-		...TextNbtBase,
+		...TextBase,
 	} |
 )
 
