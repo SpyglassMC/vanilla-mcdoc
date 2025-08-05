@@ -75,6 +75,14 @@ type TextObject = (
 		type?: "nbt",
 		...TextNbtBase,
 	} |
+	#[since="1.21.9"]
+	struct AtlasNbtText {
+		/// Defaults to `minecraft:blocks`
+		atlas?: #[id="atlas"] string,
+		sprite: #[id="texture"] string,
+		type?: "object",
+		...TextBase,
+	} |
 )
 
 struct TextNbtBase {
