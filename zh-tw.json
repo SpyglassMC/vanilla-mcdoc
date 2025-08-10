@@ -102,6 +102,7 @@
 	"::java::assets::texture_meta::TextureAnimation.frames.index": "一個由上開始與幀位置對應的數字，首幀為0。",
 	"::java::assets::texture_meta::TextureAnimation.frames.time": "顯示此幀的時間刻，覆寫上面的`frametime`。",
 	"::java::assets::texture_meta::TextureAnimation.frametime": "設定每幀持續多少遊戲刻。預設為1。",
+	"::java::assets::texture_meta::TextureAnimation.height": "圖塊的高度，作為直接比例而不是像素。資源包可以使用此功能來擁有非完美正方形的幀。",
 	"::java::data::advancement::Advancement.criteria": "如果沒有指定`requirements`，所有定義的條件都要達成。",
 	"::java::data::advancement::Advancement.display": "欄位存在時，能在介面中查看這個進度。",
 	"::java::data::advancement::Advancement.parent": "如果這個欄位不存在，這個進度會被當成根進度。\n循環引用會導致載入失敗。",
