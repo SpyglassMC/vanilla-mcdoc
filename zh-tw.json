@@ -100,6 +100,7 @@
 	"::java::assets::texture_meta::NineSlice.stretch_inner": "預設為`false`。",
 	"::java::assets::texture_meta::TextureAnimation.frames": "預設由上到下顯示所有幀。",
 	"::java::assets::texture_meta::TextureAnimation.frames.index": "一個由上開始與幀位置對應的數字，首幀為0。",
+	"::java::assets::texture_meta::TextureAnimation.frames.time": "顯示此幀的時間（以遊戲刻為單位），覆蓋上面的`frametime`。",
 	"::java::data::advancement::Advancement.criteria": "如果沒有指定`requirements`，所有定義的條件都要達成。",
 	"::java::data::advancement::Advancement.display": "欄位存在時，能在介面中查看這個進度。",
 	"::java::data::advancement::Advancement.parent": "如果這個欄位不存在，這個進度會被當成根進度。\n循環引用會導致載入失敗。",
