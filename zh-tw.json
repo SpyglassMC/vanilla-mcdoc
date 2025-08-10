@@ -31,6 +31,8 @@
 	"::java::assets::item_definition::CompassTarget.Recovery": "指向玩家最後死亡的位置。",
 	"::java::assets::item_definition::CompassTarget.Spawn": "指向世界重生點。",
 	"::java::assets::item_definition::ComponentFlags.predicate": "需要檢查的組件述詞。",
+	"::java::assets::item_definition::ComponentFlags.value": "謂詞特定的值。",
+	"::java::assets::item_definition::ComponentStrings.component": "要檢查其值的組件類型。\n如果所選值來自客戶端無法訪問的註冊表，\n則該條目將被靜默忽略。",
 	"::java::assets::item_definition::ConstantTint.value": "用於塗色的顏色。",
 	"::java::assets::item_definition::Count.normalize": "設定為`false`時，回傳物品的數量。\n設定為`true`時，回傳物品數量佔最大堆疊數的比例（範圍是`0..1`）。\n預設值`true`。",
 	"::java::assets::item_definition::CustomModelDataFlags.index": "`custom_model_data`元件中`flags`列表的索引值。預設值`0`。",
