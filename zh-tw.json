@@ -94,7 +94,7 @@
 	"::java::assets::sounds::SoundType.File": "指向聲音檔案。",
 	"::java::assets::sounds::SoundType.SoundEvent": "指向另一個聲音事件。",
 	"::java::assets::texture_meta::ColormapTextureMeta.blur": "靠近觀看時導致材質模糊。預設為 false。",
-	"::java::assets::texture_meta::ColormapTextureMeta.clamp": "使紋理在原本會平鋪的情況下拉伸，例如在陰影上。預設為false。",
+	"::java::assets::texture_meta::ColormapTextureMeta.clamp": "使材質在原本會平鋪的情況下拉伸，例如在陰影上。預設為false。",
 	"::java::data::advancement::Advancement.criteria": "如果沒有指定`requirements`，所有定義的條件都要達成。",
 	"::java::data::advancement::Advancement.display": "欄位存在時，能在介面中查看這個進度。",
 	"::java::data::advancement::Advancement.parent": "如果這個欄位不存在，這個進度會被當成根進度。\n循環引用會導致載入失敗。",
