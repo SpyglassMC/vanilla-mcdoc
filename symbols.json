@@ -1,5 +1,5 @@
 {
-	"ref": "b0eafd65ec96dd6ef0dba543bb4553bad0211216",
+	"ref": "79b53cc4aa18078fa830d92dba4e666d8597709f",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -5113,6 +5113,22 @@
 				{
 					"identifier": "Fixed",
 					"value": "fixed"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"identifier": "OnShelf",
+					"value": "on_shelf"
 				}
 			]
 		},
@@ -5155,6 +5171,22 @@
 				{
 					"identifier": "Fixed",
 					"value": "fixed"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"identifier": "OnShelf",
+					"value": "on_shelf"
 				}
 			]
 		},
@@ -20918,17 +20950,21 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Defaults to 1.0. Scaling of the distance between the center of the explosion and the block\n",
 					"key": "scaling",
 					"type": {
 						"kind": "float"
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
+					"desc": "Defaults to 1.0. Scaling of the speed of the particle\n",
 					"key": "speed",
 					"type": {
 						"kind": "float"
-					}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -58151,82 +58187,6 @@
 				}
 			]
 		},
-		"::java::util::text::AtlasNbtText": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Defaults to `minecraft:blocks`\n",
-					"key": "atlas",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "atlas"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "sprite",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "texture"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "object"
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::text::TextBase"
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.21.9"
-						}
-					}
-				}
-			]
-		},
 		"::java::util::text::BlockNbtText": {
 			"kind": "struct",
 			"fields": [
@@ -60060,6 +60020,82 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::util::text::Text"
+					}
+				}
+			]
+		},
+		"::java::util::text::SpriteText": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to `minecraft:blocks`\n",
+					"key": "atlas",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "atlas"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "sprite",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "object"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::TextBase"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.9"
+						}
 					}
 				}
 			]
