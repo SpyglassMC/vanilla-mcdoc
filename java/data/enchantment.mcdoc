@@ -223,6 +223,8 @@ struct ExplodeEntityEffect {
 	block_interaction: BlockInteraction,
 	small_particle: Particle,
 	large_particle: Particle,
+	#[since="1.21.9"]
+	block_particles?: [ExplosionParticleInfo],
 	sound: SoundEventRef,
 }
 
@@ -237,6 +239,15 @@ enum(string) BlockInteraction {
 	TNT = "tnt",
 	/// Triggers redstone-activated blocks.
 	Trigger = "trigger",
+}
+
+struct ExplosionParticleInfo {
+	weight: int @ 1..,
+	particle: Particle,
+	// scaling of the distance between the center of the explosion and the block
+	scaling: float,
+	// scaling of the speed of the particle
+	speed: float,
 }
 
 dispatch minecraft:entity_effect[explode] to ExplodeEntityEffect
