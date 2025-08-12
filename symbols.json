@@ -1,5 +1,5 @@
 {
-	"ref": "61ff0cbb786299f06659f05a24b95f2b85349933",
+	"ref": "b0eafd65ec96dd6ef0dba543bb4553bad0211216",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -20862,10 +20862,72 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"key": "block_particles",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::enchantment::ExplosionParticleInfo"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"key": "sound",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::util::SoundEventRef"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::ExplosionParticleInfo": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "weight",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::particle::Particle"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "scaling",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "speed",
+					"type": {
+						"kind": "float"
 					}
 				}
 			]
