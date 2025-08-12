@@ -69,6 +69,8 @@ enum(string) ItemDisplayContext {
 	Head = "head",
 	Ground = "ground",
 	Fixed = "fixed",
+	#[since="1.21.9"]
+	OnShelf = "on_shelf",
 }
 
 enum(string) CustomizableItemDisplayContext {
@@ -80,6 +82,8 @@ enum(string) CustomizableItemDisplayContext {
 	Head = "head",
 	Ground = "ground",
 	Fixed = "fixed",
+	#[since="1.21.9"]
+	OnShelf = "on_shelf",
 }
 
 enum(string) Predicates {
