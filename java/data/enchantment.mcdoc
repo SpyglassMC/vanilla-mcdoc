@@ -244,10 +244,10 @@ enum(string) BlockInteraction {
 struct ExplosionParticleInfo {
 	weight: int @ 1..,
 	particle: Particle,
-	// scaling of the distance between the center of the explosion and the block
-	scaling: float,
-	// scaling of the speed of the particle
-	speed: float,
+	/// Defaults to 1.0. Scaling of the distance between the center of the explosion and the block
+	scaling?: float,
+	/// Defaults to 1.0. Scaling of the speed of the particle
+	speed?: float,
 }
 
 dispatch minecraft:entity_effect[explode] to ExplodeEntityEffect
