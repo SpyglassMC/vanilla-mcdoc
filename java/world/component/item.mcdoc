@@ -521,17 +521,34 @@ dispatch minecraft:data_component[profile] to (
 	string |
 )
 
-struct Profile {
-	/// Username of a player profile.
-	name?: string,
-	/// UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.
-	id?: int[] @ 4,
-	/// Resolved textures hosted on the minecraft CDN.
-	properties?: (
-		#[canonical] [ProfileProperty] |
-		ProfilePropertyMap |
-	)
-}
+type Profile = (
+	#[until="1.21.9"]
+	struct {
+		/// Username of a player profile.
+		name?: string,
+		/// UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.
+		id?: int[] @ 4,
+		/// Resolved textures hosted on the minecraft CDN.
+		properties?: (
+			#[canonical] [ProfileProperty] |
+			ProfilePropertyMap |
+		)
+	} |
+	#[since="1.21.9"]
+	struct {
+		/// Username of a player profile.
+		/// If `id` doesn't exist, this field is used to fetch the current skin of the profile.
+		name?: string,
+		/// UUID of the player profile.
+		/// If `name` doesn't exist, this field is used to fetch the current skin of the profile.
+		id?: int[] @ 4,
+		/// Resolved textures hosted on the minecraft CDN.
+		properties?: (
+			#[canonical] [ProfileProperty] |
+			ProfilePropertyMap |
+		)
+	} |
+)
 
 struct ProfileProperty {
 	// TODO: Provide better doc for this

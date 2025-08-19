@@ -27,10 +27,12 @@ dispatch minecraft:block_entity[dispenser, dropper] to struct Container9 {
 	Items?: [SlottedItem<byte @ 0..8>] @ 0..9,
 }
 
-dispatch minecraft:block_entity[shelf] to struct Container3 {
+dispatch minecraft:block_entity[shelf] to struct Shelf {
 	...ContainerBase,
 	/// Slots from 0 to 2.
 	Items?: [SlottedItem<byte @ 0..2>] @ 0..3,
+	/// Defaults to `false`.
+	align_items_to_bottom?: boolean,
 }
 
 dispatch minecraft:block_entity[hopper] to struct Hopper {
