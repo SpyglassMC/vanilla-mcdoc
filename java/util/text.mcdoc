@@ -87,7 +87,7 @@ type TextObject = (
 	#[since="1.21.9"]
 	struct PlayerHeadText {
 		player: minecraft:data_component[profile],
-		/// Whether the head layer is rendered. Defaults to `false`.
+		/// Whether the head layer is rendered. Defaults to `true`.
 		hat?: boolean,
 		object?: "player",
 		type?: "object",
