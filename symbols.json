@@ -1,5 +1,5 @@
 {
-	"ref": "d0b8114634c910590f40ab868ecd9242da0e0edc",
+	"ref": "727b78e45256c6a60780168a453af98af54fe4b4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -57916,6 +57916,342 @@
 				}
 			]
 		},
+		"::java::util::profile::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Username of a player profile.\n",
+					"key": "name",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.\n",
+					"key": "id",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Resolved textures hosted on the minecraft CDN.\n",
+					"key": "properties",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::util::profile::ProfileProperty"
+								},
+								"attributes": [
+									{
+										"name": "canonical"
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::util::profile::ProfilePropertyMap"
+							}
+						]
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.9"
+						}
+					}
+				},
+				{
+					"name": "canonical"
+				}
+			]
+		},
+		"::java::util::profile::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Username of a player profile.\n\nIf `id` doesn't exist, this field is used to fetch the current skin of the profile.\n",
+					"key": "name",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "UUID of the player profile.\n\nIf `name` doesn't exist, this field is used to fetch the current skin of the profile.\n",
+					"key": "id",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Resolved textures hosted on the minecraft CDN.\n",
+					"key": "properties",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::util::profile::ProfileProperty"
+								},
+								"attributes": [
+									{
+										"name": "canonical"
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::util::profile::ProfilePropertyMap"
+							}
+						]
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.9"
+						}
+					}
+				},
+				{
+					"name": "canonical"
+				}
+			]
+		},
+		"::java::util::profile::Profile": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"desc": "Username of a player profile.\n",
+							"key": "name",
+							"type": {
+								"kind": "string"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.\n",
+							"key": "id",
+							"type": {
+								"kind": "int_array",
+								"lengthRange": {
+									"kind": 0,
+									"min": 4,
+									"max": 4
+								}
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Resolved textures hosted on the minecraft CDN.\n",
+							"key": "properties",
+							"type": {
+								"kind": "union",
+								"members": [
+									{
+										"kind": "list",
+										"item": {
+											"kind": "reference",
+											"path": "::java::util::profile::ProfileProperty"
+										},
+										"attributes": [
+											{
+												"name": "canonical"
+											}
+										]
+									},
+									{
+										"kind": "reference",
+										"path": "::java::util::profile::ProfilePropertyMap"
+									}
+								]
+							},
+							"optional": true
+						}
+					],
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						},
+						{
+							"name": "canonical"
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"desc": "Username of a player profile.\n\nIf `id` doesn't exist, this field is used to fetch the current skin of the profile.\n",
+							"key": "name",
+							"type": {
+								"kind": "string"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "UUID of the player profile.\n\nIf `name` doesn't exist, this field is used to fetch the current skin of the profile.\n",
+							"key": "id",
+							"type": {
+								"kind": "int_array",
+								"lengthRange": {
+									"kind": 0,
+									"min": 4,
+									"max": 4
+								}
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Resolved textures hosted on the minecraft CDN.\n",
+							"key": "properties",
+							"type": {
+								"kind": "union",
+								"members": [
+									{
+										"kind": "list",
+										"item": {
+											"kind": "reference",
+											"path": "::java::util::profile::ProfileProperty"
+										},
+										"attributes": [
+											{
+												"name": "canonical"
+											}
+										]
+									},
+									{
+										"kind": "reference",
+										"path": "::java::util::profile::ProfilePropertyMap"
+									}
+								]
+							},
+							"optional": true
+						}
+					],
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						},
+						{
+							"name": "canonical"
+						}
+					]
+				},
+				{
+					"kind": "string"
+				}
+			]
+		},
+		"::java::util::profile::ProfileProperty": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Usually `textures`.\n",
+					"key": "name",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Base64 encoded JSON value of the texture index.\n",
+					"key": "value",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Verifies the hash of the resulting texture.\n",
+					"key": "signature",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::util::profile::ProfilePropertyMap": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
+					"key": {
+						"kind": "string"
+					},
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string"
+						}
+					}
+				}
+			]
+		},
 		"::java::util::slot::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
@@ -59217,14 +59553,8 @@
 					"kind": "pair",
 					"key": "player",
 					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "static",
-								"value": "profile"
-							}
-						],
-						"registry": "minecraft:data_component"
+						"kind": "reference",
+						"path": "::java::util::profile::Profile"
 					}
 				},
 				{
@@ -61306,14 +61636,8 @@
 							"kind": "pair",
 							"key": "player",
 							"type": {
-								"kind": "dispatcher",
-								"parallelIndices": [
-									{
-										"kind": "static",
-										"value": "profile"
-									}
-								],
-								"registry": "minecraft:data_component"
+								"kind": "reference",
+								"path": "::java::util::profile::Profile"
 							}
 						},
 						{
@@ -67701,140 +68025,6 @@
 			"kind": "struct",
 			"fields": []
 		},
-		"::java::world::component::item::<anonymous 7>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Username of a player profile.\n",
-					"key": "name",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.\n",
-					"key": "id",
-					"type": {
-						"kind": "int_array",
-						"lengthRange": {
-							"kind": 0,
-							"min": 4,
-							"max": 4
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Resolved textures hosted on the minecraft CDN.\n",
-					"key": "properties",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::world::component::item::ProfileProperty"
-								},
-								"attributes": [
-									{
-										"name": "canonical"
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::world::component::item::ProfilePropertyMap"
-							}
-						]
-					},
-					"optional": true
-				}
-			],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.21.9"
-						}
-					}
-				}
-			]
-		},
-		"::java::world::component::item::<anonymous 8>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Username of a player profile.\n\nIf `id` doesn't exist, this field is used to fetch the current skin of the profile.\n",
-					"key": "name",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "UUID of the player profile.\n\nIf `name` doesn't exist, this field is used to fetch the current skin of the profile.\n",
-					"key": "id",
-					"type": {
-						"kind": "int_array",
-						"lengthRange": {
-							"kind": 0,
-							"min": 4,
-							"max": 4
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Resolved textures hosted on the minecraft CDN.\n",
-					"key": "properties",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::world::component::item::ProfileProperty"
-								},
-								"attributes": [
-									{
-										"name": "canonical"
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::world::component::item::ProfilePropertyMap"
-							}
-						]
-					},
-					"optional": true
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.21.9"
-						}
-					}
-				}
-			]
-		},
 		"::java::world::component::item::AdventureModePredicate": {
 			"kind": "union",
 			"members": [
@@ -69676,193 +69866,6 @@
 						}
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::world::component::item::Profile": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "struct",
-					"fields": [
-						{
-							"kind": "pair",
-							"desc": "Username of a player profile.\n",
-							"key": "name",
-							"type": {
-								"kind": "string"
-							},
-							"optional": true
-						},
-						{
-							"kind": "pair",
-							"desc": "UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.\n",
-							"key": "id",
-							"type": {
-								"kind": "int_array",
-								"lengthRange": {
-									"kind": 0,
-									"min": 4,
-									"max": 4
-								}
-							},
-							"optional": true
-						},
-						{
-							"kind": "pair",
-							"desc": "Resolved textures hosted on the minecraft CDN.\n",
-							"key": "properties",
-							"type": {
-								"kind": "union",
-								"members": [
-									{
-										"kind": "list",
-										"item": {
-											"kind": "reference",
-											"path": "::java::world::component::item::ProfileProperty"
-										},
-										"attributes": [
-											{
-												"name": "canonical"
-											}
-										]
-									},
-									{
-										"kind": "reference",
-										"path": "::java::world::component::item::ProfilePropertyMap"
-									}
-								]
-							},
-							"optional": true
-						}
-					],
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.9"
-								}
-							}
-						}
-					]
-				},
-				{
-					"kind": "struct",
-					"fields": [
-						{
-							"kind": "pair",
-							"desc": "Username of a player profile.\n\nIf `id` doesn't exist, this field is used to fetch the current skin of the profile.\n",
-							"key": "name",
-							"type": {
-								"kind": "string"
-							},
-							"optional": true
-						},
-						{
-							"kind": "pair",
-							"desc": "UUID of the player profile.\n\nIf `name` doesn't exist, this field is used to fetch the current skin of the profile.\n",
-							"key": "id",
-							"type": {
-								"kind": "int_array",
-								"lengthRange": {
-									"kind": 0,
-									"min": 4,
-									"max": 4
-								}
-							},
-							"optional": true
-						},
-						{
-							"kind": "pair",
-							"desc": "Resolved textures hosted on the minecraft CDN.\n",
-							"key": "properties",
-							"type": {
-								"kind": "union",
-								"members": [
-									{
-										"kind": "list",
-										"item": {
-											"kind": "reference",
-											"path": "::java::world::component::item::ProfileProperty"
-										},
-										"attributes": [
-											{
-												"name": "canonical"
-											}
-										]
-									},
-									{
-										"kind": "reference",
-										"path": "::java::world::component::item::ProfilePropertyMap"
-									}
-								]
-							},
-							"optional": true
-						}
-					],
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.9"
-								}
-							}
-						}
-					]
-				}
-			]
-		},
-		"::java::world::component::item::ProfileProperty": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Usually `textures`.\n",
-					"key": "name",
-					"type": {
-						"kind": "string"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Base64 encoded JSON value of the texture index.\n",
-					"key": "value",
-					"type": {
-						"kind": "string"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Verifies the hash of the resulting texture.\n",
-					"key": "signature",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::world::component::item::ProfilePropertyMap": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
-					"key": {
-						"kind": "string"
-					},
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "string"
-						}
-					}
 				}
 			]
 		},
@@ -91159,21 +91162,8 @@
 				]
 			},
 			"profile": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "reference",
-						"path": "::java::world::component::item::Profile",
-						"attributes": [
-							{
-								"name": "canonical"
-							}
-						]
-					},
-					{
-						"kind": "string"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::util::profile::Profile"
 			},
 			"provides_banner_patterns": {
 				"kind": "string",
