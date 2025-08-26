@@ -1,5 +1,5 @@
 {
-	"ref": "79b53cc4aa18078fa830d92dba4e666d8597709f",
+	"ref": "d0b8114634c910590f40ab868ecd9242da0e0edc",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -59210,6 +59210,77 @@
 				}
 			]
 		},
+		"::java::util::text::PlayerHeadText": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "player",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "static",
+								"value": "profile"
+							}
+						],
+						"registry": "minecraft:data_component"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the head layer is rendered. Defaults to `true`.\n",
+					"key": "hat",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "object",
+					"type": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "player"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "object"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::TextBase"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.9"
+						}
+					}
+				}
+			]
+		},
 		"::java::util::text::RunCommand": {
 			"kind": "struct",
 			"fields": [
@@ -60029,7 +60100,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Defaults to `minecraft:blocks`\n",
+					"desc": "Defaults to `minecraft:blocks`.\n",
 					"key": "atlas",
 					"type": {
 						"kind": "string",
@@ -60066,6 +60137,18 @@
 							}
 						]
 					}
+				},
+				{
+					"kind": "pair",
+					"key": "object",
+					"type": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "atlas"
+						}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -61133,7 +61216,7 @@
 					"fields": [
 						{
 							"kind": "pair",
-							"desc": "Defaults to `minecraft:blocks`\n",
+							"desc": "Defaults to `minecraft:blocks`.\n",
 							"key": "atlas",
 							"type": {
 								"kind": "string",
@@ -61170,6 +61253,89 @@
 									}
 								]
 							}
+						},
+						{
+							"kind": "pair",
+							"key": "object",
+							"type": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "atlas"
+								}
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "type",
+							"type": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "object"
+								}
+							},
+							"optional": true
+						},
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::util::text::TextBase"
+							}
+						}
+					],
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "player",
+							"type": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "static",
+										"value": "profile"
+									}
+								],
+								"registry": "minecraft:data_component"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Whether the head layer is rendered. Defaults to `true`.\n",
+							"key": "hat",
+							"type": {
+								"kind": "boolean"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "object",
+							"type": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "player"
+								}
+							},
+							"optional": true
 						},
 						{
 							"kind": "pair",
@@ -63141,49 +63307,6 @@
 				}
 			]
 		},
-		"::java::world::block::container::Container3": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::block::container::ContainerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Slots from 0 to 2.\n",
-					"key": "Items",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "concrete",
-							"child": {
-								"kind": "reference",
-								"path": "::java::util::slot::SlottedItem"
-							},
-							"typeArgs": [
-								{
-									"kind": "byte",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 2
-									}
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 3
-						}
-					},
-					"optional": true
-				}
-			]
-		},
 		"::java::world::block::container::Container9": {
 			"kind": "struct",
 			"fields": [
@@ -63347,6 +63470,58 @@
 					"key": "TransferCooldown",
 					"type": {
 						"kind": "int"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::block::container::Shelf": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::block::container::ContainerBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Slots from 0 to 2.\n",
+					"key": "Items",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::util::slot::SlottedItem"
+							},
+							"typeArgs": [
+								{
+									"kind": "byte",
+									"valueRange": {
+										"kind": 0,
+										"min": 0,
+										"max": 2
+									}
+								}
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `false`.\n",
+					"key": "align_items_to_bottom",
+					"type": {
+						"kind": "boolean"
 					},
 					"optional": true
 				}
@@ -67526,6 +67701,140 @@
 			"kind": "struct",
 			"fields": []
 		},
+		"::java::world::component::item::<anonymous 7>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Username of a player profile.\n",
+					"key": "name",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.\n",
+					"key": "id",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Resolved textures hosted on the minecraft CDN.\n",
+					"key": "properties",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::world::component::item::ProfileProperty"
+								},
+								"attributes": [
+									{
+										"name": "canonical"
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::world::component::item::ProfilePropertyMap"
+							}
+						]
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.9"
+						}
+					}
+				}
+			]
+		},
+		"::java::world::component::item::<anonymous 8>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Username of a player profile.\n\nIf `id` doesn't exist, this field is used to fetch the current skin of the profile.\n",
+					"key": "name",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "UUID of the player profile.\n\nIf `name` doesn't exist, this field is used to fetch the current skin of the profile.\n",
+					"key": "id",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Resolved textures hosted on the minecraft CDN.\n",
+					"key": "properties",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::world::component::item::ProfileProperty"
+								},
+								"attributes": [
+									{
+										"name": "canonical"
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::world::component::item::ProfilePropertyMap"
+							}
+						]
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.9"
+						}
+					}
+				}
+			]
+		},
 		"::java::world::component::item::AdventureModePredicate": {
 			"kind": "union",
 			"members": [
@@ -69371,57 +69680,141 @@
 			]
 		},
 		"::java::world::component::item::Profile": {
-			"kind": "struct",
-			"fields": [
+			"kind": "union",
+			"members": [
 				{
-					"kind": "pair",
-					"desc": "Username of a player profile.\n",
-					"key": "name",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.\n",
-					"key": "id",
-					"type": {
-						"kind": "int_array",
-						"lengthRange": {
-							"kind": 0,
-							"min": 4,
-							"max": 4
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Resolved textures hosted on the minecraft CDN.\n",
-					"key": "properties",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::world::component::item::ProfileProperty"
-								},
-								"attributes": [
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"desc": "Username of a player profile.\n",
+							"key": "name",
+							"type": {
+								"kind": "string"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "UUID of the owner. Used to update the other tags when the chunk loads or the holder logs in, in case the owner's name has changed.\n",
+							"key": "id",
+							"type": {
+								"kind": "int_array",
+								"lengthRange": {
+									"kind": 0,
+									"min": 4,
+									"max": 4
+								}
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Resolved textures hosted on the minecraft CDN.\n",
+							"key": "properties",
+							"type": {
+								"kind": "union",
+								"members": [
 									{
-										"name": "canonical"
+										"kind": "list",
+										"item": {
+											"kind": "reference",
+											"path": "::java::world::component::item::ProfileProperty"
+										},
+										"attributes": [
+											{
+												"name": "canonical"
+											}
+										]
+									},
+									{
+										"kind": "reference",
+										"path": "::java::world::component::item::ProfilePropertyMap"
 									}
 								]
 							},
-							{
-								"kind": "reference",
-								"path": "::java::world::component::item::ProfilePropertyMap"
+							"optional": true
+						}
+					],
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
 							}
-						]
-					},
-					"optional": true
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"desc": "Username of a player profile.\n\nIf `id` doesn't exist, this field is used to fetch the current skin of the profile.\n",
+							"key": "name",
+							"type": {
+								"kind": "string"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "UUID of the player profile.\n\nIf `name` doesn't exist, this field is used to fetch the current skin of the profile.\n",
+							"key": "id",
+							"type": {
+								"kind": "int_array",
+								"lengthRange": {
+									"kind": 0,
+									"min": 4,
+									"max": 4
+								}
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Resolved textures hosted on the minecraft CDN.\n",
+							"key": "properties",
+							"type": {
+								"kind": "union",
+								"members": [
+									{
+										"kind": "list",
+										"item": {
+											"kind": "reference",
+											"path": "::java::world::component::item::ProfileProperty"
+										},
+										"attributes": [
+											{
+												"name": "canonical"
+											}
+										]
+									},
+									{
+										"kind": "reference",
+										"path": "::java::world::component::item::ProfilePropertyMap"
+									}
+								]
+							},
+							"optional": true
+						}
+					],
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
@@ -89161,7 +89554,7 @@
 			},
 			"shelf": {
 				"kind": "reference",
-				"path": "::java::world::block::container::Container3"
+				"path": "::java::world::block::container::Shelf"
 			},
 			"shulker_box": {
 				"kind": "reference",
