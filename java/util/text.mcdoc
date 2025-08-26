@@ -1,4 +1,5 @@
 use ::java::util::color::RGBA
+use ::java::util::profile::Profile
 use ::java::world::item::ItemStack
 use ::java::world::component::DataComponentPatch
 use ::java::data::dialog::Dialog
@@ -86,7 +87,7 @@ type TextObject = (
 	} |
 	#[since="1.21.9"]
 	struct PlayerHeadText {
-		player: minecraft:data_component[profile],
+		player: Profile,
 		/// Whether the head layer is rendered. Defaults to `true`.
 		hat?: boolean,
 		object?: "player",
