@@ -77,9 +77,19 @@ type TextObject = (
 	} |
 	#[since="1.21.9"]
 	struct SpriteText {
-		/// Defaults to `minecraft:blocks`
+		/// Defaults to `minecraft:blocks`.
 		atlas?: #[id="atlas"] string,
 		sprite: #[id="texture"] string,
+		object?: "atlas",
+		type?: "object",
+		...TextBase,
+	} |
+	#[since="1.21.9"]
+	struct PlayerHeadText {
+		player: minecraft:data_component[profile],
+		/// Whether the head layer is rendered. Defaults to `false`.
+		hat?: boolean,
+		object?: "player",
 		type?: "object",
 		...TextBase,
 	} |
