@@ -8,6 +8,7 @@
 	"::java::assets::atlas::Unstitch.divisor_x": "Если задана ширина ресурса, регионы будут использовать пиксельные координаты.",
 	"::java::assets::atlas::Unstitch.divisor_y": "Если задана высота ресурса, регионы будут использовать пиксельные координаты.",
 	"::java::assets::block_state_definition::BlockStateDefinitionMultipartEntry.when": "Одно условие или список, как минимум с одним условием.",
+	"::java::assets::block_state_definition::ModelVariantBase.uvlock": "Если установлено значение `true`, текстура не поворачивается вместе с блоком.",
 	"::java::assets::equipment::Dyeable.color_when_undyed": "Если указано, этот слой будет окрашен в цвет, содержащийся в компоненте `dyed_color`.\nЕсли элемент не подлежит окрашиванию или не окрашен, он будет окрашен в этот цвет.\nЕсли не указано и элемент не окрашен, слой будет скрыт.",
 	"::java::assets::equipment::Equipment.layers": "Список слоев для каждого типа слоя модели.",
 	"::java::assets::equipment::Layer.dyeable": "Настраивает, как этот слой ведет себя, когда окрашен (в предмете с тегом `#dyeable` и с компонентом `dyed_color`).",
