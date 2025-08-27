@@ -1,5 +1,5 @@
 {
-	"ref": "727b78e45256c6a60780168a453af98af54fe4b4",
+	"ref": "e3e07ea6048b1a2afb780aa1e516736d30e42729",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -56941,6 +56941,30 @@
 				}
 			]
 		},
+		"::java::util::memory::UnreachableTransportBlockPositions": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::memory::ExpirableValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "A list of container positions that the copper golem has visited and failed to interact with.\n",
+					"key": "value",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::util::GlobalPos"
+						}
+					}
+				}
+			]
+		},
 		"::java::util::memory::VibrationCooldown": {
 			"kind": "struct",
 			"fields": [
@@ -56958,6 +56982,30 @@
 					"type": {
 						"kind": "struct",
 						"fields": []
+					}
+				}
+			]
+		},
+		"::java::util::memory::VisitedBlockPositions": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::memory::ExpirableValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "A list of container positions that the copper golem has visited, whether successful or not.\n",
+					"key": "value",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::util::GlobalPos"
+						}
 					}
 				}
 			]
@@ -96691,9 +96739,41 @@
 				"kind": "reference",
 				"path": "::java::util::memory::UniversalAnger"
 			},
+			"unreachable_transport_block_positions": {
+				"kind": "reference",
+				"path": "::java::util::memory::UnreachableTransportBlockPositions",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
+			},
 			"vibration_cooldown": {
 				"kind": "reference",
 				"path": "::java::util::memory::VibrationCooldown"
+			},
+			"visited_block_positions": {
+				"kind": "reference",
+				"path": "::java::util::memory::VisitedBlockPositions",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			}
 		},
 		"minecraft:multi_noise_biome_source": {
