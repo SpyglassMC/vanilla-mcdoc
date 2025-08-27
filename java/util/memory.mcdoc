@@ -308,3 +308,17 @@ dispatch minecraft:memory_module[breeze_leaving_water] to struct BreezeLeavingWa
 	/// If present, the breeze is in water.
 	value: struct {},
 }
+
+#[since="1.21.9"]
+dispatch minecraft:memory_module[visited_block_positions] to struct VisitedBlockPositions {
+	...ExpirableValue,
+	/// A list of container positions that the copper golem has visited, whether successful or not.
+	value: [GlobalPos],
+}
+
+#[since="1.21.9"]
+dispatch minecraft:memory_module[unreachable_transport_block_positions] to struct UnreachableTransportBlockPositions {
+	...ExpirableValue,
+	/// A list of container positions that the copper golem has visited and failed to interact with.
+	value: [GlobalPos],
+}
