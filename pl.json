@@ -694,7 +694,6 @@
 	"::java::world::component::item::MapDecoration.x": "Światowa pozycja X dekoracji.",
 	"::java::world::component::item::MapDecoration.z": "Światowa pozycja Z dekoracji.",
 	"::java::world::component::item::PotionContents.custom_color": "Obliczane formułą `RED << 16 | GREEN << 8 | BLUE`. Każde z tych pól musi mieć wartość między `0` a `255` włącznie.",
-	"::java::world::component::item::ProfileProperty.value": "Wartość JSON indeksu tekstury, zakodowana w Base64.",
 	"::java::world::component::item::Rarity.Common": "Biała nazwa, lub aqua jeśli zaklęto.",
 	"::java::world::component::item::Rarity.Epic": "Jasnofioletowa nazwa.",
 	"::java::world::component::item::Rarity.Rare": "Aqua nazwa, lub jasnofioletowa jeśli zaklęto.",
