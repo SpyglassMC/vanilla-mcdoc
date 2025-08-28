@@ -46,6 +46,10 @@ enum(string) LootContextType {
 	EnchantedEntity = "enchanted_entity",
 	#[since="1.21"]
 	HitBlock = "hit_block",
+	#[since="1.21.9"]
+	BlockInteract = "block_interact",
+	#[since="1.21.9"]
+	EntityInteract = "entity_interact",
 }
 
 enum(string) EntityTarget {
