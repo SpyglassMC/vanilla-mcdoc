@@ -1,5 +1,5 @@
 {
-	"ref": "e3e07ea6048b1a2afb780aa1e516736d30e42729",
+	"ref": "be219d1148c940f131ba469577111025736a9fd2",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -28264,6 +28264,38 @@
 					],
 					"identifier": "HitBlock",
 					"value": "hit_block"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"identifier": "BlockInteract",
+					"value": "block_interact"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"identifier": "EntityInteract",
+					"value": "entity_interact"
 				}
 			]
 		},
