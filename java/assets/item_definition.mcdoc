@@ -374,6 +374,8 @@ enum(string) SpecialModelType {
 	Bed = "bed",
 	Conduit = "conduit",
 	Chest = "chest",
+	#[since="1.21.9"]
+	CopperGolemStatue = "copper_golem_statue",
 	DecoratedPot = "decorated_pot",
 	HangingSign = "hanging_sign",
 	Head = "head",
@@ -399,6 +401,21 @@ dispatch minecraft:special_item_model[chest] to struct Chest {
 	texture: #[id(registry="texture",path="entity/chest/")] string,
 	/// Defaults to `0`.
 	openness?: float @ 0..1,
+}
+
+dispatch minecraft:special_item_model[copper_golem_statue] to struct CopperGolemStatue {
+	pose: CopperGolemStatuePose,
+	// TODO: apply a proper #[id] attribute
+	// in 25w36a it has a weird ID pattern, with `.png` suffix and path relative to `assets/`
+	// e.g. `minecraft:textures/entity/copper_golem/copper_golem.png`
+	texture: string,
+}
+
+enum(string) CopperGolemStatuePose {
+	Standing = "standing",
+	Sitting = "sitting",
+	Running = "running",
+	Star = "star",
 }
 
 dispatch minecraft:special_item_model[hanging_sign] to struct HangingSign {
