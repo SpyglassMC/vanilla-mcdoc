@@ -412,7 +412,8 @@ dispatch minecraft:feature_config[root_system] to struct RootSystemConfig {
 	root_placement_attempts: int @ 1..256,
 	root_column_max_height: int @ 1..4096,
 	hanging_root_radius: int @ 1..64,
-	hanging_roots_vertical_span: int @ 0..16,
+	// 0 is allowed until 1.21.9, but crashes. See MC-258191
+	hanging_roots_vertical_span: int @ 1..16,
 	hanging_root_placement_attempts: int @ 0..256,
 	allowed_vertical_water_for_tree: int @ 1..64,
 	root_replaceable: (
