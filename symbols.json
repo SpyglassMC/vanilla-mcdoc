@@ -1,5 +1,5 @@
 {
-	"ref": "09bd0b6f1a9784299e87f2cdb44f7cb158a1a4ef",
+	"ref": "fe1d570c4cf127f216c84216a2eadbd22557f131",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -3261,6 +3261,48 @@
 				}
 			]
 		},
+		"::java::assets::item_definition::CopperGolemStatue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "pose",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::item_definition::CopperGolemStatuePose"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "texture",
+					"type": {
+						"kind": "string"
+					}
+				}
+			]
+		},
+		"::java::assets::item_definition::CopperGolemStatuePose": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Standing",
+					"value": "standing"
+				},
+				{
+					"identifier": "Sitting",
+					"value": "sitting"
+				},
+				{
+					"identifier": "Running",
+					"value": "running"
+				},
+				{
+					"identifier": "Star",
+					"value": "star"
+				}
+			]
+		},
 		"::java::assets::item_definition::Count": {
 			"kind": "struct",
 			"fields": [
@@ -4574,6 +4616,22 @@
 				{
 					"identifier": "Chest",
 					"value": "chest"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"identifier": "CopperGolemStatue",
+					"value": "copper_golem_statue"
 				},
 				{
 					"identifier": "DecoratedPot",
@@ -98316,6 +98374,10 @@
 			"chest": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::Chest"
+			},
+			"copper_golem_statue": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::CopperGolemStatue"
 			},
 			"hanging_sign": {
 				"kind": "reference",
