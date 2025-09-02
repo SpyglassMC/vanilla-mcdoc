@@ -486,6 +486,7 @@
 	"::java::data::trim::TrimMaterial.description": "Text displayed in the item tooltip.",
 	"::java::data::trim::TrimMaterial.ingredient": "Item used in the smithing table for this material.",
 	"::java::data::trim::TrimMaterial.item_model_index": "Model override predicate float.",
+	"::java::data::trim::TrimMaterial.override_armor_assets": "Armor materials that should have a different color palette.",
 	"::java::data::trim::TrimMaterial.override_armor_materials": "Armor materials that should have a different color palette.",
 	"::java::data::trim::TrimPattern.asset_id": "ID of the pattern that will be used in the resource pack as an overlay on the armor.",
 	"::java::data::trim::TrimPattern.decal": "Whether the pattern texture will be masked based on the underlying armor. Defaults to `false`.",
