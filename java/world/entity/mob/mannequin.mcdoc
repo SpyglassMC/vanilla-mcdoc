@@ -1,0 +1,28 @@
+use ::java::util::profile::Profile
+use ::java::util::player_model::HumanoidArm
+use ::java::util::player_model::PlayerModelType
+use ::java::util::player_model::PlayerModelPart
+use super::LivingEntity
+
+dispatch minecraft:entity[mannequin] to struct Mannequin {
+	...LivingEntity,
+	profile?: (Profile | MannequinProfile),
+	hidden_layers?: [PlayerModelPart],
+	/// Defaults to `right`.
+	main_hand?: HumanoidArm,
+}
+
+struct MannequinProfile {
+	/// Skin texture to use.
+	texture: #[id="texture"] string,
+	/// Cape texture to use.
+	/// Omitting this field means that the mannequin has no cape.
+	cape?: #[id="texture"] string,
+	/// Elytra texture to use.
+	/// If omitted, the texture specified in `cape` is used.
+	/// If `cape` field is also omitted, the default elytra texture is used.
+	elytra?: #[id="texture"] string,
+	/// Model type to use.
+	/// Defaults to `wide`.
+	model?: PlayerModelType,
+}

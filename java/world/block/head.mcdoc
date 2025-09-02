@@ -1,3 +1,5 @@
+use ::java::util::profile::Profile
+
 dispatch minecraft:block_entity[skull] to struct Skull {
 	...super::BlockEntity,
 	/// Owner of the skull.
@@ -13,7 +15,7 @@ dispatch minecraft:block_entity[skull] to struct Skull {
 	note_block_sound?: minecraft:data_component[note_block_sound],
 	/// Only works on player head.
 	#[since="1.20.5"]
-	profile?: minecraft:data_component[profile],
+	profile?: Profile,
 	#[since="1.20.5"]
 	custom_name?: minecraft:data_component[custom_name],
 }

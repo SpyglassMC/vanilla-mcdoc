@@ -3,6 +3,7 @@ use ::java::assets::model::ItemDisplayContext
 use ::java::util::color::RGB
 use ::java::util::color::DyeColor
 use ::java::util::direction::Direction
+use ::java::util::player_model::HumanoidArm
 use ::java::util::text::Keybind
 
 #[since="1.21.4"]
@@ -360,8 +361,8 @@ dispatch minecraft:select_item_property[local_time] to struct LocalTime {
 	...SelectCases<string>
 }
 
-dispatch minecraft:select_item_property[main_hand] to struct MainHand{
-	...SelectCases<("left" | "right")>
+dispatch minecraft:select_item_property[main_hand] to struct MainHand {
+	...SelectCases<HumanoidArm>
 }
 
 dispatch minecraft:select_item_property[trim_material] to struct TrimMaterial{

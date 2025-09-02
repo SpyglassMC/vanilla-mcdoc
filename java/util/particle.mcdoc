@@ -57,6 +57,13 @@ type DustColor = (
 	#[since="1.21.2"] RGB |
 )
 
+dispatch minecraft:particle[dragon_breath] to struct DragonBreathParticle {
+	/// Multiplier of initial velocity.
+	/// Defaults to 1.0
+	#[since="1.21.9"]
+	power?: float,
+}
+
 dispatch minecraft:particle[dust] to struct DustParticle {
 	#[until="1.20.5"]
 	value: struct OldDustParticle {
@@ -85,6 +92,15 @@ dispatch minecraft:particle[dust_color_transition] to struct DustColorTransition
 		to_color: DustColor,
 		scale: float @ 0.01..4,
 	},
+}
+
+dispatch minecraft:particle[effect, instant_effect] to struct EffectParticle {
+	/// Multiplier of initial velocity.
+	/// Defaults to 1.0
+	#[since="1.21.9"]
+	power?: float,
+	#[since="1.21.9"]
+	color?: RGB,
 }
 
 dispatch minecraft:particle[entity_effect] to struct EntityEffectParticle {
@@ -118,6 +134,11 @@ dispatch minecraft:particle[entity_effect] to struct EntityEffectParticle {
 	/// }
 	/// ```
 	#[since="1.20.5"]
+	color: RGBA,
+}
+
+dispatch minecraft:particle[flash] to struct FlashParticle {
+	#[since="1.21.9"]
 	color: RGBA,
 }
 

@@ -323,6 +323,8 @@ enum(string) Keybind {
 	Screenshot = "key.screenshot",
 	SmoothCamera = "key.smoothCamera",
 	Sneak = "key.sneak",
+	#[since="1.21.9"]
+	SpectatorHotbar = "key.spectatorHotbar",
 	SpectatorOutlines = "key.spectatorOutlines",
 	Sprint = "key.sprint",
 	SwapOffhand = "key.swapOffhand",
