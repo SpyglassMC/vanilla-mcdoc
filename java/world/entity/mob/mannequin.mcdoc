@@ -1,7 +1,7 @@
-use ::java::util::profile::Profile
-use ::java::util::player_model::HumanoidArm
-use ::java::util::player_model::PlayerModelType
-use ::java::util::player_model::PlayerModelPart
+use ::java::util::avatar::Profile
+use ::java::util::avatar::HumanoidArm
+use ::java::util::avatar::PlayerModelType
+use ::java::util::avatar::PlayerModelPart
 use super::LivingEntity
 
 dispatch minecraft:entity[mannequin] to struct Mannequin {
