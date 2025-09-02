@@ -2,8 +2,11 @@ use ::java::util::text::Text
 
 #[since="1.19.4"]
 dispatch minecraft:resource[trim_material] to struct TrimMaterial {
+	// TODO: This field is a permutation key rather than #[id(registry="texture", path="trims/color_palettes/")]
+	// It should pass the ResourceLocation.isValidPath() check
+	// Same for the two trim material override types
 	/// ID which will be used in the resource pack.
-	asset_name: #[id(registry="texture", path="trims/color_palettes/")] string,
+	asset_name: string,
 	/// Text displayed in the item tooltip.
 	description: Text,
 	/// Item used in the smithing table for this material.
@@ -16,11 +19,18 @@ dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 	#[until="1.21.4"]
 	item_model_index: float @ 0..1,
 	/// Armor materials that should have a different color palette.
-	override_armor_materials?: struct TrimMaterialOverrides {
+	#[until="1.21.4"]
+	override_armor_materials?: struct OldTrimMaterialOverrides {
 		[#[id] ArmorMaterial]: string,
 	},
+	/// Armor materials that should have a different color palette.
+	#[since="1.21.4"]
+	override_armor_assets?: struct TrimMaterialOverrides {
+		[#[id="equipment"] string]: string,
+	}
 }
 
+// Doesn't need to maintain 1.21.4+ armor materials
 enum(string) ArmorMaterial {
 	Leather = "leather",
 	Chainmail = "chainmail",
