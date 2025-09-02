@@ -1,5 +1,5 @@
 {
-	"ref": "fe1d570c4cf127f216c84216a2eadbd22557f131",
+	"ref": "388800887f2c0199c8a5218fdd27d5d01526f39d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -31201,6 +31201,26 @@
 				}
 			]
 		},
+		"::java::data::trim::OldTrimMaterialOverrides": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "reference",
+						"path": "::java::data::trim::ArmorMaterial",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					},
+					"type": {
+						"kind": "string"
+					}
+				}
+			]
+		},
 		"::java::data::trim::TrimMaterial": {
 			"kind": "struct",
 			"fields": [
@@ -31209,31 +31229,7 @@
 					"desc": "ID which will be used in the resource pack.\n",
 					"key": "asset_name",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "texture"
-											}
-										},
-										"path": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "trims/color_palettes/"
-											}
-										}
-									}
-								}
-							}
-						]
+						"kind": "string"
 					}
 				},
 				{
@@ -31361,6 +31357,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.4"
+								}
+							}
+						}
+					],
 					"desc": "Armor materials that should have a different color palette.\n",
 					"key": "override_armor_materials",
 					"type": {
@@ -31384,6 +31392,50 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.4"
+								}
+							}
+						}
+					],
+					"desc": "Armor materials that should have a different color palette.\n",
+					"key": "override_armor_assets",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "equipment"
+												}
+											}
+										}
+									]
+								},
+								"type": {
+									"kind": "string"
+								}
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -31393,11 +31445,17 @@
 				{
 					"kind": "pair",
 					"key": {
-						"kind": "reference",
-						"path": "::java::data::trim::ArmorMaterial",
+						"kind": "string",
 						"attributes": [
 							{
-								"name": "id"
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "equipment"
+									}
+								}
 							}
 						]
 					},
