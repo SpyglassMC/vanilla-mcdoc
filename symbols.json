@@ -1,5 +1,5 @@
 {
-	"ref": "be219d1148c940f131ba469577111025736a9fd2",
+	"ref": "e299152b46ec058920e798d62fc88d5a25fa0ec5",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -3996,23 +3996,8 @@
 						},
 						"typeArgs": [
 							{
-								"kind": "union",
-								"members": [
-									{
-										"kind": "literal",
-										"value": {
-											"kind": "string",
-											"value": "left"
-										}
-									},
-									{
-										"kind": "literal",
-										"value": {
-											"kind": "string",
-											"value": "right"
-										}
-									}
-								]
+								"kind": "reference",
+								"path": "::java::util::player_model::HumanoidArm"
 							}
 						]
 					}
@@ -57173,6 +57158,32 @@
 				}
 			]
 		},
+		"::java::util::particle::DragonBreathParticle": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"desc": "Multiplier of initial velocity.\n\nDefaults to 1.0\n",
+					"key": "power",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::util::particle::DustColor": {
 			"kind": "union",
 			"members": [
@@ -57428,6 +57439,53 @@
 				}
 			]
 		},
+		"::java::util::particle::EffectParticle": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"desc": "Multiplier of initial velocity.\n\nDefaults to 1.0\n",
+					"key": "power",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"key": "color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::color::RGB"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::util::particle::EntityEffectParticle": {
 			"kind": "struct",
 			"fields": [
@@ -57495,6 +57553,31 @@
 						}
 					],
 					"desc": " Translucent color interpreted from four floats.\n\n\n\n Cheat Sheet:\n\n - Floats between 0 and 1 are interpreted as a percentage of the original color.\n\n - Negative values & values above 1 simply loop the 0-255 range, since there isn't randomization there's no weirdness.\n\n\n\n Simplified internal behavior ([graph demo](https://www.desmos.com/calculator/drwzjaxgks)):\n\n ```js\n\n function integerToByte(integer) {\n\n \tif (integer >= 0) {\n\n \t\t// Integer is positive\n\n \t\tif (integer <= 255) {\n\n \t\t\t// Integer already fits in a color channel\n\n \t\t\treturn integer\n\n \t\t}\n\n \t\t// Integer doesn't fit in color channel; modulo it\n\n \t\treturn integer % 256\n\n \t}\n\n \t// Integer is negative\n\n \treturn Math.abs((Math.floor(integer / 256) * 256)) + integer\n\n }\n\n ```\n",
+					"key": "color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::color::RGBA"
+					}
+				}
+			]
+		},
+		"::java::util::particle::FlashParticle": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
 					"key": "color",
 					"type": {
 						"kind": "reference",
@@ -57993,6 +58076,68 @@
 						"kind": "reference",
 						"path": "::java::util::particle::SafePositionSource"
 					}
+				}
+			]
+		},
+		"::java::util::player_model::HumanoidArm": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Left",
+					"value": "left"
+				},
+				{
+					"identifier": "Right",
+					"value": "right"
+				}
+			]
+		},
+		"::java::util::player_model::PlayerModelPart": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Cape",
+					"value": "cape"
+				},
+				{
+					"identifier": "Jacket",
+					"value": "jacket"
+				},
+				{
+					"identifier": "LeftSleeve",
+					"value": "left_sleeve"
+				},
+				{
+					"identifier": "RightSleeve",
+					"value": "right_sleeve"
+				},
+				{
+					"identifier": "LeftPantsLeg",
+					"value": "left_pants_leg"
+				},
+				{
+					"identifier": "RightPantsLeg",
+					"value": "right_pants_leg"
+				},
+				{
+					"identifier": "Hat",
+					"value": "hat"
+				}
+			]
+		},
+		"::java::util::player_model::PlayerModelType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Wide",
+					"value": "wide"
+				},
+				{
+					"identifier": "Slim",
+					"value": "slim"
 				}
 			]
 		},
@@ -59463,6 +59608,22 @@
 				{
 					"identifier": "Sneak",
 					"value": "key.sneak"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"identifier": "SpectatorHotbar",
+					"value": "key.spectatorHotbar"
 				},
 				{
 					"identifier": "SpectatorOutlines",
@@ -64868,14 +65029,8 @@
 					"desc": "Only works on player head.\n",
 					"key": "profile",
 					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "static",
-								"value": "profile"
-							}
-						],
-						"registry": "minecraft:data_component"
+						"kind": "reference",
+						"path": "::java::util::profile::Profile"
 					},
 					"optional": true
 				},
@@ -79888,6 +80043,135 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::mannequin::Mannequin": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::LivingEntity"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "profile",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::util::profile::Profile"
+							},
+							{
+								"kind": "reference",
+								"path": "::java::world::entity::mob::mannequin::MannequinProfile"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "hidden_layers",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::util::player_model::PlayerModelPart"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `right`.\n",
+					"key": "main_hand",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::player_model::HumanoidArm"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::mannequin::MannequinProfile": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Skin texture to use.\n",
+					"key": "texture",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Cape texture to use.\n\nOmitting this field means that the mannequin has no cape.\n",
+					"key": "cape",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Elytra texture to use.\n\nIf omitted, the texture specified in `cape` is used.\n\nIf `cape` field is also omitted, the default elytra texture is used.\n",
+					"key": "elytra",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Model type to use.\n\nDefaults to `wide`.\n",
+					"key": "model",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::player_model::PlayerModelType"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::world::entity::mob::MobBase": {
 			"kind": "struct",
 			"fields": [
@@ -93139,6 +93423,10 @@
 					}
 				]
 			},
+			"mannequin": {
+				"kind": "reference",
+				"path": "::java::world::entity::mob::mannequin::Mannequin"
+			},
 			"marker": {
 				"kind": "reference",
 				"path": "::java::world::entity::marker::Marker",
@@ -96924,6 +97212,10 @@
 				"kind": "reference",
 				"path": "::java::util::particle::BlockParticle"
 			},
+			"dragon_breath": {
+				"kind": "reference",
+				"path": "::java::util::particle::DragonBreathParticle"
+			},
 			"dust": {
 				"kind": "reference",
 				"path": "::java::util::particle::DustParticle"
@@ -96936,6 +97228,10 @@
 				"kind": "reference",
 				"path": "::java::util::particle::BlockParticle"
 			},
+			"effect": {
+				"kind": "reference",
+				"path": "::java::util::particle::EffectParticle"
+			},
 			"entity_effect": {
 				"kind": "reference",
 				"path": "::java::util::particle::EntityEffectParticle"
@@ -96943,6 +97239,14 @@
 			"falling_dust": {
 				"kind": "reference",
 				"path": "::java::util::particle::BlockParticle"
+			},
+			"flash": {
+				"kind": "reference",
+				"path": "::java::util::particle::FlashParticle"
+			},
+			"instant_effect": {
+				"kind": "reference",
+				"path": "::java::util::particle::EffectParticle"
 			},
 			"item": {
 				"kind": "reference",
