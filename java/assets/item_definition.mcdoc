@@ -3,7 +3,7 @@ use ::java::assets::model::ItemDisplayContext
 use ::java::util::color::RGB
 use ::java::util::color::DyeColor
 use ::java::util::direction::Direction
-use ::java::util::player_model::HumanoidArm
+use ::java::util::avatar::HumanoidArm
 use ::java::util::text::Keybind
 
 #[since="1.21.4"]
