@@ -44,8 +44,6 @@ struct LivingEntity {
 	ActiveEffects?: [MobEffectInstance],
 	#[since="1.20.2"]
 	active_effects?: [MobEffectInstance],
-	/// Whether it should have an AI.
-	NoAI?: boolean,
 	/// Team to join when it is spawned.
 	Team?: #[team] string,
 	/// The UUID of the player that last hurt this entity. Stored for 100 ticks.
@@ -101,6 +99,8 @@ struct MobBase {
 	PersistenceRequired?: boolean,
 	/// Whether it is left handed.
 	LeftHanded?: boolean,
+	/// Whether it should have an AI.
+	NoAI?: boolean,
 	/// What the leash is attached to.
 	#[until="1.20.5"]
 	Leash?: (UUIDLeash | BlockLeash),
