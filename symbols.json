@@ -1,5 +1,5 @@
 {
-	"ref": "388800887f2c0199c8a5218fdd27d5d01526f39d",
+	"ref": "72f34581f3cffba003357bd98deb072991ab8a8d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -80001,15 +80001,6 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether it should have an AI.\n",
-					"key": "NoAI",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
 					"desc": "Team to join when it is spawned.\n",
 					"key": "Team",
 					"type": {
@@ -80558,6 +80549,15 @@
 					"kind": "pair",
 					"desc": "Whether it is left handed.\n",
 					"key": "LeftHanded",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether it should have an AI.\n",
+					"key": "NoAI",
 					"type": {
 						"kind": "boolean"
 					},
