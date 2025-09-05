@@ -54,7 +54,7 @@ dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 		#[until="1.18"] [[ConfiguredFeatureRef]] @ ..10 |
 		#[since="1.18"] [(
 			[PlacedFeatureRef] |
-			#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags=allowed)] string |
+			#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags=required)] string |
 		)] @ ..11 |
 	),
 }
