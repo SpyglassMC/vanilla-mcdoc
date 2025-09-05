@@ -1,5 +1,5 @@
 {
-	"ref": "72f34581f3cffba003357bd98deb072991ab8a8d",
+	"ref": "2561dc0c9b47bd7b0e5df126d5ddd391cd106d61",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -35018,7 +35018,7 @@
 															},
 															"tags": {
 																"kind": "reference",
-																"path": "::java::data::worldgen::biome::allowed"
+																"path": "::java::data::worldgen::biome::required"
 															}
 														}
 													}
