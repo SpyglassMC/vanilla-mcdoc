@@ -52,7 +52,7 @@ enum(string) HumanoidArm {
 }
 
 enum(string) PlayerModelType {
-	Wide = "wide",
+	Wide = "default",
 	Slim = "slim",
 }
 
