@@ -12,7 +12,7 @@ use ::java::util::effect::MobEffectInstance
 use ::java::util::slot::EquipmentSlot
 use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::text::Text
-use ::java::util::profile::Profile
+use ::java::util::avatar::Profile
 use ::java::world::item::ItemStack
 use ::java::world::item::SingleItem
 use ::java::world::entity::AnyEntity

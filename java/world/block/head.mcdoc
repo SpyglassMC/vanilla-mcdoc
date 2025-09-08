@@ -1,4 +1,4 @@
-use ::java::util::profile::Profile
+use ::java::util::avatar::Profile
 
 dispatch minecraft:block_entity[skull] to struct Skull {
 	...super::BlockEntity,
