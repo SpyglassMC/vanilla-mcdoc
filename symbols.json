@@ -1,5 +1,5 @@
 {
-	"ref": "9ba1d9b4ac3bf3b8e780594f4fc825f6e5d7ea10",
+	"ref": "5173d30c4cc36aab2776b3bc519121a371407c58",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -67216,6 +67216,31 @@
 				}
 			]
 		},
+		"::java::world::block::test_instance_block::ErrorMarker": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "pos",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "text",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					}
+				}
+			]
+		},
 		"::java::world::block::test_instance_block::TestInstanceBlock": {
 			"kind": "struct",
 			"fields": [
@@ -67256,10 +67281,7 @@
 								"kind": "pair",
 								"key": "size",
 								"type": {
-									"kind": "list",
-									"item": {
-										"kind": "int"
-									},
+									"kind": "int_array",
 									"lengthRange": {
 										"kind": 0,
 										"min": 3,
@@ -67302,6 +67324,51 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"key": "errors",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"key": "pos",
+									"type": {
+										"kind": "int_array",
+										"lengthRange": {
+											"kind": 0,
+											"min": 3,
+											"max": 3
+										}
+									}
+								},
+								{
+									"kind": "pair",
+									"key": "text",
+									"type": {
+										"kind": "reference",
+										"path": "::java::util::text::Text"
+									}
+								}
+							]
+						}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -67332,10 +67399,7 @@
 					"kind": "pair",
 					"key": "size",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "int"
-						},
+						"kind": "int_array",
 						"lengthRange": {
 							"kind": 0,
 							"min": 3,
