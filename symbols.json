@@ -1,5 +1,5 @@
 {
-	"ref": "5173d30c4cc36aab2776b3bc519121a371407c58",
+	"ref": "b74b2fc1028ad28760474dce57f54f85980e15c7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -54404,7 +54404,7 @@
 			"values": [
 				{
 					"identifier": "Wide",
-					"value": "default"
+					"value": "wide"
 				},
 				{
 					"identifier": "Slim",
