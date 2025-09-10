@@ -52,7 +52,9 @@ enum(string) HumanoidArm {
 }
 
 enum(string) PlayerModelType {
-	Wide = "default",
+	// regular ID = "wide"
+	// legacy services ID = "default"
+	Wide = "wide",
 	Slim = "slim",
 }
 
