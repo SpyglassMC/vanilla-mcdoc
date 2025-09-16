@@ -1,5 +1,5 @@
 {
-	"ref": "1268f5b1c3a47845ffe6723daa2b475a7df3bba6",
+	"ref": "9c9c8ee8da982043e85e686f439705ba1586bb46",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -22854,6 +22854,13 @@
 				}
 			]
 		},
+		"::java::data::loot::BlockEntityTarget": {
+			"kind": "literal",
+			"value": {
+				"kind": "string",
+				"value": "block_entity"
+			}
+		},
 		"::java::data::loot::CompositePoolEntry": {
 			"kind": "struct",
 			"fields": [
@@ -24674,11 +24681,45 @@
 					"kind": "pair",
 					"key": "source",
 					"type": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "block_entity"
-						}
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::BlockEntityTarget"
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::EntityTarget",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::ItemStackTarget",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -24745,8 +24786,57 @@
 					"kind": "pair",
 					"key": "source",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::CopyNameSource"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::CopyNameSource",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::EntityTarget",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::BlockEntityTarget",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -27936,6 +28026,13 @@
 					}
 				}
 			]
+		},
+		"::java::data::loot::ItemStackTarget": {
+			"kind": "literal",
+			"value": {
+				"kind": "string",
+				"value": "tool"
+			}
 		},
 		"::java::data::loot::LootCondition": {
 			"kind": "struct",
@@ -31929,8 +32026,57 @@
 					"kind": "pair",
 					"key": "target",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NbtContextTarget"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::util::NbtContextTarget",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::EntityTarget",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::BlockEntityTarget",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				}
 			]
@@ -54332,6 +54478,79 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Skin texture override.\n",
+					"key": "texture",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Cape texture override.\n",
+					"key": "cape",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Elytra texture override.\n\nIf this texture is not present either as override or in player profile, the cape texture is used.\n\nIf the cape texture is also not present, the default elytra texture is used.\n",
+					"key": "elytra",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Model type override.\n",
+					"key": "model",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::avatar::PlayerModelType"
+					},
+					"optional": true
 				}
 			],
 			"attributes": [
@@ -54535,6 +54754,79 @@
 										"path": "::java::util::avatar::ProfilePropertyMap"
 									}
 								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Skin texture override.\n",
+							"key": "texture",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										}
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Cape texture override.\n",
+							"key": "cape",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										}
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Elytra texture override.\n\nIf this texture is not present either as override or in player profile, the cape texture is used.\n\nIf the cape texture is also not present, the default elytra texture is used.\n",
+							"key": "elytra",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										}
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Model type override.\n",
+							"key": "model",
+							"type": {
+								"kind": "reference",
+								"path": "::java::util::avatar::PlayerModelType"
 							},
 							"optional": true
 						}
@@ -80228,17 +80520,8 @@
 					"kind": "pair",
 					"key": "profile",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::util::avatar::Profile"
-							},
-							{
-								"kind": "reference",
-								"path": "::java::world::entity::mob::mannequin::MannequinProfile"
-							}
-						]
+						"kind": "reference",
+						"path": "::java::util::avatar::Profile"
 					},
 					"optional": true
 				},
@@ -80263,83 +80546,70 @@
 						"path": "::java::util::avatar::HumanoidArm"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `standing`.\n",
+					"key": "pose",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::mannequin::MannequinPose"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `false`.\n",
+					"key": "immovable",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Text shown below the name tag.\n\nDefaults to the translated `entity.minecraft.mannequin.label`.\n",
+					"key": "description",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the below name text is displayed.\n\nDefaults to `false`.\n",
+					"key": "hide_description",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
 				}
 			]
 		},
-		"::java::world::entity::mob::mannequin::MannequinProfile": {
-			"kind": "struct",
-			"fields": [
+		"::java::world::entity::mob::mannequin::MannequinPose": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
 				{
-					"kind": "pair",
-					"desc": "Skin texture to use.\n",
-					"key": "texture",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "texture"
-									}
-								}
-							}
-						]
-					}
+					"identifier": "Standing",
+					"value": "standing"
 				},
 				{
-					"kind": "pair",
-					"desc": "Cape texture to use.\n\nOmitting this field means that the mannequin has no cape.\n",
-					"key": "cape",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "texture"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
+					"identifier": "Crouching",
+					"value": "crouching"
 				},
 				{
-					"kind": "pair",
-					"desc": "Elytra texture to use.\n\nIf omitted, the texture specified in `cape` is used.\n\nIf `cape` field is also omitted, the default elytra texture is used.\n",
-					"key": "elytra",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "texture"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
+					"identifier": "Swimming",
+					"value": "swimming"
 				},
 				{
-					"kind": "pair",
-					"desc": "Model type to use.\n\nDefaults to `wide`.\n",
-					"key": "model",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::avatar::PlayerModelType"
-					},
-					"optional": true
+					"identifier": "FallFlying",
+					"value": "fall_flying"
+				},
+				{
+					"identifier": "Sleeping",
+					"value": "sleeping"
 				}
 			]
 		},
@@ -81013,6 +81283,81 @@
 						"kind": "int"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::player::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Dimension of the player's respawn point. Defaults to overworld.\n",
+					"key": "dimension",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "dimension"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.9"
+						}
+					}
+				}
+			]
+		},
+		"::java::world::entity::mob::player::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Dimension of the player's respawn point. Defaults to overworl.\n",
+					"key": "dimension",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "dimension"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.9"
+						}
+					}
 				}
 			]
 		},
@@ -82157,6 +82502,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
 					"desc": "The Y-rotation of the player's respawn point\n",
 					"key": "angle",
 					"type": {
@@ -82166,24 +82523,126 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Dimension of the player's respawn point. Defaults to overworld.\n",
-					"key": "dimension",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
 								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "dimension"
-									}
+									"kind": "string",
+									"value": "1.21.9"
 								}
 							}
+						}
+					],
+					"desc": "The Y-rotation of the player's respawn point\n",
+					"key": "yaw",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"desc": "The X-rotation of the player's respawn point\n",
+					"key": "pitch",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "struct",
+								"fields": [
+									{
+										"kind": "pair",
+										"desc": "Dimension of the player's respawn point. Defaults to overworld.\n",
+										"key": "dimension",
+										"type": {
+											"kind": "string",
+											"attributes": [
+												{
+													"name": "id",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "dimension"
+														}
+													}
+												}
+											]
+										},
+										"optional": true
+									}
+								],
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "struct",
+								"fields": [
+									{
+										"kind": "pair",
+										"desc": "Dimension of the player's respawn point. Defaults to overworl.\n",
+										"key": "dimension",
+										"type": {
+											"kind": "string",
+											"attributes": [
+												{
+													"name": "id",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "dimension"
+														}
+													}
+												}
+											]
+										}
+									}
+								],
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								]
+							}
 						]
-					},
-					"optional": true
+					}
 				},
 				{
 					"kind": "pair",
