@@ -23,7 +23,17 @@ type Profile = (
 		properties?: (
 			#[canonical] [ProfileProperty] |
 			ProfilePropertyMap |
-		)
+		),
+		/// Skin texture override.
+		texture?: #[id="texture"] string,
+		/// Cape texture override.
+		cape?: #[id="texture"] string,
+		/// Elytra texture override.
+		/// If this texture is not present either as override or in player profile, the cape texture is used.
+		/// If the cape texture is also not present, the default elytra texture is used.
+		elytra?: #[id="texture"] string,
+		/// Model type override.
+		model?: PlayerModelType,
 	} |
 	string |
 )

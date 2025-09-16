@@ -64,6 +64,10 @@ enum(string) EntityTarget {
 	#[since="1.21.9"] InteractingEntity = "interacting_entity",
 }
 
+// both are enum in game code, like EntityTarget
+type BlockEntityTarget = "block_entity"
+type ItemStackTarget = "tool"
+
 struct LootPool {
 	rolls: (
 		#[until="1.17"] RandomIntGenerator |

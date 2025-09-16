@@ -2,6 +2,8 @@ use super::LootPoolEntry
 use super::LootCondition
 use super::LootFunction
 use super::EntityTarget
+use super::BlockEntityTarget
+use super::ItemStackTarget
 use super::super::util::MinMaxBounds
 use super::super::util::RandomValueBounds
 use super::super::util::RandomIntGenerator
@@ -57,7 +59,11 @@ dispatch minecraft:apply_bonus_formula[binomial_with_bonus_count] to struct Bino
 
 /// Copies `CustomName` tag from an entity or block entity into the item's `custom_name` component.
 dispatch minecraft:loot_function[copy_name] to struct CopyName {
-	source: CopyNameSource,
+	source: (
+		#[until="1.21.9"] CopyNameSource |
+		#[since="1.21.9"] EntityTarget | 
+		#[since="1.21.9"] BlockEntityTarget |
+	),
 	...Conditions,
 }
 
@@ -91,7 +97,11 @@ dispatch minecraft:loot_function[copy_custom_data] to CopyNbt
 
 #[since="1.20.5"]
 dispatch minecraft:loot_function[copy_components] to struct CopyComponents {
-	source: "block_entity",
+	source: (
+		BlockEntityTarget |
+		#[since="1.21.9"] EntityTarget |
+		#[since="1.21.9"] ItemStackTarget |
+	),
 	/// If omitted, all components present are included
 	include?: [#[id="data_component_type"] string],
 	/// Defaults to none.

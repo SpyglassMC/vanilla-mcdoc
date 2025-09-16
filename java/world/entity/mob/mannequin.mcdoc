@@ -1,28 +1,32 @@
 use ::java::util::avatar::Profile
 use ::java::util::avatar::HumanoidArm
-use ::java::util::avatar::PlayerModelType
 use ::java::util::avatar::PlayerModelPart
+use ::java::util::text::Text
 use super::LivingEntity
 
 dispatch minecraft:entity[mannequin] to struct Mannequin {
 	...LivingEntity,
-	profile?: (Profile | MannequinProfile),
+	profile?: Profile,
 	hidden_layers?: [PlayerModelPart],
 	/// Defaults to `right`.
 	main_hand?: HumanoidArm,
+	/// Defaults to `standing`.
+	pose?: MannequinPose,
+	/// Defaults to `false`.
+	immovable?: boolean,
+	/// Text shown below the name tag.
+	/// Defaults to the translated `entity.minecraft.mannequin.label`.
+	description?: Text,
+	/// Whether the below name text is displayed.
+	/// Defaults to `false`.
+	hide_description?: boolean,
 }
 
-struct MannequinProfile {
-	/// Skin texture to use.
-	texture: #[id="texture"] string,
-	/// Cape texture to use.
-	/// Omitting this field means that the mannequin has no cape.
-	cape?: #[id="texture"] string,
-	/// Elytra texture to use.
-	/// If omitted, the texture specified in `cape` is used.
-	/// If `cape` field is also omitted, the default elytra texture is used.
-	elytra?: #[id="texture"] string,
-	/// Model type to use.
-	/// Defaults to `wide`.
-	model?: PlayerModelType,
+// this is a subset of entity poses
+enum(string) MannequinPose {
+	Standing = "standing",
+	Crouching = "crouching",
+	Swimming = "swimming",
+	FallFlying = "fall_flying",
+	Sleeping = "sleeping",
 }

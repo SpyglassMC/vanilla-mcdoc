@@ -1,5 +1,6 @@
 use super::loot::function::CopyNameSource
 use super::loot::EntityTarget
+use super::loot::BlockEntityTarget
 use super::enchantment::LevelBasedValue
 
 type MinMaxBounds<T> = (
@@ -126,7 +127,11 @@ type NbtProvider = (
 )
 
 dispatch minecraft:nbt_provider[context] to struct ContextNbtProvider {
-	target: NbtContextTarget,
+	target: (
+		#[until="1.21.9"] NbtContextTarget |
+		#[since="1.21.9"] EntityTarget |
+		#[since="1.21.9"] BlockEntityTarget |
+	),
 }
 
 enum(string) NbtContextTarget {
