@@ -126,15 +126,18 @@ type NbtProvider = (
 	} |
 )
 
+
 dispatch minecraft:nbt_provider[context] to struct ContextNbtProvider {
-	target: (
-		#[until="1.21.9"] NbtContextTarget |
-		#[since="1.21.9"] EntityTarget |
-		#[since="1.21.9"] BlockEntityTarget |
-	),
+	target: NbtContextTarget,
 }
 
-enum(string) NbtContextTarget {
+type NbtContextTarget = (
+	#[until="1.21.9"] NbtProviderSource |
+	#[since="1.21.9"] EntityTarget |
+	#[since="1.21.9"] BlockEntityTarget |
+)
+
+enum(string) NbtProviderSource {
 	This = "this",
 	#[until="1.21"] Killer = "killer",
 	#[since="1.21"] Attacker = "attacker",
