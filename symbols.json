@@ -1,5 +1,5 @@
 {
-	"ref": "9c9c8ee8da982043e85e686f439705ba1586bb46",
+	"ref": "86b63bbe452c6cb55a12de1f1bcf35e2e9c2fdc6",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -32026,57 +32026,8 @@
 					"kind": "pair",
 					"key": "target",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::util::NbtContextTarget",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.21.9"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::EntityTarget",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.21.9"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::BlockEntityTarget",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.21.9"
-											}
-										}
-									}
-								]
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::util::NbtContextTarget"
 					}
 				}
 			]
@@ -32233,6 +32184,107 @@
 			]
 		},
 		"::java::data::util::NbtContextTarget": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::util::NbtProviderSource",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::loot::EntityTarget",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::loot::BlockEntityTarget",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::util::NbtProvider": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::util::NbtContextTarget"
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "type",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "loot_nbt_provider_type"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"type"
+										]
+									}
+								],
+								"registry": "minecraft:nbt_provider"
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::util::NbtProviderSource": {
 			"kind": "enum",
 			"enumKind": "string",
 			"values": [
@@ -32339,54 +32391,6 @@
 				{
 					"identifier": "BlockEntity",
 					"value": "block_entity"
-				}
-			]
-		},
-		"::java::data::util::NbtProvider": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "reference",
-					"path": "::java::data::util::NbtContextTarget"
-				},
-				{
-					"kind": "struct",
-					"fields": [
-						{
-							"kind": "pair",
-							"key": "type",
-							"type": {
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "loot_nbt_provider_type"
-											}
-										}
-									}
-								]
-							}
-						},
-						{
-							"kind": "spread",
-							"type": {
-								"kind": "dispatcher",
-								"parallelIndices": [
-									{
-										"kind": "dynamic",
-										"accessor": [
-											"type"
-										]
-									}
-								],
-								"registry": "minecraft:nbt_provider"
-							}
-						}
-					]
 				}
 			]
 		},
