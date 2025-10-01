@@ -1,5 +1,5 @@
 {
-	"ref": "86b63bbe452c6cb55a12de1f1bcf35e2e9c2fdc6",
+	"ref": "11f37dbee52608215ff3c75801218a69bc67f2a5",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -53999,7 +53999,8 @@
 											"name": "pack_format"
 										}
 									]
-								}
+								},
+								"optional": true
 							},
 							{
 								"kind": "pair",
@@ -54030,6 +54031,58 @@
 													"name": "pack_format"
 												}
 											]
+										}
+									]
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								],
+								"key": "min_format",
+								"type": {
+									"kind": "reference",
+									"path": "::java::pack::PackFormat",
+									"attributes": [
+										{
+											"name": "pack_format"
+										}
+									]
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.9"
+											}
+										}
+									}
+								],
+								"key": "max_format",
+								"type": {
+									"kind": "reference",
+									"path": "::java::pack::PackFormat",
+									"attributes": [
+										{
+											"name": "pack_format"
 										}
 									]
 								},
@@ -54124,7 +54177,8 @@
 								"name": "pack_format"
 							}
 						]
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -54155,6 +54209,58 @@
 										"name": "pack_format"
 									}
 								]
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"key": "min_format",
+					"type": {
+						"kind": "reference",
+						"path": "::java::pack::PackFormat",
+						"attributes": [
+							{
+								"name": "pack_format"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"key": "max_format",
+					"type": {
+						"kind": "reference",
+						"path": "::java::pack::PackFormat",
+						"attributes": [
+							{
+								"name": "pack_format"
 							}
 						]
 					},
@@ -54199,6 +54305,40 @@
 				}
 			]
 		},
+		"::java::pack::PackFormat": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "int"
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "int"
+					},
+					"lengthRange": {
+						"kind": 0,
+						"min": 1,
+						"max": 1
+					}
+				},
+				{
+					"kind": "tuple",
+					"items": [
+						{
+							"kind": "int"
+						},
+						{
+							"kind": "int",
+							"valueRange": {
+								"kind": 0,
+								"min": 0
+							}
+						}
+					]
+				}
+			]
+		},
 		"::java::pack::PackOverlay": {
 			"kind": "struct",
 			"fields": [
@@ -54232,7 +54372,52 @@
 								]
 							}
 						]
-					}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "min_format",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::pack::PackFormat"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						],
+						"attributes": [
+							{
+								"name": "pack_format"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "max_format",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::pack::PackFormat"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						],
+						"attributes": [
+							{
+								"name": "pack_format"
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
