@@ -1,5 +1,5 @@
 {
-	"ref": "11f37dbee52608215ff3c75801218a69bc67f2a5",
+	"ref": "15c3be9bcaf6c53756a6ce8bf3ef1db8308ffde1",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -82598,19 +82598,22 @@
 					"desc": "Recipes the player has acquired.\n",
 					"key": "recipes",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "id",
 									"value": {
-										"kind": "string",
-										"value": "recipe"
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "recipe"
+										}
 									}
 								}
-							}
-						]
+							]
+						}
 					},
 					"optional": true
 				},
@@ -82619,19 +82622,22 @@
 					"desc": "Recipes that should pulse in the crafting book.\n",
 					"key": "toBeDisplayed",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "id",
 									"value": {
-										"kind": "string",
-										"value": "recipe"
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "recipe"
+										}
 									}
 								}
-							}
-						]
+							]
+						}
 					},
 					"optional": true
 				},
