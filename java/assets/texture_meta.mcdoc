@@ -37,6 +37,9 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 		/// Custom mipmap values for the texture.
 		mipmaps?: int[],
 	},
+	/// Defaults to `false`.
+	#[since="1.21.11"]
+	darkened_cutout_mipmap?: boolean,
 }
 
 struct GuiSpriteScaling {

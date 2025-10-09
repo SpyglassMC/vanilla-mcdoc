@@ -80,6 +80,12 @@ dispatch minecraft:level_based_value[clamped] to struct ClampedLevelValue {
 	max: float,
 }
 
+#[since="1.21.11"]
+dispatch minecraft:level_based_value[exponent] to struct ExponentLevelValue {
+	base: LevelBasedValue,
+	power: LevelBasedValue,
+}
+
 /// Fraction constructed from two other Level-Based Values
 dispatch minecraft:level_based_value[fraction] to struct FractionLevelValue {
 	numerator: LevelBasedValue,
@@ -163,6 +169,20 @@ dispatch minecraft:entity_effect[all_of] to struct AllOfEntityEffect {
 dispatch minecraft:location_based_effect[all_of] to struct AllOfLocationBasedEffect {
 	effects: [LocationBasedEffect] @ 1..,
 }
+
+struct ApplyImpulseEntityEffect {
+	/// Impulse direction in local coordinates (the same used by `tp @s ^ ^ ^`).
+	/// `[left, upward, forward]`
+	direction: [float] @ 3,
+	/// The multipler to apply to the computed impulse direction.
+	/// `[x, y, z]`
+	coordinate_scale: [float] @ 3,
+	/// The scale of the impulse.
+	magnitude: LevelBasedValue,
+}
+#[since="1.21.11"]
+dispatch minecraft:entity_effect[apply_impulse] to ApplyImpulseEntityEffect
+dispatch minecraft:location_based_effect[apply_impulse] to ApplyImpulseEntityEffect
 
 struct ApplyMobEffectEntityEffect {
 	/// If multiple mob effects are specified, a random effect is selected.
@@ -262,7 +282,10 @@ dispatch minecraft:entity_effect[ignite] to IgniteEntityEffect
 dispatch minecraft:location_based_effect[ignite] to IgniteEntityEffect
 
 struct PlaySoundEntityEffect {
-	sound: SoundEventRef,
+	sound: (
+		SoundEventRef |
+		#[since="1.21.11"] [SoundEventRef] @ ..255 |
+	),
 	volume: FloatProvider<float @ 0.00001..10.0>,
 	pitch: FloatProvider<float @ 0.00001..2.0>,
 }
@@ -490,6 +513,14 @@ enum(string) AttackTarget {
 	DamagingEntity = "damaging_entity",
 	Victim = "victim",
 }
+
+#[since="1.21.11"]
+dispatch minecraft:effect_component[post_piercing_attack] to [struct PostPiercingAttackEnchantmentEffect {
+	/// Predicate context: Damage Parameters.
+	requirements?: (LootCondition | [LootCondition]),
+	/// The effect to apply on attacker.
+	effect: EntityEffect,
+}]
 
 /// Prevents the enchanted item from being unequipped from an armor slot.
 dispatch minecraft:effect_component[prevent_armor_change] to struct {}

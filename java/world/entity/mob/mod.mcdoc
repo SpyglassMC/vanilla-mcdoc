@@ -127,9 +127,15 @@ struct DropChances {
 
 struct NeutralMob {
 	/// Ticks that it will be angry for.
+	#[until="1.21.11"]
 	AngerTime?: int,
-	#[uuid]
-	AngryAt?: int[] @ 4,
+	/// The time anger ends.
+	#[since="1.21.11"]
+	anger_end_tine?: long,
+	#[until="1.21.11"]
+	AngryAt?: #[uuid] int[] @ 4,
+	#[since="1.21.11"]
+	angry_at?: #[uuid] int[] @ 4,
 }
 
 struct AgeableMob {

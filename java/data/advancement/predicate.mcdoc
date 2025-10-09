@@ -190,6 +190,10 @@ struct EntityFlagsPredicate {
 	is_on_ground?: boolean,
 	#[since="1.21"]
 	is_flying?: boolean,
+	#[since="1.21.11"]
+	is_in_water?: boolean,
+	#[since="1.21.11"]
+	is_fall_flying?: boolean,
 }
 
 struct EntitySubPredicate {

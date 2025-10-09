@@ -17,6 +17,10 @@ dispatch minecraft:resource[item_definition] to struct ItemDefinition {
 	/// The behavior of `true` is **not** officially supported.
 	#[since="1.21.6"]
 	oversized_in_gui?: boolean,
+	/// How fast the item moves up and down when swapping items in hotbar.
+	/// Defaults to 1.0
+	#[since="1.21.11"]
+	swap_animation_scale?: float,
 }
 
 struct ItemModel {
@@ -180,6 +184,7 @@ enum(string) ConditionalPropertyType {
 
 dispatch minecraft:conditional_item_property[%unknown] to struct {}
 
+// TODO: 1.21.11 component existence predicate
 dispatch minecraft:conditional_item_property[component] to struct ComponentFlags {
 	/// The component predicate to check.
 	predicate: (

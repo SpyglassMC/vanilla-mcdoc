@@ -9,6 +9,7 @@ struct DataComponentExactPredicate {
 	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
 }
 
+// TODO: 1.21.11 component existence predicate
 struct DataComponentPredicate {
 	[(
 		#[until="1.21.5"] #[id="item_sub_predicate_type"] string |

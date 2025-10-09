@@ -170,6 +170,11 @@ enum(string) ItemUseAnimation {
 	Block = "block",
 	Bow = "bow",
 	/// Used for Tridents.
+	#[until="1.21.11"]
+	OldTrident = "spear",
+	#[since="1.21.11"]
+	Trident = "trident",
+	#[since="1.21.11"]
 	Spear = "spear",
 	Crossbow = "crossbow",
 	Spyglass = "spyglass",
@@ -453,6 +458,47 @@ dispatch minecraft:data_component[jukebox_playable] to (
 	#[since="1.21.5"] #[id="jukebox_song"] string |
 )
 
+#[since="1.21.11"]
+dispatch minecraft:data_component[kinetic_weapon] to struct KineticWeapon {
+	/// Minimum distance to the target to be considered valid.
+	/// Defaults to 0.0
+	min_reach?: float @ 0..,
+	/// Maximum distance to the target to be considered valid.
+	/// Defaults to 3.0
+	max_reach?: float @ 0..,
+	/// The margin applied to the target bounding box when checking for valid hitbox collision.
+	/// Defaults to 0.3
+	hitbox_margin?: float @ 0..,
+	/// The time in ticks required for charging.
+	/// Defaults to 0
+	delay_ticks?: int @ 0..,
+	dismount_conditions?: KineticWeaponEffectCondition,
+	knockback_conditions?: KineticWeaponEffectCondition,
+	damage_conditions?: KineticWeaponEffectCondition,
+	/// The distance the item moves out of hand during animation.
+	/// Defaults to 0.0
+	forward_movement?: float,
+	/// The multiplier for the final damage from the relative speed.
+	/// Defaults to 1.0
+	damage_multiplier?: float,
+	/// Sound to play when the weapon is engaged.
+	sound?: SoundEventRef,
+	/// Sound to play when the weapon hits an entity.
+	hit_sound?: SoundEventRef,
+}
+
+struct KineticWeaponEffectCondition {
+	/// The duration in ticks this condition can pass.
+	/// Starts counting after charged.
+	max_duration_ticks: int,
+	/// The minimum attacker speed required.
+	/// Defaults to 0.0
+	min_speed?: float,
+	/// The minimum relative speed required.
+	/// Defaults to 0.0
+	min_relative_speed?: float,
+}
+
 dispatch minecraft:data_component[lodestone_tracker] to struct LodestoneTracker {
 	/// Location of the lodestone. Optional. If not set, the compass will spin randomly.
 	target?: GlobalPos,
@@ -493,11 +539,37 @@ dispatch minecraft:data_component[max_damage] to int @ 1..
 
 dispatch minecraft:data_component[max_stack_size] to int @ 1..99
 
+#[since="1.21.11"]
+dispatch minecraft:data_component[minimum_attack_charge] to float @ 0..1
+
 /// Sound to be played by a note block if this player head is placed above it.
 dispatch minecraft:data_component[note_block_sound] to (#[id="weighed_sound_event"] string)
 
 /// Bad omen amplifier level +1 (value of `0` corresponds to `Bad Omen I`).
 dispatch minecraft:data_component[ominous_bottle_amplifier] to int @ 0..4
+
+#[since="1.21.11"]
+dispatch minecraft:data_component[piercing_weapon] to struct PiercingWeapon {
+	/// Minimum distance to the target to be considered valid.
+	/// Defaults to 0.0
+	min_reach?: float @ 0..,
+	/// Maximum distance to the target to be considered valid.
+	/// Defaults to 3.0
+	max_reach?: float @ 0..,
+	/// The margin applied to the target bounding box when checking for valid hitbox collision.
+	/// Defaults to 0.3
+	hitbox_margin?: float @ 0..,
+	/// Whether the attack deals knockback.
+	/// Defaults to `true`.
+	deals_knockback?: boolean,
+	/// Whether the attack dismounts the target.
+	/// Defaults to `false`.
+	dismounts?: boolean,
+	/// Sound to play when using the weapon to attack.
+	sound?: SoundEventRef,
+	/// Sound to play when the weapon hits an entity.
+	hit_sound?: SoundEventRef,
+}
 
 dispatch minecraft:data_component[potion_contents] to (
 	#[canonical] PotionContents |
@@ -559,6 +631,22 @@ struct SuspiciousStewEffect {
 	duration?: int @ 1..,
 }
 
+#[since="1.21.11"]
+dispatch minecraft:data_component[swing_animation] to struct SwingAnimation {
+	/// The animation type to play when attacking or interacting using this item.
+	/// Defaults to `whack`.
+	type?: SwingAnimationType,
+	/// The animation duration in ticks.
+	/// Defaults to 6
+	duration?: int @ 1..,
+}
+
+enum(string) SwingAnimationType {
+	None = "none",
+	Whack = "whack",
+	Stab = "stab",
+}
+
 dispatch minecraft:data_component[tool] to struct Tool {
 	/// Blocks that this tool has a special behavior with.
 	rules: [ToolRule],
@@ -616,6 +704,16 @@ dispatch minecraft:data_component[use_cooldown] to struct UseCooldown {
 	/// If present, this item will be part of a cooldown group and no longer share cooldowns with its base item type.
 	/// Instead, cooldowns applied to this item will only be shared with any other items that are part of the same cooldown group.
 	cooldown_group?: #[id(registry="cooldown_group", definition=true)] string,
+}
+
+#[since="1.21.11"]
+dispatch minecraft:data_component[use_effects] to struct UseEffects {
+	/// Whether the player can sprint while using this item.
+	/// Defaults to `false`.
+	can_sprint?: boolean,
+	/// The speed multiplier applied to the player while using this item.
+	/// Defaults to 0.2
+	speed_multiplier?: float @ 0..1,
 }
 
 dispatch minecraft:data_component[use_remainder] to ItemStack
