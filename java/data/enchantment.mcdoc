@@ -121,6 +121,12 @@ dispatch minecraft:value_effect[all_of] to struct AllOfEffectValue {
 	effects: [ValueEffect] @ 1..,
 }
 
+#[since="1.21.11"]
+dispatch minecraft:value_effect[exponential] to struct ExponentialEffectValue {
+	base: LevelBasedValue,
+	exponent: LevelBasedValue,
+}
+
 dispatch minecraft:value_effect[multiply] to struct MultiplyEffectValue {
 	/// Level-Based Value determining the factor to multiply in
 	factor: LevelBasedValue,
@@ -182,6 +188,7 @@ struct ApplyImpulseEntityEffect {
 }
 #[since="1.21.11"]
 dispatch minecraft:entity_effect[apply_impulse] to ApplyImpulseEntityEffect
+#[since="1.21.11"]
 dispatch minecraft:location_based_effect[apply_impulse] to ApplyImpulseEntityEffect
 
 struct ApplyMobEffectEntityEffect {

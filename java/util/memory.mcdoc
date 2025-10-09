@@ -322,3 +322,15 @@ dispatch minecraft:memory_module[unreachable_transport_block_positions] to struc
 	/// A list of container positions that the copper golem has visited and failed to interact with.
 	value: [GlobalPos],
 }
+
+#[since="1.21.11"]
+dispatch minecraft:memory_module[charge_cooldown_ticks] to struct ChargeCooldownTicks {
+	...ExpirableValue,
+	value: int,
+}
+
+#[since="1.21.11"]
+dispatch minecraft:memory_module[attack_target_cooldown] to struct AttackTargetCooldown {
+	...ExpirableValue,
+	value: int,
+}

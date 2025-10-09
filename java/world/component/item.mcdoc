@@ -3,6 +3,7 @@ use ::java::data::trim::TrimMaterial
 use ::java::data::trim::TrimPattern
 use ::java::data::variants::instrument::Instrument
 use ::java::data::util::SoundEventRef
+use ::java::data::damage_type::DamageType
 use ::java::util::Filterable
 use ::java::util::GlobalPos
 use ::java::util::attribute::AttributeOperation
@@ -226,6 +227,11 @@ dispatch minecraft:data_component[custom_model_data] to (
 
 /// Damage that an item has. Only used for tools, armor, etc.
 dispatch minecraft:data_component[damage] to int @ 0..
+
+dispatch minecraft:data_component[damage_type] to (
+	#[id="damage_type"] string |
+	DamageType |
+)
 
 #[since="1.21.2"]
 dispatch minecraft:data_component[damage_resistant] to struct DamageResistant {
