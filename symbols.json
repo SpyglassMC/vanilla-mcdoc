@@ -1,5 +1,5 @@
 {
-	"ref": "2fa9a36f16e8cc25bc01b90e8cada0398a754fa1",
+	"ref": "a4dfe918c770b979844518a0100a61812e8d7f0c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -21136,6 +21136,27 @@
 						"kind": "float"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::ExponentialEffectValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "base",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "exponent",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
 				}
 			]
 		},
@@ -57151,6 +57172,25 @@
 				}
 			]
 		},
+		"::java::util::memory::AttackTargetCooldown": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::memory::ExpirableValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "int"
+					}
+				}
+			]
+		},
 		"::java::util::memory::BreezeJumpCooldown": {
 			"kind": "struct",
 			"fields": [
@@ -57319,6 +57359,25 @@
 					"type": {
 						"kind": "struct",
 						"fields": []
+					}
+				}
+			]
+		},
+		"::java::util::memory::ChargeCooldownTicks": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::memory::ExpirableValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "int"
 					}
 				}
 			]
@@ -92191,6 +92250,30 @@
 					}
 				]
 			},
+			"damage_type": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "damage_type"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::damage_type::DamageType"
+					}
+				]
+			},
 			"death_protection": {
 				"kind": "reference",
 				"path": "::java::world::component::item::DeathProtection",
@@ -97743,7 +97826,19 @@
 			},
 			"apply_impulse": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ApplyImpulseEntityEffect"
+				"path": "::java::data::enchantment::ApplyImpulseEntityEffect",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
 			},
 			"apply_mob_effect": {
 				"kind": "reference",
@@ -98493,6 +98588,22 @@
 				"kind": "reference",
 				"path": "::java::util::memory::AngryAt"
 			},
+			"attack_target_cooldown": {
+				"kind": "reference",
+				"path": "::java::util::memory::AttackTargetCooldown",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"breeze_jump_cooldown": {
 				"kind": "reference",
 				"path": "::java::util::memory::BreezeJumpCooldown"
@@ -98524,6 +98635,22 @@
 			"breeze_shoot_recover": {
 				"kind": "reference",
 				"path": "::java::util::memory::BreezeShootRecover"
+			},
+			"charge_cooldown_ticks": {
+				"kind": "reference",
+				"path": "::java::util::memory::ChargeCooldownTicks",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
 			},
 			"danger_detected_recently": {
 				"kind": "reference",
@@ -101653,6 +101780,22 @@
 			"all_of": {
 				"kind": "reference",
 				"path": "::java::data::enchantment::AllOfEffectValue"
+			},
+			"exponential": {
+				"kind": "reference",
+				"path": "::java::data::enchantment::ExponentialEffectValue",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
 			},
 			"multiply": {
 				"kind": "reference",
