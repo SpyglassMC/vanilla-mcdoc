@@ -1,5 +1,5 @@
 {
-	"ref": "15c3be9bcaf6c53756a6ce8bf3ef1db8308ffde1",
+	"ref": "2fa9a36f16e8cc25bc01b90e8cada0398a754fa1",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -3884,6 +3884,27 @@
 					"key": "oversized_in_gui",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "How fast the item moves up and down when swapping items in hotbar.\n\nDefaults to 1.0\n",
+					"key": "swap_animation_scale",
+					"type": {
+						"kind": "float"
 					},
 					"optional": true
 				}
@@ -9965,6 +9986,27 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to `false`.\n",
+					"key": "darkened_cutout_mipmap",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -11672,6 +11714,46 @@
 						}
 					],
 					"key": "is_flying",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"key": "is_in_water",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"key": "is_fall_flying",
 					"type": {
 						"kind": "boolean"
 					},
@@ -19693,6 +19775,52 @@
 				}
 			]
 		},
+		"::java::data::enchantment::ApplyImpulseEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Impulse direction in local coordinates (the same used by `tp @s ^ ^ ^`).\n\n`[left, upward, forward]`\n",
+					"key": "direction",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "float"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The multipler to apply to the computed impulse direction.\n\n`[x, y, z]`\n",
+					"key": "coordinate_scale",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "float"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The scale of the impulse.\n",
+					"key": "magnitude",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
 		"::java::data::enchantment::ApplyMobEffectEntityEffect": {
 			"kind": "struct",
 			"fields": [
@@ -21011,6 +21139,27 @@
 				}
 			]
 		},
+		"::java::data::enchantment::ExponentLevelValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "base",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "power",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
 		"::java::data::enchantment::FishingLuckBonusEnchantmentEffect": {
 			"kind": "struct",
 			"fields": [
@@ -21529,8 +21678,36 @@
 					"kind": "pair",
 					"key": "sound",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::util::SoundEventRef"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"max": 255
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -21625,6 +21802,42 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::enchantment::AttackTarget"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::PostPiercingAttackEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Damage Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The effect to apply on attacker.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::EntityEffect"
 					}
 				}
 			]
@@ -70514,7 +70727,51 @@
 					"value": "bow"
 				},
 				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "Used for Tridents.\n",
+					"identifier": "OldTrident",
+					"value": "spear"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "Trident",
+					"value": "trident"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"identifier": "Spear",
 					"value": "spear"
 				},
@@ -70594,6 +70851,159 @@
 							"value": "1.21.5"
 						}
 					}
+				}
+			]
+		},
+		"::java::world::component::item::KineticWeapon": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Minimum distance to the target to be considered valid.\n\nDefaults to 0.0\n",
+					"key": "min_reach",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Maximum distance to the target to be considered valid.\n\nDefaults to 3.0\n",
+					"key": "max_reach",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The margin applied to the target bounding box when checking for valid hitbox collision.\n\nDefaults to 0.3\n",
+					"key": "hitbox_margin",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The time in ticks required for charging.\n\nDefaults to 0\n",
+					"key": "delay_ticks",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "dismount_conditions",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::item::KineticWeaponEffectCondition"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "knockback_conditions",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::item::KineticWeaponEffectCondition"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "damage_conditions",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::item::KineticWeaponEffectCondition"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The distance the item moves out of hand during animation.\n\nDefaults to 0.0\n",
+					"key": "forward_movement",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The multiplier for the final damage from the relative speed.\n\nDefaults to 1.0\n",
+					"key": "damage_multiplier",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Sound to play when the weapon is engaged.\n",
+					"key": "sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Sound to play when the weapon hits an entity.\n",
+					"key": "hit_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::component::item::KineticWeaponEffectCondition": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The duration in ticks this condition can pass.\n\nStarts counting after charged.\n",
+					"key": "max_duration_ticks",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The minimum attacker speed required.\n\nDefaults to 0.0\n",
+					"key": "min_speed",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The minimum relative speed required.\n\nDefaults to 0.0\n",
+					"key": "min_relative_speed",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -70682,6 +71092,88 @@
 						"kind": "reference",
 						"path": "::java::world::component::item::MapDecoration"
 					}
+				}
+			]
+		},
+		"::java::world::component::item::PiercingWeapon": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Minimum distance to the target to be considered valid.\n\nDefaults to 0.0\n",
+					"key": "min_reach",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Maximum distance to the target to be considered valid.\n\nDefaults to 3.0\n",
+					"key": "max_reach",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The margin applied to the target bounding box when checking for valid hitbox collision.\n\nDefaults to 0.3\n",
+					"key": "hitbox_margin",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the attack deals knockback.\n\nDefaults to `true`.\n",
+					"key": "deals_knockback",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the attack dismounts the target.\n\nDefaults to `false`.\n",
+					"key": "dismounts",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Sound to play when using the weapon to attack.\n",
+					"key": "sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Sound to play when the weapon hits an entity.\n",
+					"key": "hit_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -70943,6 +71435,52 @@
 						}
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::component::item::SwingAnimation": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The animation type to play when attacking or interacting using this item.\n\nDefaults to `whack`.\n",
+					"key": "type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::item::SwingAnimationType"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The animation duration in ticks.\n\nDefaults to 6\n",
+					"key": "duration",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::component::item::SwingAnimationType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "None",
+					"value": "none"
+				},
+				{
+					"identifier": "Whack",
+					"value": "whack"
+				},
+				{
+					"identifier": "Stab",
+					"value": "stab"
 				}
 			]
 		},
@@ -71288,6 +71826,34 @@
 								}
 							}
 						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::component::item::UseEffects": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Whether the player can sprint while using this item.\n\nDefaults to `false`.\n",
+					"key": "can_sprint",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The speed multiplier applied to the player while using this item.\n\nDefaults to 0.2\n",
+					"key": "speed_multiplier",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
 					},
 					"optional": true
 				}
@@ -81220,6 +81786,18 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "Ticks that it will be angry for.\n",
 					"key": "AngerTime",
 					"type": {
@@ -81231,7 +81809,35 @@
 					"kind": "pair",
 					"attributes": [
 						{
-							"name": "uuid"
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "The time anger ends.\n",
+					"key": "anger_end_tine",
+					"type": {
+						"kind": "long"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
 						}
 					],
 					"key": "AngryAt",
@@ -81241,7 +81847,42 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
 						}
+					],
+					"key": "angry_at",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				}
@@ -92039,6 +92680,22 @@
 					}
 				]
 			},
+			"kinetic_weapon": {
+				"kind": "reference",
+				"path": "::java::world::component::item::KineticWeapon",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"llama/variant": {
 				"kind": "reference",
 				"path": "::java::world::component::entity::LlamaVariant"
@@ -92162,6 +92819,26 @@
 					"max": 99
 				}
 			},
+			"minimum_attack_charge": {
+				"kind": "float",
+				"valueRange": {
+					"kind": 0,
+					"min": 0,
+					"max": 1
+				},
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"mooshroom/variant": {
 				"kind": "reference",
 				"path": "::java::world::component::entity::MooshroomType",
@@ -92265,6 +92942,22 @@
 							"value": {
 								"kind": "string",
 								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"piercing_weapon": {
+				"kind": "reference",
+				"path": "::java::world::component::item::PiercingWeapon",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
 							}
 						}
 					}
@@ -92549,6 +93242,22 @@
 					"path": "::java::world::component::item::SuspiciousStewEffect"
 				}
 			},
+			"swing_animation": {
+				"kind": "reference",
+				"path": "::java::world::component::item::SwingAnimation",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"tool": {
 				"kind": "reference",
 				"path": "::java::world::component::item::Tool"
@@ -92636,6 +93345,22 @@
 			"use_cooldown": {
 				"kind": "reference",
 				"path": "::java::world::component::item::UseCooldown"
+			},
+			"use_effects": {
+				"kind": "reference",
+				"path": "::java::world::component::item::UseEffects",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
 			},
 			"use_remainder": {
 				"kind": "reference",
@@ -93461,6 +94186,25 @@
 					"kind": "reference",
 					"path": "::java::data::enchantment::PostAttackEnchantmentEffect"
 				}
+			},
+			"post_piercing_attack": {
+				"kind": "list",
+				"item": {
+					"kind": "reference",
+					"path": "::java::data::enchantment::PostPiercingAttackEnchantmentEffect"
+				},
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
 			},
 			"prevent_armor_change": {
 				"kind": "struct",
@@ -94746,6 +95490,22 @@
 			"all_of": {
 				"kind": "reference",
 				"path": "::java::data::enchantment::AllOfEntityEffect"
+			},
+			"apply_impulse": {
+				"kind": "reference",
+				"path": "::java::data::enchantment::ApplyImpulseEntityEffect",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
 			},
 			"apply_mob_effect": {
 				"kind": "reference",
@@ -96925,6 +97685,22 @@
 				"kind": "reference",
 				"path": "::java::data::enchantment::ClampedLevelValue"
 			},
+			"exponent": {
+				"kind": "reference",
+				"path": "::java::data::enchantment::ExponentLevelValue",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"fraction": {
 				"kind": "reference",
 				"path": "::java::data::enchantment::FractionLevelValue"
@@ -96964,6 +97740,10 @@
 			"all_of": {
 				"kind": "reference",
 				"path": "::java::data::enchantment::AllOfLocationBasedEffect"
+			},
+			"apply_impulse": {
+				"kind": "reference",
+				"path": "::java::data::enchantment::ApplyImpulseEntityEffect"
 			},
 			"apply_mob_effect": {
 				"kind": "reference",
