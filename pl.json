@@ -685,7 +685,7 @@
 	"::java::world::component::item::FoodEffect.probability": "Szansa z jaką efekt zostanie nałożony. Domyślnie `1`.",
 	"::java::world::component::item::ItemDamageFunction.base": "Stała wartość uszkodzeń nakładana na przedmiot, jeśli przekroczono `threshold`.",
 	"::java::world::component::item::ItemDamageFunction.factor": "Ułamek zadanych uszkodzeń nakładanych na przedmiot, jeśli przekroczono `threshold`.",
-	"::java::world::component::item::ItemUseAnimation.Spear": "Używane przez Trójzęby.",
+	"::java::world::component::item::ItemUseAnimation.OldTrident": "Używane przez Trójzęby.",
 	"::java::world::component::item::ItemUseAnimation.TootHorn": "Używane przez Kozie Rogi.",
 	"::java::world::component::item::LodestoneTracker.target": "Opcjonalna lokalizacja lodestone'a. Jeśli nie podano, kompas będzie kręcić śmigło.",
 	"::java::world::component::item::LodestoneTracker.tracked": "Jeśli `true`, komponent zostanie usunięty gdy lodestone zostanie zniszczony. Jeśli `false`, komponent pozostanie. Domyślnie `true`.",
