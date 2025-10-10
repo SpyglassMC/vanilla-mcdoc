@@ -1,5 +1,5 @@
 {
-	"ref": "a4dfe918c770b979844518a0100a61812e8d7f0c",
+	"ref": "741ad3bf7aea21f8a1983d0787b2289623bb0ce7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -97823,22 +97823,6 @@
 			"all_of": {
 				"kind": "reference",
 				"path": "::java::data::enchantment::AllOfLocationBasedEffect"
-			},
-			"apply_impulse": {
-				"kind": "reference",
-				"path": "::java::data::enchantment::ApplyImpulseEntityEffect",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "1.21.11"
-							}
-						}
-					}
-				]
 			},
 			"apply_mob_effect": {
 				"kind": "reference",
