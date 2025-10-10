@@ -188,8 +188,9 @@ struct ApplyImpulseEntityEffect {
 }
 #[since="1.21.11"]
 dispatch minecraft:entity_effect[apply_impulse] to ApplyImpulseEntityEffect
-#[since="1.21.11"]
-dispatch minecraft:location_based_effect[apply_impulse] to ApplyImpulseEntityEffect
+// TODO: track MC-302790
+//#[since="1.21.11"]
+//dispatch minecraft:location_based_effect[apply_impulse] to ApplyImpulseEntityEffect
 
 struct ApplyMobEffectEntityEffect {
 	/// If multiple mob effects are specified, a random effect is selected.
