@@ -6,11 +6,17 @@ use super::biome::BiomeMusic
 use super::biome::BiomeParticle
 use super::biome::MoodSound
 use super::biome::BiomeSoundAdditions
+use modifier::BooleanAttributeModifier
+use modifier::FloatAttributeModifier
+use modifier::ColorAttributeModifier
 
 struct EnvironmentAttributeMap {
 	[#[id="environmemt_attribute"] string]: (
 		minecraft:environment_attribute[[%key]] |
-		minecraft:environment_attribute_modifier[[%key]] |
+		struct OverrideModifier {
+			modifier?: "override",
+			argument: minecraft:environment_attribute[[%parent.%key]],
+		} |
 	),
 }
 
@@ -24,24 +30,24 @@ dispatch minecraft:environment_attribute[
 	"gameplay/increased_fire_burnout",
 	"gameplay/piglins_zombify",
 	"gameplay/snow_golem_melts",
-] to boolean
+] to (boolean | BooleanAttributeModifier)
 
 dispatch minecraft:environment_attribute[
 	"visual/cloud_height",
-] to float
+] to (float | FloatAttributeModifier)
 dispatch minecraft:environment_attribute[
 	"visual/water_fog_radius",
-] to float @ 0..
+] to (float @ 0.. | FloatAttributeModifier)
 dispatch minecraft:environment_attribute[
 	"visual/cloud_opacity",
 	"audio/music_volume",
-] to float @ 0..1
+] to (float @ 0..1 | FloatAttributeModifier)
 
 dispatch minecraft:environment_attribute[
 	"visual/fog_color",
 	"visual/water_fog_color",
 	"visual/sky_color",
-] to StringRGB
+] to (StringRGB | ColorAttributeModifier)
 
 dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to Particle
 
