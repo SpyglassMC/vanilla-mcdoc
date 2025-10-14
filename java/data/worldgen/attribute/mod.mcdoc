@@ -72,8 +72,8 @@ dispatch minecraft:environment_attribute["audio/ambient_sounds"] to struct Ambie
 }
 
 dispatch minecraft:environment_attribute["gameplay/bed_rule"] to struct BedRule {
-	can_sleep?: BedRuleType,
-	can_set_spawn?: BedRuleType,
+	can_sleep: BedRuleType,
+	can_set_spawn: BedRuleType,
 	explodes?: boolean,
 	error_message?: Text,
 }
