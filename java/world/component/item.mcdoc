@@ -478,6 +478,9 @@ dispatch minecraft:data_component[kinetic_weapon] to struct KineticWeapon {
 	/// The time in ticks required for charging.
 	/// Defaults to 0
 	delay_ticks?: int @ 0..,
+	/// The cooldown in ticks after hitting, and loosing contact with an entity before being able to hit it again
+	/// Defaults to 10
+	contact_cooldown_ticks?: int @ 0..,
 	dismount_conditions?: KineticWeaponEffectCondition,
 	knockback_conditions?: KineticWeaponEffectCondition,
 	damage_conditions?: KineticWeaponEffectCondition,
