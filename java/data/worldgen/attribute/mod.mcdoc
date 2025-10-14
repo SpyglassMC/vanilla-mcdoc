@@ -1,0 +1,79 @@
+use ::java::util::color::StringRGB
+use ::java::util::particle::Particle
+use ::java::util::text::Text
+use ::java::data::util::SoundEventRef
+use super::biome::BiomeMusic
+use super::biome::BiomeParticle
+use super::biome::MoodSound
+use super::biome::BiomeSoundAdditions
+
+struct EnvironmentAttributeMap {
+	[#[id="environmemt_attribute"] string]: (
+		minecraft:environment_attribute[[%key]] |
+		minecraft:environment_attribute_modifier[[%key]] |
+	),
+}
+
+dispatch minecraft:environment_attribute[
+	"visual/extra_fog",
+	"gameplay/can_start_raid",
+	"gameplay/water_evaporates",
+	"gameplay/respawn_anchor_works",
+	"gameplay/nether_portal_spawns_piglin",
+	"gameplay/fast_lava",
+	"gameplay/increased_fire_burnout",
+	"gameplay/piglins_zombify",
+	"gameplay/snow_golem_melts",
+] to boolean
+
+dispatch minecraft:environment_attribute[
+	"visual/cloud_height",
+] to float
+dispatch minecraft:environment_attribute[
+	"visual/water_fog_radius",
+] to float @ 0..
+dispatch minecraft:environment_attribute[
+	"visual/cloud_opacity",
+	"audio/music_volume",
+] to float @ 0..1
+
+dispatch minecraft:environment_attribute[
+	"visual/fog_color",
+	"visual/water_fog_color",
+	"visual/sky_color",
+] to StringRGB
+
+dispatch minecraft:environment_attribute[
+	"visual/default_dripstone_particle",
+] to Particle
+
+dispatch minecraft:environment_attribute[
+	"visual/ambient_particles",
+] to [BiomeParticle]
+
+dispatch minecraft:environment_attribute["audio/background_music"] to struct BackgroundMusic {
+	/// Default music to play
+	default?: BiomeMusic,
+	/// Overrides default music when underwater
+	underwater?: BiomeMusic,
+	/// Overrides default music when in creative mode
+	creative?: BiomeMusic,
+}
+
+dispatch minecraft:environment_attribute["audio/ambient_sounds"] to struct AmbientSounds {
+	loop?: SoundEventRef,
+	mood?: MoodSound,
+	additions?: [BiomeSoundAdditions],
+}
+
+dispatch minecraft:environment_attribute["gameplay/bed_rule"] to struct BedRule {
+	can_sleep?: BedRuleType,
+	can_set_spawn?: BedRuleType,
+	explodes?: boolean,
+	error_message?: Text,
+}
+enum(string) BedRuleType {
+	Always = "always",
+	WhenDark = "when_dark",
+	Never = "never",
+}
