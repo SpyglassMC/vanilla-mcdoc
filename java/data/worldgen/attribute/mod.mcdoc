@@ -43,13 +43,9 @@ dispatch minecraft:environment_attribute[
 	"visual/sky_color",
 ] to StringRGB
 
-dispatch minecraft:environment_attribute[
-	"visual/default_dripstone_particle",
-] to Particle
+dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to Particle
 
-dispatch minecraft:environment_attribute[
-	"visual/ambient_particles",
-] to [BiomeParticle]
+dispatch minecraft:environment_attribute["visual/ambient_particles"] to [BiomeParticle]
 
 dispatch minecraft:environment_attribute["audio/background_music"] to struct BackgroundMusic {
 	/// Default music to play
@@ -72,6 +68,7 @@ dispatch minecraft:environment_attribute["gameplay/bed_rule"] to struct BedRule 
 	explodes?: boolean,
 	error_message?: Text,
 }
+
 enum(string) BedRuleType {
 	Always = "always",
 	WhenDark = "when_dark",

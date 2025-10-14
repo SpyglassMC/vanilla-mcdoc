@@ -1,4 +1,5 @@
 use ::java::util::particle::Particle
+use super::attribute::EnvironmentAttributeMap
 use super::CarveStep
 use super::carver::CarverRef
 use super::feature::ConfiguredFeatureRef
@@ -8,6 +9,8 @@ use super::surface_builder::ConfiguredSurfaceBuilderRef
 use super::super::util::SoundEventRef
 
 dispatch minecraft:resource["worldgen/biome"] to struct Biome {
+	#[since="1.21.11"]
+	attributes?: EnvironmentAttributeMap,
 	#[until="1.19"]
 	category: BiomeCategory,
 	/// Raises or lowers the terrain. Positive values are considered land and negative are oceans.
@@ -93,26 +96,33 @@ enum(string) TemperatureModifier {
 }
 
 struct BiomeEffects {
+	#[until="1.21.11"]
 	sky_color: #[color="composite_rgb"] int,
+	#[until="1.21.11"]
 	fog_color: #[color="composite_rgb"] int,
 	water_color: #[color="composite_rgb"] int,
+	#[until="1.21.11"]
 	water_fog_color: #[color="composite_rgb"] int,
 	grass_color?: #[color="composite_rgb"] int,
 	foliage_color?: #[color="composite_rgb"] int,
 	#[since="1.21.5"]
 	dry_foliage_color?: #[color="composite_rgb"] int,
 	grass_color_modifier?: GrassColorModifier,
+	#[until="1.21.11"]
 	ambient_sound?: SoundEventRef,
+	#[until="1.21.11"]
 	mood_sound?: struct MoodSound {
 		sound: SoundEventRef,
 		tick_delay: int,
 		block_search_extent: int,
 		offset: float,
 	},
+	#[until="1.21.11"]
 	additions_sound?: struct BiomeSoundAdditions {
 		sound: SoundEventRef,
 		tick_chance: float @ 0..1,
 	},
+	#[until="1.21.11"]
 	music?: (
 		#[until="1.21.4"] BiomeMusic |
 		#[since="1.21.4"] [struct {
@@ -122,7 +132,9 @@ struct BiomeEffects {
 	),
 	/// The volume of the music in this biome. Defaults to 1.
 	/// The game will smoothly transition between the current music volume and the new volume when entering the biome.
+	#[since="1.21.4"] #[until="1.21.11"]
 	music_volume?: float,
+	#[until="1.21.11"]
 	particle?: struct BiomeParticle {
 		options: Particle,
 		probability: float @ 0..1,
