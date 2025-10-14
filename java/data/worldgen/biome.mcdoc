@@ -1,5 +1,5 @@
 use ::java::util::particle::Particle
-use super::attribute::EnvironmentAttributeMap
+use super::attribute::PositionalEnvironmentAttributeMap
 use super::CarveStep
 use super::carver::CarverRef
 use super::feature::ConfiguredFeatureRef
@@ -10,7 +10,7 @@ use super::super::util::SoundEventRef
 
 dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 	#[since="1.21.11"]
-	attributes?: EnvironmentAttributeMap,
+	attributes?: PositionalEnvironmentAttributeMap,
 	#[until="1.19"]
 	category: BiomeCategory,
 	/// Raises or lowers the terrain. Positive values are considered land and negative are oceans.

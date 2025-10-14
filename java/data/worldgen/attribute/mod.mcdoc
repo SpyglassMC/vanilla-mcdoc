@@ -10,8 +10,8 @@ use modifier::BooleanAttributeModifier
 use modifier::FloatAttributeModifier
 use modifier::ColorAttributeModifier
 
-struct EnvironmentAttributeMap {
-	[#[id="environmemt_attribute"] string]: (
+type EnvironmentAttributeMap<K> = struct {
+	[K]: (
 		minecraft:environment_attribute[[%key]] |
 		struct OverrideModifier {
 			modifier?: "override",
@@ -19,6 +19,9 @@ struct EnvironmentAttributeMap {
 		} |
 	),
 }
+
+type GlobalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id="environmemt_attribute"] string>
+type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id(registry="environmemt_attribute", exclude=["gameplay/fast_lava"])] string>
 
 dispatch minecraft:environment_attribute[
 	"visual/extra_fog",

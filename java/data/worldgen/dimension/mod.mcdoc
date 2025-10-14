@@ -1,6 +1,6 @@
 use chunk_generator::ChunkGenerator
 use super::IntProvider
-use super::attribute::EnvironmentAttributeMap
+use super::attribute::GlobalEnvironmentAttributeMap
 
 #[since="1.16"]
 dispatch minecraft:resource[dimension] to struct Dimension {
@@ -18,7 +18,7 @@ type DimensionTypeRef = (
 
 dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	#[since="1.21.11"]
-	attributes?: EnvironmentAttributeMap,
+	attributes?: GlobalEnvironmentAttributeMap,
 	/// If true, water will evaporate and sponges will dry.
 	#[until="1.21.11"]
 	ultrawarm: boolean,
