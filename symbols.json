@@ -1,5 +1,5 @@
 {
-	"ref": "4e74b33a8c78bc8c2c992e4e47e64b921b0b6df6",
+	"ref": "b2fd1d3ae6b36a26293aa7f9b1be0c219bce994b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -34964,11 +34964,20 @@
 					"kind": "pair",
 					"key": "additions",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::biome::BiomeSoundAdditions"
-						}
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::biome::BiomeSoundAdditions"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::biome::BiomeSoundAdditions"
+								}
+							}
+						]
 					},
 					"optional": true
 				}
