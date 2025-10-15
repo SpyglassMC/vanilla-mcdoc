@@ -151,7 +151,13 @@ struct BiomeMusic {
 	sound: SoundEventRef,
 	min_delay: int @ 0..,
 	max_delay: int @ 0..,
-	replace_current_music: boolean,
+	#[until="1.21.11"] ...struct {
+		replace_current_music: boolean,
+	},
+	#[since="1.21.11"] ...struct {
+		/// Defaults to `false`.
+		replace_current_music?: boolean,
+	},
 }
 
 enum(string) MobCategory {
