@@ -12,7 +12,7 @@ struct FloatAttributeModifier {
 }
 
 struct ColorAttributeModifier {
-	type: ColorModifierType,
+	modifier: ColorModifierType,
 	argument: minecraft:environment_attribute_color_modifier[[type]],
 }
 dispatch minecraft:environment_attribute_color_modifier[%fallback] to StringRGB
