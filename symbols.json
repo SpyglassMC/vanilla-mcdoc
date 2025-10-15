@@ -1,5 +1,5 @@
 {
-	"ref": "8febc86e98279b419fcc0322dad5d680b2201cb0",
+	"ref": "8127630a91d9789e4bfcfc72e07c5d34f4d7a668",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -34870,6 +34870,528 @@
 				}
 			]
 		},
+		"::java::data::worldgen::attribute::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::K"
+					},
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											{
+												"keyword": "key"
+											}
+										]
+									}
+								],
+								"registry": "minecraft:environment_attribute"
+							},
+							{
+								"kind": "struct",
+								"fields": [
+									{
+										"kind": "pair",
+										"key": "modifier",
+										"type": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "override"
+											}
+										},
+										"optional": true
+									},
+									{
+										"kind": "pair",
+										"key": "argument",
+										"type": {
+											"kind": "dispatcher",
+											"parallelIndices": [
+												{
+													"kind": "dynamic",
+													"accessor": [
+														{
+															"keyword": "parent"
+														},
+														{
+															"keyword": "key"
+														}
+													]
+												}
+											],
+											"registry": "minecraft:environment_attribute"
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::AmbientSounds": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "loop",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "mood",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::biome::MoodSound"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "additions",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::biome::BiomeSoundAdditions"
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::BackgroundMusic": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Default music to play\n",
+					"key": "default",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::biome::BiomeMusic"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Overrides default music when underwater\n",
+					"key": "underwater",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::biome::BiomeMusic"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Overrides default music when in creative mode\n",
+					"key": "creative",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::biome::BiomeMusic"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::BedRule": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "can_sleep",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::BedRuleType"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "can_set_spawn",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::BedRuleType"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "explodes",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "error_message",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::BedRuleType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Always",
+					"value": "always"
+				},
+				{
+					"identifier": "WhenDark",
+					"value": "when_dark"
+				},
+				{
+					"identifier": "Never",
+					"value": "never"
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::EnvironmentAttributeMap": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::attribute::K"
+						},
+						"type": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "dispatcher",
+									"parallelIndices": [
+										{
+											"kind": "dynamic",
+											"accessor": [
+												{
+													"keyword": "key"
+												}
+											]
+										}
+									],
+									"registry": "minecraft:environment_attribute"
+								},
+								{
+									"kind": "struct",
+									"fields": [
+										{
+											"kind": "pair",
+											"key": "modifier",
+											"type": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "override"
+												}
+											},
+											"optional": true
+										},
+										{
+											"kind": "pair",
+											"key": "argument",
+											"type": {
+												"kind": "dispatcher",
+												"parallelIndices": [
+													{
+														"kind": "dynamic",
+														"accessor": [
+															{
+																"keyword": "parent"
+															},
+															{
+																"keyword": "key"
+															}
+														]
+													}
+												],
+												"registry": "minecraft:environment_attribute"
+											}
+										}
+									]
+								}
+							]
+						}
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::worldgen::attribute::K"
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::GlobalEnvironmentAttributeMap": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::EnvironmentAttributeMap"
+			},
+			"typeArgs": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "environmemt_attribute"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::modifier::BooleanAttributeModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "modifier",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::BooleanModifierType"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "argument",
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::modifier::BooleanModifierType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "And",
+					"value": "and"
+				},
+				{
+					"identifier": "Nand",
+					"value": "nand"
+				},
+				{
+					"identifier": "Or",
+					"value": "or"
+				},
+				{
+					"identifier": "Nor",
+					"value": "nor"
+				},
+				{
+					"identifier": "Xor",
+					"value": "xor"
+				},
+				{
+					"identifier": "Xnor",
+					"value": "xnor"
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::modifier::ColorAttributeModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::ColorModifierType"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "argument",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:environment_attribute_color_modifier"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::modifier::ColorModifierType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Add",
+					"value": "add"
+				},
+				{
+					"identifier": "Subtract",
+					"value": "subtract"
+				},
+				{
+					"identifier": "Multiply",
+					"value": "multiply"
+				},
+				{
+					"identifier": "AlphaBlend",
+					"value": "alpha_blend"
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::modifier::FloatAttributeModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "modifier",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::FloatModifierType"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "argument",
+					"type": {
+						"kind": "float"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::modifier::FloatModifierType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Add",
+					"value": "add"
+				},
+				{
+					"identifier": "Subtract",
+					"value": "subtract"
+				},
+				{
+					"identifier": "Multiply",
+					"value": "multiply"
+				},
+				{
+					"identifier": "Minimum",
+					"value": "minimum"
+				},
+				{
+					"identifier": "Maximum",
+					"value": "maximum"
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::OverrideModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "modifier",
+					"type": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "override"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "argument",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "parent"
+									},
+									{
+										"keyword": "key"
+									}
+								]
+							}
+						],
+						"registry": "minecraft:environment_attribute"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::PositionalEnvironmentAttributeMap": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::EnvironmentAttributeMap"
+			},
+			"typeArgs": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "tree",
+								"values": {
+									"registry": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "environmemt_attribute"
+										}
+									},
+									"exclude": {
+										"kind": "tree",
+										"values": {
+											"0": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "gameplay/fast_lava"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			]
+		},
 		"::java::data::worldgen::biome::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
@@ -34943,6 +35465,27 @@
 		"::java::data::worldgen::biome::Biome": {
 			"kind": "struct",
 			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"key": "attributes",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::PositionalEnvironmentAttributeMap"
+					},
+					"optional": true
+				},
 				{
 					"kind": "pair",
 					"attributes": [
@@ -35544,6 +36087,18 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"key": "sky_color",
 					"type": {
 						"kind": "int",
@@ -35563,6 +36118,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"key": "fog_color",
 					"type": {
 						"kind": "int",
@@ -35601,6 +36168,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"key": "water_fog_color",
 					"type": {
 						"kind": "int",
@@ -35701,6 +36280,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"key": "ambient_sound",
 					"type": {
 						"kind": "reference",
@@ -35710,6 +36301,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"key": "mood_sound",
 					"type": {
 						"kind": "struct",
@@ -35749,6 +36352,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"key": "additions_sound",
 					"type": {
 						"kind": "struct",
@@ -35779,6 +36394,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"key": "music",
 					"type": {
 						"kind": "union",
@@ -35844,6 +36471,28 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.4"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "The volume of the music in this biome. Defaults to 1.\n\nThe game will smoothly transition between the current music volume and the new volume when entering the biome.\n",
 					"key": "music_volume",
 					"type": {
@@ -35853,6 +36502,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"key": "particle",
 					"type": {
 						"kind": "struct",
@@ -39179,6 +39840,39 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"key": "attributes",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::GlobalEnvironmentAttributeMap"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "If true, water will evaporate and sponges will dry.\n",
 					"key": "ultrawarm",
 					"type": {
@@ -39195,6 +39889,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "If false, piglins will shake and convert to zombified piglins.\n",
 					"key": "piglin_safe",
 					"type": {
@@ -39203,6 +39909,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "If true, players can charge and use respawn anchors to set their spawn. If false, respawn anchors will blow up when used.\n",
 					"key": "respawn_anchor_works",
 					"type": {
@@ -39211,6 +39929,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "If true, players can use beds to set their spawn and advance time. If false, beds will blow up when used.\n",
 					"key": "bed_works",
 					"type": {
@@ -39219,6 +39949,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "If true, players with the Bad Omen effect can cause a raid.\n",
 					"key": "has_raids",
 					"type": {
@@ -39607,6 +40349,16 @@
 								"value": {
 									"kind": "string",
 									"value": "1.21.6"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
 								}
 							}
 						}
@@ -55684,6 +56436,122 @@
 				}
 			]
 		},
+		"::java::util::color::StringARGB": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "int",
+					"attributes": [
+						{
+							"name": "color",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "composite_argb"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "float"
+					},
+					"lengthRange": {
+						"kind": 0,
+						"min": 4,
+						"max": 4
+					},
+					"attributes": [
+						{
+							"name": "color",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "dec_rgba"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "color",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "hex_argb"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::util::color::StringRGB": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "int",
+					"attributes": [
+						{
+							"name": "color",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "composite_rgb"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "float"
+					},
+					"lengthRange": {
+						"kind": 0,
+						"min": 3,
+						"max": 3
+					},
+					"attributes": [
+						{
+							"name": "color",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "dec_rgb"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "color",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "hex_rgb"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
 		"::java::util::custom_event::UnknownDynamicAdditions": {
 			"kind": "struct",
 			"fields": [
@@ -71048,6 +71916,19 @@
 					"kind": "pair",
 					"desc": "The time in ticks required for charging.\n\nDefaults to 0\n",
 					"key": "delay_ticks",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The cooldown in ticks after hitting, and loosing contact with an entity before being able to hit it again\n\nDefaults to 10\n",
+					"key": "contact_cooldown_ticks",
 					"type": {
 						"kind": "int",
 						"valueRange": {
@@ -96008,6 +96889,250 @@
 						}
 					}
 				]
+			}
+		},
+		"minecraft:environment_attribute": {
+			"audio/ambient_sounds": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::AmbientSounds"
+			},
+			"audio/background_music": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::BackgroundMusic"
+			},
+			"audio/music_volume": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+					}
+				]
+			},
+			"gameplay/bed_rule": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::BedRule"
+			},
+			"gameplay/can_start_raid": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "boolean"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+					}
+				]
+			},
+			"gameplay/fast_lava": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "boolean"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+					}
+				]
+			},
+			"gameplay/increased_fire_burnout": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "boolean"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+					}
+				]
+			},
+			"gameplay/nether_portal_spawns_piglin": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "boolean"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+					}
+				]
+			},
+			"gameplay/piglins_zombify": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "boolean"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+					}
+				]
+			},
+			"gameplay/respawn_anchor_works": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "boolean"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+					}
+				]
+			},
+			"gameplay/snow_golem_melts": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "boolean"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+					}
+				]
+			},
+			"gameplay/water_evaporates": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "boolean"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+					}
+				]
+			},
+			"visual/ambient_particles": {
+				"kind": "list",
+				"item": {
+					"kind": "reference",
+					"path": "::java::data::worldgen::biome::BiomeParticle"
+				}
+			},
+			"visual/cloud_height": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "float"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+					}
+				]
+			},
+			"visual/cloud_opacity": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+					}
+				]
+			},
+			"visual/default_dripstone_particle": {
+				"kind": "reference",
+				"path": "::java::util::particle::Particle"
+			},
+			"visual/extra_fog": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "boolean"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+					}
+				]
+			},
+			"visual/fog_color": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::util::color::StringRGB"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::ColorAttributeModifier"
+					}
+				]
+			},
+			"visual/sky_color": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::util::color::StringRGB"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::ColorAttributeModifier"
+					}
+				]
+			},
+			"visual/water_fog_color": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::util::color::StringRGB"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::ColorAttributeModifier"
+					}
+				]
+			},
+			"visual/water_fog_radius": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+					}
+				]
+			}
+		},
+		"minecraft:environment_attribute_color_modifier": {
+			"%fallback": {
+				"kind": "reference",
+				"path": "::java::util::color::StringRGB"
+			},
+			"alpha_blend": {
+				"kind": "reference",
+				"path": "::java::util::color::StringARGB"
 			}
 		},
 		"minecraft:feature_config": {
