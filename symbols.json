@@ -1,5 +1,5 @@
 {
-	"ref": "7080a2f47554ddea322db17143382f5d9e514076",
+	"ref": "1310588729a4a33e5704d7562f96413cc83fc689",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -35158,7 +35158,7 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "environmemt_attribute"
+									"value": "environment_attribute"
 								}
 							}
 						}
@@ -35370,7 +35370,7 @@
 										"kind": "literal",
 										"value": {
 											"kind": "string",
-											"value": "environmemt_attribute"
+											"value": "environment_attribute"
 										}
 									},
 									"exclude": {
