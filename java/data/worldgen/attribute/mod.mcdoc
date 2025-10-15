@@ -20,8 +20,8 @@ type EnvironmentAttributeMap<K> = struct {
 	),
 }
 
-type GlobalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id="environmemt_attribute"] string>
-type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id(registry="environmemt_attribute", exclude=["gameplay/fast_lava"])] string>
+type GlobalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id="environment_attribute"] string>
+type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id(registry="environment_attribute", exclude=["gameplay/fast_lava"])] string>
 
 dispatch minecraft:environment_attribute[
 	"visual/extra_fog",
