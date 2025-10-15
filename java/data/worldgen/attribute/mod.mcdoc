@@ -3,7 +3,6 @@ use ::java::util::particle::Particle
 use ::java::util::text::Text
 use ::java::data::util::SoundEventRef
 use super::biome::BiomeMusic
-use super::biome::BiomeParticle
 use super::biome::MoodSound
 use super::biome::BiomeSoundAdditions
 use modifier::BooleanAttributeModifier
@@ -54,7 +53,7 @@ dispatch minecraft:environment_attribute[
 
 dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to Particle
 
-dispatch minecraft:environment_attribute["visual/ambient_particles"] to [BiomeParticle]
+dispatch minecraft:environment_attribute["visual/ambient_particles"] to [AmbientParticle]
 
 dispatch minecraft:environment_attribute["audio/background_music"] to struct BackgroundMusic {
 	/// Default music to play
@@ -76,6 +75,11 @@ dispatch minecraft:environment_attribute["gameplay/bed_rule"] to struct BedRule 
 	can_set_spawn: BedRuleType,
 	explodes?: boolean,
 	error_message?: Text,
+}
+
+struct AmbientParticle {
+	particle: Particle,
+	probability: float @ 0..1,
 }
 
 enum(string) BedRuleType {
