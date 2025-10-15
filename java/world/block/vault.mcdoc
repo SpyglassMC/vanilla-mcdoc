@@ -1,6 +1,5 @@
 use ::java::world::item::ItemStack
 
-// TODO: update with new fields
 #[since="1.20.5"]
 dispatch minecraft:block_entity[vault] to struct Vault {
 	server_data?: struct ServerData {
@@ -18,14 +17,22 @@ dispatch minecraft:block_entity[vault] to struct Vault {
 		key_item?: ItemStack,
 		/// Defaults to "minecraft:chests/trial_chambers/reward".
 		loot_table?: #[id="loot_table"] string,
+		/// The loot table to display items in the vault.
+		/// Defaults to use the value in `loot_table` field.
+		override_loot_table_to_display: #[id="loot_table"] string,
+		/// The range when the vault should activate.
+		activation_range?: double,
+		/// The range when the vault should deactivate.
+		deactivation_range?: double,
 	},
 	/// When a player is in range of the vault, the same display item will be shown to all players.
 	/// This is also used for the items that are being ejected from the vault.
-	shared_data?: (struct {} | struct SharedData {
+	shared_data?: struct SharedData {
 		/// Item that is displayed to players when they are in range of the vault.
 		display_item?: ItemStack,
-		connected_players?: [int[] @ 4],
-	}),
+		connected_players?: [#[uuid] int[] @ 4],
+		connected_particles_range?: double,
+	},
 }
 
 dispatch minecraft:block[vault] to minecraft:block_entity[vault]
