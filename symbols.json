@@ -1,5 +1,5 @@
 {
-	"ref": "741ad3bf7aea21f8a1983d0787b2289623bb0ce7",
+	"ref": "8febc86e98279b419fcc0322dad5d680b2201cb0",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -68212,10 +68212,6 @@
 				}
 			]
 		},
-		"::java::world::block::vault::<anonymous 0>": {
-			"kind": "struct",
-			"fields": []
-		},
 		"::java::world::block::vault::Config": {
 			"kind": "struct",
 			"fields": [
@@ -68247,6 +68243,44 @@
 								}
 							}
 						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The loot table to display items in the vault.\n\nDefaults to use the value in `loot_table` field.\n",
+					"key": "override_loot_table_to_display",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "loot_table"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The range when the vault should activate.\n",
+					"key": "activation_range",
+					"type": {
+						"kind": "double"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The range when the vault should deactivate.\n",
+					"key": "deactivation_range",
+					"type": {
+						"kind": "double"
 					},
 					"optional": true
 				}
@@ -68329,8 +68363,21 @@
 								"kind": 0,
 								"min": 4,
 								"max": 4
-							}
+							},
+							"attributes": [
+								{
+									"name": "uuid"
+								}
+							]
 						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "connected_particles_range",
+					"type": {
+						"kind": "double"
 					},
 					"optional": true
 				}
@@ -68433,6 +68480,44 @@
 									]
 								},
 								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "The loot table to display items in the vault.\n\nDefaults to use the value in `loot_table` field.\n",
+								"key": "override_loot_table_to_display",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "loot_table"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "pair",
+								"desc": "The range when the vault should activate.\n",
+								"key": "activation_range",
+								"type": {
+									"kind": "double"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "The range when the vault should deactivate.\n",
+								"key": "deactivation_range",
+								"type": {
+									"kind": "double"
+								},
+								"optional": true
 							}
 						]
 					},
@@ -68443,42 +68528,46 @@
 					"desc": "When a player is in range of the vault, the same display item will be shown to all players.\n\nThis is also used for the items that are being ejected from the vault.\n",
 					"key": "shared_data",
 					"type": {
-						"kind": "union",
-						"members": [
+						"kind": "struct",
+						"fields": [
 							{
-								"kind": "struct",
-								"fields": []
+								"kind": "pair",
+								"desc": "Item that is displayed to players when they are in range of the vault.\n",
+								"key": "display_item",
+								"type": {
+									"kind": "reference",
+									"path": "::java::world::item::ItemStack"
+								},
+								"optional": true
 							},
 							{
-								"kind": "struct",
-								"fields": [
-									{
-										"kind": "pair",
-										"desc": "Item that is displayed to players when they are in range of the vault.\n",
-										"key": "display_item",
-										"type": {
-											"kind": "reference",
-											"path": "::java::world::item::ItemStack"
+								"kind": "pair",
+								"key": "connected_players",
+								"type": {
+									"kind": "list",
+									"item": {
+										"kind": "int_array",
+										"lengthRange": {
+											"kind": 0,
+											"min": 4,
+											"max": 4
 										},
-										"optional": true
-									},
-									{
-										"kind": "pair",
-										"key": "connected_players",
-										"type": {
-											"kind": "list",
-											"item": {
-												"kind": "int_array",
-												"lengthRange": {
-													"kind": 0,
-													"min": 4,
-													"max": 4
-												}
+										"attributes": [
+											{
+												"name": "uuid"
 											}
-										},
-										"optional": true
+										]
 									}
-								]
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"key": "connected_particles_range",
+								"type": {
+									"kind": "double"
+								},
+								"optional": true
 							}
 						]
 					},
