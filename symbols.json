@@ -1,5 +1,5 @@
 {
-	"ref": "8127630a91d9789e4bfcfc72e07c5d34f4d7a668",
+	"ref": "7080a2f47554ddea322db17143382f5d9e514076",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -35462,6 +35462,32 @@
 				}
 			]
 		},
+		"::java::data::worldgen::biome::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "replace_current_music",
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::biome::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to `false`.\n",
+					"key": "replace_current_music",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::worldgen::biome::Biome": {
 			"kind": "struct",
 			"fields": [
@@ -36578,10 +36604,59 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "replace_current_music",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "boolean"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "replace_current_music",
+								"type": {
+									"kind": "boolean"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Defaults to `false`.\n",
+								"key": "replace_current_music",
+								"type": {
+									"kind": "boolean"
+								},
+								"optional": true
+							}
+						]
 					}
 				}
 			]
