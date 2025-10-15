@@ -528,6 +528,7 @@
 	"::java::data::worldgen::biome::Biome.player_spawn_friendly": "If true, the world spawn will be preferred in this biome.",
 	"::java::data::worldgen::biome::Biome.scale": "Vertically stretches the terrain. Lower values produce flatter terrain.",
 	"::java::data::worldgen::biome::BiomeEffects.music_volume": "The volume of the music in this biome. Defaults to 1.\nThe game will smoothly transition between the current music volume and the new volume when entering the biome.",
+	"::java::data::worldgen::biome::BiomeMusic.replace_current_music": "Defaults to `false`.",
 	"::java::data::worldgen::dimension::DimensionType.bed_works": "If true, players can use beds to set their spawn and advance time. If false, beds will blow up when used.",
 	"::java::data::worldgen::dimension::DimensionType.cloud_height": "The Y-level where the clouds start in the dimension. If not present, no clouds will be visible.",
 	"::java::data::worldgen::dimension::DimensionType.effects": "Sky effects.",
