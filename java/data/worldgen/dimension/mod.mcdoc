@@ -1,5 +1,6 @@
 use chunk_generator::ChunkGenerator
 use super::IntProvider
+use super::attribute::GlobalEnvironmentAttributeMap
 
 #[since="1.16"]
 dispatch minecraft:resource[dimension] to struct Dimension {
@@ -16,17 +17,24 @@ type DimensionTypeRef = (
 )
 
 dispatch minecraft:resource[dimension_type] to struct DimensionType {
+	#[since="1.21.11"]
+	attributes?: GlobalEnvironmentAttributeMap,
 	/// If true, water will evaporate and sponges will dry.
+	#[until="1.21.11"]
 	ultrawarm: boolean,
 	/// If true, portals will spawn zombified piglins. If false, compasses and clocks spin randomly.
 	natural: boolean,
 	/// If false, piglins will shake and convert to zombified piglins.
+	#[until="1.21.11"]
 	piglin_safe: boolean,
 	/// If true, players can charge and use respawn anchors to set their spawn. If false, respawn anchors will blow up when used.
+	#[until="1.21.11"]
 	respawn_anchor_works: boolean,
 	/// If true, players can use beds to set their spawn and advance time. If false, beds will blow up when used.
+	#[until="1.21.11"]
 	bed_works: boolean,
 	/// If true, players with the Bad Omen effect can cause a raid.
+	#[until="1.21.11"]
 	has_raids: boolean,
 	/// Affects the weather, lighting engine and respawning rules.
 	has_skylight: boolean,
@@ -63,7 +71,7 @@ dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	#[since="1.19"]
 	monster_spawn_block_light_limit: int @ 0..15,
 	/// The Y-level where the clouds start in the dimension. If not present, no clouds will be visible.
-	#[since="1.21.6"]
+	#[since="1.21.6"] #[until="1.21.11"]
 	cloud_height?: int @ -2032..2031,
 }
 
