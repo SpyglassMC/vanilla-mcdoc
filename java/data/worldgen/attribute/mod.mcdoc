@@ -68,7 +68,7 @@ dispatch minecraft:environment_attribute["audio/background_music"] to struct Bac
 dispatch minecraft:environment_attribute["audio/ambient_sounds"] to struct AmbientSounds {
 	loop?: SoundEventRef,
 	mood?: MoodSound,
-	additions?: [BiomeSoundAdditions],
+	additions?: (BiomeSoundAdditions | [BiomeSoundAdditions]),
 }
 
 dispatch minecraft:environment_attribute["gameplay/bed_rule"] to struct BedRule {
