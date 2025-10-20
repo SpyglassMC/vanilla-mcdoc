@@ -1,5 +1,5 @@
 {
-	"ref": "5ce3286c073051f45b167f758109a7910740956e",
+	"ref": "cc2ce104105a4f0c4854a9faea685f7a75d4ccf9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -35234,7 +35234,7 @@
 								{
 									"kind": "dynamic",
 									"accessor": [
-										"type"
+										"modifier"
 									]
 								}
 							],
@@ -35273,7 +35273,7 @@
 								{
 									"kind": "dynamic",
 									"accessor": [
-										"type"
+										"modifier"
 									]
 								}
 							],
@@ -35402,7 +35402,7 @@
 									{
 										"kind": "dynamic",
 										"accessor": [
-											"type"
+											"modifier"
 										]
 									}
 								],
@@ -35475,7 +35475,7 @@
 									{
 										"kind": "dynamic",
 										"accessor": [
-											"type"
+											"modifier"
 										]
 									}
 								],
