@@ -1,5 +1,5 @@
 {
-	"ref": "446fa47aa7056758a5cc11d67f2c7b3f45a45fd8",
+	"ref": "fa7a3ba20cf8177a70b46346afb65aca864a7d99",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -34897,6 +34897,20 @@
 								"registry": "minecraft:environment_attribute"
 							},
 							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											{
+												"keyword": "key"
+											}
+										]
+									}
+								],
+								"registry": "minecraft:environment_attribute_modifier"
+							},
+							{
 								"kind": "struct",
 								"fields": [
 									{
@@ -35126,6 +35140,20 @@
 										}
 									],
 									"registry": "minecraft:environment_attribute"
+								},
+								{
+									"kind": "dispatcher",
+									"parallelIndices": [
+										{
+											"kind": "dynamic",
+											"accessor": [
+												{
+													"keyword": "key"
+												}
+											]
+										}
+									],
+									"registry": "minecraft:environment_attribute_modifier"
 								},
 								{
 									"kind": "struct",
@@ -97010,121 +97038,40 @@
 				"path": "::java::data::worldgen::attribute::BackgroundMusic"
 			},
 			"audio/music_volume": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
-					}
-				]
+				"kind": "float",
+				"valueRange": {
+					"kind": 0,
+					"min": 0,
+					"max": 1
+				}
 			},
 			"gameplay/bed_rule": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::attribute::BedRule"
 			},
 			"gameplay/can_start_raid": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "boolean"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
-					}
-				]
+				"kind": "boolean"
 			},
 			"gameplay/fast_lava": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "boolean"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
-					}
-				]
+				"kind": "boolean"
 			},
 			"gameplay/increased_fire_burnout": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "boolean"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
-					}
-				]
+				"kind": "boolean"
 			},
 			"gameplay/nether_portal_spawns_piglin": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "boolean"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
-					}
-				]
+				"kind": "boolean"
 			},
 			"gameplay/piglins_zombify": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "boolean"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
-					}
-				]
+				"kind": "boolean"
 			},
 			"gameplay/respawn_anchor_works": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "boolean"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
-					}
-				]
+				"kind": "boolean"
 			},
 			"gameplay/snow_golem_melts": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "boolean"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
-					}
-				]
+				"kind": "boolean"
 			},
 			"gameplay/water_evaporates": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "boolean"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
-					}
-				]
+				"kind": "boolean"
 			},
 			"visual/ambient_particles": {
 				"kind": "list",
@@ -97134,104 +97081,41 @@
 				}
 			},
 			"visual/cloud_height": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "float"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
-					}
-				]
+				"kind": "float"
 			},
 			"visual/cloud_opacity": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
-					}
-				]
+				"kind": "float",
+				"valueRange": {
+					"kind": 0,
+					"min": 0,
+					"max": 1
+				}
 			},
 			"visual/default_dripstone_particle": {
 				"kind": "reference",
 				"path": "::java::util::particle::Particle"
 			},
 			"visual/extra_fog": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "boolean"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
-					}
-				]
+				"kind": "boolean"
 			},
 			"visual/fog_color": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "reference",
-						"path": "::java::util::color::StringRGB"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::ColorAttributeModifier"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::util::color::StringRGB"
 			},
 			"visual/sky_color": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "reference",
-						"path": "::java::util::color::StringRGB"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::ColorAttributeModifier"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::util::color::StringRGB"
 			},
 			"visual/water_fog_color": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "reference",
-						"path": "::java::util::color::StringRGB"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::ColorAttributeModifier"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::util::color::StringRGB"
 			},
 			"visual/water_fog_radius": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0
-						}
-					},
-					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
-					}
-				]
+				"kind": "float",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
 			}
 		},
 		"minecraft:environment_attribute_color_modifier": {
@@ -97242,6 +97126,76 @@
 			"alpha_blend": {
 				"kind": "reference",
 				"path": "::java::util::color::StringARGB"
+			}
+		},
+		"minecraft:environment_attribute_modifier": {
+			"%unknown": {
+				"kind": "union",
+				"members": []
+			},
+			"audio/music_volume": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+			},
+			"gameplay/can_start_raid": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+			},
+			"gameplay/fast_lava": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+			},
+			"gameplay/increased_fire_burnout": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+			},
+			"gameplay/nether_portal_spawns_piglin": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+			},
+			"gameplay/piglins_zombify": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+			},
+			"gameplay/respawn_anchor_works": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+			},
+			"gameplay/snow_golem_melts": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+			},
+			"gameplay/water_evaporates": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+			},
+			"visual/cloud_height": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+			},
+			"visual/cloud_opacity": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+			},
+			"visual/extra_fog": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
+			},
+			"visual/fog_color": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::ColorAttributeModifier"
+			},
+			"visual/sky_color": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::ColorAttributeModifier"
+			},
+			"visual/water_fog_color": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::ColorAttributeModifier"
+			},
+			"visual/water_fog_radius": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
 			}
 		},
 		"minecraft:feature_config": {
