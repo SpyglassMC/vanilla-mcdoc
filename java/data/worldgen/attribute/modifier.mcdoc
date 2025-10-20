@@ -10,14 +10,14 @@ type BooleanAttributeModifier<T> = struct {
 
 type FloatAttributeModifier<T> = struct {
 	modifier?: FloatModifierType,
-	argument: minecraft:environment_attribute_float_modifier[[type]]<T>,
+	argument: minecraft:environment_attribute_float_modifier[[modifier]]<T>,
 }
 dispatch minecraft:environment_attribute_float_modifier[%unknown]<T> to float
 dispatch minecraft:environment_attribute_float_modifier[override, %none]<T> to T
 
 type ColorAttributeModifier<T> = struct {
 	modifier?: ColorModifierType,
-	argument: minecraft:environment_attribute_color_modifier[[type]]<T>,
+	argument: minecraft:environment_attribute_color_modifier[[modifier]]<T>,
 }
 dispatch minecraft:environment_attribute_color_modifier[%unknown]<T> to StringRGB
 dispatch minecraft:environment_attribute_color_modifier[alpha_blend]<T> to StringARGB
