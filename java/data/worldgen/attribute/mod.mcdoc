@@ -12,12 +12,15 @@ use modifier::ColorAttributeModifier
 type EnvironmentAttributeMap<K> = struct {
 	[K]: (
 		minecraft:environment_attribute[[%key]] |
+		minecraft:environment_attribute_modifier[[%key]] |
 		struct OverrideModifier {
 			modifier?: "override",
 			argument: minecraft:environment_attribute[[%parent.%key]],
 		} |
 	),
 }
+
+dispatch minecraft:environment_attribute_modifier[%unknown] to ()
 
 type GlobalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id="environment_attribute"] string>
 type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id(registry="environment_attribute", exclude=["gameplay/fast_lava"])] string>
@@ -32,24 +35,46 @@ dispatch minecraft:environment_attribute[
 	"gameplay/increased_fire_burnout",
 	"gameplay/piglins_zombify",
 	"gameplay/snow_golem_melts",
-] to (boolean | BooleanAttributeModifier)
+] to boolean
+dispatch minecraft:environment_attribute_modifier[
+	"visual/extra_fog",
+	"gameplay/can_start_raid",
+	"gameplay/water_evaporates",
+	"gameplay/respawn_anchor_works",
+	"gameplay/nether_portal_spawns_piglin",
+	"gameplay/fast_lava",
+	"gameplay/increased_fire_burnout",
+	"gameplay/piglins_zombify",
+	"gameplay/snow_golem_melts",
+] to BooleanAttributeModifier
 
 dispatch minecraft:environment_attribute[
 	"visual/cloud_height",
-] to (float | FloatAttributeModifier)
+] to float
 dispatch minecraft:environment_attribute[
 	"visual/water_fog_radius",
-] to (float @ 0.. | FloatAttributeModifier)
+] to float @ 0..
 dispatch minecraft:environment_attribute[
 	"visual/cloud_opacity",
 	"audio/music_volume",
-] to (float @ 0..1 | FloatAttributeModifier)
+] to float @ 0..1
+dispatch minecraft:environment_attribute_modifier[
+	"visual/cloud_height",
+	"visual/water_fog_radius",
+	"visual/cloud_opacity",
+	"audio/music_volume",
+] to FloatAttributeModifier
 
 dispatch minecraft:environment_attribute[
 	"visual/fog_color",
 	"visual/water_fog_color",
 	"visual/sky_color",
-] to (StringRGB | ColorAttributeModifier)
+] to StringRGB
+dispatch minecraft:environment_attribute_modifier[
+	"visual/fog_color",
+	"visual/water_fog_color",
+	"visual/sky_color",
+] to ColorAttributeModifier
 
 dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to Particle
 
