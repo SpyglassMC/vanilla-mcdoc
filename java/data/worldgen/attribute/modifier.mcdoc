@@ -1,24 +1,35 @@
 use ::java::util::color::StringRGB
 use ::java::util::color::StringARGB
 
-struct BooleanAttributeModifier {
-	modifier: BooleanModifierType,
+type BooleanAttributeModifier<T> = struct {
+	modifier?: BooleanModifierType,
+	// All modifiers use boolean argument
+	// If this is changed in the future, use a dispatcher like float/color modifier
 	argument: boolean,
 }
 
-struct FloatAttributeModifier {
-	modifier: FloatModifierType,
-	argument: float,
+type FloatAttributeModifier<T> = struct {
+	modifier?: FloatModifierType,
+	argument: minecraft:environment_attribute_float_modifier[[type]]<T>,
 }
+dispatch minecraft:environment_attribute_float_modifier[%unknown]<T> to float
+dispatch minecraft:environment_attribute_float_modifier[override, %none]<T> to T
 
-struct ColorAttributeModifier {
-	modifier: ColorModifierType,
-	argument: minecraft:environment_attribute_color_modifier[[type]],
+type ColorAttributeModifier<T> = struct {
+	modifier?: ColorModifierType,
+	argument: minecraft:environment_attribute_color_modifier[[type]]<T>,
 }
-dispatch minecraft:environment_attribute_color_modifier[%fallback] to StringRGB
-dispatch minecraft:environment_attribute_color_modifier[alpha_blend] to StringARGB
+dispatch minecraft:environment_attribute_color_modifier[%unknown]<T> to StringRGB
+dispatch minecraft:environment_attribute_color_modifier[alpha_blend]<T> to StringARGB
+dispatch minecraft:environment_attribute_color_modifier[override, %none]<T> to T
+
+type OverrideModifier<T> = struct {
+	modifier?: "override",
+	argument: T,
+}
 
 enum(string) BooleanModifierType {
+	Override = "override",
 	And = "and",
 	Nand = "nand",
 	Or = "or",
@@ -28,6 +39,7 @@ enum(string) BooleanModifierType {
 }
 
 enum(string) FloatModifierType {
+	Override = "override",
 	Add = "add",
 	Subtract = "subtract",
 	Multiply = "multiply",
@@ -36,6 +48,7 @@ enum(string) FloatModifierType {
 }
 
 enum(string) ColorModifierType {
+	Override = "override",
 	Add = "add",
 	Subtract = "subtract",
 	Multiply = "multiply",
