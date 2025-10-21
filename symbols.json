@@ -1,5 +1,5 @@
 {
-	"ref": "f81109ea0f7c52b29347cdf0be53a1b0047fdf6d",
+	"ref": "4a5a3aae6ca20a78872877371dc6d9fe00cb059e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -9601,6 +9601,32 @@
 				}
 			]
 		},
+		"::java::assets::texture_meta::MipmapStrategy": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Auto",
+					"value": "auto"
+				},
+				{
+					"identifier": "Mean",
+					"value": "mean"
+				},
+				{
+					"identifier": "Cutout",
+					"value": "cutout"
+				},
+				{
+					"identifier": "StrictCutout",
+					"value": "strict_cutout"
+				},
+				{
+					"identifier": "DarkCutout",
+					"value": "dark_cutout"
+				}
+			]
+		},
 		"::java::assets::texture_meta::NineSlice": {
 			"kind": "struct",
 			"fields": [
@@ -10001,10 +10027,11 @@
 							}
 						}
 					],
-					"desc": "Defaults to `false`.\n",
-					"key": "darkened_cutout_mipmap",
+					"desc": "Defaults to `auto`.\n",
+					"key": "mipmap_strategy",
 					"type": {
-						"kind": "boolean"
+						"kind": "reference",
+						"path": "::java::assets::texture_meta::MipmapStrategy"
 					},
 					"optional": true
 				}
@@ -19775,6 +19802,20 @@
 				}
 			]
 		},
+		"::java::data::enchantment::ApplyExhaustionEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The amount of exhaustion to apply to player.\n",
+					"key": "amount",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
 		"::java::data::enchantment::ApplyImpulseEntityEffect": {
 			"kind": "struct",
 			"fields": [
@@ -23962,9 +24003,74 @@
 		},
 		"::java::data::loot::function::<anonymous 10>": {
 			"kind": "struct",
-			"fields": []
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": {
+						"kind": "reference",
+						"path": "::java::data::loot::function::ToggleableDataComponent",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					},
+					"type": {
+						"kind": "boolean"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "data_component_type"
+									}
+								}
+							}
+						]
+					},
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
 		},
 		"::java::data::loot::function::<anonymous 11>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::loot::function::<anonymous 12>": {
 			"kind": "struct",
 			"fields": []
 		},
@@ -24020,6 +24126,18 @@
 			"kind": "struct",
 			"fields": [
 				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::loot::function::Conditions"
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 6>": {
+			"kind": "struct",
+			"fields": [
+				{
 					"kind": "pair",
 					"key": "id",
 					"type": {
@@ -24034,7 +24152,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 6>": {
+		"::java::data::loot::function::<anonymous 7>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -24059,7 +24177,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 7>": {
+		"::java::data::loot::function::<anonymous 8>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -24098,7 +24216,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 8>": {
+		"::java::data::loot::function::<anonymous 9>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -24219,71 +24337,6 @@
 						]
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::data::loot::function::<anonymous 9>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"key": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::ToggleableDataComponent",
-						"attributes": [
-							{
-								"name": "id"
-							}
-						]
-					},
-					"type": {
-						"kind": "boolean"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"key": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "data_component_type"
-									}
-								}
-							}
-						]
-					},
-					"type": {
-						"kind": "boolean"
-					}
 				}
 			]
 		},
@@ -26090,6 +26143,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "Loot function to apply to the selected items.\n",
 					"key": "modifier",
 					"type": {
@@ -26108,6 +26173,74 @@
 							}
 						]
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "Loot function to apply to the item when `item_filter` passes.\n",
+					"key": "on_pass",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootFunction"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootFunction"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "Loot function to apply to the item when `item_filter` fails.\n",
+					"key": "on_fail",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootFunction"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootFunction"
+								}
+							}
+						]
+					},
+					"optional": true
 				},
 				{
 					"kind": "spread",
@@ -35536,6 +35669,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Defaults to 1.0\n",
 					"key": "alpha",
 					"type": {
 						"kind": "float",
@@ -35544,7 +35678,8 @@
 							"min": 0,
 							"max": 1
 						}
-					}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -96848,6 +96983,22 @@
 				"kind": "reference",
 				"path": "::java::data::enchantment::AllOfEntityEffect"
 			},
+			"apply_exhaustion": {
+				"kind": "reference",
+				"path": "::java::data::enchantment::ApplyExhaustionEntityEffect",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"apply_impulse": {
 				"kind": "reference",
 				"path": "::java::data::enchantment::ApplyImpulseEntityEffect",
@@ -99646,6 +99797,38 @@
 				"kind": "reference",
 				"path": "::java::data::enchantment::AllOfLocationBasedEffect"
 			},
+			"apply_exhaustion": {
+				"kind": "reference",
+				"path": "::java::data::enchantment::ApplyExhaustionEntityEffect",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
+			"apply_impulse": {
+				"kind": "reference",
+				"path": "::java::data::enchantment::ApplyImpulseEntityEffect",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"apply_mob_effect": {
 				"kind": "reference",
 				"path": "::java::data::enchantment::ApplyMobEffectEntityEffect"
@@ -99721,6 +99904,10 @@
 			"spawn_particles": {
 				"kind": "reference",
 				"path": "::java::data::enchantment::SpawnParticlesEntityEffect"
+			},
+			"summon_entity": {
+				"kind": "reference",
+				"path": "::java::data::enchantment::SummonEntityEffect"
 			}
 		},
 		"minecraft:loot_condition": {
@@ -99937,6 +100124,30 @@
 			"copy_state": {
 				"kind": "reference",
 				"path": "::java::data::loot::function::CopyState"
+			},
+			"discard": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "spread",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						}
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
 			},
 			"enchant_randomly": {
 				"kind": "reference",
