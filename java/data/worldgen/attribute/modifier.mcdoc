@@ -15,7 +15,8 @@ type FloatAttributeModifier<T> = struct {
 dispatch minecraft:environment_attribute_float_modifier[%unknown]<T> to float
 dispatch minecraft:environment_attribute_float_modifier[alpha_blend]<T> to struct FloatWithAlpha {
 	value: float,
-	alpha: float @ 0..1,
+	/// Defaults to 1.0
+	alpha?: float @ 0..1,
 }
 dispatch minecraft:environment_attribute_float_modifier[override, %none]<T> to T
 

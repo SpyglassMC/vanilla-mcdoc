@@ -176,6 +176,15 @@ dispatch minecraft:location_based_effect[all_of] to struct AllOfLocationBasedEff
 	effects: [LocationBasedEffect] @ 1..,
 }
 
+struct ApplyExhaustionEntityEffect {
+	/// The amount of exhaustion to apply to player.
+	amount: LevelBasedValue,
+}
+#[since="1.21.11"]
+dispatch minecraft:entity_effect[apply_exhaustion] to ApplyExhaustionEntityEffect
+#[since="1.21.11"]
+dispatch minecraft:location_based_effect[apply_exhaustion] to ApplyExhaustionEntityEffect
+
 struct ApplyImpulseEntityEffect {
 	/// Impulse direction in local coordinates (the same used by `tp @s ^ ^ ^`).
 	/// `[left, upward, forward]`
@@ -188,9 +197,8 @@ struct ApplyImpulseEntityEffect {
 }
 #[since="1.21.11"]
 dispatch minecraft:entity_effect[apply_impulse] to ApplyImpulseEntityEffect
-// TODO: track MC-302790
-//#[since="1.21.11"]
-//dispatch minecraft:location_based_effect[apply_impulse] to ApplyImpulseEntityEffect
+#[since="1.21.11"]
+dispatch minecraft:location_based_effect[apply_impulse] to ApplyImpulseEntityEffect
 
 struct ApplyMobEffectEntityEffect {
 	/// If multiple mob effects are specified, a random effect is selected.
@@ -376,12 +384,14 @@ struct ParticleVelocity {
 	movement_scale?: float,
 }
 
-dispatch minecraft:entity_effect[summon_entity] to struct SummonEntityEffect {
+struct SummonEntityEffect {
 	/// If multiple entity types are specified, a random entity type is selected.
 	entity: (#[id(registry="entity_type", tags="allowed")] string | [#[id="entity_type"] string]),
 	/// Whether the summoned entity should join the team of the owner of the Enchanted Item.
 	join_team?: boolean,
 }
+dispatch minecraft:entity_effect[summon_entity] to SummonEntityEffect
+dispatch minecraft:location_based_effect[summon_entity] to SummonEntityEffect
 
 struct DamageEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
