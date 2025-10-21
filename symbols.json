@@ -1,5 +1,5 @@
 {
-	"ref": "cc2ce104105a4f0c4854a9faea685f7a75d4ccf9",
+	"ref": "f81109ea0f7c52b29347cdf0be53a1b0047fdf6d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -35199,8 +35199,7 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::attribute::modifier::BooleanModifierType"
-					},
-					"optional": true
+					}
 				},
 				{
 					"kind": "pair",
@@ -35220,8 +35219,7 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::attribute::modifier::FloatModifierType"
-					},
-					"optional": true
+					}
 				},
 				{
 					"kind": "pair",
@@ -35259,8 +35257,7 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::attribute::modifier::ColorModifierType"
-					},
-					"optional": true
+					}
 				},
 				{
 					"kind": "pair",
@@ -35301,8 +35298,7 @@
 							"kind": "string",
 							"value": "override"
 						}
-					},
-					"optional": true
+					}
 				},
 				{
 					"kind": "pair",
@@ -35325,8 +35321,7 @@
 						"type": {
 							"kind": "reference",
 							"path": "::java::data::worldgen::attribute::modifier::BooleanModifierType"
-						},
-						"optional": true
+						}
 					},
 					{
 						"kind": "pair",
@@ -35388,8 +35383,7 @@
 						"type": {
 							"kind": "reference",
 							"path": "::java::data::worldgen::attribute::modifier::ColorModifierType"
-						},
-						"optional": true
+						}
 					},
 					{
 						"kind": "pair",
@@ -35461,8 +35455,7 @@
 						"type": {
 							"kind": "reference",
 							"path": "::java::data::worldgen::attribute::modifier::FloatModifierType"
-						},
-						"optional": true
+						}
 					},
 					{
 						"kind": "pair",
@@ -35524,6 +35517,34 @@
 				{
 					"identifier": "Maximum",
 					"value": "maximum"
+				},
+				{
+					"identifier": "AlphaBlend",
+					"value": "alpha_blend"
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::modifier::FloatWithAlpha": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "alpha",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					}
 				}
 			]
 		},
@@ -35541,8 +35562,7 @@
 								"kind": "string",
 								"value": "override"
 							}
-						},
-						"optional": true
+						}
 					},
 					{
 						"kind": "pair",
@@ -97332,6 +97352,18 @@
 				"kind": "template",
 				"child": {
 					"kind": "float"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::modifier::T"
+					}
+				]
+			},
+			"alpha_blend": {
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::worldgen::attribute::modifier::FloatWithAlpha"
 				},
 				"typeParams": [
 					{
