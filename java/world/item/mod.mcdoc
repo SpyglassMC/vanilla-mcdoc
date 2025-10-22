@@ -3,22 +3,25 @@ use ::java::util::attribute::LegacyOperation
 use ::java::util::slot::EquipmentSlotGroup
 use ::java::world::block::BlockEntityData
 use ::java::world::component::DataComponentPatch
+use ::java::world::component::DataComponentExactPredicate
 use ::java::world::component::item::Trim
 
-struct SingleItem {
+type SingleItemOfComponent<T> = struct {
 	/// ID of the item.
 	id: (
 		#[until="1.20.5"] #[id="item"] string |
 		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |	
 	),
 	#[since="1.20.5"]
-	components?: DataComponentPatch,
+	components?: T,
 	#[until="1.20.5"]
 	tag?: minecraft:item[[id]],
 }
 
-type ItemStack = struct {
-	...SingleItem,
+type SingleItem = SingleItemOfComponent<DataComponentPatch>
+
+type ItemStackOfComponent<T> = struct {
+	...SingleItemOfComponent<T>,
 	/// Number of items in the stack
 	#[since="1.20.5"]
 	count?: int @ 1..99,
@@ -26,6 +29,9 @@ type ItemStack = struct {
 	#[until="1.20.5"]
 	Count?: byte,
 }
+
+type ItemStack = ItemStackOfComponent<DataComponentPatch>
+type ItemCost = ItemStackOfComponent<DataComponentExactPredicate>  // used by villager trade
 
 // Until 1.20.5
 struct ItemBase {
