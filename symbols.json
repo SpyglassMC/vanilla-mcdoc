@@ -1,5 +1,5 @@
 {
-	"ref": "ef3fe833ed3bb19c1cfd20baa0ce6e962a11db27",
+	"ref": "6332d1e3bddb846d0ff094895afc0b922787a950",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -81269,7 +81269,7 @@
 					"key": "buy",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::item::ItemStack"
+						"path": "::java::world::item::ItemCost"
 					},
 					"optional": true
 				},
@@ -81279,7 +81279,7 @@
 					"key": "buyB",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::item::ItemStack"
+						"path": "::java::world::item::ItemCost"
 					},
 					"optional": true
 				},
@@ -87875,10 +87875,151 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "spread",
+					"kind": "pair",
+					"desc": "ID of the item.\n",
+					"key": "id",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "item"
+													}
+												},
+												"exclude": {
+													"kind": "tree",
+													"values": {
+														"0": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "air"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "components",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::item::SingleItem"
+						"path": "::java::world::item::T"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "tag",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"id"
+								]
+							}
+						],
+						"registry": "minecraft:item"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::item::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::world::item::SingleItemOfComponent"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::world::item::T"
+							}
+						]
 					}
 				},
 				{
@@ -87930,7 +88071,7 @@
 				}
 			]
 		},
-		"::java::world::item::<anonymous 1>": {
+		"::java::world::item::<anonymous 2>": {
 			"kind": "enum",
 			"enumKind": "int",
 			"values": [
@@ -89219,62 +89360,105 @@
 				}
 			]
 		},
+		"::java::world::item::ItemCost": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::world::item::ItemStackOfComponent"
+			},
+			"typeArgs": [
+				{
+					"kind": "reference",
+					"path": "::java::world::component::DataComponentExactPredicate"
+				}
+			]
+		},
 		"::java::world::item::ItemStack": {
-			"kind": "struct",
-			"fields": [
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::world::item::ItemStackOfComponent"
+			},
+			"typeArgs": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::item::SingleItem"
+					"kind": "reference",
+					"path": "::java::world::component::DataComponentPatch"
+				}
+			]
+		},
+		"::java::world::item::ItemStackOfComponent": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "spread",
+						"type": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::world::item::SingleItemOfComponent"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::world::item::T"
+								}
+							]
+						}
+					},
+					{
+						"kind": "pair",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						],
+						"desc": "Number of items in the stack\n",
+						"key": "count",
+						"type": {
+							"kind": "int",
+							"valueRange": {
+								"kind": 0,
+								"min": 1,
+								"max": 99
+							}
+						},
+						"optional": true
+					},
+					{
+						"kind": "pair",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						],
+						"desc": "Number of items in the stack\n",
+						"key": "Count",
+						"type": {
+							"kind": "byte"
+						},
+						"optional": true
 					}
-				},
+				]
+			},
+			"typeParams": [
 				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"desc": "Number of items in the stack\n",
-					"key": "count",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1,
-							"max": 99
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"desc": "Number of items in the stack\n",
-					"key": "Count",
-					"type": {
-						"kind": "byte"
-					},
-					"optional": true
+					"path": "::java::world::item::T"
 				}
 			]
 		},
@@ -89870,134 +90054,155 @@
 			]
 		},
 		"::java::world::item::SingleItem": {
-			"kind": "struct",
-			"fields": [
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::world::item::SingleItemOfComponent"
+			},
+			"typeArgs": [
 				{
-					"kind": "pair",
-					"desc": "ID of the item.\n",
-					"key": "id",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
+					"kind": "reference",
+					"path": "::java::world::component::DataComponentPatch"
+				}
+			]
+		},
+		"::java::world::item::SingleItemOfComponent": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"desc": "ID of the item.\n",
+						"key": "id",
+						"type": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "until",
 											"value": {
-												"kind": "string",
-												"value": "1.20.5"
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "1.20.5"
+												}
+											}
+										},
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "item"
+												}
 											}
 										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
+									]
+								},
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "since",
 											"value": {
-												"kind": "string",
-												"value": "item"
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "1.20.5"
+												}
 											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
+										},
+										{
+											"name": "id",
 											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "item"
-													}
-												},
-												"exclude": {
-													"kind": "tree",
-													"values": {
-														"0": {
-															"kind": "literal",
-															"value": {
-																"kind": "string",
-																"value": "air"
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "item"
+														}
+													},
+													"exclude": {
+														"kind": "tree",
+														"values": {
+															"0": {
+																"kind": "literal",
+																"value": {
+																	"kind": "string",
+																	"value": "air"
+																}
 															}
 														}
 													}
 												}
 											}
 										}
-									}
-								]
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
+									]
 								}
-							}
+							]
 						}
-					],
-					"key": "components",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::component::DataComponentPatch"
 					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"key": "tag",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
+					{
+						"kind": "pair",
+						"attributes": [
 							{
-								"kind": "dynamic",
-								"accessor": [
-									"id"
-								]
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
 							}
 						],
-						"registry": "minecraft:item"
+						"key": "components",
+						"type": {
+							"kind": "reference",
+							"path": "::java::world::item::T"
+						},
+						"optional": true
 					},
-					"optional": true
+					{
+						"kind": "pair",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						],
+						"key": "tag",
+						"type": {
+							"kind": "dispatcher",
+							"parallelIndices": [
+								{
+									"kind": "dynamic",
+									"accessor": [
+										"id"
+									]
+								}
+							],
+							"registry": "minecraft:item"
+						},
+						"optional": true
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::world::item::T"
 				}
 			]
 		},
