@@ -1,5 +1,5 @@
 {
-	"ref": "4a5a3aae6ca20a78872877371dc6d9fe00cb059e",
+	"ref": "4fe10d1dd519e1ac70345def0d2e8e2dd589798b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -29216,18 +29216,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "functions",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::loot::LootFunction"
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
 					"key": "conditions",
 					"type": {
 						"kind": "list",
@@ -29439,6 +29427,18 @@
 						"kind": "reference",
 						"path": "::java::data::loot::LootPoolEntryBase"
 					}
+				},
+				{
+					"kind": "pair",
+					"key": "functions",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::loot::LootFunction"
+						}
+					},
+					"optional": true
 				}
 			]
 		},
