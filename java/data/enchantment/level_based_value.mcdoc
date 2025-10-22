@@ -1,0 +1,46 @@
+struct LevelBasedValueMap {
+	type: #[id="enchantment_level_based_value_type"] string,
+	...minecraft:level_based_value[[type]],
+}
+
+type LevelBasedValue = (float | LevelBasedValueMap)
+
+dispatch minecraft:level_based_value[linear] to struct LinearLevelValue {
+	/// Base cost at level 1.
+	base: float,
+	/// Cost increase per level above 1.
+	per_level_above_first: float,
+}
+
+/// Clamps another Level-Based Value
+dispatch minecraft:level_based_value[clamped] to struct ClampedLevelValue {
+	value: LevelBasedValue,
+	min: float,
+	max: float,
+}
+
+#[since="1.21.11"]
+dispatch minecraft:level_based_value[exponent] to struct ExponentLevelValue {
+	base: LevelBasedValue,
+	power: LevelBasedValue,
+}
+
+/// Fraction constructed from two other Level-Based Values
+dispatch minecraft:level_based_value[fraction] to struct FractionLevelValue {
+	numerator: LevelBasedValue,
+	denominator: LevelBasedValue,
+}
+
+/// Value based on the level squared.
+dispatch minecraft:level_based_value[levels_squared] to struct SquaredLevelValue {
+	/// Added to the exponent; `0.0` for squared, `1.0` for cubed, `.5` for square root, `-4` for negpow(2), etc.
+	added: float,
+}
+
+/// Maps a list of values to specific levels, and applies a fallback if the level is greater than the number of values supplied.
+dispatch minecraft:level_based_value[lookup] to struct LookupLevelValue {
+	/// Indexed by `level - 1` to apply, if present
+	values: [LevelBasedValue] @ 1..,
+	/// Applied if the level is greater than the size of `values`.
+	fallback: LevelBasedValue,
+}

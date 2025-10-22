@@ -1,0 +1,294 @@
+use ::java::util::attribute::AttributeOperation
+use ::java::util::particle::Particle
+use ::java::data::util::SoundEventRef
+use ::java::data::worldgen::FloatProvider
+use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
+use ::java::data::worldgen::feature::block_predicate::BlockPredicate
+use super::LevelBasedValue
+
+// An effect value, referred to by Mojang as "value effect"
+struct ValueEffect {
+	type: #[id="enchantment_value_effect_type"] string,
+	...minecraft:value_effect[[type]],
+}
+
+dispatch minecraft:value_effect[add] to struct AddEffectValue {
+	value: LevelBasedValue,
+}
+
+/// Runs a number of other Effect Values, in order
+dispatch minecraft:value_effect[all_of] to struct AllOfEffectValue {
+	effects: [ValueEffect] @ 1..,
+}
+
+#[since="1.21.11"]
+dispatch minecraft:value_effect[exponential] to struct ExponentialEffectValue {
+	base: LevelBasedValue,
+	exponent: LevelBasedValue,
+}
+
+dispatch minecraft:value_effect[multiply] to struct MultiplyEffectValue {
+	/// Level-Based Value determining the factor to multiply in
+	factor: LevelBasedValue,
+}
+
+/// Runs a Binomial series of checks, reducing the input value by 1 for every successful check.
+dispatch minecraft:value_effect[remove_binomial] to struct ReduceBinomialEffectValue {
+	/// Chance that an input value is dropped by 1.
+	///
+	/// The span is 0 to 1, with 0 being no chance to drop an input value and 1 dropping all input values.
+	chance: LevelBasedValue,
+}
+
+dispatch minecraft:value_effect[set] to struct SetEffectValue {
+	value: LevelBasedValue,
+}
+
+struct AttributeEffect {
+	attribute: #[id="attribute"] string,
+	/// Used when equipping and unequipping the item to identify which modifier to add or remove from the entity.
+	///
+	/// Postfixed with the slot name when the enchanted item is equipped.
+	id: #[id="attribute_modifier"] string,
+	/// Change in the attribute.
+	amount: LevelBasedValue,
+	/// The attribute operation to use.
+	operation: AttributeOperation,
+}
+
+struct EntityEffect {
+	type: #[id="enchantment_entity_effect_type"] string,
+	...minecraft:entity_effect[[type]],
+}
+
+struct LocationBasedEffect {
+	type: #[id="enchantment_location_based_effect_type"] string,
+	...minecraft:location_based_effect[[type]],
+}
+
+/// Runs a list of other Entity Effects. Useful when a set of conditions should apply to more than one Entity Effect.
+dispatch minecraft:entity_effect[all_of] to struct AllOfEntityEffect {
+	effects: [EntityEffect] @ 1..,
+}
+
+/// Runs a list of other Entity Effects. Useful when a set of conditions should apply to more than one Entity Effect.
+dispatch minecraft:location_based_effect[all_of] to struct AllOfLocationBasedEffect {
+	effects: [LocationBasedEffect] @ 1..,
+}
+
+struct ApplyExhaustionEntityEffect {
+	/// The amount of exhaustion to apply to player.
+	amount: LevelBasedValue,
+}
+#[since="1.21.11"]
+dispatch minecraft:entity_effect[apply_exhaustion] to ApplyExhaustionEntityEffect
+#[since="1.21.11"]
+dispatch minecraft:location_based_effect[apply_exhaustion] to ApplyExhaustionEntityEffect
+
+struct ApplyImpulseEntityEffect {
+	/// Impulse direction in local coordinates (the same used by `tp @s ^ ^ ^`).
+	/// `[left, upward, forward]`
+	direction: [float] @ 3,
+	/// The multipler to apply to the computed impulse direction.
+	/// `[x, y, z]`
+	coordinate_scale: [float] @ 3,
+	/// The scale of the impulse.
+	magnitude: LevelBasedValue,
+}
+#[since="1.21.11"]
+dispatch minecraft:entity_effect[apply_impulse] to ApplyImpulseEntityEffect
+#[since="1.21.11"]
+dispatch minecraft:location_based_effect[apply_impulse] to ApplyImpulseEntityEffect
+
+struct ApplyMobEffectEntityEffect {
+	/// If multiple mob effects are specified, a random effect is selected.
+	to_apply: (#[id(registry="mob_effect", tags="allowed")] string | [#[id="mob_effect"] string]),
+	min_duration: LevelBasedValue,
+	max_duration: LevelBasedValue,
+	min_amplifier: LevelBasedValue,
+	max_amplifier: LevelBasedValue,
+}
+dispatch minecraft:entity_effect[apply_mob_effect] to ApplyMobEffectEntityEffect
+dispatch minecraft:location_based_effect[apply_mob_effect] to ApplyMobEffectEntityEffect
+
+struct DamageEntityEffect {
+	damage_type: #[id="damage_type"] string,
+	/// Amount of damage is randomized within the given min/max span.
+	min_damage: LevelBasedValue,
+	max_damage: LevelBasedValue,
+}
+dispatch minecraft:entity_effect[damage_entity] to DamageEntityEffect
+dispatch minecraft:location_based_effect[damage_entity] to DamageEntityEffect
+
+struct DamageItemEffect {
+	/// Damage to apply to the enchanted item.
+	/// The damage is not applied to items held by players in creative mode.
+	amount: LevelBasedValue
+}
+#[until="1.21.2"]
+dispatch minecraft:entity_effect[damage_item] to DamageItemEffect
+#[until="1.21.2"]
+dispatch minecraft:location_based_effect[damage_item] to DamageItemEffect
+
+struct ChangeItemDamageEffect {
+	/// Damage to apply to the enchanted item. Negative values will repair the item.
+	/// The change is not applied to items held by players in creative mode.
+	amount: LevelBasedValue
+}
+#[since="1.21.2"]
+dispatch minecraft:entity_effect[change_item_damage] to ChangeItemDamageEffect
+#[since="1.21.2"]
+dispatch minecraft:location_based_effect[change_item_damage] to ChangeItemDamageEffect
+
+struct ExplodeEntityEffect {
+	/// Whether the explosion should be attributed to the user of the enchanted tool.
+	attribute_to_user?: boolean,
+	/// If omitted, no damage is dealt by the explosion.
+	damage_type?: #[id="damage_type"] string,
+	/// List of Blocks or hash-prefixed Block Tag specifying which blocks fully block the explosion.
+	immune_blocks?: (#[id(registry="block", tags="allowed")] string | [#[id="block"] string]),
+	// TODO: determine the default knockback
+	/// If omitted, the default explosion knockback is applied.
+	knockback_multiplier?: LevelBasedValue,
+	/// Relative coordinates to offset the explosion by. Defaults to `[0, 0, 0]`.
+	offset?: [double] @ 3,
+	radius: LevelBasedValue,
+	/// Whether fire is placed within the explosion radius.
+	create_fire?: boolean,
+	/// Whether the explosion has special effects on blocks.
+	block_interaction: BlockInteraction,
+	small_particle: Particle,
+	large_particle: Particle,
+	#[since="1.21.9"]
+	block_particles?: [ExplosionParticleInfo],
+	sound: SoundEventRef,
+}
+
+enum(string) BlockInteraction {
+	/// No item drops or special behavior.
+	None = "none",
+	/// Drops items as if a block caused the explosion; `blockExplosionDropDecay` game rule applies.
+	Block = "block",
+	/// Drops items as if a mob caused the explosion; `mobExplosionDropDecay` game rule applies.
+	Mob = "mob",
+	/// Drops items as if TNT caused the explosion; `tntExplosionDropDecay` game rule applies.
+	TNT = "tnt",
+	/// Triggers redstone-activated blocks.
+	Trigger = "trigger",
+}
+
+struct ExplosionParticleInfo {
+	weight: int @ 1..,
+	particle: Particle,
+	/// Defaults to 1.0. Scaling of the distance between the center of the explosion and the block
+	scaling?: float,
+	/// Defaults to 1.0. Scaling of the speed of the particle
+	speed?: float,
+}
+
+dispatch minecraft:entity_effect[explode] to ExplodeEntityEffect
+dispatch minecraft:location_based_effect[explode] to ExplodeEntityEffect
+
+struct IgniteEntityEffect {
+	/// Seconds the fire should last.
+	duration: LevelBasedValue,
+}
+
+dispatch minecraft:entity_effect[ignite] to IgniteEntityEffect
+dispatch minecraft:location_based_effect[ignite] to IgniteEntityEffect
+
+struct PlaySoundEntityEffect {
+	sound: (
+		SoundEventRef |
+		#[since="1.21.11"] [SoundEventRef] @ ..255 |
+	),
+	volume: FloatProvider<float @ 0.00001..10.0>,
+	pitch: FloatProvider<float @ 0.00001..2.0>,
+}
+
+dispatch minecraft:entity_effect[play_sound] to PlaySoundEntityEffect
+dispatch minecraft:location_based_effect[play_sound] to PlaySoundEntityEffect
+
+struct ReplaceBlockEntityEffect {
+	block_state: BlockStateProvider,
+	/// Relative coordinates to offset the placed block by. Defaults to `[0, 0, 0]`.
+	offset?: [int] @ 3,
+	/// If omitted, all block types are replaced.
+	predicate?: BlockPredicate,
+	/// Defaults to no game event dispatched.
+	trigger_game_event?: #[id="game_event"] string,
+}
+
+dispatch minecraft:entity_effect[replace_block] to ReplaceBlockEntityEffect
+dispatch minecraft:location_based_effect[replace_block] to ReplaceBlockEntityEffect
+
+struct ReplaceDiskEntityEffect {
+	...ReplaceBlockEntityEffect,
+	/// Relative coordinates to offset the center of the cylinder by. Defaults to `[0, 0, 0]`.
+	offset?: [int] @ 3,
+	radius: LevelBasedValue,
+	height: LevelBasedValue,
+}
+
+dispatch minecraft:entity_effect[replace_disk] to ReplaceDiskEntityEffect
+dispatch minecraft:location_based_effect[replace_disk] to ReplaceDiskEntityEffect
+
+/// Runs an mcfunction as/at the entity.
+///
+/// Because of function call overhead, this is only useful for events, not for continuous effects, `@e[tag=...]` in that case.
+struct RunFunctionEntityEffect {
+	function: #[id="function"] string,
+}
+
+dispatch minecraft:entity_effect[run_function] to RunFunctionEntityEffect
+dispatch minecraft:location_based_effect[run_function] to RunFunctionEntityEffect
+
+struct SetBlockPropertiesEntityEffect {
+	properties: minecraft:data_component[block_state],
+	/// Relative coordinates to offset the block by. Defaults to `[0, 0, 0]`.
+	offset?: [int] @ 3,
+	/// Defaults to no game event dispatched.
+	trigger_game_event?: #[id="game_event"] string,
+}
+
+dispatch minecraft:entity_effect[set_block_properties] to SetBlockPropertiesEntityEffect
+dispatch minecraft:location_based_effect[set_block_properties] to SetBlockPropertiesEntityEffect
+
+struct SpawnParticlesEntityEffect {
+	particle: Particle,
+	horizontal_position: ParticlePosition,
+	vertical_position: ParticlePosition,
+	horizontal_velocity: ParticleVelocity,
+	vertical_velocity: ParticleVelocity,
+	speed?: float
+}
+
+dispatch minecraft:entity_effect[spawn_particles] to SpawnParticlesEntityEffect
+dispatch minecraft:location_based_effect[spawn_particles] to SpawnParticlesEntityEffect
+
+dispatch minecraft:location_based_effect[attribute] to AttributeEffect
+
+
+struct ParticlePosition {
+	type: ("entity_position" | "in_bounding_box"),
+	/// Defaults to 0.
+	offset?: float,
+	/// Defaults to 1.
+	scale?: float,
+}
+
+struct ParticleVelocity {
+	/// Defaults to 0.
+	base?: float,
+	/// Scale factor applied to the given axis (`1` adds the velocity of the entity to the spawned particles). Defaults to 0.
+	movement_scale?: float,
+}
+
+struct SummonEntityEffect {
+	/// If multiple entity types are specified, a random entity type is selected.
+	entity: (#[id(registry="entity_type", tags="allowed")] string | [#[id="entity_type"] string]),
+	/// Whether the summoned entity should join the team of the owner of the Enchanted Item.
+	join_team?: boolean,
+}
+dispatch minecraft:entity_effect[summon_entity] to SummonEntityEffect
+dispatch minecraft:location_based_effect[summon_entity] to SummonEntityEffect
