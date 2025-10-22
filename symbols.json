@@ -1,5 +1,5 @@
 {
-	"ref": "4fe10d1dd519e1ac70345def0d2e8e2dd589798b",
+	"ref": "ef3fe833ed3bb19c1cfd20baa0ce6e962a11db27",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -19681,92 +19681,19 @@
 				}
 			]
 		},
-		"::java::data::enchantment::<anonymous 0>": {
+		"::java::data::enchantment::effect_component::<anonymous 0>": {
 			"kind": "struct",
 			"fields": []
 		},
-		"::java::data::enchantment::<anonymous 1>": {
+		"::java::data::enchantment::effect_component::<anonymous 1>": {
 			"kind": "struct",
 			"fields": []
 		},
-		"::java::data::enchantment::<anonymous 2>": {
+		"::java::data::enchantment::effect_component::<anonymous 2>": {
 			"kind": "struct",
 			"fields": []
 		},
-		"::java::data::enchantment::AddEffectValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "value",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::AllOfEffectValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "effects",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::enchantment::ValueEffect"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 1
-						}
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::AllOfEntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "effects",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::enchantment::EntityEffect"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 1
-						}
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::AllOfLocationBasedEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "effects",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::enchantment::LocationBasedEffect"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 1
-						}
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::AmmoUseEnchantmentEffect": {
+		"::java::data::enchantment::effect_component::AmmoUseEnchantmentEffect": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -19797,12 +19724,1008 @@
 					"key": "effect",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
+						"path": "::java::data::enchantment::effect::ValueEffect"
 					}
 				}
 			]
 		},
-		"::java::data::enchantment::ApplyExhaustionEntityEffect": {
+		"::java::data::enchantment::effect_component::AttackTarget": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Attacker",
+					"value": "attacker"
+				},
+				{
+					"identifier": "DamagingEntity",
+					"value": "damaging_entity"
+				},
+				{
+					"identifier": "Victim",
+					"value": "victim"
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::BlockExperienceEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Item Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of experience awarded.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::CrossbowChargeSoundsEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Start of charging.\n",
+					"key": "start",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Middle of charging.\n",
+					"key": "mid",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "End of charging.\n",
+					"key": "end",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::DamageEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Damage Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Determines armor effectiveness; `0.0` for no effect, `1.0` for full effect.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::DamageImmunityEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Damage Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Dummy value; this is a boolean effect.\n",
+					"key": "effect",
+					"type": {
+						"kind": "struct",
+						"fields": []
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::DamageProtectionEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Damage Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of damage being absorbed; as \"fake armor\".\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::EnchantmentEffectComponentMap": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "enchantment_effect_component_type"
+									}
+								}
+							}
+						]
+					},
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "key"
+									}
+								]
+							}
+						],
+						"registry": "minecraft:effect_component"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::EquipmentDropsEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Damage Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Chance between `0.0` and `1.0` of an equipped piece dropping.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Which subject needs to be enchanted for the effect to apply.\n",
+					"key": "enchanted",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "attacker"
+								}
+							},
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "victim"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::FishingLuckBonusEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the player fishing.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of luck being added.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::FishingTimeReductionEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the player fishing.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Time reduction in seconds (higher values mean less time until a fish bites).\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::HitBlockEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the entity hitting the Block, unless during a projectile attack, then, `this` is the projectile.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "On the entity hitting the Block\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::EntityEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::ItemDamageEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Item Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of damage being dealt to the item.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::KnockbackEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Damage Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of knockback being applied.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::LocationChangedEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Location Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "On the entity changing location.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::LocationBasedEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::MobExperienceEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the killed mob.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of experience awarded.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::PostAttackEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Damage Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Examples:\n\n- A Fire Aspect Enchant would specify that when the attacker is enchanted, the ignite effect is applied, and the affected party is the victim.\n\n- Thorns would specify that when the victim is enchanted, the damage_entity effect is applied, and the affected party is the attacker.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::EntityEffect"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "enchanted",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect_component::AttackTarget"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "affected",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect_component::AttackTarget"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::PostPiercingAttackEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Damage Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The effect to apply on attacker.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::EntityEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::ProjectileCountEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the entity drawing the weapon.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of projectiles being loaded/drawn.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::ProjectilePiercingEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Predicate context: Item Parameters.\n\n\n\n Tool is the ammunition item.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of entities the projectile will pierce through before despawning.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::ProjectileSpawnedEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the newly spawned projectile.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "On the newly spawned projectile.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::EntityEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::ProjectileSpreadEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the entity shooting the projectile.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Maximum spread of projectiles measured in degrees from the aim line.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::RepairWithXpEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Item Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of durability increase per experience point, `mending` uses 2x.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::SmashDamagePerBlockFallenEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Damage Parameters.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of damage dealt per block fallen.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::TickEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the entity with the Enchanted Item.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "On every tick. Performance recommendation: don't use with `run_function` unless necessary.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::EntityEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::TridentReturnAccelerationEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the trident entity.\n",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Amount of acceleration applied to the returning trident.\n",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::AddEffectValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::AllOfEffectValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "effects",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::enchantment::effect::ValueEffect"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::AllOfEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "effects",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::enchantment::effect::EntityEffect"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::AllOfLocationBasedEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "effects",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::enchantment::effect::LocationBasedEffect"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ApplyExhaustionEntityEffect": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -19816,7 +20739,7 @@
 				}
 			]
 		},
-		"::java::data::enchantment::ApplyImpulseEntityEffect": {
+		"::java::data::enchantment::effect::ApplyImpulseEntityEffect": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -19862,7 +20785,7 @@
 				}
 			]
 		},
-		"::java::data::enchantment::ApplyMobEffectEntityEffect": {
+		"::java::data::enchantment::effect::ApplyMobEffectEntityEffect": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -19954,25 +20877,7 @@
 				}
 			]
 		},
-		"::java::data::enchantment::AttackTarget": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Attacker",
-					"value": "attacker"
-				},
-				{
-					"identifier": "DamagingEntity",
-					"value": "damaging_entity"
-				},
-				{
-					"identifier": "Victim",
-					"value": "victim"
-				}
-			]
-		},
-		"::java::data::enchantment::AttributeEffect": {
+		"::java::data::enchantment::effect::AttributeEffect": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -20034,43 +20939,7 @@
 				}
 			]
 		},
-		"::java::data::enchantment::BlockExperienceEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Item Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of experience awarded.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::BlockInteraction": {
+		"::java::data::enchantment::effect::BlockInteraction": {
 			"kind": "enum",
 			"enumKind": "string",
 			"values": [
@@ -20101,74 +20970,7 @@
 				}
 			]
 		},
-		"::java::data::enchantment::ByCostEnchantmentProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "enchantments",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::EnchantmentsType"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Cost to use for the Enchanting process.\n",
-					"key": "cost",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::IntProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ByCostWithDifficultyEnchantmentProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "enchantments",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::EnchantmentsType"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Positive integer representing the minimum possible cost\n",
-					"key": "min_cost",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 0
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Span of the cost randomization when the special factor is at its maximum.\n",
-					"key": "max_cost_span",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 0
-						}
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ChangeItemDamageEffect": {
+		"::java::data::enchantment::effect::ChangeItemDamageEffect": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -20182,105 +20984,7 @@
 				}
 			]
 		},
-		"::java::data::enchantment::ClampedLevelValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "value",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "min",
-					"type": {
-						"kind": "float"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "max",
-					"type": {
-						"kind": "float"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::CrossbowChargeSoundsEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Start of charging.\n",
-					"key": "start",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Middle of charging.\n",
-					"key": "mid",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "End of charging.\n",
-					"key": "end",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::enchantment::DamageEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Damage Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Determines armor effectiveness; `0.0` for no effect, `1.0` for full effect.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::DamageEntityEffect": {
+		"::java::data::enchantment::effect::DamageEntityEffect": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -20321,43 +21025,7 @@
 				}
 			]
 		},
-		"::java::data::enchantment::DamageImmunityEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Damage Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Dummy value; this is a boolean effect.\n",
-					"key": "effect",
-					"type": {
-						"kind": "struct",
-						"fields": []
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::DamageItemEffect": {
+		"::java::data::enchantment::effect::DamageItemEffect": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -20371,25 +21039,72 @@
 				}
 			]
 		},
-		"::java::data::enchantment::DamageProtectionEnchantmentEffect": {
+		"::java::data::enchantment::effect::EntityEffect": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Predicate context: Damage Parameters.\n",
-					"key": "requirements",
+					"key": "type",
 					"type": {
-						"kind": "union",
-						"members": [
+						"kind": "string",
+						"attributes": [
 							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "enchantment_entity_effect_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
 							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:entity_effect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ExplodeEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Whether the explosion should be attributed to the user of the enchanted tool.\n",
+					"key": "attribute_to_user",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If omitted, no damage is dealt by the explosion.\n",
+					"key": "damage_type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "damage_type"
+									}
 								}
 							}
 						]
@@ -20398,11 +21113,816 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Amount of damage being absorbed; as \"fake armor\".\n",
-					"key": "effect",
+					"desc": "List of Blocks or hash-prefixed Block Tag specifying which blocks fully block the explosion.\n",
+					"key": "immune_blocks",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If omitted, the default explosion knockback is applied.\n",
+					"key": "knockback_multiplier",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
+						"path": "::java::data::enchantment::LevelBasedValue"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Relative coordinates to offset the explosion by. Defaults to `[0, 0, 0]`.\n",
+					"key": "offset",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "double"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "radius",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether fire is placed within the explosion radius.\n",
+					"key": "create_fire",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the explosion has special effects on blocks.\n",
+					"key": "block_interaction",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::BlockInteraction"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "small_particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::particle::Particle"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "large_particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::particle::Particle"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.9"
+								}
+							}
+						}
+					],
+					"key": "block_particles",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::enchantment::effect::ExplosionParticleInfo"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ExplosionParticleInfo": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "weight",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::particle::Particle"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to 1.0. Scaling of the distance between the center of the explosion and the block\n",
+					"key": "scaling",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to 1.0. Scaling of the speed of the particle\n",
+					"key": "speed",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ExponentialEffectValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "base",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "exponent",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::IgniteEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Seconds the fire should last.\n",
+					"key": "duration",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::LocationBasedEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "enchantment_location_based_effect_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:location_based_effect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::MultiplyEffectValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Level-Based Value determining the factor to multiply in\n",
+					"key": "factor",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ParticlePosition": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "entity_position"
+								}
+							},
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "in_bounding_box"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to 0.\n",
+					"key": "offset",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to 1.\n",
+					"key": "scale",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ParticleVelocity": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to 0.\n",
+					"key": "base",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Scale factor applied to the given axis (`1` adds the velocity of the entity to the spawned particles). Defaults to 0.\n",
+					"key": "movement_scale",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::effect::PlaySoundEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "sound",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::util::SoundEventRef"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"max": 255
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "volume",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float",
+								"valueRange": {
+									"kind": 0,
+									"min": 0.00001,
+									"max": 10
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "pitch",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float",
+								"valueRange": {
+									"kind": 0,
+									"min": 0.00001,
+									"max": 2
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ReduceBinomialEffectValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": " Chance that an input value is dropped by 1.\n\n\n\n The span is 0 to 1, with 0 being no chance to drop an input value and 1 dropping all input values.\n",
+					"key": "chance",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ReplaceBlockEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "block_state",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Relative coordinates to offset the placed block by. Defaults to `[0, 0, 0]`.\n",
+					"key": "offset",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "int"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If omitted, all block types are replaced.\n",
+					"key": "predicate",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to no game event dispatched.\n",
+					"key": "trigger_game_event",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "game_event"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ReplaceDiskEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ReplaceBlockEntityEffect"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Relative coordinates to offset the center of the cylinder by. Defaults to `[0, 0, 0]`.\n",
+					"key": "offset",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "int"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "radius",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "height",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::RunFunctionEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "function",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "function"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::SetBlockPropertiesEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "properties",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "static",
+								"value": "block_state"
+							}
+						],
+						"registry": "minecraft:data_component"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Relative coordinates to offset the block by. Defaults to `[0, 0, 0]`.\n",
+					"key": "offset",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "int"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to no game event dispatched.\n",
+					"key": "trigger_game_event",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "game_event"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::effect::SetEffectValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::SpawnParticlesEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::particle::Particle"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "horizontal_position",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ParticlePosition"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "vertical_position",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ParticlePosition"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "horizontal_velocity",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ParticleVelocity"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "vertical_velocity",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ParticleVelocity"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "speed",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::effect::SummonEntityEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If multiple entity types are specified, a random entity type is selected.\n",
+					"key": "entity",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "entity_type"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "entity_type"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the summoned entity should join the team of the owner of the Enchanted Item.\n",
+					"key": "join_team",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ValueEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "enchantment_value_effect_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:value_effect"
 					}
 				}
 			]
@@ -20654,42 +22174,8 @@
 					"kind": "pair",
 					"key": "effects",
 					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "id",
-											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "enchantment_effect_component_type"
-												}
-											}
-										}
-									]
-								},
-								"type": {
-									"kind": "dispatcher",
-									"parallelIndices": [
-										{
-											"kind": "dynamic",
-											"accessor": [
-												{
-													"keyword": "key"
-												}
-											]
-										}
-									],
-									"registry": "minecraft:effect_component"
-								},
-								"optional": true
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect_component::EnchantmentEffectComponentMap"
 					},
 					"optional": true
 				}
@@ -20716,12 +22202,94 @@
 				}
 			]
 		},
-		"::java::data::enchantment::EnchantmentEffects": {
+		"::java::data::enchantment::level_based_value::ClampedLevelValue": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"key": {
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::level_based_value::LevelBasedValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "float"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::level_based_value::ExponentLevelValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "base",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::level_based_value::LevelBasedValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "power",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::level_based_value::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::level_based_value::FractionLevelValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "numerator",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::level_based_value::LevelBasedValue"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "denominator",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::level_based_value::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::level_based_value::LevelBasedValue": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "float"
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::enchantment::level_based_value::LevelBasedValueMap"
+				}
+			]
+		},
+		"::java::data::enchantment::level_based_value::LevelBasedValueMap": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
 						"kind": "string",
 						"attributes": [
 							{
@@ -20730,31 +22298,166 @@
 									"kind": "literal",
 									"value": {
 										"kind": "string",
-										"value": "enchantment_effect_component_type"
+										"value": "enchantment_level_based_value_type"
 									}
 								}
 							}
 						]
-					},
+					}
+				},
+				{
+					"kind": "spread",
 					"type": {
 						"kind": "dispatcher",
 						"parallelIndices": [
 							{
 								"kind": "dynamic",
 								"accessor": [
-									{
-										"keyword": "key"
-									}
+									"type"
 								]
 							}
 						],
-						"registry": "minecraft:effect_component"
-					},
-					"optional": true
+						"registry": "minecraft:level_based_value"
+					}
 				}
 			]
 		},
-		"::java::data::enchantment::EnchantmentProvider": {
+		"::java::data::enchantment::level_based_value::LinearLevelValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Base cost at level 1.\n",
+					"key": "base",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Cost increase per level above 1.\n",
+					"key": "per_level_above_first",
+					"type": {
+						"kind": "float"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::level_based_value::LookupLevelValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Indexed by `level - 1` to apply, if present\n",
+					"key": "values",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::enchantment::level_based_value::LevelBasedValue"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Applied if the level is greater than the size of `values`.\n",
+					"key": "fallback",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::level_based_value::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::level_based_value::SquaredLevelValue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Added to the exponent; `0.0` for squared, `1.0` for cubed, `.5` for square root, `-4` for negpow(2), etc.\n",
+					"key": "added",
+					"type": {
+						"kind": "float"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::LevelBasedValue": {
+			"kind": "reference",
+			"path": "::java::data::enchantment::level_based_value::LevelBasedValue"
+		},
+		"::java::data::enchantment::provider::ByCostEnchantmentProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "enchantments",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::provider::EnchantmentsType"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Cost to use for the Enchanting process.\n",
+					"key": "cost",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::provider::ByCostWithDifficultyEnchantmentProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "enchantments",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::provider::EnchantmentsType"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Positive integer representing the minimum possible cost\n",
+					"key": "min_cost",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Span of the cost randomization when the special factor is at its maximum.\n",
+					"key": "max_cost_span",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::provider::EnchantmentProvider": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -20793,7 +22496,7 @@
 				}
 			]
 		},
-		"::java::data::enchantment::EnchantmentsType": {
+		"::java::data::enchantment::provider::EnchantmentsType": {
 			"kind": "union",
 			"members": [
 				{
@@ -20847,1458 +22550,7 @@
 				}
 			]
 		},
-		"::java::data::enchantment::EntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "enchantment_entity_effect_type"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
-							}
-						],
-						"registry": "minecraft:entity_effect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::EquipmentDropsEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Damage Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Chance between `0.0` and `1.0` of an equipped piece dropping.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Which subject needs to be enchanted for the effect to apply.\n",
-					"key": "enchanted",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "attacker"
-								}
-							},
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "victim"
-								}
-							}
-						]
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ExplodeEntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Whether the explosion should be attributed to the user of the enchanted tool.\n",
-					"key": "attribute_to_user",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "If omitted, no damage is dealt by the explosion.\n",
-					"key": "damage_type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "damage_type"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "List of Blocks or hash-prefixed Block Tag specifying which blocks fully block the explosion.\n",
-					"key": "immune_blocks",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "block"
-													}
-												},
-												"tags": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "allowed"
-													}
-												}
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "id",
-											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "block"
-												}
-											}
-										}
-									]
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "If omitted, the default explosion knockback is applied.\n",
-					"key": "knockback_multiplier",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Relative coordinates to offset the explosion by. Defaults to `[0, 0, 0]`.\n",
-					"key": "offset",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "double"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 3,
-							"max": 3
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "radius",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether fire is placed within the explosion radius.\n",
-					"key": "create_fire",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether the explosion has special effects on blocks.\n",
-					"key": "block_interaction",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::BlockInteraction"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "small_particle",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::particle::Particle"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "large_particle",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::particle::Particle"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.9"
-								}
-							}
-						}
-					],
-					"key": "block_particles",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::enchantment::ExplosionParticleInfo"
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "sound",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ExplosionParticleInfo": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "weight",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "particle",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::particle::Particle"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to 1.0. Scaling of the distance between the center of the explosion and the block\n",
-					"key": "scaling",
-					"type": {
-						"kind": "float"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to 1.0. Scaling of the speed of the particle\n",
-					"key": "speed",
-					"type": {
-						"kind": "float"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::enchantment::ExponentialEffectValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "base",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "exponent",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ExponentLevelValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "base",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "power",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::FishingLuckBonusEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the player fishing.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of luck being added.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::FishingTimeReductionEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the player fishing.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Time reduction in seconds (higher values mean less time until a fish bites).\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::FractionLevelValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "numerator",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "denominator",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::HitBlockEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the entity hitting the Block, unless during a projectile attack, then, `this` is the projectile.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "On the entity hitting the Block\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::EntityEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::IgniteEntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Seconds the fire should last.\n",
-					"key": "duration",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ItemDamageEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Item Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of damage being dealt to the item.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::KnockbackEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Damage Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of knockback being applied.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::LevelBasedValue": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "float"
-				},
-				{
-					"kind": "reference",
-					"path": "::java::data::enchantment::LevelBasedValueMap"
-				}
-			]
-		},
-		"::java::data::enchantment::LevelBasedValueMap": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "enchantment_level_based_value_type"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
-							}
-						],
-						"registry": "minecraft:level_based_value"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::LinearLevelValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Base cost at level 1.\n",
-					"key": "base",
-					"type": {
-						"kind": "float"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Cost increase per level above 1.\n",
-					"key": "per_level_above_first",
-					"type": {
-						"kind": "float"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::LocationBasedEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "enchantment_location_based_effect_type"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
-							}
-						],
-						"registry": "minecraft:location_based_effect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::LocationChangedEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Location Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "On the entity changing location.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LocationBasedEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::LookupLevelValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Indexed by `level - 1` to apply, if present\n",
-					"key": "values",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::enchantment::LevelBasedValue"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 1
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Applied if the level is greater than the size of `values`.\n",
-					"key": "fallback",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::MobExperienceEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the killed mob.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of experience awarded.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::MultiplyEffectValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Level-Based Value determining the factor to multiply in\n",
-					"key": "factor",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ParticlePosition": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "entity_position"
-								}
-							},
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "in_bounding_box"
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to 0.\n",
-					"key": "offset",
-					"type": {
-						"kind": "float"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to 1.\n",
-					"key": "scale",
-					"type": {
-						"kind": "float"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::enchantment::ParticleVelocity": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Defaults to 0.\n",
-					"key": "base",
-					"type": {
-						"kind": "float"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Scale factor applied to the given axis (`1` adds the velocity of the entity to the spawned particles). Defaults to 0.\n",
-					"key": "movement_scale",
-					"type": {
-						"kind": "float"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::enchantment::PlaySoundEntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "sound",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::util::SoundEventRef"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::util::SoundEventRef"
-								},
-								"lengthRange": {
-									"kind": 0,
-									"max": 255
-								},
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.21.11"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "volume",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::FloatProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "float",
-								"valueRange": {
-									"kind": 0,
-									"min": 0.00001,
-									"max": 10
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "pitch",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::FloatProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "float",
-								"valueRange": {
-									"kind": 0,
-									"min": 0.00001,
-									"max": 2
-								}
-							}
-						]
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::PostAttackEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Damage Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Examples:\n\n- A Fire Aspect Enchant would specify that when the attacker is enchanted, the ignite effect is applied, and the affected party is the victim.\n\n- Thorns would specify that when the victim is enchanted, the damage_entity effect is applied, and the affected party is the attacker.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::EntityEffect"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "enchanted",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::AttackTarget"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "affected",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::AttackTarget"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::PostPiercingAttackEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Damage Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "The effect to apply on attacker.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::EntityEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ProjectileCountEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the entity drawing the weapon.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of projectiles being loaded/drawn.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ProjectilePiercingEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Predicate context: Item Parameters.\n\n\n\n Tool is the ammunition item.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of entities the projectile will pierce through before despawning.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ProjectileSpawnedEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the newly spawned projectile.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "On the newly spawned projectile.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::EntityEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ProjectileSpreadEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the entity shooting the projectile.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Maximum spread of projectiles measured in degrees from the aim line.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ReduceBinomialEffectValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Chance that an input value is dropped by 1.\n\n\n\n The span is 0 to 1, with 0 being no chance to drop an input value and 1 dropping all input values.\n",
-					"key": "chance",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::RepairWithXpEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Item Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of durability increase per experience point, `mending` uses 2x.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ReplaceBlockEntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "block_state",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Relative coordinates to offset the placed block by. Defaults to `[0, 0, 0]`.\n",
-					"key": "offset",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "int"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 3,
-							"max": 3
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "If omitted, all block types are replaced.\n",
-					"key": "predicate",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to no game event dispatched.\n",
-					"key": "trigger_game_event",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "game_event"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::enchantment::ReplaceDiskEntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ReplaceBlockEntityEffect"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Relative coordinates to offset the center of the cylinder by. Defaults to `[0, 0, 0]`.\n",
-					"key": "offset",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "int"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 3,
-							"max": 3
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "radius",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "height",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::RunFunctionEntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "function",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "function"
-									}
-								}
-							}
-						]
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::SetBlockPropertiesEntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "properties",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "static",
-								"value": "block_state"
-							}
-						],
-						"registry": "minecraft:data_component"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Relative coordinates to offset the block by. Defaults to `[0, 0, 0]`.\n",
-					"key": "offset",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "int"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 3,
-							"max": 3
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to no game event dispatched.\n",
-					"key": "trigger_game_event",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "game_event"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::enchantment::SetEffectValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "value",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::SingleProvider": {
+		"::java::data::enchantment::provider::SingleProvider": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -22334,288 +22586,6 @@
 								"kind": "int"
 							}
 						]
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::SmashDamagePerBlockFallenEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Predicate context: Damage Parameters.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of damage dealt per block fallen.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::SpawnParticlesEntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "particle",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::particle::Particle"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "horizontal_position",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ParticlePosition"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "vertical_position",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ParticlePosition"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "horizontal_velocity",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ParticleVelocity"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "vertical_velocity",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ParticleVelocity"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "speed",
-					"type": {
-						"kind": "float"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::enchantment::SquaredLevelValue": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Added to the exponent; `0.0` for squared, `1.0` for cubed, `.5` for square root, `-4` for negpow(2), etc.\n",
-					"key": "added",
-					"type": {
-						"kind": "float"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::SummonEntityEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "If multiple entity types are specified, a random entity type is selected.\n",
-					"key": "entity",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "entity_type"
-													}
-												},
-												"tags": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "allowed"
-													}
-												}
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "id",
-											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "entity_type"
-												}
-											}
-										}
-									]
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether the summoned entity should join the team of the owner of the Enchanted Item.\n",
-					"key": "join_team",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::enchantment::TickEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the entity with the Enchanted Item.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "On every tick. Performance recommendation: don't use with `run_function` unless necessary.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::EntityEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::TridentReturnAccelerationEnchantmentEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": " Predicate context: Entity Parameters.\n\n\n\n `this` is the trident entity.\n",
-					"key": "requirements",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of acceleration applied to the returning trident.\n",
-					"key": "effect",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::ValueEffect"
-					}
-				}
-			]
-		},
-		"::java::data::enchantment::ValueEffect": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "enchantment_value_effect_type"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
-							}
-						],
-						"registry": "minecraft:value_effect"
 					}
 				}
 			]
@@ -95560,130 +95530,130 @@
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::AmmoUseEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::AmmoUseEnchantmentEffect"
 				}
 			},
 			"armor_effectiveness": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::DamageEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::DamageEnchantmentEffect"
 				}
 			},
 			"attributes": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::AttributeEffect"
+					"path": "::java::data::enchantment::effect::AttributeEffect"
 				}
 			},
 			"block_experience": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::BlockExperienceEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::BlockExperienceEnchantmentEffect"
 				}
 			},
 			"crossbow_charge_sounds": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::CrossbowChargeSoundsEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::CrossbowChargeSoundsEnchantmentEffect"
 				}
 			},
 			"crossbow_charge_time": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ValueEffect"
+				"path": "::java::data::enchantment::effect::ValueEffect"
 			},
 			"damage": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::DamageEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::DamageEnchantmentEffect"
 				}
 			},
 			"damage_immunity": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::DamageImmunityEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::DamageImmunityEnchantmentEffect"
 				}
 			},
 			"damage_protection": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::DamageProtectionEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::DamageProtectionEnchantmentEffect"
 				}
 			},
 			"equipment_drops": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::EquipmentDropsEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::EquipmentDropsEnchantmentEffect"
 				}
 			},
 			"fishing_luck_bonus": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::FishingLuckBonusEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::FishingLuckBonusEnchantmentEffect"
 				}
 			},
 			"fishing_time_reduction": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::FishingTimeReductionEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::FishingTimeReductionEnchantmentEffect"
 				}
 			},
 			"hit_block": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::HitBlockEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::HitBlockEnchantmentEffect"
 				}
 			},
 			"item_damage": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::ItemDamageEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::ItemDamageEnchantmentEffect"
 				}
 			},
 			"knockback": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::KnockbackEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::KnockbackEnchantmentEffect"
 				}
 			},
 			"location_changed": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::LocationChangedEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::LocationChangedEnchantmentEffect"
 				}
 			},
 			"mob_experience": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::MobExperienceEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::MobExperienceEnchantmentEffect"
 				}
 			},
 			"post_attack": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::PostAttackEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::PostAttackEnchantmentEffect"
 				}
 			},
 			"post_piercing_attack": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::PostPiercingAttackEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::PostPiercingAttackEnchantmentEffect"
 				},
 				"attributes": [
 					{
@@ -95710,56 +95680,56 @@
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::ProjectileCountEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::ProjectileCountEnchantmentEffect"
 				}
 			},
 			"projectile_piercing": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::ProjectilePiercingEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::ProjectilePiercingEnchantmentEffect"
 				}
 			},
 			"projectile_spawned": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::ProjectileSpawnedEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::ProjectileSpawnedEnchantmentEffect"
 				}
 			},
 			"projectile_spread": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::ProjectileSpreadEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::ProjectileSpreadEnchantmentEffect"
 				}
 			},
 			"repair_with_xp": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::RepairWithXpEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::RepairWithXpEnchantmentEffect"
 				}
 			},
 			"smash_damage_per_block_fallen": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::SmashDamagePerBlockFallenEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::SmashDamagePerBlockFallenEnchantmentEffect"
 				}
 			},
 			"tick": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::TickEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::TickEnchantmentEffect"
 				}
 			},
 			"trident_return_acceleration": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::TridentReturnAccelerationEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::TridentReturnAccelerationEnchantmentEffect"
 				}
 			},
 			"trident_sound": {
@@ -95771,21 +95741,21 @@
 			},
 			"trident_spin_attack_strength": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ValueEffect"
+				"path": "::java::data::enchantment::effect::ValueEffect"
 			}
 		},
 		"minecraft:enchantment_provider": {
 			"by_cost": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ByCostEnchantmentProvider"
+				"path": "::java::data::enchantment::provider::ByCostEnchantmentProvider"
 			},
 			"by_cost_with_difficulty": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ByCostWithDifficultyEnchantmentProvider"
+				"path": "::java::data::enchantment::provider::ByCostWithDifficultyEnchantmentProvider"
 			},
 			"single": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::SingleProvider"
+				"path": "::java::data::enchantment::provider::SingleProvider"
 			}
 		},
 		"minecraft:entity": {
@@ -96981,11 +96951,11 @@
 		"minecraft:entity_effect": {
 			"all_of": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::AllOfEntityEffect"
+				"path": "::java::data::enchantment::effect::AllOfEntityEffect"
 			},
 			"apply_exhaustion": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ApplyExhaustionEntityEffect",
+				"path": "::java::data::enchantment::effect::ApplyExhaustionEntityEffect",
 				"attributes": [
 					{
 						"name": "since",
@@ -97001,7 +96971,7 @@
 			},
 			"apply_impulse": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ApplyImpulseEntityEffect",
+				"path": "::java::data::enchantment::effect::ApplyImpulseEntityEffect",
 				"attributes": [
 					{
 						"name": "since",
@@ -97017,11 +96987,11 @@
 			},
 			"apply_mob_effect": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ApplyMobEffectEntityEffect"
+				"path": "::java::data::enchantment::effect::ApplyMobEffectEntityEffect"
 			},
 			"change_item_damage": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ChangeItemDamageEffect",
+				"path": "::java::data::enchantment::effect::ChangeItemDamageEffect",
 				"attributes": [
 					{
 						"name": "since",
@@ -97037,11 +97007,11 @@
 			},
 			"damage_entity": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::DamageEntityEffect"
+				"path": "::java::data::enchantment::effect::DamageEntityEffect"
 			},
 			"damage_item": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::DamageItemEffect",
+				"path": "::java::data::enchantment::effect::DamageItemEffect",
 				"attributes": [
 					{
 						"name": "until",
@@ -97057,39 +97027,39 @@
 			},
 			"explode": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ExplodeEntityEffect"
+				"path": "::java::data::enchantment::effect::ExplodeEntityEffect"
 			},
 			"ignite": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::IgniteEntityEffect"
+				"path": "::java::data::enchantment::effect::IgniteEntityEffect"
 			},
 			"play_sound": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::PlaySoundEntityEffect"
+				"path": "::java::data::enchantment::effect::PlaySoundEntityEffect"
 			},
 			"replace_block": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ReplaceBlockEntityEffect"
+				"path": "::java::data::enchantment::effect::ReplaceBlockEntityEffect"
 			},
 			"replace_disk": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ReplaceDiskEntityEffect"
+				"path": "::java::data::enchantment::effect::ReplaceDiskEntityEffect"
 			},
 			"run_function": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::RunFunctionEntityEffect"
+				"path": "::java::data::enchantment::effect::RunFunctionEntityEffect"
 			},
 			"set_block_properties": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::SetBlockPropertiesEntityEffect"
+				"path": "::java::data::enchantment::effect::SetBlockPropertiesEntityEffect"
 			},
 			"spawn_particles": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::SpawnParticlesEntityEffect"
+				"path": "::java::data::enchantment::effect::SpawnParticlesEntityEffect"
 			},
 			"summon_entity": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::SummonEntityEffect"
+				"path": "::java::data::enchantment::effect::SummonEntityEffect"
 			}
 		},
 		"minecraft:entity_sub_predicate": {
@@ -99739,11 +99709,11 @@
 		"minecraft:level_based_value": {
 			"clamped": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ClampedLevelValue"
+				"path": "::java::data::enchantment::level_based_value::ClampedLevelValue"
 			},
 			"exponent": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ExponentLevelValue",
+				"path": "::java::data::enchantment::level_based_value::ExponentLevelValue",
 				"attributes": [
 					{
 						"name": "since",
@@ -99759,19 +99729,19 @@
 			},
 			"fraction": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::FractionLevelValue"
+				"path": "::java::data::enchantment::level_based_value::FractionLevelValue"
 			},
 			"levels_squared": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::SquaredLevelValue"
+				"path": "::java::data::enchantment::level_based_value::SquaredLevelValue"
 			},
 			"linear": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::LinearLevelValue"
+				"path": "::java::data::enchantment::level_based_value::LinearLevelValue"
 			},
 			"lookup": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::LookupLevelValue"
+				"path": "::java::data::enchantment::level_based_value::LookupLevelValue"
 			}
 		},
 		"minecraft:list_operation": {
@@ -99795,11 +99765,11 @@
 		"minecraft:location_based_effect": {
 			"all_of": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::AllOfLocationBasedEffect"
+				"path": "::java::data::enchantment::effect::AllOfLocationBasedEffect"
 			},
 			"apply_exhaustion": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ApplyExhaustionEntityEffect",
+				"path": "::java::data::enchantment::effect::ApplyExhaustionEntityEffect",
 				"attributes": [
 					{
 						"name": "since",
@@ -99815,7 +99785,7 @@
 			},
 			"apply_impulse": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ApplyImpulseEntityEffect",
+				"path": "::java::data::enchantment::effect::ApplyImpulseEntityEffect",
 				"attributes": [
 					{
 						"name": "since",
@@ -99831,15 +99801,15 @@
 			},
 			"apply_mob_effect": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ApplyMobEffectEntityEffect"
+				"path": "::java::data::enchantment::effect::ApplyMobEffectEntityEffect"
 			},
 			"attribute": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::AttributeEffect"
+				"path": "::java::data::enchantment::effect::AttributeEffect"
 			},
 			"change_item_damage": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ChangeItemDamageEffect",
+				"path": "::java::data::enchantment::effect::ChangeItemDamageEffect",
 				"attributes": [
 					{
 						"name": "since",
@@ -99855,11 +99825,11 @@
 			},
 			"damage_entity": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::DamageEntityEffect"
+				"path": "::java::data::enchantment::effect::DamageEntityEffect"
 			},
 			"damage_item": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::DamageItemEffect",
+				"path": "::java::data::enchantment::effect::DamageItemEffect",
 				"attributes": [
 					{
 						"name": "until",
@@ -99875,39 +99845,39 @@
 			},
 			"explode": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ExplodeEntityEffect"
+				"path": "::java::data::enchantment::effect::ExplodeEntityEffect"
 			},
 			"ignite": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::IgniteEntityEffect"
+				"path": "::java::data::enchantment::effect::IgniteEntityEffect"
 			},
 			"play_sound": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::PlaySoundEntityEffect"
+				"path": "::java::data::enchantment::effect::PlaySoundEntityEffect"
 			},
 			"replace_block": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ReplaceBlockEntityEffect"
+				"path": "::java::data::enchantment::effect::ReplaceBlockEntityEffect"
 			},
 			"replace_disk": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ReplaceDiskEntityEffect"
+				"path": "::java::data::enchantment::effect::ReplaceDiskEntityEffect"
 			},
 			"run_function": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::RunFunctionEntityEffect"
+				"path": "::java::data::enchantment::effect::RunFunctionEntityEffect"
 			},
 			"set_block_properties": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::SetBlockPropertiesEntityEffect"
+				"path": "::java::data::enchantment::effect::SetBlockPropertiesEntityEffect"
 			},
 			"spawn_particles": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::SpawnParticlesEntityEffect"
+				"path": "::java::data::enchantment::effect::SpawnParticlesEntityEffect"
 			},
 			"summon_entity": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::SummonEntityEffect"
+				"path": "::java::data::enchantment::effect::SummonEntityEffect"
 			}
 		},
 		"minecraft:loot_condition": {
@@ -101440,7 +101410,7 @@
 			},
 			"enchantment_provider": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::EnchantmentProvider",
+				"path": "::java::data::enchantment::provider::EnchantmentProvider",
 				"attributes": [
 					{
 						"name": "since",
@@ -103792,15 +103762,15 @@
 		"minecraft:value_effect": {
 			"add": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::AddEffectValue"
+				"path": "::java::data::enchantment::effect::AddEffectValue"
 			},
 			"all_of": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::AllOfEffectValue"
+				"path": "::java::data::enchantment::effect::AllOfEffectValue"
 			},
 			"exponential": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ExponentialEffectValue",
+				"path": "::java::data::enchantment::effect::ExponentialEffectValue",
 				"attributes": [
 					{
 						"name": "since",
@@ -103816,15 +103786,15 @@
 			},
 			"multiply": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::MultiplyEffectValue"
+				"path": "::java::data::enchantment::effect::MultiplyEffectValue"
 			},
 			"remove_binomial": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::ReduceBinomialEffectValue"
+				"path": "::java::data::enchantment::effect::ReduceBinomialEffectValue"
 			},
 			"set": {
 				"kind": "reference",
-				"path": "::java::data::enchantment::SetEffectValue"
+				"path": "::java::data::enchantment::effect::SetEffectValue"
 			}
 		},
 		"minecraft:worldgen/pool_alias_binding": {
