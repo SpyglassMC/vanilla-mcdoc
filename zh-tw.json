@@ -199,11 +199,10 @@
 	"::java::data::damage_type::DeathMessageType.Default": "生成的死亡訊息是`death.attack.` + message_id。",
 	"::java::data::damage_type::DeathMessageType.FallVariants": "生成的死亡訊息是`death.attack.` + message_id。",
 	"::java::data::damage_type::DeathMessageType.IntentionalGameDesign": "「被刻意的遊戲設計殺死了」訊息，訊息本體是`death.attack.` + message_id + `.message`，附上MCPE-28723連結的文字是`death.attack.` + message_id + `.link`。",
-	"::java::data::enchantment::AttributeEffect.amount": "屬性值的變化量。",
-	"::java::data::enchantment::effect_component::AmmoUseEnchantmentEffect.effect": "投射物的消耗量。",
 	"::java::data::enchantment::effect::ApplyMobEffectEntityEffect.to_apply": "指定多種狀態時，隨機選取其中一種。",
 	"::java::data::enchantment::effect::AttributeEffect.id": "識別屬性修改的ID，必須是唯一的。\n\n實際裝備附魔時，ID後面會附加上欄位名稱，以保持多件裝備的相容性。",
 	"::java::data::enchantment::effect::AttributeEffect.operation": "屬性值的計算模式。",
+	"::java::data::enchantment::effect_component::AmmoUseEnchantmentEffect.effect": "投射物的消耗量。",
 	"::java::world::component::entity::AxolotlVariant.Blue": "稀有的藍色變種。",
 	"::java::world::component::entity::RabbitVariant.Evil": "殺手兔"
 }
