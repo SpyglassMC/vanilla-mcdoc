@@ -91,7 +91,6 @@ struct LootPoolEntry {
 }
 
 struct LootPoolEntryBase {
-	functions?: [LootFunction],
 	conditions?: [LootCondition],
 }
 
@@ -99,6 +98,7 @@ struct SingletonPoolEntry {
 	weight?: int @ 1..,
 	quality?: int,
 	...LootPoolEntryBase,
+	functions?: [LootFunction],
 }
 
 dispatch minecraft:loot_pool_entry[empty] to SingletonPoolEntry
