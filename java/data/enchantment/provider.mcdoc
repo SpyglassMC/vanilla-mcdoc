@@ -1,0 +1,30 @@
+use ::java::data::worldgen::IntProvider
+
+#[since="1.21"]
+dispatch minecraft:resource[enchantment_provider] to struct EnchantmentProvider {
+	type: #[id="enchantment_provider_type"] string,
+	...minecraft:enchantment_provider[[type]],
+}
+
+type EnchantmentsType = (#[id(registry="enchantment", tags="allowed")] string | [#[id="enchantment"] string] @ 1..)
+
+/// Returns a specified Enchantment
+dispatch minecraft:enchantment_provider[single] to struct SingleProvider {
+	enchantment: #[id="enchantment"] string,
+	level: IntProvider<int>,
+}
+
+/// Gives one or more Enchantments from a set of options according to a given cost (similar to the cost value in the Enchantment Table).
+dispatch minecraft:enchantment_provider[by_cost] to struct ByCostEnchantmentProvider {
+	enchantments: EnchantmentsType,
+	/// Cost to use for the Enchanting process.
+	cost: IntProvider<int>,
+}
+
+dispatch minecraft:enchantment_provider[by_cost_with_difficulty] to struct ByCostWithDifficultyEnchantmentProvider {
+	enchantments: EnchantmentsType,
+	/// Positive integer representing the minimum possible cost
+	min_cost: int @ 0..,
+	/// Span of the cost randomization when the special factor is at its maximum.
+	max_cost_span: int @ 0..,
+}

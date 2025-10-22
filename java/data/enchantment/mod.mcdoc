@@ -1,0 +1,45 @@
+use ::java::util::text::Text
+use ::java::util::slot::EquipmentSlotGroup
+use effect_component::EnchantmentEffectComponentMap
+
+#[since="1.21"]
+dispatch minecraft:resource[enchantment] to struct Enchantment {
+	description: Text,
+	exclusive_set?: (
+		#[id(registry="enchantment", tags="allowed")] string |
+		[#[id="enchantment"] string] |
+	),
+	supported_items: (
+		#[id(registry="item", tags="allowed")] string |
+		[#[id="item"] string] |
+	),
+	/// Item types for which this Enchantment shows up in Enchanting Tables and on traded equipment.
+	///
+	/// Must be a subset of `supported_items`.
+	primary_items?: (
+		#[id(registry="item", tags="allowed")] string |
+		[#[id="item"] string] |
+	),
+	/// How commonly the Enchantment appears, compared to the total combined `weight` of all available Enchantments.
+	weight: int @ 1..1024,
+	/// Maximum level of the enchantment.
+	max_level: int @ 1..255,
+	/// Minimum experience cost.
+	min_cost: EnchantmentCost,
+	/// Maximum experience cost.
+	max_cost: EnchantmentCost,
+	/// Halved when an Enchantment is added to a book.
+	/// The effective fee is multiplied by the level of the Enchantment.
+	anvil_cost: int @ 0..,
+	slots: [EquipmentSlotGroup],
+	effects?: EnchantmentEffectComponentMap,
+}
+
+struct EnchantmentCost {
+	/// Base cost at level 1.
+	base: int,
+	/// Cost increase per level above 1.
+	per_level_above_first: int,
+}
+
+type LevelBasedValue = level_based_value::LevelBasedValue
