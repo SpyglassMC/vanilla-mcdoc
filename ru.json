@@ -146,7 +146,7 @@
 	"::java::world::item::shield::BlockEntityTag.Base": "Базовый цвет.",
 	"::java::world::item::shield::Shield.BlockEntityTag": "Данные Флага.",
 	"::java::world::item::shield::Shield.BlockEntityTag.Base": "Базовый цвет.",
-	"::java::world::item::SingleItem.id": "ID предмета.",
+	"::java::world::item::SingleItemOfComponent.id": "ID предмета.",
 	"::java::world::item::spawn_item::SpawnItem.EntityTag": "Дата созданной сущности.",
 	"::java::world::item::suspicious_stew::Effect": "Эффект Подозрительного рагу.",
 	"::java::world::item::suspicious_stew::Effect.EffectDuration": "Длительность в тиках.",
