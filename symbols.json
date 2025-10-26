@@ -1,5 +1,5 @@
 {
-	"ref": "6332d1e3bddb846d0ff094895afc0b922787a950",
+	"ref": "810fe3430e65d6bf8e3eb43ae1527b0023976680",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -69999,6 +69999,22 @@
 				}
 			]
 		},
+		"::java::world::component::ComponentExistenceCheck": {
+			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.11"
+						}
+					}
+				}
+			]
+		},
 		"::java::world::component::CustomData": {
 			"kind": "union",
 			"members": [
@@ -70218,6 +70234,16 @@
 										}
 									},
 									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									},
+									{
 										"name": "id",
 										"value": {
 											"kind": "literal",
@@ -70228,22 +70254,68 @@
 										}
 									}
 								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "data_component_type"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
 					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
+						"kind": "union",
+						"members": [
 							{
-								"kind": "dynamic",
-								"accessor": [
+								"kind": "dispatcher",
+								"parallelIndices": [
 									{
-										"keyword": "key"
+										"kind": "dynamic",
+										"accessor": [
+											{
+												"keyword": "key"
+											}
+										]
+									}
+								],
+								"registry": "minecraft:data_component_predicate"
+							},
+							{
+								"kind": "struct",
+								"fields": [],
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
 									}
 								]
 							}
-						],
-						"registry": "minecraft:data_component_predicate"
+						]
 					}
 				}
 			]
@@ -95150,6 +95222,10 @@
 			}
 		},
 		"minecraft:data_component_predicate": {
+			"%unknown": {
+				"kind": "union",
+				"members": []
+			},
 			"attribute_modifiers": {
 				"kind": "reference",
 				"path": "::java::world::component::predicate::AttributeModifiersPredicate"
