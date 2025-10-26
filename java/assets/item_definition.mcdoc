@@ -184,7 +184,6 @@ enum(string) ConditionalPropertyType {
 
 dispatch minecraft:conditional_item_property[%unknown] to struct {}
 
-// TODO: 1.21.11 component existence predicate
 dispatch minecraft:conditional_item_property[component] to struct ComponentFlags {
 	/// The component predicate to check.
 	predicate: (

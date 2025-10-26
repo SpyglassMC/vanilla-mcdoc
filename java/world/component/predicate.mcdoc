@@ -7,6 +7,9 @@ use ::java::util::text::Text
 use ::java::world::component::CustomData
 use ::java::world::component::item::FireworkShape
 
+// This is necessary for super::DataComponentPredicate to work in 1.21.11
+dispatch minecraft:data_component_predicate[%unknown] to ()
+
 dispatch minecraft:data_component_predicate[attribute_modifiers] to struct AttributeModifiersPredicate {
 	modifiers?: CollectionPredicate<AttributeModifiersPredicateEntry>,
 }

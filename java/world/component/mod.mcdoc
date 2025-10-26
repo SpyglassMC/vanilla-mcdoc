@@ -9,12 +9,16 @@ struct DataComponentExactPredicate {
 	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
 }
 
-// TODO: 1.21.11 component existence predicate
 struct DataComponentPredicate {
 	[(
 		#[until="1.21.5"] #[id="item_sub_predicate_type"] string |
-		#[since="1.21.5"] #[id="data_component_predicate_type"] string |
-	)]: minecraft:data_component_predicate[[%key]],
+		#[since="1.21.5"] #[until="1.21.11"] #[id="data_component_predicate_type"] string |
+		// Note: this implementation relies on the fact that "data_component_predicate_type" is a subset of "data_component_type"
+		#[since="1.21.11"] #[id="data_component_type"] string |
+	)]: (
+		minecraft:data_component_predicate[[%key]] |
+		#[since="1.21.11"] struct ComponentExistenceCheck {} |
+	),
 }
 
 
