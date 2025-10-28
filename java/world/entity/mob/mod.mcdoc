@@ -227,6 +227,8 @@ dispatch minecraft:entity[
 	stray,
 	wither_skeleton,
 ] to MobBase
+#[since="1.21.11"]
+dispatch minecraft:entity[parched] to MobBase
 
 dispatch minecraft:entity[squid] to struct Squid {
 	...MobBase,

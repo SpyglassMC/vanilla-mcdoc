@@ -94,6 +94,8 @@ dispatch minecraft:entity[camel] to struct Camel {
 	/// The tick when it started changing its pose.
 	LastPoseTick?: long
 }
+#[since="1.21.11"]
+dispatch minecraft:entity[camel_husk] to Camel
 
 dispatch minecraft:entity[llama] to struct Llama {
 	...super::horse::ChestedHorse,
