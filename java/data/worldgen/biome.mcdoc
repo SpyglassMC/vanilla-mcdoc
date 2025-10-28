@@ -1,3 +1,4 @@
+use ::java::util::color::StringRGB
 use ::java::util::particle::Particle
 use super::attribute::PositionalEnvironmentAttributeMap
 use super::CarveStep
@@ -100,13 +101,25 @@ struct BiomeEffects {
 	sky_color: #[color="composite_rgb"] int,
 	#[until="1.21.11"]
 	fog_color: #[color="composite_rgb"] int,
-	water_color: #[color="composite_rgb"] int,
+	water_color: (
+		#[until="1.21.11"] #[color="composite_rgb"] int |
+		#[since="1.21.11"] StringRGB |
+	),
 	#[until="1.21.11"]
 	water_fog_color: #[color="composite_rgb"] int,
-	grass_color?: #[color="composite_rgb"] int,
-	foliage_color?: #[color="composite_rgb"] int,
+	grass_color?: (
+		#[until="1.21.11"] #[color="composite_rgb"] int |
+		#[since="1.21.11"] StringRGB |
+	),
+	foliage_color?: (
+		#[until="1.21.11"] #[color="composite_rgb"] int |
+		#[since="1.21.11"] StringRGB |
+	),
 	#[since="1.21.5"]
-	dry_foliage_color?: #[color="composite_rgb"] int,
+	dry_foliage_color?: (
+		#[until="1.21.11"] #[color="composite_rgb"] int |
+		#[since="1.21.11"] StringRGB |
+	),
 	grass_color_modifier?: GrassColorModifier,
 	#[until="1.21.11"]
 	ambient_sound?: SoundEventRef,
