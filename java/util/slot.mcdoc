@@ -1,3 +1,7 @@
+use ::java::data::advancement::predicate::ItemPredicate
+use ::java::data::loot::BlockEntityTarget
+use ::java::data::loot::EntityTarget
+use ::java::data::loot::function::ContainerComponents
 use ::java::world::item::ItemStack
 
 type SlottedItem<T> = struct {
@@ -36,4 +40,37 @@ enum(string) EquipmentSlotGroup {
 	Body = "body",
 	#[since="1.21.5"]
 	Saddle = "saddle",
+}
+
+struct SlotSource {
+	type: #[id="slot_source_type"] string,
+	...minecraft:slot_source[[type]],
+}
+
+dispatch minecraft:slot_source[empty] to struct {}
+
+dispatch minecraft:slot_source[group] to struct GroupSlotSource {
+	terms: [SlotSource],
+}
+
+dispatch minecraft:slot_source[slot_range] to struct RangeSlotSource {
+	source: (EntityTarget | BlockEntityTarget),
+	slots: #[item_slots] string,
+}
+
+dispatch minecraft:slot_source[contents] to struct ContentsSlotSource {
+	/// The slots to search.
+	slot_source: SlotSource,
+	/// If an item targeted by `slot_source` has this container component, selects all items inside.
+	component: #[id] ContainerComponents,
+}
+
+dispatch minecraft:slot_source[filtered] to struct FilterSlotSource {
+	slot_source: SlotSource,
+	item_filter: ItemPredicate,
+}
+
+dispatch minecraft:slot_source[limit_slots] to struct LimitCountSlotSource {
+	slot_source: SlotSource,
+	limit: int @ 1..,
 }
