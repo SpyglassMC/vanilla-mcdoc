@@ -1,5 +1,5 @@
 {
-	"ref": "56da023341f4da3aaf31ec83611413dfc2d78dd9",
+	"ref": "e26675ae2d6c35a95ef32c252b43ee05b553afb9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -61299,6 +61299,52 @@
 			]
 		},
 		"::java::util::slot::SlotSource": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::util::slot::TypedSlotSource"
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "reference",
+						"path": "::java::util::slot::TypedSlotSource"
+					}
+				}
+			]
+		},
+		"::java::util::slot::SlottedItem": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "spread",
+						"type": {
+							"kind": "reference",
+							"path": "::java::world::item::ItemStack"
+						}
+					},
+					{
+						"kind": "pair",
+						"desc": "Inventory slot the item is in\n",
+						"key": "Slot",
+						"type": {
+							"kind": "reference",
+							"path": "::java::util::slot::T"
+						},
+						"optional": true
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::util::slot::T"
+				}
+			]
+		},
+		"::java::util::slot::TypedSlotSource": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -61334,36 +61380,6 @@
 						],
 						"registry": "minecraft:slot_source"
 					}
-				}
-			]
-		},
-		"::java::util::slot::SlottedItem": {
-			"kind": "template",
-			"child": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "spread",
-						"type": {
-							"kind": "reference",
-							"path": "::java::world::item::ItemStack"
-						}
-					},
-					{
-						"kind": "pair",
-						"desc": "Inventory slot the item is in\n",
-						"key": "Slot",
-						"type": {
-							"kind": "reference",
-							"path": "::java::util::slot::T"
-						},
-						"optional": true
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::util::slot::T"
 				}
 			]
 		},
