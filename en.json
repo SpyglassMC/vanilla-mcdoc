@@ -693,6 +693,8 @@
 	"::java::util::particle::SculkChargeParticle.roll": "Angle the particle texture is rotated to, measured in radians (π ~ 3.14 for 180° clockwise, negative for counter clockwise).",
 	"::java::util::particle::ShriekParticle.delay": "Ticks until the particle renders.",
 	"::java::util::particle::VibrationParticleData.arrival_in_ticks": "Ticks in which to interpolate the particle's initial position to the destination.",
+	"::java::util::slot::ContentsSlotSource.component": "If an item targeted by `slot_source` has this container component, selects all items inside.",
+	"::java::util::slot::ContentsSlotSource.slot_source": "The slots to search.",
 	"::java::util::slot::SlottedItem.Slot": "Inventory slot the item is in",
 	"::java::util::text::ChangePage.page": "The page number to go to.",
 	"::java::util::text::ChangePage.value": "The page number to go to.",
