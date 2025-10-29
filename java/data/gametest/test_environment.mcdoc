@@ -19,7 +19,9 @@ dispatch minecraft:test_environment_definition[game_rules] to struct GameRulesTe
 	#[until="1.21.11"]
 	int_rules: [IntGameRule],
 	#[since="1.21.11"]
-	[#[id="game_rule"] string]: minecraft:game_rule[[%key]],
+	rules: struct GameRuleMap {
+		[#[id="game_rule"] string]: minecraft:game_rule[[%key]],
+	},
 }
 
 struct BoolGameRule {

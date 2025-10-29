@@ -1,5 +1,3 @@
-// id key = game_rule
-
 dispatch minecraft:game_rule [
 	advance_time,
 	advance_weather,
