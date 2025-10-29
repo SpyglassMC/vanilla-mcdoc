@@ -1,5 +1,5 @@
 {
-	"ref": "810fe3430e65d6bf8e3eb43ae1527b0023976680",
+	"ref": "56da023341f4da3aaf31ec83611413dfc2d78dd9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -22753,11 +22753,60 @@
 				}
 			]
 		},
+		"::java::data::gametest::test_environment::GameRuleMap": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "game_rule"
+									}
+								}
+							}
+						]
+					},
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "key"
+									}
+								]
+							}
+						],
+						"registry": "minecraft:game_rule"
+					}
+				}
+			]
+		},
 		"::java::data::gametest::test_environment::GameRulesTestEnvironment": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"key": "bool_rules",
 					"type": {
 						"kind": "list",
@@ -22769,6 +22818,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"key": "int_rules",
 					"type": {
 						"kind": "list",
@@ -22776,6 +22837,59 @@
 							"kind": "reference",
 							"path": "::java::data::gametest::test_environment::IntGameRule"
 						}
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"key": "rules",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "game_rule"
+												}
+											}
+										}
+									]
+								},
+								"type": {
+									"kind": "dispatcher",
+									"parallelIndices": [
+										{
+											"kind": "dynamic",
+											"accessor": [
+												{
+													"keyword": "key"
+												}
+											]
+										}
+									],
+									"registry": "minecraft:game_rule"
+								}
+							}
+						]
 					}
 				}
 			]
@@ -23769,6 +23883,18 @@
 			"enumKind": "string",
 			"values": [
 				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "Drops the items in a shulker box.\n",
 					"identifier": "Contents",
 					"value": "contents"
@@ -29409,6 +29535,26 @@
 						}
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::data::loot::SlotsPoolEntry": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "slot_source",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::slot::SlotSource"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::loot::SingletonPoolEntry"
+					}
 				}
 			]
 		},
@@ -35396,6 +35542,44 @@
 					"kind": "pair",
 					"key": "modifier",
 					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::ColorModifierType"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "argument",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "dispatcher",
+							"parallelIndices": [
+								{
+									"kind": "dynamic",
+									"accessor": [
+										"modifier"
+									]
+								}
+							],
+							"registry": "minecraft:environment_attribute_argb_color_modifier"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::attribute::modifier::T"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::modifier::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "modifier",
+					"type": {
 						"kind": "literal",
 						"value": {
 							"kind": "string",
@@ -35675,6 +35859,52 @@
 						"type": {
 							"kind": "reference",
 							"path": "::java::data::worldgen::attribute::modifier::T"
+						}
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::worldgen::attribute::modifier::T"
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::modifier::TranslucentColorAttributeModifier": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "modifier",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::attribute::modifier::ColorModifierType"
+						}
+					},
+					{
+						"kind": "pair",
+						"key": "argument",
+						"type": {
+							"kind": "concrete",
+							"child": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"modifier"
+										]
+									}
+								],
+								"registry": "minecraft:environment_attribute_argb_color_modifier"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::worldgen::attribute::modifier::T"
+								}
+							]
 						}
 					}
 				]
@@ -36511,17 +36741,48 @@
 					"kind": "pair",
 					"key": "water_color",
 					"type": {
-						"kind": "int",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "color",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "composite_rgb"
+								"kind": "int",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									},
+									{
+										"name": "color",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "composite_rgb"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::util::color::StringRGB",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -36561,17 +36822,48 @@
 					"kind": "pair",
 					"key": "grass_color",
 					"type": {
-						"kind": "int",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "color",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "composite_rgb"
+								"kind": "int",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									},
+									{
+										"name": "color",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "composite_rgb"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::util::color::StringRGB",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -36581,17 +36873,48 @@
 					"kind": "pair",
 					"key": "foliage_color",
 					"type": {
-						"kind": "int",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "color",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "composite_rgb"
+								"kind": "int",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									},
+									{
+										"name": "color",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "composite_rgb"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::util::color::StringRGB",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -36613,17 +36936,48 @@
 					],
 					"key": "dry_foliage_color",
 					"type": {
-						"kind": "int",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "color",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "composite_rgb"
+								"kind": "int",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									},
+									{
+										"name": "color",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "composite_rgb"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::util::color::StringRGB",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -60645,6 +60999,38 @@
 				}
 			]
 		},
+		"::java::util::slot::<anonymous 1>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::util::slot::ContentsSlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The slots to search.\n",
+					"key": "slot_source",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::slot::SlotSource"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "If an item targeted by `slot_source` has this container component, selects all items inside.\n",
+					"key": "component",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::loot::function::ContainerComponents",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::util::slot::EquipmentSlot": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -60814,6 +61200,140 @@
 					],
 					"identifier": "Saddle",
 					"value": "saddle"
+				}
+			]
+		},
+		"::java::util::slot::FilterSlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "slot_source",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::slot::SlotSource"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "item_filter",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					}
+				}
+			]
+		},
+		"::java::util::slot::GroupSlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "terms",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::util::slot::SlotSource"
+						}
+					}
+				}
+			]
+		},
+		"::java::util::slot::LimitCountSlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "slot_source",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::slot::SlotSource"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "limit",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::util::slot::RangeSlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "source",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::EntityTarget"
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::BlockEntityTarget"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "slots",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "item_slots"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::util::slot::SlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "slot_source_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:slot_source"
+					}
 				}
 			]
 		},
@@ -96256,6 +96776,22 @@
 					}
 				]
 			},
+			"camel_husk": {
+				"kind": "reference",
+				"path": "::java::world::entity::mob::breedable::horse::Camel",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"cat": {
 				"kind": "reference",
 				"path": "::java::world::entity::mob::breedable::tamable::Cat"
@@ -96776,6 +97312,22 @@
 				"kind": "reference",
 				"path": "::java::world::entity::mob::breedable::horse::ChestedHorse"
 			},
+			"nautilus": {
+				"kind": "reference",
+				"path": "::java::world::entity::mob::breedable::tamable::Tamable",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"oak_boat": {
 				"kind": "reference",
 				"path": "::java::world::entity::boat::Boat",
@@ -96855,6 +97407,22 @@
 			"panda": {
 				"kind": "reference",
 				"path": "::java::world::entity::mob::breedable::panda::Panda"
+			},
+			"parched": {
+				"kind": "reference",
+				"path": "::java::world::entity::mob::MobBase",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
 			},
 			"parrot": {
 				"kind": "reference",
@@ -97191,6 +97759,22 @@
 			"zombie_horse": {
 				"kind": "reference",
 				"path": "::java::world::entity::mob::breedable::horse::HorseBase"
+			},
+			"zombie_nautilus": {
+				"kind": "reference",
+				"path": "::java::world::entity::mob::breedable::tamable::Tamable",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
 			},
 			"zombie_pigman": {
 				"kind": "reference",
@@ -97649,46 +98233,111 @@
 					"path": "::java::data::worldgen::attribute::AmbientParticle"
 				}
 			},
-			"visual/cloud_height": {
-				"kind": "float"
-			},
-			"visual/cloud_opacity": {
-				"kind": "float",
-				"valueRange": {
-					"kind": 0,
-					"min": 0,
-					"max": 1
-				}
-			},
-			"visual/default_dripstone_particle": {
+			"visual/cloud_color": {
 				"kind": "reference",
-				"path": "::java::util::particle::Particle"
+				"path": "::java::util::color::StringARGB"
 			},
-			"visual/extra_fog": {
-				"kind": "boolean"
-			},
-			"visual/fog_color": {
-				"kind": "reference",
-				"path": "::java::util::color::StringRGB"
-			},
-			"visual/sky_color": {
-				"kind": "reference",
-				"path": "::java::util::color::StringRGB"
-			},
-			"visual/water_fog_color": {
-				"kind": "reference",
-				"path": "::java::util::color::StringRGB"
-			},
-			"visual/water_fog_radius": {
+			"visual/cloud_fog_end_distance": {
 				"kind": "float",
 				"valueRange": {
 					"kind": 0,
 					"min": 0
 				}
+			},
+			"visual/cloud_height": {
+				"kind": "float"
+			},
+			"visual/default_dripstone_particle": {
+				"kind": "reference",
+				"path": "::java::util::particle::Particle"
+			},
+			"visual/fog_color": {
+				"kind": "reference",
+				"path": "::java::util::color::StringRGB"
+			},
+			"visual/fog_end_distance": {
+				"kind": "float",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
+			},
+			"visual/fog_start_distance": {
+				"kind": "float"
+			},
+			"visual/sky_color": {
+				"kind": "reference",
+				"path": "::java::util::color::StringRGB"
+			},
+			"visual/sky_fog_end_distance": {
+				"kind": "float",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
+			},
+			"visual/water_fog_color": {
+				"kind": "reference",
+				"path": "::java::util::color::StringRGB"
+			},
+			"visual/water_fog_end_distance": {
+				"kind": "float",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
+			},
+			"visual/water_fog_start_distance": {
+				"kind": "float"
 			}
 		},
-		"minecraft:environment_attribute_color_modifier": {
-			"%none": {
+		"minecraft:environment_attribute_argb_color_modifier": {
+			"add": {
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::util::color::StringRGB"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::modifier::T"
+					}
+				]
+			},
+			"alpha_blend": {
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::util::color::StringARGB"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::modifier::T"
+					}
+				]
+			},
+			"multiply": {
+				"kind": "template",
+				"child": {
+					"kind": "union",
+					"members": [
+						{
+							"kind": "reference",
+							"path": "::java::util::color::StringRGB"
+						},
+						{
+							"kind": "reference",
+							"path": "::java::util::color::StringARGB"
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::modifier::T"
+					}
+				]
+			},
+			"override": {
 				"kind": "template",
 				"child": {
 					"kind": "reference",
@@ -97700,6 +98349,20 @@
 					}
 				]
 			},
+			"subtract": {
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::util::color::StringRGB"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::modifier::T"
+					}
+				]
+			}
+		},
+		"minecraft:environment_attribute_color_modifier": {
 			"%unknown": {
 				"kind": "template",
 				"child": {
@@ -97738,18 +98401,6 @@
 			}
 		},
 		"minecraft:environment_attribute_float_modifier": {
-			"%none": {
-				"kind": "template",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::worldgen::attribute::modifier::T"
-				},
-				"typeParams": [
-					{
-						"path": "::java::data::worldgen::attribute::modifier::T"
-					}
-				]
-			},
 			"%unknown": {
 				"kind": "template",
 				"child": {
@@ -97997,6 +98648,48 @@
 					}
 				]
 			},
+			"visual/cloud_color": {
+				"kind": "template",
+				"child": {
+					"kind": "concrete",
+					"child": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::TranslucentColorAttributeModifier"
+					},
+					"typeArgs": [
+						{
+							"kind": "reference",
+							"path": "::java::data::worldgen::attribute::T"
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::T"
+					}
+				]
+			},
+			"visual/cloud_fog_end_distance": {
+				"kind": "template",
+				"child": {
+					"kind": "concrete",
+					"child": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+					},
+					"typeArgs": [
+						{
+							"kind": "reference",
+							"path": "::java::data::worldgen::attribute::T"
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::T"
+					}
+				]
+			},
 			"visual/cloud_height": {
 				"kind": "template",
 				"child": {
@@ -98004,48 +98697,6 @@
 					"child": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
-					},
-					"typeArgs": [
-						{
-							"kind": "reference",
-							"path": "::java::data::worldgen::attribute::T"
-						}
-					]
-				},
-				"typeParams": [
-					{
-						"path": "::java::data::worldgen::attribute::T"
-					}
-				]
-			},
-			"visual/cloud_opacity": {
-				"kind": "template",
-				"child": {
-					"kind": "concrete",
-					"child": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
-					},
-					"typeArgs": [
-						{
-							"kind": "reference",
-							"path": "::java::data::worldgen::attribute::T"
-						}
-					]
-				},
-				"typeParams": [
-					{
-						"path": "::java::data::worldgen::attribute::T"
-					}
-				]
-			},
-			"visual/extra_fog": {
-				"kind": "template",
-				"child": {
-					"kind": "concrete",
-					"child": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::modifier::BooleanAttributeModifier"
 					},
 					"typeArgs": [
 						{
@@ -98081,6 +98732,48 @@
 					}
 				]
 			},
+			"visual/fog_end_distance": {
+				"kind": "template",
+				"child": {
+					"kind": "concrete",
+					"child": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+					},
+					"typeArgs": [
+						{
+							"kind": "reference",
+							"path": "::java::data::worldgen::attribute::T"
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::T"
+					}
+				]
+			},
+			"visual/fog_start_distance": {
+				"kind": "template",
+				"child": {
+					"kind": "concrete",
+					"child": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+					},
+					"typeArgs": [
+						{
+							"kind": "reference",
+							"path": "::java::data::worldgen::attribute::T"
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::T"
+					}
+				]
+			},
 			"visual/sky_color": {
 				"kind": "template",
 				"child": {
@@ -98088,6 +98781,27 @@
 					"child": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::attribute::modifier::ColorAttributeModifier"
+					},
+					"typeArgs": [
+						{
+							"kind": "reference",
+							"path": "::java::data::worldgen::attribute::T"
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::T"
+					}
+				]
+			},
+			"visual/sky_fog_end_distance": {
+				"kind": "template",
+				"child": {
+					"kind": "concrete",
+					"child": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
 					},
 					"typeArgs": [
 						{
@@ -98123,7 +98837,28 @@
 					}
 				]
 			},
-			"visual/water_fog_radius": {
+			"visual/water_fog_end_distance": {
+				"kind": "template",
+				"child": {
+					"kind": "concrete",
+					"child": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::modifier::FloatAttributeModifier"
+					},
+					"typeArgs": [
+						{
+							"kind": "reference",
+							"path": "::java::data::worldgen::attribute::T"
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::attribute::T"
+					}
+				]
+			},
+			"visual/water_fog_start_distance": {
 				"kind": "template",
 				"child": {
 					"kind": "concrete",
@@ -98675,6 +99410,232 @@
 			"spruce_foliage_placer": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::tree::SprucePineFoliagePlacer"
+			}
+		},
+		"minecraft:game_rule": {
+			"advance_time": {
+				"kind": "boolean"
+			},
+			"advance_weather": {
+				"kind": "boolean"
+			},
+			"allow_entering_nether_using_portals": {
+				"kind": "boolean"
+			},
+			"block_drops": {
+				"kind": "boolean"
+			},
+			"block_explosion_drop_decay": {
+				"kind": "boolean"
+			},
+			"command_block_output": {
+				"kind": "boolean"
+			},
+			"command_blocks_work": {
+				"kind": "boolean"
+			},
+			"drowning_damage": {
+				"kind": "boolean"
+			},
+			"elytra_movement_check": {
+				"kind": "boolean"
+			},
+			"ender_pearls_vanish_on_death": {
+				"kind": "boolean"
+			},
+			"entity_drops": {
+				"kind": "boolean"
+			},
+			"fall_damage": {
+				"kind": "boolean"
+			},
+			"fire_damage": {
+				"kind": "boolean"
+			},
+			"fire_spread_radius_around_player": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": -1
+				}
+			},
+			"forgive_dead_players": {
+				"kind": "boolean"
+			},
+			"freeze_damage": {
+				"kind": "boolean"
+			},
+			"global_sound_events": {
+				"kind": "boolean"
+			},
+			"immediate_respawn": {
+				"kind": "boolean"
+			},
+			"keep_inventory": {
+				"kind": "boolean"
+			},
+			"lava_source_conversion": {
+				"kind": "boolean"
+			},
+			"limited_crafting": {
+				"kind": "boolean"
+			},
+			"locator_bar": {
+				"kind": "boolean"
+			},
+			"log_admin_commands": {
+				"kind": "boolean"
+			},
+			"max_block_modifications": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 1
+				}
+			},
+			"max_command_forks": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
+			},
+			"max_command_sequence_length": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
+			},
+			"max_entity_cramming": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 1
+				}
+			},
+			"max_minecart_speed": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 1,
+					"max": 1000
+				}
+			},
+			"max_snow_accumulation_height": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 0,
+					"max": 8
+				}
+			},
+			"mob_drops": {
+				"kind": "boolean"
+			},
+			"mob_explosion_drop_decay": {
+				"kind": "boolean"
+			},
+			"mob_griefing": {
+				"kind": "boolean"
+			},
+			"natural_health_regeneration": {
+				"kind": "boolean"
+			},
+			"player_movement_check": {
+				"kind": "boolean"
+			},
+			"players_nether_portal_creative_delay": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
+			},
+			"players_nether_portal_default_delay": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
+			},
+			"players_sleeping_percentage": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
+			},
+			"projectiles_can_break_blocks": {
+				"kind": "boolean"
+			},
+			"pvp": {
+				"kind": "boolean"
+			},
+			"raids": {
+				"kind": "boolean"
+			},
+			"random_tick_speed": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
+			},
+			"reduced_debug_info": {
+				"kind": "boolean"
+			},
+			"respawn_radius": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 0
+				}
+			},
+			"send_command_feedback": {
+				"kind": "boolean"
+			},
+			"show_death_messages": {
+				"kind": "boolean"
+			},
+			"spawn_mobs": {
+				"kind": "boolean"
+			},
+			"spawn_monsters": {
+				"kind": "boolean"
+			},
+			"spawn_patrols": {
+				"kind": "boolean"
+			},
+			"spawn_phantoms": {
+				"kind": "boolean"
+			},
+			"spawn_wandering_traders": {
+				"kind": "boolean"
+			},
+			"spawn_wardens": {
+				"kind": "boolean"
+			},
+			"spawner_blocks_work": {
+				"kind": "boolean"
+			},
+			"spectators_generate_chunks": {
+				"kind": "boolean"
+			},
+			"spread_vines": {
+				"kind": "boolean"
+			},
+			"tnt_explodes": {
+				"kind": "boolean"
+			},
+			"tnt_explosion_drop_decay": {
+				"kind": "boolean"
+			},
+			"universal_anger": {
+				"kind": "boolean"
+			},
+			"water_source_conversion": {
+				"kind": "boolean"
 			}
 		},
 		"minecraft:glyph_provider": {
@@ -100834,6 +101795,22 @@
 				"kind": "reference",
 				"path": "::java::data::loot::CompositePoolEntry"
 			},
+			"slots": {
+				"kind": "reference",
+				"path": "::java::data::loot::SlotsPoolEntry",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"tag": {
 				"kind": "reference",
 				"path": "::java::data::loot::TagPoolEntry"
@@ -102246,6 +103223,32 @@
 			"trim_material": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::TrimMaterial"
+			}
+		},
+		"minecraft:slot_source": {
+			"contents": {
+				"kind": "reference",
+				"path": "::java::util::slot::ContentsSlotSource"
+			},
+			"empty": {
+				"kind": "struct",
+				"fields": []
+			},
+			"filtered": {
+				"kind": "reference",
+				"path": "::java::util::slot::FilterSlotSource"
+			},
+			"group": {
+				"kind": "reference",
+				"path": "::java::util::slot::GroupSlotSource"
+			},
+			"limit_slots": {
+				"kind": "reference",
+				"path": "::java::util::slot::LimitCountSlotSource"
+			},
+			"slot_range": {
+				"kind": "reference",
+				"path": "::java::util::slot::RangeSlotSource"
 			}
 		},
 		"minecraft:sound_type": {
