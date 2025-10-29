@@ -11,6 +11,9 @@ struct Tamable {
 	Sitting?: boolean,
 }
 
+#[since="1.21.11"]
+dispatch minecraft:entity[nautilus, zombie_nautilus] to Tamable
+
 dispatch minecraft:entity[cat] to struct Cat {
 	...Tamable,
 	#[until="1.19"]

@@ -1,0 +1,70 @@
+dispatch minecraft:game_rule [
+	advance_time,
+	advance_weather,
+	allow_entering_nether_using_portals,
+	block_drops,
+	block_explosion_drop_decay,
+	command_blocks_work,
+	command_block_output,
+	drowning_damage,
+	elytra_movement_check,
+	ender_pearls_vanish_on_death,
+	entity_drops,
+	fall_damage,
+	fire_damage,
+	forgive_dead_players,
+	freeze_damage,
+	global_sound_events,
+	immediate_respawn,
+	keep_inventory,
+	lava_source_conversion,
+	limited_crafting,
+	locator_bar,
+	log_admin_commands,
+	mob_drops,
+	mob_explosion_drop_decay,
+	mob_griefing,
+	natural_health_regeneration,
+	player_movement_check,
+	projectiles_can_break_blocks,
+	pvp,
+	raids,
+	reduced_debug_info,
+	send_command_feedback,
+	show_death_messages,
+	spawner_blocks_work,
+	spawn_mobs,
+	spawn_monsters,
+	spawn_patrols,
+	spawn_phantoms,
+	spawn_wandering_traders,
+	spawn_wardens,
+	spectators_generate_chunks,
+	spread_vines,
+	tnt_explodes,
+	tnt_explosion_drop_decay,
+	universal_anger,
+	water_source_conversion,
+] to boolean
+
+dispatch minecraft:game_rule[fire_spread_radius_around_player] to int @ -1..
+
+dispatch minecraft:game_rule[
+	max_command_forks,
+	max_command_sequence_length,
+	players_nether_portal_creative_delay,
+	players_nether_portal_default_delay,
+	players_sleeping_percentage,
+	random_tick_speed,
+	respawn_radius,
+] to int @ 0..
+
+dispatch minecraft:game_rule[
+	max_block_modifications,
+	max_entity_cramming,
+] to int @ 1..
+
+dispatch minecraft:game_rule[max_snow_accumulation_height] to int @ 0..8
+
+// minecart improvement feature flag exclusive
+dispatch minecraft:game_rule[max_minecart_speed] to int @ 1..1000

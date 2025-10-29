@@ -1,4 +1,5 @@
 use ::java::util::color::StringRGB
+use ::java::util::color::StringARGB
 use ::java::util::particle::Particle
 use ::java::util::text::Text
 use ::java::data::util::SoundEventRef
@@ -8,6 +9,7 @@ use super::biome::BiomeSoundAdditions
 use modifier::BooleanAttributeModifier
 use modifier::FloatAttributeModifier
 use modifier::ColorAttributeModifier
+use modifier::TranslucentColorAttributeModifier
 use modifier::OverrideModifier
 
 type EnvironmentAttributeMap<K> = struct {
@@ -23,7 +25,6 @@ type GlobalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id="environment_a
 type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id(registry="environment_attribute", exclude=["gameplay/fast_lava"])] string>
 
 dispatch minecraft:environment_attribute[
-	"visual/extra_fog",
 	"gameplay/can_start_raid",
 	"gameplay/water_evaporates",
 	"gameplay/respawn_anchor_works",
@@ -34,7 +35,6 @@ dispatch minecraft:environment_attribute[
 	"gameplay/snow_golem_melts",
 ] to boolean
 dispatch minecraft:environment_attribute_modifier[
-	"visual/extra_fog",
 	"gameplay/can_start_raid",
 	"gameplay/water_evaporates",
 	"gameplay/respawn_anchor_works",
@@ -47,18 +47,26 @@ dispatch minecraft:environment_attribute_modifier[
 
 dispatch minecraft:environment_attribute[
 	"visual/cloud_height",
+	"visual/fog_start_distance",
+	"visual/water_fog_start_distance",
 ] to float
 dispatch minecraft:environment_attribute[
-	"visual/water_fog_radius",
+	"visual/cloud_fog_end_distance",
+	"visual/fog_end_distance",
+	"visual/sky_fog_end_distance",
+	"visual/water_fog_end_distance",
 ] to float @ 0..
 dispatch minecraft:environment_attribute[
-	"visual/cloud_opacity",
 	"audio/music_volume",
 ] to float @ 0..1
 dispatch minecraft:environment_attribute_modifier[
+	"visual/cloud_fog_end_distance",
 	"visual/cloud_height",
-	"visual/water_fog_radius",
-	"visual/cloud_opacity",
+	"visual/fog_end_distance",
+	"visual/fog_start_distance",
+	"visual/sky_fog_end_distance",
+	"visual/water_fog_end_distance",
+	"visual/water_fog_start_distance",
 	"audio/music_volume",
 ]<T> to FloatAttributeModifier<T>
 
@@ -72,6 +80,13 @@ dispatch minecraft:environment_attribute_modifier[
 	"visual/water_fog_color",
 	"visual/sky_color",
 ]<T> to ColorAttributeModifier<T>
+
+dispatch minecraft:environment_attribute[
+	"visual/cloud_color",
+] to StringARGB
+dispatch minecraft:environment_attribute_modifier[
+	"visual/cloud_color",
+]<T> to TranslucentColorAttributeModifier<T>
 
 dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to Particle
 

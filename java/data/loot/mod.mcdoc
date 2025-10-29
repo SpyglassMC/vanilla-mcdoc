@@ -1,3 +1,4 @@
+use ::java::util::slot::SlotSource
 use ::java::util::text::Text
 use super::util::MinMaxBounds
 use super::util::NumberProvider
@@ -111,6 +112,7 @@ dispatch minecraft:loot_pool_entry[dynamic] to struct DynamicPoolEntry {
 
 enum(string) DynamicDrops {
 	/// Drops the items in a shulker box.
+	#[until="1.21.11"]
 	Contents = "contents",
 	/// Drops the sherds of a decorated pot.
 	#[since="1.20"]
@@ -135,6 +137,12 @@ dispatch minecraft:loot_pool_entry[loot_table] to struct LootTablePoolEntry {
 		#[id="loot_table"] string |
 		LootTable |
 	),
+	...SingletonPoolEntry,
+}
+
+#[since="1.21.11"]
+dispatch minecraft:loot_pool_entry[slots] to struct SlotsPoolEntry {
+	slot_source: SlotSource,
 	...SingletonPoolEntry,
 }
 

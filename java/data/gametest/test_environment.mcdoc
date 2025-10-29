@@ -14,8 +14,14 @@ dispatch minecraft:test_environment_definition[function] to struct FunctionTestE
 }
 
 dispatch minecraft:test_environment_definition[game_rules] to struct GameRulesTestEnvironment {
+	#[until="1.21.11"]
 	bool_rules: [BoolGameRule],
+	#[until="1.21.11"]
 	int_rules: [IntGameRule],
+	#[since="1.21.11"]
+	rules: struct GameRuleMap {
+		[#[id="game_rule"] string]: minecraft:game_rule[[%key]],
+	},
 }
 
 struct BoolGameRule {

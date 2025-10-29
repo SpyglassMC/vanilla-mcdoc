@@ -18,7 +18,7 @@ dispatch minecraft:environment_attribute_float_modifier[alpha_blend]<T> to struc
 	/// Defaults to 1.0
 	alpha?: float @ 0..1,
 }
-dispatch minecraft:environment_attribute_float_modifier[override, %none]<T> to T
+dispatch minecraft:environment_attribute_float_modifier[override]<T> to T
 
 type ColorAttributeModifier<T> = struct {
 	modifier: ColorModifierType,
@@ -26,7 +26,16 @@ type ColorAttributeModifier<T> = struct {
 }
 dispatch minecraft:environment_attribute_color_modifier[%unknown]<T> to StringRGB
 dispatch minecraft:environment_attribute_color_modifier[alpha_blend]<T> to StringARGB
-dispatch minecraft:environment_attribute_color_modifier[override, %none]<T> to T
+dispatch minecraft:environment_attribute_color_modifier[override]<T> to T
+
+type TranslucentColorAttributeModifier<T> = struct {
+	modifier: ColorModifierType,
+	argument: minecraft:environment_attribute_argb_color_modifier[[modifier]]<T>,
+}
+dispatch minecraft:environment_attribute_argb_color_modifier[add, subtract]<T> to StringRGB
+dispatch minecraft:environment_attribute_argb_color_modifier[multiply]<T> to (StringRGB | StringARGB)
+dispatch minecraft:environment_attribute_argb_color_modifier[alpha_blend]<T> to StringARGB
+dispatch minecraft:environment_attribute_argb_color_modifier[override]<T> to T
 
 type OverrideModifier<T> = struct {
 	modifier: "override",
