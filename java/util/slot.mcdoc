@@ -42,7 +42,9 @@ enum(string) EquipmentSlotGroup {
 	Saddle = "saddle",
 }
 
-struct SlotSource {
+type SlotSource = (TypedSlotSource | [TypedSlotSource])
+
+struct TypedSlotSource {
 	type: #[id="slot_source_type"] string,
 	...minecraft:slot_source[[type]],
 }
