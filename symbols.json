@@ -1,5 +1,5 @@
 {
-	"ref": "e26675ae2d6c35a95ef32c252b43ee05b553afb9",
+	"ref": "06a39347bf06ffa9597eded29c89d1946ad6a32d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -1647,6 +1647,62 @@
 														"value": {
 															"kind": "string",
 															"value": "entity/equipment/strider_saddle/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"key": "camel_husk_saddle",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/camel_husk_saddle/"
 														}
 													}
 												}
