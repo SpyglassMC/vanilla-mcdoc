@@ -17,6 +17,8 @@ struct Layers {
 	happy_ghast_body?: [Layer<#[id(registry="texture",path="entity/equipment/happy_ghast_body/")] string>],
 	pig_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/pig_saddle/")] string>],
 	strider_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/strider_saddle/")] string>],
+	#[since="1.21.11"]
+	camel_husk_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/camel_husk_saddle/")] string>],
 	camel_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/camel_saddle/")] string>],
 	horse_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/horse_saddle/")] string>],
 	donkey_saddle?: [Layer<#[id(registry="texture",path="entity/equipment/donkey_saddle/")] string>],
