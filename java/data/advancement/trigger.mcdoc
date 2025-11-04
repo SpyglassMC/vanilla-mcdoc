@@ -380,6 +380,12 @@ dispatch minecraft:trigger[slide_down_block] to Conditions<struct SlideDownBlock
 	block?: #[id="block"] string,
 }>
 
+#[since="1.21.11"]
+dispatch minecraft:trigger[spear_mobs] to Conditions<struct SpearMobs {
+	...TriggerBase,
+	count?: int @ 1..,
+}>
+
 #[since="1.17"]
 dispatch minecraft:trigger[started_riding] to Conditions<TriggerBase>
 
