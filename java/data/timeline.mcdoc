@@ -9,12 +9,11 @@ struct EnvironmentAttributeTrackMap {
 	[#[id="environment_attribute"] string]: struct AttributeTrack {
 		/// Defaults to `linear`.
 		ease?: EasingType,
-		keyframes: [minecraft:environment_attribute[[%parent.%parent.%key]][keyframe_type]],
+		keyframes: [struct Keyframe {
+			ticks: int @ 0..,
+			...minecraft:environment_attribute[[%parent.%parent.%parent.%key]][keyframe_value]
+		}],
 	},
-}
-
-struct KeyframeBase {
-	ticks: int @ 0..,
 }
 
 type EasingType = (SimpleEasingType | CubicBezierEase)

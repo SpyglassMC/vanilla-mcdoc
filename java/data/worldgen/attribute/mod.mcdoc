@@ -4,7 +4,6 @@ use ::java::util::particle::Particle
 use ::java::util::text::Text
 use ::java::data::util::MoonPhase
 use ::java::data::util::SoundEventRef
-use ::java::data::timeline::KeyframeBase
 use super::biome::BiomeMusic
 use super::biome::MoodSound
 use super::biome::BiomeSoundAdditions
@@ -20,15 +19,14 @@ use modifier::OverrideModifier
 type EnvironmentAttributeMap<K> = struct {
 	[K]: (
 		minecraft:environment_attribute[[%key]][value] |
-		minecraft:environment_attribute[[%key]][modifier_type] |
+		minecraft:environment_attribute[[%key]][modifier_value] |
 	),
 }
 
 struct BooleanAttribute {
 	value: boolean,
-	modifier_type: BooleanAttributeModifier,
-	keyframe_type: struct {
-		...KeyframeBase,
+	modifier_value: BooleanAttributeModifier,
+	keyframe_value: struct {
 		modifier?: BooleanModifierType,
 		value: boolean,
 	}
@@ -36,9 +34,8 @@ struct BooleanAttribute {
 
 type FloatAttribute<T> = struct {
 	value: T,
-	modifier_type: FloatAttributeModifier<T>,
-	keyframe_type: struct {
-		...KeyframeBase,
+	modifier_value: FloatAttributeModifier<T>,
+	keyframe_value: struct {
 		modifier?: FloatModifierType,
 		value: minecraft:environment_attribute_float_modifier[[modifier]]<T>,
 	}
@@ -46,9 +43,8 @@ type FloatAttribute<T> = struct {
 
 struct RGBColorAttribute {
 	value: StringRGB,
-	modifier_type: ColorAttributeModifier,
-	keyframe_type: struct {
-		...KeyframeBase,
+	modifier_value: ColorAttributeModifier,
+	keyframe_value: struct {
 		modifier?: ColorModifierType,
 		value: minecraft:environment_attribute_color_modifier[[modifier]],
 	}
@@ -56,9 +52,8 @@ struct RGBColorAttribute {
 
 struct ARGBColorAttribute {
 	value: StringARGB,
-	modifier_type: TranslucentColorAttributeModifier,
-	keyframe_type: struct {
-		...KeyframeBase,
+	modifier_value: TranslucentColorAttributeModifier,
+	keyframe_value: struct {
 		modifier?: ColorModifierType,
 		value: minecraft:environment_attribute_argb_color_modifier[[modifier]],
 	}
@@ -66,9 +61,8 @@ struct ARGBColorAttribute {
 
 type DiscreteAttribute<T> = struct {
 	value: T,
-	modifier_type: OverrideModifier<T>,
-	keyframe_type: struct {
-		...KeyframeBase,
+	modifier_value: OverrideModifier<T>,
+	keyframe_value: struct {
 		modifier?: "override",
 		value: T,
 	}
