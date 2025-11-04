@@ -70,8 +70,10 @@ type DiscreteAttribute<T> = struct {
 
 dispatch minecraft:environment_attribute[%unknown] to DiscreteAttribute<any>
 
+type PositionalEnvironmentAttribute = #[id(registry="environment_attribute", exclude=["gameplay/fast_lava", "gameplay/sky_light_level"])] string
+
 type GlobalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id="environment_attribute"] string>
-type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id(registry="environment_attribute", exclude=["gameplay/fast_lava"])] string>
+type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<PositionalEnvironmentAttribute>
 
 dispatch minecraft:environment_attribute[
 	"audio/firefly_bush_sounds",
