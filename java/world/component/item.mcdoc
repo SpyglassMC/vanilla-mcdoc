@@ -468,13 +468,13 @@ dispatch minecraft:data_component[jukebox_playable] to (
 dispatch minecraft:data_component[kinetic_weapon] to struct KineticWeapon {
 	/// Minimum distance to the target to be considered valid.
 	/// Defaults to 0.0
-	min_reach?: float @ 0..,
+	min_reach?: float @ 0..128,
 	/// Maximum distance to the target to be considered valid.
 	/// Defaults to 3.0
-	max_reach?: float @ 0..,
+	max_reach?: float @ 0..128,
 	/// The margin applied to the target bounding box when checking for valid hitbox collision.
 	/// Defaults to 0.3
-	hitbox_margin?: float @ 0..,
+	hitbox_margin?: float @ 0..1,
 	/// The time in ticks required for charging.
 	/// Defaults to 0
 	delay_ticks?: int @ 0..,
@@ -561,13 +561,13 @@ dispatch minecraft:data_component[ominous_bottle_amplifier] to int @ 0..4
 dispatch minecraft:data_component[piercing_weapon] to struct PiercingWeapon {
 	/// Minimum distance to the target to be considered valid.
 	/// Defaults to 0.0
-	min_reach?: float @ 0..,
+	min_reach?: float @ 0..128,
 	/// Maximum distance to the target to be considered valid.
 	/// Defaults to 3.0
-	max_reach?: float @ 0..,
+	max_reach?: float @ 0..128,
 	/// The margin applied to the target bounding box when checking for valid hitbox collision.
 	/// Defaults to 0.3
-	hitbox_margin?: float @ 0..,
+	hitbox_margin?: float @ 0..1,
 	/// Whether the attack deals knockback.
 	/// Defaults to `true`.
 	deals_knockback?: boolean,
