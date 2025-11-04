@@ -4,9 +4,13 @@ use ::java::util::particle::Particle
 use ::java::util::text::Text
 use ::java::data::util::MoonPhase
 use ::java::data::util::SoundEventRef
+use ::java::data::timeline::KeyframeBase
 use super::biome::BiomeMusic
 use super::biome::MoodSound
 use super::biome::BiomeSoundAdditions
+use modifier::BooleanModifierType
+use modifier::FloatModifierType
+use modifier::ColorModifierType
 use modifier::BooleanAttributeModifier
 use modifier::FloatAttributeModifier
 use modifier::ColorAttributeModifier
@@ -15,12 +19,62 @@ use modifier::OverrideModifier
 
 type EnvironmentAttributeMap<K> = struct {
 	[K]: (
-		minecraft:environment_attribute[[%key]] |
-		minecraft:environment_attribute_modifier[[%key]]<minecraft:environment_attribute[[%key]]> |
+		minecraft:environment_attribute[[%key]][value] |
+		minecraft:environment_attribute[[%key]][modifier_type] |
 	),
 }
 
-dispatch minecraft:environment_attribute_modifier[%unknown]<T> to OverrideModifier<T>
+struct BooleanAttribute {
+	value: boolean,
+	modifier_type: BooleanAttributeModifier,
+	keyframe_type: struct {
+		...KeyframeBase,
+		modifier?: BooleanModifierType,
+		value: boolean,
+	}
+}
+
+type FloatAttribute<T> = struct {
+	value: T,
+	modifier_type: FloatAttributeModifier<T>,
+	keyframe_type: struct {
+		...KeyframeBase,
+		modifier?: FloatModifierType,
+		value: minecraft:environment_attribute_float_modifier[[modifier]]<T>,
+	}
+}
+
+struct RGBColorAttribute {
+	value: StringRGB,
+	modifier_type: ColorAttributeModifier,
+	keyframe_type: struct {
+		...KeyframeBase,
+		modifier?: ColorModifierType,
+		value: minecraft:environment_attribute_color_modifier[[modifier]],
+	}
+}
+
+struct ARGBColorAttribute {
+	value: StringARGB,
+	modifier_type: TranslucentColorAttributeModifier,
+	keyframe_type: struct {
+		...KeyframeBase,
+		modifier?: ColorModifierType,
+		value: minecraft:environment_attribute_argb_color_modifier[[modifier]],
+	}
+}
+
+type DiscreteAttribute<T> = struct {
+	value: T,
+	modifier_type: OverrideModifier<T>,
+	keyframe_type: struct {
+		...KeyframeBase,
+		modifier?: "override",
+		value: T,
+	}
+}
+
+dispatch minecraft:environment_attribute[%unknown] to DiscreteAttribute<any>
 
 type GlobalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id="environment_attribute"] string>
 type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id(registry="environment_attribute", exclude=["gameplay/fast_lava"])] string>
@@ -39,22 +93,7 @@ dispatch minecraft:environment_attribute[
 	"gameplay/respawn_anchor_works",
 	"gameplay/snow_golem_melts",
 	"gameplay/water_evaporates",
-] to boolean
-dispatch minecraft:environment_attribute_modifier[
-	"audio/firefly_bush_sounds",
-	"gameplay/bees_stay_in_hive",
-	"gameplay/can_pillager_patrol_spawn",
-	"gameplay/can_start_raid",
-	"gameplay/creaking_active",
-	"gameplay/fast_lava",
-	"gameplay/increased_fire_burnout",
-	"gameplay/monsters_burn",
-	"gameplay/nether_portal_spawns_piglin",
-	"gameplay/piglins_zombify",
-	"gameplay/respawn_anchor_works",
-	"gameplay/snow_golem_melts",
-	"gameplay/water_evaporates",
-]<T> to BooleanAttributeModifier<T>
+] to BooleanAttribute
 
 dispatch minecraft:environment_attribute[
 	"visual/cloud_height",
@@ -63,13 +102,13 @@ dispatch minecraft:environment_attribute[
 	"visual/star_angle",
 	"visual/sun_angle",
 	"visual/water_fog_start_distance",
-] to float
+] to FloatAttribute<float>
 dispatch minecraft:environment_attribute[
 	"visual/cloud_fog_end_distance",
 	"visual/fog_end_distance",
 	"visual/sky_fog_end_distance",
 	"visual/water_fog_end_distance",
-] to float @ 0..
+] to FloatAttribute<float @ 0..>
 dispatch minecraft:environment_attribute[
 	"visual/sky_light_factor",
 	"visual/star_brightness",
@@ -77,81 +116,52 @@ dispatch minecraft:environment_attribute[
 	"gameplay/cat_waking_up_gift_chance",
 	"gameplay/surface_slime_spawn_chance",
 	"gameplay/turtle_egg_hatch_chance",
-] to float @ 0..1
-dispatch minecraft:environment_attribute["gameplay/sky_light_level"] to float @ 0..15
-dispatch minecraft:environment_attribute_modifier[
-	"visual/cloud_fog_end_distance",
-	"visual/cloud_height",
-	"visual/fog_end_distance",
-	"visual/fog_start_distance",
-	"visual/moon_angle",
-	"visual/sky_fog_end_distance",
-	"visual/sky_light_factor",
-	"visual/star_angle",
-	"visual/star_brightness",
-	"visual/sun_angle",
-	"visual/water_fog_end_distance",
-	"visual/water_fog_start_distance",
-	"audio/music_volume",
-	"gameplay/cat_waking_up_gift_chance",
-	"gameplay/sky_light_level",
-	"gameplay/surface_slime_spawn_chance",
-	"gameplay/turtle_egg_hatch_chance",
-]<T> to FloatAttributeModifier<T>
+] to FloatAttribute<float @ 0..1>
+dispatch minecraft:environment_attribute["gameplay/sky_light_level"] to FloatAttribute<float @ 0..15>
 
 dispatch minecraft:environment_attribute[
 	"visual/fog_color",
 	"visual/water_fog_color",
 	"visual/sky_color",
 	"visual/sky_light_color",
-] to StringRGB
-dispatch minecraft:environment_attribute_modifier[
-	"visual/fog_color",
-	"visual/water_fog_color",
-	"visual/sky_color",
-	"visual/sky_light_color",
-]<T> to ColorAttributeModifier<T>
+] to RGBColorAttribute
 
 dispatch minecraft:environment_attribute[
 	"visual/cloud_color",
 	"visual/sunrise_sunset_color",
-] to StringARGB
-dispatch minecraft:environment_attribute_modifier[
-	"visual/cloud_color",
-	"visual/sunrise_sunset_color",
-]<T> to TranslucentColorAttributeModifier<T>
+] to ARGBColorAttribute
 
-dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to Particle
+dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to DiscreteAttribute<Particle>
 
-dispatch minecraft:environment_attribute["visual/ambient_particles"] to [AmbientParticle]
+dispatch minecraft:environment_attribute["visual/ambient_particles"] to DiscreteAttribute<[AmbientParticle]>
 
-dispatch minecraft:environment_attribute["audio/background_music"] to struct BackgroundMusic {
+dispatch minecraft:environment_attribute["audio/background_music"] to DiscreteAttribute<struct BackgroundMusic {
 	/// Default music to play
 	default?: BiomeMusic,
 	/// Overrides default music when underwater
 	underwater?: BiomeMusic,
 	/// Overrides default music when in creative mode
 	creative?: BiomeMusic,
-}
+}>
 
-dispatch minecraft:environment_attribute["audio/ambient_sounds"] to struct AmbientSounds {
+dispatch minecraft:environment_attribute["audio/ambient_sounds"] to DiscreteAttribute<struct AmbientSounds {
 	loop?: SoundEventRef,
 	mood?: MoodSound,
 	additions?: (BiomeSoundAdditions | [BiomeSoundAdditions]),
-}
+}>
 
-dispatch minecraft:environment_attribute["gameplay/bed_rule"] to struct BedRule {
+dispatch minecraft:environment_attribute["gameplay/bed_rule"] to DiscreteAttribute<struct BedRule {
 	can_sleep: BedRuleType,
 	can_set_spawn: BedRuleType,
 	explodes?: boolean,
 	error_message?: Text,
-}
+}>
 
-dispatch minecraft:environment_attribute["visual/moon_phase"] to MoonPhase
+dispatch minecraft:environment_attribute["visual/moon_phase"] to DiscreteAttribute<MoonPhase>
 
-dispatch minecraft:environment_attribute["gameplay/eyeblossom_open"] to TriState
+dispatch minecraft:environment_attribute["gameplay/eyeblossom_open"] to DiscreteAttribute<TriState>
 
-dispatch minecraft:environment_attribute["gameplay/villager_activity", "gameplay/baby_villager_activity"] to #[id="activity"] string
+dispatch minecraft:environment_attribute["gameplay/villager_activity", "gameplay/baby_villager_activity"] to DiscreteAttribute<#[id="activity"] string>
 
 struct AmbientParticle {
 	particle: Particle,

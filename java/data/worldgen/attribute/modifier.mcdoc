@@ -1,7 +1,7 @@
 use ::java::util::color::StringRGB
 use ::java::util::color::StringARGB
 
-type BooleanAttributeModifier<T> = struct {
+type BooleanAttributeModifier = struct {
 	modifier: BooleanModifierType,
 	// All modifiers use boolean argument
 	// If this is changed in the future, use a dispatcher like float/color modifier
@@ -18,26 +18,26 @@ dispatch minecraft:environment_attribute_float_modifier[alpha_blend]<T> to struc
 	/// Defaults to 1.0
 	alpha?: float @ 0..1,
 }
-dispatch minecraft:environment_attribute_float_modifier[override]<T> to T
+dispatch minecraft:environment_attribute_float_modifier[override, %none]<T> to T
 
-type ColorAttributeModifier<T> = struct {
+type ColorAttributeModifier = struct {
 	modifier: ColorModifierType,
-	argument: minecraft:environment_attribute_color_modifier[[modifier]]<T>,
+	argument: minecraft:environment_attribute_color_modifier[[modifier]],
 }
-dispatch minecraft:environment_attribute_color_modifier[%unknown]<T> to StringRGB
-dispatch minecraft:environment_attribute_color_modifier[alpha_blend]<T> to StringARGB
-dispatch minecraft:environment_attribute_color_modifier[blend_to_gray]<T> to BlendToGray
-dispatch minecraft:environment_attribute_color_modifier[override]<T> to T
+dispatch minecraft:environment_attribute_color_modifier[%unknown] to StringRGB
+dispatch minecraft:environment_attribute_color_modifier[alpha_blend] to StringARGB
+dispatch minecraft:environment_attribute_color_modifier[blend_to_gray] to BlendToGray
+dispatch minecraft:environment_attribute_color_modifier[override, %none] to StringRGB
 
-type TranslucentColorAttributeModifier<T> = struct {
+type TranslucentColorAttributeModifier = struct {
 	modifier: ColorModifierType,
-	argument: minecraft:environment_attribute_argb_color_modifier[[modifier]]<T>,
+	argument: minecraft:environment_attribute_argb_color_modifier[[modifier]],
 }
-dispatch minecraft:environment_attribute_argb_color_modifier[add, subtract]<T> to StringRGB
-dispatch minecraft:environment_attribute_argb_color_modifier[multiply]<T> to (StringRGB | StringARGB)
-dispatch minecraft:environment_attribute_argb_color_modifier[alpha_blend]<T> to StringARGB
-dispatch minecraft:environment_attribute_argb_color_modifier[blend_to_gray]<T> to BlendToGray
-dispatch minecraft:environment_attribute_argb_color_modifier[override]<T> to T
+dispatch minecraft:environment_attribute_argb_color_modifier[add, subtract] to StringRGB
+dispatch minecraft:environment_attribute_argb_color_modifier[multiply] to (StringRGB | StringARGB)
+dispatch minecraft:environment_attribute_argb_color_modifier[alpha_blend] to StringARGB
+dispatch minecraft:environment_attribute_argb_color_modifier[blend_to_gray] to BlendToGray
+dispatch minecraft:environment_attribute_argb_color_modifier[override, %none] to StringARGB
 
 struct BlendToGray {
 	/// The gray color is `brightness * (0.3 * r + 0.59 * g + 0.11 * b)`.
