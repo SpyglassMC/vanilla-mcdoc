@@ -2,6 +2,7 @@ use ::java::util::color::StringRGB
 use ::java::util::color::StringARGB
 use ::java::util::particle::Particle
 use ::java::util::text::Text
+use ::java::data::util::MoonPhase
 use ::java::data::util::SoundEventRef
 use super::biome::BiomeMusic
 use super::biome::MoodSound
@@ -25,29 +26,42 @@ type GlobalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id="environment_a
 type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id(registry="environment_attribute", exclude=["gameplay/fast_lava"])] string>
 
 dispatch minecraft:environment_attribute[
+	"audio/firefly_bush_sounds",
+	"gameplay/bees_stay_in_hive",
+	"gameplay/can_pillager_patrol_spawn",
 	"gameplay/can_start_raid",
-	"gameplay/water_evaporates",
-	"gameplay/respawn_anchor_works",
-	"gameplay/nether_portal_spawns_piglin",
+	"gameplay/creaking_active",
 	"gameplay/fast_lava",
 	"gameplay/increased_fire_burnout",
+	"gameplay/monsters_burn",
+	"gameplay/nether_portal_spawns_piglin",
 	"gameplay/piglins_zombify",
+	"gameplay/respawn_anchor_works",
 	"gameplay/snow_golem_melts",
+	"gameplay/water_evaporates",
 ] to boolean
 dispatch minecraft:environment_attribute_modifier[
+	"audio/firefly_bush_sounds",
+	"gameplay/bees_stay_in_hive",
+	"gameplay/can_pillager_patrol_spawn",
 	"gameplay/can_start_raid",
-	"gameplay/water_evaporates",
-	"gameplay/respawn_anchor_works",
-	"gameplay/nether_portal_spawns_piglin",
+	"gameplay/creaking_active",
 	"gameplay/fast_lava",
 	"gameplay/increased_fire_burnout",
+	"gameplay/monsters_burn",
+	"gameplay/nether_portal_spawns_piglin",
 	"gameplay/piglins_zombify",
+	"gameplay/respawn_anchor_works",
 	"gameplay/snow_golem_melts",
+	"gameplay/water_evaporates",
 ]<T> to BooleanAttributeModifier<T>
 
 dispatch minecraft:environment_attribute[
 	"visual/cloud_height",
 	"visual/fog_start_distance",
+	"visual/moon_angle",
+	"visual/star_angle",
+	"visual/sun_angle",
 	"visual/water_fog_start_distance",
 ] to float
 dispatch minecraft:environment_attribute[
@@ -57,35 +71,54 @@ dispatch minecraft:environment_attribute[
 	"visual/water_fog_end_distance",
 ] to float @ 0..
 dispatch minecraft:environment_attribute[
+	"visual/sky_light_factor",
+	"visual/star_brightness",
 	"audio/music_volume",
+	"gameplay/cat_waking_up_gift_chance",
+	"gameplay/surface_slime_spawn_chance",
+	"gameplay/turtle_egg_hatch_chance",
 ] to float @ 0..1
+dispatch minecraft:environment_attribute["gameplay/sky_light_level"] to float @ 0..15
 dispatch minecraft:environment_attribute_modifier[
 	"visual/cloud_fog_end_distance",
 	"visual/cloud_height",
 	"visual/fog_end_distance",
 	"visual/fog_start_distance",
+	"visual/moon_angle",
 	"visual/sky_fog_end_distance",
+	"visual/sky_light_factor",
+	"visual/star_angle",
+	"visual/star_brightness",
+	"visual/sun_angle",
 	"visual/water_fog_end_distance",
 	"visual/water_fog_start_distance",
 	"audio/music_volume",
+	"gameplay/cat_waking_up_gift_chance",
+	"gameplay/sky_light_level",
+	"gameplay/surface_slime_spawn_chance",
+	"gameplay/turtle_egg_hatch_chance",
 ]<T> to FloatAttributeModifier<T>
 
 dispatch minecraft:environment_attribute[
 	"visual/fog_color",
 	"visual/water_fog_color",
 	"visual/sky_color",
+	"visual/sky_light_color",
 ] to StringRGB
 dispatch minecraft:environment_attribute_modifier[
 	"visual/fog_color",
 	"visual/water_fog_color",
 	"visual/sky_color",
+	"visual/sky_light_color",
 ]<T> to ColorAttributeModifier<T>
 
 dispatch minecraft:environment_attribute[
 	"visual/cloud_color",
+	"visual/sunrise_sunset_color",
 ] to StringARGB
 dispatch minecraft:environment_attribute_modifier[
 	"visual/cloud_color",
+	"visual/sunrise_sunset_color",
 ]<T> to TranslucentColorAttributeModifier<T>
 
 dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to Particle
@@ -114,6 +147,12 @@ dispatch minecraft:environment_attribute["gameplay/bed_rule"] to struct BedRule 
 	error_message?: Text,
 }
 
+dispatch minecraft:environment_attribute["visual/moon_phase"] to MoonPhase
+
+dispatch minecraft:environment_attribute["gameplay/eyeblossom_open"] to TriState
+
+dispatch minecraft:environment_attribute["gameplay/villager_activity", "gameplay/baby_villager_activity"] to #[id="activity"] string
+
 struct AmbientParticle {
 	particle: Particle,
 	probability: float @ 0..1,
@@ -124,3 +163,5 @@ enum(string) BedRuleType {
 	WhenDark = "when_dark",
 	Never = "never",
 }
+
+type TriState = (boolean | "default")
