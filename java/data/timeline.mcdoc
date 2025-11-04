@@ -13,10 +13,9 @@ struct EnvironmentAttributeTrackMap {
 	},
 }
 
-// probably need some very very cursed type generics here
 type Keyframe = struct {
 	ticks: int @ 0..,
-	modifier?: any,  // TODO
+	modifier?: string,  // TODO
 	value: any,  // TODO
 }
 
