@@ -1,3 +1,4 @@
+use ::java::util::WeightedList
 use ::java::world::block::spawner::SpawnPotential
 
 struct TrialSpawnerConfig {
@@ -16,10 +17,7 @@ struct TrialSpawnerConfig {
 	/// Entities that can be placed.
 	spawn_potentials?: [SpawnPotential],
 	/// Loot tables to use when ejecting loot. Chooses one loot table based on weight and then uses it as often as there are players nearby.
-	loot_tables_to_eject?: [struct {
-		data: #[id="loot_table"] string,
-		weight: int @ 1..,
-	}],
+	loot_tables_to_eject?: WeightedList<#[id="loot_table"] string>,
 	/// Loot table to use when summoning ominous item spawners. One roll seeded based on rough location to determine all items used during the battle.
 	items_to_drop_when_ominous?: #[id="loot_table"] string
 }

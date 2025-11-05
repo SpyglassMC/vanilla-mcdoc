@@ -1,3 +1,4 @@
+use ::java::util::NonEmptyWeightedList
 use super::HeightmapType
 use super::HeightProvider
 use super::DecorationStep
@@ -216,15 +217,9 @@ dispatch minecraft:worldgen/pool_alias_binding[direct] to struct DirectPoolAlias
 
 dispatch minecraft:worldgen/pool_alias_binding[random] to struct RandomPoolAlias {
 	alias: #[id] string,
-	targets: [struct PoolAliasTarget {
-		weight: int,
-		data: #[id="worldgen/template_pool"] string,
-	}],
+	targets: NonEmptyWeightedList<#[id="worldgen/template_pool"] string>,
 }
 
 dispatch minecraft:worldgen/pool_alias_binding[random_group] to struct RandomGroupPoolAlias {
-	groups: [struct PoolAliasGroup {
-		weight: int,
-		data: [PoolAlias],
-	}],
+	groups: NonEmptyWeightedList<[PoolAlias]>,
 }

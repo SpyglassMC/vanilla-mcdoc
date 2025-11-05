@@ -33,3 +33,11 @@ type InclusiveRange<T> = (
 		max_inclusive: T,
 	} |
 )
+
+// package net.minecraft.util.random
+type WeightedEntry<T> = struct {
+	weight: int @ 0..,
+	data: T,
+}
+type WeightedList<T> = [WeightedEntry<T>]
+type NonEmptyWeightedList<T> = [WeightedEntry<T>] @ 1..

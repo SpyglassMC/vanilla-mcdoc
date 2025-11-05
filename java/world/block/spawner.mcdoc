@@ -1,5 +1,6 @@
 use ::java::data::trial_spawner::TrialSpawnerConfig
 use ::java::util::InclusiveRange
+use ::java::util::WeightedEntry
 use ::java::world::entity::AnyEntity
 
 dispatch minecraft:block_entity[mob_spawner] to struct Spawner {
@@ -65,25 +66,18 @@ dispatch minecraft:block[spawner] to minecraft:block_entity[mob_spawner]
 
 dispatch minecraft:block[trial_spawner] to minecraft:block_entity[trial_spawner]
 
-// TODO: check this, probably wrong between 1.18 and 1.20.5
-struct SpawnPotential {
-	#[until="1.20.5"]
-	Entity?: (
-		#[until="1.18"] AnyEntity |
-		#[since="1.18"] SpawnerEntry |
-	),
-	#[since="1.20.5"]
-	data: SpawnerEntry,
-	/// Weight for this entry to be chosen.
+type SpawnPotential = (
 	#[until="1.18"]
-	Weight?: (
-		#[until="1.17"] int @ 0.. | 
-		#[since="1.17"] byte @ 0.. |
-	),
-	/// Weight for this entry to be chosen.
-	#[since="1.18"]
-	weight: int @ 0..,
-}
+	struct {
+		Entity?: AnyEntity,
+		/// Weight for this entry to be chosen.
+		Weight?: (
+			#[until="1.17"] int @ 0.. | 
+			#[since="1.17"] byte @ 0.. |
+		),
+	} |
+	#[since="1.18"] WeightedEntry<SpawnerEntry>
+)
 
 struct SpawnEquipment {
 	/// Generates the equipment.

@@ -1,5 +1,6 @@
 use ::java::util::color::StringRGB
 use ::java::util::particle::Particle
+use ::java::util::WeightedList
 use super::attribute::PositionalEnvironmentAttributeMap
 use super::CarveStep
 use super::carver::CarverRef
@@ -138,10 +139,7 @@ struct BiomeEffects {
 	#[until="1.21.11"]
 	music?: (
 		#[until="1.21.4"] BiomeMusic |
-		#[since="1.21.4"] [struct {
-			weight: int @ 1..,
-			data: BiomeMusic,
-		}]
+		#[since="1.21.4"] WeightedList<BiomeMusic> |
 	),
 	/// The volume of the music in this biome. Defaults to 1.
 	/// The game will smoothly transition between the current music volume and the new volume when entering the biome.

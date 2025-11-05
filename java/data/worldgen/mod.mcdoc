@@ -1,3 +1,5 @@
+use ::java::util::NonEmptyWeightedList
+
 enum(string) HeightmapType {
 	MotionBlocking = "MOTION_BLOCKING",
 	MotionBlockingNoLeaves = "MOTION_BLOCKING_NO_LEAVES",
@@ -97,10 +99,7 @@ dispatch minecraft:int_provider[clamped_normal]<T> to (
 )
 
 type WeightListIntProvider<T> = struct {
-	distribution: [struct {
-		weight: int,
-		data: IntProvider<T>,
-	}],
+	distribution: NonEmptyWeightedList<IntProvider<T>>,
 }
 
 #[since="1.18"]
@@ -185,8 +184,5 @@ dispatch minecraft:height_provider[trapezoid] to struct TrapezoidHeightProvider 
 
 #[since="1.18"]
 dispatch minecraft:height_provider[weighted_list] to struct WeightListHeightProvider {
-	distribution: [struct WeightDistribution {
-		weight: int,
-		data: HeightProvider,
-	}],
+	distribution: NonEmptyWeightedList<HeightProvider>,
 }
