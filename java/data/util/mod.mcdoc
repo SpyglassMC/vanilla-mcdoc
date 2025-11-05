@@ -164,3 +164,14 @@ type SoundEventRef = (
 		range?: float
 	} |
 )
+
+enum(string) MoonPhase {
+	FullMoon = "full_moon",
+	WaningGibbous = "waning_gibbous",
+	ThirdQuarter = "third_quarter",
+	WaningCrescent = "waning_crescent",
+	NewMoon = "new_moon",
+	WaxingCrescent = "waxing_crescent",
+	FirstQuarter = "first_quarter",
+	WaxingGibbous = "waxing_gibbous",
+}

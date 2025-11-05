@@ -19,10 +19,13 @@ type DimensionTypeRef = (
 dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	#[since="1.21.11"]
 	attributes?: GlobalEnvironmentAttributeMap,
+	#[since="1.21.11"]
+	timelines?: (#[id=(registry="timeline",tags="allowed")] string | [#[id="timeline"] string]),
 	/// If true, water will evaporate and sponges will dry.
 	#[until="1.21.11"]
 	ultrawarm: boolean,
 	/// If true, portals will spawn zombified piglins. If false, compasses and clocks spin randomly.
+	#[until="1.21.11"]
 	natural: boolean,
 	/// If false, piglins will shake and convert to zombified piglins.
 	#[until="1.21.11"]
@@ -46,15 +49,26 @@ dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	coordinate_scale: double @ 0.00001..30000000,
 	ambient_light: float @ 0..1,
 	/// Setting this value will keep the sun in a fixed position.
+	#[until="1.21.11"]
 	fixed_time?: int,
+	/// Defaults to `false`.
+	#[since="1.21.11"]
+	has_fixed_time?: boolean,
 	/// Portals can't spawn and chorus fruit can't teleport players above this height.
 	logical_height: (
 		#[until="1.17"] int @ 0..256 |
 		#[since="1.17"] int @ 0..4064 |
 	),
 	/// Sky effects.
-	#[since="1.16.2"]
+	#[since="1.16.2"] #[until="1.21.11"]
 	effects?: #[id] DimensionTypeEffects,
+	/// Skybox type.
+	/// Defaults to `overworld`.
+	#[since="1.21.11"]
+	skybox?: SkyboxType,
+	/// The direction of cardinal lighting that affects blocks.
+	#[since="1.21.11"]
+	cardinal_light?: CardinalLightType,
 	/// Block tag defining what blocks keep fire infinitely burning.
 	infiniburn: (
 		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
@@ -79,4 +93,15 @@ enum(string) DimensionTypeEffects {
 	Overworld = "overworld",
 	TheNether = "the_nether",
 	TheEnd = "the_end",
+}
+
+enum(string) SkyboxType {
+	None = "none",
+	Overworld = "overworld",
+	End = "end",
+}
+
+enum(string) CardinalLightType {
+	Default = "default",
+	Nether = "nether",
 }

@@ -2,10 +2,15 @@ use ::java::util::color::StringRGB
 use ::java::util::color::StringARGB
 use ::java::util::particle::Particle
 use ::java::util::text::Text
+use ::java::data::util::MoonPhase
 use ::java::data::util::SoundEventRef
+use ::java::data::timeline::AttributeTrackBase
 use super::biome::BiomeMusic
 use super::biome::MoodSound
 use super::biome::BiomeSoundAdditions
+use modifier::BooleanModifierType
+use modifier::FloatModifierType
+use modifier::ColorModifierType
 use modifier::BooleanAttributeModifier
 use modifier::FloatAttributeModifier
 use modifier::ColorAttributeModifier
@@ -14,105 +19,166 @@ use modifier::OverrideModifier
 
 type EnvironmentAttributeMap<K> = struct {
 	[K]: (
-		minecraft:environment_attribute[[%key]] |
-		minecraft:environment_attribute_modifier[[%key]]<minecraft:environment_attribute[[%key]]> |
+		minecraft:environment_attribute[[%key]][value] |
+		minecraft:environment_attribute[[%key]][modifier] |
 	),
 }
 
-dispatch minecraft:environment_attribute_modifier[%unknown]<T> to OverrideModifier<T>
+struct BooleanAttribute {
+	value: boolean,
+	modifier: BooleanAttributeModifier,
+	attribute_track: struct {
+		...AttributeTrackBase,
+		modifier?: BooleanModifierType,
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: boolean,
+		}],
+	},
+}
+
+type FloatAttribute<T> = struct {
+	value: T,
+	modifier: FloatAttributeModifier<T>,
+	attribute_track: struct {
+		...AttributeTrackBase,
+		modifier?: FloatModifierType,
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: minecraft:environment_attribute_float_modifier[[%parent.%parent.modifier]]<T>,
+		}],
+	},
+}
+
+struct RGBColorAttribute {
+	value: StringRGB,
+	modifier: ColorAttributeModifier,
+	attribute_track: struct {
+		...AttributeTrackBase,
+		modifier?: ColorModifierType,
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: minecraft:environment_attribute_color_modifier[[%parent.%parent.modifier]],
+		}],
+	},
+}
+
+struct ARGBColorAttribute {
+	value: StringARGB,
+	modifier: TranslucentColorAttributeModifier,
+	attribute_track: struct {
+		...AttributeTrackBase,
+		modifier?: ColorModifierType,
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: minecraft:environment_attribute_argb_color_modifier[[modifier]],
+		}],
+	},
+}
+
+type DiscreteAttribute<T> = struct {
+	value: T,
+	modifier: OverrideModifier<T>,
+	attribute_track: struct {
+		...AttributeTrackBase,
+		modifier?: "override",
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: T
+		}],
+	},
+}
+
+dispatch minecraft:environment_attribute[%unknown] to DiscreteAttribute<any>
+
+type PositionalEnvironmentAttribute = #[id(registry="environment_attribute", exclude=["gameplay/fast_lava", "gameplay/sky_light_level"])] string
 
 type GlobalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id="environment_attribute"] string>
-type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id(registry="environment_attribute", exclude=["gameplay/fast_lava"])] string>
+type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<PositionalEnvironmentAttribute>
 
 dispatch minecraft:environment_attribute[
+	"audio/firefly_bush_sounds",
+	"gameplay/bees_stay_in_hive",
+	"gameplay/can_pillager_patrol_spawn",
 	"gameplay/can_start_raid",
-	"gameplay/water_evaporates",
-	"gameplay/respawn_anchor_works",
-	"gameplay/nether_portal_spawns_piglin",
+	"gameplay/creaking_active",
 	"gameplay/fast_lava",
 	"gameplay/increased_fire_burnout",
-	"gameplay/piglins_zombify",
-	"gameplay/snow_golem_melts",
-] to boolean
-dispatch minecraft:environment_attribute_modifier[
-	"gameplay/can_start_raid",
-	"gameplay/water_evaporates",
-	"gameplay/respawn_anchor_works",
+	"gameplay/monsters_burn",
 	"gameplay/nether_portal_spawns_piglin",
-	"gameplay/fast_lava",
-	"gameplay/increased_fire_burnout",
 	"gameplay/piglins_zombify",
+	"gameplay/respawn_anchor_works",
 	"gameplay/snow_golem_melts",
-]<T> to BooleanAttributeModifier<T>
+	"gameplay/water_evaporates",
+] to BooleanAttribute
 
 dispatch minecraft:environment_attribute[
 	"visual/cloud_height",
 	"visual/fog_start_distance",
+	"visual/moon_angle",
+	"visual/star_angle",
+	"visual/sun_angle",
 	"visual/water_fog_start_distance",
-] to float
+] to FloatAttribute<float>
 dispatch minecraft:environment_attribute[
 	"visual/cloud_fog_end_distance",
 	"visual/fog_end_distance",
 	"visual/sky_fog_end_distance",
 	"visual/water_fog_end_distance",
-] to float @ 0..
+] to FloatAttribute<float @ 0..>
 dispatch minecraft:environment_attribute[
+	"visual/sky_light_factor",
+	"visual/star_brightness",
 	"audio/music_volume",
-] to float @ 0..1
-dispatch minecraft:environment_attribute_modifier[
-	"visual/cloud_fog_end_distance",
-	"visual/cloud_height",
-	"visual/fog_end_distance",
-	"visual/fog_start_distance",
-	"visual/sky_fog_end_distance",
-	"visual/water_fog_end_distance",
-	"visual/water_fog_start_distance",
-	"audio/music_volume",
-]<T> to FloatAttributeModifier<T>
+	"gameplay/cat_waking_up_gift_chance",
+	"gameplay/surface_slime_spawn_chance",
+	"gameplay/turtle_egg_hatch_chance",
+] to FloatAttribute<float @ 0..1>
+dispatch minecraft:environment_attribute["gameplay/sky_light_level"] to FloatAttribute<float @ 0..15>
 
 dispatch minecraft:environment_attribute[
 	"visual/fog_color",
 	"visual/water_fog_color",
 	"visual/sky_color",
-] to StringRGB
-dispatch minecraft:environment_attribute_modifier[
-	"visual/fog_color",
-	"visual/water_fog_color",
-	"visual/sky_color",
-]<T> to ColorAttributeModifier<T>
+	"visual/sky_light_color",
+] to RGBColorAttribute
 
 dispatch minecraft:environment_attribute[
 	"visual/cloud_color",
-] to StringARGB
-dispatch minecraft:environment_attribute_modifier[
-	"visual/cloud_color",
-]<T> to TranslucentColorAttributeModifier<T>
+	"visual/sunrise_sunset_color",
+] to ARGBColorAttribute
 
-dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to Particle
+dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to DiscreteAttribute<Particle>
 
-dispatch minecraft:environment_attribute["visual/ambient_particles"] to [AmbientParticle]
+dispatch minecraft:environment_attribute["visual/ambient_particles"] to DiscreteAttribute<[AmbientParticle]>
 
-dispatch minecraft:environment_attribute["audio/background_music"] to struct BackgroundMusic {
+dispatch minecraft:environment_attribute["audio/background_music"] to DiscreteAttribute<struct BackgroundMusic {
 	/// Default music to play
 	default?: BiomeMusic,
 	/// Overrides default music when underwater
 	underwater?: BiomeMusic,
 	/// Overrides default music when in creative mode
 	creative?: BiomeMusic,
-}
+}>
 
-dispatch minecraft:environment_attribute["audio/ambient_sounds"] to struct AmbientSounds {
+dispatch minecraft:environment_attribute["audio/ambient_sounds"] to DiscreteAttribute<struct AmbientSounds {
 	loop?: SoundEventRef,
 	mood?: MoodSound,
 	additions?: (BiomeSoundAdditions | [BiomeSoundAdditions]),
-}
+}>
 
-dispatch minecraft:environment_attribute["gameplay/bed_rule"] to struct BedRule {
+dispatch minecraft:environment_attribute["gameplay/bed_rule"] to DiscreteAttribute<struct BedRule {
 	can_sleep: BedRuleType,
 	can_set_spawn: BedRuleType,
 	explodes?: boolean,
 	error_message?: Text,
-}
+}>
+
+dispatch minecraft:environment_attribute["visual/moon_phase"] to DiscreteAttribute<MoonPhase>
+
+dispatch minecraft:environment_attribute["gameplay/eyeblossom_open"] to DiscreteAttribute<TriState>
+
+dispatch minecraft:environment_attribute["gameplay/villager_activity", "gameplay/baby_villager_activity"] to DiscreteAttribute<#[id="activity"] string>
 
 struct AmbientParticle {
 	particle: Particle,
@@ -124,3 +190,5 @@ enum(string) BedRuleType {
 	WhenDark = "when_dark",
 	Never = "never",
 }
+
+type TriState = (boolean | "default")

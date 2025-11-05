@@ -52,6 +52,7 @@ dispatch minecraft:game_rule[fire_spread_radius_around_player] to int @ -1..
 dispatch minecraft:game_rule[
 	max_command_forks,
 	max_command_sequence_length,
+	max_entity_cramming,
 	players_nether_portal_creative_delay,
 	players_nether_portal_default_delay,
 	players_sleeping_percentage,
@@ -61,7 +62,6 @@ dispatch minecraft:game_rule[
 
 dispatch minecraft:game_rule[
 	max_block_modifications,
-	max_entity_cramming,
 ] to int @ 1..
 
 dispatch minecraft:game_rule[max_snow_accumulation_height] to int @ 0..8

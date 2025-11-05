@@ -1,0 +1,12 @@
+#[since="1.21.11"]
+dispatch minecraft:resource[zombie_nautilus_variant] to struct ZombieNautilusVariant {
+	model?: ZombieNautilusModelType,
+	/// The zombie nautilus texture to use for this variant.
+	asset_id: #[id="texture"] string,
+	...super::SpawnPrioritySelectors,
+}
+
+enum(string) ZombieNautilusModelType {
+	Normal = "normal",
+	Warm = "warm",
+}
