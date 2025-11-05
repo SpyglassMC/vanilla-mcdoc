@@ -859,7 +859,6 @@
 	"::java::world::block::spawner::Spawner.SpawnPotentials": "Entities that can be placed.",
 	"::java::world::block::spawner::Spawner.SpawnRange": "Range that the spawned entities will be placed.",
 	"::java::world::block::spawner::SpawnerEntry.equipment": "Rolled items from the specified loot table will be equipped to the mob that spawns.",
-	"::java::world::block::spawner::SpawnPotential.weight": "Weight for this entry to be chosen.",
 	"::java::world::block::spawner::SpawnPotential.Weight": "Weight for this entry to be chosen.",
 	"::java::world::block::spawner::TrialSpawner.cooldown_ends_at": "Gametime in ticks when the cooldown ends",
 	"::java::world::block::spawner::TrialSpawner.current_mobs": "All mobs that have been spawned by this trial spawner and are currently alive",
