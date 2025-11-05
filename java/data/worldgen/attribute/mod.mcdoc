@@ -4,6 +4,7 @@ use ::java::util::particle::Particle
 use ::java::util::text::Text
 use ::java::data::util::MoonPhase
 use ::java::data::util::SoundEventRef
+use ::java::data::timeline::AttributeTrackBase
 use super::biome::BiomeMusic
 use super::biome::MoodSound
 use super::biome::BiomeSoundAdditions
@@ -19,53 +20,73 @@ use modifier::OverrideModifier
 type EnvironmentAttributeMap<K> = struct {
 	[K]: (
 		minecraft:environment_attribute[[%key]][value] |
-		minecraft:environment_attribute[[%key]][modifier_value] |
+		minecraft:environment_attribute[[%key]][modifier] |
 	),
 }
 
 struct BooleanAttribute {
 	value: boolean,
-	modifier_value: BooleanAttributeModifier,
-	keyframe_value: struct {
+	modifier: BooleanAttributeModifier,
+	attribute_track: struct {
+		...AttributeTrackBase,
 		modifier?: BooleanModifierType,
-		value: boolean,
-	}
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: boolean,
+		}],
+	},
 }
 
 type FloatAttribute<T> = struct {
 	value: T,
-	modifier_value: FloatAttributeModifier<T>,
-	keyframe_value: struct {
+	modifier: FloatAttributeModifier<T>,
+	attribute_track: struct {
+		...AttributeTrackBase,
 		modifier?: FloatModifierType,
-		value: minecraft:environment_attribute_float_modifier[[modifier]]<T>,
-	}
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: minecraft:environment_attribute_float_modifier[[%parent.%parent.modifier]]<T>,
+		}],
+	},
 }
 
 struct RGBColorAttribute {
 	value: StringRGB,
-	modifier_value: ColorAttributeModifier,
-	keyframe_value: struct {
+	modifier: ColorAttributeModifier,
+	attribute_track: struct {
+		...AttributeTrackBase,
 		modifier?: ColorModifierType,
-		value: minecraft:environment_attribute_color_modifier[[modifier]],
-	}
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: minecraft:environment_attribute_color_modifier[[%parent.%parent.modifier]],
+		}],
+	},
 }
 
 struct ARGBColorAttribute {
 	value: StringARGB,
-	modifier_value: TranslucentColorAttributeModifier,
-	keyframe_value: struct {
+	modifier: TranslucentColorAttributeModifier,
+	attribute_track: struct {
+		...AttributeTrackBase,
 		modifier?: ColorModifierType,
-		value: minecraft:environment_attribute_argb_color_modifier[[modifier]],
-	}
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: minecraft:environment_attribute_argb_color_modifier[[modifier]],
+		}],
+	},
 }
 
 type DiscreteAttribute<T> = struct {
 	value: T,
-	modifier_value: OverrideModifier<T>,
-	keyframe_value: struct {
+	modifier: OverrideModifier<T>,
+	attribute_track: struct {
+		...AttributeTrackBase,
 		modifier?: "override",
-		value: T,
-	}
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: T
+		}],
+	},
 }
 
 dispatch minecraft:environment_attribute[%unknown] to DiscreteAttribute<any>

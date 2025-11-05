@@ -6,14 +6,12 @@ dispatch minecraft:resource[timeline] to struct Timeline {
 }
 
 struct EnvironmentAttributeTrackMap {
-	[#[id="environment_attribute"] string]: struct AttributeTrack {
-		/// Defaults to `linear`.
-		ease?: EasingType,
-		keyframes: [struct Keyframe {
-			ticks: int @ 0..,
-			...minecraft:environment_attribute[[%parent.%parent.%parent.%key]][keyframe_value]
-		}],
-	},
+	[#[id="environment_attribute"] string]: minecraft:environment_attribute[[%key]][attribute_track],
+}
+
+type AttributeTrackBase = struct {
+	/// Defaults to `linear`.
+	ease?: EasingType,
 }
 
 type EasingType = (SimpleEasingType | CubicBezierEase)
