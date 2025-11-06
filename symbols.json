@@ -1,5 +1,5 @@
 {
-	"ref": "a51eebfc45d8eb99ce023924b1d6fea2b08670bd",
+	"ref": "b1be3ed28a618d5176bae9d714537e9471ac91b6",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -31655,7 +31655,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Defaults to `linear`.\n",
+					"desc": "Defaults to `linear`.\n\nFor visualization, check out: https://easings.net/\n",
 					"key": "ease",
 					"type": {
 						"kind": "reference",
@@ -31670,7 +31670,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Defaults to `linear`.\n",
+					"desc": "Defaults to `linear`.\n\nFor visualization, check out: https://easings.net/\n",
 					"key": "ease",
 					"type": {
 						"kind": "reference",
@@ -31685,7 +31685,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "`[x1, y1, x2, y2]`\n",
+					"desc": "`[x1, y1, x2, y2]`\n\nFor an easy GUI, check out: https://cubic-bezier.com/\n",
 					"key": "cubic_bezier",
 					"type": {
 						"kind": "tuple",
