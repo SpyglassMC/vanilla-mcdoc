@@ -1,5 +1,5 @@
 {
-	"ref": "b1be3ed28a618d5176bae9d714537e9471ac91b6",
+	"ref": "f680adafb8658da26af45605b7d6b981009b5de9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -29701,7 +29701,19 @@
 					"item": {
 						"kind": "reference",
 						"path": "::java::data::loot::LootCondition"
-					}
+					},
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
