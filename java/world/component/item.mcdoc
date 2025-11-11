@@ -723,6 +723,9 @@ dispatch minecraft:data_component[use_effects] to struct UseEffects {
 	/// The speed multiplier applied to the player while using this item.
 	/// Defaults to 0.2
 	speed_multiplier?: float @ 0..1,
+	/// Whether using this item emits game events (`item_interact_start` and `item_interact_finish`).
+	/// Defaults to `true`.
+	interact_vibrations?: boolean,
 }
 
 dispatch minecraft:data_component[use_remainder] to ItemStack

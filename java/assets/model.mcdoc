@@ -40,11 +40,7 @@ struct ModelElement {
 	},
 	rotation?: struct ModelElementRotation {
 		origin: [float] @ 3,
-		axis: Axis,
-		angle: (
-			#[until="1.21.6"] (-45.0 | -22.5 | 0.0 | 22.5 | 45.0) |
-			#[since="1.21.6"] float @ -45..45 |
-		),
+		...ModelElementRotationAngles,
 		/// Defaults to `false`.
 		rescale?: boolean,
 	},
@@ -52,6 +48,20 @@ struct ModelElement {
 	#[since="1.21.2"]
 	light_emission?: int @ 0..15,
 }
+
+type ModelElementRotationAngles = (
+	#[deprecated="1.21.11"] struct SingleAxisRotation {
+		axis: Axis,
+		angle: (
+			#[until="1.21.6"] (-45.0 | -22.5 | 0.0 | 22.5 | 45.0) |
+			#[since="1.21.6"] #[until="1.21.11"] float @ -45..45 |
+			#[since="1.21.11"] float |
+		),
+	} |
+	#[since="1.21.11"] struct MultipleAxesRotation {
+		[Axis]?: float,
+	} |
+)
 
 enum(string) Axis {
 	X = "x",

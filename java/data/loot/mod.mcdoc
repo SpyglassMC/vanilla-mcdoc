@@ -112,7 +112,6 @@ dispatch minecraft:loot_pool_entry[dynamic] to struct DynamicPoolEntry {
 
 enum(string) DynamicDrops {
 	/// Drops the items in a shulker box.
-	#[until="1.21.11"]
 	Contents = "contents",
 	/// Drops the sherds of a decorated pot.
 	#[since="1.20"]

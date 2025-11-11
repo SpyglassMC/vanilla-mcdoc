@@ -28,6 +28,8 @@ struct ModelVariantBase {
 	model: ModelRef,
 	x?: (0 | 90 | 180 | 270),
 	y?: (0 | 90 | 180 | 270),
+	#[since="1.21.11"]
+	z?: (0 | 90 | 180 | 270),
 	/// If set to `true`, the textures are not rotated with the block.
 	uvlock?: boolean,
 }
