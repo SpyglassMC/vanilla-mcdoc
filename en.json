@@ -1002,6 +1002,7 @@
 	"::java::world::component::item::UseCooldown.cooldown_group": "If present, this item will be part of a cooldown group and no longer share cooldowns with its base item type.\nInstead, cooldowns applied to this item will only be shared with any other items that are part of the same cooldown group.",
 	"::java::world::component::item::UseCooldown.seconds": "Time the cooldown will last.",
 	"::java::world::component::item::UseEffects.can_sprint": "Whether the player can sprint while using this item.\nDefaults to `false`.",
+	"::java::world::component::item::UseEffects.interact_vibrations": "Whether using this item emits game events (`item_interact_start` and `item_interact_finish`).\nDefaults to `true`.",
 	"::java::world::component::item::UseEffects.speed_multiplier": "The speed multiplier applied to the player while using this item.\nDefaults to 0.2",
 	"::java::world::component::item::Weapon.disable_blocking_for_seconds": "If non-zero, will disable a blocking shield on successful attack for the specified amount of seconds.",
 	"::java::world::component::item::Weapon.item_damage_per_attack": "The amount to damage to the weapon item for each attack performed. Defaults to `1`.",
