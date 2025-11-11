@@ -1,4 +1,7 @@
 use super::loot::LootCondition
 
-type Predicate = (LootCondition | [LootCondition])
+type Predicate = (
+	LootCondition |
+	#[since="1.16"] [LootCondition]
+)
 dispatch minecraft:resource[predicate] to Predicate
