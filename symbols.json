@@ -1,5 +1,5 @@
 {
-	"ref": "295c9f3e5797881e8c2eb2ecebd4404781dc271e",
+	"ref": "7da0ac505cff5b27d2fb100a11664080f1c9a578",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -5915,40 +5915,8 @@
 					"kind": "pair",
 					"key": "rotation",
 					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": "origin",
-								"type": {
-									"kind": "list",
-									"item": {
-										"kind": "float"
-									},
-									"lengthRange": {
-										"kind": 0,
-										"min": 3,
-										"max": 3
-									}
-								}
-							},
-							{
-								"kind": "spread",
-								"type": {
-									"kind": "reference",
-									"path": "::java::assets::model::ModelElementRotationAngles"
-								}
-							},
-							{
-								"kind": "pair",
-								"desc": "Defaults to `false`.\n",
-								"key": "rescale",
-								"type": {
-									"kind": "boolean"
-								},
-								"optional": true
-							}
-						]
+						"kind": "reference",
+						"path": "::java::assets::model::ModelElementRotation"
 					},
 					"optional": true
 				},
@@ -6200,47 +6168,18 @@
 			]
 		},
 		"::java::assets::model::ModelElementRotation": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "origin",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "float"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 3,
-							"max": 3
-						}
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::assets::model::ModelElementRotationAngles"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to `false`.\n",
-					"key": "rescale",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::assets::model::ModelElementRotationAngles": {
 			"kind": "union",
 			"members": [
 				{
 					"kind": "struct",
 					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::assets::model::ModelElementRotationBase"
+							}
+						},
 						{
 							"kind": "pair",
 							"key": "axis",
@@ -6373,6 +6312,13 @@
 					"kind": "struct",
 					"fields": [
 						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::assets::model::ModelElementRotationBase"
+							}
+						},
+						{
 							"kind": "pair",
 							"key": {
 								"kind": "reference",
@@ -6396,6 +6342,35 @@
 							}
 						}
 					]
+				}
+			]
+		},
+		"::java::assets::model::ModelElementRotationBase": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "origin",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "float"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `false`.\n",
+					"key": "rescale",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -6533,9 +6508,16 @@
 				}
 			]
 		},
-		"::java::assets::model::MultipleAxesRotation": {
+		"::java::assets::model::MultipleAxesModelElementRotation": {
 			"kind": "struct",
 			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::model::ModelElementRotationBase"
+					}
+				},
 				{
 					"kind": "pair",
 					"key": {
@@ -6647,9 +6629,16 @@
 				}
 			]
 		},
-		"::java::assets::model::SingleAxisRotation": {
+		"::java::assets::model::SingleAxisModelElementRotation": {
 			"kind": "struct",
 			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::model::ModelElementRotationBase"
+					}
+				},
 				{
 					"kind": "pair",
 					"key": "axis",
