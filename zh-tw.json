@@ -67,7 +67,6 @@
 	"::java::assets::item_definition::UseDuration.remaining": "設定為`true`時，回傳物品剩餘的使用時間（刻）。\n設定為`false`時，回傳物品已經使用的時間（刻）。\n預設值`false`。",
 	"::java::assets::lang::LangDeprecated.removed": "移除的翻譯鍵。",
 	"::java::assets::lang::LangDeprecated.renamed": "重新命名的翻譯鍵，把舊名稱對應到新名稱。",
-	"::java::assets::model::ModelElementRotation.rescale": "預設值`false`。",
 	"::java::assets::model::Predicates.HoneyLevel": "蜂窩和蜂箱的蜂蜜儲量。",
 	"::java::assets::model::Predicates.Level": "光源（物品）的亮度等級。",
 	"::java::assets::model::Predicates.Throwing": "三叉戟是否正在使用中。",
@@ -199,10 +198,10 @@
 	"::java::data::damage_type::DeathMessageType.Default": "生成的死亡訊息是`death.attack.` + message_id。",
 	"::java::data::damage_type::DeathMessageType.FallVariants": "生成的死亡訊息是`death.attack.` + message_id。",
 	"::java::data::damage_type::DeathMessageType.IntentionalGameDesign": "「被刻意的遊戲設計殺死了」訊息，訊息本體是`death.attack.` + message_id + `.message`，附上MCPE-28723連結的文字是`death.attack.` + message_id + `.link`。",
-	"::java::data::enchantment::effect_component::AmmoUseEnchantmentEffect.effect": "投射物的消耗量。",
 	"::java::data::enchantment::effect::ApplyMobEffectEntityEffect.to_apply": "指定多種狀態時，隨機選取其中一種。",
 	"::java::data::enchantment::effect::AttributeEffect.id": "識別屬性修改的ID，必須是唯一的。\n\n實際裝備附魔時，ID後面會附加上欄位名稱，以保持多件裝備的相容性。",
 	"::java::data::enchantment::effect::AttributeEffect.operation": "屬性值的計算模式。",
+	"::java::data::enchantment::effect_component::AmmoUseEnchantmentEffect.effect": "投射物的消耗量。",
 	"::java::world::component::entity::AxolotlVariant.Blue": "稀有的藍色變種。",
 	"::java::world::component::entity::RabbitVariant.Evil": "殺手兔"
 }
