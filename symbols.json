@@ -1,5 +1,5 @@
 {
-	"ref": "f680adafb8658da26af45605b7d6b981009b5de9",
+	"ref": "295c9f3e5797881e8c2eb2ecebd4404781dc271e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -755,6 +755,56 @@
 				{
 					"kind": "pair",
 					"key": "y",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "int",
+									"value": 0
+								}
+							},
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "int",
+									"value": 90
+								}
+							},
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "int",
+									"value": 180
+								}
+							},
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "int",
+									"value": 270
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"key": "z",
 					"type": {
 						"kind": "union",
 						"members": [
@@ -5883,92 +5933,10 @@
 								}
 							},
 							{
-								"kind": "pair",
-								"key": "axis",
+								"kind": "spread",
 								"type": {
 									"kind": "reference",
-									"path": "::java::assets::model::Axis"
-								}
-							},
-							{
-								"kind": "pair",
-								"key": "angle",
-								"type": {
-									"kind": "union",
-									"members": [
-										{
-											"kind": "union",
-											"members": [
-												{
-													"kind": "literal",
-													"value": {
-														"kind": "double",
-														"value": -45
-													}
-												},
-												{
-													"kind": "literal",
-													"value": {
-														"kind": "double",
-														"value": -22.5
-													}
-												},
-												{
-													"kind": "literal",
-													"value": {
-														"kind": "double",
-														"value": 0
-													}
-												},
-												{
-													"kind": "literal",
-													"value": {
-														"kind": "double",
-														"value": 22.5
-													}
-												},
-												{
-													"kind": "literal",
-													"value": {
-														"kind": "double",
-														"value": 45
-													}
-												}
-											],
-											"attributes": [
-												{
-													"name": "until",
-													"value": {
-														"kind": "literal",
-														"value": {
-															"kind": "string",
-															"value": "1.21.6"
-														}
-													}
-												}
-											]
-										},
-										{
-											"kind": "float",
-											"valueRange": {
-												"kind": 0,
-												"min": -45,
-												"max": 45
-											},
-											"attributes": [
-												{
-													"name": "since",
-													"value": {
-														"kind": "literal",
-														"value": {
-															"kind": "string",
-															"value": "1.21.6"
-														}
-													}
-												}
-											]
-										}
-									]
+									"path": "::java::assets::model::ModelElementRotationAngles"
 								}
 							},
 							{
@@ -6250,92 +6218,10 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "axis",
+					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::assets::model::Axis"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "angle",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "union",
-								"members": [
-									{
-										"kind": "literal",
-										"value": {
-											"kind": "double",
-											"value": -45
-										}
-									},
-									{
-										"kind": "literal",
-										"value": {
-											"kind": "double",
-											"value": -22.5
-										}
-									},
-									{
-										"kind": "literal",
-										"value": {
-											"kind": "double",
-											"value": 0
-										}
-									},
-									{
-										"kind": "literal",
-										"value": {
-											"kind": "double",
-											"value": 22.5
-										}
-									},
-									{
-										"kind": "literal",
-										"value": {
-											"kind": "double",
-											"value": 45
-										}
-									}
-								],
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.21.6"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "float",
-								"valueRange": {
-									"kind": 0,
-									"min": -45,
-									"max": 45
-								},
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.21.6"
-											}
-										}
-									}
-								]
-							}
-						]
+						"path": "::java::assets::model::ModelElementRotationAngles"
 					}
 				},
 				{
@@ -6346,6 +6232,170 @@
 						"kind": "boolean"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::assets::model::ModelElementRotationAngles": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "axis",
+							"type": {
+								"kind": "reference",
+								"path": "::java::assets::model::Axis"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "angle",
+							"type": {
+								"kind": "union",
+								"members": [
+									{
+										"kind": "union",
+										"members": [
+											{
+												"kind": "literal",
+												"value": {
+													"kind": "double",
+													"value": -45
+												}
+											},
+											{
+												"kind": "literal",
+												"value": {
+													"kind": "double",
+													"value": -22.5
+												}
+											},
+											{
+												"kind": "literal",
+												"value": {
+													"kind": "double",
+													"value": 0
+												}
+											},
+											{
+												"kind": "literal",
+												"value": {
+													"kind": "double",
+													"value": 22.5
+												}
+											},
+											{
+												"kind": "literal",
+												"value": {
+													"kind": "double",
+													"value": 45
+												}
+											}
+										],
+										"attributes": [
+											{
+												"name": "until",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "1.21.6"
+													}
+												}
+											}
+										]
+									},
+									{
+										"kind": "float",
+										"valueRange": {
+											"kind": 0,
+											"min": -45,
+											"max": 45
+										},
+										"attributes": [
+											{
+												"name": "since",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "1.21.6"
+													}
+												}
+											},
+											{
+												"name": "until",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "1.21.11"
+													}
+												}
+											}
+										]
+									},
+									{
+										"kind": "float",
+										"attributes": [
+											{
+												"name": "since",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "1.21.11"
+													}
+												}
+											}
+										]
+									}
+								]
+							}
+						}
+					],
+					"attributes": [
+						{
+							"name": "deprecated",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": {
+								"kind": "reference",
+								"path": "::java::assets::model::Axis"
+							},
+							"type": {
+								"kind": "float"
+							},
+							"optional": true
+						}
+					],
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
@@ -6483,6 +6533,34 @@
 				}
 			]
 		},
+		"::java::assets::model::MultipleAxesRotation": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "reference",
+						"path": "::java::assets::model::Axis"
+					},
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.11"
+						}
+					}
+				}
+			]
+		},
 		"::java::assets::model::Predicates": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -6566,6 +6644,137 @@
 				{
 					"identifier": "TrimType",
 					"value": "trim_type"
+				}
+			]
+		},
+		"::java::assets::model::SingleAxisRotation": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "axis",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::model::Axis"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "angle",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "union",
+								"members": [
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "double",
+											"value": -45
+										}
+									},
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "double",
+											"value": -22.5
+										}
+									},
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "double",
+											"value": 0
+										}
+									},
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "double",
+											"value": 22.5
+										}
+									},
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "double",
+											"value": 45
+										}
+									}
+								],
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "float",
+								"valueRange": {
+									"kind": 0,
+									"min": -45,
+									"max": 45
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "float",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "deprecated",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.11"
+						}
+					}
 				}
 			]
 		},
@@ -23963,18 +24172,6 @@
 			"enumKind": "string",
 			"values": [
 				{
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.11"
-								}
-							}
-						}
-					],
 					"desc": "Drops the items in a shulker box.\n",
 					"identifier": "Contents",
 					"value": "contents"
@@ -75555,6 +75752,15 @@
 							"min": 0,
 							"max": 1
 						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether using this item emits game events (`item_interact_start` and `item_interact_finish`).\n\nDefaults to `true`.\n",
+					"key": "interact_vibrations",
+					"type": {
+						"kind": "boolean"
 					},
 					"optional": true
 				}
