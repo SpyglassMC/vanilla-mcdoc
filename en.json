@@ -68,7 +68,7 @@
 	"::java::assets::item_definition::UseDuration.remaining": "If true, returns remaining item use ticks.\nIf false, returns item use ticks so far.\nDefaults to false.",
 	"::java::assets::lang::LangDeprecated.removed": "List of removed ranslation keys.",
 	"::java::assets::lang::LangDeprecated.renamed": "Mapping renamed translation keys from old to new keys.",
-	"::java::assets::model::ModelElementRotation.rescale": "Defaults to `false`.",
+	"::java::assets::model::ModelElementRotationBase.rescale": "Defaults to `false`.",
 	"::java::assets::model::Predicates.HoneyLevel": "The honey level on bee nests and beehives.",
 	"::java::assets::model::Predicates.Level": "The `level` block state on light items.",
 	"::java::assets::model::Predicates.Throwing": "Whether the trident is being used.",
