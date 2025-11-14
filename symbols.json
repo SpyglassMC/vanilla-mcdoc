@@ -1,5 +1,5 @@
 {
-	"ref": "7da0ac505cff5b27d2fb100a11664080f1c9a578",
+	"ref": "fbde5c95afdd0ea9a948995699b936b15742f499",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -58866,7 +58866,12 @@
 				{
 					"kind": "list",
 					"item": {
-						"kind": "float"
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
 					},
 					"lengthRange": {
 						"kind": 0,
@@ -58912,7 +58917,12 @@
 				{
 					"kind": "list",
 					"item": {
-						"kind": "float"
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
 					},
 					"lengthRange": {
 						"kind": 0,
@@ -58955,7 +58965,12 @@
 				{
 					"kind": "list",
 					"item": {
-						"kind": "float"
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
 					},
 					"lengthRange": {
 						"kind": 0,
@@ -59013,7 +59028,12 @@
 				{
 					"kind": "list",
 					"item": {
-						"kind": "float"
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
 					},
 					"lengthRange": {
 						"kind": 0,
@@ -61849,15 +61869,8 @@
 			"kind": "union",
 			"members": [
 				{
-					"kind": "list",
-					"item": {
-						"kind": "float"
-					},
-					"lengthRange": {
-						"kind": 0,
-						"min": 3,
-						"max": 3
-					},
+					"kind": "reference",
+					"path": "::java::util::particle::LegacyDustColor",
 					"attributes": [
 						{
 							"name": "until",
@@ -61865,17 +61878,7 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "1.21.2"
-								}
-							}
-						},
-						{
-							"name": "color",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "particle"
+									"value": "1.21.5"
 								}
 							}
 						}
@@ -61891,7 +61894,7 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "1.21.2"
+									"value": "1.21.5"
 								}
 							}
 						}
@@ -62213,11 +62216,10 @@
 							}
 						}
 					],
-					"desc": " Translucent color interpreted from four floats.\n\n\n\n Cheat Sheet:\n\n - Floats between 0 and 1 are interpreted as a percentage of the original color.\n\n - Negative values & values above 1 simply loop the 0-255 range, since there isn't randomization there's no weirdness.\n\n\n\n Simplified internal behavior ([graph demo](https://www.desmos.com/calculator/drwzjaxgks)):\n\n ```js\n\n function integerToByte(integer) {\n\n \tif (integer >= 0) {\n\n \t\t// Integer is positive\n\n \t\tif (integer <= 255) {\n\n \t\t\t// Integer already fits in a color channel\n\n \t\t\treturn integer\n\n \t\t}\n\n \t\t// Integer doesn't fit in color channel; modulo it\n\n \t\treturn integer % 256\n\n \t}\n\n \t// Integer is negative\n\n \treturn Math.abs((Math.floor(integer / 256) * 256)) + integer\n\n }\n\n ```\n",
 					"key": "color",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::color::RGBA"
+						"path": "::java::util::particle::TranslucentParticle"
 					}
 				}
 			]
@@ -62242,7 +62244,7 @@
 					"key": "color",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::color::RGBA"
+						"path": "::java::util::particle::TranslucentParticle"
 					}
 				}
 			]
@@ -62325,6 +62327,52 @@
 								"path": "::java::world::item::SingleItem"
 							}
 						]
+					}
+				}
+			]
+		},
+		"::java::util::particle::LegacyDustColor": {
+			"kind": "list",
+			"item": {
+				"kind": "float"
+			},
+			"lengthRange": {
+				"kind": 0,
+				"min": 3,
+				"max": 3
+			},
+			"attributes": [
+				{
+					"name": "color",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "particle"
+						}
+					}
+				}
+			]
+		},
+		"::java::util::particle::LegacyTranslucentParticle": {
+			"kind": "list",
+			"item": {
+				"kind": "float"
+			},
+			"lengthRange": {
+				"kind": 0,
+				"min": 4,
+				"max": 4
+			},
+			"attributes": [
+				{
+					"name": "color",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "dec_rgba"
+						}
 					}
 				}
 			]
@@ -62672,6 +62720,43 @@
 							"min": 1
 						}
 					}
+				}
+			]
+		},
+		"::java::util::particle::TranslucentParticle": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::util::particle::LegacyTranslucentParticle",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.2"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::util::color::RGBA",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.2"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
