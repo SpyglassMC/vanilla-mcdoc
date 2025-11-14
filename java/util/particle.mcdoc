@@ -23,38 +23,29 @@ dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to s
 #[since="1.21.2"]
 dispatch minecraft:particle[block_crumble] to BlockParticle
 
-/// Randomized color interpreted from three floats.
+/// Additional Explanation:
+/// - Randomized float values are multiplied by 255 before they are floored.
+/// - If contained floats cause resulting color values outside of the range of 0-255 they are [modulo-capped](https://www.desmos.com/calculator/drwzjaxgks) immediately before use.
+/// - Exception to the above is that `1e100000f` produces a solid channel with no randomization.
+type LegacyDustColor = #[color="particle"] [float] @ 3
+
+/// Randomized color from three derived values.
 ///
-/// Cheat Sheet:
-/// - Floats between 0 and 1 are interpreted as a percentage of the original color. Weirdness begins when floats are outside of this range.
+/// Explanation:
 /// - 0-20% of darkness is added per channel.
-/// - The final color is 0-40% darker. 
-/// - `1e100000f` produces a solid channel with no randomization.
+/// - The final color is 0-40% darker.
+/// - When all values are `0` only black particles are produced with no randomization.
 ///
-/// Simplified internal behavior ([graph demo](https://www.desmos.com/calculator/drwzjaxgks)):
+/// Simplified internal behavior:
 /// ```js
-/// function integerToByte(integer) {
-/// 	if (integer >= 0) {
-/// 		// Integer is positive
-/// 		if (integer <= 255) {
-/// 			// Integer already fits in a color channel
-/// 			return integer
-/// 		}
-/// 		// Integer doesn't fit in color channel; modulo it
-/// 		return integer % 256
-/// 	}
-/// 	// Integer is negative
-/// 	return Math.abs((Math.floor(integer / 256) * 256)) + integer
-/// }
-/// 
 /// var baseShade = randomBetween(0.6, 1),
-/// 	r = integerToByte(Math.floor(color[0] * randomBetween(0.8, 1) * baseShade * 255)),
-/// 	g = integerToByte(Math.floor(color[1] * randomBetween(0.8, 1) * baseShade * 255)),
-/// 	b = integerToByte(Math.floor(color[2] * randomBetween(0.8, 1) * baseShade * 255))
+/// 	r = Math.floor(color[0] * randomBetween(0.8, 1) * baseShade),
+/// 	g = Math.floor(color[1] * randomBetween(0.8, 1) * baseShade),
+/// 	b = Math.floor(color[2] * randomBetween(0.8, 1) * baseShade)
 /// ```
 type DustColor = (
-	#[until="1.21.2"] #[color="particle"] [float] @ 3 |
-	#[since="1.21.2"] RGB |
+	#[until="1.21.5"] LegacyDustColor |
+	#[since="1.21.5"] RGB |
 )
 
 dispatch minecraft:particle[dragon_breath] to struct DragonBreathParticle {
@@ -103,6 +94,16 @@ dispatch minecraft:particle[effect, instant_effect] to struct EffectParticle {
 	color?: RGB,
 }
 
+/// Explanation:
+/// - Floats are multiplied by 255 and floored before use.
+/// - Resulting values outside the range of 0-255 are [modulo-capped](https://www.desmos.com/calculator/drwzjaxgks).
+type LegacyTranslucentParticle = #[color="dec_rgba"] [float] @ 4
+
+type TranslucentParticle = (
+	#[until="1.21.2"] LegacyTranslucentParticle |
+	#[since="1.21.2"] RGBA |
+)
+
 dispatch minecraft:particle[entity_effect] to struct EntityEffectParticle {
 	#[until="1.20.5"]
 	value: struct OldEntityEffect {
@@ -111,35 +112,13 @@ dispatch minecraft:particle[entity_effect] to struct EntityEffectParticle {
 		b: float,
 		a: float,
 	},
-	/// Translucent color interpreted from four floats.
-	///
-	/// Cheat Sheet:
-	/// - Floats between 0 and 1 are interpreted as a percentage of the original color.
-	/// - Negative values & values above 1 simply loop the 0-255 range, since there isn't randomization there's no weirdness.
-	///
-	/// Simplified internal behavior ([graph demo](https://www.desmos.com/calculator/drwzjaxgks)):
-	/// ```js
-	/// function integerToByte(integer) {
-	/// 	if (integer >= 0) {
-	/// 		// Integer is positive
-	/// 		if (integer <= 255) {
-	/// 			// Integer already fits in a color channel
-	/// 			return integer
-	/// 		}
-	/// 		// Integer doesn't fit in color channel; modulo it
-	/// 		return integer % 256
-	/// 	}
-	/// 	// Integer is negative
-	/// 	return Math.abs((Math.floor(integer / 256) * 256)) + integer
-	/// }
-	/// ```
 	#[since="1.20.5"]
-	color: RGBA,
+	color: TranslucentParticle,
 }
 
 dispatch minecraft:particle[flash] to struct FlashParticle {
 	#[since="1.21.9"]
-	color: RGBA,
+	color: TranslucentParticle,
 }
 
 dispatch minecraft:particle[item] to struct ItemParticle {

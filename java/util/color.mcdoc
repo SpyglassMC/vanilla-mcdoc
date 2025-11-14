@@ -1,27 +1,25 @@
 type RGB = (
 	#[canonical] #[color="composite_rgb"] int |
-	#[color="dec_rgb"] [float] @ 3 |
+	#[color="dec_rgb"] [float @ 0..1] @ 3 |
 )
 
 type RGBA = (
 	#[canonical] #[color="composite_argb"] int |
-	#[color="dec_rgba"] [float] @ 4 |
+	#[color="dec_rgba"] [float @ 0..1] @ 4 |
 )
 
 // ExtraCodecs.STRING_RGB_COLOR
 type StringRGB = (
 	#[color="composite_rgb"] int |
-	#[color="dec_rgb"] [float] @ 3 |
+	#[color="dec_rgb"] [float @ 0..1] @ 3 |
 	#[color="hex_rgb"] string |
 )
 // ExtraCodecs.STRING_ARGB_COLOR
 type StringARGB = (
 	#[color="composite_argb"] int |
-	#[color="dec_rgba"] [float] @ 4 |
+	#[color="dec_rgba"] [float @ 0..1] @ 4 |
 	#[color="hex_argb"] string |
 )
-// TODO: support following #[color] attribute types in Spyglass:
-// dec_rgb, dec_rgba, hex_argb
 
 enum(string) DyeColor {
 	White = "white",
