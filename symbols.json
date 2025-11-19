@@ -1,5 +1,5 @@
 {
-	"ref": "fbde5c95afdd0ea9a948995699b936b15742f499",
+	"ref": "a80d8584c77fa251e3c53242e676b604efab7cf0",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -10286,6 +10286,32 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::assets::texture_meta::MipmapStrategy"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "The alpha bias for cutout textures.\n\nPositive values make the texture more opaque at distance.\n\nNegative values make the texture more transparent at distance.\n\nDefaults to 0.0\n",
+					"key": "alpha_cutoff_bias",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": -1,
+							"max": 1
+						}
 					},
 					"optional": true
 				}
@@ -31897,15 +31923,15 @@
 								}
 							},
 							{
+								"kind": "float"
+							},
+							{
 								"kind": "float",
 								"valueRange": {
 									"kind": 0,
 									"min": 0,
 									"max": 1
 								}
-							},
-							{
-								"kind": "float"
 							},
 							{
 								"kind": "float"
@@ -73191,6 +73217,67 @@
 				}
 			]
 		},
+		"::java::world::component::item::AttackRange": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Minimum distance to the target to be considered valid.\n\nDefaults to 0.0\n",
+					"key": "min_reach",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 64
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Maximum distance to the target to be considered valid.\n\nDefaults to 3.0\n",
+					"key": "max_reach",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 64
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The margin applied to the target bounding box when checking for valid hitbox collision.\n\nDefaults to 0.3\n",
+					"key": "hitbox_margin",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The multiplier applied to `min_reach` and `max_reach` when the user is a mob.\n",
+					"key": "mob_factor",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 2
+						}
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::world::component::item::AttributeDisplay": {
 			"kind": "struct",
 			"fields": [
@@ -74812,48 +74899,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Minimum distance to the target to be considered valid.\n\nDefaults to 0.0\n",
-					"key": "min_reach",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 128
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Maximum distance to the target to be considered valid.\n\nDefaults to 3.0\n",
-					"key": "max_reach",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 128
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "The margin applied to the target bounding box when checking for valid hitbox collision.\n\nDefaults to 0.3\n",
-					"key": "hitbox_margin",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
 					"desc": "The time in ticks required for charging.\n\nDefaults to 0\n",
 					"key": "delay_ticks",
 					"type": {
@@ -75067,48 +75112,6 @@
 		"::java::world::component::item::PiercingWeapon": {
 			"kind": "struct",
 			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Minimum distance to the target to be considered valid.\n\nDefaults to 0.0\n",
-					"key": "min_reach",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 128
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Maximum distance to the target to be considered valid.\n\nDefaults to 3.0\n",
-					"key": "max_reach",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 128
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "The margin applied to the target bounding box when checking for valid hitbox collision.\n\nDefaults to 0.3\n",
-					"key": "hitbox_margin",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					},
-					"optional": true
-				},
 				{
 					"kind": "pair",
 					"desc": "Whether the attack deals knockback.\n\nDefaults to `true`.\n",
@@ -95967,6 +95970,22 @@
 			}
 		},
 		"minecraft:data_component": {
+			"attack_range": {
+				"kind": "reference",
+				"path": "::java::world::component::item::AttackRange",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
+			},
 			"attribute_modifiers": {
 				"kind": "union",
 				"members": [
