@@ -1,5 +1,5 @@
 {
-	"ref": "a80d8584c77fa251e3c53242e676b604efab7cf0",
+	"ref": "280842e2739de6af3d60555f87361fd2dc52c830",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -58166,6 +58166,43 @@
 								},
 								"attributes": [
 									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									},
+									{
+										"name": "canonical"
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::util::avatar::ProfileProperty"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 16
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									},
+									{
 										"name": "canonical"
 									}
 								]
@@ -58444,6 +58481,43 @@
 										},
 										"attributes": [
 											{
+												"name": "until",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "1.21.11"
+													}
+												}
+											},
+											{
+												"name": "canonical"
+											}
+										]
+									},
+									{
+										"kind": "list",
+										"item": {
+											"kind": "reference",
+											"path": "::java::util::avatar::ProfileProperty"
+										},
+										"lengthRange": {
+											"kind": 0,
+											"min": 0,
+											"max": 16
+										},
+										"attributes": [
+											{
+												"name": "since",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "1.21.11"
+													}
+												}
+											},
+											{
 												"name": "canonical"
 											}
 										]
@@ -58559,7 +58633,44 @@
 					"desc": "Usually `textures`.\n",
 					"key": "name",
 					"type": {
-						"kind": "string"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"lengthRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 64
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -58567,7 +58678,44 @@
 					"desc": "Base64 encoded JSON value of the texture index.\n",
 					"key": "value",
 					"type": {
-						"kind": "string"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"lengthRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 32767
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -58575,7 +58723,44 @@
 					"desc": "Verifies the hash of the resulting texture.\n",
 					"key": "signature",
 					"type": {
-						"kind": "string"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"lengthRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 1024
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				}
