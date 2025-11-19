@@ -21,7 +21,8 @@ type Profile = (
 		id?: int[] @ 4,
 		/// Resolved textures hosted on the minecraft CDN.
 		properties?: (
-			#[canonical] [ProfileProperty] |
+			#[until="1.21.11"] #[canonical] [ProfileProperty] |
+			#[since="1.21.11"] #[canonical] [ProfileProperty] @ 0..16 |
 			ProfilePropertyMap |
 		),
 		/// Skin texture override.
@@ -41,16 +42,26 @@ type Profile = (
 struct ProfileProperty {
 	// TODO: Provide better doc for this
 	/// Usually `textures`.
-	name: string,
+	name: (
+		#[until="1.21.11"] string |
+		#[since="1.21.11"] string @ 0..64 |
+	),
 	// TODO: Consider providing specific tooling for this.
 	/// Base64 encoded JSON value of the texture index.
-	value: string,
+	value: (
+		#[until="1.21.11"] string |
+		#[since="1.21.11"] string @ 0..32767 |
+	),
 	/// Verifies the hash of the resulting texture.
-	signature?: string,
+	signature?: (
+		#[until="1.21.11"] string |
+		#[since="1.21.11"] string @ 0..1024 |
+	),
 }
 
 struct ProfilePropertyMap {
 	// TODO: Consider providing specific tooling for this.
+	// TODO: since 1.21.11 only allows a maximum of 16 keys.
 	/// The key is usually `textures`.
 	/// Base64 encoded JSON value of the texture index.
 	[string]: [string]
