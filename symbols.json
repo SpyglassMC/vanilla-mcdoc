@@ -1,5 +1,5 @@
 {
-	"ref": "280842e2739de6af3d60555f87361fd2dc52c830",
+	"ref": "be18ac0c4f348cba674486ad0f75ad7fb89a0c4c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -58305,6 +58305,71 @@
 				}
 			]
 		},
+		"::java::util::avatar::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
+					"key": {
+						"kind": "string"
+					},
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string"
+						}
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.11"
+						}
+					}
+				}
+			]
+		},
+		"::java::util::avatar::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
+					"key": {
+						"kind": "string",
+						"lengthRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 16
+						}
+					},
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string"
+						}
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21.11"
+						}
+					}
+				}
+			]
+		},
 		"::java::util::avatar::HumanoidArm": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -58767,20 +58832,72 @@
 			]
 		},
 		"::java::util::avatar::ProfilePropertyMap": {
-			"kind": "struct",
-			"fields": [
+			"kind": "union",
+			"members": [
 				{
-					"kind": "pair",
-					"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
-					"key": {
-						"kind": "string"
-					},
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "string"
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
+							"key": {
+								"kind": "string"
+							},
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "string"
+								}
+							}
 						}
-					}
+					],
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
+							"key": {
+								"kind": "string",
+								"lengthRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 16
+								}
+							},
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "string"
+								}
+							}
+						}
+					],
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
