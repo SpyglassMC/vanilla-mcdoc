@@ -18,10 +18,10 @@ type AttributeTrackBase = struct {
 type EasingType = (SimpleEasingType | CubicBezierEase)
 
 struct CubicBezierEase {
-	// EasingType.CubicBezierControls::validate() - only x1 and y1 are validated
+	// EasingType.CubicBezierControls::validate() - only x1 and x2 are validated
 	/// `[x1, y1, x2, y2]`
 	/// For an easy GUI, check out: https://cubic-bezier.com/
-	cubic_bezier: [float @ 0..1, float @ 0..1, float, float],
+	cubic_bezier: [float @ 0..1, float, float @ 0..1, float],
 }
 
 enum(string) SimpleEasingType {

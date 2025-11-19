@@ -18,6 +18,22 @@ use ::java::world::item::ItemStack
 use ::java::world::item::SingleItem
 use ::java::world::entity::AnyEntity
 
+// the fields are documented as "min_range" and "max_range" in 1.21.11-pre1 changelog
+#[since="1.21.11"]
+dispatch minecraft:data_component[attack_range] to struct AttackRange {
+	/// Minimum distance to the target to be considered valid.
+	/// Defaults to 0.0
+	min_reach?: float @ 0..64,
+	/// Maximum distance to the target to be considered valid.
+	/// Defaults to 3.0
+	max_reach?: float @ 0..64,
+	/// The margin applied to the target bounding box when checking for valid hitbox collision.
+	/// Defaults to 0.3
+	hitbox_margin?: float @ 0..1,
+	/// The multiplier applied to `min_reach` and `max_reach` when the user is a mob.
+	mob_factor?: float @ 0..2,
+}
+
 /// Applied to an entity that has equipped/is holding the item.
 dispatch minecraft:data_component[attribute_modifiers] to (
 	#[until="1.21.5"] #[canonical] AttributeModifiers |
@@ -466,15 +482,6 @@ dispatch minecraft:data_component[jukebox_playable] to (
 
 #[since="1.21.11"]
 dispatch minecraft:data_component[kinetic_weapon] to struct KineticWeapon {
-	/// Minimum distance to the target to be considered valid.
-	/// Defaults to 0.0
-	min_reach?: float @ 0..128,
-	/// Maximum distance to the target to be considered valid.
-	/// Defaults to 3.0
-	max_reach?: float @ 0..128,
-	/// The margin applied to the target bounding box when checking for valid hitbox collision.
-	/// Defaults to 0.3
-	hitbox_margin?: float @ 0..1,
 	/// The time in ticks required for charging.
 	/// Defaults to 0
 	delay_ticks?: int @ 0..,
@@ -559,15 +566,6 @@ dispatch minecraft:data_component[ominous_bottle_amplifier] to int @ 0..4
 
 #[since="1.21.11"]
 dispatch minecraft:data_component[piercing_weapon] to struct PiercingWeapon {
-	/// Minimum distance to the target to be considered valid.
-	/// Defaults to 0.0
-	min_reach?: float @ 0..128,
-	/// Maximum distance to the target to be considered valid.
-	/// Defaults to 3.0
-	max_reach?: float @ 0..128,
-	/// The margin applied to the target bounding box when checking for valid hitbox collision.
-	/// Defaults to 0.3
-	hitbox_margin?: float @ 0..1,
 	/// Whether the attack deals knockback.
 	/// Defaults to `true`.
 	deals_knockback?: boolean,
