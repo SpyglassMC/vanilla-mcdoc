@@ -45,7 +45,7 @@ dispatch minecraft:glyph_provider[ttf] to struct TtfProvider {
 	file: string, // TODO
 	size?: float,
 	oversample?: float,
-	shift?: [float, float],
+	shift?: [float] @ 2,
 	skip?: (string | [string]),
 }
 
