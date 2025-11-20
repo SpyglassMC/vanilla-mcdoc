@@ -1,5 +1,5 @@
 {
-	"ref": "be18ac0c4f348cba674486ad0f75ad7fb89a0c4c",
+	"ref": "381b3ea4dcf1789ec960596553579561adf27dbc",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -2440,15 +2440,15 @@
 					"kind": "pair",
 					"key": "shift",
 					"type": {
-						"kind": "tuple",
-						"items": [
-							{
-								"kind": "float"
-							},
-							{
-								"kind": "float"
-							}
-						]
+						"kind": "list",
+						"item": {
+							"kind": "float"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 2,
+							"max": 2
+						}
 					},
 					"optional": true
 				},
