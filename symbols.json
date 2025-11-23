@@ -1,5 +1,5 @@
 {
-	"ref": "381b3ea4dcf1789ec960596553579561adf27dbc",
+	"ref": "8ea7c31d8b7e6268db28d9197dd17f656b473b60",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -80732,84 +80732,6 @@
 			"kind": "struct",
 			"fields": []
 		},
-		"::java::world::entity::mob::armor_stand::<anonymous 2>": {
-			"kind": "enum",
-			"enumKind": "int",
-			"values": [
-				{
-					"identifier": "HandAll",
-					"value": 1
-				},
-				{
-					"identifier": "BootsAll",
-					"value": 2
-				},
-				{
-					"identifier": "LeggingsAll",
-					"value": 3
-				},
-				{
-					"identifier": "ChestplateAll",
-					"value": 4
-				},
-				{
-					"identifier": "HelmetAll",
-					"value": 5
-				},
-				{
-					"identifier": "OffhandAll",
-					"value": 6
-				},
-				{
-					"identifier": "HandReplace",
-					"value": 7
-				},
-				{
-					"identifier": "BootsReplace",
-					"value": 8
-				},
-				{
-					"identifier": "LeggingsReplace",
-					"value": 9
-				},
-				{
-					"identifier": "ChestplateReplace",
-					"value": 10
-				},
-				{
-					"identifier": "HelmetReplace",
-					"value": 11
-				},
-				{
-					"identifier": "OffhandReplace",
-					"value": 12
-				},
-				{
-					"identifier": "HandPlace",
-					"value": 13
-				},
-				{
-					"identifier": "BootsPlace",
-					"value": 14
-				},
-				{
-					"identifier": "LeggingsPlace",
-					"value": 15
-				},
-				{
-					"identifier": "ChestplatePlace",
-					"value": 16
-				},
-				{
-					"identifier": "HelmetPlace",
-					"value": 17
-				},
-				{
-					"identifier": "OffhandPlace",
-					"value": 18
-				}
-			]
-		},
 		"::java::world::entity::mob::armor_stand::ArmorStand": {
 			"kind": "struct",
 			"fields": [
@@ -80971,87 +80893,8 @@
 						{
 							"name": "bitfield",
 							"value": {
-								"kind": "tree",
-								"values": {
-									"0": {
-										"kind": "enum",
-										"enumKind": "int",
-										"values": [
-											{
-												"identifier": "HandAll",
-												"value": 1
-											},
-											{
-												"identifier": "BootsAll",
-												"value": 2
-											},
-											{
-												"identifier": "LeggingsAll",
-												"value": 3
-											},
-											{
-												"identifier": "ChestplateAll",
-												"value": 4
-											},
-											{
-												"identifier": "HelmetAll",
-												"value": 5
-											},
-											{
-												"identifier": "OffhandAll",
-												"value": 6
-											},
-											{
-												"identifier": "HandReplace",
-												"value": 7
-											},
-											{
-												"identifier": "BootsReplace",
-												"value": 8
-											},
-											{
-												"identifier": "LeggingsReplace",
-												"value": 9
-											},
-											{
-												"identifier": "ChestplateReplace",
-												"value": 10
-											},
-											{
-												"identifier": "HelmetReplace",
-												"value": 11
-											},
-											{
-												"identifier": "OffhandReplace",
-												"value": 12
-											},
-											{
-												"identifier": "HandPlace",
-												"value": 13
-											},
-											{
-												"identifier": "BootsPlace",
-												"value": 14
-											},
-											{
-												"identifier": "LeggingsPlace",
-												"value": 15
-											},
-											{
-												"identifier": "ChestplatePlace",
-												"value": 16
-											},
-											{
-												"identifier": "HelmetPlace",
-												"value": 17
-											},
-											{
-												"identifier": "OffhandPlace",
-												"value": 18
-											}
-										]
-									}
-								}
+								"kind": "reference",
+								"path": "::java::world::entity::mob::armor_stand::DisabledSlots"
 							}
 						}
 					],
@@ -81071,6 +80914,84 @@
 						"path": "::java::world::entity::mob::armor_stand::Pose"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::armor_stand::DisabledSlots": {
+			"kind": "enum",
+			"enumKind": "int",
+			"values": [
+				{
+					"identifier": "HandAll",
+					"value": 1
+				},
+				{
+					"identifier": "BootsAll",
+					"value": 2
+				},
+				{
+					"identifier": "LeggingsAll",
+					"value": 3
+				},
+				{
+					"identifier": "ChestplateAll",
+					"value": 4
+				},
+				{
+					"identifier": "HelmetAll",
+					"value": 5
+				},
+				{
+					"identifier": "OffhandAll",
+					"value": 6
+				},
+				{
+					"identifier": "HandReplace",
+					"value": 7
+				},
+				{
+					"identifier": "BootsReplace",
+					"value": 8
+				},
+				{
+					"identifier": "LeggingsReplace",
+					"value": 9
+				},
+				{
+					"identifier": "ChestplateReplace",
+					"value": 10
+				},
+				{
+					"identifier": "HelmetReplace",
+					"value": 11
+				},
+				{
+					"identifier": "OffhandReplace",
+					"value": 12
+				},
+				{
+					"identifier": "HandPlace",
+					"value": 13
+				},
+				{
+					"identifier": "BootsPlace",
+					"value": 14
+				},
+				{
+					"identifier": "LeggingsPlace",
+					"value": 15
+				},
+				{
+					"identifier": "ChestplatePlace",
+					"value": 16
+				},
+				{
+					"identifier": "HelmetPlace",
+					"value": 17
+				},
+				{
+					"identifier": "OffhandPlace",
+					"value": 18
 				}
 			]
 		},
@@ -90919,68 +90840,6 @@
 				}
 			]
 		},
-		"::java::world::item::<anonymous 2>": {
-			"kind": "enum",
-			"enumKind": "int",
-			"values": [
-				{
-					"identifier": "Enchantments",
-					"value": 1
-				},
-				{
-					"identifier": "AttributeModifiers",
-					"value": 2
-				},
-				{
-					"identifier": "Unbreakable",
-					"value": 3
-				},
-				{
-					"identifier": "CanDestroy",
-					"value": 4
-				},
-				{
-					"identifier": "CanPlaceOn",
-					"value": 5
-				},
-				{
-					"identifier": "Other",
-					"value": 6
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16.2"
-								}
-							}
-						}
-					],
-					"identifier": "LeatherColor",
-					"value": 7
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.19.4"
-								}
-							}
-						}
-					],
-					"identifier": "Trim",
-					"value": 8
-				}
-			]
-		},
 		"::java::world::item::AttributeModifier": {
 			"kind": "struct",
 			"fields": [
@@ -91984,6 +91843,68 @@
 				}
 			]
 		},
+		"::java::world::item::HideFlags": {
+			"kind": "enum",
+			"enumKind": "int",
+			"values": [
+				{
+					"identifier": "Enchantments",
+					"value": 1
+				},
+				{
+					"identifier": "AttributeModifiers",
+					"value": 2
+				},
+				{
+					"identifier": "Unbreakable",
+					"value": 3
+				},
+				{
+					"identifier": "CanDestroy",
+					"value": 4
+				},
+				{
+					"identifier": "CanPlaceOn",
+					"value": 5
+				},
+				{
+					"identifier": "Other",
+					"value": 6
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16.2"
+								}
+							}
+						}
+					],
+					"identifier": "LeatherColor",
+					"value": 7
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.19.4"
+								}
+							}
+						}
+					],
+					"identifier": "Trim",
+					"value": 8
+				}
+			]
+		},
 		"::java::world::item::ItemBase": {
 			"kind": "struct",
 			"fields": [
@@ -92099,71 +92020,8 @@
 						{
 							"name": "bitfield",
 							"value": {
-								"kind": "tree",
-								"values": {
-									"0": {
-										"kind": "enum",
-										"enumKind": "int",
-										"values": [
-											{
-												"identifier": "Enchantments",
-												"value": 1
-											},
-											{
-												"identifier": "AttributeModifiers",
-												"value": 2
-											},
-											{
-												"identifier": "Unbreakable",
-												"value": 3
-											},
-											{
-												"identifier": "CanDestroy",
-												"value": 4
-											},
-											{
-												"identifier": "CanPlaceOn",
-												"value": 5
-											},
-											{
-												"identifier": "Other",
-												"value": 6
-											},
-											{
-												"attributes": [
-													{
-														"name": "since",
-														"value": {
-															"kind": "literal",
-															"value": {
-																"kind": "string",
-																"value": "1.16.2"
-															}
-														}
-													}
-												],
-												"identifier": "LeatherColor",
-												"value": 7
-											},
-											{
-												"attributes": [
-													{
-														"name": "since",
-														"value": {
-															"kind": "literal",
-															"value": {
-																"kind": "string",
-																"value": "1.19.4"
-															}
-														}
-													}
-												],
-												"identifier": "Trim",
-												"value": 8
-											}
-										]
-									}
-								}
+								"kind": "reference",
+								"path": "::java::world::item::HideFlags"
 							}
 						}
 					],
