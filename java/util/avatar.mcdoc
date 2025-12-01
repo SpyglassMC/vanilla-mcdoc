@@ -59,19 +59,13 @@ struct ProfileProperty {
 	),
 }
 
-// TODO: Consider providing specific tooling for this.
-type ProfilePropertyMap = (
-	#[until="1.21.11"] struct {
-		/// The key is usually `textures`.
-		/// Base64 encoded JSON value of the texture index.
-		[string]: [string],
-	} |
-	#[since="1.21.11"] struct {
-		/// The key is usually `textures`.
-		/// Base64 encoded JSON value of the texture index.
-		[string @ 0..16]: [string],
-	} |
-)
+struct ProfilePropertyMap {
+	// TODO: Consider providing specific tooling for this.
+	// TODO: since 1.21.11 only allows a maximum of 16 keys.
+	/// The key is usually `textures`.
+	/// Base64 encoded JSON value of the texture index.
+	[string]: [string]
+}
 
 enum(string) HumanoidArm {
 	Left = "left",
