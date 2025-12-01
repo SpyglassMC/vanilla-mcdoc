@@ -1,5 +1,5 @@
 {
-	"ref": "8ea7c31d8b7e6268db28d9197dd17f656b473b60",
+	"ref": "0a843f40313251d0ba356de7d065814f43eba3ae",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -58305,71 +58305,6 @@
 				}
 			]
 		},
-		"::java::util::avatar::<anonymous 2>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
-					"key": {
-						"kind": "string"
-					},
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "string"
-						}
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.21.11"
-						}
-					}
-				}
-			]
-		},
-		"::java::util::avatar::<anonymous 3>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
-					"key": {
-						"kind": "string",
-						"lengthRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 16
-						}
-					},
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "string"
-						}
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.21.11"
-						}
-					}
-				}
-			]
-		},
 		"::java::util::avatar::HumanoidArm": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -58832,72 +58767,20 @@
 			]
 		},
 		"::java::util::avatar::ProfilePropertyMap": {
-			"kind": "union",
-			"members": [
+			"kind": "struct",
+			"fields": [
 				{
-					"kind": "struct",
-					"fields": [
-						{
-							"kind": "pair",
-							"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
-							"key": {
-								"kind": "string"
-							},
-							"type": {
-								"kind": "list",
-								"item": {
-									"kind": "string"
-								}
-							}
+					"kind": "pair",
+					"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
+					"key": {
+						"kind": "string"
+					},
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string"
 						}
-					],
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.11"
-								}
-							}
-						}
-					]
-				},
-				{
-					"kind": "struct",
-					"fields": [
-						{
-							"kind": "pair",
-							"desc": "The key is usually `textures`.\n\nBase64 encoded JSON value of the texture index.\n",
-							"key": {
-								"kind": "string",
-								"lengthRange": {
-									"kind": 0,
-									"min": 0,
-									"max": 16
-								}
-							},
-							"type": {
-								"kind": "list",
-								"item": {
-									"kind": "string"
-								}
-							}
-						}
-					],
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.11"
-								}
-							}
-						}
-					]
+					}
 				}
 			]
 		},
@@ -73540,6 +73423,34 @@
 					"kind": "pair",
 					"desc": "Maximum distance to the target to be considered valid.\n\nDefaults to 3.0\n",
 					"key": "max_reach",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 64
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Minimum distance from the creative mode attacker to the target to be considered valid.\n\nDefaults to 0.0\n",
+					"key": "min_creative_reach",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 64
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Maximum distance from the creative mode attacker to the target to be considered valid.\n\nDefaults to 5.0\n",
+					"key": "max_creative_reach",
 					"type": {
 						"kind": "float",
 						"valueRange": {
