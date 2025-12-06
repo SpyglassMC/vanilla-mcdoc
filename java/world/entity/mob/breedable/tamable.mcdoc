@@ -5,8 +5,8 @@ struct Tamable {
 	...super::Breedable,
 	#[until="1.16"]
 	OwnerUUID?: #[uuid] string,
-	#[since="1.16"] #[uuid]
-	Owner?: int[] @ 4,
+	#[since="1.16"]
+	Owner?: #[uuid] int[] @ 4,
 	/// Whether the mob is sitting.
 	Sitting?: boolean,
 }

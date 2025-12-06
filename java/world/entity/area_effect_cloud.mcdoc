@@ -23,9 +23,8 @@ dispatch minecraft:entity[area_effect_cloud] to struct AreaEffectCloud {
 	/// Lower bits of the owner's UUID.
 	#[until="1.16"]
 	OwnerUUIDLeast?: long,
-	#[uuid]
 	#[since="1.16"]
-	Owner?: int[] @ 4,
+	Owner?: #[uuid] int[] @ 4,
 	/// Radius of the particles & effect applications.
 	Radius?: float,
 	/// Change in the radius when it is used.

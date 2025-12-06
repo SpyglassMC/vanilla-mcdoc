@@ -17,8 +17,7 @@ dispatch minecraft:entity[interaction] to struct Interaction {
 }
 
 struct Action {
-	#[uuid]
-	player?: int[] @ 4,
+	player?: #[uuid] int[] @ 4,
 	/// Game tick of when the event occured.
 	timestamp?: long @ 0..,
 }

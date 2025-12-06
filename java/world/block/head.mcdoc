@@ -41,10 +41,9 @@ dispatch minecraft:block[
 
 struct SkullOwner {
 	/// Optional.
-	#[uuid]
 	Id?: (
-		#[until="1.16"] string |
-		#[since="1.16"] int[] @ 4 |
+		#[until="1.16"] #[uuid] string |
+		#[since="1.16"] #[uuid] int[] @ 4 |
 	),
 	/// If missing appears as a steve head.
 	Name?: string,

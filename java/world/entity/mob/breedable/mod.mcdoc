@@ -10,8 +10,8 @@ struct Breedable {
 	#[until="1.16"]
 	LoveCauseMost?: long,
 	/// Player that caused this mob to breed.
-	#[since="1.16"] #[uuid]
-	LoveCause?: int[] @ 4,
+	#[since="1.16"]
+	LoveCause?: #[uuid] int[] @ 4,
 }
 
 #[since="1.19.4"]

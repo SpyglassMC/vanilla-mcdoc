@@ -25,10 +25,9 @@ dispatch minecraft:entity[bee] to struct Bee {
 	/// Ticks the bee will be angry for.
 	Anger?: int,
 	/// Player that has attacked the bee.
-	#[uuid]
 	HurtBy?: (
-		#[until="1.16"] string |
-		#[since="1.16"] int[] @ 4 |
+		#[until="1.16"] #[uuid] string |
+		#[since="1.16"] #[uuid] int[] @ 4 |
 	),
 }
 

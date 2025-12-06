@@ -31,7 +31,6 @@ dispatch minecraft:entity[zombie_villager] to struct ZombieVillager {
 	#[until="1.16"]
 	ConversionPlayerMost?: long,
 	/// Player who triggered the conversion.
-	#[uuid]
 	#[since="1.16"]
-	ConversionPlayer?: int[] @ 4,
+	ConversionPlayer?: #[uuid] int[] @ 4,
 }

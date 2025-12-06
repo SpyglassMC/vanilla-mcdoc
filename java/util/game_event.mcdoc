@@ -33,8 +33,7 @@ dispatch minecraft:position_source[block] to struct BlockPositionSource {
 }
 
 dispatch minecraft:position_source[entity] to struct EntityPositionSource {
-	#[uuid]
-	source_entity: [int] @ 4,
+	source_entity: #[uuid] [int] @ 4,
 	/// offset from the entity's feet to the source position
 	y_offset?: float,
 }

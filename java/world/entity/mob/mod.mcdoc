@@ -188,9 +188,8 @@ type AttributeModifier = (
 		/// Lower bits of the modifier's UUID.
 		#[until="1.16"]
 		UUIDLeast?: long,
-		#[uuid]
 		#[since="1.16"]
-		UUID?: int[] @ 4,
+		UUID?: #[uuid] int[] @ 4,
 	} |
 )
 

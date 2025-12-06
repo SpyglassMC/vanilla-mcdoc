@@ -158,9 +158,8 @@ struct RootVehicle {
 	#[until="1.16"]
 	AttachLeast?: long,
 	/// Ridden entity's UUID.
-	#[uuid]
 	#[since="1.16"]
-	Attach?: int[] @ 4,
+	Attach?: #[uuid] int[] @ 4,
 	/// The ridden entity.
 	Entity?: AnyEntity,
 }

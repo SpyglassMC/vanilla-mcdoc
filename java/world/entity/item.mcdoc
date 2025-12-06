@@ -8,16 +8,14 @@ dispatch minecraft:entity[item] to struct Item {
 	/// Ticks until an entity can pick up this item.
 	PickupDelay?: short,
 	/// Only this entity can pick up the item.
-	#[uuid]
 	Owner?: (
-		#[until="1.16"] Uuid |
-		#[since="1.16"] int[] @ 4 |
+		#[until="1.16"] #[uuid] Uuid |
+		#[since="1.16"] #[uuid] int[] @ 4 |
 	),
 	/// Player who threw the item. Can be set and/or changed to any entity.
-	#[uuid]
 	Thrower?: (
-		#[until="1.16"] Uuid |
-		#[since="1.16"] int[] @ 4 |
+		#[until="1.16"] #[uuid] Uuid |
+		#[since="1.16"] #[uuid] int[] @ 4 |
 	),
 	Item?: ItemStack,
 }

@@ -13,6 +13,5 @@ struct ZombiePigman {
 	#[until="1.16"]
 	Anger?: short,
 	/// Last player to hit a zombie pigman in this zombie pigman's detection range.
-	#[uuid]
-	HurtBy?: string,
+	HurtBy?: #[uuid] string,
 }

@@ -17,6 +17,5 @@ struct AngerManagement {
 struct Suspect {
 	/// Level of anger that will decrease by 1 every second.
 	anger?: int @ 1..150,
-	#[uuid]
-	uuid?: int[] @ 4,
+	uuid?: #[uuid] int[] @ 4,
 }
