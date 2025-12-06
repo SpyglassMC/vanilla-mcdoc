@@ -1,5 +1,5 @@
 {
-	"ref": "4be994400b729dd46efbbfb2b2b39466867b4c8f",
+	"ref": "9106171516461cb9c6293360cf2016a529240a2f",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -36402,6 +36402,12 @@
 											{
 												"kind": "dynamic",
 												"accessor": [
+													{
+														"keyword": "parent"
+													},
+													{
+														"keyword": "parent"
+													},
 													"modifier"
 												]
 											}
@@ -36438,6 +36444,12 @@
 							{
 								"kind": "dynamic",
 								"accessor": [
+									{
+										"keyword": "parent"
+									},
+									{
+										"keyword": "parent"
+									},
 									"modifier"
 								]
 							}
@@ -36585,6 +36597,12 @@
 														{
 															"kind": "dynamic",
 															"accessor": [
+																{
+																	"keyword": "parent"
+																},
+																{
+																	"keyword": "parent"
+																},
 																"modifier"
 															]
 														}
