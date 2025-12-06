@@ -71,7 +71,7 @@ struct ARGBColorAttribute {
 		modifier?: ColorModifierType,
 		keyframes: [struct {
 			ticks: int @ 0..,
-			value: minecraft:environment_attribute_argb_color_modifier[[modifier]],
+			value: minecraft:environment_attribute_argb_color_modifier[[%parent.%parent.modifier]],
 		}],
 	},
 }
