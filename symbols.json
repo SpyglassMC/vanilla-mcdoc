@@ -1,5 +1,5 @@
 {
-	"ref": "0a843f40313251d0ba356de7d065814f43eba3ae",
+	"ref": "4be994400b729dd46efbbfb2b2b39466867b4c8f",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -60302,11 +60302,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "uuid"
-						}
-					],
 					"key": "source_entity",
 					"type": {
 						"kind": "list",
@@ -60317,7 +60312,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					}
 				},
 				{
@@ -69865,11 +69865,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "uuid"
-						}
-					],
 					"desc": "Optional.\n",
 					"key": "Id",
 					"type": {
@@ -69887,6 +69882,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							},
@@ -69907,6 +69905,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							}
@@ -77118,9 +77119,6 @@
 					"kind": "pair",
 					"attributes": [
 						{
-							"name": "uuid"
-						},
-						{
 							"name": "since",
 							"value": {
 								"kind": "literal",
@@ -77138,7 +77136,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				},
@@ -78728,9 +78731,6 @@
 					"kind": "pair",
 					"attributes": [
 						{
-							"name": "uuid"
-						},
-						{
 							"name": "since",
 							"value": {
 								"kind": "literal",
@@ -78748,7 +78748,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				},
@@ -78919,11 +78924,6 @@
 				},
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "uuid"
-						}
-					],
 					"key": "Owner",
 					"type": {
 						"kind": "union",
@@ -78941,6 +78941,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							},
@@ -78961,6 +78964,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							}
@@ -79186,11 +79192,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "uuid"
-						}
-					],
 					"key": "player",
 					"type": {
 						"kind": "int_array",
@@ -79198,7 +79199,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				},
@@ -79440,11 +79446,6 @@
 				},
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "uuid"
-						}
-					],
 					"desc": "Only this entity can pick up the item.\n",
 					"key": "Owner",
 					"type": {
@@ -79463,6 +79464,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							},
@@ -79483,6 +79487,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							}
@@ -79492,11 +79499,6 @@
 				},
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "uuid"
-						}
-					],
 					"desc": "Player who threw the item. Can be set and/or changed to any entity.\n",
 					"key": "Thrower",
 					"type": {
@@ -79515,6 +79517,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							},
@@ -79535,6 +79540,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							}
@@ -80504,9 +80512,6 @@
 					"kind": "pair",
 					"attributes": [
 						{
-							"name": "uuid"
-						},
-						{
 							"name": "since",
 							"value": {
 								"kind": "literal",
@@ -80524,7 +80529,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				}
@@ -81347,9 +81357,6 @@
 							"kind": "pair",
 							"attributes": [
 								{
-									"name": "uuid"
-								},
-								{
 									"name": "since",
 									"value": {
 										"kind": "literal",
@@ -81367,7 +81374,12 @@
 									"kind": 0,
 									"min": 4,
 									"max": 4
-								}
+								},
+								"attributes": [
+									{
+										"name": "uuid"
+									}
+								]
 							},
 							"optional": true
 						}
@@ -81766,11 +81778,6 @@
 				},
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "uuid"
-						}
-					],
 					"desc": "Player that has attacked the bee.\n",
 					"key": "HurtBy",
 					"type": {
@@ -81788,6 +81795,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							},
@@ -81808,6 +81818,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							}
@@ -81959,9 +81972,6 @@
 									"value": "1.16"
 								}
 							}
-						},
-						{
-							"name": "uuid"
 						}
 					],
 					"desc": "Player that caused this mob to breed.\n",
@@ -81972,7 +81982,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				}
@@ -82560,9 +82575,6 @@
 									"value": "1.16"
 								}
 							}
-						},
-						{
-							"name": "uuid"
 						}
 					],
 					"desc": "Player who tamed it.\n",
@@ -82573,7 +82585,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				},
@@ -83453,9 +83470,6 @@
 									"value": "1.16"
 								}
 							}
-						},
-						{
-							"name": "uuid"
 						}
 					],
 					"key": "Owner",
@@ -83465,7 +83479,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				},
@@ -87658,9 +87677,6 @@
 					"kind": "pair",
 					"attributes": [
 						{
-							"name": "uuid"
-						},
-						{
 							"name": "since",
 							"value": {
 								"kind": "literal",
@@ -87679,7 +87695,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				},
@@ -88568,11 +88589,6 @@
 				},
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "uuid"
-						}
-					],
 					"key": "uuid",
 					"type": {
 						"kind": "int_array",
@@ -88580,7 +88596,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				}
@@ -88839,9 +88860,6 @@
 					"kind": "pair",
 					"attributes": [
 						{
-							"name": "uuid"
-						},
-						{
 							"name": "since",
 							"value": {
 								"kind": "literal",
@@ -88860,7 +88878,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				}
@@ -88927,15 +88950,15 @@
 				},
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "uuid"
-						}
-					],
 					"desc": "Last player to hit a zombie pigman in this zombie pigman's detection range.\n",
 					"key": "HurtBy",
 					"type": {
-						"kind": "string"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				}
@@ -89865,15 +89888,17 @@
 									"value": "1.16"
 								}
 							}
-						},
-						{
-							"name": "uuid"
 						}
 					],
 					"key": "Owner",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::entity::projectile::OwnerUuid"
+						"path": "::java::world::entity::projectile::OwnerUuid",
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				}
@@ -89945,9 +89970,6 @@
 									"value": "1.16"
 								}
 							}
-						},
-						{
-							"name": "uuid"
 						}
 					],
 					"key": "Owner",
@@ -89957,7 +89979,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				},
@@ -90896,9 +90923,6 @@
 					"kind": "pair",
 					"attributes": [
 						{
-							"name": "uuid"
-						},
-						{
 							"name": "since",
 							"value": {
 								"kind": "literal",
@@ -90916,7 +90940,12 @@
 							"kind": 0,
 							"min": 4,
 							"max": 4
-						}
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
 					},
 					"optional": true
 				}
@@ -91663,11 +91692,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "uuid"
-						}
-					],
 					"desc": "Optional.\n",
 					"key": "Id",
 					"type": {
@@ -91685,6 +91709,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							},
@@ -91705,6 +91732,9 @@
 												"value": "1.16"
 											}
 										}
+									},
+									{
+										"name": "uuid"
 									}
 								]
 							}
