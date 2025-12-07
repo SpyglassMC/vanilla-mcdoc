@@ -1,5 +1,5 @@
 {
-	"ref": "8105eb1d2588e6a3a6f4cc0fc5f18b4aefeb50dc",
+	"ref": "8a6290af40f0c85ac5cc5f7cb9b64ffbc1f7d654",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -5149,7 +5149,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "List of removed ranslation keys.\n",
+					"desc": "List of removed translation keys.\n",
 					"key": "removed",
 					"type": {
 						"kind": "list",
