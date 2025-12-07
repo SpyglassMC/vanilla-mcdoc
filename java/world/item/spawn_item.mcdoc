@@ -2,7 +2,7 @@ use ::java::world::entity::AnyEntity
 
 // List can be generated using the following code:
 // https://github.com/misode/mcmeta/raw/registries/item/data.min.json
-// `document.body.textContent.split('\n')[0].filter(item => item.includes('_spawn_egg')).join(',\n')`
+// `JSON.parse(document.body.textContent).filter(item => item.includes('_spawn_egg')).join(',\n')`
 dispatch minecraft:item[
 	allay_spawn_egg,
 	armadillo_spawn_egg,
@@ -12,12 +12,15 @@ dispatch minecraft:item[
 	blaze_spawn_egg,
 	bogged_spawn_egg,
 	breeze_spawn_egg,
+	camel_husk_spawn_egg,
 	camel_spawn_egg,
 	cat_spawn_egg,
 	cave_spider_spawn_egg,
 	chicken_spawn_egg,
 	cod_spawn_egg,
+	copper_golem_spawn_egg,
 	cow_spawn_egg,
+	creaking_spawn_egg,
 	creeper_spawn_egg,
 	dolphin_spawn_egg,
 	donkey_spawn_egg,
@@ -33,6 +36,7 @@ dispatch minecraft:item[
 	glow_squid_spawn_egg,
 	goat_spawn_egg,
 	guardian_spawn_egg,
+	happy_ghast_spawn_egg,
 	hoglin_spawn_egg,
 	horse_spawn_egg,
 	husk_spawn_egg,
@@ -41,8 +45,10 @@ dispatch minecraft:item[
 	magma_cube_spawn_egg,
 	mooshroom_spawn_egg,
 	mule_spawn_egg,
+	nautilus_spawn_egg,
 	ocelot_spawn_egg,
 	panda_spawn_egg,
+	parched_spawn_egg,
 	parrot_spawn_egg,
 	phantom_spawn_egg,
 	pig_spawn_egg,
@@ -81,6 +87,7 @@ dispatch minecraft:item[
 	wolf_spawn_egg,
 	zoglin_spawn_egg,
 	zombie_horse_spawn_egg,
+	zombie_nautilus_spawn_egg,
 	zombie_spawn_egg,
 	zombie_villager_spawn_egg,
 	zombified_piglin_spawn_egg,
