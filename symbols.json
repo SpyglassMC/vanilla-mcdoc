@@ -1,5 +1,5 @@
 {
-	"ref": "9106171516461cb9c6293360cf2016a529240a2f",
+	"ref": "8105eb1d2588e6a3a6f4cc0fc5f18b4aefeb50dc",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -102196,6 +102196,10 @@
 				"kind": "reference",
 				"path": "::java::world::item::spawn_item::SpawnItem"
 			},
+			"camel_husk_spawn_egg": {
+				"kind": "reference",
+				"path": "::java::world::item::spawn_item::SpawnItem"
+			},
 			"camel_spawn_egg": {
 				"kind": "reference",
 				"path": "::java::world::item::spawn_item::SpawnItem"
@@ -102240,7 +102244,15 @@
 				"kind": "reference",
 				"path": "::java::world::item::compass::Compass"
 			},
+			"copper_golem_spawn_egg": {
+				"kind": "reference",
+				"path": "::java::world::item::spawn_item::SpawnItem"
+			},
 			"cow_spawn_egg": {
+				"kind": "reference",
+				"path": "::java::world::item::spawn_item::SpawnItem"
+			},
+			"creaking_spawn_egg": {
 				"kind": "reference",
 				"path": "::java::world::item::spawn_item::SpawnItem"
 			},
@@ -102360,6 +102372,10 @@
 				"kind": "reference",
 				"path": "::java::world::item::spawn_item::SpawnItem"
 			},
+			"happy_ghast_spawn_egg": {
+				"kind": "reference",
+				"path": "::java::world::item::spawn_item::SpawnItem"
+			},
 			"hoglin_spawn_egg": {
 				"kind": "reference",
 				"path": "::java::world::item::spawn_item::SpawnItem"
@@ -102448,6 +102464,10 @@
 				"kind": "reference",
 				"path": "::java::world::item::spawn_item::SpawnItem"
 			},
+			"nautilus_spawn_egg": {
+				"kind": "reference",
+				"path": "::java::world::item::spawn_item::SpawnItem"
+			},
 			"oak_boat": {
 				"kind": "reference",
 				"path": "::java::world::item::spawn_item::SpawnItem"
@@ -102465,6 +102485,10 @@
 				"path": "::java::world::item::spawn_item::SpawnItem"
 			},
 			"panda_spawn_egg": {
+				"kind": "reference",
+				"path": "::java::world::item::spawn_item::SpawnItem"
+			},
+			"parched_spawn_egg": {
 				"kind": "reference",
 				"path": "::java::world::item::spawn_item::SpawnItem"
 			},
@@ -102677,6 +102701,10 @@
 				"path": "::java::world::item::spawn_item::SpawnItem"
 			},
 			"zombie_horse_spawn_egg": {
+				"kind": "reference",
+				"path": "::java::world::item::spawn_item::SpawnItem"
+			},
+			"zombie_nautilus_spawn_egg": {
 				"kind": "reference",
 				"path": "::java::world::item::spawn_item::SpawnItem"
 			},
