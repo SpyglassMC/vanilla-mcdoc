@@ -1,5 +1,5 @@
 {
-	"ref": "8a6290af40f0c85ac5cc5f7cb9b64ffbc1f7d654",
+	"ref": "fd0ada40eb4210785d78d2ac378c6b14c2a387f4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -35502,8 +35502,17 @@
 					"kind": "pair",
 					"key": "value",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::ConstantIntProvider"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::ConstantIntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::T"
+							}
+						]
 					}
 				}
 			],
@@ -40176,49 +40185,6 @@
 				}
 			]
 		},
-		"::java::data::worldgen::ClampedNormalFloatProvider": {
-			"kind": "template",
-			"child": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "pair",
-						"key": "min",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::T"
-						}
-					},
-					{
-						"kind": "pair",
-						"key": "max",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::T"
-						}
-					},
-					{
-						"kind": "pair",
-						"key": "mean",
-						"type": {
-							"kind": "float"
-						}
-					},
-					{
-						"kind": "pair",
-						"key": "deviation",
-						"type": {
-							"kind": "float"
-						}
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::data::worldgen::T"
-				}
-			]
-		},
 		"::java::data::worldgen::ClampedNormalIntProvider": {
 			"kind": "template",
 			"child": {
@@ -40252,27 +40218,6 @@
 						"key": "deviation",
 						"type": {
 							"kind": "float"
-						}
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::data::worldgen::T"
-				}
-			]
-		},
-		"::java::data::worldgen::ConstantFloatProvider": {
-			"kind": "template",
-			"child": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "pair",
-						"key": "value",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::T"
 						}
 					}
 				]
@@ -56849,42 +56794,6 @@
 				}
 			]
 		},
-		"::java::data::worldgen::TrapezoidFloatProvider": {
-			"kind": "template",
-			"child": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "pair",
-						"key": "min",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::T"
-						}
-					},
-					{
-						"kind": "pair",
-						"key": "max",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::T"
-						}
-					},
-					{
-						"kind": "pair",
-						"key": "plateau",
-						"type": {
-							"kind": "float"
-						}
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::data::worldgen::T"
-				}
-			]
-		},
 		"::java::data::worldgen::TrapezoidHeightProvider": {
 			"kind": "struct",
 			"fields": [
@@ -56902,35 +56811,6 @@
 						"kind": "int"
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::data::worldgen::UniformFloatProvider": {
-			"kind": "template",
-			"child": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "pair",
-						"key": "min_inclusive",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::T"
-						}
-					},
-					{
-						"kind": "pair",
-						"key": "max_exclusive",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::T"
-						}
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::data::worldgen::T"
 				}
 			]
 		},
@@ -57085,45 +56965,6 @@
 							}
 						]
 					}
-				}
-			]
-		},
-		"::java::data::worldgen::WeightListIntProvider": {
-			"kind": "template",
-			"child": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "pair",
-						"key": "distribution",
-						"type": {
-							"kind": "concrete",
-							"child": {
-								"kind": "reference",
-								"path": "::java::util::NonEmptyWeightedList"
-							},
-							"typeArgs": [
-								{
-									"kind": "concrete",
-									"child": {
-										"kind": "reference",
-										"path": "::java::data::worldgen::IntProvider"
-									},
-									"typeArgs": [
-										{
-											"kind": "reference",
-											"path": "::java::data::worldgen::T"
-										}
-									]
-								}
-							]
-						}
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::data::worldgen::T"
 				}
 			]
 		},
@@ -101321,20 +101162,133 @@
 		},
 		"minecraft:float_provider": {
 			"clamped_normal": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::ClampedNormalFloatProvider"
+				"kind": "template",
+				"child": {
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "min",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::T"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "max",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::T"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "mean",
+							"type": {
+								"kind": "float"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "deviation",
+							"type": {
+								"kind": "float"
+							}
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::T"
+					}
+				]
 			},
 			"constant": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::ConstantFloatProvider"
+				"kind": "template",
+				"child": {
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "value",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::T"
+							}
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::T"
+					}
+				]
 			},
 			"trapezoid": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::TrapezoidFloatProvider"
+				"kind": "template",
+				"child": {
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "min",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::T"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "max",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::T"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "plateau",
+							"type": {
+								"kind": "float"
+							}
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::T"
+					}
+				]
 			},
 			"uniform": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::UniformFloatProvider"
+				"kind": "template",
+				"child": {
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "min_inclusive",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::T"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "max_exclusive",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::T"
+							}
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::T"
+					}
+				]
 			}
 		},
 		"minecraft:foliage_placer": {
@@ -102001,36 +101955,62 @@
 				]
 			},
 			"constant": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": "value",
-								"type": {
-									"kind": "reference",
-									"path": "::java::data::worldgen::ConstantIntProvider"
-								}
-							}
-						],
-						"attributes": [
-							{
-								"name": "until",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "1.20.5"
+				"kind": "template",
+				"child": {
+					"kind": "union",
+					"members": [
+						{
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"key": "value",
+									"type": {
+										"kind": "concrete",
+										"child": {
+											"kind": "reference",
+											"path": "::java::data::worldgen::ConstantIntProvider"
+										},
+										"typeArgs": [
+											{
+												"kind": "reference",
+												"path": "::java::data::worldgen::T"
+											}
+										]
 									}
 								}
-							}
-						]
-					},
+							],
+							"attributes": [
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.20.5"
+										}
+									}
+								}
+							]
+						},
+						{
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::ConstantIntProvider"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::worldgen::T"
+								}
+							]
+						}
+					]
+				},
+				"typeParams": [
 					{
-						"kind": "reference",
-						"path": "::java::data::worldgen::ConstantIntProvider"
+						"path": "::java::data::worldgen::T"
 					}
 				]
 			},
@@ -102107,8 +102087,43 @@
 				]
 			},
 			"weighted_list": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::WeightListIntProvider",
+				"kind": "template",
+				"child": {
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "distribution",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::util::NonEmptyWeightedList"
+								},
+								"typeArgs": [
+									{
+										"kind": "concrete",
+										"child": {
+											"kind": "reference",
+											"path": "::java::data::worldgen::IntProvider"
+										},
+										"typeArgs": [
+											{
+												"kind": "reference",
+												"path": "::java::data::worldgen::T"
+											}
+										]
+									}
+								]
+							}
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::T"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
