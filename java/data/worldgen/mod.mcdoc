@@ -53,11 +53,11 @@ type ConstantIntProvider<T> = struct {
 	value: T,
 }
 
-dispatch minecraft:int_provider[constant] to (
+dispatch minecraft:int_provider[constant]<T> to (
 	#[until="1.20.5"] struct {
-		value: ConstantIntProvider
+		value: ConstantIntProvider<T>
 	} |
-	ConstantIntProvider |
+	ConstantIntProvider<T> |
 )
 
 type UniformIntProvider<T> = struct {
@@ -98,12 +98,10 @@ dispatch minecraft:int_provider[clamped_normal]<T> to (
 	#[since="1.20.5"] ClampedNormalIntProvider<T> |
 )
 
-type WeightListIntProvider<T> = struct {
+#[since="1.18"]
+dispatch minecraft:int_provider[weighted_list]<T> to struct {
 	distribution: NonEmptyWeightedList<IntProvider<T>>,
 }
-
-#[since="1.18"]
-dispatch minecraft:int_provider[weighted_list] to WeightListIntProvider
 
 
 type FloatProvider<T> = (
@@ -117,31 +115,27 @@ type FloatProvider<T> = (
 	} |
 )
 
-type ConstantFloatProvider<T> = struct {
+dispatch minecraft:float_provider[constant]<T> to struct {
 	value: T,
 }
-dispatch minecraft:float_provider[constant] to ConstantFloatProvider
 
-type UniformFloatProvider<T> = struct {
+dispatch minecraft:float_provider[uniform]<T> to struct {
 	min_inclusive: T,
 	max_exclusive: T,
 }
-dispatch minecraft:float_provider[uniform] to UniformFloatProvider
 
-type ClampedNormalFloatProvider<T> = struct {
+dispatch minecraft:float_provider[clamped_normal]<T> to struct {
 	min: T,
 	max: T,
 	mean: float,
 	deviation: float,
 }
-dispatch minecraft:float_provider[clamped_normal] to ClampedNormalFloatProvider
 
-type TrapezoidFloatProvider<T> = struct {
+dispatch minecraft:float_provider[trapezoid]<T> to struct {
 	min: T,
 	max: T,
 	plateau: float,
 }
-dispatch minecraft:float_provider[trapezoid] to TrapezoidFloatProvider
 
 type VerticalAnchor = (
 	struct {

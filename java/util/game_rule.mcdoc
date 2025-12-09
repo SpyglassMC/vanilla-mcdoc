@@ -1,4 +1,4 @@
-dispatch minecraft:game_rule [
+dispatch minecraft:game_rule[
 	advance_time,
 	advance_weather,
 	allow_entering_nether_using_portals,
