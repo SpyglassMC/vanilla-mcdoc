@@ -131,7 +131,7 @@ struct NeutralMob {
 	AngerTime?: int,
 	/// The time anger ends.
 	#[since="1.21.11"]
-	anger_end_tine?: long,
+	anger_end_time?: long,
 	#[until="1.21.11"]
 	AngryAt?: #[uuid] int[] @ 4,
 	#[since="1.21.11"]
