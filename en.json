@@ -1340,7 +1340,7 @@
 	"::java::world::entity::mob::MobBase.LeftHanded": "Whether it is left handed.",
 	"::java::world::entity::mob::MobBase.NoAI": "Whether it should have an AI.",
 	"::java::world::entity::mob::MobBase.PersistenceRequired": "Whether it should not despawn naturally.",
-	"::java::world::entity::mob::NeutralMob.anger_end_tine": "The time anger ends.",
+	"::java::world::entity::mob::NeutralMob.anger_end_time": "The time anger ends.",
 	"::java::world::entity::mob::NeutralMob.AngerTime": "Ticks that it will be angry for.",
 	"::java::world::entity::mob::phantom::Phantom.anchor_pos": "Approximate circle coordinates.",
 	"::java::world::entity::mob::phantom::Phantom.AX": "Approximate circle x coordinate.",
