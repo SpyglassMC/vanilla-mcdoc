@@ -1,5 +1,5 @@
 {
-	"ref": "fd0ada40eb4210785d78d2ac378c6b14c2a387f4",
+	"ref": "73932f0281d1be3ab33be1a224028b221d6f4c20",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -85816,7 +85816,7 @@
 						}
 					],
 					"desc": "The time anger ends.\n",
-					"key": "anger_end_tine",
+					"key": "anger_end_time",
 					"type": {
 						"kind": "long"
 					},
