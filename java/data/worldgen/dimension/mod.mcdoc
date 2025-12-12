@@ -11,7 +11,7 @@ dispatch minecraft:resource[dimension] to struct Dimension {
 type DimensionTypeRef = (
 	#[id="dimension_type"] string |
 	#[until="1.19"] struct {
-		name: #[id=(registry=dimension_type,definition=true)] string,
+		name: #[id=(registry="dimension_type",definition=true)] string,
 		...DimensionType,
 	} |
 )

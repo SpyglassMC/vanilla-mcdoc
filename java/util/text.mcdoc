@@ -59,7 +59,7 @@ type TextObject = (
 		...TextNbtBase,
 	} |
 	struct EntityNbtText {
-		entity: #[entity(amount=multiple,type=entities)] string,
+		entity: #[entity(amount=multiple,type="entities")] string,
 		nbt: #[nbt_path=minecraft:entity[[entity]]] string,
 		#[since="1.20.3"]
 		source?: "entity",

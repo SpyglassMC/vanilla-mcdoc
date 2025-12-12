@@ -8,7 +8,7 @@ dispatch minecraft:biome_source[checkerboard] to struct Checkerboard {
 	scale?: int @ 0..62,
 	biomes: (
 		[#[id="worldgen/biome"] string] |
-		#[since="1.18.2"] #[id(registry="worldgen/biome",tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="worldgen/biome",tags="allowed")] string |
 	),
 }
 

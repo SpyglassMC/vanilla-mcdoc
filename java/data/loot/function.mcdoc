@@ -168,7 +168,7 @@ dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
 	/// Generated structure to locate. Accepts any of the structure types used by the `/locate` command. Defaults to buried treasure.
 	destination?: (
 		#[until="1.19"] string | // TODO: low-priority, this is an enum
-		#[since="1.19"] #[id(registry="worldgen/structure",tags=implicit)] string |
+		#[since="1.19"] #[id(registry="worldgen/structure",tags="implicit")] string |
 	),
 	/// The icon used to mark the destination on the map. Accepts any of the map icon text IDs (case insensitive).
 	/// If `mansion` or `monument` is used, the color of the lines on the item texture changes to match the corresponding explorer map.

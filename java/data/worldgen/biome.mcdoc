@@ -47,19 +47,19 @@ dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 		#[until="1.21.2"] struct CarversPerStep {
 			[CarveStep]: (
 				[CarverRef] |
-				#[since="1.18.2"] #[id(registry="worldgen/configured_carver",tags=allowed)] string |
+				#[since="1.18.2"] #[id(registry="worldgen/configured_carver",tags="allowed")] string |
 			),
 		} |
 		#[since="1.21.2"] (
 			[CarverRef] |
-			#[id(registry="worldgen/configured_carver",tags=allowed)] string |
+			#[id(registry="worldgen/configured_carver",tags="allowed")] string |
 		) |
 	),
 	features: (
 		#[until="1.18"] [[ConfiguredFeatureRef]] @ ..10 |
 		#[since="1.18"] [(
 			[PlacedFeatureRef] |
-			#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags=required)] string |
+			#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags="required")] string |
 		)] @ ..11 |
 	),
 }

@@ -90,7 +90,7 @@ struct LocationPredicate {
 		#[since="1.16"] #[id="worldgen/biome"] string |
 	),
 	#[since="1.20.5"]
-	biomes?: (#[id=(registry="worldgen/biome",tags=allowed)] string | [#[id="worldgen/biome"] string]),
+	biomes?: (#[id=(registry="worldgen/biome",tags="allowed")] string | [#[id="worldgen/biome"] string]),
 	#[until="1.19"]
 	feature?: (
 		#[until="1.18.2"] string |
@@ -99,7 +99,7 @@ struct LocationPredicate {
 	#[since="1.19"] #[until="1.20.5"]
 	structure?: #[id="worldgen/structure"] string,
 	#[since="1.20.5"]
-	structures?: (#[id=(registry="worldgen/structure",tags=allowed)] string | [#[id="worldgen/structure"] string]),
+	structures?: (#[id=(registry="worldgen/structure",tags="allowed")] string | [#[id="worldgen/structure"] string]),
 	dimension?: #[id="dimension"] string,
 	/// Calculated using: `max(sky-darkening, block)`.
 	light?: struct LocationPredicateLight {

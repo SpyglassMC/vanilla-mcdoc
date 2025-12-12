@@ -19,7 +19,7 @@ type Structure = struct {
 	#[since="1.18.2"]
 	biomes: (
 		[#[id="worldgen/biome"] string] |
-		#[id(registry="worldgen/biome",tags=allowed)] string |
+		#[id(registry="worldgen/biome",tags="allowed")] string |
 	),
 	/// The step when the structure generates.
 	#[since="1.19"]

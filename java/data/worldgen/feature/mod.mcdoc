@@ -471,7 +471,7 @@ dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
 dispatch minecraft:feature_config[simple_random_selector] to struct SimpleRandomSelectorConfig {
 	features: (
 		[FeatureRef] |
-		#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags=allowed)] string |
+		#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags="allowed")] string |
 	),
 }
 
