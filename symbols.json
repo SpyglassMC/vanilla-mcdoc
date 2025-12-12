@@ -1,5 +1,5 @@
 {
-	"ref": "73932f0281d1be3ab33be1a224028b221d6f4c20",
+	"ref": "20c7da28eca3ca176b52c1122df905721c99daec",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -13686,8 +13686,11 @@
 													}
 												},
 												"tags": {
-													"kind": "reference",
-													"path": "::java::data::advancement::predicate::allowed"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
 												}
 											}
 										}
@@ -13854,8 +13857,11 @@
 													}
 												},
 												"tags": {
-													"kind": "reference",
-													"path": "::java::data::advancement::predicate::allowed"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
 												}
 											}
 										}
@@ -26396,8 +26402,11 @@
 													}
 												},
 												"tags": {
-													"kind": "reference",
-													"path": "::java::data::loot::function::implicit"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "implicit"
+													}
 												}
 											}
 										}
@@ -38120,8 +38129,11 @@
 																		}
 																	},
 																	"tags": {
-																		"kind": "reference",
-																		"path": "::java::data::worldgen::biome::allowed"
+																		"kind": "literal",
+																		"value": {
+																			"kind": "string",
+																			"value": "allowed"
+																		}
 																	}
 																}
 															}
@@ -38171,8 +38183,11 @@
 															}
 														},
 														"tags": {
-															"kind": "reference",
-															"path": "::java::data::worldgen::biome::allowed"
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "allowed"
+															}
 														}
 													}
 												}
@@ -38266,8 +38281,11 @@
 																}
 															},
 															"tags": {
-																"kind": "reference",
-																"path": "::java::data::worldgen::biome::required"
+																"kind": "literal",
+																"value": {
+																	"kind": "string",
+																	"value": "required"
+																}
 															}
 														}
 													}
@@ -39162,8 +39180,11 @@
 													}
 												},
 												"tags": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::biome::allowed"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
 												}
 											}
 										}
@@ -41148,8 +41169,11 @@
 									"kind": "tree",
 									"values": {
 										"registry": {
-											"kind": "reference",
-											"path": "::java::data::worldgen::dimension::dimension_type"
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "dimension_type"
+											}
 										},
 										"definition": {
 											"kind": "literal",
@@ -41326,8 +41350,11 @@
 													}
 												},
 												"tags": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::dimension::biome_source::allowed"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
 												}
 											}
 										}
@@ -42186,8 +42213,11 @@
 													}
 												},
 												"tags": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::dimension::chunk_generator::allowed"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
 												}
 											}
 										}
@@ -43025,8 +43055,11 @@
 											"kind": "tree",
 											"values": {
 												"registry": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::dimension::dimension_type"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "dimension_type"
+													}
 												},
 												"definition": {
 													"kind": "literal",
@@ -48827,8 +48860,11 @@
 													}
 												},
 												"tags": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::feature::allowed"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
 												}
 											}
 										}
@@ -53735,8 +53771,11 @@
 													}
 												},
 												"tags": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::structure_set::allowed"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
 												}
 											}
 										}
@@ -54312,8 +54351,11 @@
 													}
 												},
 												"tags": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::structure::allowed"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
 												}
 											}
 										}
@@ -55568,8 +55610,11 @@
 													}
 												},
 												"tags": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::structure::allowed"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
 												}
 											}
 										}
@@ -63785,8 +63830,11 @@
 											"path": "::java::util::text::multiple"
 										},
 										"type": {
-											"kind": "reference",
-											"path": "::java::util::text::entities"
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "entities"
+											}
 										}
 									}
 								}
@@ -66189,8 +66237,11 @@
 													"path": "::java::util::text::multiple"
 												},
 												"type": {
-													"kind": "reference",
-													"path": "::java::util::text::entities"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "entities"
+													}
 												}
 											}
 										}
