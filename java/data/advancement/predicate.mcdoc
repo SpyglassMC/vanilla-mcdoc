@@ -56,7 +56,10 @@ struct BlockPredicate {
 	#[until="1.20.5"]
 	tag?: #[id(registry="block",tags="implicit")] string,
 	state?: mcdoc:block_states[[blocks]],
-	nbt?: #[nbt=minecraft:block[[blocks]]] string,
+	nbt?: (
+		#[nbt=minecraft:block[[blocks]]] string |
+		#[since="1.20.5"] minecraft:block[[blocks]]
+	),
 	/// Match exact data component values on the block entity.
 	#[since="1.21.5"]
 	components?: DataComponentExactPredicate,
@@ -133,7 +136,10 @@ struct EntityPredicate {
 	#[since="1.19"]
 	type_specific?: EntitySubPredicate,
 	team?: #[team] string,
-	nbt?: #[nbt=minecraft:entity[[type]]] string,
+	nbt?: (
+		#[nbt=minecraft:entity[[type]]] string |
+		#[since="1.20.5"] minecraft:entity[[type]]
+	),
 	location?: LocationPredicate,
 	distance?: DistancePredicate,
 	flags?: EntityFlagsPredicate,
