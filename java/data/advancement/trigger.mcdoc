@@ -148,6 +148,7 @@ dispatch minecraft:trigger[enchanted_item] to Conditions<struct EnchantedItem {
 }>
 
 /// Player stands in a block.
+///
 /// Checked every tick and will trigger for each successful match (up to 8 times, the maximum amount of blocks a player can stand in).
 dispatch minecraft:trigger[enter_block] to Conditions<struct EnterBlock {
 	...TriggerBase,
