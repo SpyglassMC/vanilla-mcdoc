@@ -1,5 +1,5 @@
 {
-	"ref": "29cf1ca75332da8d8c7a7afd4dfb923a33a5bc0f",
+	"ref": "cc733e079f92431749e7a33faf4da46b5bb43861",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -11164,22 +11164,51 @@
 					"kind": "pair",
 					"key": "nbt",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "nbt",
-								"value": {
-									"kind": "dispatcher",
-									"parallelIndices": [
-										{
-											"kind": "dynamic",
-											"accessor": [
-												"blocks"
-											]
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "nbt",
+										"value": {
+											"kind": "dispatcher",
+											"parallelIndices": [
+												{
+													"kind": "dynamic",
+													"accessor": [
+														"blocks"
+													]
+												}
+											],
+											"registry": "minecraft:block"
 										}
-									],
-									"registry": "minecraft:block"
-								}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"blocks"
+										]
+									}
+								],
+								"registry": "minecraft:block",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -12196,22 +12225,51 @@
 					"kind": "pair",
 					"key": "nbt",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "nbt",
-								"value": {
-									"kind": "dispatcher",
-									"parallelIndices": [
-										{
-											"kind": "dynamic",
-											"accessor": [
-												"type"
-											]
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "nbt",
+										"value": {
+											"kind": "dispatcher",
+											"parallelIndices": [
+												{
+													"kind": "dynamic",
+													"accessor": [
+														"type"
+													]
+												}
+											],
+											"registry": "minecraft:entity"
 										}
-									],
-									"registry": "minecraft:entity"
-								}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"type"
+										]
+									}
+								],
+								"registry": "minecraft:entity",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
