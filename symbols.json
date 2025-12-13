@@ -1,5 +1,5 @@
 {
-	"ref": "20c7da28eca3ca176b52c1122df905721c99daec",
+	"ref": "29cf1ca75332da8d8c7a7afd4dfb923a33a5bc0f",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -77605,7 +77605,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "How text should be aligned. Defaults to `center`.\n\nWill log an error when not specified, see [MC-261036](https://bugs.mojang.com/browse/MC-261036).\n",
+					"desc": " How text should be aligned. Defaults to `center`.\n\n\n\n Will log an error when not specified, see [MC-261036](https://bugs.mojang.com/browse/MC-261036).\n",
 					"key": "alignment",
 					"type": {
 						"kind": "reference",
@@ -77696,7 +77696,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Block state to display.\n\nDoes display most block entities (eg. Chests, Beds, Furnaces, etc).\n\nDoes not display specially rendered block entities (eg. The bell in a bell block, an end gateway, the book on an enchantment table, a banner, a sign, etc).\n",
+					"desc": " Block state to display. Can display most block entities (eg. Chests, Beds, Furnaces, etc).\n\n\n\n Does not display specially rendered block entities (eg. The bell in a bell block, an end gateway, the book on an enchantment table, a banner, a sign, etc).\n",
 					"key": "block_state",
 					"type": {
 						"kind": "reference",
@@ -77809,7 +77809,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": " Transformation applied to model (after normal entity orientation). Defaults to identity. Interpolated.\n\n For an easy GUI, check out [Misode's tool](https://misode.github.io/transformation/).\n\n\n\n The value is stored in decomposed object form for interpolation & ease-of-use,\n\n Supports storing a [non-canonical matrix form](https://gist.github.com/MulverineX/f473dbfd7cc8dadb326074fef05ad76a) describing a row-major matrix, which is automatically decomposed by the game with a performance cost.\n",
+					"desc": " Transformation applied to model (after normal entity orientation). Defaults to identity. Interpolated.\n\n\n\n For an easy GUI, check out [Misode's tool](https://misode.github.io/transformation/).\n\n\n\n The value is stored in decomposed object form for interpolation & ease-of-use,\n\n\n\n Supports storing a [non-canonical matrix form](https://gist.github.com/MulverineX/f473dbfd7cc8dadb326074fef05ad76a) describing a row-major matrix, which is automatically decomposed by the game with a performance cost.\n",
 					"key": "transformation",
 					"type": {
 						"kind": "reference",
@@ -77846,7 +77846,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Ticks after the next client tick to wait until starting the interpolation.\n\nInfo:\n\nAll interpolated properties are part of a single interpolation set.\n\nAny update to an interpolated property will cause all values of the interpolation set to be saved as \"current\".\n\n - Data command executions that do not change the value of a property (even if it's present in NBT) do not count as updates.\n\n - Updates are synchronized to clients at most once per tick, so multiple updates within a single command or a function will still count as a single update.\n\nPrevious current values are saved as \"previous\".\n\nIf interpolation is enabled, the entity will transition between \"previous\" and \"current\" values over time.\n\n`interpolation_duration` must be set every time an interpolatable property is updated to cause interpolation.\n\nNegative values are allowed, will cause an instant jump to the subtracted duration value, then interpolation will continue as normal.\n",
+					"desc": " Ticks after the next client tick to wait until starting the interpolation.\n\n\n\n Info:\n\n\n\n All interpolated properties are part of a single interpolation set.\n\n\n\n Any update to an interpolated property will cause all values of the interpolation set to be saved as \"current\".\n\n  - Data command executions that do not change the value of a property (even if it's present in NBT) do not count as updates.\n\n  - Updates are synchronized to clients at most once per tick, so multiple updates within a single command or a function will still count as a single update.\n\n\n\n Previous current values are saved as \"previous\".\n\n\n\n If interpolation is enabled, the entity will transition between \"previous\" and \"current\" values over time.\n\n\n\n `interpolation_duration` must be set every time an interpolatable property is updated to cause interpolation.\n\n\n\n Negative values are allowed, will cause an instant jump to the subtracted duration value, then interpolation will continue as normal.\n",
 					"key": "start_interpolation",
 					"type": {
 						"kind": "int"
@@ -77927,7 +77927,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Describe width of the culling bounding box.\n\nBounding box spans vertically from y to y+height and horizontally width/2 in all directions from the entity position.\n\nIf set to 0, culling is disabled. Defaults to 0.\n",
+					"desc": " Describe width of the culling bounding box.\n\n\n\n Bounding box spans vertically from y to y+height and horizontally width/2 in all directions from the entity position.\n\n\n\n If set to 0, culling is disabled. Defaults to 0.\n",
 					"key": "width",
 					"type": {
 						"kind": "float",
@@ -77940,7 +77940,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Describes height of the culling bounding box.\n\nBounding box spans vertically from y to y+height and horizontally width/2 in all directions from the entity position.\n\nIf set to 0, culling is disabled. Defaults to 0.\n",
+					"desc": " Describes height of the culling bounding box.\n\n\n\n Bounding box spans vertically from y to y+height and horizontally width/2 in all directions from the entity position.\n\n\n\n If set to 0, culling is disabled. Defaults to 0.\n",
 					"key": "height",
 					"type": {
 						"kind": "float",
@@ -77953,7 +77953,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Override glow border color. If set to 0, uses team color. Defaults to 0.\n\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.\n",
+					"desc": " Override glow border color. If set to 0, uses team color. Defaults to 0.\n\n\n\n Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.\n",
 					"key": "glow_color_override",
 					"type": {
 						"kind": "union",
@@ -78140,7 +78140,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Color of background. Includes alpha channel. Defaults to 0x40000000. Interpolated.\n\nCalculated as `ALPHA << 24 | RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.\n",
+					"desc": " Color of background. Includes alpha channel. Defaults to 0x40000000. Interpolated.\n\n\n\n Calculated as `ALPHA << 24 | RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.\n",
 					"key": "background",
 					"type": {
 						"kind": "int",
@@ -78205,7 +78205,7 @@
 						"fields": [
 							{
 								"kind": "pair",
-								"desc": "How text should be aligned. Defaults to `center`.\n\nWill log an error when not specified, see [MC-261036](https://bugs.mojang.com/browse/MC-261036).\n",
+								"desc": " How text should be aligned. Defaults to `center`.\n\n\n\n Will log an error when not specified, see [MC-261036](https://bugs.mojang.com/browse/MC-261036).\n",
 								"key": "alignment",
 								"type": {
 									"kind": "reference",
