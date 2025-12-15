@@ -1,4 +1,5 @@
 use ::java::data::trial_spawner::TrialSpawnerConfig
+use ::java::util::slot::EquipmentSlot
 use ::java::util::InclusiveRange
 use ::java::util::WeightedEntry
 use ::java::world::entity::AnyEntity
