@@ -1,4 +1,4 @@
-dispatch minecraft:entity[end_crystal] to struct EvokerFangs {
+dispatch minecraft:entity[end_crystal] to struct EndCrystal {
 	...super::EntityBase,
 	/// Whether to show the base of the end crystal.
 	ShowBottom?: boolean,
