@@ -1,5 +1,5 @@
 {
-	"ref": "cc733e079f92431749e7a33faf4da46b5bb43861",
+	"ref": "0a95d467bfbc5abb1cd9ba68819b08dc4c369aa0",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -78415,7 +78415,7 @@
 				}
 			]
 		},
-		"::java::world::entity::end_crystal::EvokerFangs": {
+		"::java::world::entity::end_crystal::EndCrystal": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -99025,7 +99025,7 @@
 			},
 			"end_crystal": {
 				"kind": "reference",
-				"path": "::java::world::entity::end_crystal::EvokerFangs"
+				"path": "::java::world::entity::end_crystal::EndCrystal"
 			},
 			"ender_dragon": {
 				"kind": "reference",
