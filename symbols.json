@@ -1,5 +1,5 @@
 {
-	"ref": "0a95d467bfbc5abb1cd9ba68819b08dc4c369aa0",
+	"ref": "0bdc3d14ed9d32078d3383250925305a2a222b2d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -70920,7 +70920,7 @@
 					"kind": "pair",
 					"key": {
 						"kind": "reference",
-						"path": "::java::world::block::spawner::EquipmentSlot"
+						"path": "::java::util::slot::EquipmentSlot"
 					},
 					"type": {
 						"kind": "float",
@@ -71029,7 +71029,7 @@
 										"kind": "pair",
 										"key": {
 											"kind": "reference",
-											"path": "::java::world::block::spawner::EquipmentSlot"
+											"path": "::java::util::slot::EquipmentSlot"
 										},
 										"type": {
 											"kind": "float",
