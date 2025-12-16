@@ -1,0 +1,12 @@
+use ::java::data::util::NumberProvider
+
+dispatch minecraft:resource[trade_set] to struct TradeSet {
+	/// The possible trade generators.
+	trades: (#[id(registry="villager_trade",tags="allowed")] string | #[id="villager_trade"] string),
+	/// The amount of trades to be generated.
+	amount: NumberProvider,
+	/// Whether the trade set can use the same generator multiple times to generate trades.
+	/// Defaults to `false`.
+	allow_duplicates?: boolean,
+	random_sequence?: #[id(registry="random_sequence",definition=true)] string,
+}

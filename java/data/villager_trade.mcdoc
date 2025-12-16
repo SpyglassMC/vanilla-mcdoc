@@ -1,0 +1,37 @@
+use ::java::data::util::NumberProvider
+use ::java::data::predicate::Predicate
+use ::java::data::item_modifier::ItemModifier
+use ::java::world::item::ItemStack
+use ::java::world::item::TradeCost
+
+dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
+	/// The item required by the merchant.
+	wants: TradeCost,
+	/// The second item required by the merchant.
+	additional_wants?: TradeCost,
+	/// The base item given by the merchant.
+	gives: ItemStack,
+	/// The modifiers applied to the `gives` item.
+	/// Does **not** support `reference` item modifier.
+	/// The resulting item can affect the count of `wants` by its `additional_trade_cost` component.
+	/// After modifying the cost, the `additional_trade_cost` component is removed.
+	given_item_modifiers?: [ItemModifier],
+	/// Uses 1 if the provided value is lower than 1
+	/// Defaults to 4
+	max_uses?: NumberProvider,
+	/// How much factors such as demand, discounts or penalties affects the count of `wants`.
+	/// Uses 0.0 if the provided value is lower than 0.0
+	/// Defaults to 0.0
+	reputation_discount?: NumberProvider,
+	/// The XP reward of the merchant.
+	/// Uses 0 if the provided value is lower than 0
+	/// Defaults to 1
+	xp?: NumberProvider,
+	/// The predicate for the trade to be offered.
+	/// Does **not** support `reference` predicate.
+	merchant_predicate?: Predicate,
+	/// Doubles the `additional_trade_cost` value if the resulting item of `given_item_modifiers`:
+	/// 1. has `additional_trade_cost` component, and
+	/// 2. has the specified enchantments.
+	double_trade_price_enchantments?: (#[id(registry="enchantment",tags="allowed")] string | #[id="enchantment"] string),
+}
