@@ -102,6 +102,11 @@ dispatch minecraft:number_provider[enchantment_level] to struct EnchantmentLevel
 	amount: LevelBasedValue,
 }
 
+#[since="26.1"]
+dispatch minecraft:number_provider[sum] to struct SumNumberProvider {
+	summands: [NumberProvider],
+}
+
 type ScoreProvider = (
 	EntityTarget |
 	struct {

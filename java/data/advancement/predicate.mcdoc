@@ -330,6 +330,11 @@ dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 		sneak?: boolean,
 		sprint?: boolean,
 	},
+	#[since="26.1"]
+	food?: struct FoodPredicate {
+		level?: MinMaxBounds<int>,
+		saturation?: MinMaxBounds<double>,
+	}
 }
 
 #[until="1.21.5"]
