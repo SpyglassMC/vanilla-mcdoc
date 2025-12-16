@@ -1,6 +1,7 @@
 use ::java::util::attribute::AttributeName
 use ::java::util::attribute::LegacyOperation
 use ::java::util::slot::EquipmentSlotGroup
+use ::java::data::util::NumberProvider
 use ::java::world::block::BlockEntityData
 use ::java::world::component::DataComponentPatch
 use ::java::world::component::DataComponentExactPredicate
@@ -32,6 +33,13 @@ type ItemStackOfComponent<T> = struct {
 
 type ItemStack = ItemStackOfComponent<DataComponentPatch>
 type ItemCost = ItemStackOfComponent<DataComponentExactPredicate>  // used by villager trade
+
+// 26.1 villager trade field
+struct TradeCost {
+	...SingleItemOfComponent<DataComponentExactPredicate>,
+	/// Defaults to constant 1.
+	count?: NumberProvider,
+}
 
 // Until 1.20.5
 struct ItemBase {
