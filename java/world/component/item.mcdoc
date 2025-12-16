@@ -18,6 +18,9 @@ use ::java::world::item::ItemStack
 use ::java::world::item::SingleItem
 use ::java::world::entity::AnyEntity
 
+#[since="26.1"]
+dispatch minecraft:data_component[additional_trade_cost] to int
+
 #[since="1.21.11"]
 dispatch minecraft:data_component[attack_range] to struct AttackRange {
 	/// Minimum distance to the target to be considered valid.
