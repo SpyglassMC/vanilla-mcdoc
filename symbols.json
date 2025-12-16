@@ -1,5 +1,5 @@
 {
-	"ref": "a1dabecd2f35d5bf2d1648a668dbcde306585a61",
+	"ref": "9a10b0e633b17c3a3b856536d4cba5e4b12e70c5",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -13001,6 +13001,45 @@
 				}
 			]
 		},
+		"::java::data::advancement::predicate::FoodPredicate": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "level",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "saturation",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "double"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::advancement::predicate::FoxPredicate": {
 			"kind": "struct",
 			"fields": [
@@ -14756,6 +14795,62 @@
 								"key": "sprint",
 								"type": {
 									"kind": "boolean"
+								},
+								"optional": true
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "food",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "level",
+								"type": {
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::util::MinMaxBounds"
+									},
+									"typeArgs": [
+										{
+											"kind": "int"
+										}
+									]
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"key": "saturation",
+								"type": {
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::util::MinMaxBounds"
+									},
+									"typeArgs": [
+										{
+											"kind": "double"
+										}
+									]
 								},
 								"optional": true
 							}
@@ -26258,6 +26353,27 @@
 					"optional": true
 				},
 				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "Whether to add `additional_trade_cost` component to the enchanted item.\n\nThe additioal cost value is determined by the enchantment level, with the formula `2 + random(0, 5 + level * 10) + 3 * level`.\n\nDefaults to `false`.\n",
+					"key": "include_additional_cost_component",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
@@ -26395,6 +26511,27 @@
 					],
 					"desc": "Whether treasure enchantments are allowed on this item.\n",
 					"key": "treasure",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "Whether to add `additional_trade_cost` component to the enchanted item.\n\nThe additioal cost value is equal to the level cost determined by `levels`.\n\nDefaults to `false`.\n",
+					"key": "include_additional_cost_component",
 					"type": {
 						"kind": "boolean"
 					},
@@ -28427,6 +28564,93 @@
 							}
 						]
 					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::loot::function::Conditions"
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::SetRandomDyes": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The number of random dyes to apply to the item.\n\nThe same dye color can be selected multiple times.\n\nOnly has effect on `#dyeable` items.\n",
+					"key": "number_of_dyes",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
+					},
+					"optional": true
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::loot::function::Conditions"
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::SetRandomPotion": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Possible potions to select from.\n\nDefaults to all potions.\n",
+					"key": "options",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "potion"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "potion"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					"optional": true
 				},
 				{
 					"kind": "spread",
@@ -32228,6 +32452,113 @@
 				}
 			]
 		},
+		"::java::data::trade_set::TradeSet": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The possible trade generators.\n",
+					"key": "trades",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "villager_trade"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "villager_trade"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The amount of trades to be generated.\n",
+					"key": "amount",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the trade set can use the same generator multiple times to generate trades.\n\nDefaults to `false`.\n",
+					"key": "allow_duplicates",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "random_sequence",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "random_sequence"
+											}
+										},
+										"definition": {
+											"kind": "literal",
+											"value": {
+												"kind": "boolean",
+												"value": true
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::trial_spawner::TrialSpawnerConfig": {
 			"kind": "struct",
 			"fields": [
@@ -33909,6 +34240,22 @@
 				}
 			]
 		},
+		"::java::data::util::SumNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "summands",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::util::NumberProvider"
+						}
+					}
+				}
+			]
+		},
 		"::java::data::util::UniformIntGenerator": {
 			"kind": "struct",
 			"fields": [
@@ -35177,6 +35524,145 @@
 						"kind": "reference",
 						"path": "::java::data::variants::SpawnPrioritySelectors"
 					}
+				}
+			]
+		},
+		"::java::data::villager_trade::VillagerTrade": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The item required by the merchant.\n",
+					"key": "wants",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::TradeCost"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The second item required by the merchant.\n",
+					"key": "additional_wants",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::TradeCost"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The base item given by the merchant.\n",
+					"key": "gives",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStack"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The modifiers applied to the `gives` item.\n\nDoes **not** support `reference` item modifier.\n\nThe resulting item can affect the count of `wants` by its `additional_trade_cost` component.\n\nAfter modifying the cost, the `additional_trade_cost` component is removed.\n",
+					"key": "given_item_modifiers",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::item_modifier::ItemModifier"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Uses 1 if the provided value is lower than 1\n\nDefaults to 4\n",
+					"key": "max_uses",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "How much factors such as demand, discounts or penalties affects the count of `wants`.\n\nUses 0.0 if the provided value is lower than 0.0\n\nDefaults to 0.0\n",
+					"key": "reputation_discount",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The XP reward of the merchant.\n\nUses 0 if the provided value is lower than 0\n\nDefaults to 1\n",
+					"key": "xp",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The predicate for the trade to be offered.\n\nDoes **not** support `reference` predicate.\n",
+					"key": "merchant_predicate",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::Predicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Doubles the `additional_trade_cost` value if the resulting item of `given_item_modifiers`:\n\n1. has `additional_trade_cost` component, and\n\n2. has the specified enchantments.\n",
+					"key": "double_trade_price_enchantments",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "enchantment"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "enchantment"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -93295,6 +93781,37 @@
 					"optional": true
 				}
 			]
+		},
+		"::java::world::item::TradeCost": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::world::item::SingleItemOfComponent"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::world::component::DataComponentExactPredicate"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 1.\n",
+					"key": "count",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
+					},
+					"optional": true
+				}
+			]
 		}
 	},
 	"mcdoc/dispatcher": {
@@ -96440,6 +96957,21 @@
 			}
 		},
 		"minecraft:data_component": {
+			"additional_trade_cost": {
+				"kind": "int",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"attack_range": {
 				"kind": "reference",
 				"path": "::java::world::component::item::AttackRange",
@@ -100871,6 +101403,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::attribute::BooleanAttribute"
 			},
+			"visual/ambient_light_color": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::RGBColorAttribute",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"visual/ambient_particles": {
 				"kind": "concrete",
 				"child": {
@@ -100883,6 +101431,22 @@
 						"item": {
 							"kind": "reference",
 							"path": "::java::data::worldgen::attribute::AmbientParticle"
+						}
+					}
+				]
+			},
+			"visual/block_light_tint": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::RGBColorAttribute",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
 						}
 					}
 				]
@@ -100986,6 +101550,22 @@
 					{
 						"kind": "reference",
 						"path": "::java::data::util::MoonPhase"
+					}
+				]
+			},
+			"visual/night_vision_color": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::RGBColorAttribute",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
 					}
 				]
 			},
@@ -104253,6 +104833,38 @@
 					}
 				]
 			},
+			"set_random_dyes": {
+				"kind": "reference",
+				"path": "::java::data::loot::function::SetRandomDyes",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
+			"set_random_potion": {
+				"kind": "reference",
+				"path": "::java::data::loot::function::SetRandomPotion",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"set_stew_effect": {
 				"kind": "reference",
 				"path": "::java::data::loot::function::SetStewEffect"
@@ -104666,6 +105278,22 @@
 			"storage": {
 				"kind": "reference",
 				"path": "::java::data::util::StorageNumberProvider"
+			},
+			"sum": {
+				"kind": "reference",
+				"path": "::java::data::util::SumNumberProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
 			},
 			"uniform": {
 				"kind": "reference",
@@ -105454,6 +106082,10 @@
 					}
 				]
 			},
+			"trade_set": {
+				"kind": "reference",
+				"path": "::java::data::trade_set::TradeSet"
+			},
 			"trial_spawner": {
 				"kind": "reference",
 				"path": "::java::data::trial_spawner::TrialSpawnerConfig",
@@ -105501,6 +106133,10 @@
 						}
 					}
 				]
+			},
+			"villager_trade": {
+				"kind": "reference",
+				"path": "::java::data::villager_trade::VillagerTrade"
 			},
 			"waypoint_style": {
 				"kind": "reference",
