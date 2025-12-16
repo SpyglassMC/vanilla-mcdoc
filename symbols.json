@@ -1,5 +1,5 @@
 {
-	"ref": "0bdc3d14ed9d32078d3383250925305a2a222b2d",
+	"ref": "778100ed4139cbea303057f770ec7d37838374f4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -63884,8 +63884,11 @@
 									"kind": "tree",
 									"values": {
 										"amount": {
-											"kind": "reference",
-											"path": "::java::util::text::multiple"
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "multiple"
+											}
 										},
 										"type": {
 											"kind": "literal",
@@ -66291,8 +66294,11 @@
 											"kind": "tree",
 											"values": {
 												"amount": {
-													"kind": "reference",
-													"path": "::java::util::text::multiple"
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "multiple"
+													}
 												},
 												"type": {
 													"kind": "literal",
