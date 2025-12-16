@@ -1,5 +1,5 @@
 {
-	"ref": "778100ed4139cbea303057f770ec7d37838374f4",
+	"ref": "90c395cd3223fba40f0ae0568111edee65ce9eff",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -74184,7 +74184,18 @@
 						]
 					},
 					"type": {
-						"kind": "string"
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "key"
+									}
+								]
+							}
+						],
+						"registry": "mcdoc:block_state_keys"
 					}
 				}
 			]
