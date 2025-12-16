@@ -1,5 +1,5 @@
 {
-	"ref": "90c395cd3223fba40f0ae0568111edee65ce9eff",
+	"ref": "a1dabecd2f35d5bf2d1648a668dbcde306585a61",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -64211,6 +64211,358 @@
 					"value": "key.command"
 				},
 				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugClearChat",
+					"value": "key.debug.clearChat"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugCopyLocation",
+					"value": "key.debug.copyLocation"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugCopyRecreateCommand",
+					"value": "key.debug.copyRecreateCommand"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugCrash",
+					"value": "key.debug.crash"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugOptionsMenu",
+					"value": "key.debug.debugOptions"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugDumpDynamicTextures",
+					"value": "key.debug.dumpDynamicTextures"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugDumpVersion",
+					"value": "key.debug.dumpVersion"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugFocusPause",
+					"value": "key.debug.focusPause"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugFpsCharts",
+					"value": "key.debug.fpsCharts"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"identifier": "DebugLightmapTexture",
+					"value": "key.debug.lightmapTexture"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugModifier",
+					"value": "key.debug.modifier"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugNetworkCharts",
+					"value": "key.debug.networkCharts"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugOverlay",
+					"value": "key.debug.overlay"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugProfiling",
+					"value": "key.debug.profiling"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugProfilingChart",
+					"value": "key.debug.profilingChart"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugReloadChunk",
+					"value": "key.debug.reloadChunk"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugReloadResourcePacks",
+					"value": "key.debug.reloadResourcePacks"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugShowAdvancedTooltips",
+					"value": "key.debug.showAdvancedTooltips"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugShowChunkBorders",
+					"value": "key.debug.showChunkBorders"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugShowHitboxes",
+					"value": "key.debug.showHitboxes"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugSpectate",
+					"value": "key.debug.spectate"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "DebugSwitchGameMode",
+					"value": "key.debug.switchGameMode"
+				},
+				{
 					"identifier": "Drop",
 					"value": "key.drop"
 				},
@@ -64347,8 +64699,40 @@
 					"value": "key.swapOffhand"
 				},
 				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "ToggleGui",
+					"value": "key.toggleGui"
+				},
+				{
 					"identifier": "TogglePerspective",
 					"value": "key.togglePerspective"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"identifier": "ToggleSpectatorShaderEffects",
+					"value": "key.toggleSpectatorShaderEffects"
 				},
 				{
 					"identifier": "Use",
