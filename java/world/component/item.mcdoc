@@ -268,7 +268,7 @@ dispatch minecraft:data_component[death_protection] to struct DeathProtection {
 }
 
 dispatch minecraft:data_component[debug_stick_state] to struct DebugStickState {
-	[#[id="block"] string]: string, // TODO
+	[#[id="block"] string]: mcdoc:block_state_keys[[%key]],
 }
 
 dispatch minecraft:data_component[dyed_color] to (
