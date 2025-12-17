@@ -450,7 +450,7 @@
 	"::java::data::loot::function::SetName.entity": "Specifies the entity to act as the target `@s` in the JSON text component.",
 	"::java::data::loot::function::SetName.target": "Which name component to set. Defaults to `custom_name`.",
 	"::java::data::loot::function::SetPotion.id": "The potion identifier.",
-	"::java::data::loot::function::SetRandomDyes.number_of_dyes": "Random dyes to apply to the item.\nThe same dye color can be selected multiple times.\nOnly has effect on `#dyeable` items.",
+	"::java::data::loot::function::SetRandomDyes.number_of_dyes": "Applies specified number of random dyes to the item.\nFor example, one possible outcome of `\"number_of_dyes\": 2` is `#2C3065`, which is the combination of a blue dye and a black dye.\nThe same dye color can be selected multiple times.\nOnly has effect on `#dyeable` items.",
 	"::java::data::loot::function::SetRandomPotion.options": "Possible potions to select from.\nDefaults to all potions.",
 	"::java::data::loot::function::SetStewEffect.effects": "Sets the status effects for suspicious stew.",
 	"::java::data::loot::function::SetWriteableBookPages.pages": "Sets the pages of a book and quill.",
