@@ -1,5 +1,5 @@
 {
-	"ref": "9a10b0e633b17c3a3b856536d4cba5e4b12e70c5",
+	"ref": "ae25be2cd218a4c9e33e27311bfd33252b03f633",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -26366,7 +26366,7 @@
 							}
 						}
 					],
-					"desc": "Whether to add `additional_trade_cost` component to the enchanted item.\n\nThe additioal cost value is determined by the enchantment level, with the formula `2 + random(0, 5 + level * 10) + 3 * level`.\n\nDefaults to `false`.\n",
+					"desc": "Whether to add `additional_trade_cost` component to the enchanted item.\n\nAdditional cost value is determined by the enchantment level, with the formula `2 + random(0, 5 + level * 10) + 3 * level`.\n\nDefaults to `false`.\n",
 					"key": "include_additional_cost_component",
 					"type": {
 						"kind": "boolean"
@@ -26530,7 +26530,7 @@
 							}
 						}
 					],
-					"desc": "Whether to add `additional_trade_cost` component to the enchanted item.\n\nThe additioal cost value is equal to the level cost determined by `levels`.\n\nDefaults to `false`.\n",
+					"desc": "Whether to add `additional_trade_cost` component to the enchanted item.\n\nAdditional cost value is equal to the level cost determined by `levels`.\n\nDefaults to `false`.\n",
 					"key": "include_additional_cost_component",
 					"type": {
 						"kind": "boolean"
@@ -28579,11 +28579,24 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The number of random dyes to apply to the item.\n\nThe same dye color can be selected multiple times.\n\nOnly has effect on `#dyeable` items.\n",
+					"desc": "Random dyes to apply to the item.\n\nThe same dye color can be selected multiple times.\n\nOnly has effect on `#dyeable` items.\n",
 					"key": "number_of_dyes",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NumberProvider"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::NumberProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 16
+								}
+							}
+						]
 					},
 					"optional": true
 				},
@@ -32457,7 +32470,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The possible trade generators.\n",
+					"desc": "Possible trade generators.\n",
 					"key": "trades",
 					"type": {
 						"kind": "union",
@@ -32509,16 +32522,28 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The amount of trades to be generated.\n",
+					"desc": "Amount of trades to be generated.\n",
 					"key": "amount",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NumberProvider"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::NumberProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								}
+							}
+						]
 					}
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether the trade set can use the same generator multiple times to generate trades.\n\nDefaults to `false`.\n",
+					"desc": "Whether the trade set can use the same generator multiple times and generate duplicate trades.\n\nDefaults to `false`.\n",
 					"key": "allow_duplicates",
 					"type": {
 						"kind": "boolean"
@@ -35532,7 +35557,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The item required by the merchant.\n",
+					"desc": "Price item required by the merchant, count is modified depending on demand & per-player context.\n",
 					"key": "wants",
 					"type": {
 						"kind": "reference",
@@ -35541,7 +35566,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The second item required by the merchant.\n",
+					"desc": "Second item required by the merchant, count does not change.\n",
 					"key": "additional_wants",
 					"type": {
 						"kind": "reference",
@@ -35551,7 +35576,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The base item given by the merchant.\n",
+					"desc": "Item being offered by the merchant.\n",
 					"key": "gives",
 					"type": {
 						"kind": "reference",
@@ -35560,7 +35585,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The modifiers applied to the `gives` item.\n\nDoes **not** support `reference` item modifier.\n\nThe resulting item can affect the count of `wants` by its `additional_trade_cost` component.\n\nAfter modifying the cost, the `additional_trade_cost` component is removed.\n",
+					"desc": "Modifiers applied to the `gives` item.\n\nDoes **not** support `reference` item modifier.\n\nCan affect the count of `wants` with the `additional_trade_cost` component.\n\nAfter modifying the cost, the `additional_trade_cost` component is removed.\n",
 					"key": "given_item_modifiers",
 					"type": {
 						"kind": "list",
@@ -35573,37 +35598,74 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Uses 1 if the provided value is lower than 1\n\nDefaults to 4\n",
+					"desc": "Maximum number of uses of this trade before the villager has to restock. Defaults to `4`.\n",
 					"key": "max_uses",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NumberProvider"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::NumberProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								}
+							}
+						]
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "How much factors such as demand, discounts or penalties affects the count of `wants`.\n\nUses 0.0 if the provided value is lower than 0.0\n\nDefaults to 0.0\n",
+					"desc": "How much demand & reputation each affect the count of `wants`, is serialized as `priceMultiplier`. Defaults to `0.0`.\n",
 					"key": "reputation_discount",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NumberProvider"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::NumberProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "double",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 16777216
+								}
+							}
+						]
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "The XP reward of the merchant.\n\nUses 0 if the provided value is lower than 0\n\nDefaults to 1\n",
+					"desc": "Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`.\n",
 					"key": "xp",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NumberProvider"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::NumberProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0
+								}
+							}
+						]
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "The predicate for the trade to be offered.\n\nDoes **not** support `reference` predicate.\n",
+					"desc": " Check whether the trade should be offered by the merchant.\n\n\n\n Does **not** support the `reference` predicate.\n",
 					"key": "merchant_predicate",
 					"type": {
 						"kind": "reference",
@@ -35613,7 +35675,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Doubles the `additional_trade_cost` value if the resulting item of `given_item_modifiers`:\n\n1. has `additional_trade_cost` component, and\n\n2. has the specified enchantments.\n",
+					"desc": " Doubles the `additional_trade_cost` value if the resulting item of `given_item_modifiers`:\n\n\n\n 1. has `additional_trade_cost` component, and\n\n 2. has the specified enchantments.\n",
 					"key": "double_trade_price_enchantments",
 					"type": {
 						"kind": "union",
@@ -60173,7 +60235,11 @@
 							"kind": "pair",
 							"key": "Amplifier",
 							"type": {
-								"kind": "byte"
+								"kind": "byte",
+								"valueRange": {
+									"kind": 0,
+									"min": 0
+								}
 							},
 							"optional": true
 						},
@@ -60301,10 +60367,14 @@
 						},
 						{
 							"kind": "pair",
-							"desc": "Level I having value 0. Defaults to 0.\n",
+							"desc": "Level I does not have this field, following levels start at `1`. Defaults to Level I.\n",
 							"key": "amplifier",
 							"type": {
-								"kind": "byte"
+								"kind": "byte",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								}
 							},
 							"optional": true
 						},
@@ -60313,7 +60383,23 @@
 							"desc": "Duration of the effect in ticks. Infinite is represented by `-1`.\n",
 							"key": "duration",
 							"type": {
-								"kind": "int"
+								"kind": "union",
+								"members": [
+									{
+										"kind": "literal",
+										"value": {
+											"kind": "int",
+											"value": -1
+										}
+									},
+									{
+										"kind": "int",
+										"valueRange": {
+											"kind": 0,
+											"min": 1
+										}
+									}
+								]
 							},
 							"optional": true
 						},
@@ -60394,10 +60480,14 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Level I having value 0. Defaults to 0.\n",
+					"desc": "Level I does not have this field, following levels start at `1`. Defaults to Level I.\n",
 					"key": "amplifier",
 					"type": {
-						"kind": "byte"
+						"kind": "byte",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
 					},
 					"optional": true
 				},
@@ -60406,7 +60496,23 @@
 					"desc": "Duration of the effect in ticks. Infinite is represented by `-1`.\n",
 					"key": "duration",
 					"type": {
-						"kind": "int"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "int",
+									"value": -1
+								}
+							},
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								}
+							}
+						]
 					},
 					"optional": true
 				},
@@ -60477,7 +60583,11 @@
 					"kind": "pair",
 					"key": "Amplifier",
 					"type": {
-						"kind": "byte"
+						"kind": "byte",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
 					},
 					"optional": true
 				},
@@ -84703,29 +84813,12 @@
 				}
 			]
 		},
-		"::java::world::entity::mob::breedable::villager::Gossip": {
+		"::java::world::entity::mob::breedable::villager::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "Type",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::entity::mob::breedable::villager::GossipType"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "Value",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Upper bits of the gossip target's UUID.\n",
+					"desc": "Upper bits of the UUID of the player that caused the gossip-worthy event(s) related to this reputation part.\n",
 					"key": "TargetMost",
 					"type": {
 						"kind": "long"
@@ -84734,38 +84827,12 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Lower bits of the gossip target's UUID.\n",
+					"desc": "Lower bits of the UUID of the player that caused the gossip-worthy event(s) related to this reputation part.\n",
 					"key": "TargetLeast",
 					"type": {
 						"kind": "long"
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::world::entity::mob::breedable::villager::GossipType": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "MajorNegative",
-					"value": "major_negative"
-				},
-				{
-					"identifier": "MinorNegative",
-					"value": "minor_negative"
-				},
-				{
-					"identifier": "MajorPositive",
-					"value": "major_positive"
-				},
-				{
-					"identifier": "MinorPositive",
-					"value": "minor_positive"
-				},
-				{
-					"identifier": "Trading",
-					"value": "trading"
 				}
 			]
 		},
@@ -84787,12 +84854,112 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::breedable::villager::PlayerReputationPart": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "Type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::breedable::villager::ReputationPart"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "Value",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"Type"
+								]
+							}
+						],
+						"registry": "minecraft:reputation_part_value"
+					},
+					"optional": true
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Upper bits of the UUID of the player that caused the gossip-worthy event(s) related to this reputation part.\n",
+								"key": "TargetMost",
+								"type": {
+									"kind": "long"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Lower bits of the UUID of the player that caused the gossip-worthy event(s) related to this reputation part.\n",
+								"key": "TargetLeast",
+								"type": {
+									"kind": "long"
+								},
+								"optional": true
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					],
+					"desc": "UUID of the player that caused the gossip-worthy event(s) related to this reputation part.\n",
+					"key": "Target",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 4
+						},
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::world::entity::mob::breedable::villager::Recipe": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Whether it should reward experience for using this trade.\n",
+					"desc": " Whether it should reward experience for using this trade. \n\n\n\n Experience amount is `3 + random(0, 3)` plus `5` if the trade is causing the merchant to increase in tier.\n",
 					"key": "rewardExp",
 					"type": {
 						"kind": "boolean"
@@ -84801,25 +84968,33 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Maximum number of uses for this trade before it has to restock.\n",
+					"desc": "Maximum number of uses for this trade before the merchant has to restock.\n",
 					"key": "maxUses",
 					"type": {
-						"kind": "int"
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "Times this trade has been used since it last restocked.\n",
+					"desc": "Times this trade has been used since the merchant last restocked.\n",
 					"key": "uses",
 					"type": {
-						"kind": "int"
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "First item it buys.\n",
+					"desc": "Price item required by the merchant, count is modified depending on `demand` & per-player context.\n",
 					"key": "buy",
 					"type": {
 						"kind": "reference",
@@ -84829,7 +85004,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Second item it buys.\n",
+					"desc": "Second item required by the merchant, count does not change.\n",
 					"key": "buyB",
 					"type": {
 						"kind": "reference",
@@ -84839,7 +85014,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Item it sells.\n",
+					"desc": "Item being offered by the merchant.\n",
 					"key": "sell",
 					"type": {
 						"kind": "reference",
@@ -84849,16 +85024,20 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "XP it gains from the trade.\n",
+					"desc": "XP the merchant gains from the trade.\n",
 					"key": "xp",
 					"type": {
-						"kind": "int"
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "Multiplier on the demand price adjuster.\n",
+					"desc": "How much demand & reputation each affect the count of the `buy` item.\n",
 					"key": "priceMultiplier",
 					"type": {
 						"kind": "float"
@@ -84867,7 +85046,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Modifier added to the original price of the first cost item.\n",
+					"desc": "Modifier added to the original count of the `buy` item.\n",
 					"key": "specialPrice",
 					"type": {
 						"kind": "int"
@@ -84876,12 +85055,43 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Price adjuster of the first cost item based on demand.\n",
+					"desc": " Count adjuster of the `buy` item based on demand.\n\n\n\n Minus twice the number of times the villager has the trade in stock.\n\n When restocking subtract the number of possible purchases before running out of stock and add twice the number of actually made purchases.\n\n When the demand becomes positive, the count is increased by the initial count times `priceMultiplier` times the demand. \n",
 					"key": "demand",
 					"type": {
 						"kind": "int"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::breedable::villager::ReputationPart": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"desc": " Caused by the villager being directly killed, increasing by 25 each time.\n\n\n\n Increases others' `major_negative` by 15 when shared through gossip.\n\n\n\n Decays by 10 every 20 minutes.\n",
+					"identifier": "MajorNegative",
+					"value": "major_negative"
+				},
+				{
+					"desc": " Caused by the villager being directly hurt, increasing by 25 each time\n\n\n\n Increases others' `major_negative` by 5 when shared through gossip.\n\n\n\n Decays by 20 every 20 minutes.\n",
+					"identifier": "MinorNegative",
+					"value": "minor_negative"
+				},
+				{
+					"desc": " Caused by the villager being cured, is always set to 20.\n\n\n\n Does not increase others' `major_positive` through gossip.\n\n\n\n Does not decay.\n",
+					"identifier": "MajorPositive",
+					"value": "major_positive"
+				},
+				{
+					"desc": " Caused by the villager being cured, is increased by 25 each time.\n\n\n\n Increases others' `minor_positive` by 20 when shared through gossip.\n\n\n\n Decays by 1 every 20 minutes.\n",
+					"identifier": "MinorPositive",
+					"value": "minor_positive"
+				},
+				{
+					"desc": " Caused by trading with the villager, increasing by 2 each time.\n\n\n\n Does not increase others' `trading` through gossip.\n\n\n\n Decays by 2 every 20 minutes.\n",
+					"identifier": "Trading",
+					"value": "trading"
 				}
 			]
 		},
@@ -84913,37 +85123,34 @@
 				},
 				{
 					"kind": "pair",
+					"desc": " Determines whether the villager will be available to reproduce.\n\n\n\n When the value is `12` the villager can reproduce.\n\n\n\n After reproducing, the value is reset to `0`.\n\n\n\n To increase this value villagers will pick up food that is in range.\n\n\n\n Foods: Potatoes, Carrots, & Beetroots increase the level by `1`. Bread increases the level by `4`.\n",
 					"key": "FoodLevel",
 					"type": {
-						"kind": "byte"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Gossips it has heard.\n",
-					"key": "Gossips",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::world::entity::mob::breedable::villager::Gossip"
+						"kind": "byte",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 12
 						}
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "Tick of the last time it has restocked.\n",
-					"key": "LastRestock",
+					"desc": " Affects per-player reputation which affects trade offer pricing and iron golem behavior.\n\n\n\n Reputation is assembled through events the villager has witnessed (within 16 blocks) or heard about from other villagers through gossip.\n\n\n\n All reputation parts decay over time except `major_positive` which is only ever increased (when the villager is cured).\n\n\n\n Decay occurs every 24k ticks (20 minutes), tracked by `LastGossipDecay`.\n\n\n\n Once a reputation part decays to zero it is removed from the list.\n",
+					"key": "Gossips",
 					"type": {
-						"kind": "long"
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::world::entity::mob::breedable::villager::PlayerReputationPart"
+						}
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "Tick of the last time its gossips have decreased in strength.\n",
+					"desc": " Last game-tick every gossip significance `Value` could have decayed.\n\n\n\n Once this reaches 24k (20 minutes) less than the current game tick a decay occurs again.\n",
 					"key": "LastGossipDecay",
 					"type": {
 						"kind": "long"
@@ -84952,19 +85159,37 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Times it has restocked in the past ten minutes.\n",
-					"key": "RestocksToday",
+					"desc": "Last game-tick it removed `uses` & updated `demand` of every trade offer by going to its `job_site`.\n",
+					"key": "LastRestock",
 					"type": {
-						"kind": "int"
+						"kind": "long"
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "XP it has, increases with trading.\n",
+					"desc": " Times it has reset the `uses` & updated `demand` of every trade offer by going to its `job_site` in the past 12k ticks (10 minutes).\n\n\n\n Time is tracked by `LastRestock`.\n\n\n\n When two restocks have occurred, another restock (and reset of this value to `0`) will only occur after 10 minutes.\n",
+					"key": "RestocksToday",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 2
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": " XP it has, increases when trades are used by each trade offer's `xp` value.\n\n\n\n After `250` the XP will continue to increase, but will do nothing more.\n\n\n\n Trade tiers:\n\n - `0..9`     - Tier 1: Novice\n\n - `10..69`   - Tier 2: Apprentice\n\n - `70..149`  - Tier 3: Journeyman\n\n - `150..249` - Tier 4: Expert\n\n - `250..`    - Tier 5: Master\n",
 					"key": "Xp",
 					"type": {
-						"kind": "int"
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
 					},
 					"optional": true
 				}
@@ -93803,7 +94028,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Defaults to constant 1.\n",
+					"desc": "Defaults to `1`.\n",
 					"key": "count",
 					"type": {
 						"kind": "reference",
@@ -105667,6 +105892,67 @@
 			"stonecutting": {
 				"kind": "reference",
 				"path": "::java::data::recipe::Stonecutting"
+			}
+		},
+		"minecraft:reputation_part_value": {
+			"major_negative": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 5,
+							"max": 100
+						}
+					}
+				]
+			},
+			"major_positive": {
+				"kind": "literal",
+				"value": {
+					"kind": "int",
+					"value": 20
+				}
+			},
+			"minor_negative": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 5,
+							"max": 200
+						}
+					}
+				]
+			},
+			"minor_positive": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 25
+						}
+					}
+				]
+			},
+			"trading": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 25
+						}
+					}
+				]
 			}
 		},
 		"minecraft:resource": {
