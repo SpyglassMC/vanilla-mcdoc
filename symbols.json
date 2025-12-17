@@ -1,5 +1,5 @@
 {
-	"ref": "79af5c0f7d5b88c06b28de588f0e4604091eac34",
+	"ref": "3acd034f07f36d8c0b6c9cddb7bce7f795aaa75e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -89856,7 +89856,7 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::world::entity::mob::breedable::villager::Gossip"
+							"path": "::java::world::entity::mob::breedable::villager::PlayerReputationPart"
 						}
 					},
 					"optional": true
