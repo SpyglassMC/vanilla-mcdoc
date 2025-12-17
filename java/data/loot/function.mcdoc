@@ -576,11 +576,11 @@ dispatch minecraft:loot_function[set_potion] to struct SetPotion {
 
 #[since="26.1"]
 dispatch minecraft:loot_function[set_random_dyes] to struct SetRandomDyes {
-	// TODO: Determine what this modifier does when `number_of_dyes` is not defined.
-	/// Random dyes to apply to the item.
+	/// Applies specified number of random dyes to the item.
+	/// For example, one possible outcome of `"number_of_dyes": 2` is `#2C3065`, which is the combination of a blue dye and a black dye.
 	/// The same dye color can be selected multiple times.
 	/// Only has effect on `#dyeable` items.
-	number_of_dyes?: NumberProvider<int @ 1..16>,
+	number_of_dyes: NumberProvider,
 	...Conditions,
 }
 
