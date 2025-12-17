@@ -1,5 +1,5 @@
 use super::breedable::villager::VillagerData
-use super::breedable::villager::Gossip
+use super::breedable::villager::PlayerReputationPart
 use super::breedable::villager::Offers
 
 dispatch minecraft:entity[drowned,husk,zombie] to struct Zombie {
@@ -19,7 +19,7 @@ dispatch minecraft:entity[zombie_villager] to struct ZombieVillager {
 	/// Villager's skin data
 	VillagerData?: VillagerData,
 	/// Villager's gossips
-	Gossips?: [Gossip],
+	Gossips?: [PlayerReputationPart],
 	/// Villager's offers
 	Offers?: Offers,
 	/// Ticks until the it is converted.
