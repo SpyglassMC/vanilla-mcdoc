@@ -144,7 +144,7 @@ dispatch minecraft:loot_function[enchant_randomly] to struct EnchantRandomly {
 	/// Note: Books are considered compatible with all Enchantments.
 	only_compatible?: boolean,
 	/// Whether to add `additional_trade_cost` component to the enchanted item.
-	/// The additioal cost value is determined by the enchantment level, with the formula `2 + random(0, 5 + level * 10) + 3 * level`.
+	/// Additional cost value is determined by the enchantment level, with the formula `2 + random(0, 5 + level * 10) + 3 * level`.
 	/// Defaults to `false`.
 	#[since="26.1"]
 	include_additional_cost_component?: boolean,
@@ -166,7 +166,7 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 	#[until="1.21"]
 	treasure?: boolean,
 	/// Whether to add `additional_trade_cost` component to the enchanted item.
-	/// The additioal cost value is equal to the level cost determined by `levels`.
+	/// Additional cost value is equal to the level cost determined by `levels`.
 	/// Defaults to `false`.
 	#[since="26.1"]
 	include_additional_cost_component?: boolean,
@@ -576,10 +576,11 @@ dispatch minecraft:loot_function[set_potion] to struct SetPotion {
 
 #[since="26.1"]
 dispatch minecraft:loot_function[set_random_dyes] to struct SetRandomDyes {
-	/// The number of random dyes to apply to the item.
+	// TODO: Determine what this modifier does when `number_of_dyes` is not defined.
+	/// Random dyes to apply to the item.
 	/// The same dye color can be selected multiple times.
 	/// Only has effect on `#dyeable` items.
-	number_of_dyes?: NumberProvider,
+	number_of_dyes?: NumberProvider<int @ 1..16>,
 	...Conditions,
 }
 

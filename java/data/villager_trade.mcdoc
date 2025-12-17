@@ -5,32 +5,31 @@ use ::java::world::item::ItemStack
 use ::java::world::item::TradeCost
 
 dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
-	/// The item required by the merchant.
+	// TODO: Provide a link to a gist with the full explanation. 
+	/// Price item required by the merchant, count is modified depending on demand & per-player context.
 	wants: TradeCost,
-	/// The second item required by the merchant.
+	/// Second item required by the merchant, count does not change.
 	additional_wants?: TradeCost,
-	/// The base item given by the merchant.
+	/// Item being offered by the merchant.
 	gives: ItemStack,
-	/// The modifiers applied to the `gives` item.
+	/// Modifiers applied to the `gives` item.
 	/// Does **not** support `reference` item modifier.
-	/// The resulting item can affect the count of `wants` by its `additional_trade_cost` component.
+	/// Can affect the count of `wants` with the `additional_trade_cost` component.
 	/// After modifying the cost, the `additional_trade_cost` component is removed.
 	given_item_modifiers?: [ItemModifier],
-	/// Uses 1 if the provided value is lower than 1
-	/// Defaults to 4
-	max_uses?: NumberProvider,
-	/// How much factors such as demand, discounts or penalties affects the count of `wants`.
-	/// Uses 0.0 if the provided value is lower than 0.0
-	/// Defaults to 0.0
-	reputation_discount?: NumberProvider,
-	/// The XP reward of the merchant.
-	/// Uses 0 if the provided value is lower than 0
-	/// Defaults to 1
-	xp?: NumberProvider,
-	/// The predicate for the trade to be offered.
-	/// Does **not** support `reference` predicate.
+	/// Maximum number of uses of this trade before the villager has to restock. Defaults to `4`.
+	max_uses?: NumberProvider<int @ 1..>,
+	/// How much demand & reputation each affect the count of `wants`, is serialized as `priceMultiplier`. Defaults to `0.0`.
+	reputation_discount?: NumberProvider<double @ 0..16777216>,
+	/// Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`.
+	xp?: NumberProvider<int @ 0..>,
+	/// Check whether the trade should be offered by the merchant.
+	///
+	/// Does **not** support the `reference` predicate.
 	merchant_predicate?: Predicate,
+	// TODO: Provide a better explanation
 	/// Doubles the `additional_trade_cost` value if the resulting item of `given_item_modifiers`:
+	///
 	/// 1. has `additional_trade_cost` component, and
 	/// 2. has the specified enchantments.
 	double_trade_price_enchantments?: (#[id(registry="enchantment",tags="allowed")] string | #[id="enchantment"] string),

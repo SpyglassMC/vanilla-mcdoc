@@ -142,7 +142,9 @@ dispatch minecraft:environment_attribute[
 	"visual/sky_color",
 	"visual/sky_light_color",
 ] to RGBColorAttribute
-#[since="26.1"] dispatch minecraft:environment_attribute[
+
+#[since="26.1"] 
+dispatch minecraft:environment_attribute[
 	"visual/ambient_light_color",
 	"visual/block_light_tint",
 	"visual/night_vision_color",

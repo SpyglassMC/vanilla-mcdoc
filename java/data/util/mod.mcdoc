@@ -64,6 +64,7 @@ dispatch minecraft:random_int_generator[constant] to struct ConstantIntGenerator
 	value: int,
 }
 
+// TODO: Determine why we're not using a generic for this
 // Since 1.17
 type NumberProvider = (
 	float |

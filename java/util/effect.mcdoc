@@ -1,7 +1,7 @@
 type MobEffectInstance = (
 	#[until="1.20.2"] struct OldMobEffect {
 		Id?: EffectId,
-		Amplifier?: byte,
+		Amplifier?: byte @ 0..,
 		/// Duration of the effect in ticks. Infinite is represented by `-1`.
 		Duration?: (
 			int @ 1.. |
@@ -19,10 +19,10 @@ type MobEffectInstance = (
 	} |
 	#[since="1.20.2"] struct ModernMobEffect {
 		id: #[id="mob_effect"] string,
-		/// Level I having value 0. Defaults to 0.
-		amplifier?: byte,
+		/// Level I does not have this field, following levels start at `1`. Defaults to Level I.
+		amplifier?: byte @ 1..,
 		/// Duration of the effect in ticks. Infinite is represented by `-1`.
-		duration?: int,
+		duration?: (-1 | int @ 1..),
 		/// Whether the effect appears as a HUD icon in addition to in the inventory GUI (same behavior as beacons when `true`). Defaults to `false`.
 		ambient?: boolean,
 		/// Defaults to `true`.

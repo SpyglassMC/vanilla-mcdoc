@@ -37,7 +37,7 @@ type ItemCost = ItemStackOfComponent<DataComponentExactPredicate>  // used by vi
 // 26.1 villager trade field
 struct TradeCost {
 	...SingleItemOfComponent<DataComponentExactPredicate>,
-	/// Defaults to constant 1.
+	/// Defaults to `1`.
 	count?: NumberProvider,
 }
 
