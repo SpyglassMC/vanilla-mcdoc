@@ -1,5 +1,5 @@
 {
-	"ref": "ae25be2cd218a4c9e33e27311bfd33252b03f633",
+	"ref": "79af5c0f7d5b88c06b28de588f0e4604091eac34",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -28579,26 +28579,12 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Random dyes to apply to the item.\n\nThe same dye color can be selected multiple times.\n\nOnly has effect on `#dyeable` items.\n",
+					"desc": "Applies specified number of random dyes to the item.\n\nFor example, one possible outcome of `\"number_of_dyes\": 2` is `#2C3065`, which is the combination of a blue dye and a black dye.\n\nThe same dye color can be selected multiple times.\n\nOnly has effect on `#dyeable` items.\n",
 					"key": "number_of_dyes",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::NumberProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 1,
-									"max": 16
-								}
-							}
-						]
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
+					}
 				},
 				{
 					"kind": "spread",
