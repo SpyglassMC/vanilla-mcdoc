@@ -122,7 +122,7 @@
 	"::java::data::advancement::Advancement.criteria": "If `requirements` is not defined, all defined criteria will be required.",
 	"::java::data::advancement::Advancement.display": "If present, advancement will be visible in the advancement tabs.",
 	"::java::data::advancement::Advancement.parent": "If this field is absent, this advancement is a root advancement.\nCircular references cause a loading failure.",
-	"::java::data::advancement::Advancement.requirements": "Contains all of the `criteria` keys.\nIf all criteria are required at once, this may be omitted.\nWith multiple criteria: this contains a list of lists with criteria (all criteria must be mentioned).\nIf all of the lists each have any criteria met, the advancement is complete (basically AND grouping of OR groups).",
+	"::java::data::advancement::Advancement.requirements": "If all criteria are required at once, this may be omitted.\n\nContains all of the `criteria` keys.\n\nIf all of the lists each have at least one criteria met, the advancement is complete (basically AND grouping of OR groups).",
 	"::java::data::advancement::Advancement.rewards": "Provided to the player when this advancement is obtained.",
 	"::java::data::advancement::Advancement.sends_telemetry_event": "Defaults to `false`. The vanilla game client only reads this for advancements from the `minecraft` namespace.",
 	"::java::data::advancement::AdvancementCriterion.trigger": "Many triggers can occur multiple times, however, the reward will only be provided multiple times if the advancement is first revoked, which is often done within the function reward.",
