@@ -11,10 +11,11 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 	criteria: struct AdvancementCriteriaMap {
 		[#[criterion(definition=true)] string]: AdvancementCriterion,
 	},
-	/// Contains all of the `criteria` keys.
 	/// If all criteria are required at once, this may be omitted.
-	/// With multiple criteria: this contains a list of lists with criteria (all criteria must be mentioned).
-	/// If all of the lists each have any criteria met, the advancement is complete (basically AND grouping of OR groups).
+	///
+	/// Contains all of the `criteria` keys.
+	///
+	/// If all of the lists each have at least one criteria met, the advancement is complete (basically AND grouping of OR groups).
 	requirements?: [[#[criterion] string] @ 1..] @ 1..,
 	/// Provided to the player when this advancement is obtained.
 	rewards?: AdvancementRewards,
