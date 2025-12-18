@@ -3,8 +3,9 @@ use ::java::data::util::NumberProvider
 dispatch minecraft:resource[trade_set] to struct TradeSet {
 	/// Possible trade generators.
 	trades: (#[id(registry="villager_trade",tags="allowed")] string | #[id="villager_trade"] string),
-	/// Amount of trades to be generated.
-	amount: NumberProvider<int @ 1..>,
+	/// Amount of trades to be generated. \
+	/// Clamps to an integer of at least `1`.
+	amount: NumberProvider,
 	/// Whether the trade set can use the same generator multiple times and generate duplicate trades.
 	/// Defaults to `false`.
 	allow_duplicates?: boolean,

@@ -51,8 +51,8 @@ struct PackOverlays {
 struct PackOverlay {
 	directory: string @ 1..,
 	formats?: InclusiveRange<#[pack_format] int>,
-	min_format?: #[pack_format] PackFormat<int>,
-	max_format?: #[pack_format] PackFormat<int>,
+	min_format?: #[pack_format] PackFormat,
+	max_format?: #[pack_format] PackFormat,
 }
 
 type PackFormat = (int | [int] @ 1 | [int, int @ 0..])

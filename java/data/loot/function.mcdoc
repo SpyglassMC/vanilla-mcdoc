@@ -452,10 +452,11 @@ dispatch minecraft:loot_function[set_count] to struct SetCount {
 
 /// Sets the durability of applicable items.
 dispatch minecraft:loot_function[set_damage] to struct SetDamage {
-	/// Decimal percentage. Can be negative when used in combination with `add`.
+	/// Decimal percentage. Can be negative when used in combination with `add`. \
+	/// Clamps to a float between `-1` & `1` (inclusive).
 	damage: (
 		#[until="1.17"] RandomValueBounds |
-		#[since="1.17"] NumberProvider<float @ -1..1> |
+		#[since="1.17"] NumberProvider |
 	),
 	/// Whether to add to the existing damage of the item. Defaults to `false`.
 	#[since="1.17"]
@@ -465,9 +466,10 @@ dispatch minecraft:loot_function[set_damage] to struct SetDamage {
 
 #[since="1.17"]
 dispatch minecraft:loot_function[set_enchantments] to struct SetEnchantments {
-	/// A map of enchantments to levels. Setting an enchantment to `0` removes it from the item.
+	/// A map of enchantments to levels. Setting an enchantment to `0` removes it from the item. \
+	/// Each level is clamped to a positive integer.
 	enchantments: struct {
-		[#[id="enchantment"] string]: NumberProvider<int @ 0..>,
+		[#[id="enchantment"] string]: NumberProvider,
 	},
 	/// Whether to add to the level of each enchantment. Defaults to `false`.
 	add?: boolean,

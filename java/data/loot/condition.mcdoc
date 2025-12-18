@@ -78,9 +78,10 @@ dispatch minecraft:loot_condition[match_tool] to struct MatchTool {
 }
 
 dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
+	/// Clamps to a float between `0` & `1` (inclusive).
 	chance: (
 		#[until="1.21"] float @ 0..1 |
-		#[since="1.21"] NumberProvider<float> |
+		#[since="1.21"] NumberProvider |
 	),
 }
 
@@ -123,7 +124,8 @@ dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
 
 #[since="1.17"]
 dispatch minecraft:loot_condition[value_check] to struct ValueCheck {
-	value: NumberProvider<int>,
+	/// Clamps to an integer.
+	value: NumberProvider,
 	/// Passes when `value` is within this range.
 	range: IntRange,
 }
