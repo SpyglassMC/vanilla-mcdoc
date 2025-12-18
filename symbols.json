@@ -1,5 +1,5 @@
 {
-	"ref": "f8f4b6b9d3645823908bc8829117150a1e8b6c93",
+	"ref": "34cd42d4bdac0953bfd885aba6c8187dc3e2045a",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -24047,6 +24047,7 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "Clamps to a float between `0` & `1` (inclusive).\n",
 					"key": "chance",
 					"type": {
 						"kind": "union",
@@ -24072,16 +24073,8 @@
 								]
 							},
 							{
-								"kind": "concrete",
-								"child": {
-									"kind": "reference",
-									"path": "::java::data::util::NumberProvider"
-								},
-								"typeArgs": [
-									{
-										"kind": "float"
-									}
-								],
+								"kind": "reference",
+								"path": "::java::data::util::NumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -24295,18 +24288,11 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "Clamps to an integer.\n",
 					"key": "value",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::NumberProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
 					}
 				},
 				{
@@ -24745,20 +24731,8 @@
 						]
 					},
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::NumberProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 0
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
 					}
 				}
 			]
@@ -27759,7 +27733,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Decimal percentage. Can be negative when used in combination with `add`.\n",
+					"desc": "Decimal percentage. Can be negative when used in combination with `add`. \\\n\nClamps to a float between `-1` & `1` (inclusive).\n",
 					"key": "damage",
 					"type": {
 						"kind": "union",
@@ -27781,21 +27755,8 @@
 								]
 							},
 							{
-								"kind": "concrete",
-								"child": {
-									"kind": "reference",
-									"path": "::java::data::util::NumberProvider"
-								},
-								"typeArgs": [
-									{
-										"kind": "float",
-										"valueRange": {
-											"kind": 0,
-											"min": -1,
-											"max": 1
-										}
-									}
-								],
+								"kind": "reference",
+								"path": "::java::data::util::NumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -27847,7 +27808,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "A map of enchantments to levels. Setting an enchantment to `0` removes it from the item.\n",
+					"desc": "A map of enchantments to levels. Setting an enchantment to `0` removes it from the item. \\\n\nEach level is clamped to a positive integer.\n",
 					"key": "enchantments",
 					"type": {
 						"kind": "struct",
@@ -27870,20 +27831,8 @@
 									]
 								},
 								"type": {
-									"kind": "concrete",
-									"child": {
-										"kind": "reference",
-										"path": "::java::data::util::NumberProvider"
-									},
-									"typeArgs": [
-										{
-											"kind": "int",
-											"valueRange": {
-												"kind": 0,
-												"min": 0
-											}
-										}
-									]
+									"kind": "reference",
+									"path": "::java::data::util::NumberProvider"
 								}
 							}
 						]
@@ -32508,23 +32457,11 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Amount of trades to be generated.\n",
+					"desc": "Amount of trades to be generated. \\\n\nClamps to an integer of at least `1`.\n",
 					"key": "amount",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::NumberProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 1
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
 					}
 				},
 				{
@@ -33180,35 +33117,21 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "Clamped to an integer.\n",
 					"key": "min",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::NumberProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
+					"desc": "Clamped to an integer.\n",
 					"key": "max",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::NumberProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
 					},
 					"optional": true
 				}
@@ -33541,35 +33464,21 @@
 					"fields": [
 						{
 							"kind": "pair",
+							"desc": "Clamped to an integer.\n",
 							"key": "min",
 							"type": {
-								"kind": "concrete",
-								"child": {
-									"kind": "reference",
-									"path": "::java::data::util::NumberProvider"
-								},
-								"typeArgs": [
-									{
-										"kind": "int"
-									}
-								]
+								"kind": "reference",
+								"path": "::java::data::util::NumberProvider"
 							},
 							"optional": true
 						},
 						{
 							"kind": "pair",
+							"desc": "Clamped to an integer.\n",
 							"key": "max",
 							"type": {
-								"kind": "concrete",
-								"child": {
-									"kind": "reference",
-									"path": "::java::data::util::NumberProvider"
-								},
-								"typeArgs": [
-									{
-										"kind": "int"
-									}
-								]
+								"kind": "reference",
+								"path": "::java::data::util::NumberProvider"
 							},
 							"optional": true
 						}
@@ -35571,7 +35480,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Modifiers applied to the `gives` item.\n\nDoes **not** support `reference` item modifier.\n\nCan affect the count of `wants` with the `additional_trade_cost` component.\n\nAfter modifying the cost, the `additional_trade_cost` component is removed.\n",
+					"desc": "Modifiers applied to the `gives` item. \\\n\nDoes **not** support `reference` item modifier. \\\n\nCan affect the count of `wants` with the `additional_trade_cost` component. \\\n\nAfter modifying the cost, the `additional_trade_cost` component is removed. \\\n",
 					"key": "given_item_modifiers",
 					"type": {
 						"kind": "list",
@@ -35584,74 +35493,37 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Maximum number of uses of this trade before the villager has to restock. Defaults to `4`.\n",
+					"desc": "Maximum number of uses of this trade before the villager has to restock. Defaults to `4`. \\\n\nClamps to an integer of at least `1`.\n",
 					"key": "max_uses",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::NumberProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 1
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "How much demand & reputation each affect the count of `wants`, is serialized as `priceMultiplier`. Defaults to `0.0`.\n",
+					"desc": "How much demand & reputation each affect the count of `wants`, is serialized as `priceMultiplier`. Defaults to `0.0`. \\\n\nClamps to a positive float.\n",
 					"key": "reputation_discount",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::NumberProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "double",
-								"valueRange": {
-									"kind": 0,
-									"min": 0,
-									"max": 16777216
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`.\n",
+					"desc": "Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`. \\\n\nClamps to a positive integer.\n",
 					"key": "xp",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::NumberProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 0
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::util::NumberProvider"
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": " Check whether the trade should be offered by the merchant.\n\n\n\n Does **not** support the `reference` predicate.\n",
+					"desc": "Check whether the trade should be offered by the merchant. \\\n\nDoes **not** support the `reference` predicate.\n",
 					"key": "merchant_predicate",
 					"type": {
 						"kind": "reference",
@@ -35661,7 +35533,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": " Doubles the `additional_trade_cost` value if the resulting item of `given_item_modifiers`:\n\n\n\n 1. has `additional_trade_cost` component, and\n\n 2. has the specified enchantments.\n",
+					"desc": "Doubles the `additional_trade_cost` value if the resulting item of `given_item_modifiers`:\n\n1. has `additional_trade_cost` component, and\n\n2. has the specified enchantments.\n",
 					"key": "double_trade_price_enchantments",
 					"type": {
 						"kind": "union",
@@ -58361,16 +58233,8 @@
 					"kind": "pair",
 					"key": "min_format",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::pack::PackFormat"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						],
+						"kind": "reference",
+						"path": "::java::pack::PackFormat",
 						"attributes": [
 							{
 								"name": "pack_format"
@@ -58383,16 +58247,8 @@
 					"kind": "pair",
 					"key": "max_format",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::pack::PackFormat"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						],
+						"kind": "reference",
+						"path": "::java::pack::PackFormat",
 						"attributes": [
 							{
 								"name": "pack_format"
