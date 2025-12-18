@@ -1,5 +1,5 @@
 {
-	"ref": "3acd034f07f36d8c0b6c9cddb7bce7f795aaa75e",
+	"ref": "f8f4b6b9d3645823908bc8829117150a1e8b6c93",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -10518,7 +10518,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Contains all of the `criteria` keys.\n\nIf all criteria are required at once, this may be omitted.\n\nWith multiple criteria: this contains a list of lists with criteria (all criteria must be mentioned).\n\nIf all of the lists each have any criteria met, the advancement is complete (basically AND grouping of OR groups).\n",
+					"desc": " If all criteria are required at once, this may be omitted.\n\n\n\n Contains all of the `criteria` keys.\n\n\n\n If all of the lists each have at least one criteria met, the advancement is complete (basically AND grouping of OR groups).\n",
 					"key": "requirements",
 					"type": {
 						"kind": "list",
