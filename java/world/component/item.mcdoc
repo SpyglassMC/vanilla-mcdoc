@@ -86,7 +86,9 @@ enum(string) AttributeDisplayType {
 	Override = "override",
 }
 
-dispatch minecraft:attribute_display[override] to struct AttributeDisplayOverride {
+dispatch minecraft:attribute_display[default, hidden] to struct {}
+
+dispatch minecraft:attribute_display[override] to struct AttributeDisplayTextOverride {
 	/// The text contents to show for this attribute modifer entry.
 	value: Text,
 }
