@@ -640,7 +640,7 @@
 	"::java::world::component::entity::AxolotlVariant.Blue": "Rzadki wariant.",
 	"::java::world::component::entity::RabbitVariant.Evil": "Zabójczy królik",
 	"::java::world::component::item::ApplyEffectsConsumeEffect.probability": "Szansa na nałożenie efektów po zdegustowaniu.",
-	"::java::world::component::item::AttributeDisplayOverride.value": "Zawartość tekstowa do pokazania w tym wpisie modyfikatora atrybutu.",
+	"::java::world::component::item::AttributeDisplayTextOverride.value": "Zawartość tekstowa do pokazania w tym wpisie modyfikatora atrybutu.",
 	"::java::world::component::item::AttributeDisplayType.Default": "Pokazuje obliczone wartości modyfikatora atrybutu w opisie.",
 	"::java::world::component::item::AttributeDisplayType.Hidden": "Nie pokazuje wpisu modyfikatora atrybutu w opisie.",
 	"::java::world::component::item::AttributeDisplayType.Override": "Zastępuje pokazywany tekst modyfikatora atrybutu.",

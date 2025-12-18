@@ -926,7 +926,7 @@
 	"::java::world::component::item::AttackRange.min_creative_reach": "Minimum distance from the creative mode attacker to the target to be considered valid.\nDefaults to 0.0",
 	"::java::world::component::item::AttackRange.min_reach": "Minimum distance to the target to be considered valid.\nDefaults to 0.0",
 	"::java::world::component::item::AttackRange.mob_factor": "The multiplier applied to `min_reach` and `max_reach` when the user is a mob.",
-	"::java::world::component::item::AttributeDisplayOverride.value": "The text contents to show for this attribute modifer entry.",
+	"::java::world::component::item::AttributeDisplayTextOverride.value": "The text contents to show for this attribute modifer entry.",
 	"::java::world::component::item::AttributeDisplayType.Default": "Shows the calculated attribute modifier values on the tooltip.",
 	"::java::world::component::item::AttributeDisplayType.Hidden": "Does not show the attribute modifier entry in tooltips.",
 	"::java::world::component::item::AttributeDisplayType.Override": "Replaces the shown attribute modifier text.",
