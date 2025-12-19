@@ -2,7 +2,7 @@ use ::java::data::util::NumberProvider
 
 dispatch minecraft:resource[trade_set] to struct TradeSet {
 	/// Possible trade generators.
-	trades: (#[id(registry="villager_trade",tags="allowed")] string | #[id="villager_trade"] string),
+	trades: (#[id(registry="villager_trade",tags="allowed")] string | [#[id="villager_trade"] string]),
 	/// Amount of trades to be generated. \
 	/// Clamps to an integer of at least `1`.
 	amount: NumberProvider,
