@@ -1,5 +1,5 @@
 {
-	"ref": "cc5d846943b633d68b580e4b35997e325a044e2a",
+	"ref": "b4510bb3d806ad13b13d5141fb4a42105099ae1b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -32438,19 +32438,22 @@
 								]
 							},
 							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
 											"value": {
-												"kind": "string",
-												"value": "villager_trade"
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "villager_trade"
+												}
 											}
 										}
-									}
-								]
+									]
+								}
 							}
 						]
 					}
