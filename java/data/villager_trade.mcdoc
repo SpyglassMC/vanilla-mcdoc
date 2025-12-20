@@ -33,5 +33,5 @@ dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	/// Doubles the `additional_trade_cost` value if the resulting item of `given_item_modifiers`:
 	/// 1. has `additional_trade_cost` component, and
 	/// 2. has the specified enchantments.
-	double_trade_price_enchantments?: (#[id(registry="enchantment",tags="allowed")] string | #[id="enchantment"] string),
+	double_trade_price_enchantments?: (#[id(registry="enchantment",tags="allowed")] string | [#[id="enchantment"] string]),
 }
