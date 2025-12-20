@@ -1,5 +1,5 @@
 {
-	"ref": "b4510bb3d806ad13b13d5141fb4a42105099ae1b",
+	"ref": "7b4ffcd9599277a71d75cfe7911f2520888f089d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -35569,19 +35569,22 @@
 								]
 							},
 							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
 											"value": {
-												"kind": "string",
-												"value": "enchantment"
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "enchantment"
+												}
 											}
 										}
-									}
-								]
+									]
+								}
 							}
 						]
 					},
@@ -60212,13 +60215,13 @@
 						},
 						{
 							"kind": "pair",
-							"desc": "Level I does not have this field, following levels start at `1`. Defaults to Level I.\n",
+							"desc": "Level I having value 0. Defaults to 0.\n",
 							"key": "amplifier",
 							"type": {
 								"kind": "byte",
 								"valueRange": {
 									"kind": 0,
-									"min": 1
+									"min": 0
 								}
 							},
 							"optional": true
@@ -60325,13 +60328,13 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Level I does not have this field, following levels start at `1`. Defaults to Level I.\n",
+					"desc": "Level I having value 0. Defaults to 0.\n",
 					"key": "amplifier",
 					"type": {
 						"kind": "byte",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 0
 						}
 					},
 					"optional": true
