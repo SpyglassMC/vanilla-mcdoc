@@ -1,5 +1,5 @@
 {
-	"ref": "7b4ffcd9599277a71d75cfe7911f2520888f089d",
+	"ref": "a507f4adeb97c4a1b70f3c2f7bc56725ad242df7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -6548,73 +6548,87 @@
 			"enumKind": "string",
 			"values": [
 				{
+					"desc": "Used on compasses to determine the current angle, expressed in a decimal value of less than one.\n",
 					"identifier": "Angle",
 					"value": "angle"
 				},
 				{
+					"desc": "Used on shields to determine if currently blocking. If `1`, the player is blocking.\n",
 					"identifier": "Blocking",
 					"value": "blocking"
 				},
 				{
+					"desc": "Used on Elytra to determine if broken. If `1`, the Elytra is broken.\n",
 					"identifier": "Broken",
 					"value": "broken"
 				},
 				{
+					"desc": "Used on fishing rods to determine if the fishing rod has been cast. If `1`, the fishing rod has been cast.\n",
 					"identifier": "Cast",
 					"value": "cast"
 				},
 				{
+					"desc": "Used on crossbows to determine if they are charged with any projectile. If `1`, the crossbow is charged.\n",
 					"identifier": "Charged",
 					"value": "charged"
 				},
 				{
+					"desc": "Used on ender pearls and chorus fruit to determine the remaining cooldown, expressed in a decimal value between `0` and `1`.\n",
 					"identifier": "Cooldown",
 					"value": "cooldown"
 				},
 				{
+					"desc": " Used on any item and is compared to the CustomModelData NBT, expressed in an integer value.\n\n\n\n The number is still internally converted to float, causing a precision loss for some numbers above 16 million. \\\n\n If the value read from the item data is greater than or equal to the value used for the predicate, the predicate is positive.\n",
 					"identifier": "CustomModelData",
 					"value": "custom_model_data"
 				},
 				{
+					"desc": "Used on items with durability to determine the amount of damage, expressed in a decimal value between `0` and `1`.\n",
 					"identifier": "Damage",
 					"value": "damage"
 				},
 				{
+					"desc": "Used on items with durability to determine if it is damaged. If 1, the item is damaged. \\\n\nNote that if an item has the unbreakable tag, this may be `0` while the item has a non-zero `'damage'` tag.\n",
 					"identifier": "Damaged",
 					"value": "damaged"
 				},
 				{
+					"desc": "Used on crossbows. If `1`, the crossbow is charged with a firework rocket.\n",
 					"identifier": "Firework",
 					"value": "firework"
 				},
 				{
-					"desc": "The honey level on bee nests and beehives.\n",
+					"desc": "Used for honey level on bee nests and beehives.\n",
 					"identifier": "HoneyLevel",
 					"value": "honey_level"
 				},
 				{
+					"desc": "Determines the model used by left handed players. It affects the item they see in inventories, along with the item players see them holding or wearing.\n",
 					"identifier": "Lefthanded",
 					"value": "lefthanded"
 				},
 				{
-					"desc": "The `level` block state on light items.\n",
+					"desc": "Used for the `level` block state on light items.\n",
 					"identifier": "Level",
 					"value": "level"
 				},
 				{
+					"desc": "Determines the amount a bow or crossbow has been pulled, expressed in a decimal value of less than one.\n",
 					"identifier": "Pull",
 					"value": "pull"
 				},
 				{
+					"desc": "Used on bows and crossbows to determine if the bow is being pulled. If `1`, the bow is currently being pulled.\n",
 					"identifier": "Pulling",
 					"value": "pulling"
 				},
 				{
-					"desc": "Whether the trident is being used.\n",
+					"desc": "Used on the trident to determine if the trident is ready to be thrown by the player. If `1`, the trident is ready for fire.\n",
 					"identifier": "Throwing",
 					"value": "throwing"
 				},
 				{
+					"desc": "Used on clocks to determine the current time, expressed in a decimal value of less than one.\n",
 					"identifier": "Time",
 					"value": "time"
 				},
