@@ -5,7 +5,7 @@ dispatch minecraft:resource[sounds] to struct Sounds {
 
 struct SoundEventRegistration {
 	/// The sound files this sound event uses. One sound is randomly selected to play when the event is triggered. Defaults to assumed path.
-	sounds?: [(string | Sound)],
+	sounds?: [(#[id="sound"] string | Sound)],
 	/// If true the sounds listed should replace the ones listed in the minecraft sounds.json for this sound event.
 	/// False if the sounds listed should be added. If undefined. Defaults to false.
 	replace?: boolean,
