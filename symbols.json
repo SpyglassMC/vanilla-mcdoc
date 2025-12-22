@@ -1,5 +1,5 @@
 {
-	"ref": "a507f4adeb97c4a1b70f3c2f7bc56725ad242df7",
+	"ref": "89531dd2a6805a3f935310435382fa6648b9a2f8",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -9735,19 +9735,7 @@
 				{
 					"kind": "pair",
 					"key": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "weighed_sound_event"
-									}
-								}
-							}
-						]
+						"kind": "string"
 					},
 					"type": {
 						"kind": "reference",
