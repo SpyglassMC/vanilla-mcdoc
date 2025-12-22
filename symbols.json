@@ -1,5 +1,5 @@
 {
-	"ref": "89531dd2a6805a3f935310435382fa6648b9a2f8",
+	"ref": "5d7a81353c7d21aa88ec6fe87bdd16fb09555a3e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -9693,7 +9693,19 @@
 							"kind": "union",
 							"members": [
 								{
-									"kind": "string"
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "sound"
+												}
+											}
+										}
+									]
 								},
 								{
 									"kind": "reference",
