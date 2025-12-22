@@ -100,25 +100,43 @@ enum(string) CustomizableItemDisplayContext {
 }
 
 enum(string) Predicates {
+	/// Used on compasses to determine the current angle, expressed in a decimal value of less than one.
 	Angle = "angle",
+	/// Used on shields to determine if currently blocking. If `1`, the player is blocking.
 	Blocking = "blocking",
+	/// Used on Elytra to determine if broken. If `1`, the Elytra is broken.
 	Broken = "broken",
+	/// Used on fishing rods to determine if the fishing rod has been cast. If `1`, the fishing rod has been cast.
 	Cast = "cast",
+	/// Used on crossbows to determine if they are charged with any projectile. If `1`, the crossbow is charged.
 	Charged = "charged",
+	/// Used on ender pearls and chorus fruit to determine the remaining cooldown, expressed in a decimal value between `0` and `1`.
 	Cooldown = "cooldown",
+	/// Used on any item and is compared to the CustomModelData NBT, expressed in an integer value.
+	///
+	/// The number is still internally converted to float, causing a precision loss for some numbers above 16 million. \
+	/// If the value read from the item data is greater than or equal to the value used for the predicate, the predicate is positive.
 	CustomModelData = "custom_model_data",
+	/// Used on items with durability to determine the amount of damage, expressed in a decimal value between `0` and `1`.
 	Damage = "damage",
+	/// Used on items with durability to determine if it is damaged. If 1, the item is damaged. \
+	/// Note that if an item has the unbreakable tag, this may be `0` while the item has a non-zero `'damage'` tag.
 	Damaged = "damaged",
+	/// Used on crossbows. If `1`, the crossbow is charged with a firework rocket.
 	Firework = "firework",
-	/// The honey level on bee nests and beehives.
+	/// Used for honey level on bee nests and beehives.
 	HoneyLevel = "honey_level",
+	/// Determines the model used by left handed players. It affects the item they see in inventories, along with the item players see them holding or wearing.
 	Lefthanded = "lefthanded",
-	/// The `level` block state on light items.
+	/// Used for the `level` block state on light items.
 	Level = "level",
+	/// Determines the amount a bow or crossbow has been pulled, expressed in a decimal value of less than one.
 	Pull = "pull",
+	/// Used on bows and crossbows to determine if the bow is being pulled. If `1`, the bow is currently being pulled.
 	Pulling = "pulling",
-	/// Whether the trident is being used.
+	/// Used on the trident to determine if the trident is ready to be thrown by the player. If `1`, the trident is ready for fire.
 	Throwing = "throwing",
+	/// Used on clocks to determine the current time, expressed in a decimal value of less than one.
 	Time = "time",
 	/// Whether the goat horn is being used.
 	Tooting = "tooting",
