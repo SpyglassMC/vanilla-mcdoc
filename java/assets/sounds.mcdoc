@@ -1,6 +1,6 @@
 dispatch minecraft:resource[sounds] to struct Sounds {
-	//TODO: this actually registers new weighed_sound_events. Namespace is always the namespace of file
-	[#[id="weighed_sound_event"] string]: SoundEventRegistration,
+	// TODO: Namespace is always (implicitly) the namespace of file, this would need a custom `id` argument to get correct behavior
+	[string]: SoundEventRegistration,
 }
 
 struct SoundEventRegistration {
