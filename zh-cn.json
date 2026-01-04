@@ -67,6 +67,7 @@
 	"::java::assets::item_definition::UseDuration.remaining": "为true时，返回剩余使用刻数；\n为false时，返回已使用刻数。\n默认为false。",
 	"::java::assets::lang::LangDeprecated.removed": "被移除的语言文件中的翻译键。",
 	"::java::assets::lang::LangDeprecated.renamed": "被重命名的语言文件中的翻译键。",
+	"::java::assets::model::ModelElementRotationBase.rescale": "默认为`false`。",
 	"::java::assets::model::Predicates.HoneyLevel": "蜂巢或蜂箱的储蜜量。",
 	"::java::assets::model::Predicates.Level": "光源物品的亮度等级。",
 	"::java::assets::model::Predicates.Throwing": "三叉戟是否正在使用中。",
