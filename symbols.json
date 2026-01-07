@@ -1,5 +1,5 @@
 {
-	"ref": "7f34469ae1afc2924aadb8521d25b7228d2a0d54",
+	"ref": "19d640f835b8b311e3e63c947f054c4a7bbc32e4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -23630,6 +23630,32 @@
 					"key": "sky_access",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "Additional padding in blocks placed around the structure. Defaults to `0`.\n",
+					"key": "padding",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 128
+						}
 					},
 					"optional": true
 				}
