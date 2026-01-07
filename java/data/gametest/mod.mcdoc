@@ -40,6 +40,9 @@ struct TestData {
 	/// Whether the test needs clear access to the sky. Defaults to `false`.
 	/// If `false`, test is enclosed in barrier blocks. If `true`, the top is left open.
 	sky_access?: boolean,
+	/// Additional padding in blocks placed around the structure. Defaults to `0`.
+	#[since="26.1"]
+	padding?: int @ 0..128,
 }
 
 enum(string) Rotation {
