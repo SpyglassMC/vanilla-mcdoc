@@ -1,5 +1,5 @@
 {
-	"ref": "5d7a81353c7d21aa88ec6fe87bdd16fb09555a3e",
+	"ref": "7f34469ae1afc2924aadb8521d25b7228d2a0d54",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -34423,6 +34423,38 @@
 					}
 				},
 				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "The baby cat texture to use for this variant.\n",
+					"key": "baby_asset_id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
@@ -34461,6 +34493,38 @@
 					"kind": "pair",
 					"desc": "The chicken texture to use for this variant.\n",
 					"key": "asset_id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "The baby chicken texture to use for this variant.\n",
+					"key": "baby_asset_id",
 					"type": {
 						"kind": "string",
 						"attributes": [
@@ -34520,6 +34584,38 @@
 					"kind": "pair",
 					"desc": "The cow texture to use for this variant.\n",
 					"key": "asset_id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "The baby cow texture to use for this variant.\n",
+					"key": "baby_asset_id",
 					"type": {
 						"kind": "string",
 						"attributes": [
@@ -34838,6 +34934,38 @@
 					}
 				},
 				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "The baby pig texture to use for this variant.\n",
+					"key": "baby_asset_id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
@@ -35114,6 +35242,27 @@
 					}
 				},
 				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "The baby texture set to use for this wolf variant.\r\n",
+					"key": "baby_assets",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::wolf::WolfVariantAssetInfo"
+					}
+				},
+				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
@@ -35122,7 +35271,7 @@
 				}
 			]
 		},
-		"::java::data::variants::wolf::WolfSoundVariant": {
+		"::java::data::variants::wolf::WolfSounds": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -35171,6 +35320,39 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::util::SoundEventRef"
+					}
+				}
+			]
+		},
+		"::java::data::variants::wolf::WolfSoundVariant": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "adult_sounds",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::wolf::WolfSounds"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "baby_sounds",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::wolf::WolfSounds"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
 					}
 				}
 			]
@@ -35330,6 +35512,27 @@
 								"kind": "pair",
 								"desc": "The texture set to use for this wolf variant.\r\n",
 								"key": "assets",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::variants::wolf::WolfVariantAssetInfo"
+								}
+							},
+							{
+								"kind": "pair",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								],
+								"desc": "The baby texture set to use for this wolf variant.\r\n",
+								"key": "baby_assets",
 								"type": {
 									"kind": "reference",
 									"path": "::java::data::variants::wolf::WolfVariantAssetInfo"
@@ -85688,6 +85891,64 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::FallDamageLogicData": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.3"
+								}
+							}
+						}
+					],
+					"desc": "Added mid-air after being hit by an explosion.\n",
+					"key": "current_explosion_impact_pos",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "double"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"desc": "Used by fall damage logic. Decreases by 1 every tick.\n",
+					"key": "current_impulse_context_reset_grace_time",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				}
+			]
+		},
 		"::java::world::entity::mob::fish::Fish": {
 			"kind": "struct",
 			"fields": [
@@ -86341,6 +86602,25 @@
 						"path": "::java::world::entity::mob::WaypointIcon"
 					},
 					"optional": true
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::FallDamageLogicData"
+					}
 				}
 			]
 		},
@@ -88129,6 +88409,16 @@
 									"value": "1.20.3"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
 						}
 					],
 					"desc": "Used by the game for wind charges.\n",
@@ -88139,56 +88429,22 @@
 					"optional": true
 				},
 				{
-					"kind": "pair",
+					"kind": "spread",
 					"attributes": [
 						{
-							"name": "since",
+							"name": "until",
 							"value": {
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "1.20.3"
+									"value": "26.1"
 								}
 							}
 						}
 					],
-					"desc": "Added mid-air after being hit by an explosion.\n",
-					"key": "current_explosion_impact_pos",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "double"
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 3,
-							"max": 3
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21"
-								}
-							}
-						}
-					],
-					"desc": "Used by fall damage logic. Decreases by 1 every tick.\n",
-					"key": "current_impulse_context_reset_grace_time",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 0
-						}
+						"kind": "reference",
+						"path": "::java::world::entity::mob::FallDamageLogicData"
 					}
 				},
 				{
@@ -106315,8 +106571,41 @@
 				]
 			},
 			"wolf_sound_variant": {
-				"kind": "reference",
-				"path": "::java::data::variants::wolf::WolfSoundVariant",
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::data::variants::wolf::WolfSounds",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::variants::wolf::WolfSoundVariant",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
