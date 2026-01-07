@@ -2,5 +2,8 @@
 dispatch minecraft:resource[cat_variant] to struct CatVariant {
 	/// The cat texture to use for this variant.
 	asset_id: #[id="texture"] string,
+	/// The baby cat texture to use for this variant.
+	#[since="26.1"]
+	baby_asset_id: #[id="texture"] string,
 	...super::SpawnPrioritySelectors,
 }

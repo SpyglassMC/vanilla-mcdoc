@@ -3,6 +3,9 @@ dispatch minecraft:resource[chicken_variant] to struct ChickenVariant {
 	model?: ChickenModelType,
 	/// The chicken texture to use for this variant.
 	asset_id: #[id="texture"] string,
+	/// The baby chicken texture to use for this variant.
+	#[since="26.1"]
+	baby_asset_id: #[id="texture"] string,
 	...super::SpawnPrioritySelectors,
 }
 

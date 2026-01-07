@@ -13,6 +13,9 @@ dispatch minecraft:resource[wolf_variant] to struct WolfVariant {
 	...struct {
 		/// The texture set to use for this wolf variant.
 		assets: WolfVariantAssetInfo,
+		/// The baby texture set to use for this wolf variant.
+		#[since="26.1"]
+		baby_assets: WolfVariantAssetInfo,
 		...super::SpawnPrioritySelectors,
 	},
 }
@@ -24,7 +27,15 @@ struct WolfVariantAssetInfo {
 }
 
 #[since="1.21.5"]
-dispatch minecraft:resource[wolf_sound_variant] to struct WolfSoundVariant {
+dispatch minecraft:resource[wolf_sound_variant] to (
+	#[until="26.1"] WolfSounds |
+	#[since="26.1"] struct WolfSoundVariant {
+		adult_sounds: WolfSounds,
+		baby_sounds: WolfSounds,
+	} |
+)
+
+struct WolfSounds {
 	ambient_sound: SoundEventRef,
 	death_sound: SoundEventRef,
 	growl_sound: SoundEventRef,

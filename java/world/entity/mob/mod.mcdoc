@@ -62,6 +62,8 @@ struct LivingEntity {
 	ticks_since_last_hurt_by_mob?: int @ 0..100,
 	#[since="1.21.6"]
 	locator_bar_icon?: WaypointIcon,
+	#[since="26.1"]
+	...FallDamageLogicData,
 }
 
 /// Base NBT for all mobs.
@@ -212,6 +214,15 @@ struct BlockLeash {
 struct WaypointIcon {
 	style: #[id="waypoint_style"] string,
 	color?: RGB,
+}
+
+struct FallDamageLogicData {
+	/// Added mid-air after being hit by an explosion.
+	#[since="1.20.3"]
+	current_explosion_impact_pos?: [double] @ 3,
+	/// Used by fall damage logic. Decreases by 1 every tick.
+	#[since="1.21"]
+	current_impulse_context_reset_grace_time: int @ 0..,
 }
 
 dispatch minecraft:entity[

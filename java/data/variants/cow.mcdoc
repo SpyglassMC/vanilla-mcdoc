@@ -3,6 +3,9 @@ dispatch minecraft:resource[cow_variant] to struct CowVariant {
 	model?: CowModelType,
 	/// The cow texture to use for this variant.
 	asset_id: #[id="texture"] string,
+	/// The baby cow texture to use for this variant.
+	#[since="26.1"]
+	baby_asset_id: #[id="texture"] string,
 	...super::SpawnPrioritySelectors,
 }
 
