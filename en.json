@@ -380,6 +380,7 @@
 	"::java::data::gametest::TestData.manual_only": "If `true`, test is not included as part of automated test runs. Defaults to `false`.",
 	"::java::data::gametest::TestData.max_attempts": "Number of attempts to run the test. Defaults to `1`.",
 	"::java::data::gametest::TestData.max_ticks": "Maximum number of ticks allowed to pass before the test is considered timed out.",
+	"::java::data::gametest::TestData.padding": "Additional padding in blocks placed around the structure. Defaults to `0`.",
 	"::java::data::gametest::TestData.required": "Whether the test is considered required to pass for the full test suite to pass. Defaults to `true`.",
 	"::java::data::gametest::TestData.required_successes": "Number of attempts that must succeed for the test to be considered successful. Defaults to `1`.",
 	"::java::data::gametest::TestData.rotation": "Rotation to apply to the test structure. Defaults to `none`.",
