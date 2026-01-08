@@ -1,5 +1,5 @@
 {
-	"ref": "19d640f835b8b311e3e63c947f054c4a7bbc32e4",
+	"ref": "c76be55cd5c96a2531d98d5e5df0cf455b3cf157",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -81612,6 +81612,41 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::<anonymous 6>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Used by fall damage logic. Decreases by 1 every tick.\n",
+					"key": "current_impulse_context_reset_grace_time",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				}
+			]
+		},
+		"::java::world::entity::mob::<anonymous 7>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Used by fall damage logic. Decreases by 1 every tick.\n",
+					"key": "current_impulse_context_reset_grace_time",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::world::entity::mob::AgeableMob": {
 			"kind": "struct",
 			"fields": [
@@ -85950,7 +85985,7 @@
 					"optional": true
 				},
 				{
-					"kind": "pair",
+					"kind": "spread",
 					"attributes": [
 						{
 							"name": "since",
@@ -85961,16 +85996,67 @@
 									"value": "1.21"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
 						}
 					],
-					"desc": "Used by fall damage logic. Decreases by 1 every tick.\n",
-					"key": "current_impulse_context_reset_grace_time",
 					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 0
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Used by fall damage logic. Decreases by 1 every tick.\n",
+								"key": "current_impulse_context_reset_grace_time",
+								"type": {
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 0
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
 						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Used by fall damage logic. Decreases by 1 every tick.\n",
+								"key": "current_impulse_context_reset_grace_time",
+								"type": {
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 0
+									}
+								},
+								"optional": true
+							}
+						]
 					}
 				}
 			]
@@ -87510,6 +87596,33 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "Used by the game for wind charges.\n",
+					"key": "ignore_fall_damage_from_current_explosion",
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
+		},
+		"::java::world::entity::mob::player::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Used by the game for wind charges.\n",
+					"key": "ignore_fall_damage_from_current_explosion",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::player::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"desc": "Dimension of the player's respawn point. Defaults to overworld.\n",
 					"key": "dimension",
 					"type": {
@@ -87543,7 +87656,7 @@
 				}
 			]
 		},
-		"::java::world::entity::mob::player::<anonymous 1>": {
+		"::java::world::entity::mob::player::<anonymous 3>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -88424,7 +88537,7 @@
 					"optional": true
 				},
 				{
-					"kind": "pair",
+					"kind": "spread",
 					"attributes": [
 						{
 							"name": "since",
@@ -88442,17 +88555,63 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Used by the game for wind charges.\n",
+								"key": "ignore_fall_damage_from_current_explosion",
+								"type": {
+									"kind": "boolean"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
 									"value": "26.1"
 								}
 							}
 						}
 					],
-					"desc": "Used by the game for wind charges.\n",
-					"key": "ignore_fall_damage_from_current_explosion",
 					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Used by the game for wind charges.\n",
+								"key": "ignore_fall_damage_from_current_explosion",
+								"type": {
+									"kind": "boolean"
+								},
+								"optional": true
+							}
+						]
+					}
 				},
 				{
 					"kind": "spread",
