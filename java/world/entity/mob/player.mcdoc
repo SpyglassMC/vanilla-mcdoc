@@ -101,11 +101,15 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Ender pearls thrown by this player.
 	#[since="1.21.2"]
 	ender_pearls?: [EnderPearl],
-	/// Used by the game for wind charges.
-	#[since="1.20.3"] #[until="26.1"]
-	ignore_fall_damage_from_current_explosion?: boolean,
-	#[until="26.1"]
-	...FallDamageLogicData,
+	#[since="1.20.3"] #[until="1.21.5"] ...struct {
+		/// Used by the game for wind charges.
+		ignore_fall_damage_from_current_explosion: boolean,
+	},
+	#[since="1.21.5"] #[until="26.1"] ...struct {
+		/// Used by the game for wind charges.
+		ignore_fall_damage_from_current_explosion?: boolean,
+	},
+	#[until="26.1"] ...FallDamageLogicData,
 	// these are not included
 	CustomName?: (),
 	CustomNameVisible?: (),
