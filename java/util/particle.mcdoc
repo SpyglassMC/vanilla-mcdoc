@@ -44,8 +44,8 @@ type LegacyDustColor = #[color="particle"] [float] @ 3
 /// 	b = Math.floor(color[2] * randomBetween(0.8, 1) * baseShade)
 /// ```
 type DustColor = (
-	#[until="1.21.5"] LegacyDustColor |
-	#[since="1.21.5"] RGB |
+	#[until="1.21.2"] LegacyDustColor |
+	#[since="1.21.2"] RGB |
 )
 
 dispatch minecraft:particle[dragon_breath] to struct DragonBreathParticle {
