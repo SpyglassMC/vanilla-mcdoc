@@ -19,6 +19,8 @@ type DimensionTypeRef = (
 dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	#[since="1.21.11"]
 	attributes?: GlobalEnvironmentAttributeMap,
+	#[since="26.1"]
+	default_clock?: #[id="world_clock"] string,
 	#[since="1.21.11"]
 	timelines?: (#[id=(registry="timeline",tags="allowed")] string | [#[id="timeline"] string]),
 	/// If true, water will evaporate and sponges will dry.

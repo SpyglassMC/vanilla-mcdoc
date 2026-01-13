@@ -20,6 +20,7 @@ dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 	result: (
 		#[until="1.20.5"] ItemResult |
 		#[since="1.20.5"] ItemStack |
+		#[since="26.1"] #[id="item"] string |
 	),
 	/// Determines if a notification is shown when unlocking this recipe. Defaults to true.
 	#[since="1.19.4"]
@@ -34,6 +35,7 @@ dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShape
 	result: (
 		#[until="1.20.5"] ItemResult |
 		#[since="1.20.5"] ItemStack |
+		#[since="26.1"] #[id="item"] string |
 	),
 }
 
@@ -60,7 +62,9 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 	ingredient: Ingredient,
 	result: (
 		#[until="1.20.5"] #[id="item"] string |
-		#[since="1.20.5"] SingleItem |
+		#[since="1.20.5"] #[until="26.1"] SingleItem |
+		#[since="26.1"] ItemStack |
+		#[since="26.1"] #[id="item"] string |
 	),
 	experience?: float,
 	cookingtime?: int,
@@ -72,6 +76,7 @@ dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
 	result: (
 		#[until="1.20.5"] #[id="item"] string |
 		#[since="1.20.5"] ItemStack |
+		#[since="26.1"] #[id="item"] string |
 	),
 	#[until="1.20.5"]
 	count: int,
@@ -127,6 +132,7 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 			item: #[id="item"] string,
 		} |
 		#[since="1.20.5"] ItemStack |
+		#[since="26.1"] #[id="item"] string |
 	)
 }
 

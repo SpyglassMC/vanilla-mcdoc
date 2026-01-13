@@ -2,7 +2,26 @@
 dispatch minecraft:resource[timeline] to struct Timeline {
 	/// When not present, the timeline will not repeat.
 	period_ticks?: int @ 1..,
+	/// The world clock this timeline is tied to.
+	#[since="26.1"]
+	clock: #[id="world_clock"] string,
+	#[since="26.1"]
+	time_markers?: TimeMarkerMap,
 	tracks?: EnvironmentAttributeTrackMap,
+}
+
+struct TimeMarkerMap {
+	// TODO: tie the time markers to the world clock
+	/// Time marker ID must be unique within the world clock.
+	[#[id] string]: (int @ 0.. | TimeMarker),
+}
+
+struct TimeMarker {
+	ticks: int @ 0..,
+	/// Whether the time marker shows up in command suggestions. \
+	/// The time marker is still available in commands even if it is not suggested. \
+	/// Defaults to `false`.
+	show_in_commands?: boolean,
 }
 
 struct EnvironmentAttributeTrackMap {

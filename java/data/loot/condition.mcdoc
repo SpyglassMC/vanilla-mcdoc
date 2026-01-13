@@ -112,6 +112,9 @@ dispatch minecraft:loot_condition[table_bonus] to struct TableBonus {
 }
 
 dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
+	/// The world clock to check.
+	#[since="26.1"]
+	clock: #[id="world_clock"] string,
 	/// Check the current game tick.
 	value: (
 		#[until="1.17"] RandomValueBounds |

@@ -34,8 +34,15 @@ struct IntGameRule {
 	value: int,
 }
 
+#[until="26.1"]
 dispatch minecraft:test_environment_definition[time_of_day] to struct TimeOfDayTestEnvironment {
 	time: int @ 0..
+}
+
+#[since="26.1"]
+dispatch minecraft:test_environment_definition[clock_time] to struct ClockTimeTestEnvironment {
+	clock: #[id="world_clock"] string,
+	time: int @ 0..,
 }
 
 dispatch minecraft:test_environment_definition[weather] to struct WeatherTestEnvironment {

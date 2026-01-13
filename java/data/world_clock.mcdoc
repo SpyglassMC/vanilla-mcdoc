@@ -1,0 +1,2 @@
+#[since="26.1"]
+dispatch minecraft:resource[world_clock] to struct {}
