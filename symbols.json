@@ -1,5 +1,5 @@
 {
-	"ref": "df6e44644c4166248f9a5df401dcda8b5f3cd77d",
+	"ref": "a673addee4d712d8f7f0dd2179d6cab03d349218",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -23185,6 +23185,41 @@
 				}
 			]
 		},
+		"::java::data::gametest::test_environment::ClockTimeTestEnvironment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "clock",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "world_clock"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "time",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				}
+			]
+		},
 		"::java::data::gametest::test_environment::FunctionTestEnvironment": {
 			"kind": "struct",
 			"fields": [
@@ -24270,6 +24305,38 @@
 		"::java::data::loot::condition::TimeCheck": {
 			"kind": "struct",
 			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "The world clock to check.",
+					"key": "clock",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "world_clock"
+									}
+								}
+							}
+						]
+					}
+				},
 				{
 					"kind": "pair",
 					"desc": "Check the current game tick.",
@@ -30440,6 +30507,31 @@
 										}
 									}
 								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -30537,6 +30629,31 @@
 											"value": {
 												"kind": "string",
 												"value": "1.20.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item"
 											}
 										}
 									}
@@ -31153,6 +31270,57 @@
 												"value": "1.20.5"
 											}
 										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::world::item::ItemStack",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item"
+											}
+										}
 									}
 								]
 							}
@@ -31450,6 +31618,31 @@
 										}
 									}
 								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -31617,6 +31810,31 @@
 											"value": {
 												"kind": "string",
 												"value": "1.20.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item"
 											}
 										}
 									}
@@ -32431,12 +32649,123 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "The world clock this timeline is tied to.",
+					"key": "clock",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "world_clock"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "time_markers",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::timeline::TimeMarkerMap"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"key": "tracks",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::timeline::EnvironmentAttributeTrackMap"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::data::timeline::TimeMarker": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ticks",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the time marker shows up in command suggestions. \\\nThe time marker is still available in commands even if it is not suggested. \\\nDefaults to `false`.",
+					"key": "show_in_commands",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::timeline::TimeMarkerMap": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Time marker ID must be unique within the world clock.",
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					},
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0
+								}
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::timeline::TimeMarker"
+							}
+						]
+					}
 				}
 			]
 		},
@@ -35834,6 +36163,10 @@
 					"optional": true
 				}
 			]
+		},
+		"::java::data::world_clock::<anonymous 0>": {
+			"kind": "struct",
+			"fields": []
 		},
 		"::java::data::worldgen::<anonymous 0>": {
 			"kind": "struct",
@@ -43030,6 +43363,38 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::attribute::GlobalEnvironmentAttributeMap"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "default_clock",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "world_clock"
+									}
+								}
+							}
+						]
 					},
 					"optional": true
 				},
@@ -106820,6 +107185,22 @@
 					}
 				]
 			},
+			"world_clock": {
+				"kind": "struct",
+				"fields": [],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"worldgen/biome": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::biome::Biome"
@@ -107593,6 +107974,22 @@
 				"kind": "reference",
 				"path": "::java::data::gametest::test_environment::AllOffTestEnvironment"
 			},
+			"clock_time": {
+				"kind": "reference",
+				"path": "::java::data::gametest::test_environment::ClockTimeTestEnvironment",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"function": {
 				"kind": "reference",
 				"path": "::java::data::gametest::test_environment::FunctionTestEnvironment"
@@ -107603,7 +108000,19 @@
 			},
 			"time_of_day": {
 				"kind": "reference",
-				"path": "::java::data::gametest::test_environment::TimeOfDayTestEnvironment"
+				"path": "::java::data::gametest::test_environment::TimeOfDayTestEnvironment",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
 			},
 			"weather": {
 				"kind": "reference",
