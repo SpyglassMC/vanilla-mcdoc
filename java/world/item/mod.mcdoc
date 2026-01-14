@@ -23,10 +23,11 @@ type SingleItem = SingleItemOfComponent<DataComponentPatch>
 
 type ItemStackOfComponent<T> = struct {
 	...SingleItemOfComponent<T>,
-	/// Number of items in the stack
+	/// Number of items in the stack.
+	/// Defaults to `1`.
 	#[since="1.20.5"]
 	count?: int @ 1..99,
-	/// Number of items in the stack
+	/// Number of items in the stack.
 	#[until="1.20.5"]
 	Count?: byte,
 }
@@ -37,6 +38,7 @@ type ItemCost = ItemStackOfComponent<DataComponentExactPredicate>  // used by vi
 // 26.1 villager trade field
 struct TradeCost {
 	...SingleItemOfComponent<DataComponentExactPredicate>,
+	/// Number of items in the stack.
 	/// Defaults to `1`.
 	count?: NumberProvider,
 }
