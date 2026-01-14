@@ -13,7 +13,7 @@ dispatch minecraft:resource[timeline] to struct Timeline {
 struct TimeMarkerMap {
 	// TODO: tie the time markers to the world clock
 	/// Time marker ID must be unique within the world clock.
-	[string]: (int @ 0.. | TimeMarker),
+	[#[id] string]: (int @ 0.. | TimeMarker),
 }
 
 struct TimeMarker {
