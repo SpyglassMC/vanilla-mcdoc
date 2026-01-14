@@ -1,5 +1,5 @@
 {
-	"ref": "a560582eb72903c8abfb224e5130e6e578bdca9c",
+	"ref": "e257d34b8e8c49accebce5c283235775792b35b5",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -33489,7 +33489,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Clamped to an integer.",
+					"desc": "Clamps to an integer.",
 					"key": "min",
 					"type": {
 						"kind": "reference",
@@ -33499,7 +33499,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Clamped to an integer.",
+					"desc": "Clamps to an integer.",
 					"key": "max",
 					"type": {
 						"kind": "reference",
@@ -33836,7 +33836,7 @@
 					"fields": [
 						{
 							"kind": "pair",
-							"desc": "Clamped to an integer.",
+							"desc": "Clamps to an integer.",
 							"key": "min",
 							"type": {
 								"kind": "reference",
@@ -33846,7 +33846,7 @@
 						},
 						{
 							"kind": "pair",
-							"desc": "Clamped to an integer.",
+							"desc": "Clamps to an integer.",
 							"key": "max",
 							"type": {
 								"kind": "reference",
@@ -36027,7 +36027,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Price item required by the merchant, count is modified depending on demand & per-player context.",
+					"desc": "Price item required by the merchant. \\\nThe count is affected by various factors, including offered item, demand and player reputation.",
 					"key": "wants",
 					"type": {
 						"kind": "reference",
@@ -36036,7 +36036,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Second item required by the merchant, count does not change.",
+					"desc": "Second item required by the merchant. \\\nThe count is not affected by any factors.",
 					"key": "additional_wants",
 					"type": {
 						"kind": "reference",
@@ -36055,7 +36055,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Modifiers applied to the `gives` item. \\\nDoes **not** support `reference` item modifier. \\\nCan affect the count of `wants` with the `additional_trade_cost` component. \\\nAfter modifying the cost, the `additional_trade_cost` component is removed. \\",
+					"desc": "Modifiers applied to the `gives` item. \\\nDoes **not** support `reference` item modifier. \\\nSome modifiers can affect the price through the `additional_trade_cost` transient component. \\\nThe `additional_trade_cost` component is not saved on the offered item.",
 					"key": "given_item_modifiers",
 					"type": {
 						"kind": "list",
@@ -36068,7 +36068,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Maximum number of uses of this trade before the villager has to restock. Defaults to `4`. \\\nClamps to an integer of at least `1`.",
+					"desc": "Maximum number of uses of this trade before the villager has to restock. Defaults to `4`. \\\nClamps to a positive integer.",
 					"key": "max_uses",
 					"type": {
 						"kind": "reference",
@@ -36078,7 +36078,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "How much demand & reputation each affect the count of `wants`, is serialized as `priceMultiplier`. Defaults to `0.0`. \\\nClamps to a positive float.",
+					"desc": "How much demand & reputation each affect the price, is serialized as `priceMultiplier`. Defaults to `0.0`. \\\nClamps to a non-negative float.",
 					"key": "reputation_discount",
 					"type": {
 						"kind": "reference",
@@ -36088,7 +36088,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`. \\\nClamps to a positive integer.",
+					"desc": "Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`. \\\nClamps to a non-negative integer.",
 					"key": "xp",
 					"type": {
 						"kind": "reference",
@@ -36108,7 +36108,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Doubles the `additional_trade_cost` value if the resulting item of `given_item_modifiers`:\n1. has `additional_trade_cost` component, and\n2. has the specified enchantments.",
+					"desc": "If the offered enchanted book has the specified enchantments, the price will be affected by doubling the `additional_trade_cost` transient component.",
 					"key": "double_trade_price_enchantments",
 					"type": {
 						"kind": "union",
@@ -92495,7 +92495,7 @@
 							}
 						}
 					],
-					"desc": "Number of items in the stack",
+					"desc": "Number of items in the stack.\nDefaults to `1`.",
 					"key": "count",
 					"type": {
 						"kind": "int",
@@ -92521,7 +92521,7 @@
 							}
 						}
 					],
-					"desc": "Number of items in the stack",
+					"desc": "Number of items in the stack.",
 					"key": "Count",
 					"type": {
 						"kind": "byte"
@@ -93820,7 +93820,7 @@
 								}
 							}
 						],
-						"desc": "Number of items in the stack",
+						"desc": "Number of items in the stack.\nDefaults to `1`.",
 						"key": "count",
 						"type": {
 							"kind": "int",
@@ -93846,7 +93846,7 @@
 								}
 							}
 						],
-						"desc": "Number of items in the stack",
+						"desc": "Number of items in the stack.",
 						"key": "Count",
 						"type": {
 							"kind": "byte"
@@ -94700,7 +94700,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Defaults to `1`.",
+					"desc": "Number of items in the stack.\nDefaults to `1`.",
 					"key": "count",
 					"type": {
 						"kind": "reference",
