@@ -1,5 +1,5 @@
 {
-	"ref": "d94323aa594d8554026e4008c8438b80595c6bf2",
+	"ref": "a560582eb72903c8abfb224e5130e6e578bdca9c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -32743,7 +32743,12 @@
 					"kind": "pair",
 					"desc": "Time marker ID must be unique within the world clock.",
 					"key": {
-						"kind": "string"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
 					},
 					"type": {
 						"kind": "union",
