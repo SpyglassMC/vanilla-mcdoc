@@ -27,6 +27,7 @@ struct AdvancementDisplay {
 	icon: (
 		#[until="1.20.5"] AdvancementIcon |
 		#[since="1.20.5"] ItemStack |
+		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
 	),
 	title: Text,
 	description: Text,
@@ -48,6 +49,7 @@ struct AdvancementDisplay {
 	hidden?: boolean,
 }
 
+// Until 1.20.5
 struct AdvancementIcon {
 	item: #[id="item"] string,
 	nbt?: #[nbt=minecraft:item[[item]]] string,

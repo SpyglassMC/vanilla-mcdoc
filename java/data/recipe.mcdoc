@@ -20,7 +20,7 @@ dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 	result: (
 		#[until="1.20.5"] ItemResult |
 		#[since="1.20.5"] ItemStack |
-		#[since="26.1"] #[id="item"] string |
+		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
 	),
 	/// Determines if a notification is shown when unlocking this recipe. Defaults to true.
 	#[since="1.19.4"]
@@ -35,7 +35,7 @@ dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShape
 	result: (
 		#[until="1.20.5"] ItemResult |
 		#[since="1.20.5"] ItemStack |
-		#[since="26.1"] #[id="item"] string |
+		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
 	),
 }
 
@@ -50,8 +50,9 @@ dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTrans
 	material: Ingredient,
 	/// The result item that will be merged with the input ingredient.
 	result: (
-		#[id="item"] string |
+		#[until="26.1"] #[id="item"] string |
 		#[since="1.21.5"] ItemStack |
+		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
 	),
 }
 
@@ -64,7 +65,7 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 		#[until="1.20.5"] #[id="item"] string |
 		#[since="1.20.5"] #[until="26.1"] SingleItem |
 		#[since="26.1"] ItemStack |
-		#[since="26.1"] #[id="item"] string |
+		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
 	),
 	experience?: float,
 	cookingtime?: int,
@@ -76,7 +77,7 @@ dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
 	result: (
 		#[until="1.20.5"] #[id="item"] string |
 		#[since="1.20.5"] ItemStack |
-		#[since="26.1"] #[id="item"] string |
+		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
 	),
 	#[until="1.20.5"]
 	count: int,
@@ -132,7 +133,7 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 			item: #[id="item"] string,
 		} |
 		#[since="1.20.5"] ItemStack |
-		#[since="26.1"] #[id="item"] string |
+		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
 	)
 }
 
