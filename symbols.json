@@ -1,5 +1,5 @@
 {
-	"ref": "e257d34b8e8c49accebce5c283235775792b35b5",
+	"ref": "7648c80727b0a0089c18006e187acb2aeb49ea7c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -10721,6 +10721,48 @@
 											"value": {
 												"kind": "string",
 												"value": "1.20.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "item"
+													}
+												},
+												"exclude": {
+													"kind": "tree",
+													"values": {
+														"0": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "air"
+															}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -30524,10 +30566,27 @@
 									{
 										"name": "id",
 										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "item"
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "item"
+													}
+												},
+												"exclude": {
+													"kind": "tree",
+													"values": {
+														"0": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "air"
+															}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -30650,10 +30709,27 @@
 									{
 										"name": "id",
 										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "item"
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "item"
+													}
+												},
+												"exclude": {
+													"kind": "tree",
+													"values": {
+														"0": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "air"
+															}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -30714,6 +30790,16 @@
 								"kind": "string",
 								"attributes": [
 									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
 										"name": "id",
 										"value": {
 											"kind": "literal",
@@ -30736,6 +30822,48 @@
 											"value": {
 												"kind": "string",
 												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "item"
+													}
+												},
+												"exclude": {
+													"kind": "tree",
+													"values": {
+														"0": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "air"
+															}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -31315,10 +31443,27 @@
 									{
 										"name": "id",
 										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "item"
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "item"
+													}
+												},
+												"exclude": {
+													"kind": "tree",
+													"values": {
+														"0": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "air"
+															}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -31635,10 +31780,27 @@
 									{
 										"name": "id",
 										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "item"
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "item"
+													}
+												},
+												"exclude": {
+													"kind": "tree",
+													"values": {
+														"0": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "air"
+															}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -31831,10 +31993,27 @@
 									{
 										"name": "id",
 										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "item"
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "item"
+													}
+												},
+												"exclude": {
+													"kind": "tree",
+													"values": {
+														"0": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "air"
+															}
+														}
+													}
+												}
 											}
 										}
 									}
