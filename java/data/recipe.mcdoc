@@ -102,7 +102,7 @@ dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTrans
 
 dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
 	...RecipeCommonInfo,
-	...CraftingBookInfo,
+	...CookingBookInfo,
 	ingredient: Ingredient,
 	result: (
 		#[until="1.20.5"] #[id="item"] string |
@@ -334,6 +334,13 @@ struct CraftingBookInfo {
 	group?: string, // TODO
 	/// Identifier for the category this goes in the recipe book.
 	category?: CraftingBookCategory,
+}
+
+struct CookingBookInfo {
+	/// Identifier to group multiple recipes in the recipe book.
+	group?: string,
+	/// Identifier for the category this goes in the recipe book.
+	category?: CookingBookCategory,
 }
 
 #[until="1.20.5"]
