@@ -146,6 +146,8 @@ struct AgeableMob {
 	/// A value of age assigned to this mob when it grows up.
 	/// Incremented when a baby mob is fed.
 	ForcedAge?: int,
+	#[since="26.1"]
+	AgeLocked?: boolean,
 }
 
 /// A single attribute.

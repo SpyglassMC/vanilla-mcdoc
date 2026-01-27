@@ -1,5 +1,8 @@
+use ::java::data::util::MinMaxBounds
 use ::java::world::item::ItemStack
+use ::java::world::item::ItemStackTemplate
 use ::java::world::item::SingleItem
+use ::java::world::component::item::FireworkShape
 
 dispatch minecraft:resource[recipe] to struct Recipe {
 	type: #[id="recipe_serializer"] string,
@@ -8,11 +11,52 @@ dispatch minecraft:resource[recipe] to struct Recipe {
 
 dispatch minecraft:recipe_serializer[%unknown] to struct {}
 
+dispatch minecraft:recipe_serializer[crafting_decorated_pot] to (
+	#[until="26.1"] struct {} |
+	#[since="26.1"] struct CraftingDecoratedPot {
+		back: Ingredient,
+		left: Ingredient,
+		right: Ingredient,
+		front: Ingredient,
+		/// The `pot_decorations` component will store the 4 ingredients.
+		result: ItemStackTemplate,
+	} |
+)
+
+#[since="26.1"]
+dispatch minecraft:recipe_serializer[crafting_dye] to struct CraftingDye {
+	#[since="26.1"]
+	...NotificationInfo,
+	...CraftingBookInfo,
+	/// The item to be dyed. \
+	/// Its `dyed_color` component will be dyed. The other components are copied.
+	target: Ingredient,
+	/// The items to provide dye color. \
+	/// Colors are provided by the `dye` component. \
+	/// Multiple dyes can be used at the same time.
+	dye: Ingredient,
+	result: ItemStackTemplate
+}
+
+#[since="26.1"]
+dispatch minecraft:recipe_serializer[crafting_imbue] to struct CraftingImbue {
+	#[since="26.1"]
+	...NotificationInfo,
+	...CraftingBookInfo,
+	/// The item to provide potion effect. \
+	/// Its `potion_contents` component will be copied. \
+	/// This item is placed at the center grid.
+	source: Ingredient,
+	/// Additional ingredients. \
+	/// 8 `material` items are required to surroud the `source` item.
+	material: Ingredient,
+	result: ItemStackTemplate
+}
+
 dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
-	/// Identifier to group multiple recipes in the recipe book.
-	group?: string, // TODO
-	/// Identifier for the category this goes in the recipe book.
-	category?: CraftingBookCategory,
+	#[since="1.19.4"]
+	...NotificationInfo,
+	...CraftingBookInfo,
 	pattern: [#[crafting_ingredient(definition=true)] string @ 1..3] @ 1..3,
 	key: struct CraftingIngredients {
 		[#[crafting_ingredient] string]: Ingredient,
@@ -22,15 +66,12 @@ dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 		#[since="1.20.5"] ItemStack |
 		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
 	),
-	/// Determines if a notification is shown when unlocking this recipe. Defaults to true.
-	#[since="1.19.4"]
-	show_notification?: boolean
 }
 
 dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShapeless {
-	group?: string,
-	/// Identifier for the category this goes in the recipe book.
-	category?: CraftingBookCategory,
+	#[since="26.1"]
+	...NotificationInfo,
+	...CraftingBookInfo,
 	ingredients: [Ingredient] @ 1..9,
 	result: (
 		#[until="1.20.5"] ItemResult |
@@ -41,13 +82,21 @@ dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShape
 
 #[since="1.21.2"]
 dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTransmute {
-	group?: string,
-	/// Identifier for the category this goes in the recipe book.
-	category?: CraftingBookCategory,
+	#[since="26.1"]
+	...NotificationInfo,
+	...CraftingBookInfo,
 	/// The ingredient that will transfer its data components to the result item.
 	input: Ingredient,
 	/// An additional ingredient.
 	material: Ingredient,
+	/// The allowed count of material.
+	/// Defaults to `1`.
+	#[since="26.1"]
+	material_count?: MinMaxBounds<int @ 1..8>,
+	/// When true, the number of materials will be added to the result count. \
+	/// Defaults to `false`.
+	#[since="26.1"]
+	add_material_count_to_result?: boolean,
 	/// The result item that will be merged with the input ingredient.
 	result: (
 		#[until="26.1"] #[id="item"] string |
@@ -57,9 +106,9 @@ dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTrans
 }
 
 dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
-	group?: string,
-	/// Identifier for the category this goes in the recipe book.
-	category?: CookingBookCategory,
+	#[since="26.1"]
+	...NotificationInfo,
+	...CookingBookInfo,
 	ingredient: Ingredient,
 	result: (
 		#[until="1.20.5"] #[id="item"] string |
@@ -72,6 +121,10 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 }
 
 dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
+	#[since="26.1"]
+	...NotificationInfo,
+	/// This field is unused by the game.
+	#[deprecated] #[until="26.1"]
 	group?: string,
 	ingredient: Ingredient,
 	result: (
@@ -111,6 +164,11 @@ type SmithingIngredients = (
 
 #[since="1.19.4"]
 dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTransform {
+	#[since="26.1"]
+	...NotificationInfo,
+	/// This field is unused by the game.
+	#[deprecated] #[until="26.1"]
+	group?: string,
 	/// Ingredient specifying an item to be transformed.
 	base: Ingredient,
 	#[until="1.21.2"]
@@ -139,6 +197,11 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 
 #[since="1.19.4"]
 dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
+	#[since="26.1"]
+	...NotificationInfo,
+	/// This field is unused by the game.
+	#[deprecated] #[until="26.1"]
+	group?: string,
 	/// Ingredient specifying an item to be trimmed.
 	base: Ingredient,
 	/// Material that will be used.
@@ -148,6 +211,150 @@ dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
 	/// The trim pattern to apply to the result item.
 	#[since="1.21.5"]
 	pattern: #[id="trim_pattern"] string,
+}
+
+dispatch minecraft:recipe_serializer[crafting_special_bannerduplicate] to (
+	#[until="26.1"] struct {} |
+	#[since="26.1"] struct CraftingSpecialBannerDuplicate {
+		/// The banner item. The item type is required to be `BannerItem`. \
+		/// Exactly 2 banners of the same color are required. \
+		/// The one with patterns is viewed as "source". Its components will be copied. \
+		/// The other is viewed as "target". It is required to have no patterns. \
+		/// \
+		/// The source banner will be kept in the crafting grid.
+		banner: Ingredient,
+		result: ItemStackTemplate,
+	} |
+)
+
+dispatch minecraft:recipe_serializer[crafting_special_bookcloning] to (
+	#[until="26.1"] struct {} |
+	#[since="26.1"] struct CraftingSpecialBookCloning {
+		/// The book item. \
+		/// Its `written_book_contents` component will be copied, with `generation` value increased by 1. \
+		/// The other components are copied as-is. \
+		/// \
+		/// The book will be kept in the crafting grid.
+		source: Ingredient,
+		/// Additional ingredients. \
+		/// Multiple materials can be used at the same time. \
+		/// The number of materials beyond the first one will be added to the result count.
+		material: Ingredient,
+		/// Limits the generation of the `source` item that can be copied.
+		/// Defaults to allow generation 0 and 1 (original and first copy).
+		allowed_generations?: MinMaxBounds<int @ 0..2>,
+		result: ItemStackTemplate,
+	} |
+)
+
+dispatch minecraft:recipe_serializer[crafting_special_firework_rocket] to (
+	#[until="26.1"] struct {} |
+	#[since="26.1"] struct CraftingSpecialFireworkRocket {
+		/// Additional ingredient. \
+		/// Exactly 1 additional ingredient is required.
+		shell: Ingredient,
+		/// The fuel ingredient. \
+		/// The count of fuel ingredients controls the `flight_duration` field. \
+		/// Only 1 ~ 3 fuels are allowed.
+		fuel: Ingredient,
+		/// The firework star ingredient. \
+		/// Provides explosion data by the `firework_explosion` component. \
+		/// Any count of stars (including 0) are allowed.
+		star: Ingredient,
+		/// The `fireworks` component is controlled by `fuel` and `star`.
+		result: ItemStackTemplate,
+	} |
+)
+
+dispatch minecraft:recipe_serializer[crafting_special_firework_star] to (
+	#[until="26.1"] struct {} |
+	#[since="26.1"] struct CraftingSpecialFireworkStar {
+		/// If this ingredient is provided, the result will have `has_trail` field set.
+		trail: Ingredient,
+		/// If this ingredient is provided, the result will have `has_twinkle` field set.
+		twinkle: Ingredient,
+		/// Additional ingredient. \
+		/// Exactly 1 additional ingredient is required.
+		fuel: Ingredient,
+		/// The items to provide explosion color. \
+		/// Colors are provided by the `dye` component. \
+		/// Multiple dyes can be used at the same time.
+		dye: Ingredient,
+		/// If one of the ingredients is provided, the result will have the corresponding `shape` value. \
+		/// If no shape ingredient is provided, the shape will be `small_ball`.
+		shapes: struct FireworkShapeIngredients {
+			[FireworkShape]: Ingredient,
+		},
+		/// The `firework_explosion` component is controlled by the ingredients.
+		result: ItemStackTemplate,
+	} |
+)
+
+dispatch minecraft:recipe_serializer[crafting_special_firework_star_fade] to (
+	#[until="26.1"] struct {} |
+	#[since="26.1"] struct CraftingSpecialFireworkStarFade {
+		/// The firework star item. \
+		/// The fade effect of its `firework_explosion` will be changed. \
+		/// The other components are copied.
+		target: Ingredient,
+		/// The items to provide fade color. \
+		/// Colors are provided by the `dye` component. \
+		/// Multiple dyes can be used at the same time.
+		dye: Ingredient,
+		result: ItemStackTemplate,
+	} |
+)
+
+dispatch minecraft:recipe_serializer[crafting_special_mapextending] to (
+	#[until="26.1"] struct {} |
+	#[since="26.1"] struct CraftingSpecialMapExtending {
+		/// The map item. \
+		/// The `map_id` component is used to determine the resulting item. \
+		/// The other components are copied. \
+		/// This item is placed at the center grid. \
+		/// \
+		/// The source map will be kept in the crafting grid.
+		map: Ingredient,
+		/// Additional ingredients. \
+		/// 8 `material` items are required to surroud the `map` item.
+		material: Ingredient,
+		/// The previewing result will have `map_post_processing` transient component. \
+		/// The crafted result will have a new `map_id` component, which shows the extended version of the original map.
+		result: ItemStackTemplate,
+	} |
+)
+
+dispatch minecraft:recipe_serializer[crafting_special_shielddecoration] to (
+	#[until="26.1"] struct {} |
+	#[since="26.1"] struct CraftingSpecialShieldDecoration {
+		/// The item to be decorated. It is required to have no patterns. \
+		/// Its components, except `base_color` and `banner_patterns`, are copied.
+		target: Ingredient,
+		/// The banner item. The item type is required to be `BannerItem`. \
+		/// Determines the `base_color` component of the resulting item.
+		banner: Ingredient,
+		result: ItemStackTemplate,
+	} |
+)
+
+struct NotificationInfo {
+	/// Determines if a notification is shown when unlocking this recipe.
+	/// Defaults to `true`.
+	show_notification?: boolean,
+}
+
+struct CraftingBookInfo {
+	/// Identifier to group multiple recipes in the recipe book.
+	group?: string, // TODO
+	/// Identifier for the category this goes in the recipe book.
+	category?: CraftingBookCategory,
+}
+
+struct CookingBookInfo {
+	/// Identifier to group multiple recipes in the recipe book.
+	group?: string,
+	/// Identifier for the category this goes in the recipe book.
+	category?: CookingBookCategory,
 }
 
 #[until="1.20.5"]

@@ -276,6 +276,9 @@ dispatch minecraft:data_component[debug_stick_state] to struct DebugStickState {
 	[#[id="block"] string]: mcdoc:block_state_keys[[%key]],
 }
 
+#[since="26.1"]
+dispatch minecraft:data_component[dye] to DyeColor
+
 dispatch minecraft:data_component[dyed_color] to (
 	#[until="1.21.5"] (
 		#[canonical] DyedColor |
