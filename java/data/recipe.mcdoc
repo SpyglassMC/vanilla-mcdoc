@@ -25,6 +25,7 @@ dispatch minecraft:recipe_serializer[crafting_decorated_pot] to (
 
 #[since="26.1"]
 dispatch minecraft:recipe_serializer[crafting_dye] to struct CraftingDye {
+	#[since="26.1"]
 	...RecipeCommonInfo,
 	...CraftingBookInfo,
 	/// The item to be dyed. \
@@ -39,6 +40,7 @@ dispatch minecraft:recipe_serializer[crafting_dye] to struct CraftingDye {
 
 #[since="26.1"]
 dispatch minecraft:recipe_serializer[crafting_imbue] to struct CraftingImbue {
+	#[since="26.1"]
 	...RecipeCommonInfo,
 	...CraftingBookInfo,
 	/// The item to provide potion effect. \
@@ -52,6 +54,7 @@ dispatch minecraft:recipe_serializer[crafting_imbue] to struct CraftingImbue {
 }
 
 dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
+	#[since="1.19.4"]
 	...RecipeCommonInfo,
 	...CraftingBookInfo,
 	pattern: [#[crafting_ingredient(definition=true)] string @ 1..3] @ 1..3,
@@ -66,6 +69,7 @@ dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 }
 
 dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShapeless {
+	#[since="26.1"]
 	...RecipeCommonInfo,
 	...CraftingBookInfo,
 	ingredients: [Ingredient] @ 1..9,
@@ -78,6 +82,7 @@ dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShape
 
 #[since="1.21.2"]
 dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTransmute {
+	#[since="26.1"]
 	...RecipeCommonInfo,
 	...CraftingBookInfo,
 	/// The ingredient that will transfer its data components to the result item.
@@ -101,6 +106,7 @@ dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTrans
 }
 
 dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
+	#[since="26.1"]
 	...RecipeCommonInfo,
 	...CookingBookInfo,
 	ingredient: Ingredient,
@@ -118,6 +124,7 @@ dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
 	/// Unused field.
 	#[until="26.1"]
 	group?: string,
+	#[since="26.1"]
 	...RecipeCommonInfo,
 	ingredient: Ingredient,
 	result: (
@@ -157,6 +164,7 @@ type SmithingIngredients = (
 
 #[since="1.19.4"]
 dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTransform {
+	#[since="26.1"]
 	...RecipeCommonInfo,
 	/// Ingredient specifying an item to be transformed.
 	base: Ingredient,
@@ -186,6 +194,7 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 
 #[since="1.19.4"]
 dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
+	#[since="26.1"]
 	...RecipeCommonInfo,
 	/// Ingredient specifying an item to be trimmed.
 	base: Ingredient,
@@ -325,7 +334,6 @@ dispatch minecraft:recipe_serializer[crafting_special_shielddecoration] to (
 struct RecipeCommonInfo {
 	/// Determines if a notification is shown when unlocking this recipe.
 	/// Defaults to `true`.
-	#[since="1.19.4"]
 	show_notification?: boolean,
 }
 
