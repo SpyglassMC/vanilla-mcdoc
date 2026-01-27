@@ -121,11 +121,11 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 }
 
 dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
-	/// Unused field.
-	#[until="26.1"]
-	group?: string,
 	#[since="26.1"]
 	...RecipeCommonInfo,
+	/// This field is unused by the game.
+	#[deprecated] #[until="26.1"]
+	group?: string,
 	ingredient: Ingredient,
 	result: (
 		#[until="1.20.5"] #[id="item"] string |
@@ -166,6 +166,9 @@ type SmithingIngredients = (
 dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTransform {
 	#[since="26.1"]
 	...RecipeCommonInfo,
+	/// This field is unused by the game.
+	#[deprecated] #[until="26.1"]
+	group?: string,
 	/// Ingredient specifying an item to be transformed.
 	base: Ingredient,
 	#[until="1.21.2"]
@@ -196,6 +199,9 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
 	#[since="26.1"]
 	...RecipeCommonInfo,
+	/// This field is unused by the game.
+	#[deprecated] #[until="26.1"]
+	group?: string,
 	/// Ingredient specifying an item to be trimmed.
 	base: Ingredient,
 	/// Material that will be used.
