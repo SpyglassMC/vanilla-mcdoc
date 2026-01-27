@@ -1,5 +1,5 @@
 {
-	"ref": "7648c80727b0a0089c18006e187acb2aeb49ea7c",
+	"ref": "d024afa9e4173f18fb295703ce2574e79136f937",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -30323,6 +30323,38 @@
 		},
 		"::java::data::recipe::<anonymous 1>": {
 			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 10>": {
+			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 2>": {
+			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
@@ -30344,7 +30376,7 @@
 				}
 			]
 		},
-		"::java::data::recipe::<anonymous 2>": {
+		"::java::data::recipe::<anonymous 3>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -30369,6 +30401,102 @@
 				}
 			]
 		},
+		"::java::data::recipe::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 5>": {
+			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 6>": {
+			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 7>": {
+			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 8>": {
+			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 9>": {
+			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
 		"::java::data::recipe::CookingBookCategory": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -30384,6 +30512,30 @@
 				{
 					"identifier": "Misc",
 					"value": "misc"
+				}
+			]
+		},
+		"::java::data::recipe::CookingBookInfo": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Identifier to group multiple recipes in the recipe book.",
+					"key": "group",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Identifier for the category this goes in the recipe book.",
+					"key": "category",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::CookingBookCategory"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -30406,6 +30558,202 @@
 				{
 					"identifier": "Misc",
 					"value": "misc"
+				}
+			]
+		},
+		"::java::data::recipe::CraftingBookInfo": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Identifier to group multiple recipes in the recipe book.",
+					"key": "group",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Identifier for the category this goes in the recipe book.",
+					"key": "category",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingBookCategory"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::recipe::CraftingDecoratedPot": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "back",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "left",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "right",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "front",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The `pot_decorations` component will store the 4 ingredients.",
+					"key": "result",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::CraftingDye": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::NotificationInfo"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingBookInfo"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The item to be dyed. \\\nIts `dyed_color` component will be dyed. The other components are copied.",
+					"key": "target",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The items to provide dye color. \\\nColors are provided by the `dye` component. \\\nMultiple dyes can be used at the same time.",
+					"key": "dye",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "result",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					}
+				}
+			]
+		},
+		"::java::data::recipe::CraftingImbue": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::NotificationInfo"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingBookInfo"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The item to provide potion effect. \\\nIts `potion_contents` component will be copied. \\\nThis item is placed at the center grid.",
+					"key": "source",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Additional ingredients. \\\n8 `material` items are required to surroud the `source` item.",
+					"key": "material",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "result",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					}
 				}
 			]
 		},
@@ -30433,23 +30781,30 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "pair",
-					"desc": "Identifier to group multiple recipes in the recipe book.",
-					"key": "group",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Identifier for the category this goes in the recipe book.",
-					"key": "category",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.19.4"
+								}
+							}
+						}
+					],
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::recipe::CraftingBookCategory"
-					},
-					"optional": true
+						"path": "::java::data::recipe::NotificationInfo"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingBookInfo"
+					}
 				},
 				{
 					"kind": "pair",
@@ -30594,27 +30949,6 @@
 							}
 						]
 					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.19.4"
-								}
-							}
-						}
-					],
-					"desc": "Determines if a notification is shown when unlocking this recipe. Defaults to true.",
-					"key": "show_notification",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
 				}
 			]
 		},
@@ -30622,22 +30956,30 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "pair",
-					"key": "group",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Identifier for the category this goes in the recipe book.",
-					"key": "category",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::recipe::CraftingBookCategory"
-					},
-					"optional": true
+						"path": "::java::data::recipe::NotificationInfo"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingBookInfo"
+					}
 				},
 				{
 					"kind": "pair",
@@ -30740,26 +31082,400 @@
 				}
 			]
 		},
-		"::java::data::recipe::CraftingTransmute": {
+		"::java::data::recipe::CraftingSpecialBannerDuplicate": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "group",
+					"desc": "The banner item. The item type is required to be `BannerItem`. \\\nExactly 2 banners of the same color are required. \\\nThe one with patterns is viewed as \"source\". Its components will be copied. \\\nThe other is viewed as \"target\". It is required to have no patterns. \\\n\\\nThe source banner will be kept in the crafting grid.",
+					"key": "banner",
 					"type": {
-						"kind": "string"
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "result",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::CraftingSpecialBookCloning": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The book item. \\\nIts `written_book_contents` component will be copied, with `generation` value increased by 1. \\\nThe other components are copied as-is. \\\n\\\nThe book will be kept in the crafting grid.",
+					"key": "source",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Additional ingredients. \\\nMultiple materials can be used at the same time. \\\nThe number of materials beyond the first one will be added to the result count.",
+					"key": "material",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Limits the generation of the `source` item that can be copied.\nDefaults to allow generation 0 and 1 (original and first copy).",
+					"key": "allowed_generations",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 2
+								}
+							}
+						]
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "Identifier for the category this goes in the recipe book.",
-					"key": "category",
+					"key": "result",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::recipe::CraftingBookCategory"
-					},
-					"optional": true
+						"path": "::java::world::item::ItemStackTemplate"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::CraftingSpecialFireworkRocket": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Additional ingredient. \\\nExactly 1 additional ingredient is required.",
+					"key": "shell",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The fuel ingredient. \\\nThe count of fuel ingredients controls the `flight_duration` field. \\\nOnly 1 ~ 3 fuels are allowed.",
+					"key": "fuel",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The firework star ingredient. \\\nProvides explosion data by the `firework_explosion` component. \\\nAny count of stars (including 0) are allowed.",
+					"key": "star",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The `fireworks` component is controlled by `fuel` and `star`.",
+					"key": "result",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::CraftingSpecialFireworkStar": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If this ingredient is provided, the result will have `has_trail` field set.",
+					"key": "trail",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "If this ingredient is provided, the result will have `has_twinkle` field set.",
+					"key": "twinkle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Additional ingredient. \\\nExactly 1 additional ingredient is required.",
+					"key": "fuel",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The items to provide explosion color. \\\nColors are provided by the `dye` component. \\\nMultiple dyes can be used at the same time.",
+					"key": "dye",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "If one of the ingredients is provided, the result will have the corresponding `shape` value. \\\nIf no shape ingredient is provided, the shape will be `small_ball`.",
+					"key": "shapes",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": {
+									"kind": "reference",
+									"path": "::java::world::component::item::FireworkShape"
+								},
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::recipe::Ingredient"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The `firework_explosion` component is controlled by the ingredients.",
+					"key": "result",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::CraftingSpecialFireworkStarFade": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The firework star item. \\\nThe fade effect of its `firework_explosion` will be changed. \\\nThe other components are copied.",
+					"key": "target",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The items to provide fade color. \\\nColors are provided by the `dye` component. \\\nMultiple dyes can be used at the same time.",
+					"key": "dye",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "result",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::CraftingSpecialMapExtending": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The map item. \\\nThe `map_id` component is used to determine the resulting item. \\\nThe other components are copied. \\\nThis item is placed at the center grid. \\\n\\\nThe source map will be kept in the crafting grid.",
+					"key": "map",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Additional ingredients. \\\n8 `material` items are required to surroud the `map` item.",
+					"key": "material",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The previewing result will have `map_post_processing` transient component. \\\nThe crafted result will have a new `map_id` component, which shows the extended version of the original map.",
+					"key": "result",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::CraftingSpecialShieldDecoration": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The item to be decorated. It is required to have no patterns. \\\nIts components, except `base_color` and `banner_patterns`, are copied.",
+					"key": "target",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The banner item. The item type is required to be `BannerItem`. \\\nDetermines the `base_color` component of the resulting item.",
+					"key": "banner",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "result",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::CraftingTransmute": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::NotificationInfo"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingBookInfo"
+					}
 				},
 				{
 					"kind": "pair",
@@ -30778,6 +31494,62 @@
 						"kind": "reference",
 						"path": "::java::data::recipe::Ingredient"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "The allowed count of material.\nDefaults to `1`.",
+					"key": "material_count",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 8
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "When true, the number of materials will be added to the result count. \\\nDefaults to `false`.",
+					"key": "add_material_count_to_result",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -30870,6 +31642,22 @@
 								]
 							}
 						]
+					}
+				}
+			]
+		},
+		"::java::data::recipe::FireworkShapeIngredients": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "reference",
+						"path": "::java::world::component::item::FireworkShape"
+					},
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
 					}
 				}
 			]
@@ -31195,6 +31983,20 @@
 				}
 			]
 		},
+		"::java::data::recipe::NotificationInfo": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Determines if a notification is shown when unlocking this recipe.\nDefaults to `true`.",
+					"key": "show_notification",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::recipe::OptionalSmithingIngredients": {
 			"kind": "struct",
 			"fields": [
@@ -31329,22 +32131,30 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "pair",
-					"key": "group",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Identifier for the category this goes in the recipe book.",
-					"key": "category",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::recipe::CookingBookCategory"
-					},
-					"optional": true
+						"path": "::java::data::recipe::NotificationInfo"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::CookingBookInfo"
+					}
 				},
 				{
 					"kind": "pair",
@@ -31619,6 +32429,49 @@
 			"kind": "struct",
 			"fields": [
 				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::NotificationInfo"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "deprecated"
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "This field is unused by the game.",
+					"key": "group",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
 					"kind": "pair",
 					"desc": "Ingredient specifying an item to be transformed.",
 					"key": "base",
@@ -31851,6 +32704,49 @@
 			"kind": "struct",
 			"fields": [
 				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::NotificationInfo"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "deprecated"
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "This field is unused by the game.",
+					"key": "group",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
 					"kind": "pair",
 					"desc": "Ingredient specifying an item to be trimmed.",
 					"key": "base",
@@ -31915,7 +32811,42 @@
 			"kind": "struct",
 			"fields": [
 				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::NotificationInfo"
+					}
+				},
+				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "deprecated"
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "This field is unused by the game.",
 					"key": "group",
 					"type": {
 						"kind": "string"
@@ -82211,6 +83142,26 @@
 						"kind": "int"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "AgeLocked",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -94040,6 +94991,47 @@
 				}
 			]
 		},
+		"::java::world::item::ItemStackTemplate": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::world::item::ItemStack"
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "tree",
+								"values": {
+									"registry": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "item"
+										}
+									},
+									"exclude": {
+										"kind": "tree",
+										"values": {
+											"0": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "air"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			]
+		},
 		"::java::world::item::knowledge_book::KnowledgeBook": {
 			"kind": "struct",
 			"fields": [
@@ -98525,6 +99517,22 @@
 			"debug_stick_state": {
 				"kind": "reference",
 				"path": "::java::world::component::item::DebugStickState"
+			},
+			"dye": {
+				"kind": "reference",
+				"path": "::java::util::color::DyeColor",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
 			},
 			"dyed_color": {
 				"kind": "union",
@@ -106668,6 +107676,75 @@
 				"kind": "reference",
 				"path": "::java::data::recipe::Smelting"
 			},
+			"crafting_decorated_pot": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "struct",
+						"fields": [],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingDecoratedPot",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					}
+				]
+			},
+			"crafting_dye": {
+				"kind": "reference",
+				"path": "::java::data::recipe::CraftingDye",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
+			"crafting_imbue": {
+				"kind": "reference",
+				"path": "::java::data::recipe::CraftingImbue",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"crafting_shaped": {
 				"kind": "reference",
 				"path": "::java::data::recipe::CraftingShaped"
@@ -106675,6 +107752,265 @@
 			"crafting_shapeless": {
 				"kind": "reference",
 				"path": "::java::data::recipe::CraftingShapeless"
+			},
+			"crafting_special_bannerduplicate": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "struct",
+						"fields": [],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingSpecialBannerDuplicate",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					}
+				]
+			},
+			"crafting_special_bookcloning": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "struct",
+						"fields": [],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingSpecialBookCloning",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					}
+				]
+			},
+			"crafting_special_firework_rocket": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "struct",
+						"fields": [],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingSpecialFireworkRocket",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					}
+				]
+			},
+			"crafting_special_firework_star": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "struct",
+						"fields": [],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingSpecialFireworkStar",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					}
+				]
+			},
+			"crafting_special_firework_star_fade": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "struct",
+						"fields": [],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingSpecialFireworkStarFade",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					}
+				]
+			},
+			"crafting_special_mapextending": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "struct",
+						"fields": [],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingSpecialMapExtending",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					}
+				]
+			},
+			"crafting_special_shielddecoration": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "struct",
+						"fields": [],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::recipe::CraftingSpecialShieldDecoration",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"crafting_transmute": {
 				"kind": "reference",
