@@ -37,7 +37,7 @@ dispatch minecraft:effect_component[block_experience] to [struct BlockExperience
 }]
 
 /// Each entry in the list represents the sounds at one level of the Enchantment, so the first entry represents the sounds used by a level 1 Enchantment.
-dispatch minecraft:effect_component[crossbow_charge_sounds] to [struct CrossbowChargeSoundsEnchantmentEffect {
+dispatch minecraft:effect_component[crossbow_charging_sounds] to [struct CrossbowChargeSoundsEnchantmentEffect {
 	/// Start of charging.
 	start?: SoundEventRef,
 	/// Middle of charging.
