@@ -1,5 +1,5 @@
 {
-	"ref": "d024afa9e4173f18fb295703ce2574e79136f937",
+	"ref": "0639fe6f1cff1973b6c414eb82a8393a7268d448",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -101419,16 +101419,16 @@
 					"path": "::java::data::enchantment::effect_component::BlockExperienceEnchantmentEffect"
 				}
 			},
-			"crossbow_charge_sounds": {
+			"crossbow_charge_time": {
+				"kind": "reference",
+				"path": "::java::data::enchantment::effect::ValueEffect"
+			},
+			"crossbow_charging_sounds": {
 				"kind": "list",
 				"item": {
 					"kind": "reference",
 					"path": "::java::data::enchantment::effect_component::CrossbowChargeSoundsEnchantmentEffect"
 				}
-			},
-			"crossbow_charge_time": {
-				"kind": "reference",
-				"path": "::java::data::enchantment::effect::ValueEffect"
 			},
 			"damage": {
 				"kind": "list",
