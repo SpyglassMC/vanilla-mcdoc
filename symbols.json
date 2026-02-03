@@ -1,5 +1,5 @@
 {
-	"ref": "0639fe6f1cff1973b6c414eb82a8393a7268d448",
+	"ref": "adde57d155837ad2658cf72a80259e3befd6ed8b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -71416,7 +71416,7 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::block::BlockEntity"
+						"path": "::java::world::block::container::Container9"
 					}
 				},
 				{
@@ -96638,6 +96638,16 @@
 			"copper_golem_statue": {
 				"kind": "reference",
 				"path": "::java::world::block::BlockEntity"
+			},
+			"crafter": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "crafter"
+					}
+				],
+				"registry": "minecraft:block_entity"
 			},
 			"creeper_head": {
 				"kind": "union",
