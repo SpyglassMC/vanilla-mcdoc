@@ -1,5 +1,5 @@
 {
-	"ref": "adde57d155837ad2658cf72a80259e3befd6ed8b",
+	"ref": "c513b4c24813372aa29eaeada0a6338bef995a92",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -44715,6 +44715,25 @@
 					"kind": "pair",
 					"attributes": [
 						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "has_ender_dragon_fight",
+					"type": {
+						"kind": "boolean"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
 							"name": "until",
 							"value": {
 								"kind": "literal",
@@ -45304,6 +45323,33 @@
 			]
 		},
 		"::java::data::worldgen::feature::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "fallback",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "fallback",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::feature::<anonymous 2>": {
 			"kind": "struct",
 			"fields": []
 		},
@@ -45964,6 +46010,27 @@
 								"path": "::java::util::block_state::BlockState"
 							}
 						]
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::BlockBlobConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "state",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "can_place_on",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
 					}
 				}
 			]
@@ -48443,6 +48510,26 @@
 					"type": {
 						"kind": "int"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "can_place_on",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
 				}
 			]
 		},
@@ -50610,11 +50697,60 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "pair",
-					"key": "fallback",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "fallback",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "fallback",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+								},
+								"optional": true
+							}
+						]
 					}
 				},
 				{
@@ -51121,6 +51257,35 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::SpikeConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "state",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "can_place_on",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "can_replace",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::SpringConfig": {
 			"kind": "struct",
 			"fields": [
@@ -51276,8 +51441,41 @@
 					"kind": "pair",
 					"key": "provider",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::feature::RuleBasedBlockStateProvider",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				}
 			]
@@ -52730,26 +52928,6 @@
 				},
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.17"
-								}
-							}
-						}
-					],
-					"key": "force_dirt",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
 					"key": "minimum_size",
 					"type": {
 						"kind": "reference",
@@ -52768,12 +52946,72 @@
 									"value": "1.17"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "force_dirt",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.17"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
 						}
 					],
 					"key": "dirt_provider",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "below_trunk_provider",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::RuleBasedBlockStateProvider"
 					}
 				},
 				{
@@ -103909,6 +104147,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::ColumnsConfig"
 			},
+			"block_blob": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::BlockBlobConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"block_column": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::BlockColumnConfig",
@@ -104007,7 +104261,19 @@
 			},
 			"forest_rock": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::ForestRockConfig"
+				"path": "::java::data::worldgen::feature::ForestRockConfig",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
 			},
 			"fossil": {
 				"kind": "reference",
@@ -104264,6 +104530,22 @@
 							"value": {
 								"kind": "string",
 								"value": "1.18"
+							}
+						}
+					}
+				]
+			},
+			"spike": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::SpikeConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
 							}
 						}
 					}
