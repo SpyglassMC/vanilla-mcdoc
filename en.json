@@ -1400,6 +1400,7 @@
 	"::java::world::entity::mob::LivingEntity.Team": "Team to join when it is spawned.",
 	"::java::world::entity::mob::LivingEntity.ticks_since_last_hurt_by_mob": "Amount of ticks since this entity was last hurt by a mob.\nCounts up from 0 to 100.",
 	"::java::world::entity::mob::mannequin::Mannequin.description": "Text shown below the name tag.\nDefaults to the translated `entity.minecraft.mannequin.label`.",
+	"::java::world::entity::mob::mannequin::Mannequin.equipment": "The equipment items of the mannequin.",
 	"::java::world::entity::mob::mannequin::Mannequin.hide_description": "Whether the below name text is displayed.\nDefaults to `false`.",
 	"::java::world::entity::mob::mannequin::Mannequin.immovable": "Defaults to `false`.",
 	"::java::world::entity::mob::mannequin::Mannequin.main_hand": "Defaults to `right`.",
