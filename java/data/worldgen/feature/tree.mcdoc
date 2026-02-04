@@ -1,6 +1,7 @@
 use super::super::HeightmapType
 use super::super::UniformInt
 use super::block_state_provider::BlockStateProvider
+use super::RuleBasedBlockStateProvider
 use super::super::IntProvider
 use super::super::UniformIntProvider
 use ::java::util::direction::Direction
@@ -11,11 +12,13 @@ dispatch minecraft:feature_config[tree] to struct TreeConfig {
 	ignore_vines?: boolean,
 	#[until="1.17"]
 	heightmap: HeightmapType,
-	#[since="1.17"]
-	force_dirt?: boolean,
 	minimum_size: FeatureSize,
-	#[since="1.17"]
+	#[since="1.17"] #[until="26.1"]
+	force_dirt?: boolean,
+	#[since="1.17"] #[until="26.1"]
 	dirt_provider: BlockStateProvider,
+	#[since="26.1"]
+	below_trunk_provider: RuleBasedBlockStateProvider,
 	#[since="1.17"] #[until="1.18"]
 	sapling_provider: BlockStateProvider,
 	trunk_provider: BlockStateProvider,
@@ -198,7 +201,10 @@ struct TreeDecorator {
 }
 
 dispatch minecraft:tree_decorator[alter_ground] to struct AlterGroundTreeDecorator {
-	provider: BlockStateProvider,
+	provider: (
+		#[until="26.1"] BlockStateProvider |
+		#[since="26.1"] RuleBasedBlockStateProvider |
+	),
 }
 
 dispatch minecraft:tree_decorator[attached_to_leaves] to struct AttachedToLeavesTreeDecorator {

@@ -95,7 +95,12 @@ dispatch minecraft:feature_config[disk,ice_patch] to struct DiskConfig {
 }
 
 struct RuleBasedBlockStateProvider {
-	fallback: BlockStateProvider,
+	#[until="26.1"] ... struct {
+		fallback: BlockStateProvider,
+	},
+	#[since="26.1"] ... struct {
+		fallback?: BlockStateProvider,
+	},
 	rules: [struct BlockStateRuleProviderEntry {
 		if_true: BlockPredicate,
 		then: BlockStateProvider,
@@ -204,6 +209,13 @@ dispatch minecraft:block_placer[column_placer] to struct ColumnPlacer {
 	size: IntProvider<int @ 0..>,
 }
 
+#[since="26.1"]
+dispatch minecraft:feature_config[block_blob] to struct BlockBlobConfig {
+	state: BlockState,
+	can_place_on: BlockPredicate,
+}
+
+#[until="26.1"]
 dispatch minecraft:feature_config[forest_rock] to struct ForestRockConfig {
 	state: BlockState,
 }
@@ -308,6 +320,8 @@ dispatch minecraft:feature_config[huge_brown_mushroom,huge_red_mushroom] to stru
 	cap_provider: BlockStateProvider,
 	stem_provider: BlockStateProvider,
 	foliage_radius: int,
+	#[since="26.1"]
+	can_place_on: BlockPredicate,
 }
 
 dispatch minecraft:feature_config[huge_fungus] to struct HugeFungusConfig {
@@ -481,6 +495,13 @@ dispatch minecraft:feature_config[small_dripstone] to struct SmallDripstoneConfi
 	empty_space_search_radius?: int @ 0..20,
 	max_offset_from_origin?: int @ 0..20,
 	chance_of_taller_dripstone?: float @ 0..1,
+}
+
+#[since="26.1"]
+dispatch minecraft:feature_config[spike] to struct SpikeConfig {
+	state: BlockState,
+	can_place_on: BlockPredicate,
+	can_replace: BlockPredicate,
 }
 
 dispatch minecraft:feature_config[spring_feature] to struct SpringConfig {
