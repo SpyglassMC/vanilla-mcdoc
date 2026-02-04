@@ -1,5 +1,5 @@
 {
-	"ref": "c513b4c24813372aa29eaeada0a6338bef995a92",
+	"ref": "6882e19217af13274fa7b806e71226ded9fe8907",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -88545,6 +88545,16 @@
 					"key": "hide_description",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The equipment items of the mannequin.",
+					"key": "equipment",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::EntityEquipment"
 					},
 					"optional": true
 				}
