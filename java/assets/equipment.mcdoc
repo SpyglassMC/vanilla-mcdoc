@@ -36,8 +36,14 @@ struct Layers {
 type Layer<T> = struct {
 	/// Texture location for this layer, inside `entity/equipment/<layer>/`.
 	texture: T,
-	/// Configures how this layer behaves when dyed (in the `#dyeable` item tag, and has the `dyed_color` component).
-	dyeable?: Dyeable,
+	#[until="1.21.5"] ...struct {
+		/// Configures how this layer behaves when dyed (in the `#dyeable` item tag, and has the `dyed_color` component).
+		dyeable?: Dyeable,
+	},
+	#[since="1.21.5"] ...struct {
+		/// Configures how this layer behaves when dyed (has the `dyed_color` component).
+		dyeable?: Dyeable,
+	},
 }
 
 struct Dyeable {
