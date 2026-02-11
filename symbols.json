@@ -1,5 +1,5 @@
 {
-	"ref": "6882e19217af13274fa7b806e71226ded9fe8907",
+	"ref": "23bf490f1f008f74937db8f060c1ebcaa092fd71",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -1196,6 +1196,71 @@
 					}
 				},
 				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Configures how this layer behaves when dyed (in the `#dyeable` item tag, and has the `dyed_color` component).",
+								"key": "dyeable",
+								"type": {
+									"kind": "reference",
+									"path": "::java::assets::equipment::Dyeable"
+								},
+								"optional": true
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Configures how this layer behaves when dyed (has the `dyed_color` component).",
+								"key": "dyeable",
+								"type": {
+									"kind": "reference",
+									"path": "::java::assets::equipment::Dyeable"
+								},
+								"optional": true
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::assets::equipment::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
 					"kind": "pair",
 					"desc": "Configures how this layer behaves when dyed (in the `#dyeable` item tag, and has the `dyed_color` component).",
 					"key": "dyeable",
@@ -1207,7 +1272,22 @@
 				}
 			]
 		},
-		"::java::assets::equipment::<anonymous 1>": {
+		"::java::assets::equipment::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Configures how this layer behaves when dyed (has the `dyed_color` component).",
+					"key": "dyeable",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::equipment::Dyeable"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::assets::equipment::<anonymous 3>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -1281,14 +1361,64 @@
 						}
 					},
 					{
-						"kind": "pair",
-						"desc": "Configures how this layer behaves when dyed (in the `#dyeable` item tag, and has the `dyed_color` component).",
-						"key": "dyeable",
+						"kind": "spread",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
+							}
+						],
 						"type": {
-							"kind": "reference",
-							"path": "::java::assets::equipment::Dyeable"
-						},
-						"optional": true
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"desc": "Configures how this layer behaves when dyed (in the `#dyeable` item tag, and has the `dyed_color` component).",
+									"key": "dyeable",
+									"type": {
+										"kind": "reference",
+										"path": "::java::assets::equipment::Dyeable"
+									},
+									"optional": true
+								}
+							]
+						}
+					},
+					{
+						"kind": "spread",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.21.5"
+									}
+								}
+							}
+						],
+						"type": {
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"desc": "Configures how this layer behaves when dyed (has the `dyed_color` component).",
+									"key": "dyeable",
+									"type": {
+										"kind": "reference",
+										"path": "::java::assets::equipment::Dyeable"
+									},
+									"optional": true
+								}
+							]
+						}
 					}
 				]
 			},
@@ -1377,6 +1507,62 @@
 														"value": {
 															"kind": "string",
 															"value": "entity/equipment/humanoid_leggings/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "humanoid_baby",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/humanoid_baby/"
 														}
 													}
 												}
@@ -1609,6 +1795,118 @@
 														"value": {
 															"kind": "string",
 															"value": "entity/equipment/happy_ghast_body/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"key": "nautilus_saddle",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/nautilus_saddle/"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"key": "nautilus_body",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::assets::equipment::Layer"
+							},
+							"typeArgs": [
+								{
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "tree",
+												"values": {
+													"registry": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "texture"
+														}
+													},
+													"path": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "entity/equipment/nautilus_body/"
 														}
 													}
 												}
@@ -5507,22 +5805,43 @@
 									]
 								},
 								"type": {
-									"kind": "string",
-									"attributes": [
+									"kind": "union",
+									"members": [
 										{
-											"name": "texture_slot",
-											"value": {
-												"kind": "tree",
-												"values": {
-													"kind": {
-														"kind": "literal",
-														"value": {
-															"kind": "string",
-															"value": "value"
+											"kind": "string",
+											"attributes": [
+												{
+													"name": "texture_slot",
+													"value": {
+														"kind": "tree",
+														"values": {
+															"kind": {
+																"kind": "literal",
+																"value": {
+																	"kind": "string",
+																	"value": "value"
+																}
+															}
 														}
 													}
 												}
-											}
+											]
+										},
+										{
+											"kind": "reference",
+											"path": "::java::assets::model::TextureMaterial",
+											"attributes": [
+												{
+													"name": "since",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "26.1"
+														}
+													}
+												}
+											]
 										}
 									]
 								}
@@ -6486,22 +6805,43 @@
 						]
 					},
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "texture_slot",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"kind": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "value"
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "texture_slot",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"kind": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "value"
+													}
+												}
 											}
 										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::assets::model::TextureMaterial",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -6778,6 +7118,39 @@
 							"value": "1.21.11"
 						}
 					}
+				}
+			]
+		},
+		"::java::assets::model::TextureMaterial": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "sprite",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "texture"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the texture should be forced into the translucent render pass. \\\nTextures without any translucent pixels are not assigned to the translucent pass by default. \\\nDefaults to `false`.",
+					"key": "force_translucent",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -10712,7 +11085,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::world::item::ItemStack",
+								"path": "::java::world::item::ItemStackTemplate",
 								"attributes": [
 									{
 										"name": "since",
@@ -10721,48 +11094,6 @@
 											"value": {
 												"kind": "string",
 												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.1"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "item"
-													}
-												},
-												"exclude": {
-													"kind": "tree",
-													"values": {
-														"0": {
-															"kind": "literal",
-															"value": {
-																"kind": "string",
-																"value": "air"
-															}
-														}
-													}
-												}
 											}
 										}
 									}
@@ -19281,7 +19612,7 @@
 					"key": "item",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::item::ItemStack"
+						"path": "::java::world::item::ItemStackTemplate"
 					}
 				},
 				{
@@ -28677,7 +29008,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Applies specified number of random dyes to the item.\nFor example, one possible outcome of `\"number_of_dyes\": 2` is `#2C3065`, which is the combination of a blue dye and a black dye.\nThe same dye color can be selected multiple times.\nOnly has effect on `#dyeable` items.",
+					"desc": "Applies specified number of random dyes to the item. \\\nFor example, one possible outcome of `\"number_of_dyes\": 2` is `#2C3065`, which is the combination of a blue dye and a black dye. \\\nThe same dye color can be selected multiple times.",
 					"key": "number_of_dyes",
 					"type": {
 						"kind": "reference",
@@ -30891,7 +31222,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::world::item::ItemStack",
+								"path": "::java::world::item::ItemStackTemplate",
 								"attributes": [
 									{
 										"name": "since",
@@ -30900,48 +31231,6 @@
 											"value": {
 												"kind": "string",
 												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.1"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "item"
-													}
-												},
-												"exclude": {
-													"kind": "tree",
-													"values": {
-														"0": {
-															"kind": "literal",
-															"value": {
-																"kind": "string",
-																"value": "air"
-															}
-														}
-													}
-												}
 											}
 										}
 									}
@@ -31021,7 +31310,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::world::item::ItemStack",
+								"path": "::java::world::item::ItemStackTemplate",
 								"attributes": [
 									{
 										"name": "since",
@@ -31030,48 +31319,6 @@
 											"value": {
 												"kind": "string",
 												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.1"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "item"
-													}
-												},
-												"exclude": {
-													"kind": "tree",
-													"values": {
-														"0": {
-															"kind": "literal",
-															"value": {
-																"kind": "string",
-																"value": "air"
-															}
-														}
-													}
-												}
 											}
 										}
 									}
@@ -32223,7 +32470,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::world::item::ItemStack",
+								"path": "::java::world::item::ItemStackTemplate",
 								"attributes": [
 									{
 										"name": "since",
@@ -32232,48 +32479,6 @@
 											"value": {
 												"kind": "string",
 												"value": "26.1"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.1"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "item"
-													}
-												},
-												"exclude": {
-													"kind": "tree",
-													"values": {
-														"0": {
-															"kind": "literal",
-															"value": {
-																"kind": "string",
-																"value": "air"
-															}
-														}
-													}
-												}
 											}
 										}
 									}
@@ -32603,7 +32808,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::world::item::ItemStack",
+								"path": "::java::world::item::ItemStackTemplate",
 								"attributes": [
 									{
 										"name": "since",
@@ -32612,48 +32817,6 @@
 											"value": {
 												"kind": "string",
 												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.1"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "item"
-													}
-												},
-												"exclude": {
-													"kind": "tree",
-													"values": {
-														"0": {
-															"kind": "literal",
-															"value": {
-																"kind": "string",
-																"value": "air"
-															}
-														}
-													}
-												}
 											}
 										}
 									}
@@ -32894,7 +33057,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::world::item::ItemStack",
+								"path": "::java::world::item::ItemStackTemplate",
 								"attributes": [
 									{
 										"name": "since",
@@ -32903,48 +33066,6 @@
 											"value": {
 												"kind": "string",
 												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.1"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "item"
-													}
-												},
-												"exclude": {
-													"kind": "tree",
-													"values": {
-														"0": {
-															"kind": "literal",
-															"value": {
-																"kind": "string",
-																"value": "air"
-															}
-														}
-													}
-												}
 											}
 										}
 									}
@@ -35759,6 +35880,27 @@
 				}
 			]
 		},
+		"::java::data::variants::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "adult_sounds",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::T"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "baby_sounds",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::variants::T"
+					}
+				}
+			]
+		},
 		"::java::data::variants::banner_pattern::BannerPattern": {
 			"kind": "struct",
 			"fields": [
@@ -35864,6 +36006,83 @@
 				}
 			]
 		},
+		"::java::data::variants::cat::CatSounds": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "stray_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "hiss_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "hurt_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "death_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "eat_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "beg_for_food_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "purr_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "purreow_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				}
+			]
+		},
 		"::java::data::variants::cat::CatVariant": {
 			"kind": "struct",
 			"fields": [
@@ -35939,6 +36158,43 @@
 				{
 					"identifier": "Cold",
 					"value": "cold"
+				}
+			]
+		},
+		"::java::data::variants::chicken::ChickenSounds": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "hurt_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "death_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "step_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
 				}
 			]
 		},
@@ -36030,6 +36286,43 @@
 				{
 					"identifier": "Warm",
 					"value": "warm"
+				}
+			]
+		},
+		"::java::data::variants::cow::CowSounds": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "hurt_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "death_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "step_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
 				}
 			]
 		},
@@ -36366,6 +36659,43 @@
 				}
 			]
 		},
+		"::java::data::variants::pig::PigSounds": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "hurt_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "death_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "step_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				}
+			]
+		},
 		"::java::data::variants::pig::PigVariant": {
 			"kind": "struct",
 			"fields": [
@@ -36436,6 +36766,35 @@
 						"kind": "reference",
 						"path": "::java::data::variants::SpawnPrioritySelectors"
 					}
+				}
+			]
+		},
+		"::java::data::variants::SoundVariant": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "adult_sounds",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::variants::T"
+						}
+					},
+					{
+						"kind": "pair",
+						"key": "baby_sounds",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::variants::T"
+						}
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::variants::T"
 				}
 			]
 		},
@@ -36789,39 +37148,6 @@
 				}
 			]
 		},
-		"::java::data::variants::wolf::WolfSoundVariant": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "adult_sounds",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::variants::wolf::WolfSounds"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "baby_sounds",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::variants::wolf::WolfSounds"
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "26.1"
-						}
-					}
-				}
-			]
-		},
 		"::java::data::variants::wolf::WolfVariant": {
 			"kind": "struct",
 			"fields": [
@@ -37160,7 +37486,7 @@
 					"key": "gives",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::item::ItemStack"
+						"path": "::java::world::item::ItemStackTemplate"
 					}
 				},
 				{
@@ -64867,6 +65193,16 @@
 								"kind": "string",
 								"attributes": [
 									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
 										"name": "id",
 										"value": {
 											"kind": "tree",
@@ -64897,7 +65233,35 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::world::item::SingleItem"
+								"path": "::java::world::item::SingleItem",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::world::item::ItemStackTemplate",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -71766,16 +72130,22 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Item ID of what was used for each side of the pot.",
+					"desc": "Item ID of what was used for each side of the pot. \\\nOnly vanilla pottery sherds have hardcoded decoration textures.\nOther items are treated like brick.",
 					"key": "sherds",
 					"type": {
 						"kind": "list",
 						"item": {
-							"kind": "reference",
-							"path": "::java::world::block::decorated_pot::Sherd",
+							"kind": "string",
 							"attributes": [
 								{
-									"name": "id"
+									"name": "id",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "item"
+										}
+									}
 								}
 							]
 						},
@@ -71878,144 +72248,6 @@
 						"path": "::java::world::item::ItemStack"
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::world::block::decorated_pot::Sherd": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Angler",
-					"value": "angler_pottery_sherd"
-				},
-				{
-					"identifier": "Archer",
-					"value": "archer_pottery_sherd"
-				},
-				{
-					"identifier": "ArmsUp",
-					"value": "arms_up_pottery_sherd"
-				},
-				{
-					"identifier": "Blade",
-					"value": "blade_pottery_sherd"
-				},
-				{
-					"identifier": "Brewer",
-					"value": "brewer_pottery_sherd"
-				},
-				{
-					"identifier": "Brick",
-					"value": "brick"
-				},
-				{
-					"identifier": "Burn",
-					"value": "burn_pottery_sherd"
-				},
-				{
-					"identifier": "Danger",
-					"value": "danger_pottery_sherd"
-				},
-				{
-					"identifier": "Explorer",
-					"value": "explorer_pottery_sherd"
-				},
-				{
-					"identifier": "Friend",
-					"value": "friend_pottery_sherd"
-				},
-				{
-					"identifier": "Heart",
-					"value": "heart_pottery_sherd"
-				},
-				{
-					"identifier": "Heartbreak",
-					"value": "heartbreak_pottery_sherd"
-				},
-				{
-					"identifier": "Howl",
-					"value": "howl_pottery_sherd"
-				},
-				{
-					"identifier": "Miner",
-					"value": "miner_pottery_sherd"
-				},
-				{
-					"identifier": "Mourner",
-					"value": "mourner_pottery_sherd"
-				},
-				{
-					"identifier": "Plenty",
-					"value": "plenty_pottery_sherd"
-				},
-				{
-					"identifier": "Prize",
-					"value": "prize_pottery_sherd"
-				},
-				{
-					"identifier": "Sheaf",
-					"value": "sheaf_pottery_sherd"
-				},
-				{
-					"identifier": "Shelter",
-					"value": "shelter_pottery_sherd"
-				},
-				{
-					"identifier": "Skull",
-					"value": "skull_pottery_sherd"
-				},
-				{
-					"identifier": "Snort",
-					"value": "snort_pottery_sherd"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"identifier": "Flow",
-					"value": "flow_pottery_sherd"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"identifier": "Guster",
-					"value": "guster_pottery_sherd"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"identifier": "Scrape",
-					"value": "scrape_pottery_sherd"
 				}
 			]
 		},
@@ -75393,7 +75625,7 @@
 					"key": "item",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::item::ItemStack"
+						"path": "::java::world::item::ItemStackTemplate"
 					}
 				}
 			]
@@ -84880,6 +85112,38 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "sound_variant",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "chicken_sound_variant"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -84918,6 +85182,38 @@
 									"value": {
 										"kind": "string",
 										"value": "cow_variant"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "sound_variant",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "cow_sound_variant"
 									}
 								}
 							}
@@ -86009,6 +86305,38 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "sound_variant",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "pig_sound_variant"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -86141,6 +86469,38 @@
 									"value": {
 										"kind": "string",
 										"value": "cat_variant"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "sound_variant",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "cat_sound_variant"
 									}
 								}
 							}
@@ -86384,27 +86744,6 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::util::DyeColorByte"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"key": "body_armor_item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::item::ItemStack"
 					},
 					"optional": true
 				},
@@ -95244,11 +95583,26 @@
 			"members": [
 				{
 					"kind": "reference",
-					"path": "::java::world::item::ItemStack"
+					"path": "::java::world::item::ItemStack",
+					"attributes": [
+						{
+							"name": "canonical"
+						}
+					]
 				},
 				{
 					"kind": "string",
 					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						},
 						{
 							"name": "id",
 							"value": {
@@ -99490,7 +99844,7 @@
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::world::item::ItemStack"
+					"path": "::java::world::item::ItemStackTemplate"
 				}
 			},
 			"can_break": {
@@ -99512,6 +99866,31 @@
 							"value": {
 								"kind": "string",
 								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"cat/sound_variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "cat_sound_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
 							}
 						}
 					}
@@ -99546,8 +99925,33 @@
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::world::item::ItemStack"
+					"path": "::java::world::item::ItemStackTemplate"
 				}
+			},
+			"chicken/sound_variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "chicken_sound_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
 			},
 			"chicken/variant": {
 				"kind": "string",
@@ -99604,6 +100008,31 @@
 			"container_loot": {
 				"kind": "reference",
 				"path": "::java::world::component::block::ContainerLoot"
+			},
+			"cow/sound_variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "cow_sound_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
 			},
 			"cow/variant": {
 				"kind": "string",
@@ -100544,6 +100973,31 @@
 					}
 				]
 			},
+			"pig/sound_variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "pig_sound_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"pig/variant": {
 				"kind": "string",
 				"attributes": [
@@ -100572,11 +101026,17 @@
 			"pot_decorations": {
 				"kind": "list",
 				"item": {
-					"kind": "reference",
-					"path": "::java::world::block::decorated_pot::Sherd",
+					"kind": "string",
 					"attributes": [
 						{
-							"name": "id"
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "item"
+								}
+							}
 						}
 					]
 				},
@@ -100945,7 +101405,7 @@
 			},
 			"use_remainder": {
 				"kind": "reference",
-				"path": "::java::world::item::ItemStack"
+				"path": "::java::world::item::ItemStackTemplate"
 			},
 			"villager/variant": {
 				"kind": "string",
@@ -108493,6 +108953,31 @@
 				"kind": "reference",
 				"path": "::java::assets::block_state_definition::BlockStateDefinition"
 			},
+			"cat_sound_variant": {
+				"kind": "concrete",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::variants::SoundVariant"
+				},
+				"typeArgs": [
+					{
+						"kind": "reference",
+						"path": "::java::data::variants::cat::CatSounds"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"cat_variant": {
 				"kind": "reference",
 				"path": "::java::data::variants::cat::CatVariant",
@@ -108513,6 +108998,31 @@
 				"kind": "reference",
 				"path": "::java::data::chat_type::ChatType"
 			},
+			"chicken_sound_variant": {
+				"kind": "concrete",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::variants::SoundVariant"
+				},
+				"typeArgs": [
+					{
+						"kind": "reference",
+						"path": "::java::data::variants::chicken::ChickenSounds"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"chicken_variant": {
 				"kind": "reference",
 				"path": "::java::data::variants::chicken::ChickenVariant",
@@ -108524,6 +109034,22 @@
 							"value": {
 								"kind": "string",
 								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"cow_sound_variant": {
+				"kind": "reference",
+				"path": "::java::data::variants::cow::CowSounds",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
 							}
 						}
 					}
@@ -108785,6 +109311,31 @@
 				"kind": "reference",
 				"path": "::java::assets::particle::Particle"
 			},
+			"pig_sound_variant": {
+				"kind": "concrete",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::variants::SoundVariant"
+				},
+				"typeArgs": [
+					{
+						"kind": "reference",
+						"path": "::java::data::variants::pig::PigSounds"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"pig_variant": {
 				"kind": "reference",
 				"path": "::java::data::variants::pig::PigVariant",
@@ -108957,8 +109508,17 @@
 						]
 					},
 					{
-						"kind": "reference",
-						"path": "::java::data::variants::wolf::WolfSoundVariant",
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::variants::SoundVariant"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::variants::wolf::WolfSounds"
+							}
+						],
 						"attributes": [
 							{
 								"name": "since",
