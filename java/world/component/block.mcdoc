@@ -1,7 +1,6 @@
 use ::java::data::advancement::predicate::ItemPredicate
 use ::java::world::block::BlockEntityData
 use ::java::world::block::banner::BannerPatternLayer
-use ::java::world::block::decorated_pot::Sherd
 use ::java::world::component::item::AdventureModePredicate
 use ::java::world::entity::AnyEntity
 use ::java::world::item::ItemStackTemplate
@@ -51,4 +50,4 @@ dispatch minecraft:data_component[lock] to (
 	#[since="1.21.2"] ItemPredicate |
 )
 
-dispatch minecraft:data_component[pot_decorations] to [#[id] Sherd] @ ..4
+dispatch minecraft:data_component[pot_decorations] to [#[id="item"] string] @ ..4
