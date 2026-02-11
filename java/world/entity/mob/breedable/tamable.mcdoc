@@ -64,8 +64,6 @@ dispatch minecraft:entity[wolf] to struct Wolf {
 	/// Collar color, present for wild wolfs. Defaults to 14 (red).
 	CollarColor?: DyeColorByte,
 	#[since="1.20.5"]
-	body_armor_item?: ItemStack,
-	#[since="1.20.5"]
 	variant?: #[id="wolf_variant"] string,
 	#[since="1.21.5"]
 	sound_variant?: #[id="wolf_sound_variant"] string,
