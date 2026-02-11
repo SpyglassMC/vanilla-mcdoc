@@ -1,3 +1,5 @@
+use super::SoundVariant
+
 #[since="1.21.5"]
 dispatch minecraft:resource[cat_variant] to struct CatVariant {
 	/// The cat texture to use for this variant.
@@ -6,4 +8,19 @@ dispatch minecraft:resource[cat_variant] to struct CatVariant {
 	#[since="26.1"]
 	baby_asset_id: #[id="texture"] string,
 	...super::SpawnPrioritySelectors,
+}
+
+#[since="26.1"]
+dispatch minecraft:resource[cat_sound_variant] to SoundVariant<CatSounds>
+
+enum(string) CatSounds {
+	Ambient = "ambient_sound",
+	Stray = "stray_sound",
+	Hiss = "hiss_sound",
+	Hurt = "hurt_sound",
+	Death = "death_sound",
+	Eat = "eat_sound",
+	BegForFood = "beg_for_food_sound",
+	Purr = "purr_sound",
+	Purreow = "purreow_sound",
 }

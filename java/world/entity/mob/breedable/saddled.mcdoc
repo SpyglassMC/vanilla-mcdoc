@@ -9,6 +9,8 @@ dispatch minecraft:entity[pig] to struct Pig {
 	...Saddled,
 	#[since="1.21.5"]
 	variant?: #[id="pig_variant"] string,
+	#[since="26.1"]
+	sound_variant?: #[id="pig_sound_variant"] string,
 }
 
 #[since="1.16"]

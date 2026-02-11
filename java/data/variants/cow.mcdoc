@@ -1,3 +1,5 @@
+use super::SoundSet
+
 #[since="1.21.5"]
 dispatch minecraft:resource[cow_variant] to struct CowVariant {
 	model?: CowModelType,
@@ -9,8 +11,18 @@ dispatch minecraft:resource[cow_variant] to struct CowVariant {
 	...super::SpawnPrioritySelectors,
 }
 
+#[since="26.1"]
+dispatch minecraft:resource[cow_sound_variant] to SoundSet<CowSounds>
+
 enum(string) CowModelType {
 	Normal = "normal",
 	Cold = "cold",
 	Warm = "warm",
+}
+
+enum(string) CowSounds {
+	Ambient = "ambient_sound",
+	Hurt = "hurt_sound",
+	Death = "death_sound",
+	Step = "step_sound",
 }

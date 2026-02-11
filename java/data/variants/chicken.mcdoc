@@ -1,3 +1,5 @@
+use super::SoundVariant
+
 #[since="1.21.5"]
 dispatch minecraft:resource[chicken_variant] to struct ChickenVariant {
 	model?: ChickenModelType,
@@ -9,7 +11,17 @@ dispatch minecraft:resource[chicken_variant] to struct ChickenVariant {
 	...super::SpawnPrioritySelectors,
 }
 
+#[since="26.1"]
+dispatch minecraft:resource[chicken_sound_variant] to SoundVariant<ChickenSounds>
+
 enum(string) ChickenModelType {
 	Normal = "normal",
 	Cold = "cold",
+}
+
+enum(string) ChickenSounds {
+	Ambient = "ambient_sound",
+	Hurt = "hurt_sound",
+	Death = "death_sound",
+	Step = "step_sound",
 }

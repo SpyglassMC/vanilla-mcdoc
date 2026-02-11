@@ -7,4 +7,6 @@ dispatch minecraft:entity[chicken] to struct Chicken {
 	EggLayTime?: int,
 	#[since="1.21.5"]
 	variant?: #[id="chicken_variant"] string,
+	#[since="26.1"]
+	sound_variant?: #[id="chicken_sound_variant"] string,
 }

@@ -22,6 +22,8 @@ dispatch minecraft:entity[cat] to struct Cat {
 	CollarColor?: DyeColorByte,
 	#[since="1.19"]
 	variant?: #[id="cat_variant"] string,
+	#[since="26.1"]
+	sound_variant?: #[id="cat_sound_variant"] string,
 }
 
 enum(int) CatType {

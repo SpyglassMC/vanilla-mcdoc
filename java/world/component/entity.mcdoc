@@ -16,11 +16,20 @@ enum(string) AxolotlVariant {
 #[since="1.21.5"]
 dispatch minecraft:data_component["cat/collar"] to DyeColor
 
+#[since="26.1"]
+dispatch minecraft:data_component["cat/sound_variant"] to #[id="cat_sound_variant"] string
+
 #[since="1.21.5"]
 dispatch minecraft:data_component["cat/variant"] to #[id="cat_variant"] string
 
+#[since="26.1"]
+dispatch minecraft:data_component["chicken/sound_variant"] to #[id="chicken_sound_variant"] string
+
 #[since="1.21.5"]
 dispatch minecraft:data_component["chicken/variant"] to #[id="chicken_variant"] string
+
+#[since="26.1"]
+dispatch minecraft:data_component["cow/sound_variant"] to #[id="cow_sound_variant"] string
 
 #[since="1.21.5"]
 dispatch minecraft:data_component["cow/variant"] to #[id="cow_variant"] string
@@ -96,6 +105,9 @@ enum(string) RabbitVariant {
 	/// Killer rabbit
 	Evil = "evil",
 }
+
+#[since="26.1"]
+dispatch minecraft:data_component["pig/sound_variant"] to #[id="pig_sound_variant"] string
 
 #[since="1.21.5"]
 dispatch minecraft:data_component["pig/variant"] to #[id="pig_variant"] string

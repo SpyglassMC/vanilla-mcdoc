@@ -1,4 +1,5 @@
 use ::java::data::util::MinMaxBounds
+use ::java::data::util::SoundEventRef
 
 struct SpawnPrioritySelectors {
 	/// The spawn conditions for this variant. Selection process:
@@ -34,4 +35,13 @@ dispatch minecraft:spawn_condition[moon_brightness] to struct MoonBrightnessChec
 dispatch minecraft:spawn_condition[structure] to struct StructureCheck {
 	/// Checks if the entity is spawning in specific structures.
 	structures: (#[id=(registry="worldgen/structure",tags="allowed")] string | [#[id="worldgen/structure"] string]),
+}
+
+type SoundSet<T> = struct {
+	[T]: SoundEventRef,
+}
+
+type SoundVariant<T> = struct {
+	adult_sounds: SoundSet<T>,
+	baby_sounds: SoundSet<T>,
 }
