@@ -14,7 +14,7 @@ use ::java::util::slot::EquipmentSlot
 use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::text::Text
 use ::java::util::avatar::Profile
-use ::java::world::item::ItemStack
+use ::java::world::item::ItemStackTemplate
 use ::java::world::item::SingleItem
 use ::java::world::entity::AnyEntity
 
@@ -160,7 +160,7 @@ struct BucketEntityData {
 	BucketVariantTag: int,
 }
 
-dispatch minecraft:data_component[bundle_contents] to [ItemStack]
+dispatch minecraft:data_component[bundle_contents] to [ItemStackTemplate]
 
 dispatch minecraft:data_component[can_break] to AdventureModePredicate
 
@@ -174,7 +174,7 @@ type AdventureModePredicate = (
 )
 
 /// Crossbow projectiles that are loaded.
-dispatch minecraft:data_component[charged_projectiles] to [ItemStack]
+dispatch minecraft:data_component[charged_projectiles] to [ItemStackTemplate]
 
 #[since="1.21.2"]
 dispatch minecraft:data_component[consumable] to struct Consumable {
@@ -739,7 +739,7 @@ dispatch minecraft:data_component[use_effects] to struct UseEffects {
 	interact_vibrations?: boolean,
 }
 
-dispatch minecraft:data_component[use_remainder] to ItemStack
+dispatch minecraft:data_component[use_remainder] to ItemStackTemplate
 
 /// When present, the 'Item Used' statistic will be incremented for each attack with the item.
 #[since="1.21.5"]

@@ -2,6 +2,7 @@ use super::block_state::BlockState
 use ::java::util::color::RGB
 use ::java::util::color::RGBA
 use ::java::world::item::ItemStack
+use ::java::world::item::ItemStackTemplate
 use ::java::world::item::SingleItem
 
 struct Particle {
@@ -125,7 +126,11 @@ dispatch minecraft:particle[item] to struct ItemParticle {
 	#[until="1.20.5"]
 	value: ItemStack,
 	#[since="1.20.5"]
-	item: (#[id(registry="item", exclude=["air"])] string | SingleItem),
+	item: (
+		#[until="26.1"] #[id(registry="item", exclude=["air"])] string |
+		#[until="26.1"] SingleItem |
+		#[since="26.1"] ItemStackTemplate |
+	),
 }
 
 dispatch minecraft:particle[sculk_charge] to struct SculkChargeParticle {

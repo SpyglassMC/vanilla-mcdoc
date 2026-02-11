@@ -63,8 +63,7 @@ dispatch minecraft:recipe_serializer[crafting_shaped] to struct CraftingShaped {
 	},
 	result: (
 		#[until="1.20.5"] ItemResult |
-		#[since="1.20.5"] ItemStack |
-		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
+		#[since="1.20.5"] ItemStackTemplate
 	),
 }
 
@@ -75,8 +74,7 @@ dispatch minecraft:recipe_serializer[crafting_shapeless] to struct CraftingShape
 	ingredients: [Ingredient] @ 1..9,
 	result: (
 		#[until="1.20.5"] ItemResult |
-		#[since="1.20.5"] ItemStack |
-		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
+		#[since="1.20.5"] ItemStackTemplate
 	),
 }
 
@@ -113,8 +111,7 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 	result: (
 		#[until="1.20.5"] #[id="item"] string |
 		#[since="1.20.5"] #[until="26.1"] SingleItem |
-		#[since="26.1"] ItemStack |
-		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
+		#[since="26.1"] ItemStackTemplate
 	),
 	experience?: float,
 	cookingtime?: int,
@@ -129,8 +126,7 @@ dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {
 	ingredient: Ingredient,
 	result: (
 		#[until="1.20.5"] #[id="item"] string |
-		#[since="1.20.5"] ItemStack |
-		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
+		#[since="1.20.5"] ItemStackTemplate
 	),
 	#[until="1.20.5"]
 	count: int,
@@ -190,8 +186,7 @@ dispatch minecraft:recipe_serializer[smithing_transform] to struct SmithingTrans
 		#[until="1.20.5"] struct SmithingTransformResult {
 			item: #[id="item"] string,
 		} |
-		#[since="1.20.5"] ItemStack |
-		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
+		#[since="1.20.5"] ItemStackTemplate
 	)
 }
 
