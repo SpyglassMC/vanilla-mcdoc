@@ -1,7 +1,1 @@
-{
-	"::java::assets::atlas::Atlas.sources": "Une liste de sources de sprites qui peuvent ajouter ou supprimer des textures de sprite à cet atlas.",
-	"::java::assets::atlas::Directory.prefix": "Le préfixe du nom du sprite, se terminant souvent par `/`.",
-	"::java::assets::atlas::Filter.pattern": "Motif pour supprimer les identifiants de sprites déjà dans l’atlas. L’ordre des sources de sprites est important.",
-	"::java::assets::atlas::Unstitch.divisor_y": "Si réglé sur la hauteur de la ressource, les régions utiliseront des coordonnées pixel.",
-	"::java::assets::block_state_definition::ModelVariantBase.uvlock": "Si réglé sur `true`, les textures ne sont pas tournées avec le bloc."
-}
+{}
