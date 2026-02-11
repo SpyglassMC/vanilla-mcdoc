@@ -1,4 +1,5 @@
 use super::SoundVariant
+use ::java::data::util::SoundEventRef
 
 #[since="1.21.5"]
 dispatch minecraft:resource[cat_variant] to struct CatVariant {
@@ -11,16 +12,14 @@ dispatch minecraft:resource[cat_variant] to struct CatVariant {
 }
 
 #[since="26.1"]
-dispatch minecraft:resource[cat_sound_variant] to SoundVariant<CatSounds>
-
-enum(string) CatSounds {
-	Ambient = "ambient_sound",
-	Stray = "stray_sound",
-	Hiss = "hiss_sound",
-	Hurt = "hurt_sound",
-	Death = "death_sound",
-	Eat = "eat_sound",
-	BegForFood = "beg_for_food_sound",
-	Purr = "purr_sound",
-	Purreow = "purreow_sound",
-}
+dispatch minecraft:resource[cat_sound_variant] to SoundVariant<struct CatSounds {
+	ambient_sound: SoundEventRef,
+	stray_sound: SoundEventRef,
+	hiss_sound: SoundEventRef,
+	hurt_sound: SoundEventRef,
+	death_sound: SoundEventRef,
+	eat_sound: SoundEventRef,
+	beg_for_food_sound: SoundEventRef,
+	purr_sound: SoundEventRef,
+	purreow_sound: SoundEventRef,
+}>

@@ -1,5 +1,5 @@
-use super::SoundSet
 use super::SoundVariant
+use ::java::data::util::SoundEventRef
 
 #[since="1.20.5"]
 dispatch minecraft:resource[wolf_variant] to struct WolfVariant {
@@ -29,15 +29,15 @@ struct WolfVariantAssetInfo {
 
 #[since="1.21.5"]
 dispatch minecraft:resource[wolf_sound_variant] to (
-	#[until="26.1"] SoundSet<WolfSounds> |
+	#[until="26.1"] WolfSounds |
 	#[since="26.1"] SoundVariant<WolfSounds> |
 )
 
-enum(string) WolfSounds {
-	Ambient = "ambient_sound",
-	Death = "death_sound",
-	Growl = "growl_sound",
-	Hurt = "hurt_sound",
-	Pant = "pant_sound",
-	Whine = "whine_sound",
+struct WolfSounds {
+	ambient_sound: SoundEventRef,
+	death_sound: SoundEventRef,
+	growl_sound: SoundEventRef,
+	hurt_sound: SoundEventRef,
+	pant_sound: SoundEventRef,
+	whine_sound: SoundEventRef,
 }

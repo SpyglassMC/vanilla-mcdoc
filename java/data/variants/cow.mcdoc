@@ -1,4 +1,4 @@
-use super::SoundSet
+use ::java::data::util::SoundEventRef
 
 #[since="1.21.5"]
 dispatch minecraft:resource[cow_variant] to struct CowVariant {
@@ -12,17 +12,15 @@ dispatch minecraft:resource[cow_variant] to struct CowVariant {
 }
 
 #[since="26.1"]
-dispatch minecraft:resource[cow_sound_variant] to SoundSet<CowSounds>
+dispatch minecraft:resource[cow_sound_variant] to struct CowSounds {
+	ambient_sound: SoundEventRef,
+	hurt_sound: SoundEventRef,
+	death_sound: SoundEventRef,
+	step_sound: SoundEventRef,
+}
 
 enum(string) CowModelType {
 	Normal = "normal",
 	Cold = "cold",
 	Warm = "warm",
-}
-
-enum(string) CowSounds {
-	Ambient = "ambient_sound",
-	Hurt = "hurt_sound",
-	Death = "death_sound",
-	Step = "step_sound",
 }

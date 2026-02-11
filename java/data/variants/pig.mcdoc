@@ -1,4 +1,5 @@
 use super::SoundVariant
+use ::java::data::util::SoundEventRef
 
 #[since="1.21.5"]
 dispatch minecraft:resource[pig_variant] to struct PigVariant {
@@ -12,16 +13,14 @@ dispatch minecraft:resource[pig_variant] to struct PigVariant {
 }
 
 #[since="26.1"]
-dispatch minecraft:resource[pig_sound_variant] to SoundVariant<PigSounds>
+dispatch minecraft:resource[pig_sound_variant] to SoundVariant<struct PigSounds {
+	ambient_sound: SoundEventRef,
+	hurt_sound: SoundEventRef,
+	death_sound: SoundEventRef,
+	step_sound: SoundEventRef,
+}>
 
 enum(string) PigModelType {
 	Normal = "normal",
 	Cold = "cold",
-}
-
-enum(string) PigSounds {
-	Ambient = "ambient_sound",
-	Hurt = "hurt_sound",
-	Death = "death_sound",
-	Step = "step_sound",
 }
