@@ -1,5 +1,5 @@
 {
-	"ref": "23bf490f1f008f74937db8f060c1ebcaa092fd71",
+	"ref": "49767313e32a5c94cf7280c42ab4f1c80be04a35",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -110572,6 +110572,31 @@
 							"value": {
 								"kind": "string",
 								"value": "1.20.5"
+							}
+						}
+					}
+				]
+			},
+			"avoid_vibration": {
+				"kind": "concrete",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::advancement::trigger::Conditions"
+				},
+				"typeArgs": [
+					{
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::Location"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.19"
 							}
 						}
 					}
