@@ -1,7 +1,5 @@
 {
 	"::java::assets::equipment::Equipment.layers": "各モデルレイヤータイプごとのレイヤー一覧",
-	"::java::world::item::SingleItemOfComponent.id": "アイテムID",
-	"::java::world::item::TradeCost.count": "スタック内のアイテムの数。\nデフォルトは `1` です。",
 	"::java::world::item::map::FilledMap.Decorations.id": "装飾を識別する任意の一意の文字列",
 	"::java::world::item::map::FilledMap.display": "アイテムの表示",
 	"::java::world::item::map::FilledMap.display.MapColor": "RED << 16 | GREEN << 8 | BLUEとして計算されます。これらの各フィールドは、0から255の範囲内でなければなりません。",
@@ -19,15 +17,17 @@
 	"::java::world::item::map::IconByteId.TargetPoint": "赤い三角形",
 	"::java::world::item::map::IconByteId.TargetX": "ホワイトX (White x)",
 	"::java::world::item::map::IdentifiedDecoration.id": "装飾を識別する任意の一意の文字列",
+	"::java::world::item::potion::EffectItem.custom_potion_effects": "このアイテムに適用される効果のリスト",
 	"::java::world::item::potion::EffectItem.CustomPotionColor": "RED << 16 | GREEN << 8 | BLUEとして計算されます。これらの各フィールドは、0から255の範囲内でなければなりません。",
 	"::java::world::item::potion::EffectItem.CustomPotionEffects": "このアイテムに適用される効果 (Effect) のリスト",
 	"::java::world::item::potion::EffectItem.Potion": "デフォルトのポーション効果 (Effect)",
-	"::java::world::item::potion::EffectItem.custom_potion_effects": "このアイテムに適用される効果のリスト",
 	"::java::world::item::shield::BlockEntityTag.Base": "ベースカラー",
 	"::java::world::item::shield::Shield.BlockEntityTag": "旗のデータ",
 	"::java::world::item::shield::Shield.BlockEntityTag.Base": "ベースカラー",
+	"::java::world::item::SingleItemOfComponent.id": "アイテムID",
 	"::java::world::item::spawn_item::SpawnItem.EntityTag": "スポーンしたエンティティのデータ",
 	"::java::world::item::suspicious_stew::Effect": "怪しいシチューの効果 (Effect)",
 	"::java::world::item::suspicious_stew::Effect.EffectDuration": "ティック単位の間隔",
-	"::java::world::item::suspicious_stew::SuspiciousStew.Effects": "このシチューがもたらす効果(Effect)"
+	"::java::world::item::suspicious_stew::SuspiciousStew.Effects": "このシチューがもたらす効果(Effect)",
+	"::java::world::item::TradeCost.count": "スタック内のアイテムの数。\nデフォルトは `1` です。"
 }
