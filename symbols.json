@@ -1,5 +1,5 @@
 {
-	"ref": "49767313e32a5c94cf7280c42ab4f1c80be04a35",
+	"ref": "102fc030c6c0cc923b8e1693cfdbe1ca9a08ee3e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -68976,6 +68976,27 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "Whether to remove colors from pretty-printed NBT structure when `interpret` is `false`.\nDefaults to `false`. \\\nCannot be `true` when `interpret` is `true`.",
+					"key": "plain",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
 									"value": "1.17"
 								}
 							}
@@ -75199,7 +75220,8 @@
 								}
 							}
 						]
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -75434,7 +75456,8 @@
 											}
 										}
 									]
-								}
+								},
+								"optional": true
 							},
 							{
 								"kind": "pair",
