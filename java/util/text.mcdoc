@@ -98,6 +98,11 @@ type TextObject = (
 
 struct TextNbtBase {
 	interpret?: boolean,
+	/// Whether to remove colors from pretty-printed NBT structure when `interpret` is `false`.
+	/// Defaults to `false`. \
+	/// Cannot be `true` when `interpret` is `true`.
+	#[since="26.1"]
+	plain?: boolean,
 	#[since="1.17"]
 	separator?: Text,
 	...TextBase,
