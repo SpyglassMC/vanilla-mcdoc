@@ -1,5 +1,5 @@
 {
-	"ref": "102fc030c6c0cc923b8e1693cfdbe1ca9a08ee3e",
+	"ref": "facfd182113fb418df0a23a57bd3a88530c985ab",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -4051,7 +4051,8 @@
 								}
 							}
 						]
-					}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -5144,7 +5145,8 @@
 								}
 							}
 						]
-					}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -41699,10 +41701,12 @@
 					"value": "none"
 				},
 				{
+					"desc": "Grass color will be average of the base color and `#28340a`.",
 					"identifier": "DarkForest",
 					"value": "dark_forest"
 				},
 				{
+					"desc": "Grass color will be either `#4c763c` or `#6a7039`, depending on block position. \\\nThe base color is ignored.",
 					"identifier": "Swamp",
 					"value": "swamp"
 				}
