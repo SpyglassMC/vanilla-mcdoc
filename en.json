@@ -615,6 +615,8 @@
 	"::java::data::worldgen::biome::Biome.scale": "Vertically stretches the terrain. Lower values produce flatter terrain.",
 	"::java::data::worldgen::biome::BiomeEffects.music_volume": "The volume of the music in this biome. Defaults to 1.\nThe game will smoothly transition between the current music volume and the new volume when entering the biome.",
 	"::java::data::worldgen::biome::BiomeMusic.replace_current_music": "Defaults to `false`.",
+	"::java::data::worldgen::biome::GrassColorModifier.DarkForest": "Grass color will be average of the base color and `#28340a`.",
+	"::java::data::worldgen::biome::GrassColorModifier.Swamp": "Grass color will be either `#4c763c` or `#6a7039`, depending on block position. \\\nThe base color is ignored.",
 	"::java::data::worldgen::dimension::DimensionType.bed_works": "If true, players can use beds to set their spawn and advance time. If false, beds will blow up when used.",
 	"::java::data::worldgen::dimension::DimensionType.cardinal_light": "The direction of cardinal lighting that affects blocks.",
 	"::java::data::worldgen::dimension::DimensionType.cloud_height": "The Y-level where the clouds start in the dimension. If not present, no clouds will be visible.",
