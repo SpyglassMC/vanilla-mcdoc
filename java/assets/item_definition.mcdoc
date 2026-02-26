@@ -424,7 +424,7 @@ enum(string) CopperGolemStatuePose {
 
 dispatch minecraft:special_item_model[hanging_sign] to struct HangingSign {
 	wood_type: WoodType,
-	texture: #[id(registry="texture",path="entity/signs/hanging/")] string,
+	texture?: #[id(registry="texture",path="entity/signs/hanging/")] string,
 }
 
 enum(string) WoodType {
@@ -478,5 +478,5 @@ dispatch minecraft:special_item_model[shulker_box] to struct ShulkerBox {
 
 dispatch minecraft:special_item_model[standing_sign] to struct StandingSign {
 	wood_type: WoodType,
-	texture: #[id(registry="texture",path="entity/signs/")] string,
+	texture?: #[id(registry="texture",path="entity/signs/")] string,
 }
