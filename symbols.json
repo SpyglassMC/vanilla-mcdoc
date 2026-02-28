@@ -1,5 +1,5 @@
 {
-	"ref": "facfd182113fb418df0a23a57bd3a88530c985ab",
+	"ref": "542bb77b39c474012d8b0f87e29fbe95deae0f85",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -20572,7 +20572,43 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Amount of ammunition being used up.",
+					"desc": "Amount of ammunition being used up. \\\n`0` has a side effect of applying `intangible_projectile` component to the projectile item.",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ValueEffect"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect_component::ArmorEffectivenessEnchantmentEffect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Damage Parameters.",
+					"key": "requirements",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootCondition"
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::loot::LootCondition"
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Determines armor effectiveness; `0.0` for no effect, `1.0` for full effect.",
 					"key": "effect",
 					"type": {
 						"kind": "reference",
@@ -20697,7 +20733,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Determines armor effectiveness; `0.0` for no effect, `1.0` for full effect.",
+					"desc": "Damage dealt by the weapon.",
 					"key": "effect",
 					"type": {
 						"kind": "reference",
@@ -20769,7 +20805,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Amount of damage being absorbed; as \"fake armor\".",
+					"desc": "Damage reduction factor. \\\nProvides `factor * 4%` of damage reduction, capped at 80%.",
 					"key": "effect",
 					"type": {
 						"kind": "reference",
@@ -20843,7 +20879,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Chance between `0.0` and `1.0` of an equipped piece dropping.",
+					"desc": "Chance between `0.0` and `1.0` of an equipped piece dropping. \\\nIf the drop chance on mob is 0, the chance will not be affected by this effect.",
 					"key": "effect",
 					"type": {
 						"kind": "reference",
@@ -21155,7 +21191,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Examples:\n- A Fire Aspect Enchant would specify that when the attacker is enchanted, the ignite effect is applied, and the affected party is the victim.\n- Thorns would specify that when the victim is enchanted, the damage_entity effect is applied, and the affected party is the attacker.",
+					"desc": "Examples:\n- A Fire Aspect Enchant would specify that when the attacker is enchanted, the `ignite` effect is applied, and the affected party is the victim.\n- Thorns would specify that when the victim is enchanted, the `damage_entity` effect is applied, and the affected party is the attacker.",
 					"key": "effect",
 					"type": {
 						"kind": "reference",
@@ -21164,6 +21200,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "When set to `attacker`, this effect only works on enchanted weapon, regardless of the `slots` field.",
 					"key": "enchanted",
 					"type": {
 						"kind": "reference",
@@ -21243,7 +21280,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Amount of projectiles being loaded/drawn.",
+					"desc": "Amount of projectiles being loaded/drawn. \\\nAll projectile items except the first one will have `intangible_projectile` component applied.",
 					"key": "effect",
 					"type": {
 						"kind": "reference",
@@ -21596,7 +21633,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Impulse direction in local coordinates (the same used by `tp @s ^ ^ ^`).\n`[left, upward, forward]`",
+					"desc": "Impulse direction in local coordinates (the same used by `tp @s ^ ^ ^`). \\\n`[left, upward, forward]`",
 					"key": "direction",
 					"type": {
 						"kind": "list",
@@ -21612,7 +21649,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The multipler to apply to the computed impulse direction.\n`[x, y, z]`",
+					"desc": "The multipler to apply to the computed impulse direction. \\\n`[x, y, z]`",
 					"key": "coordinate_scale",
 					"type": {
 						"kind": "list",
@@ -21801,17 +21838,104 @@
 					"value": "none"
 				},
 				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "Drops items as if a block caused the explosion; `blockExplosionDropDecay` game rule applies.",
+					"identifier": "BlockOldDoc",
+					"value": "block"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "Drops items as if a block caused the explosion; `block_explosion_drop_decay` game rule applies.",
 					"identifier": "Block",
 					"value": "block"
 				},
 				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "Drops items as if a mob caused the explosion; `mobExplosionDropDecay` game rule applies.",
+					"identifier": "MobOldDoc",
+					"value": "mob"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "Drops items as if a mob caused the explosion; `mob_explosion_drop_decay` game rule applies.",
 					"identifier": "Mob",
 					"value": "mob"
 				},
 				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
 					"desc": "Drops items as if TNT caused the explosion; `tntExplosionDropDecay` game rule applies.",
+					"identifier": "TNTOldDoc",
+					"value": "tnt"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "Drops items as if TNT caused the explosion; `tnt_explosion_drop_decay` game rule applies.",
 					"identifier": "TNT",
 					"value": "tnt"
 				},
@@ -22021,7 +22145,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "If omitted, the default explosion knockback is applied.",
+					"desc": "If omitted, constant value `1` is applied.",
 					"key": "knockback_multiplier",
 					"type": {
 						"kind": "reference",
@@ -22342,6 +22466,7 @@
 								},
 								"lengthRange": {
 									"kind": 0,
+									"min": 1,
 									"max": 255
 								},
 								"attributes": [
@@ -23179,7 +23304,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Base cost at level 1.",
+					"desc": "Base value at level 1.",
 					"key": "base",
 					"type": {
 						"kind": "float"
@@ -23187,7 +23312,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Cost increase per level above 1.",
+					"desc": "Value increase per level above 1.",
 					"key": "per_level_above_first",
 					"type": {
 						"kind": "float"
@@ -23230,7 +23355,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Added to the exponent; `0.0` for squared, `1.0` for cubed, `.5` for square root, `-4` for negpow(2), etc.",
+					"desc": "Added to the result so that the result becomes `square(level) + added`.",
 					"key": "added",
 					"type": {
 						"kind": "float"
@@ -83267,7 +83392,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Chance to drop the items it is holding, in [main hand, offhand].",
+					"desc": "Chance to drop the items it is holding, in [main hand, offhand].\n\n`0.0` is hardcoded to be unaffected by enchantments. \\\nValues between `0.0` and `1.0` (inclusive) randomizes durability of the dropped item.",
 					"key": "HandDropChances",
 					"type": {
 						"kind": "list",
@@ -83311,7 +83436,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Chance to drop the items it is wearing, in [feet, legs, body, head].",
+					"desc": "Chance to drop the items it is wearing, in [feet, legs, body, head].\n\n`0.0` is hardcoded to be unaffected by enchantments. \\\nValues between `0.0` and `1.0` (inclusive) randomizes durability of the dropped item.",
 					"key": "ArmorDropChances",
 					"type": {
 						"kind": "list",
@@ -87878,6 +88003,7 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "`0.0` is hardcoded to be unaffected by enchantments. \\\nValues between `0.0` and `1.0` (inclusive) randomizes durability of the dropped item.",
 					"key": {
 						"kind": "reference",
 						"path": "::java::util::slot::EquipmentSlot"
@@ -89008,7 +89134,7 @@
 							},
 							{
 								"kind": "pair",
-								"desc": "Chance to drop the items it is holding, in [main hand, offhand].",
+								"desc": "Chance to drop the items it is holding, in [main hand, offhand].\n\n`0.0` is hardcoded to be unaffected by enchantments. \\\nValues between `0.0` and `1.0` (inclusive) randomizes durability of the dropped item.",
 								"key": "HandDropChances",
 								"type": {
 									"kind": "list",
@@ -89052,7 +89178,7 @@
 							},
 							{
 								"kind": "pair",
-								"desc": "Chance to drop the items it is wearing, in [feet, legs, body, head].",
+								"desc": "Chance to drop the items it is wearing, in [feet, legs, body, head].\n\n`0.0` is hardcoded to be unaffected by enchantments. \\\nValues between `0.0` and `1.0` (inclusive) randomizes durability of the dropped item.",
 								"key": "ArmorDropChances",
 								"type": {
 									"kind": "list",
@@ -102147,7 +102273,7 @@
 				"kind": "list",
 				"item": {
 					"kind": "reference",
-					"path": "::java::data::enchantment::effect_component::DamageEnchantmentEffect"
+					"path": "::java::data::enchantment::effect_component::ArmorEffectivenessEnchantmentEffect"
 				}
 			},
 			"attributes": {
