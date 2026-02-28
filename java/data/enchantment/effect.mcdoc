@@ -86,10 +86,10 @@ dispatch minecraft:entity_effect[apply_exhaustion] to ApplyExhaustionEntityEffec
 dispatch minecraft:location_based_effect[apply_exhaustion] to ApplyExhaustionEntityEffect
 
 struct ApplyImpulseEntityEffect {
-	/// Impulse direction in local coordinates (the same used by `tp @s ^ ^ ^`).
+	/// Impulse direction in local coordinates (the same used by `tp @s ^ ^ ^`). \
 	/// `[left, upward, forward]`
 	direction: [float] @ 3,
-	/// The multipler to apply to the computed impulse direction.
+	/// The multipler to apply to the computed impulse direction. \
 	/// `[x, y, z]`
 	coordinate_scale: [float] @ 3,
 	/// The scale of the impulse.
@@ -148,7 +148,7 @@ struct ExplodeEntityEffect {
 	/// List of Blocks or hash-prefixed Block Tag specifying which blocks fully block the explosion.
 	immune_blocks?: (#[id(registry="block", tags="allowed")] string | [#[id="block"] string]),
 	// TODO: determine the default knockback
-	/// If omitted, the default explosion knockback is applied.
+	/// If omitted, constant value `1` is applied.
 	knockback_multiplier?: LevelBasedValue,
 	/// Relative coordinates to offset the explosion by. Defaults to `[0, 0, 0]`.
 	offset?: [double] @ 3,
@@ -168,10 +168,22 @@ enum(string) BlockInteraction {
 	/// No item drops or special behavior.
 	None = "none",
 	/// Drops items as if a block caused the explosion; `blockExplosionDropDecay` game rule applies.
+	#[until="1.21.11"]
+	BlockOldDoc = "block",
+	/// Drops items as if a block caused the explosion; `block_explosion_drop_decay` game rule applies.
+	#[since="1.21.11"]
 	Block = "block",
 	/// Drops items as if a mob caused the explosion; `mobExplosionDropDecay` game rule applies.
+	#[until="1.21.11"]
+	MobOldDoc = "mob",
+	/// Drops items as if a mob caused the explosion; `mob_explosion_drop_decay` game rule applies.
+	#[since="1.21.11"]
 	Mob = "mob",
 	/// Drops items as if TNT caused the explosion; `tntExplosionDropDecay` game rule applies.
+	#[until="1.21.11"]
+	TNTOldDoc = "tnt",
+	/// Drops items as if TNT caused the explosion; `tnt_explosion_drop_decay` game rule applies.
+	#[since="1.21.11"]
 	TNT = "tnt",
 	/// Triggers redstone-activated blocks.
 	Trigger = "trigger",
@@ -200,7 +212,8 @@ dispatch minecraft:location_based_effect[ignite] to IgniteEntityEffect
 struct PlaySoundEntityEffect {
 	sound: (
 		SoundEventRef |
-		#[since="1.21.11"] [SoundEventRef] @ ..255 |
+		// length 0 seems to throw an IndexOutOfBoundException
+		#[since="1.21.11"] [SoundEventRef] @ 1..255 |
 	),
 	volume: FloatProvider<float @ 0.00001..10.0>,
 	pitch: FloatProvider<float @ 0.00001..2.0>,

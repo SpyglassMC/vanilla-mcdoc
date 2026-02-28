@@ -11,21 +11,20 @@ struct EnchantmentEffectComponentMap {
 
 // TODO: handle the "location based effects" thing
 
-struct DamageEnchantmentEffect {
+dispatch minecraft:effect_component[armor_effectiveness] to [struct ArmorEffectivenessEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
 	requirements?: (LootCondition | [LootCondition]),
 	/// Determines armor effectiveness; `0.0` for no effect, `1.0` for full effect.
 	effect: ValueEffect,
-}
-
-dispatch minecraft:effect_component[armor_effectiveness] to [DamageEnchantmentEffect]
+}]
 
 dispatch minecraft:effect_component[attributes] to [AttributeEffect]
 
 dispatch minecraft:effect_component[ammo_use] to [struct AmmoUseEnchantmentEffect {
 	/// Predicate context: Item Parameters.
 	requirements?: (LootCondition | [LootCondition]),
-	/// Amount of ammunition being used up.
+	/// Amount of ammunition being used up. \
+	/// `0` has a side effect of applying `intangible_projectile` component to the projectile item.
 	effect: ValueEffect,
 }]
 
@@ -49,7 +48,12 @@ dispatch minecraft:effect_component[crossbow_charging_sounds] to [struct Crossbo
 /// Charge time of the Crossbow in seconds
 dispatch minecraft:effect_component[crossbow_charge_time] to ValueEffect
 
-dispatch minecraft:effect_component[damage] to [DamageEnchantmentEffect]
+dispatch minecraft:effect_component[damage] to [struct DamageEnchantmentEffect {
+	/// Predicate context: Damage Parameters.
+	requirements?: (LootCondition | [LootCondition]),
+	/// Damage dealt by the weapon.
+	effect: ValueEffect,
+}]
 
 /// Complete damage immunity given the conditions are met.
 dispatch minecraft:effect_component[damage_immunity] to [struct DamageImmunityEnchantmentEffect {
@@ -62,7 +66,8 @@ dispatch minecraft:effect_component[damage_immunity] to [struct DamageImmunityEn
 dispatch minecraft:effect_component[damage_protection] to [struct DamageProtectionEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
 	requirements?: (LootCondition | [LootCondition]),
-	/// Amount of damage being absorbed; as "fake armor".
+	/// Damage reduction factor. \
+	/// Provides `factor * 4%` of damage reduction, capped at 80%.
 	effect: ValueEffect,
 }]
 
@@ -70,7 +75,8 @@ dispatch minecraft:effect_component[damage_protection] to [struct DamageProtecti
 dispatch minecraft:effect_component[equipment_drops] to [struct EquipmentDropsEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
 	requirements?: (LootCondition | [LootCondition]),
-	/// Chance between `0.0` and `1.0` of an equipped piece dropping.
+	/// Chance between `0.0` and `1.0` of an equipped piece dropping. \
+	/// If the drop chance on mob is 0, the chance will not be affected by this effect.
 	effect: ValueEffect,
 	/// Which subject needs to be enchanted for the effect to apply.
 	enchanted: ("attacker" | "victim"),
@@ -137,9 +143,10 @@ dispatch minecraft:effect_component[post_attack] to [struct PostAttackEnchantmen
 	/// Predicate context: Damage Parameters.
 	requirements?: (LootCondition | [LootCondition]),
 	/// Examples:
-	/// - A Fire Aspect Enchant would specify that when the attacker is enchanted, the ignite effect is applied, and the affected party is the victim.
-	/// - Thorns would specify that when the victim is enchanted, the damage_entity effect is applied, and the affected party is the attacker.
+	/// - A Fire Aspect Enchant would specify that when the attacker is enchanted, the `ignite` effect is applied, and the affected party is the victim.
+	/// - Thorns would specify that when the victim is enchanted, the `damage_entity` effect is applied, and the affected party is the attacker.
 	effect: EntityEffect,
+	/// When set to `attacker`, this effect only works on enchanted weapon, regardless of the `slots` field.
 	enchanted: AttackTarget,
 	affected: AttackTarget,
 }]
@@ -169,7 +176,8 @@ dispatch minecraft:effect_component[projectile_count] to [struct ProjectileCount
 	///
 	/// `this` is the entity drawing the weapon.
 	requirements?: (LootCondition | [LootCondition]),
-	/// Amount of projectiles being loaded/drawn.
+	/// Amount of projectiles being loaded/drawn. \
+	/// All projectile items except the first one will have `intangible_projectile` component applied.
 	effect: ValueEffect,
 }]
 

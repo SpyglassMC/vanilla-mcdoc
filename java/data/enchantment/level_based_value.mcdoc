@@ -6,9 +6,9 @@ struct LevelBasedValueMap {
 type LevelBasedValue = (float | LevelBasedValueMap)
 
 dispatch minecraft:level_based_value[linear] to struct LinearLevelValue {
-	/// Base cost at level 1.
+	/// Base value at level 1.
 	base: float,
-	/// Cost increase per level above 1.
+	/// Value increase per level above 1.
 	per_level_above_first: float,
 }
 
@@ -33,7 +33,7 @@ dispatch minecraft:level_based_value[fraction] to struct FractionLevelValue {
 
 /// Value based on the level squared.
 dispatch minecraft:level_based_value[levels_squared] to struct SquaredLevelValue {
-	/// Added to the exponent; `0.0` for squared, `1.0` for cubed, `.5` for square root, `-4` for negpow(2), etc.
+	/// Added to the result so that the result becomes `square(level) + added`.
 	added: float,
 }
 
