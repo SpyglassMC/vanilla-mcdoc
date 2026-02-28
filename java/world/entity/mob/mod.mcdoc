@@ -72,10 +72,16 @@ struct MobBase {
 		/// [main hand, offhand]
 		HandItems?: [(ItemStack | struct {})] @ 2,
 		/// Chance to drop the items it is holding, in [main hand, offhand].
+		///
+		/// `0.0` is hardcoded to be unaffected by enchantments. \
+		/// Values between `0.0` and `1.0` (inclusive) randomizes durability of the dropped item.
 		HandDropChances?: [float] @ 2,
 		/// [feet, legs, body, head]
 		ArmorItems?: [(ItemStack | struct {})] @ 4,
 		/// Chance to drop the items it is wearing, in [feet, legs, body, head].
+		///
+		/// `0.0` is hardcoded to be unaffected by enchantments. \
+		/// Values between `0.0` and `1.0` (inclusive) randomizes durability of the dropped item.
 		ArmorDropChances?: [float] @ 4,
 		/// Used for wolf armor & llama carpet decoration.
 		#[since="1.20.5"]
@@ -123,6 +129,8 @@ struct EntityEquipment {
 }
 
 struct DropChances {
+	/// `0.0` is hardcoded to be unaffected by enchantments. \
+	/// Values between `0.0` and `1.0` (inclusive) randomizes durability of the dropped item.
 	[EquipmentSlot]: float @ 0..,
 }
 
