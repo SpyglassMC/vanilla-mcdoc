@@ -1,5 +1,5 @@
 {
-	"ref": "542bb77b39c474012d8b0f87e29fbe95deae0f85",
+	"ref": "9d0c5db8358b1bf99e5ef96b2f589dded7a83324",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -3129,6 +3129,42 @@
 						"kind": "reference",
 						"path": "::java::util::color::DyeColor"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to `ground`.",
+					"key": "attachment",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::item_definition::BannerAttachment"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::assets::item_definition::BannerAttachment": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Wall",
+					"value": "wall"
+				},
+				{
+					"identifier": "Ground",
+					"value": "ground"
 				}
 			]
 		},
@@ -3165,6 +3201,40 @@
 							}
 						]
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "part",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::item_definition::BedPart"
+					}
+				}
+			]
+		},
+		"::java::assets::item_definition::BedPart": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Head",
+					"value": "head"
+				},
+				{
+					"identifier": "Foot",
+					"value": "foot"
 				}
 			]
 		},
@@ -3198,6 +3268,35 @@
 								"kind": "string"
 							}
 						]
+					}
+				}
+			]
+		},
+		"::java::assets::item_definition::Book": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Angle in degrees between book cover and book centerline. \\\n`0.0` for closed, `90.0` for open flat.",
+					"key": "open_angle",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The position of the first page inside the book. \\\n`0.0` for leftmost, `1.0` for rightmost.",
+					"key": "page1",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The position of the second page inside the book. \\\n`0.0` for leftmost, `1.0` for rightmost.",
+					"key": "page2",
+					"type": {
+						"kind": "float"
 					}
 				}
 			]
@@ -3270,6 +3369,46 @@
 						}
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to `single`.",
+					"key": "chest_type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::item_definition::ChestType"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::assets::item_definition::ChestType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Single",
+					"value": "single"
+				},
+				{
+					"identifier": "Left",
+					"value": "left"
+				},
+				{
+					"identifier": "Right",
+					"value": "right"
 				}
 			]
 		},
@@ -3465,6 +3604,27 @@
 							"path": "::java::assets::item_definition::ItemModel"
 						}
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "transformation",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::display::Transformation"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -3514,6 +3674,27 @@
 						"kind": "reference",
 						"path": "::java::assets::item_definition::ItemModel"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "transformation",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::display::Transformation"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -4053,6 +4234,46 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to `ceiling_middle`.",
+					"key": "attachment",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::item_definition::HangingSignAttachment"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::assets::item_definition::HangingSignAttachment": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Wall",
+					"value": "wall"
+				},
+				{
+					"identifier": "Ceiling",
+					"value": "ceiling"
+				},
+				{
+					"identifier": "CeilingMiddle",
+					"value": "ceiling_middle"
 				}
 			]
 		},
@@ -4508,6 +4729,27 @@
 						}
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "transformation",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::display::Transformation"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -4681,6 +4923,27 @@
 						"path": "::java::assets::item_definition::ItemModel"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "transformation",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::display::Transformation"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -4742,6 +5005,27 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::assets::item_definition::ItemModel"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "transformation",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::display::Transformation"
 					},
 					"optional": true
 				}
@@ -4928,6 +5212,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
 					"desc": "Defaults to `up`.",
 					"key": "orientation",
 					"type": {
@@ -4987,6 +5283,27 @@
 						"kind": "reference",
 						"path": "::java::assets::model::ModelRef"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "transformation",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::display::Transformation"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -5034,6 +5351,38 @@
 				{
 					"identifier": "Bed",
 					"value": "bed"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"identifier": "Bell",
+					"value": "bell"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"identifier": "Book",
+					"value": "book"
 				},
 				{
 					"identifier": "Conduit",
@@ -5147,6 +5496,42 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to `ground`.",
+					"key": "attachment",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::item_definition::StandingSignAttachment"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::assets::item_definition::StandingSignAttachment": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Wall",
+					"value": "wall"
+				},
+				{
+					"identifier": "Ground",
+					"value": "ground"
 				}
 			]
 		},
@@ -23981,6 +24366,33 @@
 				}
 			]
 		},
+		"::java::data::gametest::test_environment::TimelineAttributesTestEnvironment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "timelines",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "id",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "timeline"
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			]
+		},
 		"::java::data::gametest::test_environment::TimeOfDayTestEnvironment": {
 			"kind": "struct",
 			"fields": [
@@ -36820,6 +37232,14 @@
 						"kind": "reference",
 						"path": "::java::data::util::SoundEventRef"
 					}
+				},
+				{
+					"kind": "pair",
+					"key": "eat_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
 				}
 			]
 		},
@@ -47644,8 +48064,41 @@
 					],
 					"key": "state_provider",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::feature::RuleBasedBlockStateProvider"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::feature::RuleBasedBlockStateProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -51896,41 +52349,8 @@
 					"kind": "pair",
 					"key": "provider",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.1"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::worldgen::feature::RuleBasedBlockStateProvider",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.1"
-											}
-										}
-									}
-								]
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
 					}
 				}
 			]
@@ -53465,8 +53885,41 @@
 					],
 					"key": "below_trunk_provider",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::feature::RuleBasedBlockStateProvider"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::feature::RuleBasedBlockStateProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -99650,6 +100103,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_state_provider::SimpleStateProvider"
 			},
+			"rule_based_state_provider": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::RuleBasedBlockStateProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"simple_state_provider": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_state_provider::SimpleStateProvider"
@@ -110078,6 +110547,22 @@
 				"kind": "reference",
 				"path": "::java::assets::item_definition::Bed"
 			},
+			"book": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::Book",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"chest": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::Chest"
@@ -110534,6 +111019,22 @@
 				"attributes": [
 					{
 						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
+			"timeline_attributes": {
+				"kind": "reference",
+				"path": "::java::data::gametest::test_environment::TimelineAttributesTestEnvironment",
+				"attributes": [
+					{
+						"name": "since",
 						"value": {
 							"kind": "literal",
 							"value": {
