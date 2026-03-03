@@ -54,3 +54,8 @@ enum(string) Weather {
 	Rain = "rain",
 	Thunder = "thunder",
 }
+
+#[since="26.1"]
+dispatch minecraft:test_environment_definition[timeline_attributes] to struct TimelineAttributesTestEnvironment {
+	timelines: [#[id="timeline"] string],
+}

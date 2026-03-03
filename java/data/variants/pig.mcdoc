@@ -18,6 +18,7 @@ dispatch minecraft:resource[pig_sound_variant] to SoundVariant<struct PigSounds 
 	hurt_sound: SoundEventRef,
 	death_sound: SoundEventRef,
 	step_sound: SoundEventRef,
+	eat_sound: SoundEventRef,
 }>
 
 enum(string) PigModelType {

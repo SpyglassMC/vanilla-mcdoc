@@ -5,6 +5,7 @@ use ::java::util::color::DyeColor
 use ::java::util::direction::Direction
 use ::java::util::avatar::HumanoidArm
 use ::java::util::text::Keybind
+use ::java::world::entity::display::Transformation
 
 #[since="1.21.4"]
 dispatch minecraft:resource[item_definition] to struct ItemDefinition {
@@ -43,6 +44,8 @@ dispatch minecraft:item_model["bundle/selected_item"] to struct {}
 
 dispatch minecraft:item_model[composite] to struct Composite {
 	models: [ItemModel],
+	#[since="26.1"]
+	transformation?: Transformation,
 }
 
 dispatch minecraft:item_model[condition] to struct Condition {
@@ -50,11 +53,15 @@ dispatch minecraft:item_model[condition] to struct Condition {
 	...minecraft:conditional_item_property[[property]],
 	on_true: ItemModel,
 	on_false: ItemModel,
+	#[since="26.1"]
+	transformation?: Transformation,
 }
 
 dispatch minecraft:item_model[model] to struct Model {
 	model: ModelRef,
 	tints?: [ModelTint],
+	#[since="26.1"]
+	transformation?: Transformation,
 }
 
 dispatch minecraft:item_model[range_dispatch] to struct RangeDispatch {
@@ -70,6 +77,8 @@ dispatch minecraft:item_model[range_dispatch] to struct RangeDispatch {
 	}],
 	/// Item model to render if no entries were less or equal to the value.
 	fallback?: ItemModel,
+	#[since="26.1"]
+	transformation?: Transformation,
 }
 
 dispatch minecraft:item_model[select] to struct Select {
@@ -77,6 +86,8 @@ dispatch minecraft:item_model[select] to struct Select {
 	...minecraft:select_item_property[[property]],
 	/// Item model to render if none of the cases matched the value.
 	fallback?: ItemModel,
+	#[since="26.1"]
+	transformation?: Transformation,
 }
 
 type SelectCases<T> = struct {
@@ -96,6 +107,8 @@ dispatch minecraft:item_model[special] to struct Special {
 	},
 	/// Base model, providing transformations, particle texture and GUI light.
 	base: ModelRef,
+	#[since="26.1"]
+	transformation?: Transformation,
 }
 
 
@@ -376,6 +389,10 @@ dispatch minecraft:select_item_property[trim_material] to struct TrimMaterial{
 enum(string) SpecialModelType {
 	Banner = "banner",
 	Bed = "bed",
+	#[since="26.1"]
+	Bell = "bell",
+	#[since="26.1"]
+	Book = "book",
 	Conduit = "conduit",
 	Chest = "chest",
 	#[since="1.21.9"]
@@ -395,16 +412,53 @@ dispatch minecraft:special_item_model[%unknown] to struct {}
 
 dispatch minecraft:special_item_model[banner] to struct Banner {
 	color: DyeColor,
+	/// Defaults to `ground`.
+	#[since="26.1"]
+	attachment?: BannerAttachment,
+}
+
+enum(string) BannerAttachment {
+	Wall = "wall",
+	Ground = "ground",
 }
 
 dispatch minecraft:special_item_model[bed] to struct Bed {
 	texture: #[id(registry="texture",path="entity/bed/")] string,
+	#[since="26.1"]
+	part: BedPart,
+}
+
+enum(string) BedPart {
+	Head = "head",
+	Foot = "foot",
+}
+
+#[since="26.1"]
+dispatch minecraft:special_item_model[book] to struct Book {
+	/// Angle in degrees between book cover and book centerline. \
+	/// `0.0` for closed, `90.0` for open flat.
+	open_angle: float,
+	/// The position of the first page inside the book. \
+	/// `0.0` for leftmost, `1.0` for rightmost.
+	page1: float,
+	/// The position of the second page inside the book. \
+	/// `0.0` for leftmost, `1.0` for rightmost.
+	page2: float,
 }
 
 dispatch minecraft:special_item_model[chest] to struct Chest {
 	texture: #[id(registry="texture",path="entity/chest/")] string,
 	/// Defaults to `0`.
 	openness?: float @ 0..1,
+	/// Defaults to `single`.
+	#[since="26.1"]
+	chest_type?: ChestType,
+}
+
+enum(string) ChestType {
+	Single = "single",
+	Left = "left",
+	Right = "right",
 }
 
 dispatch minecraft:special_item_model[copper_golem_statue] to struct CopperGolemStatue {
@@ -425,6 +479,9 @@ enum(string) CopperGolemStatuePose {
 dispatch minecraft:special_item_model[hanging_sign] to struct HangingSign {
 	wood_type: WoodType,
 	texture?: #[id(registry="texture",path="entity/signs/hanging/")] string,
+	/// Defaults to `ceiling_middle`.
+	#[since="26.1"]
+	attachment?: HangingSignAttachment,
 }
 
 enum(string) WoodType {
@@ -440,6 +497,12 @@ enum(string) WoodType {
 	Bamboo = "bamboo",
 	Crimson = "crimson",
 	Warped = "warped",
+}
+
+enum(string) HangingSignAttachment {
+	Wall = "wall",
+	Ceiling = "ceiling",
+	CeilingMiddle = "ceiling_middle",
 }
 
 dispatch minecraft:special_item_model[head] to struct Head {
@@ -473,10 +536,19 @@ dispatch minecraft:special_item_model[shulker_box] to struct ShulkerBox {
 	texture: #[id(registry="texture",path="entity/shulker/")] string,
 	openness?: float @ 0..1,
 	/// Defaults to `up`.
+	#[until="26.1"]
 	orientation?: Direction,
 }
 
 dispatch minecraft:special_item_model[standing_sign] to struct StandingSign {
 	wood_type: WoodType,
 	texture?: #[id(registry="texture",path="entity/signs/")] string,
+	/// Defaults to `ground`.
+	#[since="26.1"]
+	attachment?: StandingSignAttachment,
+}
+
+enum(string) StandingSignAttachment {
+	Wall = "wall",
+	Ground = "ground",
 }

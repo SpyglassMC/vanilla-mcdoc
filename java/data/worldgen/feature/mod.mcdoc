@@ -82,7 +82,10 @@ dispatch minecraft:feature_config[disk,ice_patch] to struct DiskConfig {
 	#[until="1.19"]
 	state: BlockState,
 	#[since="1.19"]
-	state_provider: RuleBasedBlockStateProvider,
+	state_provider: (
+		#[until="26.1"] RuleBasedBlockStateProvider |
+		#[since="26.1"] BlockStateProvider |
+	),
 	radius: (
 		#[until="1.17"] UniformInt<int @ 0..4, int @ 0..4> |
 		#[since="1.17"] IntProvider<int @ 0..8> |
