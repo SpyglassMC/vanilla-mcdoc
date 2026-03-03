@@ -18,10 +18,7 @@ dispatch minecraft:feature_config[tree] to struct TreeConfig {
 	#[since="1.17"] #[until="26.1"]
 	dirt_provider: BlockStateProvider,
 	#[since="26.1"]
-	below_trunk_provider: (
-		#[until="26.1"] RuleBasedBlockStateProvider |
-		#[since="26.1"] BlockStateProvider |
-	),
+	below_trunk_provider?: BlockStateProvider,
 	#[since="1.17"] #[until="1.18"]
 	sapling_provider: BlockStateProvider,
 	trunk_provider: BlockStateProvider,
