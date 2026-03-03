@@ -1,5 +1,5 @@
 {
-	"ref": "9d0c5db8358b1bf99e5ef96b2f589dded7a83324",
+	"ref": "33a94aa10356d20c360ff4b53d2449d39fe81fc7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -53885,42 +53885,10 @@
 					],
 					"key": "below_trunk_provider",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::worldgen::feature::RuleBasedBlockStateProvider",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.1"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.1"
-											}
-										}
-									}
-								]
-							}
-						]
-					}
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
