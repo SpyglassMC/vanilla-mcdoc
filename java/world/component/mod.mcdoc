@@ -1,12 +1,17 @@
 use ::java::util::text::Text
 
+// Transient data component IDs are disallowed in:
+// - DataComponentExactPredicate::CODEC
+// - DataComponentMap::CODEC
+type PersistentDataComponent = #[id(registry="data_component_type", exclude=["additional_trade_cost", "creative_slot_lock", "map_post_processing"])] string
+
 struct DataComponentPatch {
-	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
-	[#[id(registry="data_component_type", prefix="!")] string]: struct {},
+	[PersistentDataComponent]: minecraft:data_component[[%key]],
+	[#[id(registry="data_component_type", prefix="!", exclude=["additional_trade_cost", "creative_slot_lock", "map_post_processing"])] string]: struct {},
 }
 
 struct DataComponentExactPredicate {
-	[#[id="data_component_type"] string]: minecraft:data_component[[%key]],
+	[PersistentDataComponent]: minecraft:data_component[[%key]],
 }
 
 struct DataComponentPredicate {
@@ -39,3 +44,10 @@ dispatch minecraft:data_component[custom_name] to (
 	#[until="1.21.5"] #[text_component] string |
 	#[since="1.21.5"] Text |
 )
+
+
+// Transient data components
+dispatch minecraft:data_component[creative_slot_lock, map_post_processing] to struct {}
+
+#[since="26.1"]
+dispatch minecraft:data_component[additional_trade_cost] to int
