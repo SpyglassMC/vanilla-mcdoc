@@ -1,1 +1,21 @@
-{}
+{
+	"::java::assets::atlas::Atlas.sources": "Bu atlasa sprite dokusu ekleyebilen ya da kaldırabilen sprite kaynakları listesi.",
+	"::java::assets::atlas::Directory.prefix": "Sprite adı öneki, genellikle `/` ile biter.",
+	"::java::assets::atlas::Directory.source": "Dahil edilecek doku yeri dizinleri, `textures` dosyasına göre, `/` ayracı dahil değil.",
+	"::java::assets::atlas::Filter.pattern": "Sprite kaynağı kaldırma şablonu zaten atlasta. Sprite kaynaklarının sırası önemli.",
+	"::java::assets::atlas::PalettedPermutations.separator": "Sprite ismi oluşturmak için doku ve permutasyon isimleri birbirine katılırken kullanılcak değer.\nVarsayılan olarak`_`.",
+	"::java::assets::atlas::Single.resource": "Kaynağın tekil doku yeri.",
+	"::java::assets::atlas::Single.sprite": "Referans gösterilebilicek sprite tanımlayıcısı.\nBelitilmemişse, `resource` (kaynak) ile eşleşir.",
+	"::java::assets::atlas::Unstitch.divisor_x": "Eğer kaynak genişliğine ayarlanımşa, bölgeler piksel kordinatlarını kullanıcak.",
+	"::java::assets::atlas::Unstitch.divisor_y": "Eğer kaynak yüksekliğine ayarlanımşa, bölgeler piksel kordinatlarını kullanıcak.",
+	"::java::assets::block_state_definition::BlockStateDefinitionMultipartEntry.when": "Bir koşul ya da bir dizinin (array) koşullarından biri uygun olmak zorunda.",
+	"::java::assets::block_state_definition::ModelVariantBase.uvlock": "Eğer `true` (doğru) olarak ayarlanmışsa, dokular blockla beraber döndürülmiyecek.",
+	"::java::assets::credits::Credits.section": "Şirket kısmı.",
+	"::java::assets::credits::CreditsCompanySegment.section": "Şirket kısmı.",
+	"::java::assets::credits::CreditsJobTitle.names": "Ünvanlı Çalışanlar.",
+	"::java::assets::equipment::Dyeable.color_when_undyed": "Belirtilmişse, bu katman `dyed_color` (boya_rengi) bileşeni ile renklerdirilcek.\nEğer eşya boyanabilir ya da boyanmış değil ise, bu renk ile renklendirilcek.\nEğer belirtilmemişse ve eşya boyanmamışsa, bu katman gizli kalıcak.",
+	"::java::assets::equipment::Equipment.layers": "Her model katman türü için katman listesi.",
+	"::java::assets::equipment::Layer.dyeable": "Bu katmanın boyandığında nasıl davrandığını ayarlar (`dyed_color`(boya_rengi) bileşenine sahip).",
+	"::java::assets::equipment::Layer.texture": "Bu katman için doku yerelleştirmesi, `entity/equipment/<layer>/`(`varlık/ekipman/<katman>/`)nın içindie.",
+	"::java::assets::equipment::WingsLayer.use_player_texture": "Oyuncunun kişisel elytrası bu katmanın üstüne koyulmalı mı.\nVarsayılan olarak `false`."
+}
