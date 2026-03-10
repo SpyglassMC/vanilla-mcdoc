@@ -1,5 +1,5 @@
 {
-	"ref": "33a94aa10356d20c360ff4b53d2449d39fe81fc7",
+	"ref": "06368d51c552a14ca6bf062077f9300abedeebb3",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -4107,6 +4107,33 @@
 				}
 			]
 		},
+		"::java::assets::item_definition::EndCube": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "effect",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::item_definition::EndCubeEffectType"
+					}
+				}
+			]
+		},
+		"::java::assets::item_definition::EndCubeEffectType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Portal",
+					"value": "portal"
+				},
+				{
+					"identifier": "Gateway",
+					"value": "gateway"
+				}
+			]
+		},
 		"::java::assets::item_definition::FireworkTint": {
 			"kind": "struct",
 			"fields": [
@@ -5411,6 +5438,22 @@
 				{
 					"identifier": "DecoratedPot",
 					"value": "decorated_pot"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"identifier": "EndCube",
+					"value": "end_cube"
 				},
 				{
 					"identifier": "HangingSign",
@@ -24953,6 +24996,55 @@
 				}
 			]
 		},
+		"::java::data::loot::condition::EnvironmentAttributeCheck": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "attribute",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "environment_attribute"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "indexed",
+						"child": {
+							"kind": "dispatcher",
+							"parallelIndices": [
+								{
+									"kind": "dynamic",
+									"accessor": [
+										"attribute"
+									]
+								}
+							],
+							"registry": "minecraft:environment_attribute"
+						},
+						"parallelIndices": [
+							{
+								"kind": "static",
+								"value": "value"
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::loot::condition::Inverted": {
 			"kind": "struct",
 			"fields": [
@@ -29115,29 +29207,111 @@
 					"desc": "Sets the instrument tag for a goat horn.",
 					"key": "options",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
 											"kind": "literal",
 											"value": {
 												"kind": "string",
-												"value": "instrument"
+												"value": "26.1"
 											}
-										},
-										"tags": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "required"
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "instrument"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "required"
+													}
+												}
 											}
 										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "instrument"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "instrument"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -35557,6 +35731,30 @@
 				}
 			]
 		},
+		"::java::data::util::EnvironmentAttributeNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "attribute",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "environment_attribute"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::util::FixedScoreProvider": {
 			"kind": "struct",
 			"fields": [
@@ -38225,6 +38423,34 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::T"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::T"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "plateau",
+					"type": {
+						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::<anonymous 11>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"key": "distribution",
 					"type": {
 						"kind": "concrete",
@@ -38251,7 +38477,7 @@
 				}
 			]
 		},
-		"::java::data::worldgen::<anonymous 11>": {
+		"::java::data::worldgen::<anonymous 12>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -38348,7 +38574,7 @@
 				}
 			]
 		},
-		"::java::data::worldgen::<anonymous 12>": {
+		"::java::data::worldgen::<anonymous 13>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -38361,7 +38587,7 @@
 				}
 			]
 		},
-		"::java::data::worldgen::<anonymous 13>": {
+		"::java::data::worldgen::<anonymous 14>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -38382,7 +38608,7 @@
 				}
 			]
 		},
-		"::java::data::worldgen::<anonymous 14>": {
+		"::java::data::worldgen::<anonymous 15>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -38417,7 +38643,7 @@
 				}
 			]
 		},
-		"::java::data::worldgen::<anonymous 15>": {
+		"::java::data::worldgen::<anonymous 16>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -38445,7 +38671,7 @@
 				}
 			]
 		},
-		"::java::data::worldgen::<anonymous 16>": {
+		"::java::data::worldgen::<anonymous 17>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -38457,7 +38683,7 @@
 				}
 			]
 		},
-		"::java::data::worldgen::<anonymous 17>": {
+		"::java::data::worldgen::<anonymous 18>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -38469,7 +38695,7 @@
 				}
 			]
 		},
-		"::java::data::worldgen::<anonymous 18>": {
+		"::java::data::worldgen::<anonymous 19>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -38481,7 +38707,20 @@
 				}
 			]
 		},
-		"::java::data::worldgen::<anonymous 19>": {
+		"::java::data::worldgen::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::T"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::<anonymous 20>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -38516,19 +38755,6 @@
 							}
 						],
 						"registry": "minecraft:height_provider"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::<anonymous 2>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "value",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::T"
 					}
 				}
 			]
@@ -68141,6 +68367,33 @@
 				}
 			]
 		},
+		"::java::util::text::ObjectTextConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "Used in places where object component cannot be displayed (for example, server log or narration).",
+					"key": "fallback",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::Text"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::util::text::OpenUrl": {
 			"kind": "struct",
 			"fields": [
@@ -68213,6 +68466,13 @@
 						"kind": "boolean"
 					},
 					"optional": true
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::ObjectTextConfig"
+					}
 				},
 				{
 					"kind": "pair",
@@ -69114,6 +69374,13 @@
 								}
 							}
 						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::text::ObjectTextConfig"
 					}
 				},
 				{
@@ -70260,6 +70527,13 @@
 							}
 						},
 						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::util::text::ObjectTextConfig"
+							}
+						},
+						{
 							"kind": "pair",
 							"key": "object",
 							"type": {
@@ -70323,6 +70597,13 @@
 								"kind": "boolean"
 							},
 							"optional": true
+						},
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::util::text::ObjectTextConfig"
+							}
 						},
 						{
 							"kind": "pair",
@@ -77370,29 +77651,111 @@
 					"desc": "Damage types in this tag are bypassing the blocking",
 					"key": "bypassed_by",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
 											"kind": "literal",
 											"value": {
 												"kind": "string",
-												"value": "damage_type"
+												"value": "26.1"
 											}
-										},
-										"tags": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "required"
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "damage_type"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "required"
+													}
+												}
 											}
 										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "damage_type"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "damage_type"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
@@ -77709,29 +78072,111 @@
 					"desc": "The damage types which the item is resistant to when in entity form.\nAdditionally, this also affects whether the equipped item will be damaged when the wearer is hurt by a specified damage type.",
 					"key": "types",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
 											"kind": "literal",
 											"value": {
 												"kind": "string",
-												"value": "damage_type"
+												"value": "26.1"
 											}
-										},
-										"tags": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "required"
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "damage_type"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "required"
+													}
+												}
 											}
 										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "damage_type"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "damage_type"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -101688,29 +102133,111 @@
 				"path": "::java::util::avatar::Profile"
 			},
 			"provides_banner_patterns": {
-				"kind": "string",
-				"attributes": [
+				"kind": "union",
+				"members": [
 					{
-						"name": "id",
-						"value": {
-							"kind": "tree",
-							"values": {
-								"registry": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
 									"kind": "literal",
 									"value": {
 										"kind": "string",
-										"value": "banner_pattern"
+										"value": "26.1"
 									}
-								},
-								"tags": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "required"
+								}
+							},
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "banner_pattern"
+											}
+										},
+										"tags": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "required"
+											}
+										}
 									}
 								}
 							}
-						}
+						]
+					},
+					{
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							},
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "banner_pattern"
+											}
+										},
+										"tags": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "allowed"
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "id",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "banner_pattern"
+										}
+									}
+								}
+							]
+						},
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.1"
+									}
+								}
+							}
+						]
 					}
 				]
 			},
@@ -106548,6 +107075,54 @@
 					}
 				]
 			},
+			"trapezoid": {
+				"kind": "template",
+				"child": {
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "min",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::T"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "max",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::T"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "plateau",
+							"type": {
+								"kind": "int"
+							}
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::T"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"uniform": {
 				"kind": "template",
 				"child": {
@@ -107755,6 +108330,22 @@
 				"kind": "reference",
 				"path": "::java::data::loot::condition::EntityScores"
 			},
+			"environment_attribute_check": {
+				"kind": "reference",
+				"path": "::java::data::loot::condition::EnvironmentAttributeCheck",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
 			"inverted": {
 				"kind": "reference",
 				"path": "::java::data::loot::condition::Inverted"
@@ -108714,6 +109305,22 @@
 			"enchantment_level": {
 				"kind": "reference",
 				"path": "::java::data::util::EnchantmentLevelProvider"
+			},
+			"environment_attribute": {
+				"kind": "reference",
+				"path": "::java::data::util::EnvironmentAttributeNumberProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
 			},
 			"score": {
 				"kind": "reference",
@@ -110538,6 +111145,22 @@
 			"copper_golem_statue": {
 				"kind": "reference",
 				"path": "::java::assets::item_definition::CopperGolemStatue"
+			},
+			"end_cube": {
+				"kind": "reference",
+				"path": "::java::assets::item_definition::EndCube",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
 			},
 			"hanging_sign": {
 				"kind": "reference",
