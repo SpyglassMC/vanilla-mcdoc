@@ -98,6 +98,13 @@ dispatch minecraft:int_provider[clamped_normal]<T> to (
 	#[since="1.20.5"] ClampedNormalIntProvider<T> |
 )
 
+#[since="26.1"]
+dispatch minecraft:int_provider[trapezoid]<T> to struct {
+	min: T,
+	max: T,
+	plateau: int,
+}
+
 #[since="1.18"]
 dispatch minecraft:int_provider[weighted_list]<T> to struct {
 	distribution: NonEmptyWeightedList<IntProvider<T>>,

@@ -398,6 +398,8 @@ enum(string) SpecialModelType {
 	#[since="1.21.9"]
 	CopperGolemStatue = "copper_golem_statue",
 	DecoratedPot = "decorated_pot",
+	#[since="26.1"]
+	EndCube = "end_cube",
 	HangingSign = "hanging_sign",
 	Head = "head",
 	#[since="1.21.6"]
@@ -474,6 +476,16 @@ enum(string) CopperGolemStatuePose {
 	Sitting = "sitting",
 	Running = "running",
 	Star = "star",
+}
+
+#[since="26.1"]
+dispatch minecraft:special_item_model[end_cube] to struct EndCube {
+	effect: EndCubeEffectType,
+}
+
+enum(string) EndCubeEffectType {
+	Portal = "portal",
+	Gateway = "gateway",
 }
 
 dispatch minecraft:special_item_model[hanging_sign] to struct HangingSign {

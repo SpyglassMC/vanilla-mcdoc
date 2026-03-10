@@ -90,6 +90,11 @@ dispatch minecraft:number_provider[constant] to struct ConstantNumberProvider {
 	value: float,
 }
 
+#[since="26.1"]
+dispatch minecraft:number_provider[environment_attribute] to struct EnvironmentAttributeNumberProvider {
+	attribute: #[id="environment_attribute"] string,
+}
+
 dispatch minecraft:number_provider[score] to struct ScoreNumberProvider {
 	target: ScoreProvider,
 	score: #[objective] string,

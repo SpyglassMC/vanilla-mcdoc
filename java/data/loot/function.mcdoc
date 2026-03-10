@@ -479,7 +479,11 @@ dispatch minecraft:loot_function[set_enchantments] to struct SetEnchantments {
 #[since="1.19"]
 dispatch minecraft:loot_function[set_instrument] to struct SetInstrument {
 	/// Sets the instrument tag for a goat horn.
-	options: #[id(registry="instrument",tags="required")] string,
+	options: (
+		#[until="26.1"] #[id(registry="instrument",tags="required")] string |
+		#[since="26.1"] #[id(registry="instrument",tags="allowed")] string |
+		#[since="26.1"] [#[id="instrument"] string] |
+	),
 	...Conditions,
 }
 
