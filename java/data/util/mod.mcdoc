@@ -2,6 +2,7 @@ use super::loot::function::CopyNameSource
 use super::loot::EntityTarget
 use super::loot::BlockEntityTarget
 use super::enchantment::LevelBasedValue
+use ::java::data::worldgen::attribute::NumericalEnvironmentAttribute
 
 type MinMaxBounds<T> = (
 	T |
@@ -92,7 +93,7 @@ dispatch minecraft:number_provider[constant] to struct ConstantNumberProvider {
 
 #[since="26.1"]
 dispatch minecraft:number_provider[environment_attribute] to struct EnvironmentAttributeNumberProvider {
-	attribute: #[id="environment_attribute"] string,
+	attribute: NumericalEnvironmentAttribute,
 }
 
 dispatch minecraft:number_provider[score] to struct ScoreNumberProvider {
