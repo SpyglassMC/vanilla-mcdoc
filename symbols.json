@@ -1,5 +1,5 @@
 {
-	"ref": "06368d51c552a14ca6bf062077f9300abedeebb3",
+	"ref": "16e02d95ad94292bcf4ca262873f571ec316bf61",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -35738,19 +35738,8 @@
 					"kind": "pair",
 					"key": "attribute",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "environment_attribute"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::NumericalEnvironmentAttribute"
 					}
 				}
 			]
@@ -39270,6 +39259,85 @@
 				}
 			]
 		},
+		"::java::data::worldgen::attribute::<anonymous 13>": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "CloudHeight",
+					"value": "visual/cloud_height"
+				},
+				{
+					"identifier": "FogStartDistance",
+					"value": "visual/fog_start_distance"
+				},
+				{
+					"identifier": "MoonAngle",
+					"value": "visual/moon_angle"
+				},
+				{
+					"identifier": "StarAngle",
+					"value": "visual/star_angle"
+				},
+				{
+					"identifier": "SunAngle",
+					"value": "visual/sun_angle"
+				},
+				{
+					"identifier": "WaterFogStartDistance",
+					"value": "visual/water_fog_start_distance"
+				},
+				{
+					"identifier": "CloudFogEndDistance",
+					"value": "visual/cloud_fog_end_distance"
+				},
+				{
+					"identifier": "FogEndDistance",
+					"value": "visual/fog_end_distance"
+				},
+				{
+					"identifier": "SkyFogEndDistance",
+					"value": "visual/sky_fog_end_distance"
+				},
+				{
+					"identifier": "WaterFogEndDistance",
+					"value": "visual/water_fog_end_distance"
+				},
+				{
+					"identifier": "SkyLightFactor",
+					"value": "visual/sky_light_factor"
+				},
+				{
+					"identifier": "StarBrightness",
+					"value": "visual/star_brightness"
+				},
+				{
+					"identifier": "MusicVolume",
+					"value": "audio/music_volume"
+				},
+				{
+					"identifier": "CatWakingUpGiftChance",
+					"value": "gameplay/cat_waking_up_gift_chance"
+				},
+				{
+					"identifier": "SurfaceSlimeSpawnChance",
+					"value": "gameplay/surface_slime_spawn_chance"
+				},
+				{
+					"identifier": "TurtleEggHatchChance",
+					"value": "gameplay/turtle_egg_hatch_chance"
+				},
+				{
+					"identifier": "SkyLightLevel",
+					"value": "gameplay/sky_light_level"
+				}
+			],
+			"attributes": [
+				{
+					"name": "id"
+				}
+			]
+		},
 		"::java::data::worldgen::attribute::<anonymous 2>": {
 			"kind": "struct",
 			"fields": [
@@ -40815,6 +40883,85 @@
 						],
 						"registry": "minecraft:environment_attribute_argb_color_modifier"
 					}
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::NumericalEnvironmentAttribute": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "CloudHeight",
+					"value": "visual/cloud_height"
+				},
+				{
+					"identifier": "FogStartDistance",
+					"value": "visual/fog_start_distance"
+				},
+				{
+					"identifier": "MoonAngle",
+					"value": "visual/moon_angle"
+				},
+				{
+					"identifier": "StarAngle",
+					"value": "visual/star_angle"
+				},
+				{
+					"identifier": "SunAngle",
+					"value": "visual/sun_angle"
+				},
+				{
+					"identifier": "WaterFogStartDistance",
+					"value": "visual/water_fog_start_distance"
+				},
+				{
+					"identifier": "CloudFogEndDistance",
+					"value": "visual/cloud_fog_end_distance"
+				},
+				{
+					"identifier": "FogEndDistance",
+					"value": "visual/fog_end_distance"
+				},
+				{
+					"identifier": "SkyFogEndDistance",
+					"value": "visual/sky_fog_end_distance"
+				},
+				{
+					"identifier": "WaterFogEndDistance",
+					"value": "visual/water_fog_end_distance"
+				},
+				{
+					"identifier": "SkyLightFactor",
+					"value": "visual/sky_light_factor"
+				},
+				{
+					"identifier": "StarBrightness",
+					"value": "visual/star_brightness"
+				},
+				{
+					"identifier": "MusicVolume",
+					"value": "audio/music_volume"
+				},
+				{
+					"identifier": "CatWakingUpGiftChance",
+					"value": "gameplay/cat_waking_up_gift_chance"
+				},
+				{
+					"identifier": "SurfaceSlimeSpawnChance",
+					"value": "gameplay/surface_slime_spawn_chance"
+				},
+				{
+					"identifier": "TurtleEggHatchChance",
+					"value": "gameplay/turtle_egg_hatch_chance"
+				},
+				{
+					"identifier": "SkyLightLevel",
+					"value": "gameplay/sky_light_level"
+				}
+			],
+			"attributes": [
+				{
+					"name": "id"
 				}
 			]
 		},
