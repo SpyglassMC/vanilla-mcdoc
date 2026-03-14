@@ -1,5 +1,5 @@
 {
-	"ref": "65fe598763858491b009a62775b0c23474b6e0ca",
+	"ref": "3f150064e62e553a49d4408c30edb220bc1b1361",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -19878,7 +19878,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
+					"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.\n\nThe currently selected `after_action` only supports the value `false`",
 					"key": "pause",
 					"type": {
 						"kind": "literal",
@@ -97816,7 +97816,7 @@
 				"fields": [
 					{
 						"kind": "pair",
-						"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
+						"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.\n\nThe currently selected `after_action` only supports the value `false`",
 						"key": "pause",
 						"type": {
 							"kind": "literal",
