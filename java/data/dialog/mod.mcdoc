@@ -24,7 +24,8 @@ struct DialogBase {
 	/// Defaults to `true`.
 	pause?: boolean,
 	/// An additional operation performed on dialog after click or submit actions.
-	/// Defaults to `close`.
+	/// Defaults to `close`. \
+	/// Value `none` requires `pause` set to `false`.
 	after_action?: AfterAction,
 }
 
