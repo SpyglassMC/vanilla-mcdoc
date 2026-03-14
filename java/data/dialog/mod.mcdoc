@@ -20,13 +20,11 @@ struct DialogBase {
 	/// Whether the dialog can be closed with ESC key.
 	/// Defaults to `true`.
 	can_close_with_escape?: boolean,
-	/// Whether the dialog should pause the game in single-player mode.
-	/// Defaults to `true`.
-	pause?: boolean,
 	/// An additional operation performed on dialog after click or submit actions.
 	/// Defaults to `close`. \
 	/// Value `none` requires `pause` set to `false`.
 	after_action?: AfterAction,
+	...mcdoc:dialog_after_action[[after_action]]
 }
 
 enum(string) AfterAction {
@@ -35,11 +33,22 @@ enum(string) AfterAction {
 	Close = "close",
 	/// Does nothing.
 	/// Only available if `pause` is set to `false`.
-	// TODO: implement this restriction
 	None = "none",
 	/// Replaces the dialog with a "Waiting for Response" screen.
 	/// The waiting screen unpauses the game in single-player mode.
 	WaitForResponse = "wait_for_response",
+}
+
+dispatch mcdoc:dialog_after_action[close, wait_for_response, %none] to struct {
+	/// Whether the dialog should pause the game in single-player mode.
+	/// Defaults to `true`.
+	pause?: boolean,
+}
+
+dispatch mcdoc:dialog_after_action[none] to struct {
+	/// Whether the dialog should pause the game in single-player mode.
+	/// Defaults to `true`.
+	pause: false,
 }
 
 struct Button {
