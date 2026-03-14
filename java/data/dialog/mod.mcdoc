@@ -48,6 +48,8 @@ dispatch mcdoc:dialog_after_action[close, wait_for_response, %none] to struct {
 dispatch mcdoc:dialog_after_action[none] to struct {
 	/// Whether the dialog should pause the game in single-player mode.
 	/// Defaults to `true`.
+	///
+	/// The currently selected `after_action` only supports the value `false`
 	pause: false,
 }
 
