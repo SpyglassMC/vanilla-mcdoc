@@ -1,5 +1,5 @@
 {
-	"ref": "16e02d95ad94292bcf4ca262873f571ec316bf61",
+	"ref": "bddb00f1f86e1bf5a2247dd71c1dad7dbf199fab",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -20353,7 +20353,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "An additional operation performed on dialog after click or submit actions.\nDefaults to `close`.",
+					"desc": "An additional operation performed on dialog after click or submit actions.\nDefaults to `close`. \\\nValue `none` requires `pause` set to `false`.",
 					"key": "after_action",
 					"type": {
 						"kind": "reference",
