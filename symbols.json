@@ -1,5 +1,5 @@
 {
-	"ref": "bddb00f1f86e1bf5a2247dd71c1dad7dbf199fab",
+	"ref": "65fe598763858491b009a62775b0c23474b6e0ca",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -19859,6 +19859,37 @@
 				}
 			]
 		},
+		"::java::data::dialog::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
+					"key": "pause",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dialog::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
+					"key": "pause",
+					"type": {
+						"kind": "literal",
+						"value": {
+							"kind": "boolean",
+							"value": false
+						}
+					}
+				}
+			]
+		},
 		"::java::data::dialog::action::ClickAction": {
 			"kind": "struct",
 			"fields": [
@@ -20344,15 +20375,6 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
-					"key": "pause",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
 					"desc": "An additional operation performed on dialog after click or submit actions.\nDefaults to `close`. \\\nValue `none` requires `pause` set to `false`.",
 					"key": "after_action",
 					"type": {
@@ -20360,6 +20382,21 @@
 						"path": "::java::data::dialog::AfterAction"
 					},
 					"optional": true
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"after_action"
+								]
+							}
+						],
+						"registry": "mcdoc:dialog_after_action"
+					}
 				}
 			]
 		},
@@ -97743,6 +97780,67 @@
 		"mcdoc:custom_event": {
 			"%unknown": {
 				"kind": "any"
+			}
+		},
+		"mcdoc:dialog_after_action": {
+			"%none": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
+						"key": "pause",
+						"type": {
+							"kind": "boolean"
+						},
+						"optional": true
+					}
+				]
+			},
+			"close": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
+						"key": "pause",
+						"type": {
+							"kind": "boolean"
+						},
+						"optional": true
+					}
+				]
+			},
+			"none": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
+						"key": "pause",
+						"type": {
+							"kind": "literal",
+							"value": {
+								"kind": "boolean",
+								"value": false
+							}
+						}
+					}
+				]
+			},
+			"wait_for_response": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"desc": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
+						"key": "pause",
+						"type": {
+							"kind": "boolean"
+						},
+						"optional": true
+					}
+				]
 			}
 		},
 		"mcdoc:fluid_states": {
