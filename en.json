@@ -243,7 +243,7 @@
 	"::java::data::dialog::Button.width": "Width of the button.\nDefaults to 150.",
 	"::java::data::dialog::ButtonListDialogBase.button_width": "Width of buttons in the list.\nDefaults to 150.",
 	"::java::data::dialog::ConfirmationDialog.no": "This action is also used for ESC-triggered exit.",
-	"::java::data::dialog::DialogBase.after_action": "An additional operation performed on dialog after click or submit actions.\nDefaults to `close`.",
+	"::java::data::dialog::DialogBase.after_action": "An additional operation performed on dialog after click or submit actions.\nDefaults to `close`. \\\nValue `none` requires `pause` set to `false`.",
 	"::java::data::dialog::DialogBase.can_close_with_escape": "Whether the dialog can be closed with ESC key.\nDefaults to `true`.",
 	"::java::data::dialog::DialogBase.external_title": "Name to be used for a button leading to this dialog.\nIf not present, `title` will be used instead.",
 	"::java::data::dialog::DialogBase.pause": "Whether the dialog should pause the game in single-player mode.\nDefaults to `true`.",
