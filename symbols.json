@@ -1,5 +1,5 @@
 {
-	"ref": "3f150064e62e553a49d4408c30edb220bc1b1361",
+	"ref": "1d79f9cb76633be300896afe2ddcaa4b46eeeebd",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -50879,6 +50879,78 @@
 			]
 		},
 		"::java::data::worldgen::feature::placement::CountModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "count",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::IntProvider"
+								},
+								"typeArgs": [
+									{
+										"kind": "int",
+										"valueRange": {
+											"kind": 0,
+											"min": 0,
+											"max": 256
+										}
+									}
+								],
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::IntProvider"
+								},
+								"typeArgs": [
+									{
+										"kind": "int",
+										"valueRange": {
+											"kind": 0,
+											"min": 0,
+											"max": 4096
+										}
+									}
+								],
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.1"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::placement::CountOnEveryLayerModifier": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -109774,7 +109846,7 @@
 			},
 			"count_on_every_layer": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::placement::CountModifier"
+				"path": "::java::data::worldgen::feature::placement::CountOnEveryLayerModifier"
 			},
 			"environment_scan": {
 				"kind": "reference",
