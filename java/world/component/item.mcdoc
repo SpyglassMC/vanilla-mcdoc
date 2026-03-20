@@ -765,3 +765,9 @@ enum(int) BookGeneration {
 	CopyOfCopy = 2,
 	Tattered = 3,
 }
+
+// Transient data components
+dispatch minecraft:data_component[creative_slot_lock, map_post_processing] to struct {}
+
+#[since="26.1"]
+dispatch minecraft:data_component[additional_trade_cost] to int
