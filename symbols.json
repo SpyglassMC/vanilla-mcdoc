@@ -1,5 +1,5 @@
 {
-	"ref": "7bbb610b4ddb4df17b0a9f28e9dbfb6b7344265e",
+	"ref": "fbfaa96a0d88e5cd36e37ab47f5abf7d2e7fbf58",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -10602,10 +10602,49 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Custom mipmap values for the texture.",
-					"key": "mipmaps",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to `auto`.",
+					"key": "mipmap_strategy",
 					"type": {
-						"kind": "int_array"
+						"kind": "reference",
+						"path": "::java::assets::texture_meta::MipmapStrategy"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.11"
+								}
+							}
+						}
+					],
+					"desc": "The alpha bias for cutout textures.\nPositive values make the texture more opaque at distance.\nNegative values make the texture more transparent at distance.\nDefaults to 0.0",
+					"key": "alpha_cutoff_bias",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": -1,
+							"max": 1
+						}
 					},
 					"optional": true
 				}
@@ -11048,7 +11087,6 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Only available for colormaps.",
 					"key": "texture",
 					"type": {
 						"kind": "struct",
@@ -11073,62 +11111,53 @@
 							},
 							{
 								"kind": "pair",
-								"desc": "Custom mipmap values for the texture.",
-								"key": "mipmaps",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								],
+								"desc": "Defaults to `auto`.",
+								"key": "mipmap_strategy",
 								"type": {
-									"kind": "int_array"
+									"kind": "reference",
+									"path": "::java::assets::texture_meta::MipmapStrategy"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.11"
+											}
+										}
+									}
+								],
+								"desc": "The alpha bias for cutout textures.\nPositive values make the texture more opaque at distance.\nNegative values make the texture more transparent at distance.\nDefaults to 0.0",
+								"key": "alpha_cutoff_bias",
+								"type": {
+									"kind": "float",
+									"valueRange": {
+										"kind": 0,
+										"min": -1,
+										"max": 1
+									}
 								},
 								"optional": true
 							}
 						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.11"
-								}
-							}
-						}
-					],
-					"desc": "Defaults to `auto`.",
-					"key": "mipmap_strategy",
-					"type": {
-						"kind": "reference",
-						"path": "::java::assets::texture_meta::MipmapStrategy"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.11"
-								}
-							}
-						}
-					],
-					"desc": "The alpha bias for cutout textures.\nPositive values make the texture more opaque at distance.\nNegative values make the texture more transparent at distance.\nDefaults to 0.0",
-					"key": "alpha_cutoff_bias",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": -1,
-							"max": 1
-						}
 					},
 					"optional": true
 				}
