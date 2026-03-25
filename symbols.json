@@ -1,5 +1,5 @@
 {
-	"ref": "1d79f9cb76633be300896afe2ddcaa4b46eeeebd",
+	"ref": "7bbb610b4ddb4df17b0a9f28e9dbfb6b7344265e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -82399,7 +82399,12 @@
 						"kind": 0,
 						"min": 4,
 						"max": 4
-					}
+					},
+					"attributes": [
+						{
+							"name": "canonical"
+						}
+					]
 				},
 				{
 					"kind": "reference",
