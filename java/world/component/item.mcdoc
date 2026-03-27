@@ -17,6 +17,8 @@ use ::java::util::avatar::Profile
 use ::java::world::item::ItemStackTemplate
 use ::java::world::item::SingleItem
 use ::java::world::entity::AnyEntity
+use ::java::world::entity::mob::breedable::axolotl::AxolotlVariantInt
+use ::java::world::component::entity::SalmonType
 
 #[since="26.1"]
 dispatch minecraft:data_component[additional_trade_cost] to int
@@ -173,12 +175,12 @@ struct BucketEntityData {
 	/// Turns into the `Variant` entity tag for tropical fish.
 	#[until="1.21.4"]
 	BucketVariantTag?: int,
-	/// The axolotl variant
+	/// The variant for axolotl.
 	#[until="1.21.4"]
-	Variant?: int,
-	/// The salmon type
+	Variant?: AxolotlVariantInt,
+	/// The size variant for salmon.
 	#[until="1.21.4"]
-	type?: ("small" | "medium" | "large")
+	type?: SalmonType
 }
 
 dispatch minecraft:data_component[bundle_contents] to [ItemStackTemplate]
