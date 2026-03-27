@@ -157,11 +157,28 @@ dispatch minecraft:data_component[bucket_entity_data] to (
 )
 
 struct BucketEntityData {
-	...AnyEntity,
+	/// Whether it should have an AI.
+	NoAI?: boolean,
+	/// Whether the entity should make any sound.
+	Silent?: boolean,
+	/// Whether the entity should be effected by gravity.
+	NoGravity?: boolean,
+	/// Whether the entity should glow.
+	Glowing?: boolean,
+	/// Whether the entity should take damage.
+	Invulnerable?: boolean,
+	Health?: float,
 	/// Turns into the expiry time of the memory module `has_hunting_cooldown` for axolotls.
-	HuntingCooldown: long,
+	HuntingCooldown?: long,
 	/// Turns into the `Variant` entity tag for tropical fish.
-	BucketVariantTag: int,
+	#[until="1.21.4"]
+	BucketVariantTag?: int,
+	/// The axolotl variant
+	#[until="1.21.4"]
+	Variant?: int,
+	/// The salmon type
+	#[until="1.21.4"]
+	type?: ("small" | "medium" | "large")
 }
 
 dispatch minecraft:data_component[bundle_contents] to [ItemStackTemplate]
