@@ -1,5 +1,5 @@
 {
-	"ref": "fbfaa96a0d88e5cd36e37ab47f5abf7d2e7fbf58",
+	"ref": "9774ba23b16aff99b1d174c030d8c42505850b51",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -78074,11 +78074,57 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "spread",
+					"kind": "pair",
+					"desc": "Whether it should have an AI.",
+					"key": "NoAI",
 					"type": {
-						"kind": "reference",
-						"path": "::java::world::entity::AnyEntity"
-					}
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the entity should make any sound.",
+					"key": "Silent",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the entity should be effected by gravity.",
+					"key": "NoGravity",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the entity should glow.",
+					"key": "Glowing",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the entity should take damage.",
+					"key": "Invulnerable",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "Health",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -78086,15 +78132,73 @@
 					"key": "HuntingCooldown",
 					"type": {
 						"kind": "long"
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.4"
+								}
+							}
+						}
+					],
 					"desc": "Turns into the `Variant` entity tag for tropical fish.",
 					"key": "BucketVariantTag",
 					"type": {
 						"kind": "int"
-					}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.4"
+								}
+							}
+						}
+					],
+					"desc": "The variant for axolotl.",
+					"key": "Variant",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::breedable::axolotl::AxolotlVariantInt"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.4"
+								}
+							}
+						}
+					],
+					"desc": "The size variant for salmon.",
+					"key": "type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::entity::SalmonType"
+					},
+					"optional": true
 				}
 			]
 		},
