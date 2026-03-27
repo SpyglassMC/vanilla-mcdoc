@@ -20,9 +20,6 @@ use ::java::world::entity::AnyEntity
 use ::java::world::entity::mob::breedable::axolotl::AxolotlVariantInt
 use ::java::world::component::entity::SalmonType
 
-#[since="26.1"]
-dispatch minecraft:data_component[additional_trade_cost] to int
-
 #[since="1.21.11"]
 dispatch minecraft:data_component[attack_range] to struct AttackRange {
 	/// Minimum distance to the target to be considered valid.
@@ -804,3 +801,9 @@ enum(int) BookGeneration {
 	CopyOfCopy = 2,
 	Tattered = 3,
 }
+
+// Transient data components
+dispatch minecraft:data_component[creative_slot_lock, map_post_processing] to struct {}
+
+#[since="26.1"]
+dispatch minecraft:data_component[additional_trade_cost] to int
