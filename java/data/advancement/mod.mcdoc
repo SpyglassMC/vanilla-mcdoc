@@ -1,5 +1,5 @@
 use ::java::util::text::Text
-use ::java::world::item::ItemStack
+use ::java::world::item::ItemStackTemplate
 
 dispatch minecraft:resource[advancement] to struct Advancement {
 	/// If present, advancement will be visible in the advancement tabs.
@@ -26,8 +26,7 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 struct AdvancementDisplay {
 	icon: (
 		#[until="1.20.5"] AdvancementIcon |
-		#[since="1.20.5"] ItemStack |
-		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
+		#[since="1.20.5"] ItemStackTemplate
 	),
 	title: Text,
 	description: Text,

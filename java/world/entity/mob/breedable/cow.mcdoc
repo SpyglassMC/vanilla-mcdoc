@@ -2,4 +2,6 @@ dispatch minecraft:entity[cow] to struct Cow {
 	...super::Breedable,
 	#[since="1.21.5"]
 	variant?: #[id="cow_variant"] string,
+	#[since="26.1"]
+	sound_variant?: #[id="cow_sound_variant"] string,
 }

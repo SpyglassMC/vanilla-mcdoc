@@ -1,5 +1,5 @@
 use ::java::util::text::Text
-use ::java::world::item::ItemStack
+use ::java::world::item::ItemStackTemplate
 
 struct DialogBody {
 	type: #[id="dialog_body_type"] string,
@@ -16,7 +16,7 @@ dispatch minecraft:dialog_body[plain_message] to struct PlainMessage {
 }
 
 dispatch minecraft:dialog_body[item] to struct ItemBody {
-	item: ItemStack,
+	item: ItemStackTemplate,
 	// game code implementation shares the same PlainMessage codec so it's safe to reuse the type
 	/// The description text rendered to the right of item.
 	description?: (PlainMessage | Text),

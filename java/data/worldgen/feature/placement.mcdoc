@@ -33,7 +33,14 @@ dispatch minecraft:placement_modifier[rarity_filter] to struct RarityFilter {
 	chance: int @ 0..,
 }
 
-dispatch minecraft:placement_modifier[count,count_on_every_layer] to struct CountModifier {
+dispatch minecraft:placement_modifier[count] to struct CountModifier {
+	count: (
+		#[until="26.1"] IntProvider<int @ 0..256> |
+		#[since="26.1"] IntProvider<int @ 0..4096> |
+	),
+}
+
+dispatch minecraft:placement_modifier[count_on_every_layer] to struct CountOnEveryLayerModifier {
 	count: IntProvider<int @ 0..256>,
 }
 

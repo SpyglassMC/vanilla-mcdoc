@@ -1,3 +1,6 @@
+use super::SoundVariant
+use ::java::data::util::SoundEventRef
+
 #[since="1.21.5"]
 dispatch minecraft:resource[chicken_variant] to struct ChickenVariant {
 	model?: ChickenModelType,
@@ -8,6 +11,14 @@ dispatch minecraft:resource[chicken_variant] to struct ChickenVariant {
 	baby_asset_id: #[id="texture"] string,
 	...super::SpawnPrioritySelectors,
 }
+
+#[since="26.1"]
+dispatch minecraft:resource[chicken_sound_variant] to SoundVariant<struct ChickenSounds {
+	ambient_sound: SoundEventRef,
+	hurt_sound: SoundEventRef,
+	death_sound: SoundEventRef,
+	step_sound: SoundEventRef,
+}>
 
 enum(string) ChickenModelType {
 	Normal = "normal",

@@ -1,3 +1,5 @@
+use ::java::data::util::SoundEventRef
+
 #[since="1.21.5"]
 dispatch minecraft:resource[cow_variant] to struct CowVariant {
 	model?: CowModelType,
@@ -7,6 +9,14 @@ dispatch minecraft:resource[cow_variant] to struct CowVariant {
 	#[since="26.1"]
 	baby_asset_id: #[id="texture"] string,
 	...super::SpawnPrioritySelectors,
+}
+
+#[since="26.1"]
+dispatch minecraft:resource[cow_sound_variant] to struct CowSounds {
+	ambient_sound: SoundEventRef,
+	hurt_sound: SoundEventRef,
+	death_sound: SoundEventRef,
+	step_sound: SoundEventRef,
 }
 
 enum(string) CowModelType {

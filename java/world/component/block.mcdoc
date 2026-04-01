@@ -1,10 +1,9 @@
 use ::java::data::advancement::predicate::ItemPredicate
 use ::java::world::block::BlockEntityData
 use ::java::world::block::banner::BannerPatternLayer
-use ::java::world::block::decorated_pot::Sherd
 use ::java::world::component::item::AdventureModePredicate
 use ::java::world::entity::AnyEntity
-use ::java::world::item::ItemStack
+use ::java::world::item::ItemStackTemplate
 
 dispatch minecraft:data_component[banner_patterns] to [BannerPatternLayer]
 
@@ -38,7 +37,7 @@ struct ContainerSlot {
 	/// The slot ID of the container.
 	slot: int @ 0..255,
 	/// The item stack in this container slot.
-	item: ItemStack,
+	item: ItemStackTemplate,
 }
 
 dispatch minecraft:data_component[container_loot] to struct ContainerLoot {
@@ -51,4 +50,6 @@ dispatch minecraft:data_component[lock] to (
 	#[since="1.21.2"] ItemPredicate |
 )
 
-dispatch minecraft:data_component[pot_decorations] to [#[id] Sherd] @ ..4
+/// Only vanilla pottery sherds have hardcoded decoration textures.
+/// Other items are treated like brick.
+dispatch minecraft:data_component[pot_decorations] to [#[id="item"] string] @ ..4

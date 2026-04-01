@@ -1,6 +1,10 @@
+use super::container::Container9
+
 dispatch minecraft:block_entity[crafter] to struct Crafter {
-	...super::BlockEntity,
+	...Container9,
 	crafting_ticks_remaining?: int,
 	disabled_slots?: int @ 0..8 [] @ ..9,
 	triggered?: (0 | 1),
 }
+
+dispatch minecraft:block[crafter] to minecraft:block_entity[crafter]

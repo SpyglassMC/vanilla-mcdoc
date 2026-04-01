@@ -1,3 +1,4 @@
+use super::SoundVariant
 use ::java::data::util::SoundEventRef
 
 #[since="1.20.5"]
@@ -29,10 +30,7 @@ struct WolfVariantAssetInfo {
 #[since="1.21.5"]
 dispatch minecraft:resource[wolf_sound_variant] to (
 	#[until="26.1"] WolfSounds |
-	#[since="26.1"] struct WolfSoundVariant {
-		adult_sounds: WolfSounds,
-		baby_sounds: WolfSounds,
-	} |
+	#[since="26.1"] SoundVariant<WolfSounds> |
 )
 
 struct WolfSounds {

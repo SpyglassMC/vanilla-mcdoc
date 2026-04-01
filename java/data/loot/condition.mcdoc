@@ -57,6 +57,12 @@ dispatch minecraft:loot_condition[entity_scores] to struct EntityScores {
 	},
 }
 
+#[since="26.1"]
+dispatch minecraft:loot_condition[environment_attribute_check] to struct EnvironmentAttributeCheck {
+	attribute: #[id="environment_attribute"] string,
+	value: minecraft:environment_attribute[[attribute]][value],
+}
+
 /// Whether a condition does not pass.
 dispatch minecraft:loot_condition[inverted] to struct Inverted {
 	term: LootCondition,

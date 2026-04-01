@@ -7,7 +7,10 @@ dispatch minecraft:resource[model] to struct Model {
 	ambientocclusion?: boolean,
 	gui_light?: ("front" | "side"),
 	textures?: struct ModelTextures {
-		[#[texture_slot(kind="definition")] string]: #[texture_slot(kind="value")] string,
+		[#[texture_slot(kind="definition")] string]: (
+			#[texture_slot(kind="value")] string |
+			#[since="26.1"] TextureMaterial |
+		),
 	},
 	elements?: [ModelElement],
 	display?: struct ModelDisplay {
@@ -24,6 +27,15 @@ dispatch minecraft:resource[model] to struct Model {
 		},
 		model: ModelRef,
 	}],
+}
+
+struct TextureMaterial {
+	// #-prefixed sprite reference is not allowed here
+	sprite: #[id="texture"] string,
+	/// Whether the texture should be forced into the translucent render pass. \
+	/// Textures without any translucent pixels are not assigned to the translucent pass by default. \
+	/// Defaults to `false`.
+	force_translucent?: boolean,
 }
 
 struct ModelElement {

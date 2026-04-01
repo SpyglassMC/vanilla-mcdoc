@@ -35,3 +35,8 @@ dispatch minecraft:spawn_condition[structure] to struct StructureCheck {
 	/// Checks if the entity is spawning in specific structures.
 	structures: (#[id=(registry="worldgen/structure",tags="allowed")] string | [#[id="worldgen/structure"] string]),
 }
+
+type SoundVariant<T> = struct {
+	adult_sounds: T,
+	baby_sounds: T,
+}

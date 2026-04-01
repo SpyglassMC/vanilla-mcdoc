@@ -81,6 +81,7 @@ type TextObject = (
 		/// Defaults to `minecraft:blocks`.
 		atlas?: #[id="atlas"] string,
 		sprite: #[id="texture"] string,
+		...ObjectTextConfig,
 		object?: "atlas",
 		type?: "object",
 		...TextBase,
@@ -90,14 +91,26 @@ type TextObject = (
 		player: Profile,
 		/// Whether the head layer is rendered. Defaults to `true`.
 		hat?: boolean,
+		...ObjectTextConfig,
 		object?: "player",
 		type?: "object",
 		...TextBase,
 	} |
 )
 
+struct ObjectTextConfig {
+	/// Used in places where object component cannot be displayed (for example, server log or narration).
+	#[since="26.1"]
+	fallback?: Text,
+}
+
 struct TextNbtBase {
 	interpret?: boolean,
+	/// Whether to remove colors from pretty-printed NBT structure when `interpret` is `false`.
+	/// Defaults to `false`. \
+	/// Cannot be `true` when `interpret` is `true`.
+	#[since="26.1"]
+	plain?: boolean,
 	#[since="1.17"]
 	separator?: Text,
 	...TextBase,

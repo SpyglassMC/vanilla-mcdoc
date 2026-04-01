@@ -1,7 +1,7 @@
 use ::java::data::util::NumberProvider
 use ::java::data::predicate::Predicate
 use ::java::data::item_modifier::ItemModifier
-use ::java::world::item::ItemStack
+use ::java::world::item::ItemStackTemplate
 use ::java::world::item::TradeCost
 
 dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
@@ -13,7 +13,7 @@ dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	/// The count is not affected by any factors.
 	additional_wants?: TradeCost,
 	/// Item being offered by the merchant.
-	gives: ItemStack,
+	gives: ItemStackTemplate,
 	/// Modifiers applied to the `gives` item. \
 	/// Does **not** support `reference` item modifier. \
 	/// Some modifiers can affect the price through the `additional_trade_cost` transient component. \

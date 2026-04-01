@@ -19,7 +19,7 @@ dispatch minecraft:block_entity[vault] to struct Vault {
 		loot_table?: #[id="loot_table"] string,
 		/// The loot table to display items in the vault.
 		/// Defaults to use the value in `loot_table` field.
-		override_loot_table_to_display: #[id="loot_table"] string,
+		override_loot_table_to_display?: #[id="loot_table"] string,
 		/// The range when the vault should activate.
 		activation_range?: double,
 		/// The range when the vault should deactivate.

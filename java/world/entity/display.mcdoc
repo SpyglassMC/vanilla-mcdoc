@@ -80,7 +80,7 @@ type Transformation = (
 
 type Rotation = (
 	// Quaternion form (used for saving) in [x, y, z, w].
-	[float] @ 4 |
+	#[canonical] [float] @ 4 |
 	// Axis-angle form.
 	AxisAngle |
 )

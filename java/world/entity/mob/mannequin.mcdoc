@@ -20,6 +20,8 @@ dispatch minecraft:entity[mannequin] to struct Mannequin {
 	/// Whether the below name text is displayed.
 	/// Defaults to `false`.
 	hide_description?: boolean,
+	/// The equipment items of the mannequin.
+	equipment?: super::EntityEquipment,
 }
 
 // this is a subset of entity poses

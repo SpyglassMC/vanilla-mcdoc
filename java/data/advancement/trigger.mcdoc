@@ -67,6 +67,9 @@ dispatch minecraft:trigger[any_block_use] to Conditions<struct AnyBlockUse {
 	location?: [LootCondition],
 }>
 
+#[since="1.19"]
+dispatch minecraft:trigger[avoid_vibration] to Conditions<Location>
+
 dispatch minecraft:trigger[bee_nest_destroyed] to Conditions<struct BeeNestDestroyed {
 	...TriggerBase,
 	block?: #[id="block"] string,
