@@ -1,5 +1,5 @@
 {
-	"ref": "9774ba23b16aff99b1d174c030d8c42505850b51",
+	"ref": "1a5680603b0e5559916c615c64f0f643328311a7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -58369,14 +58369,14 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Defaults to 4096",
+					"desc": "Defaults to 4064",
 					"key": "vertical",
 					"type": {
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
 							"min": 1,
-							"max": 4096
+							"max": 4064
 						}
 					},
 					"optional": true
@@ -58808,14 +58808,14 @@
 					},
 					{
 						"kind": "pair",
-						"desc": "Defaults to 4096",
+						"desc": "Defaults to 4064",
 						"key": "vertical",
 						"type": {
 							"kind": "int",
 							"valueRange": {
 								"kind": 0,
 								"min": 1,
-								"max": 4096
+								"max": 4064
 							}
 						},
 						"optional": true
