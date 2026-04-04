@@ -671,7 +671,7 @@
 	"::java::data::worldgen::noise_settings::NoiseSlideSettings.target": "The target density. Positive values add terrain and negative values remove terrain.",
 	"::java::data::worldgen::structure_set::RandomSpreadPlacement.separation": "Minimum distance in chunks between two structures of this type.",
 	"::java::data::worldgen::structure_set::RandomSpreadPlacement.spacing": "Average distance in chunks between two structures of this type.",
-	"::java::data::worldgen::structure::JigsawDistanceLimits.vertical": "Defaults to 4096",
+	"::java::data::worldgen::structure::JigsawDistanceLimits.vertical": "Defaults to 4064",
 	"::java::data::worldgen::structure::Structure.adapt_noise": "Whether to add extra terrain below the structure.",
 	"::java::data::worldgen::structure::Structure.step": "The step when the structure generates.",
 	"::java::util::attribute::AttributeOperation.AddMultipliedBase": "Multiplies the current value of the attribute by `(1 + x)`,\nwhere `x` is the sum of the modifiers' amounts.",
