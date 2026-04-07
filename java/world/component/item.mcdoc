@@ -674,6 +674,9 @@ dispatch minecraft:data_component[repairable] to struct Repairable{
 	items: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
 }
 
+#[since="26.2"]
+dispatch minecraft:data_component[sulfur_cube_content] to ItemStackTemplate
+
 dispatch minecraft:data_component[suspicious_stew_effects] to [SuspiciousStewEffect]
 
 struct SuspiciousStewEffect {

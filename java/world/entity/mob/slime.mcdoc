@@ -1,9 +1,21 @@
-dispatch minecraft:entity[magma_cube,slime] to struct Slime {
-	...super::MobBase,
+struct CubeMob {
 	Size?: (
 		#[until="1.17"] int |
 		#[since="1.17"] int @ 0..126
 	),
 	/// Whether it is on the ground.
 	wasOnGround?: boolean,
+}
+
+dispatch minecraft:entity[magma_cube,slime] to struct Slime {
+	...super::MobBase,
+	...CubeMob,
+}
+
+dispatch minecraft:entity[sulfur_cube] to struct SulfurCube {
+	...super::MobBase,
+	...super::AgeableMob,
+	...CubeMob,
+	pickup_timer?: int @ 0..,
+	from_bucket?: boolean,
 }
