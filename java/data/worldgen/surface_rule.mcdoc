@@ -16,6 +16,18 @@ dispatch minecraft:surface_rule[condition] to struct ConditionRule {
 	then_run: SurfaceRule,
 }
 
+#[since="26.2"]
+dispatch minecraft:surface_rule[noise_gradient] to struct NoiseGradient {
+	/// The noise to sample.
+	noise: #[id="worldgen/noise"] string,
+	/// The list to sample based on the noise value.
+	gradient: [struct {
+		/// Block state to select at this index.
+		/// If this field is not defined, the surface rule will not replace any block when sampling this entry.
+		state?: BlockState,
+	}] @ 1..,
+}
+
 dispatch minecraft:surface_rule[sequence] to struct SequenceRule {
 	sequence: [SurfaceRule],
 }
