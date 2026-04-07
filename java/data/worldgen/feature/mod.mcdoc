@@ -11,6 +11,8 @@ use super::CaveSurface
 use ::java::util::block_state::BlockState
 use ::java::util::fluid_state::FluidState
 use ::java::util::direction::Direction
+use ::java::util::Rotation
+use ::java::util::WeightedList
 
 type ConfiguredFeatureRef = (
 	#[id="worldgen/configured_feature"] string |
@@ -134,19 +136,37 @@ struct EndSpike {
 	guarded?: boolean,
 }
 
-#[since="1.17"]
-dispatch minecraft:feature_config[dripstone_cluster] to struct DripstoneClusterConfig {
+#[since="1.17"] #[until="26.1"]
+dispatch minecraft:feature_config[dripstone_cluster] to SpeleothemClusterConfig
+
+#[since="26.2"]
+dispatch minecraft:feature_config[speleothem_cluster] to struct SpeleothemClusterConfig {
+	#[since="26.2"]
+	base_block: BlockState,
+	#[since="26.2"]
+	pointed_block: BlockState,
+	#[since="26.2"]
+	replaceable_blocks: ([#[id="block"] string] | #[id(registry="block",tags="allowed")] string),
 	floor_to_ceiling_search_range: int @ 1..512,
 	height: IntProvider<int @ 0..128>,
 	radius: IntProvider<int @ 0..128>,
 	/// Max height difference between the stalagmite and stalactite.
 	max_stalagmite_stalactite_height_diff: int @ 0..64,
 	height_deviation: int @ 1..64,
+	#[until="26.2"]
 	dripstone_block_layer_thickness: IntProvider<int @ 0..128>,
+	#[since="26.2"]
+	speleothem_block_layer_thickness: IntProvider<int @ 0..128>,
 	density: FloatProvider<float @ 0..2>,
 	wetness: FloatProvider<float @ 0..2>,
+	#[until="26.2"]
 	chance_of_dripstone_column_at_max_distance_from_center: float @ 0..1,
+	#[since="26.2"]
+	chance_of_speleothem_at_max_distance_from_center: float @ 0..1,
+	#[until="26.2"]
 	max_distance_from_edge_affecting_chance_of_dripstone_column: int @ 1..64,
+	#[since="26.2"]
+	max_distance_from_edge_affecting_chance_of_speleothem: int @ 1..64,
 	max_distance_from_center_affecting_height_bias: int @ 1..64,
 }
 
@@ -260,14 +280,16 @@ struct GeodeBlockSettings {
 	/// Blocks that will not be replaced by the geode.
 	cannot_replace: (
 		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
-		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="1.18.2"] #[until="26.2"] #[id(registry="block",tags="required")] string |
+		#[since="26.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="26.2"] [#[id="block"] string] |
 	),
 	/// When encountering an invalid block, feature placement is cancelled.
 	invalid_blocks: (
 		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
-		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="1.18.2"] #[until="26.2"] #[id(registry="block",tags="required")] string |
+		#[since="26.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="26.2"] [#[id="block"] string] |
 	),
 }
 
@@ -352,6 +374,8 @@ dispatch minecraft:feature_config[lake] to struct LakeConfig {
 
 #[since="1.17"]
 dispatch minecraft:feature_config[large_dripstone] to struct LargeDripstoneConfig {
+	#[since="26.2"]
+	replaceable_blocks: ([#[id="block"] string] | #[id(registry="block",tags="allowed")] string),
 	floor_to_ceiling_search_range?: int @ 1..512,
 	column_radius: IntProvider<int @ 0..60>,
 	height_scale: FloatProvider<float @ 0..20>,
@@ -397,8 +421,21 @@ struct TargetBlock {
 	state: BlockState,
 }
 
-dispatch minecraft:feature_config[pointed_dripstone] to struct PointedDripstoneConfig {
+#[until="26.2"]
+dispatch minecraft:feature_config[pointed_dripstone] to SpeleothemConfig 
+
+#[since="26.2"]
+dispatch minecraft:feature_config[speleothem] to struct SpeleothemConfig {
+	#[since="26.2"]
+	base_block: BlockState,
+	#[since="26.2"]
+	pointed_block: BlockState,
+	#[since="26.2"]
+	replaceable_blocks: ([#[id="block"] string] | #[id(registry="block",tags="allowed")] string),
+	#[until="26.2"]
 	chance_of_taller_dripstone?: float @ 0..1,
+	#[since="26.2"]
+	chance_of_taller_generation?: float @ 0..1,
 	chance_of_directional_spread?: float @ 0..1,
 	chance_of_spread_radius2?: float @ 0..1,
 	chance_of_spread_radius3?: float @ 0..1,
@@ -435,8 +472,9 @@ dispatch minecraft:feature_config[root_system] to struct RootSystemConfig {
 	allowed_vertical_water_for_tree: int @ 1..64,
 	root_replaceable: (
 		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
-		#[since="1.18.2"] [#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="1.18.2"] #[until="26.2"] #[id(registry="block",tags="required")] string |
+		#[since="26.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="26.2"] [#[id="block"] string] |
 	),
 	root_state_provider: BlockStateProvider,
 	hanging_root_state_provider: BlockStateProvider,
@@ -461,6 +499,16 @@ dispatch minecraft:feature_config[sea_pickle] to struct SeaPickleConfig {
 		#[until="1.17"] UniformInt<int @ -10..128, int @ 0..128> |
 		#[since="1.17"] IntProvider<int @ 0..256> |
 	),
+}
+
+#[since="26.2"]
+dispatch minecraft:feature_config[sequence] to struct SequenceConfig {
+	/// The features to generate, in order.
+	/// If any feature in the list is not placed, the following features will also be skipped.
+	features: (
+		#[id(registry="worldgen/placed_feature",tags="required")] string |
+		[#[id="worldgen/placed_feature"] string] |
+	)
 }
 
 dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
@@ -518,6 +566,19 @@ dispatch minecraft:feature_config[spring_feature] to struct SpringConfig {
 	),
 }
 
+#[since="26.2"]
+dispatch minecraft:feature_config[template] to struct TemplateConfig {
+	templates: WeightedList<TemplateEntry>,
+}
+
+struct TemplateEntry {
+	/// The structure template to place.
+	id: #[id="structure"] string,
+	/// Rotations to choose from and apply to this template, centered around the origin.
+	/// If not specified, defaults to all allowed rotations.
+	rotations?: [Rotation],
+}
+
 #[since="1.18"]
 dispatch minecraft:feature_config[twisting_vines] to struct TwistingVinesConfig {
 	spread_width: int @ 1..,
@@ -543,7 +604,9 @@ dispatch minecraft:feature_config[vegetation_patch,waterlogged_vegetation_patch]
 	xz_radius: IntProvider<int>,
 	replaceable: (
 		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
-		#[since="1.18.2"] #[id(registry="block",tags="required")] string |
+		#[since="1.18.2"] #[until="26.2"] #[id(registry="block",tags="required")] string |
+		#[since="26.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="26.2"] [#[id="block"] string] |
 	),
 	ground_state: BlockStateProvider,
 	vegetation_feature: FeatureRef,

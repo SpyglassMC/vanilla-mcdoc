@@ -46,7 +46,9 @@ dispatch minecraft:template_processor[gravity] to struct Gravity {
 dispatch minecraft:template_processor[protected_blocks] to struct ProtectedBlocks {
 	value: (
 		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
-		#[since="1.18.2"] #[id(registry="block",tags="required")] string |
+		#[since="1.18.2"] #[until="26.2"] #[id(registry="block",tags="required")] string |
+		#[since="26.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="26.2"] [#[id="block"] string] |
 	),
 }
 

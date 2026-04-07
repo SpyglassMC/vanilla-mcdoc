@@ -41,3 +41,10 @@ type WeightedEntry<T> = struct {
 }
 type WeightedList<T> = [WeightedEntry<T>]
 type NonEmptyWeightedList<T> = [WeightedEntry<T>] @ 1..
+
+enum(string) Rotation {
+	None = "none",
+	Clockwise90 = "clockwise_90",
+	Clockwise180 = "180",
+	CounterClockwise90 = "counterclockwise_90",
+}
