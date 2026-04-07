@@ -1,5 +1,5 @@
 {
-	"ref": "1a5680603b0e5559916c615c64f0f643328311a7",
+	"ref": "01f682d17147f3bcf7ba577550a797d716377e37",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -24105,28 +24105,6 @@
 				}
 			]
 		},
-		"::java::data::gametest::Rotation": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "None",
-					"value": "none"
-				},
-				{
-					"identifier": "Clockwise90",
-					"value": "clockwise_90"
-				},
-				{
-					"identifier": "Clockwise180",
-					"value": "180"
-				},
-				{
-					"identifier": "CounterClockwise90",
-					"value": "counterclockwise_90"
-				}
-			]
-		},
 		"::java::data::gametest::test_environment::AllOffTestEnvironment": {
 			"kind": "struct",
 			"fields": [
@@ -24641,7 +24619,7 @@
 					"key": "rotation",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::gametest::Rotation"
+						"path": "::java::util::Rotation"
 					},
 					"optional": true
 				},
@@ -46274,7 +46252,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Block tag defining what blocks keep fire infinitely burning.",
+					"desc": "Defining what blocks keep fire infinitely burning.",
 					"key": "infiniburn",
 					"type": {
 						"kind": "union",
@@ -46330,6 +46308,16 @@
 										}
 									},
 									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
 										"name": "id",
 										"value": {
 											"kind": "tree",
@@ -46348,6 +46336,73 @@
 														"value": "required"
 													}
 												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
 											}
 										}
 									}
@@ -48672,189 +48727,6 @@
 				}
 			]
 		},
-		"::java::data::worldgen::feature::DripstoneClusterConfig": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "floor_to_ceiling_search_range",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1,
-							"max": 512
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "height",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::IntProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 0,
-									"max": 128
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "radius",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::IntProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 0,
-									"max": 128
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Max height difference between the stalagmite and stalactite.",
-					"key": "max_stalagmite_stalactite_height_diff",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 64
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "height_deviation",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1,
-							"max": 64
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "dripstone_block_layer_thickness",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::IntProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 0,
-									"max": 128
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "density",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::FloatProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "float",
-								"valueRange": {
-									"kind": 0,
-									"min": 0,
-									"max": 2
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "wetness",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::FloatProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "float",
-								"valueRange": {
-									"kind": 0,
-									"min": 0,
-									"max": 2
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "chance_of_dripstone_column_at_max_distance_from_center",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "max_distance_from_edge_affecting_chance_of_dripstone_column",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1,
-							"max": 64
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "max_distance_from_center_affecting_height_bias",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1,
-							"max": 64
-						}
-					}
-				}
-			]
-		},
 		"::java::data::worldgen::feature::EmeraldOreConfig": {
 			"kind": "struct",
 			"fields": [
@@ -49241,6 +49113,90 @@
 								]
 							},
 							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.18.2"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "required"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
 								"kind": "list",
 								"item": {
 									"kind": "string",
@@ -49264,44 +49220,7 @@
 											"kind": "literal",
 											"value": {
 												"kind": "string",
-												"value": "1.18.2"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.18.2"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "block"
-													}
-												},
-												"tags": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "allowed"
-													}
-												}
+												"value": "26.2"
 											}
 										}
 									}
@@ -49355,6 +49274,90 @@
 								]
 							},
 							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.18.2"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "required"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
 								"kind": "list",
 								"item": {
 									"kind": "string",
@@ -49378,44 +49381,7 @@
 											"kind": "literal",
 											"value": {
 												"kind": "string",
-												"value": "1.18.2"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.18.2"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "block"
-													}
-												},
-												"tags": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "allowed"
-													}
-												}
+												"value": "26.2"
 											}
 										}
 									}
@@ -49961,6 +49927,72 @@
 		"::java::data::worldgen::feature::LargeDripstoneConfig": {
 			"kind": "struct",
 			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "replaceable_blocks",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
 				{
 					"kind": "pair",
 					"key": "floor_to_ceiling_search_range",
@@ -51355,63 +51387,6 @@
 				}
 			]
 		},
-		"::java::data::worldgen::feature::PointedDripstoneConfig": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "chance_of_taller_dripstone",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "chance_of_directional_spread",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "chance_of_spread_radius2",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "chance_of_spread_radius3",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					},
-					"optional": true
-				}
-			]
-		},
 		"::java::data::worldgen::feature::ProbabilityConfig": {
 			"kind": "struct",
 			"fields": [
@@ -51997,6 +51972,90 @@
 								]
 							},
 							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.18.2"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "required"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
 								"kind": "list",
 								"item": {
 									"kind": "string",
@@ -52020,44 +52079,7 @@
 											"kind": "literal",
 											"value": {
 												"kind": "string",
-												"value": "1.18.2"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.18.2"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "block"
-													}
-												},
-												"tags": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "allowed"
-													}
-												}
+												"value": "26.2"
 											}
 										}
 									}
@@ -52375,6 +52397,66 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::SequenceConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The features to generate, in order.\nIf any feature in the list is not placed, the following features will also be skipped.",
+					"key": "features",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "worldgen/placed_feature"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "required"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "worldgen/placed_feature"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::SimpleBlockConfig": {
 			"kind": "struct",
 			"fields": [
@@ -52676,6 +52758,612 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::SpeleothemClusterConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "base_block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "pointed_block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "replaceable_blocks",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "floor_to_ceiling_search_range",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 512
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "height",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 128
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "radius",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 128
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Max height difference between the stalagmite and stalactite.",
+					"key": "max_stalagmite_stalactite_height_diff",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 64
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "height_deviation",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 64
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "dripstone_block_layer_thickness",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 128
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "speleothem_block_layer_thickness",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 128
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "density",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 2
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "wetness",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 2
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "chance_of_dripstone_column_at_max_distance_from_center",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "chance_of_speleothem_at_max_distance_from_center",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "max_distance_from_edge_affecting_chance_of_dripstone_column",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 64
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "max_distance_from_edge_affecting_chance_of_speleothem",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 64
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max_distance_from_center_affecting_height_bias",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 64
+						}
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::SpeleothemConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "base_block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "pointed_block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "replaceable_blocks",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "chance_of_taller_dripstone",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "chance_of_taller_generation",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "chance_of_directional_spread",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "chance_of_spread_radius2",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "chance_of_spread_radius3",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::worldgen::feature::SpikeConfig": {
 			"kind": "struct",
 			"fields": [
@@ -52821,6 +53509,66 @@
 						"kind": "reference",
 						"path": "::java::util::block_state::BlockState"
 					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::TemplateConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "templates",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::util::WeightedList"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::feature::TemplateEntry"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::TemplateEntry": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The structure template to place.",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "structure"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Rotations to choose from and apply to this template, centered around the origin.\nIf not specified, defaults to all allowed rotations.",
+					"key": "rotations",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::util::Rotation"
+						}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -55043,6 +55791,16 @@
 										}
 									},
 									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
 										"name": "id",
 										"value": {
 											"kind": "tree",
@@ -55061,6 +55819,73 @@
 														"value": "required"
 													}
 												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
 											}
 										}
 									}
@@ -57313,6 +58138,16 @@
 										}
 									},
 									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
 										"name": "id",
 										"value": {
 											"kind": "tree",
@@ -57331,6 +58166,73 @@
 														"value": "required"
 													}
 												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
 											}
 										}
 									}
@@ -66820,6 +67722,28 @@
 						"kind": "reference",
 						"path": "::java::util::particle::SafePositionSource"
 					}
+				}
+			]
+		},
+		"::java::util::Rotation": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "None",
+					"value": "none"
+				},
+				{
+					"identifier": "Clockwise90",
+					"value": "clockwise_90"
+				},
+				{
+					"identifier": "Clockwise180",
+					"value": "180"
+				},
+				{
+					"identifier": "CounterClockwise90",
+					"value": "counterclockwise_90"
 				}
 			]
 		},
@@ -106251,7 +107175,7 @@
 			},
 			"dripstone_cluster": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::DripstoneClusterConfig",
+				"path": "::java::data::worldgen::feature::SpeleothemClusterConfig",
 				"attributes": [
 					{
 						"name": "since",
@@ -106260,6 +107184,16 @@
 							"value": {
 								"kind": "string",
 								"value": "1.17"
+							}
+						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
 							}
 						}
 					}
@@ -106469,7 +107403,19 @@
 			},
 			"pointed_dripstone": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::PointedDripstoneConfig"
+				"path": "::java::data::worldgen::feature::SpeleothemConfig",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"random_boolean_selector": {
 				"kind": "reference",
@@ -106543,6 +107489,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::ProbabilityConfig"
 			},
+			"sequence": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::SequenceConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
 			"simple_block": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::SimpleBlockConfig"
@@ -106577,6 +107539,38 @@
 					}
 				]
 			},
+			"speleothem": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::SpeleothemConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"speleothem_cluster": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::SpeleothemClusterConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
 			"spike": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::SpikeConfig",
@@ -106596,6 +107590,22 @@
 			"spring_feature": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::SpringConfig"
+			},
+			"template": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::TemplateConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"tree": {
 				"kind": "reference",
