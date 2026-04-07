@@ -1,5 +1,5 @@
 {
-	"ref": "33c3b7ccac279e36c0995264dcec8160c6af3fd4",
+	"ref": "4237c86d58a74acbc3c92304654fd1920720bc8d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -60955,6 +60955,21 @@
 				}
 			]
 		},
+		"::java::data::worldgen::surface_rule::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Block state to select at this index.\nIf this field is not defined, the surface rule will not replace any block when sampling this entry.",
+					"key": "state",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::worldgen::surface_rule::BiomeCondition": {
 			"kind": "struct",
 			"fields": [
@@ -61012,6 +61027,58 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::surface_rule::SurfaceRule"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::surface_rule::NoiseGradient": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The noise to sample.",
+					"key": "noise",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "worldgen/noise"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The list to sample based on the noise value.",
+					"key": "gradient",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"desc": "Block state to select at this index.\nIf this field is not defined, the surface rule will not replace any block when sampling this entry.",
+									"key": "state",
+									"type": {
+										"kind": "reference",
+										"path": "::java::util::block_state::BlockState"
+									},
+									"optional": true
+								}
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
 					}
 				}
 			]
@@ -113185,6 +113252,22 @@
 			"condition": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::surface_rule::ConditionRule"
+			},
+			"noise_gradient": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::surface_rule::NoiseGradient",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"sequence": {
 				"kind": "reference",
