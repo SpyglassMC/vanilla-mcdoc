@@ -1,5 +1,5 @@
 {
-	"ref": "01f682d17147f3bcf7ba577550a797d716377e37",
+	"ref": "33c3b7ccac279e36c0995264dcec8160c6af3fd4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -34198,6 +34198,147 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::structure::BlockPalette"
+					}
+				}
+			]
+		},
+		"::java::data::sulfur_cube_archetype::AttributeModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Attribute type to modify.",
+					"key": "attribute",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "attribute"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The unique identifier of this attribute modifier.",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "attribute_modifier"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Change in the attribute.",
+					"key": "amount",
+					"type": {
+						"kind": "double"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The operation used for this modifier.",
+					"key": "operation",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::attribute::AttributeOperation"
+					}
+				}
+			]
+		},
+		"::java::data::sulfur_cube_archetype::SulfurCubeArchetype": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "items",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "item"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "item"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `false`.",
+					"key": "buoyant",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "attribute_modifiers",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::sulfur_cube_archetype::AttributeModifier"
+						}
 					}
 				}
 			]
@@ -94013,16 +94154,9 @@
 				}
 			]
 		},
-		"::java::world::entity::mob::slime::Slime": {
+		"::java::world::entity::mob::slime::CubeMob": {
 			"kind": "struct",
 			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::entity::mob::MobBase"
-					}
-				},
 				{
 					"kind": "pair",
 					"key": "Size",
@@ -94072,6 +94206,71 @@
 					"kind": "pair",
 					"desc": "Whether it is on the ground.",
 					"key": "wasOnGround",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::slime::Slime": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::MobBase"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::slime::CubeMob"
+					}
+				}
+			]
+		},
+		"::java::world::entity::mob::slime::SulfurCube": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::MobBase"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::AgeableMob"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::slime::CubeMob"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "pickup_timer",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "from_bucket",
 					"type": {
 						"kind": "boolean"
 					},
@@ -103772,6 +103971,22 @@
 					}
 				]
 			},
+			"sulfur_cube_content": {
+				"kind": "reference",
+				"path": "::java::world::item::ItemStackTemplate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
 			"suspicious_stew_effects": {
 				"kind": "list",
 				"item": {
@@ -105917,6 +106132,10 @@
 						}
 					}
 				]
+			},
+			"sulfur_cube": {
+				"kind": "reference",
+				"path": "::java::world::entity::mob::slime::SulfurCube"
 			},
 			"tadpole": {
 				"kind": "reference",
@@ -112049,6 +112268,10 @@
 			"sounds": {
 				"kind": "reference",
 				"path": "::java::assets::sounds::Sounds"
+			},
+			"sulfur_cube_archetype": {
+				"kind": "reference",
+				"path": "::java::data::sulfur_cube_archetype::SulfurCubeArchetype"
 			},
 			"test_environment": {
 				"kind": "reference",
