@@ -1,0 +1,20 @@
+use ::java::util::attribute::AttributeOperation
+
+dispatch minecraft:resource[sulfur_cube_archetype] to struct SulfurCubeArchetype {
+	items: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
+	/// Defaults to `false`.
+	buoyant?: boolean,
+	attribute_modifiers: [AttributeModifier],
+}
+
+// TODO: refactor this (and other attribute modifiers) with a base util type matching AttributeModifier.MAP_CODEC
+struct AttributeModifier {
+	/// Attribute type to modify.
+	attribute: #[id="attribute"] string,
+	/// The unique identifier of this attribute modifier.
+	id: #[id="attribute_modifier"] string,
+	/// Change in the attribute.
+	amount: double,
+	/// The operation used for this modifier.
+	operation: AttributeOperation,
+}
