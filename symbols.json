@@ -1,5 +1,5 @@
 {
-	"ref": "145dc9e984b28ca1e9618edeb6f27c5dd453bf2e",
+	"ref": "6ef5413a6b0dcd4cbf448aedeebead491221c5cb",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -34202,7 +34202,7 @@
 				}
 			]
 		},
-		"::java::data::sulfur_cube_archetype::AttributeModifier": {
+		"::java::data::sulfur_cube_archetype::AttributeEntry": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -34226,40 +34226,10 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"desc": "The unique identifier of this attribute modifier.",
-					"key": "id",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "attribute_modifier"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Change in the attribute.",
-					"key": "amount",
-					"type": {
-						"kind": "double"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "The operation used for this modifier.",
-					"key": "operation",
+					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::attribute::AttributeOperation"
+						"path": "::java::world::entity::mob::ModernAttributeModifier"
 					}
 				}
 			]
@@ -34337,7 +34307,7 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::data::sulfur_cube_archetype::AttributeModifier"
+							"path": "::java::data::sulfur_cube_archetype::AttributeEntry"
 						}
 					}
 				}
@@ -85926,60 +85896,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "id",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "attribute_modifier"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "amount",
-					"type": {
-						"kind": "double"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "operation",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::attribute::AttributeOperation"
-					},
-					"optional": true
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.21"
-						}
-					}
-				}
-			]
-		},
-		"::java::world::entity::mob::<anonymous 5>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
 					"desc": "Has no real effect.",
 					"key": "Name",
 					"type": {
@@ -86101,7 +86017,7 @@
 				}
 			]
 		},
-		"::java::world::entity::mob::<anonymous 6>": {
+		"::java::world::entity::mob::<anonymous 5>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -86118,7 +86034,7 @@
 				}
 			]
 		},
-		"::java::world::entity::mob::<anonymous 7>": {
+		"::java::world::entity::mob::<anonymous 6>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -86826,6 +86742,7 @@
 					"fields": [
 						{
 							"kind": "pair",
+							"desc": "The unique identifier of this attribute modifier.",
 							"key": "id",
 							"type": {
 								"kind": "string",
@@ -86841,25 +86758,24 @@
 										}
 									}
 								]
-							},
-							"optional": true
+							}
 						},
 						{
 							"kind": "pair",
+							"desc": "Change in the attribute.",
 							"key": "amount",
 							"type": {
 								"kind": "double"
-							},
-							"optional": true
+							}
 						},
 						{
 							"kind": "pair",
+							"desc": "The operation used for this modifier.",
 							"key": "operation",
 							"type": {
 								"kind": "reference",
 								"path": "::java::util::attribute::AttributeOperation"
-							},
-							"optional": true
+							}
 						}
 					],
 					"attributes": [
@@ -91880,6 +91796,60 @@
 						}
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::ModernAttributeModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The unique identifier of this attribute modifier.",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "attribute_modifier"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Change in the attribute.",
+					"key": "amount",
+					"type": {
+						"kind": "double"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The operation used for this modifier.",
+					"key": "operation",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::attribute::AttributeOperation"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.21"
+						}
+					}
 				}
 			]
 		},
