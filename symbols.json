@@ -1,5 +1,5 @@
 {
-	"ref": "4237c86d58a74acbc3c92304654fd1920720bc8d",
+	"ref": "145dc9e984b28ca1e9618edeb6f27c5dd453bf2e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -77251,7 +77251,7 @@
 								"key": "rotation",
 								"type": {
 									"kind": "reference",
-									"path": "::java::data::gametest::Rotation"
+									"path": "::java::util::Rotation"
 								}
 							},
 							{
@@ -77369,7 +77369,7 @@
 					"key": "rotation",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::gametest::Rotation"
+						"path": "::java::util::Rotation"
 					}
 				},
 				{
