@@ -34,10 +34,8 @@ dispatch minecraft:block[
 	waxed_oxidized_copper_golem_statue,
 ] to BlockEntity
 
-dispatch minecraft:block[bed] to (
-	#[until="26.2"] BlockEntity |
-	#[since="26.2"] any |  // or whatever represents "does not exist"
-)
+#[until="26.2"]
+dispatch minecraft:block[bed] to BlockEntity
 
 struct Lockable {
 	/// Name of the item that a player has to be holding to open this container.
