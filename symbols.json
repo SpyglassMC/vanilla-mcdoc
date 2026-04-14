@@ -1,5 +1,5 @@
 {
-	"ref": "a2ae86c0a05b1cb222d286462a604cecb13e948a",
+	"ref": "44995c9383e8c739cecf9afbab7121e146c76a33",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -12297,7 +12297,6 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The type of the damage source.",
 					"key": "type",
 					"type": {
 						"kind": "reference",
@@ -12536,7 +12535,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The damage type tag to check.",
 					"key": "id",
 					"type": {
 						"kind": "string",
@@ -12787,7 +12785,7 @@
 				}
 			]
 		},
-		"::java::data::advancement::predicate::EntityEffects": {
+		"::java::data::advancement::predicate::EntityEffectsPredicate": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -12814,7 +12812,7 @@
 				}
 			]
 		},
-		"::java::data::advancement::predicate::EntityEquipment": {
+		"::java::data::advancement::predicate::EntityEquipmentPredicate": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -12955,7 +12953,44 @@
 				}
 			]
 		},
-		"::java::data::advancement::predicate::EntityInventorySlots": {
+		"::java::data::advancement::predicate::EntityPredicate": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::advancement::predicate::OldEntityPredicate",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::advancement::predicate::EntitySubPredicateMap",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::predicate::EntitySlotsPredicate": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -12972,583 +13007,6 @@
 						"kind": "reference",
 						"path": "::java::data::advancement::predicate::ItemPredicate"
 					}
-				}
-			]
-		},
-		"::java::data::advancement::predicate::EntityPredicate": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "entity_type"
-													}
-												},
-												"tags": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "allowed"
-													}
-												}
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "id",
-											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "entity_type"
-												}
-											}
-										}
-									]
-								},
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.19"
-								}
-							}
-						}
-					],
-					"key": "type_specific",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::EntitySubPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "team",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "team"
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "nbt",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "nbt",
-										"value": {
-											"kind": "dispatcher",
-											"parallelIndices": [
-												{
-													"kind": "dynamic",
-													"accessor": [
-														"type"
-													]
-												}
-											],
-											"registry": "minecraft:entity"
-										}
-									}
-								]
-							},
-							{
-								"kind": "dispatcher",
-								"parallelIndices": [
-									{
-										"kind": "dynamic",
-										"accessor": [
-											"type"
-										]
-									}
-								],
-								"registry": "minecraft:entity",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									}
-								]
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "location",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LocationPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "distance",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::DistancePredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "flags",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::EntityFlagsPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "equipment",
-					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": {
-									"kind": "reference",
-									"path": "::java::util::slot::EquipmentSlot"
-								},
-								"type": {
-									"kind": "reference",
-									"path": "::java::data::advancement::predicate::ItemPredicate"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.19"
-								}
-							}
-						}
-					],
-					"key": "player",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::PlayerPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16"
-								}
-							}
-						}
-					],
-					"key": "vehicle",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::EntityPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.17"
-								}
-							}
-						}
-					],
-					"key": "passenger",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::EntityPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.17"
-								}
-							}
-						}
-					],
-					"key": "stepping_on",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LocationPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16"
-								}
-							}
-						}
-					],
-					"desc": "The entity that a mob's AI/aggro is targeting.",
-					"key": "targeted_entity",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::EntityPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16"
-								}
-							}
-						},
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.19"
-								}
-							}
-						}
-					],
-					"key": "fishing_hook",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::FishingHookPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.17"
-								}
-							}
-						},
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.19"
-								}
-							}
-						}
-					],
-					"key": "lightning_bolt",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LightningBoltPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.19"
-								}
-							}
-						}
-					],
-					"key": "catType",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "effects",
-					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "id",
-											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "mob_effect"
-												}
-											}
-										}
-									]
-								},
-								"type": {
-									"kind": "reference",
-									"path": "::java::data::advancement::predicate::MobEffectPredicate"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20.5"
-								}
-							}
-						}
-					],
-					"key": "slots",
-					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "item_slots"
-										}
-									]
-								},
-								"type": {
-									"kind": "reference",
-									"path": "::java::data::advancement::predicate::ItemPredicate"
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21"
-								}
-							}
-						}
-					],
-					"key": "movement",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::MovementPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21"
-								}
-							}
-						}
-					],
-					"desc": "True every `n` ticks of an entity's lifetime.",
-					"key": "periodic_tick",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21"
-								}
-							}
-						}
-					],
-					"desc": "Whether the block at most 0.5 blocks below the entity is present which can affect its movement.",
-					"key": "movement_affected_by",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LocationPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"desc": "Match exact data component values on the entity.",
-					"key": "components",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::component::DataComponentExactPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"desc": "Test data component values on the entity.",
-					"key": "predicates",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::component::DataComponentPredicate"
-					},
-					"optional": true
 				}
 			]
 		},
@@ -13622,6 +13080,161 @@
 						],
 						"registry": "minecraft:entity_sub_predicate"
 					}
+				}
+			]
+		},
+		"::java::data::advancement::predicate::EntitySubPredicateMap": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "entity_sub_predicate_type"
+									}
+								}
+							}
+						]
+					},
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "key"
+									}
+								]
+							}
+						],
+						"registry": "minecraft:entity_sub_predicate"
+					}
+				}
+			]
+		},
+		"::java::data::advancement::predicate::EntityTagPredicate": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Must have at least one of the listed tags.",
+					"key": "any_of",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "tag"
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Must have all the listed tags.",
+					"key": "all_of",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "tag"
+								}
+							]
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Must have none of the listed tags.",
+					"key": "none_of",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "tag"
+								}
+							]
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::predicate::EntityTypePredicate": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "tree",
+								"values": {
+									"registry": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "entity_type"
+										}
+									},
+									"tags": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "allowed"
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "entity_type"
+									}
+								}
+							}
+						]
+					},
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
@@ -15235,6 +14848,474 @@
 				}
 			]
 		},
+		"::java::data::advancement::predicate::OldEntityPredicate": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::EntityTypePredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.19"
+								}
+							}
+						}
+					],
+					"key": "type_specific",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::EntitySubPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "team",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "team"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "nbt",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "nbt",
+										"value": {
+											"kind": "dispatcher",
+											"parallelIndices": [
+												{
+													"kind": "dynamic",
+													"accessor": [
+														"type"
+													]
+												}
+											],
+											"registry": "minecraft:entity"
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"type"
+										]
+									}
+								],
+								"registry": "minecraft:entity",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "location",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::LocationPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "distance",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::DistancePredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "flags",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::EntityFlagsPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "equipment",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::EntityEquipmentPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.19"
+								}
+							}
+						}
+					],
+					"key": "player",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::PlayerPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					],
+					"key": "vehicle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::EntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.17"
+								}
+							}
+						}
+					],
+					"key": "passenger",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::EntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.17"
+								}
+							}
+						}
+					],
+					"key": "stepping_on",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::LocationPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					],
+					"desc": "Entity that a mob's AI/aggro is targeting.",
+					"key": "targeted_entity",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::EntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.19"
+								}
+							}
+						}
+					],
+					"key": "fishing_hook",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::FishingHookPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.17"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.19"
+								}
+							}
+						}
+					],
+					"key": "lightning_bolt",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::LightningBoltPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.19"
+								}
+							}
+						}
+					],
+					"key": "catType",
+					"type": {
+						"kind": "string"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "effects",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::EntityEffectsPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "slots",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::EntitySlotsPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"key": "movement",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::MovementPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"desc": "True every `n` ticks of an entity's lifetime.",
+					"key": "periodic_tick",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21"
+								}
+							}
+						}
+					],
+					"desc": "Whether the block at most 0.5 blocks below the entity is present which can affect its movement.",
+					"key": "movement_affected_by",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::LocationPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Match exact data component values on the entity.",
+					"key": "components",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::DataComponentExactPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"desc": "Test data component values on the entity.",
+					"key": "predicates",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::DataComponentPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::advancement::predicate::PaintingPredicate": {
 			"kind": "struct",
 			"fields": [
@@ -16458,7 +16539,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The pattern of the tropical fish.",
 					"key": "variant",
 					"type": {
 						"kind": "reference",
@@ -106582,9 +106662,133 @@
 					}
 				]
 			},
+			"components": {
+				"kind": "reference",
+				"path": "::java::world::component::DataComponentExactPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"distance": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::DistancePredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"effects": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::EntityEffectsPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"entity_tags": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::EntityTagPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"entity_type": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::EntityTypePredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"equipment": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::EntityEquipmentPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
 			"fishing_hook": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::FishingHookPredicate"
+				"path": "::java::data::advancement::predicate::FishingHookPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"flags": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::EntityFlagsPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"fox": {
 				"kind": "reference",
@@ -106636,7 +106840,19 @@
 			},
 			"lightning": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::LightningBoltPredicate"
+				"path": "::java::data::advancement::predicate::LightningBoltPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"llama": {
 				"kind": "reference",
@@ -106654,6 +106870,22 @@
 					}
 				]
 			},
+			"location": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::LocationPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
 			"mooshroom": {
 				"kind": "reference",
 				"path": "::java::data::advancement::predicate::MooshroomPredicate",
@@ -106665,6 +106897,95 @@
 							"value": {
 								"kind": "string",
 								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"movement": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::MovementPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"movement_affected_by": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::LocationPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"nbt": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "nbt",
+								"value": {
+									"kind": "dispatcher",
+									"parallelIndices": [
+										{
+											"kind": "static",
+											"value": "%fallback"
+										}
+									],
+									"registry": "minecraft:entity"
+								}
+							}
+						]
+					},
+					{
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "static",
+								"value": "%fallback"
+							}
+						],
+						"registry": "minecraft:entity",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "1.20.5"
+									}
+								}
+							}
+						]
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
 							}
 						}
 					}
@@ -106702,9 +107023,72 @@
 					}
 				]
 			},
+			"passenger": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::EntityPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"periodic_tick": {
+				"kind": "int",
+				"valueRange": {
+					"kind": 0,
+					"min": 1
+				},
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
 			"player": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::PlayerPredicate"
+				"path": "::java::data::advancement::predicate::PlayerPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"predicates": {
+				"kind": "reference",
+				"path": "::java::world::component::DataComponentPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"rabbit": {
 				"kind": "reference",
@@ -106724,7 +107108,19 @@
 			},
 			"raider": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::RaiderPredicate"
+				"path": "::java::data::advancement::predicate::RaiderPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"salmon": {
 				"kind": "reference",
@@ -106744,11 +107140,101 @@
 			},
 			"sheep": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::SheepPredicate"
+				"path": "::java::data::advancement::predicate::SheepPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"slime": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::SlimePredicate"
+				"path": "::java::data::advancement::predicate::SlimePredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"slots": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::EntitySlotsPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"stepping_on": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::LocationPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"targeted_entity": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::EntityPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"team": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "team"
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"tropical_fish": {
 				"kind": "reference",
@@ -106761,6 +107247,118 @@
 							"value": {
 								"kind": "string",
 								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"type_specific/fishing_hook": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::FishingHookPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"type_specific/lightning": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::LightningBoltPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"type_specific/player": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::PlayerPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"type_specific/raider": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::RaiderPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"type_specific/sheep": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::SheepPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"type_specific/slime": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::SlimePredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"vehicle": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::EntityPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
 							}
 						}
 					}
