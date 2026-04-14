@@ -1,5 +1,5 @@
 {
-	"ref": "6c5570cab6c052c911f85e3fe19b0e19e30df3b6",
+	"ref": "a2ae86c0a05b1cb222d286462a604cecb13e948a",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -99576,38 +99576,18 @@
 				"registry": "minecraft:block_entity"
 			},
 			"bed": {
-				"kind": "union",
-				"members": [
+				"kind": "reference",
+				"path": "::java::world::block::BlockEntity",
+				"attributes": [
 					{
-						"kind": "reference",
-						"path": "::java::world::block::BlockEntity",
-						"attributes": [
-							{
-								"name": "until",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "26.2"
-									}
-								}
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
 							}
-						]
-					},
-					{
-						"kind": "any",
-						"attributes": [
-							{
-								"name": "since",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "26.2"
-									}
-								}
-							}
-						]
+						}
 					}
 				]
 			},
