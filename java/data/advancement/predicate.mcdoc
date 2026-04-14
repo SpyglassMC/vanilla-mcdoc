@@ -128,11 +128,13 @@ struct MovementPredicate {
 	fall_distance?: MinMaxBounds<float>,
 }
 
-struct EntityPredicate {
-	type?: (
-		#[id(registry="entity_type",tags="allowed")] string |
-		#[since="1.20.5"] [#[id="entity_type"] string] |
-	),
+type EntityPredicate = (
+	#[until="26.2"] OldEntityPredicate |
+	#[since="26.2"] EntitySubPredicateMap |
+)
+
+struct OldEntityPredicate {
+	type?: EntityTypePredicate,
 	#[since="1.19"]
 	type_specific?: EntitySubPredicate,
 	team?: #[team] string,
@@ -143,9 +145,7 @@ struct EntityPredicate {
 	location?: LocationPredicate,
 	distance?: DistancePredicate,
 	flags?: EntityFlagsPredicate,
-	equipment?: struct EntityEquipment {
-		[EquipmentSlot]: ItemPredicate,
-	},
+	equipment?: EntityEquipmentPredicate,
 	#[until="1.19"]
 	player?: PlayerPredicate,
 	#[since="1.16"]
@@ -154,7 +154,7 @@ struct EntityPredicate {
 	passenger?: EntityPredicate,
 	#[since="1.17"]
 	stepping_on?: LocationPredicate,
-	/// The entity that a mob's AI/aggro is targeting.
+	/// Entity that a mob's AI/aggro is targeting.
 	#[since="1.16"]
 	targeted_entity?: EntityPredicate,
 	#[since="1.16"] #[until="1.19"]
@@ -163,13 +163,9 @@ struct EntityPredicate {
 	lightning_bolt?: LightningBoltPredicate,
 	#[until="1.19"]
 	catType?: string,
-	effects?: struct EntityEffects {
-		[#[id="mob_effect"] string]: MobEffectPredicate,
-	},
+	effects?: EntityEffectsPredicate,
 	#[since="1.20.5"]
-	slots?: struct EntityInventorySlots {
-		[#[item_slots] string]: ItemPredicate,
-	},
+	slots?: EntitySlotsPredicate,
 	#[since="1.21"]
 	movement?: MovementPredicate,
 	/// True every `n` ticks of an entity's lifetime.
@@ -202,12 +198,18 @@ struct EntityFlagsPredicate {
 	is_fall_flying?: boolean,
 }
 
+// pre-26.2 type-specific check
 struct EntitySubPredicate {
 	type: (
 		#[until="1.20.5"] #[id] SpecificType |
 		#[since="1.20.5"] #[id="entity_sub_predicate_type"] string
 	),
 	...minecraft:entity_sub_predicate[[type]],
+}
+
+// 26.2 new predicate map
+struct EntitySubPredicateMap {
+	[#[id="entity_sub_predicate_type"] string]: minecraft:entity_sub_predicate[[%key]]
 }
 
 #[until="1.20.5"]
@@ -250,9 +252,55 @@ dispatch minecraft:entity_sub_predicate[cat] to struct CatPredicate {
 	),
 }
 
-dispatch minecraft:entity_sub_predicate[fishing_hook] to struct FishingHookPredicate {
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[components] to DataComponentExactPredicate
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[distance] to DistancePredicate
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[effects] to EntityEffectsPredicate
+
+struct EntityEffectsPredicate {
+	[#[id="mob_effect"] string]: MobEffectPredicate,
+}
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[entity_tags] to struct EntityTagPredicate {
+	/// Must have at least one of the listed tags.
+	any_of?: [#[tag] string],
+	/// Must have all the listed tags.
+	all_of?: [#[tag] string],
+	/// Must have none of the listed tags.
+	none_of?: [#[tag] string],
+}
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[entity_type] to EntityTypePredicate
+
+type EntityTypePredicate = (
+	#[id(registry="entity_type",tags="allowed")] string |
+	#[since="1.20.5"] [#[id="entity_type"] string] |
+)
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[equipment] to EntityEquipmentPredicate
+
+struct EntityEquipmentPredicate {
+	[EquipmentSlot]: ItemPredicate,
+}
+
+#[until="26.2"]
+dispatch minecraft:entity_sub_predicate[fishing_hook] to FishingHookPredicate
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate["type_specific/fishing_hook"] to FishingHookPredicate
+
+struct FishingHookPredicate {
 	in_open_water?: boolean,
 }
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[flags] to EntityFlagsPredicate
 
 #[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[fox] to struct FoxPredicate {
@@ -268,12 +316,20 @@ dispatch minecraft:entity_sub_predicate[frog] to struct FrogPredicate {
 	),
 }
 
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[location] to LocationPredicate
+
 #[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[horse] to struct HorsePredicate {
 	variant: HorseVariant,
 }
 
-dispatch minecraft:entity_sub_predicate[lightning] to struct LightningBoltPredicate {
+#[until="26.2"]
+dispatch minecraft:entity_sub_predicate[lightning] to LightningBoltPredicate
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate["type_specific/lightning"] to LightningBoltPredicate
+
+struct LightningBoltPredicate {
 	blocks_set_on_fire?: MinMaxBounds<int>,
 	entity_struck?: EntityPredicate,
 }
@@ -287,6 +343,19 @@ dispatch minecraft:entity_sub_predicate[llama] to struct LlamaPredicate {
 dispatch minecraft:entity_sub_predicate[mooshroom] to struct MooshroomPredicate {
 	variant: MooshroomType,
 }
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[movement] to MovementPredicate
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[movement_affected_by] to LocationPredicate
+
+// TODO: link entity type here to "entity_type" subpredicate
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[nbt] to (
+	#[nbt=minecraft:entity[%fallback]] string |
+	#[since="1.20.5"] minecraft:entity[%fallback]
+)
 
 #[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[painting] to struct PaintingPredicate {
@@ -302,7 +371,18 @@ dispatch minecraft:entity_sub_predicate[parrot] to struct ParrotPredicate {
 	variant: ParrotVariant,
 }
 
-dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[passenger] to EntityPredicate
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[periodic_tick] to int @ 1..
+
+#[until="26.2"]
+dispatch minecraft:entity_sub_predicate[player] to PlayerPredicate
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate["type_specific/player"] to PlayerPredicate
+
+struct PlayerPredicate {
 	advancements?: struct PlayerAdvancements {
 		[#[id="advancement"] string]: (boolean | struct PlayerAdvancementCriteria {
 			[string]: boolean, // TODO: This should use `#[criterion]`, but it's not supported yet.
@@ -337,18 +417,22 @@ dispatch minecraft:entity_sub_predicate[player] to struct PlayerPredicate {
 	}
 }
 
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[predicates] to DataComponentPredicate
+
 #[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[rabbit] to struct RabbitPredicate {
 	variant: RabbitVariant,
 }
 
-dispatch minecraft:entity_sub_predicate[raider] to struct RaiderPredicate {
+#[until="26.2"]
+dispatch minecraft:entity_sub_predicate[raider] to RaiderPredicate
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate["type_specific/raider"] to RaiderPredicate
+
+struct RaiderPredicate {
 	has_raid?: boolean,
 	is_captain?: boolean,
-}
-
-dispatch minecraft:entity_sub_predicate[slime] to struct SlimePredicate {
-	size?: MinMaxBounds<int>,
 }
 
 #[until="1.21.5"]
@@ -362,17 +446,52 @@ enum(string) SalmonVariant {
 	Large = "large",
 }
 
-dispatch minecraft:entity_sub_predicate[sheep] to struct SheepPredicate {
+#[until="26.2"]
+dispatch minecraft:entity_sub_predicate[sheep] to SheepPredicate
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate["type_specific/sheep"] to SheepPredicate
+
+struct SheepPredicate {
 	sheared?: boolean,
 	#[until="1.21.5"]
 	color?: DyeColor,
 }
 
+#[until="26.2"]
+dispatch minecraft:entity_sub_predicate[slime] to SlimePredicate
+// As of 26.2 snapshot 3:
+// The registered type is "type_specific/slime"
+// Changelog says that this should be "cube_mob"
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate["type_specific/slime"] to SlimePredicate
+
+struct SlimePredicate {
+	size?: MinMaxBounds<int>,
+}
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[slots] to EntitySlotsPredicate
+
+struct EntitySlotsPredicate {
+	[#[item_slots] string]: ItemPredicate,
+}
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[stepping_on] to LocationPredicate
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[targeted_entity] to EntityPredicate
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[team] to #[team] string
+
 #[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[tropical_fish] to struct TropicalFishPredicate {
-	/// The pattern of the tropical fish.
 	variant: TropicalFishPattern,
 }
+
+#[since="26.2"]
+dispatch minecraft:entity_sub_predicate[vehicle] to EntityPredicate
 
 #[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[villager] to struct VillagerPredicate {
@@ -431,7 +550,6 @@ struct DamagePredicate {
 	blocked?: boolean,
 	/// Source of the damage (eg: a skeleton shooting an arrow or player igniting tnt).
 	source_entity?: EntityPredicate,
-	/// The type of the damage source.
 	type?: DamageSourcePredicate,
 }
 
@@ -460,7 +578,6 @@ struct DamageSourcePredicate {
 }
 
 struct DamageTagPredicate {
-	/// The damage type tag to check.
 	id: #[id(registry="damage_type",tags="implicit")] string,
 	/// Whether the damage is expected to have or not have the tag.
 	expected: boolean,
