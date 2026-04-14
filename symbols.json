@@ -1,5 +1,5 @@
 {
-	"ref": "6ef5413a6b0dcd4cbf448aedeebead491221c5cb",
+	"ref": "6c5570cab6c052c911f85e3fe19b0e19e30df3b6",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -5376,6 +5376,18 @@
 					"value": "banner"
 				},
 				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
 					"identifier": "Bed",
 					"value": "bed"
 				},
@@ -50031,6 +50043,66 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "can_place_feature",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "can_replace_with_air_or_fluid",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "can_replace_with_barrier",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
 					}
 				}
 			]
@@ -99504,8 +99576,40 @@
 				"registry": "minecraft:block_entity"
 			},
 			"bed": {
-				"kind": "reference",
-				"path": "::java::world::block::BlockEntity"
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.2"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "any",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.2"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"bee_nest": {
 				"kind": "dispatcher",
@@ -112845,7 +112949,19 @@
 			},
 			"bed": {
 				"kind": "reference",
-				"path": "::java::assets::item_definition::Bed"
+				"path": "::java::assets::item_definition::Bed",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"book": {
 				"kind": "reference",
