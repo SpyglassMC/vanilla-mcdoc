@@ -154,7 +154,7 @@ struct OldEntityPredicate {
 	passenger?: EntityPredicate,
 	#[since="1.17"]
 	stepping_on?: LocationPredicate,
-	/// The entity that a mob's AI/aggro is targeting.
+	/// Entity that a mob's AI/aggro is targeting.
 	#[since="1.16"]
 	targeted_entity?: EntityPredicate,
 	#[since="1.16"] #[until="1.19"]
@@ -267,11 +267,11 @@ struct EntityEffectsPredicate {
 
 #[since="26.2"]
 dispatch minecraft:entity_sub_predicate[entity_tags] to struct EntityTagPredicate {
-	/// The entity must have at least one of the listed tags.
+	/// Must have at least one of the listed tags.
 	any_of?: [#[tag] string],
-	/// The entity must have all the listed tags.
+	/// Must have all the listed tags.
 	all_of?: [#[tag] string],
-	/// The entity must have none of the listed tags.
+	/// Must have none of the listed tags.
 	none_of?: [#[tag] string],
 }
 
@@ -487,7 +487,6 @@ dispatch minecraft:entity_sub_predicate[team] to #[team] string
 
 #[until="1.21.5"]
 dispatch minecraft:entity_sub_predicate[tropical_fish] to struct TropicalFishPredicate {
-	/// The pattern of the tropical fish.
 	variant: TropicalFishPattern,
 }
 
@@ -551,7 +550,6 @@ struct DamagePredicate {
 	blocked?: boolean,
 	/// Source of the damage (eg: a skeleton shooting an arrow or player igniting tnt).
 	source_entity?: EntityPredicate,
-	/// The type of the damage source.
 	type?: DamageSourcePredicate,
 }
 
@@ -580,7 +578,6 @@ struct DamageSourcePredicate {
 }
 
 struct DamageTagPredicate {
-	/// The damage type tag to check.
 	id: #[id(registry="damage_type",tags="implicit")] string,
 	/// Whether the damage is expected to have or not have the tag.
 	expected: boolean,
