@@ -370,6 +370,12 @@ dispatch minecraft:feature_config[lake] to struct LakeConfig {
 	fluid: BlockStateProvider,
 	#[since="1.18"]
 	barrier: BlockStateProvider,
+	#[since="26.2"]
+	can_place_feature: BlockPredicate,
+	#[since="26.2"]
+	can_replace_with_air_or_fluid: BlockPredicate,
+	#[since="26.2"]
+	can_replace_with_barrier: BlockPredicate,
 }
 
 #[since="1.17"]

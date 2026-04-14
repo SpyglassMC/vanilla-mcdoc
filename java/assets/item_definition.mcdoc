@@ -388,6 +388,7 @@ dispatch minecraft:select_item_property[trim_material] to struct TrimMaterial{
 
 enum(string) SpecialModelType {
 	Banner = "banner",
+	#[until="26.2"]
 	Bed = "bed",
 	#[since="26.1"]
 	Bell = "bell",
@@ -424,6 +425,7 @@ enum(string) BannerAttachment {
 	Ground = "ground",
 }
 
+#[until="26.2"]
 dispatch minecraft:special_item_model[bed] to struct Bed {
 	texture: #[id(registry="texture",path="entity/bed/")] string,
 	#[since="26.1"]
