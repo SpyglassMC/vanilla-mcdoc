@@ -267,11 +267,11 @@ struct EntityEffectsPredicate {
 
 #[since="26.2"]
 dispatch minecraft:entity_sub_predicate[entity_tags] to struct EntityTagPredicate {
-	// The entity must have at least one of the listed tags.
+	/// The entity must have at least one of the listed tags.
 	any_of?: [#[tag] string],
-	// The entity must have all the listed tags.
+	/// The entity must have all the listed tags.
 	all_of?: [#[tag] string],
-	// The entity must have none of the listed tags.
+	/// The entity must have none of the listed tags.
 	none_of?: [#[tag] string],
 }
 
