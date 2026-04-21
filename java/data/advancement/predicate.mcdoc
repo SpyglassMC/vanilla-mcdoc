@@ -459,11 +459,8 @@ struct SheepPredicate {
 
 #[until="26.2"]
 dispatch minecraft:entity_sub_predicate[slime] to SlimePredicate
-// As of 26.2 snapshot 3:
-// The registered type is "type_specific/slime"
-// Changelog says that this should be "cube_mob"
 #[since="26.2"]
-dispatch minecraft:entity_sub_predicate["type_specific/slime"] to SlimePredicate
+dispatch minecraft:entity_sub_predicate["type_specific/cube_mob"] to SlimePredicate
 
 struct SlimePredicate {
 	size?: MinMaxBounds<int>,
