@@ -1,5 +1,5 @@
 {
-	"ref": "44995c9383e8c739cecf9afbab7121e146c76a33",
+	"ref": "7f3161745c3313fa076252c2c14755bb0caba6d5",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -107252,6 +107252,22 @@
 					}
 				]
 			},
+			"type_specific/cube_mob": {
+				"kind": "reference",
+				"path": "::java::data::advancement::predicate::SlimePredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
 			"type_specific/fishing_hook": {
 				"kind": "reference",
 				"path": "::java::data::advancement::predicate::FishingHookPredicate",
@@ -107319,22 +107335,6 @@
 			"type_specific/sheep": {
 				"kind": "reference",
 				"path": "::java::data::advancement::predicate::SheepPredicate",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.2"
-							}
-						}
-					}
-				]
-			},
-			"type_specific/slime": {
-				"kind": "reference",
-				"path": "::java::data::advancement::predicate::SlimePredicate",
 				"attributes": [
 					{
 						"name": "since",
