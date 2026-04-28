@@ -4,6 +4,9 @@ dispatch minecraft:resource[sulfur_cube_archetype] to struct SulfurCubeArchetype
 	items: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
 	/// Defaults to `false`.
 	buoyant?: boolean,
+	/// When present, sulfur cube with this archetype will explode with this fuse time when ignited. \
+	/// When ignited by an explosion, the fuse will be a random value between `explosion_fuse / 8` and `3 * explosion_fuse / 8`.
+	explosion_fuse?: int,
 	attribute_modifiers: [AttributeEntry],
 }
 

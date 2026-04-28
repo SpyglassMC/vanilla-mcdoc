@@ -63,6 +63,15 @@ dispatch minecraft:density_function[find_top_surface] to struct FindTopSurface {
 	cell_height: int @ 1..,
 }
 
+#[since="26.2"]
+dispatch minecraft:density_function[interval_select] to struct InvervalSelect {
+	input: DensityFunctionRef,
+	/// Must have exactly one fewer element than `functions`.
+	thresholds: [NoiseRange] @ 1..,
+	/// Must have exactly one more element than `thresholds`.
+	functions: [DensityFunctionRef] @ 2..,
+}
+
 dispatch minecraft:density_function[noise] to struct Noise {
 	noise: #[id="worldgen/noise"] string,
 	xz_scale: float,
@@ -125,6 +134,7 @@ enum(string) SplineType {
 	Jaggedness = "jaggedness",
 }
 
+#[until="26.2"]
 dispatch minecraft:density_function[weird_scaled_sampler] to struct WeirdScaledSampler {
 	rarity_value_mapper: RarityType,
 	noise: #[id="worldgen/noise"] string,

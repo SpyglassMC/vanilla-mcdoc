@@ -29,11 +29,16 @@ dispatch minecraft:block_predicate[matching_block_tag] to struct MatchingBlockTa
 	tag: #[id(registry="block",tags="implicit")] string,
 }
 
+#[since="26.2"]
+dispatch minecraft:block_predicate[matching_biomes] to struct MatchingBiomesPredicate {
+	biomes: (#[id=(registry="biome",tags="allowed")] string | [#[id="biome"] string])
+}
+
 dispatch minecraft:block_predicate[matching_blocks] to struct MatchingBlocksPredicate {
 	...PredicateOffset,
 	blocks: (
 		[#[id="block"] string] |
-		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string|
+		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |
 	),
 }
 

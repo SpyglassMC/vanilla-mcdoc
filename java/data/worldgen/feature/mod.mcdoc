@@ -308,8 +308,12 @@ struct GeodeCrackSettings {
 
 #[since="1.17"]
 dispatch minecraft:feature_config[glow_lichen,multiface_growth] to struct MultifaceGrowthConfig {
-	#[since="1.19"]
-	block?: #[id] MultifaceBlock,
+	#[since="1.19"] #[until="26.2"] ...struct {
+		block?: #[id] MultifaceBlock,
+	},
+	#[since="26.2"] ...struct {
+		block: #[id] MultifaceBlock,
+	},
 	search_range?: int @ 1..64,
 	chance_of_spreading?: float @ 0..1,
 	can_place_on_floor?: boolean,

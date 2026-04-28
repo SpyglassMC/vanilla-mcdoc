@@ -1,0 +1,9 @@
+dispatch minecraft:block_entity[potent_sulfur] to struct PotentSulfur {
+	...super::BlockEntity,
+	// TODO: doc comments
+	dormant_time?: int @ -1..,
+	eruption_time?: int @ -1..,
+	countdown?: int @ -1..,
+}
+
+dispatch minecraft:block[potent_sulfur] to minecraft:block_entity[potent_sulfur]

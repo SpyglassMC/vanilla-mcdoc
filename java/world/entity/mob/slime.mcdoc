@@ -18,4 +18,6 @@ dispatch minecraft:entity[sulfur_cube] to struct SulfurCube {
 	...CubeMob,
 	pickup_timer?: int @ 0..,
 	from_bucket?: boolean,
+	/// `-1` represents "not ignited".
+	fuse?: int @ -1..,
 }
