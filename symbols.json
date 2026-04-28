@@ -1,5 +1,5 @@
 {
-	"ref": "7f3161745c3313fa076252c2c14755bb0caba6d5",
+	"ref": "000d339e0e6f15cd22cf9274ec337fe54de638a1",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -24284,6 +24284,41 @@
 				}
 			]
 		},
+		"::java::data::gametest::test_environment::Difficulty": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Peaceful",
+					"value": "peaceful"
+				},
+				{
+					"identifier": "Easy",
+					"value": "easy"
+				},
+				{
+					"identifier": "Normal",
+					"value": "normal"
+				},
+				{
+					"identifier": "Hard",
+					"value": "hard"
+				}
+			]
+		},
+		"::java::data::gametest::test_environment::DifficultyTestEnvironment": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "difficulty",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::gametest::test_environment::Difficulty"
+					}
+				}
+			]
+		},
 		"::java::data::gametest::test_environment::FunctionTestEnvironment": {
 			"kind": "struct",
 			"fields": [
@@ -34394,6 +34429,15 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "When present, sulfur cube with this archetype will explode with this fuse time when ignited. \\\nWhen ignited by an explosion, the fuse will be a random value between `explosion_fuse / 8` and `3 * explosion_fuse / 8`.",
+					"key": "explosion_fuse",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"key": "attribute_modifiers",
 					"type": {
 						"kind": "list",
@@ -44303,6 +44347,51 @@
 				}
 			]
 		},
+		"::java::data::worldgen::density_function::InvervalSelect": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "input",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Must have exactly one fewer element than `functions`.",
+					"key": "thresholds",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::density_function::NoiseRange"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Must have exactly one more element than `thresholds`.",
+					"key": "functions",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 2
+						}
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::density_function::Noise": {
 			"kind": "struct",
 			"fields": [
@@ -46925,6 +47014,43 @@
 			"kind": "struct",
 			"fields": []
 		},
+		"::java::data::worldgen::feature::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::MultifaceBlock",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::feature::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::MultifaceBlock",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::block_predicate::BlockPredicate": {
 			"kind": "struct",
 			"fields": [
@@ -47008,6 +47134,65 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::feature::block_predicate::PredicateOffset"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::block_predicate::MatchingBiomesPredicate": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "biomes",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "biome"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "biome"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
 					}
 				}
 			]
@@ -50496,7 +50681,7 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "pair",
+					"kind": "spread",
 					"attributes": [
 						{
 							"name": "since",
@@ -50507,19 +50692,70 @@
 									"value": "1.19"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
 						}
 					],
-					"key": "block",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::feature::MultifaceBlock",
-						"attributes": [
+						"kind": "struct",
+						"fields": [
 							{
-								"name": "id"
+								"kind": "pair",
+								"key": "block",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::feature::MultifaceBlock",
+									"attributes": [
+										{
+											"name": "id"
+										}
+									]
+								},
+								"optional": true
 							}
 						]
-					},
-					"optional": true
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "block",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::feature::MultifaceBlock",
+									"attributes": [
+										{
+											"name": "id"
+										}
+									]
+								}
+							}
+						]
+					}
 				},
 				{
 					"kind": "pair",
@@ -67441,6 +67677,48 @@
 				}
 			]
 		},
+		"::java::util::particle::GeyserBaseParticle": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Scales the particle size and its burst impulse.",
+					"key": "water_blocks",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Scales the initial burst impulse",
+					"key": "burst_impulse_base",
+					"type": {
+						"kind": "float"
+					}
+				}
+			]
+		},
+		"::java::util::particle::GeyserParticle": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Scales the particle size and its burst impulse.",
+					"key": "water_blocks",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
 		"::java::util::particle::ItemParticle": {
 			"kind": "struct",
 			"fields": [
@@ -75844,6 +76122,54 @@
 								]
 							}
 						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::block::potent_sulfur::PotentSulfur": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "dormant_time",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": -1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "eruption_time",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": -1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "countdown",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": -1
+						}
 					},
 					"optional": true
 				}
@@ -90213,7 +90539,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Gametime in ticks when the copper golem oxidizes\n-2 represents \"waxed\"\n-1 will be replaced with a random time between 504000 and 552000 ticks later",
+					"desc": "Gametime in ticks when the copper golem oxidizes. \\\n`-2` represents \"waxed\" \\\n`-1` will be replaced with a random time between 504000 and 552000 ticks later",
 					"key": "next_weather_age",
 					"type": {
 						"kind": "long",
@@ -94462,6 +94788,19 @@
 					"key": "from_bucket",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "`-1` represents \"not ignited\".",
+					"key": "fuse",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": -1
+						}
 					},
 					"optional": true
 				}
@@ -101065,6 +101404,16 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"potent_sulfur": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "potent_sulfur"
+					}
+				],
+				"registry": "minecraft:block_entity"
+			},
 			"purple_banner": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -102008,6 +102357,10 @@
 				"kind": "reference",
 				"path": "::java::world::block::moving_piston::MovingPiston"
 			},
+			"potent_sulfur": {
+				"kind": "reference",
+				"path": "::java::world::block::potent_sulfur::PotentSulfur"
+			},
 			"sculk_catalyst": {
 				"kind": "reference",
 				"path": "::java::world::block::sculk_catalyst::SculkCatalyst",
@@ -102188,6 +102541,22 @@
 			"inside_world_bounds": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_predicate::InsideWorldBoundsPredicate"
+			},
+			"matching_biomes": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_predicate::MatchingBiomesPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"matching_block_tag": {
 				"kind": "reference",
@@ -104849,6 +105218,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::OneArgument"
 			},
+			"interval_select": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::InvervalSelect",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
 			"invert": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::OneArgument"
@@ -104943,7 +105328,19 @@
 			},
 			"weird_scaled_sampler": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::density_function::WeirdScaledSampler"
+				"path": "::java::data::worldgen::density_function::WeirdScaledSampler",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"y_clamped_gradient": {
 				"kind": "reference",
@@ -111852,6 +112249,70 @@
 				"kind": "reference",
 				"path": "::java::util::particle::FlashParticle"
 			},
+			"geyser": {
+				"kind": "reference",
+				"path": "::java::util::particle::GeyserParticle",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"geyser_base": {
+				"kind": "reference",
+				"path": "::java::util::particle::GeyserBaseParticle",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"geyser_plume": {
+				"kind": "reference",
+				"path": "::java::util::particle::GeyserParticle",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
+			"geyser_poof": {
+				"kind": "reference",
+				"path": "::java::util::particle::GeyserBaseParticle",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
+			},
 			"instant_effect": {
 				"kind": "reference",
 				"path": "::java::util::particle::EffectParticle"
@@ -114026,6 +114487,22 @@
 							"value": {
 								"kind": "string",
 								"value": "26.1"
+							}
+						}
+					}
+				]
+			},
+			"difficulty": {
+				"kind": "reference",
+				"path": "::java::data::gametest::test_environment::DifficultyTestEnvironment",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
 							}
 						}
 					}
