@@ -1,5 +1,5 @@
 {
-	"ref": "000d339e0e6f15cd22cf9274ec337fe54de638a1",
+	"ref": "de146128ed0a35e28bd3bb4721cf2b5ba80ec73d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -76139,6 +76139,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Base dormancy duration in seconds. \\\nWhen a dormancy begins, `countdown` will be set to `dormant_time + 10 * (depth - 1)`, where `depth` is the water depth of the geyser. \\\n`-1` will be replaced with a random value between 15 and 30.",
 					"key": "dormant_time",
 					"type": {
 						"kind": "int",
@@ -76151,6 +76152,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Base eruption duration in seconds. \\\nWhen an eruption begins, `countdown` will be set to `eruption_time + (depth - 1)`, where `depth` is the water depth of the geyser. \\\n`-1` will be randomly replaced with 1 or 2.",
 					"key": "eruption_time",
 					"type": {
 						"kind": "int",
@@ -76163,6 +76165,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Time in seconds until the next state switch (between dormant and erupting). \\\nThe timer only counts down when the potent sulfur creates a valid geyser. \\\n`-1` will be replaced with a new duration of the current state.",
 					"key": "countdown",
 					"type": {
 						"kind": "int",
