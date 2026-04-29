@@ -1,5 +1,5 @@
 {
-	"ref": "de146128ed0a35e28bd3bb4721cf2b5ba80ec73d",
+	"ref": "b454bf21e961a860fd1519c2bc8c0475122accbf",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -11754,22 +11754,10 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Function to run as the player (not at). Function group tags are not allowed.",
-					"key": "function",
+					"desc": "XP to add.",
+					"key": "experience",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "function"
-									}
-								}
-							}
-						]
+						"kind": "int"
 					},
 					"optional": true
 				},
@@ -11823,10 +11811,22 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "XP to add.",
-					"key": "experience",
+					"desc": "Function to run as and at the player. Function tags are not allowed.",
+					"key": "function",
 					"type": {
-						"kind": "int"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "function"
+									}
+								}
+							}
+						]
 					},
 					"optional": true
 				}
