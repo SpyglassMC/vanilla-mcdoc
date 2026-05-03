@@ -201,7 +201,7 @@ struct EntityFlagsPredicate {
 // pre-26.2 type-specific check
 struct EntitySubPredicate {
 	type: (
-		#[until="1.20.5"] #[id] SpecificType |
+		#[until="1.20.5"] SpecificType |
 		#[since="1.20.5"] #[id="entity_sub_predicate_type"] string
 	),
 	...minecraft:entity_sub_predicate[[type]],
