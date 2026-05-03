@@ -1,5 +1,5 @@
 {
-	"ref": "b454bf21e961a860fd1519c2bc8c0475122accbf",
+	"ref": "a71972afd910f721f8ad76c625b35d07955ad4ba",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -91255,6 +91255,33 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::happy_ghast::HappyGhast": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::MobBase"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::AgeableMob"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "still_timeout",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::world::entity::mob::iron_golem::IronGolem": {
 			"kind": "struct",
 			"fields": [
@@ -106213,6 +106240,22 @@
 			"guardian": {
 				"kind": "reference",
 				"path": "::java::world::entity::mob::MobBase"
+			},
+			"happy_ghast": {
+				"kind": "reference",
+				"path": "::java::world::entity::mob::happy_ghast::HappyGhast",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.6"
+							}
+						}
+					}
+				]
 			},
 			"hoglin": {
 				"kind": "reference",
