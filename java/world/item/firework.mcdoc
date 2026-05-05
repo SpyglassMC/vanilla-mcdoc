@@ -29,9 +29,9 @@ struct Explosion {
 }
 
 enum(byte) ExplosionType {
-	SmallBall = 0,
-	LargeBall = 1,
-	Star = 2,
-	Creeper = 3,
-	Burst = 4,
+	SmallBall = 0b,
+	LargeBall = 1b,
+	Star = 2b,
+	Creeper = 3b,
+	Burst = 4b,
 }

@@ -44,9 +44,9 @@ struct ArrowBase {
 }
 
 enum(byte) Pickup {
-	None = 0,
-	Any = 1,
-	Creative = 2,
+	None = 0b,
+	Any = 1b,
+	Creative = 2b,
 }
 
 dispatch minecraft:entity[arrow] to struct Arrow {
