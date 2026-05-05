@@ -1,5 +1,5 @@
 {
-	"ref": "8c423c133b63fe3e4114c10ec70008be5753896d",
+	"ref": "eb0e5bb6bf11757faf5059464b83f26fca43e752",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -34358,6 +34358,116 @@
 				}
 			]
 		},
+		"::java::data::sulfur_cube_archetype::ContactDamage": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "damage_type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "damage_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "amount",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float",
+								"valueRange": {
+									"kind": 0,
+									"min": 0
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the damage is attributed to the sulfur cube.",
+					"key": "attribute_to_source",
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
+		},
+		"::java::data::sulfur_cube_archetype::ExplosionData": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The fuse time in ticks when ignited. \\\nWhen ignited by an explosion, the fuse will be a random value between `explosion_fuse / 8` and `3 * explosion_fuse / 8`.",
+					"key": "fuse",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The explosion power.",
+					"key": "power",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the explosion causes fire.",
+					"key": "causes_fire",
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
+		},
+		"::java::data::sulfur_cube_archetype::KnockbackModifiers": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The horizontal power of the knockback.",
+					"key": "horizontal_power",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The vertical power of the knockback.",
+					"key": "vertical_power",
+					"type": {
+						"kind": "float"
+					}
+				}
+			]
+		},
 		"::java::data::sulfur_cube_archetype::SulfurCubeArchetype": {
 			"kind": "struct",
 			"fields": [
@@ -34426,12 +34536,30 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "When present, sulfur cube with this archetype will explode with this fuse time when ignited. \\\nWhen ignited by an explosion, the fuse will be a random value between `explosion_fuse / 8` and `3 * explosion_fuse / 8`.",
-					"key": "explosion_fuse",
+					"desc": "When present, sulfur cube with this archetype will explode when ignited.",
+					"key": "explosion",
 					"type": {
-						"kind": "int"
+						"kind": "reference",
+						"path": "::java::data::sulfur_cube_archetype::ExplosionData"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "contact_damage",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::sulfur_cube_archetype::ContactDamage"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "knockback_modifiers",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::sulfur_cube_archetype::KnockbackModifiers"
+					}
 				},
 				{
 					"kind": "pair",
@@ -50455,19 +50583,65 @@
 					"kind": "pair",
 					"key": "column_radius",
 					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::IntProvider"
-						},
-						"typeArgs": [
+						"kind": "union",
+						"members": [
 							{
-								"kind": "int",
-								"valueRange": {
-									"kind": 0,
-									"min": 0,
-									"max": 60
-								}
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::IntProvider"
+								},
+								"typeArgs": [
+									{
+										"kind": "int",
+										"valueRange": {
+											"kind": 0,
+											"min": 0,
+											"max": 60
+										}
+									}
+								],
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::IntProvider"
+								},
+								"typeArgs": [
+									{
+										"kind": "int",
+										"valueRange": {
+											"kind": 0,
+											"min": 0,
+											"max": 16
+										}
+									}
+								],
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -52336,6 +52510,54 @@
 						"valueRange": {
 							"kind": 0,
 							"min": 1,
+							"max": 64
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "level_test_distance",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 16
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "max_level_deviation",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
 							"max": 64
 						}
 					}
@@ -56477,6 +56699,39 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::feature::FeatureRef"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::WeightedRandomFeatureConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "features",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::util::WeightedList"
+						},
+						"typeArgs": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "worldgen/placed_feature"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				}
 			]
@@ -61383,21 +61638,6 @@
 				}
 			]
 		},
-		"::java::data::worldgen::surface_rule::<anonymous 0>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Block state to select at this index.\nIf this field is not defined, the surface rule will not replace any block when sampling this entry.",
-					"key": "state",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::block_state::BlockState"
-					},
-					"optional": true
-				}
-			]
-		},
 		"::java::data::worldgen::surface_rule::BiomeCondition": {
 			"kind": "struct",
 			"fields": [
@@ -61459,58 +61699,6 @@
 				}
 			]
 		},
-		"::java::data::worldgen::surface_rule::NoiseGradient": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "The noise to sample.",
-					"key": "noise",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/noise"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "The list to sample based on the noise value.",
-					"key": "gradient",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "struct",
-							"fields": [
-								{
-									"kind": "pair",
-									"desc": "Block state to select at this index.\nIf this field is not defined, the surface rule will not replace any block when sampling this entry.",
-									"key": "state",
-									"type": {
-										"kind": "reference",
-										"path": "::java::util::block_state::BlockState"
-									},
-									"optional": true
-								}
-							]
-						},
-						"lengthRange": {
-							"kind": 0,
-							"min": 1
-						}
-					}
-				}
-			]
-		},
 		"::java::data::worldgen::surface_rule::NoiseThresholdCondition": {
 			"kind": "struct",
 			"fields": [
@@ -61546,6 +61734,27 @@
 					"type": {
 						"kind": "float"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to `false`.",
+					"key": "is_3d",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -91448,6 +91657,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
 					"desc": "Ticks since it was last damaged, from its creation.",
 					"key": "HurtByTimestamp",
 					"type": {
@@ -109125,6 +109346,22 @@
 						}
 					}
 				]
+			},
+			"weighted_random_selector": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::WeightedRandomFeatureConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			}
 		},
 		"minecraft:feature_size": {
@@ -114493,22 +114730,6 @@
 			"condition": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::surface_rule::ConditionRule"
-			},
-			"noise_gradient": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::NoiseGradient",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.2"
-							}
-						}
-					}
-				]
 			},
 			"sequence": {
 				"kind": "reference",
