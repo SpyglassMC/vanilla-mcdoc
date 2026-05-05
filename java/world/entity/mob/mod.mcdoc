@@ -16,6 +16,7 @@ struct LivingEntity {
 	/// Timer since it has been damaged. Counts down to zero.
 	HurtTime?: short,
 	/// Ticks since it was last damaged, from its creation.
+	#[until="26.2"]
 	HurtByTimestamp?: int,
 	/// Timer since it was marked as dead. Counts down to zero.
 	DeathTime?: short,

@@ -387,7 +387,10 @@ dispatch minecraft:feature_config[large_dripstone] to struct LargeDripstoneConfi
 	#[since="26.2"]
 	replaceable_blocks: ([#[id="block"] string] | #[id(registry="block",tags="allowed")] string),
 	floor_to_ceiling_search_range?: int @ 1..512,
-	column_radius: IntProvider<int @ 0..60>,
+	column_radius: (
+		#[until="26.2"] IntProvider<int @ 0..60> |
+		#[since="26.2"] IntProvider<int @ 0..16> |
+	),
 	height_scale: FloatProvider<float @ 0..20>,
 	max_column_radius_to_cave_height_ratio: float @ 0..1,
 	stalactite_bluntness: FloatProvider<float @ 0.1..10>,
@@ -472,6 +475,10 @@ dispatch minecraft:feature_config[replace_single_block] to struct ReplaceSingleB
 #[since="1.17"]
 dispatch minecraft:feature_config[root_system] to struct RootSystemConfig {
 	required_vertical_space_for_tree: int @ 1..64,
+	#[since="26.2"]
+	level_test_distance: int @ 0..16,
+	#[since="26.2"]
+	max_level_deviation: int @ 0..64,
 	root_radius: int @ 1..64,
 	root_placement_attempts: int @ 1..256,
 	root_column_max_height: int @ 1..4096,
@@ -620,4 +627,9 @@ dispatch minecraft:feature_config[vegetation_patch,waterlogged_vegetation_patch]
 	),
 	ground_state: BlockStateProvider,
 	vegetation_feature: FeatureRef,
+}
+
+#[since="26.2"]
+dispatch minecraft:feature_config[weighted_random_selector] to struct WeightedRandomFeatureConfig {
+	features: WeightedList<#[id="worldgen/placed_feature"] string>,
 }
