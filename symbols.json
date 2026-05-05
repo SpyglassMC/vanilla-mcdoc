@@ -1,5 +1,5 @@
 {
-	"ref": "eb0e5bb6bf11757faf5059464b83f26fca43e752",
+	"ref": "f9a84bc2571fa9e1ab7a28ff20f0fcf2c025e6d0",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -94872,7 +94872,7 @@
 						"members": [
 							{
 								"kind": "reference",
-								"path": "::java::util::color::DyeColorInt"
+								"path": "::java::util::color::DyeColorByte"
 							},
 							{
 								"kind": "reference",
