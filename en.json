@@ -68,6 +68,7 @@
 	"::java::assets::item_definition::ShulkerBox.orientation": "Defaults to `up`.",
 	"::java::assets::item_definition::Special.base": "Base model, providing transformations, particle texture and GUI light.",
 	"::java::assets::item_definition::Special.model": "Renders a special hardcoded model.",
+	"::java::assets::item_definition::StandingSign.attachement": "There is an extra \"e\" in the field name. See MC-307498. \\\nDefaults to `ground`.",
 	"::java::assets::item_definition::StandingSign.attachment": "Defaults to `ground`.",
 	"::java::assets::item_definition::TeamTint.default": "Tint to apply when there is no context entity, entity is not in a team or the team has no color.",
 	"::java::assets::item_definition::Time.wobble": "Whether to oscillate for some time around target before settling. Defaults to true.",
