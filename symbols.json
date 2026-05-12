@@ -1,5 +1,5 @@
 {
-	"ref": "4b2ea615d7e6bc8d0e7b2b21230730da2861f8c6",
+	"ref": "2dc963c9e9ec0e58b989242c408de15f81e8b1e2",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -5562,6 +5562,38 @@
 								"value": {
 									"kind": "string",
 									"value": "26.1"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"desc": "There is an extra \"e\" in the field name. See MC-307498. \\\nDefaults to `ground`.",
+					"key": "attachement",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::item_definition::StandingSignAttachment"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
 								}
 							}
 						}
