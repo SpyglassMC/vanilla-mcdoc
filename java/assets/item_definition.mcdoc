@@ -557,8 +557,12 @@ dispatch minecraft:special_item_model[shulker_box] to struct ShulkerBox {
 dispatch minecraft:special_item_model[standing_sign] to struct StandingSign {
 	wood_type: WoodType,
 	texture?: #[id(registry="texture",path="entity/signs/")] string,
+	/// There is an extra "e" in the field name. See MC-307498. \
 	/// Defaults to `ground`.
-	#[since="26.1"]
+	#[since="26.1"] #[until="26.2"]
+	attachement?: StandingSignAttachment,
+	/// Defaults to `ground`.
+	#[since="26.2"]
 	attachment?: StandingSignAttachment,
 }
 
