@@ -61,6 +61,9 @@ dispatch minecraft:data_component_predicate[trim] to struct TrimPredicate {
 	pattern?: (#[id(registry="trim_pattern",tags="allowed")] string | [#[id="trim_pattern"] string]),
 }
 
+#[since="26.1"]
+dispatch minecraft:data_component_predicate["villager/variant"] to (#[id=(registry="villager_type",tags="allowed")] string | [#[id="villager_type"] string])
+
 dispatch minecraft:data_component_predicate[writable_book_content] to struct WritableBookPredicate {
 	/// Matches the raw text, instead of filtered.
 	pages?: CollectionPredicate<string>,
