@@ -1,5 +1,5 @@
 {
-	"ref": "f9a84bc2571fa9e1ab7a28ff20f0fcf2c025e6d0",
+	"ref": "4b2ea615d7e6bc8d0e7b2b21230730da2861f8c6",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -105229,6 +105229,68 @@
 			"trim": {
 				"kind": "reference",
 				"path": "::java::world::component::predicate::TrimPredicate"
+			},
+			"villager/variant": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "villager_type"
+											}
+										},
+										"tags": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "allowed"
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "id",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "villager_type"
+										}
+									}
+								}
+							]
+						}
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
 			},
 			"writable_book_content": {
 				"kind": "reference",
