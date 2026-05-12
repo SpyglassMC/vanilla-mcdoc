@@ -1,5 +1,5 @@
 {
-	"ref": "2dc963c9e9ec0e58b989242c408de15f81e8b1e2",
+	"ref": "90acdfb868ed95af297bc2a0b1c7054fc69bfb94",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -5468,6 +5468,18 @@
 					"value": "end_cube"
 				},
 				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
 					"identifier": "HangingSign",
 					"value": "hanging_sign"
 				},
@@ -5500,6 +5512,18 @@
 					"value": "shulker_box"
 				},
 				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
 					"identifier": "StandingSign",
 					"value": "standing_sign"
 				},
@@ -5564,42 +5588,10 @@
 									"value": "26.1"
 								}
 							}
-						},
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.2"
-								}
-							}
 						}
 					],
 					"desc": "There is an extra \"e\" in the field name. See MC-307498. \\\nDefaults to `ground`.",
 					"key": "attachement",
-					"type": {
-						"kind": "reference",
-						"path": "::java::assets::item_definition::StandingSignAttachment"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.2"
-								}
-							}
-						}
-					],
-					"desc": "Defaults to `ground`.",
-					"key": "attachment",
 					"type": {
 						"kind": "reference",
 						"path": "::java::assets::item_definition::StandingSignAttachment"
@@ -70239,6 +70231,22 @@
 					"value": "key.forward"
 				},
 				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"identifier": "Friends",
+					"value": "key.friends"
+				},
+				{
 					"identifier": "Fullscreen",
 					"value": "key.fullscreen"
 				},
@@ -76450,40 +76458,10 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Base dormancy duration in seconds. \\\nWhen a dormancy begins, `countdown` will be set to `dormant_time + 10 * (depth - 1)`, where `depth` is the water depth of the geyser. \\\n`-1` will be replaced with a random value between 15 and 30.",
-					"key": "dormant_time",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": -1
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Base eruption duration in seconds. \\\nWhen an eruption begins, `countdown` will be set to `eruption_time + (depth - 1)`, where `depth` is the water depth of the geyser. \\\n`-1` will be randomly replaced with 1 or 2.",
-					"key": "eruption_time",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": -1
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Time in seconds until the next state switch (between dormant and erupting). \\\nThe timer only counts down when the potent sulfur creates a valid geyser. \\\n`-1` will be replaced with a new duration of the current state.",
+					"desc": "Time in seconds until the next state switch (between dormant and erupting). \\\nThe timer only counts down when the potent sulfur creates a valid geyser. \\\nNegative values will be replaced with a new duration of the current state.",
 					"key": "countdown",
 					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": -1
-						}
+						"kind": "int"
 					},
 					"optional": true
 				}
@@ -114491,7 +114469,19 @@
 			},
 			"hanging_sign": {
 				"kind": "reference",
-				"path": "::java::assets::item_definition::HangingSign"
+				"path": "::java::assets::item_definition::HangingSign",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			},
 			"head": {
 				"kind": "reference",
@@ -114503,7 +114493,19 @@
 			},
 			"standing_sign": {
 				"kind": "reference",
-				"path": "::java::assets::item_definition::StandingSign"
+				"path": "::java::assets::item_definition::StandingSign",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.2"
+							}
+						}
+					}
+				]
 			}
 		},
 		"minecraft:sprite_source": {
