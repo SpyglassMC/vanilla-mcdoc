@@ -1,17 +1,9 @@
 dispatch minecraft:block_entity[potent_sulfur] to struct PotentSulfur {
 	...super::BlockEntity,
-	/// Base dormancy duration in seconds. \
-	/// When a dormancy begins, `countdown` will be set to `dormant_time + 10 * (depth - 1)`, where `depth` is the water depth of the geyser. \
-	/// `-1` will be replaced with a random value between 15 and 30.
-	dormant_time?: int @ -1..,
-	/// Base eruption duration in seconds. \
-	/// When an eruption begins, `countdown` will be set to `eruption_time + (depth - 1)`, where `depth` is the water depth of the geyser. \
-	/// `-1` will be randomly replaced with 1 or 2.
-	eruption_time?: int @ -1..,
 	/// Time in seconds until the next state switch (between dormant and erupting). \
 	/// The timer only counts down when the potent sulfur creates a valid geyser. \
-	/// `-1` will be replaced with a new duration of the current state.
-	countdown?: int @ -1..,
+	/// Negative values will be replaced with a new duration of the current state.
+	countdown?: int,
 }
 
 dispatch minecraft:block[potent_sulfur] to minecraft:block_entity[potent_sulfur]

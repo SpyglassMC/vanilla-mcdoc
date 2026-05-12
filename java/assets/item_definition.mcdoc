@@ -182,8 +182,7 @@ enum(string) ConditionalPropertyType {
 	Broken = "broken",
 	BundleHasSelectedItem = "bundle/has_selected_item",
 	Carried = "carried",
-	#[since="1.21.5"]
-	Component = "component",
+	#[since="1.21.5"] Component = "component",
 	CustomModelData = "custom_model_data",
 	Damaged = "damaged",
 	ExtendedView = "extended_view",
@@ -388,26 +387,21 @@ dispatch minecraft:select_item_property[trim_material] to struct TrimMaterial{
 
 enum(string) SpecialModelType {
 	Banner = "banner",
-	#[until="26.2"]
-	Bed = "bed",
-	#[since="26.1"]
-	Bell = "bell",
+	#[until="26.2"] Bed = "bed",
+	#[since="26.1"] Bell = "bell",
 	#[since="26.1"]
 	Book = "book",
 	Conduit = "conduit",
 	Chest = "chest",
-	#[since="1.21.9"]
-	CopperGolemStatue = "copper_golem_statue",
+	#[since="1.21.9"] CopperGolemStatue = "copper_golem_statue",
 	DecoratedPot = "decorated_pot",
-	#[since="26.1"]
-	EndCube = "end_cube",
-	HangingSign = "hanging_sign",
+	#[since="26.1"] EndCube = "end_cube",
+	#[until="26.2"] HangingSign = "hanging_sign",
 	Head = "head",
-	#[since="1.21.6"]
-	PlayerHead = "player_head",
+	#[since="1.21.6"] PlayerHead = "player_head",
 	Shield = "shield",
 	ShulkerBox = "shulker_box",
-	StandingSign = "standing_sign",
+	#[until="26.2"] StandingSign = "standing_sign",
 	Trident = "trident",
 }
 
@@ -490,6 +484,7 @@ enum(string) EndCubeEffectType {
 	Gateway = "gateway",
 }
 
+#[until="26.2"]
 dispatch minecraft:special_item_model[hanging_sign] to struct HangingSign {
 	wood_type: WoodType,
 	texture?: #[id(registry="texture",path="entity/signs/hanging/")] string,
@@ -554,16 +549,14 @@ dispatch minecraft:special_item_model[shulker_box] to struct ShulkerBox {
 	orientation?: Direction,
 }
 
+#[until="26.2"]
 dispatch minecraft:special_item_model[standing_sign] to struct StandingSign {
 	wood_type: WoodType,
 	texture?: #[id(registry="texture",path="entity/signs/")] string,
 	/// There is an extra "e" in the field name. See MC-307498. \
 	/// Defaults to `ground`.
-	#[since="26.1"] #[until="26.2"]
+	#[since="26.1"]
 	attachement?: StandingSignAttachment,
-	/// Defaults to `ground`.
-	#[since="26.2"]
-	attachment?: StandingSignAttachment,
 }
 
 enum(string) StandingSignAttachment {
