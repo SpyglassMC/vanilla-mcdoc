@@ -1,7 +1,13 @@
 use super::loot::LootCondition
+use super::loot::NonReferenceLootCondition
 
 type Predicate = (
 	LootCondition |
 	#[since="1.16"] [LootCondition]
 )
+type NonReferencePredicate = (
+	NonReferenceLootCondition |
+	#[since="1.16"] [NonReferenceLootCondition]
+)
+
 dispatch minecraft:resource[predicate] to Predicate
