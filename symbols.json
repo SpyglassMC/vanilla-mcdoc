@@ -1,5 +1,5 @@
 {
-	"ref": "90acdfb868ed95af297bc2a0b1c7054fc69bfb94",
+	"ref": "605ca35cbe60e634085c4096c6cae352d949bf9d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -65197,11 +65197,25 @@
 							"kind": "pair",
 							"key": "Amplifier",
 							"type": {
-								"kind": "byte",
-								"valueRange": {
-									"kind": 0,
-									"min": 0
-								}
+								"kind": "union",
+								"members": [
+									{
+										"kind": "byte",
+										"attributes": [
+											{
+												"name": "canonical"
+											}
+										]
+									},
+									{
+										"kind": "int",
+										"valueRange": {
+											"kind": 0,
+											"min": 0,
+											"max": 255
+										}
+									}
+								]
 							},
 							"optional": true
 						},
@@ -65332,11 +65346,25 @@
 							"desc": "Level I having value 0. Defaults to 0.",
 							"key": "amplifier",
 							"type": {
-								"kind": "byte",
-								"valueRange": {
-									"kind": 0,
-									"min": 0
-								}
+								"kind": "union",
+								"members": [
+									{
+										"kind": "byte",
+										"attributes": [
+											{
+												"name": "canonical"
+											}
+										]
+									},
+									{
+										"kind": "int",
+										"valueRange": {
+											"kind": 0,
+											"min": 0,
+											"max": 255
+										}
+									}
+								]
 							},
 							"optional": true
 						},
@@ -65445,11 +65473,25 @@
 					"desc": "Level I having value 0. Defaults to 0.",
 					"key": "amplifier",
 					"type": {
-						"kind": "byte",
-						"valueRange": {
-							"kind": 0,
-							"min": 0
-						}
+						"kind": "union",
+						"members": [
+							{
+								"kind": "byte",
+								"attributes": [
+									{
+										"name": "canonical"
+									}
+								]
+							},
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 255
+								}
+							}
+						]
 					},
 					"optional": true
 				},
@@ -65545,11 +65587,25 @@
 					"kind": "pair",
 					"key": "Amplifier",
 					"type": {
-						"kind": "byte",
-						"valueRange": {
-							"kind": 0,
-							"min": 0
-						}
+						"kind": "union",
+						"members": [
+							{
+								"kind": "byte",
+								"attributes": [
+									{
+										"name": "canonical"
+									}
+								]
+							},
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 255
+								}
+							}
+						]
 					},
 					"optional": true
 				},
