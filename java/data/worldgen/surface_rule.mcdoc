@@ -26,7 +26,10 @@ struct SurfaceCondition {
 }
 
 dispatch minecraft:surface_condition[biome] to struct BiomeCondition {
-	biome_is: [#[id="worldgen/biome"] string],
+	biome_is: (
+		[#[id="worldgen/biome"] string] |
+		#[since="26.2"] #[id=(registry="worldgen/biome",tags="allowed")] string |
+	),
 }
 
 dispatch minecraft:surface_condition[noise_threshold] to struct NoiseThresholdCondition {
