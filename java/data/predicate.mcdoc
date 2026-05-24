@@ -5,9 +5,7 @@ type Predicate = (
 	LootCondition |
 	#[since="1.16"] [LootCondition]
 )
-type NonReferencePredicate = (
-	NonReferenceLootCondition |
-	#[since="1.16"] [NonReferenceLootCondition]
-)
+// Since 1.21
+type NonReferencePredicate = (NonReferenceLootCondition | [NonReferenceLootCondition])
 
 dispatch minecraft:resource[predicate] to Predicate
