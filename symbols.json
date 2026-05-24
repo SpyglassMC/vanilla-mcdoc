@@ -1,5 +1,5 @@
 {
-	"ref": "605ca35cbe60e634085c4096c6cae352d949bf9d",
+	"ref": "98d2e1948fa9a9b6401aa98ace09627ef1a77619",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -61669,22 +61669,64 @@
 					"kind": "pair",
 					"key": "biome_is",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "string",
-							"attributes": [
-								{
-									"name": "id",
-									"value": {
-										"kind": "literal",
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "worldgen/biome"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
 										"value": {
-											"kind": "string",
-											"value": "worldgen/biome"
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "worldgen/biome"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
 										}
 									}
-								}
-							]
-						}
+								]
+							}
+						]
 					}
 				}
 			]
