@@ -552,6 +552,8 @@
 	"::java::data::sulfur_cube_archetype::ExplosionData.power": "The explosion power.",
 	"::java::data::sulfur_cube_archetype::KnockbackModifiers.horizontal_power": "The horizontal power of the knockback.",
 	"::java::data::sulfur_cube_archetype::KnockbackModifiers.vertical_power": "The vertical power of the knockback.",
+	"::java::data::sulfur_cube_archetype::SoundSettings.push_sound_cooldown": "Cooldown in seconds for the sound effect.",
+	"::java::data::sulfur_cube_archetype::SoundSettings.push_sound_impulse_threshold": "Minimum impact speed required to trigger the sound.",
 	"::java::data::sulfur_cube_archetype::SulfurCubeArchetype.buoyant": "Defaults to `false`.",
 	"::java::data::sulfur_cube_archetype::SulfurCubeArchetype.explosion": "When present, sulfur cube with this archetype will explode when ignited.",
 	"::java::data::timeline::AttributeTrackBase.ease": "Defaults to `linear`.\nFor visualization, check out: https://easings.net/",
