@@ -1,5 +1,5 @@
 {
-	"ref": "98d2e1948fa9a9b6401aa98ace09627ef1a77619",
+	"ref": "9a490bf07067a598c8afd9fbd23a08c1c524a2ef",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -34492,6 +34492,43 @@
 				}
 			]
 		},
+		"::java::data::sulfur_cube_archetype::SoundSettings": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "hit_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "push_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Minimum impact speed required to trigger the sound.",
+					"key": "push_sound_impulse_threshold",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Cooldown in seconds for the sound effect.",
+					"key": "push_sound_cooldown",
+					"type": {
+						"kind": "float"
+					}
+				}
+			]
+		},
 		"::java::data::sulfur_cube_archetype::SulfurCubeArchetype": {
 			"kind": "struct",
 			"fields": [
@@ -34594,6 +34631,14 @@
 							"kind": "reference",
 							"path": "::java::data::sulfur_cube_archetype::AttributeEntry"
 						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "sound_settings",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::sulfur_cube_archetype::SoundSettings"
 					}
 				}
 			]
