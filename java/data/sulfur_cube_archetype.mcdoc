@@ -1,3 +1,4 @@
+use ::java::data::util::SoundEventRef
 use ::java::world::entity::mob::ModernAttributeModifier
 use ::java::data::worldgen::FloatProvider
 
@@ -10,6 +11,7 @@ dispatch minecraft:resource[sulfur_cube_archetype] to struct SulfurCubeArchetype
 	contact_damage?: ContactDamage,
 	knockback_modifiers: KnockbackModifiers,
 	attribute_modifiers: [AttributeEntry],
+	sound_settings: SoundSettings,
 }
 
 struct AttributeEntry {
@@ -40,4 +42,13 @@ struct KnockbackModifiers {
 	horizontal_power: float,
 	/// The vertical power of the knockback.
 	vertical_power: float,
+}
+
+struct SoundSettings {
+	hit_sound: SoundEventRef,
+	push_sound: SoundEventRef,
+	/// Minimum impact speed required to trigger the sound.
+	push_sound_impulse_threshold: float,
+	/// Cooldown in seconds for the sound effect.
+	push_sound_cooldown: float,
 }
