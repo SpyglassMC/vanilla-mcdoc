@@ -128,6 +128,12 @@ enum(string) TintSourceType {
 	Team = "team",
 }
 
+// MC-278626
+type ActuallyTranslucentRGB = (
+	#[canonical] #[color="composite_argb"] int |
+	#[color="dec_rgb"] [float @ 0..1] @ 3 |
+)
+
 dispatch minecraft:tint_source[constant] to struct ConstantTint {
 	/// Constant tint color to apply.
 	value: RGB,
@@ -135,10 +141,7 @@ dispatch minecraft:tint_source[constant] to struct ConstantTint {
 
 dispatch minecraft:tint_source[dye] to struct DyeTint {
 	/// Tint to apply when the `dyed_color` component is not present.
-	default: (
-		#[canonical] #[color="composite_argb"] int |
-		#[color="dec_rgb"] [float] @ 3 |
-	),
+	default: ActuallyTranslucentRGB,
 }
 
 /// Applies a tint color based on the `textures/colormap/grass.png` color map.
@@ -149,10 +152,7 @@ dispatch minecraft:tint_source[grass] to struct GrassTint {
 
 dispatch minecraft:tint_source[firework] to struct FireworkTint {
 	/// Tint to apply when the `firework_explosion` component is not present.
-	default: (
-		#[canonical] #[color="composite_argb"] int |
-		#[color="dec_rgb"] [float] @ 3 |
-	),
+	default: ActuallyTranslucentRGB,
 }
 
 dispatch minecraft:tint_source[potion] to struct PotionTint {
