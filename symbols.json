@@ -1,5 +1,5 @@
 {
-	"ref": "9a490bf07067a598c8afd9fbd23a08c1c524a2ef",
+	"ref": "8207aba87e6c8075a4e929b91cfe1367acba00df",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -1214,7 +1214,7 @@
 						"fields": [
 							{
 								"kind": "pair",
-								"desc": "Configures how this layer behaves when dyed (in the `#dyeable` item tag, and has the `dyed_color` component).",
+								"desc": "If specified, this layer will be tinted by the color contained in the `dyed_color` component. \\\nItems not in the `#dyeable` tag are always considered \"not dyed\".",
 								"key": "dyeable",
 								"type": {
 									"kind": "reference",
@@ -1244,7 +1244,7 @@
 						"fields": [
 							{
 								"kind": "pair",
-								"desc": "Configures how this layer behaves when dyed (has the `dyed_color` component).",
+								"desc": "If specified, this layer will be tinted by the color contained in the `dyed_color` component.",
 								"key": "dyeable",
 								"type": {
 									"kind": "reference",
@@ -1262,7 +1262,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Configures how this layer behaves when dyed (in the `#dyeable` item tag, and has the `dyed_color` component).",
+					"desc": "If specified, this layer will be tinted by the color contained in the `dyed_color` component. \\\nItems not in the `#dyeable` tag are always considered \"not dyed\".",
 					"key": "dyeable",
 					"type": {
 						"kind": "reference",
@@ -1277,7 +1277,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Configures how this layer behaves when dyed (has the `dyed_color` component).",
+					"desc": "If specified, this layer will be tinted by the color contained in the `dyed_color` component.",
 					"key": "dyeable",
 					"type": {
 						"kind": "reference",
@@ -1308,7 +1308,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether this layer texture should be overridden by the player's custom elytra texture.\nDefaults to `false`.",
+					"desc": "Whether this layer texture should be overridden by the player's custom elytra texture. \\\nDefaults to `false`.",
 					"key": "use_player_texture",
 					"type": {
 						"kind": "boolean"
@@ -1322,7 +1322,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "If specified, this layer will be tinted by the color contained in the `dyed_color` component.\nIf the item is not dyeable or not dyed, it will be tinted by this color.\nIf not specified and the item is not dyed, the layer will be hidden.",
+					"desc": "If the item is not dyed, this color is used instead. \\\nIf not specified and the item is not dyed, this layer will be hidden.",
 					"key": "color_when_undyed",
 					"type": {
 						"kind": "reference",
@@ -1379,7 +1379,7 @@
 							"fields": [
 								{
 									"kind": "pair",
-									"desc": "Configures how this layer behaves when dyed (in the `#dyeable` item tag, and has the `dyed_color` component).",
+									"desc": "If specified, this layer will be tinted by the color contained in the `dyed_color` component. \\\nItems not in the `#dyeable` tag are always considered \"not dyed\".",
 									"key": "dyeable",
 									"type": {
 										"kind": "reference",
@@ -1409,7 +1409,7 @@
 							"fields": [
 								{
 									"kind": "pair",
-									"desc": "Configures how this layer behaves when dyed (has the `dyed_color` component).",
+									"desc": "If specified, this layer will be tinted by the color contained in the `dyed_color` component.",
 									"key": "dyeable",
 									"type": {
 										"kind": "reference",
@@ -2352,7 +2352,7 @@
 					},
 					{
 						"kind": "pair",
-						"desc": "Whether this layer texture should be overridden by the player's custom elytra texture.\nDefaults to `false`.",
+						"desc": "Whether this layer texture should be overridden by the player's custom elytra texture. \\\nDefaults to `false`.",
 						"key": "use_player_texture",
 						"type": {
 							"kind": "boolean"
@@ -3116,6 +3116,57 @@
 						]
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::assets::item_definition::ActuallyTranslucentRGB": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "int",
+					"attributes": [
+						{
+							"name": "canonical"
+						},
+						{
+							"name": "color",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "composite_argb"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					"lengthRange": {
+						"kind": 0,
+						"min": 3,
+						"max": 3
+					},
+					"attributes": [
+						{
+							"name": "color",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "dec_rgb"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
@@ -4059,50 +4110,8 @@
 					"desc": "Tint to apply when the `dyed_color` component is not present.",
 					"key": "default",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "int",
-								"attributes": [
-									{
-										"name": "canonical"
-									},
-									{
-										"name": "color",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "composite_argb"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "float"
-								},
-								"lengthRange": {
-									"kind": 0,
-									"min": 3,
-									"max": 3
-								},
-								"attributes": [
-									{
-										"name": "color",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "dec_rgb"
-											}
-										}
-									}
-								]
-							}
-						]
+						"kind": "reference",
+						"path": "::java::assets::item_definition::ActuallyTranslucentRGB"
 					}
 				}
 			]
@@ -4142,50 +4151,8 @@
 					"desc": "Tint to apply when the `firework_explosion` component is not present.",
 					"key": "default",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "int",
-								"attributes": [
-									{
-										"name": "canonical"
-									},
-									{
-										"name": "color",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "composite_argb"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "float"
-								},
-								"lengthRange": {
-									"kind": 0,
-									"min": 3,
-									"max": 3
-								},
-								"attributes": [
-									{
-										"name": "color",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "dec_rgb"
-											}
-										}
-									}
-								]
-							}
-						]
+						"kind": "reference",
+						"path": "::java::assets::item_definition::ActuallyTranslucentRGB"
 					}
 				}
 			]
