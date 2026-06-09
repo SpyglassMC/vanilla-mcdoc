@@ -1,5 +1,5 @@
 {
-	"ref": "61c9d272ea8198dbccbb2e845e9ffca7b732248f",
+	"ref": "fc6c86938d59c5cccd86b2d48fae4665f14565ff",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -19759,7 +19759,7 @@
 					"key": "narration",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::chat_type::TextDisplay"
+						"path": "::java::data::chat_type::Narration"
 					},
 					"optional": true
 				}
