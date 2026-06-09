@@ -9,7 +9,7 @@ dispatch minecraft:resource[chat_type] to (
 struct OldChatType {
 	chat?: TextDisplay,
 	overlay?: TextDisplay,
-	narration?: TextDisplay,
+	narration?: Narration,
 }
 
 // since 1.19.1
