@@ -523,8 +523,8 @@ dispatch minecraft:feature_config[sequence] to struct SequenceConfig {
 	/// The features to generate, in order.
 	/// If any feature in the list is not placed, the following features will also be skipped.
 	features: (
+		[PlacedFeatureRef] |
 		#[id(registry="worldgen/placed_feature",tags="required")] string |
-		[#[id="worldgen/placed_feature"] string] |
 	)
 }
 
