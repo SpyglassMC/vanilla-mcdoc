@@ -1,5 +1,5 @@
 {
-	"ref": "fc6c86938d59c5cccd86b2d48fae4665f14565ff",
+	"ref": "f90919f6ae4c1c47867759a85cb44c08dffce8e8",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -53105,6 +53105,13 @@
 						"kind": "union",
 						"members": [
 							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::feature::placement::PlacedFeatureRef"
+								}
+							},
+							{
 								"kind": "string",
 								"attributes": [
 									{
@@ -53130,24 +53137,6 @@
 										}
 									}
 								]
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "id",
-											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "worldgen/placed_feature"
-												}
-											}
-										}
-									]
-								}
 							}
 						]
 					}
