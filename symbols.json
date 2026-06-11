@@ -1,5 +1,5 @@
 {
-	"ref": "f90825db1b38e87bef427b6ff9ee51bf8bcbc0c3",
+	"ref": "43030e5f53e03a272c4f27639c20bf8d30a152d1",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -11823,6 +11823,29 @@
 				}
 			]
 		},
+		"::java::data::advancement::predicate::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::T"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::T"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::advancement::predicate::AxolotlPredicate": {
 			"kind": "struct",
 			"fields": [
@@ -11996,16 +12019,42 @@
 					"kind": "pair",
 					"key": "state",
 					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
+						"kind": "union",
+						"members": [
 							{
-								"kind": "dynamic",
-								"accessor": [
-									"blocks"
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"blocks"
+										]
+									}
+								],
+								"registry": "mcdoc:block_states"
+							},
+							{
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::advancement::predicate::BlockStatePropertyRangedMatcher"
+								},
+								"typeArgs": [
+									{
+										"kind": "dispatcher",
+										"parallelIndices": [
+											{
+												"kind": "dynamic",
+												"accessor": [
+													"blocks"
+												]
+											}
+										],
+										"registry": "mcdoc:block_states"
+									}
 								]
 							}
-						],
-						"registry": "mcdoc:block_states"
+						]
 					},
 					"optional": true
 				},
@@ -12106,6 +12155,37 @@
 						"path": "::java::world::component::DataComponentPredicate"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::predicate::BlockStatePropertyRangedMatcher": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "min",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::advancement::predicate::T"
+						},
+						"optional": true
+					},
+					{
+						"kind": "pair",
+						"key": "max",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::advancement::predicate::T"
+						},
+						"optional": true
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::advancement::predicate::T"
 				}
 			]
 		},
