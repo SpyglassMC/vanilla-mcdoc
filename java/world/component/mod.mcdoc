@@ -17,7 +17,7 @@ struct DataComponentPredicate {
 		#[since="1.21.11"] #[id="data_component_type"] string |
 	)]: (
 		minecraft:data_component_predicate[[%key]] |
-		#[since="1.21.11"] struct ComponentExistenceCheck {} |
+		#[since="1.21.11"] minecraft:data_component_existence_predicate[[%key]] |
 	),
 }
 
