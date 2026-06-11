@@ -55,7 +55,10 @@ struct BlockPredicate {
 	),
 	#[until="1.20.5"]
 	tag?: #[id(registry="block",tags="implicit")] string,
-	state?: mcdoc:block_states[[blocks]],
+	state?: (
+		mcdoc:block_states[[blocks]] |
+		BlockStatePropertyRangedMatcher<mcdoc:block_states[[blocks]]> |
+	),
 	nbt?: (
 		#[nbt=minecraft:block[[blocks]]] string |
 		#[since="1.20.5"] minecraft:block[[blocks]]
@@ -66,6 +69,11 @@ struct BlockPredicate {
 	/// Test data component values on the block entity.
 	#[since="1.21.5"]
 	predicates?: DataComponentPredicate,
+}
+
+type BlockStatePropertyRangedMatcher<T> = struct {
+	min?: T,
+	max?: T,
 }
 
 struct FluidPredicate {
