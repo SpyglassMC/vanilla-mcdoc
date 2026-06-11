@@ -1,5 +1,5 @@
 {
-	"ref": "f90919f6ae4c1c47867759a85cb44c08dffce8e8",
+	"ref": "f90825db1b38e87bef427b6ff9ee51bf8bcbc0c3",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -78710,22 +78710,6 @@
 				}
 			]
 		},
-		"::java::world::component::ComponentExistenceCheck": {
-			"kind": "struct",
-			"fields": [],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.21.11"
-						}
-					}
-				}
-			]
-		},
 		"::java::world::component::CustomData": {
 			"kind": "union",
 			"members": [
@@ -79011,8 +78995,18 @@
 								"registry": "minecraft:data_component_predicate"
 							},
 							{
-								"kind": "struct",
-								"fields": [],
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											{
+												"keyword": "key"
+											}
+										]
+									}
+								],
+								"registry": "minecraft:data_component_existence_predicate",
 								"attributes": [
 									{
 										"name": "since",
@@ -82551,6 +82545,10 @@
 			]
 		},
 		"::java::world::component::predicate::<anonymous 0>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::world::component::predicate::<anonymous 1>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -105175,6 +105173,28 @@
 			"written_book_content": {
 				"kind": "reference",
 				"path": "::java::world::component::item::WrittenBookContent"
+			}
+		},
+		"minecraft:data_component_existence_predicate": {
+			"%unknown": {
+				"kind": "struct",
+				"fields": []
+			},
+			"enchantments": {
+				"kind": "union",
+				"members": []
+			},
+			"potion_contents": {
+				"kind": "union",
+				"members": []
+			},
+			"stored_enchantments": {
+				"kind": "union",
+				"members": []
+			},
+			"villager/variant": {
+				"kind": "union",
+				"members": []
 			}
 		},
 		"minecraft:data_component_predicate": {
