@@ -1,6 +1,6 @@
 use ::java::data::util::NumberProvider
-use ::java::data::predicate::Predicate
-use ::java::data::item_modifier::ItemModifier
+use ::java::data::predicate::NonReferencePredicate
+use ::java::data::item_modifier::NonReferenceItemModifier
 use ::java::world::item::ItemStackTemplate
 use ::java::world::item::TradeCost
 
@@ -18,7 +18,7 @@ dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	/// Does **not** support `reference` item modifier. \
 	/// Some modifiers can affect the price through the `additional_trade_cost` transient component. \
 	/// The `additional_trade_cost` component is not saved on the offered item.
-	given_item_modifiers?: [ItemModifier],
+	given_item_modifiers?: [NonReferenceItemModifier],
 	/// Maximum number of uses of this trade before the villager has to restock. Defaults to `4`. \
 	/// Clamps to a positive integer.
 	max_uses?: NumberProvider,
@@ -30,7 +30,7 @@ dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	xp?: NumberProvider,
 	/// Check whether the trade should be offered by the merchant. \
 	/// Does **not** support the `reference` predicate.
-	merchant_predicate?: Predicate,
+	merchant_predicate?: NonReferencePredicate,
 	// TODO: Provide a better explanation
 	// The "stored_enchantments" component on any item can affect the price
 	/// If the offered enchanted book has the specified enchantments, the price will be affected by doubling the `additional_trade_cost` transient component.

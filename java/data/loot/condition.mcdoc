@@ -1,4 +1,3 @@
-use super::LootCondition
 use super::EntityTarget
 use super::super::enchantment::LevelBasedValue
 use super::super::util::IntRange
@@ -9,45 +8,53 @@ use super::super::advancement::predicate::EntityPredicate
 use super::super::advancement::predicate::LocationPredicate
 use super::super::advancement::predicate::DamageSourcePredicate
 
+type LootConditionOf<C> = struct {
+	condition: (
+		#[until="1.16"] #[id] super::LootConditionType |
+		#[since="1.16"] C |
+	),
+	...minecraft:loot_condition[[condition]]<C>,
+}
+
 /// Whether any condition within a list passes.
 #[until="1.20"]
-dispatch minecraft:loot_condition[alternative] to struct Alternative {
-	terms: [LootCondition],
+dispatch minecraft:loot_condition[alternative]<C> to struct Alternative {
+	terms: [LootConditionOf<C>],
 }
 
 #[since="1.20"]
-dispatch minecraft:loot_condition[any_of] to struct AnyOf {
+dispatch minecraft:loot_condition[any_of]<C> to struct AnyOf {
 	/// Passes when any of these conditions pass.
-	terms: [LootCondition],
+	terms: [LootConditionOf<C>],
 }
 
 #[since="1.20"]
-dispatch minecraft:loot_condition[all_of] to struct AllOf {
+dispatch minecraft:loot_condition[all_of]<C> to struct AllOf {
 	/// Passes when all of these conditions pass.
-	terms: [LootCondition],
+	terms: [LootConditionOf<C>],
 }
 
-dispatch minecraft:loot_condition[block_state_property] to struct BlockStateProperty {
+dispatch minecraft:loot_condition[block_state_property]<C> to struct BlockStateProperty {
 	block: #[id="block"] string,
 	// TODO: was this optional in 1.20.2 and before? (wasn't codecified yet)
 	properties?: mcdoc:block_states[[block]],
 }
 
-dispatch minecraft:loot_condition[damage_source_properties] to struct DamageSourceProperties {
+dispatch minecraft:loot_condition[damage_source_properties]<C> to struct DamageSourceProperties {
 	predicate: DamageSourcePredicate,
 }
 
 /// Requires the "Enchantment Active" parameter to exist in the context, which currently means it only works in Enchantment conditions.
-dispatch minecraft:loot_condition[enchantment_active_check] to struct EnchantmentActiveCheck {
+dispatch minecraft:loot_condition[enchantment_active_check]<C> to struct EnchantmentActiveCheck {
 	active: boolean,
 }
 
-dispatch minecraft:loot_condition[entity_properties] to struct EntityProperties {
+dispatch minecraft:loot_condition[entity_properties]<C> to struct EntityProperties {
 	entity: EntityTarget,
 	predicate: EntityPredicate,
 }
 
-dispatch minecraft:loot_condition[entity_scores] to struct EntityScores {
+dispatch minecraft:loot_condition[entity_scores]<C> to struct EntityScores {
 	entity: EntityTarget,
 	scores: struct {
 		[#[objective] string]: (
@@ -58,32 +65,32 @@ dispatch minecraft:loot_condition[entity_scores] to struct EntityScores {
 }
 
 #[since="26.1"]
-dispatch minecraft:loot_condition[environment_attribute_check] to struct EnvironmentAttributeCheck {
+dispatch minecraft:loot_condition[environment_attribute_check]<C> to struct EnvironmentAttributeCheck {
 	attribute: #[id="environment_attribute"] string,
 	value: minecraft:environment_attribute[[attribute]][value],
 }
 
 /// Whether a condition does not pass.
-dispatch minecraft:loot_condition[inverted] to struct Inverted {
-	term: LootCondition,
+dispatch minecraft:loot_condition[inverted]<C> to struct Inverted {
+	term: LootConditionOf<C>,
 }
 
-dispatch minecraft:loot_condition[killed_by_player] to struct KilledByPlayer {
+dispatch minecraft:loot_condition[killed_by_player]<C> to struct KilledByPlayer {
 	inverse?: boolean,
 }
 
-dispatch minecraft:loot_condition[location_check] to struct LocationCheck {
+dispatch minecraft:loot_condition[location_check]<C> to struct LocationCheck {
 	offsetX?: int,
 	offsetY?: int,
 	offsetZ?: int,
 	predicate: LocationPredicate,
 }
 
-dispatch minecraft:loot_condition[match_tool] to struct MatchTool {
+dispatch minecraft:loot_condition[match_tool]<C> to struct MatchTool {
 	predicate: ItemPredicate,
 }
 
-dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
+dispatch minecraft:loot_condition[random_chance]<C> to struct RandomChance {
 	/// Clamps to a float between `0` & `1` (inclusive).
 	chance: (
 		#[until="1.21"] float @ 0..1 |
@@ -92,32 +99,32 @@ dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
 }
 
 #[until="1.21"]
-dispatch minecraft:loot_condition[random_chance_with_looting] to struct RandomChanceWithLooting {
+dispatch minecraft:loot_condition[random_chance_with_looting]<C> to struct RandomChanceWithLooting {
 	chance: float @ 0..1,
 	/// Looting adjustment to the base success rate. Formula is `chance + (looting_level * looting_multiplier)` .
 	looting_multiplier: float,
 }
 
 #[since="1.21"]
-dispatch minecraft:loot_condition[random_chance_with_enchanted_bonus] to struct RandomChanceWithEnchantedBonus {
+dispatch minecraft:loot_condition[random_chance_with_enchanted_bonus]<C> to struct RandomChanceWithEnchantedBonus {
 	unenchanted_chance: float @ 0..1,
 	enchanted_chance: LevelBasedValue,
 	enchantment: #[id="enchantment"] string,
 }
 
 /// Whether another predicate passes.
-dispatch minecraft:loot_condition[reference] to struct Reference {
+dispatch minecraft:loot_condition[reference]<C> to struct Reference {
 	/// A cyclic reference causes a parsing failure.
 	name: #[id="predicate"] string,
 }
 
-dispatch minecraft:loot_condition[table_bonus] to struct TableBonus {
+dispatch minecraft:loot_condition[table_bonus]<C> to struct TableBonus {
 	enchantment: #[id="enchantment"] string,
 	/// Probabilities for each enchantment level
 	chances: [float @ 0..1],
 }
 
-dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
+dispatch minecraft:loot_condition[time_check]<C> to struct TimeCheck {
 	/// The world clock to check.
 	#[since="26.1"]
 	clock: #[id="world_clock"] string,
@@ -132,14 +139,14 @@ dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
 }
 
 #[since="1.17"]
-dispatch minecraft:loot_condition[value_check] to struct ValueCheck {
+dispatch minecraft:loot_condition[value_check]<C> to struct ValueCheck {
 	/// Clamps to an integer.
 	value: NumberProvider,
 	/// Passes when `value` is within this range.
 	range: IntRange,
 }
 
-dispatch minecraft:loot_condition[weather_check] to struct WeatherCheck {
+dispatch minecraft:loot_condition[weather_check]<C> to struct WeatherCheck {
 	raining?: boolean,
 	thundering?: boolean,
 }
