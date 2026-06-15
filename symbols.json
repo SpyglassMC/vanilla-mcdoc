@@ -1,5 +1,5 @@
 {
-	"ref": "5ef300ab18109a6ba411cc3f4deae12654d89a1b",
+	"ref": "fd7c687ac920d1c1bab83cedecb38eef4f99ad82",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -21178,20 +21178,8 @@
 					"desc": "Predicate context: Item Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21214,20 +21202,8 @@
 					"desc": "Predicate context: Damage Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21268,20 +21244,8 @@
 					"desc": "Predicate context: Item Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21339,20 +21303,8 @@
 					"desc": "Predicate context: Damage Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21375,20 +21327,8 @@
 					"desc": "Predicate context: Damage Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21411,20 +21351,8 @@
 					"desc": "Predicate context: Damage Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21485,20 +21413,8 @@
 					"desc": "Predicate context: Damage Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21545,20 +21461,8 @@
 					"desc": "Predicate context: Entity Parameters.\n\n`this` is the player fishing.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21581,20 +21485,8 @@
 					"desc": "Predicate context: Entity Parameters.\n\n`this` is the player fishing.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21617,20 +21509,8 @@
 					"desc": "Predicate context: Entity Parameters.\n\n`this` is the entity hitting the Block, unless during a projectile attack, then, `this` is the projectile.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21653,20 +21533,8 @@
 					"desc": "Predicate context: Item Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21689,20 +21557,8 @@
 					"desc": "Predicate context: Damage Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21725,20 +21581,8 @@
 					"desc": "Predicate context: Location Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21761,20 +21605,8 @@
 					"desc": "Predicate context: Entity Parameters.\n\n`this` is the killed mob.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21797,20 +21629,8 @@
 					"desc": "Predicate context: Damage Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21850,20 +21670,8 @@
 					"desc": "Predicate context: Damage Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21886,20 +21694,8 @@
 					"desc": "Predicate context: Entity Parameters.\n\n`this` is the entity drawing the weapon.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21922,20 +21718,8 @@
 					"desc": "Predicate context: Item Parameters.\n\nTool is the ammunition item.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21958,20 +21742,8 @@
 					"desc": "Predicate context: Entity Parameters.\n\n`this` is the newly spawned projectile.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -21994,20 +21766,8 @@
 					"desc": "Predicate context: Entity Parameters.\n\n`this` is the entity shooting the projectile.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -22030,20 +21790,8 @@
 					"desc": "Predicate context: Item Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -22066,20 +21814,8 @@
 					"desc": "Predicate context: Damage Parameters.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -22102,20 +21838,8 @@
 					"desc": "Predicate context: Entity Parameters.\n\n`this` is the entity with the Enchanted Item.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -22138,20 +21862,8 @@
 					"desc": "Predicate context: Entity Parameters.\n\n`this` is the trident entity.",
 					"key": "requirements",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootCondition"
-							},
-							{
-								"kind": "list",
-								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootCondition"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -24916,6 +24628,22 @@
 				}
 			]
 		},
+		"::java::data::item_modifier::NonReferenceItemModifier": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::loot::NonReferenceLootFunction"
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "reference",
+						"path": "::java::data::loot::NonReferenceLootFunction"
+					}
+				}
+			]
+		},
 		"::java::data::loot::BlockEntityTarget": {
 			"kind": "literal",
 			"value": {
@@ -24947,6 +24675,79 @@
 			]
 		},
 		"::java::data::loot::condition::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "condition",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootConditionType",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.16"
+											}
+										}
+									},
+									{
+										"name": "id"
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::condition::C",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.16"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "dispatcher",
+							"parallelIndices": [
+								{
+									"kind": "dynamic",
+									"accessor": [
+										"condition"
+									]
+								}
+							],
+							"registry": "minecraft:loot_condition"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::condition::C"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::loot::condition::<anonymous 1>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -25009,8 +24810,17 @@
 					"type": {
 						"kind": "list",
 						"item": {
-							"kind": "reference",
-							"path": "::java::data::loot::LootCondition"
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::data::loot::condition::LootConditionOf"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::condition::C"
+								}
+							]
 						}
 					}
 				}
@@ -25025,8 +24835,17 @@
 					"type": {
 						"kind": "list",
 						"item": {
-							"kind": "reference",
-							"path": "::java::data::loot::LootCondition"
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::data::loot::condition::LootConditionOf"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::condition::C"
+								}
+							]
 						}
 					}
 				}
@@ -25042,8 +24861,17 @@
 					"type": {
 						"kind": "list",
 						"item": {
-							"kind": "reference",
-							"path": "::java::data::loot::LootCondition"
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::data::loot::condition::LootConditionOf"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::condition::C"
+								}
+							]
 						}
 					}
 				}
@@ -25262,8 +25090,17 @@
 					"kind": "pair",
 					"key": "term",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::LootCondition"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::condition::LootConditionOf"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::condition::C"
+							}
+						]
 					}
 				}
 			]
@@ -25315,6 +25152,87 @@
 						"kind": "reference",
 						"path": "::java::data::advancement::predicate::LocationPredicate"
 					}
+				}
+			]
+		},
+		"::java::data::loot::condition::LootConditionOf": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "condition",
+						"type": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::LootConditionType",
+									"attributes": [
+										{
+											"name": "until",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "1.16"
+												}
+											}
+										},
+										{
+											"name": "id"
+										}
+									]
+								},
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::condition::C",
+									"attributes": [
+										{
+											"name": "since",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "1.16"
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					{
+						"kind": "spread",
+						"type": {
+							"kind": "concrete",
+							"child": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"condition"
+										]
+									}
+								],
+								"registry": "minecraft:loot_condition"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::condition::C"
+								}
+							]
+						}
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::loot::condition::C"
 				}
 			]
 		},
@@ -25841,172 +25759,108 @@
 		},
 		"::java::data::loot::function::<anonymous 0>": {
 			"kind": "struct",
-			"fields": []
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "conditions",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::data::loot::condition::LootConditionOf"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::function::C"
+								}
+							]
+						}
+					},
+					"optional": true
+				}
+			]
 		},
 		"::java::data::loot::function::<anonymous 1>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "bonusMultiplier",
+					"key": "function",
 					"type": {
-						"kind": "int"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootFunctionType",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.16"
+											}
+										}
+									},
+									{
+										"name": "id"
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::F",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.16"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "dispatcher",
+							"parallelIndices": [
+								{
+									"kind": "dynamic",
+									"accessor": [
+										"function"
+									]
+								}
+							],
+							"registry": "minecraft:loot_function"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::F"
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
 		},
 		"::java::data::loot::function::<anonymous 10>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"key": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::ToggleableDataComponent",
-						"attributes": [
-							{
-								"name": "id"
-							}
-						]
-					},
-					"type": {
-						"kind": "boolean"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.5"
-								}
-							}
-						}
-					],
-					"key": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "data_component_type"
-									}
-								}
-							}
-						]
-					},
-					"type": {
-						"kind": "boolean"
-					}
-				}
-			]
-		},
-		"::java::data::loot::function::<anonymous 11>": {
-			"kind": "struct",
-			"fields": []
-		},
-		"::java::data::loot::function::<anonymous 12>": {
-			"kind": "struct",
-			"fields": []
-		},
-		"::java::data::loot::function::<anonymous 2>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "extra",
-					"type": {
-						"kind": "int"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "probability",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					}
-				}
-			]
-		},
-		"::java::data::loot::function::<anonymous 3>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
-					}
-				}
-			]
-		},
-		"::java::data::loot::function::<anonymous 4>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
-					}
-				}
-			]
-		},
-		"::java::data::loot::function::<anonymous 5>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
-					}
-				}
-			]
-		},
-		"::java::data::loot::function::<anonymous 6>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "id",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "uuid"
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::loot::function::<anonymous 7>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -26031,7 +25885,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 8>": {
+		"::java::data::loot::function::<anonymous 11>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -26058,7 +25912,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 9>": {
+		"::java::data::loot::function::<anonymous 12>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -26182,6 +26036,331 @@
 				}
 			]
 		},
+		"::java::data::loot::function::<anonymous 13>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": {
+						"kind": "reference",
+						"path": "::java::data::loot::function::ToggleableDataComponent",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					},
+					"type": {
+						"kind": "boolean"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					],
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "data_component_type"
+									}
+								}
+							}
+						]
+					},
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 14>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::loot::function::<anonymous 15>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::loot::function::<anonymous 2>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::loot::function::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "bonusMultiplier",
+					"type": {
+						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "extra",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "probability",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 5>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "source",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::NbtProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "ops",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "struct",
+									"fields": [
+										{
+											"kind": "pair",
+											"key": "source",
+											"type": {
+												"kind": "string",
+												"attributes": [
+													{
+														"name": "nbt_path"
+													}
+												]
+											}
+										},
+										{
+											"kind": "pair",
+											"key": "target",
+											"type": {
+												"kind": "union",
+												"members": [
+													{
+														"kind": "string",
+														"attributes": [
+															{
+																"name": "until",
+																"value": {
+																	"kind": "literal",
+																	"value": {
+																		"kind": "string",
+																		"value": "1.20.5"
+																	}
+																}
+															},
+															{
+																"name": "nbt_path",
+																"value": {
+																	"kind": "dispatcher",
+																	"parallelIndices": [
+																		{
+																			"kind": "static",
+																			"value": "%fallback"
+																		}
+																	],
+																	"registry": "minecraft:item"
+																}
+															}
+														]
+													},
+													{
+														"kind": "string",
+														"attributes": [
+															{
+																"name": "since",
+																"value": {
+																	"kind": "literal",
+																	"value": {
+																		"kind": "string",
+																		"value": "1.20.5"
+																	}
+																}
+															},
+															{
+																"name": "nbt_path",
+																"value": {
+																	"kind": "dispatcher",
+																	"parallelIndices": [
+																		{
+																			"kind": "static",
+																			"value": "%fallback"
+																		}
+																	],
+																	"registry": "mcdoc:custom_data"
+																}
+															}
+														]
+													}
+												]
+											}
+										},
+										{
+											"kind": "pair",
+											"key": "op",
+											"type": {
+												"kind": "reference",
+												"path": "::java::data::loot::function::CopyNbtStrategy"
+											}
+										}
+									]
+								}
+							]
+						}
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 6>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 7>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 8>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 9>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "uuid"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::loot::function::ApplyBonus": {
 			"kind": "struct",
 			"fields": [
@@ -26235,8 +26414,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -26769,19 +26957,36 @@
 			]
 		},
 		"::java::data::loot::function::Conditions": {
-			"kind": "struct",
-			"fields": [
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "conditions",
+						"type": {
+							"kind": "list",
+							"item": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::loot::condition::LootConditionOf"
+								},
+								"typeArgs": [
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::C"
+									}
+								]
+							}
+						},
+						"optional": true
+					}
+				]
+			},
+			"typeParams": [
 				{
-					"kind": "pair",
-					"key": "conditions",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::loot::LootCondition"
-						}
-					},
-					"optional": true
+					"path": "::java::data::loot::function::C"
 				}
 			]
 		},
@@ -26902,8 +27107,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -26971,8 +27185,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -27056,124 +27279,141 @@
 			]
 		},
 		"::java::data::loot::function::CopyNbt": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "source",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NbtProvider"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "ops",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "union",
-							"members": [
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "source",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::util::NbtProvider"
+						}
+					},
+					{
+						"kind": "pair",
+						"key": "ops",
+						"type": {
+							"kind": "list",
+							"item": {
+								"kind": "union",
+								"members": [
+									{
+										"kind": "struct",
+										"fields": [
+											{
+												"kind": "pair",
+												"key": "source",
+												"type": {
+													"kind": "string",
+													"attributes": [
+														{
+															"name": "nbt_path"
+														}
+													]
+												}
+											},
+											{
+												"kind": "pair",
+												"key": "target",
+												"type": {
+													"kind": "union",
+													"members": [
+														{
+															"kind": "string",
+															"attributes": [
+																{
+																	"name": "until",
+																	"value": {
+																		"kind": "literal",
+																		"value": {
+																			"kind": "string",
+																			"value": "1.20.5"
+																		}
+																	}
+																},
+																{
+																	"name": "nbt_path",
+																	"value": {
+																		"kind": "dispatcher",
+																		"parallelIndices": [
+																			{
+																				"kind": "static",
+																				"value": "%fallback"
+																			}
+																		],
+																		"registry": "minecraft:item"
+																	}
+																}
+															]
+														},
+														{
+															"kind": "string",
+															"attributes": [
+																{
+																	"name": "since",
+																	"value": {
+																		"kind": "literal",
+																		"value": {
+																			"kind": "string",
+																			"value": "1.20.5"
+																		}
+																	}
+																},
+																{
+																	"name": "nbt_path",
+																	"value": {
+																		"kind": "dispatcher",
+																		"parallelIndices": [
+																			{
+																				"kind": "static",
+																				"value": "%fallback"
+																			}
+																		],
+																		"registry": "mcdoc:custom_data"
+																	}
+																}
+															]
+														}
+													]
+												}
+											},
+											{
+												"kind": "pair",
+												"key": "op",
+												"type": {
+													"kind": "reference",
+													"path": "::java::data::loot::function::CopyNbtStrategy"
+												}
+											}
+										]
+									}
+								]
+							}
+						}
+					},
+					{
+						"kind": "spread",
+						"type": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::data::loot::function::Conditions"
+							},
+							"typeArgs": [
 								{
-									"kind": "struct",
-									"fields": [
-										{
-											"kind": "pair",
-											"key": "source",
-											"type": {
-												"kind": "string",
-												"attributes": [
-													{
-														"name": "nbt_path"
-													}
-												]
-											}
-										},
-										{
-											"kind": "pair",
-											"key": "target",
-											"type": {
-												"kind": "union",
-												"members": [
-													{
-														"kind": "string",
-														"attributes": [
-															{
-																"name": "until",
-																"value": {
-																	"kind": "literal",
-																	"value": {
-																		"kind": "string",
-																		"value": "1.20.5"
-																	}
-																}
-															},
-															{
-																"name": "nbt_path",
-																"value": {
-																	"kind": "dispatcher",
-																	"parallelIndices": [
-																		{
-																			"kind": "static",
-																			"value": "%fallback"
-																		}
-																	],
-																	"registry": "minecraft:item"
-																}
-															}
-														]
-													},
-													{
-														"kind": "string",
-														"attributes": [
-															{
-																"name": "since",
-																"value": {
-																	"kind": "literal",
-																	"value": {
-																		"kind": "string",
-																		"value": "1.20.5"
-																	}
-																}
-															},
-															{
-																"name": "nbt_path",
-																"value": {
-																	"kind": "dispatcher",
-																	"parallelIndices": [
-																		{
-																			"kind": "static",
-																			"value": "%fallback"
-																		}
-																	],
-																	"registry": "mcdoc:custom_data"
-																}
-															}
-														]
-													}
-												]
-											}
-										},
-										{
-											"kind": "pair",
-											"key": "op",
-											"type": {
-												"kind": "reference",
-												"path": "::java::data::loot::function::CopyNbtStrategy"
-											}
-										}
-									]
+									"kind": "reference",
+									"path": "::java::data::loot::function::C"
 								}
 							]
 						}
 					}
-				},
+				]
+			},
+			"typeParams": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
-					}
+					"path": "::java::data::loot::function::C"
 				}
 			]
 		},
@@ -27335,8 +27575,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -27537,8 +27786,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -27671,8 +27929,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -27835,8 +28102,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -27989,8 +28265,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28010,8 +28295,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28048,14 +28342,40 @@
 						"kind": "union",
 						"members": [
 							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootFunction"
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::loot::function::LootFunctionOf"
+								},
+								"typeArgs": [
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::F"
+									},
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::C"
+									}
+								]
 							},
 							{
 								"kind": "list",
 								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootFunction"
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::loot::function::LootFunctionOf"
+									},
+									"typeArgs": [
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::function::F"
+										},
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::function::C"
+										}
+									]
 								}
 							}
 						]
@@ -28081,14 +28401,40 @@
 						"kind": "union",
 						"members": [
 							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootFunction"
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::loot::function::LootFunctionOf"
+								},
+								"typeArgs": [
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::F"
+									},
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::C"
+									}
+								]
 							},
 							{
 								"kind": "list",
 								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootFunction"
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::loot::function::LootFunctionOf"
+									},
+									"typeArgs": [
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::function::F"
+										},
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::function::C"
+										}
+									]
 								}
 							}
 						]
@@ -28115,14 +28461,40 @@
 						"kind": "union",
 						"members": [
 							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootFunction"
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::loot::function::LootFunctionOf"
+								},
+								"typeArgs": [
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::F"
+									},
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::C"
+									}
+								]
 							},
 							{
 								"kind": "list",
 								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootFunction"
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::loot::function::LootFunctionOf"
+									},
+									"typeArgs": [
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::function::F"
+										},
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::function::C"
+										}
+									]
 								}
 							}
 						]
@@ -28132,8 +28504,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28233,8 +28614,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28290,6 +28680,94 @@
 				}
 			]
 		},
+		"::java::data::loot::function::LootFunctionOf": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "function",
+						"type": {
+							"kind": "union",
+							"members": [
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::LootFunctionType",
+									"attributes": [
+										{
+											"name": "until",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "1.16"
+												}
+											}
+										},
+										{
+											"name": "id"
+										}
+									]
+								},
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::function::F",
+									"attributes": [
+										{
+											"name": "since",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "1.16"
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					{
+						"kind": "spread",
+						"type": {
+							"kind": "concrete",
+							"child": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"function"
+										]
+									}
+								],
+								"registry": "minecraft:loot_function"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::function::F"
+								},
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::function::C"
+								}
+							]
+						}
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::loot::function::F"
+				},
+				{
+					"path": "::java::data::loot::function::C"
+				}
+			]
+		},
 		"::java::data::loot::function::LootingEnchant": {
 			"kind": "struct",
 			"fields": [
@@ -28303,8 +28781,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28448,14 +28935,40 @@
 						"kind": "union",
 						"members": [
 							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootFunction"
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::loot::function::LootFunctionOf"
+								},
+								"typeArgs": [
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::F"
+									},
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::C"
+									}
+								]
 							},
 							{
 								"kind": "list",
 								"item": {
-									"kind": "reference",
-									"path": "::java::data::loot::LootFunction"
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::loot::function::LootFunctionOf"
+									},
+									"typeArgs": [
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::function::F"
+										},
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::function::C"
+										}
+									]
 								}
 							}
 						]
@@ -28464,8 +28977,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28496,8 +29018,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28543,8 +29074,21 @@
 					"type": {
 						"kind": "list",
 						"item": {
-							"kind": "reference",
-							"path": "::java::data::loot::LootFunction"
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::data::loot::function::LootFunctionOf"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::function::F"
+								},
+								{
+									"kind": "reference",
+									"path": "::java::data::loot::function::C"
+								}
+							]
 						}
 					}
 				}
@@ -28577,8 +29121,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28609,8 +29162,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28667,8 +29229,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28687,8 +29258,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28777,8 +29357,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28851,8 +29440,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -28871,8 +29469,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29043,8 +29650,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29118,8 +29734,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29171,8 +29796,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29343,8 +29977,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29403,8 +30046,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29529,8 +30181,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29617,8 +30278,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29695,8 +30365,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29768,8 +30447,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29820,8 +30508,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29868,8 +30565,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29888,8 +30594,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29920,8 +30635,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -29941,8 +30665,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -30006,8 +30739,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -30031,8 +30773,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -30070,8 +30821,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -30110,8 +30870,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -30309,8 +31078,17 @@
 				{
 					"kind": "spread",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::loot::function::Conditions"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::C"
+							}
+						]
 					}
 				}
 			]
@@ -30432,75 +31210,26 @@
 			}
 		},
 		"::java::data::loot::LootCondition": {
-			"kind": "struct",
-			"fields": [
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::loot::condition::LootConditionOf"
+			},
+			"typeArgs": [
 				{
-					"kind": "pair",
-					"key": "condition",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootConditionType",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.16"
-											}
-										}
-									},
-									{
-										"name": "id"
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.16"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "loot_condition_type"
-											}
-										}
-									}
-								]
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "loot_condition_type"
+								}
 							}
-						]
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"condition"
-								]
-							}
-						],
-						"registry": "minecraft:loot_condition"
-					}
+						}
+					]
 				}
 			]
 		},
@@ -30875,75 +31604,41 @@
 			]
 		},
 		"::java::data::loot::LootFunction": {
-			"kind": "struct",
-			"fields": [
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::loot::function::LootFunctionOf"
+			},
+			"typeArgs": [
 				{
-					"kind": "pair",
-					"key": "function",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::LootFunctionType",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.16"
-											}
-										}
-									},
-									{
-										"name": "id"
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.16"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "loot_function_type"
-											}
-										}
-									}
-								]
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "loot_function_type"
+								}
 							}
-						]
-					}
+						}
+					]
 				},
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"function"
-								]
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "loot_condition_type"
+								}
 							}
-						],
-						"registry": "minecraft:loot_function"
-					}
+						}
+					]
 				}
 			]
 		},
@@ -31428,6 +32123,120 @@
 				}
 			]
 		},
+		"::java::data::loot::NonReferenceLootCondition": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::loot::condition::LootConditionOf"
+			},
+			"typeArgs": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "tree",
+								"values": {
+									"registry": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "loot_condition_type"
+										}
+									},
+									"exclude": {
+										"kind": "tree",
+										"values": {
+											"0": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "reference"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::loot::NonReferenceLootFunction": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::loot::function::LootFunctionOf"
+			},
+			"typeArgs": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "tree",
+								"values": {
+									"registry": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "loot_function_type"
+										}
+									},
+									"exclude": {
+										"kind": "tree",
+										"values": {
+											"0": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "reference"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "tree",
+								"values": {
+									"registry": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "loot_condition_type"
+										}
+									},
+									"exclude": {
+										"kind": "tree",
+										"values": {
+											"0": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "reference"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			]
+		},
 		"::java::data::loot::SingletonPoolEntry": {
 			"kind": "struct",
 			"fields": [
@@ -31539,6 +32348,22 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::loot::SingletonPoolEntry"
+					}
+				}
+			]
+		},
+		"::java::data::predicate::NonReferencePredicate": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::loot::NonReferenceLootCondition"
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "reference",
+						"path": "::java::data::loot::NonReferenceLootCondition"
 					}
 				}
 			]
@@ -38734,7 +39559,7 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::data::item_modifier::ItemModifier"
+							"path": "::java::data::item_modifier::NonReferenceItemModifier"
 						}
 					},
 					"optional": true
@@ -38775,7 +39600,7 @@
 					"key": "merchant_predicate",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::predicate::Predicate"
+						"path": "::java::data::predicate::NonReferencePredicate"
 					},
 					"optional": true
 				},
@@ -111658,8 +112483,16 @@
 		},
 		"minecraft:loot_condition": {
 			"all_of": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::AllOf",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::AllOf"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -111674,8 +112507,16 @@
 				]
 			},
 			"alternative": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::Alternative",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::Alternative"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "until",
@@ -111690,8 +112531,16 @@
 				]
 			},
 			"any_of": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::AnyOf",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::AnyOf"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -111706,28 +112555,76 @@
 				]
 			},
 			"block_state_property": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::BlockStateProperty"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::BlockStateProperty"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"damage_source_properties": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::DamageSourceProperties"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::DamageSourceProperties"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"enchantment_active_check": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::EnchantmentActiveCheck"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::EnchantmentActiveCheck"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"entity_properties": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::EntityProperties"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::EntityProperties"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"entity_scores": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::EntityScores"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::EntityScores"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"environment_attribute_check": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::EnvironmentAttributeCheck",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::EnvironmentAttributeCheck"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -111742,28 +112639,76 @@
 				]
 			},
 			"inverted": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::Inverted"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::Inverted"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"killed_by_player": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::KilledByPlayer"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::KilledByPlayer"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"location_check": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::LocationCheck"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::LocationCheck"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"match_tool": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::MatchTool"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::MatchTool"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"random_chance": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::RandomChance"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::RandomChance"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"random_chance_with_enchanted_bonus": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::RandomChanceWithEnchantedBonus",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::RandomChanceWithEnchantedBonus"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -111778,8 +112723,16 @@
 				]
 			},
 			"random_chance_with_looting": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::RandomChanceWithLooting",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::RandomChanceWithLooting"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "until",
@@ -111794,20 +112747,52 @@
 				]
 			},
 			"reference": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::Reference"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::Reference"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"table_bonus": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::TableBonus"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::TableBonus"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"time_check": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::TimeCheck"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::TimeCheck"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			},
 			"value_check": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::ValueCheck",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::ValueCheck"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -111822,18 +112807,48 @@
 				]
 			},
 			"weather_check": {
-				"kind": "reference",
-				"path": "::java::data::loot::condition::WeatherCheck"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::condition::WeatherCheck"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::condition::C"
+					}
+				]
 			}
 		},
 		"minecraft:loot_function": {
 			"apply_bonus": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::ApplyBonus"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::ApplyBonus"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"copy_components": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::CopyComponents",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::CopyComponents"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -111848,8 +112863,28 @@
 				]
 			},
 			"copy_custom_data": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::CopyNbt",
+				"kind": "template",
+				"child": {
+					"kind": "concrete",
+					"child": {
+						"kind": "reference",
+						"path": "::java::data::loot::function::CopyNbt"
+					},
+					"typeArgs": [
+						{
+							"kind": "reference",
+							"path": "::java::data::loot::function::C"
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -111864,12 +112899,43 @@
 				]
 			},
 			"copy_name": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::CopyName"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::CopyName"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"copy_nbt": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::CopyNbt",
+				"kind": "template",
+				"child": {
+					"kind": "concrete",
+					"child": {
+						"kind": "reference",
+						"path": "::java::data::loot::function::CopyNbt"
+					},
+					"typeArgs": [
+						{
+							"kind": "reference",
+							"path": "::java::data::loot::function::C"
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "until",
@@ -111884,18 +112950,49 @@
 				]
 			},
 			"copy_state": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::CopyState"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::CopyState"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"discard": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "spread",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::loot::function::Conditions"
+				"kind": "template",
+				"child": {
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::loot::function::Conditions"
+								},
+								"typeArgs": [
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::C"
+									}
+								]
+							}
 						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
 					}
 				],
 				"attributes": [
@@ -111912,16 +113009,49 @@
 				]
 			},
 			"enchant_randomly": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::EnchantRandomly"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::EnchantRandomly"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"enchant_with_levels": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::EnchantWithLevels"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::EnchantWithLevels"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"enchanted_count_increase": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::EnchantedCountIncrease",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::EnchantedCountIncrease"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -111936,28 +113066,81 @@
 				]
 			},
 			"exploration_map": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::ExplorationMap"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::ExplorationMap"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"explosion_decay": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "spread",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::loot::function::Conditions"
+				"kind": "template",
+				"child": {
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::loot::function::Conditions"
+								},
+								"typeArgs": [
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::C"
+									}
+								]
+							}
 						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
 					}
 				]
 			},
 			"fill_player_head": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::FillPlayerHead"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::FillPlayerHead"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"filtered": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::Filtered",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::Filtered"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -111972,24 +113155,66 @@
 				]
 			},
 			"furnace_smelt": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "spread",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::loot::function::Conditions"
+				"kind": "template",
+				"child": {
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::loot::function::Conditions"
+								},
+								"typeArgs": [
+									{
+										"kind": "reference",
+										"path": "::java::data::loot::function::C"
+									}
+								]
+							}
 						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
 					}
 				]
 			},
 			"limit_count": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::LimitCount"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::LimitCount"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"looting_enchant": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::LootingEnchant",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::LootingEnchant"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "until",
@@ -112004,12 +113229,34 @@
 				]
 			},
 			"modify_contents": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::ModifyContents"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::ModifyContents"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"reference": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::Reference",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::Reference"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112024,8 +113271,19 @@
 				]
 			},
 			"sequence": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::Sequence",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::Sequence"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112040,12 +113298,34 @@
 				]
 			},
 			"set_attributes": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetAttributes"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetAttributes"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"set_banner_pattern": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetBannerPattern",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetBannerPattern"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112060,8 +113340,19 @@
 				]
 			},
 			"set_book_cover": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetBookCover",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetBookCover"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112076,8 +113367,19 @@
 				]
 			},
 			"set_components": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetComponents",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetComponents"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112092,16 +113394,49 @@
 				]
 			},
 			"set_contents": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetContents"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetContents"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"set_count": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetCount"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetCount"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"set_custom_data": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetCustomData",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetCustomData"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112116,8 +113451,19 @@
 				]
 			},
 			"set_custom_model_data": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetCustomModelData",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetCustomModelData"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112132,12 +113478,34 @@
 				]
 			},
 			"set_damage": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetDamage"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetDamage"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"set_enchantments": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetEnchantments",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetEnchantments"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112152,8 +113520,19 @@
 				]
 			},
 			"set_firework_explosion": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetFireworkExplosion",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetFireworkExplosion"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112168,8 +113547,19 @@
 				]
 			},
 			"set_fireworks": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetFireworks",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetFireworks"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112184,8 +113574,19 @@
 				]
 			},
 			"set_instrument": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetInstrument",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetInstrument"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112200,24 +113601,79 @@
 				]
 			},
 			"set_item": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetItem"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetItem"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"set_loot_table": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetLootTable"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetLootTable"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"set_lore": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetLore"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetLore"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"set_name": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetName"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetName"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"set_nbt": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetNbt",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetNbt"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "until",
@@ -112232,8 +113688,19 @@
 				]
 			},
 			"set_ominous_bottle_amplifier": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetOminousBottleAmplifier",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetOminousBottleAmplifier"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112248,8 +113715,19 @@
 				]
 			},
 			"set_potion": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetPotion",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetPotion"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112264,8 +113742,19 @@
 				]
 			},
 			"set_random_dyes": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetRandomDyes",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetRandomDyes"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112280,8 +113769,19 @@
 				]
 			},
 			"set_random_potion": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetRandomPotion",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetRandomPotion"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112296,12 +113796,34 @@
 				]
 			},
 			"set_stew_effect": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetStewEffect"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetStewEffect"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				]
 			},
 			"set_writable_book_pages": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetWriteableBookPages",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetWriteableBookPages"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112316,8 +113838,19 @@
 				]
 			},
 			"set_written_book_pages": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::SetWrittenBookPages",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::SetWrittenBookPages"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -112332,8 +113865,19 @@
 				]
 			},
 			"toggle_tooltips": {
-				"kind": "reference",
-				"path": "::java::data::loot::function::ToggleTooltips",
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::loot::function::ToggleTooltips"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::loot::function::F"
+					},
+					{
+						"path": "::java::data::loot::function::C"
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
