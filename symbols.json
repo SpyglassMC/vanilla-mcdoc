@@ -1,5 +1,5 @@
 {
-	"ref": "fd7c687ac920d1c1bab83cedecb38eef4f99ad82",
+	"ref": "262cbfbba91b9428e401becfe35e6b8046b5bef7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -79713,19 +79713,8 @@
 				{
 					"kind": "pair",
 					"key": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "data_component_type"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::world::component::PersistentDataComponent"
 					},
 					"type": {
 						"kind": "dispatcher",
@@ -79750,19 +79739,8 @@
 				{
 					"kind": "pair",
 					"key": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "data_component_type"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::world::component::PersistentDataComponent"
 					},
 					"type": {
 						"kind": "dispatcher",
@@ -79801,6 +79779,32 @@
 											"value": {
 												"kind": "string",
 												"value": "!"
+											}
+										},
+										"exclude": {
+											"kind": "tree",
+											"values": {
+												"0": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "additional_trade_cost"
+													}
+												},
+												"1": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "creative_slot_lock"
+													}
+												},
+												"2": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "map_post_processing"
+													}
+												}
 											}
 										}
 									}
@@ -80270,6 +80274,10 @@
 			"fields": []
 		},
 		"::java::world::component::item::<anonymous 7>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::world::component::item::<anonymous 8>": {
 			"kind": "struct",
 			"fields": []
 		},
@@ -83474,6 +83482,52 @@
 						"kind": "boolean"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::component::PersistentDataComponent": {
+			"kind": "string",
+			"attributes": [
+				{
+					"name": "id",
+					"value": {
+						"kind": "tree",
+						"values": {
+							"registry": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "data_component_type"
+								}
+							},
+							"exclude": {
+								"kind": "tree",
+								"values": {
+									"0": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "additional_trade_cost"
+										}
+									},
+									"1": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "creative_slot_lock"
+										}
+									},
+									"2": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "map_post_processing"
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			]
 		},
@@ -104546,6 +104600,10 @@
 					}
 				]
 			},
+			"creative_slot_lock": {
+				"kind": "struct",
+				"fields": []
+			},
 			"custom_data": {
 				"kind": "reference",
 				"path": "::java::world::component::CustomData"
@@ -105300,6 +105358,10 @@
 			},
 			"map_id": {
 				"kind": "int"
+			},
+			"map_post_processing": {
+				"kind": "struct",
+				"fields": []
 			},
 			"max_damage": {
 				"kind": "int",
