@@ -1,1 +1,9 @@
-{}
+{
+	"::java::assets::atlas::Atlas.sources": "Eine Liste von Sprite-Quellen, welche zum Atlas hinzugefügt oder entfernt werden können.",
+	"::java::assets::atlas::Directory.prefix": "Der Name des Sprites (häufig verwendete Endung: `/`).",
+	"::java::assets::atlas::Directory.source": "Verzeichnis der einzubeziehenden Texturpfade, relativ zum Ordner der `textures` (Texturen) und ohne abschließenden Schrägstrich (`/`).",
+	"::java::assets::atlas::Filter.pattern": "Muster, um Sprites-Identifizierer zu entfernen, die bereits im Atlas existieren. Der Ordner der Sprite-Quellen ist wichtig.",
+	"::java::assets::atlas::PalettedPermutations.separator": "Der Wert, der beim Verknüpfen der Textur- und Permutationsnamen verwendet wird, um den Sprite-Namen zu erzeugen.\nStandardwert: `_`.",
+	"::java::assets::atlas::Single.resource": "Ein einziger Texturpfad der Quelle.",
+	"::java::assets::atlas::Single.sprite": "Der Identifikator des Sprites, zu den verwiesen werden kann.\nWenn dieser nicht spezifiziert ist, stimmt er mit der `resource` (Ressource) überein."
+}
