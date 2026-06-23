@@ -1,4 +1,4 @@
-use ::java::util::slot::SlotSource
+use ::java::data::slot_source::SlotSource
 use ::java::util::text::Text
 use super::util::MinMaxBounds
 use super::util::NumberProvider

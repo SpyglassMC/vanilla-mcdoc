@@ -1,0 +1,55 @@
+use ::java::data::advancement::predicate::ItemPredicate
+use ::java::data::loot::BlockEntityTarget
+use ::java::data::loot::EntityTarget
+use ::java::data::loot::function::ContainerComponents
+
+#[since="26.3"]
+dispatch minecraft:resource[slot_source] to SlotSource
+
+type SlotSource = SlotSourceOf<#[id="slot_source_type"] string>
+
+type SlotSourceOf<S> = (TypedSlotSourceOf<S> | [TypedSlotSourceOf<S>])
+
+type TypedSlotSourceOf<S> = struct {
+	type: S,
+	...minecraft:slot_source[[type]]<S>,
+}
+
+dispatch minecraft:slot_source[empty]<S> to struct {}
+
+dispatch minecraft:slot_source[group]<S> to struct GroupSlotSource {
+	terms: [SlotSourceOf<S>],
+}
+
+dispatch minecraft:slot_source[slot_range]<S> to struct RangeSlotSource {
+	#[until="26.3"] ...struct {
+		source: (EntityTarget | BlockEntityTarget),
+	},
+	#[since="26.3"] ...struct {
+		/// Defaults to `container`.
+		source?: (EntityTarget | BlockEntityTarget | "container"),
+	},
+	slots: #[item_slots] string,
+}
+
+dispatch minecraft:slot_source[contents]<S> to struct ContentsSlotSource {
+	/// The slots to search.
+	slot_source: SlotSourceOf<S>,
+	/// If an item targeted by `slot_source` has this container component, selects all items inside.
+	component: #[id] ContainerComponents,
+}
+
+dispatch minecraft:slot_source[filtered]<S> to struct FilterSlotSource {
+	slot_source: SlotSourceOf<S>,
+	item_filter: ItemPredicate,
+}
+
+dispatch minecraft:slot_source[limit_slots]<S> to struct LimitCountSlotSource {
+	slot_source: SlotSourceOf<S>,
+	limit: int @ 1..,
+}
+
+#[since="26.3"]
+dispatch minecraft:slot_source[reference]<S> to struct SlotSourceReference {
+	id: #[id="slot_source"] string,
+}
