@@ -15,7 +15,8 @@ use ::java::util::Rotation
 use ::java::util::WeightedList
 
 type ConfiguredFeatureRef = (
-	#[id="worldgen/configured_feature"] string |
+	#[until="26.3"] #[id="worldgen/configured_feature"] string |
+	#[since="26.3"] #[id="worldgen/feature"] string |
 	ConfiguredFeature |
 )
 
