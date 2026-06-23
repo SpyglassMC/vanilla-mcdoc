@@ -143,8 +143,8 @@ dispatch minecraft:trunk_placer[cherry_trunk_placer] to struct CherryTrunkPlacer
 
 #[since="26.3"]
 dispatch minecraft:trunk_placer[poplar_trunk_placer] to struct PoplarTrunkPlacer {
-	height: IntProvider<int @ 5..16>,
-	side_hole_chance: float @ 0..1,
+	trunk_height_above_branches: IntProvider<int @ 0..8>,
+	branch_amount: IntProvider<int @ 1..4>,
 }
 
 struct FoliagePlacer {
