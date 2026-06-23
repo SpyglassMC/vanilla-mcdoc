@@ -1,3 +1,13 @@
 {
-	"::java::assets::atlas::Single.resource": "Единственное расположение текстуры источника."
+	"::java::assets::atlas::Atlas.sources": "Список источников спрайтов, которые могут добавить или удалить спрайты текстур в этот атлас.",
+	"::java::assets::atlas::Directory.prefix": "Префикс имени спрайта обычно заканчивается на '/'.",
+	"::java::assets::atlas::Single.resource": "Единственное расположение текстуры источника.",
+	"::java::world::block::structure_block::StructureBlock.showair": "Показывать ли невидимые блоки внутри границ структуры.",
+	"::java::world::block::structure_block::StructureBlock.showboundingbox": "Показывать ли границу структуры.",
+	"::java::world::block::structure_block::StructureBlock.strict": "Если установлено на `true`, блоки в установленной структуре вызовут обновления блоков(энтити) и обновления формы. По умолчанию `false`.",
+	"::java::world::block::vault::Config.activation_range": "Радиус, в котором хранилище должно активироваться.",
+	"::java::world::block::vault::Config.deactivation_range": "Радиус, в котором хранилище должно деактивироваться.",
+	"::java::world::block::vault::Config.key_item": "Предмет, требующийся для открытия хранилищя.",
+	"::java::world::block::vault::Config.loot_table": "По умолчанию \"minecraft:chests/trial_chambers/reward\".",
+	"::java::world::component::entity::RabbitVariant.Evil": "Кролик убийца"
 }
