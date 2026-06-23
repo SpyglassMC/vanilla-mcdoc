@@ -642,6 +642,9 @@ dispatch minecraft:data_component[provides_banner_patterns] to (
 	#[since="26.1"] [#[id="banner_pattern"] string] |
 )
 
+#[since="26.3"]
+dispatch minecraft:data_component[provides_pottery_pattern] to #[id="decorated_pot_pattern"] string
+
 /// When present, this item will provide the specified trim material when used in a trimming recipe.
 dispatch minecraft:data_component[provides_trim_material] to #[id="trim_material"] string
 

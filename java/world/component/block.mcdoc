@@ -50,6 +50,15 @@ dispatch minecraft:data_component[lock] to (
 	#[since="1.21.2"] ItemPredicate |
 )
 
-/// Only vanilla pottery sherds have hardcoded decoration textures.
+// TODO: doc comment for 26.3
+/// Only vanilla pottery sherds have hardcoded decoration textures. \
 /// Other items are treated like brick.
-dispatch minecraft:data_component[pot_decorations] to [#[id="item"] string] @ ..4
+dispatch minecraft:data_component[pot_decorations] to (
+	#[until="26.3"] [#[id="item"] string] @ ..4 |
+	#[since="26.3"] struct PotDecorations {
+		back?: #[id="item"] string,
+		left?: #[id="item"] string,
+		right?: #[id="item"] string,
+		front?: #[id="item"] string,
+	} |
+)
