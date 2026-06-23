@@ -41,6 +41,8 @@ struct ExclusionZone {
 	chunk_count: int @ 1..16,
 }
 
+dispatch minecraft:structure_placement[%unknown] to struct {}
+
 dispatch minecraft:structure_placement[concentric_rings] to struct ConcentricRingsPlacement {
 	distance: int @ 0..1023,
 	spread: int @ 0..1023,

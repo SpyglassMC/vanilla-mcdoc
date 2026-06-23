@@ -419,6 +419,7 @@ dispatch minecraft:loot_function[set_contents]<F, C> to struct SetContents {
 	/// Describes target component to be filled with items.
 	#[since="1.20.5"]
 	component: #[id] ContainerComponents,
+	// TODO: disallow reference here
 	entries: [LootPoolEntry],
 	...Conditions<C>,
 }

@@ -1,0 +1,32 @@
+use ::java::util::block_state::BlockState
+use super::material_condition::MaterialConditionRef
+
+#[since="26.3"]
+dispatch minecraft:resource["worldgen/material_rule"] to MaterialRule
+
+struct MaterialRule {
+	type: (
+		#[until="26.3"] #[id="worldgen/material_rule"] string |
+		#[since="26.3"] #[id="worldgen/material_rule_type"] string |
+	),
+	...minecraft:material_rule[[type]],
+}
+type MaterialRuleRef = (
+	#[since="26.3"] #[id="material_rule"] string |
+	MaterialRule |
+)
+
+dispatch minecraft:material_rule[%unknown] to struct {}
+
+dispatch minecraft:material_rule[block] to struct BlockRule {
+	result_state: BlockState,
+}
+
+dispatch minecraft:material_rule[condition] to struct ConditionRule {
+	if_true: MaterialConditionRef,
+	then_run: MaterialRuleRef,
+}
+
+dispatch minecraft:material_rule[sequence] to struct SequenceRule {
+	sequence: [MaterialRuleRef],
+}

@@ -1,4 +1,4 @@
-use ::java::util::slot::SlotSource
+use ::java::data::slot_source::SlotSource
 use ::java::util::text::Text
 use super::util::MinMaxBounds
 use super::util::NumberProvider
@@ -51,6 +51,10 @@ enum(string) LootContextType {
 	BlockInteract = "block_interact",
 	#[since="1.21.9"]
 	EntityInteract = "entity_interact",
+	#[since="26.1"]
+	VillagerTrade = "villager_trade",
+	#[since="26.3"]
+	CommandSlotSource = "command_slot_source",
 }
 
 enum(string) EntityTarget {

@@ -15,13 +15,25 @@ use ::java::util::Rotation
 use ::java::util::WeightedList
 
 type ConfiguredFeatureRef = (
-	#[id="worldgen/configured_feature"] string |
+	#[until="26.3"] #[id="worldgen/configured_feature"] string |
+	#[since="26.3"] #[id="worldgen/feature"] string |
 	ConfiguredFeature |
 )
 
-dispatch minecraft:resource["worldgen/configured_feature"] to struct ConfiguredFeature {
-	type: #[id="worldgen/feature"] string,
+#[until="26.3"]
+dispatch minecraft:resource["worldgen/configured_feature"] to ConfiguredFeature
+#[since="26.3"]
+dispatch minecraft:resource["worldgen/feature"] to ConfiguredFeature
+
+struct ConfiguredFeature {
+	type: (
+		#[until="26.3"] #[id="worldgen/feature"] string |
+		#[since="26.3"] #[id="worldgen/feature_type"] string |
+	),
+	#[until="26.3"]
 	config: minecraft:feature_config[[type]],
+	#[since="26.3"]
+	...minecraft:feature_config[[type]],
 }
 
 type FeatureRef = (
@@ -120,6 +132,12 @@ dispatch minecraft:feature_config[emerald_ore] to struct EmeraldOreConfig {
 dispatch minecraft:feature_config[end_gateway] to struct EndGatewayConfig {
 	exact: boolean,
 	exit?: [int] @ 3,
+}
+
+#[since="26.3"]
+dispatch minecraft:feature_config[end_podium] to struct EndPodiumConfig {
+	/// Defaults to `false`.
+	active?: boolean,
 }
 
 dispatch minecraft:feature_config[end_spike] to struct EndSpikeConfig {

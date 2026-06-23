@@ -1,0 +1,65 @@
+use super::CaveSurface
+use super::VerticalAnchor
+
+#[since="26.3"]
+dispatch minecraft:resource["worldgen/material_condition"] to MaterialCondition
+
+struct MaterialCondition {
+	type: (
+		#[until="26.3"] #[id="worldgen/material_condition"] string |
+		#[since="26.3"] #[id="worldgen/material_condition_type"] string |
+	),
+	...minecraft:material_condition[[type]],
+}
+type MaterialConditionRef = (
+	#[since="26.3"] #[id="material_condition"] string |
+	MaterialCondition |
+)
+
+dispatch minecraft:material_condition[biome] to struct BiomeCondition {
+	biome_is: (
+		[#[id="worldgen/biome"] string] |
+		#[since="26.2"] #[id=(registry="worldgen/biome",tags="allowed")] string |
+	),
+}
+
+dispatch minecraft:material_condition[noise_threshold] to struct NoiseThresholdCondition {
+	noise: #[id="worldgen/noise"] string,
+	min_threshold: float,
+	max_threshold: float,
+	/// Defaults to `false`.
+	#[since="26.2"]
+	is_3d?: boolean,
+}
+
+dispatch minecraft:material_condition[not] to struct NotCondition {
+	invert: MaterialConditionRef,
+}
+
+dispatch minecraft:material_condition[stone_depth] to struct StoneDepthCondition {
+	offset: int,
+	surface_type: CaveSurface,
+	add_surface_depth: boolean,
+	#[until="1.18.2"]
+	add_surface_secondary_depth: boolean,
+	#[since="1.18.2"]
+	secondary_depth_range: int,
+}
+
+dispatch minecraft:material_condition[vertical_gradient] to struct VerticalGradientCondition {
+	random_name: string,
+	true_at_and_below: VerticalAnchor,
+	false_at_and_above: VerticalAnchor,
+}
+
+dispatch minecraft:material_condition[water] to struct WaterCondition {
+	offset: int,
+	surface_depth_multiplier: int @ -20..20,
+	add_stone_depth: boolean,
+}
+
+dispatch minecraft:material_condition[y_above] to struct YAboveCondition {
+	anchor: VerticalAnchor,
+	surface_depth_multiplier: int @ -20..20,
+	add_stone_depth: boolean,
+}
