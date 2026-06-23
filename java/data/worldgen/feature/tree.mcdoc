@@ -141,6 +141,12 @@ dispatch minecraft:trunk_placer[cherry_trunk_placer] to struct CherryTrunkPlacer
 	branch_end_offset_from_top: IntProvider<int @ -16..16>,
 }
 
+#[since="26.3"]
+dispatch minecraft:trunk_placer[poplar_trunk_placer] to struct PoplarTrunkPlacer {
+	height: IntProvider<int @ 5..16>,
+	side_hole_chance: float @ 0..1,
+}
+
 struct FoliagePlacer {
 	type: #[id="worldgen/foliage_placer_type"] string,
 	radius: (
@@ -197,6 +203,12 @@ dispatch minecraft:foliage_placer[cherry_foliage_placer] to struct CherryFoliage
 	corner_hole_chance: float @ 0..1,
 	hanging_leaves_chance: float @ 0..1,
 	hanging_leaves_extension_chance: float @ 0..1,
+}
+
+#[since="26.3"]
+dispatch minecraft:foliage_placer[poplar_foliage_placer] to struct PoplarFoliagePlacer {
+	height: IntProvider<int @ 5..16>,
+	side_hole_chance: float @ 0..1,
 }
 
 struct TreeDecorator {
@@ -259,4 +271,9 @@ dispatch minecraft:tree_decorator[attached_to_logs] to struct AttachedToLogsTree
 	probability: float @ 0..1,
 	block_provider: BlockStateProvider,
 	directions: [Direction] @ 1..,
+}
+
+#[since="26.3"]
+dispatch minecraft:tree_decorator[shelf_mushroom] to struct ShelfMushroomTreeDecorator {
+	probability: float @ 0..1,
 }

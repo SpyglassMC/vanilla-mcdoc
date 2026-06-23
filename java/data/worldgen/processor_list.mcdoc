@@ -101,12 +101,23 @@ struct RuleTest {
 	...minecraft:rule_test[[predicate_type]],
 }
 
+#[since="26.3"]
+dispatch minecraft:rule_test[all_of] to struct AllOfMatch {
+	rules: [RuleTest],
+}
+
 dispatch minecraft:rule_test[block_match] to struct BlockMatch {
 	block: #[id="block"] string,
 }
 
 dispatch minecraft:rule_test[blockstate_match] to struct BlockStateMatch {
 	block_state: BlockState,
+}
+
+#[since="26.3"]
+dispatch minecraft:rule_test[height_match] to struct HeightMatch {
+	min_inclusive: int,
+	max_inclusive: int,
 }
 
 dispatch minecraft:rule_test[random_block_match] to struct RandomBlockMatch {
