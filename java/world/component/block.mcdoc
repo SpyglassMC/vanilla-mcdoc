@@ -56,9 +56,9 @@ dispatch minecraft:data_component[lock] to (
 dispatch minecraft:data_component[pot_decorations] to (
 	#[until="26.3"] [#[id="item"] string] @ ..4 |
 	#[since="26.3"] struct PotDecorations {
-		back?: #[id="item"] string,
-		left?: #[id="item"] string,
-		right?: #[id="item"] string,
-		front?: #[id="item"] string,
+		back?: ItemStackTemplate,
+		left?: ItemStackTemplate,
+		right?: ItemStackTemplate,
+		front?: ItemStackTemplate,
 	} |
 )
