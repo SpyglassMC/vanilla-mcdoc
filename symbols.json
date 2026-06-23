@@ -1,5 +1,5 @@
 {
-	"ref": "8e0271a118f654031de11c688f64cb783c3bc6c7",
+	"ref": "9076335470a40fe389b204b2aba40d14c7992647",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -113,19 +113,8 @@
 					"kind": "pair",
 					"key": "palette_key",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "texture"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::assets::atlas::PaletteTexture"
 					}
 				},
 				{
@@ -157,19 +146,8 @@
 									]
 								},
 								"type": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "id",
-											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "texture"
-												}
-											}
-										}
-									]
+									"kind": "reference",
+									"path": "::java::assets::atlas::PaletteTexture"
 								}
 							}
 						]
@@ -183,6 +161,79 @@
 						"kind": "string"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::assets::atlas::PaletteRef": {
+			"kind": "string",
+			"attributes": [
+				{
+					"name": "id",
+					"value": {
+						"kind": "tree",
+						"values": {
+							"registry": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "texture"
+								}
+							},
+							"path": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "trims/palettes/"
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		"::java::assets::atlas::PaletteTexture": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "texture"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::assets::atlas::PaletteRef",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
@@ -212,19 +263,8 @@
 						]
 					},
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "texture"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::assets::atlas::PaletteTexture"
 					}
 				}
 			]
@@ -1188,6 +1228,22 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"key": {
+						"kind": "reference",
+						"path": "::java::assets::atlas::PaletteRef"
+					},
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::atlas::PaletteRef"
+					}
+				}
+			]
+		},
+		"::java::assets::equipment::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"desc": "Texture location for this layer, inside `entity/equipment/<layer>/`.",
 					"key": "texture",
 					"type": {
@@ -1257,7 +1313,7 @@
 				}
 			]
 		},
-		"::java::assets::equipment::<anonymous 1>": {
+		"::java::assets::equipment::<anonymous 2>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -1272,7 +1328,7 @@
 				}
 			]
 		},
-		"::java::assets::equipment::<anonymous 2>": {
+		"::java::assets::equipment::<anonymous 3>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -1287,7 +1343,7 @@
 				}
 			]
 		},
-		"::java::assets::equipment::<anonymous 3>": {
+		"::java::assets::equipment::<anonymous 4>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -1343,6 +1399,40 @@
 						"kind": "reference",
 						"path": "::java::assets::equipment::Layers"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Replaces palette textures provided by trim materials.",
+					"key": "trim_palette_replacements",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": {
+									"kind": "reference",
+									"path": "::java::assets::atlas::PaletteRef"
+								},
+								"type": {
+									"kind": "reference",
+									"path": "::java::assets::atlas::PaletteRef"
+								}
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -20019,6 +20109,42 @@
 				}
 			]
 		},
+		"::java::data::decorated_pot_pattern::DecoratedPotPattern": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "asset_id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										},
+										"path": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "entity/decorated_pot/"
+											}
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::dialog::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
@@ -31562,6 +31688,38 @@
 					],
 					"identifier": "EntityInteract",
 					"value": "entity_interact"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"identifier": "VillagerTrade",
+					"value": "villager_trade"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"identifier": "CommandSlotSource",
+					"value": "command_slot_source"
 				}
 			]
 		},
@@ -32289,7 +32447,7 @@
 					"key": "slot_source",
 					"type": {
 						"kind": "reference",
-						"path": "::java::util::slot::SlotSource"
+						"path": "::java::data::slot_source::SlotSource"
 					}
 				},
 				{
@@ -34843,6 +35001,460 @@
 				}
 			]
 		},
+		"::java::data::slot_source::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::slot_source::S"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "dispatcher",
+							"parallelIndices": [
+								{
+									"kind": "dynamic",
+									"accessor": [
+										"type"
+									]
+								}
+							],
+							"registry": "minecraft:slot_source"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::slot_source::S"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::slot_source::<anonymous 1>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::slot_source::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "source",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::EntityTarget"
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::BlockEntityTarget"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::slot_source::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to `container`.",
+					"key": "source",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::EntityTarget"
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::BlockEntityTarget"
+							},
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "container"
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::slot_source::ContentsSlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The slots to search.",
+					"key": "slot_source",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::slot_source::SlotSourceOf"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::slot_source::S"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "If an item targeted by `slot_source` has this container component, selects all items inside.",
+					"key": "component",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::loot::function::ContainerComponents",
+						"attributes": [
+							{
+								"name": "id"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::slot_source::FilterSlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "slot_source",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::slot_source::SlotSourceOf"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::slot_source::S"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "item_filter",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					}
+				}
+			]
+		},
+		"::java::data::slot_source::GroupSlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "terms",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::data::slot_source::SlotSourceOf"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::slot_source::S"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"::java::data::slot_source::LimitCountSlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "slot_source",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::slot_source::SlotSourceOf"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::slot_source::S"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "limit",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::slot_source::RangeSlotSource": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "source",
+								"type": {
+									"kind": "union",
+									"members": [
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::EntityTarget"
+										},
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::BlockEntityTarget"
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Defaults to `container`.",
+								"key": "source",
+								"type": {
+									"kind": "union",
+									"members": [
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::EntityTarget"
+										},
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::BlockEntityTarget"
+										},
+										{
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "container"
+											}
+										}
+									]
+								},
+								"optional": true
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "slots",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "item_slots"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::slot_source::SlotSource": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::slot_source::SlotSourceOf"
+			},
+			"typeArgs": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "slot_source_type"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::slot_source::SlotSourceOf": {
+			"kind": "template",
+			"child": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::slot_source::TypedSlotSourceOf"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::slot_source::S"
+							}
+						]
+					},
+					{
+						"kind": "list",
+						"item": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::data::slot_source::TypedSlotSourceOf"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::slot_source::S"
+								}
+							]
+						}
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::slot_source::S"
+				}
+			]
+		},
+		"::java::data::slot_source::SlotSourceReference": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "slot_source"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::slot_source::TypedSlotSourceOf": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "type",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::slot_source::S"
+						}
+					},
+					{
+						"kind": "spread",
+						"type": {
+							"kind": "concrete",
+							"child": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"type"
+										]
+									}
+								],
+								"registry": "minecraft:slot_source"
+							},
+							"typeArgs": [
+								{
+									"kind": "reference",
+									"path": "::java::data::slot_source::S"
+								}
+							]
+						}
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::slot_source::S"
+				}
+			]
+		},
 		"::java::data::storage::UnknownStorage": {
 			"kind": "struct",
 			"fields": [
@@ -36338,10 +36950,43 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "ID which will be used in the resource pack.",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Permutation key which will be used in the resource pack.",
 					"key": "asset_name",
 					"type": {
 						"kind": "string"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Palette ID which will be used in the resource pack.",
+					"key": "palette",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::atlas::PaletteRef"
 					}
 				},
 				{
@@ -36515,6 +37160,16 @@
 								"value": {
 									"kind": "string",
 									"value": "1.21.4"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
 								}
 							}
 						}
@@ -38513,12 +39168,72 @@
 					"desc": "Duration of use in seconds, used as item cooldown",
 					"key": "use_duration",
 					"type": {
-						"kind": "float",
+						"kind": "union",
+						"members": [
+							{
+								"kind": "float",
+								"valueRange": {
+									"kind": 2,
+									"min": 0
+								},
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "float",
+								"valueRange": {
+									"kind": 0,
+									"min": 0
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "durability_damage",
+					"type": {
+						"kind": "int",
 						"valueRange": {
-							"kind": 2,
+							"kind": 0,
 							"min": 0
 						}
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -49211,24 +49926,103 @@
 					"kind": "pair",
 					"key": "type",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/feature"
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "worldgen/feature"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "worldgen/feature_type"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"key": "config",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:feature_config"
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"type": {
 						"kind": "dispatcher",
 						"parallelIndices": [
@@ -49251,12 +50045,47 @@
 					"kind": "string",
 					"attributes": [
 						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
 							"name": "id",
 							"value": {
 								"kind": "literal",
 								"value": {
 									"kind": "string",
 									"value": "worldgen/configured_feature"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "worldgen/feature"
 								}
 							}
 						}
@@ -50196,6 +51025,20 @@
 							"min": 3,
 							"max": 3
 						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::feature::EndPodiumConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to `false`.",
+					"key": "active",
+					"type": {
+						"kind": "boolean"
 					},
 					"optional": true
 				}
@@ -56382,6 +57225,91 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::tree::PoplarFoliagePlacer": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "height",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 5,
+									"max": 16
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "side_hole_chance",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::tree::PoplarTrunkPlacer": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "trunk_height_above_branches",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 8
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "branch_amount",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 4
+								}
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::tree::RandomSpreadFoliagePlacer": {
 			"kind": "struct",
 			"fields": [
@@ -56488,6 +57416,23 @@
 							}
 						],
 						"registry": "minecraft:root_placer"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::tree::ShelfMushroomTreeDecorator": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "probability",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
 					}
 				}
 			]
@@ -57894,6 +58839,583 @@
 				}
 			]
 		},
+		"::java::data::worldgen::material_condition::BiomeCondition": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "biome_is",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "worldgen/biome"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "worldgen/biome"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::material_condition::MaterialCondition": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "worldgen/material_condition"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "worldgen/material_condition_type"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:material_condition"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::material_condition::MaterialConditionRef": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "material_condition"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::worldgen::material_condition::MaterialCondition"
+				}
+			]
+		},
+		"::java::data::worldgen::material_condition::NoiseThresholdCondition": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "noise",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "worldgen/noise"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "min_threshold",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max_threshold",
+					"type": {
+						"kind": "float"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to `false`.",
+					"key": "is_3d",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::material_condition::NotCondition": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "invert",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::material_condition::MaterialConditionRef"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::material_condition::StoneDepthCondition": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "offset",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "surface_type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::CaveSurface"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "add_surface_depth",
+					"type": {
+						"kind": "boolean"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.18.2"
+								}
+							}
+						}
+					],
+					"key": "add_surface_secondary_depth",
+					"type": {
+						"kind": "boolean"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.18.2"
+								}
+							}
+						}
+					],
+					"key": "secondary_depth_range",
+					"type": {
+						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::material_condition::VerticalGradientCondition": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "random_name",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "true_at_and_below",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::VerticalAnchor"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "false_at_and_above",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::VerticalAnchor"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::material_condition::WaterCondition": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "offset",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "surface_depth_multiplier",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": -20,
+							"max": 20
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "add_stone_depth",
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::material_condition::YAboveCondition": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "anchor",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::VerticalAnchor"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "surface_depth_multiplier",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": -20,
+							"max": 20
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "add_stone_depth",
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::material_rule::<anonymous 0>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::worldgen::material_rule::BlockRule": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "result_state",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::material_rule::ConditionRule": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "if_true",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::material_condition::MaterialConditionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "then_run",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::material_rule::MaterialRuleRef"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::material_rule::MaterialRule": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "worldgen/material_rule"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "worldgen/material_rule_type"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:material_rule"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::material_rule::MaterialRuleRef": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "material_rule"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::worldgen::material_rule::MaterialRule"
+				}
+			]
+		},
+		"::java::data::worldgen::material_rule::SequenceRule": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "sequence",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::material_rule::MaterialRuleRef"
+						}
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::noise_settings::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
@@ -58426,12 +59948,42 @@
 									"value": "1.18"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
 						}
 					],
 					"key": "surface_rule",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::surface_rule::SurfaceRule"
+						"path": "::java::data::worldgen::material_rule::MaterialRuleRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "material_rule",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::material_rule::MaterialRuleRef"
 					}
 				},
 				{
@@ -59195,6 +60747,22 @@
 			"kind": "struct",
 			"fields": []
 		},
+		"::java::data::worldgen::processor_list::AllOfMatch": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "rules",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::processor_list::RuleTest"
+						}
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::processor_list::AppendLoot": {
 			"kind": "struct",
 			"fields": [
@@ -59505,6 +61073,25 @@
 				{
 					"kind": "pair",
 					"key": "offset",
+					"type": {
+						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::processor_list::HeightMatch": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min_inclusive",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max_inclusive",
 					"type": {
 						"kind": "int"
 					}
@@ -60119,6 +61706,10 @@
 					}
 				}
 			]
+		},
+		"::java::data::worldgen::structure_set::<anonymous 0>": {
+			"kind": "struct",
+			"fields": []
 		},
 		"::java::data::worldgen::structure_set::ConcentricRingsPlacement": {
 			"kind": "struct",
@@ -62536,431 +64127,6 @@
 				{
 					"kind": "reference",
 					"path": "::java::data::worldgen::surface_builder::ConfiguredSurfaceBuilder"
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::BiomeCondition": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "biome_is",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "list",
-								"item": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "id",
-											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "worldgen/biome"
-												}
-											}
-										}
-									]
-								}
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.2"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "tree",
-											"values": {
-												"registry": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "worldgen/biome"
-													}
-												},
-												"tags": {
-													"kind": "literal",
-													"value": {
-														"kind": "string",
-														"value": "allowed"
-													}
-												}
-											}
-										}
-									}
-								]
-							}
-						]
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::BlockRule": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "result_state",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::block_state::BlockState"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::ConditionRule": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "if_true",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::surface_rule::SurfaceCondition"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "then_run",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::surface_rule::SurfaceRule"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::NoiseThresholdCondition": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "noise",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/noise"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "min_threshold",
-					"type": {
-						"kind": "float"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "max_threshold",
-					"type": {
-						"kind": "float"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.2"
-								}
-							}
-						}
-					],
-					"desc": "Defaults to `false`.",
-					"key": "is_3d",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::NotCondition": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "invert",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::surface_rule::SurfaceCondition"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::SequenceRule": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "sequence",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::surface_rule::SurfaceRule"
-						}
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::StoneDepthCondition": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "offset",
-					"type": {
-						"kind": "int"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "surface_type",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::CaveSurface"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "add_surface_depth",
-					"type": {
-						"kind": "boolean"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.18.2"
-								}
-							}
-						}
-					],
-					"key": "add_surface_secondary_depth",
-					"type": {
-						"kind": "boolean"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.18.2"
-								}
-							}
-						}
-					],
-					"key": "secondary_depth_range",
-					"type": {
-						"kind": "int"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::SurfaceCondition": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/material_condition"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
-							}
-						],
-						"registry": "minecraft:surface_condition"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::SurfaceRule": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/material_rule"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
-							}
-						],
-						"registry": "minecraft:surface_rule"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::VerticalGradientCondition": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "random_name",
-					"type": {
-						"kind": "string"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "true_at_and_below",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::VerticalAnchor"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "false_at_and_above",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::VerticalAnchor"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::WaterCondition": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "offset",
-					"type": {
-						"kind": "int"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "surface_depth_multiplier",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": -20,
-							"max": 20
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "add_stone_depth",
-					"type": {
-						"kind": "boolean"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::surface_rule::YAboveCondition": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "anchor",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::VerticalAnchor"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "surface_depth_multiplier",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": -20,
-							"max": 20
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "add_stone_depth",
-					"type": {
-						"kind": "boolean"
-					}
 				}
 			]
 		},
@@ -69655,38 +70821,6 @@
 				}
 			]
 		},
-		"::java::util::slot::<anonymous 1>": {
-			"kind": "struct",
-			"fields": []
-		},
-		"::java::util::slot::ContentsSlotSource": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "The slots to search.",
-					"key": "slot_source",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::slot::SlotSource"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "If an item targeted by `slot_source` has this container component, selects all items inside.",
-					"key": "component",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::ContainerComponents",
-						"attributes": [
-							{
-								"name": "id"
-							}
-						]
-					}
-				}
-			]
-		},
 		"::java::util::slot::EquipmentSlot": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -69859,117 +70993,6 @@
 				}
 			]
 		},
-		"::java::util::slot::FilterSlotSource": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "slot_source",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::slot::SlotSource"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "item_filter",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					}
-				}
-			]
-		},
-		"::java::util::slot::GroupSlotSource": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "terms",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::util::slot::SlotSource"
-						}
-					}
-				}
-			]
-		},
-		"::java::util::slot::LimitCountSlotSource": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "slot_source",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::slot::SlotSource"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "limit",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1
-						}
-					}
-				}
-			]
-		},
-		"::java::util::slot::RangeSlotSource": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "source",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::EntityTarget"
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::loot::BlockEntityTarget"
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "slots",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "item_slots"
-							}
-						]
-					}
-				}
-			]
-		},
-		"::java::util::slot::SlotSource": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "reference",
-					"path": "::java::util::slot::TypedSlotSource"
-				},
-				{
-					"kind": "list",
-					"item": {
-						"kind": "reference",
-						"path": "::java::util::slot::TypedSlotSource"
-					}
-				}
-			]
-		},
 		"::java::util::slot::SlottedItem": {
 			"kind": "template",
 			"child": {
@@ -69997,45 +71020,6 @@
 			"typeParams": [
 				{
 					"path": "::java::util::slot::T"
-				}
-			]
-		},
-		"::java::util::slot::TypedSlotSource": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "slot_source_type"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
-							}
-						],
-						"registry": "minecraft:slot_source"
-					}
 				}
 			]
 		},
@@ -76081,19 +77065,12 @@
 				}
 			]
 		},
-		"::java::world::block::decorated_pot::DecoratedPot": {
+		"::java::world::block::decorated_pot::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::block::BlockEntity"
-					}
-				},
-				{
 					"kind": "pair",
-					"desc": "Item ID of what was used for each side of the pot. \\\nOnly vanilla pottery sherds have hardcoded decoration textures.\nOther items are treated like brick.",
+					"desc": "Item ID of what was used for each side of the pot. \\\nOnly vanilla pottery sherds have hardcoded decoration textures. \\\nOther items are treated like brick.",
 					"key": "sherds",
 					"type": {
 						"kind": "list",
@@ -76114,11 +77091,115 @@
 						},
 						"lengthRange": {
 							"kind": 0,
-							"min": 4,
 							"max": 4
 						}
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::block::decorated_pot::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Item ID of what was used for each side of the pot. \\\nDecoration textures are determined by `provides_pottery_pattern` component on the sherd items.",
+					"key": "sherds",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::block::PotDecorations"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::block::decorated_pot::DecoratedPot": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::block::BlockEntity"
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Item ID of what was used for each side of the pot. \\\nOnly vanilla pottery sherds have hardcoded decoration textures. \\\nOther items are treated like brick.",
+								"key": "sherds",
+								"type": {
+									"kind": "list",
+									"item": {
+										"kind": "string",
+										"attributes": [
+											{
+												"name": "id",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "item"
+													}
+												}
+											}
+										]
+									},
+									"lengthRange": {
+										"kind": 0,
+										"max": 4
+									}
+								},
+								"optional": true
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Item ID of what was used for each side of the pot. \\\nDecoration textures are determined by `provides_pottery_pattern` component on the sherd items.",
+								"key": "sherds",
+								"type": {
+									"kind": "reference",
+									"path": "::java::world::component::block::PotDecorations"
+								},
+								"optional": true
+							}
+						]
+					}
 				},
 				{
 					"kind": "pair",
@@ -79639,6 +80720,59 @@
 					"key": "ticks_in_hive",
 					"type": {
 						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::world::component::block::PotDecorations": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "back",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "left",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "right",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "front",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.3"
+						}
 					}
 				}
 			]
@@ -105573,26 +106707,59 @@
 				]
 			},
 			"pot_decorations": {
-				"kind": "list",
-				"item": {
-					"kind": "string",
-					"attributes": [
-						{
-							"name": "id",
-							"value": {
-								"kind": "literal",
+				"kind": "union",
+				"members": [
+					{
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "id",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "item"
+										}
+									}
+								}
+							]
+						},
+						"lengthRange": {
+							"kind": 0,
+							"max": 4
+						},
+						"attributes": [
+							{
+								"name": "until",
 								"value": {
-									"kind": "string",
-									"value": "item"
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.3"
+									}
 								}
 							}
-						}
-					]
-				},
-				"lengthRange": {
-					"kind": 0,
-					"max": 4
-				}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::world::component::block::PotDecorations",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.3"
+									}
+								}
+							}
+						]
+					}
+				]
 			},
 			"potion_contents": {
 				"kind": "union",
@@ -105752,6 +106919,31 @@
 								}
 							}
 						]
+					}
+				]
+			},
+			"provides_pottery_pattern": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "decorated_pot_pattern"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
 					}
 				]
 			},
@@ -110033,6 +111225,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::EndGatewayConfig"
 			},
+			"end_podium": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::EndPodiumConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"end_spike": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::EndSpikeConfig"
@@ -110699,6 +111907,22 @@
 			"pine_foliage_placer": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::tree::PineFoliagePlacer"
+			},
+			"poplar_foliage_placer": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::tree::PoplarFoliagePlacer",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"random_spread_foliage_placer": {
 				"kind": "reference",
@@ -114029,6 +115253,54 @@
 				"path": "::java::data::loot::TagPoolEntry"
 			}
 		},
+		"minecraft:material_condition": {
+			"biome": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_condition::BiomeCondition"
+			},
+			"noise_threshold": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_condition::NoiseThresholdCondition"
+			},
+			"not": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_condition::NotCondition"
+			},
+			"stone_depth": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_condition::StoneDepthCondition"
+			},
+			"vertical_gradient": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_condition::VerticalGradientCondition"
+			},
+			"water": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_condition::WaterCondition"
+			},
+			"y_above": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_condition::YAboveCondition"
+			}
+		},
+		"minecraft:material_rule": {
+			"%unknown": {
+				"kind": "struct",
+				"fields": []
+			},
+			"block": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_rule::BlockRule"
+			},
+			"condition": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_rule::ConditionRule"
+			},
+			"sequence": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_rule::SequenceRule"
+			}
+		},
 		"minecraft:memory_module": {
 			"%unknown": {
 				"kind": "union",
@@ -115411,6 +116683,22 @@
 					}
 				]
 			},
+			"decorated_pot_pattern": {
+				"kind": "reference",
+				"path": "::java::data::decorated_pot_pattern::DecoratedPotPattern",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"dialog": {
 				"kind": "reference",
 				"path": "::java::data::dialog::Dialog",
@@ -115704,6 +116992,22 @@
 				"kind": "reference",
 				"path": "::java::assets::shader::program::ShaderProgram"
 			},
+			"slot_source": {
+				"kind": "reference",
+				"path": "::java::data::slot_source::SlotSource",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"sounds": {
 				"kind": "reference",
 				"path": "::java::assets::sounds::Sounds"
@@ -115912,7 +117216,19 @@
 			},
 			"worldgen/configured_feature": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::ConfiguredFeature"
+				"path": "::java::data::worldgen::feature::ConfiguredFeature",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"worldgen/configured_structure_feature": {
 				"kind": "reference",
@@ -115950,9 +117266,57 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::DensityFunction"
 			},
+			"worldgen/feature": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::ConfiguredFeature",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"worldgen/flat_level_generator_preset": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::world_preset::FlatGeneratorPreset"
+			},
+			"worldgen/material_condition": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_condition::MaterialCondition",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"worldgen/material_rule": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_rule::MaterialRule",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"worldgen/multi_noise_biome_source_parameter_list": {
 				"kind": "reference",
@@ -116044,6 +117408,22 @@
 			}
 		},
 		"minecraft:rule_test": {
+			"all_of": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::processor_list::AllOfMatch",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"block_match": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::processor_list::BlockMatch"
@@ -116051,6 +117431,22 @@
 			"blockstate_match": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::processor_list::BlockStateMatch"
+			},
+			"height_match": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::processor_list::HeightMatch",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"random_block_match": {
 				"kind": "reference",
@@ -116151,28 +117547,100 @@
 		},
 		"minecraft:slot_source": {
 			"contents": {
-				"kind": "reference",
-				"path": "::java::util::slot::ContentsSlotSource"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::slot_source::ContentsSlotSource"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::slot_source::S"
+					}
+				]
 			},
 			"empty": {
-				"kind": "struct",
-				"fields": []
+				"kind": "template",
+				"child": {
+					"kind": "struct",
+					"fields": []
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::slot_source::S"
+					}
+				]
 			},
 			"filtered": {
-				"kind": "reference",
-				"path": "::java::util::slot::FilterSlotSource"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::slot_source::FilterSlotSource"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::slot_source::S"
+					}
+				]
 			},
 			"group": {
-				"kind": "reference",
-				"path": "::java::util::slot::GroupSlotSource"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::slot_source::GroupSlotSource"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::slot_source::S"
+					}
+				]
 			},
 			"limit_slots": {
-				"kind": "reference",
-				"path": "::java::util::slot::LimitCountSlotSource"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::slot_source::LimitCountSlotSource"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::slot_source::S"
+					}
+				]
+			},
+			"reference": {
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::slot_source::SlotSourceReference"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::slot_source::S"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"slot_range": {
-				"kind": "reference",
-				"path": "::java::util::slot::RangeSlotSource"
+				"kind": "template",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::slot_source::RangeSlotSource"
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::slot_source::S"
+					}
+				]
 			}
 		},
 		"minecraft:sound_type": {
@@ -116613,6 +118081,10 @@
 			}
 		},
 		"minecraft:structure_placement": {
+			"%unknown": {
+				"kind": "struct",
+				"fields": []
+			},
 			"concentric_rings": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::structure_set::ConcentricRingsPlacement"
@@ -116620,50 +118092,6 @@
 			"random_spread": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::structure_set::RandomSpreadPlacement"
-			}
-		},
-		"minecraft:surface_condition": {
-			"biome": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::BiomeCondition"
-			},
-			"noise_threshold": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::NoiseThresholdCondition"
-			},
-			"not": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::NotCondition"
-			},
-			"stone_depth": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::StoneDepthCondition"
-			},
-			"vertical_gradient": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::VerticalGradientCondition"
-			},
-			"water": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::WaterCondition"
-			},
-			"y_above": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::YAboveCondition"
-			}
-		},
-		"minecraft:surface_rule": {
-			"block": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::BlockRule"
-			},
-			"condition": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::ConditionRule"
-			},
-			"sequence": {
-				"kind": "reference",
-				"path": "::java::data::worldgen::surface_rule::SequenceRule"
 			}
 		},
 		"minecraft:template_pool_element": {
@@ -116944,6 +118372,22 @@
 							"value": {
 								"kind": "string",
 								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"shelf_mushroom": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::tree::ShelfMushroomTreeDecorator",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
 							}
 						}
 					}
@@ -118060,6 +119504,22 @@
 			"mega_jungle_trunk_placer": {
 				"kind": "struct",
 				"fields": []
+			},
+			"poplar_trunk_placer": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::tree::PoplarTrunkPlacer",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"straight_trunk_placer": {
 				"kind": "struct",
