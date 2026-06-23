@@ -1,9 +1,15 @@
 use ::java::util::color::RGB
+use super::atlas::PaletteRef
 
 #[since="1.21.2"]
 dispatch minecraft:resource[equipment] to struct Equipment {
 	/// List of layers for each model layer type.
 	layers: Layers,
+	/// Replaces palette textures provided by trim materials.
+	#[since="26.3"]
+	trim_palette_replacements?: struct {
+		[PaletteRef]: PaletteRef,
+	}
 }
 
 struct Layers {

@@ -1,16 +1,17 @@
 use ::java::util::text::Text
+use ::java::assets::atlas::PaletteRef
 
 #[since="1.19.4"]
 dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 	// TODO: This field is a permutation key rather than #[id(registry="texture", path="trims/color_palettes/")]
 	// It should pass the ResourceLocation.isValidPath() check
 	// Same for the two trim material override types
-	/// ID which will be used in the resource pack.
+	/// Permutation key which will be used in the resource pack.
 	#[until="26.3"]
 	asset_name: string,
 	/// Palette ID which will be used in the resource pack.
 	#[since="26.3"]
-	palette: #[id] string,
+	palette: PaletteRef,
 	/// Text displayed in the item tooltip.
 	description: Text,
 	/// Item used in the smithing table for this material.
