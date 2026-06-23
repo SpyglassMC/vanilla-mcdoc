@@ -1,0 +1,4 @@
+#[since="26.3"]
+dispatch minecraft:resource[decorated_pot_pattern] to struct DecoratedPotPattern {
+	asset_id: #[id=(registry="texture",path="entity/decorated_pot/")] string,
+}
