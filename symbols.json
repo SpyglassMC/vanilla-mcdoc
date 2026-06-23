@@ -1,5 +1,5 @@
 {
-	"ref": "262cbfbba91b9428e401becfe35e6b8046b5bef7",
+	"ref": "8e0271a118f654031de11c688f64cb783c3bc6c7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -106168,6 +106168,31 @@
 			"written_book_content": {
 				"kind": "reference",
 				"path": "::java::world::component::item::WrittenBookContent"
+			},
+			"zombie_nautilus/variant": {
+				"kind": "string",
+				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "zombie_nautilus_variant"
+							}
+						}
+					},
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.11"
+							}
+						}
+					}
+				]
 			}
 		},
 		"minecraft:data_component_existence_predicate": {
