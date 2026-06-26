@@ -51,5 +51,5 @@ dispatch minecraft:slot_source[limit_slots]<ST> to struct LimitCountSlotSource {
 
 #[since="26.3"]
 dispatch minecraft:slot_source[reference]<ST> to struct SlotSourceReference {
-	id: #[id="slot_source"] string,
+	name: #[id="slot_source"] string,
 }
