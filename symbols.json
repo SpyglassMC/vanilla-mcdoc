@@ -1,5 +1,5 @@
 {
-	"ref": "9076335470a40fe389b204b2aba40d14c7992647",
+	"ref": "d492d6fb5c1a59cb7b5962aa3ed40fabee7c48c4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -35391,7 +35391,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "id",
+					"key": "name",
 					"type": {
 						"kind": "string",
 						"attributes": [
