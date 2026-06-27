@@ -1,5 +1,5 @@
 {
-	"ref": "d492d6fb5c1a59cb7b5962aa3ed40fabee7c48c4",
+	"ref": "b50a5eed0c1de20f208c06e40008ddc2e9676a48",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -183,7 +183,7 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "trims/palettes/"
+									"value": "palettes/"
 								}
 							}
 						}
