@@ -65,7 +65,7 @@ type PaletteTexture = (
 	#[since="26.3"] PaletteRef |
 )
 // since 26.3
-type PaletteRef = #[id(registry="texture", path="trims/palettes/")] string
+type PaletteRef = #[id(registry="texture", path="palettes/")] string
 
 dispatch minecraft:sprite_source[unstitch] to struct Unstitch {
 	resource: #[id="texture"] string,
