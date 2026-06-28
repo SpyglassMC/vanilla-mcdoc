@@ -493,6 +493,7 @@ dispatch minecraft:special_item_model[hanging_sign] to struct HangingSign {
 	attachment?: HangingSignAttachment,
 }
 
+// Until 26.2
 enum(string) WoodType {
 	Oak = "oak",
 	Spruce = "spruce",

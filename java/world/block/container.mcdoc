@@ -45,6 +45,7 @@ dispatch minecraft:block_entity[hopper] to struct Hopper {
 
 dispatch minecraft:block[barrel] to minecraft:block_entity[barrel]
 
+#[since="1.21.9"]
 dispatch minecraft:block[
 	chest,
 	copper_chest,
@@ -81,6 +82,7 @@ dispatch minecraft:block[
 
 dispatch minecraft:block[dispenser, dropper] to minecraft:block_entity[dispenser]
 
+#[since="1.21.9"]
 dispatch minecraft:block[
 	oak_shelf,
 	spruce_shelf,
@@ -95,5 +97,8 @@ dispatch minecraft:block[
 	crimson_shelf,
 	warped_shelf,
 ] to minecraft:block_entity[shelf]
+
+#[since="26.3"]
+dispatch minecraft:block[poplar_shelf] to minecraft:block_entity[shelf]
 
 dispatch minecraft:block[hopper] to minecraft:block_entity[hopper]

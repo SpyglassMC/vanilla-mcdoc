@@ -77,6 +77,28 @@ dispatch minecraft:block[
 dispatch minecraft:block[
 	bamboo_sign,
 	bamboo_wall_sign,
+] to minecraft:block_entity[sign]
+
+#[since="1.19.4"]
+dispatch minecraft:block[
+	cherry_sign,
+	cherry_wall_sign,
+] to minecraft:block_entity[sign]
+
+#[since="1.21.2"]
+dispatch minecraft:block[
+	pale_oak_sign,
+	pale_oak_wall_sign,
+] to minecraft:block_entity[sign]
+
+#[since="26.3"]
+dispatch minecraft:block[
+	poplar_sign,
+	poplar_wall_sign,
+] to minecraft:block_entity[sign]
+
+#[since="1.19.3"]
+dispatch minecraft:block[
 	acacia_hanging_sign,
 	bamboo_hanging_sign,
 	birch_hanging_sign,
@@ -97,10 +119,22 @@ dispatch minecraft:block[
 	oak_wall_hanging_sign,
 	spruce_wall_hanging_sign,
 	warped_wall_hanging_sign,
-] to minecraft:block_entity[sign]
+] to minecraft:block_entity[hanging_sign]
 
 #[since="1.19.4"]
 dispatch minecraft:block[
-	cherry_sign,
-	cherry_wall_sign,
-] to minecraft:block_entity[sign]
+	cherry_hanging_sign,
+	cherry_wall_hanging_sign,
+] to minecraft:block_entity[hanging_sign]
+
+#[since="1.21.2"]
+dispatch minecraft:block[
+	pale_oak_hanging_sign,
+	pale_oak_wall_hanging_sign,
+] to minecraft:block_entity[hanging_sign]
+
+#[since="26.3"]
+dispatch minecraft:block[
+	poplar_hanging_sign,
+	poplar_wall_hanging_sign,
+] to minecraft:block_entity[hanging_sign]

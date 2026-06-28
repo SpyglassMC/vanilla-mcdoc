@@ -24,6 +24,10 @@ dispatch minecraft:entity[
 	spruce_boat,
 ] to Boat
 
+#[since="26.3"]
+dispatch minecraft:entity[poplar_boat] to Boat
+
+// Until 1.21.2
 enum(string) BoatType {
 	Oak = "oak",
 	Spruce = "spruce",
@@ -65,3 +69,6 @@ dispatch minecraft:entity[
 	pale_oak_chest_boat,
 	spruce_chest_boat,
 ] to ChestBoat
+
+#[since="26.3"]
+dispatch minecraft:entity[popolar_chest_boat] to ChestBoat
