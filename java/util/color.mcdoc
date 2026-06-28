@@ -41,22 +41,22 @@ enum(string) DyeColor {
 }
 
 enum(byte) DyeColorByte {
-	White = 0,
-	Orange = 1,
-	Magenta = 2,
-	LightBlue = 3,
-	Yellow = 4,
-	Lime = 5,
-	Pink = 6,
-	Gray = 7,
-	LightGray = 8,
-	Cyan = 9,
-	Purple = 10,
-	Blue = 11,
-	Brown = 12,
-	Green = 13,
-	Red = 14,
-	Black = 15,
+	White = 0b,
+	Orange = 1b,
+	Magenta = 2b,
+	LightBlue = 3b,
+	Yellow = 4b,
+	Lime = 5b,
+	Pink = 6b,
+	Gray = 7b,
+	LightGray = 8b,
+	Cyan = 9b,
+	Purple = 10b,
+	Blue = 11b,
+	Brown = 12b,
+	Green = 13b,
+	Red = 14b,
+	Black = 15b,
 }
 
 enum(int) DyeColorInt {

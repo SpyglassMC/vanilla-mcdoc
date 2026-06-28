@@ -20,8 +20,8 @@ dispatch minecraft:entity[painting] to struct Painting {
 }
 
 enum(byte) Facing {
-	South = 0,
-	West = 1,
-	North = 2,
-	East = 3,
+	South = 0b,
+	West = 1b,
+	North = 2b,
+	East = 3b,
 }

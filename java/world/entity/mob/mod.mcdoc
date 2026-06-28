@@ -16,6 +16,7 @@ struct LivingEntity {
 	/// Timer since it has been damaged. Counts down to zero.
 	HurtTime?: short,
 	/// Ticks since it was last damaged, from its creation.
+	#[until="26.2"]
 	HurtByTimestamp?: int,
 	/// Timer since it was marked as dead. Counts down to zero.
 	DeathTime?: short,
@@ -180,10 +181,13 @@ struct Attribute {
 
 /// A single attribute modifier
 type AttributeModifier = (
-	#[since="1.21"] struct {
-		id?: #[id="attribute_modifier"] string,
-		amount?: double,
-		operation?: AttributeOperation,
+	#[since="1.21"] struct ModernAttributeModifier {
+		/// The unique identifier of this attribute modifier.
+		id: #[id="attribute_modifier"] string,
+		/// Change in the attribute.
+		amount: double,
+		/// The operation used for this modifier.
+		operation: AttributeOperation,
 	} |
 	#[until="1.21"] struct {
 		/// Has no real effect.

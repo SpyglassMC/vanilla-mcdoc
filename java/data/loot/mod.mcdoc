@@ -1,4 +1,4 @@
-use ::java::util::slot::SlotSource
+use ::java::data::slot_source::SlotSource
 use ::java::util::text::Text
 use super::util::MinMaxBounds
 use super::util::NumberProvider
@@ -51,6 +51,10 @@ enum(string) LootContextType {
 	BlockInteract = "block_interact",
 	#[since="1.21.9"]
 	EntityInteract = "entity_interact",
+	#[since="26.1"]
+	VillagerTrade = "villager_trade",
+	#[since="26.3"]
+	CommandSlotSource = "command_slot_source",
 }
 
 enum(string) EntityTarget {
@@ -167,21 +171,11 @@ dispatch minecraft:loot_pool_entry[group] to CompositePoolEntry
 /// Executes child entries until the first one that can't run due to conditions.
 dispatch minecraft:loot_pool_entry[sequence] to CompositePoolEntry
 
-struct LootFunction {
-	function: (
-		#[until="1.16"] #[id] LootFunctionType |
-		#[since="1.16"] #[id="loot_function_type"] string |
-	),
-	...minecraft:loot_function[[function]],
-}
+type LootFunction = function::LootFunctionOf<#[id="loot_function_type"] string, #[id="loot_condition_type"] string>
+type NonReferenceLootFunction = function::LootFunctionOf<#[id(registry="loot_function_type",exclude=["reference"])] string, #[id(registry="loot_condition_type",exclude=["reference"])] string>
 
-struct LootCondition {
-	condition: (
-		#[until="1.16"] #[id] LootConditionType |
-		#[since="1.16"] #[id="loot_condition_type"] string |
-	),
-	...minecraft:loot_condition[[condition]],
-}
+type LootCondition = condition::LootConditionOf<#[id="loot_condition_type"] string>
+type NonReferenceLootCondition = condition::LootConditionOf<#[id(registry="loot_condition_type",exclude=["reference"])] string>
 
 // Until 1.16
 enum(string) LootEntryType {

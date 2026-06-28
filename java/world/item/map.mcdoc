@@ -33,40 +33,40 @@ struct Decoration {
 
 enum(byte) IconByteId {
 	/// White pentagon.
-	Player = 0,
+	Player = 0b,
 	/// Green pentagon.
-	Frame = 1,
+	Frame = 1b,
 	/// Red pentagon.
-	RedMarker = 2,
+	RedMarker = 2b,
 	/// Blue pentagon.
-	BlueMarker = 3,
+	BlueMarker = 3b,
 	/// White x.
-	TargetX = 4,
+	TargetX = 4b,
 	/// Red triangle.
-	TargetPoint = 5,
+	TargetPoint = 5b,
 	/// Large white dot.
-	PlayerOffMap = 6,
+	PlayerOffMap = 6b,
 	/// Small white dot.
-	PlayerOffLimits = 7,
+	PlayerOffLimits = 7b,
 	/// Woodland mansion.
-	Mansion = 8,
+	Mansion = 8b,
 	/// Ocean monument.
-	Monument = 9,
-	WhiteBanner = 10,
-	OrangeBanner = 11,
-	MagentaBanner = 12,
-	LightBlueBanner = 13,
-	YellowBanner = 14,
-	LimeBanner = 15,
-	PinkBanner = 16,
-	GrayBanner = 17,
-	LightGrayBanner = 18,
-	CyanBanner = 19,
-	PurpleBanner = 20,
-	BlueBanner = 21,
-	BrownBanner = 22,
-	GreenBanner = 23,
-	RedBanner = 24,
-	BlackBanner = 25,
-	RedX = 26,
+	Monument = 9b,
+	WhiteBanner = 10b,
+	OrangeBanner = 11b,
+	MagentaBanner = 12b,
+	LightBlueBanner = 13b,
+	YellowBanner = 14b,
+	LimeBanner = 15b,
+	PinkBanner = 16b,
+	GrayBanner = 17b,
+	LightGrayBanner = 18b,
+	CyanBanner = 19b,
+	PurpleBanner = 20b,
+	BlueBanner = 21b,
+	BrownBanner = 22b,
+	GreenBanner = 23b,
+	RedBanner = 24b,
+	BlackBanner = 25b,
+	RedX = 26b,
 }

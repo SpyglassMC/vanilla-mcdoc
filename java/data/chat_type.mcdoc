@@ -1,16 +1,21 @@
 use ::java::util::text::TextStyle
 
-dispatch minecraft:resource[chat_type] to struct ChatType {
-	chat?: (
-		#[until="1.19.1"] TextDisplay |
-		#[since="1.19.1"] ChatDecoration |
-	),
-	#[until="1.19.1"]
+dispatch minecraft:resource[chat_type] to (
+	#[until="1.19.1"] OldChatType |
+	#[since="1.19.1"] ChatType |
+)
+
+// 1.19
+struct OldChatType {
+	chat?: TextDisplay,
 	overlay?: TextDisplay,
-	narration?: (
-		#[until="1.19.1"] Narration |
-		#[since="1.19.1"] ChatDecoration
-	),
+	narration?: Narration,
+}
+
+// since 1.19.1
+struct ChatType {
+	chat: ChatDecoration,
+	narration: ChatDecoration,
 }
 
 struct TextDisplay {

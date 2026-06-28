@@ -122,6 +122,20 @@ dispatch minecraft:particle[flash] to struct FlashParticle {
 	color: TranslucentParticle,
 }
 
+#[since="26.2"]
+dispatch minecraft:particle[geyser, geyser_plume] to struct GeyserParticle {
+	/// Scales the particle size and its burst impulse.
+	water_blocks: int @ 1..,
+}
+
+#[since="26.2"]
+dispatch minecraft:particle[geyser_base, geyser_poof] to struct GeyserBaseParticle {
+	/// Scales the particle size and its burst impulse.
+	water_blocks: int @ 1..,
+	/// Scales the initial burst impulse
+	burst_impulse_base: float,
+}
+
 dispatch minecraft:particle[item] to struct ItemParticle {
 	#[until="1.20.5"]
 	value: ItemStack,

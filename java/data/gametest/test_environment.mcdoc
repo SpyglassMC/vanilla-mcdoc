@@ -8,6 +8,18 @@ dispatch minecraft:test_environment_definition[all_of] to struct AllOffTestEnvir
 	definitions: [TestEnvironment],
 }
 
+#[since="26.2"]
+dispatch minecraft:test_environment_definition[difficulty] to struct DifficultyTestEnvironment {
+	difficulty: Difficulty,
+}
+
+enum(string) Difficulty {
+	Peaceful = "peaceful",
+	Easy = "easy",
+	Normal = "normal",
+	Hard = "hard",
+}
+
 dispatch minecraft:test_environment_definition[function] to struct FunctionTestEnvironment {
 	setup?: #[id="function"] string,
 	teardown?: #[id="function"] string,

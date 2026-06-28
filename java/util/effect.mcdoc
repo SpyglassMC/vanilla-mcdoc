@@ -1,7 +1,7 @@
 type MobEffectInstance = (
 	#[until="1.20.2"] struct OldMobEffect {
 		Id?: EffectId,
-		Amplifier?: byte @ 0..,
+		Amplifier?: (#[canonical] byte | int @ 0..255), // TODO: Properly support unsigned byte in some way
 		/// Duration of the effect in ticks. Infinite is represented by `-1`.
 		Duration?: (
 			int @ 1.. |
@@ -20,7 +20,7 @@ type MobEffectInstance = (
 	#[since="1.20.2"] struct ModernMobEffect {
 		id: #[id="mob_effect"] string,
 		/// Level I having value 0. Defaults to 0.
-		amplifier?: byte @ 0..,
+		amplifier?: (#[canonical] byte | int @ 0..255),  // TODO: Properly support unsigned byte in some way
 		/// Duration of the effect in ticks. Infinite is represented by `-1`.
 		duration?: (-1 | int @ 1..),
 		/// Whether the effect appears as a HUD icon in addition to in the inventory GUI (same behavior as beacons when `true`). Defaults to `false`.
@@ -41,38 +41,38 @@ type EffectId = (
 
 /// Numerical ids for effects
 enum(byte) EffectByteId {
-	Speed = 1,
-	Slowness = 2,
-	Haste = 3,
-	MiningFatigue = 4,
-	Strength = 5,
-	InstantHealth = 6,
-	InstantDamage = 7,
-	JumpBoost = 8,
-	Nausea = 9,
-	Regeneration = 10,
-	Resistance = 11,
-	FireResistance = 12,
-	WaterBreathing = 13,
-	Invisibility = 14,
-	Blindness = 15,
-	NightVision = 16,
-	Hunger = 17,
-	Weakness = 18,
-	Poison = 19,
-	Wither = 20,
-	HealthBoost = 21,
-	Absorption = 22,
-	Saturation = 23,
-	Glowing = 24,
-	Levitation = 25,
-	Luck = 26,
-	UnLuck = 27,
-	SlowFalling = 28,
-	ConduitPower = 29,
-	DolphinsGrace = 30,
-	BadOmen = 31,
-	HeroOfTheVillage = 32,
+	Speed = 1b,
+	Slowness = 2b,
+	Haste = 3b,
+	MiningFatigue = 4b,
+	Strength = 5b,
+	InstantHealth = 6b,
+	InstantDamage = 7b,
+	JumpBoost = 8b,
+	Nausea = 9b,
+	Regeneration = 10b,
+	Resistance = 11b,
+	FireResistance = 12b,
+	WaterBreathing = 13b,
+	Invisibility = 14b,
+	Blindness = 15b,
+	NightVision = 16b,
+	Hunger = 17b,
+	Weakness = 18b,
+	Poison = 19b,
+	Wither = 20b,
+	HealthBoost = 21b,
+	Absorption = 22b,
+	Saturation = 23b,
+	Glowing = 24b,
+	Levitation = 25b,
+	Luck = 26b,
+	UnLuck = 27b,
+	SlowFalling = 28b,
+	ConduitPower = 29b,
+	DolphinsGrace = 30b,
+	BadOmen = 31b,
+	HeroOfTheVillage = 32b,
 }
 
 enum(int) EffectIntId {

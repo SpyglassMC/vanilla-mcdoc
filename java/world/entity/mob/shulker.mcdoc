@@ -1,4 +1,4 @@
-use ::java::util::color::DyeColorInt
+use ::java::util::color::DyeColorByte
 use ::java::util::color::DyeColor
 
 dispatch minecraft:entity[shulker] to struct Shulker {
@@ -7,7 +7,7 @@ dispatch minecraft:entity[shulker] to struct Shulker {
 	Peek?: boolean,
 	/// Which face it is attached to.
 	AttachFace?: AttachFace,
-	Color?: (DyeColorInt | ShulkerColor),
+	Color?: (DyeColorByte | ShulkerColor),
 	/// Approximate x coordinate of the shulker.
 	#[until="1.17"]
 	APX?: int,
@@ -20,14 +20,14 @@ dispatch minecraft:entity[shulker] to struct Shulker {
 }
 
 enum(byte) AttachFace {
-	Down = 0,
-	Up = 1,
-	North = 2,
-	South = 3,
-	West = 4,
-	East = 5,
+	Down = 0b,
+	Up = 1b,
+	North = 2b,
+	South = 3b,
+	West = 4b,
+	East = 5b,
 }
 
 enum(byte) ShulkerColor {
-	Normal = 16,
+	Normal = 16b,
 }

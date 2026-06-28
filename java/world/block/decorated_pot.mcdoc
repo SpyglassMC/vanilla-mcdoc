@@ -1,12 +1,20 @@
 use ::java::world::item::ItemStack
+use ::java::world::component::block::PotDecorations
 
 #[since="1.19.4"]
 dispatch minecraft:block_entity[decorated_pot] to struct DecoratedPot {
 	...super::BlockEntity,
-	/// Item ID of what was used for each side of the pot. \
-	/// Only vanilla pottery sherds have hardcoded decoration textures.
-	/// Other items are treated like brick.
-	sherds?: [#[id="item"] string] @ 4,
+	#[until="26.3"] ...struct {
+		/// Item ID of what was used for each side of the pot. \
+		/// Only vanilla pottery sherds have hardcoded decoration textures. \
+		/// Other items are treated like brick.
+		sherds?: [#[id="item"] string] @ ..4,
+	},
+	#[since="26.3"] ...struct {
+		/// Item ID of what was used for each side of the pot. \
+		/// Decoration textures are determined by `provides_pottery_pattern` component on the sherd items.
+		sherds?: PotDecorations,
+	},
 	/// Loot table that will populate this container.
 	#[since="1.20.3"]
 	LootTable?: #[id(registry="loot_table",empty="allowed")] string,

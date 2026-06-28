@@ -1,0 +1,10 @@
+// HappyGhast actually inherits the breedable Animal class
+// However, it disables the breeding behavior so the fields are unused
+// So it spreads MobBase and AgeableMob here instead of Breedable
+
+#[since="1.21.6"]
+dispatch minecraft:entity[happy_ghast] to struct HappyGhast {
+	...super::MobBase,
+	...super::AgeableMob,
+	still_timeout?: int,
+}

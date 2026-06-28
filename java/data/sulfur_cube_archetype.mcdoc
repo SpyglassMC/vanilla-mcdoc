@@ -1,0 +1,54 @@
+use ::java::data::util::SoundEventRef
+use ::java::world::entity::mob::ModernAttributeModifier
+use ::java::data::worldgen::FloatProvider
+
+dispatch minecraft:resource[sulfur_cube_archetype] to struct SulfurCubeArchetype {
+	items: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
+	/// Defaults to `false`.
+	buoyant?: boolean,
+	/// When present, sulfur cube with this archetype will explode when ignited.
+	explosion?: ExplosionData,
+	contact_damage?: ContactDamage,
+	knockback_modifiers: KnockbackModifiers,
+	attribute_modifiers: [AttributeEntry],
+	sound_settings: SoundSettings,
+}
+
+struct AttributeEntry {
+	/// Attribute type to modify.
+	attribute: #[id="attribute"] string,
+	...ModernAttributeModifier,
+}
+
+struct ExplosionData {
+	/// The fuse time in ticks when ignited. \
+	/// When ignited by an explosion, the fuse will be a random value between `explosion_fuse / 8` and `3 * explosion_fuse / 8`.
+	fuse: int @ 1..,
+	/// The explosion power.
+	power: int @ 0..,
+	/// Whether the explosion causes fire.
+	causes_fire: boolean,
+}
+
+struct ContactDamage {
+	damage_type: #[id="damage_type"] string,
+	amount: FloatProvider<float @ 0..>,
+	/// Whether the damage is attributed to the sulfur cube.
+	attribute_to_source: boolean,
+}
+
+struct KnockbackModifiers {
+	/// The horizontal power of the knockback.
+	horizontal_power: float,
+	/// The vertical power of the knockback.
+	vertical_power: float,
+}
+
+struct SoundSettings {
+	hit_sound: SoundEventRef,
+	push_sound: SoundEventRef,
+	/// Minimum impact speed required to trigger the sound.
+	push_sound_impulse_threshold: float,
+	/// Cooldown in seconds for the sound effect.
+	push_sound_cooldown: float,
+}

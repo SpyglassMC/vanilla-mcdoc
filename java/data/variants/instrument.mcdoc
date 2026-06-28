@@ -7,6 +7,11 @@ dispatch minecraft:resource["instrument"] to struct Instrument {
 	/// Maximum range in blocks that the sound can be heard
 	range: float @ 0<..,
 	/// Duration of use in seconds, used as item cooldown
-	use_duration: float @ 0<..,
-	description: Text
+	use_duration: (
+		#[until="26.3"] float @ 0<.. |
+		#[since="26.3"] float @ 0.. |
+	),
+	#[since="26.3"]
+	durability_damage?: int @ 0..,
+	description: Text,
 }

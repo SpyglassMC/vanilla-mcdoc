@@ -72,15 +72,16 @@ struct AdvancementCriterion {
 	...minecraft:trigger[[trigger]],
 }
 
+/// The order is `experience` → `loot` → `recipes` → `function`.
 struct AdvancementRewards {
-	/// Function to run as the player (not at). Function group tags are not allowed.
-	function?: #[id="function"] string,
+	/// XP to add.
+	experience?: int,
 	/// Loot tables to give.
 	loot?: [#[id="loot_table"] string],
 	/// Recipes to unlock.
 	recipes?: [#[id="recipe"] string],
-	/// XP to add.
-	experience?: int,
+	/// Function to run as and at the player. Function tags are not allowed.
+	function?: #[id="function"] string,
 }
 
 enum(string) Trigger {

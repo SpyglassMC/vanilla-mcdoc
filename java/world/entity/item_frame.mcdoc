@@ -22,10 +22,10 @@ dispatch minecraft:entity[item_frame] to struct ItemFrame {
 dispatch minecraft:entity[glow_item_frame] to ItemFrame
 
 enum(byte) Facing {
-	Down = 0,
-	Up = 1,
-	North = 2,
-	South = 3,
-	West = 4,
-	East = 5,
+	Down = 0b,
+	Up = 1b,
+	North = 2b,
+	South = 3b,
+	West = 4b,
+	East = 5b,
 }

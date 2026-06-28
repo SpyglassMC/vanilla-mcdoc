@@ -73,10 +73,12 @@ dispatch minecraft:resource[dimension_type] to struct DimensionType {
 	/// The direction of cardinal lighting that affects blocks.
 	#[since="1.21.11"]
 	cardinal_light?: CardinalLightType,
-	/// Block tag defining what blocks keep fire infinitely burning.
+	/// Defining what blocks keep fire infinitely burning.
 	infiniburn: (
 		#[until="1.18.2"] #[id(registry="block",tags="implicit")] string |
-		#[since="1.18.2"] #[id(registry="block",tags="required")] string |
+		#[since="1.18.2"] #[until="26.2"] #[id(registry="block",tags="required")] string |
+		#[since="26.2"] #[id(registry="block",tags="allowed")] string |
+		#[since="26.2"] [#[id="block"] string] |
 	),
 	/// The minimum height in which blocks can exist.
 	#[since="1.17"]

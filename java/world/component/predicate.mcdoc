@@ -10,6 +10,15 @@ use ::java::world::component::item::FireworkShape
 // This is necessary for super::DataComponentPredicate to work in 1.21.11
 dispatch minecraft:data_component_predicate[%unknown] to ()
 
+// MC-307873 got a won't fix
+dispatch minecraft:data_component_existence_predicate[%unknown] to struct {}
+dispatch minecraft:data_component_existence_predicate[
+	enchantments,
+	potion_contents,
+	stored_enchantments,
+	"villager/variant",
+] to ()
+
 dispatch minecraft:data_component_predicate[attribute_modifiers] to struct AttributeModifiersPredicate {
 	modifiers?: CollectionPredicate<AttributeModifiersPredicateEntry>,
 }
@@ -60,6 +69,9 @@ dispatch minecraft:data_component_predicate[trim] to struct TrimPredicate {
 	material?: (#[id(registry="trim_material",tags="allowed")] string | [#[id="trim_material"] string]),
 	pattern?: (#[id(registry="trim_pattern",tags="allowed")] string | [#[id="trim_pattern"] string]),
 }
+
+#[since="26.1"]
+dispatch minecraft:data_component_predicate["villager/variant"] to (#[id=(registry="villager_type",tags="allowed")] string | [#[id="villager_type"] string])
 
 dispatch minecraft:data_component_predicate[writable_book_content] to struct WritableBookPredicate {
 	/// Matches the raw text, instead of filtered.

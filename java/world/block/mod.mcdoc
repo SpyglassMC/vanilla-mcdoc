@@ -20,7 +20,6 @@ struct BlockEntityData {
 }
 
 dispatch minecraft:block[
-	bed,
 	bell,
 	daylight_detector,
 	ender_chest,
@@ -34,6 +33,9 @@ dispatch minecraft:block[
 	waxed_weathered_copper_golem_statue,
 	waxed_oxidized_copper_golem_statue,
 ] to BlockEntity
+
+#[until="26.2"]
+dispatch minecraft:block[bed] to BlockEntity
 
 struct Lockable {
 	/// Name of the item that a player has to be holding to open this container.

@@ -1,0 +1,9 @@
+dispatch minecraft:block_entity[potent_sulfur] to struct PotentSulfur {
+	...super::BlockEntity,
+	/// Time in seconds until the next state switch (between dormant and erupting). \
+	/// The timer only counts down when the potent sulfur creates a valid geyser. \
+	/// Negative values will be replaced with a new duration of the current state.
+	countdown?: int,
+}
+
+dispatch minecraft:block[potent_sulfur] to minecraft:block_entity[potent_sulfur]

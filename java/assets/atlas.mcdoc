@@ -51,14 +51,21 @@ struct FilterPattern {
 #[since="1.19.4"]
 dispatch minecraft:sprite_source[paletted_permutations] to struct PalettedPermutations {
 	textures: [#[id="texture"] string],
-	palette_key: #[id="texture"] string,
+	palette_key: PaletteTexture,
 	permutations: struct PermutationsMap {
-		[#[permutation(definition=true)] string]: #[id="texture"] string,
+		[#[permutation(definition=true)] string]: PaletteTexture,
 	},
 	/// Value to use when joining the texture and permutation names to produce the sprite name.
 	/// Defaults to `_`.
 	separator?: string,
 }
+
+type PaletteTexture = (
+	#[until="26.3"] #[id="texture"] string |
+	#[since="26.3"] PaletteRef |
+)
+// since 26.3
+type PaletteRef = #[id(registry="texture", path="palettes/")] string
 
 dispatch minecraft:sprite_source[unstitch] to struct Unstitch {
 	resource: #[id="texture"] string,
