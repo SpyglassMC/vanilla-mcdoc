@@ -1,5 +1,5 @@
 {
-	"ref": "b50a5eed0c1de20f208c06e40008ddc2e9676a48",
+	"ref": "fd2603f7fe8d1ad2bf2d12cd73ce14eaf777e8cf",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -10484,7 +10484,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Changes how `name` is interpreted. Defaults to `sound`.",
+					"desc": "Changes how `name` is interpreted. Defaults to `file`.",
 					"key": "type",
 					"type": {
 						"kind": "reference",
