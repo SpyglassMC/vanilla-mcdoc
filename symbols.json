@@ -1,5 +1,5 @@
 {
-	"ref": "fd2603f7fe8d1ad2bf2d12cd73ce14eaf777e8cf",
+	"ref": "3e938e1499f1ebb19d1fe78e066cb043dcfaf1d2",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -96009,6 +96009,31 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "raid_omen_position",
+					"type": {
+						"kind": "int_array",
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"desc": "Entity that the player is riding.",
 					"key": "RootVehicle",
 					"type": {
@@ -96198,6 +96223,54 @@
 						"kind": "reference",
 						"path": "::java::world::entity::mob::FallDamageLogicData"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"key": "last_explosion_impact_pos",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "double"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"key": "spawn_extra_particles_on_fall",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -102299,7 +102372,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -102324,7 +102397,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"acacia_sign": {
 				"kind": "dispatcher",
@@ -102341,7 +102426,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -102373,7 +102458,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -102398,7 +102483,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"bamboo_sign": {
 				"kind": "dispatcher",
@@ -102427,7 +102524,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -102531,7 +102628,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -102556,7 +102653,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"birch_sign": {
 				"kind": "dispatcher",
@@ -102573,7 +102682,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -102752,6 +102861,28 @@
 				],
 				"registry": "minecraft:block_entity"
 			},
+			"cherry_hanging_sign": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "hanging_sign"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.19.4"
+							}
+						}
+					}
+				]
+			},
 			"cherry_shelf": {
 				"kind": "dispatcher",
 				"parallelIndices": [
@@ -102760,7 +102891,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"cherry_sign": {
 				"kind": "dispatcher",
@@ -102768,6 +102911,28 @@
 					{
 						"kind": "static",
 						"value": "sign"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.19.4"
+							}
+						}
+					}
+				]
+			},
+			"cherry_wall_hanging_sign": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -102814,7 +102979,19 @@
 						"value": "chest"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"chiseled_bookshelf": {
 				"kind": "dispatcher",
@@ -102864,7 +103041,19 @@
 						"value": "chest"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"copper_golem_statue": {
 				"kind": "reference",
@@ -102959,7 +103148,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -102984,7 +103173,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"crimson_sign": {
 				"kind": "dispatcher",
@@ -103013,7 +103214,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -103087,7 +103288,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -103112,7 +103313,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"dark_oak_sign": {
 				"kind": "dispatcher",
@@ -103129,7 +103342,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -103300,7 +103513,19 @@
 						"value": "chest"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"exposed_copper_golem_statue": {
 				"kind": "reference",
@@ -103411,7 +103636,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -103436,7 +103661,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"jungle_sign": {
 				"kind": "dispatcher",
@@ -103453,7 +103690,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -103615,7 +103852,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -103640,7 +103877,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"mangrove_sign": {
 				"kind": "dispatcher",
@@ -103669,7 +103918,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -103723,7 +103972,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -103748,7 +103997,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"oak_sign": {
 				"kind": "dispatcher",
@@ -103765,7 +104026,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -103830,11 +104091,45 @@
 						"value": "chest"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"oxidized_copper_golem_statue": {
 				"kind": "reference",
 				"path": "::java::world::block::BlockEntity"
+			},
+			"pale_oak_hanging_sign": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "hanging_sign"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.2"
+							}
+						}
+					}
+				]
 			},
 			"pale_oak_shelf": {
 				"kind": "dispatcher",
@@ -103844,7 +104139,85 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
+			},
+			"pale_oak_sign": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "sign"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.2"
+							}
+						}
+					}
+				]
+			},
+			"pale_oak_wall_hanging_sign": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "hanging_sign"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.2"
+							}
+						}
+					}
+				]
+			},
+			"pale_oak_wall_sign": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "sign"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.2"
+							}
+						}
+					}
+				]
 			},
 			"pink_banner": {
 				"kind": "dispatcher",
@@ -103895,6 +104268,116 @@
 					}
 				],
 				"registry": "minecraft:block_entity"
+			},
+			"poplar_hanging_sign": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "hanging_sign"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"poplar_shelf": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "shelf"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"poplar_sign": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "sign"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"poplar_wall_hanging_sign": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "hanging_sign"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"poplar_wall_sign": {
+				"kind": "dispatcher",
+				"parallelIndices": [
+					{
+						"kind": "static",
+						"value": "sign"
+					}
+				],
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"potent_sulfur": {
 				"kind": "dispatcher",
@@ -104137,7 +104620,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -104162,7 +104645,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"spruce_sign": {
 				"kind": "dispatcher",
@@ -104179,7 +104674,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -104291,7 +104786,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -104316,7 +104811,19 @@
 						"value": "shelf"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"warped_sign": {
 				"kind": "dispatcher",
@@ -104345,7 +104852,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "sign"
+						"value": "hanging_sign"
 					}
 				],
 				"registry": "minecraft:block_entity",
@@ -104392,7 +104899,19 @@
 						"value": "chest"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"waxed_copper_golem_statue": {
 				"kind": "reference",
@@ -104406,7 +104925,19 @@
 						"value": "chest"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"waxed_exposed_copper_golem_statue": {
 				"kind": "reference",
@@ -104420,7 +104951,19 @@
 						"value": "chest"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"waxed_oxidized_copper_golem_statue": {
 				"kind": "reference",
@@ -104434,7 +104977,19 @@
 						"value": "chest"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"waxed_weathered_copper_golem_statue": {
 				"kind": "reference",
@@ -104448,7 +105003,19 @@
 						"value": "chest"
 					}
 				],
-				"registry": "minecraft:block_entity"
+				"registry": "minecraft:block_entity",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.9"
+							}
+						}
+					}
+				]
 			},
 			"weathered_copper_golem_statue": {
 				"kind": "reference",
@@ -109254,6 +109821,38 @@
 				"kind": "reference",
 				"path": "::java::world::entity::mob::breedable::polar_bear::PolarBear"
 			},
+			"poplar_boat": {
+				"kind": "reference",
+				"path": "::java::world::entity::boat::Boat",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"popolar_chest_boat": {
+				"kind": "reference",
+				"path": "::java::world::entity::boat::ChestBoat",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"potion": {
 				"kind": "reference",
 				"path": "::java::world::entity::projectile::throwable::Potion"
@@ -109724,7 +110323,19 @@
 			},
 			"boat": {
 				"kind": "reference",
-				"path": "::java::data::advancement::predicate::BoatPredicate"
+				"path": "::java::data::advancement::predicate::BoatPredicate",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.2"
+							}
+						}
+					}
+				]
 			},
 			"cat": {
 				"kind": "reference",
