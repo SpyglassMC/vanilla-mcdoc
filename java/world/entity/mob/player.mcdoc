@@ -85,6 +85,8 @@ dispatch minecraft:entity[player] to struct Player {
 	/// Position that the player entered the nether at.
 	#[since="1.21.5"]
 	entered_nether_pos?: [double] @ 3,
+	#[since="1.20.5"]
+	raid_omen_position?: int[] @ 3,
 	/// Entity that the player is riding.
 	RootVehicle?: RootVehicle,
 	/// Entity that is on the player's left shoulder.
@@ -110,6 +112,10 @@ dispatch minecraft:entity[player] to struct Player {
 		ignore_fall_damage_from_current_explosion?: boolean,
 	},
 	#[until="26.1"] ...FallDamageLogicData,
+	#[since="26.2"]
+	last_explosion_impact_pos?: [double] @ 3,
+	#[since="1.20.5"]
+	spawn_extra_particles_on_fall?: boolean,
 	// these are not included
 	CustomName?: (),
 	CustomNameVisible?: (),
