@@ -109,7 +109,7 @@
 	"::java::assets::sounds::Sound.pitch": "Default is 1.0.",
 	"::java::assets::sounds::Sound.preload": "Whether the sound should be loaded when loading the pack instead of when the sound is played. Used by the underwater ambience. Defaults to false.",
 	"::java::assets::sounds::Sound.stream": "If true it will be streamed from its file. Sounds longer than a few seconds should enable this to avoid lag. Defaults to false.\nWhen false many instances of the sound can be ran at the same time. When true only allows 4 instances (of that type) can be played.",
-	"::java::assets::sounds::Sound.type": "Changes how `name` is interpreted. Defaults to `sound`.",
+	"::java::assets::sounds::Sound.type": "Changes how `name` is interpreted. Defaults to `file`.",
 	"::java::assets::sounds::Sound.volume": "Defaults to 1.0.",
 	"::java::assets::sounds::Sound.weight": "Chance that this sound is selected to play. Defaults to 1.",
 	"::java::assets::sounds::SoundEventRegistration.replace": "If true the sounds listed should replace the ones listed in the minecraft sounds.json for this sound event.\nFalse if the sounds listed should be added. If undefined. Defaults to false.",
