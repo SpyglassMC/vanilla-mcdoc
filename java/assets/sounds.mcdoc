@@ -14,7 +14,7 @@ struct SoundEventRegistration {
 }
 
 struct Sound {
-	/// Changes how `name` is interpreted. Defaults to `sound`.
+	/// Changes how `name` is interpreted. Defaults to `file`.
 	type?: SoundType,
 	name: minecraft:sound_type[[type]],
 	/// Defaults to 1.0.
