@@ -1,5 +1,5 @@
 {
-	"ref": "3e938e1499f1ebb19d1fe78e066cb043dcfaf1d2",
+	"ref": "fbb60d0c98ec3448aac0ea95b4538823f70ae8fe",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -10935,6 +10935,19 @@
 				}
 			]
 		},
+		"::java::assets::texture_meta::PaletteMeta": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "base_palette",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::atlas::PaletteRef"
+					}
+				}
+			]
+		},
 		"::java::assets::texture_meta::TextureAnimation": {
 			"kind": "struct",
 			"fields": [
@@ -11249,6 +11262,37 @@
 									}
 								},
 								"optional": true
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Required for armor trim textures.",
+					"key": "palette",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "base_palette",
+								"type": {
+									"kind": "reference",
+									"path": "::java::assets::atlas::PaletteRef"
+								}
 							}
 						]
 					},
