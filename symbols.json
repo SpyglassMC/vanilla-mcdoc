@@ -1,5 +1,5 @@
 {
-	"ref": "5aa8b129e04779de9d7180caa113eb29816b7aec",
+	"ref": "9fe7fe2779ba80be106c5a98a4c71d94cce76bf4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -12016,66 +12016,6 @@
 				}
 			]
 		},
-		"::java::data::advancement::predicate::<anonymous 0>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									{
-										"keyword": "parent"
-									},
-									"blocks"
-								]
-							}
-						],
-						"registry": "mcdoc:block_state_keys"
-					},
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "indexed",
-								"child": {
-									"kind": "dispatcher",
-									"parallelIndices": [
-										{
-											"kind": "dynamic",
-											"accessor": [
-												{
-													"keyword": "parent"
-												},
-												"blocks"
-											]
-										}
-									],
-									"registry": "mcdoc:block_states"
-								},
-								"parallelIndices": [
-									{
-										"kind": "dynamic",
-										"accessor": [
-											{
-												"keyword": "key"
-											}
-										]
-									}
-								]
-							}
-						]
-					}
-				}
-			]
-		},
 		"::java::data::advancement::predicate::AxolotlPredicate": {
 			"kind": "struct",
 			"fields": [
@@ -12249,64 +12189,8 @@
 					"kind": "pair",
 					"key": "state",
 					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": {
-									"kind": "dispatcher",
-									"parallelIndices": [
-										{
-											"kind": "dynamic",
-											"accessor": [
-												{
-													"keyword": "parent"
-												},
-												"blocks"
-											]
-										}
-									],
-									"registry": "mcdoc:block_state_keys"
-								},
-								"type": {
-									"kind": "concrete",
-									"child": {
-										"kind": "reference",
-										"path": "::java::data::util::MinMaxBounds"
-									},
-									"typeArgs": [
-										{
-											"kind": "indexed",
-											"child": {
-												"kind": "dispatcher",
-												"parallelIndices": [
-													{
-														"kind": "dynamic",
-														"accessor": [
-															{
-																"keyword": "parent"
-															},
-															"blocks"
-														]
-													}
-												],
-												"registry": "mcdoc:block_states"
-											},
-											"parallelIndices": [
-												{
-													"kind": "dynamic",
-													"accessor": [
-														{
-															"keyword": "key"
-														}
-													]
-												}
-											]
-										}
-									]
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::BlockPredicateState"
 					},
 					"optional": true
 				},
@@ -12407,6 +12291,66 @@
 						"path": "::java::world::component::DataComponentPredicate"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::predicate::BlockPredicateState": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "parent"
+									},
+									"blocks"
+								]
+							}
+						],
+						"registry": "mcdoc:block_state_keys"
+					},
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "indexed",
+								"child": {
+									"kind": "dispatcher",
+									"parallelIndices": [
+										{
+											"kind": "dynamic",
+											"accessor": [
+												{
+													"keyword": "parent"
+												},
+												"blocks"
+											]
+										}
+									],
+									"registry": "mcdoc:block_states"
+								},
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											{
+												"keyword": "key"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
 				}
 			]
 		},
