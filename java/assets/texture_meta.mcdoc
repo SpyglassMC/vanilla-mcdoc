@@ -5,30 +5,32 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 		/// If true, additional frames will be generated between frames with a frame time greater than 1 between them. Defaults to false.
 		interpolate?: boolean,
 		/// The width of the tile, as a direct ratio rather than in pixels. Can be used by resource packs to have frames that are not perfect squares.
-		width?: int,
+		width?: int @ 1..,
 		/// The height of the tile, as a direct ratio rather than in pixels. Can be used by resource packs to have frames that are not perfect squares.
-		height?: int,
+		height?: int @ 1..,
 		/// Sets the default time for each frame in increments of one game tick. Defaults to 1.
-		frametime?: int,
+		frametime?: int @ 1..,
 		/// Defaults to displaying all the frames from top to bottom.
 		frames?: [
 			(struct TextureAnimationFrame {
 				/// A number corresponding to position of a frame from the top, with the top frame being 0.
-				index: int,
+				index: int @ 0..,
 				/// The time in ticks to show this frame, overriding `frametime` above.
-				time: int,
+				time?: int @ 1..,
 			} |
-			int |
+			int @ 0.. |
 		)],
 	},
+	#[since="1.20.2"]
 	gui?: struct GuiMeta {
 		/// Configures how the GUI texture should be scaled. Defaults to `stretch`.
 		scaling?: GuiSpriteScaling,
 	},
 	/// Only available for villager textures.
 	villager?: struct VillagerTextureMeta {
-		/// Determines whether the villager's 'profession' hat layer should allow the 'type' hat layer to render or not. If this mcmeta is undefined the default is used.
-		hat?: ("full" | "partial")
+		/// Determines whether the villager's 'profession' hat layer should allow the 'type' hat layer to render or not. \
+		/// Defaults to `none`.
+		hat?: VillagerHatType,
 	},
 	texture?: struct ColormapTextureMeta {
 		/// Causes the texture to blur when viewed from close up. Defaults to false.
@@ -38,9 +40,9 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 		/// Defaults to `auto`.
 		#[since="1.21.11"]
 		mipmap_strategy?: MipmapStrategy,
-		/// The alpha bias for cutout textures.
+		/// The alpha bias for cutout textures. \
 		/// Positive values make the texture more opaque at distance.
-		/// Negative values make the texture more transparent at distance.
+		/// Negative values make the texture more transparent at distance. \
 		/// Defaults to 0.0
 		#[since="1.21.11"]
 		alpha_cutoff_bias?: float @ -1..1,
@@ -71,18 +73,18 @@ dispatch minecraft:gui_sprite_scaling[tile] to struct TileScaling {
 }
 
 dispatch minecraft:gui_sprite_scaling[nine_slice] to struct NineSlice {
-	width: int @ 0..,
-	height: int @ 0..,
+	width: int @ 1..,
+	height: int @ 1..,
 	border: (int @ 1.. | NineSliceBorder),
 	/// Defaults to `false`.
 	stretch_inner?: boolean,
 }
 
 struct NineSliceBorder {
-	left: int @ 0..,
-	top: int @ 0..,
-	right: int @ 0..,
-	bottom: int @ 0..,
+	left: int @ 1..,
+	top: int @ 1..,
+	right: int @ 1..,
+	bottom: int @ 1..,
 }
 
 enum(string) MipmapStrategy {
@@ -91,4 +93,10 @@ enum(string) MipmapStrategy {
 	Cutout = "cutout",
 	StrictCutout = "strict_cutout",
 	DarkCutout = "dark_cutout",
+}
+
+enum(string) VillagerHatType {
+	None = "none",
+	Parital = "partial",
+	Full = "full",
 }
