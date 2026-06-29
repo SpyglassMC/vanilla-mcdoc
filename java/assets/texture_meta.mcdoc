@@ -1,3 +1,5 @@
+use super::atlas::PaletteRef
+
 dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 	animation?: struct TextureAnimation {
 		/// If true, additional frames will be generated between frames with a frame time greater than 1 between them. Defaults to false.
@@ -42,7 +44,12 @@ dispatch minecraft:resource[texture_meta] to struct TextureMeta {
 		/// Defaults to 0.0
 		#[since="1.21.11"]
 		alpha_cutoff_bias?: float @ -1..1,
-	}
+	},
+	/// Required for armor trim textures.
+	#[since="26.3"]
+	palette?: struct PaletteMeta {
+		base_palette: PaletteRef,
+	},
 }
 
 struct GuiSpriteScaling {
