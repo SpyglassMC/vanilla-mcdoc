@@ -1,5 +1,5 @@
 {
-	"ref": "fbb60d0c98ec3448aac0ea95b4538823f70ae8fe",
+	"ref": "37070a56fce03d8e0f8bb06049b9b947ee65746b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -10729,7 +10729,7 @@
 							}
 						}
 					],
-					"desc": "The alpha bias for cutout textures.\nPositive values make the texture more opaque at distance.\nNegative values make the texture more transparent at distance.\nDefaults to 0.0",
+					"desc": "The alpha bias for cutout textures. \\\nPositive values make the texture more opaque at distance.\nNegative values make the texture more transparent at distance. \\\nDefaults to 0.0",
 					"key": "alpha_cutoff_bias",
 					"type": {
 						"kind": "float",
@@ -10840,7 +10840,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 0
+							"min": 1
 						}
 					}
 				},
@@ -10851,7 +10851,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 0
+							"min": 1
 						}
 					}
 				},
@@ -10896,7 +10896,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 0
+							"min": 1
 						}
 					}
 				},
@@ -10907,7 +10907,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 0
+							"min": 1
 						}
 					}
 				},
@@ -10918,7 +10918,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 0
+							"min": 1
 						}
 					}
 				},
@@ -10929,7 +10929,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 0
+							"min": 1
 						}
 					}
 				}
@@ -10965,7 +10965,11 @@
 					"desc": "The width of the tile, as a direct ratio rather than in pixels. Can be used by resource packs to have frames that are not perfect squares.",
 					"key": "width",
 					"type": {
-						"kind": "int"
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
 					},
 					"optional": true
 				},
@@ -10974,7 +10978,11 @@
 					"desc": "The height of the tile, as a direct ratio rather than in pixels. Can be used by resource packs to have frames that are not perfect squares.",
 					"key": "height",
 					"type": {
-						"kind": "int"
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
 					},
 					"optional": true
 				},
@@ -10983,7 +10991,11 @@
 					"desc": "Sets the default time for each frame in increments of one game tick. Defaults to 1.",
 					"key": "frametime",
 					"type": {
-						"kind": "int"
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
 					},
 					"optional": true
 				},
@@ -11004,7 +11016,11 @@
 											"desc": "A number corresponding to position of a frame from the top, with the top frame being 0.",
 											"key": "index",
 											"type": {
-												"kind": "int"
+												"kind": "int",
+												"valueRange": {
+													"kind": 0,
+													"min": 0
+												}
 											}
 										},
 										{
@@ -11012,13 +11028,22 @@
 											"desc": "The time in ticks to show this frame, overriding `frametime` above.",
 											"key": "time",
 											"type": {
-												"kind": "int"
-											}
+												"kind": "int",
+												"valueRange": {
+													"kind": 0,
+													"min": 1
+												}
+											},
+											"optional": true
 										}
 									]
 								},
 								{
-									"kind": "int"
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 0
+									}
 								}
 							]
 						}
@@ -11035,7 +11060,11 @@
 					"desc": "A number corresponding to position of a frame from the top, with the top frame being 0.",
 					"key": "index",
 					"type": {
-						"kind": "int"
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
 					}
 				},
 				{
@@ -11043,8 +11072,13 @@
 					"desc": "The time in ticks to show this frame, overriding `frametime` above.",
 					"key": "time",
 					"type": {
-						"kind": "int"
-					}
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -11071,7 +11105,11 @@
 								"desc": "The width of the tile, as a direct ratio rather than in pixels. Can be used by resource packs to have frames that are not perfect squares.",
 								"key": "width",
 								"type": {
-									"kind": "int"
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 1
+									}
 								},
 								"optional": true
 							},
@@ -11080,7 +11118,11 @@
 								"desc": "The height of the tile, as a direct ratio rather than in pixels. Can be used by resource packs to have frames that are not perfect squares.",
 								"key": "height",
 								"type": {
-									"kind": "int"
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 1
+									}
 								},
 								"optional": true
 							},
@@ -11089,7 +11131,11 @@
 								"desc": "Sets the default time for each frame in increments of one game tick. Defaults to 1.",
 								"key": "frametime",
 								"type": {
-									"kind": "int"
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 1
+									}
 								},
 								"optional": true
 							},
@@ -11110,7 +11156,11 @@
 														"desc": "A number corresponding to position of a frame from the top, with the top frame being 0.",
 														"key": "index",
 														"type": {
-															"kind": "int"
+															"kind": "int",
+															"valueRange": {
+																"kind": 0,
+																"min": 0
+															}
 														}
 													},
 													{
@@ -11118,13 +11168,22 @@
 														"desc": "The time in ticks to show this frame, overriding `frametime` above.",
 														"key": "time",
 														"type": {
-															"kind": "int"
-														}
+															"kind": "int",
+															"valueRange": {
+																"kind": 0,
+																"min": 1
+															}
+														},
+														"optional": true
 													}
 												]
 											},
 											{
-												"kind": "int"
+												"kind": "int",
+												"valueRange": {
+													"kind": 0,
+													"min": 0
+												}
 											}
 										]
 									}
@@ -11137,6 +11196,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.2"
+								}
+							}
+						}
+					],
 					"key": "gui",
 					"type": {
 						"kind": "struct",
@@ -11164,26 +11235,11 @@
 						"fields": [
 							{
 								"kind": "pair",
-								"desc": "Determines whether the villager's 'profession' hat layer should allow the 'type' hat layer to render or not. If this mcmeta is undefined the default is used.",
+								"desc": "Determines whether the villager's 'profession' hat layer should allow the 'type' hat layer to render or not. \\\nDefaults to `none`.",
 								"key": "hat",
 								"type": {
-									"kind": "union",
-									"members": [
-										{
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "full"
-											}
-										},
-										{
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "partial"
-											}
-										}
-									]
+									"kind": "reference",
+									"path": "::java::assets::texture_meta::VillagerHatType"
 								},
 								"optional": true
 							}
@@ -11251,7 +11307,7 @@
 										}
 									}
 								],
-								"desc": "The alpha bias for cutout textures.\nPositive values make the texture more opaque at distance.\nNegative values make the texture more transparent at distance.\nDefaults to 0.0",
+								"desc": "The alpha bias for cutout textures. \\\nPositive values make the texture more opaque at distance.\nNegative values make the texture more transparent at distance. \\\nDefaults to 0.0",
 								"key": "alpha_cutoff_bias",
 								"type": {
 									"kind": "float",
@@ -11327,31 +11383,34 @@
 				}
 			]
 		},
+		"::java::assets::texture_meta::VillagerHatType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "None",
+					"value": "none"
+				},
+				{
+					"identifier": "Parital",
+					"value": "partial"
+				},
+				{
+					"identifier": "Full",
+					"value": "full"
+				}
+			]
+		},
 		"::java::assets::texture_meta::VillagerTextureMeta": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Determines whether the villager's 'profession' hat layer should allow the 'type' hat layer to render or not. If this mcmeta is undefined the default is used.",
+					"desc": "Determines whether the villager's 'profession' hat layer should allow the 'type' hat layer to render or not. \\\nDefaults to `none`.",
 					"key": "hat",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "full"
-								}
-							},
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "partial"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::assets::texture_meta::VillagerHatType"
 					},
 					"optional": true
 				}
