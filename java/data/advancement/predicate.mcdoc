@@ -45,6 +45,10 @@ struct EnchantmentPredicate {
 	levels?: MinMaxBounds<int>,
 }
 
+struct BlockPredicateState {
+	[mcdoc:block_state_keys[[%parent.blocks]]]: MinMaxBounds<mcdoc:block_states[[%parent.blocks]][[%key]]>,
+}
+
 struct BlockPredicate {
 	#[until="1.17"]
 	block?: #[id="block"] string,
@@ -55,9 +59,7 @@ struct BlockPredicate {
 	),
 	#[until="1.20.5"]
 	tag?: #[id(registry="block",tags="implicit")] string,
-	state?: struct {
-		[mcdoc:block_state_keys[[%parent.blocks]]]: MinMaxBounds<mcdoc:block_states[[%parent.blocks]][[%key]]>,
-	},
+	state?: BlockPredicateState,
 	nbt?: (
 		#[nbt=minecraft:block[[blocks]]] string |
 		#[since="1.20.5"] minecraft:block[[blocks]]
