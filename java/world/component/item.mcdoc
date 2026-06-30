@@ -4,11 +4,13 @@ use ::java::data::trim::TrimPattern
 use ::java::data::variants::instrument::Instrument
 use ::java::data::util::SoundEventRef
 use ::java::data::damage_type::DamageType
+use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
 use ::java::util::Filterable
 use ::java::util::GlobalPos
 use ::java::util::attribute::AttributeOperation
 use ::java::util::color::DyeColor
 use ::java::util::color::RGB
+use ::java::util::direction::Direction
 use ::java::util::effect::MobEffectInstance
 use ::java::util::slot::EquipmentSlot
 use ::java::util::slot::EquipmentSlotGroup
@@ -145,6 +147,54 @@ struct ItemDamageFunction {
 	base: float,
 	/// Fraction of the dealt damage that should be applied to the item, if `threshold` is passed.
 	factor: float,
+}
+
+#[since="26.3"]
+dispatch minecraft:data_component[block_transformer] to [BlockTransformer] @ 1..200
+
+struct BlockTransformer {
+	/// If the provider returns no result, the next transformer will be attempted.
+	block_state_provider: BlockStateProvider,
+	/// Defaults to not playing sound.
+	sound?: SoundEventRef,
+	/// Defaults to `none`.
+	particle?: BlockTransformParticle,
+	/// If a disallowed face is interacted with, the next transformer will be attempted. \
+	/// Defaults to empty (allowing all faces).
+	disallowed_faces?: [Direction],
+	/// The loot to drop on a successful transformation. \
+	/// Defaults to drop nothing.
+	loot?: #[id="loot_table"] string,
+	/// Where the `loot` should drop. \
+	/// Defaults to `from_middle`.
+	drop_stragegy?: BlockTransformDropStrategy,
+	/// How nearby blocks are affected by the transformation. \
+	/// Defaults to `single_block`.
+	transform_type?: BlockTransformType,
+	/// Only has effect on stackable items. \
+	/// Defaults to `true`.
+	consume_on_use?: boolean,
+	/// Only has effect on unstackable items. \
+	/// Defauls to 1.
+	item_damage_per_use?: int @ 0..,
+}
+
+enum(string) BlockTransformParticle {
+	None = "none",
+	Scrape = "scrape",
+	WaxOn = "wax_on",
+	WaxOff = "wax_off",
+}
+
+enum(string) BlockTransformDropStrategy {
+	ClickedFace = "clicked_face",
+	FromMiddle = "from_middle",
+}
+
+enum(string) BlockTransformType {
+	SingleBlock = "single_block",
+	/// If the original block and the transformed block are both copper chests of any kind, the transform applies to the other half of the double chest.
+	CopperChest = "copper_chest",
 }
 
 #[since="1.21.5"]
