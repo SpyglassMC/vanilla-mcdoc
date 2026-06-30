@@ -1,13 +1,28 @@
-use ::java::data::slot_source::SlotSource
+use ::java::data::slot_source::SlotSourceOf
 use ::java::util::text::Text
 use super::util::MinMaxBounds
 use super::util::NumberProvider
 use super::util::RandomIntGenerator
+use function::LootFunctionOf
+use condition::LootConditionOf
 
-dispatch minecraft:resource[loot_table] to struct LootTable {
+dispatch minecraft:resource[loot_table] to LootTable
+
+type LootTable = LootTableOf<
+	#[id="loot_function_type"] string,
+	#[id="loot_condition_type"] string,
+	#[id="loot_table"] string,
+	#[id="slot_source"] string
+>
+
+// FT: loot function type
+// CT: loot condition type
+// LRef: loot table ID or empty union
+// ST: slot source type
+type LootTableOf<FT, CT, LRef, ST> = struct {
 	type?: #[id] LootContextType,
-	pools?: [LootPool],
-	functions?: [LootFunction],
+	pools?: [LootPool<FT, CT, LRef, ST>],
+	functions?: [LootFunctionOf<FT, CT, LRef, ST>],
 	#[since="1.20"]
 	random_sequence?: #[id(registry="random_sequence",definition=true)] string,
 }
@@ -73,7 +88,7 @@ enum(string) EntityTarget {
 type BlockEntityTarget = "block_entity"
 type ItemStackTarget = "tool"
 
-struct LootPool {
+type LootPool<FT, CT, LRef, ST> = struct {
 	rolls: (
 		#[until="1.17"] RandomIntGenerator |
 		#[since="1.17"] NumberProvider |
@@ -82,36 +97,36 @@ struct LootPool {
 		#[until="1.17"] MinMaxBounds<float> |
 		#[since="1.17"] NumberProvider |
 	),
-	entries: [LootPoolEntry],
-	functions?: [LootFunction],
-	conditions?: [LootCondition],
+	entries: [LootPoolEntry<FT, CT, LRef, ST>],
+	functions?: [LootFunctionOf<FT, CT, LRef, ST>],
+	conditions?: [LootConditionOf<CT>],
 }
 
-struct LootPoolEntry {
+type LootPoolEntry<FT, CT, LRef, ST> = struct {
 	type: (
 		#[until="1.16"] #[id] LootEntryType |
 		#[since="1.16"] #[id="loot_pool_entry_type"] string |
 	),
-	...minecraft:loot_pool_entry[[type]],
+	...minecraft:loot_pool_entry[[type]]<FT, CT, LRef, ST>,
 }
 
-struct LootPoolEntryBase {
-	conditions?: [LootCondition],
+type LootPoolEntryBase<CT> = struct {
+	conditions?: [LootConditionOf<CT>],
 }
 
-struct SingletonPoolEntry {
+type SingletonPoolEntry<FT, CT, LRef, ST> = struct {
 	weight?: int @ 1..,
 	quality?: int,
-	...LootPoolEntryBase,
-	functions?: [LootFunction],
+	...LootPoolEntryBase<CT>,
+	functions?: [LootFunctionOf<FT, CT, LRef, ST>],
 }
 
-dispatch minecraft:loot_pool_entry[empty] to SingletonPoolEntry
+dispatch minecraft:loot_pool_entry[empty]<FT, CT, LRef, ST> to SingletonPoolEntry<FT, CT, LRef, ST>
 
 /// Gets block specific drops.
-dispatch minecraft:loot_pool_entry[dynamic] to struct DynamicPoolEntry {
+dispatch minecraft:loot_pool_entry[dynamic]<FT, CT, LRef, ST> to struct DynamicPoolEntry {
 	name: #[id] DynamicDrops,
-	...SingletonPoolEntry,
+	...SingletonPoolEntry<FT, CT, LRef, ST>,
 }
 
 enum(string) DynamicDrops {
@@ -123,59 +138,66 @@ enum(string) DynamicDrops {
 }
 
 /// Adds a single item.
-dispatch minecraft:loot_pool_entry[item] to struct ItemPoolEntry {
+dispatch minecraft:loot_pool_entry[item]<FT, CT, LRef, ST> to struct ItemPoolEntry {
 	name: (
 		#[until="1.21.2"] #[id="item"] string |
 		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
 	),
-	...SingletonPoolEntry,
+	...SingletonPoolEntry<FT, CT, LRef, ST>,
 }
 
 /// Adds the contents of another loot table.
-dispatch minecraft:loot_pool_entry[loot_table] to struct LootTablePoolEntry {
+dispatch minecraft:loot_pool_entry[loot_table]<FT, CT, LRef, ST> to struct LootTablePoolEntry {
 	#[until="1.20.5"]
 	name: #[id="loot_table"] string,
 	#[since="1.20.5"]
-	value: (
-		#[id="loot_table"] string |
-		LootTable |
-	),
-	...SingletonPoolEntry,
+	value: (LRef | LootTableOf<FT, CT, LRef, ST>),
+	...SingletonPoolEntry<FT, CT, LRef, ST>,
 }
 
 #[since="1.21.11"]
-dispatch minecraft:loot_pool_entry[slots] to struct SlotsPoolEntry {
-	slot_source: SlotSource,
-	...SingletonPoolEntry,
+dispatch minecraft:loot_pool_entry[slots]<FT, CT, LRef, ST> to struct SlotsPoolEntry {
+	slot_source: SlotSourceOf<ST>,
+	...SingletonPoolEntry<FT, CT, LRef, ST>,
 }
 
 /// Adds the contents of an item tag.
-dispatch minecraft:loot_pool_entry[tag] to struct TagPoolEntry {
+dispatch minecraft:loot_pool_entry[tag]<FT, CT, LRef, ST> to struct TagPoolEntry {
 	name: #[id(registry="item",tags="implicit")] string,
 	/// If `true`, drops a random item from the tag. If `false`, drops all items in the tag.
 	expand: boolean,
-	...SingletonPoolEntry,
+	...SingletonPoolEntry<FT, CT, LRef, ST>,
 }
 
-struct CompositePoolEntry {
-	children: [LootPoolEntry],
-	...LootPoolEntryBase,
+type CompositePoolEntry<FT, CT, LRef, ST> = struct {
+	children: [LootPoolEntry<FT, CT, LRef, ST>],
+	...LootPoolEntryBase<CT>,
 }
 
 /// Tests conditions of the child entries and executes the first that can run.
-dispatch minecraft:loot_pool_entry[alternatives] to CompositePoolEntry
+dispatch minecraft:loot_pool_entry[alternatives]<FT, CT, LRef, ST> to CompositePoolEntry<FT, CT, LRef, ST>
 
 /// Executes all child entries when own conditions pass.
-dispatch minecraft:loot_pool_entry[group] to CompositePoolEntry
+dispatch minecraft:loot_pool_entry[group]<FT, CT, LRef, ST> to CompositePoolEntry<FT, CT, LRef, ST>
 
 /// Executes child entries until the first one that can't run due to conditions.
-dispatch minecraft:loot_pool_entry[sequence] to CompositePoolEntry
+dispatch minecraft:loot_pool_entry[sequence]<FT, CT, LRef, ST> to CompositePoolEntry<FT, CT, LRef, ST>
 
-type LootFunction = function::LootFunctionOf<#[id="loot_function_type"] string, #[id="loot_condition_type"] string>
-type NonReferenceLootFunction = function::LootFunctionOf<#[id(registry="loot_function_type",exclude=["reference"])] string, #[id(registry="loot_condition_type",exclude=["reference"])] string>
+type LootFunction = LootFunctionOf<
+	#[id="loot_function_type"] string,
+	#[id="loot_condition_type"] string,
+	#[id="loot_table"] string,
+	#[id="slot_source"] string,
+>
+type NonReferenceLootFunction = LootFunctionOf<
+	#[id(registry="loot_function_type",exclude=["reference"])] string,
+	#[id(registry="loot_condition_type",exclude=["reference"])] string,
+	(),
+	#[id=(registry="slot_source",exclude=["reference"])] string,
+>
 
-type LootCondition = condition::LootConditionOf<#[id="loot_condition_type"] string>
-type NonReferenceLootCondition = condition::LootConditionOf<#[id(registry="loot_condition_type",exclude=["reference"])] string>
+type LootCondition = LootConditionOf<#[id="loot_condition_type"] string>
+type NonReferenceLootCondition = LootConditionOf<#[id(registry="loot_condition_type",exclude=["reference"])] string>
 
 // Until 1.16
 enum(string) LootEntryType {
