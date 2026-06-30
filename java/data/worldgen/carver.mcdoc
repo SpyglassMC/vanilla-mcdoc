@@ -1,33 +1,48 @@
 use ::java::util::block_state::BlockState
 use super::HeightProvider
 use super::VerticalAnchor
+use super::IntProvider
 use super::FloatProvider
 
 type CarverRef = (
-	#[id="worldgen/configured_carver"] string |
+	#[until="26.3"] #[id="worldgen/configured_carver"] string |
+	#[since="26.3"] #[id="worldgen/carver"] string |
 	ConfiguredCarver |
 )
 
-dispatch minecraft:resource["worldgen/configured_carver"] to struct ConfiguredCarver {
-	type: #[id="worldgen/carver"] string,
-	config: struct CarverConfigBase {
-		probability: float @ 0..1,
-		#[since="1.19"]
-		replaceable?: (
-			[#[id="block"] string] |
-			#[id(registry="block",tags="allowed")] string |
-		),
-		#[since="1.17"]
-		...struct ModernCarverConfig {
-			y: HeightProvider,
-			yScale: FloatProvider<float>,
-			lava_level: VerticalAnchor,
-			#[until="1.18"]
-			aquifers_enabled: boolean,
-			debug_settings?: CarverDebugSettings,
-		},
-		...minecraft:carver_config[[%parent.type]],
+#[until="26.3"]
+dispatch minecraft:resource["worldgen/configured_carver"] to ConfiguredCarver
+#[since="26.3"]
+dispatch minecraft:resource["worldgen/carver"] to ConfiguredCarver
+
+struct ConfiguredCarver {
+	type: (
+		#[until="26.3"] #[id="worldgen/carver"] string |
+		#[since="26.3"] #[id="worldgen/carver_type"] string |
+	),
+	#[until="26.3"]
+	config: minecraft:carver_config[[type]],
+	#[since="26.3"]
+	...minecraft:carver_config[[type]],
+}
+
+struct CarverConfigBase {
+	probability: float @ 0..1,
+	#[since="1.19"] #[until="26.3"]
+	replaceable?: (
+		[#[id="block"] string] |
+		#[id(registry="block",tags="allowed")] string |
+	),
+	#[since="1.17"] #[until="26.3"] ...struct {
+		y: HeightProvider,
+		yScale: FloatProvider<float>,
+		lava_level: VerticalAnchor,
+		#[until="1.18"]
+		aquifers_enabled: boolean,
+		debug_settings?: CarverDebugSettings,
 	},
+	#[since="26.3"]
+	y: HeightProvider,
 }
 
 struct CarverDebugSettings {
@@ -40,6 +55,7 @@ struct CarverDebugSettings {
 
 #[since="1.17"]
 dispatch minecraft:carver_config[canyon] to struct CanyonConfig {
+	...CarverConfigBase,
 	vertical_rotation: FloatProvider<float>,
 	shape: CanyonShape,
 }
@@ -51,11 +67,30 @@ struct CanyonShape {
 	horizontal_radius_factor: FloatProvider<float>,
 	vertical_radius_default_factor: float,
 	vertical_radius_center_factor: float,
+	#[since="26.3"]
+	y_scale: FloatProvider<float>,
 }
 
 #[since="1.17"]
-dispatch minecraft:carver_config[cave,nether_cave] to struct CaveConfig {
+dispatch minecraft:carver_config[cave] to CaveConfig
+#[since="1.17"] #[until="26.3"]
+dispatch minecraft:carver_config[nether_cave] to CaveConfig
+
+struct CaveConfig {
+	...CarverConfigBase,
+	#[since="26.3"]
+	count: IntProvider<int @ 0..>,
+	#[since="26.3"]
+	thickness: FloatProvider<float @ 0..>,
+	/// Defaults to `false`.
+	#[since="26.3"]
+	weird_thickness_bias?: boolean,
+	#[since="26.3"]
+	room_vertical_radius_multiplier: FloatProvider<float>,
 	horizontal_radius_multiplier: FloatProvider<float>,
 	vertical_radius_multiplier: FloatProvider<float>,
+	/// Defaults to constant 1.0
+	#[since="26.3"]
+	start_vertical_radiues_multiplier?: FloatProvider<float>,
 	floor_level: FloatProvider<float @ -1..1>,
 }

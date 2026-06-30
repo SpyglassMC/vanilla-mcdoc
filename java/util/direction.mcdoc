@@ -7,6 +7,11 @@ enum(string) Direction {
 	West = "west",
 }
 
+enum(string) VerticalDirection {
+	Down = "down",
+	Up = "up",
+}
+
 enum(byte) DirectionByte {
 	Down = 0b,
 	Up = 1b,

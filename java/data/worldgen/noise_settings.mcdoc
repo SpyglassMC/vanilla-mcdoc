@@ -1,4 +1,5 @@
 use super::dimension::biome_source::ClimateParameters
+use super::dimension::biome_source::ClimateParameter
 use super::density_function::DensityFunctionRef
 use super::density_function::CubicSpline
 use super::structure_set::ConcentricRingsPlacement
@@ -53,7 +54,10 @@ dispatch minecraft:resource["worldgen/noise_settings"] to struct NoiseGeneratorS
 	#[since="1.18.2"]
 	noise_router: NoiseRouter,
 	#[since="1.19"]
-	spawn_target: [ClimateParameters],
+	spawn_target: (
+		#[until="26.3"] [ClimateParameters] |
+		#[since="26.3"] [SpawnTargetPoint] |
+	),
 	#[since="1.18"] #[until="26.3"]
 	surface_rule: MaterialRuleRef,
 	#[since="26.3"]
@@ -141,6 +145,10 @@ struct NoiseRouter {
 	#[since="1.21.9"]
 	preliminary_surface_level: DensityFunctionRef,
 	final_density: DensityFunctionRef,
+}
+
+struct SpawnTargetPoint {
+	[#[id="worldgen/density_function"] string]: ClimateParameter,
 }
 
 struct StructureSettings {
