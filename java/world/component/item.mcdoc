@@ -167,7 +167,7 @@ struct BlockTransformer {
 	loot?: #[id="loot_table"] string,
 	/// Where the `loot` should drop. \
 	/// Defaults to `from_middle`.
-	drop_stragegy?: BlockTransformDropStrategy,
+	drop_strategy?: BlockTransformDropStrategy,
 	/// How nearby blocks are affected by the transformation. \
 	/// Defaults to `single_block`.
 	transform_type?: BlockTransformType,
