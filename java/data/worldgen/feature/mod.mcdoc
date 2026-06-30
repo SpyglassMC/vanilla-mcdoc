@@ -11,6 +11,7 @@ use super::CaveSurface
 use ::java::util::block_state::BlockState
 use ::java::util::fluid_state::FluidState
 use ::java::util::direction::Direction
+use ::java::util::direction::VerticalDirection
 use ::java::util::Rotation
 use ::java::util::WeightedList
 
@@ -45,15 +46,35 @@ dispatch minecraft:feature_config[bamboo,seagrass] to struct ProbabilityConfig {
 	probability: float @ 0..1,
 }
 
-dispatch minecraft:feature_config[basalt_columns] to struct ColumnsConfig {
+#[until="26.3"]
+dispatch minecraft:feature_config[basalt_columns] to ColumnsConfig
+
+#[since="26.3"]
+dispatch minecraft:feature_config[stepped_column_cluster] to struct ColumnsConfig {
+	#[since="26.3"]
+	block: BlockStateProvider,
+	#[since="26.3"]
+	can_replace: BlockPredicate,
+	#[since="26.3"]
+	continue_through: BlockPredicate,
+	#[since="26.3"]
+	cannot_place_on: (#[id=(registry="block",tags="allowed")] string | [#[id="block"] string]),
+	#[until="26.3"]
 	reach: (
 		#[until="1.17"] UniformInt<int @ 0..2, int @ 0..1> |
 		#[since="1.17"] IntProvider<int @ 0..3> |
 	),
+	#[since="26.3"]
+	column_reach: IntProvider<int @ 0..3>,
+	#[since="26.3"]
+	column_count: IntProvider<int @ 1..150>,
 	height: (
 		#[until="1.17"] UniformInt<int @ 1..5, int @ 0..5> |
 		#[since="1.17"] IntProvider<int @ 1..10> |
 	),
+	/// The effective reach is limited by `height`.
+	#[since="26.3"]
+	cluster_reach: IntProvider<int @ 0..13>,
 }
 
 #[since="1.18"]
@@ -154,7 +175,7 @@ struct EndSpike {
 	guarded?: boolean,
 }
 
-#[since="1.17"] #[until="26.1"]
+#[since="1.17"] #[until="26.2"]
 dispatch minecraft:feature_config[dripstone_cluster] to SpeleothemClusterConfig
 
 #[since="26.2"]
@@ -472,9 +493,29 @@ dispatch minecraft:feature_config[speleothem] to struct SpeleothemConfig {
 	chance_of_spread_radius3?: float @ 0..1,
 }
 
+#[since="26.3"]
+dispatch minecraft:feature_config[projected_random_patchy_square] to struct ProjectedSquareConfig {
+	block: BlockStateProvider,
+	project_through: BlockPredicate,
+	size: IntProvider<int @ 1..16>,
+	max_projection_height: int @ 0..,
+}
+
 dispatch minecraft:feature_config[random_boolean_selector] to struct RandomBooleanSelector {
 	feature_false: FeatureRef,
 	feature_true: FeatureRef,
+}
+
+#[since="26.3"]
+dispatch minecraft:feature_config[random_neighbor_spread] to struct RandomNeighborSpreadConfig {
+	block: BlockStateProvider,
+	accepted_neighbors: (#[id=(registry="block",tags="allowed")] string | [#[id="block"] string]),
+	can_replace: BlockPredicate,
+	attempts: IntProvider<int @ 1..3000>,
+	// Should be xz_offset. Almost certainly a typo in 26.3-snapshot-2.
+	// TODO: track the fix of this field
+	xy_offset: IntProvider<int @ -16..16>,
+	y_offset: IntProvider<int @ -16..16>,
 }
 
 dispatch minecraft:feature_config[random_selector] to struct RandomSelector {
@@ -538,11 +579,21 @@ dispatch minecraft:feature_config[sea_pickle] to struct SeaPickleConfig {
 
 #[since="26.2"]
 dispatch minecraft:feature_config[sequence] to struct SequenceConfig {
-	/// The features to generate, in order.
+	/// The features to generate, in order. \
 	/// If any feature in the list is not placed, the following features will also be skipped.
 	features: (
-		[PlacedFeatureRef] |
-		#[id(registry="worldgen/placed_feature",tags="required")] string |
+		[PlacedFeatureRef] @ 1.. |
+		#[id(registry="worldgen/placed_feature",tags="allowed")] string |
+	)
+}
+
+#[since="26.3"]
+dispatch minecraft:feature_config[overlay] to struct OverlayConfig {
+	/// The features to generate, in order. \
+	/// All features are placed regardless of individual placement success.
+	features: (
+		[PlacedFeatureRef] @ 1.. |
+		#[id(registry="worldgen/placed_feature",tags="allowed")] string |
 	)
 }
 
@@ -573,6 +624,19 @@ dispatch minecraft:feature_config[simple_random_selector] to struct SimpleRandom
 		[FeatureRef] |
 		#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags="allowed")] string |
 	),
+}
+
+#[since="26.3"]
+dispatch minecraft:feature_config[single_block_pillar] to struct SingleBlockPillarConfig {
+	block: BlockStateProvider,
+	// Undocumented in 26.3-snapshot-2 changelog: this field is optional
+	// TODO: track if this is intentional
+	/// Defaults to "always true".
+	can_replace?: BlockPredicate,
+	direction: VerticalDirection,
+	/// Defaults to 1.
+	chance_to_continue?: float @ 0..1,
+	cap_feature?: PlacedFeatureRef,
 }
 
 #[since="1.17"] #[until="1.18"]

@@ -72,6 +72,9 @@ dispatch minecraft:int_provider[uniform,biased_to_bottom]<T> to (
 	#[since="1.20.5"] UniformIntProvider<T> |
 )
 
+#[since="26.3"]
+dispatch minecraft:int_provider[very_biased_to_bottom]<T> to UniformIntProvider<T>
+
 type ClampedIntProvider<T> = struct {
 	min_inclusive: T,
 	max_inclusive: T,
@@ -153,6 +156,9 @@ type VerticalAnchor = (
 	} |
 	struct {
 		below_top: int,
+	} |
+	#[since="26.3"] struct {
+		relative_to_sea_level: int,
 	} |
 )
 

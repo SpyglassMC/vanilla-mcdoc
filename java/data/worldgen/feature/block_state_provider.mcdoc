@@ -16,6 +16,11 @@ struct BaseNoiseProvider {
 	scale: float @ 0..,
 }
 
+#[since="26.3"]
+dispatch minecraft:block_state_provider[copy_properties_provider] to struct CopyPropertiesProvider {
+	source_block_state_provider: BlockStateProvider,
+}
+
 #[since="1.18"]
 dispatch minecraft:block_state_provider[dual_noise_provider] to struct DualNoiseProvider {
 	...BaseNoiseProvider,

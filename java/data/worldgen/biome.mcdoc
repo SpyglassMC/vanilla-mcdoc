@@ -52,7 +52,8 @@ dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 		} |
 		#[since="1.21.2"] (
 			[CarverRef] |
-			#[id(registry="worldgen/configured_carver",tags="allowed")] string |
+			#[until="26.3"] #[id(registry="worldgen/configured_carver",tags="allowed")] string |
+			#[since="26.3"] #[id(registry="worldgen/carver",tags="allowed")] string |
 		) |
 	),
 	features: (

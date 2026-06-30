@@ -1,5 +1,6 @@
 use ::java::util::block_state::BlockState
 use ::java::util::direction::Direction
+use super::super::VerticalAnchor
 
 struct BlockPredicate {
 	type: #[id="block_predicate_type"] string,
@@ -18,6 +19,11 @@ dispatch minecraft:block_predicate[all_of,any_of] to struct CombiningPredicate {
 dispatch minecraft:block_predicate[has_sturdy_face] to struct HasSturdyFacePredicate {
 	...PredicateOffset,
 	direction: Direction,
+}
+
+dispatch minecraft:block_predicate[height_range] to struct HeightRangePredicate {
+	min_inclusive: VerticalAnchor,
+	max_inclusive: VerticalAnchor,
 }
 
 dispatch minecraft:block_predicate[inside_world_bounds] to struct InsideWorldBoundsPredicate {
