@@ -58,6 +58,7 @@ enum(string) HorseVariant {
     DarkBrown = "dark_brown",
 }
 
+#[since="1.21.5"]
 dispatch minecraft:data_component["llama/variant"] to LlamaVariant
 
 enum(string) LlamaVariant {
