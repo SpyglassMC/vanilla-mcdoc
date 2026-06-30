@@ -1,5 +1,5 @@
 {
-	"ref": "9fe7fe2779ba80be106c5a98a4c71d94cce76bf4",
+	"ref": "13dac591bfc7084d8673058cf1912f3cc4c8713c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -40806,6 +40806,30 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"key": "relative_to_sea_level",
+					"type": {
+						"kind": "int"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.3"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::<anonymous 21>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"key": "type",
 					"type": {
 						"kind": "string",
@@ -43665,6 +43689,16 @@
 										"kind": "string",
 										"attributes": [
 											{
+												"name": "until",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "26.3"
+													}
+												}
+											},
+											{
 												"name": "id",
 												"value": {
 													"kind": "tree",
@@ -43674,6 +43708,43 @@
 															"value": {
 																"kind": "string",
 																"value": "worldgen/configured_carver"
+															}
+														},
+														"tags": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "allowed"
+															}
+														}
+													}
+												}
+											}
+										]
+									},
+									{
+										"kind": "string",
+										"attributes": [
+											{
+												"name": "since",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "26.3"
+													}
+												}
+											},
+											{
+												"name": "id",
+												"value": {
+													"kind": "tree",
+													"values": {
+														"registry": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "worldgen/carver"
 															}
 														},
 														"tags": {
@@ -44938,9 +45009,81 @@
 				}
 			]
 		},
+		"::java::data::worldgen::carver::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "y",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::HeightProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "yScale",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "lava_level",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::VerticalAnchor"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.18"
+								}
+							}
+						}
+					],
+					"key": "aquifers_enabled",
+					"type": {
+						"kind": "boolean"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "debug_settings",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::carver::CarverDebugSettings"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::worldgen::carver::CanyonConfig": {
 			"kind": "struct",
 			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::carver::CarverConfigBase"
+					}
+				},
 				{
 					"kind": "pair",
 					"key": "vertical_rotation",
@@ -45042,6 +45185,34 @@
 					"type": {
 						"kind": "float"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "y_scale",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float"
+							}
+						]
+					}
 				}
 			]
 		},
@@ -45070,6 +45241,16 @@
 								"value": {
 									"kind": "string",
 									"value": "1.19"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
 								}
 							}
 						}
@@ -45137,6 +45318,16 @@
 								"value": {
 									"kind": "string",
 									"value": "1.17"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
 								}
 							}
 						}
@@ -45208,21 +45399,23 @@
 					}
 				},
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									{
-										"keyword": "parent"
-									},
-									"type"
-								]
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
 							}
-						],
-						"registry": "minecraft:carver_config"
+						}
+					],
+					"key": "y",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::HeightProvider"
 					}
 				}
 			]
@@ -45279,12 +45472,47 @@
 					"kind": "string",
 					"attributes": [
 						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
 							"name": "id",
 							"value": {
 								"kind": "literal",
 								"value": {
 									"kind": "string",
 									"value": "worldgen/configured_carver"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "worldgen/carver"
 								}
 							}
 						}
@@ -45299,6 +45527,126 @@
 		"::java::data::worldgen::carver::CaveConfig": {
 			"kind": "struct",
 			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::carver::CarverConfigBase"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "count",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "thickness",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float",
+								"valueRange": {
+									"kind": 0,
+									"min": 0
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to `false`.",
+					"key": "weird_thickness_bias",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "room_vertical_radius_multiplier",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float"
+							}
+						]
+					}
+				},
 				{
 					"kind": "pair",
 					"key": "horizontal_radius_multiplier",
@@ -45333,6 +45681,36 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to constant 1.0",
+					"key": "start_vertical_radiues_multiplier",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"key": "floor_level",
 					"type": {
 						"kind": "concrete",
@@ -45361,41 +45739,35 @@
 					"kind": "pair",
 					"key": "type",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/carver"
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "worldgen/carver"
+											}
+										}
 									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "config",
-					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": "probability",
-								"type": {
-									"kind": "float",
-									"valueRange": {
-										"kind": 0,
-										"min": 0,
-										"max": 1
-									}
-								}
+								]
 							},
 							{
-								"kind": "pair",
+								"kind": "string",
 								"attributes": [
 									{
 										"name": "since",
@@ -45403,200 +45775,23 @@
 											"kind": "literal",
 											"value": {
 												"kind": "string",
-												"value": "1.19"
+												"value": "26.3"
 											}
 										}
-									}
-								],
-								"key": "replaceable",
-								"type": {
-									"kind": "union",
-									"members": [
-										{
-											"kind": "list",
-											"item": {
-												"kind": "string",
-												"attributes": [
-													{
-														"name": "id",
-														"value": {
-															"kind": "literal",
-															"value": {
-																"kind": "string",
-																"value": "block"
-															}
-														}
-													}
-												]
-											}
-										},
-										{
-											"kind": "string",
-											"attributes": [
-												{
-													"name": "id",
-													"value": {
-														"kind": "tree",
-														"values": {
-															"registry": {
-																"kind": "literal",
-																"value": {
-																	"kind": "string",
-																	"value": "block"
-																}
-															},
-															"tags": {
-																"kind": "literal",
-																"value": {
-																	"kind": "string",
-																	"value": "allowed"
-																}
-															}
-														}
-													}
-												}
-											]
-										}
-									]
-								},
-								"optional": true
-							},
-							{
-								"kind": "spread",
-								"attributes": [
+									},
 									{
-										"name": "since",
+										"name": "id",
 										"value": {
 											"kind": "literal",
 											"value": {
 												"kind": "string",
-												"value": "1.17"
+												"value": "worldgen/carver_type"
 											}
 										}
 									}
-								],
-								"type": {
-									"kind": "struct",
-									"fields": [
-										{
-											"kind": "pair",
-											"key": "y",
-											"type": {
-												"kind": "reference",
-												"path": "::java::data::worldgen::HeightProvider"
-											}
-										},
-										{
-											"kind": "pair",
-											"key": "yScale",
-											"type": {
-												"kind": "concrete",
-												"child": {
-													"kind": "reference",
-													"path": "::java::data::worldgen::FloatProvider"
-												},
-												"typeArgs": [
-													{
-														"kind": "float"
-													}
-												]
-											}
-										},
-										{
-											"kind": "pair",
-											"key": "lava_level",
-											"type": {
-												"kind": "reference",
-												"path": "::java::data::worldgen::VerticalAnchor"
-											}
-										},
-										{
-											"kind": "pair",
-											"attributes": [
-												{
-													"name": "until",
-													"value": {
-														"kind": "literal",
-														"value": {
-															"kind": "string",
-															"value": "1.18"
-														}
-													}
-												}
-											],
-											"key": "aquifers_enabled",
-											"type": {
-												"kind": "boolean"
-											}
-										},
-										{
-											"kind": "pair",
-											"key": "debug_settings",
-											"type": {
-												"kind": "reference",
-												"path": "::java::data::worldgen::carver::CarverDebugSettings"
-											},
-											"optional": true
-										}
-									]
-								}
-							},
-							{
-								"kind": "spread",
-								"type": {
-									"kind": "dispatcher",
-									"parallelIndices": [
-										{
-											"kind": "dynamic",
-											"accessor": [
-												{
-													"keyword": "parent"
-												},
-												"type"
-											]
-										}
-									],
-									"registry": "minecraft:carver_config"
-								}
+								]
 							}
 						]
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::carver::ModernCarverConfig": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "y",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::HeightProvider"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "yScale",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::FloatProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "float"
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "lava_level",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::VerticalAnchor"
 					}
 				},
 				{
@@ -45608,24 +45803,51 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "1.18"
+									"value": "26.3"
 								}
 							}
 						}
 					],
-					"key": "aquifers_enabled",
+					"key": "config",
 					"type": {
-						"kind": "boolean"
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:carver_config"
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "debug_settings",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::carver::CarverDebugSettings"
-					},
-					"optional": true
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:carver_config"
+					}
 				}
 			]
 		},
@@ -48927,6 +49149,27 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::block_predicate::HeightRangePredicate": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min_inclusive",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::VerticalAnchor"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max_inclusive",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::VerticalAnchor"
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::block_predicate::InsideWorldBoundsPredicate": {
 			"kind": "struct",
 			"fields": [
@@ -49345,6 +49588,19 @@
 							}
 						],
 						"registry": "minecraft:block_state_provider"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::block_state_provider::CopyPropertiesProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "source_block_state_provider",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
 					}
 				}
 			]
@@ -49818,6 +50074,144 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "can_replace",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "continue_through",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "cannot_place_on",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"key": "reach",
 					"type": {
 						"kind": "union",
@@ -49893,6 +50287,72 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "column_reach",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 3
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "column_count",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 150
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
 					"key": "height",
 					"type": {
 						"kind": "union",
@@ -49962,6 +50422,40 @@
 										}
 									}
 								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "The effective reach is limited by `height`.",
+					"key": "cluster_reach",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0,
+									"max": 13
+								}
 							}
 						]
 					}
@@ -53387,6 +53881,59 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::OverlayConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The features to generate, in order. \\\nAll features are placed regardless of individual placement success.",
+					"key": "features",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::feature::placement::PlacedFeatureRef"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 1
+								}
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "worldgen/placed_feature"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::placement::BlockPredicateFilter": {
 			"kind": "struct",
 			"fields": [
@@ -53519,7 +54066,7 @@
 					"key": "direction_of_search",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::placement::SearchDirection"
+						"path": "::java::util::direction::VerticalDirection"
 					}
 				},
 				{
@@ -53652,6 +54199,74 @@
 					"key": "above_noise",
 					"type": {
 						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::placement::OffsetModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "x",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": -16,
+									"max": 16
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "y",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": -16,
+									"max": 16
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "z",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": -16,
+									"max": 16
+								}
+							}
+						]
 					}
 				}
 			]
@@ -53806,20 +54421,6 @@
 				}
 			]
 		},
-		"::java::data::worldgen::feature::placement::SearchDirection": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Up",
-					"value": "up"
-				},
-				{
-					"identifier": "Down",
-					"value": "down"
-				}
-			]
-		},
 		"::java::data::worldgen::feature::placement::SurfaceRelativeThresholdFilter": {
 			"kind": "struct",
 			"fields": [
@@ -53878,6 +54479,59 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::ProjectedSquareConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "project_through",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "size",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 16
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max_projection_height",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::RandomBooleanSelector": {
 			"kind": "struct",
 			"fields": [
@@ -53920,6 +54574,144 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::feature::FeatureRef"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::RandomNeighborSpreadConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "accepted_neighbors",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "can_replace",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "attempts",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 3000
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "xy_offset",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": -16,
+									"max": 16
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "y_offset",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": -16,
+									"max": 16
+								}
+							}
+						]
 					}
 				}
 			]
@@ -54924,7 +55716,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The features to generate, in order.\nIf any feature in the list is not placed, the following features will also be skipped.",
+					"desc": "The features to generate, in order. \\\nIf any feature in the list is not placed, the following features will also be skipped.",
 					"key": "features",
 					"type": {
 						"kind": "union",
@@ -54934,6 +55726,10 @@
 								"item": {
 									"kind": "reference",
 									"path": "::java::data::worldgen::feature::placement::PlacedFeatureRef"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 1
 								}
 							},
 							{
@@ -54955,7 +55751,7 @@
 													"kind": "literal",
 													"value": {
 														"kind": "string",
-														"value": "required"
+														"value": "allowed"
 													}
 												}
 											}
@@ -55209,6 +56005,60 @@
 							}
 						]
 					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::SingleBlockPillarConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to \"always true\".",
+					"key": "can_replace",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "direction",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::direction::VerticalDirection"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to 1.",
+					"key": "chance_to_continue",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "cap_feature",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::placement::PlacedFeatureRef"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -59978,11 +60828,47 @@
 					],
 					"key": "spawn_target",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::dimension::biome_source::ClimateParameters"
-						}
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::dimension::biome_source::ClimateParameters"
+								},
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::noise_settings::SpawnTargetPoint"
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -60714,6 +61600,33 @@
 					"key": "offset",
 					"type": {
 						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::noise_settings::SpawnTargetPoint": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "worldgen/density_function"
+									}
+								}
+							}
+						]
+					},
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::dimension::biome_source::ClimateParameter"
 					}
 				}
 			]
@@ -64706,6 +65619,30 @@
 							}
 						}
 					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "relative_to_sea_level",
+							"type": {
+								"kind": "int"
+							}
+						}
+					],
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
@@ -66988,6 +67925,20 @@
 				{
 					"identifier": "East",
 					"value": 5
+				}
+			]
+		},
+		"::java::util::direction::VerticalDirection": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Down",
+					"value": "down"
+				},
+				{
+					"identifier": "Up",
+					"value": "up"
 				}
 			]
 		},
@@ -82077,6 +83028,167 @@
 						]
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::component::item::BlockTransformDropStrategy": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "ClickedFace",
+					"value": "clicked_face"
+				},
+				{
+					"identifier": "FromMiddle",
+					"value": "from_middle"
+				}
+			]
+		},
+		"::java::world::component::item::BlockTransformer": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If the provider returns no result, the next transformer will be attempted.",
+					"key": "block_state_provider",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to not playing sound.",
+					"key": "sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `none`.",
+					"key": "particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::item::BlockTransformParticle"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If a disallowed face is interacted with, the next transformer will be attempted. \\\nDefaults to empty (allowing all faces).",
+					"key": "disallowed_faces",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::util::direction::Direction"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The loot to drop on a successful transformation. \\\nDefaults to drop nothing.",
+					"key": "loot",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "loot_table"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Where the `loot` should drop. \\\nDefaults to `from_middle`.",
+					"key": "drop_stragegy",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::item::BlockTransformDropStrategy"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "How nearby blocks are affected by the transformation. \\\nDefaults to `single_block`.",
+					"key": "transform_type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::item::BlockTransformType"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Only has effect on stackable items. \\\nDefaults to `true`.",
+					"key": "consume_on_use",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Only has effect on unstackable items. \\\nDefauls to 1.",
+					"key": "item_damage_per_use",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::component::item::BlockTransformParticle": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "None",
+					"value": "none"
+				},
+				{
+					"identifier": "Scrape",
+					"value": "scrape"
+				},
+				{
+					"identifier": "WaxOn",
+					"value": "wax_on"
+				},
+				{
+					"identifier": "WaxOff",
+					"value": "wax_off"
+				}
+			]
+		},
+		"::java::world::component::item::BlockTransformType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "SingleBlock",
+					"value": "single_block"
+				},
+				{
+					"desc": "If the original block and the transformed block are both copper chests of any kind, the transform applies to the other half of the double chest.",
+					"identifier": "CopperChest",
+					"value": "copper_chest"
 				}
 			]
 		},
@@ -105646,6 +106758,10 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_predicate::HasSturdyFacePredicate"
 			},
+			"height_range": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_predicate::HeightRangePredicate"
+			},
 			"inside_world_bounds": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_predicate::InsideWorldBoundsPredicate"
@@ -105704,6 +106820,22 @@
 			}
 		},
 		"minecraft:block_state_provider": {
+			"copy_properties_provider": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_state_provider::CopyPropertiesProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"dual_noise_provider": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_state_provider::DualNoiseProvider",
@@ -105841,6 +106973,16 @@
 							"value": {
 								"kind": "string",
 								"value": "1.17"
+							}
+						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
 							}
 						}
 					}
@@ -106072,6 +107214,30 @@
 					}
 				],
 				"registry": "mcdoc:block_item_states"
+			},
+			"block_transformer": {
+				"kind": "list",
+				"item": {
+					"kind": "reference",
+					"path": "::java::world::component::item::BlockTransformer"
+				},
+				"lengthRange": {
+					"kind": 0,
+					"min": 1,
+					"max": 200
+				},
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"blocks_attacks": {
 				"kind": "reference",
@@ -107003,7 +108169,19 @@
 			},
 			"llama/variant": {
 				"kind": "reference",
-				"path": "::java::world::component::entity::LlamaVariant"
+				"path": "::java::world::component::entity::LlamaVariant",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.21.5"
+							}
+						}
+					}
+				]
 			},
 			"lock": {
 				"kind": "union",
@@ -111789,7 +112967,19 @@
 			},
 			"basalt_columns": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::ColumnsConfig"
+				"path": "::java::data::worldgen::feature::ColumnsConfig",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"block_blob": {
 				"kind": "reference",
@@ -111871,7 +113061,7 @@
 							"kind": "literal",
 							"value": {
 								"kind": "string",
-								"value": "26.1"
+								"value": "26.2"
 							}
 						}
 					}
@@ -112095,6 +113285,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::OreConfig"
 			},
+			"overlay": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::OverlayConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"pointed_dripstone": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::SpeleothemConfig",
@@ -112111,9 +113317,41 @@
 					}
 				]
 			},
+			"projected_random_patchy_square": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::ProjectedSquareConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"random_boolean_selector": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::RandomBooleanSelector"
+			},
+			"random_neighbor_spread": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::RandomNeighborSpreadConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"random_patch": {
 				"kind": "reference",
@@ -112207,6 +113445,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::SimpleRandomSelectorConfig"
 			},
+			"single_block_pillar": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::SingleBlockPillarConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"small_dripstone": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::SmallDripstoneConfig",
@@ -112284,6 +113538,22 @@
 			"spring_feature": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::SpringConfig"
+			},
+			"stepped_column_cluster": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::ColumnsConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"template": {
 				"kind": "reference",
@@ -113383,6 +114653,39 @@
 				"typeParams": [
 					{
 						"path": "::java::data::worldgen::T"
+					}
+				]
+			},
+			"very_biased_to_bottom": {
+				"kind": "template",
+				"child": {
+					"kind": "concrete",
+					"child": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::UniformIntProvider"
+					},
+					"typeArgs": [
+						{
+							"kind": "reference",
+							"path": "::java::data::worldgen::T"
+						}
+					]
+				},
+				"typeParams": [
+					{
+						"path": "::java::data::worldgen::T"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
 					}
 				]
 			},
@@ -116589,9 +117892,37 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::placement::NoiseThresholdCountModifier"
 			},
+			"offset": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::placement::OffsetModifier",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"random_offset": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::placement::RandomOffsetModifier"
+				"path": "::java::data::worldgen::feature::placement::RandomOffsetModifier",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"rarity_filter": {
 				"kind": "reference",
@@ -117870,9 +119201,37 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::biome::Biome"
 			},
+			"worldgen/carver": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::carver::ConfiguredCarver",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"worldgen/configured_carver": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::carver::ConfiguredCarver"
+				"path": "::java::data::worldgen::carver::ConfiguredCarver",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"worldgen/configured_feature": {
 				"kind": "reference",
