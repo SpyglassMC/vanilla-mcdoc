@@ -1,5 +1,5 @@
 {
-	"ref": "13dac591bfc7084d8673058cf1912f3cc4c8713c",
+	"ref": "ac16148537b30164786f9f8038891c60ffaccaee",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -83114,7 +83114,7 @@
 				{
 					"kind": "pair",
 					"desc": "Where the `loot` should drop. \\\nDefaults to `from_middle`.",
-					"key": "drop_stragegy",
+					"key": "drop_strategy",
 					"type": {
 						"kind": "reference",
 						"path": "::java::world::component::item::BlockTransformDropStrategy"
