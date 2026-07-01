@@ -1,5 +1,5 @@
 {
-	"ref": "575ddb28b2804a8d2e20fa70eef2650408de5205",
+	"ref": "2138b76f3aeca98b1ab86522ea96fb0ae5b7cab8",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -83280,6 +83280,27 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"desc": "Whether the entity should not despawn naturally.",
+					"key": "PersistenceRequired",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"key": "Health",
 					"type": {
 						"kind": "float"
@@ -83357,6 +83378,78 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::world::component::entity::SalmonType"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The age for axolotl and tadpole.",
+					"key": "Age",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"desc": "The age locked state for axolotl and tadpole.",
+					"key": "AgeLocked",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"desc": "The age for sulfur cube.",
+					"key": "age",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"desc": "The age locked state for sulfur cube.",
+					"key": "age_locked",
+					"type": {
+						"kind": "boolean"
 					},
 					"optional": true
 				}
