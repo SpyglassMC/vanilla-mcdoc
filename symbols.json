@@ -1,5 +1,5 @@
 {
-	"ref": "ac16148537b30164786f9f8038891c60ffaccaee",
+	"ref": "575ddb28b2804a8d2e20fa70eef2650408de5205",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -72972,6 +72972,22 @@
 					],
 					"identifier": "DebugFpsCharts",
 					"value": "key.debug.fpsCharts"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"identifier": "DebugImprovedTransparency",
+					"value": "key.debug.improvedTransparency"
 				},
 				{
 					"attributes": [
