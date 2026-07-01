@@ -321,6 +321,7 @@ enum(string) Keybind {
 	#[since="1.21.11"] DebugDumpVersion = "key.debug.dumpVersion",
 	#[since="1.21.11"] DebugFocusPause = "key.debug.focusPause",
 	#[since="1.21.11"] DebugFpsCharts = "key.debug.fpsCharts",
+	#[since="26.3"] DebugImprovedTransparency = "key.debug.improvedTransparency",
 	#[since="26.1"] DebugLightmapTexture = "key.debug.lightmapTexture",
 	#[since="1.21.11"] DebugModifier = "key.debug.modifier",
 	#[since="1.21.11"] DebugNetworkCharts = "key.debug.networkCharts",
