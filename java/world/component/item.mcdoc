@@ -216,6 +216,9 @@ struct BucketEntityData {
 	Glowing?: boolean,
 	/// Whether the entity should take damage.
 	Invulnerable?: boolean,
+	/// Whether the entity should not despawn naturally.
+	#[since="26.2"]
+	PersistenceRequired?: boolean,
 	Health?: float,
 	/// Turns into the expiry time of the memory module `has_hunting_cooldown` for axolotls.
 	HuntingCooldown?: long,
@@ -227,7 +230,18 @@ struct BucketEntityData {
 	Variant?: AxolotlVariantInt,
 	/// The size variant for salmon.
 	#[until="1.21.4"]
-	type?: SalmonType
+	type?: SalmonType,
+	/// The age for axolotl and tadpole.
+	Age?: int,
+	/// The age locked state for axolotl and tadpole.
+	#[since="26.1"]
+	AgeLocked?: boolean,
+	/// The age for sulfur cube.
+	#[since="26.2"]
+	age?: int,
+	/// The age locked state for sulfur cube.
+	#[since="26.2"]
+	age_locked?: boolean,
 }
 
 dispatch minecraft:data_component[bundle_contents] to [ItemStackTemplate]
