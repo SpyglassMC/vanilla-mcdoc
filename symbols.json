@@ -1,5 +1,5 @@
 {
-	"ref": "96f48d18420bab5c7e6c6602e65caaeb9485c4ae",
+	"ref": "e79eb890304a70d8ce7b0aef49294869c92cf29c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -6764,9 +6764,42 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"key": "shade",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "shade_direction_override",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::direction::Direction"
 					},
 					"optional": true
 				},
@@ -32557,6 +32590,390 @@
 				}
 			]
 		},
+		"::java::data::number_provider::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "loot_number_provider_type"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:number_provider"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "condition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::Predicate"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "number_provider",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::NumberProvider"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::BinomialNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "n",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::NumberProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "p",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::NumberProvider"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::ConditionalValueNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "condition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::Predicate"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "on_true",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::NumberProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0.",
+					"key": "on_false",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::NumberProvider"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::ConstantNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "float"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::EnchantmentLevelProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "amount",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::EnvironmentAttributeNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "attribute",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::NumericalEnvironmentAttribute"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::NumberDispatcher": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "cases",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"key": "condition",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::predicate::Predicate"
+									}
+								},
+								{
+									"kind": "pair",
+									"key": "number_provider",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::number_provider::NumberProvider"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0.",
+					"key": "default",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::NumberProvider"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::NumberProvider": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "float"
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "type",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "loot_number_provider_type"
+											}
+										}
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"type"
+										]
+									}
+								],
+								"registry": "minecraft:number_provider"
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::number_provider::ScoreNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "target",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::ScoreProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "score",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "objective"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "scale",
+					"type": {
+						"kind": "float"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::StorageNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "storage",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "storage"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "path",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "nbt_path",
+								"value": {
+									"kind": "dispatcher",
+									"parallelIndices": [
+										{
+											"kind": "dynamic",
+											"accessor": [
+												"source"
+											]
+										}
+									],
+									"registry": "minecraft:storage"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::SumNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "summands",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::number_provider::NumberProvider"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::UniformNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::NumberProvider"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::NumberProvider"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::WeightedNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "distribution",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::util::NonEmptyWeightedList"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::NumberProvider"
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::predicate::NonReferencePredicate": {
 			"kind": "union",
 			"members": [
@@ -32777,6 +33194,37 @@
 							"kind": "string",
 							"value": "26.1"
 						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::Brewing": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The original potion.",
+					"key": "input",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::PotionIngredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The ingredient.",
+					"key": "reagent",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::PotionIngredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "output",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::item::ItemStackTemplate"
 					}
 				}
 			]
@@ -34169,18 +34617,6 @@
 					},
 					"optional": true
 				}
-			],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.20.5"
-						}
-					}
-				}
 			]
 		},
 		"::java::data::recipe::NotificationInfo": {
@@ -34241,6 +34677,28 @@
 							"value": "1.21.2"
 						}
 					}
+				}
+			]
+		},
+		"::java::data::recipe::PotionIngredient": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "potion_contents",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::predicate::PotionsPredicate"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -37546,46 +38004,6 @@
 									"kind": "literal",
 									"value": {
 										"kind": "string",
-										"value": "loot_number_provider_type"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
-							}
-						],
-						"registry": "minecraft:number_provider"
-					}
-				}
-			]
-		},
-		"::java::data::util::<anonymous 5>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
 										"value": "loot_score_provider_type"
 									}
 								}
@@ -37610,7 +38028,7 @@
 				}
 			]
 		},
-		"::java::data::util::<anonymous 6>": {
+		"::java::data::util::<anonymous 5>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -37677,27 +38095,6 @@
 				}
 			]
 		},
-		"::java::data::util::BinomialNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "n",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NumberProvider"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "p",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NumberProvider"
-					}
-				}
-			]
-		},
 		"::java::data::util::ConstantIntGenerator": {
 			"kind": "struct",
 			"fields": [
@@ -37706,18 +38103,6 @@
 					"key": "value",
 					"type": {
 						"kind": "int"
-					}
-				}
-			]
-		},
-		"::java::data::util::ConstantNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "value",
-					"type": {
-						"kind": "float"
 					}
 				}
 			]
@@ -37744,32 +38129,6 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::loot::EntityTarget"
-					}
-				}
-			]
-		},
-		"::java::data::util::EnchantmentLevelProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "amount",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::enchantment::LevelBasedValue"
-					}
-				}
-			]
-		},
-		"::java::data::util::EnvironmentAttributeNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "attribute",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::attribute::NumericalEnvironmentAttribute"
 					}
 				}
 			]
@@ -38135,52 +38494,8 @@
 			]
 		},
 		"::java::data::util::NumberProvider": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "float"
-				},
-				{
-					"kind": "struct",
-					"fields": [
-						{
-							"kind": "pair",
-							"key": "type",
-							"type": {
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "loot_number_provider_type"
-											}
-										}
-									}
-								]
-							},
-							"optional": true
-						},
-						{
-							"kind": "spread",
-							"type": {
-								"kind": "dispatcher",
-								"parallelIndices": [
-									{
-										"kind": "dynamic",
-										"accessor": [
-											"type"
-										]
-									}
-								],
-								"registry": "minecraft:number_provider"
-							}
-						}
-					]
-				}
-			]
+			"kind": "reference",
+			"path": "::java::data::number_provider::NumberProvider"
 		},
 		"::java::data::util::RandomIntGenerator": {
 			"kind": "union",
@@ -38261,39 +38576,6 @@
 							}
 						}
 					]
-				}
-			]
-		},
-		"::java::data::util::ScoreNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "target",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::ScoreProvider"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "score",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "objective"
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "scale",
-					"type": {
-						"kind": "float"
-					},
-					"optional": true
 				}
 			]
 		},
@@ -38471,70 +38753,6 @@
 				}
 			]
 		},
-		"::java::data::util::StorageNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "storage",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "storage"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "path",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "nbt_path",
-								"value": {
-									"kind": "dispatcher",
-									"parallelIndices": [
-										{
-											"kind": "dynamic",
-											"accessor": [
-												"source"
-											]
-										}
-									],
-									"registry": "minecraft:storage"
-								}
-							}
-						]
-					}
-				}
-			]
-		},
-		"::java::data::util::SumNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "summands",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::util::NumberProvider"
-						}
-					}
-				}
-			]
-		},
 		"::java::data::util::UniformIntGenerator": {
 			"kind": "struct",
 			"fields": [
@@ -38551,29 +38769,6 @@
 					"key": "max",
 					"type": {
 						"kind": "int"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::util::UniformNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "min",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NumberProvider"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "max",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::NumberProvider"
 					},
 					"optional": true
 				}
@@ -42132,7 +42327,59 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"key": "explodes",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "destroy_on_use",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "destroy_on_leave",
 					"type": {
 						"kind": "boolean"
 					},
@@ -49597,7 +49844,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "source_block_state_provider",
+					"key": "source",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
@@ -49757,6 +50004,65 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::block_state_provider::RandomBlockStateProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "blocks",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "block"
+													}
+												},
+												"tags": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "allowed"
+													}
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::block_state_provider::RandomizedIntStateProvider": {
 			"kind": "struct",
 			"fields": [
@@ -49790,6 +50096,73 @@
 						"kind": "reference",
 						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
 					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::block_state_provider::RotatedStateProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "state",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::util::block_state::BlockState",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "direction",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::direction::Direction"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -50637,6 +51010,31 @@
 				{
 					"kind": "reference",
 					"path": "::java::data::worldgen::feature::ConfiguredFeature"
+				}
+			]
+		},
+		"::java::data::worldgen::feature::CoralConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "feature",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::placement::PlacedFeatureRef"
+					}
 				}
 			]
 		},
@@ -54058,6 +54456,71 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::placement::CuboidModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "xz_size",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 16
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "y_size",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 16
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `true`.",
+					"key": "include_interior",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `true`.",
+					"key": "include_edges",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::worldgen::feature::placement::EnvironmentScanModifier": {
 			"kind": "struct",
 			"fields": [
@@ -54354,6 +54817,23 @@
 							}
 						],
 						"registry": "minecraft:placement_modifier"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::placement::RandomChanceModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "chance",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
 					}
 				}
 			]
@@ -54674,7 +55154,7 @@
 				},
 				{
 					"kind": "pair",
-					"key": "xy_offset",
+					"key": "xz_offset",
 					"type": {
 						"kind": "concrete",
 						"child": {
@@ -61709,22 +62189,6 @@
 			"kind": "struct",
 			"fields": []
 		},
-		"::java::data::worldgen::processor_list::AllOfMatch": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "rules",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::processor_list::RuleTest"
-						}
-					}
-				}
-			]
-		},
 		"::java::data::worldgen::processor_list::AppendLoot": {
 			"kind": "struct",
 			"fields": [
@@ -62021,6 +62485,22 @@
 				}
 			]
 		},
+		"::java::data::worldgen::processor_list::CompositeMatch": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "rules",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::processor_list::RuleTest"
+						}
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::processor_list::Gravity": {
 			"kind": "struct",
 			"fields": [
@@ -62056,6 +62536,19 @@
 					"key": "max_inclusive",
 					"type": {
 						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::processor_list::InvertedMatch": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "rule",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::processor_list::RuleTest"
 					}
 				}
 			]
@@ -83160,6 +83653,15 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Whether the transformed block should update based on neighboring blocks. \\\nDefaults to `true`.",
+					"key": "update_from_neighbors",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"desc": "Only has effect on stackable items. \\\nDefaults to `true`.",
 					"key": "consume_on_use",
 					"type": {
@@ -83463,6 +83965,30 @@
 						"kind": "boolean"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::component::item::Compostable": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "layers",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "number_provider"
+									}
+								}
+							}
+						]
+					}
 				}
 			]
 		},
@@ -86492,6 +87018,88 @@
 				}
 			]
 		},
+		"::java::world::component::predicate::PotionsPredicate": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "potions",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::predicate::PotionTypeMatch"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "effects",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::world::component::predicate::CollectionPredicate"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::EntityEffectsPredicate"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::component::predicate::PotionTypeMatch": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "tree",
+								"values": {
+									"registry": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "potion"
+										}
+									},
+									"tags": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "allowed"
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "potion"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::world::component::predicate::TrimPredicate": {
 			"kind": "struct",
 			"fields": [
@@ -87411,6 +88019,27 @@
 							"min": 0,
 							"max": 27
 						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::cushion::Cushion": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::BlockAttachedEntity"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "color",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::color::DyeColor"
 					},
 					"optional": true
 				}
@@ -88586,6 +89215,32 @@
 								}
 							]
 						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Team to join when it is spawned.",
+					"key": "Team",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "team"
+							}
+						]
 					},
 					"optional": true
 				},
@@ -95352,6 +96007,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"desc": "Team to join when it is spawned.",
 					"key": "Team",
 					"type": {
@@ -97405,6 +98072,41 @@
 						"item": {
 							"kind": "reference",
 							"path": "::java::world::entity::mob::player::EnderPearl"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "post_effects",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "string",
+							"attributes": [
+								{
+									"name": "id",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "post_effect"
+										}
+									}
+								}
+							]
 						}
 					},
 					"optional": true
@@ -100385,6 +101087,27 @@
 					"key": "LeftOwner",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "can_break",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::item::AdventureModePredicate"
 					},
 					"optional": true
 				}
@@ -107004,6 +107727,22 @@
 					}
 				]
 			},
+			"random_block_provider": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_state_provider::RandomBlockStateProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"randomized_int_state_provider": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_state_provider::RandomizedIntStateProvider",
@@ -107022,7 +107761,7 @@
 			},
 			"rotated_block_provider": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::block_state_provider::SimpleStateProvider"
+				"path": "::java::data::worldgen::feature::block_state_provider::RotatedStateProvider"
 			},
 			"rule_based_state_provider": {
 				"kind": "reference",
@@ -107550,6 +108289,22 @@
 							"value": {
 								"kind": "string",
 								"value": "1.21.5"
+							}
+						}
+					}
+				]
+			},
+			"compostable": {
+				"kind": "reference",
+				"path": "::java::world::component::item::Compostable",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
 							}
 						}
 					}
@@ -109371,49 +110126,36 @@
 				"kind": "union",
 				"members": [
 					{
-						"kind": "string",
+						"kind": "reference",
+						"path": "::java::world::component::predicate::PotionTypeMatch",
 						"attributes": [
 							{
-								"name": "id",
+								"name": "until",
 								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "potion"
-											}
-										},
-										"tags": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "allowed"
-											}
-										}
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.3"
 									}
 								}
 							}
 						]
 					},
 					{
-						"kind": "list",
-						"item": {
-							"kind": "string",
-							"attributes": [
-								{
-									"name": "id",
+						"kind": "reference",
+						"path": "::java::world::component::predicate::PotionsPredicate",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
 									"value": {
-										"kind": "literal",
-										"value": {
-											"kind": "string",
-											"value": "potion"
-										}
+										"kind": "string",
+										"value": "26.3"
 									}
 								}
-							]
-						}
+							}
+						]
 					}
 				]
 			},
@@ -110599,6 +111341,22 @@
 			"creeper": {
 				"kind": "reference",
 				"path": "::java::world::entity::mob::creeper::Creeper"
+			},
+			"cushion": {
+				"kind": "reference",
+				"path": "::java::world::entity::cushion::Cushion",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"dark_oak_boat": {
 				"kind": "reference",
@@ -112623,6 +113381,31 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::attribute::BooleanAttribute"
 			},
+			"gameplay/straw_bed_rule": {
+				"kind": "concrete",
+				"child": {
+					"kind": "reference",
+					"path": "::java::data::worldgen::attribute::DiscreteAttribute"
+				},
+				"typeArgs": [
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::BedRule"
+					}
+				],
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"gameplay/surface_slime_spawn_chance": {
 				"kind": "concrete",
 				"child": {
@@ -113137,6 +113920,14 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::BlockPileConfig"
 			},
+			"coral_claw": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::CoralConfig"
+			},
+			"coral_tree": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::CoralConfig"
+			},
 			"decorated": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::DecoratedConfig",
@@ -113535,11 +114326,35 @@
 			},
 			"sea_pickle": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::SeaPickleConfig"
+				"path": "::java::data::worldgen::feature::SeaPickleConfig",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"seagrass": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::ProbabilityConfig"
+				"path": "::java::data::worldgen::feature::ProbabilityConfig",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"sequence": {
 				"kind": "reference",
@@ -117673,23 +118488,39 @@
 		"minecraft:number_provider": {
 			"%none": {
 				"kind": "reference",
-				"path": "::java::data::util::UniformNumberProvider"
+				"path": "::java::data::number_provider::UniformNumberProvider"
 			},
 			"binomial": {
 				"kind": "reference",
-				"path": "::java::data::util::BinomialNumberProvider"
+				"path": "::java::data::number_provider::BinomialNumberProvider"
+			},
+			"conditional_value": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::ConditionalValueNumberProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"constant": {
 				"kind": "reference",
-				"path": "::java::data::util::ConstantNumberProvider"
+				"path": "::java::data::number_provider::ConstantNumberProvider"
 			},
 			"enchantment_level": {
 				"kind": "reference",
-				"path": "::java::data::util::EnchantmentLevelProvider"
+				"path": "::java::data::number_provider::EnchantmentLevelProvider"
 			},
 			"environment_attribute": {
 				"kind": "reference",
-				"path": "::java::data::util::EnvironmentAttributeNumberProvider",
+				"path": "::java::data::number_provider::EnvironmentAttributeNumberProvider",
 				"attributes": [
 					{
 						"name": "since",
@@ -117703,17 +118534,33 @@
 					}
 				]
 			},
+			"number_dispatcher": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::NumberDispatcher",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"score": {
 				"kind": "reference",
-				"path": "::java::data::util::ScoreNumberProvider"
+				"path": "::java::data::number_provider::ScoreNumberProvider"
 			},
 			"storage": {
 				"kind": "reference",
-				"path": "::java::data::util::StorageNumberProvider"
+				"path": "::java::data::number_provider::StorageNumberProvider"
 			},
 			"sum": {
 				"kind": "reference",
-				"path": "::java::data::util::SumNumberProvider",
+				"path": "::java::data::number_provider::SumNumberProvider",
 				"attributes": [
 					{
 						"name": "since",
@@ -117729,7 +118576,23 @@
 			},
 			"uniform": {
 				"kind": "reference",
-				"path": "::java::data::util::UniformNumberProvider"
+				"path": "::java::data::number_provider::UniformNumberProvider"
+			},
+			"weighted_list": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::WeightedNumberProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			}
 		},
 		"minecraft:numeric_item_property": {
@@ -117976,6 +118839,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::placement::CountOnEveryLayerModifier"
 			},
+			"cuboid": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::placement::CuboidModifier",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"environment_scan": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::placement::EnvironmentScanModifier"
@@ -118015,6 +118894,22 @@
 			"offset": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::placement::OffsetModifier",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"random_chance": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::placement::RandomChanceModifier",
 				"attributes": [
 					{
 						"name": "since",
@@ -118103,6 +118998,22 @@
 			"blasting": {
 				"kind": "reference",
 				"path": "::java::data::recipe::Smelting"
+			},
+			"brewing": {
+				"kind": "reference",
+				"path": "::java::data::recipe::Brewing",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"campfire_cooking": {
 				"kind": "reference",
@@ -119010,6 +119921,22 @@
 				"kind": "reference",
 				"path": "::java::assets::model::Model"
 			},
+			"number_provider": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::NumberProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"painting_variant": {
 				"kind": "reference",
 				"path": "::java::data::variants::painting::PaintingVariant",
@@ -119549,7 +120476,23 @@
 		"minecraft:rule_test": {
 			"all_of": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::processor_list::AllOfMatch",
+				"path": "::java::data::worldgen::processor_list::CompositeMatch",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"any_of": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::processor_list::CompositeMatch",
 				"attributes": [
 					{
 						"name": "since",
@@ -119574,6 +120517,22 @@
 			"height_match": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::processor_list::HeightMatch",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"not": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::processor_list::InvertedMatch",
 				"attributes": [
 					{
 						"name": "since",
