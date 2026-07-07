@@ -65,7 +65,7 @@ dispatch minecraft:data_component_predicate[jukebox_playable] to struct JukeboxP
 }
 
 dispatch minecraft:data_component_predicate[potion_contents] to (
-	PotionTypeMatch |
+	#[until="26.3"] PotionTypeMatch |
 	#[since="26.3"] PotionsPredicate |
 )
 

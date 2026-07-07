@@ -3,6 +3,7 @@ use ::java::world::item::ItemStack
 use ::java::world::item::ItemStackTemplate
 use ::java::world::item::SingleItem
 use ::java::world::component::item::FireworkShape
+use ::java::world::component::predicate::PotionsPredicate
 
 dispatch minecraft:resource[recipe] to struct Recipe {
 	type: #[id="recipe_serializer"] string,
@@ -208,6 +209,20 @@ dispatch minecraft:recipe_serializer[smithing_trim] to struct SmithingTrim {
 	pattern: #[id="trim_pattern"] string,
 }
 
+#[since="26.3"]
+dispatch minecraft:recipe_serializer[brewing] to struct Brewing {
+	/// The original potion.
+	input: PotionIngredient,
+	/// The ingredient.
+	reagent: PotionIngredient,
+	output: ItemStackTemplate,
+}
+
+struct PotionIngredient {
+	item: Ingredient,
+	potion_contents?: PotionsPredicate,
+}
+
 dispatch minecraft:recipe_serializer[crafting_special_bannerduplicate] to (
 	#[until="26.1"] struct {} |
 	#[since="26.1"] struct CraftingSpecialBannerDuplicate {
@@ -352,7 +367,7 @@ struct CookingBookInfo {
 	category?: CookingBookCategory,
 }
 
-#[until="1.20.5"]
+// Until 1.20.5
 struct ItemResult {
 	item: #[id="item"] string,
 	count?: int
