@@ -44,5 +44,17 @@
 	"::java::assets::texture_meta::NineSlice.stretch_inner": "Domyślnie `false`.",
 	"::java::assets::texture_meta::TextureMeta.villager": "Dostępne wyłącznie dla tekstur osadników.",
 	"::java::assets::waypoint_style::WaypointStyle.far_distance": "Domyślnie `322`.",
-	"::java::assets::waypoint_style::WaypointStyle.near_distance": "Domyślnie `128`."
+	"::java::assets::waypoint_style::WaypointStyle.near_distance": "Domyślnie `128`.",
+	"::java::data::slot_source::ContentsSlotSource.slot_source": "Miejsca w ekwipunku do przeszukania.",
+	"::java::data::slot_source::RangeSlotSource.source": "Domyślnie `container`.",
+	"::java::data::trim::TrimMaterial.palette": "ID palety, która zostanie użyta w paczce zasobów..",
+	"::java::data::worldgen::carver::CaveConfig.start_vertical_radiues_multiplier": "Domyślnie stała 1.0",
+	"::java::data::worldgen::carver::CaveConfig.weird_thickness_bias": "Domyślnie `false`.",
+	"::java::data::worldgen::feature::EndPodiumConfig.active": "Domyślnie `false`.",
+	"::java::data::worldgen::feature::SingleBlockPillarConfig.can_replace": "Domyślnie \"always true\".",
+	"::java::data::worldgen::feature::SingleBlockPillarConfig.chance_to_continue": "Domyślnie 1.",
+	"::java::data::worldgen::material_condition::NoiseThresholdCondition.is_3d": "Domyślnie `false`.",
+	"::java::world::component::item::BlockTransformer.drop_strategy": "Wskazuje, gdzie `loot` powinien się pojawić.\nDomyślnie `from_middle`.",
+	"::java::world::component::item::BlockTransformer.particle": "Domyślnie `none`.",
+	"::java::world::component::item::BlockTransformer.sound": "Domyślnie nie gra dzwięku."
 }
