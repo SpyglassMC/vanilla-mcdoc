@@ -253,7 +253,7 @@ type AdventureModePredicate = (
 		predicates: [BlockPredicate] @ 1..,
 		show_in_tooltip?: boolean,
 	} |
-	#[since="1.21.5"] #[canonical] [BlockPredicate] |
+	#[since="1.21.5"] [BlockPredicate] @ 1.. |
 	BlockPredicate |
 )
 
