@@ -50,6 +50,9 @@ struct EntityBase {
 	Glowing?: boolean,
 	/// Labelling tags on the entity.
 	Tags?: [#[tag] string],
+	/// Team to join when it is spawned.
+	#[since="26.3"]
+	Team?: #[team] string,
 	/// Any stored data
 	#[since="1.21.5"]
 	data?: CustomData,

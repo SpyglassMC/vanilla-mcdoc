@@ -1,3 +1,5 @@
+use ::java::world::component::item::AdventureModePredicate
+
 struct ProjectileBase {
 	...super::EntityBase,
 	/// Whether it has been shot. This is set to true when it exists for
@@ -10,6 +12,8 @@ struct ProjectileBase {
 	/// Whether it has left its owner.
 	#[since="1.16"]
 	LeftOwner?: boolean,
+	#[since="26.3"]
+	can_break?: AdventureModePredicate,
 }
 
 dispatch minecraft:entity[llama_spit] to struct LlamaSpit {
