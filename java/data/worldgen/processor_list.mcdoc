@@ -102,7 +102,7 @@ struct RuleTest {
 }
 
 #[since="26.3"]
-dispatch minecraft:rule_test[all_of] to struct AllOfMatch {
+dispatch minecraft:rule_test[all_of,any_of] to struct CompositeMatch {
 	rules: [RuleTest],
 }
 
@@ -118,6 +118,11 @@ dispatch minecraft:rule_test[blockstate_match] to struct BlockStateMatch {
 dispatch minecraft:rule_test[height_match] to struct HeightMatch {
 	min_inclusive: int,
 	max_inclusive: int,
+}
+
+#[since="26.3"]
+dispatch minecraft:rule_test[not] to struct InvertedMatch {
+	rule: RuleTest,
 }
 
 dispatch minecraft:rule_test[random_block_match] to struct RandomBlockMatch {

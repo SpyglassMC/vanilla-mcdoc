@@ -46,6 +46,7 @@ struct LivingEntity {
 	#[since="1.20.2"]
 	active_effects?: [MobEffectInstance],
 	/// Team to join when it is spawned.
+	#[until="26.3"]
 	Team?: #[team] string,
 	/// The UUID of the player that last hurt this entity. Stored for 100 ticks.
 	#[since="1.21.4"]

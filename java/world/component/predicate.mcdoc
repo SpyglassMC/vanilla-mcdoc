@@ -1,5 +1,6 @@
 use ::java::data::advancement::predicate::ItemPredicate
 use ::java::data::advancement::predicate::EnchantmentPredicate
+use ::java::data::advancement::predicate::EntityEffectsPredicate
 use ::java::data::util::MinMaxBounds
 use ::java::util::attribute::AttributeOperation
 use ::java::util::slot::EquipmentSlotGroup
@@ -63,7 +64,16 @@ dispatch minecraft:data_component_predicate[jukebox_playable] to struct JukeboxP
 	song?: (#[id(registry="jukebox_song",tags="allowed")] string | [#[id="jukebox_song"] string]),
 }
 
-dispatch minecraft:data_component_predicate[potion_contents] to (#[id(registry="potion",tags="allowed")] string | [#[id="potion"] string])
+dispatch minecraft:data_component_predicate[potion_contents] to (
+	#[until="26.3"] PotionTypeMatch |
+	#[since="26.3"] PotionsPredicate |
+)
+
+struct PotionsPredicate {
+	potions?: PotionTypeMatch,
+	effects?: CollectionPredicate<EntityEffectsPredicate>,
+}
+type PotionTypeMatch = (#[id(registry="potion",tags="allowed")] string | [#[id="potion"] string])
 
 dispatch minecraft:data_component_predicate[trim] to struct TrimPredicate {
 	material?: (#[id(registry="trim_material",tags="allowed")] string | [#[id="trim_material"] string]),

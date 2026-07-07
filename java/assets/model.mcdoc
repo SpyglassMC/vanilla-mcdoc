@@ -51,7 +51,10 @@ struct ModelElement {
 		},
 	},
 	rotation?: ModelElementRotation,
+	#[until="26.3"]
 	shade?: boolean,
+	#[since="26.3"]
+	shade_direction_override?: Direction,
 	#[since="1.21.2"]
 	light_emission?: int @ 0..15,
 }

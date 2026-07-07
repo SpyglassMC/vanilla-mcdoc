@@ -1,0 +1,83 @@
+use ::java::data::enchantment::LevelBasedValue
+use ::java::data::predicate::Predicate
+use ::java::data::worldgen::attribute::NumericalEnvironmentAttribute
+use ::java::data::util::ScoreProvider
+use ::java::util::NonEmptyWeightedList
+
+#[since="26.3"]
+dispatch minecraft:resource[number_provider] to NumberProvider
+
+// Since 1.17
+// NumberProviders.DIRECT_CODEC in 26.3-snapshot-3
+type NumberProvider = (
+	float |
+	struct {
+		type?: #[id="loot_number_provider_type"] string,
+		...minecraft:number_provider[[type]],
+	} |
+)
+
+dispatch minecraft:number_provider[uniform,%none] to struct UniformNumberProvider {
+	min?: NumberProvider,
+	max?: NumberProvider,
+}
+
+dispatch minecraft:number_provider[binomial] to struct BinomialNumberProvider {
+	n: NumberProvider,
+	p: NumberProvider,
+}
+
+#[since="26.3"]
+dispatch minecraft:number_provider[conditional_value] to struct ConditionalValueNumberProvider {
+	condition: Predicate,
+	on_true: NumberProvider,
+	/// Defaults to constant 0.
+	on_false?: NumberProvider,
+}
+
+dispatch minecraft:number_provider[constant] to struct ConstantNumberProvider {
+	value: float,
+}
+
+dispatch minecraft:number_provider[enchantment_level] to struct EnchantmentLevelProvider {
+	amount: LevelBasedValue,
+}
+
+#[since="26.1"]
+dispatch minecraft:number_provider[environment_attribute] to struct EnvironmentAttributeNumberProvider {
+	attribute: NumericalEnvironmentAttribute,
+}
+
+#[since="26.3"]
+dispatch minecraft:number_provider[number_dispatcher] to struct NumberDispatcher {
+	cases: [struct {
+		// Ok I give up disallowing references
+		// We need a new solution for this
+		// TODO: disallow references in some registries
+		condition: Predicate,
+		number_provider: NumberProvider,
+	}],
+	/// Defaults to constant 0.
+	default?: NumberProvider,
+}
+
+dispatch minecraft:number_provider[score] to struct ScoreNumberProvider {
+	target: ScoreProvider,
+	score: #[objective] string,
+	scale?: float,
+}
+
+dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
+	storage: #[id="storage"] string,
+	path: #[nbt_path=minecraft:storage[[source]]] string,
+}
+
+#[since="26.1"]
+dispatch minecraft:number_provider[sum] to struct SumNumberProvider {
+	summands: [NumberProvider],
+}
+
+#[since="26.3"]
+dispatch minecraft:number_provider[weighted_list] to struct WeightedNumberProvider {
+	distribution: NonEmptyWeightedList<NumberProvider>,
+}

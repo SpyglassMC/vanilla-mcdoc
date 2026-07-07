@@ -197,12 +197,21 @@ dispatch minecraft:environment_attribute["audio/ambient_sounds"] to DiscreteAttr
 	additions?: (BiomeSoundAdditions | [BiomeSoundAdditions]),
 }>
 
-dispatch minecraft:environment_attribute["gameplay/bed_rule"] to DiscreteAttribute<struct BedRule {
+dispatch minecraft:environment_attribute["gameplay/bed_rule"] to DiscreteAttribute<BedRule>
+#[since="26.3"]
+dispatch minecraft:environment_attribute["gameplay/straw_bed_rule"] to DiscreteAttribute<BedRule>
+
+struct BedRule {
 	can_sleep: BedRuleType,
 	can_set_spawn: BedRuleType,
+	#[until="26.3"]
 	explodes?: boolean,
+	#[since="26.3"]
+	destroy_on_use?: boolean,
+	#[since="26.3"]
+	destroy_on_leave?: boolean,
 	error_message?: Text,
-}>
+}
 
 dispatch minecraft:environment_attribute["visual/moon_phase"] to DiscreteAttribute<MoonPhase>
 

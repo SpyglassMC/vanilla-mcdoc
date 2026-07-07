@@ -1,0 +1,7 @@
+use ::java::util::color::DyeColor
+
+#[since="26.3"]
+dispatch minecraft:entity[cushion] to struct Cushion {
+	...super::BlockAttachedEntity,
+	color?: DyeColor,
+}

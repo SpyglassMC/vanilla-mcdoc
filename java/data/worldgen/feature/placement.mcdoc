@@ -45,6 +45,16 @@ dispatch minecraft:placement_modifier[count_on_every_layer] to struct CountOnEve
 	count: IntProvider<int @ 0..256>,
 }
 
+#[since="26.3"]
+dispatch minecraft:placement_modifier[cuboid] to struct CuboidModifier {
+	xz_size: IntProvider<int @ 1..16>,
+	y_size: IntProvider<int @ 1..16>,
+	/// Defaults to `true`.
+	include_interior?: boolean,
+	/// Defaults to `true`.
+	include_edges?: boolean,
+}
+
 dispatch minecraft:placement_modifier[noise_threshold_count] to struct NoiseThresholdCountModifier {
 	noise_level: float,
 	below_noise: int,
@@ -89,6 +99,11 @@ dispatch minecraft:placement_modifier[offset] to struct OffsetModifier {
 dispatch minecraft:placement_modifier[random_offset] to struct RandomOffsetModifier {
 	xz_spread: IntProvider<int @ -16..16>,
 	y_spread: IntProvider<int @ -16..16>,
+}
+
+#[since="26.3"]
+dispatch minecraft:placement_modifier[random_chance] to struct RandomChanceModifier {
+	chance: float @ 0..1,
 }
 
 dispatch minecraft:placement_modifier[surface_relative_threshold_filter] to struct SurfaceRelativeThresholdFilter {

@@ -171,6 +171,9 @@ struct BlockTransformer {
 	/// How nearby blocks are affected by the transformation. \
 	/// Defaults to `single_block`.
 	transform_type?: BlockTransformType,
+	/// Whether the transformed block should update based on neighboring blocks. \
+	/// Defaults to `true`.
+	update_from_neighbors?: boolean,
 	/// Only has effect on stackable items. \
 	/// Defaults to `true`.
 	consume_on_use?: boolean,
@@ -259,6 +262,11 @@ type AdventureModePredicate = (
 
 /// Crossbow projectiles that are loaded.
 dispatch minecraft:data_component[charged_projectiles] to [ItemStackTemplate]
+
+#[since="26.3"]
+dispatch minecraft:data_component[compostable] to struct Compostable {
+	layers: #[id="number_provider"] string,
+}
 
 #[since="1.21.2"]
 dispatch minecraft:data_component[consumable] to struct Consumable {
