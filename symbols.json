@@ -1,5 +1,5 @@
 {
-	"ref": "2138b76f3aeca98b1ab86522ea96fb0ae5b7cab8",
+	"ref": "96f48d18420bab5c7e6c6602e65caaeb9485c4ae",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -74023,6 +74023,16 @@
 									"value": "1.16"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
 						}
 					],
 					"key": "contents",
@@ -82483,6 +82493,10 @@
 						"kind": "reference",
 						"path": "::java::data::advancement::predicate::BlockPredicate"
 					},
+					"lengthRange": {
+						"kind": 0,
+						"min": 1
+					},
 					"attributes": [
 						{
 							"name": "since",
@@ -82493,9 +82507,6 @@
 									"value": "1.21.5"
 								}
 							}
-						},
-						{
-							"name": "canonical"
 						}
 					]
 				},
