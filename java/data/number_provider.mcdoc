@@ -5,19 +5,17 @@ use ::java::data::util::ScoreProvider
 use ::java::util::NonEmptyWeightedList
 
 #[since="26.3"]
-dispatch minecraft:resource[number_provider] to NumberProviderObject
+dispatch minecraft:resource[number_provider] to NumberProvider
 
 // Since 1.17
 // NumberProviders.DIRECT_CODEC in 26.3-snapshot-3
 type NumberProvider = (
 	float |
-	NumberProviderObject |
+	struct {
+		type?: #[id="loot_number_provider_type"] string,
+		...minecraft:number_provider[[type]],
+	} |
 )
-
-struct NumberProviderObject {
-	type?: #[id="loot_number_provider_type"] string,
-	...minecraft:number_provider[[type]],
-}
 
 dispatch minecraft:number_provider[uniform,%none] to struct UniformNumberProvider {
 	min?: NumberProvider,
