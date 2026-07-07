@@ -512,9 +512,7 @@ dispatch minecraft:feature_config[random_neighbor_spread] to struct RandomNeighb
 	accepted_neighbors: (#[id=(registry="block",tags="allowed")] string | [#[id="block"] string]),
 	can_replace: BlockPredicate,
 	attempts: IntProvider<int @ 1..3000>,
-	// Should be xz_offset. Almost certainly a typo in 26.3-snapshot-2.
-	// TODO: track the fix of this field
-	xy_offset: IntProvider<int @ -16..16>,
+	xz_offset: IntProvider<int @ -16..16>,
 	y_offset: IntProvider<int @ -16..16>,
 }
 
