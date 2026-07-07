@@ -291,7 +291,7 @@ dispatch minecraft:hover_event[show_entity] to struct ShowEntity {
 		type?: string,
 		id?: string,
 	},
-	#[since="1.16"]
+	#[since="1.16"] #[until="1.21.5"]
 	contents?: struct EntityHoverContent {
 		type: #[id="entity_type"] string,
 		id: #[uuid] (#[canonical] [int] @ 4 | string),
