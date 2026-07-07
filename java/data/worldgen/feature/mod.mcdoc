@@ -42,7 +42,11 @@ type FeatureRef = (
 	#[since="1.18"] PlacedFeatureRef |
 )
 
-dispatch minecraft:feature_config[bamboo,seagrass] to struct ProbabilityConfig {
+dispatch minecraft:feature_config[bamboo] to ProbabilityConfig
+#[until="26.3"]
+dispatch minecraft:feature_config[seagrass] to ProbabilityConfig
+
+struct ProbabilityConfig {
 	probability: float @ 0..1,
 }
 
@@ -92,6 +96,11 @@ struct BlockColumnLayer {
 
 dispatch minecraft:feature_config[block_pile] to struct BlockPileConfig {
 	state_provider: BlockStateProvider,
+}
+
+dispatch minecraft:feature_config[coral_claw, coral_tree] to struct CoralConfig {
+	#[since="26.3"]
+	feature: PlacedFeatureRef,
 }
 
 #[until="1.18"]
@@ -568,6 +577,7 @@ dispatch minecraft:feature_config[sculk_patch] to struct SculkPatchConfig {
 	catalyst_chance: float @ 0..1,
 }
 
+#[until="26.3"]
 dispatch minecraft:feature_config[sea_pickle] to struct SeaPickleConfig {
 	count: (
 		#[until="1.17"] UniformInt<int @ -10..128, int @ 0..128> |
