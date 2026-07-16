@@ -1,19 +1,27 @@
 use super::EntityTarget
-use super::super::enchantment::LevelBasedValue
-use super::super::util::IntRange
-use super::super::util::NumberProvider
-use super::super::util::RandomValueBounds
-use super::super::advancement::predicate::ItemPredicate
-use super::super::advancement::predicate::EntityPredicate
-use super::super::advancement::predicate::LocationPredicate
-use super::super::advancement::predicate::DamageSourcePredicate
+use ::java::data::advancement::predicate::BlockPredicate
+use ::java::data::advancement::predicate::ItemPredicate
+use ::java::data::advancement::predicate::EntityPredicate
+use ::java::data::advancement::predicate::LocationPredicate
+use ::java::data::advancement::predicate::DamageSourcePredicate
+use ::java::data::enchantment::LevelBasedValue
+use ::java::data::number_provider::NumberProviderRef
+use ::java::data::predicate::PredicateRef
+use ::java::data::predicate::PredicateListRef
+use ::java::data::util::IntRange
+use ::java::data::util::RandomValueBounds
+use ::java::util::registry_ref::BlockListRef
 
 type LootCondition = struct {
+	#[until="26.3"]
 	condition: (
 		#[until="1.16"] #[id] super::LootConditionType |
 		#[since="1.16"] #[id="loot_condition_type"] string |
 	),
-	...minecraft:loot_condition[[condition]],
+	#[until="26.3"] ...minecraft:loot_condition[[condition]],
+	#[since="26.3"]
+	type: #[id="loot_condition_type"] string,
+	#[since="26.3"] ...minecraft:loot_condition[[type]],
 }
 
 /// Whether any condition within a list passes.
@@ -25,15 +33,16 @@ dispatch minecraft:loot_condition[alternative] to struct Alternative {
 #[since="1.20"]
 dispatch minecraft:loot_condition[any_of] to struct AnyOf {
 	/// Passes when any of these conditions pass.
-	terms: [LootCondition],
+	terms: PredicateListRef,
 }
 
 #[since="1.20"]
 dispatch minecraft:loot_condition[all_of] to struct AllOf {
 	/// Passes when all of these conditions pass.
-	terms: [LootCondition],
+	terms: PredicateListRef,
 }
 
+#[until="26.3"]
 dispatch minecraft:loot_condition[block_state_property] to struct BlockStateProperty {
 	block: #[id="block"] string,
 	// TODO: was this optional in 1.20.2 and before? (wasn't codecified yet)
@@ -72,7 +81,7 @@ dispatch minecraft:loot_condition[environment_attribute_check] to struct Environ
 
 /// Whether a condition does not pass.
 dispatch minecraft:loot_condition[inverted] to struct Inverted {
-	term: LootCondition,
+	term: PredicateRef,
 }
 
 dispatch minecraft:loot_condition[killed_by_player] to struct KilledByPlayer {
@@ -86,6 +95,9 @@ dispatch minecraft:loot_condition[location_check] to struct LocationCheck {
 	predicate: LocationPredicate,
 }
 
+#[since="26.3"]
+dispatch minecraft:loot_condition[match_block] to BlockPredicate
+
 dispatch minecraft:loot_condition[match_tool] to struct MatchTool {
 	predicate: ItemPredicate,
 }
@@ -94,7 +106,7 @@ dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
 	/// Clamps to a float between `0` & `1` (inclusive).
 	chance: (
 		#[until="1.21"] float @ 0..1 |
-		#[since="1.21"] NumberProvider |
+		#[since="1.21"] NumberProviderRef |
 	),
 }
 
@@ -113,6 +125,7 @@ dispatch minecraft:loot_condition[random_chance_with_enchanted_bonus] to struct 
 }
 
 /// Whether another predicate passes.
+#[until="26.3"]
 dispatch minecraft:loot_condition[reference] to struct Reference {
 	/// A cyclic reference causes a parsing failure.
 	name: #[id="predicate"] string,
@@ -141,7 +154,7 @@ dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
 #[since="1.17"]
 dispatch minecraft:loot_condition[value_check] to struct ValueCheck {
 	/// Clamps to an integer.
-	value: NumberProvider,
+	value: NumberProviderRef,
 	/// Passes when `value` is within this range.
 	range: IntRange,
 }
