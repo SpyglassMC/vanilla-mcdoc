@@ -6,5 +6,3 @@ type ItemListRef = (
 	#[id=(registry="block",tags="allowed")] string |
 	[#[id="item"] string] |
 )
-
-// TODO: refactor other registry references

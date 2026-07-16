@@ -1,5 +1,4 @@
 use ::java::util::color::DyeColor
-use ::java::util::text::Text
 use ::java::world::component::block::SignText
 
 // TODO: Add filtered text
