@@ -18,14 +18,17 @@ dispatch minecraft:block_entity[furnace, blast_furnace, smoker] to struct Furnac
 		CookTimeTotal?: short,
 	},
 	#[since="1.21.4"] ...struct {
-		/// Total ticks the item will take to be smelted.
-		cooking_total_time?: short,
-		/// Ticks the item has been smelting for.
-		cooking_time_spent?: short,
-		/// Ticks until the current fuel runs out.
-		lit_time_remaining?: short,
-		/// Total ticks the current fuel will burn.
-		lit_total_time?: short,
+		/// The total amount of time the current cooking process will take. Defaults to `0`.
+		cooking_total_time?: (#[until="26.3"] short | #[since="26.3"] int),
+		/// The amount of time that the current cooking process has taken so far. Defaults to `0`.
+		cooking_time_spent?: (#[until="26.3"] short | #[since="26.3"] int),
+		/// The amount of burn time remaining. Defaults to `0`.
+		lit_time_remaining?: (#[until="26.3"] short | #[since="26.3"] int),
+		/// The total amount of burn time that was added in the last refuel. Defaults to `0`.
+		lit_total_time?: (#[until="26.3"] short | #[since="26.3"] int),
+		/// Used to speed up or slow down the next cooking process. Defaults to `1`.
+		#[since="26.3"]
+		speed_multiplier?: float,
 	},
 	/// Recipes that have been used since the last time a result item was removed from the GUI. Used to calculate the experience to give to the player.
 	#[since="1.16"]
@@ -35,4 +38,6 @@ dispatch minecraft:block_entity[furnace, blast_furnace, smoker] to struct Furnac
 	},
 }
 
-dispatch minecraft:block[furnace, blast_furnace, smoker] to minecraft:block_entity[furnace]
+dispatch minecraft:block[furnace] to minecraft:block_entity[furnace]
+dispatch minecraft:block[blast_furnace] to minecraft:block_entity[blast_furnace]
+dispatch minecraft:block[smoker] to minecraft:block_entity[smoker]
