@@ -169,10 +169,8 @@ dispatch minecraft:loot_pool_entry[loot_table] to struct LootTablePoolEntry {
 	#[since="1.20.5"]
 	value: (
 		#[until="26.3"] #[id="loot_table"] string |
-		#[since="26.3"] #[id=(registry="loot_table",tags="allowed")] string |
-		#[since="26.3"] [#[id="loot_table"] string] |
-		LootTable |
-		#[since="26.3"] [LootTable] |
+		#[until="26.3"] LootTable |
+		#[since="26.3"] LootTableListRef |
 	),
 	/// If `true`, select a random loot table from the tag. \
 	/// If `false`, drops all loot tables.
