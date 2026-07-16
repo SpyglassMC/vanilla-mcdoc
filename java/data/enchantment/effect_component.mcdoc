@@ -1,4 +1,4 @@
-use ::java::data::predicate::NonReferencePredicate
+use ::java::data::predicate::Predicate
 use ::java::data::util::SoundEventRef
 use super::effect::ValueEffect
 use super::effect::EntityEffect
@@ -10,10 +10,11 @@ struct EnchantmentEffectComponentMap {
 }
 
 // TODO: handle the "location based effects" thing
+// TODO: disallow predicate reference in pre-26.3
 
 dispatch minecraft:effect_component[armor_effectiveness] to [struct ArmorEffectivenessEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Determines armor effectiveness; `0.0` for no effect, `1.0` for full effect.
 	effect: ValueEffect,
 }]
@@ -22,7 +23,7 @@ dispatch minecraft:effect_component[attributes] to [AttributeEffect]
 
 dispatch minecraft:effect_component[ammo_use] to [struct AmmoUseEnchantmentEffect {
 	/// Predicate context: Item Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of ammunition being used up. \
 	/// `0` has a side effect of applying `intangible_projectile` component to the projectile item.
 	effect: ValueEffect,
@@ -30,7 +31,7 @@ dispatch minecraft:effect_component[ammo_use] to [struct AmmoUseEnchantmentEffec
 
 dispatch minecraft:effect_component[block_experience] to [struct BlockExperienceEnchantmentEffect {
 	/// Predicate context: Item Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of experience awarded.
 	effect: ValueEffect,
 }]
@@ -50,7 +51,7 @@ dispatch minecraft:effect_component[crossbow_charge_time] to ValueEffect
 
 dispatch minecraft:effect_component[damage] to [struct DamageEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Damage dealt by the weapon.
 	effect: ValueEffect,
 }]
@@ -58,14 +59,14 @@ dispatch minecraft:effect_component[damage] to [struct DamageEnchantmentEffect {
 /// Complete damage immunity given the conditions are met.
 dispatch minecraft:effect_component[damage_immunity] to [struct DamageImmunityEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Dummy value; this is a boolean effect.
 	effect: struct {},
 }]
 
 dispatch minecraft:effect_component[damage_protection] to [struct DamageProtectionEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Damage reduction factor. \
 	/// Provides `factor * 4%` of damage reduction, capped at 80%.
 	effect: ValueEffect,
@@ -74,7 +75,7 @@ dispatch minecraft:effect_component[damage_protection] to [struct DamageProtecti
 /// Chance of equipment dropping when a target is killed by the owner of the Enchanted Item.
 dispatch minecraft:effect_component[equipment_drops] to [struct EquipmentDropsEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Chance between `0.0` and `1.0` of an equipped piece dropping. \
 	/// If the drop chance on mob is 0, the chance will not be affected by this effect.
 	effect: ValueEffect,
@@ -86,7 +87,7 @@ dispatch minecraft:effect_component[fishing_luck_bonus] to [struct FishingLuckBo
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the player fishing.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of luck being added.
 	effect: ValueEffect,
 }]
@@ -95,7 +96,7 @@ dispatch minecraft:effect_component[fishing_time_reduction] to [struct FishingTi
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the player fishing.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Time reduction in seconds (higher values mean less time until a fish bites).
 	effect: ValueEffect,
 }]
@@ -104,28 +105,28 @@ dispatch minecraft:effect_component[hit_block] to [struct HitBlockEnchantmentEff
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the entity hitting the Block, unless during a projectile attack, then, `this` is the projectile.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// On the entity hitting the Block
 	effect: EntityEffect,
 }]
 
 dispatch minecraft:effect_component[knockback] to [struct KnockbackEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of knockback being applied.
 	effect: ValueEffect,
 }]
 
 dispatch minecraft:effect_component[item_damage] to [struct ItemDamageEnchantmentEffect {
 	/// Predicate context: Item Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of damage being dealt to the item.
 	effect: ValueEffect,
 }]
 
 dispatch minecraft:effect_component[location_changed] to [struct LocationChangedEnchantmentEffect {
 	/// Predicate context: Location Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// On the entity changing location.
 	effect: LocationBasedEffect,
 }]
@@ -134,14 +135,14 @@ dispatch minecraft:effect_component[mob_experience] to [struct MobExperienceEnch
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the killed mob.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of experience awarded.
 	effect: ValueEffect,
 }]
 
 dispatch minecraft:effect_component[post_attack] to [struct PostAttackEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Examples:
 	/// - A Fire Aspect Enchant would specify that when the attacker is enchanted, the `ignite` effect is applied, and the affected party is the victim.
 	/// - Thorns would specify that when the victim is enchanted, the `damage_entity` effect is applied, and the affected party is the attacker.
@@ -160,7 +161,7 @@ enum(string) AttackTarget {
 #[since="1.21.11"]
 dispatch minecraft:effect_component[post_piercing_attack] to [struct PostPiercingAttackEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// The effect to apply on attacker.
 	effect: EntityEffect,
 }]
@@ -175,7 +176,7 @@ dispatch minecraft:effect_component[projectile_count] to [struct ProjectileCount
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the entity drawing the weapon.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of projectiles being loaded/drawn. \
 	/// All projectile items except the first one will have `intangible_projectile` component applied.
 	effect: ValueEffect,
@@ -186,7 +187,7 @@ dispatch minecraft:effect_component[projectile_piercing] to [struct ProjectilePi
 	/// Predicate context: Item Parameters.
 	///
 	/// Tool is the ammunition item.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of entities the projectile will pierce through before despawning.
 	effect: ValueEffect,
 }]
@@ -196,7 +197,7 @@ dispatch minecraft:effect_component[projectile_spread] to [struct ProjectileSpre
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the entity shooting the projectile.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Maximum spread of projectiles measured in degrees from the aim line.
 	effect: ValueEffect,
 }]
@@ -206,7 +207,7 @@ dispatch minecraft:effect_component[projectile_spawned] to [struct ProjectileSpa
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the newly spawned projectile.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// On the newly spawned projectile.
 	effect: EntityEffect,
 }]
@@ -214,7 +215,7 @@ dispatch minecraft:effect_component[projectile_spawned] to [struct ProjectileSpa
 /// Repairs the enchanted item with experience points picked up by the player.
 dispatch minecraft:effect_component[repair_with_xp] to [struct RepairWithXpEnchantmentEffect {
 	/// Predicate context: Item Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of durability increase per experience point, `mending` uses 2x.
 	effect: ValueEffect,
 }]
@@ -222,7 +223,7 @@ dispatch minecraft:effect_component[repair_with_xp] to [struct RepairWithXpEncha
 /// Amount of damage caused by a Mace's smash attack per block fallen.
 dispatch minecraft:effect_component[smash_damage_per_block_fallen] to [struct SmashDamagePerBlockFallenEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of damage dealt per block fallen.
 	effect: ValueEffect,
 }]
@@ -231,7 +232,7 @@ dispatch minecraft:effect_component[tick] to [struct TickEnchantmentEffect {
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the entity with the Enchanted Item.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// On every tick. Performance recommendation: don't use with `run_function` unless necessary.
 	effect: EntityEffect,
 }]
@@ -240,7 +241,7 @@ dispatch minecraft:effect_component[trident_return_acceleration] to [struct Trid
 	/// Predicate context: Entity Parameters.
 	///
 	/// `this` is the trident entity.
-	requirements?: NonReferencePredicate,
+	requirements?: Predicate,
 	/// Amount of acceleration applied to the returning trident.
 	effect: ValueEffect,
 }]

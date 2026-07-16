@@ -1,4 +1,6 @@
 use ::java::data::advancement::predicate::ItemPredicate
+use ::java::util::color::DyeColor
+use ::java::util::text::Text
 use ::java::world::block::BlockEntityData
 use ::java::world::block::banner::BannerPatternLayer
 use ::java::world::component::item::AdventureModePredicate
@@ -62,3 +64,20 @@ dispatch minecraft:data_component[pot_decorations] to (
 		front?: ItemStackTemplate,
 	} |
 )
+
+#[since="26.3"]
+dispatch minecraft:data_component[sign_text_back,sign_text_front] to struct SignText {
+	messages: SignLines,
+	/// Shown to players with the profanity filter enabled on Realms.
+	filtered_messages?: SignLines,
+	color?: DyeColor,
+	has_glowing_text?: boolean,
+}
+
+type SignLines = (
+	#[until="1.21.5"] [#[text_component] string] @ 4 |
+	#[since="1.21.5"] [Text] @ 4 |
+)
+
+#[since="26.3"]
+dispatch minecraft:data_component[waxed] to struct {}

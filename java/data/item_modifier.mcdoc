@@ -1,8 +1,15 @@
 use super::loot::LootFunction
-use super::loot::NonReferenceLootFunction
 
-type ItemModifier = (LootFunction | [LootFunction])
-type NonReferenceItemModifier = (NonReferenceLootFunction | [NonReferenceLootFunction])
+// Note: because sequence can be inlined, slot source doesn't need any -Ref types here.
+// Use ItemModifier instead.
+type ItemModifier = (
+	LootFunction |
+	#[until="26.3"] [LootFunction] |
+	#[since="26.3"] [ItemModifier] |
+	#[since="26.3"] #[id=(registry="item_modifier",tags="allowed")] string |
+	// ↓ This is covered by [ItemModifier]
+	// #[since="26.3"] [#[id="item_modifier"] string] |
+)
 
 #[since="1.17"]
 dispatch minecraft:resource[item_modifier] to ItemModifier

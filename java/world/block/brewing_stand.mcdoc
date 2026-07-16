@@ -11,9 +11,18 @@ dispatch minecraft:block_entity[brewing_stand] to struct BrewingStand {
 	/// * 4: fuel slot
 	Items?: [SlottedItem<byte @ 0..4>] @ 0..5,
 	/// Number of ticks until the brewing is complete.
-	BrewTime?: short,
+	BrewTime?: (#[until="26.3"] short | #[since="26.3"] int),
 	/// Amount of fuel the brewing stand has left.
-	Fuel?: byte,
+	Fuel?: (#[until="26.3"] byte | #[since="26.3"] int),
+	/// The total amount of time the current brewing process will take. Defaults to `400`.
+	#[since="26.3"]
+	total_brew_time?: int,
+	/// The amount of fuel that was added in the last refuel. Defaults to `20`.
+	#[since="26.3"]
+	total_fuel?: int,
+	/// Used to speed up or slow down the next brewing process. Defaults to `1`.
+	#[since="26.3"]
+	speed_multiplier?: float,
 }
 
 dispatch minecraft:block[brewing_stand] to minecraft:block_entity[brewing_stand]

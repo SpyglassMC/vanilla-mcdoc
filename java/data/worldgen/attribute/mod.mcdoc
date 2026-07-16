@@ -2,19 +2,25 @@ use ::java::util::color::StringRGB
 use ::java::util::color::StringARGB
 use ::java::util::particle::Particle
 use ::java::util::text::Text
+use ::java::util::FlatWeightedList
 use ::java::data::util::MoonPhase
 use ::java::data::util::SoundEventRef
 use ::java::data::timeline::AttributeTrackBase
 use super::biome::BiomeMusic
 use super::biome::MoodSound
 use super::biome::BiomeSoundAdditions
+use super::biome::NaturalMobSpawns
 use modifier::BooleanModifierType
 use modifier::FloatModifierType
 use modifier::ColorModifierType
+use modifier::MergeableModifierType
+use modifier::ListModifierType
 use modifier::BooleanAttributeModifier
 use modifier::FloatAttributeModifier
 use modifier::ColorAttributeModifier
 use modifier::TranslucentColorAttributeModifier
+use modifier::MergeableModifier
+use modifier::ListModifier
 use modifier::OverrideModifier
 
 type EnvironmentAttributeMap<K> = struct {
@@ -74,6 +80,33 @@ struct ARGBColorAttribute {
 			value: minecraft:environment_attribute_argb_color_modifier[[%parent.%parent.modifier]],
 		}],
 	},
+}
+
+type MergeableAttribute<T> = struct {
+	value: T,
+	modifier: MergeableModifier<T>,
+	attribute_track: struct {
+		...AttributeTrackBase,
+		modifier?: MergeableModifierType,
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: T,
+		}],
+	},
+}
+
+// E: element type
+type ListAttribute<E> = struct {
+	value: [E],
+	modifier: ListModifier<E>,
+	attribute_track: struct {
+		...AttributeTrackBase,
+		modifier?: ListModifierType,
+		keyframes: [struct {
+			ticks: int @ 0..,
+			value: [E],
+		}],
+	}
 }
 
 type DiscreteAttribute<T> = struct {
@@ -158,6 +191,9 @@ dispatch minecraft:environment_attribute[
 	"gameplay/turtle_egg_hatch_chance",
 ] to FloatAttribute<float @ 0..1>
 dispatch minecraft:environment_attribute["gameplay/sky_light_level"] to FloatAttribute<float @ 0..15>
+// This is how Mojang define their UNIT_FLOAT_EPSILON range
+#[since="26.3"]
+dispatch minecraft:environment_attribute["gameplay/creature_world_gen_spawn_probability"] to FloatAttribute<float @ 0..0.9999999>
 
 dispatch minecraft:environment_attribute[
 	"visual/fog_color",
@@ -180,7 +216,10 @@ dispatch minecraft:environment_attribute[
 
 dispatch minecraft:environment_attribute["visual/default_dripstone_particle"] to DiscreteAttribute<Particle>
 
-dispatch minecraft:environment_attribute["visual/ambient_particles"] to DiscreteAttribute<[AmbientParticle]>
+#[since="26.3"]
+dispatch minecraft:environment_attribute["gameplay/natural_mob_spawns"] to MergeableAttribute<NaturalMobSpawns>
+
+dispatch minecraft:environment_attribute["visual/ambient_particles"] to ListAttribute<AmbientParticle>
 
 dispatch minecraft:environment_attribute["audio/background_music"] to DiscreteAttribute<struct BackgroundMusic {
 	/// Default music to play

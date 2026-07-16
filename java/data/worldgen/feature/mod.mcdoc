@@ -448,6 +448,7 @@ dispatch minecraft:feature_config[large_dripstone] to struct LargeDripstoneConfi
 	min_bluntness_for_wind: float @ 0..1,
 }
 
+#[until="26.3"]
 dispatch minecraft:feature_config[nether_forest_vegetation] to struct NetherForestVegetationConfig {
 	state_provider: BlockStateProvider,
 	#[since="1.18"]
@@ -686,7 +687,7 @@ struct TemplateEntry {
 	rotations?: [Rotation],
 }
 
-#[since="1.18"]
+#[since="1.18"] #[until="26.3"]
 dispatch minecraft:feature_config[twisting_vines] to struct TwistingVinesConfig {
 	spread_width: int @ 1..,
 	spread_height: int @ 1..,

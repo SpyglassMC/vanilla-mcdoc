@@ -1,11 +1,19 @@
 use super::loot::LootCondition
-use super::loot::NonReferenceLootCondition
 
 type Predicate = (
 	LootCondition |
-	#[since="1.16"] [LootCondition]
+	#[since="1.16"] #[until="26.3"] [LootCondition]
 )
-// Since 1.21
-type NonReferencePredicate = (NonReferenceLootCondition | [NonReferenceLootCondition])
+
+type PredicateRef = (
+	Predicate |
+	#[since="26.3"] #[id="predicate"] string |
+)
+type PredicateListRef = (
+	#[since="26.3"] LootCondition |
+	[LootCondition] |
+	#[since="26.3"] #[id=(registry="predicate",tags="allowed")] string |
+	#[since="26.3"] [#[id="predicate"] string] |
+)
 
 dispatch minecraft:resource[predicate] to Predicate

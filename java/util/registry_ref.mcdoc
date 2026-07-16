@@ -1,0 +1,8 @@
+type BlockListRef = (
+	#[id=(registry="block",tags="allowed")] string |
+	[#[id="block"] string] |
+)
+type ItemListRef = (
+	#[id=(registry="block",tags="allowed")] string |
+	[#[id="item"] string] |
+)

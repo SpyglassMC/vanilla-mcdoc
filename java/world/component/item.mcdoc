@@ -203,6 +203,14 @@ enum(string) BlockTransformType {
 #[since="1.21.5"]
 dispatch minecraft:data_component[break_sound] to SoundEventRef
 
+#[since="26.3"]
+dispatch minecraft:data_component[brewing_fuel] to struct BrewingFuel {
+	// The number of times this fuel will brew before being consumed.
+	uses: #[id="number_provider"] string,
+	// The speed of the brewing.
+	speed_multiplier: #[id="number_provider"] string,
+}
+
 dispatch minecraft:data_component[bucket_entity_data] to (
 	#[canonical] BucketEntityData |
 	#[nbt=BucketEntityData] string |
@@ -331,6 +339,14 @@ dispatch minecraft:consume_effect[teleport_randomly] to struct TeleportRandomlyC
 
 dispatch minecraft:consume_effect[play_sound] to struct PlaySoundConsumeEffect {
 	sound: SoundEventRef,
+}
+
+#[since="26.3"]
+dispatch minecraft:data_component[cooking_fuel] to struct CookingFuel {
+	// The time in ticks for which this fuel will burn.
+	burn_time: #[id="number_provider"] string,
+	// The speed of the cooking/smelting.
+	speed_multiplier: #[id="number_provider"] string,
 }
 
 dispatch minecraft:data_component[custom_model_data] to (
@@ -667,6 +683,15 @@ dispatch minecraft:data_component[max_stack_size] to int @ 1..99
 #[since="1.21.11"]
 dispatch minecraft:data_component[minimum_attack_charge] to float @ 0..1
 
+#[since="26.3"]
+dispatch minecraft:data_component[mob_visibility] to struct MobVisibility {
+	/// Entities to match.
+	targeting_entity_types: (#[id(registry="entity_type",tags="allowed")] string | [#[id="entity_type"] string]),
+	/// Visibility factor, with `0.0` reducing the range at which mobs detects the entity to `2`, while `10.0` increases the detection range tenfold.
+	/// While multiple items with this component stack, the maximum vision will still never exceed `10.0`.
+	visibility: float @ 0..10,
+}
+
 /// Sound to be played by a note block if this player head is placed above it.
 dispatch minecraft:data_component[note_block_sound] to (#[id="weighed_sound_event"] string)
 
@@ -846,6 +871,11 @@ dispatch minecraft:data_component[use_effects] to struct UseEffects {
 }
 
 dispatch minecraft:data_component[use_remainder] to ItemStackTemplate
+
+dispatch minecraft:data_component[villager_food] to struct VillagerFood {
+	/// How much hunger the item satiates in the Villager once eaten.
+	nutrition: int @ 1..,
+}
 
 /// When present, the 'Item Used' statistic will be incremented for each attack with the item.
 #[since="1.21.5"]

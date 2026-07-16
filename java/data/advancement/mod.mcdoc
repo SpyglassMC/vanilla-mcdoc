@@ -1,4 +1,5 @@
 use ::java::util::text::Text
+use ::java::data::loot::LootTableListRef
 use ::java::world::item::ItemStackTemplate
 
 dispatch minecraft:resource[advancement] to struct Advancement {
@@ -77,13 +78,14 @@ struct AdvancementRewards {
 	/// XP to add.
 	experience?: int,
 	/// Loot tables to give.
-	loot?: [#[id="loot_table"] string],
+	loot?: LootTableListRef,
 	/// Recipes to unlock.
 	recipes?: [#[id="recipe"] string],
 	/// Function to run as and at the player. Function tags are not allowed.
 	function?: #[id="function"] string,
 }
 
+// Until 1.20.3
 enum(string) Trigger {
 	#[since="1.19"] AllayDropItemOnBlock = "allay_drop_item_on_block",
 	#[since="1.19"] AvoidVibration = "avoid_vibration",

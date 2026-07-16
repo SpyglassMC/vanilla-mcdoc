@@ -42,6 +42,14 @@ type WeightedEntry<T> = struct {
 type WeightedList<T> = [WeightedEntry<T>]
 type NonEmptyWeightedList<T> = [WeightedEntry<T>] @ 1..
 
+// This happens if the data uses MapCodec
+type FlatWeightedEntry<T> = struct {
+	weight: int @ 0..,
+	...T,
+}
+type FlatWeightedList<T> = [FlatWeightedEntry<T>]
+type NonEmptyFlatWeightedList<T> = [FlatWeightedEntry<T>] @ 1..
+
 enum(string) Rotation {
 	None = "none",
 	Clockwise90 = "clockwise_90",

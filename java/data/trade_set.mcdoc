@@ -1,4 +1,4 @@
-use ::java::data::util::NumberProvider
+use ::java::data::number_provider::NumberProvider
 
 dispatch minecraft:resource[trade_set] to struct TradeSet {
 	/// Possible trade generators.

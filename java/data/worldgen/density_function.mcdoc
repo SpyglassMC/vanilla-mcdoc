@@ -15,6 +15,8 @@ type DensityFunction = (
 
 dispatch minecraft:resource["worldgen/density_function"] to DensityFunction
 
+dispatch minecraft:density_function[%unknown] to struct {}
+
 dispatch minecraft:density_function[
 	abs,
 	blend_density,
@@ -25,23 +27,43 @@ dispatch minecraft:density_function[
 	flat_cache,
 	half_negative,
 	interpolated,
-	invert,
 	quarter_negative,
 	slide,
 	square,
 	squeeze,
-] to struct OneArgument {
+] to OneArgument
+#[until="26.3"]
+dispatch minecraft:density_function[invert] to OneArgument
+#[since="26.3"]
+dispatch minecraft:density_function[negate, reciprocal] to OneArgument
+
+struct OneArgument {
+	#[until="26.3"]
 	argument: DensityFunctionRef,
+	#[since="26.3"]
+	input: DensityFunctionRef,
 }
 
-dispatch minecraft:density_function[
-	add,
-	max,
-	min,
-	mul,
-] to struct TwoArguments {
+dispatch minecraft:density_function[add, max, min, mul] to TwoArguments
+#[since="26.3"]
+dispatch minecraft:density_function[sub, div] to TwoArguments
+
+struct TwoArguments {
+	#[until="26.3"]
 	argument1: DensityFunctionRef,
+	#[until="26.3"]
 	argument2: DensityFunctionRef,
+	#[since="26.3"]
+	left: DensityFunctionRef,
+	#[since="26.3"]
+	right: DensityFunctionRef,
+}
+
+#[since="26.3"]
+dispatch minecraft:density_function[ceil, floor, round, truncate] to struct Round {
+	input: DensityFunctionRef,
+	/// Defaults to constant 1.
+	multiple?: DensityFunctionRef,
 }
 
 dispatch minecraft:density_function[clamp] to struct Clamp {
@@ -51,7 +73,10 @@ dispatch minecraft:density_function[clamp] to struct Clamp {
 }
 
 dispatch minecraft:density_function[constant] to struct Constant {
+	#[until="26.3"]
 	argument: NoiseRange,
+	#[since="26.3"]
+	value: NoiseRange,
 }
 
 #[since="1.21.9"]
@@ -70,6 +95,13 @@ dispatch minecraft:density_function[interval_select] to struct InvervalSelect {
 	thresholds: [NoiseRange] @ 1..,
 	/// Must have exactly one more element than `thresholds`.
 	functions: [DensityFunctionRef] @ 2..,
+}
+
+#[since="26.3"]
+dispatch minecraft:density_function[lerp] to struct Lerp {
+	alpha: DensityFunctionRef,
+	first: DensityFunctionRef,
+	second: DensityFunctionRef,
 }
 
 dispatch minecraft:density_function[noise] to struct Noise {
@@ -107,7 +139,10 @@ dispatch minecraft:density_function[
 	shift_a,
 	shift_b,
 ] to struct Shift {
+	#[until="26.3"]
 	argument: #[id="worldgen/noise"] string,
+	#[since="26.3"]
+	noise: #[id="worldgen/noise"] string,
 }
 
 dispatch minecraft:density_function[spline] to struct Spline {

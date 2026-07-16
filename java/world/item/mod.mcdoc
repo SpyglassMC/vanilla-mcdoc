@@ -1,7 +1,7 @@
 use ::java::util::attribute::AttributeName
 use ::java::util::attribute::LegacyOperation
 use ::java::util::slot::EquipmentSlotGroup
-use ::java::data::util::NumberProvider
+use ::java::data::number_provider::NumberProvider
 use ::java::world::block::BlockEntityData
 use ::java::world::component::DataComponentPatch
 use ::java::world::component::DataComponentExactPredicate
@@ -42,6 +42,7 @@ type ItemStackTemplate = (
 )
 
 // 26.1 villager trade field
+// This uses the non-reference version of NumberProvider
 struct TradeCost {
 	...SingleItemOfComponent<DataComponentExactPredicate>,
 	/// Number of items in the stack.
