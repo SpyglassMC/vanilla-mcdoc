@@ -4,9 +4,6 @@ use ::java::data::item_modifier::ItemModifier
 use ::java::world::item::ItemStackTemplate
 use ::java::world::item::TradeCost
 
-// Note: "NumberProvider" is always non-reference number provider
-// Note: "Predicate" is automatically non-reference predicate since 26.3
-
 dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	// TODO: Provide a link to a gist with the full explanation. 
 	/// Price item required by the merchant. \

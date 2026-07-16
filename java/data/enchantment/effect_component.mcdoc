@@ -10,9 +10,7 @@ struct EnchantmentEffectComponentMap {
 }
 
 // TODO: handle the "location based effects" thing
-
 // TODO: disallow predicate reference in pre-26.3
-// Note: "Predicate" is automatically non-reference predicate since 26.3
 
 dispatch minecraft:effect_component[armor_effectiveness] to [struct ArmorEffectivenessEnchantmentEffect {
 	/// Predicate context: Damage Parameters.
