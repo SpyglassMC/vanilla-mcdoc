@@ -46,6 +46,16 @@ struct BlendToGray {
 	factor: float @ 0..1,
 }
 
+type MergeableModifier<T> = struct {
+	modifier: MergeableModifierType,
+	argument: T,
+}
+
+type ListModifier<E> = struct {
+	modifier: ListModifierType,
+	argument: [E],
+}
+
 type OverrideModifier<T> = struct {
 	modifier: "override",
 	argument: T,
@@ -78,4 +88,15 @@ enum(string) ColorModifierType {
 	Multiply = "multiply",
 	AlphaBlend = "alpha_blend",
 	BlendToGray = "blend_to_gray",
+}
+
+enum(string) MergeableModifierType {
+	Override = "override",
+	Overlay = "overlay",
+}
+
+enum(string) ListModifierType {
+	Override = "override",
+	#[since="26.3"]
+	Append = "append",
 }

@@ -1,6 +1,7 @@
 use ::java::util::color::StringRGB
 use ::java::util::particle::Particle
 use ::java::util::WeightedList
+use ::java::util::FlatWeightedList
 use super::attribute::PositionalEnvironmentAttributeMap
 use super::CarveStep
 use super::carver::CarverRef
@@ -8,6 +9,7 @@ use super::feature::ConfiguredFeatureRef
 use super::feature::placement::PlacedFeatureRef
 use super::structure::StructureRef
 use super::surface_builder::ConfiguredSurfaceBuilderRef
+use super::IntProvider
 use super::super::util::SoundEventRef
 
 dispatch minecraft:resource["worldgen/biome"] to struct Biome {
@@ -31,18 +33,15 @@ dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 	/// If true, the world spawn will be preferred in this biome.
 	#[until="1.18"]
 	player_spawn_friendly?: boolean,
-	creature_spawn_probability?: float @ 0..1,
+	#[until="26.3"]
+	creature_spawn_probability?: float @ 0..0.9999999,
 	effects: BiomeEffects,
 	#[until="1.18"]
 	surface_builder: ConfiguredSurfaceBuilderRef,
 	#[until="1.18"]
 	starts: [StructureRef],
-	spawners: struct {
-		[MobCategory]: [SpawnerData],
-	},
-	spawn_costs: struct {
-		[#[id="entity_type"] string]: MobSpawnCost,
-	},
+	#[until="26.3"]
+	...NaturalMobSpawns,
 	carvers: (
 		#[until="1.21.2"] struct CarversPerStep {
 			[CarveStep]: (
@@ -186,11 +185,21 @@ enum(string) MobCategory {
 	Misc = "misc",
 }
 
+struct NaturalMobSpawns {
+	spawns_by_category: struct {
+		[MobCategory]: FlatWeightedList<SpawnerData>,
+	},
+	spawn_costs: MobSpawnCost,
+}
+
 struct SpawnerData {
 	type: #[id="entity_type"] string,
-	weight: int,
+	#[until="26.3"]
 	minCount: int,
+	#[until="26.3"]
 	maxCount: int,
+	#[since="26.3"]
+	count: IntProvider<int>,
 }
 
 struct MobSpawnCost {
