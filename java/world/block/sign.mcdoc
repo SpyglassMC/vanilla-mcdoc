@@ -1,5 +1,6 @@
 use ::java::util::color::DyeColor
 use ::java::util::text::Text
+use ::java::world::component::block::SignText
 
 // TODO: Add filtered text
 dispatch minecraft:block_entity[sign, hanging_sign] to (
@@ -13,19 +14,6 @@ dispatch minecraft:block_entity[sign, hanging_sign] to (
 		/// Whether the sign has been made uneditable by applying wax.
 		is_waxed?: boolean,
 	} |
-)
-
-struct SignText {
-	messages: SignLines,
-	/// Shown to players with the profanity filter enabled on Realms.
-	filtered_messages?: SignLines,
-	color?: DyeColor,
-	has_glowing_text?: boolean,
-}
-
-type SignLines = (
-	#[until="1.21.5"] [#[text_component] string] @ 4 |
-	#[since="1.21.5"] [Text] @ 4 |
 )
 
 struct OldSign {

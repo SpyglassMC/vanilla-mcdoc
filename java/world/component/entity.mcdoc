@@ -34,6 +34,9 @@ dispatch minecraft:data_component["cow/sound_variant"] to #[id="cow_sound_varian
 #[since="1.21.5"]
 dispatch minecraft:data_component["cow/variant"] to #[id="cow_variant"] string
 
+#[since="26.3"]
+dispatch minecraft:data_component["cushion/color"] to DyeColor
+
 #[since="1.21.5"]
 dispatch minecraft:data_component["fox/variant"] to FoxType
 
