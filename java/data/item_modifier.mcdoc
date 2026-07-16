@@ -2,5 +2,18 @@ use super::loot::LootFunction
 
 type ItemModifier = (LootFunction | [LootFunction])
 
+type ItemModifierRef = (
+	ItemModifier |
+	#[since="26.3"] #[id="item_modifier"] string |
+)
+// Since 26.3
+type ItemModifierListRef = (
+	// LootFunction instead of ItemModifier to prevent a duplicate entry of [LootFunction]
+	LootFunction |
+	[ItemModifier] |
+	#[id=(registry="item_modifier",tags="allowed")] string |
+	[#[id="item_modifier"] string] |
+)
+
 #[since="1.17"]
 dispatch minecraft:resource[item_modifier] to ItemModifier

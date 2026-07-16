@@ -10,6 +10,12 @@ dispatch minecraft:resource[recipe] to struct Recipe {
 	...minecraft:recipe_serializer[[type]],
 }
 
+// Since 26.3
+type RecipeListRef = (
+	#[id=(registry="recipe",tags="allowed")] string |
+	[#[id="recipe"] string] |
+)
+
 dispatch minecraft:recipe_serializer[%unknown] to struct {}
 
 dispatch minecraft:recipe_serializer[crafting_decorated_pot] to (

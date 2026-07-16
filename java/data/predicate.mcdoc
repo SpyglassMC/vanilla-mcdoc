@@ -2,7 +2,19 @@ use super::loot::LootCondition
 
 type Predicate = (
 	LootCondition |
-	#[since="1.16"] [LootCondition]
+	#[since="1.16"] #[until="26.3"] [LootCondition]
+)
+
+type PredicateRef = (
+	Predicate |
+	#[since="26.3"] #[id="predicate"] string |
+)
+// Since 26.3
+type PredicateListRef = (
+	Predicate |
+	[Predicate] |
+	#[id=(registry="predicate",tags="allowed")] string |
+	[#[id="predicate"] string] |
 )
 
 dispatch minecraft:resource[predicate] to Predicate

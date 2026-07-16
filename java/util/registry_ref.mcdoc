@@ -1,0 +1,6 @@
+type BlockListRef = (
+	#[id=(registry="block",tags="allowed")] string |
+	[#[id="block"] string]
+)
+
+// TODO: refactor other registry references

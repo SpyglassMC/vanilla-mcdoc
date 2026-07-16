@@ -580,7 +580,11 @@ struct DamageSourcePredicate {
 }
 
 struct DamageTagPredicate {
-	id: #[id(registry="damage_type",tags="implicit")] string,
+	id: (
+		#[until="26.3"] #[id(registry="damage_type",tags="implicit")] string |
+		#[since="26.3"] #[id(registry="damage_type",tags="allowed")] string |
+		#[since="26.3"] [#[id="damage_type"] string] |
+	),
 	/// Whether the damage is expected to have or not have the tag.
 	expected: boolean,
 }

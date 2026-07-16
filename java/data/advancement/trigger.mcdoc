@@ -2,11 +2,16 @@ use super::super::util::MinMaxBounds
 use super::predicate::ItemPredicate
 use super::predicate::EntityPredicate
 use super::predicate::LocationPredicate
-use super::predicate::MobEffectPredicate
+use super::predicate::EntityEffectsPredicate
 use super::predicate::DamagePredicate
 use super::predicate::DamageSourcePredicate
 use super::predicate::DistancePredicate
-use super::super::loot::LootCondition
+use ::java::data::loot::LootCondition
+use ::java::data::loot::LootTableListRef
+use ::java::data::predicate::PredicateRef
+use ::java::data::recipe::RecipeListRef
+use ::java::world::component::predicate::PotionsPredicate
+use ::java::util::registry_ref::BlockListRef
 
 type Conditions<C> = struct {
 	conditions?: C,
@@ -16,10 +21,14 @@ type RequiredConditions<C> = struct {
 	conditions: C,
 }
 
+type AdvancementPredicateRef = (
+	#[until="26.3"] [LootCondition] |
+	#[since="26.3"] PredicateRef |
+)
+
 type CompositeEntity = (
-	EntityPredicate |
-	#[since="1.16"]
-	[LootCondition] |
+	#[until="26.3"] EntityPredicate |
+	#[since="1.16"] AdvancementPredicateRef |
 )
 
 struct TriggerBase {
@@ -27,26 +36,27 @@ struct TriggerBase {
 	player?: CompositeEntity,
 }
 
-type Location = (
-	#[deprecated="1.16"] #[until="1.19"]
-	LocationPredicate |
-	#[since="1.16"]
-	struct {
+type PlayerTrigger = (
+	#[deprecated="1.16"] #[until="1.19"] LocationPredicate |
+	#[since="1.16"] struct {
 		...TriggerBase,
 		#[until="1.19"]
 		location?: LocationPredicate,
 	} |
 )
 
-type PlayerInteract = struct {
+struct PlayerInteract {
 	...TriggerBase,
 	item?: ItemPredicate,
 	entity?: CompositeEntity,
 }
 
-type RecipeCrafted = struct {
+struct RecipeCrafted {
 	...TriggerBase,
+	#[until="26.3"]
 	recipe_id: #[id="recipe"] string,
+	#[since="26.3"]
+	recipes: RecipeListRef,
 	ingredients?: [ItemPredicate] @ 1..9,
 }
 
@@ -57,22 +67,27 @@ dispatch minecraft:trigger[allay_drop_item_on_block] to Conditions<struct AllayD
 	item?: ItemPredicate,
 	location?: (
 		#[until="1.20"] LocationPredicate |
-		#[since="1.20"] [LootCondition] |
+		#[since="1.20"] AdvancementPredicateRef |
 	),
 }>
 
 #[since="1.20.5"]
 dispatch minecraft:trigger[any_block_use] to Conditions<struct AnyBlockUse {
 	...TriggerBase,
-	location?: [LootCondition],
+	location?: AdvancementPredicateRef,
 }>
 
 #[since="1.19"]
-dispatch minecraft:trigger[avoid_vibration] to Conditions<Location>
+dispatch minecraft:trigger[avoid_vibration] to Conditions<PlayerTrigger>
 
 dispatch minecraft:trigger[bee_nest_destroyed] to Conditions<struct BeeNestDestroyed {
 	...TriggerBase,
+	#[until="26.3"]
 	block?: #[id="block"] string,
+	#[since="26.3"]
+	blocks?: BlockListRef,
+	#[since="26.3"]
+	state?: mcdoc:block_states[[blocks]],
 	/// Number of bees that were inside the bee nest/beehive before it was broken.
 	num_bees_inside?: int,
 	/// Item used to break the block.
@@ -89,7 +104,10 @@ dispatch minecraft:trigger[bred_animals] to Conditions<struct BredAnimals {
 /// Player took any item out of a brewing stand.
 dispatch minecraft:trigger[brewed_potion] to Conditions<struct BrewedPotion {
 	...TriggerBase,
-	potion?: #[id="potion"] string,
+	potion?: (
+		#[until="26.3"] #[id="potion"] string |
+		#[since="26.3"] PotionsPredicate |
+	),
 }>
 
 dispatch minecraft:trigger[changed_dimension] to Conditions<struct ChangedDimension {
@@ -130,15 +148,13 @@ dispatch minecraft:trigger[cured_zombie_villager] to Conditions<struct CuredZomb
 dispatch minecraft:trigger[default_block_use] to Conditions<struct DefaultBlockUse {
 	...TriggerBase,
 	/// The location of the block.
-	location?: [LootCondition],
+	location?: AdvancementPredicateRef,
 }>
 
 /// Player had a status effect applied or taken from them.
 dispatch minecraft:trigger[effects_changed] to Conditions<struct EffectsChanged {
 	...TriggerBase,
-	effects?: struct {
-		[#[id="mob_effect"] string]: MobEffectPredicate,
-	},
+	effects?: EntityEffectsPredicate,
 	#[since="1.17"]
 	source?: CompositeEntity,
 }>
@@ -155,7 +171,10 @@ dispatch minecraft:trigger[enchanted_item] to Conditions<struct EnchantedItem {
 /// Checked every tick and will trigger for each successful match (up to 8 times, the maximum amount of blocks a player can stand in).
 dispatch minecraft:trigger[enter_block] to Conditions<struct EnterBlock {
 	...TriggerBase,
+	#[until="26.3"]
 	block?: #[id="block"] string,
+	#[since="26.3"]
+	blocks?: BlockListRef,
 	state?: mcdoc:block_states[[block]],
 }>
 
@@ -202,7 +221,7 @@ dispatch minecraft:trigger[fishing_rod_hooked] to Conditions<struct FishingRodHo
 }>
 
 /// Player killed the last mob of the last wave in a raid.
-dispatch minecraft:trigger[hero_of_the_village] to Conditions<Location>
+dispatch minecraft:trigger[hero_of_the_village] to Conditions<PlayerTrigger>
 
 dispatch minecraft:trigger[impossible] to Conditions<TriggerBase>
 
@@ -239,7 +258,7 @@ dispatch minecraft:trigger[item_used_on_block] to Conditions<struct ItemUsedOnBl
 	item?: ItemPredicate,
 	location?: (
 		#[until="1.20"] LocationPredicate |
-		#[since="1.20"] [LootCondition] |
+		#[since="1.20"] AdvancementPredicateRef |
 	),
 }>
 
@@ -284,7 +303,7 @@ dispatch minecraft:trigger[lightning_strike] to Conditions<struct LightningStrik
 }>
 
 /// Activates every 20 ticks (1 second).
-dispatch minecraft:trigger[location] to Conditions<Location>
+dispatch minecraft:trigger[location] to Conditions<PlayerTrigger>
 
 /// Player returned to the Overworld after traveling to the Nether.
 dispatch minecraft:trigger[nether_travel] to Conditions<struct NetherTravel {
@@ -314,7 +333,7 @@ dispatch minecraft:trigger[placed_block] to Conditions<struct PlacedBlock {
 	/// Where the block was placed.
 	location?: (
 		#[until="1.20"] LocationPredicate |
-		#[since="1.20"] [LootCondition]
+		#[since="1.20"] AdvancementPredicateRef |
 	),
 }>
 
@@ -322,7 +341,10 @@ dispatch minecraft:trigger[placed_block] to Conditions<struct PlacedBlock {
 #[since="1.16"]
 dispatch minecraft:trigger[player_generates_container_loot] to RequiredConditions<struct PlayerGeneratesContainerLoot {
 	...TriggerBase,
+	#[until="26.3"]
 	loot_table: #[id="loot_table"] string,
+	#[since="26.3"]
+	loot_tables: LootTableListRef,
 }>
 
 dispatch minecraft:trigger[player_hurt_entity] to Conditions<struct PlayerHurtEntity {
@@ -351,7 +373,10 @@ dispatch minecraft:trigger[recipe_crafted] to RequiredConditions<RecipeCrafted>
 /// Player unlocked a recipe by either crafting it, receiving it in an advancement reward, using a knowledge book, or receiving it through `/recipe`.
 dispatch minecraft:trigger[recipe_unlocked] to RequiredConditions<struct RecipeUnlocked {
 	...TriggerBase,
+	#[until="26.3"]
 	recipe: #[id="recipe"] string,
+	#[since="26.3"]
+	recipes: RecipeListRef,
 }>
 
 #[since="1.18"]
@@ -377,11 +402,14 @@ dispatch minecraft:trigger[shot_crossbow] to Conditions<struct ShotCrossbow {
 	item?: ItemPredicate,
 }>
 
-dispatch minecraft:trigger[slept_in_bed] to Conditions<Location>
+dispatch minecraft:trigger[slept_in_bed] to Conditions<PlayerTrigger>
 
 dispatch minecraft:trigger[slide_down_block] to Conditions<struct SlideDownBlock {
 	...TriggerBase,
+	#[until="26.3"]
 	block?: #[id="block"] string,
+	#[since="26.3"]
+	blocks?: BlockListRef,
 }>
 
 #[since="1.21.11"]
@@ -466,4 +494,4 @@ dispatch minecraft:trigger[villager_trade] to Conditions<struct VillagerTrade {
 }>
 
 /// Player caused a raid to start.
-dispatch minecraft:trigger[voluntary_exile] to Conditions<Location>
+dispatch minecraft:trigger[voluntary_exile] to Conditions<PlayerTrigger>
