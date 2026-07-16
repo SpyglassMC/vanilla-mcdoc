@@ -17,6 +17,11 @@ type NumberProvider = (
 	} |
 )
 
+type NumberProviderRef = (
+	NumberProvider |
+	#[since="26.3"] #[id="number_provider"] string |
+)
+
 dispatch minecraft:number_provider[uniform,%none] to struct UniformNumberProvider {
 	min?: NumberProvider,
 	max?: NumberProvider,

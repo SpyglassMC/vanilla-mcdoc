@@ -66,9 +66,9 @@ dispatch minecraft:random_int_generator[constant] to struct ConstantIntGenerator
 }
 
 // deprecated
-// moved to ::java::data::number_provider::NumberProvider
+// moved to ::java::data::number_provider::NumberProviderRef
 // TODO: refactor references
-type NumberProvider = super::number_provider::NumberProvider
+type NumberProvider = super::number_provider::NumberProviderRef
 
 type ScoreProvider = (
 	EntityTarget |

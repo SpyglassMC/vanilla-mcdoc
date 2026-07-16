@@ -9,8 +9,10 @@ use super::super::util::RandomIntGenerator
 use super::super::util::IntRange
 use super::super::util::IntLimiter
 use super::super::util::NbtProvider
-use super::super::util::NumberProvider
 use ::java::data::advancement::predicate::ItemPredicate
+use ::java::data::item_modifier::ItemModifier
+use ::java::data::number_provider::NumberProviderRef
+use ::java::data::predicate::PredicateRef
 use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::attribute::AttributeOperation
 use ::java::util::color::DyeColor
@@ -22,15 +24,22 @@ use ::java::world::component::CustomData
 use ::java::world::component::item::FireworkShape
 
 type Conditions = struct {
+	#[until="26.3"]
 	conditions?: [LootCondition],
+	#[since="26.3"]
+	condition?: PredicateRef,
 }
 
 type LootFunction = struct {
+	#[until="26.3"]
 	function: (
 		#[until="1.16"] #[id] super::LootFunctionType |
 		#[since="1.16"] #[id="loot_function_type"] string |
 	),
-	...minecraft:loot_function[[function]],
+	#[until="26.3"] ...minecraft:loot_function[[function]],
+	#[since="26.3"]
+	type: #[id="loot_function_type"] string,
+	#[since="26.3"] ...minecraft:loot_function[[type]],
 }
 
 dispatch minecraft:loot_function[apply_bonus] to struct ApplyBonus {
@@ -164,7 +173,7 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 	/// The levels to enchant this item with.
 	levels: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] NumberProvider |
+		#[since="1.17"] NumberProviderRef |
 	),
 	/// The allowed enchantments. If omitted, all enchantments applicable to the item are possible.
 	#[since="1.21"]
@@ -182,11 +191,20 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 
 /// Converts an empty map into an `explorer map` leading to a nearby generated structure.
 dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
-	/// Generated structure to locate. Accepts any of the structure types used by the `/locate` command. Defaults to buried treasure.
-	destination?: (
-		#[until="1.19"] string | // TODO: low-priority, this is an enum
-		#[since="1.19"] #[id(registry="worldgen/structure",tags="implicit")] string |
-	),
+	#[until="26.3"] ...struct {
+		/// Generated structure to locate. Accepts any of the structure types used by the `/locate` command. Defaults to buried treasure.
+		destination?: (
+			#[until="1.19"] string | // TODO: low-priority, this is an enum
+			#[since="1.19"] #[id(registry="worldgen/structure",tags="implicit")] string |
+		),
+	},
+	#[since="26.3"] ...struct {
+		/// Generated structure to locate. Accepts any of the structure types used by the `/locate` command.
+		destination: (
+			#[id(registry="worldgen/structure",tags="allowed")] string |
+			[#[id="worldgen/structure"] string] |
+		),
+	},
 	/// The icon used to mark the destination on the map. Accepts any of the map icon text IDs (case insensitive).
 	/// If `mansion` or `monument` is used, the color of the lines on the item texture changes to match the corresponding explorer map.
 	decoration?: (
@@ -247,13 +265,13 @@ dispatch minecraft:loot_function[filtered] to struct Filtered {
 	item_filter: ItemPredicate,
 	/// Loot function to apply to the selected items.
 	#[until="1.21.11"]
-	modifier: (LootFunction | [LootFunction]),
+	modifier: ItemModifier,
 	/// Loot function to apply to the item when `item_filter` passes.
 	#[since="1.21.11"]
-	on_pass?: (LootFunction | [LootFunction]),
+	on_pass?: ItemModifier,
 	/// Loot function to apply to the item when `item_filter` fails.
 	#[since="1.21.11"]
-	on_fail?: (LootFunction | [LootFunction]),
+	on_fail?: ItemModifier,
 	...Conditions,
 }
 
@@ -281,7 +299,7 @@ struct EnchantedCountBase {
 	/// If the number is fractional the result is rounded *after* the number was multiplied by the looting level.
 	count: (
 		#[until="1.17"] MinMaxBounds<float> |
-		#[since="1.17"] NumberProvider |
+		#[since="1.17"] NumberProviderRef |
 	),
 	/// Limits the count of the item to a range.
 	limit?: int,
@@ -302,7 +320,7 @@ dispatch minecraft:loot_function[enchanted_count_increase] to struct EnchantedCo
 	...Conditions,
 }
 
-#[since="1.20"]
+#[since="1.20"] #[until="26.3"]
 dispatch minecraft:loot_function[reference] to struct Reference {
 	/// Item modifier to reference.
 	name: #[id="item_modifier"] string,
@@ -312,8 +330,13 @@ dispatch minecraft:loot_function[reference] to struct Reference {
 #[since="1.20.2"]
 dispatch minecraft:loot_function[sequence] to struct Sequence {
 	/// List of functions to apply to this item.
-	functions: [LootFunction],
-	// Intentionally doesn't include conditions, see MC-275648
+	functions: (
+		#[until="26.3"] [LootFunction] |
+		#[since="26.3"] ItemModifier |
+	),
+	// Intentionally doesn't include "conditions" in old versions, see MC-275648
+	#[since="26.3"]
+	...Conditions,
 }
 
 dispatch minecraft:loot_function[set_attributes] to struct SetAttributes {
@@ -340,7 +363,7 @@ struct AttributeModifier {
 	},
 	amount: (
 		#[until="1.17"] RandomValueBounds |
-		#[since="1.17"] NumberProvider |
+		#[since="1.17"] NumberProviderRef |
 	),
 	/// The operation used for this modifier.
 	operation: (
@@ -428,7 +451,7 @@ dispatch minecraft:loot_function[modify_contents] to struct ModifyContents {
 	/// Describes target component's items to modify.
 	component: #[id] ContainerComponents,
 	/// Applied to every item inside container.
-	modifier: (LootFunction | [LootFunction]),
+	modifier: ItemModifier,
 	...Conditions,
 }
 
@@ -450,7 +473,7 @@ dispatch minecraft:loot_function[set_item] to struct SetItem {
 dispatch minecraft:loot_function[set_count] to struct SetCount {
 	count: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] NumberProvider |
+		#[since="1.17"] NumberProviderRef |
 	),
 	/// Whether to add to the existing count. Defaults to `false`.
 	#[since="1.17"]
@@ -464,7 +487,7 @@ dispatch minecraft:loot_function[set_damage] to struct SetDamage {
 	/// Clamps to a float between `-1` & `1` (inclusive).
 	damage: (
 		#[until="1.17"] RandomValueBounds |
-		#[since="1.17"] NumberProvider |
+		#[since="1.17"] NumberProviderRef |
 	),
 	/// Whether to add to the existing damage of the item. Defaults to `false`.
 	#[since="1.17"]
@@ -477,7 +500,7 @@ dispatch minecraft:loot_function[set_enchantments] to struct SetEnchantments {
 	/// A map of enchantments to levels. Setting an enchantment to `0` removes it from the item. \
 	/// Each level is clamped to a positive integer.
 	enchantments: struct {
-		[#[id="enchantment"] string]: NumberProvider,
+		[#[id="enchantment"] string]: NumberProviderRef,
 	},
 	/// Whether to add to the level of each enchantment. Defaults to `false`.
 	add?: boolean,
@@ -501,7 +524,11 @@ dispatch minecraft:loot_function[set_loot_table] to struct SetLootTable {
 	#[since="1.18"]
 	type: #[id="block_entity_type"] string,
 	/// The loot table to set to the container block item.
+	#[until="26.3"]
 	name: #[id="loot_table"] string,
+	/// The loot table to set to the container block item.
+	#[since="26.3"]
+	tag: #[id="loot_table"] string,
 	/// The container seed to use. Defaults to a random seed.
 	seed?: #[random] long,
 	...Conditions,
@@ -558,11 +585,11 @@ dispatch minecraft:loot_function[set_custom_model_data] to struct SetCustomModel
 	/// Used by the `custom_model_data` model overrides predicate.
 	/// Has certain restrictions due to float conversion.
 	#[until="1.21.4"]
-	value: NumberProvider,
+	value: NumberProviderRef,
 	#[since="1.21.4"]
 	...struct {
 		floats?: struct CustomModelDataFloats {
-			values: [NumberProvider],
+			values: [NumberProviderRef],
 			...ListOperation,
 		},
 		flags?: struct CustomModelDataFlags {
@@ -574,7 +601,7 @@ dispatch minecraft:loot_function[set_custom_model_data] to struct SetCustomModel
 			...ListOperation,
 		},
 		colors?: struct CustomModelDataColors {
-			values: [(NumberProvider | RGB)],
+			values: [(NumberProviderRef | RGB)],
 			...ListOperation,
 		},
 	},
@@ -593,7 +620,7 @@ dispatch minecraft:loot_function[set_random_dyes] to struct SetRandomDyes {
 	/// Applies specified number of random dyes to the item. \
 	/// For example, one possible outcome of `"number_of_dyes": 2` is `#2C3065`, which is the combination of a blue dye and a black dye. \
 	/// The same dye color can be selected multiple times.
-	number_of_dyes: NumberProvider,
+	number_of_dyes: NumberProviderRef,
 	...Conditions,
 }
 
@@ -686,7 +713,7 @@ dispatch minecraft:loot_function[toggle_tooltips] to struct ToggleTooltips {
 
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_ominous_bottle_amplifier] to struct SetOminousBottleAmplifier {
-	amplifier: NumberProvider,
+	amplifier: NumberProviderRef,
 	...Conditions,
 }
 
@@ -737,6 +764,6 @@ struct StewEffect {
 	/// The duration of this stew effect, in seconds.
 	duration: (
 		#[until="1.17"] MinMaxBounds<float> |
-		#[since="1.17"] NumberProvider |
+		#[since="1.17"] NumberProviderRef |
 	),
 }

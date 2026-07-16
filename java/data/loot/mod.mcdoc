@@ -1,13 +1,19 @@
+use ::java::data::item_modifier::ItemModifier
+use ::java::data::number_provider::NumberProviderRef
+use ::java::data::predicate::PredicateRef
 use ::java::data::slot_source::SlotSource
+use ::java::util::registry_ref::ItemListRef
 use ::java::util::text::Text
 use super::util::MinMaxBounds
-use super::util::NumberProvider
 use super::util::RandomIntGenerator
 
 dispatch minecraft:resource[loot_table] to struct LootTable {
-	type?: #[id] LootContextType,
+	type?: #[id] LootContextParamSets,
 	pools?: [LootPool],
+	#[until="26.3"]
 	functions?: [LootFunction],
+	#[since="26.3"]
+	modifier?: ItemModifier,
 	#[since="1.20"]
 	random_sequence?: #[id(registry="random_sequence",definition=true)] string,
 }
@@ -23,7 +29,7 @@ type LootTableListRef = (
 	#[since="26.3"] [#[id="loot_table"] string] |
 )
 
-enum(string) LootContextType {
+enum(string) LootContextParamSets {
 	Empty = "empty",
 	Chest = "chest",
 	Command = "command",
@@ -66,6 +72,8 @@ enum(string) LootContextType {
 	VillagerTrade = "villager_trade",
 	#[since="26.3"]
 	CommandSlotSource = "command_slot_source",
+	#[since="26.3"]
+	ContainerProcess = "container_process",
 }
 
 enum(string) EntityTarget {
@@ -87,15 +95,21 @@ type ItemStackTarget = "tool"
 struct LootPool {
 	rolls: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] NumberProvider |
+		#[since="1.17"] NumberProviderRef |
 	),
 	bonus_rolls?: (
 		#[until="1.17"] MinMaxBounds<float> |
-		#[since="1.17"] NumberProvider |
+		#[since="1.17"] NumberProviderRef |
 	),
 	entries: [LootPoolEntry],
-	functions?: [LootFunction],
-	conditions?: [LootCondition],
+	#[until="26.3"] ...struct {
+		functions?: [LootFunction],
+		conditions?: [LootCondition],
+	},
+	#[since="26.3"] ...struct {
+		modifier?: ItemModifier,
+		condition?: PredicateRef,
+	},
 }
 
 struct LootPoolEntry {
@@ -107,13 +121,19 @@ struct LootPoolEntry {
 }
 
 struct LootPoolEntryBase {
+	#[until="26.3"]
 	conditions?: [LootCondition],
+	#[since="26.3"] ...struct {
+		modifier?: ItemModifier,
+		condition?: PredicateRef,
+	},
 }
 
 struct SingletonPoolEntry {
 	weight?: int @ 1..,
 	quality?: int,
 	...LootPoolEntryBase,
+	#[until="26.3"]
 	functions?: [LootFunction],
 }
 
@@ -148,9 +168,16 @@ dispatch minecraft:loot_pool_entry[loot_table] to struct LootTablePoolEntry {
 	name: #[id="loot_table"] string,
 	#[since="1.20.5"]
 	value: (
-		#[id="loot_table"] string |
+		#[until="26.3"] #[id="loot_table"] string |
+		#[since="26.3"] #[id=(registry="loot_table",tags="allowed")] string |
+		#[since="26.3"] [#[id="loot_table"] string] |
 		LootTable |
+		#[since="26.3"] [LootTable] |
 	),
+	/// If `true`, select a random loot table from the tag. \
+	/// If `false`, drops all loot tables.
+	#[since="26.3"]
+	expand: boolean,
 	...SingletonPoolEntry,
 }
 
@@ -162,14 +189,18 @@ dispatch minecraft:loot_pool_entry[slots] to struct SlotsPoolEntry {
 
 /// Adds the contents of an item tag.
 dispatch minecraft:loot_pool_entry[tag] to struct TagPoolEntry {
+	#[until="26.3"]
 	name: #[id(registry="item",tags="implicit")] string,
-	/// If `true`, drops a random item from the tag. If `false`, drops all items in the tag.
+	#[since="26.3"]
+	items: ItemListRef,
+	/// If `true`, drops a random item from the tag. \
+	/// If `false`, drops all items in the tag.
 	expand: boolean,
 	...SingletonPoolEntry,
 }
 
 struct CompositePoolEntry {
-	children: [LootPoolEntry],
+	children: [LootPoolEntry] @ 1..,
 	...LootPoolEntryBase,
 }
 
