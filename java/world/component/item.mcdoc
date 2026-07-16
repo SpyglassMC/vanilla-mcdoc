@@ -4,7 +4,6 @@ use ::java::data::trim::TrimPattern
 use ::java::data::variants::instrument::Instrument
 use ::java::data::util::SoundEventRef
 use ::java::data::damage_type::DamageType
-use ::java::data::number_provider::NumberProvider
 use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
 use ::java::util::Filterable
 use ::java::util::GlobalPos
@@ -207,9 +206,9 @@ dispatch minecraft:data_component[break_sound] to SoundEventRef
 #[since="26.3"]
 dispatch minecraft:data_component[brewing_fuel] to struct BrewingFuel {
 	// The number of times this fuel will brew before being consumed.
-	uses: NumberProvider,
+	uses: #[id="number_provider"] string,
 	// The speed of the brewing.
-	speed_multiplier: NumberProvider,
+	speed_multiplier: #[id="number_provider"] string,
 }
 
 dispatch minecraft:data_component[bucket_entity_data] to (
@@ -345,9 +344,9 @@ dispatch minecraft:consume_effect[play_sound] to struct PlaySoundConsumeEffect {
 #[since="26.3"]
 dispatch minecraft:data_component[cooking_fuel] to struct CookingFuel {
 	// The time in ticks for which this fuel will burn.
-	burn_time: NumberProvider,
+	burn_time: #[id="number_provider"] string,
 	// The speed of the cooking/smelting.
-	speed_multiplier: NumberProvider,
+	speed_multiplier: #[id="number_provider"] string,
 }
 
 dispatch minecraft:data_component[custom_model_data] to (
