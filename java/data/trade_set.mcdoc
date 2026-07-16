@@ -1,4 +1,6 @@
-use ::java::data::util::NumberProvider
+use ::java::data::number_provider::NumberProvider
+
+// Note: "NumberProvider" is always non-reference number provider
 
 dispatch minecraft:resource[trade_set] to struct TradeSet {
 	/// Possible trade generators.

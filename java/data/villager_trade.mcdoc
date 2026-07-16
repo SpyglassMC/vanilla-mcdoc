@@ -1,8 +1,11 @@
-use ::java::data::util::NumberProvider
+use ::java::data::number_provider::NumberProvider
 use ::java::data::predicate::Predicate
 use ::java::data::item_modifier::ItemModifier
 use ::java::world::item::ItemStackTemplate
 use ::java::world::item::TradeCost
+
+// Note: "NumberProvider" is always non-reference number provider
+// Note: "Predicate" is automatically non-reference predicate since 26.3
 
 dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	// TODO: Provide a link to a gist with the full explanation. 
@@ -37,7 +40,6 @@ dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	/// Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`. \
 	/// Clamps to a non-negative integer.
 	xp?: NumberProvider,
-	// Note: "Predicate" is automatically non-reference predicate since 26.3
 	/// Check whether the trade should be offered by the merchant. \
 	/// Does **not** support the `reference` predicate.
 	merchant_predicate?: Predicate,
