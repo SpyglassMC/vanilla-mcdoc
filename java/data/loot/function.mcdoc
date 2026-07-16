@@ -194,7 +194,8 @@ dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
 	#[until="26.3"] ...struct {
 		/// Generated structure to locate. Accepts any of the structure types used by the `/locate` command. Defaults to buried treasure.
 		destination?: (
-			#[until="1.19"] string | // TODO: low-priority, this is an enum
+			#[until="1.18.2"] LegacyExplorationMapDestination |  // TODO: this is case insensitive
+			#[since="1.18.2"] #[until="1.19"] #[id(registry="worldgen/configured_structure_feature",tags="implicit")] string |
 			#[since="1.19"] #[id(registry="worldgen/structure",tags="implicit")] string |
 		),
 	},
@@ -221,6 +222,31 @@ dispatch minecraft:loot_function[exploration_map] to struct ExplorationMap {
 	/// Whether to not search in chunks that have already been generated. Defaults to `true`.
 	skip_existing_chunks?: boolean,
 	...Conditions,
+}
+
+// Until 1.18.2
+enum(string) LegacyExplorationMapDestination {
+	PillagerOutpost = "pillager_outpost",
+	Mineshaft = "mineshaft",
+	Manshion = "manshion",
+	JunglePyramid = "jungle_pyramid",
+	DesertPyramid = "desert_pyramid",
+	Igloo = "igloo",
+	#[since="1.16"]
+	RuinedPortal = "ruined_portal",
+	Shipwreck = "shipwreck",
+	SwampHut = "swamp_hut",
+	Stronghold = "stronghold",
+	OceanMonument = "monument",
+	OceanRuin = "ocean_ruin",
+	Fortress = "fortress",
+	EndCity = "endcity",
+	BuriedTreasure = "buried_treasure",
+	Village = "village",
+	#[since="1.16"]
+	NetherFossil = "nether_fossil",
+	#[since="1.16"]
+	BastionRemnent = "bastion_remnent",
 }
 
 enum(string) MapDecoration {
