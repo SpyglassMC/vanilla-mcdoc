@@ -1,8 +1,6 @@
 use super::loot::LootFunction
-use super::loot::NonReferenceLootFunction
 
 type ItemModifier = (LootFunction | [LootFunction])
-type NonReferenceItemModifier = (NonReferenceLootFunction | [NonReferenceLootFunction])
 
 #[since="1.17"]
 dispatch minecraft:resource[item_modifier] to ItemModifier

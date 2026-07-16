@@ -171,11 +171,8 @@ dispatch minecraft:loot_pool_entry[group] to CompositePoolEntry
 /// Executes child entries until the first one that can't run due to conditions.
 dispatch minecraft:loot_pool_entry[sequence] to CompositePoolEntry
 
-type LootFunction = function::LootFunctionOf<#[id="loot_function_type"] string, #[id="loot_condition_type"] string>
-type NonReferenceLootFunction = function::LootFunctionOf<#[id(registry="loot_function_type",exclude=["reference"])] string, #[id(registry="loot_condition_type",exclude=["reference"])] string>
-
-type LootCondition = condition::LootConditionOf<#[id="loot_condition_type"] string>
-type NonReferenceLootCondition = condition::LootConditionOf<#[id(registry="loot_condition_type",exclude=["reference"])] string>
+type LootCondition = condition::LootCondition
+type LootFunction = function::LootFunction
 
 // Until 1.16
 enum(string) LootEntryType {
