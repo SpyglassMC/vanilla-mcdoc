@@ -1,5 +1,0 @@
-// @deprecated
-type Text = ::java::util::text::Text
-
-// @deprecated
-type TextStyle = ::java::util::text::TextStyle
