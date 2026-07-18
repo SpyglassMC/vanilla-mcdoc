@@ -1,5 +1,5 @@
 {
-	"ref": "a03b544ba200400abe359f0fc4c4001b3c2b0404",
+	"ref": "c77b16363be95915c5630d3f03c4cbbd84c54eca",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -25206,6 +25206,33 @@
 				}
 			]
 		},
+		"::java::data::loot::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If `true`, drops a random item from the tag. \\\nIf `false`, drops all items in the tag.",
+					"key": "expand",
+					"type": {
+						"kind": "boolean"
+					}
+				}
+			]
+		},
+		"::java::data::loot::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If `true`, randomly selects an item to drop. \\\nIf `false`, drops all items. \\\nDefaults to `false`.",
+					"key": "expand",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::loot::BlockEntityTarget": {
 			"kind": "literal",
 			"value": {
@@ -33211,11 +33238,12 @@
 							}
 						}
 					],
-					"desc": "If `true`, select a random loot table from the tag. \\\nIf `false`, drops all loot tables.",
+					"desc": "If `true`, randomly selects a loot table to drop. \\\nIf `false`, drops all loot tables. \\\nDefaults to `false`.",
 					"key": "expand",
 					"type": {
 						"kind": "boolean"
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "spread",
@@ -33403,11 +33431,60 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"desc": "If `true`, drops a random item from the tag. \\\nIf `false`, drops all items in the tag.",
-					"key": "expand",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "boolean"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "If `true`, drops a random item from the tag. \\\nIf `false`, drops all items in the tag.",
+								"key": "expand",
+								"type": {
+									"kind": "boolean"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "If `true`, randomly selects an item to drop. \\\nIf `false`, drops all items. \\\nDefaults to `false`.",
+								"key": "expand",
+								"type": {
+									"kind": "boolean"
+								},
+								"optional": true
+							}
+						]
 					}
 				},
 				{
