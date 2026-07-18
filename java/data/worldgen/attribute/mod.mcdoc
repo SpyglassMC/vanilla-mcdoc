@@ -128,7 +128,7 @@ dispatch minecraft:environment_attribute[%unknown] to DiscreteAttribute<any>
 type PositionalEnvironmentAttribute = #[id(registry="environment_attribute", exclude=["gameplay/fast_lava", "gameplay/sky_light_level"])] string
 // Search "->" in `net.minecraft.world.attribute.AttributeTypes`
 // Currently FLOAT, ANGLE_DEGREES and INTEGER supports `toFloat()`
-// This type is used since 26.1, so there is no need to maintain #[since] attributes before 26.2
+// Since 26.1
 type NumericalEnvironmentAttribute = #[id] enum(string) {
 	CloudHeight = "visual/cloud_height",
 	FogStartDistance = "visual/fog_start_distance",
@@ -144,6 +144,8 @@ type NumericalEnvironmentAttribute = #[id] enum(string) {
 	StarBrightness = "visual/star_brightness",
 	MusicVolume = "audio/music_volume",
 	CatWakingUpGiftChance = "gameplay/cat_waking_up_gift_chance",
+	#[since="26.3"]
+	CreatureWorldgenSpawnProbability = "gameplay/creature_world_gen_spawn_probability",
 	SurfaceSlimeSpawnChance = "gameplay/surface_slime_spawn_chance",
 	TurtleEggHatchChance = "gameplay/turtle_egg_hatch_chance",
 	SkyLightLevel = "gameplay/sky_light_level",
