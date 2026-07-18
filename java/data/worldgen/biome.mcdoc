@@ -33,8 +33,6 @@ dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 	/// If true, the world spawn will be preferred in this biome.
 	#[until="1.18"]
 	player_spawn_friendly?: boolean,
-	#[until="26.3"]
-	creature_spawn_probability?: float @ 0..0.9999999,
 	effects: BiomeEffects,
 	#[until="1.18"]
 	surface_builder: ConfiguredSurfaceBuilderRef,
@@ -186,10 +184,19 @@ enum(string) MobCategory {
 }
 
 struct NaturalMobSpawns {
-	spawns_by_category: struct {
-		[MobCategory]: FlatWeightedList<SpawnerData>,
+	#[until="26.3"]
+	creature_spawn_probability?: float @ 0..0.9999999,
+	#[until="26.3"]
+	spawners: SpawnerDataMap,
+	#[since="26.3"]
+	spawns_by_category: SpawnerDataMap,
+	spawn_costs: struct {
+		[#[id="entity"] string]: MobSpawnCost,
 	},
-	spawn_costs: MobSpawnCost,
+}
+
+struct SpawnerDataMap {
+	[MobCategory]: FlatWeightedList<SpawnerData>,
 }
 
 struct SpawnerData {
