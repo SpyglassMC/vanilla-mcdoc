@@ -1,5 +1,5 @@
 {
-	"ref": "8c3a894e01f3e2a2bd81fe89accc384f6a163cf0",
+	"ref": "a03b544ba200400abe359f0fc4c4001b3c2b0404",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -45308,21 +45308,23 @@
 				{
 					"kind": "pair",
 					"key": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::biome::MobCategory"
-					},
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::util::FlatWeightedList"
-						},
-						"typeArgs": [
+						"kind": "string",
+						"attributes": [
 							{
-								"kind": "reference",
-								"path": "::java::data::worldgen::biome::SpawnerData"
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "entity"
+									}
+								}
 							}
 						]
+					},
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::biome::MobSpawnCost"
 					}
 				}
 			]
@@ -45491,31 +45493,6 @@
 					"key": "player_spawn_friendly",
 					"type": {
 						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "creature_spawn_probability",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 0.9999999
-						}
 					},
 					"optional": true
 				},
@@ -46906,39 +46883,98 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "spawns_by_category",
-					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": {
-									"kind": "reference",
-									"path": "::java::data::worldgen::biome::MobCategory"
-								},
-								"type": {
-									"kind": "concrete",
-									"child": {
-										"kind": "reference",
-										"path": "::java::util::FlatWeightedList"
-									},
-									"typeArgs": [
-										{
-											"kind": "reference",
-											"path": "::java::data::worldgen::biome::SpawnerData"
-										}
-									]
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
 								}
 							}
-						]
+						}
+					],
+					"key": "creature_spawn_probability",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 0.9999999
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "spawners",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::biome::SpawnerDataMap"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "spawns_by_category",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::biome::SpawnerDataMap"
 					}
 				},
 				{
 					"kind": "pair",
 					"key": "spawn_costs",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::biome::MobSpawnCost"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "entity"
+												}
+											}
+										}
+									]
+								},
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::biome::MobSpawnCost"
+								}
+							}
+						]
 					}
 				}
 			]
@@ -47045,6 +47081,31 @@
 						"typeArgs": [
 							{
 								"kind": "int"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::biome::SpawnerDataMap": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::biome::MobCategory"
+					},
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::util::FlatWeightedList"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::biome::SpawnerData"
 							}
 						]
 					}
@@ -69281,14 +69342,6 @@
 					}
 				}
 			]
-		},
-		"::java::server::util::text::Text": {
-			"kind": "reference",
-			"path": "::java::util::text::Text"
-		},
-		"::java::server::util::text::TextStyle": {
-			"kind": "reference",
-			"path": "::java::util::text::TextStyle"
 		},
 		"::java::util::<anonymous 0>": {
 			"kind": "struct",
