@@ -1,5 +1,5 @@
 {
-	"ref": "c77b16363be95915c5630d3f03c4cbbd84c54eca",
+	"ref": "f037df046d34db4be041055cbf66a72083c0e578",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -43158,6 +43158,22 @@
 					"value": "gameplay/cat_waking_up_gift_chance"
 				},
 				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"identifier": "CreatureWorldgenSpawnProbability",
+					"value": "gameplay/creature_world_gen_spawn_probability"
+				},
+				{
 					"identifier": "SurfaceSlimeSpawnChance",
 					"value": "gameplay/surface_slime_spawn_chance"
 				},
@@ -45175,6 +45191,22 @@
 				{
 					"identifier": "CatWakingUpGiftChance",
 					"value": "gameplay/cat_waking_up_gift_chance"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"identifier": "CreatureWorldgenSpawnProbability",
+					"value": "gameplay/creature_world_gen_spawn_probability"
 				},
 				{
 					"identifier": "SurfaceSlimeSpawnChance",
