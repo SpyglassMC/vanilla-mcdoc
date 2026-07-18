@@ -23,13 +23,15 @@ type ParitalRequired<C> = struct {
 	conditions: C,
 }
 
-type AdvancementGeneralPredicate = (
-	#[until="26.3"] [LootCondition] |
-	#[since="26.3"] PredicateRef |
-)
 type AdvancementEntityPredicate = (
 	#[until="26.3"] EntityPredicate |
-	#[since="1.16"] AdvancementGeneralPredicate |
+	#[since="1.16"] #[until="26.3"] [LootCondition] |
+	#[since="26.3"] PredicateRef |
+)
+type AdvancementLocationPredicate = (
+	#[until="1.20"] LocationPredicate |
+	#[since="1.20"] #[until="26.3"] [LootCondition] |
+	#[since="26.3"] PredicateRef |
 )
 
 struct PlayerConditions {
@@ -52,10 +54,7 @@ struct BlockStateConditions {
 type AnyBlockInteractionTrigger = AllOptional<struct {
 	...PlayerConditions,
 	/// Predicate context: Advancement Location.
-	location?: (
-		#[until="1.20"] LocationPredicate |
-		#[since="1.20"] AdvancementGeneralPredicate |
-	),
+	location?: AdvancementLocationPredicate,
 }>
 #[since="1.20.5"]
 dispatch minecraft:trigger[any_block_use] to AnyBlockInteractionTrigger
@@ -139,7 +138,7 @@ dispatch minecraft:trigger[cured_zombie_villager] to CuredZombieVillagerTrigger
 type DefaultBlockInteractionTrigger = AllOptional<struct {
 	...PlayerConditions,
 	/// Predicate context: Block Use.
-	location?: AdvancementGeneralPredicate,
+	location?: AdvancementLocationPredicate,
 }>
 #[since="1.20.5"]
 dispatch minecraft:trigger[default_block_use] to DefaultBlockInteractionTrigger
@@ -277,10 +276,7 @@ struct ItemUesdOnLocationConditions {
 	block?: BlockPredicate,
 	/// Predicate context: Advancement Location.
 	#[since="1.16"]
-	location?: (
-		#[until="1.20"] LocationPredicate |
-		#[since="1.20"] AdvancementGeneralPredicate |
-	),
+	location?: AdvancementLocationPredicate,
 }
 // Until 1.20
 struct PlacedBlockConditions {
