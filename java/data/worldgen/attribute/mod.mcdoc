@@ -39,7 +39,7 @@ struct BooleanAttribute {
 		keyframes: [struct {
 			ticks: int @ 0..,
 			value: boolean,
-		}],
+		}] @ 1..,
 	},
 }
 
@@ -52,7 +52,7 @@ type FloatAttribute<T> = struct {
 		keyframes: [struct {
 			ticks: int @ 0..,
 			value: minecraft:environment_attribute_float_modifier[[%parent.%parent.modifier]]<T>,
-		}],
+		}] @ 1..,
 	},
 }
 
@@ -65,7 +65,7 @@ struct RGBColorAttribute {
 		keyframes: [struct {
 			ticks: int @ 0..,
 			value: minecraft:environment_attribute_color_modifier[[%parent.%parent.modifier]],
-		}],
+		}] @ 1..,
 	},
 }
 
@@ -78,7 +78,7 @@ struct ARGBColorAttribute {
 		keyframes: [struct {
 			ticks: int @ 0..,
 			value: minecraft:environment_attribute_argb_color_modifier[[%parent.%parent.modifier]],
-		}],
+		}] @ 1..,
 	},
 }
 
@@ -91,7 +91,7 @@ type MergeableAttribute<T> = struct {
 		keyframes: [struct {
 			ticks: int @ 0..,
 			value: T,
-		}],
+		}] @ 1..,
 	},
 }
 
@@ -105,7 +105,7 @@ type ListAttribute<E> = struct {
 		keyframes: [struct {
 			ticks: int @ 0..,
 			value: [E],
-		}],
+		}] @ 1..,
 	}
 }
 
@@ -118,7 +118,7 @@ type DiscreteAttribute<T> = struct {
 		keyframes: [struct {
 			ticks: int @ 0..,
 			value: T
-		}],
+		}] @ 1..,
 	},
 }
 
