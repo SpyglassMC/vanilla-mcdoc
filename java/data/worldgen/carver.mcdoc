@@ -4,16 +4,24 @@ use super::VerticalAnchor
 use super::IntProvider
 use super::FloatProvider
 
-type CarverRef = (
-	#[until="26.3"] #[id="worldgen/configured_carver"] string |
-	#[since="26.3"] #[id="worldgen/carver"] string |
-	ConfiguredCarver |
-)
-
 #[until="26.3"]
 dispatch minecraft:resource["worldgen/configured_carver"] to ConfiguredCarver
 #[since="26.3"]
 dispatch minecraft:resource["worldgen/carver"] to ConfiguredCarver
+
+type CarverRef = (
+	ConfiguredCarver |
+	#[until="26.3"] #[id="worldgen/configured_carver"] string |
+	#[since="26.3"] #[id="worldgen/carver"] string |
+)
+type CarverListRef = (
+	ConfiguredCarver |
+	#[until="26.3"] [ConfiguredCarver] |
+	#[until="26.3"] #[id=(registry="worldgen/configured_carver",tags="allowed")] string |
+	#[until="26.3"] [#[id="worldgen/configured_carver"] string] |
+	#[since="26.3"] #[id=(registry="worldgen/carver",tags="allowed")] string |
+	#[since="26.3"] [(#[id="worldgen/carver"] string | ConfiguredCarver)] |
+)
 
 struct ConfiguredCarver {
 	type: (

@@ -6,15 +6,24 @@ use super::super::IntProvider
 use super::super::HeightmapType
 use super::super::HeightProvider
 
-type PlacedFeatureRef = (
-	#[id="worldgen/placed_feature"] string |
-	PlacedFeature |
-)
-
 dispatch minecraft:resource["worldgen/placed_feature"] to struct PlacedFeature {
 	feature: ConfiguredFeatureRef,
 	placement: [PlacementModifier],
 }
+
+type PlacedFeatureRef = (
+	PlacedFeature |
+	#[id="worldgen/placed_feature"] string |
+)
+type PlacedFeatureListRef = (
+	PlacedFeature |
+	#[until="26.3"] [PlacedFeature] @ 1.. |
+	#[id=(registry="worldgen/placed_feature",tags="allowed")] string |
+	[(
+		#[id="worldgen/placed_feature"] string |
+		#[since="26.3"] PlacedFeature |
+	)] @ 1.. |
+)
 
 struct PlacementModifier {
 	type: #[id="worldgen/placement_modifier_type"] string,

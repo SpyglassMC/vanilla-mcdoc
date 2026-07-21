@@ -26,6 +26,12 @@ type NumberProviderRef = (
 	NumberProvider |
 	#[since="26.3"] #[id="number_provider"] string |
 )
+type NumberProviderListRef = (
+	#[until="26.3"] [NumberProvider] |
+	#[since="26.3"] NumberProvider |
+	#[since="26.3"] #[id=(registry="number_provider",tags="allowed")] string |
+	#[since="26.3"] [(#[id="number_provider"] string | NumberProvider)] |
+)
 
 dispatch minecraft:number_provider[uniform,%none] to struct UniformNumberProvider {
 	min?: NumberProviderRef,
@@ -84,7 +90,7 @@ dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
 
 #[since="26.1"]
 dispatch minecraft:number_provider[sum] to struct SumNumberProvider {
-	summands: [NumberProviderRef],
+	summands: NumberProviderListRef,
 }
 
 #[since="26.3"]

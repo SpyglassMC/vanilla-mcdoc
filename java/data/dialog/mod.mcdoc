@@ -10,6 +10,16 @@ dispatch minecraft:resource[dialog] to struct Dialog {
 	...minecraft:dialog[[type]],
 }
 
+type DialogListRef = (
+	Dialog |
+	#[until="26.3"] [Dialog] |
+	#[id=(registry="dialog", tags="allowed")] string |
+	[(
+		#[id="dialog"] string |
+		#[since="26.3"] Dialog |
+	)] |
+)
+
 struct DialogBase {
 	title: Text,
 	/// Name to be used for a button leading to this dialog.
@@ -105,9 +115,5 @@ dispatch minecraft:dialog[server_links] to struct ServerLinksDialog {
 
 dispatch minecraft:dialog[dialog_list] to struct RedirectDialog {
 	...ButtonListDialogBase,
-	dialogs: (
-		[(#[id="dialog"] string | Dialog)] |
-		#[id=(registry="dialog", tags="allowed")] string |
-		Dialog |
-	),
+	dialogs: DialogListRef,
 }

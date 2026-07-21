@@ -10,10 +10,10 @@ type PredicateRef = (
 	#[since="26.3"] #[id="predicate"] string |
 )
 type PredicateListRef = (
+	#[until="26.3"] [LootCondition] |
 	#[since="26.3"] LootCondition |
-	[LootCondition] |
 	#[since="26.3"] #[id=(registry="predicate",tags="allowed")] string |
-	#[since="26.3"] [#[id="predicate"] string] |
+	#[since="26.3"] [(#[id="predicate"] string | LootCondition)] |
 )
 
 dispatch minecraft:resource[predicate] to Predicate

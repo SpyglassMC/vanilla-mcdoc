@@ -2,6 +2,7 @@ use block_predicate::BlockPredicate
 use block_state_provider::BlockStateProvider
 use decorator::ConfiguredDecorator
 use placement::PlacedFeatureRef
+use placement::PlacedFeatureListRef
 use super::processor_list::RuleTest
 use super::processor_list::ProcessorListRef
 use super::UniformInt
@@ -590,20 +591,14 @@ dispatch minecraft:feature_config[sea_pickle] to struct SeaPickleConfig {
 dispatch minecraft:feature_config[sequence] to struct SequenceConfig {
 	/// The features to generate, in order. \
 	/// If any feature in the list is not placed, the following features will also be skipped.
-	features: (
-		[PlacedFeatureRef] @ 1.. |
-		#[id(registry="worldgen/placed_feature",tags="allowed")] string |
-	)
+	features: PlacedFeatureListRef,
 }
 
 #[since="26.3"]
 dispatch minecraft:feature_config[overlay] to struct OverlayConfig {
 	/// The features to generate, in order. \
 	/// All features are placed regardless of individual placement success.
-	features: (
-		[PlacedFeatureRef] @ 1.. |
-		#[id(registry="worldgen/placed_feature",tags="allowed")] string |
-	)
+	features: PlacedFeatureListRef,
 }
 
 dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
@@ -630,8 +625,8 @@ dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
 
 dispatch minecraft:feature_config[simple_random_selector] to struct SimpleRandomSelectorConfig {
 	features: (
-		[FeatureRef] |
-		#[since="1.18.2"] #[id(registry="worldgen/placed_feature",tags="allowed")] string |
+		#[until="1.18.2"] [FeatureRef] |
+		#[since="1.18.2"] PlacedFeatureListRef |
 	),
 }
 
@@ -722,5 +717,5 @@ dispatch minecraft:feature_config[vegetation_patch,waterlogged_vegetation_patch]
 
 #[since="26.2"]
 dispatch minecraft:feature_config[weighted_random_selector] to struct WeightedRandomFeatureConfig {
-	features: WeightedList<#[id="worldgen/placed_feature"] string>,
+	features: WeightedList<PlacedFeatureRef>,
 }

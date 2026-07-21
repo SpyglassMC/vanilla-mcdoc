@@ -5,6 +5,7 @@ use ::java::util::FlatWeightedList
 use super::attribute::PositionalEnvironmentAttributeMap
 use super::CarveStep
 use super::carver::CarverRef
+use super::carver::CarverListRef
 use super::feature::ConfiguredFeatureRef
 use super::feature::placement::PlacedFeatureRef
 use super::structure::StructureRef
@@ -43,15 +44,11 @@ dispatch minecraft:resource["worldgen/biome"] to struct Biome {
 	carvers: (
 		#[until="1.21.2"] struct CarversPerStep {
 			[CarveStep]: (
-				[CarverRef] |
-				#[since="1.18.2"] #[id(registry="worldgen/configured_carver",tags="allowed")] string |
+				#[until="1.18.2"] [CarverRef] |
+				#[since="1.18.2"] CarverListRef |
 			),
 		} |
-		#[since="1.21.2"] (
-			[CarverRef] |
-			#[until="26.3"] #[id(registry="worldgen/configured_carver",tags="allowed")] string |
-			#[since="26.3"] #[id(registry="worldgen/carver",tags="allowed")] string |
-		) |
+		#[since="1.21.2"] CarverListRef |
 	),
 	features: (
 		#[until="1.18"] [[ConfiguredFeatureRef]] @ ..10 |

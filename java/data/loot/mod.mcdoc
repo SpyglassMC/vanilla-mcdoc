@@ -23,10 +23,10 @@ type LootTableRef = (
 	#[since="26.3"] #[id="loot_table"] string |
 )
 type LootTableListRef = (
+	#[until="26.3"] [LootTable] |
 	#[since="26.3"] LootTable |
-	[LootTable] |
 	#[since="26.3"] #[id=(registry="loot_table",tags="allowed")] string |
-	#[since="26.3"] [#[id="loot_table"] string] |
+	#[since="26.3"] [(#[id="loot_table"] string | LootTable)] |
 )
 
 enum(string) LootContextParamSets {
