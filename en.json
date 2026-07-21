@@ -979,7 +979,7 @@
 	"::java::world::block::sign::OldSign.Text2": "Second line of text.",
 	"::java::world::block::sign::OldSign.Text3": "Third line of text.",
 	"::java::world::block::sign::OldSign.Text4": "Fourth line of text.",
-	"::java::world::block::sign::Sign.allow_op_features": "Whether placed signs resolve text components.\nDefaults to `false`.",
+	"::java::world::block::sign::Sign.allow_op_features": "Whether the sign allows following features:\n1. Resolving text components\n2. Executing click events\nDefaults to `false`.",
 	"::java::world::block::sign::Sign.is_waxed": "Whether the sign has been made uneditable by applying wax.",
 	"::java::world::block::spawner::CustomSpawnRules.block_light_limit": "Range of block light level required for the entity to spawn.",
 	"::java::world::block::spawner::CustomSpawnRules.sky_light_limit": "Range of sky light level required for the entity to spawn.",
