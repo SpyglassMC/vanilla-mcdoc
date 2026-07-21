@@ -575,7 +575,9 @@ dispatch minecraft:feature_config[sculk_patch] to struct SculkPatchConfig {
 	spread_attempts: int @ 1..64,
 	growth_rounds: int @ 0..8,
 	spread_rounds: int @ 0..8,
+	#[until="26.3"]
 	extra_rare_growths: IntProvider<int>,
+	#[until="26.3"]
 	catalyst_chance: float @ 0..1,
 }
 
