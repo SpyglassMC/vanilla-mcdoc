@@ -1,5 +1,5 @@
 {
-	"ref": "8fa0787999181366bf632f2dad50964c7e7370a7",
+	"ref": "82e5a63b7592aa4e22b7b62f45316f5777ee9710",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -58709,6 +58709,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"key": "extra_rare_growths",
 					"type": {
 						"kind": "concrete",
@@ -58725,6 +58737,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"key": "catalyst_chance",
 					"type": {
 						"kind": "float",
