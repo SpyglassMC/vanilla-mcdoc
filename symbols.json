@@ -1,5 +1,5 @@
 {
-	"ref": "3fa9d53f8b3f0802c2d94d42647c388e36ee1e2d",
+	"ref": "6ebd2027fe64812fa38476b591f59cf4bb36edb7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -83523,7 +83523,19 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether placed signs resolve text components.\nDefaults to `false`.",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Whether the sign allows following features:\n1. Resolving text components\n2. Executing click events\n\nDefaults to `false`.",
 					"key": "allow_op_features",
 					"type": {
 						"kind": "boolean"
