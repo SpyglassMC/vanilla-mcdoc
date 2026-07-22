@@ -1,5 +1,5 @@
 {
-	"ref": "aebd89617b2fdc3ba08bdb9a0dca60f1eeb34b6f",
+	"ref": "bb91c4e796915642ec4e15a34e4099c625f1b292",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -108473,7 +108473,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "furnace"
+						"value": "blast_furnace"
 					}
 				],
 				"registry": "minecraft:block_entity"
@@ -110307,7 +110307,7 @@
 				"parallelIndices": [
 					{
 						"kind": "static",
-						"value": "furnace"
+						"value": "smoker"
 					}
 				],
 				"registry": "minecraft:block_entity"
