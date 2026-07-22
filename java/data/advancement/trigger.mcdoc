@@ -107,7 +107,7 @@ dispatch minecraft:trigger[changed_dimension] to ChangeDimensionTrigger
 type ChanneledLightningTrigger = AllOptional<struct {
 	...PlayerConditions,
 	/// Predicate context: Advancement Entity. \
-	/// Evaluates to true if every victim passes some predicates in the list.
+	/// Evaluates to true if every predicate in the list matches some victims.
 	victims?: [AdvancementEntityPredicate],
 }>
 /// Player successfully used the Channeling enchantment on an entity.
@@ -312,7 +312,7 @@ type KilledByArrowTrigger = AllOptional<struct {
 	#[since="1.21.2"]
 	fired_from_weapon?: ItemPredicate,
 	/// Predicate context: Advancement Entity. \
-	/// Evaluates to true if every victim passes some predicates in the list.
+	/// Evaluates to true if every predicate in the list matches some victims.
 	victims?: [AdvancementEntityPredicate],
 }>
 /// Player killed a mob or player using a projectile shot from a crossbow.
