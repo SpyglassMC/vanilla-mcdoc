@@ -78,7 +78,10 @@ struct AdvancementRewards {
 	/// XP to add.
 	experience?: int,
 	/// Loot tables to give.
-	loot?: LootTableListRef,
+	loot?: (
+		#[until="26.3"] [#[id="loot_table"] string] |
+		#[since="26.3"] LootTableListRef |
+	),
 	/// Recipes to unlock.
 	recipes?: [#[id="recipe"] string],
 	/// Function to run as and at the player. Function tags are not allowed.
