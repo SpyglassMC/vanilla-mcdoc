@@ -1,5 +1,5 @@
 {
-	"ref": "82e5a63b7592aa4e22b7b62f45316f5777ee9710",
+	"ref": "606880423d1e8ffa4a6e9c7e3790baec328f93c3",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -11983,8 +11983,55 @@
 					"desc": "Loot tables to give.",
 					"key": "loot",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::LootTableListRef"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "loot_table"
+												}
+											}
+										}
+									]
+								},
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootTableListRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				},
