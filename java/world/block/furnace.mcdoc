@@ -39,11 +39,5 @@ dispatch minecraft:block_entity[furnace, blast_furnace, smoker] to struct Furnac
 }
 
 dispatch minecraft:block[furnace] to minecraft:block_entity[furnace]
-// #[until="26.3"]
-dispatch minecraft:block[blast_furnace, smoker] to minecraft:block_entity[furnace]
-
-// TODO: Make this pattern work in the mcdoc Binder, Checker, and Runtime
-// #[since="26.3"]
-// dispatch minecraft:block[blast_furnace] to minecraft:block_entity[blast_furnace]
-// #[since="26.3"]
-// dispatch minecraft:block[smoker] to minecraft:block_entity[smoker]
+dispatch minecraft:block[blast_furnace] to minecraft:block_entity[blast_furnace]
+dispatch minecraft:block[smoker] to minecraft:block_entity[smoker]
