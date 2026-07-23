@@ -3,6 +3,6 @@ type BlockListRef = (
 	[#[id="block"] string] |
 )
 type ItemListRef = (
-	#[id=(registry="block",tags="allowed")] string |
+	#[id=(registry="item",tags="allowed")] string |
 	[#[id="item"] string] |
 )
