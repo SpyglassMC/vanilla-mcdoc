@@ -1,5 +1,5 @@
 {
-	"ref": "bb91c4e796915642ec4e15a34e4099c625f1b292",
+	"ref": "2570c36dbc7f04854ea1120da4f032e794c55548",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -75334,7 +75334,7 @@
 										"kind": "literal",
 										"value": {
 											"kind": "string",
-											"value": "block"
+											"value": "item"
 										}
 									},
 									"tags": {
