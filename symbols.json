@@ -1,5 +1,5 @@
 {
-	"ref": "2570c36dbc7f04854ea1120da4f032e794c55548",
+	"ref": "91297ae67d7f7bd071c03528bfd722949eb3a672",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -9800,7 +9800,31 @@
 					"kind": "pair",
 					"key": "location",
 					"type": {
-						"kind": "string"
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										},
+										"path": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "effect/"
+											}
+										}
+									}
+								}
+							}
+						]
 					}
 				},
 				{
