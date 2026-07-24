@@ -75,7 +75,7 @@ struct AuxTarget {
 }
 
 struct TextureInput {
-	location: string,
+	location: #[id(registry="texture",path="effect/")] string,
 	sampler_name: string,
 	width: int @ 1..,
 	height: int @ 1..,
