@@ -48,11 +48,16 @@ enum(string) ArmorMaterial {
 
 #[since="1.19.4"]
 dispatch minecraft:resource[trim_pattern] to struct TrimPattern {
-	/// ID of the pattern that will be used in the resource pack as an overlay on the armor.
-	asset_id: (
-		#[until="1.21.4"] #[id(registry="texture", path="trims/models/armor/")] string |
-		#[since="1.21.4"] #[id(registry="texture", path="trims/entity/")] string |
-	),
+	#[until="1.21.2"] ...struct {
+		/// ID of the pattern that will be used in the resource pack as an overlay on the armor. \
+		/// Leggings layer adds `_leggings` suffix automatically.
+		asset_id: #[id(registry="texture", path="trims/models/armor/")] string,
+	},
+	#[since="1.21.2"] ...struct {
+		/// ID of the pattern that will be used in the resource pack as an overlay on the armor. \
+		/// The texture is located under `trims/entity/<layer>/`.
+		asset_id: #[id] string,
+	},
 	/// Text displayed in the item tooltip.
 	description: Text,
 	/// The item used in the smithing table for this pattern.

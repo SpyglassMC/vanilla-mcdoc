@@ -5,7 +5,8 @@ use super::atlas::PaletteRef
 dispatch minecraft:resource[equipment] to struct Equipment {
 	/// List of layers for each model layer type.
 	layers: Layers,
-	/// Replaces trim texture based on armor trim.
+	/// Replaces trim texture based on armor trim. \
+	/// Only the first entry that matches is applied.
 	#[since="26.3"]
 	trim_overrides?: [TrimOverride],
 }
@@ -16,8 +17,9 @@ struct TrimOverride {
 		pattern?: #[id="trim_pattern"] string,
 		material?: #[id="trim_material"] string,
 	},
-	/// When present, overrides the base texture provided by trim pattern.
-	texture?: #[id(registry="texture", path="trims/entity/")] string,
+	/// When present, overrides the base texture provided by trim pattern. \
+	/// The texture is located under `trims/entity/<layer>/`.
+	texture?: #[id] string,
 	/// When present, overrides the palette texture provided by trim material.
 	palette?: PaletteRef,
 }
