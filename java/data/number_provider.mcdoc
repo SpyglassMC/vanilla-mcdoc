@@ -32,6 +32,11 @@ type NumberProviderListRef = (
 	#[since="26.3"] #[id=(registry="number_provider",tags="allowed")] string |
 	#[since="26.3"] [(#[id="number_provider"] string | NumberProvider)] |
 )
+// Since 26.3
+type ResolvableNumber = (
+	float |
+	#[id="number_provider"] string |
+)
 
 dispatch minecraft:number_provider[uniform,%none] to struct UniformNumberProvider {
 	min?: NumberProviderRef,

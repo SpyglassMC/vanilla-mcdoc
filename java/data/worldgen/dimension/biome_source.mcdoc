@@ -60,8 +60,22 @@ dispatch minecraft:resource["worldgen/multi_noise_biome_source_parameter_list"] 
 }
 
 dispatch minecraft:resource["worldgen/noise"] to struct NoiseParameters {
-	firstOctave: int,
-	amplitudes: [double],
+	#[until="26.3"] ...struct {
+		firstOctave: int,
+		amplitudes: [double],
+	},
+	#[since="26.3"] ...struct {
+		base_octave: int @ -32..32,
+		/// Defaults to 1.0.
+		base_amplitude?: double @ 0..1000000,
+		/// Defaults to 1.
+		octave_count?: int @ 1..32,
+		/// Defaults to `true`.
+		normalize?: (boolean | #[deprecated] "legacy"),
+		/// When empty or not present, defaults to all 1.0. \
+		/// Otherwise, the size must match `octave_count`.
+		amplitude_modifiers?: [double @ 0..1000000] @ ..32,
+	},
 }
 
 struct ClimateParameters {

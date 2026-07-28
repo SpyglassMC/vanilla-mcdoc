@@ -24,8 +24,12 @@ struct EntityBase {
 	OnGround?: boolean,
 	/// Whether the entity should be effected by gravity.
 	NoGravity?: boolean,
-	/// Whether the entity should take damage.
+	/// Whether the entity is immune to damage.
 	Invulnerable?: boolean,
+	/// Temporary immunity duration of the entity, in ticks. \
+	/// The entity is immune to damage if `invulnerable_time` > 0 **or** `Invulnerable` is `true`.
+	#[since="26.3"]
+	invulnerable_time?: int @ 0..,
 	/// How long until the entity can go through a nether portal.
 	PortalCooldown?: int,
 	/// Upper bits of the entity's UUID.

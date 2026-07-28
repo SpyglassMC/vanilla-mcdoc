@@ -1,9 +1,14 @@
+use ::java::util::direction::Axis
+use super::dimension::biome_source::NoiseParameters
+
 type DensityFunctionRef = (
 	#[id="worldgen/density_function"] string |
 	DensityFunction |
 )
 
 type NoiseRange = float @ -1000000..1000000
+
+type NoiseParametersRef = (#[id="worldgen/noise"] string | NoiseParameters)
 
 type DensityFunction = (
 	NoiseRange | 
@@ -35,7 +40,13 @@ dispatch minecraft:density_function[
 #[until="26.3"]
 dispatch minecraft:density_function[invert] to OneArgument
 #[since="26.3"]
-dispatch minecraft:density_function[negate, reciprocal] to OneArgument
+dispatch minecraft:density_function[
+	log,
+	negate,
+	reciprocal,
+	sign,
+	sqrt,
+] to OneArgument
 
 struct OneArgument {
 	#[until="26.3"]
@@ -79,6 +90,23 @@ dispatch minecraft:density_function[constant] to struct Constant {
 	value: NoiseRange,
 }
 
+#[since="26.3"]
+dispatch minecraft:density_function[disatnce_to_point] to struct DistanceToPoint {
+	point: [int] @ 3,
+	metric: DistanceMetric,
+}
+
+enum(string) DistanceMetric {
+	/// `sqrt(dx^2 + dy^2 + dz^2)`
+	Euclidean = "euclidean",
+	/// `dx^2 + dy^2 + dz^2`
+	EuclideanSquared = "euclidean_squared",
+	/// `abs(dx) + abs(dy) + abs(dz)`
+	Manhattan = "manhattan",
+	/// `max(abs(dx), abs(dy), abs(dz))`
+	Chebyshev = "chebyshev",
+}
+
 #[since="1.21.9"]
 dispatch minecraft:density_function[find_top_surface] to struct FindTopSurface {
 	density: DensityFunctionRef,
@@ -86,6 +114,17 @@ dispatch minecraft:density_function[find_top_surface] to struct FindTopSurface {
 	// the range is (DimensionType.MIN_Y * 2)..(DimensionType.MAX_Y * 2)
 	lower_bound: int @ -4064..4062,
 	cell_height: int @ 1..,
+}
+
+#[since="26.3"]
+dispatch minecraft:density_function[gradient] to struct Gradient {
+	axis: Axis,
+	/// Defaults to `clamp_to_edge`.
+	tiling?: TilingMode,
+	from_coordinate: int,
+	to_coordinate: int,
+	from_value: NoiseRange,
+	to_value: NoiseRange,
 }
 
 #[since="26.2"]
@@ -105,7 +144,7 @@ dispatch minecraft:density_function[lerp] to struct Lerp {
 }
 
 dispatch minecraft:density_function[noise] to struct Noise {
-	noise: #[id="worldgen/noise"] string,
+	noise: NoiseParametersRef,
 	xz_scale: float,
 	y_scale: float,
 }
@@ -117,6 +156,12 @@ dispatch minecraft:density_function[old_blended_noise] to struct OldBlendedNoise
 	xz_factor: float,
 	y_factor: float,
 	smear_scale_multiplier: float @ 1..8,
+}
+
+#[since="26.3"]
+dispatch minecraft:density_function[pow] to struct Pow {
+	base: DensityFunctionRef,
+	exponent: DensityFunctionRef,
 }
 
 dispatch minecraft:density_function[range_choice] to struct RangeChoice {
@@ -140,9 +185,16 @@ dispatch minecraft:density_function[
 	shift_b,
 ] to struct Shift {
 	#[until="26.3"]
-	argument: #[id="worldgen/noise"] string,
+	argument: NoiseParametersRef,
 	#[since="26.3"]
-	noise: #[id="worldgen/noise"] string,
+	noise: NoiseParametersRef,
+}
+
+#[since="26.3"]
+dispatch minecraft:density_function[slice] to struct Slice {
+	axis: Axis,
+	coordinate: int,
+	input: DensityFunctionRef,
 }
 
 dispatch minecraft:density_function[spline] to struct Spline {
@@ -172,7 +224,7 @@ enum(string) SplineType {
 #[until="26.2"]
 dispatch minecraft:density_function[weird_scaled_sampler] to struct WeirdScaledSampler {
 	rarity_value_mapper: RarityType,
-	noise: #[id="worldgen/noise"] string,
+	noise: NoiseParametersRef,
 	input: DensityFunctionRef,
 }
 
@@ -181,11 +233,18 @@ enum(string) RarityType {
 	Type2 = "type_2",
 }
 
+#[until="26.3"]
 dispatch minecraft:density_function[y_clamped_gradient] to struct YClampedGradient {
 	from_y: int @ -4064..4062,
 	to_y: int @ -4064..4062,
 	from_value: NoiseRange,
 	to_value: NoiseRange,
+}
+
+enum(string) TilingMode {
+	ClampToEdge = "clamp_to_edge",
+	Repeat = "repeat",
+	MirroredRepeat = "mirrored_repeat",
 }
 
 type CubicSpline = (

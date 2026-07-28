@@ -29,3 +29,9 @@ enum(int) DirectionInt {
 	West = 4,
 	East = 5,
 }
+
+enum(string) Axis {
+	X = "x",
+	Y = "y",
+	Z = "z",
+}

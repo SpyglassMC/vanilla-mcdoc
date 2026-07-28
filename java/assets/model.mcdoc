@@ -1,3 +1,4 @@
+use ::java::util::direction::Axis
 use ::java::util::direction::Direction
 
 type ModelRef = #[id(registry="model",exclude=["builtin/generated","builtin/entity"])] string
@@ -79,12 +80,6 @@ struct ModelElementRotationBase {
 	origin: [float] @ 3,
 	/// Defaults to `false`.
 	rescale?: boolean,
-}
-
-enum(string) Axis {
-	X = "x",
-	Y = "y",
-	Z = "z",
 }
 
 enum(string) ItemDisplayContext {

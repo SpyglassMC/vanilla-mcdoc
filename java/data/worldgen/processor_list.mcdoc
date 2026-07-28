@@ -1,4 +1,5 @@
 use ::java::util::block_state::BlockState
+use ::java::util::direction::Axis
 use super::HeightmapType
 use super::IntProvider
 
@@ -88,12 +89,6 @@ dispatch minecraft:pos_rule_test[linear_pos] to struct LinearPos {
 dispatch minecraft:pos_rule_test[axis_aligned_linear_pos] to struct AxisAlignedLinearPos {
 	axis: Axis,
 	...LinearPos,
-}
-
-enum(string) Axis {
-	X = "x",
-	Y = "y",
-	Z = "z",
 }
 
 struct RuleTest {
