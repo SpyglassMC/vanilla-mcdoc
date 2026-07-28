@@ -1,5 +1,5 @@
 {
-	"ref": "91297ae67d7f7bd071c03528bfd722949eb3a672",
+	"ref": "f965668ef758d2c5a9410611582695cc4a47edba",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -1228,22 +1228,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": {
-						"kind": "reference",
-						"path": "::java::assets::atlas::PaletteRef"
-					},
-					"type": {
-						"kind": "reference",
-						"path": "::java::assets::atlas::PaletteRef"
-					}
-				}
-			]
-		},
-		"::java::assets::equipment::<anonymous 1>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
 					"desc": "Texture location for this layer, inside `entity/equipment/<layer>/`.",
 					"key": "texture",
 					"type": {
@@ -1313,7 +1297,7 @@
 				}
 			]
 		},
-		"::java::assets::equipment::<anonymous 2>": {
+		"::java::assets::equipment::<anonymous 1>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -1328,7 +1312,7 @@
 				}
 			]
 		},
-		"::java::assets::equipment::<anonymous 3>": {
+		"::java::assets::equipment::<anonymous 2>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -1343,7 +1327,7 @@
 				}
 			]
 		},
-		"::java::assets::equipment::<anonymous 4>": {
+		"::java::assets::equipment::<anonymous 3>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -1414,23 +1398,14 @@
 							}
 						}
 					],
-					"desc": "Replaces palette textures provided by trim materials.",
-					"key": "trim_palette_replacements",
+					"desc": "Replaces trim texture based on armor trim.",
+					"key": "trim_overrides",
 					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": {
-									"kind": "reference",
-									"path": "::java::assets::atlas::PaletteRef"
-								},
-								"type": {
-									"kind": "reference",
-									"path": "::java::assets::atlas::PaletteRef"
-								}
-							}
-						]
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::assets::equipment::TrimOverride"
+						}
 					},
 					"optional": true
 				}
@@ -2414,6 +2389,148 @@
 								}
 							]
 						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::assets::equipment::TrimOverride": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "when",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "pattern",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "trim_pattern"
+												}
+											}
+										}
+									]
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"key": "material",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "trim_material"
+												}
+											}
+										}
+									]
+								},
+								"optional": true
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "When present, overrides the base texture provided by trim pattern.",
+					"key": "texture",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										},
+										"path": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "trims/entity/"
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "When present, overrides the palette texture provided by trim material.",
+					"key": "palette",
+					"type": {
+						"kind": "reference",
+						"path": "::java::assets::atlas::PaletteRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::assets::equipment::TrimPredicate": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "pattern",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "trim_pattern"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "material",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "trim_material"
+									}
+								}
+							}
+						]
 					},
 					"optional": true
 				}
@@ -6051,24 +6168,6 @@
 				}
 			]
 		},
-		"::java::assets::model::Axis": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "X",
-					"value": "x"
-				},
-				{
-					"identifier": "Y",
-					"value": "y"
-				},
-				{
-					"identifier": "Z",
-					"value": "z"
-				}
-			]
-		},
 		"::java::assets::model::CustomizableItemDisplayContext": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -7060,7 +7159,7 @@
 							"key": "axis",
 							"type": {
 								"kind": "reference",
-								"path": "::java::assets::model::Axis"
+								"path": "::java::util::direction::Axis"
 							}
 						},
 						{
@@ -7197,7 +7296,7 @@
 							"kind": "pair",
 							"key": {
 								"kind": "reference",
-								"path": "::java::assets::model::Axis"
+								"path": "::java::util::direction::Axis"
 							},
 							"type": {
 								"kind": "float"
@@ -7418,7 +7517,7 @@
 					"kind": "pair",
 					"key": {
 						"kind": "reference",
-						"path": "::java::assets::model::Axis"
+						"path": "::java::util::direction::Axis"
 					},
 					"type": {
 						"kind": "float"
@@ -7554,7 +7653,7 @@
 					"key": "axis",
 					"type": {
 						"kind": "reference",
-						"path": "::java::assets::model::Axis"
+						"path": "::java::util::direction::Axis"
 					}
 				},
 				{
@@ -34143,6 +34242,29 @@
 				}
 			]
 		},
+		"::java::data::number_provider::ResolvableNumber": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "float"
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "number_provider"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
 		"::java::data::number_provider::ScoreNumberProvider": {
 			"kind": "struct",
 			"fields": [
@@ -39167,29 +39289,81 @@
 					"desc": "ID of the pattern that will be used in the resource pack as an overlay on the armor.",
 					"key": "asset_id",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
 											"kind": "literal",
 											"value": {
 												"kind": "string",
-												"value": "texture"
+												"value": "1.21.4"
 											}
-										},
-										"path": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "trims/models/armor/"
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "texture"
+													}
+												},
+												"path": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "trims/models/armor/"
+													}
+												}
 											}
 										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.4"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "tree",
+											"values": {
+												"registry": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "texture"
+													}
+												},
+												"path": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "trims/entity/"
+													}
+												}
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -49016,6 +49190,60 @@
 				}
 			]
 		},
+		"::java::data::worldgen::density_function::DistanceMetric": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"desc": "`sqrt(dx^2 + dy^2 + dz^2)`",
+					"identifier": "Euclidean",
+					"value": "euclidean"
+				},
+				{
+					"desc": "`dx^2 + dy^2 + dz^2`",
+					"identifier": "EuclideanSquared",
+					"value": "euclidean_squared"
+				},
+				{
+					"desc": "`abs(dx) + abs(dy) + abs(dz)`",
+					"identifier": "Manhattan",
+					"value": "manhattan"
+				},
+				{
+					"desc": "`max(abs(dx), abs(dy), abs(dz))`",
+					"identifier": "Chebyshev",
+					"value": "chebyshev"
+				}
+			]
+		},
+		"::java::data::worldgen::density_function::DistanceToPoint": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "point",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "int"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "metric",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DistanceMetric"
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::density_function::FindTopSurface": {
 			"kind": "struct",
 			"fields": [
@@ -49056,6 +49284,59 @@
 							"kind": 0,
 							"min": 1
 						}
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::density_function::Gradient": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "axis",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::direction::Axis"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `clamp_to_edge`.",
+					"key": "tiling",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::TilingMode"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "from_coordinate",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "to_coordinate",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "from_value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::NoiseRange"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "to_value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::NoiseRange"
 					}
 				}
 			]
@@ -49141,19 +49422,8 @@
 					"kind": "pair",
 					"key": "noise",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/noise"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::NoiseParametersRef"
 					}
 				},
 				{
@@ -49169,6 +49439,30 @@
 					"type": {
 						"kind": "float"
 					}
+				}
+			]
+		},
+		"::java::data::worldgen::density_function::NoiseParametersRef": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "worldgen/noise"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::worldgen::dimension::biome_source::NoiseParameters"
 				}
 			]
 		},
@@ -49263,6 +49557,27 @@
 						}
 					],
 					"key": "input",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::density_function::Pow": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "base",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "exponent",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
@@ -49371,19 +49686,8 @@
 					],
 					"key": "argument",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/noise"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::NoiseParametersRef"
 					}
 				},
 				{
@@ -49402,19 +49706,8 @@
 					],
 					"key": "noise",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/noise"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::NoiseParametersRef"
 					}
 				}
 			]
@@ -49448,6 +49741,34 @@
 				{
 					"kind": "pair",
 					"key": "shift_z",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::density_function::Slice": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "axis",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::direction::Axis"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "coordinate",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "input",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
@@ -49628,6 +49949,24 @@
 				}
 			]
 		},
+		"::java::data::worldgen::density_function::TilingMode": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "ClampToEdge",
+					"value": "clamp_to_edge"
+				},
+				{
+					"identifier": "Repeat",
+					"value": "repeat"
+				},
+				{
+					"identifier": "MirroredRepeat",
+					"value": "mirrored_repeat"
+				}
+			]
+		},
 		"::java::data::worldgen::density_function::TwoArguments": {
 			"kind": "struct",
 			"fields": [
@@ -49728,19 +50067,8 @@
 					"kind": "pair",
 					"key": "noise",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/noise"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::NoiseParametersRef"
 					}
 				},
 				{
@@ -49856,6 +50184,120 @@
 		"::java::data::worldgen::dimension::biome_source::<anonymous 0>": {
 			"kind": "struct",
 			"fields": []
+		},
+		"::java::data::worldgen::dimension::biome_source::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "firstOctave",
+					"type": {
+						"kind": "int"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "amplitudes",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "double"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::dimension::biome_source::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "base_octave",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": -32,
+							"max": 32
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to 1.0.",
+					"key": "base_amplitude",
+					"type": {
+						"kind": "double",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1000000
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to 1.",
+					"key": "octave_count",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 32
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `true`.",
+					"key": "normalize",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "boolean"
+							},
+							{
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "legacy"
+								},
+								"attributes": [
+									{
+										"name": "deprecated"
+									}
+								]
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "When empty or not present, defaults to all 1.0. \\\nOtherwise, the size must match `octave_count`.",
+					"key": "amplitude_modifiers",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "double",
+							"valueRange": {
+								"kind": 0,
+								"min": 0,
+								"max": 1000000
+							}
+						},
+						"lengthRange": {
+							"kind": 0,
+							"max": 32
+						}
+					},
+					"optional": true
+				}
+			]
 		},
 		"::java::data::worldgen::dimension::biome_source::BiomeNoiseEntry": {
 			"kind": "struct",
@@ -50548,20 +50990,147 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "pair",
-					"key": "firstOctave",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "int"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "firstOctave",
+								"type": {
+									"kind": "int"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "amplitudes",
+								"type": {
+									"kind": "list",
+									"item": {
+										"kind": "double"
+									}
+								}
+							}
+						]
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "amplitudes",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "double"
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
 						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "base_octave",
+								"type": {
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": -32,
+										"max": 32
+									}
+								}
+							},
+							{
+								"kind": "pair",
+								"desc": "Defaults to 1.0.",
+								"key": "base_amplitude",
+								"type": {
+									"kind": "double",
+									"valueRange": {
+										"kind": 0,
+										"min": 0,
+										"max": 1000000
+									}
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Defaults to 1.",
+								"key": "octave_count",
+								"type": {
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 1,
+										"max": 32
+									}
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Defaults to `true`.",
+								"key": "normalize",
+								"type": {
+									"kind": "union",
+									"members": [
+										{
+											"kind": "boolean"
+										},
+										{
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "legacy"
+											},
+											"attributes": [
+												{
+													"name": "deprecated"
+												}
+											]
+										}
+									]
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "When empty or not present, defaults to all 1.0. \\\nOtherwise, the size must match `octave_count`.",
+								"key": "amplitude_modifiers",
+								"type": {
+									"kind": "list",
+									"item": {
+										"kind": "double",
+										"valueRange": {
+											"kind": 0,
+											"min": 0,
+											"max": 1000000
+										}
+									},
+									"lengthRange": {
+										"kind": 0,
+										"max": 32
+									}
+								},
+								"optional": true
+							}
+						]
 					}
 				}
 			]
@@ -65157,24 +65726,6 @@
 				}
 			]
 		},
-		"::java::data::worldgen::processor_list::Axis": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "X",
-					"value": "x"
-				},
-				{
-					"identifier": "Y",
-					"value": "y"
-				},
-				{
-					"identifier": "Z",
-					"value": "z"
-				}
-			]
-		},
 		"::java::data::worldgen::processor_list::AxisAlignedLinearPos": {
 			"kind": "struct",
 			"fields": [
@@ -65183,7 +65734,7 @@
 					"key": "axis",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::processor_list::Axis"
+						"path": "::java::util::direction::Axis"
 					}
 				},
 				{
@@ -71268,6 +71819,24 @@
 					"type": {
 						"kind": "any"
 					}
+				}
+			]
+		},
+		"::java::util::direction::Axis": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "X",
+					"value": "x"
+				},
+				{
+					"identifier": "Y",
+					"value": "y"
+				},
+				{
+					"identifier": "Z",
+					"value": "z"
 				}
 			]
 		},
@@ -87323,38 +87892,16 @@
 					"kind": "pair",
 					"key": "uses",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "number_provider"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::number_provider::ResolvableNumber"
 					}
 				},
 				{
 					"kind": "pair",
 					"key": "speed_multiplier",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "number_provider"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::number_provider::ResolvableNumber"
 					}
 				}
 			]
@@ -87591,19 +88138,8 @@
 					"kind": "pair",
 					"key": "layers",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "number_provider"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::number_provider::ResolvableNumber"
 					}
 				}
 			]
@@ -87714,38 +88250,16 @@
 					"kind": "pair",
 					"key": "burn_time",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "number_provider"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::number_provider::ResolvableNumber"
 					}
 				},
 				{
 					"kind": "pair",
 					"key": "speed_multiplier",
 					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "number_provider"
-									}
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::number_provider::ResolvableNumber"
 					}
 				}
 			]
@@ -92778,10 +93292,35 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether the entity should take damage.",
+					"desc": "Whether the entity is immune to damage.",
 					"key": "Invulnerable",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Temporary immunity duration of the entity, in ticks. \\\nThe entity is immune to damage if `invulnerable_time` > 0 **or** `Invulnerable` is `true`.",
+					"key": "invulnerable_time",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
 					},
 					"optional": true
 				},
@@ -114398,6 +114937,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::OneArgument"
 			},
+			"disatnce_to_point": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::DistanceToPoint",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"div": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::TwoArguments",
@@ -114437,6 +114992,22 @@
 			"floor": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::Round",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"gradient": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::Gradient",
 				"attributes": [
 					{
 						"name": "since",
@@ -114506,6 +115077,22 @@
 					}
 				]
 			},
+			"log": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::OneArgument",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"max": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::TwoArguments"
@@ -114549,6 +115136,22 @@
 							"value": {
 								"kind": "string",
 								"value": "1.19"
+							}
+						}
+					}
+				]
+			},
+			"pow": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::Pow",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
 							}
 						}
 					}
@@ -114610,6 +115213,38 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::ShiftedNoise"
 			},
+			"sign": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::OneArgument",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"slice": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::Slice",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"slide": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::OneArgument"
@@ -114617,6 +115252,22 @@
 			"spline": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::Spline"
+			},
+			"sqrt": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::OneArgument",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"square": {
 				"kind": "reference",
@@ -114692,7 +115343,19 @@
 			},
 			"y_clamped_gradient": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::density_function::YClampedGradient"
+				"path": "::java::data::worldgen::density_function::YClampedGradient",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			}
 		},
 		"minecraft:dialog": {
