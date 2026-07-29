@@ -1,5 +1,5 @@
 {
-	"ref": "e13a07a899f1a62320f7abbb7b57940a6360b76f",
+	"ref": "4851bbee77c3b6defe676894c628cdf8777b8572",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -114974,7 +114974,7 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::OneArgument"
 			},
-			"disatnce_to_point": {
+			"distance_to_point": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::DistanceToPoint",
 				"attributes": [
