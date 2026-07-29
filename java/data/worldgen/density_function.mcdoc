@@ -91,7 +91,7 @@ dispatch minecraft:density_function[constant] to struct Constant {
 }
 
 #[since="26.3"]
-dispatch minecraft:density_function[disatnce_to_point] to struct DistanceToPoint {
+dispatch minecraft:density_function[distance_to_point] to struct DistanceToPoint {
 	point: [int] @ 3,
 	metric: DistanceMetric,
 }
