@@ -18,6 +18,8 @@ dispatch minecraft:entity[zombie_villager] to struct ZombieVillager {
 	...Zombie,
 	/// Villager's skin data
 	VillagerData?: VillagerData,
+	#[since="26.1"]
+	VillagerDataFinalized?: boolean,
 	/// Villager's gossips
 	Gossips?: [PlayerReputationPart],
 	/// Villager's offers

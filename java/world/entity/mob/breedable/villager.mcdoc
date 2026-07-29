@@ -12,6 +12,8 @@ dispatch minecraft:entity[villager] to struct Villager {
 	...super::Breedable,
 	...VillagerBase,
 	VillagerData?: VillagerData,
+	#[since="26.1"]
+	VillagerDataFinalized?: boolean,
 	/// Determines whether the villager will be available to reproduce.
 	///
 	/// When the value is `12` the villager can reproduce.
