@@ -1,5 +1,5 @@
 {
-	"ref": "4851bbee77c3b6defe676894c628cdf8777b8572",
+	"ref": "a6ef96e3e2793fbd1268437b862ab7c29bcad708",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -98977,6 +98977,26 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "VillagerDataFinalized",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"desc": "Determines whether the villager will be available to reproduce.\n\nWhen the value is `12` the villager can reproduce.\n\nAfter reproducing, the value is reset to `0`.\n\nTo increase this value villagers will pick up food that is in range.\n\nFoods: Potatoes, Carrots, & Beetroots increase the level by `1`. Bread increases the level by `4`.",
 					"key": "FoodLevel",
 					"type": {
@@ -104185,6 +104205,26 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::world::entity::mob::breedable::villager::VillagerData"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.1"
+								}
+							}
+						}
+					],
+					"key": "VillagerDataFinalized",
+					"type": {
+						"kind": "boolean"
 					},
 					"optional": true
 				},
