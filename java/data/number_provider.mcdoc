@@ -49,7 +49,7 @@ dispatch minecraft:number_provider[binomial] to struct BinomialNumberProvider {
 }
 
 #[since="26.3"]
-dispatch minecraft:number_provider[conditional_value] to struct ConditionalValueNumberProvider {
+dispatch minecraft:number_provider[conditional] to struct ConditionalNumberProvider {
 	condition: PredicateRef,
 	on_true: NumberProviderRef,
 	/// Defaults to constant 0.
