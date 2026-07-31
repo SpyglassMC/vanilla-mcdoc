@@ -1,5 +1,5 @@
 {
-	"ref": "a6ef96e3e2793fbd1268437b862ab7c29bcad708",
+	"ref": "4ce0dfa9b12d802f0f12b202b38ce88875c262b9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -33849,7 +33849,7 @@
 				}
 			]
 		},
-		"::java::data::number_provider::ConditionalValueNumberProvider": {
+		"::java::data::number_provider::ConditionalNumberProvider": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -122663,9 +122663,9 @@
 				"kind": "reference",
 				"path": "::java::data::number_provider::BinomialNumberProvider"
 			},
-			"conditional_value": {
+			"conditional": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::ConditionalValueNumberProvider",
+				"path": "::java::data::number_provider::ConditionalNumberProvider",
 				"attributes": [
 					{
 						"name": "since",
