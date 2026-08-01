@@ -1,5 +1,5 @@
 {
-	"ref": "4ce0dfa9b12d802f0f12b202b38ce88875c262b9",
+	"ref": "b40c696f3206ac7b8f5ec7f4e40483ffd54b7757",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -49023,8 +49023,41 @@
 					"kind": "pair",
 					"key": "input",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunction"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::density_function::DensityFunction",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::worldgen::density_function::DensityFunctionRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.2"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
