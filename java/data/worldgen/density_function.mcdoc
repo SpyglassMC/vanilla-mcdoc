@@ -78,7 +78,10 @@ dispatch minecraft:density_function[ceil, floor, round, truncate] to struct Roun
 }
 
 dispatch minecraft:density_function[clamp] to struct Clamp {
-	input: DensityFunction,
+	input: (
+		#[until="26.2"] DensityFunction |
+		#[since="26.2"] DensityFunctionRef |
+	),
 	min: NoiseRange,
 	max: NoiseRange,
 }
