@@ -1,12 +1,13 @@
 use ::java::util::color::DyeColorByte
 use ::java::util::color::DyeColor
+use ::java::util::direction::DirectionByte
 
 dispatch minecraft:entity[shulker] to struct Shulker {
 	...super::MobBase,
 	/// Whether it is peeking.
 	Peek?: boolean,
 	/// Which face it is attached to.
-	AttachFace?: AttachFace,
+	AttachFace?: DirectionByte,
 	Color?: (DyeColorByte | ShulkerColor),
 	/// Approximate x coordinate of the shulker.
 	#[until="1.17"]
@@ -17,15 +18,6 @@ dispatch minecraft:entity[shulker] to struct Shulker {
 	/// Approximate z coordinate of the shulker.
 	#[until="1.17"]
 	APZ?: int,
-}
-
-enum(byte) AttachFace {
-	Down = 0b,
-	Up = 1b,
-	North = 2b,
-	South = 3b,
-	West = 4b,
-	East = 5b,
 }
 
 enum(byte) ShulkerColor {

@@ -1,9 +1,10 @@
+use ::java::util::direction::DirectionByte
 use ::java::world::item::ItemStack
 
 dispatch minecraft:entity[item_frame] to struct ItemFrame {
 	...super::BlockAttachedEntity,
 	/// Direction it is facing.
-	Facing?: Facing,
+	Facing?: DirectionByte,
 	Item?: ItemStack,
 	/// Chance the item has to drop.
 	ItemDropChance?: float,
@@ -20,12 +21,3 @@ dispatch minecraft:entity[item_frame] to struct ItemFrame {
 
 #[since="1.17"]
 dispatch minecraft:entity[glow_item_frame] to ItemFrame
-
-enum(byte) Facing {
-	Down = 0b,
-	Up = 1b,
-	North = 2b,
-	South = 3b,
-	West = 4b,
-	East = 5b,
-}

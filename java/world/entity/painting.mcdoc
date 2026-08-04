@@ -1,13 +1,14 @@
 use ::java::data::variants::painting::PaintingVariant
+use ::java::util::direction::HorizontalDirectionByte
 
 dispatch minecraft:entity[painting] to struct Painting {
 	...super::BlockAttachedEntity,
 	/// Direction it is facing.
 	#[until="1.19"]
-	Facing?: Facing,
+	Facing?: HorizontalDirectionByte,
 	/// Direction it is facing.
 	#[since="1.19"]
-	facing?: Facing,
+	facing?: HorizontalDirectionByte,
 	/// Type of painting.
 	#[until="1.19"]
 	Motive?: #[id="motive"] string,
@@ -17,11 +18,4 @@ dispatch minecraft:entity[painting] to struct Painting {
 		#[id="painting_variant"] string |
 		#[since="1.21"] #[until="1.21.6"] PaintingVariant |
 	),
-}
-
-enum(byte) Facing {
-	South = 0b,
-	West = 1b,
-	North = 2b,
-	East = 3b,
 }

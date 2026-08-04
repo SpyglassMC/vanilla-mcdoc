@@ -1,7 +1,13 @@
+use ::java::util::direction::DirectionByte
 use ::java::util::direction::DirectionInt
 use ::java::world::item::ItemStack
 
-dispatch minecraft:block_entity[brushable_block] to struct BrushableBlock {
+#[since="1.19.4"] #[until="1.20"]
+dispatch minecraft:block_entity[suspicious_sand] to BrushableBlock
+#[since="1.20"]
+dispatch minecraft:block_entity[brushable_block] to BrushableBlock
+
+struct BrushableBlock {
 	...super::BlockEntity,
 	/// Loot table that will decide the brushed loot.
 	LootTable?: #[id(registry="loot_table", empty="allowed")] string,
@@ -11,7 +17,10 @@ dispatch minecraft:block_entity[brushable_block] to struct BrushableBlock {
 	item?: ItemStack,
 	/// Direction of the block that was interacted with.
 	/// Write-only, is not saved by the game.
-	hit_direction?: DirectionInt,
+	hit_direction?: (
+		#[until="1.21.5"] DirectionInt |
+		#[since="1.21.5"] DirectionByte |
+	),
 }
 
 dispatch minecraft:block[suspicious_sand,suspicious_gravel] to minecraft:block_entity[brushable_block]
