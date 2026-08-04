@@ -1,5 +1,5 @@
 {
-	"ref": "3b08300bbbaa9ce7270b2046a1e790cd0172f2c4",
+	"ref": "8e0bdd3df587c5d043920e3bfcf875724f882a18",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -72494,6 +72494,28 @@
 				}
 			]
 		},
+		"::java::util::direction::HorizontalDirectionByte": {
+			"kind": "enum",
+			"enumKind": "byte",
+			"values": [
+				{
+					"identifier": "South",
+					"value": 0
+				},
+				{
+					"identifier": "West",
+					"value": 1
+				},
+				{
+					"identifier": "North",
+					"value": 2
+				},
+				{
+					"identifier": "East",
+					"value": 3
+				}
+			]
+		},
 		"::java::util::direction::VerticalDirection": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -82376,8 +82398,41 @@
 					"desc": "Direction of the block that was interacted with.\nWrite-only, is not saved by the game.",
 					"key": "hit_direction",
 					"type": {
-						"kind": "reference",
-						"path": "::java::util::direction::DirectionInt"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::util::direction::DirectionInt",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::util::direction::DirectionByte",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				}
@@ -84769,36 +84824,6 @@
 				}
 			]
 		},
-		"::java::world::block::moving_piston::Facing": {
-			"kind": "enum",
-			"enumKind": "int",
-			"values": [
-				{
-					"identifier": "Down",
-					"value": 0
-				},
-				{
-					"identifier": "Up",
-					"value": 1
-				},
-				{
-					"identifier": "North",
-					"value": 2
-				},
-				{
-					"identifier": "South",
-					"value": 3
-				},
-				{
-					"identifier": "West",
-					"value": 4
-				},
-				{
-					"identifier": "East",
-					"value": 5
-				}
-			]
-		},
 		"::java::world::block::moving_piston::MovingPiston": {
 			"kind": "struct",
 			"fields": [
@@ -84824,8 +84849,41 @@
 					"desc": "The direction it is moving.",
 					"key": "facing",
 					"type": {
-						"kind": "reference",
-						"path": "::java::world::block::moving_piston::Facing"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::util::direction::DirectionInt",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::util::direction::DirectionByte",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				},
@@ -94862,36 +94920,6 @@
 				}
 			]
 		},
-		"::java::world::entity::item_frame::Facing": {
-			"kind": "enum",
-			"enumKind": "byte",
-			"values": [
-				{
-					"identifier": "Down",
-					"value": 0
-				},
-				{
-					"identifier": "Up",
-					"value": 1
-				},
-				{
-					"identifier": "North",
-					"value": 2
-				},
-				{
-					"identifier": "South",
-					"value": 3
-				},
-				{
-					"identifier": "West",
-					"value": 4
-				},
-				{
-					"identifier": "East",
-					"value": 5
-				}
-			]
-		},
 		"::java::world::entity::item_frame::ItemFrame": {
 			"kind": "struct",
 			"fields": [
@@ -94908,7 +94936,7 @@
 					"key": "Facing",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::entity::item_frame::Facing"
+						"path": "::java::util::direction::DirectionByte"
 					},
 					"optional": true
 				},
@@ -104246,36 +104274,6 @@
 				}
 			]
 		},
-		"::java::world::entity::mob::shulker::AttachFace": {
-			"kind": "enum",
-			"enumKind": "byte",
-			"values": [
-				{
-					"identifier": "Down",
-					"value": 0
-				},
-				{
-					"identifier": "Up",
-					"value": 1
-				},
-				{
-					"identifier": "North",
-					"value": 2
-				},
-				{
-					"identifier": "South",
-					"value": 3
-				},
-				{
-					"identifier": "West",
-					"value": 4
-				},
-				{
-					"identifier": "East",
-					"value": 5
-				}
-			]
-		},
 		"::java::world::entity::mob::shulker::Shulker": {
 			"kind": "struct",
 			"fields": [
@@ -104301,7 +104299,7 @@
 					"key": "AttachFace",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::entity::mob::shulker::AttachFace"
+						"path": "::java::util::direction::DirectionByte"
 					},
 					"optional": true
 				},
@@ -105308,28 +105306,6 @@
 				}
 			]
 		},
-		"::java::world::entity::painting::Facing": {
-			"kind": "enum",
-			"enumKind": "byte",
-			"values": [
-				{
-					"identifier": "South",
-					"value": 0
-				},
-				{
-					"identifier": "West",
-					"value": 1
-				},
-				{
-					"identifier": "North",
-					"value": 2
-				},
-				{
-					"identifier": "East",
-					"value": 3
-				}
-			]
-		},
 		"::java::world::entity::painting::Painting": {
 			"kind": "struct",
 			"fields": [
@@ -105358,7 +105334,7 @@
 					"key": "Facing",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::entity::painting::Facing"
+						"path": "::java::util::direction::HorizontalDirectionByte"
 					},
 					"optional": true
 				},
@@ -105380,7 +105356,7 @@
 					"key": "facing",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::entity::painting::Facing"
+						"path": "::java::util::direction::HorizontalDirectionByte"
 					},
 					"optional": true
 				},
@@ -112385,7 +112361,19 @@
 			},
 			"brushable_block": {
 				"kind": "reference",
-				"path": "::java::world::block::brushable_block::BrushableBlock"
+				"path": "::java::world::block::brushable_block::BrushableBlock",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.20"
+							}
+						}
+					}
+				]
 			},
 			"calibrated_sculk_sensor": {
 				"kind": "reference",
@@ -112652,6 +112640,32 @@
 			"structure_block": {
 				"kind": "reference",
 				"path": "::java::world::block::structure_block::StructureBlock"
+			},
+			"suspicious_sand": {
+				"kind": "reference",
+				"path": "::java::world::block::brushable_block::BrushableBlock",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.19.4"
+							}
+						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "1.20"
+							}
+						}
+					}
+				]
 			},
 			"test_block": {
 				"kind": "reference",
