@@ -5,8 +5,10 @@ dispatch minecraft:entity[falling_block] to struct FallingBlock {
 	/// NBT data for the placed block.
 	TileEntityData?: (
 		#[until="26.3"] minecraft:block[[BlockState.Name]] |
-		#[since="26.3"] minecraft:block[[BlockState]] |
-		#[since="26.3"] minecraft:block[[BlockState.id]] |
+		#[since="26.3"] struct {
+			...minecraft:block[[%parent.BlockState]],
+			...minecraft:block[[%parent.BlockState.id]],
+		} |
 	),
 	/// Block state for the placed block. Defaults to sand.
 	BlockState?: BlockState,
