@@ -1,5 +1,5 @@
 {
-	"ref": "b40c696f3206ac7b8f5ec7f4e40483ffd54b7757",
+	"ref": "a11558d3263dea81cc5c5cc26be84a2ccdbc9a7c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -5848,6 +5848,18 @@
 					"value": "grass"
 				},
 				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"identifier": "MapColor",
 					"value": "map_color"
 				},
@@ -26859,6 +26871,32 @@
 			"kind": "struct",
 			"fields": [
 				{
+					"kind": "pair",
+					"desc": "The icon used to mark the destination on the map.",
+					"key": "decoration",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "map_decoration_type"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 11>": {
+			"kind": "struct",
+			"fields": [
+				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
@@ -26867,7 +26905,19 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 11>": {
+		"::java::data::loot::function::<anonymous 12>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::loot::function::Conditions"
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 13>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -26885,7 +26935,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 12>": {
+		"::java::data::loot::function::<anonymous 14>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -26910,7 +26960,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 13>": {
+		"::java::data::loot::function::<anonymous 15>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -26937,7 +26987,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 14>": {
+		"::java::data::loot::function::<anonymous 16>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -27061,7 +27111,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 15>": {
+		"::java::data::loot::function::<anonymous 17>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -27126,11 +27176,11 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 16>": {
+		"::java::data::loot::function::<anonymous 18>": {
 			"kind": "struct",
 			"fields": []
 		},
-		"::java::data::loot::function::<anonymous 17>": {
+		"::java::data::loot::function::<anonymous 19>": {
 			"kind": "struct",
 			"fields": []
 		},
@@ -27488,11 +27538,56 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "spread",
+					"kind": "pair",
+					"desc": "The icon used to mark the destination on the map. \\\nSome decoration types have corresponding map colors. The color of the lines on the item texture is changed to match the color.",
+					"key": "decoration",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::function::Conditions"
-					}
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::function::MapDecoration",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.20.5"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "map_decoration_type"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					"optional": true
 				}
 			]
 		},
@@ -29398,56 +29493,117 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"desc": "The icon used to mark the destination on the map. Accepts any of the map icon text IDs (case insensitive).\nIf `mansion` or `monument` is used, the color of the lines on the item texture changes to match the corresponding explorer map.",
-					"key": "decoration",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "union",
-						"members": [
+						"kind": "struct",
+						"fields": [
 							{
-								"kind": "reference",
-								"path": "::java::data::loot::function::MapDecoration",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
+								"kind": "pair",
+								"desc": "The icon used to mark the destination on the map. \\\nSome decoration types have corresponding map colors. The color of the lines on the item texture is changed to match the color.",
+								"key": "decoration",
+								"type": {
+									"kind": "union",
+									"members": [
+										{
+											"kind": "reference",
+											"path": "::java::data::loot::function::MapDecoration",
+											"attributes": [
+												{
+													"name": "until",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "1.20.5"
+														}
+													}
+												}
+											]
+										},
+										{
+											"kind": "string",
+											"attributes": [
+												{
+													"name": "since",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "1.20.5"
+														}
+													}
+												},
+												{
+													"name": "id",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "map_decoration_type"
+														}
+													}
+												}
+											]
 										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20.5"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "map_decoration_type"
-											}
-										}
-									}
-								]
+									]
+								},
+								"optional": true
 							}
 						]
-					},
-					"optional": true
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "The icon used to mark the destination on the map.",
+								"key": "decoration",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "map_decoration_type"
+												}
+											}
+										}
+									]
+								},
+								"optional": true
+							}
+						]
+					}
 				},
 				{
 					"kind": "pair",
@@ -65778,20 +65934,92 @@
 					"kind": "pair",
 					"key": "data",
 					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
+						"kind": "union",
+						"members": [
 							{
-								"kind": "dynamic",
-								"accessor": [
+								"kind": "dispatcher",
+								"parallelIndices": [
 									{
-										"keyword": "parent"
-									},
-									"output_state",
-									"Name"
+										"kind": "dynamic",
+										"accessor": [
+											{
+												"keyword": "parent"
+											},
+											"output_state",
+											"Name"
+										]
+									}
+								],
+								"registry": "minecraft:block",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											{
+												"keyword": "parent"
+											},
+											"output_state"
+										]
+									}
+								],
+								"registry": "minecraft:block",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											{
+												"keyword": "parent"
+											},
+											"output_state",
+											"id"
+										]
+									}
+								],
+								"registry": "minecraft:block",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
 								]
 							}
-						],
-						"registry": "minecraft:block"
+						]
 					}
 				}
 			]
@@ -71386,20 +71614,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": {
-						"kind": "string"
-					},
-					"type": {
-						"kind": "string"
-					}
-				}
-			]
-		},
-		"::java::util::block_state::BlockState": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
 					"key": "Name",
 					"type": {
 						"kind": "string",
@@ -71433,6 +71647,221 @@
 						"registry": "mcdoc:block_states"
 					},
 					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.3"
+						}
+					}
+				}
+			]
+		},
+		"::java::util::block_state::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "block"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "properties",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"id"
+								]
+							}
+						],
+						"registry": "mcdoc:block_states"
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.3"
+						}
+					}
+				}
+			]
+		},
+		"::java::util::block_state::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "string"
+					},
+					"type": {
+						"kind": "string"
+					}
+				}
+			]
+		},
+		"::java::util::block_state::BlockState": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "Name",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "block"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "Properties",
+							"type": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"Name"
+										]
+									}
+								],
+								"registry": "mcdoc:block_states"
+							},
+							"optional": true
+						}
+					],
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "block"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "id",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "block"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "properties",
+							"type": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"id"
+										]
+									}
+								],
+								"registry": "mcdoc:block_states"
+							},
+							"optional": true
+						}
+					],
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
@@ -73014,20 +73443,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": {
-						"kind": "string"
-					},
-					"type": {
-						"kind": "string"
-					}
-				}
-			]
-		},
-		"::java::util::fluid_state::FluidState": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
 					"key": "Name",
 					"type": {
 						"kind": "string",
@@ -73061,6 +73476,221 @@
 						"registry": "mcdoc:fluid_states"
 					},
 					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.3"
+						}
+					}
+				}
+			]
+		},
+		"::java::util::fluid_state::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "fluid"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "properties",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"id"
+								]
+							}
+						],
+						"registry": "mcdoc:fluid_states"
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.3"
+						}
+					}
+				}
+			]
+		},
+		"::java::util::fluid_state::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "string"
+					},
+					"type": {
+						"kind": "string"
+					}
+				}
+			]
+		},
+		"::java::util::fluid_state::FluidState": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "Name",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "fluid"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "Properties",
+							"type": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"Name"
+										]
+									}
+								],
+								"registry": "mcdoc:fluid_states"
+							},
+							"optional": true
+						}
+					],
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "fluid"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "id",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "fluid"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "properties",
+							"type": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"id"
+										]
+									}
+								],
+								"registry": "mcdoc:fluid_states"
+							},
+							"optional": true
+						}
+					],
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
@@ -83657,7 +84287,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "If missing appears as a steve head.",
+					"desc": "Name of the owner, if missing appears as a steve head.",
 					"key": "Name",
 					"type": {
 						"kind": "string"
@@ -90178,6 +90808,18 @@
 			"enumKind": "string",
 			"values": [
 				{
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"identifier": "None",
 					"value": "none"
 				},
@@ -93839,17 +94481,83 @@
 					"desc": "NBT data for the placed block.",
 					"key": "TileEntityData",
 					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
+						"kind": "union",
+						"members": [
 							{
-								"kind": "dynamic",
-								"accessor": [
-									"BlockState",
-									"Name"
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"BlockState",
+											"Name"
+										]
+									}
+								],
+								"registry": "minecraft:block",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"BlockState"
+										]
+									}
+								],
+								"registry": "minecraft:block",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"BlockState",
+											"id"
+										]
+									}
+								],
+								"registry": "minecraft:block",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
 								]
 							}
-						],
-						"registry": "minecraft:block"
+						]
 					},
 					"optional": true
 				},
@@ -107159,126 +107867,12 @@
 						"members": [
 							{
 								"kind": "reference",
-								"path": "::java::world::item::head::SkullOwner"
+								"path": "::java::world::block::head::SkullOwner"
 							},
 							{
 								"kind": "string"
 							}
 						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::world::item::head::Properties": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "textures",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::world::item::head::Texture"
-						}
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::world::item::head::SkullOwner": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Optional.",
-					"key": "Id",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.16"
-											}
-										}
-									},
-									{
-										"name": "uuid"
-									}
-								]
-							},
-							{
-								"kind": "int_array",
-								"lengthRange": {
-									"kind": 0,
-									"min": 4,
-									"max": 4
-								},
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.16"
-											}
-										}
-									},
-									{
-										"name": "uuid"
-									}
-								]
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Name of the owner, if missing appears as a steve head.",
-					"key": "Name",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "Properties",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::item::head::Properties"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::world::item::head::Texture": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "Signature",
-					"type": {
-						"kind": "string"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Base64 encoded JSON value of the texture index.",
-					"key": "Value",
-					"type": {
-						"kind": "string"
 					},
 					"optional": true
 				}
@@ -112350,6 +112944,22 @@
 					}
 				]
 			},
+			"attack_animation": {
+				"kind": "reference",
+				"path": "::java::world::component::item::SwingAnimation",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"attack_range": {
 				"kind": "reference",
 				"path": "::java::world::component::item::AttackRange",
@@ -113303,6 +113913,22 @@
 				"kind": "struct",
 				"fields": []
 			},
+			"interact_animation": {
+				"kind": "reference",
+				"path": "::java::world::component::item::SwingAnimation",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"item_model": {
 				"kind": "union",
 				"members": [
@@ -113596,6 +114222,16 @@
 							"value": {
 								"kind": "string",
 								"value": "composite_rgb"
+							}
+						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
 							}
 						}
 					}
@@ -114296,6 +114932,16 @@
 							"value": {
 								"kind": "string",
 								"value": "1.21.11"
+							}
+						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
 							}
 						}
 					}
