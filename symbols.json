@@ -1,5 +1,5 @@
 {
-	"ref": "c4565e8525dd8748cba863761c333de1a0e203e2",
+	"ref": "3b08300bbbaa9ce7270b2046a1e790cd0172f2c4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -65901,6 +65901,66 @@
 		},
 		"::java::data::worldgen::processor_list::<anonymous 0>": {
 			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "parent"
+									},
+									{
+										"keyword": "parent"
+									},
+									"output_state"
+								]
+							}
+						],
+						"registry": "minecraft:block"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "parent"
+									},
+									{
+										"keyword": "parent"
+									},
+									"output_state",
+									"id"
+								]
+							}
+						],
+						"registry": "minecraft:block"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.3"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::processor_list::<anonymous 1>": {
+			"kind": "struct",
 			"fields": []
 		},
 		"::java::data::worldgen::processor_list::AppendLoot": {
@@ -65965,47 +66025,52 @@
 								]
 							},
 							{
-								"kind": "dispatcher",
-								"parallelIndices": [
+								"kind": "struct",
+								"fields": [
 									{
-										"kind": "dynamic",
-										"accessor": [
-											{
-												"keyword": "parent"
-											},
-											"output_state"
-										]
-									}
-								],
-								"registry": "minecraft:block",
-								"attributes": [
+										"kind": "spread",
+										"type": {
+											"kind": "dispatcher",
+											"parallelIndices": [
+												{
+													"kind": "dynamic",
+													"accessor": [
+														{
+															"keyword": "parent"
+														},
+														{
+															"keyword": "parent"
+														},
+														"output_state"
+													]
+												}
+											],
+											"registry": "minecraft:block"
+										}
+									},
 									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.3"
-											}
+										"kind": "spread",
+										"type": {
+											"kind": "dispatcher",
+											"parallelIndices": [
+												{
+													"kind": "dynamic",
+													"accessor": [
+														{
+															"keyword": "parent"
+														},
+														{
+															"keyword": "parent"
+														},
+														"output_state",
+														"id"
+													]
+												}
+											],
+											"registry": "minecraft:block"
 										}
 									}
-								]
-							},
-							{
-								"kind": "dispatcher",
-								"parallelIndices": [
-									{
-										"kind": "dynamic",
-										"accessor": [
-											{
-												"keyword": "parent"
-											},
-											"output_state",
-											"id"
-										]
-									}
 								],
-								"registry": "minecraft:block",
 								"attributes": [
 									{
 										"name": "since",
@@ -94470,6 +94535,60 @@
 				}
 			]
 		},
+		"::java::world::entity::falling_block::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "parent"
+									},
+									"BlockState"
+								]
+							}
+						],
+						"registry": "minecraft:block"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "parent"
+									},
+									"BlockState",
+									"id"
+								]
+							}
+						],
+						"registry": "minecraft:block"
+					}
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.3"
+						}
+					}
+				}
+			]
+		},
 		"::java::world::entity::falling_block::FallingBlock": {
 			"kind": "struct",
 			"fields": [
@@ -94513,41 +94632,46 @@
 								]
 							},
 							{
-								"kind": "dispatcher",
-								"parallelIndices": [
+								"kind": "struct",
+								"fields": [
 									{
-										"kind": "dynamic",
-										"accessor": [
-											"BlockState"
-										]
-									}
-								],
-								"registry": "minecraft:block",
-								"attributes": [
+										"kind": "spread",
+										"type": {
+											"kind": "dispatcher",
+											"parallelIndices": [
+												{
+													"kind": "dynamic",
+													"accessor": [
+														{
+															"keyword": "parent"
+														},
+														"BlockState"
+													]
+												}
+											],
+											"registry": "minecraft:block"
+										}
+									},
 									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.3"
-											}
+										"kind": "spread",
+										"type": {
+											"kind": "dispatcher",
+											"parallelIndices": [
+												{
+													"kind": "dynamic",
+													"accessor": [
+														{
+															"keyword": "parent"
+														},
+														"BlockState",
+														"id"
+													]
+												}
+											],
+											"registry": "minecraft:block"
 										}
 									}
-								]
-							},
-							{
-								"kind": "dispatcher",
-								"parallelIndices": [
-									{
-										"kind": "dynamic",
-										"accessor": [
-											"BlockState",
-											"id"
-										]
-									}
 								],
-								"registry": "minecraft:block",
 								"attributes": [
 									{
 										"name": "since",
