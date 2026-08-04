@@ -140,7 +140,11 @@ struct BlockEntityModifier {
 }
 
 dispatch minecraft:rule_block_entity_modifier[append_static] to struct AppendStatic {
-	data: minecraft:block[[%parent.output_state.Name]],
+	data: (
+		#[until="26.3"] minecraft:block[[%parent.output_state.Name]] |
+		#[since="26.3"] minecraft:block[[%parent.output_state]] |
+		#[since="26.3"] minecraft:block[[%parent.output_state.id]] |
+	),
 }
 
 dispatch minecraft:rule_block_entity_modifier[append_loot] to struct AppendLoot {

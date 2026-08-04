@@ -655,6 +655,7 @@ dispatch minecraft:data_component[lore] to [(
 )]
 
 /// Calculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.
+#[until="26.3"]
 dispatch minecraft:data_component[map_color] to #[color="composite_rgb"] int
 
 /// Key-value pairs of the icons to display, where the key is an arbitrary unique string identifying the decoration.
@@ -783,8 +784,12 @@ struct SuspiciousStewEffect {
 	duration?: int @ 1..,
 }
 
-#[since="1.21.11"]
-dispatch minecraft:data_component[swing_animation] to struct SwingAnimation {
+#[since="1.21.11"] #[until="26.3"]
+dispatch minecraft:data_component[swing_animation] to SwingAnimation
+#[since="26.3"]
+dispatch minecraft:data_component[attack_animation, interact_animation] to SwingAnimation
+
+struct SwingAnimation {
 	/// The animation type to play when attacking or interacting using this item.
 	/// Defaults to `whack`.
 	type?: SwingAnimationType,
@@ -794,6 +799,7 @@ dispatch minecraft:data_component[swing_animation] to struct SwingAnimation {
 }
 
 enum(string) SwingAnimationType {
+	#[until="26.3"]
 	None = "none",
 	Whack = "whack",
 	Stab = "stab",

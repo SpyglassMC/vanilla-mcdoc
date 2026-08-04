@@ -39,13 +39,14 @@ dispatch minecraft:block[
 	#[since="1.20.5"] Skull |
 )
 
+// Until 1.20.5
 struct SkullOwner {
 	/// Optional.
 	Id?: (
 		#[until="1.16"] #[uuid] string |
 		#[since="1.16"] #[uuid] int[] @ 4 |
 	),
-	/// If missing appears as a steve head.
+	/// Name of the owner, if missing appears as a steve head.
 	Name?: string,
 	Properties?: Properties,
 }

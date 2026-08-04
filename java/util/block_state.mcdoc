@@ -1,7 +1,14 @@
-struct BlockState {
-	Name: #[id="block"] string,
-	Properties?: mcdoc:block_states[[Name]],
-}
+type BlockState = (
+	#[until="26.3"] struct {
+		Name: #[id="block"] string,
+		Properties?: mcdoc:block_states[[Name]],
+	} |
+	#[since="26.3"] #[id="block"] string |
+	#[since="26.3"] struct {
+		id: #[id="block"] string,
+		properties?: mcdoc:block_states[[id]],
+	} |
+)
 
 dispatch mcdoc:block_states[%unknown,%none] to struct {
 	[string]: string,

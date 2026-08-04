@@ -3,7 +3,11 @@ use ::java::util::BlockState
 dispatch minecraft:entity[falling_block] to struct FallingBlock {
 	...super::EntityBase,
 	/// NBT data for the placed block.
-	TileEntityData?: minecraft:block[[BlockState.Name]],
+	TileEntityData?: (
+		#[until="26.3"] minecraft:block[[BlockState.Name]] |
+		#[since="26.3"] minecraft:block[[BlockState]] |
+		#[since="26.3"] minecraft:block[[BlockState.id]] |
+	),
 	/// Block state for the placed block. Defaults to sand.
 	BlockState?: BlockState,
 	/// Ticks it has existed.

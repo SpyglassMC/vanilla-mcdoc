@@ -1,7 +1,14 @@
-struct FluidState {
-	Name: #[id="fluid"] string,
-	Properties?: mcdoc:fluid_states[[Name]],
-}
+type FluidState = (
+	#[until="26.3"] struct {
+		Name: #[id="fluid"] string,
+		Properties?: mcdoc:fluid_states[[Name]],
+	} |
+	#[since="26.3"] #[id="fluid"] string |
+	#[since="26.3"] struct {
+		id: #[id="fluid"] string,
+		properties?: mcdoc:fluid_states[[id]],
+	} |
+)
 
 dispatch mcdoc:fluid_states[%unknown,%none] to struct {
 	[string]: string,

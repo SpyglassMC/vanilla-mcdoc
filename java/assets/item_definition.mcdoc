@@ -123,6 +123,7 @@ enum(string) TintSourceType {
 	Dye = "dye",
 	Firework = "firework",
 	Grass = "grass",
+	#[until="26.3"]
 	MapColor = "map_color",
 	Potion = "potion",
 	Team = "team",
