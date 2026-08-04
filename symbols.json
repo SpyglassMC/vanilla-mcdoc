@@ -1,5 +1,5 @@
 {
-	"ref": "a11558d3263dea81cc5c5cc26be84a2ccdbc9a7c",
+	"ref": "c4565e8525dd8748cba863761c333de1a0e203e2",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -81045,6 +81045,10 @@
 				}
 			]
 		},
+		"::java::world::block::<anonymous 0>": {
+			"kind": "struct",
+			"fields": []
+		},
 		"::java::world::block::banner::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
@@ -109363,6 +109367,10 @@
 			}
 		},
 		"minecraft:block": {
+			"%unknown": {
+				"kind": "struct",
+				"fields": []
+			},
 			"acacia_hanging_sign": {
 				"kind": "dispatcher",
 				"parallelIndices": [
