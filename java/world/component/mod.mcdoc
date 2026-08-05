@@ -27,9 +27,6 @@ struct DataComponentPredicate {
 	),
 }
 
-// Used by item predicate command argument
-type ItemCountPseudoPredicate = MinMaxBounds<int @ 1..99>
-
 
 dispatch minecraft:data_component[custom_data] to CustomData
 

@@ -8,6 +8,9 @@ use ::java::util::text::Text
 use ::java::world::component::CustomData
 use ::java::world::component::item::FireworkShape
 
+// Used by item predicate command argument
+type ItemCountPseudoPredicate = MinMaxBounds<int @ 1..99>
+
 // This is necessary for super::DataComponentPredicate to work in 1.21.11
 dispatch minecraft:data_component_predicate[%unknown] to ()
 
