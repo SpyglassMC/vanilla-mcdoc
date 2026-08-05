@@ -1,4 +1,3 @@
-use ::java::data::util::MinMaxBounds
 use ::java::util::text::Text
 
 // Transient data component IDs are disallowed in:
