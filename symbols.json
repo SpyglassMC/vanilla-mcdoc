@@ -1,5 +1,5 @@
 {
-	"ref": "8e0bdd3df587c5d043920e3bfcf875724f882a18",
+	"ref": "29f59b04d3077bc0b8d3c8de58ce78626bb00358",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -92018,6 +92018,23 @@
 						]
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::world::component::predicate::ItemCountPseudoPredicate": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::util::MinMaxBounds"
+			},
+			"typeArgs": [
+				{
+					"kind": "int",
+					"valueRange": {
+						"kind": 0,
+						"min": 1,
+						"max": 99
+					}
 				}
 			]
 		},
