@@ -1,5 +1,5 @@
 {
-	"ref": "29f59b04d3077bc0b8d3c8de58ce78626bb00358",
+	"ref": "466fa041364690b71dbfe7824c978682cba461c8",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -123341,7 +123341,19 @@
 			},
 			"is_tempted": {
 				"kind": "reference",
-				"path": "::java::util::memory::IsTempted"
+				"path": "::java::util::memory::IsTempted",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"item_pickup_cooldown_ticks": {
 				"kind": "reference",
