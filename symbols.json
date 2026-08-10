@@ -1,5 +1,5 @@
 {
-	"ref": "466fa041364690b71dbfe7824c978682cba461c8",
+	"ref": "0e35f011b4d1ba86c64e1d54c331f89420faab56",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -17564,6 +17564,362 @@
 				}
 			]
 		},
+		"::java::data::advancement::trigger::<anonymous 10>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
+					"key": "zombie",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
+					"key": "villager",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 11>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Block Use.",
+					"key": "location",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementLocationPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 12>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Where the player started to travel.",
+					"key": "start_position",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::LocationPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "How far the player travels.",
+					"key": "distance",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::DistancePredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 13>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.18"
+								}
+							}
+						}
+					],
+					"desc": "Where in the Overworld the player was when they travelled to the Nether.",
+					"key": "start_position",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::LocationPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "How far the player now is from the coordinate they started at in the Overworld before travelling.",
+					"key": "distance",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::DistancePredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.18"
+								}
+							}
+						}
+					],
+					"desc": "Where in the Overworld the player was when they travelled to the Nether.",
+					"key": "entered",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::LocationPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.18"
+								}
+							}
+						}
+					],
+					"desc": "Where in the Nether the player was when they travelled back to the Overworld.",
+					"key": "exited",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::LocationPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 14>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "effects",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::EntityEffectsPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.17"
+								}
+							}
+						}
+					],
+					"desc": "Predicate context: Advancement Entity. \\\nEntity may not exist.",
+					"key": "source",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 15>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "levels",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 16>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::BlockStateConditions"
+					}
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 17>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "damage",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::DamagePredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 18>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "start_position",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::LocationPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "distance",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::DistancePredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity. \\\nEntity may not exist.",
+					"key": "cause",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 19>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::advancement::trigger::<anonymous 2>": {
 			"kind": "struct",
 			"fields": [
@@ -17571,7 +17927,387 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Location.",
+					"key": "location",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementLocationPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 20>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity. \\\nEntity that was pulled.\nOr the hook itself if no entity was hooked.",
+					"key": "entity",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Item that was caught.",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Fishing rod used.",
+					"key": "rod",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 21>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::advancement::trigger::<anonymous 22>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "slots",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Amount of empty slots.",
+								"key": "empty",
+								"type": {
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::util::MinMaxBounds"
+									},
+									"typeArgs": [
+										{
+											"kind": "int"
+										}
+									]
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Amount of occupied slots.",
+								"key": "occupied",
+								"type": {
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::util::MinMaxBounds"
+									},
+									"typeArgs": [
+										{
+											"kind": "int"
+										}
+									]
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Amount of slots that are a full stack.",
+								"key": "full",
+								"type": {
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::util::MinMaxBounds"
+									},
+									"typeArgs": [
+										{
+											"kind": "int"
+										}
+									]
+								},
+								"optional": true
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "items",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::advancement::predicate::ItemPredicate"
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 23>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Change in durability (negative numbers are used to indicate a decrease in durability).",
+					"key": "delta",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The resulting durability.",
+					"key": "durability",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The item before its durability changed.",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 24>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "How many different types of entities were killed.",
+					"key": "unique_entity_types",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.2"
+								}
+							}
+						}
+					],
+					"desc": "The weapon item that was used to fire the arrow.",
+					"key": "fired_from_weapon",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity. \\\nEvaluates to true if every predicate in the list matches some victims.",
+					"key": "victims",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 25>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
+					"key": "entity",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "killing_blow",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::DamageSourcePredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 26>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "distance",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::DistancePredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "duration",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 27>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
+					"key": "lightning",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity. \\\nEvaluates to false if no entities are nearby.",
+					"key": "bystander",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 28>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
@@ -17583,57 +18319,30 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "1.19"
-								}
-							}
-						}
-					],
-					"key": "location",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LocationPredicate"
-					},
-					"optional": true
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "1.16"
-						}
-					}
-				}
-			]
-		},
-		"::java::data::advancement::trigger::AdvancementPredicateRef": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "list",
-					"item": {
-						"kind": "reference",
-						"path": "::java::data::loot::LootCondition"
-					},
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
 									"value": "26.3"
 								}
 							}
 						}
-					]
+					],
+					"key": "loot_table",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "loot_table"
+									}
+								}
+							}
+						]
+					}
 				},
 				{
-					"kind": "reference",
-					"path": "::java::data::predicate::PredicateRef",
+					"kind": "pair",
 					"attributes": [
 						{
 							"name": "since",
@@ -17645,34 +18354,27 @@
 								}
 							}
 						}
-					]
+					],
+					"key": "loot_tables",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::loot::LootTableListRef"
+					}
 				}
 			]
 		},
-		"::java::data::advancement::trigger::AllayDropItemOnBlock": {
+		"::java::data::advancement::trigger::<anonymous 29>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
 					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20"
-								}
-							}
-						}
-					],
 					"key": "item",
 					"type": {
 						"kind": "reference",
@@ -17682,77 +18384,24 @@
 				},
 				{
 					"kind": "pair",
-					"key": "location",
+					"desc": "Predicate context: Advancement Entity. \\\nEntity may not exist.",
+					"key": "entity",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::advancement::predicate::LocationPredicate",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::advancement::trigger::AdvancementPredicateRef",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20"
-											}
-										}
-									}
-								]
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
 					},
 					"optional": true
 				}
 			]
 		},
-		"::java::data::advancement::trigger::AnyBlockUse": {
+		"::java::data::advancement::trigger::<anonymous 3>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "location",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::AdvancementPredicateRef"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::BeeNestDestroyed": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
@@ -17858,1517 +18507,14 @@
 				}
 			]
 		},
-		"::java::data::advancement::trigger::BredAnimals": {
+		"::java::data::advancement::trigger::<anonymous 30>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "parent",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "partner",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "child",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::BrewedPotion": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "potion",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.3"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "potion"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::world::component::predicate::PotionsPredicate",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "26.3"
-											}
-										}
-									}
-								]
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::ChangedDimension": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "from",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "dimension"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "to",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "dimension"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::ChanneledLightning": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "victims",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::advancement::trigger::CompositeEntity"
-						}
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::CompositeEntity": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "reference",
-					"path": "::java::data::advancement::predicate::EntityPredicate",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					]
-				},
-				{
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::AdvancementPredicateRef",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16"
-								}
-							}
-						}
-					]
-				}
-			]
-		},
-		"::java::data::advancement::trigger::Conditions": {
-			"kind": "template",
-			"child": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "pair",
-						"key": "conditions",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::advancement::trigger::C"
-						},
-						"optional": true
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::data::advancement::trigger::C"
-				}
-			]
-		},
-		"::java::data::advancement::trigger::ConstructBeacon": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Tier of the updated beacon base.",
-					"key": "level",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::ConsumeItem": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::CuredZombieVillager": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "villager",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "zombie",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::DefaultBlockUse": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "The location of the block.",
-					"key": "location",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::AdvancementPredicateRef"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::EffectsChanged": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "effects",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::EntityEffectsPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.17"
-								}
-							}
-						}
-					],
-					"key": "source",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::EnchantedItem": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "levels",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::EnterBlock": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "block",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "block"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "blocks",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::registry_ref::BlockListRef"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "state",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"block"
-								]
-							}
-						],
-						"registry": "mcdoc:block_states"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::EntityHurtPlayer": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "damage",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::DamagePredicate"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::EntityKilledPlayer": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "entity",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "killing_blow",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::DamageSourcePredicate"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::FallAfterExplosion": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "start_position",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LocationPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "distance",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::DistancePredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "cause",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::FallFromHeight": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "start_position",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LocationPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "distance",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::DistancePredicate"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::FilledBucket": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::FishingRodHooked": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Entity that was pulled.",
-					"key": "entity",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Item that was caught.",
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Fishing rod used.",
-					"key": "rod",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::HoneyHarvestedBlock": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "block",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "block"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "tag",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "tree",
-									"values": {
-										"registry": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "block"
-											}
-										},
-										"tags": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "implicit"
-											}
-										}
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::InventoryChanged": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "slots",
-					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"desc": "Amount of empty slots.",
-								"key": "empty",
-								"type": {
-									"kind": "concrete",
-									"child": {
-										"kind": "reference",
-										"path": "::java::data::util::MinMaxBounds"
-									},
-									"typeArgs": [
-										{
-											"kind": "int"
-										}
-									]
-								},
-								"optional": true
-							},
-							{
-								"kind": "pair",
-								"desc": "Amount of occupied slots.",
-								"key": "occupied",
-								"type": {
-									"kind": "concrete",
-									"child": {
-										"kind": "reference",
-										"path": "::java::data::util::MinMaxBounds"
-									},
-									"typeArgs": [
-										{
-											"kind": "int"
-										}
-									]
-								},
-								"optional": true
-							},
-							{
-								"kind": "pair",
-								"desc": "Amount of slots that are a full stack.",
-								"key": "full",
-								"type": {
-									"kind": "concrete",
-									"child": {
-										"kind": "reference",
-										"path": "::java::data::util::MinMaxBounds"
-									},
-									"typeArgs": [
-										{
-											"kind": "int"
-										}
-									]
-								},
-								"optional": true
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "items",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::advancement::predicate::ItemPredicate"
-						}
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::InventoryChangedSlots": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Amount of empty slots.",
-					"key": "empty",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of occupied slots.",
-					"key": "occupied",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Amount of slots that are a full stack.",
-					"key": "full",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::ItemDurabilityChanged": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Change in durability (negative numbers are used to indicate a decrease in durability).",
-					"key": "delta",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "The resulting durability.",
-					"key": "durability",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "The item before its durability changed.",
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::ItemUsedOnBlock": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20"
-								}
-							}
-						}
-					],
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "location",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::advancement::predicate::LocationPredicate",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::advancement::trigger::AdvancementPredicateRef",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20"
-											}
-										}
-									}
-								]
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::KilledByArrow": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "How many different types of entities were killed.",
-					"key": "unique_entity_types",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "The weapon item that was used to fire the arrow.",
-					"key": "fired_from_weapon",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "victims",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::advancement::trigger::CompositeEntity"
-						}
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::KilledByCrossbow": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "How many different types of entities were killed.",
-					"key": "unique_entity_types",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "victims",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::advancement::trigger::CompositeEntity"
-						}
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::KillMobNearSculkCatalyst": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "entity",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::EntityPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "killing_blow",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::DamageSourcePredicate"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::Levitation": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "distance",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::DistancePredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "duration",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::LightningStrike": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "lightning",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "bystander",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::NetherTravel": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.18"
-								}
-							}
-						}
-					],
-					"desc": "Where in the Overworld the player was when they travelled to the Nether.",
-					"key": "start_position",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LocationPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "How far the player now is from the coordinate they started at in the Overworld before travelling.",
-					"key": "distance",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::DistancePredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.18"
-								}
-							}
-						}
-					],
-					"desc": "Where in the Overworld the player was when they travelled to the Nether.",
-					"key": "entered",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LocationPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.18"
-								}
-							}
-						}
-					],
-					"desc": "Where in the Nether the player was when they travelled back to the Overworld.",
-					"key": "exited",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LocationPredicate"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::PlacedBlock": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20"
-								}
-							}
-						}
-					],
-					"key": "block",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "block"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20"
-								}
-							}
-						}
-					],
-					"key": "state",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"block"
-								]
-							}
-						],
-						"registry": "mcdoc:block_states"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.20"
-								}
-							}
-						}
-					],
-					"desc": "Item that was used to place the block before the item was consumed.",
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Where the block was placed.",
-					"key": "location",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "reference",
-								"path": "::java::data::advancement::predicate::LocationPredicate",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::advancement::trigger::AdvancementPredicateRef",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.20"
-											}
-										}
-									}
-								]
-							}
-						]
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::PlayerGeneratesContainerLoot": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "loot_table",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "loot_table"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "loot_tables",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::LootTableListRef"
-					}
-				}
-			]
-		},
-		"::java::data::advancement::trigger::PlayerHurtEntity": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
@@ -19382,23 +18528,24 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
 					"key": "entity",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
 					},
 					"optional": true
 				}
 			]
 		},
-		"::java::data::advancement::trigger::PlayerInteract": {
+		"::java::data::advancement::trigger::<anonymous 31>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
@@ -19412,129 +18559,67 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
 					"key": "entity",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
 					},
 					"optional": true
 				}
 			]
 		},
-		"::java::data::advancement::trigger::PlayerKilledEntity": {
+		"::java::data::advancement::trigger::<anonymous 32>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
 					"kind": "pair",
-					"key": "entity",
+					"key": "location",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "killing_blow",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::DamageSourcePredicate"
+						"path": "::java::data::advancement::predicate::LocationPredicate"
 					},
 					"optional": true
 				}
-			]
-		},
-		"::java::data::advancement::trigger::PlayerTrigger": {
-			"kind": "union",
-			"members": [
+			],
+			"attributes": [
 				{
-					"kind": "reference",
-					"path": "::java::data::advancement::predicate::LocationPredicate",
-					"attributes": [
-						{
-							"name": "deprecated",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16"
-								}
-							}
-						},
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.19"
-								}
-							}
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.16"
 						}
-					]
+					}
 				},
 				{
-					"kind": "struct",
-					"fields": [
-						{
-							"kind": "spread",
-							"type": {
-								"kind": "reference",
-								"path": "::java::data::advancement::trigger::TriggerBase"
-							}
-						},
-						{
-							"kind": "pair",
-							"attributes": [
-								{
-									"name": "until",
-									"value": {
-										"kind": "literal",
-										"value": {
-											"kind": "string",
-											"value": "1.19"
-										}
-									}
-								}
-							],
-							"key": "location",
-							"type": {
-								"kind": "reference",
-								"path": "::java::data::advancement::predicate::LocationPredicate"
-							},
-							"optional": true
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "1.19"
 						}
-					],
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.16"
-								}
-							}
-						}
-					]
+					}
 				}
 			]
 		},
-		"::java::data::advancement::trigger::RecipeCrafted": {
+		"::java::data::advancement::trigger::<anonymous 33>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
@@ -19607,14 +18692,14 @@
 				}
 			]
 		},
-		"::java::data::advancement::trigger::RecipeUnlocked": {
+		"::java::data::advancement::trigger::<anonymous 34>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
@@ -19670,148 +18755,33 @@
 				}
 			]
 		},
-		"::java::data::advancement::trigger::RequiredConditions": {
-			"kind": "template",
-			"child": {
-				"kind": "struct",
-				"fields": [
-					{
-						"kind": "pair",
-						"key": "conditions",
-						"type": {
-							"kind": "reference",
-							"path": "::java::data::advancement::trigger::C"
-						}
-					}
-				]
-			},
-			"typeParams": [
-				{
-					"path": "::java::data::advancement::trigger::C"
-				}
-			]
-		},
-		"::java::data::advancement::trigger::RideEntityInLava": {
+		"::java::data::advancement::trigger::<anonymous 35>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "start_position",
+					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::predicate::LocationPredicate"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "distance",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::DistancePredicate"
-					},
-					"optional": true
+						"path": "::java::data::advancement::trigger::BlockStateConditions"
+					}
 				}
 			]
 		},
-		"::java::data::advancement::trigger::SafelyHarvestHoney": {
+		"::java::data::advancement::trigger::<anonymous 36>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "block",
-					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": "block",
-								"type": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "id",
-											"value": {
-												"kind": "literal",
-												"value": {
-													"kind": "string",
-													"value": "block"
-												}
-											}
-										}
-									]
-								},
-								"optional": true
-							},
-							{
-								"kind": "pair",
-								"key": "tag",
-								"type": {
-									"kind": "string",
-									"attributes": [
-										{
-											"name": "id",
-											"value": {
-												"kind": "tree",
-												"values": {
-													"registry": {
-														"kind": "literal",
-														"value": {
-															"kind": "string",
-															"value": "block"
-														}
-													},
-													"tags": {
-														"kind": "literal",
-														"value": {
-															"kind": "string",
-															"value": "implicit"
-														}
-													}
-												}
-											}
-										}
-									]
-								},
-								"optional": true
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::ShotCrossbow": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
@@ -19826,16 +18796,761 @@
 				}
 			]
 		},
-		"::java::data::advancement::trigger::SlideDownBlock": {
+		"::java::data::advancement::trigger::<anonymous 37>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
+				{
+					"kind": "pair",
+					"desc": "Minimum mob count required.",
+					"key": "count",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 38>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
+					"key": "entity",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 39>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
+					"key": "entity",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
+					"key": "parent",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
+					"key": "partner",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity. \\\nEntity may not exist.",
+					"key": "child",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 40>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
+					"key": "projectile",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "signal_strength",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 41>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity.",
+					"key": "villager",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Item that was purchased. \\\n`count` tag checks the item count from one trade, not the total amount traded for.",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 42>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Horizontal distance between the player and the stronghold.",
+					"key": "distance",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "double"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 43>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 44>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 5>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "potion",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "potion"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::world::component::predicate::PotionsPredicate",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 6>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "from",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "dimension"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "to",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "dimension"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 7>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Predicate context: Advancement Entity. \\\nEvaluates to true if every predicate in the list matches some victims.",
+					"key": "victims",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 8>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Tier of the updated beacon base.",
+					"key": "level",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::<anonymous 9>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "item",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::predicate::ItemPredicate"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::AdvancementEntityPredicate": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::advancement::predicate::EntityPredicate",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "reference",
+						"path": "::java::data::loot::LootCondition"
+					},
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::predicate::PredicateRef",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::AdvancementLocationPredicate": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::advancement::predicate::LocationPredicate",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "reference",
+						"path": "::java::data::loot::LootCondition"
+					},
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::predicate::PredicateRef",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::AllOptional": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "conditions",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::advancement::trigger::C"
+						},
+						"optional": true
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::advancement::trigger::C"
+				}
+			]
+		},
+		"::java::data::advancement::trigger::AnyBlockInteractionTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Location.",
+							"key": "location",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementLocationPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::BeeNestDestroyedTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "26.3"
+										}
+									}
+								}
+							],
+							"key": "block",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "block"
+											}
+										}
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "26.3"
+										}
+									}
+								}
+							],
+							"key": "blocks",
+							"type": {
+								"kind": "reference",
+								"path": "::java::util::registry_ref::BlockListRef"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "26.3"
+										}
+									}
+								}
+							],
+							"key": "state",
+							"type": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"blocks"
+										]
+									}
+								],
+								"registry": "mcdoc:block_states"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Number of bees that were inside the bee nest/beehive before it was broken.",
+							"key": "num_bees_inside",
+							"type": {
+								"kind": "int"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Item used to break the block.",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::BlockStateConditions": {
+			"kind": "struct",
+			"fields": [
 				{
 					"kind": "pair",
 					"attributes": [
@@ -19888,106 +19603,810 @@
 						"path": "::java::util::registry_ref::BlockListRef"
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::data::advancement::trigger::SpearMobs": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
 				},
 				{
 					"kind": "pair",
-					"key": "count",
+					"key": "state",
 					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1
+						"kind": "union",
+						"members": [
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"block"
+										]
+									}
+								],
+								"registry": "mcdoc:block_states",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"blocks"
+										]
+									}
+								],
+								"registry": "mcdoc:block_states",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::advancement::trigger::BredAnimalsTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "parent",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "partner",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity. \\\nEntity may not exist.",
+							"key": "child",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
 						}
-					},
-					"optional": true
+					]
 				}
 			]
 		},
-		"::java::data::advancement::trigger::SummonedEntity": {
-			"kind": "struct",
-			"fields": [
+		"::java::data::advancement::trigger::BrewedPotionTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "entity",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "potion",
+							"type": {
+								"kind": "union",
+								"members": [
+									{
+										"kind": "string",
+										"attributes": [
+											{
+												"name": "until",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "26.3"
+													}
+												}
+											},
+											{
+												"name": "id",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "potion"
+													}
+												}
+											}
+										]
+									},
+									{
+										"kind": "reference",
+										"path": "::java::world::component::predicate::PotionsPredicate",
+										"attributes": [
+											{
+												"name": "since",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "26.3"
+													}
+												}
+											}
+										]
+									}
+								]
+							},
+							"optional": true
+						}
+					]
 				}
 			]
 		},
-		"::java::data::advancement::trigger::TameAnimal": {
-			"kind": "struct",
-			"fields": [
+		"::java::data::advancement::trigger::ChangeDimensionTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "entity",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "from",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "dimension"
+											}
+										}
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "to",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "dimension"
+											}
+										}
+									}
+								]
+							},
+							"optional": true
+						}
+					]
 				}
 			]
 		},
-		"::java::data::advancement::trigger::TargetHit": {
+		"::java::data::advancement::trigger::ChanneledLightningTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity. \\\nEvaluates to true if every predicate in the list matches some victims.",
+							"key": "victims",
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+								}
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::ConstructBeaconTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Tier of the updated beacon base.",
+							"key": "level",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::util::MinMaxBounds"
+								},
+								"typeArgs": [
+									{
+										"kind": "int"
+									}
+								]
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::ConsumeItemTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::CuredZombieVillagerTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "zombie",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "villager",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::DefaultBlockInteractionTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Block Use.",
+							"key": "location",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementLocationPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::DistanceTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Where the player started to travel.",
+							"key": "start_position",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::LocationPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "How far the player travels.",
+							"key": "distance",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::DistancePredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::EffectsChangedTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "effects",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::EntityEffectsPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.17"
+										}
+									}
+								}
+							],
+							"desc": "Predicate context: Advancement Entity. \\\nEntity may not exist.",
+							"key": "source",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::EnchantedItemTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "levels",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::util::MinMaxBounds"
+								},
+								"typeArgs": [
+									{
+										"kind": "int"
+									}
+								]
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::EnterBlockTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::BlockStateConditions"
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::EntityHurtPlayerTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "damage",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::DamagePredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::FallAfterExplosionTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "start_position",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::LocationPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "distance",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::DistancePredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity. \\\nEntity may not exist.",
+							"key": "cause",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::FilledBucketTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::FishingRodHookedTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity. \\\nEntity that was pulled.\nOr the hook itself if no entity was hooked.",
+							"key": "entity",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Item that was caught.",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Fishing rod used.",
+							"key": "rod",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::ImpossibleTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": []
+				}
+			]
+		},
+		"::java::data::advancement::trigger::InventoryChangedSlots": {
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
 					"kind": "pair",
-					"key": "projectile",
+					"desc": "Amount of empty slots.",
+					"key": "empty",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"key": "shooter",
+					"desc": "Amount of occupied slots.",
+					"key": "occupied",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "int"
+							}
+						]
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"key": "signal_strength",
+					"desc": "Amount of slots that are a full stack.",
+					"key": "full",
 					"type": {
 						"kind": "concrete",
 						"child": {
@@ -20004,18 +20423,194 @@
 				}
 			]
 		},
-		"::java::data::advancement::trigger::ThrownItemPickedUpByEntity": {
+		"::java::data::advancement::trigger::InventoryChangeTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "slots",
+							"type": {
+								"kind": "struct",
+								"fields": [
+									{
+										"kind": "pair",
+										"desc": "Amount of empty slots.",
+										"key": "empty",
+										"type": {
+											"kind": "concrete",
+											"child": {
+												"kind": "reference",
+												"path": "::java::data::util::MinMaxBounds"
+											},
+											"typeArgs": [
+												{
+													"kind": "int"
+												}
+											]
+										},
+										"optional": true
+									},
+									{
+										"kind": "pair",
+										"desc": "Amount of occupied slots.",
+										"key": "occupied",
+										"type": {
+											"kind": "concrete",
+											"child": {
+												"kind": "reference",
+												"path": "::java::data::util::MinMaxBounds"
+											},
+											"typeArgs": [
+												{
+													"kind": "int"
+												}
+											]
+										},
+										"optional": true
+									},
+									{
+										"kind": "pair",
+										"desc": "Amount of slots that are a full stack.",
+										"key": "full",
+										"type": {
+											"kind": "concrete",
+											"child": {
+												"kind": "reference",
+												"path": "::java::data::util::MinMaxBounds"
+											},
+											"typeArgs": [
+												{
+													"kind": "int"
+												}
+											]
+										},
+										"optional": true
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "items",
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::advancement::predicate::ItemPredicate"
+								}
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::ItemDurabilityTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Change in durability (negative numbers are used to indicate a decrease in durability).",
+							"key": "delta",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::util::MinMaxBounds"
+								},
+								"typeArgs": [
+									{
+										"kind": "int"
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "The resulting durability.",
+							"key": "durability",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::util::MinMaxBounds"
+								},
+								"typeArgs": [
+									{
+										"kind": "int"
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "The item before its durability changed.",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::ItemUesdOnLocationConditions": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
 					}
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20"
+								}
+							}
+						}
+					],
 					"key": "item",
 					"type": {
 						"kind": "reference",
@@ -20025,27 +20620,601 @@
 				},
 				{
 					"kind": "pair",
-					"key": "entity",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					],
+					"key": "block",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
+						"path": "::java::data::advancement::predicate::BlockPredicate"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					],
+					"desc": "Predicate context: Advancement Location.",
+					"key": "location",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::AdvancementLocationPredicate"
 					},
 					"optional": true
 				}
 			]
 		},
-		"::java::data::advancement::trigger::ThrownItemPickedUpByPlayer": {
+		"::java::data::advancement::trigger::ItemUsedOnLocationTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "reference",
+					"path": "::java::data::advancement::trigger::ItemUesdOnLocationConditions"
+				}
+			]
+		},
+		"::java::data::advancement::trigger::KilledByArrowTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "How many different types of entities were killed.",
+							"key": "unique_entity_types",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::util::MinMaxBounds"
+								},
+								"typeArgs": [
+									{
+										"kind": "int"
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.21.2"
+										}
+									}
+								}
+							],
+							"desc": "The weapon item that was used to fire the arrow.",
+							"key": "fired_from_weapon",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity. \\\nEvaluates to true if every predicate in the list matches some victims.",
+							"key": "victims",
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+								}
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::KilledTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "entity",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "killing_blow",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::DamageSourcePredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::LevitationTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "distance",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::DistancePredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "duration",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::util::MinMaxBounds"
+								},
+								"typeArgs": [
+									{
+										"kind": "int"
+									}
+								]
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::LightningStrikeTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "lightning",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity. \\\nEvaluates to false if no entities are nearby.",
+							"key": "bystander",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::LocationTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "union",
+					"members": [
+						{
+							"kind": "reference",
+							"path": "::java::data::advancement::predicate::LocationPredicate",
+							"attributes": [
+								{
+									"name": "deprecated",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.16"
+										}
+									}
+								},
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.19"
+										}
+									}
+								}
+							]
+						},
+						{
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "spread",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::advancement::trigger::PlayerConditions"
+									}
+								},
+								{
+									"kind": "pair",
+									"key": "location",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::advancement::predicate::LocationPredicate"
+									},
+									"optional": true
+								}
+							],
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.16"
+										}
+									}
+								},
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.19"
+										}
+									}
+								}
+							]
+						},
+						{
+							"kind": "reference",
+							"path": "::java::data::advancement::trigger::PlayerConditions"
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::LootTableTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ParitalRequired"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "26.3"
+										}
+									}
+								}
+							],
+							"key": "loot_table",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "loot_table"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "26.3"
+										}
+									}
+								}
+							],
+							"key": "loot_tables",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::loot::LootTableListRef"
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::NetherTravelTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.18"
+										}
+									}
+								}
+							],
+							"desc": "Where in the Overworld the player was when they travelled to the Nether.",
+							"key": "start_position",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::LocationPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "How far the player now is from the coordinate they started at in the Overworld before travelling.",
+							"key": "distance",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::DistancePredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.18"
+										}
+									}
+								}
+							],
+							"desc": "Where in the Overworld the player was when they travelled to the Nether.",
+							"key": "entered",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::LocationPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.18"
+										}
+									}
+								}
+							],
+							"desc": "Where in the Nether the player was when they travelled back to the Overworld.",
+							"key": "exited",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::LocationPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::ParitalRequired": {
+			"kind": "template",
+			"child": {
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"key": "conditions",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::advancement::trigger::C"
+						}
+					}
+				]
+			},
+			"typeParams": [
+				{
+					"path": "::java::data::advancement::trigger::C"
+				}
+			]
+		},
+		"::java::data::advancement::trigger::PickedUpItemTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity. \\\nEntity may not exist.",
+							"key": "entity",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::PlacedBlockConditions": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
+						"path": "::java::data::advancement::trigger::PlayerConditions"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::trigger::BlockStateConditions"
 					}
 				},
 				{
 					"kind": "pair",
+					"desc": "Item that was used to place the block before the item was consumed.",
 					"key": "item",
 					"type": {
 						"kind": "reference",
@@ -20055,16 +21224,63 @@
 				},
 				{
 					"kind": "pair",
-					"key": "entity",
+					"desc": "Predicate context: Advancement Location.",
+					"key": "location",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
+						"path": "::java::data::advancement::predicate::LocationPredicate"
 					},
 					"optional": true
 				}
 			]
 		},
-		"::java::data::advancement::trigger::TriggerBase": {
+		"::java::data::advancement::trigger::PlacedBlockTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "union",
+					"members": [
+						{
+							"kind": "reference",
+							"path": "::java::data::advancement::trigger::PlacedBlockConditions",
+							"attributes": [
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.20"
+										}
+									}
+								}
+							]
+						},
+						{
+							"kind": "reference",
+							"path": "::java::data::advancement::trigger::ItemUesdOnLocationConditions",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "1.20"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::PlayerConditions": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -20081,115 +21297,623 @@
 							}
 						}
 					],
+					"desc": "Predicate context: Advancement Entity.",
 					"key": "player",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
+						"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
 					},
 					"optional": true
 				}
 			]
 		},
-		"::java::data::advancement::trigger::UsedEnderEye": {
-			"kind": "struct",
-			"fields": [
+		"::java::data::advancement::trigger::PlayerHurtEntityTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Horizontal distance between the player and the stronghold.",
-					"key": "distance",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::util::MinMaxBounds"
-						},
-						"typeArgs": [
-							{
-								"kind": "float"
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
 							}
-						]
-					},
-					"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "damage",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::DamagePredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "entity",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						}
+					]
 				}
 			]
 		},
-		"::java::data::advancement::trigger::UsedTotem": {
-			"kind": "struct",
-			"fields": [
+		"::java::data::advancement::trigger::PlayerInteractTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "entity",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						}
+					]
 				}
 			]
 		},
-		"::java::data::advancement::trigger::UsingItem": {
-			"kind": "struct",
-			"fields": [
+		"::java::data::advancement::trigger::PlayerTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
+					"kind": "reference",
+					"path": "::java::data::advancement::trigger::PlayerConditions"
 				}
 			]
 		},
-		"::java::data::advancement::trigger::VillagerTrade": {
-			"kind": "struct",
-			"fields": [
+		"::java::data::advancement::trigger::RecipeCraftedTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ParitalRequired"
+			},
+			"typeArgs": [
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				},
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "26.3"
+										}
+									}
+								}
+							],
+							"key": "recipe_id",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "recipe"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "26.3"
+										}
+									}
+								}
+							],
+							"key": "recipes",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::recipe::RecipeListRef"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "ingredients",
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::data::advancement::predicate::ItemPredicate"
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 1,
+									"max": 9
+								}
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::RecipeUnlockedTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ParitalRequired"
+			},
+			"typeArgs": [
 				{
-					"kind": "pair",
-					"key": "villager",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CompositeEntity"
-					},
-					"optional": true
-				},
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "until",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "26.3"
+										}
+									}
+								}
+							],
+							"key": "recipe",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "recipe"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "pair",
+							"attributes": [
+								{
+									"name": "since",
+									"value": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "26.3"
+										}
+									}
+								}
+							],
+							"key": "recipes",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::recipe::RecipeListRef"
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::ShotCrossbowTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
 				{
-					"kind": "pair",
-					"desc": "Item that was purchased. `count` tag checks the item count from one trade, not the total amount traded for.",
-					"key": "item",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::predicate::ItemPredicate"
-					},
-					"optional": true
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Crossbow that was used.",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::SlideDownBlockTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::BlockStateConditions"
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::SpearMobsTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Minimum mob count required.",
+							"key": "count",
+							"type": {
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								}
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::StartRidingTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "reference",
+					"path": "::java::data::advancement::trigger::PlayerConditions"
+				}
+			]
+		},
+		"::java::data::advancement::trigger::SummonedEntityTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "entity",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::TameAnimalTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "entity",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::TargetBlockTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "projectile",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "signal_strength",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::util::MinMaxBounds"
+								},
+								"typeArgs": [
+									{
+										"kind": "int"
+									}
+								]
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::TradeTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Predicate context: Advancement Entity.",
+							"key": "villager",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::AdvancementEntityPredicate"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"desc": "Item that was purchased. \\\n`count` tag checks the item count from one trade, not the total amount traded for.",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::UsedEnderEyeTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"desc": "Horizontal distance between the player and the stronghold.",
+							"key": "distance",
+							"type": {
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::util::MinMaxBounds"
+								},
+								"typeArgs": [
+									{
+										"kind": "double"
+									}
+								]
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::UsedTotemTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						}
+					]
+				}
+			]
+		},
+		"::java::data::advancement::trigger::UsingItemTrigger": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AllOptional"
+			},
+			"typeArgs": [
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::trigger::PlayerConditions"
+							}
+						},
+						{
+							"kind": "pair",
+							"key": "item",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::advancement::predicate::ItemPredicate"
+							},
+							"optional": true
+						}
+					]
 				}
 			]
 		},
@@ -126445,17 +128169,8 @@
 		},
 		"minecraft:trigger": {
 			"allay_drop_item_on_block": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::AllayDropItemOnBlock"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ItemUsedOnLocationTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -126470,17 +128185,8 @@
 				]
 			},
 			"any_block_use": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::AnyBlockUse"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::AnyBlockInteractionTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -126495,17 +128201,8 @@
 				]
 			},
 			"avoid_vibration": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerTrigger"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::LocationTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -126520,108 +128217,36 @@
 				]
 			},
 			"bee_nest_destroyed": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::BeeNestDestroyed"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::BeeNestDestroyedTrigger"
 			},
 			"bred_animals": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::BredAnimals"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::BredAnimalsTrigger"
 			},
 			"brewed_potion": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::BrewedPotion"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::BrewedPotionTrigger"
 			},
 			"changed_dimension": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::ChangedDimension"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ChangeDimensionTrigger"
 			},
 			"channeled_lightning": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::ChanneledLightning"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ChanneledLightningTrigger"
 			},
 			"construct_beacon": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::ConstructBeacon"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ConstructBeaconTrigger"
 			},
 			"consume_item": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::ConsumeItem"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ConsumeItemTrigger"
 			},
 			"crafter_recipe_crafted": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::RequiredConditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::RecipeCrafted"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::RecipeCraftedTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -126636,30 +128261,12 @@
 				]
 			},
 			"cured_zombie_villager": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::CuredZombieVillager"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::CuredZombieVillagerTrigger"
 			},
 			"default_block_use": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::DefaultBlockUse"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::DefaultBlockInteractionTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -126674,82 +128281,28 @@
 				]
 			},
 			"effects_changed": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::EffectsChanged"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::EffectsChangedTrigger"
 			},
 			"enchanted_item": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::EnchantedItem"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::EnchantedItemTrigger"
 			},
 			"enter_block": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::EnterBlock"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::EnterBlockTrigger"
 			},
 			"entity_hurt_player": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::EntityHurtPlayer"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::EntityHurtPlayerTrigger"
 			},
 			"entity_killed_player": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::EntityKilledPlayer"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::KilledTrigger"
 			},
 			"fall_after_explosion": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::FallAfterExplosion"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::FallAfterExplosionTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -126764,17 +128317,8 @@
 				]
 			},
 			"fall_from_height": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::FallFromHeight"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::DistanceTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -126789,95 +128333,32 @@
 				]
 			},
 			"filled_bucket": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::FilledBucket"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::FilledBucketTrigger"
 			},
 			"fishing_rod_hooked": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::FishingRodHooked"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::FishingRodHookedTrigger"
 			},
 			"hero_of_the_village": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerTrigger"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::LocationTrigger"
 			},
 			"impossible": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ImpossibleTrigger"
 			},
 			"inventory_changed": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::InventoryChanged"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::InventoryChangeTrigger"
 			},
 			"item_durability_changed": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::ItemDurabilityChanged"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ItemDurabilityTrigger"
 			},
 			"item_used_on_block": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::ItemUsedOnBlock"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ItemUsedOnLocationTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -126892,17 +128373,8 @@
 				]
 			},
 			"kill_mob_near_sculk_catalyst": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::KillMobNearSculkCatalyst"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::KilledTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -126917,17 +128389,8 @@
 				]
 			},
 			"killed_by_arrow": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::KilledByArrow"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::KilledByArrowTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -126942,17 +128405,8 @@
 				]
 			},
 			"killed_by_crossbow": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::KilledByCrossbow"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::KilledByArrowTrigger",
 				"attributes": [
 					{
 						"name": "until",
@@ -126967,82 +128421,28 @@
 				]
 			},
 			"levitation": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::Levitation"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::LevitationTrigger"
 			},
 			"lightning_strike": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::LightningStrike"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::LightningStrikeTrigger"
 			},
 			"location": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerTrigger"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::LocationTrigger"
 			},
 			"nether_travel": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::NetherTravel"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::NetherTravelTrigger"
 			},
 			"placed_block": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlacedBlock"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::PlacedBlockTrigger"
 			},
 			"player_generates_container_loot": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::RequiredConditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerGeneratesContainerLoot"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::LootTableTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127057,30 +128457,12 @@
 				]
 			},
 			"player_hurt_entity": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerHurtEntity"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::PlayerHurtEntityTrigger"
 			},
 			"player_interacted_with_entity": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerInteract"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::PlayerInteractTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127095,30 +128477,12 @@
 				]
 			},
 			"player_killed_entity": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerKilledEntity"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::KilledTrigger"
 			},
 			"player_sheared_equipment": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerInteract"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::PlayerInteractTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127133,17 +128497,8 @@
 				]
 			},
 			"recipe_crafted": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::RequiredConditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::RecipeCrafted"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::RecipeCraftedTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127158,30 +128513,12 @@
 				]
 			},
 			"recipe_unlocked": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::RequiredConditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::RecipeUnlocked"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::RecipeUnlockedTrigger"
 			},
 			"ride_entity_in_lava": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::RideEntityInLava"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::DistanceTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127196,17 +128533,8 @@
 				]
 			},
 			"safely_harvest_honey": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::SafelyHarvestHoney"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ItemUsedOnLocationTrigger",
 				"attributes": [
 					{
 						"name": "until",
@@ -127221,56 +128549,20 @@
 				]
 			},
 			"shot_crossbow": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::ShotCrossbow"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::ShotCrossbowTrigger"
 			},
 			"slept_in_bed": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerTrigger"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::LocationTrigger"
 			},
 			"slide_down_block": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::SlideDownBlock"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::SlideDownBlockTrigger"
 			},
 			"spear_mobs": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::SpearMobs"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::SpearMobsTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127285,17 +128577,8 @@
 				]
 			},
 			"started_riding": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::StartRidingTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127310,43 +128593,16 @@
 				]
 			},
 			"summoned_entity": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::SummonedEntity"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::SummonedEntityTrigger"
 			},
 			"tame_animal": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TameAnimal"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::TameAnimalTrigger"
 			},
 			"target_hit": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TargetHit"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::TargetBlockTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127361,17 +128617,8 @@
 				]
 			},
 			"thrown_item_picked_up_by_entity": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::ThrownItemPickedUpByEntity"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::PickedUpItemTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127386,17 +128633,8 @@
 				]
 			},
 			"thrown_item_picked_up_by_player": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::ThrownItemPickedUpByPlayer"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::PickedUpItemTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127411,56 +128649,20 @@
 				]
 			},
 			"tick": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::TriggerBase"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::PlayerTrigger"
 			},
 			"used_ender_eye": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::UsedEnderEye"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::UsedEnderEyeTrigger"
 			},
 			"used_totem": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::UsedTotem"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::UsedTotemTrigger"
 			},
 			"using_item": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::UsingItem"
-					}
-				],
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::UsingItemTrigger",
 				"attributes": [
 					{
 						"name": "since",
@@ -127475,30 +128677,12 @@
 				]
 			},
 			"villager_trade": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::VillagerTrade"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::TradeTrigger"
 			},
 			"voluntary_exile": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::advancement::trigger::Conditions"
-				},
-				"typeArgs": [
-					{
-						"kind": "reference",
-						"path": "::java::data::advancement::trigger::PlayerTrigger"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::advancement::trigger::LocationTrigger"
 			}
 		},
 		"minecraft:trunk_placer": {
