@@ -39,6 +39,9 @@ type MultiPartCondition = (
 		OR: [MultiPartCondition],
 	} |
 	struct MultiPartAnd {
+		AND: [MultiPartCondition],
+	} |
+	struct MultiPartBlockStates {
 		[string]: string, // TODO: block state key
 	} |
 )
