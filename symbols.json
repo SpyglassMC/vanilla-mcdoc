@@ -1,5 +1,5 @@
 {
-	"ref": "0e35f011b4d1ba86c64e1d54c331f89420faab56",
+	"ref": "38eada994a48ec353d81a58b71bafb507e75f82d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -912,6 +912,22 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"key": "AND",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::assets::block_state_definition::MultiPartCondition"
+						}
+					}
+				}
+			]
+		},
+		"::java::assets::block_state_definition::MultiPartBlockStates": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"key": {
 						"kind": "string"
 					},
@@ -930,6 +946,22 @@
 						{
 							"kind": "pair",
 							"key": "OR",
+							"type": {
+								"kind": "list",
+								"item": {
+									"kind": "reference",
+									"path": "::java::assets::block_state_definition::MultiPartCondition"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "AND",
 							"type": {
 								"kind": "list",
 								"item": {
