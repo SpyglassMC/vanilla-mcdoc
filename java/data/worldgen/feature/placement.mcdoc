@@ -115,6 +115,11 @@ dispatch minecraft:placement_modifier[random_chance] to struct RandomChanceModif
 	chance: float @ 0..1,
 }
 
+#[since="26.3"]
+dispatch minecraft:placement_modifier[randomly_selected] to struct RandomlySelectedModifier {
+	placements: [PlacementModifier] @ 1..,
+}
+
 dispatch minecraft:placement_modifier[surface_relative_threshold_filter] to struct SurfaceRelativeThresholdFilter {
 	heightmap: HeightmapType,
 	min_inclusive?: int,
