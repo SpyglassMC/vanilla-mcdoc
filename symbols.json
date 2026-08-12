@@ -1,5 +1,5 @@
 {
-	"ref": "38eada994a48ec353d81a58b71bafb507e75f82d",
+	"ref": "10d12924efe4f956c0c576284671d46fa3fd1d9d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -54929,6 +54929,59 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::block_predicate::VolumeMatchPredicate": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "int",
+							"valueRange": {
+								"kind": 0,
+								"min": -16,
+								"max": 16
+							}
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "int",
+							"valueRange": {
+								"kind": 0,
+								"min": -16,
+								"max": 16
+							}
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "match",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::block_predicate::WouldSurvivePredicate": {
 			"kind": "struct",
 			"fields": [
@@ -60086,6 +60139,26 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::placement::RandomlySelectedModifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "placements",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::feature::placement::PlacementModifier"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::placement::RandomOffsetModifier": {
 			"kind": "struct",
 			"fields": [
@@ -62596,6 +62669,27 @@
 							}
 						]
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "processors",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::processor_list::ProcessorListRef"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -114568,6 +114662,22 @@
 					}
 				]
 			},
+			"volume_match": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_predicate::VolumeMatchPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"would_survive": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_predicate::WouldSurvivePredicate"
@@ -125708,6 +125818,22 @@
 				"attributes": [
 					{
 						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"randomly_selected": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::placement::RandomlySelectedModifier",
+				"attributes": [
+					{
+						"name": "since",
 						"value": {
 							"kind": "literal",
 							"value": {
