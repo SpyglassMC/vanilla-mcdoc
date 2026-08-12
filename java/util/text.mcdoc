@@ -10,6 +10,16 @@ type Text = (
 	[Text] @ 1.. |
 )
 
+type ExtraPrimitives = (
+	boolean |
+	#[since="1.21.5"] byte |
+	#[since="1.21.5"] short |
+	int |
+	#[since="1.21.5"] long |
+	float |
+	#[since="1.21.5"] double |
+)
+
 type TextObject = (
 	struct NormalText {
 		text: string,
@@ -21,7 +31,7 @@ type TextObject = (
 		translate: #[translation_key] string,
 		#[since="1.19.4"]
 		fallback?: #[translation_value] string,
-		with?: [Text] @ 1..,
+		with?: [(Text | ExtraPrimitives)] @ 1..,
 		#[since="1.20.3"]
 		type?: "translatable",
 		...TextBase,
