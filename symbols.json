@@ -1,5 +1,5 @@
 {
-	"ref": "10d12924efe4f956c0c576284671d46fa3fd1d9d",
+	"ref": "87170034acf7bfd31298bf461e2a6c1df55a940c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -11077,7 +11077,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 0
 						}
 					}
 				},
@@ -11088,7 +11088,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 0
 						}
 					}
 				},
@@ -11099,7 +11099,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 0
 						}
 					}
 				},
@@ -11110,7 +11110,7 @@
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
-							"min": 1
+							"min": 0
 						}
 					}
 				}
