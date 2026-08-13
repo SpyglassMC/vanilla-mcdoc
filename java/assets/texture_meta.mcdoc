@@ -81,10 +81,10 @@ dispatch minecraft:gui_sprite_scaling[nine_slice] to struct NineSlice {
 }
 
 struct NineSliceBorder {
-	left: int @ 1..,
-	top: int @ 1..,
-	right: int @ 1..,
-	bottom: int @ 1..,
+	left: int @ 0..,
+	top: int @ 0..,
+	right: int @ 0..,
+	bottom: int @ 0..,
 }
 
 enum(string) MipmapStrategy {
