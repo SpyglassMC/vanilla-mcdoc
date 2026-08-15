@@ -1,5 +1,5 @@
 {
-	"ref": "52b73544ae61eca188974c71a433b536823cdb89",
+	"ref": "4099d1b8685a13e1d6ab5fa2d9028a0622aecfb4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -72244,7 +72244,7 @@
 										}
 									}
 								],
-								"desc": "Must not be specified in case min_format indicates a format version for 1.21.9 and\nlater, and must be specified otherwise.",
+								"desc": "Must not be specified in case min_format indicates a format version for 1.21.9 and\nlater.",
 								"key": "supported_formats",
 								"type": {
 									"kind": "concrete",
@@ -72426,7 +72426,7 @@
 							}
 						}
 					],
-					"desc": "Must not be specified in case min_format indicates a format version for 1.21.9 and\nlater, and must be specified otherwise.",
+					"desc": "Must not be specified in case min_format indicates a format version for 1.21.9 and\nlater.",
 					"key": "supported_formats",
 					"type": {
 						"kind": "concrete",
