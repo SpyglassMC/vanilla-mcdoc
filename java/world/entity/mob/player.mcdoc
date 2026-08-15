@@ -225,7 +225,7 @@ struct Respawn {
 		} |
 		#[since="1.21.9"] struct {
 			// required since 1.21.9
-			/// Dimension of the player's respawn point. Defaults to overworl.
+			/// Dimension of the player's respawn point.
 			dimension: #[id="dimension"] string,
 		} |
 	),
