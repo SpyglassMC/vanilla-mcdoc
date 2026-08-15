@@ -754,7 +754,7 @@
 	"::java::pack::PackBase.max_format": "The maximum format that is supported. To specify a minor version, use a list of two\nintegers.",
 	"::java::pack::PackBase.min_format": "The minimun format that is supported. To specify a minor version, use a list of two\nintegers.",
 	"::java::pack::PackBase.pack_format": "Optional since 1.21.9. Define it if you want older versions to recognize your pack with\na “made for a newer version” warning message.\nBecause of backwards compatibility, only the main pack format can\nbe used here. Minor formats can only be specified in min and max format.",
-	"::java::pack::PackBase.supported_formats": "Must not be specified in case min_format indicates a format version for 1.21.9 and\nlater, and must be specified otherwise.",
+	"::java::pack::PackBase.supported_formats": "Must not be specified in case min_format indicates a format version for 1.21.9 and\nlater.",
 	"::java::util::attribute::AttributeOperation.AddMultipliedBase": "Multiplies the current value of the attribute by `(1 + x)`,\nwhere `x` is the sum of the modifiers' amounts.",
 	"::java::util::attribute::AttributeOperation.AddMultipliedTotal": "For every modifier, multiplies the current value of the attribute by `(1 + x)`,\nwhere `x` is the amount of the particular modifier.",
 	"::java::util::attribute::AttributeOperation.AddValue": "Adds all of the modifiers' amounts to the current value of the attribute.",
