@@ -4,11 +4,22 @@ use ::java::util::InclusiveRange
 struct Pack {
 	pack: struct PackBase {
 		description: Text,
+		/// Optional since 1.21.9. Define it if you want older versions to recognize your pack with
+		/// a “made for a newer version” warning message.
+		/// 
+		/// Because of backwards compatibility, only the main pack format can
+		/// be used here. Minor formats can only be specified in min and max format.
 		pack_format?: #[pack_format] int,
+		/// Must not be specified in case min_format indicates a format version for 1.21.9 and
+		/// later, and must be specified otherwise.
 		#[since="1.20.2"]
 		supported_formats?: InclusiveRange<#[pack_format] int>,
+		/// The minimun format that is supported. To specify a minor version, use a list of two
+		/// integers.
 		#[since="1.21.9"]
 		min_format?: #[pack_format] PackFormat,
+		/// The maximum format that is supported. To specify a minor version, use a list of two
+		/// integers.
 		#[since="1.21.9"]
 		max_format?: #[pack_format] PackFormat,
 	},
