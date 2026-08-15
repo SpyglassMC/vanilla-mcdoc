@@ -11,7 +11,7 @@ struct Pack {
 		/// be used here. Minor formats can only be specified in min and max format.
 		pack_format?: #[pack_format] int,
 		/// Must not be specified in case min_format indicates a format version for 1.21.9 and
-		/// later, and must be specified otherwise.
+		/// later.
 		#[since="1.20.2"]
 		supported_formats?: InclusiveRange<#[pack_format] int>,
 		/// The minimun format that is supported. To specify a minor version, use a list of two
