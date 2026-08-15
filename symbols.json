@@ -1,5 +1,5 @@
 {
-	"ref": "87170034acf7bfd31298bf461e2a6c1df55a940c",
+	"ref": "52b73544ae61eca188974c71a433b536823cdb89",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -72218,6 +72218,7 @@
 							},
 							{
 								"kind": "pair",
+								"desc": "Optional since 1.21.9. Define it if you want older versions to recognize your pack with\na “made for a newer version” warning message.\n\nBecause of backwards compatibility, only the main pack format can\nbe used here. Minor formats can only be specified in min and max format.",
 								"key": "pack_format",
 								"type": {
 									"kind": "int",
@@ -72243,6 +72244,7 @@
 										}
 									}
 								],
+								"desc": "Must not be specified in case min_format indicates a format version for 1.21.9 and\nlater, and must be specified otherwise.",
 								"key": "supported_formats",
 								"type": {
 									"kind": "concrete",
@@ -72277,6 +72279,7 @@
 										}
 									}
 								],
+								"desc": "The minimun format that is supported. To specify a minor version, use a list of two\nintegers.",
 								"key": "min_format",
 								"type": {
 									"kind": "reference",
@@ -72303,6 +72306,7 @@
 										}
 									}
 								],
+								"desc": "The maximum format that is supported. To specify a minor version, use a list of two\nintegers.",
 								"key": "max_format",
 								"type": {
 									"kind": "reference",
@@ -72396,6 +72400,7 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Optional since 1.21.9. Define it if you want older versions to recognize your pack with\na “made for a newer version” warning message.\n\nBecause of backwards compatibility, only the main pack format can\nbe used here. Minor formats can only be specified in min and max format.",
 					"key": "pack_format",
 					"type": {
 						"kind": "int",
@@ -72421,6 +72426,7 @@
 							}
 						}
 					],
+					"desc": "Must not be specified in case min_format indicates a format version for 1.21.9 and\nlater, and must be specified otherwise.",
 					"key": "supported_formats",
 					"type": {
 						"kind": "concrete",
@@ -72455,6 +72461,7 @@
 							}
 						}
 					],
+					"desc": "The minimun format that is supported. To specify a minor version, use a list of two\nintegers.",
 					"key": "min_format",
 					"type": {
 						"kind": "reference",
@@ -72481,6 +72488,7 @@
 							}
 						}
 					],
+					"desc": "The maximum format that is supported. To specify a minor version, use a list of two\nintegers.",
 					"key": "max_format",
 					"type": {
 						"kind": "reference",
@@ -104285,7 +104293,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Dimension of the player's respawn point. Defaults to overworl.",
+					"desc": "Dimension of the player's respawn point.",
 					"key": "dimension",
 					"type": {
 						"kind": "string",
@@ -105701,7 +105709,7 @@
 								"fields": [
 									{
 										"kind": "pair",
-										"desc": "Dimension of the player's respawn point. Defaults to overworl.",
+										"desc": "Dimension of the player's respawn point.",
 										"key": "dimension",
 										"type": {
 											"kind": "string",
