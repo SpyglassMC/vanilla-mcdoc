@@ -10,6 +10,10 @@ type ItemModifier = (
 	// ↓ This is covered by [ItemModifier]
 	// #[since="26.3"] [#[id="item_modifier"] string] |
 )
+type ItemModifierRoot = (
+	#[until="26.3"] ItemModifier |
+	#[since="26.3"] LootFunction |
+)
 
 #[since="1.17"]
-dispatch minecraft:resource[item_modifier] to ItemModifier
+dispatch minecraft:resource[item_modifier] to ItemModifierRoot

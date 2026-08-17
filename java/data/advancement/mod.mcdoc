@@ -3,11 +3,11 @@ use ::java::data::loot::LootTableListRef
 use ::java::world::item::ItemStackTemplate
 
 dispatch minecraft:resource[advancement] to struct Advancement {
-	/// If present, advancement will be visible in the advancement tabs.
-	display?: AdvancementDisplay,
 	/// If this field is absent, this advancement is a root advancement.
 	/// Circular references cause a loading failure.
 	parent?: #[id="advancement"] string,
+	/// If present, advancement will be visible in the advancement tabs.
+	display?: mcdoc:advancement_display[[parent]],
 	/// If `requirements` is not defined, all defined criteria will be required.
 	criteria: struct AdvancementCriteriaMap {
 		[#[criterion(definition=true)] string]: AdvancementCriterion,
@@ -24,6 +24,9 @@ dispatch minecraft:resource[advancement] to struct Advancement {
 	sends_telemetry_event?: boolean,
 }
 
+dispatch mcdoc:advancement_display[%none] to RootAdvancementDisplay
+dispatch mcdoc:advancement_display[%unknown] to AdvancementDisplay
+
 struct AdvancementDisplay {
 	icon: (
 		#[until="1.20.5"] AdvancementIcon |
@@ -31,11 +34,6 @@ struct AdvancementDisplay {
 	),
 	title: Text,
 	description: Text,
-	/// Used for the advancement tab (root advancement only).
-	background?: (
-		#[until="1.21.5"] string |
-		#[since="1.21.5"] #[id="texture"] string |
-	),
 	/// Controls the advancement tile frame. Defaults to `task`.
 	frame?: AdvancementFrame,
 	/// Whether to show the toast pop up after completing this advancement. Defaults to `true`.
@@ -47,6 +45,15 @@ struct AdvancementDisplay {
 	/// Has no effect on root advancements themselves, but still affects all their children.
 	/// Defaults to `false`.
 	hidden?: boolean,
+}
+
+struct RootAdvancementDisplay {
+	...AdvancementDisplay,
+	/// Used for the advancement tab.
+	background: (
+		#[until="1.21.5"] string |
+		#[since="1.21.5"] #[id="texture"] string |
+	),
 }
 
 // Until 1.20.5
