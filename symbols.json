@@ -1,5 +1,5 @@
 {
-	"ref": "4099d1b8685a13e1d6ab5fa2d9028a0622aecfb4",
+	"ref": "fce7c6e9f8c3b4fafbf9243c04d4fafef04104d9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -11673,16 +11673,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "If present, advancement will be visible in the advancement tabs.",
-					"key": "display",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::advancement::AdvancementDisplay"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
 					"desc": "If this field is absent, this advancement is a root advancement.\nCircular references cause a loading failure.",
 					"key": "parent",
 					"type": {
@@ -11699,6 +11689,24 @@
 								}
 							}
 						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If present, advancement will be visible in the advancement tabs.",
+					"key": "display",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"parent"
+								]
+							}
+						],
+						"registry": "mcdoc:advancement_display"
 					},
 					"optional": true
 				},
@@ -11953,57 +11961,6 @@
 						"kind": "reference",
 						"path": "::java::util::text::Text"
 					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Used for the advancement tab (root advancement only).",
-					"key": "background",
-					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "until",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.21.5"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "since",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "1.21.5"
-											}
-										}
-									},
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "texture"
-											}
-										}
-									}
-								]
-							}
-						]
-					},
-					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -17153,6 +17110,68 @@
 										}
 									]
 								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::advancement::RootAdvancementDisplay": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::advancement::AdvancementDisplay"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Used for the advancement tab.",
+					"key": "background",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.5"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "texture"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
@@ -27085,6 +27104,47 @@
 				}
 			]
 		},
+		"::java::data::item_modifier::ItemModifierArgument": {
+			"kind": "reference",
+			"path": "::java::data::item_modifier::ItemModifier"
+		},
+		"::java::data::item_modifier::ItemModifierRoot": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::item_modifier::ItemModifier",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::loot::LootFunction",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
 		"::java::data::loot::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
@@ -35740,6 +35800,118 @@
 				}
 			]
 		},
+		"::java::data::number_provider::AggregateNumberProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "summands",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::NumberProviderListRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "operands",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::AggregateOperands"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::AggregateOperands": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::number_provider::NumberProvider"
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "tree",
+								"values": {
+									"registry": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "number_provider"
+										}
+									},
+									"tags": {
+										"kind": "literal",
+										"value": {
+											"kind": "string",
+											"value": "allowed"
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "number_provider"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::NumberProvider"
+							}
+						]
+					},
+					"lengthRange": {
+						"kind": 0,
+						"min": 1
+					}
+				}
+			]
+		},
 		"::java::data::number_provider::BinomialNumberProvider": {
 			"kind": "struct",
 			"fields": [
@@ -36235,19 +36407,6 @@
 								}
 							}
 						]
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::SumNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "summands",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderListRef"
 					}
 				}
 			]
@@ -39351,6 +39510,47 @@
 											"value": "allowed"
 										}
 									}
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::slot_source::SlotSourceArgument": {
+			"kind": "reference",
+			"path": "::java::data::slot_source::SlotSource"
+		},
+		"::java::data::slot_source::SlotSourceRoot": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::slot_source::SlotSource",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::slot_source::TypedSlotSource",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
 								}
 							}
 						}
@@ -111089,6 +111289,16 @@
 		}
 	},
 	"mcdoc/dispatcher": {
+		"mcdoc:advancement_display": {
+			"%none": {
+				"kind": "reference",
+				"path": "::java::data::advancement::RootAdvancementDisplay"
+			},
+			"%unknown": {
+				"kind": "reference",
+				"path": "::java::data::advancement::AdvancementDisplay"
+			}
+		},
 		"mcdoc:block_item_states": {
 			"%none": {
 				"kind": "struct",
@@ -125387,6 +125597,22 @@
 				"kind": "reference",
 				"path": "::java::data::number_provider::UniformNumberProvider"
 			},
+			"average": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::AggregateNumberProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"binomial": {
 				"kind": "reference",
 				"path": "::java::data::number_provider::BinomialNumberProvider"
@@ -125431,9 +125657,57 @@
 					}
 				]
 			},
+			"maximum": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::AggregateNumberProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"minimum": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::AggregateNumberProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"number_dispatcher": {
 				"kind": "reference",
 				"path": "::java::data::number_provider::NumberDispatcher",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"product": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::AggregateNumberProvider",
 				"attributes": [
 					{
 						"name": "since",
@@ -125457,7 +125731,7 @@
 			},
 			"sum": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::SumNumberProvider",
+				"path": "::java::data::number_provider::AggregateNumberProvider",
 				"attributes": [
 					{
 						"name": "since",
@@ -126788,7 +127062,7 @@
 			},
 			"item_modifier": {
 				"kind": "reference",
-				"path": "::java::data::item_modifier::ItemModifier",
+				"path": "::java::data::item_modifier::ItemModifierRoot",
 				"attributes": [
 					{
 						"name": "since",
@@ -126945,7 +127219,7 @@
 			},
 			"slot_source": {
 				"kind": "reference",
-				"path": "::java::data::slot_source::SlotSource",
+				"path": "::java::data::slot_source::SlotSourceRoot",
 				"attributes": [
 					{
 						"name": "since",
