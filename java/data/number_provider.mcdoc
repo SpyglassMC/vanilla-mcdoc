@@ -37,6 +37,13 @@ type ResolvableNumber = (
 	float |
 	#[id="number_provider"] string |
 )
+// Since 26.3, non-empty version of NumberProviderListRef
+type AggregateOperands = (
+	NumberProvider |
+	// TODO: disallow empty tag
+	#[id=(registry="number_provider",tags="allowed")] string |
+	[(#[id="number_provider"] string | NumberProvider)] @ 1.. |
+)
 
 dispatch minecraft:number_provider[uniform,%none] to struct UniformNumberProvider {
 	min?: NumberProviderRef,
@@ -94,8 +101,15 @@ dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
 }
 
 #[since="26.1"]
-dispatch minecraft:number_provider[sum] to struct SumNumberProvider {
+dispatch minecraft:number_provider[sum] to AggregateNumberProvider
+#[since="26.3"]
+dispatch minecraft:number_provider[average, maximum, minimum, product] to AggregateNumberProvider
+
+struct AggregateNumberProvider {
+	#[until="26.3"]
 	summands: NumberProviderListRef,
+	#[since="26.3"]
+	operands: AggregateOperands,
 }
 
 #[since="26.3"]

@@ -4,7 +4,7 @@ use ::java::data::loot::EntityTarget
 use ::java::data::loot::function::ContainerComponents
 
 #[since="26.3"]
-dispatch minecraft:resource[slot_source] to SlotSource
+dispatch minecraft:resource[slot_source] to SlotSourceRoot
 
 // Note: because group can be inlined, slot source doesn't need any -Ref types here.
 // Use SlotSource instead.
@@ -15,6 +15,12 @@ type SlotSource = (
 	// ↓ This is covered by [SlotSource]
 	// #[since="26.3"] [#[id="slot_source"] string] |
 )
+type SlotSourceRoot = (
+	#[until="26.3"] SlotSource |
+	#[since="26.3"] TypedSlotSource |
+)
+// Used by slot source command argument
+type SlotSourceArgument = SlotSource
 
 type TypedSlotSource = struct {
 	type: #[id="slot_source_type"] string,
