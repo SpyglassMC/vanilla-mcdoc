@@ -14,6 +14,8 @@ type ItemModifierRoot = (
 	#[until="26.3"] ItemModifier |
 	#[since="26.3"] LootFunction |
 )
+// Used by item modifier command argument
+type ItemModifierArgument = ItemModifier
 
 #[since="1.17"]
 dispatch minecraft:resource[item_modifier] to ItemModifierRoot

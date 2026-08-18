@@ -19,6 +19,8 @@ type SlotSourceRoot = (
 	#[until="26.3"] SlotSource |
 	#[since="26.3"] TypedSlotSource |
 )
+// Used by slot source command argument
+type SlotSourceArgument = SlotSource
 
 type TypedSlotSource = struct {
 	type: #[id="slot_source_type"] string,
