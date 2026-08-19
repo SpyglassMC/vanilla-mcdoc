@@ -1628,7 +1628,7 @@
 	"::java::world::entity::mob::player::RootVehicle.Entity": "The ridden entity.",
 	"::java::world::entity::mob::player::WardenSpawnTracker.cooldown_ticks": "Ticks before the `warning_level` can be increased again.\nDecreases by 1 every tick. It is set to 200 game ticks (10 seconds) every time the warning level is increased.",
 	"::java::world::entity::mob::player::WardenSpawnTracker.ticks_since_last_warning": "Ticks since the player was warned for warden spawning.\nIncreases by 1 every tick. After 12000 game ticks (10 minutes) it will be set back to 0,\nand the `warning_level` will be decreased by 1.",
-	"::java::world::entity::mob::player::WardenSpawnTracker.warning_level": "The warden will spawn at level 3.",
+	"::java::world::entity::mob::player::WardenSpawnTracker.warning_level": "The current warning level. The warden will spawn at level `4`.",
 	"::java::world::entity::mob::raider::RaiderBase.CanJoinRaid": "Whether the raider can join raids and count towards the progress bar.",
 	"::java::world::entity::mob::raider::RaiderBase.patrol_target": "Where the raider is heading towards.",
 	"::java::world::entity::mob::raider::RaiderBase.PatrolLeader": "Whether the raider is leading the patrol.",
