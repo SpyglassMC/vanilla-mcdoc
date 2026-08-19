@@ -1,5 +1,5 @@
 {
-	"ref": "fce7c6e9f8c3b4fafbf9243c04d4fafef04104d9",
+	"ref": "8db9e6ee7edcda95f0548413d17167b881a24086",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -106074,14 +106074,14 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The warden will spawn at level 3.",
+					"desc": "The current warning level. The warden will spawn at level `4`.",
 					"key": "warning_level",
 					"type": {
 						"kind": "int",
 						"valueRange": {
 							"kind": 0,
 							"min": 0,
-							"max": 3
+							"max": 4
 						}
 					},
 					"optional": true
