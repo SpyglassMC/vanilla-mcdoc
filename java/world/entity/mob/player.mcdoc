@@ -196,8 +196,8 @@ struct WardenSpawnTracker {
 	/// Increases by 1 every tick. After 12000 game ticks (10 minutes) it will be set back to 0,
 	/// and the `warning_level` will be decreased by 1.
 	ticks_since_last_warning?: int @ 0..,
-	/// The warden will spawn at level 3.
-	warning_level?: int @ 0..3,
+	/// The current warning level. The warden will spawn at level `4`.
+	warning_level?: int @ 0..4,
 }
 
 struct EnderPearl {
