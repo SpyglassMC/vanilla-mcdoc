@@ -1,8 +1,6 @@
 use ::java::world::entity::AnyEntity
 
-// List can be generated using the following code:
-// https://github.com/misode/mcmeta/raw/registries/item/data.min.json
-// `JSON.parse(document.body.textContent).filter(item => item.includes('_spawn_egg')).join(',\n')`
+// No longer needs to be maintained because of data components
 dispatch minecraft:item[
 	allay_spawn_egg,
 	armadillo_spawn_egg,
