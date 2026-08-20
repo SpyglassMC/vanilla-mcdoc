@@ -93,14 +93,17 @@ type BlockEntityTarget = "block_entity"
 type ItemStackTarget = "tool"
 
 struct LootPool {
-	rolls: (
-		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] NumberProviderRef |
-	),
-	bonus_rolls?: (
-		#[until="1.17"] MinMaxBounds<float> |
-		#[since="1.17"] NumberProviderRef |
-	),
+	#[until="1.17"] ...struct {
+		rolls: RandomIntGenerator,
+		bonus_rolls?: MinMaxBounds<float>,
+	},
+	#[since="1.17"] ...struct {
+		/// Resolution mode: integer
+		rolls: NumberProviderRef,
+		/// Resolution mode: float \
+		/// The result is rounded down *after* being multiplied by the luck attribute.
+		bonus_rolls?: NumberProviderRef,
+	},
 	entries: [LootPoolEntry],
 	#[until="26.3"] ...struct {
 		functions?: [LootFunction],

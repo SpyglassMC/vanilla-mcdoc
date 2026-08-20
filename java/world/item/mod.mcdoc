@@ -46,7 +46,8 @@ type ItemStackTemplate = (
 struct TradeCost {
 	...SingleItemOfComponent<DataComponentExactPredicate>,
 	/// Number of items in the stack.
-	/// Defaults to `1`.
+	/// Defaults to `1`. \
+	/// Resolution mode: integer
 	count?: NumberProvider,
 }
 
