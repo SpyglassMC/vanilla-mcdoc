@@ -141,8 +141,6 @@ dispatch minecraft:loot_function[copy_state] to struct CopyState {
 	...Conditions,
 }
 
-dispatch mcdoc:block_state_keys[%unknown,%none] to string
-
 #[since="1.21.11"]
 dispatch minecraft:loot_function[discard] to struct {
 	...Conditions,

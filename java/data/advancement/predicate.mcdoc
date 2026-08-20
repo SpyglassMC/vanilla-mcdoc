@@ -46,6 +46,9 @@ struct EnchantmentPredicate {
 }
 
 struct BlockPredicateState {
+	#[until="1.17"]
+	[mcdoc:block_state_keys[[%parent.block]]]: MinMaxBounds<mcdoc:block_states[[%parent.block]][[%key]]>,
+	#[since="1.17"]
 	[mcdoc:block_state_keys[[%parent.blocks]]]: MinMaxBounds<mcdoc:block_states[[%parent.blocks]][[%key]]>,
 }
 

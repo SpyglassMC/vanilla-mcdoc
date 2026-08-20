@@ -13,3 +13,5 @@ type BlockState = (
 dispatch mcdoc:block_states[%unknown,%none] to struct {
 	[string]: string,
 }
+
+dispatch mcdoc:block_state_keys[%unknown,%none] to string
