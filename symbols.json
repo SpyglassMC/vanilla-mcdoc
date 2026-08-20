@@ -1,5 +1,5 @@
 {
-	"ref": "2d3031f2f751e26cd522ade88ecc482d293d70a1",
+	"ref": "ce953a1f8379aef9effe6dcae9f2b5df6d240d90",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -26923,6 +26923,39 @@
 							}
 						]
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Defaults to overworld.",
+					"key": "dimension",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "dimension"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
