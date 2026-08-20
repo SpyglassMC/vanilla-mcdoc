@@ -4,7 +4,8 @@ dispatch minecraft:resource[trade_set] to struct TradeSet {
 	/// Possible trade generators.
 	trades: (#[id(registry="villager_trade",tags="allowed")] string | [#[id="villager_trade"] string]),
 	/// Amount of trades to be generated. \
-	/// Clamps to an integer of at least `1`.
+	/// Resolution mode: integer \
+	/// Clamped to positive number.
 	amount: NumberProvider,
 	/// Whether the trade set can use the same generator multiple times and generate duplicate trades.
 	/// Defaults to `false`.

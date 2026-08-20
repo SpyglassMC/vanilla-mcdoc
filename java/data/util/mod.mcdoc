@@ -15,9 +15,9 @@ type MinMaxBounds<T> = (
 type IntRange = (
 	int |
 	struct {
-		/// Clamps to an integer.
+		/// Resolution mode: integer
 		min?: NumberProviderRef,
-		/// Clamps to an integer.
+		/// Resolution mode: integer
 		max?: NumberProviderRef,
 	} |
 )
