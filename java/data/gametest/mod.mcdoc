@@ -22,6 +22,9 @@ struct TestData {
 		#[id="test_environment"] string |
 		TestEnvironment |
 	),
+	/// Defaults to overworld.
+	#[since="26.3"]
+	dimension?: #[id="dimension"] string,
 	/// Structure NBT file to use for the test.
 	structure: #[id="structure"] string,
 	/// Maximum number of ticks allowed to pass before the test is considered timed out.
