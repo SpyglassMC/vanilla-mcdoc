@@ -413,6 +413,7 @@
 	"::java::data::enchantment::provider::ByCostWithDifficultyEnchantmentProvider.max_cost_span": "Span of the cost randomization when the special factor is at its maximum.",
 	"::java::data::enchantment::provider::ByCostWithDifficultyEnchantmentProvider.min_cost": "Positive integer representing the minimum possible cost",
 	"::java::data::gametest::FunctionTestInstance.function": "Test function (Java code) to run.",
+	"::java::data::gametest::TestData.dimension": "Defaults to overworld.",
 	"::java::data::gametest::TestData.environment": "The test environment to run this test as part of.",
 	"::java::data::gametest::TestData.manual_only": "If `true`, test is not included as part of automated test runs. Defaults to `false`.",
 	"::java::data::gametest::TestData.max_attempts": "Number of attempts to run the test. Defaults to `1`.",
