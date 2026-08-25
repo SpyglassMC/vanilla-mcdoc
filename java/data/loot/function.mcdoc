@@ -550,10 +550,15 @@ dispatch minecraft:loot_function[set_instrument] to struct SetInstrument {
 
 /// For a container block item's loot table.
 dispatch minecraft:loot_function[set_loot_table] to struct SetLootTable {
-	/// The block entity type of the container. \
-	/// Unused since 1.20.5.
-	#[since="1.18"] #[until="26.3"]
-	type: #[id="block_entity_type"] string,
+	#[since="1.18"] #[until="1.20.5"] ...struct {
+		/// The block entity type of the container.
+		type: #[id="block_entity_type"] string,
+	},
+	#[since="1.20.5"] #[until="26.3"] ...struct {
+		/// A block entity type. Unused by the game. \
+		/// The shortest word you can use is `bed` before 26.2, or `bell` in 26.2.
+		type: #[id="block_entity_type"] string,
+	},
 	/// The loot table to set to the container block item.
 	#[until="26.3"]
 	name: #[id="loot_table"] string,
