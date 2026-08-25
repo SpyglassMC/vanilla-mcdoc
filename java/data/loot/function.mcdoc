@@ -658,7 +658,7 @@ dispatch minecraft:loot_function[set_random_dyes] to struct SetRandomDyes {
 dispatch minecraft:loot_function[set_random_potion] to struct SetRandomPotion {
 	/// Possible potions to select from.
 	/// Defaults to all potions.
-	options?: (#[id(registry="potion",tags="allowed")] string | #[id="potion"] string),
+	options?: (#[id(registry="potion",tags="allowed")] string | [#[id="potion"] string]),
 	...Conditions,
 }
 
