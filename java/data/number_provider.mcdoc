@@ -45,7 +45,11 @@ type AggregateOperands = (
 	[(#[id="number_provider"] string | NumberProvider)] @ 1.. |
 )
 
-dispatch minecraft:number_provider[uniform,%none] to struct UniformNumberProvider {
+dispatch minecraft:number_provider[uniform] to UniformNumberProvider
+#[until="26.3"]
+dispatch minecraft:number_provider[%none] to UniformNumberProvider
+
+struct UniformNumberProvider {
 	min?: NumberProviderRef,
 	max?: NumberProviderRef,
 }
