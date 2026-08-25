@@ -1,4 +1,5 @@
 use ::java::util::block_state::BlockState
+use super::density_function::DensityFunctionRef
 use super::material_condition::MaterialConditionRef
 
 #[since="26.3"]
@@ -25,6 +26,17 @@ dispatch minecraft:material_rule[block] to struct BlockRule {
 dispatch minecraft:material_rule[condition] to struct ConditionRule {
 	if_true: MaterialConditionRef,
 	then_run: MaterialRuleRef,
+}
+
+#[since="26.3"]
+dispatch minecraft:material_rule[ore_vein] to struct OreVeinifier {
+	ore_block: BlockState,
+	raw_ore_block: BlockState,
+	filler_block: BlockState,
+	raw_ore_chance: float @ 0..1,
+	density: DensityFunctionRef,
+	richness: DensityFunctionRef,
+	filler_gap: DensityFunctionRef,
 }
 
 dispatch minecraft:material_rule[sequence] to struct SequenceRule {
