@@ -4,14 +4,12 @@ use ::java::data::number_provider::ResolvableNumber
 use ::java::data::trim::TrimMaterial
 use ::java::data::trim::TrimPattern
 use ::java::data::variants::instrument::Instrument
-use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
 use ::java::data::util::SoundEventRef
 use ::java::util::Filterable
 use ::java::util::GlobalPos
 use ::java::util::attribute::AttributeOperation
 use ::java::util::color::DyeColor
 use ::java::util::color::RGB
-use ::java::util::direction::Direction
 use ::java::util::effect::MobEffectInstance
 use ::java::util::slot::EquipmentSlot
 use ::java::util::slot::EquipmentSlotGroup
@@ -151,55 +149,7 @@ struct ItemDamageFunction {
 }
 
 #[since="26.3"]
-dispatch minecraft:data_component[block_transformer] to [BlockTransformer] @ 1..200
-
-struct BlockTransformer {
-	/// If the provider returns no result, the next transformer will be attempted.
-	block_state_provider: BlockStateProvider,
-	/// Defaults to not playing sound.
-	sound?: SoundEventRef,
-	/// Defaults to `none`.
-	particle?: BlockTransformParticle,
-	/// If a disallowed face is interacted with, the next transformer will be attempted. \
-	/// Defaults to empty (allowing all faces).
-	disallowed_faces?: [Direction],
-	/// The loot to drop on a successful transformation. \
-	/// Defaults to drop nothing.
-	loot?: #[id="loot_table"] string,
-	/// Where the `loot` should drop. \
-	/// Defaults to `from_middle`.
-	drop_strategy?: BlockTransformDropStrategy,
-	/// How nearby blocks are affected by the transformation. \
-	/// Defaults to `single_block`.
-	transform_type?: BlockTransformType,
-	/// Whether the transformed block should update based on neighboring blocks. \
-	/// Defaults to `true`.
-	update_from_neighbors?: boolean,
-	/// Only has effect on stackable items. \
-	/// Defaults to `true`.
-	consume_on_use?: boolean,
-	/// Only has effect on unstackable items. \
-	/// Defauls to 1.
-	item_damage_per_use?: int @ 0..,
-}
-
-enum(string) BlockTransformParticle {
-	None = "none",
-	Scrape = "scrape",
-	WaxOn = "wax_on",
-	WaxOff = "wax_off",
-}
-
-enum(string) BlockTransformDropStrategy {
-	ClickedFace = "clicked_face",
-	FromMiddle = "from_middle",
-}
-
-enum(string) BlockTransformType {
-	SingleBlock = "single_block",
-	/// If the original block and the transformed block are both copper chests of any kind, the transform applies to the other half of the double chest.
-	CopperChest = "copper_chest",
-}
+dispatch minecraft:data_component[block_transformer] to #[id="block_transformer"] string
 
 #[since="1.21.5"]
 dispatch minecraft:data_component[break_sound] to SoundEventRef
@@ -336,6 +286,10 @@ dispatch minecraft:consume_effect[clear_all_effects] to struct {}
 dispatch minecraft:consume_effect[teleport_randomly] to struct TeleportRandomlyConsumeEffect {
 	/// Defaults to 16.
 	diameter?: float @ 1..,
+	/// Whether to show a particle trail into the direction of teleportation. \
+	/// Defaults to `true`.
+	#[since="26.3"]
+	directional_particles?: boolean,
 }
 
 dispatch minecraft:consume_effect[play_sound] to struct PlaySoundConsumeEffect {
@@ -799,7 +753,6 @@ struct SwingAnimation {
 }
 
 enum(string) SwingAnimationType {
-	#[until="26.3"]
 	None = "none",
 	Whack = "whack",
 	Stab = "stab",
