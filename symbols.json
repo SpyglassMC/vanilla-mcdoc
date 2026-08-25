@@ -1,5 +1,5 @@
 {
-	"ref": "238d310c1b0293c69e1aa6da9f9116ae7db6e49e",
+	"ref": "800ac61ba8b09e17ccd407a8c468d786e7433a8d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -22047,6 +22047,176 @@
 				}
 			]
 		},
+		"::java::data::block_transformer::BlockTransformData": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If the provider returns no result, the next transformer will be attempted.",
+					"key": "block_state_provider",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to not playing sound.",
+					"key": "sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `none`.",
+					"key": "particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::block_transformer::BlockTransformParticle"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "If a disallowed face is interacted with, the next transformer will be attempted. \\\nDefaults to empty (allowing all faces).",
+					"key": "disallowed_faces",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::util::direction::Direction"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "The loot to drop on a successful transformation. \\\nDefaults to drop nothing.",
+					"key": "loot",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "loot_table"
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Where the `loot` should drop. \\\nDefaults to `from_middle`.",
+					"key": "drop_strategy",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::block_transformer::BlockTransformDropStrategy"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "How nearby blocks are affected by the transformation. \\\nDefaults to `single_block`.",
+					"key": "transform_type",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::block_transformer::BlockTransformType"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the transformed block should update based on neighboring blocks. \\\nDefaults to `true`.",
+					"key": "update_from_neighbors",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Only has effect on stackable items. \\\nDefaults to `true`.",
+					"key": "consume_on_use",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Only has effect on unstackable items. \\\nDefauls to 1.",
+					"key": "item_damage_per_use",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::block_transformer::BlockTransformDropStrategy": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "ClickedFace",
+					"value": "clicked_face"
+				},
+				{
+					"identifier": "FromMiddle",
+					"value": "from_middle"
+				}
+			]
+		},
+		"::java::data::block_transformer::BlockTransformParticle": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "None",
+					"value": "none"
+				},
+				{
+					"identifier": "Scrape",
+					"value": "scrape"
+				},
+				{
+					"identifier": "WaxOn",
+					"value": "wax_on"
+				},
+				{
+					"identifier": "WaxOff",
+					"value": "wax_off"
+				}
+			]
+		},
+		"::java::data::block_transformer::BlockTransformType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "SingleBlock",
+					"value": "single_block"
+				},
+				{
+					"desc": "If the original block and the transformed block are both copper chests of any kind, the transform applies to the other half of the double chest.",
+					"identifier": "CopperChest",
+					"value": "copper_chest"
+				}
+			]
+		},
 		"::java::data::chat_type::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
@@ -28920,6 +29090,56 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "The block entity type of the container.",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "block_entity_type"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 17>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "A block entity type. Unused by the game. \\\nThe shortest word you can use is `bed` before 26.2, or `bell` in 26.2.",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "block_entity_type"
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 18>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"key": "floats",
 					"type": {
 						"kind": "struct",
@@ -29039,7 +29259,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 17>": {
+		"::java::data::loot::function::<anonymous 19>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -29104,15 +29324,15 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 18>": {
-			"kind": "struct",
-			"fields": []
-		},
-		"::java::data::loot::function::<anonymous 19>": {
-			"kind": "struct",
-			"fields": []
-		},
 		"::java::data::loot::function::<anonymous 2>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::loot::function::<anonymous 20>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::loot::function::<anonymous 21>": {
 			"kind": "struct",
 			"fields": []
 		},
@@ -33474,7 +33694,7 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "pair",
+					"kind": "spread",
 					"attributes": [
 						{
 							"name": "since",
@@ -33485,21 +33705,89 @@
 									"value": "1.18"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
 						}
 					],
-					"desc": "The block entity type of the container.",
-					"key": "type",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "struct",
+						"fields": [
 							{
-								"name": "id",
+								"kind": "pair",
+								"desc": "The block entity type of the container.",
+								"key": "type",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block_entity_type"
+												}
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
 								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "block_entity_type"
-									}
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "A block entity type. Unused by the game. \\\nThe shortest word you can use is `bed` before 26.2, or `bell` in 26.2.",
+								"key": "type",
+								"type": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "block_entity_type"
+												}
+											}
+										}
+									]
 								}
 							}
 						]
@@ -33552,7 +33840,7 @@
 						}
 					],
 					"desc": "The loot table to set to the container block item.",
-					"key": "tag",
+					"key": "loot_table_id",
 					"type": {
 						"kind": "string",
 						"attributes": [
@@ -34706,6 +34994,54 @@
 					],
 					"identifier": "ContainerProcess",
 					"value": "container_process"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"identifier": "CommandComputeDefault",
+					"value": "command_compute_default"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"identifier": "CommandComputePosition",
+					"value": "command_compute_position"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"identifier": "CommandComputeEntity",
+					"value": "command_compute_entity"
 				}
 			]
 		},
@@ -51191,6 +51527,68 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"key": "cell_size_xz",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "cell_size_y",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::density_function::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0.",
+					"key": "shift_x",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0.",
+					"key": "shift_y",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0.",
+					"key": "shift_z",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::density_function::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"key": "coordinate",
 					"type": {
 						"kind": "union",
@@ -51638,6 +52036,60 @@
 				}
 			]
 		},
+		"::java::data::worldgen::density_function::Interpolated": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::OneArgument"
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "cell_size_xz",
+								"type": {
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 1
+									}
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "cell_size_y",
+								"type": {
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 1
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::density_function::InvervalSelect": {
 			"kind": "struct",
 			"fields": [
@@ -51735,6 +52187,56 @@
 					"key": "y_scale",
 					"type": {
 						"kind": "float"
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Defaults to constant 0.",
+								"key": "shift_x",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Defaults to constant 0.",
+								"key": "shift_y",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Defaults to constant 0.",
+								"key": "shift_z",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+								},
+								"optional": true
+							}
+						]
 					}
 				}
 			]
@@ -66401,6 +66903,71 @@
 				}
 			]
 		},
+		"::java::data::worldgen::material_rule::OreVeinifier": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ore_block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "raw_ore_block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "filler_block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "raw_ore_chance",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "density",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "richness",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "filler_gap",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::material_rule::SequenceRule": {
 			"kind": "struct",
 			"fields": [
@@ -66461,6 +67028,67 @@
 			]
 		},
 		"::java::data::worldgen::noise_settings::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "barrier",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "fluid_level_floodedness",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "fluid_level_spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "lava",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "vein_toggle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "vein_ridged",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "vein_gap",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::noise_settings::<anonymous 2>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -66533,6 +67161,26 @@
 				{
 					"kind": "pair",
 					"key": "surface_level",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::noise_settings::DebugFunctionEntry": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "label",
+					"type": {
+						"kind": "string"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "function",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
@@ -66960,30 +67608,6 @@
 								"kind": "literal",
 								"value": {
 									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "ore_veins",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::noise_settings::OreVeinifier"
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
 									"value": "1.18"
 								}
 							}
@@ -67150,6 +67774,30 @@
 						"kind": "reference",
 						"path": "::java::data::worldgen::noise_settings::StructureSettings"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "debug_functions",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::noise_settings::DebugFunctionEntry"
+						}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -67230,7 +67878,7 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "pair",
+					"kind": "spread",
 					"attributes": [
 						{
 							"name": "until",
@@ -67243,130 +67891,66 @@
 							}
 						}
 					],
-					"key": "barrier",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "barrier",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "fluid_level_floodedness",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "fluid_level_spread",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "lava",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "vein_toggle",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "vein_ridged",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "vein_gap",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::density_function::DensityFunctionRef"
 								}
 							}
-						}
-					],
-					"key": "fluid_level_floodedness",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "fluid_level_spread",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "lava",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "vein_toggle",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "vein_ridged",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "vein_gap",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+						]
 					}
 				},
 				{
@@ -67449,9 +68033,39 @@
 									"value": "1.21.9"
 								}
 							}
+						},
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
 						}
 					],
 					"key": "preliminary_surface_level",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"key": "chunk_surface_level",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
@@ -67600,6 +68214,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"key": "size_horizontal",
 					"type": {
 						"kind": "int",
@@ -67612,6 +68238,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"key": "size_vertical",
 					"type": {
 						"kind": "int",
@@ -67894,71 +68532,6 @@
 					"key": "offset",
 					"type": {
 						"kind": "int"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::noise_settings::OreVeinifier": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "ore_block",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::block_state::BlockState"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "raw_ore_block",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::block_state::BlockState"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "filler_block",
-					"type": {
-						"kind": "reference",
-						"path": "::java::util::block_state::BlockState"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "raw_ore_chance",
-					"type": {
-						"kind": "float",
-						"valueRange": {
-							"kind": 0,
-							"min": 0,
-							"max": 1
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "density",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "richness",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "filler_gap",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
 					}
 				}
 			]
@@ -90693,176 +91266,6 @@
 				}
 			]
 		},
-		"::java::world::component::item::BlockTransformDropStrategy": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "ClickedFace",
-					"value": "clicked_face"
-				},
-				{
-					"identifier": "FromMiddle",
-					"value": "from_middle"
-				}
-			]
-		},
-		"::java::world::component::item::BlockTransformer": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "If the provider returns no result, the next transformer will be attempted.",
-					"key": "block_state_provider",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to not playing sound.",
-					"key": "sound",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to `none`.",
-					"key": "particle",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::component::item::BlockTransformParticle"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "If a disallowed face is interacted with, the next transformer will be attempted. \\\nDefaults to empty (allowing all faces).",
-					"key": "disallowed_faces",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "reference",
-							"path": "::java::util::direction::Direction"
-						}
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "The loot to drop on a successful transformation. \\\nDefaults to drop nothing.",
-					"key": "loot",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "loot_table"
-									}
-								}
-							}
-						]
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Where the `loot` should drop. \\\nDefaults to `from_middle`.",
-					"key": "drop_strategy",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::component::item::BlockTransformDropStrategy"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "How nearby blocks are affected by the transformation. \\\nDefaults to `single_block`.",
-					"key": "transform_type",
-					"type": {
-						"kind": "reference",
-						"path": "::java::world::component::item::BlockTransformType"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Whether the transformed block should update based on neighboring blocks. \\\nDefaults to `true`.",
-					"key": "update_from_neighbors",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Only has effect on stackable items. \\\nDefaults to `true`.",
-					"key": "consume_on_use",
-					"type": {
-						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"desc": "Only has effect on unstackable items. \\\nDefauls to 1.",
-					"key": "item_damage_per_use",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 0
-						}
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::world::component::item::BlockTransformParticle": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "None",
-					"value": "none"
-				},
-				{
-					"identifier": "Scrape",
-					"value": "scrape"
-				},
-				{
-					"identifier": "WaxOn",
-					"value": "wax_on"
-				},
-				{
-					"identifier": "WaxOff",
-					"value": "wax_off"
-				}
-			]
-		},
-		"::java::world::component::item::BlockTransformType": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "SingleBlock",
-					"value": "single_block"
-				},
-				{
-					"desc": "If the original block and the transformed block are both copper chests of any kind, the transform applies to the other half of the double chest.",
-					"identifier": "CopperChest",
-					"value": "copper_chest"
-				}
-			]
-		},
 		"::java::world::component::item::BookGeneration": {
 			"kind": "enum",
 			"enumKind": "int",
@@ -93108,18 +93511,6 @@
 			"enumKind": "string",
 			"values": [
 				{
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
 					"identifier": "None",
 					"value": "none"
 				},
@@ -93146,6 +93537,27 @@
 							"kind": 0,
 							"min": 1
 						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"desc": "Whether to show a particle trail into the direction of teleportation. \\\nDefaults to `true`.",
+					"key": "directional_particles",
+					"type": {
+						"kind": "boolean"
 					},
 					"optional": true
 				}
@@ -115445,17 +115857,18 @@
 				"registry": "mcdoc:block_item_states"
 			},
 			"block_transformer": {
-				"kind": "list",
-				"item": {
-					"kind": "reference",
-					"path": "::java::world::component::item::BlockTransformer"
-				},
-				"lengthRange": {
-					"kind": 0,
-					"min": 1,
-					"max": 200
-				},
+				"kind": "string",
 				"attributes": [
+					{
+						"name": "id",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "block_transformer"
+							}
+						}
+					},
 					{
 						"name": "since",
 						"value": {
@@ -118015,17 +118428,69 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::OneArgument"
 			},
+			"cache": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::OneArgument",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"cache_2d": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::density_function::OneArgument"
+				"path": "::java::data::worldgen::density_function::OneArgument",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"cache_all_in_cell": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::density_function::OneArgument"
+				"path": "::java::data::worldgen::density_function::OneArgument",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"cache_once": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::density_function::OneArgument"
+				"path": "::java::data::worldgen::density_function::OneArgument",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"ceil": {
 				"kind": "reference",
@@ -118105,7 +118570,19 @@
 			},
 			"flat_cache": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::density_function::OneArgument"
+				"path": "::java::data::worldgen::density_function::OneArgument",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"floor": {
 				"kind": "reference",
@@ -118145,7 +118622,7 @@
 			},
 			"interpolated": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::density_function::OneArgument"
+				"path": "::java::data::worldgen::density_function::Interpolated"
 			},
 			"interval_select": {
 				"kind": "reference",
@@ -118329,7 +118806,19 @@
 			},
 			"shifted_noise": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::density_function::ShiftedNoise"
+				"path": "::java::data::worldgen::density_function::ShiftedNoise",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"sign": {
 				"kind": "reference",
@@ -125404,6 +125893,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::material_rule::ConditionRule"
 			},
+			"ore_vein": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::material_rule::OreVeinifier",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"sequence": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::material_rule::SequenceRule"
@@ -125710,7 +126215,19 @@
 		"minecraft:number_provider": {
 			"%none": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::UniformNumberProvider"
+				"path": "::java::data::number_provider::UniformNumberProvider",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"average": {
 				"kind": "reference",
@@ -126835,6 +127352,30 @@
 			"block_definition": {
 				"kind": "reference",
 				"path": "::java::assets::block_state_definition::BlockStateDefinition"
+			},
+			"block_transformer": {
+				"kind": "list",
+				"item": {
+					"kind": "reference",
+					"path": "::java::data::block_transformer::BlockTransformData"
+				},
+				"lengthRange": {
+					"kind": 0,
+					"min": 1,
+					"max": 200
+				},
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"cat_sound_variant": {
 				"kind": "concrete",
