@@ -74,6 +74,12 @@ enum(string) LootContextParamSets {
 	CommandSlotSource = "command_slot_source",
 	#[since="26.3"]
 	ContainerProcess = "container_process",
+	#[since="26.3"]
+	CommandComputeDefault = "command_compute_default",
+	#[since="26.3"]
+	CommandComputePosition = "command_compute_position",
+	#[since="26.3"]
+	CommandComputeEntity = "command_compute_entity",
 }
 
 enum(string) EntityTarget {

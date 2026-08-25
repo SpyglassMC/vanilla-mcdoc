@@ -25,22 +25,24 @@ dispatch minecraft:density_function[%unknown] to struct {}
 dispatch minecraft:density_function[
 	abs,
 	blend_density,
-	cache_2d,
-	cache_all_in_cell,
-	cache_once,
 	cube,
-	flat_cache,
 	half_negative,
-	interpolated,
 	quarter_negative,
 	slide,
 	square,
 	squeeze,
 ] to OneArgument
 #[until="26.3"]
-dispatch minecraft:density_function[invert] to OneArgument
+dispatch minecraft:density_function[
+	cache_2d,
+	cache_all_in_cell,
+	cache_once,
+	flat_cache,
+	invert,
+] to OneArgument
 #[since="26.3"]
 dispatch minecraft:density_function[
+	cache,
 	log,
 	negate,
 	reciprocal,
@@ -130,6 +132,14 @@ dispatch minecraft:density_function[gradient] to struct Gradient {
 	to_value: NoiseRange,
 }
 
+dispatch minecraft:density_function[interpolated] to struct Interpolated {
+	...OneArgument,
+	#[since="26.3"] ...struct {
+		cell_size_xz: int @ 1..,
+		cell_size_y: int @ 1..,
+	},
+}
+
 #[since="26.2"]
 dispatch minecraft:density_function[interval_select] to struct InvervalSelect {
 	input: DensityFunctionRef,
@@ -150,6 +160,14 @@ dispatch minecraft:density_function[noise] to struct Noise {
 	noise: NoiseParametersRef,
 	xz_scale: float,
 	y_scale: float,
+	#[since="26.3"] ...struct {
+		/// Defaults to constant 0.
+		shift_x?: DensityFunctionRef,
+		/// Defaults to constant 0.
+		shift_y?: DensityFunctionRef,
+		/// Defaults to constant 0.
+		shift_z?: DensityFunctionRef,
+	},
 }
 
 #[since="1.19"]
@@ -175,6 +193,7 @@ dispatch minecraft:density_function[range_choice] to struct RangeChoice {
 	when_out_of_range: DensityFunctionRef,
 }
 
+#[until="26.3"]
 dispatch minecraft:density_function[shifted_noise] to struct ShiftedNoise {
 	...Noise,
 	shift_x: DensityFunctionRef,
