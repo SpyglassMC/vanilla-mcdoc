@@ -1,5 +1,5 @@
 {
-	"ref": "d79ca383518d6529e8c6f1c6127bafa03b355bea",
+	"ref": "238d310c1b0293c69e1aa6da9f9116ae7db6e49e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -33876,19 +33876,22 @@
 								]
 							},
 							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
+								"kind": "list",
+								"item": {
+									"kind": "string",
+									"attributes": [
+										{
+											"name": "id",
 											"value": {
-												"kind": "string",
-												"value": "potion"
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "potion"
+												}
 											}
 										}
-									}
-								]
+									]
+								}
 							}
 						]
 					},
