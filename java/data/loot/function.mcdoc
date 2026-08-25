@@ -550,15 +550,16 @@ dispatch minecraft:loot_function[set_instrument] to struct SetInstrument {
 
 /// For a container block item's loot table.
 dispatch minecraft:loot_function[set_loot_table] to struct SetLootTable {
-	/// The block entity type of the container.
-	#[since="1.18"]
+	/// The block entity type of the container. \
+	/// Unused since 1.20.5.
+	#[since="1.18"] #[until="26.3"]
 	type: #[id="block_entity_type"] string,
 	/// The loot table to set to the container block item.
 	#[until="26.3"]
 	name: #[id="loot_table"] string,
 	/// The loot table to set to the container block item.
 	#[since="26.3"]
-	tag: #[id="loot_table"] string,
+	loot_table_id: #[id="loot_table"] string,
 	/// The container seed to use. Defaults to a random seed.
 	seed?: #[random] long,
 	...Conditions,
