@@ -1,5 +1,5 @@
 {
-	"ref": "800ac61ba8b09e17ccd407a8c468d786e7433a8d",
+	"ref": "1494c161cfa8e53492bd681dae3123ac6479cfb5",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -39971,43 +39971,6 @@
 		"::java::data::slot_source::SlotSourceArgument": {
 			"kind": "reference",
 			"path": "::java::data::slot_source::SlotSource"
-		},
-		"::java::data::slot_source::SlotSourceRoot": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "reference",
-					"path": "::java::data::slot_source::SlotSource",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					]
-				},
-				{
-					"kind": "reference",
-					"path": "::java::data::slot_source::TypedSlotSource",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					]
-				}
-			]
 		},
 		"::java::data::slot_source::TypedSlotSource": {
 			"kind": "struct",
@@ -93496,11 +93459,47 @@
 					"desc": "The animation duration in ticks.\nDefaults to 6",
 					"key": "duration",
 					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1
-						}
+						"kind": "union",
+						"members": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								},
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 0
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				}
@@ -127875,7 +127874,7 @@
 			},
 			"slot_source": {
 				"kind": "reference",
-				"path": "::java::data::slot_source::SlotSourceRoot",
+				"path": "::java::data::slot_source::TypedSlotSource",
 				"attributes": [
 					{
 						"name": "since",
