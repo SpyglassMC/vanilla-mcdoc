@@ -749,7 +749,10 @@ struct SwingAnimation {
 	type?: SwingAnimationType,
 	/// The animation duration in ticks.
 	/// Defaults to 6
-	duration?: int @ 1..,
+	duration?: (
+		#[until="26.3"] int @ 1.. |
+		#[since="26.3"] int @ 0.. |
+	),
 }
 
 enum(string) SwingAnimationType {
