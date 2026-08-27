@@ -1,5 +1,5 @@
 {
-	"ref": "1494c161cfa8e53492bd681dae3123ac6479cfb5",
+	"ref": "2f3bc28a8c518fd633712e6c4cc093fa39845b3e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -27507,7 +27507,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "If `true`, drops a random item from the tag. \\\nIf `false`, drops all items in the tag.",
+					"desc": "If `true`, each of the items becomes an independent entry in the pool with the same `weight` and `quality`. \\\nIf `false`, drops all items in the tag.",
 					"key": "expand",
 					"type": {
 						"kind": "boolean"
@@ -27520,7 +27520,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "If `true`, randomly selects an item to drop. \\\nIf `false`, drops all items. \\\nDefaults to `false`.",
+					"desc": "If `true`, each of the items becomes an independent entry in the pool with the same `weight` and `quality`. \\\nIf `false`, drops all items in the tag. \\\nDefaults to `false`.",
 					"key": "expand",
 					"type": {
 						"kind": "boolean"
@@ -35868,7 +35868,7 @@
 							}
 						}
 					],
-					"desc": "If `true`, randomly selects a loot table to drop. \\\nIf `false`, drops all loot tables. \\\nDefaults to `false`.",
+					"desc": "If `true`, each of the loot tables becomes an independent entry in the pool with the same `weight` and `quality`. \\\nIf `false`, drops all loot tables. \\\nDefaults to `false`.",
 					"key": "expand",
 					"type": {
 						"kind": "boolean"
@@ -36079,7 +36079,7 @@
 						"fields": [
 							{
 								"kind": "pair",
-								"desc": "If `true`, drops a random item from the tag. \\\nIf `false`, drops all items in the tag.",
+								"desc": "If `true`, each of the items becomes an independent entry in the pool with the same `weight` and `quality`. \\\nIf `false`, drops all items in the tag.",
 								"key": "expand",
 								"type": {
 									"kind": "boolean"
@@ -36107,7 +36107,7 @@
 						"fields": [
 							{
 								"kind": "pair",
-								"desc": "If `true`, randomly selects an item to drop. \\\nIf `false`, drops all items. \\\nDefaults to `false`.",
+								"desc": "If `true`, each of the items becomes an independent entry in the pool with the same `weight` and `quality`. \\\nIf `false`, drops all items in the tag. \\\nDefaults to `false`.",
 								"key": "expand",
 								"type": {
 									"kind": "boolean"
