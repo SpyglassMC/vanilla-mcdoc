@@ -21,7 +21,7 @@ type TextObject = (
 		translate: #[translation_key] string,
 		#[since="1.19.4"]
 		fallback?: #[translation_value] string,
-		with?: [Text] @ 1..,
+		with?: [TranslationArg] @ 1..,
 		#[since="1.20.3"]
 		type?: "translatable",
 		...TextBase,
@@ -96,6 +96,17 @@ type TextObject = (
 		type?: "object",
 		...TextBase,
 	} |
+)
+
+type TranslationArg = (
+	Text |
+	boolean |
+	#[since="1.21.5"] byte |
+	#[since="1.21.5"] short |
+	int |
+	#[since="1.21.5"] long |
+	float |
+	#[since="1.21.5"] double |
 )
 
 struct ObjectTextConfig {
