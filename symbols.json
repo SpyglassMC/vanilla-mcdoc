@@ -1,5 +1,5 @@
 {
-	"ref": "2f3bc28a8c518fd633712e6c4cc093fa39845b3e",
+	"ref": "4ca198f666d23aebd674ef3ee6a056db8e0f2bc7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -82730,7 +82730,7 @@
 								"kind": "list",
 								"item": {
 									"kind": "reference",
-									"path": "::java::util::text::Text"
+									"path": "::java::util::text::TranslationArg"
 								},
 								"lengthRange": {
 									"kind": 0,
@@ -83743,7 +83743,7 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::util::text::Text"
+							"path": "::java::util::text::TranslationArg"
 						},
 						"lengthRange": {
 							"kind": 0,
@@ -83782,6 +83782,84 @@
 						"kind": "reference",
 						"path": "::java::util::text::TextBase"
 					}
+				}
+			]
+		},
+		"::java::util::text::TranslationArg": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::util::text::Text"
+				},
+				{
+					"kind": "boolean"
+				},
+				{
+					"kind": "byte",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "short",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "int"
+				},
+				{
+					"kind": "long",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "float"
+				},
+				{
+					"kind": "double",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.5"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
