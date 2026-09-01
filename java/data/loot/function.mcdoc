@@ -11,7 +11,7 @@ use super::super::util::IntLimiter
 use super::super::util::NbtProvider
 use ::java::data::advancement::predicate::ItemPredicate
 use ::java::data::item_modifier::ItemModifier
-use ::java::data::number_provider::NumberProviderRef
+use ::java::data::number_provider::LegacyNumberProvider
 use ::java::data::predicate::PredicateRef
 use ::java::util::slot::EquipmentSlotGroup
 use ::java::util::attribute::AttributeOperation
@@ -171,7 +171,7 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 	/// The levels to enchant this item with.
 	levels: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] NumberProviderRef |
+		#[since="1.17"] LegacyNumberProvider |
 	),
 	/// The allowed enchantments. If omitted, all enchantments applicable to the item are possible.
 	#[since="1.21"]
@@ -329,7 +329,7 @@ struct EnchantedCountBase {
 	/// If the number is fractional the result is rounded *after* the number was multiplied by the looting level.
 	count: (
 		#[until="1.17"] MinMaxBounds<float> |
-		#[since="1.17"] NumberProviderRef |
+		#[since="1.17"] LegacyNumberProvider |
 	),
 	/// Limits the count of the item to a range.
 	limit?: int,
@@ -393,7 +393,7 @@ struct AttributeModifier {
 	},
 	amount: (
 		#[until="1.17"] RandomValueBounds |
-		#[since="1.17"] NumberProviderRef |
+		#[since="1.17"] LegacyNumberProvider |
 	),
 	/// The operation used for this modifier.
 	operation: (
@@ -503,7 +503,7 @@ dispatch minecraft:loot_function[set_item] to struct SetItem {
 dispatch minecraft:loot_function[set_count] to struct SetCount {
 	count: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] NumberProviderRef |
+		#[since="1.17"] LegacyNumberProvider |
 	),
 	/// Whether to add to the existing count. Defaults to `false`.
 	#[since="1.17"]
@@ -517,7 +517,7 @@ dispatch minecraft:loot_function[set_damage] to struct SetDamage {
 	/// Clamps to a float between `-1` & `1` (inclusive).
 	damage: (
 		#[until="1.17"] RandomValueBounds |
-		#[since="1.17"] NumberProviderRef |
+		#[since="1.17"] LegacyNumberProvider |
 	),
 	/// Whether to add to the existing damage of the item. Defaults to `false`.
 	#[since="1.17"]
@@ -530,7 +530,7 @@ dispatch minecraft:loot_function[set_enchantments] to struct SetEnchantments {
 	/// A map of enchantments to levels. Setting an enchantment to `0` removes it from the item. \
 	/// Each level is clamped to a positive integer.
 	enchantments: struct {
-		[#[id="enchantment"] string]: NumberProviderRef,
+		[#[id="enchantment"] string]: LegacyNumberProvider,
 	},
 	/// Whether to add to the level of each enchantment. Defaults to `false`.
 	add?: boolean,
@@ -621,11 +621,11 @@ dispatch minecraft:loot_function[set_custom_model_data] to struct SetCustomModel
 	/// Used by the `custom_model_data` model overrides predicate.
 	/// Has certain restrictions due to float conversion.
 	#[until="1.21.4"]
-	value: NumberProviderRef,
+	value: LegacyNumberProvider,
 	#[since="1.21.4"]
 	...struct {
 		floats?: struct CustomModelDataFloats {
-			values: [NumberProviderRef],
+			values: [LegacyNumberProvider],
 			...ListOperation,
 		},
 		flags?: struct CustomModelDataFlags {
@@ -637,7 +637,7 @@ dispatch minecraft:loot_function[set_custom_model_data] to struct SetCustomModel
 			...ListOperation,
 		},
 		colors?: struct CustomModelDataColors {
-			values: [(NumberProviderRef | RGB)],
+			values: [(LegacyNumberProvider | RGB)],
 			...ListOperation,
 		},
 	},
@@ -656,7 +656,7 @@ dispatch minecraft:loot_function[set_random_dyes] to struct SetRandomDyes {
 	/// Applies specified number of random dyes to the item. \
 	/// For example, one possible outcome of `"number_of_dyes": 2` is `#2C3065`, which is the combination of a blue dye and a black dye. \
 	/// The same dye color can be selected multiple times.
-	number_of_dyes: NumberProviderRef,
+	number_of_dyes: LegacyNumberProvider,
 	...Conditions,
 }
 
@@ -749,7 +749,7 @@ dispatch minecraft:loot_function[toggle_tooltips] to struct ToggleTooltips {
 
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_ominous_bottle_amplifier] to struct SetOminousBottleAmplifier {
-	amplifier: NumberProviderRef,
+	amplifier: LegacyNumberProvider,
 	...Conditions,
 }
 
@@ -800,6 +800,6 @@ struct StewEffect {
 	/// The duration of this stew effect, in seconds.
 	duration: (
 		#[until="1.17"] MinMaxBounds<float> |
-		#[since="1.17"] NumberProviderRef |
+		#[since="1.17"] LegacyNumberProvider |
 	),
 }

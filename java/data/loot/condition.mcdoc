@@ -5,7 +5,7 @@ use ::java::data::advancement::predicate::EntityPredicate
 use ::java::data::advancement::predicate::LocationPredicate
 use ::java::data::advancement::predicate::DamageSourcePredicate
 use ::java::data::enchantment::LevelBasedValue
-use ::java::data::number_provider::NumberProviderRef
+use ::java::data::number_provider::LegacyNumberProvider
 use ::java::data::predicate::PredicateRef
 use ::java::data::predicate::PredicateListRef
 use ::java::data::util::IntRange
@@ -106,7 +106,7 @@ dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
 	/// Clamps to a float between `0` & `1` (inclusive).
 	chance: (
 		#[until="1.21"] float @ 0..1 |
-		#[since="1.21"] NumberProviderRef |
+		#[since="1.21"] LegacyNumberProvider |
 	),
 }
 
@@ -154,7 +154,7 @@ dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
 #[since="1.17"]
 dispatch minecraft:loot_condition[value_check] to struct ValueCheck {
 	/// Clamps to an integer.
-	value: NumberProviderRef,
+	value: LegacyNumberProvider,
 	/// Passes when `value` is within this range.
 	range: IntRange,
 }

@@ -1,7 +1,7 @@
 use ::java::util::attribute::AttributeName
 use ::java::util::attribute::LegacyOperation
 use ::java::util::slot::EquipmentSlotGroup
-use ::java::data::number_provider::NumberProvider
+use ::java::data::number_provider::LegacyNumberProvider
 use ::java::world::block::BlockEntityData
 use ::java::world::component::DataComponentPatch
 use ::java::world::component::DataComponentExactPredicate
@@ -47,7 +47,7 @@ struct TradeCost {
 	...SingleItemOfComponent<DataComponentExactPredicate>,
 	/// Number of items in the stack.
 	/// Defaults to `1`.
-	count?: NumberProvider,
+	count?: LegacyNumberProvider,
 }
 
 // Until 1.20.5

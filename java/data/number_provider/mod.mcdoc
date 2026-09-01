@@ -1,0 +1,1 @@
+type LegacyNumberProvider = legacy::LegacyNumberProvider

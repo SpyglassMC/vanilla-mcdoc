@@ -1,5 +1,5 @@
 use ::java::data::item_modifier::ItemModifier
-use ::java::data::number_provider::NumberProviderRef
+use ::java::data::number_provider::LegacyNumberProvider
 use ::java::data::predicate::PredicateRef
 use ::java::data::slot_source::SlotSource
 use ::java::util::registry_ref::ItemListRef
@@ -101,11 +101,11 @@ type ItemStackTarget = "tool"
 struct LootPool {
 	rolls: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] NumberProviderRef |
+		#[since="1.17"] LegacyNumberProvider |
 	),
 	bonus_rolls?: (
 		#[until="1.17"] MinMaxBounds<float> |
-		#[since="1.17"] NumberProviderRef |
+		#[since="1.17"] LegacyNumberProvider |
 	),
 	entries: [LootPoolEntry],
 	#[until="26.3"] ...struct {

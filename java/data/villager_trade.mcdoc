@@ -1,4 +1,4 @@
-use ::java::data::number_provider::NumberProvider
+use ::java::data::number_provider::LegacyNumberProvider
 use ::java::data::predicate::Predicate
 use ::java::data::item_modifier::ItemModifier
 use ::java::world::item::ItemStackTemplate
@@ -30,13 +30,13 @@ dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	given_item_modifier?: ItemModifier,
 	/// Maximum number of uses of this trade before the villager has to restock. Defaults to `4`. \
 	/// Clamps to a positive integer.
-	max_uses?: NumberProvider,
+	max_uses?: LegacyNumberProvider,
 	/// How much demand & reputation each affect the price, is serialized as `priceMultiplier`. Defaults to `0.0`. \
 	/// Clamps to a non-negative float.
-	reputation_discount?: NumberProvider,
+	reputation_discount?: LegacyNumberProvider,
 	/// Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`. \
 	/// Clamps to a non-negative integer.
-	xp?: NumberProvider,
+	xp?: LegacyNumberProvider,
 	/// Check whether the trade should be offered by the merchant. \
 	/// Does **not** support the `reference` predicate.
 	merchant_predicate?: Predicate,
