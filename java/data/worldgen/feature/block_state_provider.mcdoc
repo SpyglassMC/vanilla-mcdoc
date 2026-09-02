@@ -18,12 +18,11 @@ struct BaseNoiseProvider {
 }
 
 #[since="26.3"]
-dispatch minecraft:block_state_provider[copy_properties_provider] to struct CopyPropertiesProvider {
+dispatch minecraft:block_state_provider[copy_properties] to struct CopyPropertiesProvider {
 	source: BlockStateProvider,
 }
 
-#[since="1.18"]
-dispatch minecraft:block_state_provider[dual_noise_provider] to struct DualNoiseProvider {
+struct DualNoiseProvider {
 	...BaseNoiseProvider,
 	variety: InclusiveRange<int @ 1..64>,
 	slow_noise: NoiseParameters,
@@ -31,8 +30,13 @@ dispatch minecraft:block_state_provider[dual_noise_provider] to struct DualNoise
 	states: [BlockState],
 }
 
-#[since="1.18"]
-dispatch minecraft:block_state_provider[noise_threshold_provider] to struct NoiseThresholdProvider {
+#[since="1.18"] #[until="26.3"]
+dispatch minecraft:block_state_provider[dual_noise_provider] to DualNoiseProvider
+
+#[since="26.3"]
+dispatch minecraft:block_state_provider[dual_noise] to DualNoiseProvider
+
+struct NoiseThresholdProvider {
 	...BaseNoiseProvider,
 	threshold: float @ -1..1,
 	high_chance: float @ 0..1,
@@ -41,25 +45,41 @@ dispatch minecraft:block_state_provider[noise_threshold_provider] to struct Nois
 	high_states: [BlockState],
 }
 
-#[since="1.18"]
-dispatch minecraft:block_state_provider[noise_provider] to struct NoiseProvider {
+#[since="1.18"] #[until="26.3"]
+dispatch minecraft:block_state_provider[noise_threshold_provider] to NoiseThresholdProvider
+
+#[since="26.3"]
+dispatch minecraft:block_state_provider[noise_threshold] to NoiseThresholdProvider
+
+struct NoiseProvider {
 	...BaseNoiseProvider,
 	states: [BlockState],
 }
 
-#[since="1.17"]
-dispatch minecraft:block_state_provider[randomized_int_state_provider] to struct RandomizedIntStateProvider {
+#[since="1.18"] #[until="26.3"]
+dispatch minecraft:block_state_provider[noise_provider] to NoiseProvider
+
+#[since="26.3"]
+dispatch minecraft:block_state_provider[noise] to NoiseProvider
+
+struct RandomizedIntStateProvider {
 	property: string,
 	values: IntProvider<int>,
 	source: BlockStateProvider,
 }
 
+#[since="1.17"] #[until="26.3"]
+dispatch minecraft:block_state_provider[randomized_int_state_provider] to RandomizedIntStateProvider
+
 #[since="26.3"]
-dispatch minecraft:block_state_provider[random_block_provider] to struct RandomBlockStateProvider {
+dispatch minecraft:block_state_provider[randomized_int_state] to RandomizedIntStateProvider
+
+#[since="26.3"]
+dispatch minecraft:block_state_provider[random_block] to struct RandomBlockStateProvider {
 	blocks: (#[id=(registry="block",tags="allowed")] string | [#[id="block"] string]),
 }
 
-dispatch minecraft:block_state_provider[rotated_block_provider] to struct RotatedStateProvider {
+struct RotatedStateProvider {
 	state: (
 		#[until="26.3"] BlockState |
 		#[since="26.3"] BlockStateProvider |
@@ -68,13 +88,34 @@ dispatch minecraft:block_state_provider[rotated_block_provider] to struct Rotate
 	direction?: Direction,
 }
 
-dispatch minecraft:block_state_provider[simple_state_provider] to struct SimpleStateProvider {
+#[until="26.3"]
+dispatch minecraft:block_state_provider[rotated_block_provider] to RotatedStateProvider
+
+#[since="26.3"]
+dispatch minecraft:block_state_provider[rotated_block] to RotatedStateProvider
+
+struct SimpleStateProvider {
 	state: BlockState,
 }
 
-#[since="26.1"]
+#[until="26.3"]
+dispatch minecraft:block_state_provider[simple_state_provider] to SimpleStateProvider
+
+#[since="26.3"]
+dispatch minecraft:block_state_provider[simple_state] to SimpleStateProvider
+
+#[since="26.1"] #[until="26.3"]
 dispatch minecraft:block_state_provider[rule_based_state_provider] to RuleBasedBlockStateProvider
 
-dispatch minecraft:block_state_provider[weighted_state_provider] to struct WeightedBlockStateProvider {
+#[since="26.3"]
+dispatch minecraft:block_state_provider[rule_based_state] to RuleBasedBlockStateProvider
+
+struct WeightedBlockStateProvider {
 	entries: NonEmptyWeightedList<BlockState>,
 }
+
+#[until="26.3"]
+dispatch minecraft:block_state_provider[weighted_state_provider] to WeightedBlockStateProvider
+
+#[since="26.3"]
+dispatch minecraft:block_state_provider[weighted_state] to WeightedBlockStateProvider
