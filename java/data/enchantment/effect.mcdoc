@@ -2,7 +2,7 @@ use ::java::util::attribute::AttributeOperation
 use ::java::util::particle::Particle
 use ::java::data::util::SoundEventRef
 use ::java::data::worldgen::FloatProvider
-use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
+use ::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef
 use ::java::data::worldgen::feature::block_predicate::BlockPredicate
 use super::LevelBasedValue
 
@@ -223,7 +223,7 @@ dispatch minecraft:entity_effect[play_sound] to PlaySoundEntityEffect
 dispatch minecraft:location_based_effect[play_sound] to PlaySoundEntityEffect
 
 struct ReplaceBlockEntityEffect {
-	block_state: BlockStateProvider,
+	block_state: BlockStateProviderRef,
 	/// Relative coordinates to offset the placed block by. Defaults to `[0, 0, 0]`.
 	offset?: [int] @ 3,
 	/// If omitted, all block types are replaced.

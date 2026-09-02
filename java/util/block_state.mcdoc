@@ -4,11 +4,14 @@ type BlockState = (
 		Properties?: mcdoc:block_states[[Name]],
 	} |
 	#[since="26.3"] #[id="block"] string |
-	#[since="26.3"] struct {
-		id: #[id="block"] string,
-		properties?: mcdoc:block_states[[id]],
-	} |
+	#[since="26.3"] FullBlockState |
 )
+
+// Since 26.3
+struct FullBlockState {
+	id: #[id="block"] string,
+	properties?: mcdoc:block_states[[id]],
+}
 
 dispatch mcdoc:block_states[%unknown,%none] to struct {
 	[string]: string,

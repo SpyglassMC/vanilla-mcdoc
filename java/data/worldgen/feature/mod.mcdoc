@@ -1,5 +1,5 @@
 use block_predicate::BlockPredicate
-use block_state_provider::BlockStateProvider
+use block_state_provider::BlockStateProviderRef
 use decorator::ConfiguredDecorator
 use placement::PlacedFeatureRef
 use placement::PlacedFeatureListRef
@@ -57,7 +57,7 @@ dispatch minecraft:feature_config[basalt_columns] to ColumnsConfig
 #[since="26.3"]
 dispatch minecraft:feature_config[stepped_column_cluster] to struct ColumnsConfig {
 	#[since="26.3"]
-	block: BlockStateProvider,
+	block: BlockStateProviderRef,
 	#[since="26.3"]
 	can_replace: BlockPredicate,
 	#[since="26.3"]
@@ -92,11 +92,11 @@ dispatch minecraft:feature_config[block_column] to struct BlockColumnConfig {
 
 struct BlockColumnLayer {
 	height: IntProvider<int @ 0..>,
-	provider: BlockStateProvider,
+	provider: BlockStateProviderRef,
 }
 
 dispatch minecraft:feature_config[block_pile] to struct BlockPileConfig {
-	state_provider: BlockStateProvider,
+	state_provider: BlockStateProviderRef,
 }
 
 dispatch minecraft:feature_config[coral_claw, coral_tree] to struct CoralConfig {
@@ -129,7 +129,7 @@ dispatch minecraft:feature_config[disk,ice_patch] to struct DiskConfig {
 	#[since="1.19"]
 	state_provider: (
 		#[until="26.1"] RuleBasedBlockStateProvider |
-		#[since="26.1"] BlockStateProvider |
+		#[since="26.1"] BlockStateProviderRef |
 	),
 	radius: (
 		#[until="1.17"] UniformInt<int @ 0..4, int @ 0..4> |
@@ -144,14 +144,14 @@ dispatch minecraft:feature_config[disk,ice_patch] to struct DiskConfig {
 
 struct RuleBasedBlockStateProvider {
 	#[until="26.1"] ... struct {
-		fallback: BlockStateProvider,
+		fallback: BlockStateProviderRef,
 	},
 	#[since="26.1"] ... struct {
-		fallback?: BlockStateProvider,
+		fallback?: BlockStateProviderRef,
 	},
 	rules: [struct BlockStateRuleProviderEntry {
 		if_true: BlockPredicate,
-		then: BlockStateProvider,
+		then: BlockStateProviderRef,
 	}]
 }
 
@@ -247,7 +247,7 @@ dispatch minecraft:feature_config[flower,no_bonemeal_flower,random_patch] to str
 			#[until="1.17"] int |
 			#[since="1.17"] int @ 0.. |
 		),
-		state_provider: BlockStateProvider,
+		state_provider: BlockStateProviderRef,
 		block_placer: BlockPlacer,
 		whitelist: [BlockState],
 		blacklist: [BlockState],
@@ -320,11 +320,11 @@ dispatch minecraft:feature_config[geode] to struct GeodeConfig {
 }
 
 struct GeodeBlockSettings {
-	filling_provider: BlockStateProvider,
-	inner_layer_provider: BlockStateProvider,
-	alternate_inner_layer_provider: BlockStateProvider,
-	middle_layer_provider: BlockStateProvider,
-	outer_layer_provider: BlockStateProvider,
+	filling_provider: BlockStateProviderRef,
+	inner_layer_provider: BlockStateProviderRef,
+	alternate_inner_layer_provider: BlockStateProviderRef,
+	middle_layer_provider: BlockStateProviderRef,
+	outer_layer_provider: BlockStateProviderRef,
 	inner_placements: [BlockState] @ 1..,
 	/// Blocks that will not be replaced by the geode.
 	cannot_replace: (
@@ -385,8 +385,8 @@ dispatch minecraft:feature_config[growing_plant] to struct GrowingPlantConfig {
 	direction: Direction,
 	allow_water: boolean,
 	height_distribution: [GrowingPlantHeight],
-	body_provider: BlockStateProvider,
-	head_provider: BlockStateProvider,
+	body_provider: BlockStateProviderRef,
+	head_provider: BlockStateProviderRef,
 }
 
 struct GrowingPlantHeight {
@@ -395,8 +395,8 @@ struct GrowingPlantHeight {
 }
 
 dispatch minecraft:feature_config[huge_brown_mushroom,huge_red_mushroom] to struct HugeMushroomConfig {
-	cap_provider: BlockStateProvider,
-	stem_provider: BlockStateProvider,
+	cap_provider: BlockStateProviderRef,
+	stem_provider: BlockStateProviderRef,
 	foliage_radius: int,
 	#[since="26.1"]
 	can_place_on: BlockPredicate,
@@ -420,9 +420,9 @@ dispatch minecraft:feature_config[lake] to struct LakeConfig {
 	#[until="1.18"]
 	state: BlockState,
 	#[since="1.18"]
-	fluid: BlockStateProvider,
+	fluid: BlockStateProviderRef,
 	#[since="1.18"]
-	barrier: BlockStateProvider,
+	barrier: BlockStateProviderRef,
 	#[since="26.2"]
 	can_place_feature: BlockPredicate,
 	#[since="26.2"]
@@ -451,7 +451,7 @@ dispatch minecraft:feature_config[large_dripstone] to struct LargeDripstoneConfi
 
 #[until="26.3"]
 dispatch minecraft:feature_config[nether_forest_vegetation] to struct NetherForestVegetationConfig {
-	state_provider: BlockStateProvider,
+	state_provider: BlockStateProviderRef,
 	#[since="1.18"]
 	...struct ModernNetherVegetationConfig {
 		spread_width: int @ 1..,
@@ -506,7 +506,7 @@ dispatch minecraft:feature_config[speleothem] to struct SpeleothemConfig {
 
 #[since="26.3"]
 dispatch minecraft:feature_config[projected_random_patchy_square] to struct ProjectedSquareConfig {
-	block: BlockStateProvider,
+	block: BlockStateProviderRef,
 	project_through: BlockPredicate,
 	size: IntProvider<int @ 1..16>,
 	max_projection_height: int @ 0..,
@@ -519,7 +519,7 @@ dispatch minecraft:feature_config[random_boolean_selector] to struct RandomBoole
 
 #[since="26.3"]
 dispatch minecraft:feature_config[random_neighbor_spread] to struct RandomNeighborSpreadConfig {
-	block: BlockStateProvider,
+	block: BlockStateProviderRef,
 	accepted_neighbors: (#[id=(registry="block",tags="allowed")] string | [#[id="block"] string]),
 	can_replace: BlockPredicate,
 	attempts: IntProvider<int @ 1..3000>,
@@ -561,8 +561,8 @@ dispatch minecraft:feature_config[root_system] to struct RootSystemConfig {
 		#[since="26.2"] #[id(registry="block",tags="allowed")] string |
 		#[since="26.2"] [#[id="block"] string] |
 	),
-	root_state_provider: BlockStateProvider,
-	hanging_root_state_provider: BlockStateProvider,
+	root_state_provider: BlockStateProviderRef,
+	hanging_root_state_provider: BlockStateProviderRef,
 	#[since="1.18"]
 	allowed_tree_position: BlockPredicate,
 	feature: FeatureRef
@@ -606,7 +606,7 @@ dispatch minecraft:feature_config[overlay] to struct OverlayConfig {
 dispatch minecraft:feature_config[simple_block] to struct SimpleBlockConfig {
 	to_place: (
 		#[until="1.17"] BlockState |
-		#[since="1.17"] BlockStateProvider |
+		#[since="1.17"] BlockStateProviderRef |
 	),
 	/// Whether to schedule a block update. Defaults to `false`.
 	#[since="1.21.4"]
@@ -634,9 +634,8 @@ dispatch minecraft:feature_config[simple_random_selector] to struct SimpleRandom
 
 #[since="26.3"]
 dispatch minecraft:feature_config[single_block_pillar] to struct SingleBlockPillarConfig {
-	block: BlockStateProvider,
+	block: BlockStateProviderRef,
 	// Undocumented in 26.3-snapshot-2 changelog: this field is optional
-	// TODO: track if this is intentional
 	/// Defaults to "always true".
 	can_replace?: BlockPredicate,
 	direction: VerticalDirection,
@@ -715,7 +714,7 @@ dispatch minecraft:feature_config[vegetation_patch,waterlogged_vegetation_patch]
 		#[since="26.2"] #[id(registry="block",tags="allowed")] string |
 		#[since="26.2"] [#[id="block"] string] |
 	),
-	ground_state: BlockStateProvider,
+	ground_state: BlockStateProviderRef,
 	vegetation_feature: FeatureRef,
 }
 

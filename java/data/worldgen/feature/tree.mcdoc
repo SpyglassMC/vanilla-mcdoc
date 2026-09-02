@@ -1,6 +1,6 @@
 use super::super::HeightmapType
 use super::super::UniformInt
-use super::block_state_provider::BlockStateProvider
+use super::block_state_provider::BlockStateProviderRef
 use super::RuleBasedBlockStateProvider
 use super::super::IntProvider
 use super::super::UniformIntProvider
@@ -16,20 +16,20 @@ dispatch minecraft:feature_config[tree] to struct TreeConfig {
 	#[since="1.17"] #[until="26.1"]
 	force_dirt?: boolean,
 	#[since="1.17"] #[until="26.1"]
-	dirt_provider: BlockStateProvider,
+	dirt_provider: BlockStateProviderRef,
 	#[since="26.1"] #[until="26.2"] ...struct {
-		below_trunk_provider?: BlockStateProvider,
+		below_trunk_provider?: BlockStateProviderRef,
 	},
 	#[since="26.2"] ...struct {
-		below_trunk_provider: BlockStateProvider,
+		below_trunk_provider: BlockStateProviderRef,
 	},
 	#[since="1.17"] #[until="1.18"]
-	sapling_provider: BlockStateProvider,
-	trunk_provider: BlockStateProvider,
+	sapling_provider: BlockStateProviderRef,
+	trunk_provider: BlockStateProviderRef,
 	#[until="1.17"]
-	leaves_provider: BlockStateProvider,
+	leaves_provider: BlockStateProviderRef,
 	#[since="1.17"]
-	foliage_provider: BlockStateProvider,
+	foliage_provider: BlockStateProviderRef,
 	#[since="1.19"]
 	root_placer?: RootPlacer,
 	trunk_placer: TrunkPlacer,
@@ -39,7 +39,7 @@ dispatch minecraft:feature_config[tree] to struct TreeConfig {
 
 #[since="1.21.5"]
 dispatch minecraft:feature_config[fallen_tree] to struct FallenTreeConfig {
-	trunk_provider: BlockStateProvider,
+	trunk_provider: BlockStateProviderRef,
 	log_length: IntProvider<int @ 0..16>,
 	stump_decorators: [TreeDecorator],
 	log_decorators: [TreeDecorator],
@@ -68,14 +68,14 @@ dispatch minecraft:feature_size[three_layers_feature_size] to struct ThreeLayers
 
 struct RootPlacer {
 	type: #[id="worldgen/root_placer_type"] string,
-	root_provider: BlockStateProvider,
+	root_provider: BlockStateProviderRef,
 	trunk_offset_y: IntProvider<int>,
 	above_root_placement?: AboveRootPlacement,
 	...minecraft:root_placer[[type]],
 }
 
 struct AboveRootPlacement {
-	above_root_provider: BlockStateProvider,
+	above_root_provider: BlockStateProviderRef,
 	above_root_placement_chance: float @ 0..1,
 }
 
@@ -95,7 +95,7 @@ struct MangroveRootPlacement {
 		[#[id="block"] string] |
 		#[id(registry="block",tags="allowed")] string |
 	),
-	muddy_roots_provider: BlockStateProvider,
+	muddy_roots_provider: BlockStateProviderRef,
 }
 
 struct TrunkPlacer {
@@ -217,7 +217,7 @@ struct TreeDecorator {
 }
 
 dispatch minecraft:tree_decorator[alter_ground] to struct AlterGroundTreeDecorator {
-	provider: BlockStateProvider,
+	provider: BlockStateProviderRef,
 }
 
 dispatch minecraft:tree_decorator[attached_to_leaves] to struct AttachedToLeavesTreeDecorator {
@@ -225,7 +225,7 @@ dispatch minecraft:tree_decorator[attached_to_leaves] to struct AttachedToLeaves
 	exclusion_radius_xz: int @ 0..16,
 	exclusion_radius_y: int @ 0..16,
 	required_empty_blocks: int @ 1..16,
-	block_provider: BlockStateProvider,
+	block_provider: BlockStateProviderRef,
 	directions: [Direction] @ 1..,
 }
 
@@ -263,13 +263,13 @@ dispatch minecraft:tree_decorator[place_on_ground] to struct PlaceOnGroundTreeDe
 	/// Defaults to `1`.
 	height?: int @ 0..,
 	/// The block to place on the ground.
-	block_state_provider: BlockStateProvider,
+	block_state_provider: BlockStateProviderRef,
 }
 
 #[since="1.21.5"]
 dispatch minecraft:tree_decorator[attached_to_logs] to struct AttachedToLogsTreeDecorator {
 	probability: float @ 0..1,
-	block_provider: BlockStateProvider,
+	block_provider: BlockStateProviderRef,
 	directions: [Direction] @ 1..,
 }
 

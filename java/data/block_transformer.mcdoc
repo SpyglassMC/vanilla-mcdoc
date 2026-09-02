@@ -1,4 +1,4 @@
-use ::java::data::worldgen::feature::block_state_provider::BlockStateProvider
+use ::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef
 use ::java::data::util::SoundEventRef
 use ::java::util::direction::Direction
 
@@ -7,7 +7,7 @@ dispatch minecraft:resource[block_transformer] to [BlockTransformData] @ 1..200
 
 struct BlockTransformData {
 	/// If the provider returns no result, the next transformer will be attempted.
-	block_state_provider: BlockStateProvider,
+	block_state_provider: BlockStateProviderRef,
 	/// Defaults to not playing sound.
 	sound?: SoundEventRef,
 	/// Defaults to `none`.
