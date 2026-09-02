@@ -1,13 +1,16 @@
-use ::java::data::number_provider::NumberProvider
+use ::java::data::number_provider::LegacyNumberProvider
 
+#[since="26.1"]
 dispatch minecraft:resource[trade_set] to struct TradeSet {
 	/// Possible trade generators.
-	trades: (#[id(registry="villager_trade",tags="allowed")] string | [#[id="villager_trade"] string]),
-	/// Amount of trades to be generated. \
-	/// Clamps to an integer of at least `1`.
-	amount: NumberProvider,
+	trades: (#[id(registry="villager_trade", tags="allowed")] string | [#[id="villager_trade"] string]),
+	/// Amount of trades to be generated.
+	amount: (
+		#[until="26.3"] LegacyNumberProvider |
+		#[since="26.3"] minecraft:resource[context_int_provider]
+	),
 	/// Whether the trade set can use the same generator multiple times and generate duplicate trades.
 	/// Defaults to `false`.
 	allow_duplicates?: boolean,
-	random_sequence?: #[id(registry="random_sequence",definition=true)] string,
+	random_sequence?: #[id(registry="random_sequence", definition=true)] string,
 }

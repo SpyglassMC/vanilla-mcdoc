@@ -1,24 +1,12 @@
 use super::loot::function::CopyNameSource
 use super::loot::EntityTarget
 use super::loot::BlockEntityTarget
-use ::java::data::number_provider::NumberProviderRef
 
 type MinMaxBounds<T> = (
 	T |
 	struct {
 		min?: T,
 		max?: T,
-	} |
-)
-
-// Since 1.17
-type IntRange = (
-	int |
-	struct {
-		/// Clamps to an integer.
-		min?: NumberProviderRef,
-		/// Clamps to an integer.
-		max?: NumberProviderRef,
 	} |
 )
 

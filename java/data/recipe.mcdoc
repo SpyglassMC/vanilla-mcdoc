@@ -121,7 +121,16 @@ dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking]
 		#[since="26.1"] ItemStackTemplate
 	),
 	experience?: float,
-	cookingtime?: int,
+	#[until="26.3"]
+	...struct {
+		/// Defaults to `200`.
+		cookingtime?: int,
+	},
+	#[since="26.3"]
+	...struct {
+		/// Hint: The "Normal" value for this is `200`.
+		cookingtime: int,
+	},
 }
 
 dispatch minecraft:recipe_serializer[stonecutting] to struct Stonecutting {

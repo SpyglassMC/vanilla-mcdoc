@@ -1,14 +1,16 @@
 use super::EntityTarget
+use super::IntRange
 use ::java::data::advancement::predicate::BlockPredicate
 use ::java::data::advancement::predicate::ItemPredicate
 use ::java::data::advancement::predicate::EntityPredicate
 use ::java::data::advancement::predicate::LocationPredicate
 use ::java::data::advancement::predicate::DamageSourcePredicate
 use ::java::data::enchantment::LevelBasedValue
-use ::java::data::number_provider::NumberProviderRef
+use ::java::data::number_provider::FloatNumberProviderRef
+use ::java::data::number_provider::IntegerNumberProviderRef
+use ::java::data::number_provider::LegacyNumberProvider
 use ::java::data::predicate::PredicateRef
 use ::java::data::predicate::PredicateListRef
-use ::java::data::util::IntRange
 use ::java::data::util::RandomValueBounds
 use ::java::util::registry_ref::BlockListRef
 
@@ -103,10 +105,11 @@ dispatch minecraft:loot_condition[match_tool] to struct MatchTool {
 }
 
 dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
-	/// Clamps to a float between `0` & `1` (inclusive).
+	/// Accepts a value between `0` & `1` (inclusive).
 	chance: (
 		#[until="1.21"] float @ 0..1 |
-		#[since="1.21"] NumberProviderRef |
+		#[since="1.21"] #[until="26.3"] LegacyNumberProvider |
+		#[since="26.3"] FloatNumberProviderRef
 	),
 }
 
@@ -151,12 +154,32 @@ dispatch minecraft:loot_condition[time_check] to struct TimeCheck {
 	period?: long,
 }
 
-#[since="1.17"]
+#[since="1.17"] #[until="26.3"]
 dispatch minecraft:loot_condition[value_check] to struct ValueCheck {
 	/// Clamps to an integer.
-	value: NumberProviderRef,
+	value: LegacyNumberProvider,
 	/// Passes when `value` is within this range.
 	range: IntRange,
+}
+
+#[since="26.3"]
+dispatch minecraft:loot_condition[int_value_check] to struct IntegerValueCheck {
+	value: IntegerNumberProviderRef,
+	/// Passes when `value` is within this range.
+	range: IntRange,
+}
+
+#[since="26.3"]
+dispatch minecraft:loot_condition[float_value_check] to struct FloatValueCheck {
+	value: FloatNumberProviderRef,
+	/// Passes when `value` is within this range.
+	range: (
+		FloatNumberProviderRef |
+		struct {
+			min?: FloatNumberProviderRef,
+			max?: FloatNumberProviderRef,
+		} |
+	),
 }
 
 dispatch minecraft:loot_condition[weather_check] to struct WeatherCheck {

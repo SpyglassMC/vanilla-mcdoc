@@ -1,0 +1,4 @@
+type FloatNumberProviderRef = contextual_float::FloatNumberProviderRef
+type IntegerNumberProviderRef = contextual_integer::IntegerNumberProviderRef
+
+type LegacyNumberProvider = legacy::LegacyNumberProvider

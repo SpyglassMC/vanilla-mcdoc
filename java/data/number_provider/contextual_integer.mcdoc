@@ -1,0 +1,162 @@
+use ::java::data::predicate::PredicateRef
+use ::java::data::worldgen::attribute::NumericalEnvironmentAttribute
+use ::java::data::util::ScoreProvider
+use ::java::util::NonEmptyWeightedList
+
+#[since="26.3"]
+dispatch minecraft:resource[context_int_provider] to IntegerNumberProvider
+
+type IntegerNumberProvider = (
+	int |
+	struct {
+		type: #[id="context_int_provider_type"] string,
+		...minecraft:number_provider/integer[[type]],
+	} |
+)
+
+type IntegerNumberProviderRef = (
+	#[id="context_int_provider"] string |
+	IntegerNumberProvider |
+)
+
+struct SingleInputInteger {
+	input: IntegerNumberProviderRef,
+}
+
+struct MultiInputInteger {
+	inputs: [IntegerNumberProviderRef] @ 2..,
+}
+
+struct SidedInputsInteger {
+	left: IntegerNumberProviderRef,
+	right: IntegerNumberProviderRef,
+}
+
+// Basic Operations
+
+dispatch minecraft:number_provider/integer[add] to struct AddIntegerProvider {
+	...MultiInputInteger,
+}
+
+dispatch minecraft:number_provider/integer[sub] to struct SubtractIntegerProvider {
+	...SidedInputsInteger,
+}
+
+dispatch minecraft:number_provider/integer[mul] to struct MultiplyIntegerProvider {
+	...MultiInputInteger,
+}
+
+dispatch minecraft:number_provider/integer[abs] to struct AbsoluteIntegerProvider {
+	...IntegerNumberProviderRef,
+}
+
+dispatch minecraft:number_provider/integer[negate] to struct NegateIntegerProvider {
+	...IntegerNumberProviderRef,
+}
+
+// Integer Division
+
+/// Floors result (rounds towards `-∞`), usually more useful when dealing with coordinates.
+dispatch minecraft:number_provider/integer[floor_div] to struct FlooredDivideIntegerProvider {
+	...SidedInputsInteger,
+}
+
+/// Truncates result (rounds towards `0`), usually less useful when dealing with coordinates.
+dispatch minecraft:number_provider/integer[div] to struct DivideIntegerProvider {
+	...SidedInputsInteger,
+}
+
+/// Uses floored integer division, usually more useful when dealing with coordinates.
+///
+/// Solves for `x`: `(floor_div(left, right) * right) + x = left`
+///
+/// Example: `floor_mod(-5, 2)` = 1 (`(floor_div(-5, 2) * 2) + 1 = (-3 * 2) + 1 = -5`)
+dispatch minecraft:number_provider/integer[floor_mod] to struct FlooredModuloIntegerProvider {
+	...SidedInputsInteger,
+}
+
+/// Uses truncated integer division, usually less useful when dealing with coordinates.
+///
+/// Solves for `x`: `(div(left, right) * right) + x = left`
+///
+/// Example: `mod(-5, 2)` = -1 (`(div(-5, 2) * 2) + (-1) = (-2 * 2) + (-1) = -5`)
+dispatch minecraft:number_provider/integer[mod] to struct ModuloIntegerProvider {
+	...SidedInputsInteger,
+}
+
+// Composite Operations
+
+/// Division result is truncated (rounds towards `0`).
+dispatch minecraft:number_provider/integer[avg] to struct AverageIntegerProvider {
+	...MultiInputInteger,
+}
+
+/// Fails if the exponent is negative.
+dispatch minecraft:number_provider/integer[pow] to struct ExponentiateIntegerProvider {
+	base: IntegerNumberProviderRef,
+	exponent: IntegerNumberProviderRef,
+}
+
+// Conditonal Operations
+
+dispatch minecraft:number_provider/integer[max] to struct MaxOfSetIntegerProvider {
+	...IntegerNumberProviderRef,
+}
+
+dispatch minecraft:number_provider/integer[min] to struct MinOfSetIntegerProvider {
+	...IntegerNumberProviderRef,
+}
+
+// Domain-specific Conditional Providers
+
+dispatch minecraft:number_provider/integer[conditional] to struct ConditionalIntegerProvider {
+	conditions: PredicateRef,
+	on_true: IntegerNumberProviderRef,
+	/// Defaults to `0`.
+	on_false?: IntegerNumberProviderRef,
+}
+
+dispatch minecraft:number_provider/integer[number_dispatcher] to struct DispatchedIntegerProvider {
+	cases: [struct DispatcherCase {
+		condition: PredicateRef,
+		value: IntegerNumberProviderRef,
+	}],
+	/// Defaults to `0`.
+	default?: IntegerNumberProviderRef,
+}
+
+dispatch minecraft:number_provider/integer[weighted_list] to struct WeightedListIntegerProvider {
+	distribution: NonEmptyWeightedList<IntegerNumberProviderRef>
+}
+
+// Domain-specific Providers
+
+dispatch minecraft:number_provider/integer[constant] to struct ConstantIntegerProvider {
+	value: int,
+}
+
+/// Makes `n` random coin flips with probability of succeeding equal to `p`, then returns number of successes.
+dispatch minecraft:number_provider/integer[binomial] to struct BinomialRandomIntegerProvider {
+	/// Number of coin flips.
+	n: IntegerNumberProviderRef,
+	/// Probability of a single coin flip succeeding.
+	p: super::contextual_float::FloatNumberProviderRef,
+}
+
+dispatch minecraft:number_provider/integer[uniform] to struct RandomIntegerProvider {
+	min?: IntegerNumberProviderRef,
+	max?: IntegerNumberProviderRef,
+}
+
+dispatch minecraft:number_provider/integer[from_float] to super::contextual_float::SingleInputFloat
+
+dispatch minecraft:number_provider/integer[score] to struct ScoreIntegerProvider {
+	target: ScoreProvider,
+	score: #[objective] string,
+	/// Defaults to `0`.
+	fallback?: IntegerNumberProviderRef,
+}
+
+dispatch minecraft:number_provider/integer[environment_attribute] to struct EnvironmentAttributeIntegerProvider {
+	attribute: NumericalEnvironmentAttribute,
+}

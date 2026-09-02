@@ -1,5 +1,6 @@
 use ::java::world::item::ItemStack
-use ::java::world::item::ItemCost
+use ::java::world::item::ItemStackOfComponent
+use ::java::world::component::DataComponentExactPredicate
 
 struct VillagerBase {
 	/// Slots from 0 to 7.
@@ -130,6 +131,8 @@ struct Offers {
 	/// Trades it has to offer.
 	Recipes?: [Recipe],
 }
+
+type ItemCost = ItemStackOfComponent<DataComponentExactPredicate>
 
 struct Recipe {
 	/// Whether it should reward experience for using this trade. 
