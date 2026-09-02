@@ -21,7 +21,7 @@ type FloatRef = (
 )
 type AggregateOperands = (
 	// TODO: disallow empty tag
-	#[id=(registry="context_int_provider",tags="required")] string |
+	#[id=(registry="context_float_provider",tags="required")] string |
 	[FloatRef] @ 2.. |
 )
 
