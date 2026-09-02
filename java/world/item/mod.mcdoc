@@ -1,7 +1,6 @@
 use ::java::util::attribute::AttributeName
 use ::java::util::attribute::LegacyOperation
 use ::java::util::slot::EquipmentSlotGroup
-use ::java::data::number_provider::LegacyNumberProvider
 use ::java::world::block::BlockEntityData
 use ::java::world::component::DataComponentPatch
 use ::java::world::component::DataComponentExactPredicate

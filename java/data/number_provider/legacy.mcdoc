@@ -3,6 +3,7 @@ use ::java::data::worldgen::attribute::NumericalEnvironmentAttribute
 use ::java::data::util::ScoreProvider
 
 // Since 1.17
+// Until 26.3
 type LegacyNumberProvider = (
 	float |
 	struct {
@@ -12,8 +13,7 @@ type LegacyNumberProvider = (
 	} |
 )
 
-dispatch minecraft:number_provider[uniform] to UniformNumberProvider
-dispatch minecraft:number_provider[%none] to UniformNumberProvider
+dispatch minecraft:number_provider[uniform, %none] to UniformNumberProvider
 
 struct UniformNumberProvider {
 	min?: LegacyNumberProvider,
@@ -49,9 +49,7 @@ dispatch minecraft:number_provider[storage] to struct StorageNumberProvider {
 	path: #[nbt_path=minecraft:storage[[source]]] string,
 }
 
-struct LegacySumNumberProvider {
+#[since="26.1"]
+dispatch minecraft:number_provider[sum] to struct SumNumberProvider {
 	summands: [LegacyNumberProvider],
 }
-
-#[since="26.1"]
-dispatch minecraft:number_provider[sum] to LegacySumNumberProvider

@@ -2,6 +2,7 @@ use ::java::data::enchantment::LevelBasedValue
 use ::java::data::predicate::PredicateRef
 use ::java::data::worldgen::attribute::NumericalEnvironmentAttribute
 use ::java::util::NonEmptyWeightedList
+use super::contextual_integer::ContextIntRef
 
 #[since="26.3"]
 dispatch minecraft:resource[context_float_provider] to FloatNumberProvider
@@ -14,154 +15,76 @@ type FloatNumberProvider = (
 	} |
 )
 
-type FloatNumberProviderRef = (
+type ContextFloatRef = (
 	#[id="context_float_provider"] string |
 	FloatNumberProvider |
 )
+type ContextFloatListRef = (
+	FloatNumberProvider |
+	#[id=(registry="context_int_provider",tags="allowed")] string |
+	[ContextFloatRef] |
+)
 
-struct SingleInputFloat {
-	input: FloatNumberProviderRef,
-}
+type AggregateProvider = super::AggregateProvider<ContextFloatListRef>
+type BinaryProvider = super::BinaryProvider<ContextFloatRef>
+type ConditionalProvider = super::ConditionalProvider<ContextFloatRef>
+type ConstantValue = super::ConstantValue<float>
+type DispatcherProvider = super::DispatcherProvider<ContextFloatRef>
+type DistributionProvider = super::DistributionProvider<ContextFloatRef>
+type EnvironmentAttributeProvider = super::EnvironmentAttributeProvider<NumericalEnvironmentAttribute>
+type PowerProvider = super::PowerProvider<ContextFloatRef>
+type RangeProvider = super::PowerProvider<ContextFloatRef>
+type StorageValue = super::StorageValue<ContextFloatRef>
+type UnaryProvider = super::UnaryProvider<ContextFloatRef>
 
-struct MultiInputFloat {
-	inputs: [FloatNumberProviderRef] @ 2..,
-}
-
-struct SidedInputsFloat {
-	left: FloatNumberProviderRef,
-	right: FloatNumberProviderRef,
-}
+type CastFromInt = super::UnaryProvider<ContextIntRef>
 
 // Basic Operations
 
-dispatch minecraft:number_provider/float[add] to struct AddFloatProvider {
-	...MultiInputFloat,
-}
+dispatch minecraft:number_provider/float[add, mul] to AggregateProvider
 
-dispatch minecraft:number_provider/float[sub] to struct SubtractFloatProvider {
-	...SidedInputsFloat,
-}
+dispatch minecraft:number_provider/float[sub, div, mod] to BinaryProvider
 
-dispatch minecraft:number_provider/float[mul] to struct MultiplyFloatProvider {
-	...MultiInputFloat,
-}
-
-dispatch minecraft:number_provider/float[abs] to struct AbsoluteFloatProvider {
-	...SingleInputFloat,
-}
-
-dispatch minecraft:number_provider/float[negate] to struct NegateFloatProvider {
-	...SingleInputFloat,
-}
-
-dispatch minecraft:number_provider/float[div] to struct DivideFloatProvider {
-	...SidedInputsFloat,
-}
-
-dispatch minecraft:number_provider/float[mod] to struct ModuloFloatProvider {
-	...SidedInputsFloat,
-}
+dispatch minecraft:number_provider/float[abs, negate] to UnaryProvider
 
 // Composite Operations
 
-dispatch minecraft:number_provider/float[avg] to struct AverageFloatProvider {
-	...MultiInputFloat,
-}
+dispatch minecraft:number_provider/float[avg, length] to AggregateProvider
 
-dispatch minecraft:number_provider/float[pow] to struct ExponentiateFloatProvider {
-	base: FloatNumberProviderRef,
-	exponent: FloatNumberProviderRef,
-}
+dispatch minecraft:number_provider/float[pow] to PowerProvider
 
-dispatch minecraft:number_provider/float[sqrt] to struct SquareRootFloatProvider {
-	...SingleInputFloat,
-}
-
-dispatch minecraft:number_provider/float[length] to struct VectorLengthFloatProvider {
-	...MultiInputFloat,
-}
+dispatch minecraft:number_provider/float[sqrt] to UnaryProvider
 
 // Trigonometric Operations
 
-dispatch minecraft:number_provider/float[sin] to struct SineFloatProvider {
-	...SingleInputFloat,
-}
-
-dispatch minecraft:number_provider/float[cos] to struct CosineFloatProvider {
-	...SingleInputFloat,
-}
+dispatch minecraft:number_provider/float[sin, cos] to UnaryProvider
 
 // Conditonal Operations
 
-dispatch minecraft:number_provider/float[round] to struct RoundFloatProvider {
-	...SingleInputFloat,
-}
+dispatch minecraft:number_provider/float[ceil, floor, round, truncate] to UnaryProvider
 
-dispatch minecraft:number_provider/float[floor] to struct FloorFloatProvider {
-	...SingleInputFloat,
-}
-
-dispatch minecraft:number_provider/float[truncate] to struct TruncateFloatProvider {
-	...SingleInputFloat,
-}
-
-dispatch minecraft:number_provider/float[ceil] to struct CeilingFloatProvider {
-	...SingleInputFloat,
-}
-
-dispatch minecraft:number_provider/float[max] to struct MaxOfSetFloatProvider {
-	...SingleInputFloat,
-}
-
-dispatch minecraft:number_provider/float[min] to struct MinOfSetFloatProvider {
-	...SingleInputFloat,
-}
+dispatch minecraft:number_provider/float[max, min] to AggregateProvider
 
 // Domain-specific Conditional Providers
 
-dispatch minecraft:number_provider/float[conditional] to struct ConditionalFloatProvider {
-	condition: PredicateRef,
-	on_true: FloatNumberProviderRef,
-	/// Defaults to `0.0`.
-	on_false?: FloatNumberProviderRef,
-}
+dispatch minecraft:number_provider/float[conditional] to ConditionalProvider
 
-dispatch minecraft:number_provider/float[number_dispatcher] to struct DispatchedFloatProvider {
-	cases: [struct DispatcherCase {
-		condition: PredicateRef,
-		value: FloatNumberProviderRef,
-	}],
-	/// Defaults to `0.0`.
-	default?: FloatNumberProviderRef,
-}
+dispatch minecraft:number_provider/float[number_dispatcher] to DispatcherProvider
 
-dispatch minecraft:number_provider/float[weighted_list] to struct WeightedListFloatProvider {
-	distribution: NonEmptyWeightedList<FloatNumberProviderRef>
-}
+dispatch minecraft:number_provider/float[weighted_list] to DistributionProvider
 
 // Domain-specific Providers
 
-dispatch minecraft:number_provider/float[constant] to struct ConstantFloatProvider {
-	value: float,
-}
+dispatch minecraft:number_provider/float[constant] to ConstantValue
 
-dispatch minecraft:number_provider/float[uniform] to struct RandomFloatProvider {
-	min?: FloatNumberProviderRef,
-	max?: FloatNumberProviderRef,
-}
+dispatch minecraft:number_provider/float[uniform] to RangeProvider
 
-dispatch minecraft:number_provider/float[from_int] to super::contextual_integer::SingleInputInteger
+dispatch minecraft:number_provider/float[from_int] to CastFromInt
 
-dispatch minecraft:number_provider/float[storage] to struct DataStorageFloatProvider {
-	storage: #[id="storage"] string,
-	path: #[nbt_path=minecraft:storage[[source]]] string,
-	fallback?: FloatNumberProviderRef,
-}
+dispatch minecraft:number_provider/float[storage] to StorageValue
 
-dispatch minecraft:number_provider/float[enchantment_level] to struct EnchantmentLevelFloatProvider {
+dispatch minecraft:number_provider/float[enchantment_level] to struct EnchantmentLevelProvider {
 	amount: LevelBasedValue,
 }
 
-dispatch minecraft:number_provider/float[environment_attribute] to struct EnvironmentAttributeFloatProvider {
-	attribute: NumericalEnvironmentAttribute,
-}
+dispatch minecraft:number_provider/float[environment_attribute] to EnvironmentAttributeProvider

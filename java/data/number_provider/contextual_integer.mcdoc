@@ -1,7 +1,8 @@
 use ::java::data::predicate::PredicateRef
-use ::java::data::worldgen::attribute::NumericalEnvironmentAttribute
+use ::java::data::worldgen::attribute::IntegerEnvironmentAttribute
 use ::java::data::util::ScoreProvider
 use ::java::util::NonEmptyWeightedList
+use super::contextual_float::ContextFloatRef
 
 #[since="26.3"]
 dispatch minecraft:resource[context_int_provider] to IntegerNumberProvider
@@ -14,149 +15,101 @@ type IntegerNumberProvider = (
 	} |
 )
 
-type IntegerNumberProviderRef = (
+type ContextIntRef = (
 	#[id="context_int_provider"] string |
 	IntegerNumberProvider |
 )
+type ContextIntListRef = (
+	IntegerNumberProvider |
+	#[id=(registry="context_int_provider",tags="allowed")] string |
+	[ContextIntRef] |
+)
 
-struct SingleInputInteger {
-	input: IntegerNumberProviderRef,
-}
+type AggregateProvider = super::AggregateProvider<ContextIntListRef>
+type BinaryProvider = super::BinaryProvider<ContextIntRef>
+type ConditionalProvider = super::ConditionalProvider<ContextIntRef>
+type ConstantValue = super::ConstantValue<int>
+type DispatcherProvider = super::DispatcherProvider<ContextIntRef>
+type DistributionProvider = super::DistributionProvider<ContextIntRef>
+type EnvironmentAttributeProvider = super::EnvironmentAttributeProvider<IntegerEnvironmentAttribute>
+type PowerProvider = super::PowerProvider<ContextIntRef>
+type RangeProvider = super::PowerProvider<ContextIntRef>
+type StorageValue = super::StorageValue<ContextIntRef>
+type UnaryProvider = super::UnaryProvider<ContextIntRef>
 
-struct MultiInputInteger {
-	inputs: [IntegerNumberProviderRef] @ 2..,
-}
-
-struct SidedInputsInteger {
-	left: IntegerNumberProviderRef,
-	right: IntegerNumberProviderRef,
-}
+type CastFromFloat = super::UnaryProvider<ContextFloatRef>
 
 // Basic Operations
 
-dispatch minecraft:number_provider/integer[add] to struct AddIntegerProvider {
-	...MultiInputInteger,
-}
+dispatch minecraft:number_provider/integer[add, mul] to AggregateProvider
 
-dispatch minecraft:number_provider/integer[sub] to struct SubtractIntegerProvider {
-	...SidedInputsInteger,
-}
+dispatch minecraft:number_provider/integer[sub] to BinaryProvider
 
-dispatch minecraft:number_provider/integer[mul] to struct MultiplyIntegerProvider {
-	...MultiInputInteger,
-}
-
-dispatch minecraft:number_provider/integer[abs] to struct AbsoluteIntegerProvider {
-	...SingleInputInteger,
-}
-
-dispatch minecraft:number_provider/integer[negate] to struct NegateIntegerProvider {
-	...SingleInputInteger,
-}
+dispatch minecraft:number_provider/integer[abs, negate] to UnaryProvider
 
 // Integer Division
 
 /// Floors result (rounds towards `-∞`), usually more useful when dealing with coordinates.
-dispatch minecraft:number_provider/integer[floor_div] to struct FlooredDivideIntegerProvider {
-	...SidedInputsInteger,
-}
+dispatch minecraft:number_provider/integer[floor_div] to BinaryProvider
 
 /// Truncates result (rounds towards `0`), usually less useful when dealing with coordinates.
-dispatch minecraft:number_provider/integer[div] to struct DivideIntegerProvider {
-	...SidedInputsInteger,
-}
+dispatch minecraft:number_provider/integer[div] to BinaryProvider
 
 /// Uses floored integer division, usually more useful when dealing with coordinates.
 ///
 /// Solves for `x`: `(floor_div(left, right) * right) + x = left`
 ///
 /// Example: `floor_mod(-5, 2)` = 1 (`(floor_div(-5, 2) * 2) + 1 = (-3 * 2) + 1 = -5`)
-dispatch minecraft:number_provider/integer[floor_mod] to struct FlooredModuloIntegerProvider {
-	...SidedInputsInteger,
-}
+dispatch minecraft:number_provider/integer[floor_mod] to BinaryProvider
 
 /// Uses truncated integer division, usually less useful when dealing with coordinates.
 ///
 /// Solves for `x`: `(div(left, right) * right) + x = left`
 ///
 /// Example: `mod(-5, 2)` = -1 (`(div(-5, 2) * 2) + (-1) = (-2 * 2) + (-1) = -5`)
-dispatch minecraft:number_provider/integer[mod] to struct ModuloIntegerProvider {
-	...SidedInputsInteger,
-}
+dispatch minecraft:number_provider/integer[mod] to BinaryProvider
 
 // Composite Operations
 
 /// Division result is truncated (rounds towards `0`).
-dispatch minecraft:number_provider/integer[avg] to struct AverageIntegerProvider {
-	...MultiInputInteger,
-}
+dispatch minecraft:number_provider/integer[avg] to AggregateProvider
 
 /// Fails if the exponent is negative.
-dispatch minecraft:number_provider/integer[pow] to struct ExponentiateIntegerProvider {
-	base: IntegerNumberProviderRef,
-	exponent: IntegerNumberProviderRef,
-}
+dispatch minecraft:number_provider/integer[pow] to PowerProvider
 
 // Conditonal Operations
 
-dispatch minecraft:number_provider/integer[max] to struct MaxOfSetIntegerProvider {
-	...MultiInputInteger,
-}
-
-dispatch minecraft:number_provider/integer[min] to struct MinOfSetIntegerProvider {
-	...MultiInputInteger,
-}
+dispatch minecraft:number_provider/integer[max, min] to AggregateProvider
 
 // Domain-specific Conditional Providers
 
-dispatch minecraft:number_provider/integer[conditional] to struct ConditionalIntegerProvider {
-	condition: PredicateRef,
-	on_true: IntegerNumberProviderRef,
-	/// Defaults to `0`.
-	on_false?: IntegerNumberProviderRef,
-}
+dispatch minecraft:number_provider/integer[conditional] to ConditionalProvider
 
-dispatch minecraft:number_provider/integer[number_dispatcher] to struct DispatchedIntegerProvider {
-	cases: [struct DispatcherCase {
-		condition: PredicateRef,
-		value: IntegerNumberProviderRef,
-	}],
-	/// Defaults to `0`.
-	default?: IntegerNumberProviderRef,
-}
+dispatch minecraft:number_provider/integer[number_dispatcher] to DispatcherProvider
 
-dispatch minecraft:number_provider/integer[weighted_list] to struct WeightedListIntegerProvider {
-	distribution: NonEmptyWeightedList<IntegerNumberProviderRef>
-}
+dispatch minecraft:number_provider/integer[weighted_list] to DistributionProvider
 
 // Domain-specific Providers
 
-dispatch minecraft:number_provider/integer[constant] to struct ConstantIntegerProvider {
-	value: int,
-}
+dispatch minecraft:number_provider/integer[constant] to ConstantValue
 
 /// Makes `n` random coin flips with probability of succeeding equal to `p`, then returns number of successes.
-dispatch minecraft:number_provider/integer[binomial] to struct BinomialRandomIntegerProvider {
+dispatch minecraft:number_provider/integer[binomial] to struct BinomialDistributionGenerator {
 	/// Number of coin flips.
-	n: IntegerNumberProviderRef,
+	n: ContextIntRef,
 	/// Probability of a single coin flip succeeding.
-	p: super::contextual_float::FloatNumberProviderRef,
+	p: ContextFloatRef,
 }
 
-dispatch minecraft:number_provider/integer[uniform] to struct RandomIntegerProvider {
-	min?: IntegerNumberProviderRef,
-	max?: IntegerNumberProviderRef,
-}
+dispatch minecraft:number_provider/integer[uniform] to RangeProvider
 
-dispatch minecraft:number_provider/integer[from_float] to super::contextual_float::SingleInputFloat
+dispatch minecraft:number_provider/integer[from_float] to CastFromFloat
 
-dispatch minecraft:number_provider/integer[score] to struct ScoreIntegerProvider {
+dispatch minecraft:number_provider/integer[score] to struct ScoreboardValue {
 	target: ScoreProvider,
 	score: #[objective] string,
-	/// Defaults to `0`.
-	fallback?: IntegerNumberProviderRef,
+	/// Defaults to constant 0.
+	fallback?: ContextIntRef,
 }
 
-dispatch minecraft:number_provider/integer[environment_attribute] to struct EnvironmentAttributeIntegerProvider {
-	attribute: NumericalEnvironmentAttribute,
-}
+dispatch minecraft:number_provider/integer[environment_attribute] to EnvironmentAttributeProvider

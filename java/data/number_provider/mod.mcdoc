@@ -1,4 +1,88 @@
-type FloatNumberProviderRef = contextual_float::FloatNumberProviderRef
-type IntegerNumberProviderRef = contextual_integer::IntegerNumberProviderRef
+use ::java::data::predicate::PredicateRef
+use ::java::data::worldgen::attribute::NumericalEnvironmentAttribute
+use ::java::util::NonEmptyWeightedList
 
+// Export aliases
+
+type ContextFloatRef = (
+	#[until="26.3"] legacy::LegacyNumberProvider |
+	#[since="26.3"] contextual_float::ContextFloatRef |
+)
+type ContextIntRef = (
+	#[until="26.3"] legacy::LegacyNumberProvider |
+	#[since="26.3"] contextual_integer::ContextIntRef |
+)
 type LegacyNumberProvider = legacy::LegacyNumberProvider
+
+type ResolvableInt = (int | #[id="context_int_provider"] string)
+type ResolvableFloat = (float | #[id="context_float_provider"] string)
+
+// TODO: disallow ALL references
+type ContextFloat = (
+	#[until="26.3"] legacy::LegacyNumberProvider |
+	#[since="26.3"] contextual_float::FloatNumberProvider |
+)
+type ContextInt = (
+	#[until="26.3"] legacy::LegacyNumberProvider |
+	#[since="26.3"] contextual_integer::IntegerNumberProvider |
+)
+
+// Generic types (since 26.3)
+
+type ConstantValue<T> = struct {
+	value: T,
+}
+
+type UnaryProvider<T> = struct {
+	input: T,
+}
+
+type BinaryProvider<T> = struct {
+	left: T,
+	right: T,
+}
+
+type AggregateProvider<T> = struct {
+	inputs: T,
+}
+
+type ConditionalProvider<T> = struct {
+	condition: PredicateRef,
+	on_true: T,
+	/// Defaults to constant 0.
+	on_false?: T,
+}
+
+type DispatcherProvider<T> = struct {
+	cases: [struct {
+		condition: PredicateRef,
+		number_provider: T,
+	}],
+	/// Defaults to constant 0.
+	default?: T,
+}
+
+type DistributionProvider<T> = struct {
+	distribution: NonEmptyWeightedList<T>,
+}
+
+type EnvironmentAttributeProvider<A> = struct {
+	attribute: A,
+}
+
+type PowerProvider<T> = struct {
+	base: T,
+	exponent: T,
+}
+
+type RangeProvider<T> = struct {
+	min: T,
+	max: T,
+}
+
+type StorageValue<T> = struct {
+	storage: #[id="storage"] string,
+	path: #[nbt_path=minecraft:storage[[storage]]] string,
+	/// Defaults to constant 0.
+	fallback?: T,
+}
