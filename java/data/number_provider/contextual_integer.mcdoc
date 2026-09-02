@@ -110,7 +110,7 @@ dispatch minecraft:number_provider/integer[min] to struct MinOfSetIntegerProvide
 // Domain-specific Conditional Providers
 
 dispatch minecraft:number_provider/integer[conditional] to struct ConditionalIntegerProvider {
-	conditions: PredicateRef,
+	condition: PredicateRef,
 	on_true: IntegerNumberProviderRef,
 	/// Defaults to `0`.
 	on_false?: IntegerNumberProviderRef,
