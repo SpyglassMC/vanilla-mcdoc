@@ -75,7 +75,7 @@ dispatch minecraft:block_state_provider[randomized_int_state_provider] to Random
 dispatch minecraft:block_state_provider[randomized_int_state] to RandomizedIntStateProvider
 
 #[since="26.3"]
-dispatch minecraft:block_state_provider[random_block] to struct RandomBlockStateProvider {
+dispatch minecraft:block_state_provider[random] to struct RandomBlockStateProvider {
 	blocks: (#[id=(registry="block",tags="allowed")] string | [#[id="block"] string]),
 }
 
@@ -92,7 +92,7 @@ struct RotatedStateProvider {
 dispatch minecraft:block_state_provider[rotated_block_provider] to RotatedStateProvider
 
 #[since="26.3"]
-dispatch minecraft:block_state_provider[rotated_block] to RotatedStateProvider
+dispatch minecraft:block_state_provider[rotated] to RotatedStateProvider
 
 struct SimpleStateProvider {
 	state: BlockState,
@@ -102,13 +102,13 @@ struct SimpleStateProvider {
 dispatch minecraft:block_state_provider[simple_state_provider] to SimpleStateProvider
 
 #[since="26.3"]
-dispatch minecraft:block_state_provider[simple_state] to SimpleStateProvider
+dispatch minecraft:block_state_provider[simple] to SimpleStateProvider
 
 #[since="26.1"] #[until="26.3"]
 dispatch minecraft:block_state_provider[rule_based_state_provider] to RuleBasedBlockStateProvider
 
 #[since="26.3"]
-dispatch minecraft:block_state_provider[rule_based_state] to RuleBasedBlockStateProvider
+dispatch minecraft:block_state_provider[rule_based] to RuleBasedBlockStateProvider
 
 struct WeightedBlockStateProvider {
 	entries: NonEmptyWeightedList<BlockState>,
@@ -118,4 +118,4 @@ struct WeightedBlockStateProvider {
 dispatch minecraft:block_state_provider[weighted_state_provider] to WeightedBlockStateProvider
 
 #[since="26.3"]
-dispatch minecraft:block_state_provider[weighted_state] to WeightedBlockStateProvider
+dispatch minecraft:block_state_provider[weighted] to WeightedBlockStateProvider
