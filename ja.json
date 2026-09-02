@@ -13,6 +13,7 @@
 	"::java::util::text::TextObject.atlas": "デフォルトは`minecraft:blocks`です。",
 	"::java::util::text::TextObject.hat": "ヘッドレイヤーをレンダリングするかどうか。デフォルトは`true`です。",
 	"::java::util::text::TextStyle.shadow_color": "テキストの影の設定を上書きします。\n0を指定すると、影は一切表示されません。",
+	"::java::world::item::ItemStackOfComponent.count": "スタック内のアイテムの数。\nデフォルトは `1` です。",
 	"::java::world::item::map::FilledMap.Decorations.id": "装飾を識別する任意の一意の文字列",
 	"::java::world::item::map::FilledMap.display": "アイテムの表示",
 	"::java::world::item::map::FilledMap.display.MapColor": "RED << 16 | GREEN << 8 | BLUEとして計算されます。これらの各フィールドは、0から255の範囲内でなければなりません。",
@@ -41,6 +42,5 @@
 	"::java::world::item::spawn_item::SpawnItem.EntityTag": "スポーンしたエンティティのデータ",
 	"::java::world::item::suspicious_stew::Effect": "怪しいシチューの効果 (Effect)",
 	"::java::world::item::suspicious_stew::Effect.EffectDuration": "ティック単位の間隔",
-	"::java::world::item::suspicious_stew::SuspiciousStew.Effects": "このシチューがもたらす効果(Effect)",
-	"::java::world::item::TradeCost.count": "スタック内のアイテムの数。\nデフォルトは `1` です。"
+	"::java::world::item::suspicious_stew::SuspiciousStew.Effects": "このシチューがもたらす効果(Effect)"
 }
