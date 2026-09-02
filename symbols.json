@@ -1,5 +1,5 @@
 {
-	"ref": "c373ab678a7bf70f26c06fec3e7b470886dfb2f7",
+	"ref": "d8e143e26d4f4b5b4ad4357350f93d180e59d0da",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -28146,8 +28146,8 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Passes when `value` is within this range.",
-					"key": "range",
+					"desc": "Passes when `value` is within the test range.",
+					"key": "test",
 					"type": {
 						"kind": "union",
 						"members": [
@@ -28196,8 +28196,8 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Passes when `value` is within this range.",
-					"key": "range",
+					"desc": "Passes when `value` is within the test range.",
+					"key": "test",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::loot::IntRange"
@@ -37464,7 +37464,7 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+						"path": "::java::data::number_provider::contextual_float::MultiInputFloat"
 					}
 				}
 			]
@@ -37476,7 +37476,7 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+						"path": "::java::data::number_provider::contextual_float::MultiInputFloat"
 					}
 				}
 			]
