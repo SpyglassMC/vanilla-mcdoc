@@ -1,5 +1,5 @@
 {
-	"ref": "4ca198f666d23aebd674ef3ee6a056db8e0f2bc7",
+	"ref": "57c88fd1ba1db5b0c1865583557ef5f4f2e6145b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -27529,6 +27529,95 @@
 				}
 			]
 		},
+		"::java::data::loot::<anonymous 5>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntegerNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntegerNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::loot::BlockEntityTarget": {
 			"kind": "literal",
 			"value": {
@@ -27752,7 +27841,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::util::IntRange",
+								"path": "::java::data::loot::IntRange",
 								"attributes": [
 									{
 										"name": "since",
@@ -27768,6 +27857,29 @@
 							}
 						]
 					}
+				}
+			]
+		},
+		"::java::data::loot::condition::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::FloatNumberProviderRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::FloatNumberProviderRef"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -27950,7 +28062,7 @@
 										},
 										{
 											"kind": "reference",
-											"path": "::java::data::util::IntRange",
+											"path": "::java::data::loot::IntRange",
 											"attributes": [
 												{
 													"name": "since",
@@ -28017,6 +28129,78 @@
 								"value": "value"
 							}
 						]
+					}
+				}
+			]
+		},
+		"::java::data::loot::condition::FloatValueCheck": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::FloatNumberProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Passes when `value` is within this range.",
+					"key": "range",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::FloatNumberProviderRef"
+							},
+							{
+								"kind": "struct",
+								"fields": [
+									{
+										"kind": "pair",
+										"key": "min",
+										"type": {
+											"kind": "reference",
+											"path": "::java::data::number_provider::FloatNumberProviderRef"
+										},
+										"optional": true
+									},
+									{
+										"kind": "pair",
+										"key": "max",
+										"type": {
+											"kind": "reference",
+											"path": "::java::data::number_provider::FloatNumberProviderRef"
+										},
+										"optional": true
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::loot::condition::IntegerValueCheck": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::IntegerNumberProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Passes when `value` is within this range.",
+					"key": "range",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::loot::IntRange"
 					}
 				}
 			]
@@ -28257,7 +28441,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Clamps to a float between `0` & `1` (inclusive).",
+					"desc": "Accepts a value between `0` & `1` (inclusive).",
 					"key": "chance",
 					"type": {
 						"kind": "union",
@@ -28284,7 +28468,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -28293,6 +28477,32 @@
 											"value": {
 												"kind": "string",
 												"value": "1.21"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::FloatNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
 											}
 										}
 									}
@@ -28497,7 +28707,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::util::IntRange",
+								"path": "::java::data::loot::IntRange",
 								"attributes": [
 									{
 										"name": "since",
@@ -28534,7 +28744,7 @@
 					"key": "value",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
+						"path": "::java::data::number_provider::LegacyNumberProvider"
 					}
 				},
 				{
@@ -28543,7 +28753,7 @@
 					"key": "range",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::util::IntRange"
+						"path": "::java::data::loot::IntRange"
 					}
 				}
 			]
@@ -29020,6 +29230,41 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::IntegerNumberProviderRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::IntegerNumberProviderRef"
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.3"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::loot::function::<anonymous 14>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"key": "id",
 					"type": {
 						"kind": "string",
@@ -29033,7 +29278,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 14>": {
+		"::java::data::loot::function::<anonymous 15>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -29058,7 +29303,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 15>": {
+		"::java::data::loot::function::<anonymous 16>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -29079,13 +29324,46 @@
 						]
 					},
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntegerNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 16>": {
+		"::java::data::loot::function::<anonymous 17>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -29110,7 +29388,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 17>": {
+		"::java::data::loot::function::<anonymous 18>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -29135,7 +29413,7 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 18>": {
+		"::java::data::loot::function::<anonymous 19>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -29150,8 +29428,41 @@
 								"type": {
 									"kind": "list",
 									"item": {
-										"kind": "reference",
-										"path": "::java::data::number_provider::NumberProviderRef"
+										"kind": "union",
+										"members": [
+											{
+												"kind": "reference",
+												"path": "::java::data::number_provider::LegacyNumberProvider",
+												"attributes": [
+													{
+														"name": "until",
+														"value": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "26.3"
+															}
+														}
+													}
+												]
+											},
+											{
+												"kind": "reference",
+												"path": "::java::data::number_provider::FloatNumberProviderRef",
+												"attributes": [
+													{
+														"name": "since",
+														"value": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "26.3"
+															}
+														}
+													}
+												]
+											}
+										]
 									}
 								}
 							},
@@ -29236,11 +29547,39 @@
 										"members": [
 											{
 												"kind": "reference",
-												"path": "::java::data::number_provider::NumberProviderRef"
+												"path": "::java::util::color::RGB"
 											},
 											{
 												"kind": "reference",
-												"path": "::java::util::color::RGB"
+												"path": "::java::data::number_provider::LegacyNumberProvider",
+												"attributes": [
+													{
+														"name": "until",
+														"value": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "26.3"
+															}
+														}
+													}
+												]
+											},
+											{
+												"kind": "reference",
+												"path": "::java::data::number_provider::IntegerNumberProviderRef",
+												"attributes": [
+													{
+														"name": "since",
+														"value": {
+															"kind": "literal",
+															"value": {
+																"kind": "string",
+																"value": "26.3"
+															}
+														}
+													}
+												]
 											}
 										]
 									}
@@ -29259,7 +29598,11 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 19>": {
+		"::java::data::loot::function::<anonymous 2>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::loot::function::<anonymous 20>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -29324,15 +29667,11 @@
 				}
 			]
 		},
-		"::java::data::loot::function::<anonymous 2>": {
-			"kind": "struct",
-			"fields": []
-		},
-		"::java::data::loot::function::<anonymous 20>": {
-			"kind": "struct",
-			"fields": []
-		},
 		"::java::data::loot::function::<anonymous 21>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::loot::function::<anonymous 22>": {
 			"kind": "struct",
 			"fields": []
 		},
@@ -29955,7 +30294,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -29964,6 +30303,32 @@
 											"value": {
 												"kind": "string",
 												"value": "1.17"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::FloatNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
 											}
 										}
 									}
@@ -30944,11 +31309,39 @@
 							"members": [
 								{
 									"kind": "reference",
-									"path": "::java::data::number_provider::NumberProviderRef"
+									"path": "::java::util::color::RGB"
 								},
 								{
 									"kind": "reference",
-									"path": "::java::util::color::RGB"
+									"path": "::java::data::number_provider::LegacyNumberProvider",
+									"attributes": [
+										{
+											"name": "until",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "26.3"
+												}
+											}
+										}
+									]
+								},
+								{
+									"kind": "reference",
+									"path": "::java::data::number_provider::IntegerNumberProviderRef",
+									"attributes": [
+										{
+											"name": "since",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "26.3"
+												}
+											}
+										}
+									]
 								}
 							]
 						}
@@ -30994,8 +31387,41 @@
 					"type": {
 						"kind": "list",
 						"item": {
-							"kind": "reference",
-							"path": "::java::data::number_provider::NumberProviderRef"
+							"kind": "union",
+							"members": [
+								{
+									"kind": "reference",
+									"path": "::java::data::number_provider::LegacyNumberProvider",
+									"attributes": [
+										{
+											"name": "until",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "26.3"
+												}
+											}
+										}
+									]
+								},
+								{
+									"kind": "reference",
+									"path": "::java::data::number_provider::FloatNumberProviderRef",
+									"attributes": [
+										{
+											"name": "since",
+											"value": {
+												"kind": "literal",
+												"value": {
+													"kind": "string",
+													"value": "26.3"
+												}
+											}
+										}
+									]
+								}
+							]
 						}
 					}
 				},
@@ -31035,7 +31461,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "If the number is fractional the result is rounded *after* the number was multiplied by the looting level.",
+					"desc": "Rounded *after* the number was multiplied by the looting level.",
 					"key": "count",
 					"type": {
 						"kind": "union",
@@ -31066,7 +31492,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -31075,6 +31501,32 @@
 											"value": {
 												"kind": "string",
 												"value": "1.17"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::FloatNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
 											}
 										}
 									}
@@ -31295,7 +31747,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -31304,6 +31756,32 @@
 											"value": {
 												"kind": "string",
 												"value": "1.17"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntegerNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
 											}
 										}
 									}
@@ -32085,7 +32563,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::util::IntRange",
+								"path": "::java::data::loot::IntRange",
 								"attributes": [
 									{
 										"name": "since",
@@ -32094,6 +32572,51 @@
 											"value": {
 												"kind": "string",
 												"value": "1.17"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "struct",
+								"fields": [
+									{
+										"kind": "pair",
+										"key": "min",
+										"type": {
+											"kind": "reference",
+											"path": "::java::data::number_provider::IntegerNumberProviderRef"
+										},
+										"optional": true
+									},
+									{
+										"kind": "pair",
+										"key": "max",
+										"type": {
+											"kind": "reference",
+											"path": "::java::data::number_provider::IntegerNumberProviderRef"
+										},
+										"optional": true
+									}
+								],
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
 											}
 										}
 									}
@@ -32877,7 +33400,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -32886,6 +33409,32 @@
 											"value": {
 												"kind": "string",
 												"value": "1.17"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntegerNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
 											}
 										}
 									}
@@ -32965,7 +33514,7 @@
 					"key": "value",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
+						"path": "::java::data::number_provider::LegacyNumberProvider"
 					}
 				},
 				{
@@ -32997,8 +33546,41 @@
 											"type": {
 												"kind": "list",
 												"item": {
-													"kind": "reference",
-													"path": "::java::data::number_provider::NumberProviderRef"
+													"kind": "union",
+													"members": [
+														{
+															"kind": "reference",
+															"path": "::java::data::number_provider::LegacyNumberProvider",
+															"attributes": [
+																{
+																	"name": "until",
+																	"value": {
+																		"kind": "literal",
+																		"value": {
+																			"kind": "string",
+																			"value": "26.3"
+																		}
+																	}
+																}
+															]
+														},
+														{
+															"kind": "reference",
+															"path": "::java::data::number_provider::FloatNumberProviderRef",
+															"attributes": [
+																{
+																	"name": "since",
+																	"value": {
+																		"kind": "literal",
+																		"value": {
+																			"kind": "string",
+																			"value": "26.3"
+																		}
+																	}
+																}
+															]
+														}
+													]
 												}
 											}
 										},
@@ -33083,11 +33665,39 @@
 													"members": [
 														{
 															"kind": "reference",
-															"path": "::java::data::number_provider::NumberProviderRef"
+															"path": "::java::util::color::RGB"
 														},
 														{
 															"kind": "reference",
-															"path": "::java::util::color::RGB"
+															"path": "::java::data::number_provider::LegacyNumberProvider",
+															"attributes": [
+																{
+																	"name": "until",
+																	"value": {
+																		"kind": "literal",
+																		"value": {
+																			"kind": "string",
+																			"value": "26.3"
+																		}
+																	}
+																}
+															]
+														},
+														{
+															"kind": "reference",
+															"path": "::java::data::number_provider::IntegerNumberProviderRef",
+															"attributes": [
+																{
+																	"name": "since",
+																	"value": {
+																		"kind": "literal",
+																		"value": {
+																			"kind": "string",
+																			"value": "26.3"
+																		}
+																	}
+																}
+															]
 														}
 													]
 												}
@@ -33121,7 +33731,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Decimal percentage. Can be negative when used in combination with `add`. \\\nClamps to a float between `-1` & `1` (inclusive).",
+					"desc": "Decimal percentage. Can be negative when used in combination with `add`. \\\nAccepts a value between `-1` & `1` (inclusive).",
 					"key": "damage",
 					"type": {
 						"kind": "union",
@@ -33144,7 +33754,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -33153,6 +33763,32 @@
 											"value": {
 												"kind": "string",
 												"value": "1.17"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::FloatNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
 											}
 										}
 									}
@@ -33196,7 +33832,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "A map of enchantments to levels. Setting an enchantment to `0` removes it from the item. \\\nEach level is clamped to a positive integer.",
+					"desc": "A map of enchantments to levels. Setting an enchantment to `0` removes it from the item.",
 					"key": "enchantments",
 					"type": {
 						"kind": "struct",
@@ -33219,8 +33855,41 @@
 									]
 								},
 								"type": {
-									"kind": "reference",
-									"path": "::java::data::number_provider::NumberProviderRef"
+									"kind": "union",
+									"members": [
+										{
+											"kind": "reference",
+											"path": "::java::data::number_provider::LegacyNumberProvider",
+											"attributes": [
+												{
+													"name": "until",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "26.3"
+														}
+													}
+												}
+											]
+										},
+										{
+											"kind": "reference",
+											"path": "::java::data::number_provider::IntegerNumberProviderRef",
+											"attributes": [
+												{
+													"name": "since",
+													"value": {
+														"kind": "literal",
+														"value": {
+															"kind": "string",
+															"value": "26.3"
+														}
+													}
+												}
+											]
+										}
+									]
 								}
 							}
 						]
@@ -34060,8 +34729,41 @@
 					"kind": "pair",
 					"key": "amplifier",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntegerNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -34113,8 +34815,41 @@
 					"desc": "Applies specified number of random dyes to the item. \\\nFor example, one possible outcome of `\"number_of_dyes\": 2` is `#2C3065`, which is the combination of a blue dye and a black dye. \\\nThe same dye color can be selected multiple times.",
 					"key": "number_of_dyes",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntegerNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -34354,7 +35089,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -34363,6 +35098,32 @@
 											"value": {
 												"kind": "string",
 												"value": "1.17"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntegerNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
 											}
 										}
 									}
@@ -34515,6 +35276,119 @@
 							}
 						]
 					}
+				}
+			]
+		},
+		"::java::data::loot::IntRange": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "int"
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::number_provider::IntegerNumberProviderRef",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "min",
+							"type": {
+								"kind": "union",
+								"members": [
+									{
+										"kind": "reference",
+										"path": "::java::data::number_provider::LegacyNumberProvider",
+										"attributes": [
+											{
+												"name": "until",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "26.3"
+													}
+												}
+											}
+										]
+									},
+									{
+										"kind": "reference",
+										"path": "::java::data::number_provider::IntegerNumberProviderRef",
+										"attributes": [
+											{
+												"name": "since",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "26.3"
+													}
+												}
+											}
+										]
+									}
+								]
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "max",
+							"type": {
+								"kind": "union",
+								"members": [
+									{
+										"kind": "reference",
+										"path": "::java::data::number_provider::LegacyNumberProvider",
+										"attributes": [
+											{
+												"name": "until",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "26.3"
+													}
+												}
+											}
+										]
+									},
+									{
+										"kind": "reference",
+										"path": "::java::data::number_provider::IntegerNumberProviderRef",
+										"attributes": [
+											{
+												"name": "since",
+												"value": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "26.3"
+													}
+												}
+											}
+										]
+									}
+								]
+							},
+							"optional": true
+						}
+					]
 				}
 			]
 		},
@@ -35204,7 +36078,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -35213,6 +36087,32 @@
 											"value": {
 												"kind": "string",
 												"value": "1.17"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntegerNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
 											}
 										}
 									}
@@ -35253,7 +36153,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
 								"attributes": [
 									{
 										"name": "since",
@@ -35262,6 +36162,32 @@
 											"value": {
 												"kind": "string",
 												"value": "1.17"
+											}
+										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::FloatNumberProviderRef",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
 											}
 										}
 									}
@@ -36126,7 +37052,1203 @@
 				}
 			]
 		},
-		"::java::data::number_provider::<anonymous 0>": {
+		"::java::data::number_provider::contextual_float::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "context_float_provider_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:number_provider/float"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::AbsoluteFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::AddFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::MultiInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::AverageFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::MultiInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::CeilingFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::ConditionalFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "conditions",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::PredicateRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "on_true",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `0.0`.",
+					"key": "on_false",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::ConstantFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "float"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::CosineFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::DataStorageFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "storage",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "storage"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "path",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "nbt_path",
+								"value": {
+									"kind": "dispatcher",
+									"parallelIndices": [
+										{
+											"kind": "dynamic",
+											"accessor": [
+												"source"
+											]
+										}
+									],
+									"registry": "minecraft:storage"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "fallback",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::DispatchedFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "cases",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"key": "condition",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::predicate::PredicateRef"
+									}
+								},
+								{
+									"kind": "pair",
+									"key": "value",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `0.0`.",
+					"key": "default",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::DispatcherCase": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "condition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::PredicateRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::DivideFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SidedInputsFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::EnchantmentLevelFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "amount",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::enchantment::LevelBasedValue"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::EnvironmentAttributeFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "attribute",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::NumericalEnvironmentAttribute"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::ExponentiateFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "base",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "exponent",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::FloatNumberProvider": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "float"
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "type",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "context_float_provider_type"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"type"
+										]
+									}
+								],
+								"registry": "minecraft:number_provider/float"
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::FloatNumberProviderRef": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "context_float_provider"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::number_provider::contextual_float::FloatNumberProvider"
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::FloorFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::MaxOfSetFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::MinOfSetFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::ModuloFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SidedInputsFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::MultiInputFloat": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "inputs",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 2
+						}
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::MultiplyFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::MultiInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::NegateFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::RandomFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::RoundFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::SidedInputsFloat": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "left",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "right",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::SineFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::SingleInputFloat": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "input",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::SquareRootFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::SubtractFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SidedInputsFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::TruncateFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::VectorLengthFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::MultiInputFloat"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_float::WeightedListFloatProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "distribution",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::util::NonEmptyWeightedList"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "context_int_provider_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:number_provider/integer"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::AbsoluteIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::AddIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::MultiInputInteger"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::AverageIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::MultiInputInteger"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::BinomialRandomIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Number of coin flips.",
+					"key": "n",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Probability of a single coin flip succeeding.",
+					"key": "p",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::ConditionalIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "conditions",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::PredicateRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "on_true",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `0`.",
+					"key": "on_false",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::ConstantIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::DispatchedIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "cases",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"key": "condition",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::predicate::PredicateRef"
+									}
+								},
+								{
+									"kind": "pair",
+									"key": "value",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `0`.",
+					"key": "default",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::DispatcherCase": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "condition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::PredicateRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::DivideIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::SidedInputsInteger"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::EnvironmentAttributeIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "attribute",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::attribute::NumericalEnvironmentAttribute"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::ExponentiateIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "base",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "exponent",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::FlooredDivideIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::SidedInputsInteger"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::FlooredModuloIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::SidedInputsInteger"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::IntegerNumberProvider": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "int"
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "type",
+							"type": {
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "context_int_provider_type"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"kind": "spread",
+							"type": {
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											"type"
+										]
+									}
+								],
+								"registry": "minecraft:number_provider/integer"
+							}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::IntegerNumberProviderRef": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "context_int_provider"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "reference",
+					"path": "::java::data::number_provider::contextual_integer::IntegerNumberProvider"
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::MaxOfSetIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::MinOfSetIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::ModuloIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::SidedInputsInteger"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::MultiInputInteger": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "inputs",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 2
+						}
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::MultiplyIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::MultiInputInteger"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::NegateIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::RandomIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::ScoreIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "target",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::ScoreProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "score",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "objective"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `0`.",
+					"key": "fallback",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::SidedInputsInteger": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "left",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "right",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::SingleInputInteger": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "input",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::SubtractIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::contextual_integer::SidedInputsInteger"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::contextual_integer::WeightedListIntegerProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "distribution",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::util::NonEmptyWeightedList"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::FloatNumberProviderRef": {
+			"kind": "reference",
+			"path": "::java::data::number_provider::contextual_float::FloatNumberProviderRef"
+		},
+		"::java::data::number_provider::IntegerNumberProviderRef": {
+			"kind": "reference",
+			"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+		},
+		"::java::data::number_provider::legacy::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -36165,205 +38287,9 @@
 						"registry": "minecraft:number_provider"
 					}
 				}
-			],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "26.3"
-						}
-					}
-				}
 			]
 		},
-		"::java::data::number_provider::<anonymous 1>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "loot_number_provider_type"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
-							}
-						],
-						"registry": "minecraft:number_provider"
-					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "26.3"
-						}
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::<anonymous 2>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "condition",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::predicate::PredicateRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "number_provider",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::AggregateNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "summands",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderListRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "operands",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::AggregateOperands"
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::AggregateOperands": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "reference",
-					"path": "::java::data::number_provider::NumberProvider"
-				},
-				{
-					"kind": "string",
-					"attributes": [
-						{
-							"name": "id",
-							"value": {
-								"kind": "tree",
-								"values": {
-									"registry": {
-										"kind": "literal",
-										"value": {
-											"kind": "string",
-											"value": "number_provider"
-										}
-									},
-									"tags": {
-										"kind": "literal",
-										"value": {
-											"kind": "string",
-											"value": "allowed"
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"kind": "list",
-					"item": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "number_provider"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProvider"
-							}
-						]
-					},
-					"lengthRange": {
-						"kind": 0,
-						"min": 1
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::BinomialNumberProvider": {
+		"::java::data::number_provider::legacy::BinomialNumberProvider": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -36371,7 +38297,7 @@
 					"key": "n",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
+						"path": "::java::data::number_provider::legacy::LegacyNumberProvider"
 					}
 				},
 				{
@@ -36379,43 +38305,12 @@
 					"key": "p",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
+						"path": "::java::data::number_provider::legacy::LegacyNumberProvider"
 					}
 				}
 			]
 		},
-		"::java::data::number_provider::ConditionalNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "condition",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::predicate::PredicateRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "on_true",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to constant 0.",
-					"key": "on_false",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::number_provider::ConstantNumberProvider": {
+		"::java::data::number_provider::legacy::ConstantNumberProvider": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -36427,7 +38322,7 @@
 				}
 			]
 		},
-		"::java::data::number_provider::EnchantmentLevelProvider": {
+		"::java::data::number_provider::legacy::EnchantmentLevelProvider": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -36440,7 +38335,7 @@
 				}
 			]
 		},
-		"::java::data::number_provider::EnvironmentAttributeNumberProvider": {
+		"::java::data::number_provider::legacy::EnvironmentAttributeNumberProvider": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -36453,50 +38348,7 @@
 				}
 			]
 		},
-		"::java::data::number_provider::NumberDispatcher": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "cases",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "struct",
-							"fields": [
-								{
-									"kind": "pair",
-									"key": "condition",
-									"type": {
-										"kind": "reference",
-										"path": "::java::data::predicate::PredicateRef"
-									}
-								},
-								{
-									"kind": "pair",
-									"key": "number_provider",
-									"type": {
-										"kind": "reference",
-										"path": "::java::data::number_provider::NumberProviderRef"
-									}
-								}
-							]
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to constant 0.",
-					"key": "default",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::number_provider::NumberProvider": {
+		"::java::data::number_provider::legacy::LegacyNumberProvider": {
 			"kind": "union",
 			"members": [
 				{
@@ -36541,247 +38393,27 @@
 								"registry": "minecraft:number_provider"
 							}
 						}
-					],
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					]
-				},
-				{
-					"kind": "struct",
-					"fields": [
-						{
-							"kind": "pair",
-							"key": "type",
-							"type": {
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "loot_number_provider_type"
-											}
-										}
-									}
-								]
-							}
-						},
-						{
-							"kind": "spread",
-							"type": {
-								"kind": "dispatcher",
-								"parallelIndices": [
-									{
-										"kind": "dynamic",
-										"accessor": [
-											"type"
-										]
-									}
-								],
-								"registry": "minecraft:number_provider"
-							}
-						}
-					],
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
 					]
 				}
 			]
 		},
-		"::java::data::number_provider::NumberProviderListRef": {
-			"kind": "union",
-			"members": [
+		"::java::data::number_provider::legacy::LegacySumNumberProvider": {
+			"kind": "struct",
+			"fields": [
 				{
-					"kind": "list",
-					"item": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProvider"
-					},
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
+					"kind": "pair",
+					"key": "summands",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::number_provider::legacy::LegacyNumberProvider"
 						}
-					]
-				},
-				{
-					"kind": "reference",
-					"path": "::java::data::number_provider::NumberProvider",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					]
-				},
-				{
-					"kind": "string",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						},
-						{
-							"name": "id",
-							"value": {
-								"kind": "tree",
-								"values": {
-									"registry": {
-										"kind": "literal",
-										"value": {
-											"kind": "string",
-											"value": "number_provider"
-										}
-									},
-									"tags": {
-										"kind": "literal",
-										"value": {
-											"kind": "string",
-											"value": "allowed"
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"kind": "list",
-					"item": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "number_provider"
-											}
-										}
-									}
-								]
-							},
-							{
-								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProvider"
-							}
-						]
-					},
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					]
+					}
 				}
 			]
 		},
-		"::java::data::number_provider::NumberProviderRef": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "reference",
-					"path": "::java::data::number_provider::NumberProvider"
-				},
-				{
-					"kind": "string",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						},
-						{
-							"name": "id",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "number_provider"
-								}
-							}
-						}
-					]
-				}
-			]
-		},
-		"::java::data::number_provider::ResolvableNumber": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "float"
-				},
-				{
-					"kind": "string",
-					"attributes": [
-						{
-							"name": "id",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "number_provider"
-								}
-							}
-						}
-					]
-				}
-			]
-		},
-		"::java::data::number_provider::ScoreNumberProvider": {
+		"::java::data::number_provider::legacy::ScoreNumberProvider": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -36814,7 +38446,7 @@
 				}
 			]
 		},
-		"::java::data::number_provider::StorageNumberProvider": {
+		"::java::data::number_provider::legacy::StorageNumberProvider": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -36862,7 +38494,7 @@
 				}
 			]
 		},
-		"::java::data::number_provider::UniformNumberProvider": {
+		"::java::data::number_provider::legacy::UniformNumberProvider": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -36870,7 +38502,7 @@
 					"key": "min",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
+						"path": "::java::data::number_provider::legacy::LegacyNumberProvider"
 					},
 					"optional": true
 				},
@@ -36879,33 +38511,15 @@
 					"key": "max",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
+						"path": "::java::data::number_provider::legacy::LegacyNumberProvider"
 					},
 					"optional": true
 				}
 			]
 		},
-		"::java::data::number_provider::WeightedNumberProvider": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "distribution",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::util::NonEmptyWeightedList"
-						},
-						"typeArgs": [
-							{
-								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef"
-							}
-						]
-					}
-				}
-			]
+		"::java::data::number_provider::LegacyNumberProvider": {
+			"kind": "reference",
+			"path": "::java::data::number_provider::legacy::LegacyNumberProvider"
 		},
 		"::java::data::predicate::Predicate": {
 			"kind": "union",
@@ -37131,26 +38745,49 @@
 				}
 			]
 		},
+		"::java::data::recipe::<anonymous 11>": {
+			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 12>": {
+			"kind": "struct",
+			"fields": [],
+			"attributes": [
+				{
+					"name": "until",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.1"
+						}
+					}
+				}
+			]
+		},
 		"::java::data::recipe::<anonymous 2>": {
 			"kind": "struct",
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Material that will be used.",
-					"key": "addition",
+					"desc": "Defaults to `200`.",
+					"key": "cookingtime",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::recipe::Ingredient"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Template item that will be used for the pattern.",
-					"key": "template",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::recipe::Ingredient"
-					}
+						"kind": "int"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -37159,6 +38796,42 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "Hint: The \"Normal\" value for this is `200`.",
+					"key": "cookingtime",
+					"type": {
+						"kind": "int"
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Material that will be used.",
+					"key": "addition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Template item that will be used for the pattern.",
+					"key": "template",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::recipe::Ingredient"
+					}
+				}
+			]
+		},
+		"::java::data::recipe::<anonymous 5>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
 					"desc": "Material that will be used.",
 					"key": "addition",
 					"type": {
@@ -37176,38 +38849,6 @@
 						"path": "::java::data::recipe::Ingredient"
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::data::recipe::<anonymous 4>": {
-			"kind": "struct",
-			"fields": [],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "26.1"
-						}
-					}
-				}
-			]
-		},
-		"::java::data::recipe::<anonymous 5>": {
-			"kind": "struct",
-			"fields": [],
-			"attributes": [
-				{
-					"name": "until",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "26.1"
-						}
-					}
 				}
 			]
 		},
@@ -39034,12 +40675,61 @@
 					"optional": true
 				},
 				{
-					"kind": "pair",
-					"key": "cookingtime",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "int"
-					},
-					"optional": true
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Defaults to `200`.",
+								"key": "cookingtime",
+								"type": {
+									"kind": "int"
+								},
+								"optional": true
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Hint: The \"Normal\" value for this is `200`.",
+								"key": "cookingtime",
+								"type": {
+									"kind": "int"
+								}
+							}
+						]
+					}
 				}
 			]
 		},
@@ -41269,11 +42959,50 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Amount of trades to be generated. \\\nClamps to an integer of at least `1`.",
+					"desc": "Amount of trades to be generated.",
 					"key": "amount",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProvider"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "static",
+										"value": "context_int_provider"
+									}
+								],
+								"registry": "minecraft:resource",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -42080,46 +43809,21 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Clamps to an integer.",
 					"key": "min",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
-					},
-					"optional": true
+						"kind": "float"
+					}
 				},
 				{
 					"kind": "pair",
-					"desc": "Clamps to an integer.",
 					"key": "max",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProviderRef"
-					},
-					"optional": true
+						"kind": "float"
+					}
 				}
 			]
 		},
 		"::java::data::util::<anonymous 2>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "min",
-					"type": {
-						"kind": "float"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "max",
-					"type": {
-						"kind": "float"
-					}
-				}
-			]
-		},
-		"::java::data::util::<anonymous 3>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -42148,7 +43852,7 @@
 				}
 			]
 		},
-		"::java::data::util::<anonymous 4>": {
+		"::java::data::util::<anonymous 3>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -42187,7 +43891,7 @@
 				}
 			]
 		},
-		"::java::data::util::<anonymous 5>": {
+		"::java::data::util::<anonymous 4>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -42327,39 +44031,6 @@
 						"kind": "int"
 					},
 					"optional": true
-				}
-			]
-		},
-		"::java::data::util::IntRange": {
-			"kind": "union",
-			"members": [
-				{
-					"kind": "int"
-				},
-				{
-					"kind": "struct",
-					"fields": [
-						{
-							"kind": "pair",
-							"desc": "Clamps to an integer.",
-							"key": "min",
-							"type": {
-								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef"
-							},
-							"optional": true
-						},
-						{
-							"kind": "pair",
-							"desc": "Clamps to an integer.",
-							"key": "max",
-							"type": {
-								"kind": "reference",
-								"path": "::java::data::number_provider::NumberProviderRef"
-							},
-							"optional": true
-						}
-					]
 				}
 			]
 		},
@@ -44634,6 +46305,76 @@
 				}
 			]
 		},
+		"::java::data::villager_trade::TradeCost": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::world::item::SingleItemOfComponent"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::world::component::DataComponentExactPredicate"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `1`.",
+					"key": "count",
+					"type": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "static",
+										"value": "context_int_provider"
+									}
+								],
+								"registry": "minecraft:resource",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::villager_trade::VillagerTrade": {
 			"kind": "struct",
 			"fields": [
@@ -44643,7 +46384,7 @@
 					"key": "wants",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::item::TradeCost"
+						"path": "::java::data::villager_trade::TradeCost"
 					}
 				},
 				{
@@ -44652,7 +46393,7 @@
 					"key": "additional_wants",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::item::TradeCost"
+						"path": "::java::data::villager_trade::TradeCost"
 					},
 					"optional": true
 				},
@@ -44714,31 +46455,148 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Maximum number of uses of this trade before the villager has to restock. Defaults to `4`. \\\nClamps to a positive integer.",
+					"desc": "Maximum number of uses of this trade before the villager has to restock. Defaults to `4`.",
 					"key": "max_uses",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProvider"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "static",
+										"value": "context_int_provider"
+									}
+								],
+								"registry": "minecraft:resource",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "How much demand & reputation each affect the price, is serialized as `priceMultiplier`. Defaults to `0.0`. \\\nClamps to a non-negative float.",
+					"desc": "How much demand & reputation each affect the price, is serialized as `priceMultiplier`. Defaults to `0.0`.",
 					"key": "reputation_discount",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProvider"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "static",
+										"value": "context_float_provider"
+									}
+								],
+								"registry": "minecraft:resource",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				},
 				{
 					"kind": "pair",
-					"desc": "Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`. \\\nClamps to a non-negative integer.",
+					"desc": "Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`.",
 					"key": "xp",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProvider"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::LegacyNumberProvider",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "dispatcher",
+								"parallelIndices": [
+									{
+										"kind": "static",
+										"value": "context_int_provider"
+									}
+								],
+								"registry": "minecraft:resource",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							}
+						]
 					},
 					"optional": true
 				},
@@ -91336,16 +93194,54 @@
 					"kind": "pair",
 					"key": "uses",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::ResolvableNumber"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "int"
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "context_int_provider"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
 					"kind": "pair",
 					"key": "speed_multiplier",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::ResolvableNumber"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "float"
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "context_float_provider"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				}
 			]
@@ -91582,8 +93478,27 @@
 					"kind": "pair",
 					"key": "layers",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::ResolvableNumber"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "int"
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "context_int_provider"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				}
 			]
@@ -91694,16 +93609,54 @@
 					"kind": "pair",
 					"key": "burn_time",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::ResolvableNumber"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "int"
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "context_int_provider"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				},
 				{
 					"kind": "pair",
 					"key": "speed_multiplier",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::ResolvableNumber"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "float"
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "context_float_provider"
+											}
+										}
+									}
+								]
+							}
+						]
 					}
 				}
 			]
@@ -102266,6 +104219,19 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::breedable::villager::ItemCost": {
+			"kind": "concrete",
+			"child": {
+				"kind": "reference",
+				"path": "::java::world::item::ItemStackOfComponent"
+			},
+			"typeArgs": [
+				{
+					"kind": "reference",
+					"path": "::java::world::component::DataComponentExactPredicate"
+				}
+			]
+		},
 		"::java::world::entity::mob::breedable::villager::Offers": {
 			"kind": "struct",
 			"fields": [
@@ -102428,7 +104394,7 @@
 					"key": "buy",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::item::ItemCost"
+						"path": "::java::world::entity::mob::breedable::villager::ItemCost"
 					},
 					"optional": true
 				},
@@ -102438,7 +104404,7 @@
 					"key": "buyB",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::item::ItemCost"
+						"path": "::java::world::entity::mob::breedable::villager::ItemCost"
 					},
 					"optional": true
 				},
@@ -110884,19 +112850,6 @@
 				}
 			]
 		},
-		"::java::world::item::ItemCost": {
-			"kind": "concrete",
-			"child": {
-				"kind": "reference",
-				"path": "::java::world::item::ItemStackOfComponent"
-			},
-			"typeArgs": [
-				{
-					"kind": "reference",
-					"path": "::java::world::component::DataComponentExactPredicate"
-				}
-			]
-		},
 		"::java::world::item::ItemStack": {
 			"kind": "concrete",
 			"child": {
@@ -111855,37 +113808,6 @@
 							"kind": "reference",
 							"path": "::java::world::item::suspicious_stew::Effect"
 						}
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::world::item::TradeCost": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::world::item::SingleItemOfComponent"
-						},
-						"typeArgs": [
-							{
-								"kind": "reference",
-								"path": "::java::world::component::DataComponentExactPredicate"
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Number of items in the stack.\nDefaults to `1`.",
-					"key": "count",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::NumberProvider"
 					},
 					"optional": true
 				}
@@ -115506,9 +117428,25 @@
 			}
 		},
 		"minecraft:block_state_provider": {
-			"copy_properties_provider": {
+			"copy_properties": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_state_provider::CopyPropertiesProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"dual_noise": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_state_provider::DualNoiseProvider",
 				"attributes": [
 					{
 						"name": "since",
@@ -115535,6 +117473,32 @@
 								"value": "1.18"
 							}
 						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"noise": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_state_provider::NoiseProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
 					}
 				]
 			},
@@ -115549,6 +117513,32 @@
 							"value": {
 								"kind": "string",
 								"value": "1.18"
+							}
+						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"noise_threshold": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_state_provider::NoiseThresholdProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
 							}
 						}
 					}
@@ -115567,12 +117557,38 @@
 								"value": "1.18"
 							}
 						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
 					}
 				]
 			},
-			"random_block_provider": {
+			"random": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_state_provider::RandomBlockStateProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"randomized_int_state": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_state_provider::RandomizedIntStateProvider",
 				"attributes": [
 					{
 						"name": "since",
@@ -115599,12 +117615,66 @@
 								"value": "1.17"
 							}
 						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"rotated": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_state_provider::RotatedStateProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
 					}
 				]
 			},
 			"rotated_block_provider": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::block_state_provider::RotatedStateProvider"
+				"path": "::java::data::worldgen::feature::block_state_provider::RotatedStateProvider",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"rule_based": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::RuleBasedBlockStateProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"rule_based_state_provider": {
 				"kind": "reference",
@@ -115619,16 +117689,82 @@
 								"value": "26.1"
 							}
 						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"simple": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_state_provider::SimpleStateProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
 					}
 				]
 			},
 			"simple_state_provider": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::block_state_provider::SimpleStateProvider"
+				"path": "::java::data::worldgen::feature::block_state_provider::SimpleStateProvider",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"weighted": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_state_provider::WeightedBlockStateProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"weighted_state_provider": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::block_state_provider::WeightedBlockStateProvider"
+				"path": "::java::data::worldgen::feature::block_state_provider::WeightedBlockStateProvider",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			}
 		},
 		"minecraft:carver_config": {
@@ -125232,6 +127368,38 @@
 					}
 				]
 			},
+			"float_value_check": {
+				"kind": "reference",
+				"path": "::java::data::loot::condition::FloatValueCheck",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"int_value_check": {
+				"kind": "reference",
+				"path": "::java::data::loot::condition::IntegerValueCheck",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"inverted": {
 				"kind": "reference",
 				"path": "::java::data::loot::condition::Inverted"
@@ -125335,6 +127503,16 @@
 							"value": {
 								"kind": "string",
 								"value": "1.17"
+							}
+						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
 							}
 						}
 					}
@@ -126292,67 +128470,23 @@
 		"minecraft:number_provider": {
 			"%none": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::UniformNumberProvider",
-				"attributes": [
-					{
-						"name": "until",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.3"
-							}
-						}
-					}
-				]
-			},
-			"average": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::AggregateNumberProvider",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.3"
-							}
-						}
-					}
-				]
+				"path": "::java::data::number_provider::legacy::UniformNumberProvider"
 			},
 			"binomial": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::BinomialNumberProvider"
-			},
-			"conditional": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::ConditionalNumberProvider",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.3"
-							}
-						}
-					}
-				]
+				"path": "::java::data::number_provider::legacy::BinomialNumberProvider"
 			},
 			"constant": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::ConstantNumberProvider"
+				"path": "::java::data::number_provider::legacy::ConstantNumberProvider"
 			},
 			"enchantment_level": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::EnchantmentLevelProvider"
+				"path": "::java::data::number_provider::legacy::EnchantmentLevelProvider"
 			},
 			"environment_attribute": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::EnvironmentAttributeNumberProvider",
+				"path": "::java::data::number_provider::legacy::EnvironmentAttributeNumberProvider",
 				"attributes": [
 					{
 						"name": "since",
@@ -126366,81 +128500,17 @@
 					}
 				]
 			},
-			"maximum": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::AggregateNumberProvider",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.3"
-							}
-						}
-					}
-				]
-			},
-			"minimum": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::AggregateNumberProvider",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.3"
-							}
-						}
-					}
-				]
-			},
-			"number_dispatcher": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::NumberDispatcher",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.3"
-							}
-						}
-					}
-				]
-			},
-			"product": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::AggregateNumberProvider",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.3"
-							}
-						}
-					}
-				]
-			},
 			"score": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::ScoreNumberProvider"
+				"path": "::java::data::number_provider::legacy::ScoreNumberProvider"
 			},
 			"storage": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::StorageNumberProvider"
+				"path": "::java::data::number_provider::legacy::StorageNumberProvider"
 			},
 			"sum": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::AggregateNumberProvider",
+				"path": "::java::data::number_provider::legacy::LegacySumNumberProvider",
 				"attributes": [
 					{
 						"name": "since",
@@ -126456,23 +128526,211 @@
 			},
 			"uniform": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::UniformNumberProvider"
+				"path": "::java::data::number_provider::legacy::UniformNumberProvider"
+			}
+		},
+		"minecraft:number_provider/float": {
+			"abs": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::AbsoluteFloatProvider"
+			},
+			"add": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::AddFloatProvider"
+			},
+			"avg": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::AverageFloatProvider"
+			},
+			"ceil": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::CeilingFloatProvider"
+			},
+			"conditional": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::ConditionalFloatProvider"
+			},
+			"constant": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::ConstantFloatProvider"
+			},
+			"cos": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::CosineFloatProvider"
+			},
+			"div": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::DivideFloatProvider"
+			},
+			"enchantment_level": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::EnchantmentLevelFloatProvider"
+			},
+			"environment_attribute": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::EnvironmentAttributeFloatProvider"
+			},
+			"floor": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::FloorFloatProvider"
+			},
+			"from_int": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::SingleInputInteger"
+			},
+			"length": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::VectorLengthFloatProvider"
+			},
+			"max": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::MaxOfSetFloatProvider"
+			},
+			"min": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::MinOfSetFloatProvider"
+			},
+			"mod": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::ModuloFloatProvider"
+			},
+			"mul": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::MultiplyFloatProvider"
+			},
+			"negate": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::NegateFloatProvider"
+			},
+			"number_dispatcher": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::DispatchedFloatProvider"
+			},
+			"pow": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::ExponentiateFloatProvider"
+			},
+			"round": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::RoundFloatProvider"
+			},
+			"sin": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::SineFloatProvider"
+			},
+			"sqrt": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::SquareRootFloatProvider"
+			},
+			"storage": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::DataStorageFloatProvider"
+			},
+			"sub": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::SubtractFloatProvider"
+			},
+			"truncate": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::TruncateFloatProvider"
+			},
+			"uniform": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::RandomFloatProvider"
 			},
 			"weighted_list": {
 				"kind": "reference",
-				"path": "::java::data::number_provider::WeightedNumberProvider",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.3"
-							}
-						}
-					}
-				]
+				"path": "::java::data::number_provider::contextual_float::WeightedListFloatProvider"
+			}
+		},
+		"minecraft:number_provider/integer": {
+			"abs": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::AbsoluteIntegerProvider"
+			},
+			"add": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::AddIntegerProvider"
+			},
+			"avg": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::AverageIntegerProvider"
+			},
+			"binomial": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::BinomialRandomIntegerProvider"
+			},
+			"conditional": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::ConditionalIntegerProvider"
+			},
+			"constant": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::ConstantIntegerProvider"
+			},
+			"div": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::DivideIntegerProvider"
+			},
+			"environment_attribute": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::EnvironmentAttributeIntegerProvider"
+			},
+			"floor_div": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::FlooredDivideIntegerProvider"
+			},
+			"floor_mod": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::FlooredModuloIntegerProvider"
+			},
+			"from_float": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::SingleInputFloat"
+			},
+			"max": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::MaxOfSetIntegerProvider"
+			},
+			"min": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::MinOfSetIntegerProvider"
+			},
+			"mod": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::ModuloIntegerProvider"
+			},
+			"mul": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::MultiplyIntegerProvider"
+			},
+			"negate": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::NegateIntegerProvider"
+			},
+			"number_dispatcher": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::DispatchedIntegerProvider"
+			},
+			"pow": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::ExponentiateIntegerProvider"
+			},
+			"score": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::ScoreIntegerProvider"
+			},
+			"sub": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::SubtractIntegerProvider"
+			},
+			"uniform": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::RandomIntegerProvider"
+			},
+			"weighted_list": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::WeightedListIntegerProvider"
 			}
 		},
 		"minecraft:numeric_item_property": {
@@ -127573,6 +129831,38 @@
 					}
 				]
 			},
+			"context_float_provider": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_float::FloatNumberProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"context_int_provider": {
+				"kind": "reference",
+				"path": "::java::data::number_provider::contextual_integer::IntegerNumberProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
 			"cow_sound_variant": {
 				"kind": "reference",
 				"path": "::java::data::variants::cow::CowSounds",
@@ -127841,22 +130131,6 @@
 				"kind": "reference",
 				"path": "::java::assets::model::Model"
 			},
-			"number_provider": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::NumberProvider",
-				"attributes": [
-					{
-						"name": "since",
-						"value": {
-							"kind": "literal",
-							"value": {
-								"kind": "string",
-								"value": "26.3"
-							}
-						}
-					}
-				]
-			},
 			"painting_variant": {
 				"kind": "reference",
 				"path": "::java::data::variants::painting::PaintingVariant",
@@ -128004,7 +130278,19 @@
 			},
 			"trade_set": {
 				"kind": "reference",
-				"path": "::java::data::trade_set::TradeSet"
+				"path": "::java::data::trade_set::TradeSet",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.1"
+							}
+						}
+					}
+				]
 			},
 			"trial_spawner": {
 				"kind": "reference",
