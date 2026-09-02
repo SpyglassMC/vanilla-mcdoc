@@ -110,11 +110,11 @@ dispatch minecraft:number_provider/float[ceil] to struct CeilingFloatProvider {
 }
 
 dispatch minecraft:number_provider/float[max] to struct MaxOfSetFloatProvider {
-	...SingleInputFloat,
+	...MultiInputFloat,
 }
 
 dispatch minecraft:number_provider/float[min] to struct MinOfSetFloatProvider {
-	...SingleInputFloat,
+	...MultiInputFloat,
 }
 
 // Domain-specific Conditional Providers

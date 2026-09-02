@@ -165,15 +165,15 @@ dispatch minecraft:loot_condition[value_check] to struct ValueCheck {
 #[since="26.3"]
 dispatch minecraft:loot_condition[int_value_check] to struct IntegerValueCheck {
 	value: IntegerNumberProviderRef,
-	/// Passes when `value` is within this range.
-	range: IntRange,
+	/// Passes when `value` is within the test range.
+	test: IntRange,
 }
 
 #[since="26.3"]
 dispatch minecraft:loot_condition[float_value_check] to struct FloatValueCheck {
 	value: FloatNumberProviderRef,
-	/// Passes when `value` is within this range.
-	range: (
+	/// Passes when `value` is within the test range.
+	test: (
 		FloatNumberProviderRef |
 		struct {
 			min?: FloatNumberProviderRef,
