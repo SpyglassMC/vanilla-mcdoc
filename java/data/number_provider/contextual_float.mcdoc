@@ -19,13 +19,13 @@ type FloatRef = (
 	#[id="context_float_provider"] string |
 	ContextFloatProvider |
 )
-type FloatListRef = (
-	ContextFloatProvider |
-	#[id=(registry="context_int_provider",tags="allowed")] string |
-	[FloatRef] |
+type AggregateOperands = (
+	// TODO: disallow empty tag
+	#[id=(registry="context_int_provider",tags="required")] string |
+	[FloatRef] @ 2.. |
 )
 
-type AggregateProvider = super::AggregateProvider<FloatListRef>
+type AggregateProvider = super::AggregateProvider<AggregateOperands>
 type BinaryProvider = super::BinaryProvider<FloatRef>
 type ConditionalProvider = super::ConditionalProvider<FloatRef>
 type ConstantValue = super::ConstantValue<float>

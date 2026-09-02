@@ -19,13 +19,13 @@ type IntRef = (
 	#[id="context_int_provider"] string |
 	ContextIntProvider |
 )
-type IntListRef = (
-	ContextIntProvider |
-	#[id=(registry="context_int_provider",tags="allowed")] string |
-	[IntRef] |
+type AggregateOperands = (
+	// TODO: disallow empty tag
+	#[id=(registry="context_int_provider",tags="required")] string |
+	[IntRef] @ 2.. |
 )
 
-type AggregateProvider = super::AggregateProvider<IntListRef>
+type AggregateProvider = super::AggregateProvider<AggregateOperands>
 type BinaryProvider = super::BinaryProvider<IntRef>
 type ConditionalProvider = super::ConditionalProvider<IntRef>
 type ConstantValue = super::ConstantValue<int>
