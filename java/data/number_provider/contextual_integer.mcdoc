@@ -2,12 +2,12 @@ use ::java::data::predicate::PredicateRef
 use ::java::data::worldgen::attribute::IntegerEnvironmentAttribute
 use ::java::data::util::ScoreProvider
 use ::java::util::NonEmptyWeightedList
-use super::contextual_float::ContextFloatRef
+use super::contextual_float::FloatRef
 
 #[since="26.3"]
-dispatch minecraft:resource[context_int_provider] to IntegerNumberProvider
+dispatch minecraft:resource[context_int_provider] to ContextIntProvider
 
-type IntegerNumberProvider = (
+type ContextIntProvider = (
 	int |
 	struct {
 		type: #[id="context_int_provider_type"] string,
@@ -15,29 +15,29 @@ type IntegerNumberProvider = (
 	} |
 )
 
-type ContextIntRef = (
+type IntRef = (
 	#[id="context_int_provider"] string |
-	IntegerNumberProvider |
+	ContextIntProvider |
 )
-type ContextIntListRef = (
-	IntegerNumberProvider |
+type IntListRef = (
+	ContextIntProvider |
 	#[id=(registry="context_int_provider",tags="allowed")] string |
-	[ContextIntRef] |
+	[IntRef] |
 )
 
-type AggregateProvider = super::AggregateProvider<ContextIntListRef>
-type BinaryProvider = super::BinaryProvider<ContextIntRef>
-type ConditionalProvider = super::ConditionalProvider<ContextIntRef>
+type AggregateProvider = super::AggregateProvider<IntListRef>
+type BinaryProvider = super::BinaryProvider<IntRef>
+type ConditionalProvider = super::ConditionalProvider<IntRef>
 type ConstantValue = super::ConstantValue<int>
-type DispatcherProvider = super::DispatcherProvider<ContextIntRef>
-type DistributionProvider = super::DistributionProvider<ContextIntRef>
+type DispatcherProvider = super::DispatcherProvider<IntRef>
+type DistributionProvider = super::DistributionProvider<IntRef>
 type EnvironmentAttributeProvider = super::EnvironmentAttributeProvider<IntegerEnvironmentAttribute>
-type PowerProvider = super::PowerProvider<ContextIntRef>
-type RangeProvider = super::PowerProvider<ContextIntRef>
-type StorageValue = super::StorageValue<ContextIntRef>
-type UnaryProvider = super::UnaryProvider<ContextIntRef>
+type PowerProvider = super::PowerProvider<IntRef>
+type RangeProvider = super::PowerProvider<IntRef>
+type StorageValue = super::StorageValue<IntRef>
+type UnaryProvider = super::UnaryProvider<IntRef>
 
-type CastFromFloat = super::UnaryProvider<ContextFloatRef>
+type CastFromFloat = super::UnaryProvider<FloatRef>
 
 // Basic Operations
 
@@ -96,9 +96,9 @@ dispatch minecraft:number_provider/integer[constant] to ConstantValue
 /// Makes `n` random coin flips with probability of succeeding equal to `p`, then returns number of successes.
 dispatch minecraft:number_provider/integer[binomial] to struct BinomialDistributionGenerator {
 	/// Number of coin flips.
-	n: ContextIntRef,
+	n: IntRef,
 	/// Probability of a single coin flip succeeding.
-	p: ContextFloatRef,
+	p: FloatRef,
 }
 
 dispatch minecraft:number_provider/integer[uniform] to RangeProvider
@@ -109,7 +109,7 @@ dispatch minecraft:number_provider/integer[score] to struct ScoreboardValue {
 	target: ScoreProvider,
 	score: #[objective] string,
 	/// Defaults to constant 0.
-	fallback?: ContextIntRef,
+	fallback?: IntRef,
 }
 
 /// Note: \

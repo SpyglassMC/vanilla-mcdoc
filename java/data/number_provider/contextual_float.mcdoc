@@ -2,12 +2,12 @@ use ::java::data::enchantment::LevelBasedValue
 use ::java::data::predicate::PredicateRef
 use ::java::data::worldgen::attribute::NumericalEnvironmentAttribute
 use ::java::util::NonEmptyWeightedList
-use super::contextual_integer::ContextIntRef
+use super::contextual_integer::IntRef
 
 #[since="26.3"]
-dispatch minecraft:resource[context_float_provider] to FloatNumberProvider
+dispatch minecraft:resource[context_float_provider] to ContextFloatProvider
 
-type FloatNumberProvider = (
+type ContextFloatProvider = (
 	float |
 	struct {
 		type: #[id="context_float_provider_type"] string,
@@ -15,29 +15,29 @@ type FloatNumberProvider = (
 	} |
 )
 
-type ContextFloatRef = (
+type FloatRef = (
 	#[id="context_float_provider"] string |
-	FloatNumberProvider |
+	ContextFloatProvider |
 )
-type ContextFloatListRef = (
-	FloatNumberProvider |
+type FloatListRef = (
+	ContextFloatProvider |
 	#[id=(registry="context_int_provider",tags="allowed")] string |
-	[ContextFloatRef] |
+	[FloatRef] |
 )
 
-type AggregateProvider = super::AggregateProvider<ContextFloatListRef>
-type BinaryProvider = super::BinaryProvider<ContextFloatRef>
-type ConditionalProvider = super::ConditionalProvider<ContextFloatRef>
+type AggregateProvider = super::AggregateProvider<FloatListRef>
+type BinaryProvider = super::BinaryProvider<FloatRef>
+type ConditionalProvider = super::ConditionalProvider<FloatRef>
 type ConstantValue = super::ConstantValue<float>
-type DispatcherProvider = super::DispatcherProvider<ContextFloatRef>
-type DistributionProvider = super::DistributionProvider<ContextFloatRef>
+type DispatcherProvider = super::DispatcherProvider<FloatRef>
+type DistributionProvider = super::DistributionProvider<FloatRef>
 type EnvironmentAttributeProvider = super::EnvironmentAttributeProvider<NumericalEnvironmentAttribute>
-type PowerProvider = super::PowerProvider<ContextFloatRef>
-type RangeProvider = super::PowerProvider<ContextFloatRef>
-type StorageValue = super::StorageValue<ContextFloatRef>
-type UnaryProvider = super::UnaryProvider<ContextFloatRef>
+type PowerProvider = super::PowerProvider<FloatRef>
+type RangeProvider = super::PowerProvider<FloatRef>
+type StorageValue = super::StorageValue<FloatRef>
+type UnaryProvider = super::UnaryProvider<FloatRef>
 
-type CastFromInt = super::UnaryProvider<ContextIntRef>
+type CastFromInt = super::UnaryProvider<IntRef>
 
 // Basic Operations
 

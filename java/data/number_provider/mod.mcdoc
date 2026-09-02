@@ -6,11 +6,11 @@ use ::java::util::NonEmptyWeightedList
 
 type FloatNumberProviderRef = (
 	#[until="26.3"] legacy::LegacyNumberProvider |
-	#[since="26.3"] contextual_float::ContextFloatRef |
+	#[since="26.3"] contextual_float::FloatRef |
 )
 type IntegerNumberProviderRef = (
 	#[until="26.3"] legacy::LegacyNumberProvider |
-	#[since="26.3"] contextual_integer::ContextIntRef |
+	#[since="26.3"] contextual_integer::IntRef |
 )
 type LegacyNumberProvider = legacy::LegacyNumberProvider
 
@@ -20,11 +20,11 @@ type ResolvableFloat = (float | #[id="context_float_provider"] string)
 // TODO: disallow ALL references and then throw these 2 types away
 type FloatNumberProvider = (
 	#[until="26.3"] legacy::LegacyNumberProvider |
-	#[since="26.3"] contextual_float::FloatNumberProvider |
+	#[since="26.3"] contextual_float::ContextFloatProvider |
 )
 type IntegerNumberProvider = (
 	#[until="26.3"] legacy::LegacyNumberProvider |
-	#[since="26.3"] contextual_integer::IntegerNumberProvider |
+	#[since="26.3"] contextual_integer::ContextIntProvider |
 )
 
 // Generic types (since 26.3)
