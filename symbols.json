@@ -1,5 +1,5 @@
 {
-	"ref": "a79e0b03fbe1063dcb57ee28161175e5f62cd884",
+	"ref": "c373ab678a7bf70f26c06fec3e7b470886dfb2f7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -22056,7 +22056,7 @@
 					"key": "block_state_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -25545,7 +25545,7 @@
 					"key": "block_state",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -57084,7 +57084,7 @@
 					"key": "fallback",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -57097,7 +57097,7 @@
 					"key": "fallback",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					},
 					"optional": true
 				}
@@ -57677,41 +57677,61 @@
 			]
 		},
 		"::java::data::worldgen::feature::block_state_provider::BlockStateProvider": {
-			"kind": "struct",
-			"fields": [
+			"kind": "union",
+			"members": [
 				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/block_state_provider_type"
-									}
-								}
-							}
-						]
-					}
+					"kind": "reference",
+					"path": "::java::data::worldgen::feature::block_state_provider::TypedBlockStateProvider"
 				},
 				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
+					"kind": "reference",
+					"path": "::java::util::block_state::FullBlockState",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
 							}
-						],
-						"registry": "minecraft:block_state_provider"
-					}
+						}
+					]
+				}
+			]
+		},
+		"::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+				},
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "worldgen/block_state_provider"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
@@ -57723,7 +57743,7 @@
 					"key": "source",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -57970,7 +57990,7 @@
 					"key": "source",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -58002,7 +58022,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider",
+								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef",
 								"attributes": [
 									{
 										"name": "since",
@@ -58051,6 +58071,45 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::util::block_state::BlockState"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::block_state_provider::TypedBlockStateProvider": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "worldgen/block_state_provider_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:block_state_provider"
 					}
 				}
 			]
@@ -58165,7 +58224,7 @@
 					"key": "provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -58178,7 +58237,7 @@
 					"key": "state_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -58238,7 +58297,7 @@
 					"key": "then",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -58338,7 +58397,7 @@
 					"key": "block",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -59649,7 +59708,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider",
+								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef",
 								"attributes": [
 									{
 										"name": "since",
@@ -60103,7 +60162,7 @@
 					"key": "filling_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -60111,7 +60170,7 @@
 					"key": "inner_layer_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -60119,7 +60178,7 @@
 					"key": "alternate_inner_layer_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -60127,7 +60186,7 @@
 					"key": "middle_layer_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -60135,7 +60194,7 @@
 					"key": "outer_layer_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -60777,7 +60836,7 @@
 					"key": "body_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -60785,7 +60844,7 @@
 					"key": "head_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -60891,7 +60950,7 @@
 					"key": "cap_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -60899,7 +60958,7 @@
 					"key": "stem_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -60984,7 +61043,7 @@
 					"key": "fluid",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -61004,7 +61063,7 @@
 					"key": "barrier",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -61656,7 +61715,7 @@
 					"key": "state_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -61957,7 +62016,7 @@
 					"key": "state_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -62926,7 +62985,7 @@
 					"key": "block",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -63025,7 +63084,7 @@
 					"key": "block",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -63381,7 +63440,7 @@
 								"key": "state_provider",
 								"type": {
 									"kind": "reference",
-									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 								}
 							},
 							{
@@ -63846,7 +63905,7 @@
 					"key": "root_state_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -63854,7 +63913,7 @@
 					"key": "hanging_root_state_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -63912,7 +63971,7 @@
 								"key": "fallback",
 								"type": {
 									"kind": "reference",
-									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 								}
 							}
 						]
@@ -63940,7 +63999,7 @@
 								"key": "fallback",
 								"type": {
 									"kind": "reference",
-									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 								},
 								"optional": true
 							}
@@ -63968,7 +64027,7 @@
 									"key": "then",
 									"type": {
 										"kind": "reference",
-										"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+										"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 									}
 								}
 							]
@@ -64215,7 +64274,7 @@
 							},
 							{
 								"kind": "reference",
-								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider",
+								"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef",
 								"attributes": [
 									{
 										"name": "since",
@@ -64431,7 +64490,7 @@
 					"key": "block",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -65377,7 +65436,7 @@
 					"key": "below_trunk_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					},
 					"optional": true
 				}
@@ -65391,7 +65450,7 @@
 					"key": "below_trunk_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -65408,7 +65467,7 @@
 					"key": "above_root_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -65433,7 +65492,7 @@
 					"key": "provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -65494,7 +65553,7 @@
 					"key": "block_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -65534,7 +65593,7 @@
 					"key": "block_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -65814,7 +65873,7 @@
 					"key": "trunk_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -66288,7 +66347,7 @@
 					"key": "muddy_roots_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -66555,7 +66614,7 @@
 					"key": "block_state_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				}
 			]
@@ -66710,7 +66769,7 @@
 					"key": "root_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -67051,7 +67110,7 @@
 					"key": "dirt_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -67086,7 +67145,7 @@
 								"key": "below_trunk_provider",
 								"type": {
 									"kind": "reference",
-									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 								},
 								"optional": true
 							}
@@ -67115,7 +67174,7 @@
 								"key": "below_trunk_provider",
 								"type": {
 									"kind": "reference",
-									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+									"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 								}
 							}
 						]
@@ -67148,7 +67207,7 @@
 					"key": "sapling_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -67156,7 +67215,7 @@
 					"key": "trunk_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -67176,7 +67235,7 @@
 					"key": "leaves_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -67196,7 +67255,7 @@
 					"key": "foliage_provider",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -67871,7 +67930,7 @@
 					"key": "ground_state",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider"
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
 					}
 				},
 				{
@@ -76299,59 +76358,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "id",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "block"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "properties",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"id"
-								]
-							}
-						],
-						"registry": "mcdoc:block_states"
-					},
-					"optional": true
-				}
-			],
-			"attributes": [
-				{
-					"name": "since",
-					"value": {
-						"kind": "literal",
-						"value": {
-							"kind": "string",
-							"value": "26.3"
-						}
-					}
-				}
-			]
-		},
-		"::java::util::block_state::<anonymous 2>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
 					"key": {
 						"kind": "string"
 					},
@@ -76443,45 +76449,8 @@
 					]
 				},
 				{
-					"kind": "struct",
-					"fields": [
-						{
-							"kind": "pair",
-							"key": "id",
-							"type": {
-								"kind": "string",
-								"attributes": [
-									{
-										"name": "id",
-										"value": {
-											"kind": "literal",
-											"value": {
-												"kind": "string",
-												"value": "block"
-											}
-										}
-									}
-								]
-							}
-						},
-						{
-							"kind": "pair",
-							"key": "properties",
-							"type": {
-								"kind": "dispatcher",
-								"parallelIndices": [
-									{
-										"kind": "dynamic",
-										"accessor": [
-											"id"
-										]
-									}
-								],
-								"registry": "mcdoc:block_states"
-							},
-							"optional": true
-						}
-					],
+					"kind": "reference",
+					"path": "::java::util::block_state::FullBlockState",
 					"attributes": [
 						{
 							"name": "since",
@@ -76494,6 +76463,47 @@
 							}
 						}
 					]
+				}
+			]
+		},
+		"::java::util::block_state::FullBlockState": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "block"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "properties",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"id"
+								]
+							}
+						],
+						"registry": "mcdoc:block_states"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -130453,6 +130463,22 @@
 			"worldgen/biome": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::biome::Biome"
+			},
+			"worldgen/block_state_provider": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProvider",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.3"
+							}
+						}
+					}
+				]
 			},
 			"worldgen/carver": {
 				"kind": "reference",
