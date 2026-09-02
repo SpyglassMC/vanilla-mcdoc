@@ -2,11 +2,25 @@ use super::super::IntProvider
 use super::super::dimension::biome_source::NoiseParameters
 use super::RuleBasedBlockStateProvider
 use ::java::util::block_state::BlockState
+use ::java::util::block_state::FullBlockState
 use ::java::util::direction::Direction
 use ::java::util::InclusiveRange
 use ::java::util::NonEmptyWeightedList
 
-struct BlockStateProvider {
+#[since="26.3"]
+dispatch minecraft:resource["worldgen/block_state_provider"] to BlockStateProvider
+
+type BlockStateProvider = (
+	TypedBlockStateProvider |
+	#[since="26.3"] FullBlockState |
+)
+
+type BlockStateProviderRef = (
+	BlockStateProvider |
+	#[since="26.3"] #[id="worldgen/block_state_provider"] string |
+)
+
+struct TypedBlockStateProvider {
 	type: #[id="worldgen/block_state_provider_type"] string,
 	...minecraft:block_state_provider[[type]],
 }
@@ -19,7 +33,7 @@ struct BaseNoiseProvider {
 
 #[since="26.3"]
 dispatch minecraft:block_state_provider[copy_properties] to struct CopyPropertiesProvider {
-	source: BlockStateProvider,
+	source: BlockStateProviderRef,
 }
 
 struct DualNoiseProvider {
@@ -65,7 +79,7 @@ dispatch minecraft:block_state_provider[noise] to NoiseProvider
 struct RandomizedIntStateProvider {
 	property: string,
 	values: IntProvider<int>,
-	source: BlockStateProvider,
+	source: BlockStateProviderRef,
 }
 
 #[since="1.17"] #[until="26.3"]
@@ -82,7 +96,7 @@ dispatch minecraft:block_state_provider[random] to struct RandomBlockStateProvid
 struct RotatedStateProvider {
 	state: (
 		#[until="26.3"] BlockState |
-		#[since="26.3"] BlockStateProvider |
+		#[since="26.3"] BlockStateProviderRef |
 	),
 	#[since="26.3"]
 	direction?: Direction,
