@@ -26,66 +26,88 @@ type AggregateOperands = (
 	[FloatRef] @ 1.. |
 )
 
-type AggregateProvider = super::AggregateProvider<AggregateOperands>
+type SingleProvider = super::SingleProvider<FloatRef>
 type BinaryProvider = super::BinaryProvider<FloatRef>
-type ConditionalProvider = super::ConditionalProvider<FloatRef>
-type ConstantValue = super::ConstantValue<float>
-type DispatcherProvider = super::DispatcherProvider<FloatRef>
-type DistributionProvider = super::DistributionProvider<FloatRef>
-type EnvironmentAttributeProvider = super::EnvironmentAttributeProvider<NumericalEnvironmentAttribute>
-type PowerProvider = super::PowerProvider<FloatRef>
-type RangeProvider = super::PowerProvider<FloatRef>
-type StorageValue = super::StorageValue<FloatRef>
-type UnaryProvider = super::UnaryProvider<FloatRef>
+type AggregateProvider = super::AggregateProvider<AggregateOperands>
 
-type CastFromInt = super::UnaryProvider<IntRef>
 
 // Basic Operations
 
-dispatch minecraft:context_float_provider[add, mul] to AggregateProvider
+dispatch minecraft:context_float_provider[add] to AggregateProvider
 
-dispatch minecraft:context_float_provider[sub, div, mod] to BinaryProvider
+/// Subtract
+dispatch minecraft:context_float_provider[sub] to BinaryProvider
 
-dispatch minecraft:context_float_provider[abs, negate] to UnaryProvider
+/// Multiply
+dispatch minecraft:context_float_provider[mul] to AggregateProvider
+
+/// Absolute Value
+dispatch minecraft:context_float_provider[abs] to SingleProvider
+
+dispatch minecraft:context_float_provider[negate] to SingleProvider
+
+/// Divide
+dispatch minecraft:context_float_provider[div] to BinaryProvider
+
+/// Modulo
+dispatch minecraft:context_float_provider[mod] to BinaryProvider
 
 // Composite Operations
 
-dispatch minecraft:context_float_provider[avg, length] to AggregateProvider
+/// Average
+dispatch minecraft:context_float_provider[avg] to AggregateProvider
 
-dispatch minecraft:context_float_provider[pow] to PowerProvider
+/// Power
+dispatch minecraft:context_float_provider[pow] to super::PowerProvider<FloatRef>
 
-dispatch minecraft:context_float_provider[sqrt] to UnaryProvider
+/// Square Root
+dispatch minecraft:context_float_provider[sqrt] to SingleProvider
+
+/// Vector Length
+dispatch minecraft:context_float_provider[length] to AggregateProvider
 
 // Trigonometric Operations
 
-dispatch minecraft:context_float_provider[sin, cos] to UnaryProvider
+/// Sine
+dispatch minecraft:context_float_provider[sin] to SingleProvider
+
+/// Cosine
+dispatch minecraft:context_float_provider[cos] to SingleProvider
 
 // Conditonal Operations
 
-dispatch minecraft:context_float_provider[ceil, floor, round, truncate] to UnaryProvider
+dispatch minecraft:context_float_provider[ceil, floor, round, truncate] to SingleProvider
 
 dispatch minecraft:context_float_provider[max, min] to AggregateProvider
 
 // Domain-specific Conditional Providers
 
-dispatch minecraft:context_float_provider[conditional] to ConditionalProvider
+dispatch minecraft:context_float_provider[conditional] to super::ConditionalProvider<FloatRef>
 
-dispatch minecraft:context_float_provider[number_dispatcher] to DispatcherProvider
+/// Dispatched
+dispatch minecraft:context_float_provider[number_dispatcher] to super::DispatcherProvider<FloatRef>
 
-dispatch minecraft:context_float_provider[weighted_list] to DistributionProvider
+dispatch minecraft:context_float_provider[weighted_list] to super::DistributionProvider<FloatRef>
 
 // Domain-specific Providers
 
-dispatch minecraft:context_float_provider[constant] to ConstantValue
+dispatch minecraft:context_float_provider[constant] to super::ConstantValue<float>
 
-dispatch minecraft:context_float_provider[uniform] to RangeProvider
+/// Random
+dispatch minecraft:context_float_provider[uniform] to super::RandomProvider<FloatRef>
 
-dispatch minecraft:context_float_provider[from_int] to CastFromInt
+dispatch minecraft:context_float_provider[from_int] to super::SingleProvider<IntRef>
 
-dispatch minecraft:context_float_provider[storage] to StorageValue
+/// Data Storage
+dispatch minecraft:context_float_provider[storage] to struct {
+	storage: #[id="storage"] string,
+	path: #[nbt_path=minecraft:storage[[storage]]] string,
+	/// Defaults to constant 0.
+	fallback?: FloatRef,
+}
 
 dispatch minecraft:context_float_provider[enchantment_level] to struct EnchantmentLevelProvider {
 	amount: LevelBasedValue,
 }
 
-dispatch minecraft:context_float_provider[environment_attribute] to EnvironmentAttributeProvider
+dispatch minecraft:context_float_provider[environment_attribute] to super::EnvironmentAttributeProvider<NumericalEnvironmentAttribute>

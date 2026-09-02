@@ -26,57 +26,62 @@ type AggregateOperands = (
 	[IntRef] @ 1.. |
 )
 
-type AggregateProvider = super::AggregateProvider<AggregateOperands>
+type SingleProvider = super::SingleProvider<IntRef>
 type BinaryProvider = super::BinaryProvider<IntRef>
-type ConditionalProvider = super::ConditionalProvider<IntRef>
-type ConstantValue = super::ConstantValue<int>
-type DispatcherProvider = super::DispatcherProvider<IntRef>
-type DistributionProvider = super::DistributionProvider<IntRef>
-type EnvironmentAttributeProvider = super::EnvironmentAttributeProvider<IntegerEnvironmentAttribute>
-type PowerProvider = super::PowerProvider<IntRef>
-type RangeProvider = super::PowerProvider<IntRef>
-type StorageValue = super::StorageValue<IntRef>
-type UnaryProvider = super::UnaryProvider<IntRef>
-
-type CastFromFloat = super::UnaryProvider<FloatRef>
+type AggregateProvider = super::AggregateProvider<AggregateOperands>
 
 // Basic Operations
 
-dispatch minecraft:context_int_provider[add, mul] to AggregateProvider
+dispatch minecraft:context_int_provider[add] to AggregateProvider
 
+/// Subtract
 dispatch minecraft:context_int_provider[sub] to BinaryProvider
 
-dispatch minecraft:context_int_provider[abs, negate] to UnaryProvider
+/// Multiply
+dispatch minecraft:context_int_provider[mul] to AggregateProvider
+
+/// Absolute Value
+dispatch minecraft:context_int_provider[abs] to SingleProvider
+
+dispatch minecraft:context_int_provider[negate] to SingleProvider
 
 // Integer Division
 
-/// Floors result (rounds towards `-∞`), usually more useful when dealing with coordinates.
+/// Floored Divide. Rounds towards `-∞`, usually more useful when dealing with coordinates.
 dispatch minecraft:context_int_provider[floor_div] to BinaryProvider
 
-/// Truncates result (rounds towards `0`), usually less useful when dealing with coordinates.
+/// Divide. Truncates result (rounds towards `0`), usually less useful when dealing with coordinates.
 dispatch minecraft:context_int_provider[div] to BinaryProvider
 
-/// Uses floored integer division, usually more useful when dealing with coordinates.
+/// Floored Division Modulo
 ///
-/// Solves for `x`: `(floor_div(left, right) * right) + x = left`
+/// Usually more useful when dealing with coordinates. Solves for `x`:
 ///
-/// Example: `floor_mod(-5, 2)` = 1 (`(floor_div(-5, 2) * 2) + 1 = (-3 * 2) + 1 = -5`)
+/// `(floor_div(left, right) * right) + x = left`
+///
+/// Example:
+///
+/// `floor_mod(-5, 2)` = 1 (`(floor_div(-5, 2) * 2) + 1 = (-3 * 2) + 1 = -5`)
 dispatch minecraft:context_int_provider[floor_mod] to BinaryProvider
 
-/// Uses truncated integer division, usually less useful when dealing with coordinates.
+/// Modulo
 ///
-/// Solves for `x`: `(div(left, right) * right) + x = left`
+/// Uses truncated integer division, usually less useful when dealing with coordinates. Solves for `x`:
 ///
-/// Example: `mod(-5, 2)` = -1 (`(div(-5, 2) * 2) + (-1) = (-2 * 2) + (-1) = -5`)
+/// `(div(left, right) * right) + x = left`
+///
+/// Example:
+///
+/// `mod(-5, 2)` = -1 (`(div(-5, 2) * 2) + (-1) = (-2 * 2) + (-1) = -5`)
 dispatch minecraft:context_int_provider[mod] to BinaryProvider
 
 // Composite Operations
 
-/// Division result is truncated (rounds towards `0`).
+/// Average. Division result is truncated (rounded towards `0`).
 dispatch minecraft:context_int_provider[avg] to AggregateProvider
 
-/// Fails if the exponent is negative.
-dispatch minecraft:context_int_provider[pow] to PowerProvider
+/// Exponentiate. Fails if the exponent is negative.
+dispatch minecraft:context_int_provider[pow] to super::PowerProvider<IntRef>
 
 // Conditonal Operations
 
@@ -84,15 +89,16 @@ dispatch minecraft:context_int_provider[max, min] to AggregateProvider
 
 // Domain-specific Conditional Providers
 
-dispatch minecraft:context_int_provider[conditional] to ConditionalProvider
+dispatch minecraft:context_int_provider[conditional] to super::ConditionalProvider<IntRef>
 
-dispatch minecraft:context_int_provider[number_dispatcher] to DispatcherProvider
+/// Dispatched
+dispatch minecraft:context_int_provider[number_dispatcher] to super::DispatcherProvider<IntRef>
 
-dispatch minecraft:context_int_provider[weighted_list] to DistributionProvider
+dispatch minecraft:context_int_provider[weighted_list] to super::DistributionProvider<IntRef>
 
 // Domain-specific Providers
 
-dispatch minecraft:context_int_provider[constant] to ConstantValue
+dispatch minecraft:context_int_provider[constant] to super::ConstantValue<int>
 
 /// Makes `n` random coin flips with probability of succeeding equal to `p`, then returns number of successes.
 dispatch minecraft:context_int_provider[binomial] to struct BinomialDistributionGenerator {
@@ -102,9 +108,9 @@ dispatch minecraft:context_int_provider[binomial] to struct BinomialDistribution
 	p: FloatRef,
 }
 
-dispatch minecraft:context_int_provider[uniform] to RangeProvider
+dispatch minecraft:context_int_provider[uniform] to super::RandomProvider<IntRef>
 
-dispatch minecraft:context_int_provider[from_float] to CastFromFloat
+dispatch minecraft:context_int_provider[from_float] to super::SingleProvider<FloatRef>
 
 dispatch minecraft:context_int_provider[score] to struct ScoreboardValue {
 	target: ScoreProvider,
@@ -116,4 +122,4 @@ dispatch minecraft:context_int_provider[score] to struct ScoreboardValue {
 /// Note: \
 /// Minecraft doesn't have integer environment attributes for now. \
 /// Use `from_float` provider to convert float environment attributes to integer.
-dispatch minecraft:context_int_provider[environment_attribute] to EnvironmentAttributeProvider
+dispatch minecraft:context_int_provider[environment_attribute] to super::EnvironmentAttributeProvider<IntegerEnvironmentAttribute>
