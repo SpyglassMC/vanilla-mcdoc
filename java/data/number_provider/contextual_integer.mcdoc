@@ -47,11 +47,11 @@ dispatch minecraft:number_provider/integer[mul] to struct MultiplyIntegerProvide
 }
 
 dispatch minecraft:number_provider/integer[abs] to struct AbsoluteIntegerProvider {
-	...IntegerNumberProviderRef,
+	...SingleInputInteger,
 }
 
 dispatch minecraft:number_provider/integer[negate] to struct NegateIntegerProvider {
-	...IntegerNumberProviderRef,
+	...SingleInputInteger,
 }
 
 // Integer Division
@@ -100,11 +100,11 @@ dispatch minecraft:number_provider/integer[pow] to struct ExponentiateIntegerPro
 // Conditonal Operations
 
 dispatch minecraft:number_provider/integer[max] to struct MaxOfSetIntegerProvider {
-	...IntegerNumberProviderRef,
+	...MultiInputInteger,
 }
 
 dispatch minecraft:number_provider/integer[min] to struct MinOfSetIntegerProvider {
-	...IntegerNumberProviderRef,
+	...MultiInputInteger,
 }
 
 // Domain-specific Conditional Providers
