@@ -1,5 +1,5 @@
 {
-	"ref": "6681b67d25cbbe84014a810ed723253f8e2f1062",
+	"ref": "a79e0b03fbe1063dcb57ee28161175e5f62cd884",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -37144,7 +37144,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "conditions",
+					"key": "condition",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::predicate::PredicateRef"
@@ -37791,7 +37791,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "conditions",
+					"key": "condition",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::predicate::PredicateRef"
