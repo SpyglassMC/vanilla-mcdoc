@@ -1,4 +1,6 @@
 use ::java::data::item_modifier::ItemModifier
+use ::java::data::number_provider::FloatNumberProviderRef
+use ::java::data::number_provider::IntegerNumberProviderRef
 use ::java::data::number_provider::LegacyNumberProvider
 use ::java::data::predicate::PredicateRef
 use ::java::data::slot_source::SlotSource
@@ -101,11 +103,13 @@ type ItemStackTarget = "tool"
 struct LootPool {
 	rolls: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] LegacyNumberProvider |
+		#[since="1.17"] #[until="26.3"] LegacyNumberProvider |
+		#[since="26.3"] IntegerNumberProviderRef |
 	),
 	bonus_rolls?: (
 		#[until="1.17"] MinMaxBounds<float> |
-		#[since="1.17"] LegacyNumberProvider |
+		#[since="1.17"] #[until="26.3"] LegacyNumberProvider |
+		#[since="26.3"] FloatNumberProviderRef |
 	),
 	entries: [LootPoolEntry],
 	#[until="26.3"] ...struct {
@@ -225,6 +229,21 @@ dispatch minecraft:loot_pool_entry[group] to CompositePoolEntry
 
 /// Executes child entries until the first one that can't run due to conditions.
 dispatch minecraft:loot_pool_entry[sequence] to CompositePoolEntry
+
+type IntRange = (
+	int |
+	#[since="26.3"] IntegerNumberProviderRef |
+	struct {
+		min?: (
+			#[until="26.3"] LegacyNumberProvider |
+			#[since="26.3"] IntegerNumberProviderRef |
+		),
+		max?: (
+			#[until="26.3"] LegacyNumberProvider |
+			#[since="26.3"] IntegerNumberProviderRef |
+		),
+	} |
+)
 
 type LootCondition = condition::LootCondition
 type LootFunction = function::LootFunction

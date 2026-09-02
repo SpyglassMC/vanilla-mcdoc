@@ -1,8 +1,18 @@
 use ::java::data::number_provider::LegacyNumberProvider
 use ::java::data::predicate::Predicate
 use ::java::data::item_modifier::ItemModifier
+use ::java::world::item::SingleItemOfComponent
+use ::java::world::component::DataComponentExactPredicate
 use ::java::world::item::ItemStackTemplate
-use ::java::world::item::TradeCost
+
+struct TradeCost {
+	...SingleItemOfComponent<DataComponentExactPredicate>,
+	/// Defaults to `1`.
+	count?: (
+		#[until="26.3"] LegacyNumberProvider |
+		#[since="26.3"] minecraft:resource[context_int_provider]
+	),
+}
 
 dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	// TODO: Provide a link to a gist with the full explanation. 
@@ -28,15 +38,21 @@ dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	/// ID reference is not allowed here.
 	#[since="26.3"]
 	given_item_modifier?: ItemModifier,
-	/// Maximum number of uses of this trade before the villager has to restock. Defaults to `4`. \
-	/// Clamps to a positive integer.
-	max_uses?: LegacyNumberProvider,
-	/// How much demand & reputation each affect the price, is serialized as `priceMultiplier`. Defaults to `0.0`. \
-	/// Clamps to a non-negative float.
-	reputation_discount?: LegacyNumberProvider,
-	/// Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`. \
-	/// Clamps to a non-negative integer.
-	xp?: LegacyNumberProvider,
+	/// Maximum number of uses of this trade before the villager has to restock. Defaults to `4`.
+	max_uses?: (
+		#[until="26.3"] LegacyNumberProvider |
+		#[since="26.3"] minecraft:resource[context_int_provider] |
+	),
+	/// How much demand & reputation each affect the price, is serialized as `priceMultiplier`. Defaults to `0.0`.
+	reputation_discount?: (
+		#[until="26.3"] LegacyNumberProvider |
+		#[since="26.3"] minecraft:resource[context_float_provider] |
+	),
+	/// Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`.
+	xp?: (
+		#[until="26.3"] LegacyNumberProvider |
+		#[since="26.3"] minecraft:resource[context_int_provider] |
+	),
 	/// Check whether the trade should be offered by the merchant. \
 	/// Does **not** support the `reference` predicate.
 	merchant_predicate?: Predicate,
