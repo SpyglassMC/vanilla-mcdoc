@@ -28,9 +28,13 @@ type ContextInt = (
 )
 
 // Generic types (since 26.3)
+// V: primitive number
+// T: number provider holder
+// S: number provider holder set
+// A: environment attribute type
 
-type ConstantValue<T> = struct {
-	value: T,
+type ConstantValue<V> = struct {
+	value: V,
 }
 
 type UnaryProvider<T> = struct {
@@ -42,8 +46,8 @@ type BinaryProvider<T> = struct {
 	right: T,
 }
 
-type AggregateProvider<T> = struct {
-	inputs: T,
+type AggregateProvider<S> = struct {
+	inputs: S,
 }
 
 type ConditionalProvider<T> = struct {

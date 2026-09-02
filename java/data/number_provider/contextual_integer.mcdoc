@@ -112,4 +112,7 @@ dispatch minecraft:number_provider/integer[score] to struct ScoreboardValue {
 	fallback?: ContextIntRef,
 }
 
+/// Note: \
+/// Minecraft doesn't have integer environment attributes for now. \
+/// Use `from_float` provider to convert float environment attributes to integer.
 dispatch minecraft:number_provider/integer[environment_attribute] to EnvironmentAttributeProvider
