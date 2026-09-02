@@ -644,7 +644,10 @@ dispatch minecraft:loot_function[set_custom_model_data] to struct SetCustomModel
 			...ListOperation,
 		},
 		colors?: struct CustomModelDataColors {
-			values: [IntegerNumberProviderRef],
+			values: [(
+				RGB |
+				IntegerNumberProviderRef |
+			)],
 			...ListOperation,
 		},
 	},
