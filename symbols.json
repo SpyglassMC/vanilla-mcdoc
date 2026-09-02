@@ -1,5 +1,5 @@
 {
-	"ref": "57c88fd1ba1db5b0c1865583557ef5f4f2e6145b",
+	"ref": "6681b67d25cbbe84014a810ed723253f8e2f1062",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -37734,7 +37734,7 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+						"path": "::java::data::number_provider::contextual_integer::SingleInputInteger"
 					}
 				}
 			]
@@ -38041,7 +38041,7 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+						"path": "::java::data::number_provider::contextual_integer::MultiInputInteger"
 					}
 				}
 			]
@@ -38053,7 +38053,7 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+						"path": "::java::data::number_provider::contextual_integer::MultiInputInteger"
 					}
 				}
 			]
@@ -38109,7 +38109,7 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::number_provider::contextual_integer::IntegerNumberProviderRef"
+						"path": "::java::data::number_provider::contextual_integer::SingleInputInteger"
 					}
 				}
 			]
