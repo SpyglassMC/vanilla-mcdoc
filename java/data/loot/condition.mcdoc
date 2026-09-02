@@ -7,8 +7,8 @@ use ::java::data::advancement::predicate::EntityPredicate
 use ::java::data::advancement::predicate::LocationPredicate
 use ::java::data::advancement::predicate::DamageSourcePredicate
 use ::java::data::enchantment::LevelBasedValue
-use ::java::data::number_provider::ContextFloatRef
-use ::java::data::number_provider::ContextIntRef
+use ::java::data::number_provider::FloatNumberProviderRef
+use ::java::data::number_provider::IntegerNumberProviderRef
 use ::java::data::number_provider::LegacyNumberProvider
 use ::java::data::predicate::PredicateRef
 use ::java::data::predicate::PredicateListRef
@@ -109,7 +109,7 @@ dispatch minecraft:loot_condition[random_chance] to struct RandomChance {
 	/// Accepts a value between `0` & `1` (inclusive).
 	chance: (
 		#[until="1.21"] float @ 0..1 |
-		#[since="1.21"] ContextFloatRef |
+		#[since="1.21"] FloatNumberProviderRef |
 	),
 }
 
@@ -164,14 +164,14 @@ dispatch minecraft:loot_condition[value_check] to struct ValueCheck {
 
 #[since="26.3"]
 dispatch minecraft:loot_condition[int_value_check] to struct IntegerValueCheck {
-	value: ContextIntRef,
+	value: IntegerNumberProviderRef,
 	/// Passes when `value` is within this range.
 	test: IntRange,
 }
 
 #[since="26.3"]
 dispatch minecraft:loot_condition[float_value_check] to struct FloatValueCheck {
-	value: ContextFloatRef,
+	value: FloatNumberProviderRef,
 	/// Passes when `value` is within this range.
 	test: FloatRange,
 }

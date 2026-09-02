@@ -4,11 +4,11 @@ use ::java::util::NonEmptyWeightedList
 
 // Export aliases
 
-type ContextFloatRef = (
+type FloatNumberProviderRef = (
 	#[until="26.3"] legacy::LegacyNumberProvider |
 	#[since="26.3"] contextual_float::ContextFloatRef |
 )
-type ContextIntRef = (
+type IntegerNumberProviderRef = (
 	#[until="26.3"] legacy::LegacyNumberProvider |
 	#[since="26.3"] contextual_integer::ContextIntRef |
 )
@@ -17,12 +17,12 @@ type LegacyNumberProvider = legacy::LegacyNumberProvider
 type ResolvableInt = (int | #[id="context_int_provider"] string)
 type ResolvableFloat = (float | #[id="context_float_provider"] string)
 
-// TODO: disallow ALL references
-type ContextFloat = (
+// TODO: disallow ALL references and then throw these 2 types away
+type FloatNumberProvider = (
 	#[until="26.3"] legacy::LegacyNumberProvider |
 	#[since="26.3"] contextual_float::FloatNumberProvider |
 )
-type ContextInt = (
+type IntegerNumberProvider = (
 	#[until="26.3"] legacy::LegacyNumberProvider |
 	#[since="26.3"] contextual_integer::IntegerNumberProvider |
 )

@@ -1,6 +1,6 @@
 use ::java::data::item_modifier::ItemModifier
-use ::java::data::number_provider::ContextFloatRef
-use ::java::data::number_provider::ContextIntRef
+use ::java::data::number_provider::FloatNumberProviderRef
+use ::java::data::number_provider::IntegerNumberProviderRef
 use ::java::data::number_provider::LegacyNumberProvider
 use ::java::data::predicate::PredicateRef
 use ::java::data::slot_source::SlotSource
@@ -104,11 +104,11 @@ type ItemStackTarget = "tool"
 struct LootPool {
 	rolls: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] ContextIntRef |
+		#[since="1.17"] IntegerNumberProviderRef |
 	),
 	bonus_rolls?: (
 		#[until="1.17"] RandomValueBounds |
-		#[since="1.17"] ContextFloatRef |
+		#[since="1.17"] FloatNumberProviderRef |
 	),
 	entries: [LootPoolEntry],
 	#[until="26.3"] ...struct {
@@ -235,10 +235,10 @@ type IntRange = (
 		min?: LegacyNumberProvider,
 		max?: LegacyNumberProvider,
 	} |
-	#[since="26.3"] MinMaxBounds<ContextIntRef> |
+	#[since="26.3"] MinMaxBounds<IntegerNumberProviderRef> |
 )
 // Since 26.3
-type FloatRange = MinMaxBounds<ContextFloatRef>
+type FloatRange = MinMaxBounds<FloatNumberProviderRef>
 
 type LootCondition = condition::LootCondition
 type LootFunction = function::LootFunction

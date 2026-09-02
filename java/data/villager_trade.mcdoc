@@ -1,5 +1,5 @@
-use ::java::data::number_provider::ContextFloat
-use ::java::data::number_provider::ContextInt
+use ::java::data::number_provider::FloatNumberProvider
+use ::java::data::number_provider::IntegerNumberProvider
 use ::java::data::predicate::Predicate
 use ::java::data::item_modifier::ItemModifier
 use ::java::world::item::SingleItemOfComponent
@@ -9,7 +9,7 @@ use ::java::world::item::ItemStackTemplate
 struct TradeCost {
 	...SingleItemOfComponent<DataComponentExactPredicate>,
 	/// Defaults to `1`.
-	count?: ContextInt,
+	count?: IntegerNumberProvider,
 }
 
 dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
@@ -37,11 +37,11 @@ dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	#[since="26.3"]
 	given_item_modifier?: ItemModifier,
 	/// Maximum number of uses of this trade before the villager has to restock. Defaults to `4`.
-	max_uses?: ContextInt,
+	max_uses?: IntegerNumberProvider,
 	/// How much demand & reputation each affect the price, is serialized as `priceMultiplier`. Defaults to `0.0`.
-	reputation_discount?: ContextFloat,
+	reputation_discount?: FloatNumberProvider,
 	/// Amount to increase the merchant's XP score by that determines their trade tier. Defaults to `1`.
-	xp?: ContextInt,
+	xp?: IntegerNumberProvider,
 	/// Check whether the trade should be offered by the merchant. \
 	/// Does **not** support the `reference` predicate.
 	merchant_predicate?: Predicate,

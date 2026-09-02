@@ -1,11 +1,11 @@
-use ::java::data::number_provider::ContextInt
+use ::java::data::number_provider::IntegerNumberProvider
 
 #[since="26.1"]
 dispatch minecraft:resource[trade_set] to struct TradeSet {
 	/// Possible trade generators.
 	trades: (#[id(registry="villager_trade", tags="allowed")] string | [#[id="villager_trade"] string]),
 	/// Amount of trades to be generated.
-	amount: ContextInt,
+	amount: IntegerNumberProvider,
 	/// Whether the trade set can use the same generator multiple times and generate duplicate trades.
 	/// Defaults to `false`.
 	allow_duplicates?: boolean,
