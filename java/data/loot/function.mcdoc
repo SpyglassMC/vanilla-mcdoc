@@ -12,7 +12,7 @@ use super::super::util::NbtProvider
 use ::java::data::advancement::predicate::ItemPredicate
 use ::java::data::item_modifier::ItemModifier
 use ::java::data::number_provider::LegacyNumberProvider
-use ::java::data::number_provider::IntegerNumberProviderRef
+use ::java::data::number_provider::IntNumberProviderRef
 use ::java::data::number_provider::FloatNumberProviderRef
 use ::java::data::predicate::PredicateRef
 use ::java::util::slot::EquipmentSlotGroup
@@ -173,7 +173,7 @@ dispatch minecraft:loot_function[enchant_with_levels] to struct EnchantWithLevel
 	/// The levels to enchant this item with.
 	levels: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] IntegerNumberProviderRef |
+		#[since="1.17"] IntNumberProviderRef |
 	),
 	/// The allowed enchantments. If omitted, all enchantments applicable to the item are possible.
 	#[since="1.21"]
@@ -326,8 +326,8 @@ dispatch minecraft:loot_function[limit_count] to struct LimitCount {
 		#[since="1.17"] #[until="26.3"] IntRange |
 		#[since="26.3"]
 		struct {
-			min?: IntegerNumberProviderRef,
-			max?: IntegerNumberProviderRef,
+			min?: IntNumberProviderRef,
+			max?: IntNumberProviderRef,
 		} |
 	),
 	...Conditions,
@@ -511,7 +511,7 @@ dispatch minecraft:loot_function[set_item] to struct SetItem {
 dispatch minecraft:loot_function[set_count] to struct SetCount {
 	count: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] IntegerNumberProviderRef |
+		#[since="1.17"] IntNumberProviderRef |
 	),
 	/// Whether to add to the existing count. Defaults to `false`.
 	#[since="1.17"]
@@ -537,7 +537,7 @@ dispatch minecraft:loot_function[set_damage] to struct SetDamage {
 dispatch minecraft:loot_function[set_enchantments] to struct SetEnchantments {
 	/// A map of enchantments to levels. Setting an enchantment to `0` removes it from the item.
 	enchantments: struct {
-		[#[id="enchantment"] string]: IntegerNumberProviderRef,
+		[#[id="enchantment"] string]: IntNumberProviderRef,
 	},
 	/// Whether to add to the level of each enchantment. Defaults to `false`.
 	add?: boolean,
@@ -646,7 +646,7 @@ dispatch minecraft:loot_function[set_custom_model_data] to struct SetCustomModel
 		colors?: struct CustomModelDataColors {
 			values: [(
 				RGB |
-				IntegerNumberProviderRef |
+				IntNumberProviderRef |
 			)],
 			...ListOperation,
 		},
@@ -666,7 +666,7 @@ dispatch minecraft:loot_function[set_random_dyes] to struct SetRandomDyes {
 	/// Applies specified number of random dyes to the item. \
 	/// For example, one possible outcome of `"number_of_dyes": 2` is `#2C3065`, which is the combination of a blue dye and a black dye. \
 	/// The same dye color can be selected multiple times.
-	number_of_dyes: IntegerNumberProviderRef,
+	number_of_dyes: IntNumberProviderRef,
 	...Conditions,
 }
 
@@ -759,7 +759,7 @@ dispatch minecraft:loot_function[toggle_tooltips] to struct ToggleTooltips {
 
 #[since="1.20.5"]
 dispatch minecraft:loot_function[set_ominous_bottle_amplifier] to struct SetOminousBottleAmplifier {
-	amplifier: IntegerNumberProviderRef,
+	amplifier: IntNumberProviderRef,
 	...Conditions,
 }
 
@@ -810,6 +810,6 @@ struct StewEffect {
 	/// The duration of this stew effect, in seconds.
 	duration: (
 		#[until="1.17"] RandomValueBounds |
-		#[since="1.17"] IntegerNumberProviderRef |
+		#[since="1.17"] IntNumberProviderRef |
 	),
 }

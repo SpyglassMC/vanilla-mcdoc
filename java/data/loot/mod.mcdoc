@@ -1,6 +1,6 @@
 use ::java::data::item_modifier::ItemModifier
 use ::java::data::number_provider::FloatNumberProviderRef
-use ::java::data::number_provider::IntegerNumberProviderRef
+use ::java::data::number_provider::IntNumberProviderRef
 use ::java::data::number_provider::LegacyNumberProvider
 use ::java::data::predicate::PredicateRef
 use ::java::data::slot_source::SlotSource
@@ -104,7 +104,7 @@ type ItemStackTarget = "tool"
 struct LootPool {
 	rolls: (
 		#[until="1.17"] RandomIntGenerator |
-		#[since="1.17"] IntegerNumberProviderRef |
+		#[since="1.17"] IntNumberProviderRef |
 	),
 	bonus_rolls?: (
 		#[until="1.17"] RandomValueBounds |
@@ -235,7 +235,7 @@ type IntRange = (
 		min?: LegacyNumberProvider,
 		max?: LegacyNumberProvider,
 	} |
-	#[since="26.3"] MinMaxBounds<IntegerNumberProviderRef> |
+	#[since="26.3"] MinMaxBounds<IntNumberProviderRef> |
 )
 // Since 26.3
 type FloatRange = MinMaxBounds<FloatNumberProviderRef>

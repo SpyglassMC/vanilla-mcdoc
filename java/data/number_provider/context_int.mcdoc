@@ -2,7 +2,7 @@ use ::java::data::predicate::PredicateRef
 use ::java::data::worldgen::attribute::IntegerEnvironmentAttribute
 use ::java::data::util::ScoreProvider
 use ::java::util::NonEmptyWeightedList
-use super::contextual_float::FloatRef
+use super::context_float::FloatRef
 
 #[since="26.3"]
 dispatch minecraft:resource[context_int_provider] to ContextIntProvider
@@ -11,7 +11,7 @@ type ContextIntProvider = (
 	int |
 	struct {
 		type: #[id="context_int_provider_type"] string,
-		...minecraft:number_provider/integer[[type]],
+		...minecraft:context_int_provider[[type]],
 	} |
 )
 
@@ -20,9 +20,10 @@ type IntRef = (
 	ContextIntProvider |
 )
 type AggregateOperands = (
+	ContextIntProvider |
 	// TODO: disallow empty tag
-	#[id=(registry="context_int_provider",tags="required")] string |
-	[IntRef] @ 2.. |
+	#[id=(registry="context_int_provider",tags="allowed")] string |
+	[IntRef] @ 1.. |
 )
 
 type AggregateProvider = super::AggregateProvider<AggregateOperands>
@@ -41,71 +42,71 @@ type CastFromFloat = super::UnaryProvider<FloatRef>
 
 // Basic Operations
 
-dispatch minecraft:number_provider/integer[add, mul] to AggregateProvider
+dispatch minecraft:context_int_provider[add, mul] to AggregateProvider
 
-dispatch minecraft:number_provider/integer[sub] to BinaryProvider
+dispatch minecraft:context_int_provider[sub] to BinaryProvider
 
-dispatch minecraft:number_provider/integer[abs, negate] to UnaryProvider
+dispatch minecraft:context_int_provider[abs, negate] to UnaryProvider
 
 // Integer Division
 
 /// Floors result (rounds towards `-∞`), usually more useful when dealing with coordinates.
-dispatch minecraft:number_provider/integer[floor_div] to BinaryProvider
+dispatch minecraft:context_int_provider[floor_div] to BinaryProvider
 
 /// Truncates result (rounds towards `0`), usually less useful when dealing with coordinates.
-dispatch minecraft:number_provider/integer[div] to BinaryProvider
+dispatch minecraft:context_int_provider[div] to BinaryProvider
 
 /// Uses floored integer division, usually more useful when dealing with coordinates.
 ///
 /// Solves for `x`: `(floor_div(left, right) * right) + x = left`
 ///
 /// Example: `floor_mod(-5, 2)` = 1 (`(floor_div(-5, 2) * 2) + 1 = (-3 * 2) + 1 = -5`)
-dispatch minecraft:number_provider/integer[floor_mod] to BinaryProvider
+dispatch minecraft:context_int_provider[floor_mod] to BinaryProvider
 
 /// Uses truncated integer division, usually less useful when dealing with coordinates.
 ///
 /// Solves for `x`: `(div(left, right) * right) + x = left`
 ///
 /// Example: `mod(-5, 2)` = -1 (`(div(-5, 2) * 2) + (-1) = (-2 * 2) + (-1) = -5`)
-dispatch minecraft:number_provider/integer[mod] to BinaryProvider
+dispatch minecraft:context_int_provider[mod] to BinaryProvider
 
 // Composite Operations
 
 /// Division result is truncated (rounds towards `0`).
-dispatch minecraft:number_provider/integer[avg] to AggregateProvider
+dispatch minecraft:context_int_provider[avg] to AggregateProvider
 
 /// Fails if the exponent is negative.
-dispatch minecraft:number_provider/integer[pow] to PowerProvider
+dispatch minecraft:context_int_provider[pow] to PowerProvider
 
 // Conditonal Operations
 
-dispatch minecraft:number_provider/integer[max, min] to AggregateProvider
+dispatch minecraft:context_int_provider[max, min] to AggregateProvider
 
 // Domain-specific Conditional Providers
 
-dispatch minecraft:number_provider/integer[conditional] to ConditionalProvider
+dispatch minecraft:context_int_provider[conditional] to ConditionalProvider
 
-dispatch minecraft:number_provider/integer[number_dispatcher] to DispatcherProvider
+dispatch minecraft:context_int_provider[number_dispatcher] to DispatcherProvider
 
-dispatch minecraft:number_provider/integer[weighted_list] to DistributionProvider
+dispatch minecraft:context_int_provider[weighted_list] to DistributionProvider
 
 // Domain-specific Providers
 
-dispatch minecraft:number_provider/integer[constant] to ConstantValue
+dispatch minecraft:context_int_provider[constant] to ConstantValue
 
 /// Makes `n` random coin flips with probability of succeeding equal to `p`, then returns number of successes.
-dispatch minecraft:number_provider/integer[binomial] to struct BinomialDistributionGenerator {
+dispatch minecraft:context_int_provider[binomial] to struct BinomialDistributionGenerator {
 	/// Number of coin flips.
 	n: IntRef,
 	/// Probability of a single coin flip succeeding.
 	p: FloatRef,
 }
 
-dispatch minecraft:number_provider/integer[uniform] to RangeProvider
+dispatch minecraft:context_int_provider[uniform] to RangeProvider
 
-dispatch minecraft:number_provider/integer[from_float] to CastFromFloat
+dispatch minecraft:context_int_provider[from_float] to CastFromFloat
 
-dispatch minecraft:number_provider/integer[score] to struct ScoreboardValue {
+dispatch minecraft:context_int_provider[score] to struct ScoreboardValue {
 	target: ScoreProvider,
 	score: #[objective] string,
 	/// Defaults to constant 0.
@@ -115,4 +116,4 @@ dispatch minecraft:number_provider/integer[score] to struct ScoreboardValue {
 /// Note: \
 /// Minecraft doesn't have integer environment attributes for now. \
 /// Use `from_float` provider to convert float environment attributes to integer.
-dispatch minecraft:number_provider/integer[environment_attribute] to EnvironmentAttributeProvider
+dispatch minecraft:context_int_provider[environment_attribute] to EnvironmentAttributeProvider
