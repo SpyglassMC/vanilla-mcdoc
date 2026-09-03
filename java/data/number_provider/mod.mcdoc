@@ -1,4 +1,90 @@
-type FloatNumberProviderRef = contextual_float::FloatNumberProviderRef
-type IntegerNumberProviderRef = contextual_integer::IntegerNumberProviderRef
+use ::java::data::predicate::PredicateRef
+use ::java::data::worldgen::attribute::NumericalEnvironmentAttribute
+use ::java::util::NonEmptyWeightedList
 
+// Export aliases
+
+type FloatNumberProviderRef = (
+	#[until="26.3"] legacy::LegacyNumberProvider |
+	#[since="26.3"] context_float::FloatRef |
+)
+type IntNumberProviderRef = (
+	#[until="26.3"] legacy::LegacyNumberProvider |
+	#[since="26.3"] context_int::IntRef |
+)
 type LegacyNumberProvider = legacy::LegacyNumberProvider
+
+// TODO: disallow ALL references and then throw these 2 types away
+type FloatNumberProvider = (
+	#[until="26.3"] legacy::LegacyNumberProvider |
+	#[since="26.3"] context_float::ContextFloatProvider |
+)
+type IntNumberProvider = (
+	#[until="26.3"] legacy::LegacyNumberProvider |
+	#[since="26.3"] context_int::ContextIntProvider |
+)
+
+// Generic types (since 26.3)
+// V: primitive number
+// T: number provider holder
+// S: number provider holder set
+// A: environment attribute type
+
+type SingleProvider<T> = struct {
+	input: T,
+}
+
+type BinaryProvider<T> = struct {
+	left: T,
+	right: T,
+}
+
+type AggregateProvider<S> = struct {
+	inputs: S,
+}
+
+type PowerProvider<T> = struct {
+	base: T,
+	exponent: T,
+}
+
+type ConditionalProvider<T> = struct {
+	condition: PredicateRef,
+	on_true: T,
+	/// Defaults to constant 0.
+	on_false?: T,
+}
+
+type DispatcherProvider<T> = struct {
+	/// Each condition is tested in order, the first in the list that passes is used.
+	cases: [struct {
+		condition: PredicateRef,
+		value: T,
+	}],
+	/// Defaults to constant 0.
+	default?: T,
+}
+
+type DistributionProvider<T> = struct {
+	distribution: NonEmptyWeightedList<T>,
+}
+
+type ConstantValue<V> = struct {
+	value: V,
+}
+
+type RandomProvider<T> = struct {
+	min: T,
+	max: T,
+}
+
+type DataStorageProvider<T> = struct {
+	storage: #[id="storage"] string,
+	path: #[nbt_path=minecraft:storage[[storage]]] string,
+	/// Defaults to constant 0.
+	fallback?: T,
+}
+
+type EnvironmentAttributeProvider<A> = struct {
+	attribute: A,
+}

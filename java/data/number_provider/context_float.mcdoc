@@ -1,0 +1,108 @@
+use ::java::data::enchantment::LevelBasedValue
+use ::java::data::predicate::PredicateRef
+use ::java::data::worldgen::attribute::NumericalEnvironmentAttribute
+use ::java::util::NonEmptyWeightedList
+use super::context_int::IntRef
+
+#[since="26.3"]
+dispatch minecraft:resource[context_float_provider] to ContextFloatProvider
+
+type ContextFloatProvider = (
+	float |
+	struct {
+		type: #[id="context_float_provider_type"] string,
+		...minecraft:context_float_provider[[type]],
+	} |
+)
+
+type FloatRef = (
+	#[id="context_float_provider"] string |
+	ContextFloatProvider |
+)
+type AggregateOperands = (
+	ContextFloatProvider |
+	// TODO: disallow empty tag
+	#[id=(registry="context_float_provider",tags="allowed")] string |
+	[FloatRef] @ 1.. |
+)
+
+type SingleProvider = super::SingleProvider<FloatRef>
+type BinaryProvider = super::BinaryProvider<FloatRef>
+type AggregateProvider = super::AggregateProvider<AggregateOperands>
+
+
+// Basic Operations
+
+dispatch minecraft:context_float_provider[add] to AggregateProvider
+
+/// Subtract
+dispatch minecraft:context_float_provider[sub] to BinaryProvider
+
+/// Multiply
+dispatch minecraft:context_float_provider[mul] to AggregateProvider
+
+/// Absolute Value
+dispatch minecraft:context_float_provider[abs] to SingleProvider
+
+dispatch minecraft:context_float_provider[negate] to SingleProvider
+
+/// Divide
+dispatch minecraft:context_float_provider[div] to BinaryProvider
+
+/// Modulo
+dispatch minecraft:context_float_provider[mod] to BinaryProvider
+
+// Composite Operations
+
+/// Average
+dispatch minecraft:context_float_provider[avg] to AggregateProvider
+
+/// Power
+dispatch minecraft:context_float_provider[pow] to super::PowerProvider<FloatRef>
+
+/// Square Root
+dispatch minecraft:context_float_provider[sqrt] to SingleProvider
+
+/// Vector Length
+dispatch minecraft:context_float_provider[length] to AggregateProvider
+
+// Trigonometric Operations
+
+/// Sine
+dispatch minecraft:context_float_provider[sin] to SingleProvider
+
+/// Cosine
+dispatch minecraft:context_float_provider[cos] to SingleProvider
+
+// Conditonal Operations
+
+dispatch minecraft:context_float_provider[ceil, floor, round, truncate] to SingleProvider
+
+dispatch minecraft:context_float_provider[max, min] to AggregateProvider
+
+// Domain-specific Conditional Providers
+
+dispatch minecraft:context_float_provider[conditional] to super::ConditionalProvider<FloatRef>
+
+/// Dispatched
+dispatch minecraft:context_float_provider[number_dispatcher] to super::DispatcherProvider<FloatRef>
+
+dispatch minecraft:context_float_provider[weighted_list] to super::DistributionProvider<FloatRef>
+
+// Domain-specific Providers
+
+dispatch minecraft:context_float_provider[constant] to super::ConstantValue<float>
+
+/// Random
+dispatch minecraft:context_float_provider[uniform] to super::RandomProvider<FloatRef>
+
+dispatch minecraft:context_float_provider[from_int] to super::SingleProvider<IntRef>
+
+/// Data Storage
+dispatch minecraft:context_float_provider[storage] to super::DataStorageProvider<FloatRef>
+
+dispatch minecraft:context_float_provider[enchantment_level] to struct EnchantmentLevelProvider {
+	amount: LevelBasedValue,
+}
+
+dispatch minecraft:context_float_provider[environment_attribute] to super::EnvironmentAttributeProvider<NumericalEnvironmentAttribute>

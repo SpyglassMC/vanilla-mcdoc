@@ -151,6 +151,11 @@ type NumericalEnvironmentAttribute = #[id] enum(string) {
 	SkyLightLevel = "gameplay/sky_light_level",
 }
 
+// Currently only INTEGER supports `toInt()`
+// Since 26.3
+// Empty for now
+type IntegerEnvironmentAttribute = #[id] enum(string) {}
+
 type GlobalEnvironmentAttributeMap = EnvironmentAttributeMap<#[id="environment_attribute"] string>
 type PositionalEnvironmentAttributeMap = EnvironmentAttributeMap<PositionalEnvironmentAttribute>
 
