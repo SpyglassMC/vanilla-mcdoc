@@ -59,7 +59,7 @@ type DispatcherProvider<T> = struct {
 	/// Each condition is tested in order, the first in the list that passes is used.
 	cases: [struct {
 		condition: PredicateRef,
-		number_provider: T,
+		value: T,
 	}],
 	/// Defaults to constant 0.
 	default?: T,
