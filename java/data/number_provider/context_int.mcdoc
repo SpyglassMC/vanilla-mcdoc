@@ -119,6 +119,9 @@ dispatch minecraft:context_int_provider[score] to struct ScoreboardValue {
 	fallback?: IntRef,
 }
 
+/// Data Storage
+dispatch minecraft:context_int_provider[storage] to super::DataStorageProvider<IntRef>
+
 /// Note: \
 /// Minecraft doesn't have integer environment attributes for now. \
 /// Use `from_float` provider to convert float environment attributes to integer.

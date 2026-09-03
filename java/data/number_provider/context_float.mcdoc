@@ -99,12 +99,7 @@ dispatch minecraft:context_float_provider[uniform] to super::RandomProvider<Floa
 dispatch minecraft:context_float_provider[from_int] to super::SingleProvider<IntRef>
 
 /// Data Storage
-dispatch minecraft:context_float_provider[storage] to struct {
-	storage: #[id="storage"] string,
-	path: #[nbt_path=minecraft:storage[[storage]]] string,
-	/// Defaults to constant 0.
-	fallback?: FloatRef,
-}
+dispatch minecraft:context_float_provider[storage] to super::DataStorageProvider<FloatRef>
 
 dispatch minecraft:context_float_provider[enchantment_level] to struct EnchantmentLevelProvider {
 	amount: LevelBasedValue,

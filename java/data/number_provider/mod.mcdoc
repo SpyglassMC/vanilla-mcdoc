@@ -78,6 +78,13 @@ type RandomProvider<T> = struct {
 	max: T,
 }
 
+type DataStorageProvider<T> = struct {
+	storage: #[id="storage"] string,
+	path: #[nbt_path=minecraft:storage[[storage]]] string,
+	/// Defaults to constant 0.
+	fallback?: T,
+}
+
 type EnvironmentAttributeProvider<A> = struct {
 	attribute: A,
 }
