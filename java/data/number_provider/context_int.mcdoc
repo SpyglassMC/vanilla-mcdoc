@@ -26,9 +26,19 @@ type AggregateOperands = (
 	[IntRef] @ 1.. |
 )
 
-type SingleProvider = super::SingleProvider<IntRef>
-type BinaryProvider = super::BinaryProvider<IntRef>
-type AggregateProvider = super::AggregateProvider<AggregateOperands>
+// type SingleProvider = super::SingleProvider<IntRef>
+// type BinaryProvider = super::BinaryProvider<IntRef>
+// type AggregateProvider = super::AggregateProvider<AggregateOperands>
+struct SingleProvider {
+	input: IntRef
+}
+struct BinaryProvider {
+	left: IntRef,
+	right: IntRef,
+}
+struct AggregateProvider {
+	inputs: AggregateOperands,
+}
 
 // Basic Operations
 
@@ -81,7 +91,11 @@ dispatch minecraft:context_int_provider[mod] to BinaryProvider
 dispatch minecraft:context_int_provider[avg] to AggregateProvider
 
 /// Exponentiate. Fails if the exponent is negative.
-dispatch minecraft:context_int_provider[pow] to super::PowerProvider<IntRef>
+// dispatch minecraft:context_int_provider[pow] to super::PowerProvider<IntRef>
+dispatch minecraft:context_int_provider[pow] to struct {
+	base: IntRef,
+	exponent: IntRef,
+}
 
 // Conditonal Operations
 
@@ -89,12 +103,30 @@ dispatch minecraft:context_int_provider[max, min] to AggregateProvider
 
 // Domain-specific Conditional Providers
 
-dispatch minecraft:context_int_provider[conditional] to super::ConditionalProvider<IntRef>
+// dispatch minecraft:context_int_provider[conditional] to super::ConditionalProvider<IntRef>
+dispatch minecraft:context_int_provider[conditional] to struct {
+	condition: PredicateRef,
+	on_true: IntRef,
+	/// Defaults to constant 0.
+	on_false?: IntRef,
+}
 
 /// Dispatched
-dispatch minecraft:context_int_provider[number_dispatcher] to super::DispatcherProvider<IntRef>
+// dispatch minecraft:context_int_provider[number_dispatcher] to super::DispatcherProvider<IntRef>
+dispatch minecraft:context_int_provider[number_dispatcher] to struct {
+	/// Each condition is tested in order, the first in the list that passes is used.
+	cases: [struct {
+		condition: PredicateRef,
+		value: IntRef,
+	}],
+	/// Defaults to constant 0.
+	default?: IntRef,
+}
 
-dispatch minecraft:context_int_provider[weighted_list] to super::DistributionProvider<IntRef>
+// dispatch minecraft:context_int_provider[weighted_list] to super::DistributionProvider<IntRef>
+dispatch minecraft:context_int_provider[weighted_list] to struct {
+	distribution: NonEmptyWeightedList<IntRef>,
+}
 
 // Domain-specific Providers
 
@@ -108,9 +140,16 @@ dispatch minecraft:context_int_provider[binomial] to struct BinomialDistribution
 	p: FloatRef,
 }
 
-dispatch minecraft:context_int_provider[uniform] to super::RandomProvider<IntRef>
+// dispatch minecraft:context_int_provider[uniform] to super::RandomProvider<IntRef>
+dispatch minecraft:context_int_provider[uniform] to struct {
+	min: IntRef,
+	max: IntRef,
+}
 
-dispatch minecraft:context_int_provider[from_float] to super::SingleProvider<FloatRef>
+// dispatch minecraft:context_int_provider[from_float] to super::SingleProvider<FloatRef>
+dispatch minecraft:context_int_provider[from_float] to struct {
+	input: FloatRef,
+}
 
 dispatch minecraft:context_int_provider[score] to struct ScoreboardValue {
 	target: ScoreProvider,
@@ -120,7 +159,13 @@ dispatch minecraft:context_int_provider[score] to struct ScoreboardValue {
 }
 
 /// Data Storage
-dispatch minecraft:context_int_provider[storage] to super::DataStorageProvider<IntRef>
+// dispatch minecraft:context_int_provider[storage] to super::DataStorageProvider<IntRef>
+dispatch minecraft:context_int_provider[storage] to struct {
+	storage: #[id="storage"] string,
+	path: #[nbt_path=minecraft:storage[[storage]]] string,
+	/// Defaults to constant 0.
+	fallback?: IntRef,
+}
 
 /// Note: \
 /// Minecraft doesn't have integer environment attributes for now. \

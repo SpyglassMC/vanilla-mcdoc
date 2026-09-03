@@ -30,6 +30,10 @@ type IntNumberProvider = (
 // S: number provider holder set
 // A: environment attribute type
 
+// IMPORTANT:
+// Don't use the generic types with <T> and <S> parameter for now
+// It causes infinite recursion
+
 type SingleProvider<T> = struct {
 	input: T,
 }

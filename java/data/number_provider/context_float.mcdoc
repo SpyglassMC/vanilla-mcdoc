@@ -26,10 +26,19 @@ type AggregateOperands = (
 	[FloatRef] @ 1.. |
 )
 
-type SingleProvider = super::SingleProvider<FloatRef>
-type BinaryProvider = super::BinaryProvider<FloatRef>
-type AggregateProvider = super::AggregateProvider<AggregateOperands>
-
+// type SingleProvider = super::SingleProvider<FloatRef>
+// type BinaryProvider = super::BinaryProvider<FloatRef>
+// type AggregateProvider = super::AggregateProvider<AggregateOperands>
+struct SingleProvider {
+	input: FloatRef
+}
+struct BinaryProvider {
+	left: FloatRef,
+	right: FloatRef,
+}
+struct AggregateProvider {
+	inputs: AggregateOperands,
+}
 
 // Basic Operations
 
@@ -58,7 +67,11 @@ dispatch minecraft:context_float_provider[mod] to BinaryProvider
 dispatch minecraft:context_float_provider[avg] to AggregateProvider
 
 /// Power
-dispatch minecraft:context_float_provider[pow] to super::PowerProvider<FloatRef>
+// dispatch minecraft:context_float_provider[pow] to super::PowerProvider<FloatRef>
+dispatch minecraft:context_float_provider[pow] to struct {
+	base: FloatRef,
+	exponent: FloatRef,
+}
 
 /// Square Root
 dispatch minecraft:context_float_provider[sqrt] to SingleProvider
@@ -82,24 +95,55 @@ dispatch minecraft:context_float_provider[max, min] to AggregateProvider
 
 // Domain-specific Conditional Providers
 
-dispatch minecraft:context_float_provider[conditional] to super::ConditionalProvider<FloatRef>
+// dispatch minecraft:context_float_provider[conditional] to super::ConditionalProvider<FloatRef>
+dispatch minecraft:context_float_provider[conditional] to struct {
+	condition: PredicateRef,
+	on_true: FloatRef,
+	/// Defaults to constant 0.
+	on_false?: FloatRef,
+}
 
 /// Dispatched
-dispatch minecraft:context_float_provider[number_dispatcher] to super::DispatcherProvider<FloatRef>
+// dispatch minecraft:context_float_provider[number_dispatcher] to super::DispatcherProvider<FloatRef>
+dispatch minecraft:context_float_provider[number_dispatcher] to struct {
+	/// Each condition is tested in order, the first in the list that passes is used.
+	cases: [struct {
+		condition: PredicateRef,
+		value: FloatRef,
+	}],
+	/// Defaults to constant 0.
+	default?: FloatRef,
+}
 
-dispatch minecraft:context_float_provider[weighted_list] to super::DistributionProvider<FloatRef>
+// dispatch minecraft:context_float_provider[weighted_list] to super::DistributionProvider<FloatRef>
+dispatch minecraft:context_float_provider[weighted_list] to struct {
+	distribution: NonEmptyWeightedList<FloatRef>,
+}
 
 // Domain-specific Providers
 
 dispatch minecraft:context_float_provider[constant] to super::ConstantValue<float>
 
 /// Random
-dispatch minecraft:context_float_provider[uniform] to super::RandomProvider<FloatRef>
+// dispatch minecraft:context_float_provider[uniform] to super::RandomProvider<FloatRef>
+dispatch minecraft:context_float_provider[uniform] to struct {
+	min: FloatRef,
+	max: FloatRef,
+}
 
-dispatch minecraft:context_float_provider[from_int] to super::SingleProvider<IntRef>
+// dispatch minecraft:context_float_provider[from_int] to super::SingleProvider<IntRef>
+dispatch minecraft:context_float_provider[from_int] to struct {
+	input: IntRef,
+}
 
 /// Data Storage
-dispatch minecraft:context_float_provider[storage] to super::DataStorageProvider<FloatRef>
+// dispatch minecraft:context_float_provider[storage] to super::DataStorageProvider<FloatRef>
+dispatch minecraft:context_float_provider[storage] to struct {
+	storage: #[id="storage"] string,
+	path: #[nbt_path=minecraft:storage[[storage]]] string,
+	/// Defaults to constant 0.
+	fallback?: FloatRef,
+}
 
 dispatch minecraft:context_float_provider[enchantment_level] to struct EnchantmentLevelProvider {
 	amount: LevelBasedValue,
