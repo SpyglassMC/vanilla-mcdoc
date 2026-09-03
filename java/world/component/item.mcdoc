@@ -1,7 +1,5 @@
 use ::java::data::advancement::predicate::BlockPredicate
 use ::java::data::damage_type::DamageType
-use ::java::data::number_provider::ResolvableFloat
-use ::java::data::number_provider::ResolvableInt
 use ::java::data::trim::TrimMaterial
 use ::java::data::trim::TrimPattern
 use ::java::data::variants::instrument::Instrument
@@ -157,10 +155,12 @@ dispatch minecraft:data_component[break_sound] to SoundEventRef
 
 #[since="26.3"]
 dispatch minecraft:data_component[brewing_fuel] to struct BrewingFuel {
-	// The number of times this fuel will brew before being consumed.
-	uses: ResolvableInt,
-	// The speed of the brewing.
-	speed_multiplier: ResolvableFloat,
+	// ResolvableInt
+	/// Total recipes the fuel will brew before being consumed.
+	uses: (int | #[id="context_int_provider"] string),
+	// ResolvableFloat
+	/// Controls the recipe brewing speed.
+	speed_multiplier: (float | #[id="context_float_provider"] string),
 }
 
 dispatch minecraft:data_component[bucket_entity_data] to (
@@ -225,7 +225,8 @@ dispatch minecraft:data_component[charged_projectiles] to [ItemStackTemplate]
 
 #[since="26.3"]
 dispatch minecraft:data_component[compostable] to struct Compostable {
-	layers: ResolvableInt,
+	// ResolvableInt
+	layers: (int | #[id="context_int_provider"] string),
 }
 
 #[since="1.21.2"]
@@ -299,8 +300,10 @@ dispatch minecraft:consume_effect[play_sound] to struct PlaySoundConsumeEffect {
 
 #[since="26.3"]
 dispatch minecraft:data_component[cooking_fuel] to struct CookingFuel {
-	burn_time: ResolvableInt,
-	speed_multiplier: ResolvableFloat,
+	// ResolvableInt
+	burn_time: (int | #[id="context_int_provider"] string),
+	// ResolvableFloat
+	speed_multiplier: (float | #[id="context_float_provider"] string),
 }
 
 dispatch minecraft:data_component[custom_model_data] to (

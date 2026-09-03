@@ -14,9 +14,6 @@ type IntNumberProviderRef = (
 )
 type LegacyNumberProvider = legacy::LegacyNumberProvider
 
-type ResolvableInt = (int | #[id="context_int_provider"] string)
-type ResolvableFloat = (float | #[id="context_float_provider"] string)
-
 // TODO: disallow ALL references and then throw these 2 types away
 type FloatNumberProvider = (
 	#[until="26.3"] legacy::LegacyNumberProvider |
@@ -33,11 +30,7 @@ type IntNumberProvider = (
 // S: number provider holder set
 // A: environment attribute type
 
-type ConstantValue<V> = struct {
-	value: V,
-}
-
-type UnaryProvider<T> = struct {
+type SingleProvider<T> = struct {
 	input: T,
 }
 
@@ -50,6 +43,11 @@ type AggregateProvider<S> = struct {
 	inputs: S,
 }
 
+type PowerProvider<T> = struct {
+	base: T,
+	exponent: T,
+}
+
 type ConditionalProvider<T> = struct {
 	condition: PredicateRef,
 	on_true: T,
@@ -58,9 +56,10 @@ type ConditionalProvider<T> = struct {
 }
 
 type DispatcherProvider<T> = struct {
+	/// Each condition is tested in order, the first in the list that passes is used.
 	cases: [struct {
 		condition: PredicateRef,
-		number_provider: T,
+		value: T,
 	}],
 	/// Defaults to constant 0.
 	default?: T,
@@ -70,23 +69,22 @@ type DistributionProvider<T> = struct {
 	distribution: NonEmptyWeightedList<T>,
 }
 
-type EnvironmentAttributeProvider<A> = struct {
-	attribute: A,
+type ConstantValue<V> = struct {
+	value: V,
 }
 
-type PowerProvider<T> = struct {
-	base: T,
-	exponent: T,
-}
-
-type RangeProvider<T> = struct {
+type RandomProvider<T> = struct {
 	min: T,
 	max: T,
 }
 
-type StorageValue<T> = struct {
+type DataStorageProvider<T> = struct {
 	storage: #[id="storage"] string,
 	path: #[nbt_path=minecraft:storage[[storage]]] string,
 	/// Defaults to constant 0.
 	fallback?: T,
+}
+
+type EnvironmentAttributeProvider<A> = struct {
+	attribute: A,
 }
