@@ -1,5 +1,5 @@
 {
-	"ref": "eea955a6afdbf1a1954b8495e8161386cbe7efc0",
+	"ref": "304fd86bbf7d76f91dd0a8afaa78dcc201e299da",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -51766,7 +51766,12 @@
 						"kind": "reference",
 						"path": "::java::data::worldgen::HeightProvider"
 					}
-				},
+				}
+			]
+		},
+		"::java::data::worldgen::carver::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
 				{
 					"kind": "pair",
 					"key": "yScale",
@@ -52067,6 +52072,34 @@
 									"value": "1.17"
 								}
 							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "y",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::HeightProvider"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.17"
+								}
+							}
 						},
 						{
 							"name": "until",
@@ -52082,14 +52115,6 @@
 					"type": {
 						"kind": "struct",
 						"fields": [
-							{
-								"kind": "pair",
-								"key": "y",
-								"type": {
-									"kind": "reference",
-									"path": "::java::data::worldgen::HeightProvider"
-								}
-							},
 							{
 								"kind": "pair",
 								"key": "yScale",
@@ -52143,26 +52168,6 @@
 								"optional": true
 							}
 						]
-					}
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"key": "y",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::HeightProvider"
 					}
 				}
 			]
