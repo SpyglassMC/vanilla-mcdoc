@@ -1,5 +1,5 @@
 {
-	"ref": "304fd86bbf7d76f91dd0a8afaa78dcc201e299da",
+	"ref": "3993906938e49f07c8ad9743c3dbe583fdfd2741",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -51761,19 +51761,6 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"key": "y",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::worldgen::HeightProvider"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::carver::<anonymous 1>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
 					"key": "yScale",
 					"type": {
 						"kind": "concrete",
@@ -52061,7 +52048,7 @@
 					"optional": true
 				},
 				{
-					"kind": "spread",
+					"kind": "pair",
 					"attributes": [
 						{
 							"name": "since",
@@ -52074,18 +52061,10 @@
 							}
 						}
 					],
+					"key": "y",
 					"type": {
-						"kind": "struct",
-						"fields": [
-							{
-								"kind": "pair",
-								"key": "y",
-								"type": {
-									"kind": "reference",
-									"path": "::java::data::worldgen::HeightProvider"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::worldgen::HeightProvider"
 					}
 				},
 				{
