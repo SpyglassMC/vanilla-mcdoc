@@ -41,16 +41,16 @@ struct CarverConfigBase {
 		[#[id="block"] string] |
 		#[id(registry="block",tags="allowed")] string |
 	),
-	#[since="1.17"] #[until="26.3"] ...struct {
+	#[since="1.17"] ...struct {
 		y: HeightProvider,
+	},
+	#[since="1.17"] #[until="26.3"] ...struct {
 		yScale: FloatProvider<float>,
 		lava_level: VerticalAnchor,
 		#[until="1.18"]
 		aquifers_enabled: boolean,
 		debug_settings?: CarverDebugSettings,
 	},
-	#[since="26.3"]
-	y: HeightProvider,
 }
 
 struct CarverDebugSettings {
