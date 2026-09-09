@@ -86,10 +86,10 @@ struct RandomizedIntStateProvider {
 dispatch minecraft:block_state_provider[randomized_int_state_provider] to RandomizedIntStateProvider
 
 #[since="26.3"]
-dispatch minecraft:block_state_provider[randomized_int_state] to RandomizedIntStateProvider
+dispatch minecraft:block_state_provider[randomized_int] to RandomizedIntStateProvider
 
 #[since="26.3"]
-dispatch minecraft:block_state_provider[random] to struct RandomBlockStateProvider {
+dispatch minecraft:block_state_provider[random_block] to struct RandomBlockStateProvider {
 	blocks: (#[id=(registry="block",tags="allowed")] string | [#[id="block"] string]),
 }
 
