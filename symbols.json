@@ -1,5 +1,5 @@
 {
-	"ref": "3993906938e49f07c8ad9743c3dbe583fdfd2741",
+	"ref": "5a08f8b11a78251af97dd410a4aad1848eb1cf9d",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -25222,11 +25222,17 @@
 					],
 					"key": "block_particles",
 					"type": {
-						"kind": "list",
-						"item": {
+						"kind": "concrete",
+						"child": {
 							"kind": "reference",
-							"path": "::java::data::enchantment::effect::ExplosionParticleInfo"
-						}
+							"path": "::java::util::FlatWeightedList"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::enchantment::effect::ExplosionParticleInfo"
+							}
+						]
 					},
 					"optional": true
 				},
@@ -25243,17 +25249,6 @@
 		"::java::data::enchantment::effect::ExplosionParticleInfo": {
 			"kind": "struct",
 			"fields": [
-				{
-					"kind": "pair",
-					"key": "weight",
-					"type": {
-						"kind": "int",
-						"valueRange": {
-							"kind": 0,
-							"min": 1
-						}
-					}
-				},
 				{
 					"kind": "pair",
 					"key": "particle",
@@ -60477,11 +60472,25 @@
 					"kind": "pair",
 					"key": "height_distribution",
 					"type": {
-						"kind": "list",
-						"item": {
+						"kind": "concrete",
+						"child": {
 							"kind": "reference",
-							"path": "::java::data::worldgen::feature::GrowingPlantHeight"
-						}
+							"path": "::java::util::WeightedList"
+						},
+						"typeArgs": [
+							{
+								"kind": "concrete",
+								"child": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::IntProvider"
+								},
+								"typeArgs": [
+									{
+										"kind": "int"
+									}
+								]
+							}
+						]
 					}
 				},
 				{
@@ -117235,7 +117244,7 @@
 					}
 				]
 			},
-			"random": {
+			"random_block": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_state_provider::RandomBlockStateProvider",
 				"attributes": [
@@ -117251,7 +117260,7 @@
 					}
 				]
 			},
-			"randomized_int_state": {
+			"randomized_int": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_state_provider::RandomizedIntStateProvider",
 				"attributes": [
