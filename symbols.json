@@ -1,5 +1,5 @@
 {
-	"ref": "5a08f8b11a78251af97dd410a4aad1848eb1cf9d",
+	"ref": "9d2d65dd13b79ddd891369a0951bf1050b122367",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -60507,34 +60507,6 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
-					}
-				}
-			]
-		},
-		"::java::data::worldgen::feature::GrowingPlantHeight": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "weight",
-					"type": {
-						"kind": "int"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "data",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::data::worldgen::IntProvider"
-						},
-						"typeArgs": [
-							{
-								"kind": "int"
-							}
-						]
 					}
 				}
 			]
