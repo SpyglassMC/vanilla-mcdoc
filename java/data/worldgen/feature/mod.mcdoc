@@ -384,7 +384,7 @@ enum(string) MultifaceBlock {
 dispatch minecraft:feature_config[growing_plant] to struct GrowingPlantConfig {
 	direction: Direction,
 	allow_water: boolean,
-	height_distribution: [GrowingPlantHeight],
+	height_distribution: WeightedList<IntProvider<int>>,
 	body_provider: BlockStateProviderRef,
 	head_provider: BlockStateProviderRef,
 }

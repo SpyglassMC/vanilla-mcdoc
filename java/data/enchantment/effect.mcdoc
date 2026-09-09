@@ -1,5 +1,6 @@
 use ::java::util::attribute::AttributeOperation
 use ::java::util::particle::Particle
+use ::java::util::FlatWeightedList
 use ::java::data::util::SoundEventRef
 use ::java::data::worldgen::FloatProvider
 use ::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef
@@ -160,7 +161,7 @@ struct ExplodeEntityEffect {
 	small_particle: Particle,
 	large_particle: Particle,
 	#[since="1.21.9"]
-	block_particles?: [ExplosionParticleInfo],
+	block_particles?: FlatWeightedList<ExplosionParticleInfo>,
 	sound: SoundEventRef,
 }
 
@@ -190,7 +191,6 @@ enum(string) BlockInteraction {
 }
 
 struct ExplosionParticleInfo {
-	weight: int @ 1..,
 	particle: Particle,
 	/// Defaults to 1.0. Scaling of the distance between the center of the explosion and the block
 	scaling?: float,
