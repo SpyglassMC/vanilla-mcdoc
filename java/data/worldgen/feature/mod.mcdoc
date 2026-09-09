@@ -389,11 +389,6 @@ dispatch minecraft:feature_config[growing_plant] to struct GrowingPlantConfig {
 	head_provider: BlockStateProviderRef,
 }
 
-struct GrowingPlantHeight {
-	weight: int,
-	data: IntProvider<int>,
-}
-
 dispatch minecraft:feature_config[huge_brown_mushroom,huge_red_mushroom] to struct HugeMushroomConfig {
 	cap_provider: BlockStateProviderRef,
 	stem_provider: BlockStateProviderRef,
