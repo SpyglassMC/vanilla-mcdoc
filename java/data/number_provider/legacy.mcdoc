@@ -16,8 +16,8 @@ type LegacyNumberProvider = (
 dispatch minecraft:number_provider[uniform, %none] to UniformNumberProvider
 
 struct UniformNumberProvider {
-	min?: LegacyNumberProvider,
-	max?: LegacyNumberProvider,
+	min: LegacyNumberProvider,
+	max: LegacyNumberProvider,
 }
 
 dispatch minecraft:number_provider[binomial] to struct BinomialNumberProvider {
