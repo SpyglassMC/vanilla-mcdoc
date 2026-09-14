@@ -1,7 +1,7 @@
 use ::java::data::number_provider::FloatNumberProvider
 use ::java::data::number_provider::IntNumberProvider
 use ::java::data::predicate::Predicate
-use ::java::data::item_modifier::ItemModifier
+use ::java::data::item_modifier::ItemModifierRoot
 use ::java::world::item::SingleItemOfComponent
 use ::java::world::component::DataComponentExactPredicate
 use ::java::world::item::ItemStackTemplate
@@ -27,7 +27,7 @@ dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	/// Some modifiers can affect the price through the `additional_trade_cost` transient component. \
 	/// The `additional_trade_cost` component is not saved on the offered item.
 	#[until="26.3"]
-	given_item_modifiers?: [ItemModifier],
+	given_item_modifiers?: [ItemModifierRoot],
 	/// Modifiers applied to the `gives` item. \
 	/// Does **not** support `reference` item modifier. \
 	/// Some modifiers can affect the price through the `additional_trade_cost` transient component. \
@@ -35,7 +35,7 @@ dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
 	///
 	/// ID reference is not allowed here.
 	#[since="26.3"]
-	given_item_modifier?: ItemModifier,
+	given_item_modifier?: ItemModifierRoot,
 	/// Maximum number of uses of this trade before the villager has to restock. Defaults to `4`.
 	max_uses?: IntNumberProvider,
 	/// How much demand & reputation each affect the price, is serialized as `priceMultiplier`. Defaults to `0.0`.
