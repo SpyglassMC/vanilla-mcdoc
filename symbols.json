@@ -1,5 +1,5 @@
 {
-	"ref": "f0ad79b15dfc0136cde6795937f70f1914cf1253",
+	"ref": "d525b65a1b7864424af25dfb955e5a139f071439",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -46185,7 +46185,7 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::data::item_modifier::ItemModifier"
+							"path": "::java::data::item_modifier::ItemModifierRoot"
 						}
 					},
 					"optional": true
@@ -46208,7 +46208,7 @@
 					"key": "given_item_modifier",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::item_modifier::ItemModifier"
+						"path": "::java::data::item_modifier::ItemModifierRoot"
 					},
 					"optional": true
 				},
