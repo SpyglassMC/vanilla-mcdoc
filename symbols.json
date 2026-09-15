@@ -1,5 +1,5 @@
 {
-	"ref": "d525b65a1b7864424af25dfb955e5a139f071439",
+	"ref": "afe86b7f2b0c119411f4044709e19328bfa0e154",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -103999,7 +103999,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Whether it should reward experience for using this trade. \n\nExperience amount is `3 + random(0, 3)` plus `5` if the trade is causing the merchant to increase in tier.",
+					"desc": "Whether it should reward experience for using this trade.\n\nExperience amount is `3 + random(0, 3)` plus `5` if the trade is causing the merchant to increase in tier.",
 					"key": "rewardExp",
 					"type": {
 						"kind": "boolean"
