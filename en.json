@@ -1485,7 +1485,7 @@
 	"::java::world::entity::mob::breedable::villager::Recipe.demand": "Count adjuster of the `buy` item based on demand.\nMinus twice the number of times the villager has the trade in stock.\nWhen restocking subtract the number of possible purchases before running out of stock and add twice the number of actually made purchases.\nWhen the demand becomes positive, the count is increased by the initial count times `priceMultiplier` times the demand.",
 	"::java::world::entity::mob::breedable::villager::Recipe.maxUses": "Maximum number of uses for this trade before the merchant has to restock.",
 	"::java::world::entity::mob::breedable::villager::Recipe.priceMultiplier": "How much demand & reputation each affect the count of the `buy` item.",
-	"::java::world::entity::mob::breedable::villager::Recipe.rewardExp": "Whether it should reward experience for using this trade. \nExperience amount is `3 + random(0, 3)` plus `5` if the trade is causing the merchant to increase in tier.",
+	"::java::world::entity::mob::breedable::villager::Recipe.rewardExp": "Whether it should reward experience for using this trade.\nExperience amount is `3 + random(0, 3)` plus `5` if the trade is causing the merchant to increase in tier.",
 	"::java::world::entity::mob::breedable::villager::Recipe.sell": "Item being offered by the merchant.",
 	"::java::world::entity::mob::breedable::villager::Recipe.specialPrice": "Modifier added to the original count of the `buy` item.",
 	"::java::world::entity::mob::breedable::villager::Recipe.uses": "Times this trade has been used since the merchant last restocked.",
