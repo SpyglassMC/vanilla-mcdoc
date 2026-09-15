@@ -1,5 +1,5 @@
 {
-	"ref": "d3eba59e85f9eea6820f19cab58eb08baae9c2c7",
+	"ref": "55c610da6a943e015ed44033156476892564def6",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -117088,6 +117088,10 @@
 			}
 		},
 		"minecraft:block_state_provider": {
+			"%none": {
+				"kind": "union",
+				"members": []
+			},
 			"copy_properties": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_state_provider::CopyPropertiesProvider",
@@ -117576,6 +117580,10 @@
 			}
 		},
 		"minecraft:context_float_provider": {
+			"%none": {
+				"kind": "union",
+				"members": []
+			},
 			"abs": {
 				"kind": "reference",
 				"path": "::java::data::number_provider::context_float::SingleProvider"
@@ -117889,6 +117897,10 @@
 			}
 		},
 		"minecraft:context_int_provider": {
+			"%none": {
+				"kind": "union",
+				"members": []
+			},
 			"abs": {
 				"kind": "reference",
 				"path": "::java::data::number_provider::context_int::SingleProvider"
