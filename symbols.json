@@ -1,5 +1,5 @@
 {
-	"ref": "afe86b7f2b0c119411f4044709e19328bfa0e154",
+	"ref": "d3eba59e85f9eea6820f19cab58eb08baae9c2c7",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -27422,6 +27422,22 @@
 				}
 			]
 		},
+		"::java::data::item_modifier::ItemModifierWithoutRootRef": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::data::loot::LootFunction"
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "reference",
+						"path": "::java::data::item_modifier::ItemModifierWithoutRootRef"
+					}
+				}
+			]
+		},
 		"::java::data::loot::<anonymous 0>": {
 			"kind": "struct",
 			"fields": [
@@ -46185,7 +46201,7 @@
 						"kind": "list",
 						"item": {
 							"kind": "reference",
-							"path": "::java::data::item_modifier::ItemModifierRoot"
+							"path": "::java::data::item_modifier::ItemModifier"
 						}
 					},
 					"optional": true
@@ -46208,7 +46224,7 @@
 					"key": "given_item_modifier",
 					"type": {
 						"kind": "reference",
-						"path": "::java::data::item_modifier::ItemModifierRoot"
+						"path": "::java::data::item_modifier::ItemModifierWithoutRootRef"
 					},
 					"optional": true
 				},
