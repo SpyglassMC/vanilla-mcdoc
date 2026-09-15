@@ -25,6 +25,8 @@ struct TypedBlockStateProvider {
 	...minecraft:block_state_provider[[type]],
 }
 
+dispatch minecraft:block_state_provider[%none] to ()
+
 struct BaseNoiseProvider {
 	seed: #[random] int,
 	noise: NoiseParameters,
