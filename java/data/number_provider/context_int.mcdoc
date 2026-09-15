@@ -15,8 +15,6 @@ type ContextIntProvider = (
 	} |
 )
 
-dispatch minecraft:context_int_provider[%none] to ()
-
 type IntRef = (
 	#[id="context_int_provider"] string |
 	ContextIntProvider |

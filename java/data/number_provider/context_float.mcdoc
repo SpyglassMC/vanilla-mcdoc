@@ -15,8 +15,6 @@ type ContextFloatProvider = (
 	} |
 )
 
-dispatch minecraft:context_float_provider[%none] to ()
-
 type FloatRef = (
 	#[id="context_float_provider"] string |
 	ContextFloatProvider |
