@@ -17,5 +17,12 @@ type ItemModifierRoot = (
 // Used by item modifier command argument
 type ItemModifierArgument = ItemModifier
 
+// Since 26.3
+// Janky workaround before we have proper "context" attributes to handle this.
+type ItemModifierWithoutRootRef = (
+	LootFunction |
+	[ItemModifierWithoutRootRef] |
+)
+
 #[since="1.17"]
 dispatch minecraft:resource[item_modifier] to ItemModifierRoot
