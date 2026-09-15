@@ -117,9 +117,7 @@ dispatch minecraft:data_component["pig/sound_variant"] to #[id="pig_sound_varian
 dispatch minecraft:data_component["pig/variant"] to #[id="pig_variant"] string
 
 #[since="1.21.5"]
-dispatch minecraft:data_component["salmon/size"] to 
-
-enum(string) SalmonType {
+dispatch minecraft:data_component["salmon/size"] to enum(string) SalmonType {
 	Small = "small",
 	Medium = "medium",
 	Large = "large",

@@ -10,7 +10,7 @@ type SingleItemOfComponent<T> = struct {
 	/// ID of the item.
 	id: (
 		#[until="1.20.5"] #[id="item"] string |
-		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.20.5"] #[id(registry="item", exclude=["air"])] string |
 	),
 	#[since="1.20.5"]
 	components?: T,

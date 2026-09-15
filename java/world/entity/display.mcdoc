@@ -75,7 +75,7 @@ type Transformation = (
 		/// Scale in [x, y, z].
 		scale: [float] @ 3,
 	} |
-	([float] @ 16) | 
+	([float] @ 16) |
 )
 
 type Rotation = (

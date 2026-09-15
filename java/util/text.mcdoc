@@ -270,7 +270,7 @@ enum(string) HoverEventAction {
 dispatch minecraft:hover_event[show_text] to struct ShowText {
 	#[until="1.21.5"]
 	...struct {
-		#[deprecated="1.16"] 
+		#[deprecated="1.16"]
 		value?: Text,
 		#[since="1.16"]
 		contents?: Text,

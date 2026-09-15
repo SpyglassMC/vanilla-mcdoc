@@ -11,4 +11,4 @@ struct LodestonePos {
 	X?: int,
 	Y?: int,
 	Z?: int
-} 
+}

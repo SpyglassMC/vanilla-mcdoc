@@ -64,7 +64,7 @@ dispatch minecraft:apply_bonus_formula[ore_drops] to struct {}
 dispatch minecraft:apply_bonus_formula[uniform_bonus_count] to struct UniformBonusFormula {
 	parameters: struct {
 		bonusMultiplier: int,
-	},	
+	},
 }
 
 /// `n=level + extra`, `p=probability`
@@ -79,7 +79,7 @@ dispatch minecraft:apply_bonus_formula[binomial_with_bonus_count] to struct Bino
 dispatch minecraft:loot_function[copy_name] to struct CopyName {
 	source: (
 		#[until="1.21.9"] CopyNameSource |
-		#[since="1.21.9"] EntityTarget | 
+		#[since="1.21.9"] EntityTarget |
 		#[since="1.21.9"] BlockEntityTarget |
 	),
 	...Conditions,
@@ -503,7 +503,7 @@ enum(string) ContainerComponents {
 dispatch minecraft:loot_function[set_item] to struct SetItem {
 	item: (
 		#[until="1.21.2"] #[id="item"] string |
-		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |	
+		#[since="1.21.2"] #[id(registry="item", exclude=["air"])] string |
 	),
 	...Conditions,
 }

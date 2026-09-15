@@ -223,7 +223,7 @@ struct EntitySubPredicateMap {
 enum(string) SpecificType {
 	Any = "any",
 	#[since="1.19.3"] Axolotl = "axolotl",
-	#[since="1.19.3"] Boat = "boat", 
+	#[since="1.19.3"] Boat = "boat",
 	Cat = "cat",
 	FishingHook = "fishing_hook",
 	#[since="1.19.3"] Fox = "fox",

@@ -183,7 +183,7 @@ dispatch minecraft:particle[vibration] to struct VibrationParticle {
 	...VibrationParticleData,
 }
 
-struct VibrationParticleData {	
+struct VibrationParticleData {
 	/// Ticks in which to interpolate the particle's initial position to the destination.
 	arrival_in_ticks: int,
 	destination: SafePositionSource,

@@ -355,7 +355,7 @@ dispatch minecraft:select_item_property[custom_model_data] to struct CustomModel
 
 dispatch minecraft:select_item_property[context_dimension] to struct ContextDimension{
 	...SelectCases<#[id="dimension"] string>
-} 
+}
 
 dispatch minecraft:select_item_property[context_entity_type] to struct ContextEntityType{
 	...SelectCases<#[id="entity_type"] string>

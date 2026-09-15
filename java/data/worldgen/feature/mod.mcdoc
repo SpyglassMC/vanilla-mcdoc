@@ -480,7 +480,7 @@ struct TargetBlock {
 }
 
 #[until="26.2"]
-dispatch minecraft:feature_config[pointed_dripstone] to SpeleothemConfig 
+dispatch minecraft:feature_config[pointed_dripstone] to SpeleothemConfig
 
 #[since="26.2"]
 dispatch minecraft:feature_config[speleothem] to struct SpeleothemConfig {

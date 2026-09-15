@@ -73,7 +73,7 @@ type SpawnPotential = (
 		Entity?: AnyEntity,
 		/// Weight for this entry to be chosen.
 		Weight?: (
-			#[until="1.17"] int @ 0.. | 
+			#[until="1.17"] int @ 0.. |
 			#[since="1.17"] byte @ 0.. |
 		),
 	} |

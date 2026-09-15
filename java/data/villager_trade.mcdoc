@@ -13,7 +13,7 @@ struct TradeCost {
 }
 
 dispatch minecraft:resource[villager_trade] to struct VillagerTrade {
-	// TODO: Provide a link to a gist with the full explanation. 
+	// TODO: Provide a link to a gist with the full explanation.
 	/// Price item required by the merchant. \
 	/// The count is affected by various factors, including offered item, demand and player reputation.
 	wants: TradeCost,

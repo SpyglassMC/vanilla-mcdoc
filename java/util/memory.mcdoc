@@ -272,7 +272,7 @@ dispatch minecraft:memory_module[liked_noteblock] to struct LikedNoteblock {
 
 dispatch minecraft:memory_module[liked_noteblock_cooldown_ticks] to struct LikedNoteblockCooldownTicks {
 	...ExpirableValue,
-	/// Ticks before the allay stops putting items at the liked note block. 
+	/// Ticks before the allay stops putting items at the liked note block.
 	value: int,
 }
 

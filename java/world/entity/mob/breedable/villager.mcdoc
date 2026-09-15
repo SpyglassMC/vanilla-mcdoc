@@ -135,7 +135,7 @@ struct Offers {
 type ItemCost = ItemStackOfComponent<DataComponentExactPredicate>
 
 struct Recipe {
-	/// Whether it should reward experience for using this trade. 
+	/// Whether it should reward experience for using this trade.
 	///
 	/// Experience amount is `3 + random(0, 3)` plus `5` if the trade is causing the merchant to increase in tier.
 	rewardExp?: boolean,
@@ -143,7 +143,7 @@ struct Recipe {
 	maxUses?: int @ 0..,
 	/// Times this trade has been used since the merchant last restocked.
 	uses?: int @ 0..,
-	// TODO: Provide a link to a gist with the full explanation. 
+	// TODO: Provide a link to a gist with the full explanation.
 	/// Price item required by the merchant, count is modified depending on `demand` & per-player context.
 	buy?: ItemCost,
 	/// Second item required by the merchant, count does not change.
@@ -162,7 +162,7 @@ struct Recipe {
 	///
 	/// Minus twice the number of times the villager has the trade in stock.
 	/// When restocking subtract the number of possible purchases before running out of stock and add twice the number of actually made purchases.
-	/// When the demand becomes positive, the count is increased by the initial count times `priceMultiplier` times the demand. 
+	/// When the demand becomes positive, the count is increased by the initial count times `priceMultiplier` times the demand.
 	demand?: int,
 }
 
