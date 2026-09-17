@@ -1,5 +1,5 @@
 {
-	"ref": "3abd9eb720c03376596cbe695697c5cf9045d288",
+	"ref": "209f429987ce138c9a1bf99f038a41618edfea06",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -27575,6 +27575,64 @@
 				}
 			]
 		},
+		"::java::data::loot::<anonymous 6>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::IntNumberProviderRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::IntNumberProviderRef"
+					},
+					"optional": true
+				}
+			],
+			"attributes": [
+				{
+					"name": "since",
+					"value": {
+						"kind": "literal",
+						"value": {
+							"kind": "string",
+							"value": "26.3"
+						}
+					}
+				}
+			]
+		},
+		"::java::data::loot::<anonymous 7>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::FloatNumberProviderRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::FloatNumberProviderRef"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::loot::BlockEntityTarget": {
 			"kind": "literal",
 			"value": {
@@ -28851,15 +28909,34 @@
 			]
 		},
 		"::java::data::loot::FloatRange": {
-			"kind": "concrete",
-			"child": {
-				"kind": "reference",
-				"path": "::java::data::util::MinMaxBounds"
-			},
-			"typeArgs": [
+			"kind": "union",
+			"members": [
 				{
 					"kind": "reference",
 					"path": "::java::data::number_provider::FloatNumberProviderRef"
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "min",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::number_provider::FloatNumberProviderRef"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "max",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::number_provider::FloatNumberProviderRef"
+							},
+							"optional": true
+						}
+					]
 				}
 			]
 		},
@@ -34739,15 +34816,41 @@
 					]
 				},
 				{
-					"kind": "concrete",
-					"child": {
-						"kind": "reference",
-						"path": "::java::data::util::MinMaxBounds"
-					},
-					"typeArgs": [
+					"kind": "reference",
+					"path": "::java::data::number_provider::IntNumberProviderRef",
+					"attributes": [
 						{
-							"kind": "reference",
-							"path": "::java::data::number_provider::IntNumberProviderRef"
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "struct",
+					"fields": [
+						{
+							"kind": "pair",
+							"key": "min",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntNumberProviderRef"
+							},
+							"optional": true
+						},
+						{
+							"kind": "pair",
+							"key": "max",
+							"type": {
+								"kind": "reference",
+								"path": "::java::data::number_provider::IntNumberProviderRef"
+							},
+							"optional": true
 						}
 					],
 					"attributes": [
