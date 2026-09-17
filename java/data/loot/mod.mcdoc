@@ -235,10 +235,22 @@ type IntRange = (
 		min?: LegacyNumberProvider,
 		max?: LegacyNumberProvider,
 	} |
-	#[since="26.3"] MinMaxBounds<IntNumberProviderRef> |
+	// #[since="26.3"] MinMaxBounds<IntNumberProviderRef> |
+	#[since="26.3"] IntNumberProviderRef |
+	#[since="26.3"] struct {
+		min?: IntNumberProviderRef,
+		max?: IntNumberProviderRef,
+	} |
 )
 // Since 26.3
-type FloatRange = MinMaxBounds<FloatNumberProviderRef>
+// type FloatRange = MinMaxBounds<FloatNumberProviderRef>
+type FloatRange = (
+	FloatNumberProviderRef |
+	struct {
+		min?: FloatNumberProviderRef,
+		max?: FloatNumberProviderRef,
+	} |
+)
 
 type LootCondition = condition::LootCondition
 type LootFunction = function::LootFunction
