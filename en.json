@@ -695,7 +695,7 @@
 	"::java::data::worldgen::biome::BiomeMusic.replace_current_music": "Defaults to `false`.",
 	"::java::data::worldgen::biome::GrassColorModifier.DarkForest": "Grass color will be average of the base color and `#28340a`.",
 	"::java::data::worldgen::biome::GrassColorModifier.Swamp": "Grass color will be either `#4c763c` or `#6a7039`, depending on block position. \\\nThe base color is ignored.",
-	"::java::data::worldgen::carver::CaveConfig.start_vertical_radiues_multiplier": "Defaults to constant 1.0",
+	"::java::data::worldgen::carver::CaveConfig.start_vertical_radius_multiplier": "Defaults to constant 1.0",
 	"::java::data::worldgen::carver::CaveConfig.weird_thickness_bias": "Defaults to `false`.",
 	"::java::data::worldgen::density_function::DistanceMetric.Chebyshev": "`max(abs(dx), abs(dy), abs(dz))`",
 	"::java::data::worldgen::density_function::DistanceMetric.Euclidean": "`sqrt(dx^2 + dy^2 + dz^2)`",

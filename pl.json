@@ -51,7 +51,7 @@
 	"::java::data::slot_source::ContentsSlotSource.slot_source": "Miejsca w ekwipunku do przeszukania.",
 	"::java::data::slot_source::RangeSlotSource.source": "Domyślnie `container`.",
 	"::java::data::trim::TrimMaterial.palette": "ID palety, która zostanie użyta w paczce zasobów..",
-	"::java::data::worldgen::carver::CaveConfig.start_vertical_radiues_multiplier": "Domyślnie stała 1.0",
+	"::java::data::worldgen::carver::CaveConfig.start_vertical_radius_multiplier": "Domyślnie stała 1.0",
 	"::java::data::worldgen::carver::CaveConfig.weird_thickness_bias": "Domyślnie `false`.",
 	"::java::data::worldgen::feature::EndPodiumConfig.active": "Domyślnie `false`.",
 	"::java::data::worldgen::feature::SingleBlockPillarConfig.can_replace": "Domyślnie \"always true\".",
