@@ -1,5 +1,5 @@
 {
-	"ref": "d9bf6a3e2aa4a12e26651992537513f68d85bde0",
+	"ref": "ef1297a83278e98cf00357ffe9eb0d0c5c3cfc8b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -104905,11 +104905,53 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Fighting phase it is in.",
+					"desc": "The dragon's current state.",
 					"key": "DragonPhase",
 					"type": {
 						"kind": "reference",
 						"path": "::java::world::entity::mob::ender_dragon::DragonPhase"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.17"
+								}
+							}
+						}
+					],
+					"desc": "Number of ticks the dragon has been dead for, or `0` when alive.\nAt `150`, the dragon begins spawning experience orbs every 5 ticks (first drop at 155).\nRemoves dragon at values `200` and higher.",
+					"key": "DragonDeathTime",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.2"
+								}
+							}
+						}
+					],
+					"desc": "The amount of damage the dragon has received while perched.\nWhen this value is `50` or higher, it is reset to `0` and the dragon ends its perch.",
+					"key": "sitting_damage_received",
+					"type": {
+						"kind": "float"
 					},
 					"optional": true
 				}
