@@ -98,6 +98,6 @@ struct CaveConfig {
 	vertical_radius_multiplier: FloatProvider<float>,
 	/// Defaults to constant 1.0
 	#[since="26.3"]
-	start_vertical_radiues_multiplier?: FloatProvider<float>,
+	start_vertical_radius_multiplier?: FloatProvider<float>,
 	floor_level: FloatProvider<float @ -1..1>,
 }
