@@ -1,5 +1,5 @@
 {
-	"ref": "209f429987ce138c9a1bf99f038a41618edfea06",
+	"ref": "d9bf6a3e2aa4a12e26651992537513f68d85bde0",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -52708,7 +52708,7 @@
 						}
 					],
 					"desc": "Defaults to constant 1.0",
-					"key": "start_vertical_radiues_multiplier",
+					"key": "start_vertical_radius_multiplier",
 					"type": {
 						"kind": "concrete",
 						"child": {
