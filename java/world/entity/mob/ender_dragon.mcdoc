@@ -1,7 +1,16 @@
 dispatch minecraft:entity[ender_dragon] to struct EnderDragon {
 	...super::MobBase,
-	/// Fighting phase it is in.
+	/// The dragon's current state.
 	DragonPhase?: DragonPhase,
+	/// Number of ticks the dragon has been dead for, or `0` when alive.
+	/// At `150`, the dragon begins spawning experience orbs every 5 ticks (first drop at 155).
+	/// Removes dragon at values `200` and higher.
+	#[since="1.17"]
+	DragonDeathTime?: int,
+	/// The amount of damage the dragon has received while perched.
+	/// When this value is `50` or higher, it is reset to `0` and the dragon ends its perch.
+	#[since="26.2"]
+	sitting_damage_received?: float,
 }
 
 enum(int) DragonPhase {
