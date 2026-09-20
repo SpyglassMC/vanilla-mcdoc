@@ -27,6 +27,11 @@ type AggregateOperands = (
 	#[id=(registry="context_float_provider",tags="allowed")] string |
 	[FloatRef] @ 1.. |
 )
+type OptionalAggregateOperands = (
+	ContextFloatProvider |
+	#[id=(registry="context_float_provider",tags="allowed")] string |
+	[FloatRef] |
+)
 
 // type SingleProvider = super::SingleProvider<FloatRef>
 // type BinaryProvider = super::BinaryProvider<FloatRef>
@@ -93,7 +98,15 @@ dispatch minecraft:context_float_provider[cos] to SingleProvider
 
 dispatch minecraft:context_float_provider[ceil, floor, round, truncate] to SingleProvider
 
-dispatch minecraft:context_float_provider[max, min] to AggregateProvider
+dispatch minecraft:context_float_provider[max] to struct {
+	/// If no input is provided, return -3.4028235e38 (min finite float value).
+	inputs: OptionalAggregateOperands,
+}
+
+dispatch minecraft:context_float_provider[min] to struct {
+	/// If no input is provided, return 3.4028235e38 (max finite float value).
+	inputs: OptionalAggregateOperands,
+}
 
 // Domain-specific Conditional Providers
 
