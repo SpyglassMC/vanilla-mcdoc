@@ -112,8 +112,12 @@ dispatch minecraft:trunk_placer[
 	forking_trunk_placer,
 	giant_trunk_placer,
 	mega_jungle_trunk_placer,
-	straight_trunk_placer,
 ] to struct {}
+
+dispatch minecraft:trunk_placer[straight_trunk_placer] to struct {
+	#[since="26.4"]
+	trunk_width?: IntProvider<int @ 1..>,
+}
 
 #[since="1.17"]
 dispatch minecraft:trunk_placer[bending_trunk_placer] to struct BendingTrunkPlacer {
