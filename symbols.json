@@ -1,5 +1,5 @@
 {
-	"ref": "ef1297a83278e98cf00357ffe9eb0d0c5c3cfc8b",
+	"ref": "f74c1c489630ed736094b3e94dd4b6f539cdad5c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -62218,18 +62218,65 @@
 					"desc": "Fixed list of block positions to place the feature at.",
 					"key": "positions",
 					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "list",
-							"item": {
-								"kind": "int"
+						"kind": "union",
+						"members": [
+							{
+								"kind": "list",
+								"item": {
+									"kind": "list",
+									"item": {
+										"kind": "int"
+									},
+									"lengthRange": {
+										"kind": 0,
+										"min": 3,
+										"max": 3
+									}
+								},
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.4"
+											}
+										}
+									}
+								]
 							},
-							"lengthRange": {
-								"kind": 0,
-								"min": 3,
-								"max": 3
+							{
+								"kind": "list",
+								"item": {
+									"kind": "list",
+									"item": {
+										"kind": "int"
+									},
+									"lengthRange": {
+										"kind": 0,
+										"min": 3,
+										"max": 3
+									}
+								},
+								"lengthRange": {
+									"kind": 0,
+									"min": 1
+								},
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.4"
+											}
+										}
+									}
+								]
 							}
-						}
+						]
 					}
 				}
 			]
@@ -65209,6 +65256,44 @@
 		"::java::data::worldgen::feature::tree::<anonymous 2>": {
 			"kind": "struct",
 			"fields": []
+		},
+		"::java::data::worldgen::feature::tree::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"key": "trunk_width",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
 		},
 		"::java::data::worldgen::feature::tree::AboveRootPlacement": {
 			"kind": "struct",
@@ -68900,6 +68985,18 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
 					"key": "default_block",
 					"type": {
 						"kind": "reference",
@@ -132450,7 +132547,41 @@
 			},
 			"straight_trunk_placer": {
 				"kind": "struct",
-				"fields": []
+				"fields": [
+					{
+						"kind": "pair",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						],
+						"key": "trunk_width",
+						"type": {
+							"kind": "concrete",
+							"child": {
+								"kind": "reference",
+								"path": "::java::data::worldgen::IntProvider"
+							},
+							"typeArgs": [
+								{
+									"kind": "int",
+									"valueRange": {
+										"kind": 0,
+										"min": 1
+									}
+								}
+							]
+						},
+						"optional": true
+					}
+				]
 			},
 			"upwards_branching_trunk_placer": {
 				"kind": "reference",
