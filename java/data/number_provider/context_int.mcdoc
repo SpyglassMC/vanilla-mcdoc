@@ -25,7 +25,7 @@ type AggregateOperands = (
 	ContextIntProvider |
 	// TODO: disallow empty tag
 	#[id=(registry="context_int_provider",tags="allowed")] string |
-	[IntRef] @ 1.. |
+	[IntRef] |
 )
 
 // type SingleProvider = super::SingleProvider<IntRef>
@@ -101,7 +101,15 @@ dispatch minecraft:context_int_provider[pow] to struct {
 
 // Conditonal Operations
 
-dispatch minecraft:context_int_provider[max, min] to AggregateProvider
+dispatch minecraft:context_int_provider[max] to struct {
+	/// If no input is provided, return -2147483648 (int min value).
+	inputs: AggregateOperands,
+}
+
+dispatch minecraft:context_int_provider[min] to struct {
+	/// If no input is provided, return 2147483647 (int max value).
+	inputs: AggregateOperands,
+}
 
 // Domain-specific Conditional Providers
 
