@@ -1,5 +1,5 @@
 {
-	"ref": "bb600c56d857416e9eb6b9c0fc981269798fa49b",
+	"ref": "274828a50d4a90fdb0e105863f1cd17817b5f011",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -56905,6 +56905,19 @@
 								"name": "id"
 							}
 						]
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::block_predicate::BelowHeightmapPredicate": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "heightmap",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::HeightmapType"
 					}
 				}
 			]
@@ -117258,6 +117271,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_predicate::CombiningPredicate"
 			},
+			"below_heightmap": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::block_predicate::BelowHeightmapPredicate",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
+					}
+				]
+			},
 			"has_sturdy_face": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::block_predicate::HasSturdyFacePredicate"
@@ -124679,6 +124708,22 @@
 				"typeArgs": [
 					{
 						"kind": "float"
+					}
+				]
+			},
+			"visual/has_sky_occluder": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::BooleanAttribute",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
 					}
 				]
 			},
