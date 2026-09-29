@@ -174,6 +174,8 @@ dispatch minecraft:environment_attribute[
 	"gameplay/snow_golem_melts",
 	"gameplay/water_evaporates",
 ] to BooleanAttribute
+#[since="26.4"]
+dispatch minecraft:environment_attribute["visual/has_sky_occluder"] to BooleanAttribute
 
 dispatch minecraft:environment_attribute[
 	"visual/cloud_height",

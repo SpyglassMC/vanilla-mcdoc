@@ -1,6 +1,7 @@
 use ::java::util::block_state::BlockState
 use ::java::util::direction::Direction
 use super::super::VerticalAnchor
+use super::super::HeightmapType
 
 struct BlockPredicate {
 	type: #[id="block_predicate_type"] string,
@@ -14,6 +15,11 @@ struct PredicateOffset {
 
 dispatch minecraft:block_predicate[all_of,any_of] to struct CombiningPredicate {
 	predicates: [BlockPredicate],
+}
+
+#[since="26.4"]
+dispatch minecraft:block_predicate[below_heightmap] to struct BelowHeightmapPredicate {
+	heightmap: HeightmapType,
 }
 
 dispatch minecraft:block_predicate[has_sturdy_face] to struct HasSturdyFacePredicate {
