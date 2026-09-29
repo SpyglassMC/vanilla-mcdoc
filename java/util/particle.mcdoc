@@ -18,7 +18,10 @@ dispatch minecraft:particle[block, falling_dust, block_marker, dust_pillar] to s
 	#[until="1.20.5"]
 	value: BlockState,
 	#[since="1.20.5"]
-	block_state: (#[id="block"] string | BlockState),
+	block_state: (
+		#[until="26.3"] #[id="block"] string |  // Since 26.3: absorbed by BlockState
+		BlockState |
+	),
 }
 
 #[since="1.21.2"]
