@@ -1,5 +1,5 @@
 {
-	"ref": "e6cc18e687b4376c36038e172377ce588e290baf",
+	"ref": "e4624f00fe82c0cf1906e30c5c270e28e220f94b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -36929,159 +36929,7 @@
 				}
 			]
 		},
-		"::java::data::number_provider::context_float::<anonymous 2>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "condition",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::predicate::PredicateRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "on_true",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_float::FloatRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to constant 0.",
-					"key": "on_false",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_float::FloatRef"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::number_provider::context_float::<anonymous 3>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Each condition is tested in order, the first in the list that passes is used.",
-					"key": "cases",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "struct",
-							"fields": [
-								{
-									"kind": "pair",
-									"key": "condition",
-									"type": {
-										"kind": "reference",
-										"path": "::java::data::predicate::PredicateRef"
-									}
-								},
-								{
-									"kind": "pair",
-									"key": "value",
-									"type": {
-										"kind": "reference",
-										"path": "::java::data::number_provider::context_float::FloatRef"
-									}
-								}
-							]
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to constant 0.",
-					"key": "default",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_float::FloatRef"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::number_provider::context_float::<anonymous 4>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "condition",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::predicate::PredicateRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "value",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_float::FloatRef"
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::context_float::<anonymous 5>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "distribution",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::util::NonEmptyWeightedList"
-						},
-						"typeArgs": [
-							{
-								"kind": "reference",
-								"path": "::java::data::number_provider::context_float::FloatRef"
-							}
-						]
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::context_float::<anonymous 6>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "min",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_float::FloatRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "max",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_float::FloatRef"
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::context_float::<anonymous 7>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "input",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_int::IntRef"
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::context_float::<anonymous 8>": {
+		"::java::data::number_provider::context_float::<anonymous 10>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -37139,6 +36987,186 @@
 				}
 			]
 		},
+		"::java::data::number_provider::context_float::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If no input is provided, return -3.4028235e38 (min finite float value).",
+					"key": "inputs",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_float::AggregateOperands"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::context_float::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If no input is provided, return 3.4028235e38 (max finite float value).",
+					"key": "inputs",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_float::AggregateOperands"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::context_float::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "condition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::PredicateRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "on_true",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_float::FloatRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0.",
+					"key": "on_false",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_float::FloatRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::context_float::<anonymous 5>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Each condition is tested in order, the first in the list that passes is used.",
+					"key": "cases",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"key": "condition",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::predicate::PredicateRef"
+									}
+								},
+								{
+									"kind": "pair",
+									"key": "value",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::number_provider::context_float::FloatRef"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0.",
+					"key": "default",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_float::FloatRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::context_float::<anonymous 6>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "condition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::PredicateRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_float::FloatRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::context_float::<anonymous 7>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "distribution",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::util::NonEmptyWeightedList"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::context_float::FloatRef"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::context_float::<anonymous 8>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_float::FloatRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_float::FloatRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::context_float::<anonymous 9>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "input",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_int::IntRef"
+					}
+				}
+			]
+		},
 		"::java::data::number_provider::context_float::AggregateOperands": {
 			"kind": "union",
 			"members": [
@@ -37178,10 +37206,6 @@
 					"item": {
 						"kind": "reference",
 						"path": "::java::data::number_provider::context_float::FloatRef"
-					},
-					"lengthRange": {
-						"kind": 0,
-						"min": 1
 					}
 				}
 			]
@@ -37377,159 +37401,7 @@
 				}
 			]
 		},
-		"::java::data::number_provider::context_int::<anonymous 2>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "condition",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::predicate::PredicateRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "on_true",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_int::IntRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to constant 0.",
-					"key": "on_false",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_int::IntRef"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::number_provider::context_int::<anonymous 3>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"desc": "Each condition is tested in order, the first in the list that passes is used.",
-					"key": "cases",
-					"type": {
-						"kind": "list",
-						"item": {
-							"kind": "struct",
-							"fields": [
-								{
-									"kind": "pair",
-									"key": "condition",
-									"type": {
-										"kind": "reference",
-										"path": "::java::data::predicate::PredicateRef"
-									}
-								},
-								{
-									"kind": "pair",
-									"key": "value",
-									"type": {
-										"kind": "reference",
-										"path": "::java::data::number_provider::context_int::IntRef"
-									}
-								}
-							]
-						}
-					}
-				},
-				{
-					"kind": "pair",
-					"desc": "Defaults to constant 0.",
-					"key": "default",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_int::IntRef"
-					},
-					"optional": true
-				}
-			]
-		},
-		"::java::data::number_provider::context_int::<anonymous 4>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "condition",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::predicate::PredicateRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "value",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_int::IntRef"
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::context_int::<anonymous 5>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "distribution",
-					"type": {
-						"kind": "concrete",
-						"child": {
-							"kind": "reference",
-							"path": "::java::util::NonEmptyWeightedList"
-						},
-						"typeArgs": [
-							{
-								"kind": "reference",
-								"path": "::java::data::number_provider::context_int::IntRef"
-							}
-						]
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::context_int::<anonymous 6>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "min",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_int::IntRef"
-					}
-				},
-				{
-					"kind": "pair",
-					"key": "max",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_int::IntRef"
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::context_int::<anonymous 7>": {
-			"kind": "struct",
-			"fields": [
-				{
-					"kind": "pair",
-					"key": "input",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::context_float::FloatRef"
-					}
-				}
-			]
-		},
-		"::java::data::number_provider::context_int::<anonymous 8>": {
+		"::java::data::number_provider::context_int::<anonymous 10>": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -37587,6 +37459,186 @@
 				}
 			]
 		},
+		"::java::data::number_provider::context_int::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If no input is provided, return -2147483648 (int min value).",
+					"key": "inputs",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_int::AggregateOperands"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::context_int::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "If no input is provided, return 2147483647 (int max value).",
+					"key": "inputs",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_int::AggregateOperands"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::context_int::<anonymous 4>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "condition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::PredicateRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "on_true",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_int::IntRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0.",
+					"key": "on_false",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_int::IntRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::context_int::<anonymous 5>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Each condition is tested in order, the first in the list that passes is used.",
+					"key": "cases",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "struct",
+							"fields": [
+								{
+									"kind": "pair",
+									"key": "condition",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::predicate::PredicateRef"
+									}
+								},
+								{
+									"kind": "pair",
+									"key": "value",
+									"type": {
+										"kind": "reference",
+										"path": "::java::data::number_provider::context_int::IntRef"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0.",
+					"key": "default",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_int::IntRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::number_provider::context_int::<anonymous 6>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "condition",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::predicate::PredicateRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "value",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_int::IntRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::context_int::<anonymous 7>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "distribution",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::util::NonEmptyWeightedList"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::number_provider::context_int::IntRef"
+							}
+						]
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::context_int::<anonymous 8>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "min",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_int::IntRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_int::IntRef"
+					}
+				}
+			]
+		},
+		"::java::data::number_provider::context_int::<anonymous 9>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "input",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::context_float::FloatRef"
+					}
+				}
+			]
+		},
 		"::java::data::number_provider::context_int::AggregateOperands": {
 			"kind": "union",
 			"members": [
@@ -37626,10 +37678,6 @@
 					"item": {
 						"kind": "reference",
 						"path": "::java::data::number_provider::context_int::IntRef"
-					},
-					"lengthRange": {
-						"kind": 0,
-						"min": 1
 					}
 				}
 			]
@@ -117971,12 +118019,32 @@
 				"path": "::java::data::number_provider::context_float::AggregateProvider"
 			},
 			"max": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::context_float::AggregateProvider"
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"desc": "If no input is provided, return -3.4028235e38 (min finite float value).",
+						"key": "inputs",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::number_provider::context_float::AggregateOperands"
+						}
+					}
+				]
 			},
 			"min": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::context_float::AggregateProvider"
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"desc": "If no input is provided, return 3.4028235e38 (max finite float value).",
+						"key": "inputs",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::number_provider::context_float::AggregateOperands"
+						}
+					}
+				]
 			},
 			"mod": {
 				"kind": "reference",
@@ -118280,12 +118348,32 @@
 				]
 			},
 			"max": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::context_int::AggregateProvider"
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"desc": "If no input is provided, return -2147483648 (int min value).",
+						"key": "inputs",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::number_provider::context_int::AggregateOperands"
+						}
+					}
+				]
 			},
 			"min": {
-				"kind": "reference",
-				"path": "::java::data::number_provider::context_int::AggregateProvider"
+				"kind": "struct",
+				"fields": [
+					{
+						"kind": "pair",
+						"desc": "If no input is provided, return 2147483647 (int max value).",
+						"key": "inputs",
+						"type": {
+							"kind": "reference",
+							"path": "::java::data::number_provider::context_int::AggregateOperands"
+						}
+					}
+				]
 			},
 			"mod": {
 				"kind": "reference",
