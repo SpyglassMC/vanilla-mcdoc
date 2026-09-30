@@ -11,7 +11,7 @@ dispatch minecraft:resource[trim_material] to struct TrimMaterial {
 	asset_name: string,
 	/// Palette ID which will be used in the resource pack.
 	#[since="26.3"]
-	palette: PaletteRef,
+	palette_id: PaletteRef,
 	/// Text displayed in the item tooltip.
 	description: Text,
 	/// Item used in the smithing table for this material.
