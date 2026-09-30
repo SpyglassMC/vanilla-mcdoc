@@ -1,5 +1,5 @@
 {
-	"ref": "274828a50d4a90fdb0e105863f1cd17817b5f011",
+	"ref": "e6cc18e687b4376c36038e172377ce588e290baf",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -43240,7 +43240,7 @@
 						}
 					],
 					"desc": "Palette ID which will be used in the resource pack.",
-					"key": "palette",
+					"key": "palette_id",
 					"type": {
 						"kind": "reference",
 						"path": "::java::assets::atlas::PaletteRef"
