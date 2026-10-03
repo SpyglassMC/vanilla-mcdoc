@@ -1,5 +1,5 @@
 {
-	"ref": "da77575026a4d1954728317e0ca20ac7a82ee7e7",
+	"ref": "59c8e03683907de7345af38059a1b9b81cbfce1f",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -13387,7 +13387,7 @@
 					"kind": "pair",
 					"key": {
 						"kind": "reference",
-						"path": "::java::util::slot::EquipmentSlot"
+						"path": "::java::data::advancement::predicate::EquipmentPredicateSlot"
 					},
 					"type": {
 						"kind": "reference",
@@ -13800,6 +13800,52 @@
 							}
 						}
 					]
+				}
+			]
+		},
+		"::java::data::advancement::predicate::EquipmentPredicateSlot": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Mainhand",
+					"value": "mainhand"
+				},
+				{
+					"identifier": "Offhand",
+					"value": "offhand"
+				},
+				{
+					"identifier": "Head",
+					"value": "head"
+				},
+				{
+					"identifier": "Chest",
+					"value": "chest"
+				},
+				{
+					"identifier": "Legs",
+					"value": "legs"
+				},
+				{
+					"identifier": "Feet",
+					"value": "feet"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.20.5"
+								}
+							}
+						}
+					],
+					"identifier": "Body",
+					"value": "body"
 				}
 			]
 		},
