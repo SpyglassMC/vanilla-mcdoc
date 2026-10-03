@@ -1,4 +1,3 @@
-use ::java::util::slot::EquipmentSlotPredicateTestable
 use ::java::util::text::Text
 use ::java::util::Filterable
 use ::java::util::color::DyeColor
@@ -295,7 +294,19 @@ type EntityTypePredicate = (
 dispatch minecraft:entity_sub_predicate[equipment] to EntityEquipmentPredicate
 
 struct EntityEquipmentPredicate {
-	[EquipmentSlotPredicateTestable]: ItemPredicate,
+	[EquipmentPredicateSlot]: ItemPredicate,
+}
+
+// Because of MC-311029, saddle cannot be used
+enum(string) EquipmentPredicateSlot {
+	Mainhand = "mainhand",
+	Offhand = "offhand",
+	Head = "head",
+	Chest = "chest",
+	Legs = "legs",
+	Feet = "feet",
+	#[since="1.20.5"]
+	Body = "body",
 }
 
 #[until="26.2"]
