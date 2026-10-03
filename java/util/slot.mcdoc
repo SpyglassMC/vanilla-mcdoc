@@ -19,7 +19,8 @@ enum(string) EquipmentSlot {
 	Saddle = "saddle",
 }
 
-enum(string) EquipmentSlotNoSaddle {
+// Because of MC-311029, saddle cannot be used in predicates
+enum(string) EquipmentSlotPredicateTestable {
 	Mainhand = "mainhand",
 	Offhand = "offhand",
 	Head = "head",

@@ -1,4 +1,4 @@
-use ::java::util::slot::EquipmentSlotNoSaddle
+use ::java::util::slot::EquipmentSlotPredicateTestable
 use ::java::util::text::Text
 use ::java::util::Filterable
 use ::java::util::color::DyeColor
@@ -295,7 +295,7 @@ type EntityTypePredicate = (
 dispatch minecraft:entity_sub_predicate[equipment] to EntityEquipmentPredicate
 
 struct EntityEquipmentPredicate {
-	[EquipmentSlotNoSaddle]: ItemPredicate,
+	[EquipmentSlotPredicateTestable]: ItemPredicate,
 }
 
 #[until="26.2"]
