@@ -217,6 +217,23 @@ dispatch minecraft:feature_config[speleothem_cluster] to struct SpeleothemCluste
 	#[since="26.2"]
 	max_distance_from_edge_affecting_chance_of_speleothem: int @ 1..64,
 	max_distance_from_center_affecting_height_bias: int @ 1..64,
+	#[since="26.4"]
+	placement_options?: struct SpeleothemClusterPlacementOptions {
+		placement_mode: SpeleothemClusterPlacementMode,
+		base_block_transformer: SpeleothemBaseBlockTransformer,
+		allow_water_placement: boolean,
+	},
+}
+
+enum(string) SpeleothemClusterPlacementMode {
+	FloorAndCeiling = "floor_and_ceiling",
+	Floor = "floor_only",
+	Ceiling = "ceiling_only",
+}
+
+enum(string) SpeleothemBaseBlockTransformer {
+	None = "none",
+	SetAttached = "set_attached",
 }
 
 dispatch minecraft:feature_config[fill_layer] to struct FillLayerConfig {
@@ -426,8 +443,16 @@ dispatch minecraft:feature_config[lake] to struct LakeConfig {
 	can_replace_with_barrier: BlockPredicate,
 }
 
-#[since="1.17"]
-dispatch minecraft:feature_config[large_dripstone] to struct LargeDripstoneConfig {
+#[since="1.17"] #[until="26.4"]
+dispatch minecraft:feature_config[large_dripstone] to LargeSpeleothemConfig
+#[since="26.4"]
+dispatch minecraft:feature_config[large_speleothem] to LargeSpeleothemConfig
+
+struct LargeSpeleothemConfig {
+	// Game code is inconsistent with changelog
+	// This field is documented to be a block state provider
+	#[since="26.4"]
+	base_block: BlockState,
 	#[since="26.2"]
 	replaceable_blocks: ([#[id="block"] string] | #[id(registry="block",tags="allowed")] string),
 	floor_to_ceiling_search_range?: int @ 1..512,

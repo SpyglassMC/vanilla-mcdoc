@@ -1,0 +1,16 @@
+use ::java::data::util::SoundEventRef
+
+#[since="26.4"]
+dispatch minecraft:resource[block_sound_set] to BlockSoundSet
+
+struct BlockSoundSet {
+	/// Defaults to 1.
+	volume?: float @ 1e-5..10,
+	/// Defauls to 1.
+	pitch?: float @ 1e-5..2,
+	break_sound?: SoundEventRef,
+	step_sound?: SoundEventRef,
+	place_sound?: SoundEventRef,
+	hit_sound?: SoundEventRef,
+	fall_sound?: SoundEventRef,
+}

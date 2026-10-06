@@ -2,7 +2,11 @@ use super::breedable::villager::VillagerData
 use super::breedable::villager::PlayerReputationPart
 use super::breedable::villager::Offers
 
-dispatch minecraft:entity[drowned,husk,zombie] to struct Zombie {
+dispatch minecraft:entity[drowned,husk,zombie] to Zombie
+#[since="26.4"]
+dispatch minecraft:entity[frostbite] to Zombie
+
+struct Zombie {
 	...super::MobBase,
 	/// Whether it is a baby.
 	IsBaby?: boolean,
@@ -12,6 +16,12 @@ dispatch minecraft:entity[drowned,husk,zombie] to struct Zombie {
 	DrownedConversionTime?: int,
 	/// Ticks it has been in the water.
 	InWaterTime?: int,
+	/// Ticks until it converts.
+	#[since="26.4"]
+	FrostbiteConversionTime?: int,
+	/// Ticks it has been in the powdered snow.
+	#[since="26.4"]
+	FreezingTime?: int,
 }
 
 dispatch minecraft:entity[zombie_villager] to struct ZombieVillager {

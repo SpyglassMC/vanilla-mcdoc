@@ -26,7 +26,11 @@ struct Owner {
 	L?: long,
 }
 
-dispatch minecraft:entity[egg,ender_pearl,experience_bottle,snowball] to struct ThrowableItem {
+dispatch minecraft:entity[egg,ender_pearl,experience_bottle,snowball] to ThrowableItem
+#[since="26.4"]
+dispatch minecraft:entity[ice_ball] to ThrowableItem
+
+struct ThrowableItem {
 	...Throwable,
 	/// Item representation of the projectile.
 	#[since="1.16"]
