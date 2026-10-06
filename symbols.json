@@ -1,5 +1,5 @@
 {
-	"ref": "59c8e03683907de7345af38059a1b9b81cbfce1f",
+	"ref": "ab24909f11179f2b32aecde5f0ab4cd45e7bac90",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -22090,6 +22090,84 @@
 							"optional": true
 						}
 					]
+				}
+			]
+		},
+		"::java::data::block_sound_set::BlockSoundSet": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to 1.",
+					"key": "volume",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0.00001,
+							"max": 10
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defauls to 1.",
+					"key": "pitch",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0.00001,
+							"max": 2
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "break_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "step_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "place_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "hit_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "fall_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -60938,9 +61016,29 @@
 				}
 			]
 		},
-		"::java::data::worldgen::feature::LargeDripstoneConfig": {
+		"::java::data::worldgen::feature::LargeSpeleothemConfig": {
 			"kind": "struct",
 			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"key": "base_block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::block_state::BlockState"
+					}
+				},
 				{
 					"kind": "pair",
 					"attributes": [
@@ -64450,6 +64548,20 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::SpeleothemBaseBlockTransformer": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "None",
+					"value": "none"
+				},
+				{
+					"identifier": "SetAttached",
+					"value": "set_attached"
+				}
+			]
+		},
 		"::java::data::worldgen::feature::SpeleothemClusterConfig": {
 			"kind": "struct",
 			"fields": [
@@ -64852,6 +64964,97 @@
 							"min": 1,
 							"max": 64
 						}
+					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"key": "placement_options",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "placement_mode",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::feature::SpeleothemClusterPlacementMode"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "base_block_transformer",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::worldgen::feature::SpeleothemBaseBlockTransformer"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "allow_water_placement",
+								"type": {
+									"kind": "boolean"
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::feature::SpeleothemClusterPlacementMode": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "FloorAndCeiling",
+					"value": "floor_and_ceiling"
+				},
+				{
+					"identifier": "Floor",
+					"value": "floor_only"
+				},
+				{
+					"identifier": "Ceiling",
+					"value": "ceiling_only"
+				}
+			]
+		},
+		"::java::data::worldgen::feature::SpeleothemClusterPlacementOptions": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "placement_mode",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::SpeleothemClusterPlacementMode"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "base_block_transformer",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::SpeleothemBaseBlockTransformer"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "allow_water_placement",
+					"type": {
+						"kind": "boolean"
 					}
 				}
 			]
@@ -109668,6 +109871,48 @@
 						"kind": "int"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"desc": "Ticks until it converts.",
+					"key": "FrostbiteConversionTime",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"desc": "Ticks it has been in the powdered snow.",
+					"key": "FreezingTime",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -122599,6 +122844,22 @@
 					}
 				]
 			},
+			"frostbite": {
+				"kind": "reference",
+				"path": "::java::world::entity::mob::zombie::Zombie",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
+					}
+				]
+			},
 			"furnace_minecart": {
 				"kind": "reference",
 				"path": "::java::world::entity::minecart::FurnaceMinecart"
@@ -122706,6 +122967,22 @@
 			"husk": {
 				"kind": "reference",
 				"path": "::java::world::entity::mob::zombie::Zombie"
+			},
+			"ice_ball": {
+				"kind": "reference",
+				"path": "::java::world::entity::projectile::throwable::ThrowableItem",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
+					}
+				]
 			},
 			"illusioner": {
 				"kind": "reference",
@@ -125326,7 +125603,7 @@
 			},
 			"large_dripstone": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::feature::LargeDripstoneConfig",
+				"path": "::java::data::worldgen::feature::LargeSpeleothemConfig",
 				"attributes": [
 					{
 						"name": "since",
@@ -125335,6 +125612,32 @@
 							"value": {
 								"kind": "string",
 								"value": "1.17"
+							}
+						}
+					},
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
+					}
+				]
+			},
+			"large_speleothem": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::LargeSpeleothemConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
 							}
 						}
 					}
@@ -130104,6 +130407,22 @@
 			"block_definition": {
 				"kind": "reference",
 				"path": "::java::assets::block_state_definition::BlockStateDefinition"
+			},
+			"block_sound_set": {
+				"kind": "reference",
+				"path": "::java::data::block_sound_set::BlockSoundSet",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
+					}
+				]
 			},
 			"block_transformer": {
 				"kind": "list",
