@@ -1,5 +1,5 @@
 {
-	"ref": "ab24909f11179f2b32aecde5f0ab4cd45e7bac90",
+	"ref": "1528808766ccaaac10e64de002b05d3efc31a9a3",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -71731,6 +71731,13 @@
 			"kind": "struct",
 			"fields": [
 				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::structure_set::SpreadingPlacementBase"
+					}
+				},
+				{
 					"kind": "pair",
 					"key": "distance",
 					"type": {
@@ -71885,6 +71892,13 @@
 			"kind": "struct",
 			"fields": [
 				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::structure_set::SpreadingPlacementBase"
+					}
+				},
+				{
 					"kind": "pair",
 					"desc": "Average distance in chunks between two structures of this type.",
 					"key": "spacing",
@@ -71999,57 +72013,9 @@
 				}
 			]
 		},
-		"::java::data::worldgen::structure_set::SpreadType": {
-			"kind": "enum",
-			"enumKind": "string",
-			"values": [
-				{
-					"identifier": "Linear",
-					"value": "linear"
-				},
-				{
-					"identifier": "Triangular",
-					"value": "triangular"
-				}
-			]
-		},
-		"::java::data::worldgen::structure_set::StructurePlacement": {
+		"::java::data::worldgen::structure_set::SpreadingPlacementBase": {
 			"kind": "struct",
 			"fields": [
-				{
-					"kind": "pair",
-					"key": "type",
-					"type": {
-						"kind": "string",
-						"attributes": [
-							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "worldgen/structure_placement"
-									}
-								}
-							}
-						]
-					}
-				},
-				{
-					"kind": "spread",
-					"type": {
-						"kind": "dispatcher",
-						"parallelIndices": [
-							{
-								"kind": "dynamic",
-								"accessor": [
-									"type"
-								]
-							}
-						],
-						"registry": "minecraft:structure_placement"
-					}
-				},
 				{
 					"kind": "pair",
 					"attributes": [
@@ -72148,6 +72114,59 @@
 						}
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::structure_set::SpreadType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Linear",
+					"value": "linear"
+				},
+				{
+					"identifier": "Triangular",
+					"value": "triangular"
+				}
+			]
+		},
+		"::java::data::worldgen::structure_set::StructurePlacement": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "worldgen/structure_placement"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:structure_placement"
+					}
 				}
 			]
 		},
