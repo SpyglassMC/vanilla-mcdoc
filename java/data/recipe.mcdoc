@@ -107,15 +107,17 @@ dispatch minecraft:recipe_serializer[crafting_transmute] to struct CraftingTrans
 	result: (
 		#[until="26.1"] #[id="item"] string |
 		#[since="1.21.5"] #[until="26.3"] ItemStack |
-		#[since="26.3"] struct TransmuteResult {
-			/// Defaults to the input item.
-			id?: #[id(registry="item",exclude=["air"])] string,
-			/// Defaults to `1`.
-			count?: int @ 1..99,
-			components?: DataComponentPatch,
-		} |
+		#[since="26.3"] TransmuteResult |
 		#[since="26.1"] #[id(registry="item",exclude=["air"])] string |
 	),
+}
+
+struct TransmuteResult {
+	/// Defaults to the input item.
+	id?: #[id(registry="item",exclude=["air"])] string,
+	/// Defaults to `1`.
+	count?: int @ 1..99,
+	components?: DataComponentPatch,
 }
 
 dispatch minecraft:recipe_serializer[smelting,blasting,smoking,campfire_cooking] to struct Smelting {
