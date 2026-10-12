@@ -409,7 +409,8 @@ dispatch minecraft:feature_config[growing_plant] to struct GrowingPlantConfig {
 dispatch minecraft:feature_config[huge_brown_mushroom,huge_red_mushroom] to struct HugeMushroomConfig {
 	cap_provider: BlockStateProviderRef,
 	stem_provider: BlockStateProviderRef,
-	foliage_radius: int,
+	/// Defaults to `2`.
+	foliage_radius?: int,
 	#[since="26.1"]
 	can_place_on: BlockPredicate,
 }
@@ -681,9 +682,12 @@ dispatch minecraft:feature_config[spike] to struct SpikeConfig {
 
 dispatch minecraft:feature_config[spring_feature] to struct SpringConfig {
 	state: FluidState,
-	rock_count: int,
-	hole_count: int,
-	requires_block_below: boolean,
+	/// Defaults to `4`.
+	rock_count?: int,
+	/// Defaults to `1`.
+	hole_count?: int,
+	/// Defaults to `true`.
+	requires_block_below?: boolean,
 	valid_blocks: (
 		[#[id="block"] string] |
 		#[since="1.18.2"] #[id(registry="block",tags="allowed")] string |

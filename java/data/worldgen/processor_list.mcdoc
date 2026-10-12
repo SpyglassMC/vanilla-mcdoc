@@ -87,7 +87,8 @@ dispatch minecraft:pos_rule_test[linear_pos] to struct LinearPos {
 }
 
 dispatch minecraft:pos_rule_test[axis_aligned_linear_pos] to struct AxisAlignedLinearPos {
-	axis: Axis,
+	/// Defaults to `y`.
+	axis?: Axis,
 	...LinearPos,
 }
 
