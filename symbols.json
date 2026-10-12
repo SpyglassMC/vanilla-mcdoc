@@ -1,5 +1,5 @@
 {
-	"ref": "4a901eff76bb1545f842f58c997c942f4cf63b2a",
+	"ref": "bda7689f7e5992cd7a09bce39c7b1267ec4b7f0c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -40042,6 +40042,32 @@
 												"value": "1.21.5"
 											}
 										}
+									},
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::recipe::TransmuteResult",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
 									}
 								]
 							},
@@ -41400,6 +41426,72 @@
 					"type": {
 						"kind": "int"
 					}
+				}
+			]
+		},
+		"::java::data::recipe::TransmuteResult": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Defaults to the input item.",
+					"key": "id",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "tree",
+									"values": {
+										"registry": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item"
+											}
+										},
+										"exclude": {
+											"kind": "tree",
+											"values": {
+												"0": {
+													"kind": "literal",
+													"value": {
+														"kind": "string",
+														"value": "air"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `1`.",
+					"key": "count",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 99
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "components",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::component::DataComponentPatch"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -44837,7 +44929,7 @@
 				},
 				{
 					"kind": "pair",
-					"key": "stray_sound",
+					"key": "stray_ambient_sound",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::util::SoundEventRef"
@@ -60851,10 +60943,12 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Defaults to `2`.",
 					"key": "foliage_radius",
 					"type": {
 						"kind": "int"
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -65301,24 +65395,30 @@
 				},
 				{
 					"kind": "pair",
+					"desc": "Defaults to `4`.",
 					"key": "rock_count",
 					"type": {
 						"kind": "int"
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
+					"desc": "Defaults to `1`.",
 					"key": "hole_count",
 					"type": {
 						"kind": "int"
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
+					"desc": "Defaults to `true`.",
 					"key": "requires_block_below",
 					"type": {
 						"kind": "boolean"
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "pair",
@@ -70822,11 +70922,13 @@
 			"fields": [
 				{
 					"kind": "pair",
+					"desc": "Defaults to `y`.",
 					"key": "axis",
 					"type": {
 						"kind": "reference",
 						"path": "::java::util::direction::Axis"
-					}
+					},
+					"optional": true
 				},
 				{
 					"kind": "spread",
