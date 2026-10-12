@@ -1,5 +1,5 @@
 {
-	"ref": "1528808766ccaaac10e64de002b05d3efc31a9a3",
+	"ref": "4a901eff76bb1545f842f58c997c942f4cf63b2a",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -75096,6 +75096,65 @@
 				}
 			]
 		},
+		"::java::pack::LanguageInfo": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Language name displayed in the language menu.",
+					"key": "name",
+					"type": {
+						"kind": "string",
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Region name displayed in the language menu.",
+					"key": "region",
+					"type": {
+						"kind": "string",
+						"lengthRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Whether the language reads right to left.\nDefaults to `false`.",
+					"key": "bidirectional",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::pack::Languages": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "The key matches language JSON file name (e.g. `en_us`).",
+					"key": {
+						"kind": "string",
+						"lengthRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 16
+						}
+					},
+					"type": {
+						"kind": "reference",
+						"path": "::java::pack::LanguageInfo"
+					}
+				}
+			]
+		},
 		"::java::pack::Pack": {
 			"kind": "struct",
 			"fields": [
@@ -75279,6 +75338,16 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::pack::PackOverlays"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Only used by resource pack. \\\nAdds additional languages to the language menu.",
+					"key": "language",
+					"type": {
+						"kind": "reference",
+						"path": "::java::pack::Languages"
 					},
 					"optional": true
 				}
