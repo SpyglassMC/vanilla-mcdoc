@@ -29,6 +29,9 @@ struct Pack {
 	features?: PackFeatures,
 	#[since="1.20.2"]
 	overlays?: PackOverlays,
+	/// Only used by resource pack. \
+	/// Adds additional languages to the language menu.
+	language?: Languages,
 }
 
 struct PackFilter {
@@ -64,6 +67,21 @@ struct PackOverlay {
 	formats?: InclusiveRange<#[pack_format] int>,
 	min_format?: #[pack_format] PackFormat,
 	max_format?: #[pack_format] PackFormat,
+}
+
+struct Languages {
+	/// The key matches language JSON file name (e.g. `en_us`).
+	[string @ 1..16]: LanguageInfo,
+}
+
+struct LanguageInfo {
+	/// Language name displayed in the language menu.
+	name: string @ 1..,
+	/// Region name displayed in the language menu.
+	region: string @ 1..,
+	/// Whether the language reads right to left.
+	/// Defaults to `false`.
+	bidirectional?: boolean,
 }
 
 type PackFormat = (int | [int] @ 1 | [int, int @ 0..])
