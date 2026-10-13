@@ -1,5 +1,6 @@
 use ::java::util::block_state::BlockState
 use ::java::util::direction::Direction
+use ::java::data::util::MinMaxBounds
 use super::super::VerticalAnchor
 use super::super::HeightmapType
 
@@ -60,6 +61,13 @@ dispatch minecraft:block_predicate[matching_fluids] to struct MatchingFluidsPred
 		[#[id="fluid"] string] |
 		#[since="1.18.2"] #[id(registry="fluid",tags="allowed")] string |
 	),
+	#[since="26.4"]
+	state?: FluidPredicateState,
+}
+
+// Since 26.4
+struct FluidPredicateState {
+	[mcdoc:fluid_state_keys[[%parent.fluids]]]: MinMaxBounds<mcdoc:fluid_states[[%parent.fluids]][[%key]]>,
 }
 
 dispatch minecraft:block_predicate[not] to struct NotPredicate {

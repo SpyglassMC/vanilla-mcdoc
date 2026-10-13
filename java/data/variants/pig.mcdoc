@@ -13,13 +13,25 @@ dispatch minecraft:resource[pig_variant] to struct PigVariant {
 }
 
 #[since="26.1"]
-dispatch minecraft:resource[pig_sound_variant] to SoundVariant<struct PigSounds {
+dispatch minecraft:resource[pig_sound_variant] to (
+	#[until="26.4"] SoundVariant<PigSounds> |
+	#[since="26.4"] SoundVariant<OptionalPigSounds> |
+)
+
+struct PigSounds {
 	ambient_sound: SoundEventRef,
 	hurt_sound: SoundEventRef,
 	death_sound: SoundEventRef,
 	step_sound: SoundEventRef,
 	eat_sound: SoundEventRef,
-}>
+}
+struct OptionalPigSounds {
+	ambient_sound?: SoundEventRef,
+	hurt_sound?: SoundEventRef,
+	death_sound?: SoundEventRef,
+	step_sound?: SoundEventRef,
+	eat_sound?: SoundEventRef,
+}
 
 enum(string) PigModelType {
 	Normal = "normal",

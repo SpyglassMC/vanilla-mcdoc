@@ -158,11 +158,18 @@ struct ExplodeEntityEffect {
 	create_fire?: boolean,
 	/// Whether the explosion has special effects on blocks.
 	block_interaction: BlockInteraction,
-	small_particle: Particle,
-	large_particle: Particle,
+	#[until="26.4"] ...struct {
+		sound: SoundEventRef,
+		small_particle: Particle,
+		large_particle: Particle,
+	},
+	#[since="26.4"] ...struct {
+		sound?: SoundEventRef,
+		small_particle?: Particle,
+		large_particle?: Particle,
+	},
 	#[since="1.21.9"]
 	block_particles?: FlatWeightedList<ExplosionParticleInfo>,
-	sound: SoundEventRef,
 }
 
 enum(string) BlockInteraction {

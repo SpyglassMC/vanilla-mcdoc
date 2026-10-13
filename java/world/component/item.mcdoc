@@ -96,7 +96,7 @@ dispatch minecraft:attribute_display[override] to struct AttributeDisplayTextOve
 dispatch minecraft:data_component[base_color] to DyeColor
 
 #[since="1.21.5"]
-dispatch minecraft:data_component[blocks_attacks] to struct blocks_attacks {
+dispatch minecraft:data_component[blocks_attacks] to struct BlocksAttacks {
 	/// Number of seconds that right-click must be held before successfully blocking attacks.
 	/// Defaults to `0`.
 	block_delay_seconds?: float @ 0..,
@@ -235,7 +235,8 @@ dispatch minecraft:data_component[consumable] to struct Consumable {
 	consume_seconds?: float @ 0..,
 	/// View model/arms animation used during consumption of the item. Defaults to `eat`.
 	animation?: ItemUseAnimation,
-	/// Sound played during and on completion of item consumption.
+	/// Sound played during and on completion of item consumption. \
+	/// If not specified, the default eating sound will be played.
 	sound?: SoundEventRef,
 	/// Whether the `item` particle is emitted while consuming the item. Defaults to `true`.
 	has_consume_particles?: boolean,
@@ -399,7 +400,7 @@ dispatch minecraft:data_component[entity_data] to (
 #[since="1.21.2"]
 dispatch minecraft:data_component[equippable] to struct Equippable {
 	slot: EquipmentSlot,
-	/// Sound event to play when the item is equipped.
+	/// Sound event to play when the item is equipped. \
 	/// If not specified, the default armor equip sound will be played.
 	equip_sound?: SoundEventRef,
 	/// The equipment model to use when equipped.

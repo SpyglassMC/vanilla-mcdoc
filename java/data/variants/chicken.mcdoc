@@ -13,12 +13,23 @@ dispatch minecraft:resource[chicken_variant] to struct ChickenVariant {
 }
 
 #[since="26.1"]
-dispatch minecraft:resource[chicken_sound_variant] to SoundVariant<struct ChickenSounds {
+dispatch minecraft:resource[chicken_sound_variant] to (
+	#[until="26.4"] SoundVariant<ChickenSounds> |
+	#[since="26.4"] SoundVariant<OptionalChickenSounds> |
+)
+
+struct ChickenSounds {
 	ambient_sound: SoundEventRef,
 	hurt_sound: SoundEventRef,
 	death_sound: SoundEventRef,
 	step_sound: SoundEventRef,
-}>
+}
+struct OptionalChickenSounds {
+	ambient_sound?: SoundEventRef,
+	hurt_sound?: SoundEventRef,
+	death_sound?: SoundEventRef,
+	step_sound?: SoundEventRef,
+}
 
 enum(string) ChickenModelType {
 	Normal = "normal",

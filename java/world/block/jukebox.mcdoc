@@ -10,7 +10,9 @@ dispatch minecraft:block_entity[jukebox] to struct Jukebox {
 		IsPlaying?: boolean,
 	},
 	#[since="1.21"]
-	ticks_since_song_started?: long
+	ticks_since_song_started?: long,
+	#[since="26.4"]
+	playlist_position: int,
 }
 
 dispatch minecraft:block[jukebox] to minecraft:block_entity[jukebox]

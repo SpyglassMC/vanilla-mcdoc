@@ -12,11 +12,22 @@ dispatch minecraft:resource[cow_variant] to struct CowVariant {
 }
 
 #[since="26.1"]
-dispatch minecraft:resource[cow_sound_variant] to struct CowSounds {
+dispatch minecraft:resource[cow_sound_variant] to (
+	#[until="26.4"] CowSounds |
+	#[since="26.4"] OptionalCowSounds |
+)
+
+struct CowSounds {
 	ambient_sound: SoundEventRef,
 	hurt_sound: SoundEventRef,
 	death_sound: SoundEventRef,
 	step_sound: SoundEventRef,
+}
+struct OptionalCowSounds {
+	ambient_sound?: SoundEventRef,
+	hurt_sound?: SoundEventRef,
+	death_sound?: SoundEventRef,
+	step_sound?: SoundEventRef,
 }
 
 enum(string) CowModelType {

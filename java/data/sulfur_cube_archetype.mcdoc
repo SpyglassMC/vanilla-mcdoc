@@ -45,8 +45,14 @@ struct KnockbackModifiers {
 }
 
 struct SoundSettings {
-	hit_sound: SoundEventRef,
-	push_sound: SoundEventRef,
+	#[until="26.4"] ...struct {
+		hit_sound: SoundEventRef,
+		push_sound: SoundEventRef,
+	},
+	#[since="26.4"] ...struct {
+		hit_sound?: SoundEventRef,
+		push_sound?: SoundEventRef,
+	},
 	/// Minimum impact speed required to trigger the sound.
 	push_sound_impulse_threshold: float,
 	/// Cooldown in seconds for the sound effect.
