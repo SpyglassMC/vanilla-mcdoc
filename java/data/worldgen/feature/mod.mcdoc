@@ -104,6 +104,24 @@ dispatch minecraft:feature_config[coral_claw, coral_tree] to struct CoralConfig 
 	feature: PlacedFeatureRef,
 }
 
+#[since="26.4"]
+dispatch minecraft:feature_config[crevasse] to struct CrevasseConfig {
+	max_width: int @ 2..8,
+	max_length: int @ 4..16,
+	min_footprint: int @ 1..32,
+	cursor_surface_search_range: int @ 1..,
+	column_surface_search_range: int @ 1..,
+	twistiness: float @ 0..16,
+	tapering: float @ 0..1,
+	turn_factor: float @ 0..1,
+	carve_depth: IntProvider<int @ 1..>,
+	fill_depth: IntProvider<int @ 1..>,
+	surface_block: BlockStateProviderRef,
+	fill_block: BlockStateProviderRef,
+	carvable_blocks: BlockPredicate,
+	acceptable_barrier: BlockPredicate,
+}
+
 #[until="1.18"]
 dispatch minecraft:feature_config[decorated] to struct DecoratedConfig {
 	decorator: ConfiguredDecorator,

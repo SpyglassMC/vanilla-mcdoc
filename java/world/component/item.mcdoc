@@ -96,7 +96,7 @@ dispatch minecraft:attribute_display[override] to struct AttributeDisplayTextOve
 dispatch minecraft:data_component[base_color] to DyeColor
 
 #[since="1.21.5"]
-dispatch minecraft:data_component[blocks_attacks] to struct blocks_attacks {
+dispatch minecraft:data_component[blocks_attacks] to struct BlocksAttacks {
 	/// Number of seconds that right-click must be held before successfully blocking attacks.
 	/// Defaults to `0`.
 	block_delay_seconds?: float @ 0..,

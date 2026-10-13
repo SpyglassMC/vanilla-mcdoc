@@ -12,7 +12,12 @@ dispatch minecraft:resource[cat_variant] to struct CatVariant {
 }
 
 #[since="26.1"]
-dispatch minecraft:resource[cat_sound_variant] to SoundVariant<struct CatSounds {
+dispatch minecraft:resource[cat_sound_variant] to (
+	#[until="26.4"] SoundVariant<CatSounds> |
+	#[since="26.4"] SoundVariant<OptionalCatSounds> |
+)
+
+struct CatSounds {
 	ambient_sound: SoundEventRef,
 	stray_ambient_sound: SoundEventRef,
 	hiss_sound: SoundEventRef,
@@ -22,4 +27,15 @@ dispatch minecraft:resource[cat_sound_variant] to SoundVariant<struct CatSounds 
 	beg_for_food_sound: SoundEventRef,
 	purr_sound: SoundEventRef,
 	purreow_sound: SoundEventRef,
-}>
+}
+struct OptionalCatSounds {
+	ambient_sound?: SoundEventRef,
+	stray_ambient_sound?: SoundEventRef,
+	hiss_sound?: SoundEventRef,
+	hurt_sound?: SoundEventRef,
+	death_sound?: SoundEventRef,
+	eat_sound?: SoundEventRef,
+	beg_for_food_sound?: SoundEventRef,
+	purr_sound?: SoundEventRef,
+	purreow_sound?: SoundEventRef,
+}
