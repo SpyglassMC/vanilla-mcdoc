@@ -1,5 +1,5 @@
 {
-	"ref": "bda7689f7e5992cd7a09bce39c7b1267ec4b7f0c",
+	"ref": "96bc75c77c9f0c955b8ac99cccf889a768aed9b9",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -24659,6 +24659,67 @@
 				}
 			]
 		},
+		"::java::data::enchantment::effect::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "small_particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::particle::Particle"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "large_particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::particle::Particle"
+					}
+				}
+			]
+		},
+		"::java::data::enchantment::effect::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "small_particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::particle::Particle"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "large_particle",
+					"type": {
+						"kind": "reference",
+						"path": "::java::util::particle::Particle"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::enchantment::effect::AddEffectValue": {
 			"kind": "struct",
 			"fields": [
@@ -25315,19 +25376,94 @@
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "small_particle",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "reference",
-						"path": "::java::util::particle::Particle"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "small_particle",
+								"type": {
+									"kind": "reference",
+									"path": "::java::util::particle::Particle"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "large_particle",
+								"type": {
+									"kind": "reference",
+									"path": "::java::util::particle::Particle"
+								}
+							}
+						]
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "large_particle",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "reference",
-						"path": "::java::util::particle::Particle"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"key": "small_particle",
+								"type": {
+									"kind": "reference",
+									"path": "::java::util::particle::Particle"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"key": "large_particle",
+								"type": {
+									"kind": "reference",
+									"path": "::java::util::particle::Particle"
+								},
+								"optional": true
+							}
+						]
 					}
 				},
 				{
@@ -25359,14 +25495,6 @@
 						]
 					},
 					"optional": true
-				},
-				{
-					"kind": "pair",
-					"key": "sound",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
-					}
 				}
 			]
 		},
@@ -42223,6 +42351,50 @@
 				}
 			]
 		},
+		"::java::data::sulfur_cube_archetype::<anonymous 0>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "hit_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "push_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				}
+			]
+		},
+		"::java::data::sulfur_cube_archetype::<anonymous 1>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "hit_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "push_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::sulfur_cube_archetype::AttributeEntry": {
 			"kind": "struct",
 			"fields": [
@@ -42369,19 +42541,77 @@
 			"kind": "struct",
 			"fields": [
 				{
-					"kind": "pair",
-					"key": "hit_sound",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "hit_sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "push_sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								}
+							}
+						]
 					}
 				},
 				{
-					"kind": "pair",
-					"key": "push_sound",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "hit_sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"key": "push_sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"optional": true
+							}
+						]
 					}
 				},
 				{
@@ -45057,6 +45287,92 @@
 				}
 			]
 		},
+		"::java::data::variants::cat::OptionalCatSounds": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "stray_ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "hiss_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "hurt_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "death_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "eat_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "beg_for_food_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "purr_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "purreow_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::variants::chicken::ChickenModelType": {
 			"kind": "enum",
 			"enumKind": "string",
@@ -45178,6 +45494,47 @@
 						"kind": "reference",
 						"path": "::java::data::variants::SpawnPrioritySelectors"
 					}
+				}
+			]
+		},
+		"::java::data::variants::chicken::OptionalChickenSounds": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "hurt_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "death_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "step_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -45306,6 +45663,47 @@
 						"kind": "reference",
 						"path": "::java::data::variants::SpawnPrioritySelectors"
 					}
+				}
+			]
+		},
+		"::java::data::variants::cow::OptionalCowSounds": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "hurt_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "death_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "step_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -45612,6 +46010,56 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::util::text::Text"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::variants::pig::OptionalPigSounds": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "hurt_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "death_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "step_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "eat_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
 					},
 					"optional": true
 				}
@@ -46072,6 +46520,65 @@
 						"kind": "reference",
 						"path": "::java::data::variants::SpawnPrioritySelectors"
 					}
+				}
+			]
+		},
+		"::java::data::variants::wolf::OptionalWolfSounds": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "ambient_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "death_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "growl_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "hurt_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "pant_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "whine_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -57193,6 +57700,66 @@
 				}
 			]
 		},
+		"::java::data::worldgen::feature::block_predicate::FluidPredicateState": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									{
+										"keyword": "parent"
+									},
+									"fluids"
+								]
+							}
+						],
+						"registry": "mcdoc:fluid_state_keys"
+					},
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::util::MinMaxBounds"
+						},
+						"typeArgs": [
+							{
+								"kind": "indexed",
+								"child": {
+									"kind": "dispatcher",
+									"parallelIndices": [
+										{
+											"kind": "dynamic",
+											"accessor": [
+												{
+													"keyword": "parent"
+												},
+												"fluids"
+											]
+										}
+									],
+									"registry": "mcdoc:fluid_states"
+								},
+								"parallelIndices": [
+									{
+										"kind": "dynamic",
+										"accessor": [
+											{
+												"keyword": "key"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::feature::block_predicate::HasSturdyFacePredicate": {
 			"kind": "struct",
 			"fields": [
@@ -57497,6 +58064,27 @@
 							}
 						]
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"key": "state",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::FluidPredicateState"
+					},
+					"optional": true
 				}
 			]
 		},
@@ -58963,6 +59551,177 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::feature::placement::PlacedFeatureRef"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::feature::CrevasseConfig": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "max_width",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 2,
+							"max": 8
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "max_length",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 4,
+							"max": 16
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "min_footprint",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 32
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "cursor_surface_search_range",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "column_surface_search_range",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "twistiness",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 16
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "tapering",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "turn_factor",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "carve_depth",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "fill_depth",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::IntProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "int",
+								"valueRange": {
+									"kind": 0,
+									"min": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "surface_block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "fill_block",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_state_provider::BlockStateProviderRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "carvable_blocks",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "acceptable_barrier",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::feature::block_predicate::BlockPredicate"
 					}
 				}
 			]
@@ -89708,6 +90467,25 @@
 						"kind": "long"
 					},
 					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"key": "playlist_position",
+					"type": {
+						"kind": "int"
+					}
 				}
 			]
 		},
@@ -93296,7 +94074,7 @@
 				}
 			]
 		},
-		"::java::world::component::item::blocks_attacks": {
+		"::java::world::component::item::BlocksAttacks": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -93853,7 +94631,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Sound played during and on completion of item consumption.",
+					"desc": "Sound played during and on completion of item consumption. \\\nIf not specified, the default eating sound will be played.",
 					"key": "sound",
 					"type": {
 						"kind": "reference",
@@ -94423,7 +95201,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Sound event to play when the item is equipped.\nIf not specified, the default armor equip sound will be played.",
+					"desc": "Sound event to play when the item is equipped. \\\nIf not specified, the default armor equip sound will be played.",
 					"key": "equip_sound",
 					"type": {
 						"kind": "reference",
@@ -119136,7 +119914,7 @@
 			},
 			"blocks_attacks": {
 				"kind": "reference",
-				"path": "::java::world::component::item::blocks_attacks",
+				"path": "::java::world::component::item::BlocksAttacks",
 				"attributes": [
 					{
 						"name": "since",
@@ -125575,6 +126353,22 @@
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::CoralConfig"
 			},
+			"crevasse": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::feature::CrevasseConfig",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
+					}
+				]
+			},
 			"decorated": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::feature::DecoratedConfig",
@@ -130639,15 +131433,57 @@
 				]
 			},
 			"cat_sound_variant": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::variants::SoundVariant"
-				},
-				"typeArgs": [
+				"kind": "union",
+				"members": [
 					{
-						"kind": "reference",
-						"path": "::java::data::variants::cat::CatSounds"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::variants::SoundVariant"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::variants::cat::CatSounds"
+							}
+						],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::variants::SoundVariant"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::variants::cat::OptionalCatSounds"
+							}
+						],
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						]
 					}
 				],
 				"attributes": [
@@ -130717,15 +131553,57 @@
 				]
 			},
 			"chicken_sound_variant": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::variants::SoundVariant"
-				},
-				"typeArgs": [
+				"kind": "union",
+				"members": [
 					{
-						"kind": "reference",
-						"path": "::java::data::variants::chicken::ChickenSounds"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::variants::SoundVariant"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::variants::chicken::ChickenSounds"
+							}
+						],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::variants::SoundVariant"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::variants::chicken::OptionalChickenSounds"
+							}
+						],
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						]
 					}
 				],
 				"attributes": [
@@ -130790,8 +131668,41 @@
 				]
 			},
 			"cow_sound_variant": {
-				"kind": "reference",
-				"path": "::java::data::variants::cow::CowSounds",
+				"kind": "union",
+				"members": [
+					{
+						"kind": "reference",
+						"path": "::java::data::variants::cow::CowSounds",
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::variants::cow::OptionalCowSounds",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						]
+					}
+				],
 				"attributes": [
 					{
 						"name": "since",
@@ -131078,15 +131989,57 @@
 				"path": "::java::assets::particle::Particle"
 			},
 			"pig_sound_variant": {
-				"kind": "concrete",
-				"child": {
-					"kind": "reference",
-					"path": "::java::data::variants::SoundVariant"
-				},
-				"typeArgs": [
+				"kind": "union",
+				"members": [
 					{
-						"kind": "reference",
-						"path": "::java::data::variants::pig::PigSounds"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::variants::SoundVariant"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::variants::pig::PigSounds"
+							}
+						],
+						"attributes": [
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::variants::SoundVariant"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::variants::pig::OptionalPigSounds"
+							}
+						],
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						]
 					}
 				],
 				"attributes": [
@@ -131325,6 +132278,41 @@
 									"value": {
 										"kind": "string",
 										"value": "26.1"
+									}
+								}
+							},
+							{
+								"name": "until",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						]
+					},
+					{
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::variants::SoundVariant"
+						},
+						"typeArgs": [
+							{
+								"kind": "reference",
+								"path": "::java::data::variants::wolf::OptionalWolfSounds"
+							}
+						],
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
 									}
 								}
 							}
