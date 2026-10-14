@@ -8,13 +8,13 @@ type RGBA = (
 	#[color="dec_rgba"] [float @ 0..1] @ 4 |
 )
 
-// ExtraCodecs.STRING_RGB_COLOR
+// ExtraCodecs.STRING_RGB_VEC3_COLOR
 type StringRGB = (
 	#[color="composite_rgb"] int |
 	#[color="dec_rgb"] [float @ 0..1] @ 3 |
 	#[color="hex_rgb"] string |
 )
-// ExtraCodecs.STRING_ARGB_COLOR
+// ExtraCodecs.STRING_ARGB_VEC4_COLOR
 type StringARGB = (
 	#[color="composite_argb"] int |
 	#[color="dec_rgba"] [float @ 0..1] @ 4 |
