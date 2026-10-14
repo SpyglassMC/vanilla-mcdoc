@@ -1,5 +1,5 @@
 {
-	"ref": "e02625e4976d784b23f70c1ccf3907058efd2a97",
+	"ref": "b6df528ff97017da5b665a6a303a37e1682c6f7e",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -50395,6 +50395,53 @@
 						}
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::data::worldgen::attribute::modifier::LenientStringARGB": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "reference",
+					"path": "::java::util::color::StringARGB"
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					"lengthRange": {
+						"kind": 0,
+						"min": 3,
+						"max": 3
+					},
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						},
+						{
+							"name": "color",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "dec_rgb"
+								}
+							}
+						}
+					]
 				}
 			]
 		},
@@ -126193,7 +126240,7 @@
 		"minecraft:environment_attribute_argb_color_modifier": {
 			"%none": {
 				"kind": "reference",
-				"path": "::java::util::color::StringARGB"
+				"path": "::java::data::worldgen::attribute::modifier::LenientStringARGB"
 			},
 			"add": {
 				"kind": "reference",
@@ -126201,28 +126248,19 @@
 			},
 			"alpha_blend": {
 				"kind": "reference",
-				"path": "::java::util::color::StringARGB"
+				"path": "::java::data::worldgen::attribute::modifier::LenientStringARGB"
 			},
 			"blend_to_gray": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::attribute::modifier::BlendToGray"
 			},
 			"multiply": {
-				"kind": "union",
-				"members": [
-					{
-						"kind": "reference",
-						"path": "::java::util::color::StringRGB"
-					},
-					{
-						"kind": "reference",
-						"path": "::java::util::color::StringARGB"
-					}
-				]
+				"kind": "reference",
+				"path": "::java::data::worldgen::attribute::modifier::LenientStringARGB"
 			},
 			"override": {
 				"kind": "reference",
-				"path": "::java::util::color::StringARGB"
+				"path": "::java::data::worldgen::attribute::modifier::LenientStringARGB"
 			},
 			"subtract": {
 				"kind": "reference",
@@ -126240,7 +126278,7 @@
 			},
 			"alpha_blend": {
 				"kind": "reference",
-				"path": "::java::util::color::StringARGB"
+				"path": "::java::data::worldgen::attribute::modifier::LenientStringARGB"
 			},
 			"blend_to_gray": {
 				"kind": "reference",
