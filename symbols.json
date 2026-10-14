@@ -1,5 +1,5 @@
 {
-	"ref": "96bc75c77c9f0c955b8ac99cccf889a768aed9b9",
+	"ref": "e02625e4976d784b23f70c1ccf3907058efd2a97",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -111092,6 +111092,18 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.16"
+								}
+							}
+						}
+					],
 					"desc": "Last player to hit a zombie pigman in this zombie pigman's detection range.",
 					"key": "HurtBy",
 					"type": {
