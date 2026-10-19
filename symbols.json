@@ -1,5 +1,5 @@
 {
-	"ref": "b6df528ff97017da5b665a6a303a37e1682c6f7e",
+	"ref": "829f895ae3cc2ee2b9adf5b5f9946cdbdf5917d5",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -25624,23 +25624,8 @@
 					"kind": "pair",
 					"key": "type",
 					"type": {
-						"kind": "union",
-						"members": [
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "entity_position"
-								}
-							},
-							{
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "in_bounding_box"
-								}
-							}
-						]
+						"kind": "reference",
+						"path": "::java::data::enchantment::effect::ParticlePositionType"
 					}
 				},
 				{
@@ -25657,9 +25642,32 @@
 					"desc": "Defaults to 1.",
 					"key": "scale",
 					"type": {
-						"kind": "float"
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "mcdoc:particle_position_scale"
 					},
 					"optional": true
+				}
+			]
+		},
+		"::java::data::enchantment::effect::ParticlePositionType": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "EntityPosition",
+					"value": "entity_position"
+				},
+				{
+					"identifier": "InBoundingBox",
+					"value": "in_bounding_box"
 				}
 			]
 		},
@@ -115256,6 +115264,18 @@
 		"mcdoc:marker_data": {
 			"%unknown": {
 				"kind": "any"
+			}
+		},
+		"mcdoc:particle_position_scale": {
+			"%unknown": {
+				"kind": "float"
+			},
+			"entity_position": {
+				"kind": "literal",
+				"value": {
+					"kind": "float",
+					"value": 1
+				}
 			}
 		},
 		"minecraft:apply_bonus_formula": {
