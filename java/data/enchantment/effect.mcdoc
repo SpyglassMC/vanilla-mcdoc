@@ -290,12 +290,20 @@ dispatch minecraft:location_based_effect[attribute] to AttributeEffect
 
 
 struct ParticlePosition {
-	type: ("entity_position" | "in_bounding_box"),
+	type: ParticlePositionType,
 	/// Defaults to 0.
 	offset?: float,
 	/// Defaults to 1.
-	scale?: float,
+	scale?: mcdoc:particle_position_scale[[type]],
 }
+
+enum(string) ParticlePositionType {
+	EntityPosition = "entity_position",
+	InBoundingBox = "in_bounding_box",
+}
+
+dispatch mcdoc:particle_position_scale[%unknown] to float
+dispatch mcdoc:particle_position_scale[entity_position] to 1f
 
 struct ParticleVelocity {
 	/// Defaults to 0.
