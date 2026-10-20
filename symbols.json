@@ -1,5 +1,5 @@
 {
-	"ref": "829f895ae3cc2ee2b9adf5b5f9946cdbdf5917d5",
+	"ref": "1e534600f536ad42513cfda69e1271e6957ff425",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -55215,6 +55215,94 @@
 				}
 			]
 		},
+		"::java::data::worldgen::density_function::Upscale": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "input",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "x",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::UpscaleAxis"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "y",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::UpscaleAxis"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "z",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::UpscaleAxis"
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::density_function::UpscaleAxis": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "mode",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::UpscaleMode"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "cell_size",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 64
+						}
+					}
+				}
+			]
+		},
+		"::java::data::worldgen::density_function::UpscaleMode": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "NearestNeighbor",
+					"value": "nearest_neighbor"
+				},
+				{
+					"identifier": "InterpolateLinear",
+					"value": "interpolate_linear"
+				},
+				{
+					"identifier": "InterpolateCosine",
+					"value": "interpolate_cosine"
+				},
+				{
+					"identifier": "InterpolateCubic",
+					"value": "interpolate_cubic"
+				},
+				{
+					"identifier": "BSplineCubic",
+					"value": "b_spline_cubic"
+				}
+			]
+		},
 		"::java::data::worldgen::density_function::WeirdScaledSampler": {
 			"kind": "struct",
 			"fields": [
@@ -93673,13 +93761,47 @@
 				}
 			]
 		},
-		"::java::world::component::item::<anonymous 2>": {
+		"::java::world::component::item::<anonymous 10>": {
 			"kind": "struct",
 			"fields": []
 		},
-		"::java::world::component::item::<anonymous 3>": {
+		"::java::world::component::item::<anonymous 11>": {
 			"kind": "struct",
 			"fields": []
+		},
+		"::java::world::component::item::<anonymous 12>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::world::component::item::<anonymous 2>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Sound played during and on completion of item consumption. \\\nIf not specified, the default eating sound will be played.",
+					"key": "sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::component::item::<anonymous 3>": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Sound played during and on completion of item consumption.",
+					"key": "sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				}
+			]
 		},
 		"::java::world::component::item::<anonymous 4>": {
 			"kind": "struct",
@@ -93687,17 +93809,75 @@
 		},
 		"::java::world::component::item::<anonymous 5>": {
 			"kind": "struct",
-			"fields": []
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Sound event to play when the item is equipped. \\\nIf not specified, the default armor equip sound will be played.",
+					"key": "equip_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "1.21.6"
+								}
+							}
+						}
+					],
+					"desc": "Sound event to play when the item is sheared from a mob. \\\nIf not specified, the default shearing sound (`item.shears.snip`) will be played.",
+					"key": "shearing_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				}
+			]
 		},
 		"::java::world::component::item::<anonymous 6>": {
 			"kind": "struct",
-			"fields": []
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Sound event to play when the item is equipped.",
+					"key": "equip_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Sound event to play when the item is sheared from a mob.",
+					"key": "shearing_sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					},
+					"optional": true
+				}
+			]
 		},
 		"::java::world::component::item::<anonymous 7>": {
 			"kind": "struct",
 			"fields": []
 		},
 		"::java::world::component::item::<anonymous 8>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::world::component::item::<anonymous 9>": {
 			"kind": "struct",
 			"fields": []
 		},
@@ -94685,14 +94865,64 @@
 					"optional": true
 				},
 				{
-					"kind": "pair",
-					"desc": "Sound played during and on completion of item consumption. \\\nIf not specified, the default eating sound will be played.",
-					"key": "sound",
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
-					},
-					"optional": true
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Sound played during and on completion of item consumption. \\\nIf not specified, the default eating sound will be played.",
+								"key": "sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"optional": true
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Sound played during and on completion of item consumption.",
+								"key": "sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"optional": true
+							}
+						]
+					}
 				},
 				{
 					"kind": "pair",
@@ -95256,16 +95486,6 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Sound event to play when the item is equipped. \\\nIf not specified, the default armor equip sound will be played.",
-					"key": "equip_sound",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
 					"attributes": [
 						{
 							"name": "until",
@@ -95328,6 +95548,98 @@
 						]
 					},
 					"optional": true
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Sound event to play when the item is equipped. \\\nIf not specified, the default armor equip sound will be played.",
+								"key": "equip_sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "1.21.6"
+											}
+										}
+									}
+								],
+								"desc": "Sound event to play when the item is sheared from a mob. \\\nIf not specified, the default shearing sound (`item.shears.snip`) will be played.",
+								"key": "shearing_sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"optional": true
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"desc": "Sound event to play when the item is equipped.",
+								"key": "equip_sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"optional": true
+							},
+							{
+								"kind": "pair",
+								"desc": "Sound event to play when the item is sheared from a mob.",
+								"key": "shearing_sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								},
+								"optional": true
+							}
+						]
+					}
 				},
 				{
 					"kind": "pair",
@@ -95460,28 +95772,6 @@
 					"key": "can_be_sheared",
 					"type": {
 						"kind": "boolean"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "1.21.6"
-								}
-							}
-						}
-					],
-					"desc": "Sound event to play when the item is sheared from a mob.\nIf not specified, the default shearing sound (`item.shears.snip`) will be played.",
-					"key": "shearing_sound",
-					"type": {
-						"kind": "reference",
-						"path": "::java::data::util::SoundEventRef"
 					},
 					"optional": true
 				}
@@ -122732,7 +123022,19 @@
 			},
 			"interpolated": {
 				"kind": "reference",
-				"path": "::java::data::worldgen::density_function::Interpolated"
+				"path": "::java::data::worldgen::density_function::Interpolated",
+				"attributes": [
+					{
+						"name": "until",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
+					}
+				]
 			},
 			"interval_select": {
 				"kind": "reference",
@@ -123037,6 +123339,22 @@
 							"value": {
 								"kind": "string",
 								"value": "26.3"
+							}
+						}
+					}
+				]
+			},
+			"upscale": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::Upscale",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
 							}
 						}
 					}
