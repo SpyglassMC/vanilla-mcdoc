@@ -132,6 +132,7 @@ dispatch minecraft:density_function[gradient] to struct Gradient {
 	to_value: NoiseRange,
 }
 
+#[until="26.4"]
 dispatch minecraft:density_function[interpolated] to struct Interpolated {
 	...OneArgument,
 	#[since="26.3"] ...struct {
@@ -241,6 +242,27 @@ enum(string) SplineType {
 	Offset = "offset",
 	Factor = "factor",
 	Jaggedness = "jaggedness",
+}
+
+#[since="26.4"]
+dispatch minecraft:density_function[upscale] to struct Upscale {
+	input: DensityFunctionRef,
+	x: UpscaleAxis,
+	y: UpscaleAxis,
+	z: UpscaleAxis,
+}
+
+struct UpscaleAxis {
+	mode: UpscaleMode,
+	cell_size: int @ 1..64,
+}
+
+enum(string) UpscaleMode {
+	NearestNeighbor = "nearest_neighbor",
+	InterpolateLinear = "interpolate_linear",
+	InterpolateCosine = "interpolate_cosine",
+	InterpolateCubic = "interpolate_cubic",
+	BSplineCubic = "b_spline_cubic",
 }
 
 #[until="26.2"]

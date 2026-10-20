@@ -235,9 +235,15 @@ dispatch minecraft:data_component[consumable] to struct Consumable {
 	consume_seconds?: float @ 0..,
 	/// View model/arms animation used during consumption of the item. Defaults to `eat`.
 	animation?: ItemUseAnimation,
-	/// Sound played during and on completion of item consumption. \
-	/// If not specified, the default eating sound will be played.
-	sound?: SoundEventRef,
+	#[until="26.4"] ...struct {
+		/// Sound played during and on completion of item consumption. \
+		/// If not specified, the default eating sound will be played.
+		sound?: SoundEventRef,
+	},
+	#[since="26.4"] ...struct {
+		/// Sound played during and on completion of item consumption.
+		sound?: SoundEventRef,
+	},
 	/// Whether the `item` particle is emitted while consuming the item. Defaults to `true`.
 	has_consume_particles?: boolean,
 	/// Side effects which take place after consuming the item.
@@ -400,15 +406,27 @@ dispatch minecraft:data_component[entity_data] to (
 #[since="1.21.2"]
 dispatch minecraft:data_component[equippable] to struct Equippable {
 	slot: EquipmentSlot,
-	/// Sound event to play when the item is equipped. \
-	/// If not specified, the default armor equip sound will be played.
-	equip_sound?: SoundEventRef,
 	/// The equipment model to use when equipped.
 	/// Falls back to rendering as the item itself when in the head slot (or no rendering if not applicable).
 	#[until="1.21.4"]
 	model?: #[id="equipment"] string,
 	#[since="1.21.4"]
 	asset_id?: #[id="equipment"] string,
+	#[until="26.4"] ...struct {
+		/// Sound event to play when the item is equipped. \
+		/// If not specified, the default armor equip sound will be played.
+		equip_sound?: SoundEventRef,
+		/// Sound event to play when the item is sheared from a mob. \
+		/// If not specified, the default shearing sound (`item.shears.snip`) will be played.
+		#[since="1.21.6"]
+		shearing_sound?: SoundEventRef,
+	},
+	#[since="26.4"] ...struct {
+		/// Sound event to play when the item is equipped.
+		equip_sound?: SoundEventRef,
+		/// Sound event to play when the item is sheared from a mob.
+		shearing_sound?: SoundEventRef,
+	},
 	/// The overlay texture that should render in first person when equipped.
 	camera_overlay?: #[id="texture"] string,
 	/// Limits which entities can equip this item.
@@ -427,10 +445,6 @@ dispatch minecraft:data_component[equippable] to struct Equippable {
 	/// Defaults to `false`.
 	#[since="1.21.6"]
 	can_be_sheared?: boolean,
-	/// Sound event to play when the item is sheared from a mob.
-	/// If not specified, the default shearing sound (`item.shears.snip`) will be played.
-	#[since="1.21.6"]
-	shearing_sound?: SoundEventRef,
 }
 
 /// If set, this item will not burn in fire or lava.
