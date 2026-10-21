@@ -10,10 +10,12 @@ dispatch minecraft:resource[slot_source] to TypedSlotSource
 // Use SlotSource instead.
 type SlotSource = (
 	TypedSlotSource |
-	[SlotSource] |
+	#[until="26.3"] [SlotSource] |
 	#[since="26.3"] #[id(registry="slot_source",tags="allowed")] string |
-	// ↓ This is covered by [SlotSource]
-	// #[since="26.3"] [#[id="slot_source"] string] |
+	#[since="26.3"] [(
+		#[id="slot_source"] string |
+		TypedSlotSource |
+	)] |
 )
 // Used by slot source command argument
 type SlotSourceArgument = SlotSource
