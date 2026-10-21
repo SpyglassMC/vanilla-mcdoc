@@ -1,5 +1,5 @@
 {
-	"ref": "1e534600f536ad42513cfda69e1271e6957ff425",
+	"ref": "425ed21ad8cf5fceef19904e4973118c55b4d2bf",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -27565,44 +27565,6 @@
 					"path": "::java::data::loot::LootFunction"
 				},
 				{
-					"kind": "list",
-					"item": {
-						"kind": "reference",
-						"path": "::java::data::loot::LootFunction"
-					},
-					"attributes": [
-						{
-							"name": "until",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					]
-				},
-				{
-					"kind": "list",
-					"item": {
-						"kind": "reference",
-						"path": "::java::data::item_modifier::ItemModifier"
-					},
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					]
-				},
-				{
 					"kind": "string",
 					"attributes": [
 						{
@@ -27638,6 +27600,43 @@
 							}
 						}
 					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "item_modifier"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::loot::LootFunction"
+							}
+						]
+					}
 				}
 			]
 		},
@@ -41925,7 +41924,19 @@
 					"item": {
 						"kind": "reference",
 						"path": "::java::data::slot_source::SlotSource"
-					}
+					},
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
+								}
+							}
+						}
+					]
 				},
 				{
 					"kind": "string",
@@ -41959,6 +41970,45 @@
 											"value": "allowed"
 										}
 									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "union",
+						"members": [
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "slot_source"
+											}
+										}
+									}
+								]
+							},
+							{
+								"kind": "reference",
+								"path": "::java::data::slot_source::TypedSlotSource"
+							}
+						]
+					},
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.3"
 								}
 							}
 						}
