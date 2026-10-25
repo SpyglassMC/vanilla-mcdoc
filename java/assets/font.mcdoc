@@ -37,7 +37,7 @@ dispatch minecraft:glyph_provider[bitmap] to struct BitmapProvider {
 
 dispatch minecraft:glyph_provider[space] to struct SpaceProvider {
 	advances: struct {
-		[string @ 1]: float,
+		[string @ 1]: int,
 	},
 }
 
