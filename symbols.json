@@ -1,5 +1,5 @@
 {
-	"ref": "425ed21ad8cf5fceef19904e4973118c55b4d2bf",
+	"ref": "0ca060a4f1631f9d5eb7198cfe94c7b77a773d32",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -42796,6 +42796,31 @@
 				},
 				{
 					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"desc": "Enchantment level is 1 in the effects.",
+					"key": "location_based_effects",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::enchantment::effect_component::LocationChangedEnchantmentEffect"
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
 					"key": "sound_settings",
 					"type": {
 						"kind": "reference",
@@ -54353,6 +54378,49 @@
 				}
 			]
 		},
+		"::java::data::worldgen::density_function::DomainWarp": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "input",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0. \\\nAt least one of the offsets must be specified.",
+					"key": "offset_x",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0. \\\nAt least one of the offsets must be specified.",
+					"key": "offset_y",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to constant 0. \\\nAt least one of the offsets must be specified.",
+					"key": "offset_z",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::density_function::DensityFunctionRef"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::data::worldgen::density_function::FindTopSurface": {
 			"kind": "struct",
 			"fields": [
@@ -54422,14 +54490,32 @@
 					"kind": "pair",
 					"key": "from_coordinate",
 					"type": {
-						"kind": "int"
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"axis"
+								]
+							}
+						],
+						"registry": "mcdoc:gradient_density_coordinate"
 					}
 				},
 				{
 					"kind": "pair",
 					"key": "to_coordinate",
 					"type": {
-						"kind": "int"
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"axis"
+								]
+							}
+						],
+						"registry": "mcdoc:gradient_density_coordinate"
 					}
 				},
 				{
@@ -75250,6 +75336,100 @@
 				}
 			]
 		},
+		"::java::data::worldgen::template_pool::CornersToCheck": {
+			"kind": "enum",
+			"enumKind": "string",
+			"values": [
+				{
+					"identifier": "Top",
+					"value": "top"
+				},
+				{
+					"identifier": "Bottom",
+					"value": "bottom"
+				},
+				{
+					"identifier": "All",
+					"value": "all"
+				}
+			]
+		},
+		"::java::data::worldgen::template_pool::DensityPredicate": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "density_function",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "worldgen/density_function"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "acceptable_density",
+					"type": {
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::util::InclusiveRange"
+						},
+						"typeArgs": [
+							{
+								"kind": "double"
+							}
+						]
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to 0.",
+					"key": "padding",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 8
+						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Defaults to `all`.",
+					"key": "corners",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::worldgen::template_pool::CornersToCheck"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "required_corners",
+					"type": {
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 8
+						}
+					}
+				}
+			]
+		},
 		"::java::data::worldgen::template_pool::Element": {
 			"kind": "struct",
 			"fields": [
@@ -75299,6 +75479,35 @@
 						"kind": "reference",
 						"path": "::java::data::worldgen::template_pool::Projection"
 					}
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"key": "corner_constraint",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::template_pool::DensityPredicate"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 1,
+							"max": 10
+						}
+					},
+					"optional": true
 				}
 			]
 		},
@@ -111189,7 +111398,160 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::zombie::Drowned": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::ZombieBase"
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::DrowningTracker"
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::FreezingTracker"
+					}
+				}
+			]
+		},
+		"::java::world::entity::mob::zombie::DrowningTracker": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Ticks until it converts.",
+					"key": "DrownedConversionTime",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Ticks it has been in the water.",
+					"key": "InWaterTime",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::zombie::FreezingTracker": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "Ticks until it converts.",
+					"key": "FrostbiteConversionTime",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"desc": "Ticks it has been in the powdered snow.",
+					"key": "FreezingTime",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::world::entity::mob::zombie::Frostbite": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::ZombieBase"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::DrowningTracker"
+					}
+				}
+			]
+		},
 		"::java::world::entity::mob::zombie::Zombie": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::ZombieBase"
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::DrowningTracker"
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::FreezingTracker"
+					}
+				}
+			]
+		},
+		"::java::world::entity::mob::zombie::ZombieBase": {
 			"kind": "struct",
 			"fields": [
 				{
@@ -111218,25 +111580,14 @@
 					"optional": true
 				},
 				{
-					"kind": "pair",
-					"desc": "Ticks until it converts.",
-					"key": "DrownedConversionTime",
+					"kind": "spread",
 					"type": {
-						"kind": "int"
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::DrowningTracker"
+					}
 				},
 				{
-					"kind": "pair",
-					"desc": "Ticks it has been in the water.",
-					"key": "InWaterTime",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
+					"kind": "spread",
 					"attributes": [
 						{
 							"name": "since",
@@ -111249,33 +111600,10 @@
 							}
 						}
 					],
-					"desc": "Ticks until it converts.",
-					"key": "FrostbiteConversionTime",
 					"type": {
-						"kind": "int"
-					},
-					"optional": true
-				},
-				{
-					"kind": "pair",
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.4"
-								}
-							}
-						}
-					],
-					"desc": "Ticks it has been in the powdered snow.",
-					"key": "FreezingTime",
-					"type": {
-						"kind": "int"
-					},
-					"optional": true
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::FreezingTracker"
+					}
 				}
 			]
 		},
@@ -111286,7 +111614,26 @@
 					"kind": "spread",
 					"type": {
 						"kind": "reference",
-						"path": "::java::world::entity::mob::zombie::Zombie"
+						"path": "::java::world::entity::mob::zombie::ZombieBase"
+					}
+				},
+				{
+					"kind": "spread",
+					"attributes": [
+						{
+							"name": "until",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::zombie::DrowningTracker"
 					}
 				},
 				{
@@ -115597,6 +115944,35 @@
 						"type": {
 							"kind": "string"
 						}
+					}
+				]
+			}
+		},
+		"mcdoc:gradient_density_coordinate": {
+			"%unknown": {
+				"kind": "int"
+			},
+			"y": {
+				"kind": "union",
+				"members": [
+					{
+						"kind": "int"
+					},
+					{
+						"kind": "reference",
+						"path": "::java::data::worldgen::VerticalAnchor",
+						"attributes": [
+							{
+								"name": "since",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "26.4"
+									}
+								}
+							}
+						]
 					}
 				]
 			}
@@ -123002,6 +123378,22 @@
 					}
 				]
 			},
+			"domain_warp": {
+				"kind": "reference",
+				"path": "::java::data::worldgen::density_function::DomainWarp",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
+					}
+				]
+			},
 			"find_top_surface": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::density_function::FindTopSurface",
@@ -124177,7 +124569,7 @@
 			},
 			"drowned": {
 				"kind": "reference",
-				"path": "::java::world::entity::mob::zombie::Zombie"
+				"path": "::java::world::entity::mob::zombie::Drowned"
 			},
 			"egg": {
 				"kind": "reference",
@@ -124261,7 +124653,7 @@
 			},
 			"frostbite": {
 				"kind": "reference",
-				"path": "::java::world::entity::mob::zombie::Zombie",
+				"path": "::java::world::entity::mob::zombie::Frostbite",
 				"attributes": [
 					{
 						"name": "since",
