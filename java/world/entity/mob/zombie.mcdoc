@@ -2,30 +2,55 @@ use super::breedable::villager::VillagerData
 use super::breedable::villager::PlayerReputationPart
 use super::breedable::villager::Offers
 
-dispatch minecraft:entity[drowned,husk,zombie] to Zombie
+dispatch minecraft:entity[drowned] to Drowned
+dispatch minecraft:entity[husk, zombie] to Zombie
 #[since="26.4"]
-dispatch minecraft:entity[frostbite] to Zombie
+dispatch minecraft:entity[frostbite] to Frostbite
 
-struct Zombie {
+struct ZombieBase {
 	...super::MobBase,
 	/// Whether it is a baby.
 	IsBaby?: boolean,
 	/// Whether it can break doors.
 	CanBreakDoors?: boolean,
+	...DrowningTracker,
+	#[since="26.4"] ...FreezingTracker,
+}
+
+struct Zombie {
+	...ZombieBase,
+	...DrowningTracker,
+	#[since="26.4"] ...FreezingTracker,
+}
+
+struct Drowned {
+	...ZombieBase,
+	#[until="26.4"] ...DrowningTracker,
+	#[since="26.4"] ...FreezingTracker,
+}
+
+struct Frostbite {
+	...ZombieBase,
+	...DrowningTracker,
+}
+
+struct DrowningTracker {
 	/// Ticks until it converts.
 	DrownedConversionTime?: int,
 	/// Ticks it has been in the water.
 	InWaterTime?: int,
+}
+
+struct FreezingTracker {
 	/// Ticks until it converts.
-	#[since="26.4"]
 	FrostbiteConversionTime?: int,
 	/// Ticks it has been in the powdered snow.
-	#[since="26.4"]
 	FreezingTime?: int,
 }
 
 dispatch minecraft:entity[zombie_villager] to struct ZombieVillager {
-	...Zombie,
+	...ZombieBase,
+	#[until="26.4"] ...DrowningTracker,
 	/// Villager's skin data
 	VillagerData?: VillagerData,
 	#[since="26.1"]

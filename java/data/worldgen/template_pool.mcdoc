@@ -1,3 +1,4 @@
+use ::java::util::InclusiveRange
 use super::processor_list::ProcessorListRef
 use super::feature::ConfiguredFeatureRef
 use super::feature::placement::PlacedFeatureRef
@@ -31,11 +32,29 @@ struct Element {
 
 struct ElementBase {
 	projection: Projection,
+	#[since="26.4"]
+	corner_constraint?: [DensityPredicate] @ 1..10,
 }
 
 enum(string) Projection {
 	Rigid = "rigid",
 	TerrainMatching = "terrain_matching",
+}
+
+struct DensityPredicate {
+	density_function: #[id="worldgen/density_function"] string,
+	acceptable_density: InclusiveRange<double>,
+	/// Defaults to 0.
+	padding?: int @ 0..8,
+	/// Defaults to `all`.
+	corners?: CornersToCheck,
+	required_corners: int @ 1..8,
+}
+
+enum(string) CornersToCheck {
+	Top = "top",
+	Bottom = "bottom",
+	All = "all",
 }
 
 dispatch minecraft:template_pool_element[feature_pool_element] to struct FeatureElement {

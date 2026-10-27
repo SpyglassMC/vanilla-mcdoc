@@ -1,4 +1,5 @@
 use ::java::util::direction::Axis
+use super::VerticalAnchor
 use super::dimension::biome_source::NoiseParameters
 
 type DensityFunctionRef = (
@@ -112,6 +113,20 @@ enum(string) DistanceMetric {
 	Chebyshev = "chebyshev",
 }
 
+#[since="26.4"]
+dispatch minecraft:density_function[domain_warp] to struct DomainWarp {
+	input: DensityFunctionRef,
+	/// Defaults to constant 0. \
+	/// At least one of the offsets must be specified.
+	offset_x?: DensityFunctionRef,
+	/// Defaults to constant 0. \
+	/// At least one of the offsets must be specified.
+	offset_y?: DensityFunctionRef,
+	/// Defaults to constant 0. \
+	/// At least one of the offsets must be specified.
+	offset_z?: DensityFunctionRef,
+}
+
 #[since="1.21.9"]
 dispatch minecraft:density_function[find_top_surface] to struct FindTopSurface {
 	density: DensityFunctionRef,
@@ -126,11 +141,17 @@ dispatch minecraft:density_function[gradient] to struct Gradient {
 	axis: Axis,
 	/// Defaults to `clamp_to_edge`.
 	tiling?: TilingMode,
-	from_coordinate: int,
-	to_coordinate: int,
+	from_coordinate: mcdoc:gradient_density_coordinate[[axis]],
+	to_coordinate: mcdoc:gradient_density_coordinate[[axis]],
 	from_value: NoiseRange,
 	to_value: NoiseRange,
 }
+
+dispatch mcdoc:gradient_density_coordinate[%unknown] to int
+dispatch mcdoc:gradient_density_coordinate[y] to (
+	int |
+	#[since="26.4"] VerticalAnchor |
+)
 
 #[until="26.4"]
 dispatch minecraft:density_function[interpolated] to struct Interpolated {

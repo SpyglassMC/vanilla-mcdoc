@@ -1,6 +1,7 @@
 use ::java::data::util::SoundEventRef
-use ::java::world::entity::mob::ModernAttributeModifier
+use ::java::data::enchantment::effect_component::LocationChangedEnchantmentEffect
 use ::java::data::worldgen::FloatProvider
+use ::java::world::entity::mob::ModernAttributeModifier
 
 dispatch minecraft:resource[sulfur_cube_archetype] to struct SulfurCubeArchetype {
 	items: (#[id(registry="item",tags="allowed")] string | [#[id="item"] string]),
@@ -11,6 +12,9 @@ dispatch minecraft:resource[sulfur_cube_archetype] to struct SulfurCubeArchetype
 	contact_damage?: ContactDamage,
 	knockback_modifiers: KnockbackModifiers,
 	attribute_modifiers: [AttributeEntry],
+	/// Enchantment level is 1 in the effects.
+	#[since="26.4"]
+	location_based_effects?: [LocationChangedEnchantmentEffect],
 	sound_settings: SoundSettings,
 }
 
