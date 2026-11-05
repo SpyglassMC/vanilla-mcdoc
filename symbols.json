@@ -1,5 +1,5 @@
 {
-	"ref": "0ca060a4f1631f9d5eb7198cfe94c7b77a773d32",
+	"ref": "1a674539af7150444db0e2fa8fc46318f91ed86b",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -72795,17 +72795,57 @@
 					"kind": "pair",
 					"key": "predicate_type",
 					"type": {
-						"kind": "string",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id",
-								"value": {
-									"kind": "literal",
-									"value": {
-										"kind": "string",
-										"value": "rule_test"
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.4"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "rule_test"
+											}
+										}
 									}
-								}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.4"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "rule_test_type"
+											}
+										}
+									}
+								]
 							}
 						]
 					}
