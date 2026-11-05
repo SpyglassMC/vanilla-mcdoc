@@ -93,7 +93,10 @@ dispatch minecraft:pos_rule_test[axis_aligned_linear_pos] to struct AxisAlignedL
 }
 
 struct RuleTest {
-	predicate_type: #[id="rule_test"] string,
+	predicate_type: (
+		#[until="26.4"] #[id="rule_test"] string |
+		#[since="26.4"] #[id="rule_test_type"] string |
+	),
 	...minecraft:rule_test[[predicate_type]],
 }
 
