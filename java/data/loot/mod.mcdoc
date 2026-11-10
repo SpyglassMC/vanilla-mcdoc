@@ -11,7 +11,10 @@ use ::java::util::registry_ref::ItemListRef
 use ::java::util::text::Text
 
 dispatch minecraft:resource[loot_table] to struct LootTable {
-	type?: #[id] LootContextParamSets,
+	type?: (
+		#[until="26.3"] #[id] LootContextParamSets |
+		#[since="26.3"] #[id="context_key_set"] string |
+	),
 	pools?: [LootPool],
 	#[until="26.3"]
 	functions?: [LootFunction],
@@ -32,6 +35,7 @@ type LootTableListRef = (
 	#[since="26.3"] [(#[id="loot_table"] string | LootTable)] |
 )
 
+// Until 26.3
 enum(string) LootContextParamSets {
 	Empty = "empty",
 	Chest = "chest",
@@ -73,16 +77,6 @@ enum(string) LootContextParamSets {
 	EntityInteract = "entity_interact",
 	#[since="26.1"]
 	VillagerTrade = "villager_trade",
-	#[since="26.3"]
-	CommandSlotSource = "command_slot_source",
-	#[since="26.3"]
-	ContainerProcess = "container_process",
-	#[since="26.3"]
-	CommandComputeDefault = "command_compute_default",
-	#[since="26.3"]
-	CommandComputePosition = "command_compute_position",
-	#[since="26.3"]
-	CommandComputeEntity = "command_compute_entity",
 }
 
 enum(string) EntityTarget {
