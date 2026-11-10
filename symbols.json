@@ -1,5 +1,5 @@
 {
-	"ref": "1a674539af7150444db0e2fa8fc46318f91ed86b",
+	"ref": "a946af64d81b77663717bfb64f634b25fefba209",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -35571,86 +35571,6 @@
 					],
 					"identifier": "VillagerTrade",
 					"value": "villager_trade"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"identifier": "CommandSlotSource",
-					"value": "command_slot_source"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"identifier": "ContainerProcess",
-					"value": "container_process"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"identifier": "CommandComputeDefault",
-					"value": "command_compute_default"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"identifier": "CommandComputePosition",
-					"value": "command_compute_position"
-				},
-				{
-					"attributes": [
-						{
-							"name": "since",
-							"value": {
-								"kind": "literal",
-								"value": {
-									"kind": "string",
-									"value": "26.3"
-								}
-							}
-						}
-					],
-					"identifier": "CommandComputeEntity",
-					"value": "command_compute_entity"
 				}
 			]
 		},
@@ -36114,11 +36034,51 @@
 					"kind": "pair",
 					"key": "type",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::loot::LootContextParamSets",
-						"attributes": [
+						"kind": "union",
+						"members": [
 							{
-								"name": "id"
+								"kind": "reference",
+								"path": "::java::data::loot::LootContextParamSets",
+								"attributes": [
+									{
+										"name": "until",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id"
+									}
+								]
+							},
+							{
+								"kind": "string",
+								"attributes": [
+									{
+										"name": "since",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "26.3"
+											}
+										}
+									},
+									{
+										"name": "id",
+										"value": {
+											"kind": "literal",
+											"value": {
+												"kind": "string",
+												"value": "context_key_set"
+											}
+										}
+									}
+								]
 							}
 						]
 					},
