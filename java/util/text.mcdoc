@@ -330,6 +330,7 @@ enum(string) Keybind {
 	#[since="1.21.11"] DebugOptionsMenu = "key.debug.debugOptions",
 	#[since="1.21.11"] DebugDumpDynamicTextures = "key.debug.dumpDynamicTextures",
 	#[since="1.21.11"] DebugDumpVersion = "key.debug.dumpVersion",
+	#[since="26.4"] DebugEnvironmentAttributeOptions = "key.debug.environmentAttributeOptions",
 	#[since="1.21.11"] DebugFocusPause = "key.debug.focusPause",
 	#[since="1.21.11"] DebugFpsCharts = "key.debug.fpsCharts",
 	#[since="26.3"] DebugImprovedTransparency = "key.debug.improvedTransparency",
