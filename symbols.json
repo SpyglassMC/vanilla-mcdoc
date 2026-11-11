@@ -1,5 +1,5 @@
 {
-	"ref": "a946af64d81b77663717bfb64f634b25fefba209",
+	"ref": "f70b052cba38357cebd655c5bb1c6bae96352866",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -83960,6 +83960,22 @@
 					],
 					"identifier": "DebugDumpVersion",
 					"value": "key.debug.dumpVersion"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"identifier": "DebugEnvironmentAttributeOptions",
+					"value": "key.debug.environmentAttributeOptions"
 				},
 				{
 					"attributes": [
