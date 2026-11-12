@@ -1,5 +1,5 @@
 {
-	"ref": "f70b052cba38357cebd655c5bb1c6bae96352866",
+	"ref": "eebb39bd490d43ffcdd6270077b0ff5c2c25d608",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -13846,6 +13846,22 @@
 					],
 					"identifier": "Body",
 					"value": "body"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"identifier": "Saddle",
+					"value": "saddle"
 				}
 			]
 		},
