@@ -297,7 +297,6 @@ struct EntityEquipmentPredicate {
 	[EquipmentPredicateSlot]: ItemPredicate,
 }
 
-// Because of MC-311029, saddle cannot be used
 enum(string) EquipmentPredicateSlot {
 	Mainhand = "mainhand",
 	Offhand = "offhand",
@@ -307,6 +306,9 @@ enum(string) EquipmentPredicateSlot {
 	Feet = "feet",
 	#[since="1.20.5"]
 	Body = "body",
+	// Because of MC-311029, saddle cannot be used in old versions
+	#[since="26.4"]
+	Saddle = "saddle",
 }
 
 #[until="26.2"]
