@@ -1,5 +1,5 @@
 {
-	"ref": "eebb39bd490d43ffcdd6270077b0ff5c2c25d608",
+	"ref": "ba85af0f5a6cbfa27a3e60409db962c45fdf81a4",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -23951,6 +23951,216 @@
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::dialog::ButtonListDialogBase"
+					}
+				}
+			]
+		},
+		"::java::data::dispense_behavior::<anonymous 0>": {
+			"kind": "struct",
+			"fields": []
+		},
+		"::java::data::dispense_behavior::DispenseBehavior": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "type",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "dispense_behavior_type"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "spread",
+					"type": {
+						"kind": "dispatcher",
+						"parallelIndices": [
+							{
+								"kind": "dynamic",
+								"accessor": [
+									"type"
+								]
+							}
+						],
+						"registry": "minecraft:dispense_behavior"
+					}
+				}
+			]
+		},
+		"::java::data::dispense_behavior::DispenseBehaviorsRef": {
+			"kind": "union",
+			"members": [
+				{
+					"kind": "string",
+					"attributes": [
+						{
+							"name": "id",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "dispense_behavior"
+								}
+							}
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"item": {
+						"kind": "reference",
+						"path": "::java::data::dispense_behavior::DispenseBehavior"
+					}
+				}
+			]
+		},
+		"::java::data::dispense_behavior::DispenseSound": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "sound",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::util::SoundEventRef"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "volume",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::FloatNumberProvider"
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "pitch",
+					"type": {
+						"kind": "reference",
+						"path": "::java::data::number_provider::FloatNumberProvider"
+					}
+				}
+			]
+		},
+		"::java::data::dispense_behavior::ShootProjectile": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"desc": "How far the spawn position of the projectile is from the center of the dispenser. \\\n1.0 means the block center in front of the dispenser (i.e. 1 block away from the center of the dispenser).",
+					"key": "scale",
+					"type": {
+						"kind": "double"
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "**Absolute** offset added to the spawn position of the projectile. \\\nUnaffected by the dispenser's rotation.",
+					"key": "offset",
+					"type": {
+						"kind": "list",
+						"item": {
+							"kind": "double"
+						},
+						"lengthRange": {
+							"kind": 0,
+							"min": 3,
+							"max": 3
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The inaccuracy of the shot. \\\nVanilla behavior is `6.0`.\n\nEach axis of the movement direction is added by a random number between `0.0` and `0.0172275 * uncertainty`.",
+					"key": "uncertainty",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"desc": "The velocity of the shot. \\\nVanilla behavior is `1.1`.\n\nScales the movement direction after the inaccuracy is added.",
+					"key": "power",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				},
+				{
+					"kind": "pair",
+					"key": "sound",
+					"type": {
+						"kind": "struct",
+						"fields": [
+							{
+								"kind": "pair",
+								"key": "sound",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::util::SoundEventRef"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "volume",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::number_provider::FloatNumberProvider"
+								}
+							},
+							{
+								"kind": "pair",
+								"key": "pitch",
+								"type": {
+									"kind": "reference",
+									"path": "::java::data::number_provider::FloatNumberProvider"
+								}
+							}
+						]
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::data::dispense_behavior::TransformBlock": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "transformer",
+					"type": {
+						"kind": "string",
+						"attributes": [
+							{
+								"name": "id",
+								"value": {
+									"kind": "literal",
+									"value": {
+										"kind": "string",
+										"value": "block_transformer"
+									}
+								}
+							}
+						]
 					}
 				}
 			]
@@ -81647,6 +81857,65 @@
 				}
 			]
 		},
+		"::java::util::particle::BubbleColumnUp": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"desc": "The chance that the particle will spawn a pop particle and play a pop sound once at the end of its lifecycle. \\\nDefaults to 0.",
+					"key": "pop_chance",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0,
+							"max": 1
+						}
+					},
+					"optional": true
+				}
+			]
+		},
+		"::java::util::particle::CurrentDown": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"key": "radius",
+					"type": {
+						"kind": "float",
+						"valueRange": {
+							"kind": 0,
+							"min": 0
+						}
+					}
+				}
+			]
+		},
 		"::java::util::particle::DragonBreathParticle": {
 			"kind": "struct",
 			"fields": [
@@ -84352,6 +84621,22 @@
 					],
 					"identifier": "QuickActions",
 					"value": "key.quickActions"
+				},
+				{
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"identifier": "RepeatRecipeOrTrade",
+					"value": "key.repeatRecipeOrTrade"
 				},
 				{
 					"identifier": "Right",
@@ -121230,6 +121515,22 @@
 				"kind": "reference",
 				"path": "::java::world::component::item::DebugStickState"
 			},
+			"dispense_behavior": {
+				"kind": "reference",
+				"path": "::java::data::dispense_behavior::DispenseBehaviorsRef",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
+					}
+				]
+			},
 			"dye": {
 				"kind": "reference",
 				"path": "::java::util::color::DyeColor",
@@ -123935,6 +124236,20 @@
 			"plain_message": {
 				"kind": "reference",
 				"path": "::java::data::dialog::body::PlainMessage"
+			}
+		},
+		"minecraft:dispense_behavior": {
+			"%unknown": {
+				"kind": "struct",
+				"fields": []
+			},
+			"shoot_projectile": {
+				"kind": "reference",
+				"path": "::java::data::dispense_behavior::ShootProjectile"
+			},
+			"transform_block": {
+				"kind": "reference",
+				"path": "::java::data::dispense_behavior::TransformBlock"
 			}
 		},
 		"minecraft:effect_component": {
@@ -131365,6 +131680,14 @@
 				"kind": "reference",
 				"path": "::java::util::particle::BlockParticle"
 			},
+			"bubble_column_up": {
+				"kind": "reference",
+				"path": "::java::util::particle::BubbleColumnUp"
+			},
+			"current_down": {
+				"kind": "reference",
+				"path": "::java::util::particle::CurrentDown"
+			},
 			"dragon_breath": {
 				"kind": "reference",
 				"path": "::java::util::particle::DragonBreathParticle"
@@ -132665,6 +132988,22 @@
 			"dimension_type": {
 				"kind": "reference",
 				"path": "::java::data::worldgen::dimension::DimensionType"
+			},
+			"dispense_behavior": {
+				"kind": "reference",
+				"path": "::java::data::dispense_behavior::DispenseBehavior",
+				"attributes": [
+					{
+						"name": "since",
+						"value": {
+							"kind": "literal",
+							"value": {
+								"kind": "string",
+								"value": "26.4"
+							}
+						}
+					}
+				]
 			},
 			"enchantment": {
 				"kind": "reference",
