@@ -367,6 +367,7 @@ enum(string) Keybind {
 	PickItem = "key.pickItem",
 	Playerlist = "key.playerlist",
 	#[since="1.21.6"] QuickActions = "key.quickActions",
+	#[since="26.4"] RepeatRecipeOrTrade = "key.repeatRecipeOrTrade",
 	Right = "key.right",
 	SaveToolbarActivator = "key.saveToolbarActivator",
 	Screenshot = "key.screenshot",

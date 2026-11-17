@@ -1,5 +1,6 @@
 use ::java::data::advancement::predicate::BlockPredicate
 use ::java::data::damage_type::DamageType
+use ::java::data::dispense_behavior::DispenseBehaviorsRef
 use ::java::data::trim::TrimMaterial
 use ::java::data::trim::TrimPattern
 use ::java::data::variants::instrument::Instrument
@@ -351,6 +352,9 @@ dispatch minecraft:data_component[death_protection] to struct DeathProtection {
 dispatch minecraft:data_component[debug_stick_state] to struct DebugStickState {
 	[#[id="block"] string]: mcdoc:block_state_keys[[%key]],
 }
+
+#[since="26.4"]
+dispatch minecraft:data_component[dispense_behavior] to DispenseBehaviorsRef
 
 #[since="26.1"]
 dispatch minecraft:data_component[dye] to DyeColor

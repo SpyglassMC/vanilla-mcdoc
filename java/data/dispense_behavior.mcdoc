@@ -1,0 +1,44 @@
+use ::java::data::util::SoundEventRef
+use ::java::data::number_provider::FloatNumberProvider
+
+#[since="26.4"]
+dispatch minecraft:resource[dispense_behavior] to struct DispenseBehavior {
+	type: #[id="dispense_behavior_type"] string,
+	...minecraft:dispense_behavior[[type]],
+}
+
+// A single ID or an inlined list, for no reason
+type DispenseBehaviorsRef = (
+	#[id="dispense_behavior"] string |
+	[DispenseBehavior] |
+)
+
+dispatch minecraft:dispense_behavior[%unknown] to struct {}
+
+dispatch minecraft:dispense_behavior[shoot_projectile] to struct ShootProjectile {
+	/// How far the spawn position of the projectile is from the center of the dispenser. \
+	/// 1.0 means the block center in front of the dispenser (i.e. 1 block away from the center of the dispenser).
+	scale: double,
+	/// **Absolute** offset added to the spawn position of the projectile. \
+	/// Unaffected by the dispenser's rotation.
+	offset: [double] @ 3,
+	/// The inaccuracy of the shot. \
+	/// Vanilla behavior is `6.0`.
+	///
+	/// Each axis of the movement direction is added by a random number between `0.0` and `0.0172275 * uncertainty`.
+	uncertainty: float @ 0..,
+	/// The velocity of the shot. \
+	/// Vanilla behavior is `1.1`.
+	///
+	/// Scales the movement direction after the inaccuracy is added.
+	power: float @ 0..,
+	sound?: struct DispenseSound {
+		sound: SoundEventRef,
+		volume: FloatNumberProvider,
+		pitch: FloatNumberProvider,
+	},
+}
+
+dispatch minecraft:dispense_behavior[transform_block] to struct TransformBlock {
+	transformer: #[id="block_transformer"] string,
+}
