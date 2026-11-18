@@ -1,5 +1,5 @@
 {
-	"ref": "ba85af0f5a6cbfa27a3e60409db962c45fdf81a4",
+	"ref": "699fbbe52d6f8f58637d8bec22463dbd9a7a7645",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -132990,8 +132990,11 @@
 				"path": "::java::data::worldgen::dimension::DimensionType"
 			},
 			"dispense_behavior": {
-				"kind": "reference",
-				"path": "::java::data::dispense_behavior::DispenseBehavior",
+				"kind": "list",
+				"item": {
+					"kind": "reference",
+					"path": "::java::data::dispense_behavior::DispenseBehavior"
+				},
 				"attributes": [
 					{
 						"name": "since",
