@@ -2,12 +2,13 @@ use ::java::data::util::SoundEventRef
 use ::java::data::number_provider::FloatNumberProvider
 
 #[since="26.4"]
-dispatch minecraft:resource[dispense_behavior] to struct DispenseBehavior {
+dispatch minecraft:resource[dispense_behavior] to [DispenseBehavior]
+
+struct DispenseBehavior {
 	type: #[id="dispense_behavior_type"] string,
 	...minecraft:dispense_behavior[[type]],
 }
 
-// A single ID or an inlined list, for no reason
 type DispenseBehaviorsRef = (
 	#[id="dispense_behavior"] string |
 	[DispenseBehavior] |
