@@ -3,6 +3,14 @@ struct Saddled {
 	/// Whether there is a saddle on it.
 	#[until="1.21.5"]
 	Saddle?: boolean,
+	#[since="26.4"]
+	item_based_steering?: ItemBasedSteering,
+}
+
+struct ItemBasedSteering {
+	boosting?: boolean,
+	boost_time?: int,
+	boost_time_total?: int,
 }
 
 dispatch minecraft:entity[pig] to struct Pig {
