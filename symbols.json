@@ -1,5 +1,5 @@
 {
-	"ref": "699fbbe52d6f8f58637d8bec22463dbd9a7a7645",
+	"ref": "62adc8bb28c81c420d4756100fa14dec8892d160",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -105466,6 +105466,35 @@
 				}
 			]
 		},
+		"::java::world::entity::mob::breedable::saddled::ItemBasedSteering": {
+			"kind": "struct",
+			"fields": [
+				{
+					"kind": "pair",
+					"key": "boosting",
+					"type": {
+						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "boost_time",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"key": "boost_time_total",
+					"type": {
+						"kind": "int"
+					},
+					"optional": true
+				}
+			]
+		},
 		"::java::world::entity::mob::breedable::saddled::Pig": {
 			"kind": "struct",
 			"fields": [
@@ -105570,6 +105599,27 @@
 					"key": "Saddle",
 					"type": {
 						"kind": "boolean"
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"key": "item_based_steering",
+					"type": {
+						"kind": "reference",
+						"path": "::java::world::entity::mob::breedable::saddled::ItemBasedSteering"
 					},
 					"optional": true
 				}
