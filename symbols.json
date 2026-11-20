@@ -1,5 +1,5 @@
 {
-	"ref": "636352e6b1213c8764b0a0776576207cb2e6d949",
+	"ref": "2824618d7b34b3a3b3df02435e2d3810b0937b44",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -69884,14 +69884,14 @@
 					"kind": "pair",
 					"key": "min_threshold",
 					"type": {
-						"kind": "float"
+						"kind": "double"
 					}
 				},
 				{
 					"kind": "pair",
 					"key": "max_threshold",
 					"type": {
-						"kind": "float"
+						"kind": "double"
 					}
 				},
 				{
