@@ -1,5 +1,5 @@
 use ::java::data::util::SoundEventRef
-use ::java::data::number_provider::FloatNumberProvider
+use ::java::data::worldgen::FloatProvider
 
 #[since="26.4"]
 dispatch minecraft:resource[dispense_behavior] to [DispenseBehavior]
@@ -35,8 +35,8 @@ dispatch minecraft:dispense_behavior[shoot_projectile] to struct ShootProjectile
 	power: float @ 0..,
 	sound?: struct DispenseSound {
 		sound: SoundEventRef,
-		volume: FloatNumberProvider,
-		pitch: FloatNumberProvider,
+		volume: FloatProvider<float>,
+		pitch: FloatProvider<float>,
 	},
 }
 
