@@ -1,5 +1,5 @@
 {
-	"ref": "62adc8bb28c81c420d4756100fa14dec8892d160",
+	"ref": "636352e6b1213c8764b0a0776576207cb2e6d949",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -24040,16 +24040,32 @@
 					"kind": "pair",
 					"key": "volume",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::FloatNumberProvider"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float"
+							}
+						]
 					}
 				},
 				{
 					"kind": "pair",
 					"key": "pitch",
 					"type": {
-						"kind": "reference",
-						"path": "::java::data::number_provider::FloatNumberProvider"
+						"kind": "concrete",
+						"child": {
+							"kind": "reference",
+							"path": "::java::data::worldgen::FloatProvider"
+						},
+						"typeArgs": [
+							{
+								"kind": "float"
+							}
+						]
 					}
 				}
 			]
@@ -24123,16 +24139,32 @@
 								"kind": "pair",
 								"key": "volume",
 								"type": {
-									"kind": "reference",
-									"path": "::java::data::number_provider::FloatNumberProvider"
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::worldgen::FloatProvider"
+									},
+									"typeArgs": [
+										{
+											"kind": "float"
+										}
+									]
 								}
 							},
 							{
 								"kind": "pair",
 								"key": "pitch",
 								"type": {
-									"kind": "reference",
-									"path": "::java::data::number_provider::FloatNumberProvider"
+									"kind": "concrete",
+									"child": {
+										"kind": "reference",
+										"path": "::java::data::worldgen::FloatProvider"
+									},
+									"typeArgs": [
+										{
+											"kind": "float"
+										}
+									]
 								}
 							}
 						]
