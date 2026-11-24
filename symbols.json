@@ -1,5 +1,5 @@
 {
-	"ref": "09a273abb074218e510c53850a9ca5919452831c",
+	"ref": "c4404ccc39596aa6e99a1fe1dc9e56cc3a669865",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -94386,7 +94386,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Sound played during and on completion of item consumption. \\\nIf not specified, the default eating sound will be played.",
+					"desc": "Sound played during and on completion of item consumption. \\\nDefaults to `entity.generic.eat`.",
 					"key": "sound",
 					"type": {
 						"kind": "reference",
@@ -94420,7 +94420,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Sound event to play when the item is equipped. \\\nIf not specified, the default armor equip sound will be played.",
+					"desc": "Sound event to play when the item is equipped. \\\nDefaults to `item.armor.equip_generic`.",
 					"key": "equip_sound",
 					"type": {
 						"kind": "reference",
@@ -94442,7 +94442,7 @@
 							}
 						}
 					],
-					"desc": "Sound event to play when the item is sheared from a mob. \\\nIf not specified, the default shearing sound (`item.shears.snip`) will be played.",
+					"desc": "Sound event to play when the item is sheared from a mob. \\\nDefaults to `item.shears.snip`.",
 					"key": "shearing_sound",
 					"type": {
 						"kind": "reference",
@@ -94599,7 +94599,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Minimum distance to the target to be considered valid.\nDefaults to 0.0",
+					"desc": "Minimum distance to the target to be considered valid. \\\nDefaults to 0.0",
 					"key": "min_reach",
 					"type": {
 						"kind": "float",
@@ -94613,7 +94613,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Maximum distance to the target to be considered valid.\nDefaults to 3.0",
+					"desc": "Maximum distance to the target to be considered valid. \\\nDefaults to 3.0",
 					"key": "max_reach",
 					"type": {
 						"kind": "float",
@@ -94627,7 +94627,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Minimum distance from the creative mode attacker to the target to be considered valid.\nDefaults to 0.0",
+					"desc": "Minimum distance from the creative mode attacker to the target to be considered valid. \\\nDefaults to 0.0",
 					"key": "min_creative_reach",
 					"type": {
 						"kind": "float",
@@ -94641,7 +94641,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Maximum distance from the creative mode attacker to the target to be considered valid.\nDefaults to 5.0",
+					"desc": "Maximum distance from the creative mode attacker to the target to be considered valid. \\\nDefaults to 5.0",
 					"key": "max_creative_reach",
 					"type": {
 						"kind": "float",
@@ -94655,7 +94655,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The margin applied to the target bounding box when checking for valid hitbox collision.\nDefaults to 0.3",
+					"desc": "The margin applied to the target bounding box when checking for valid hitbox collision. \\\nDefaults to 0.3",
 					"key": "hitbox_margin",
 					"type": {
 						"kind": "float",
@@ -94922,7 +94922,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Number of seconds that right-click must be held before successfully blocking attacks.\nDefaults to `0`.",
+					"desc": "Number of seconds that right-click must be held before successfully blocking attacks. \\\nDefaults to `0`.",
 					"key": "block_delay_seconds",
 					"type": {
 						"kind": "float",
@@ -94935,7 +94935,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Multiplier applied to the number of seconds that the item will be on cooldown for when attacked by a disabling attack (`disable_blocking_for_seconds` on the `weapon` component).\nDefaults to `1`.\nIf `0`, this item can never be disabled by attacks.",
+					"desc": "Multiplier applied to the number of seconds that the item will be on cooldown for when attacked by a disabling attack (`disable_blocking_for_seconds` on the `weapon` component). \\\nDefaults to `1`. \\\nWhen set to `0`, this item can never be disabled by attacks.",
 					"key": "disable_cooldown_scale",
 					"type": {
 						"kind": "float",
@@ -94948,7 +94948,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Controls how much damage should be blocked in a given attack. If not specified, all damage is blocked.\nEach entry in the list contributes an amount of damage to be blocked, optionally filtered by a damage type.\nEach entry adds to blocked damage, determined by `clamp(base + factor * dealt_damage, 0, dealt_damage)`.\nThe final damage applied in the attack to the entity is determined by `dealt_damage - clamp(blocked_damage, 0, dealt_damage)`.",
+					"desc": "Controls how much damage should be blocked in a given attack. If not specified, all damage is blocked. \\\nEach entry in the list contributes an amount of damage to be blocked, optionally filtered by a damage type. \\\nEach entry adds to blocked damage, determined by `clamp(base + factor * dealt_damage, 0, dealt_damage)`. \\\nThe final damage applied in the attack to the entity is determined by `dealt_damage - clamp(blocked_damage, 0, dealt_damage)`.",
 					"key": "damage_reductions",
 					"type": {
 						"kind": "list",
@@ -94961,7 +94961,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Controls how much damage should be applied to the item from a given attack.\nIf not specified, a point of durability is removed for every point of damage dealt.\nThe final damage applied to the item is determined by `floor(base + factor * dealt_damage)`.\nThe final value may be negative, causing the item to be repaired.",
+					"desc": "Controls how much damage should be applied to the item from a given attack. \\\nIf not specified, a point of durability is removed for every point of damage dealt. \\\nThe final damage applied to the item is determined by `floor(base + factor * dealt_damage)`. \\\nThe final value may be negative, causing the item to be repaired.",
 					"key": "item_damage",
 					"type": {
 						"kind": "reference",
@@ -95451,7 +95451,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Time taken for a player to consume the item. Defaults to 1.6.",
+					"desc": "Time taken for a player to consume the item. \\\nDefaults to 1.6.",
 					"key": "consume_seconds",
 					"type": {
 						"kind": "float",
@@ -95464,7 +95464,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "View model/arms animation used during consumption of the item. Defaults to `eat`.",
+					"desc": "View model/arms animation used during consumption of the item. \\\nDefaults to `eat`.",
 					"key": "animation",
 					"type": {
 						"kind": "reference",
@@ -95491,7 +95491,7 @@
 						"fields": [
 							{
 								"kind": "pair",
-								"desc": "Sound played during and on completion of item consumption. \\\nIf not specified, the default eating sound will be played.",
+								"desc": "Sound played during and on completion of item consumption. \\\nDefaults to `entity.generic.eat`.",
 								"key": "sound",
 								"type": {
 									"kind": "reference",
@@ -95534,7 +95534,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether the `item` particle is emitted while consuming the item. Defaults to `true`.",
+					"desc": "Whether the `item` particle is emitted while consuming the item. \\\nDefaults to `true`.",
 					"key": "has_consume_particles",
 					"type": {
 						"kind": "boolean"
@@ -95721,7 +95721,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "An optional damage type to filter this reduction by.\nIf not specified, any damage type is accepted for this reduction.",
+					"desc": "An optional damage type to filter this reduction by. \\\nIf not specified, any damage type is accepted for this reduction.",
 					"key": "type",
 					"type": {
 						"kind": "union",
@@ -95811,7 +95811,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The damage types which the item is resistant to when in entity form.\nAdditionally, this also affects whether the equipped item will be damaged when the wearer is hurt by a specified damage type.",
+					"desc": "The damage types which the item is resistant to when in entity form. \\\nAdditionally, this also affects whether the equipped item will be damaged when the wearer is hurt by a specified damage type.",
 					"key": "types",
 					"type": {
 						"kind": "union",
@@ -95985,7 +95985,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Color of the armor.\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.",
+					"desc": "Color of the armor. \\\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.",
 					"key": "rgb",
 					"type": {
 						"kind": "int",
@@ -96106,7 +96106,7 @@
 							}
 						}
 					],
-					"desc": "The equipment model to use when equipped.\nFalls back to rendering as the item itself when in the head slot (or no rendering if not applicable).",
+					"desc": "The equipment model to use when equipped. \\\nFalls back to rendering as the item itself when in the head slot (or no rendering if not applicable).",
 					"key": "model",
 					"type": {
 						"kind": "string",
@@ -96176,7 +96176,7 @@
 						"fields": [
 							{
 								"kind": "pair",
-								"desc": "Sound event to play when the item is equipped. \\\nIf not specified, the default armor equip sound will be played.",
+								"desc": "Sound event to play when the item is equipped. \\\nDefaults to `item.armor.equip_generic`.",
 								"key": "equip_sound",
 								"type": {
 									"kind": "reference",
@@ -96198,7 +96198,7 @@
 										}
 									}
 								],
-								"desc": "Sound event to play when the item is sheared from a mob. \\\nIf not specified, the default shearing sound (`item.shears.snip`) will be played.",
+								"desc": "Sound event to play when the item is sheared from a mob. \\\nDefaults to `item.shears.snip`.",
 								"key": "shearing_sound",
 								"type": {
 									"kind": "reference",
@@ -96328,7 +96328,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether the item can be equipped by using a dispenser. Defaults to `true`.",
+					"desc": "Whether the item can be equipped by using a dispenser. \\\nDefaults to `true`.",
 					"key": "dispensable",
 					"type": {
 						"kind": "boolean"
@@ -96337,7 +96337,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether the item can be equipped by right-clicking. Defaults to `true`.",
+					"desc": "Whether the item can be equipped by right-clicking. \\\nDefaults to `true`.",
 					"key": "swappable",
 					"type": {
 						"kind": "boolean"
@@ -96346,7 +96346,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether the item will be damaged when the wearer is damaged. Defaults to `true`.",
+					"desc": "Whether the item will be damaged when the wearer is damaged. \\\nDefaults to `true`.",
 					"key": "damage_on_hurt",
 					"type": {
 						"kind": "boolean"
@@ -96355,7 +96355,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether players can equip this item onto a target mob by right-clicking it (as long as this item can be equipped on the target at all).\nThe item will not be equipped if the target already has an item in the relevant slot.\nDefaults to `false`.",
+					"desc": "Whether players can equip this item onto a target mob by right-clicking it (as long as this item can be equipped on the target at all). \\\nThe item will not be equipped if the target already has an item in the relevant slot. \\\nDefaults to `false`.",
 					"key": "equip_on_interact",
 					"type": {
 						"kind": "boolean"
@@ -96376,7 +96376,7 @@
 							}
 						}
 					],
-					"desc": "Whether players can use shears to remove this item from a mob by right-clicking it (as long as other shearing conditions are satisfied).\nDefaults to `false`.",
+					"desc": "Whether players can use shears to remove this item from a mob by right-clicking it (as long as other shearing conditions are satisfied). \\\nDefaults to `false`.",
 					"key": "can_be_sheared",
 					"type": {
 						"kind": "boolean"
@@ -96399,7 +96399,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Colors of the initial particles of the explosion, randomly selected from.\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.",
+					"desc": "Colors of the initial particles of the explosion, randomly selected from. \\\nCalculated as `RED << 16 | GREEN << 8 | BLUE`. Each of these fields must be between 0 and 255, inclusive.",
 					"key": "colors",
 					"type": {
 						"kind": "union",
@@ -96630,7 +96630,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether the item can be eaten when the player's food points/haunches are full. Defaults to `false`",
+					"desc": "Whether the item can be eaten when the player's food points/haunches are full. \\\nDefaults to `false`",
 					"key": "can_always_eat",
 					"type": {
 						"kind": "boolean"
@@ -96938,7 +96938,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The time in ticks required for charging.\nDefaults to 0",
+					"desc": "The time in ticks required for charging. \\\nDefaults to 0",
 					"key": "delay_ticks",
 					"type": {
 						"kind": "int",
@@ -96951,7 +96951,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The cooldown in ticks after hitting, and loosing contact with an entity before being able to hit it again\nDefaults to 10",
+					"desc": "The cooldown in ticks after hitting, and loosing contact with an entity before being able to hit it again. \\\nDefaults to 10",
 					"key": "contact_cooldown_ticks",
 					"type": {
 						"kind": "int",
@@ -96991,7 +96991,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The distance the item moves out of hand during animation.\nDefaults to 0.0",
+					"desc": "The distance the item moves out of hand during animation. \\\nDefaults to 0.0",
 					"key": "forward_movement",
 					"type": {
 						"kind": "float"
@@ -97000,7 +97000,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The multiplier for the final damage from the relative speed.\nDefaults to 1.0",
+					"desc": "The multiplier for the final damage from the relative speed. \\\nDefaults to 1.0",
 					"key": "damage_multiplier",
 					"type": {
 						"kind": "float"
@@ -97034,7 +97034,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The duration in ticks this condition can pass.\nStarts counting after charged.",
+					"desc": "The duration in ticks this condition can pass. \\\nStarts counting after charged.",
 					"key": "max_duration_ticks",
 					"type": {
 						"kind": "int"
@@ -97042,7 +97042,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The minimum attacker speed required.\nDefaults to 0.0",
+					"desc": "The minimum attacker speed required. \\\nDefaults to 0.0",
 					"key": "min_speed",
 					"type": {
 						"kind": "float"
@@ -97051,7 +97051,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The minimum relative speed required.\nDefaults to 0.0",
+					"desc": "The minimum relative speed required. \\\nDefaults to 0.0",
 					"key": "min_relative_speed",
 					"type": {
 						"kind": "float"
@@ -97065,7 +97065,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Location of the lodestone. Optional. If not set, the compass will spin randomly.",
+					"desc": "Location of the lodestone. \\\nIf not set, the compass will spin randomly.",
 					"key": "target",
 					"type": {
 						"kind": "reference",
@@ -97075,7 +97075,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "When `true`, the component is removed when the lodestone is broken. When `false`, the component is kept. Defaults to true.",
+					"desc": "When `true`, the component is removed when the lodestone is broken. \\\nWhen `false`, the component is kept. \\\nDefaults to `true`.",
 					"key": "tracked",
 					"type": {
 						"kind": "boolean"
@@ -97226,7 +97226,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Whether the attack deals knockback.\nDefaults to `true`.",
+					"desc": "Whether the attack deals knockback. \\\nDefaults to `true`.",
 					"key": "deals_knockback",
 					"type": {
 						"kind": "boolean"
@@ -97235,7 +97235,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether the attack dismounts the target.\nDefaults to `false`.",
+					"desc": "Whether the attack dismounts the target. \\\nDefaults to `false`.",
 					"key": "dismounts",
 					"type": {
 						"kind": "boolean"
@@ -97323,7 +97323,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "If present, is used to generate the item name using the translation key `item.minecraft.<potion_type>.effect.<custom_name>`.",
+					"desc": "Overrides item name of potion, splash potion, lingering potion and tipped arrow.\n\nThe first present value is used as `<name>` to generate the translation key `item.minecraft.<item_id>.effect.<name>`:\n1. This field\n2. The default name provided by the `potion` type.\n3. Literal `empty`.",
 					"key": "custom_name",
 					"type": {
 						"kind": "string"
@@ -97512,7 +97512,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Duration of the effect in ticks. Defaults to `160`; 8 seconds.",
+					"desc": "Duration of the effect in ticks. \\\nDefaults to `160`; 8 seconds.",
 					"key": "duration",
 					"type": {
 						"kind": "int",
@@ -97530,7 +97530,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The animation type to play when attacking or interacting using this item.\nDefaults to `whack`.",
+					"desc": "The animation type to play when attacking or interacting using this item. \\\nDefaults to `whack`.",
 					"key": "type",
 					"type": {
 						"kind": "reference",
@@ -97540,7 +97540,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The animation duration in ticks.\nDefaults to 6",
+					"desc": "The animation duration in ticks. \\\nDefaults to 6",
 					"key": "duration",
 					"type": {
 						"kind": "union",
@@ -97663,7 +97663,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Used if no rules override it. Defaults to 1.0.",
+					"desc": "Used if no rules override it. \\\nDefaults to 1.0.",
 					"key": "default_mining_speed",
 					"type": {
 						"kind": "float"
@@ -97672,10 +97672,14 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Amount of durability to remove each time a block is broken with this tool. Must be a non-negative integer.",
+					"desc": "Amount of durability to remove each time a block is broken with this tool. \\\nDefaults to 1.",
 					"key": "damage_per_block",
 					"type": {
-						"kind": "int"
+						"kind": "int",
+						"valueRange": {
+							"kind": 0,
+							"min": 1
+						}
 					},
 					"optional": true
 				},
@@ -97693,7 +97697,7 @@
 							}
 						}
 					],
-					"desc": "If `false`, players cannot break blocks while holding this tool in creative mode. Defaults to `true`.",
+					"desc": "If `false`, players cannot break blocks while holding this tool in creative mode. \\\nDefaults to `true`.",
 					"key": "can_destroy_blocks_in_creative",
 					"type": {
 						"kind": "boolean"
@@ -97843,7 +97847,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The trim material of this item..",
+					"desc": "The trim material of this item.",
 					"key": "material",
 					"type": {
 						"kind": "union",
@@ -97963,7 +97967,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "If present, this item will be part of a cooldown group and no longer share cooldowns with its base item type.\nInstead, cooldowns applied to this item will only be shared with any other items that are part of the same cooldown group.",
+					"desc": "Cooldowns applied to this item will only be shared with any other items that are part of the same cooldown group. \\\nDefaults to the ID of this item.",
 					"key": "cooldown_group",
 					"type": {
 						"kind": "string",
@@ -98001,7 +98005,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "Whether the player can sprint while using this item.\nDefaults to `false`.",
+					"desc": "Whether the player can sprint while using this item. \\\nDefaults to `false`.",
 					"key": "can_sprint",
 					"type": {
 						"kind": "boolean"
@@ -98010,7 +98014,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "The speed multiplier applied to the player while using this item.\nDefaults to 0.2",
+					"desc": "The speed multiplier applied to the player while using this item. \\\nDefaults to 0.2",
 					"key": "speed_multiplier",
 					"type": {
 						"kind": "float",
@@ -98024,7 +98028,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Whether using this item emits game events (`item_interact_start` and `item_interact_finish`).\nDefaults to `true`.",
+					"desc": "Whether using this item emits game events (`item_interact_start` and `item_interact_finish`). \\\nDefaults to `true`.",
 					"key": "interact_vibrations",
 					"type": {
 						"kind": "boolean"
@@ -98055,7 +98059,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "The amount to damage to the weapon item for each attack performed. Defaults to `1`.",
+					"desc": "The amount to damage to the weapon item for each attack performed. \\\nDefaults to `1`.",
 					"key": "item_damage_per_attack",
 					"type": {
 						"kind": "int",
@@ -98198,7 +98202,7 @@
 				},
 				{
 					"kind": "pair",
-					"desc": "Number of times this written book has been copied. Defaults to 0. If the value is greater than 1, the book cannot be copied.",
+					"desc": "Number of times this written book has been copied. \\\nDefaults to 0. \\\nIf the value is greater than 1, the book cannot be copied.",
 					"key": "generation",
 					"type": {
 						"kind": "reference",
