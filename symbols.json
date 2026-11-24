@@ -1,5 +1,5 @@
 {
-	"ref": "2824618d7b34b3a3b3df02435e2d3810b0937b44",
+	"ref": "09a273abb074218e510c53850a9ca5919452831c",
 	"mcdoc": {
 		"::java::assets::atlas::Atlas": {
 			"kind": "struct",
@@ -55590,7 +55590,7 @@
 				},
 				{
 					"kind": "pair",
-					"key": "y",
+					"key": "z",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::density_function::UpscaleAxis"
@@ -55598,7 +55598,7 @@
 				},
 				{
 					"kind": "pair",
-					"key": "z",
+					"key": "y",
 					"type": {
 						"kind": "reference",
 						"path": "::java::data::worldgen::density_function::UpscaleAxis"
@@ -97784,7 +97784,7 @@
 			"fields": [
 				{
 					"kind": "pair",
-					"desc": "If `true`, the item will have no tooltip when hovered. Defaults to `false`.",
+					"desc": "If `true`, the item will have no tooltip when hovered. \\\nDefaults to `false`.",
 					"key": "hide_tooltip",
 					"type": {
 						"kind": "boolean"
@@ -97812,6 +97812,27 @@
 								}
 							]
 						}
+					},
+					"optional": true
+				},
+				{
+					"kind": "pair",
+					"attributes": [
+						{
+							"name": "since",
+							"value": {
+								"kind": "literal",
+								"value": {
+									"kind": "string",
+									"value": "26.4"
+								}
+							}
+						}
+					],
+					"desc": "Whether long lines in the tooltip are wrapped so that the tooltip width doesn't exceed 170 pixels. \\\nDefaults to `true`.",
+					"key": "split_lines",
+					"type": {
+						"kind": "boolean"
 					},
 					"optional": true
 				}
