@@ -268,9 +268,10 @@ enum(string) SplineType {
 #[since="26.4"]
 dispatch minecraft:density_function[upscale] to struct Upscale {
 	input: DensityFunctionRef,
+	// The order is intentional. This matches in-game scaling order.
 	x: UpscaleAxis,
-	y: UpscaleAxis,
 	z: UpscaleAxis,
+	y: UpscaleAxis,
 }
 
 struct UpscaleAxis {

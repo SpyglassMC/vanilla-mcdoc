@@ -804,10 +804,15 @@ struct ToolRule {
 
 #[since="1.21.5"]
 dispatch minecraft:data_component[tooltip_display] to struct TooltipDisplay {
-	/// If `true`, the item will have no tooltip when hovered. Defaults to `false`.
+	/// If `true`, the item will have no tooltip when hovered. \
+	/// Defaults to `false`.
 	hide_tooltip?: boolean,
 	/// List of components that should be hidden in the item tooltip.
 	hidden_components?: [#[id="data_component_type"] string],
+	/// Whether long lines in the tooltip are wrapped so that the tooltip width doesn't exceed 170 pixels. \
+	/// Defaults to `true`.
+	#[since="26.4"]
+	split_lines?: boolean,
 }
 
 dispatch minecraft:data_component[tooltip_style] to #[id] string
